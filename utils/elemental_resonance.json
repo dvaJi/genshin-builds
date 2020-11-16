@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Enduring Rock",
+    "id": "1",
+    "primary": ["Geo", "Geo"],
+    "effect": "Increases resistance to interruption. When protected by a shield, increases Attack DMG by 15%."
+  },
+  {
+    "name": "Fervent Flames",
+    "id": "2",
+    "primary": ["Pyro", "Pyro"],
+    "effect": "Affected by Cryo for 40% less time. Increases ATK by 25%."
+  },
+  {
+    "name": "Soothing Waters",
+    "id": "3",
+    "primary": ["Hydro", "Hydro"],
+    "effect": "Affected by Pyro for 40% less time. Increases incoming healing by 30%."
+  },
+  {
+    "name": "Impetuous Winds",
+    "id": "4",
+    "primary": ["Anemo", "Anemo"],
+    "effect": "Decreases Stamina Consumption by 15%. Increases Movement SPD by 10%. Shortens Skill CD by 5%."
+  },
+  {
+    "name": "High Voltage",
+    "id": "5",
+    "primary": ["Electro", "Electro"],
+    "effect": "Affected by Hydro for 40% less time. Superconduct, Overloaded, and Electro-Charged have a 100% chance to generate an Electro Elemental Particle (CD: 5s)."
+  },
+  {
+    "name": "Shattering Ice",
+    "id": "6",
+    "primary": ["Cryo", "Cryo"],
+    "effect": "Affected by Electro for 40% less time. Increases CRIT Rate against enemies that are Frozen or affected by Cryo by 15%."
+  },
+  {
+    "name": "Protective Canopy",
+    "id": "7",
+    "primary": ["Any 4 Unique Elements"],
+    "effect": "All Elemental RES by 15%."
+  }
+]

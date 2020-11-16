@@ -1,0 +1,63 @@
+[
+  {
+    "floor": "1",
+    "bonus": [
+      "Pyro DMG dealt by all party members increased by 75%",
+      "Overloaded DMG increased by 200%"
+    ],
+    "element": "Pyro"
+  },
+  {
+    "floor": "2",
+    "bonus": [
+      "Cryo DMG dealt by all party members increased by 75%",
+      "The duration of the Frozen status effect is greatly increased"
+    ],
+    "element": "Cryo"
+  },
+  {
+    "floor": "3",
+    "bonus": [
+      "Anemo DMG dealt by all party members increased by 75%",
+      "Increases Swirl reaction DMG by 300%, and its AoE by 100%"
+    ],
+    "element": "Anemo"
+  },
+  {
+    "floor": "4",
+    "bonus": [
+      "Electro DMG dealt by all party members increased by 75%",
+      "Electro-Charged DMG increased by 150%, and its AoE increased by 100%"
+    ],
+    "element": "Electro"
+  },
+  {
+    "floor": "5",
+    "bonus": [
+      "When your character's HP is greater than 50%, ATK and DEF are increased by 25%",
+      "When HP is greater than 80%, Normal Attack SPD is increased by 20%"
+    ]
+  },
+  {
+    "floor": "6",
+    "bonus": [
+      "Using an Elemental Burst increases all party members' ATK and DEF by 6%. Max 10 stacks. At 5 stacks and above, increases characters Normal Attack SPD and Movement SPD by an additional 30%."
+    ]
+  },
+  {
+    "floor": "7",
+    "bonus": [
+      "CRIT hits will generate Elemental Particles and Orbs. Can only occur once every 15s",
+      "CRIT DMG dealt by all party members increased by 120%"
+    ]
+  },
+  {
+    "floor": "8",
+    "bonus": [
+      "When HP is less than 60%, ATK is increased by 50% and DEF is increased by 50%",
+      "When HP is less than 45%, Normal Attack SPD is increased by 30%",
+      "When HP is less than 45%, Movement SPD is increased by 30%",
+      "When HP is less than 30%, CRIT Rate is increased by 20% and CRIT DMG is increased by 40%"
+    ]
+  }
+]

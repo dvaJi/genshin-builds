@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Engulfing Storm",
+    "id": "1",
+    "primary": ["Electro"],
+    "effect": "Continuously drains Energy Recharge."
+  },
+  {
+    "name": "Slowing Water",
+    "id": "2",
+    "primary": ["Hydro"],
+    "effect": "Increases skill CD durations."
+  },
+  {
+    "name": "Smoldering Flames",
+    "id": "3",
+    "primary": ["Pyro"],
+    "effect": "Continuously inflicts damage over time."
+  },
+  {
+    "name": "Condensed Ice",
+    "id": "4",
+    "primary": ["Cryo"],
+    "effect": "Increases stamina consumption."
+  }
+]

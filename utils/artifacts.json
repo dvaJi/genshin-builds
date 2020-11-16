@@ -1,0 +1,290 @@
+[
+  {
+    "name": "Adventurer",
+    "id": "1",
+    "bonus": [
+      { "count": 2, "value": "Max HP increased by 1,000." },
+      { "count": 4, "value": "Opening chest regenerates 30% Max HP over 5s." }
+    ]
+  },
+  {
+    "name": "Archaic Petra",
+    "id": "26",
+    "bonus": [
+      { "count": 2, "value": "Geo DMG Bonus +15%" },
+      {
+        "count": 4,
+        "value": "Upon obtaining a crystal created through a Geo Elemental Reaction, all party members gain 35% RES to that particular element for 10s. Only one form of Elemental RES can be gained in this manner at any one time."
+      }
+    ]
+  },
+  {
+    "name": "Berserker",
+    "id": "5",
+    "bonus": [
+      { "count": 2, "value": "CRIT Rate +12%" },
+      {
+        "count": 4,
+        "value": "When HP is below 70%, CRIT Rate increases by an additional 24%."
+      }
+    ]
+  },
+  {
+    "name": "Bloodstained Chivalry",
+    "id": "17",
+    "bonus": [
+      { "count": 2, "value": "Physical DMG +25%" },
+      {
+        "count": 4,
+        "value": "After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s."
+      }
+    ]
+  },
+  {
+    "name": "Brave Heart",
+    "id": "11",
+    "bonus": [
+      { "count": 2, "value": "ATK +18%" },
+      {
+        "count": 4,
+        "value": "Increases DMG by 30% against enemies with more than 50% HP."
+      }
+    ]
+  },
+  {
+    "name": "Crimson Witch of Flames",
+    "id": "22",
+    "bonus": [
+      { "count": 2, "value": "Pyro DMG Bonus +15%" },
+      {
+        "count": 4,
+        "value": "Increases Overloaded and Burning DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using an Elemental Skill increases 2-Piece Set effects by 50% for 10s. Max 3 stacks."
+      }
+    ]
+  },
+  {
+    "name": "Defender's Will",
+    "id": "9",
+    "bonus": [
+      { "count": 2, "value": "Base DEF +30%" },
+      {
+        "count": 4,
+        "value": "Increases Elemental RES by 30% for each element present in the party."
+      }
+    ]
+  },
+  {
+    "name": "Gambler",
+    "id": "12",
+    "bonus": [
+      { "count": 2, "value": "Elemental Skill DMG increased by 20%" },
+      {
+        "count": 4,
+        "value": "Defeating an enemy has 100% chance to remove Elemental Skill CD. Can only occur once every 15s."
+      }
+    ]
+  },
+  {
+    "name": "Glacier and Snowfield",
+    "id": "24",
+    "bonus": [
+      { "count": 2, "value": "Cryo DMG Bonus +15%" },
+      {
+        "count": 4,
+        "value": "Increases Superconduct DMG by 50%. Increases Melt DMG by 15%. Using an Elemental Burst increases Cryo DMG by 25% for 10s."
+      }
+    ]
+  },
+  {
+    "name": "Gladiator's Finale",
+    "id": "14",
+    "bonus": [
+      { "count": 2, "value": "ATK +18%" },
+      {
+        "count": 4,
+        "value": "If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%."
+      }
+    ]
+  },
+  {
+    "name": "Icebreaker",
+    "id": "25",
+    "bonus": [
+      { "count": 2, "value": "Cryo RES increased by 40%" },
+      {
+        "count": 4,
+        "value": "Increases DMG against enemies in a Frozen state or affected by cryo by 35%."
+      }
+    ]
+  },
+  {
+    "name": "Instructor",
+    "id": "4",
+    "bonus": [
+      { "count": 2, "value": "Increases Elemental Mastery by 80." },
+      {
+        "count": 4,
+        "value": "After using Elemental Skill, increases all party members' Elemental Mastery by 120 for 8s."
+      }
+    ]
+  },
+  {
+    "name": "Lavawalker",
+    "id": "23",
+    "bonus": [
+      { "count": 2, "value": "Pyro RES increased by 40%" },
+      {
+        "count": 4,
+        "value": "Increases DMG against enemies that are Burning or affected by Pyro by 35%."
+      }
+    ]
+  },
+  {
+    "name": "Lucky Dog",
+    "id": "2",
+    "bonus": [
+      { "count": 2, "value": "DEF increased by 100." },
+      { "count": 4, "value": "Picking up Mora restores 300 HP." }
+    ]
+  },
+  {
+    "name": "Maiden Beloved",
+    "id": "15",
+    "bonus": [
+      { "count": 2, "value": "Character Healing Effectiveness +15%" },
+      {
+        "count": 4,
+        "value": "Using an Elemental Skill or Burst increases healing received by all party members by 20% for 10s."
+      }
+    ]
+  },
+  {
+    "name": "Martial Artist",
+    "id": "8",
+    "bonus": [
+      {
+        "count": 2,
+        "value": "Increases Normal Attack and Charged Attack DMG by 15%."
+      },
+      {
+        "count": 4,
+        "value": "After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 25% for 8s."
+      }
+    ]
+  },
+  {
+    "name": "Noblesse Oblige",
+    "id": "16",
+    "bonus": [
+      { "count": 2, "value": "Elemental Burst DMG +20%" },
+      {
+        "count": 4,
+        "value": "Using an Elemental Burst increase all party memebers' ATK by 20% for 12s. This effect cannot stack."
+      }
+    ]
+  },
+  {
+    "name": "Resolution of Sojourner",
+    "id": "7",
+    "bonus": [
+      { "count": 2, "value": "ATK +18%" },
+      { "count": 4, "value": "Increases Charged Attack CRIT Rate by 30%." }
+    ]
+  },
+  {
+    "name": "Retracing Bolide",
+    "id": "27",
+    "bonus": [
+      { "count": 2, "value": "Increases Shield Strength by 35%." },
+      {
+        "count": 4,
+        "value": "While protected by a shield, gain an additional 40% Normal and Charged Attack DMG."
+      }
+    ]
+  },
+  {
+    "name": "Scholar",
+    "id": "13",
+    "bonus": [
+      { "count": 2, "value": "Energy Recharge +20%" },
+      {
+        "count": 4,
+        "value": "Gaining Energy gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occurs once every 3s."
+      }
+    ]
+  },
+  {
+    "name": "The Exile",
+    "id": "6",
+    "bonus": [
+      { "count": 2, "value": "Energy Recharge +20%" },
+      {
+        "count": 4,
+        "value": "Using an Elemental Burst regenerates 2 Energy for other party members every 2s for 6s. This effect cannot stack."
+      }
+    ]
+  },
+  {
+    "name": "Thundering Fury",
+    "id": "20",
+    "bonus": [
+      { "count": 2, "value": "Electro DMG Bonus +15%" },
+      {
+        "count": 4,
+        "value": "Increases damage caused by Overloaded, Electro-Charged, and Superconduct DMG by 40%. Triggering such effects decreases Elemental Skill CD by 1s. Can only occur once every 0.8s."
+      }
+    ]
+  },
+  {
+    "name": "Thundersoother",
+    "id": "21",
+    "bonus": [
+      { "count": 2, "value": "Electro RES increased by 40%" },
+      {
+        "count": 4,
+        "value": "Increases DMG against enemies affected by Electro by 35%."
+      }
+    ]
+  },
+  {
+    "name": "Tiny Miracle",
+    "id": "10",
+    "bonus": [
+      { "count": 2, "value": "All Elemental RES increased by 20%" },
+      {
+        "count": 4,
+        "value": "Incoming elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s."
+      }
+    ]
+  },
+  {
+    "name": "Traveling Doctor",
+    "id": "3",
+    "bonus": [
+      { "count": 2, "value": "Increases incoming healing by 20%." },
+      { "count": 4, "value": "Using Elemental Burst restores 20% HP." }
+    ]
+  },
+  {
+    "name": "Viridescent Venerer",
+    "id": "19",
+    "bonus": [
+      { "count": 2, "value": "Anemo DMG Bonus +15%" },
+      {
+        "count": 4,
+        "value": "Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for 10s."
+      }
+    ]
+  },
+  {
+    "name": "Wanderer's Troupe",
+    "id": "18",
+    "bonus": [
+      { "count": 2, "value": "Elemental Mastery +80" },
+      {
+        "count": 4,
+        "value": "Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow."
+      }
+    ]
+  }
+]

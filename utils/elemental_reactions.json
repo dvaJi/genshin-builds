@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Burning",
+    "id": "1",
+    "primary": ["Dendro"],
+    "secondary": ["Pyro"],
+    "effect": "Deals Pyro DMG over time."
+  },
+  {
+    "name": "Crystalize",
+    "id": "2",
+    "primary": ["Geo"],
+    "secondary": ["Cryo", "Electro", "Hydro", "Pyro"],
+    "effect": "Creates a crystal that will provide a shield when picked up."
+  },
+  {
+    "name": "Electro-Charged",
+    "id": "3",
+    "primary": ["Electro"],
+    "secondary": ["Hydro"],
+    "effect": "Deals Electro DMG over time."
+  },
+  {
+    "name": "Frozen",
+    "id": "4",
+    "primary": ["Cryo"],
+    "secondary": ["Hydro"],
+    "effect": "Freezes the target."
+  },
+  {
+    "name": "Melt",
+    "id": "5",
+    "primary": ["Cryo"],
+    "secondary": ["Pyro"],
+    "effect": "Deals extra damage."
+  },
+  {
+    "name": "Overloaded",
+    "id": "6",
+    "primary": ["Electro"],
+    "secondary": ["Pyro"],
+    "effect": "Deals AoE Pyro DMG."
+  },
+  {
+    "name": "Superconduct",
+    "id": "7",
+    "primary": ["Cryo"],
+    "secondary": ["Electro"],
+    "effect": "Deals AoE Cryo DMG and reduces the target's Physical RES by 50%."
+  },
+  {
+    "name": "Swirl",
+    "id": "8",
+    "primary": ["Anemo"],
+    "secondary": ["Cryo", "Electro", "Hydro", "Pyro"],
+    "effect": "Deals extra elemental damage and spreads the effect."
+  },
+  {
+    "name": "Vaporize",
+    "id": "9",
+    "primary": ["Hydro"],
+    "secondary": ["Pyro"],
+    "effect": "Deals extra damage."
+  }
+]
