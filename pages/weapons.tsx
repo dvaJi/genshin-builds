@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { GetStaticProps } from "next";
 import { Column, useSortBy, useTable } from "react-table";
-import Link from "next/link";
 
 import weaponsData from "../utils/weapons.json";
 import { Weapon } from "../interfaces/weapon";
@@ -82,7 +81,7 @@ const WeaponsPage = ({ weapons }: Props) => {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
+            {rows.map((row) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>

@@ -1,5 +1,4 @@
 import { GetStaticProps } from "next";
-import Link from "next/link";
 
 import weaponsData from "../utils/weapons.json";
 import { Weapon } from "../interfaces/weapon";

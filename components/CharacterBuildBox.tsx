@@ -79,9 +79,6 @@ export const CharacterBuildBox: React.FC<CharacterBuildBoxProps> = ({
                 </button>
               )}
             </div>
-            {/* <img
-              src={`https://rerollcdn.com/GENSHIN/Characters/${charactersList[key].name}.png`}
-            /> */}
             <span
               className="text-gray-100 font-bold text-3xl tracking-tighter uppercase inline-block"
               style={{ textShadow: "0px 0px 8px black" }}
@@ -137,7 +134,7 @@ const WeaponComp = ({
     }),
   });
 
-  const handleOnRemoveWeapon = (id: string) => {
+  const handleOnRemoveWeapon = () => {
     setCompBuild((currComp) => {
       let state = { ...currComp };
       if (state[character.id]) {
@@ -173,7 +170,7 @@ const WeaponComp = ({
             {isHover && (
               <button
                 className="bg-vulcan-400 py-1 px-2 rounded-md"
-                onClick={() => handleOnRemoveWeapon(weaponSelected)}
+                onClick={() => handleOnRemoveWeapon()}
               >
                 X
               </button>
