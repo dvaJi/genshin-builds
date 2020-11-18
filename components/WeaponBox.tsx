@@ -22,8 +22,8 @@ export const WeaponBox: React.FC<WeaponBoxProps> = ({ weapon, isSelected }) => {
         );
         setCompBuild((currComp) => ({
           ...currComp,
-          [dropResult.characterId]: {
-            ...currComp[dropResult.characterId],
+          [dropResult.position]: {
+            ...currComp[dropResult.position],
             w: weapon.id,
           },
         }));

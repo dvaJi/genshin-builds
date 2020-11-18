@@ -39,7 +39,7 @@ const CharacterBox: React.FC<CharacterBoxProps> = ({
         console.log(`You dropped ${item.name} into ${dropResult.name}!`);
         setCompBuild((currComp) => ({
           ...currComp,
-          [character.id]: { a: [], w: "" },
+          [dropResult.position]: { i: character.id, a: [], w: "" },
         }));
       }
     },

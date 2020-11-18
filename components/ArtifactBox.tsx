@@ -26,9 +26,9 @@ export const ArtifactBox: React.FC<ArtifactBoxProps> = ({
         );
         setCompBuild((currComp) => ({
           ...currComp,
-          [dropResult.characterId]: {
-            w: currComp[dropResult.characterId].w,
-            a: [...currComp[dropResult.characterId].a, artifact.id],
+          [dropResult.position]: {
+            ...currComp[dropResult.position],
+            a: [...currComp[dropResult.position].a, artifact.id],
           },
         }));
       }

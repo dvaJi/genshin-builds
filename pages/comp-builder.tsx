@@ -26,9 +26,10 @@ type Props = {
 };
 
 const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
+  const router = useRouter();
   const [tab, setTab] = useState("CHARACTERS");
   const [characterList, set] = useRecoilState(compBuildState);
-  const router = useRouter();
+
   const charactersMap = useMemo(
     () =>
       characters.reduce<Record<string, Character>>(
@@ -56,44 +57,92 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
   const { map } = router.query;
 
   useEffect(() => {
+    const charactersBuilded = Object.keys(characterList).reduce<number>(
+      (a, c) => {
+        if (characterList[c].i) {
+          a++;
+        }
+        return a;
+      },
+      0
+    );
     const charactersJoin = Object.keys(characterList)
-      .map((k) => `${k}|${characterList[k].w}~${characterList[k].a.join(";")}`)
+      .map(
+        (k) =>
+          `${characterList[k].i}|${characterList[k].w}~${characterList[
+            k
+          ].a.join(";")}`
+      )
       .join(",");
 
-    console.log(map, charactersJoin, map && !charactersJoin);
-    if (map && !charactersJoin) {
+    console.log({ map, characterList, charactersBuilded, charactersJoin });
+    if (map) {
       const ch = hexyjs.hexToStr(map as string) || "";
       console.log("decoded string", ch);
       const keys = ch.split(",");
       let comp: Record<string, CharacterBuild> = {};
+      let compsCount = 0;
 
-      keys.forEach((k) => {
+      keys.forEach((k, i) => {
         const [key, rest] = k.split("|");
         const [w, a] = rest.split("~");
-        comp[key] = {
+        comp[i] = {
+          i: key,
           w: w || "",
           a: a ? a.split(";") : [],
         };
+
+        if (key) {
+          compsCount++;
+        }
       });
 
-      set(() => comp);
-    } else {
-      const generateUuid = hexyjs.strToHex(charactersJoin);
-      router.push({ pathname: "/comp-builder", query: { map: generateUuid } });
+      if (charactersBuilded === 0 && compsCount > 0) {
+        set(() => comp);
+      } else {
+        // TODO: don't add generated uuid if comp is empty
+        const generateUuid = hexyjs.strToHex(charactersJoin);
+        console.log("generateUuid", generateUuid, charactersJoin);
+        router.push({
+          pathname: "/comp-builder",
+          query: { map: generateUuid },
+        });
+      }
     }
-  }, [characterList, map]);
+  }, [map]);
 
-  console.log(characterList);
+  useEffect(() => {
+    const charactersJoin = Object.keys(characterList)
+      .map(
+        (k) =>
+          `${characterList[k].i}|${characterList[k].w}~${characterList[
+            k
+          ].a.join(";")}`
+      )
+      .join(",");
+    const generateUuid = hexyjs.strToHex(charactersJoin);
+    console.log("generateUuid", generateUuid, charactersJoin);
+    router.push({
+      pathname: "/comp-builder",
+      query: { map: generateUuid },
+    });
+  }, [characterList]);
 
   return (
     <div>
       <div>
-        <CharacterBuildBox
-          artifactsList={artifactsMap}
-          charactersList={charactersMap}
-          weaponsList={weaponsMap}
-          teamBuild={characterList}
-        />
+        <div className="grid grid-cols-4 gap-4 h-500px min-w-full mt-2">
+          {Object.keys(characterList).map((key) => (
+            <CharacterBuildBox
+              key={key}
+              artifactsList={artifactsMap}
+              charactersList={charactersMap}
+              weaponsList={weaponsMap}
+              teamBuild={characterList}
+              positionKey={key}
+            />
+          ))}
+        </div>
         <div className="min-w-0 p-4 mt-4 rounded-lg shadow-xs bg-vulcan-800 relative pt-16">
           <div className="absolute -mt-12">
             <Button
@@ -121,7 +170,7 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
             {tab === "CHARACTERS" && (
               <CharactersContent
                 characters={characters}
-                characterList={charactersMap}
+                characterList={characterList}
               />
             )}
             {tab === "WEAPONS" && <WeaponsContent weapons={weapons} />}
@@ -138,9 +187,12 @@ const CharactersContent = ({
   characterList,
 }: {
   characters: Character[];
-  characterList: Record<string, Character>;
+  characterList: Record<string, CharacterBuild>;
 }) => {
   const [elementFilter, setElementFilter] = useState("");
+  const charactersIds = Object.keys(characterList)
+    .reduce<string[]>((r, c) => [...r, characterList[c].i], [])
+    .filter((i) => i.length > 0);
   return (
     <div className="grid grid-cols-8 gap-4">
       <div className="absolute -mt-16 right-0">
@@ -168,8 +220,8 @@ const CharactersContent = ({
             key={character.id}
             character={character}
             isSelected={
-              Object.keys(characterList).includes(character.id.toString()) ||
-              Object.keys(characterList).length === 4
+              charactersIds.includes(character.id.toString()) ||
+              charactersIds.length === 4
             }
           />
         ))}
