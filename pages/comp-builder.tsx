@@ -147,6 +147,7 @@ const CharactersContent = ({
         {["Anemo", "Cryo", "Electro", "Dendro", "Geo", "Hydro", "Pyro"].map(
           (element) => (
             <Button
+              key={element}
               className="inline-block mr-2 rounded"
               isActive={elementFilter === element}
               type="outline"
@@ -183,6 +184,7 @@ const WeaponsContent = ({ weapons }: { weapons: Weapon[] }) => {
       <div className="absolute -mt-16 right-0">
         {["Bow", "Catalyst", "Claymore", "Polearm", "Sword"].map((type) => (
           <Button
+            key={type}
             className="inline-block mr-2 rounded"
             isActive={typeFilter === type}
             type="outline"
@@ -222,7 +224,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const artifacts = artifactsData as Artifact[];
   const weapons = weaponsData as Weapon[];
   const characters = charactersData as Character[];
-  return { props: { artifacts, characters, weapons } };
+  return { props: { artifacts, characters, weapons }, revalidate: 1 };
 };
 
 export default CompBuilder;

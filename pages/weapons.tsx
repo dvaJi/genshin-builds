@@ -102,7 +102,7 @@ const WeaponsPage = ({ weapons }: Props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const weapons = weaponsData as Weapon[];
-  return { props: { weapons } };
+  return { props: { weapons }, revalidate: 1 };
 };
 
 export default WeaponsPage;

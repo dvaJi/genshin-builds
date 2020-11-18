@@ -22,7 +22,7 @@ const CharactersPage = ({ characters }: Props) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   const characters = charactersData as Character[];
-  return { props: { characters } };
+  return { props: { characters }, revalidate: 1 };
 };
 
 export default CharactersPage;

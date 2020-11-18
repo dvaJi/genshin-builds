@@ -90,19 +90,19 @@ const CharacterBox: React.FC<CharacterBoxProps> = ({
               cx="50"
               cy="50"
               r="46"
-              stroke-width="2px"
+              strokeWidth="2px"
               fill="none"
               stroke="#000"
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
             ></circle>
             <circle
               cx="50"
               cy="50"
               r="50"
-              stroke-width="5px"
+              strokeWidth="5px"
               fill="none"
               stroke={borderColor(character.tier)}
-              vector-effect="non-scaling-stroke"
+              vectorEffect="non-scaling-stroke"
             ></circle>
             <rect
               x="17.7783"

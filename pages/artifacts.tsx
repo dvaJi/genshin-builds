@@ -22,7 +22,7 @@ const ArtifactsPage = ({ artifacts }: Props) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   const artifacts = artifactsData as Artifact[];
-  return { props: { artifacts } };
+  return { props: { artifacts }, revalidate: 1 };
 };
 
 export default ArtifactsPage;
