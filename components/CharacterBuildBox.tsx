@@ -264,7 +264,7 @@ const ArtifactComp = ({
                 .toLowerCase()
                 .replace(/\s/g, "_")}.png`}
             />
-            {/* {artifactsList[key].name} */}
+            {/* <span className="text-white text-xs">{artifactsList[key].name}</span> */}
           </div>
         ))}
       </div>

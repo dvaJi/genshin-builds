@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { SidebarLink } from "./SidebarLink";
+
+import { IoIosBuild, IoIosPeople } from "react-icons/io";
+import { GiBroadsword, GiEvilBud } from "react-icons/gi";
 
 interface LayoutHeaderProps {}
 
@@ -10,29 +14,18 @@ export const LayoutHeader: React.FC<LayoutHeaderProps> = () => {
           <a className="ml-6 text-lg font-bold text-gray-200">Genshin Builds</a>
         </Link>
         <ul className="mt-6">
-          <li className="relative px-6 py-3">
-            <span
-              className="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-              aria-hidden="true"
-            ></span>
-            <Link href="/comp-builder">
-              <a className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-200 text-gray-100">
-                <svg
-                  className="w-5 h-5"
-                  aria-hidden="true"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                </svg>
-                <span className="ml-4">Team Builder</span>
-              </a>
-            </Link>
-          </li>
+          <SidebarLink href="/comp-builder" icon={<IoIosBuild />}>
+            Team Builder
+          </SidebarLink>
+          <SidebarLink href="/characters" icon={<IoIosPeople />}>
+            Characters
+          </SidebarLink>
+          <SidebarLink href="/weapons" icon={<GiBroadsword />}>
+            Weapons
+          </SidebarLink>
+          <SidebarLink href="/artifacts" icon={<GiEvilBud />}>
+            Artifacts
+          </SidebarLink>
         </ul>
         {/* <ul>
           <li className="relative px-6 py-3">

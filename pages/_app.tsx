@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import { DndProvider } from "react-dnd";
@@ -12,6 +13,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <div className="flex h-screen bg-vulcan-900">
           <LayoutHeader />
+          <Head>
+            <title>Genshin Builds | Genshin Impact Wiki Database</title>
+            <meta
+              name="description"
+              content="Learn about every character in Genshin Impact including their skills, talents, builds, and tier list."
+            ></meta>
+          </Head>
           <div className="flex flex-col flex-1 w-full">
             <header className="z-10 py-4 shadow-md bg-vulcan-800">
               <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-300">
