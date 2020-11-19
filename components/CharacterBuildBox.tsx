@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 import { useSetRecoilState } from "recoil";
+import { motion } from "framer-motion";
 import { Artifact } from "../interfaces/artifacts";
 
 import { Character } from "../interfaces/character";
@@ -61,8 +62,8 @@ export const CharacterBuildBox: React.FC<CharacterBuildBoxProps> = ({
       style={{ backgroundColor }}
     >
       {character ? (
-        <div
-          className="h-500px transition-all duration-200 ease-linear mx-1 border-gray-800 border-4 p-3 relative"
+        <motion.div
+          className="h-500px mx-1 border-gray-400 dark:border-gray-800 border-4 p-3 relative"
           style={{
             backgroundImage: `url('/characters/${character.name}.png'), url('/regions/${character.region}_d.jpg')`,
             backgroundSize: "cover",
@@ -71,12 +72,15 @@ export const CharacterBuildBox: React.FC<CharacterBuildBoxProps> = ({
         >
           <div className="text-white absolute right-0 mr-3">
             {isHover && (
-              <button
+              <motion.button
+                initial={{ scale: 0.2, opacity: 0.1 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.2 }}
                 className="bg-vulcan-400 py-1 px-2 rounded-md"
                 onClick={() => handleOnRemoveCharacter()}
               >
                 X
-              </button>
+              </motion.button>
             )}
           </div>
           <span
@@ -107,7 +111,7 @@ export const CharacterBuildBox: React.FC<CharacterBuildBoxProps> = ({
               positionKey={positionKey}
             />
           </div>
-        </div>
+        </motion.div>
       ) : (
         <CharacterBuildSekeleton />
       )}

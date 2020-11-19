@@ -1,18 +1,16 @@
+import { memo, ReactNode } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { ReactNode } from "react";
-
-import classd from "../utils/classd";
+import clsx from "clsx";
 
 interface SidebarLinkProps {
   children: ReactNode;
   href: string;
+  route: string;
   icon: ReactNode;
 }
 
-export const SidebarLink = ({ children, href, icon }: SidebarLinkProps) => {
-  const router = useRouter();
-  const isActive = router.route === href;
+const SidebarLink = ({ children, href, icon, route }: SidebarLinkProps) => {
+  const isActive = route === href;
   return (
     <li className="relative px-6 py-3">
       {isActive && (
@@ -23,9 +21,9 @@ export const SidebarLink = ({ children, href, icon }: SidebarLinkProps) => {
       )}
       <Link href={href}>
         <a
-          className={classd(
-            "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-200",
-            isActive ? "text-gray-100" : ""
+          className={clsx(
+            "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-black dark:hover:text-white",
+            isActive ? "text-gray-800 dark:text-gray-200" : ""
           )}
         >
           <div className="text-2xl">{icon}</div>
@@ -35,3 +33,5 @@ export const SidebarLink = ({ children, href, icon }: SidebarLinkProps) => {
     </li>
   );
 };
+
+export default memo(SidebarLink);

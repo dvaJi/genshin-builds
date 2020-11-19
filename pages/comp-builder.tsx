@@ -143,7 +143,7 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
             />
           ))}
         </div>
-        <div className="min-w-0 p-4 mt-4 rounded-lg shadow-xs bg-vulcan-800 relative pt-16">
+        <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-vulcan-800 relative pt-16">
           <div className="absolute -mt-12">
             <Button
               isActive={tab === "CHARACTERS"}
@@ -194,7 +194,7 @@ const CharactersContent = ({
     .reduce<string[]>((r, c) => [...r, characterList[c].i], [])
     .filter((i) => i.length > 0);
   return (
-    <div className="grid grid-cols-8 gap-4">
+    <div className="grid grid-cols-9 gap-3">
       <div className="absolute -mt-16 right-0">
         {["Anemo", "Cryo", "Electro", "Dendro", "Geo", "Hydro", "Pyro"].map(
           (element) => (

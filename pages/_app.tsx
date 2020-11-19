@@ -6,39 +6,52 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import "../styles/globals.css";
 import { LayoutHeader } from "../components/LayoutHeader";
+import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = useState("dark");
   return (
-    <DndProvider backend={HTML5Backend}>
-      <RecoilRoot>
-        <div className="flex h-screen bg-vulcan-900">
-          <LayoutHeader />
-          <Head>
-            <title>Genshin Builds | Genshin Impact Wiki Database</title>
-            <meta
-              name="description"
-              content="Learn about every character in Genshin Impact including their skills, talents, builds, and tier list."
-            ></meta>
-          </Head>
-          <div className="flex flex-col flex-1 w-full">
-            <header className="z-10 py-4 shadow-md bg-vulcan-800">
-              <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-300">
-                <div className="flex justify-center flex-1 lg:mr-32">
-                  <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
-                    Patch version 1.1
+    <div className={theme}>
+      <DndProvider backend={HTML5Backend}>
+        <RecoilRoot>
+          <div className="flex h-screen bg-gray-50 dark:bg-vulcan-900">
+            <LayoutHeader />
+            <Head>
+              <title>Genshin Builds | Genshin Impact Wiki Database</title>
+              <meta
+                name="description"
+                content="Learn about every character in Genshin Impact including their skills, talents, builds, and tier list."
+              ></meta>
+            </Head>
+            <div className="flex flex-col flex-1 w-full">
+              <header className="z-10 py-4 shadow-md bg-white dark:bg-vulcan-800">
+                <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-300">
+                  <div className="flex justify-center flex-1 lg:mr-32">
+                    <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+                      Patch version 1.1
+                    </div>
+                    <div>
+                      <button
+                        onClick={() =>
+                          setTheme(theme === "light" ? "dark" : "light")
+                        }
+                      >
+                        Change theme
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </header>
-            <main className="h-full overflow-y-auto">
-              <div className="container px-6 mx-auto grid">
-                <Component {...pageProps} />
-              </div>
-            </main>
+              </header>
+              <main className="h-full overflow-y-auto">
+                <div className="container px-6 mx-auto grid">
+                  <Component {...pageProps} />
+                </div>
+              </main>
+            </div>
           </div>
-        </div>
-      </RecoilRoot>
-    </DndProvider>
+        </RecoilRoot>
+      </DndProvider>
+    </div>
   );
 }
 

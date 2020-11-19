@@ -55,12 +55,9 @@ const CharacterBox: React.FC<CharacterBoxProps> = ({
     <div
       ref={drag}
       style={{ opacity, pointerEvents }}
-      className="text-gray-600 cursor-move w-32 transition-all duration-200 ease-linear transform hover:scale-105 hover:text-white"
+      className="text-gray-800 dark:text-gray-500 cursor-move w-32 transition-all duration-200 ease-linear transform hover:scale-105 hover:text-black dark:hover:text-white"
     >
       <div>
-        {/* <img
-          src={`https://rerollcdn.com/GENSHIN/Characters/${character.name}.png`}
-        /> */}
         <svg
           className="rounded-full block w-20 h-20 p-1 m-auto"
           style={{ filter: "drop-shadow(rgba(0, 0, 0, 0.4) 0px 3px 5px)" }}

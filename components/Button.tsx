@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import classd from "../utils/classd";
+import clsx from "clsx";
 
 interface ButtonProps {
   children: ReactNode;
@@ -21,8 +21,8 @@ export const Button: React.FC<
 }) => {
   return (
     <button
-      className={classd(
-        "focus:outline-none focus:shadow-outline-purple text-white py-2 px-4 border border-transparent",
+      className={clsx(
+        "focus:outline-none focus:ring text-white py-2 px-4 border border-transparent",
         className,
         color === "primary" ? "hover:bg-purple-700" : "hover:bg-gray-700",
         type === "solid"

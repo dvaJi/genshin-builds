@@ -42,14 +42,14 @@ export const ArtifactBox: React.FC<ArtifactBoxProps> = ({
 
   return (
     <div ref={drag} style={{ opacity, pointerEvents }} className="text-center">
-      <div className="border-gray-800 border-4 w-16 h-16 m-auto">
+      <div className="border-gray-400 dark:border-gray-800 border-4 w-16 h-16 m-auto">
         <img
           src={`https://rerollcdn.com/GENSHIN/Gear/${artifact.name
             .toLowerCase()
             .replace(/\s/g, "_")}.png`}
         />
       </div>
-      <span className="text-white text-sm">{artifact.name}</span>
+      <span className="text-gray-800 dark:text-gray-500 text-sm">{artifact.name}</span>
     </div>
   );
 };
