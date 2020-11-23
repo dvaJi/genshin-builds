@@ -1,10 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { GetStaticProps } from "next";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import hexyjs from "hexyjs";
 
-import { CharacterBuild, compBuildState } from "../state/comp-builder-atoms";
+import {
+  CharacterBuild,
+  compBuildState,
+  elementalResonancesState,
+} from "../state/comp-builder-atoms";
 import { Artifact } from "../interfaces/artifacts";
 import { Character } from "../interfaces/character";
 import { Weapon } from "../interfaces/weapon";
@@ -18,17 +22,30 @@ import { Button } from "../components/Button";
 import artifactsData from "../utils/artifacts.json";
 import charactersData from "../utils/characters.json";
 import weaponsData from "../utils/weapons.json";
+import elementalResonancesData from "../utils/elemental_resonance.json";
+import { ElementalResonance } from "../interfaces/elemental-resonance";
 
 type Props = {
   artifacts: Artifact[];
   characters: Character[];
   weapons: Weapon[];
+  elementalResonances: ElementalResonance[];
 };
 
-const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
+const CompBuilder = ({
+  artifacts,
+  characters,
+  weapons,
+  elementalResonances,
+}: Props) => {
   const router = useRouter();
   const [tab, setTab] = useState("CHARACTERS");
   const [characterList, set] = useRecoilState(compBuildState);
+  const setelementalResonance = useSetRecoilState(elementalResonancesState);
+
+  useEffect(() => {
+    setelementalResonance(elementalResonances);
+  });
 
   const charactersMap = useMemo(
     () =>
@@ -54,6 +71,56 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
       ),
     []
   );
+
+  const hasDuplicates = (array: string[]) => {
+    return new Set(array).size !== array.length;
+  };
+
+  const hasUndefined = (array: string[]) => {
+    return array.filter((v) => v === undefined).length > 0;
+  };
+
+  const currentElementalResonance = useMemo(() => {
+    const types = [
+      charactersMap[characterList[0]?.i]?.type,
+      charactersMap[characterList[1]?.i]?.type,
+      charactersMap[characterList[2]?.i]?.type,
+      charactersMap[characterList[3]?.i]?.type,
+    ];
+
+    if (!hasDuplicates(types) && !hasUndefined(types)) {
+      return [elementalResonances.find((er) => er.id === "7")];
+    } else if (hasDuplicates(types)) {
+      const resonances = elementalResonances.filter((er) => {
+        if (er.id === "7") {
+          return false;
+        }
+
+        const [el1, el2] = er.primary;
+        let el1Found = false;
+        let el2Found = false;
+
+        types.forEach((t) => {
+          if (el1Found) {
+            if (t === el2) {
+              el2Found = true;
+            }
+          } else {
+            if (t === el1) {
+              el1Found = true;
+            }
+          }
+        });
+
+        return el1Found && el2Found;
+      });
+
+      return resonances;
+    } else {
+      return [];
+    }
+  }, [characterList]);
+
   const { map } = router.query;
 
   useEffect(() => {
@@ -75,10 +142,9 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
       )
       .join(",");
 
-    console.log({ map, characterList, charactersBuilded, charactersJoin });
     if (map) {
       const ch = hexyjs.hexToStr(map as string) || "";
-      console.log("decoded string", ch);
+      // console.log("decoded string", ch);
       const keys = ch.split(",");
       let comp: Record<string, CharacterBuild> = {};
       let compsCount = 0;
@@ -102,7 +168,6 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
       } else {
         // TODO: don't add generated uuid if comp is empty
         const generateUuid = hexyjs.strToHex(charactersJoin);
-        console.log("generateUuid", generateUuid, charactersJoin);
         router.push({
           pathname: "/comp-builder",
           query: { map: generateUuid },
@@ -121,7 +186,6 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
       )
       .join(",");
     const generateUuid = hexyjs.strToHex(charactersJoin);
-    console.log("generateUuid", generateUuid, charactersJoin);
     router.push({
       pathname: "/comp-builder",
       query: { map: generateUuid },
@@ -140,6 +204,7 @@ const CompBuilder = ({ artifacts, characters, weapons }: Props) => {
               weaponsList={weaponsMap}
               teamBuild={characterList}
               positionKey={key}
+              resonances={currentElementalResonance}
             />
           ))}
         </div>
@@ -276,7 +341,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const artifacts = artifactsData as Artifact[];
   const weapons = weaponsData as Weapon[];
   const characters = charactersData as Character[];
-  return { props: { artifacts, characters, weapons }, revalidate: 1 };
+  const elementalResonances = elementalResonancesData as ElementalResonance[];
+  return {
+    props: { artifacts, characters, weapons, elementalResonances },
+    revalidate: 1,
+  };
 };
 
 export default CompBuilder;

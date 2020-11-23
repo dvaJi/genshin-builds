@@ -1,58 +1,68 @@
+import { useState } from "react";
 import Head from "next/head";
 import { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilValue } from "recoil";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import "../styles/globals.css";
 import { LayoutHeader } from "../components/LayoutHeader";
-import { useState } from "react";
+import { LayoutFooter } from "../components/LayoutFooter";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import { appBackgroundStyleState } from "../state/background-atom";
+
+import "../styles/globals.css";
+
+function Root(props: AppProps) {
   const [theme, setTheme] = useState("dark");
+
   return (
     <div className={theme}>
       <DndProvider backend={HTML5Backend}>
         <RecoilRoot>
-          <div className="flex h-screen bg-gray-50 dark:bg-vulcan-900">
-            <LayoutHeader />
-            <Head>
-              <title>Genshin Builds | Genshin Impact Wiki Database</title>
-              <meta
-                name="description"
-                content="Learn about every character in Genshin Impact including their skills, talents, builds, and tier list."
-              ></meta>
-            </Head>
-            <div className="flex flex-col flex-1 w-full">
-              <header className="z-10 py-4 shadow-md bg-white dark:bg-vulcan-800">
-                <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-300">
-                  <div className="flex justify-center flex-1 lg:mr-32">
-                    <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
-                      Patch version 1.1
-                    </div>
-                    <div>
-                      <button
-                        onClick={() =>
-                          setTheme(theme === "light" ? "dark" : "light")
-                        }
-                      >
-                        Change theme
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </header>
-              <main className="h-full overflow-y-auto">
-                <div className="container px-6 mx-auto grid">
-                  <Component {...pageProps} />
-                </div>
-              </main>
-            </div>
-          </div>
+          <App themeState={{ theme, setTheme }} {...props} />
         </RecoilRoot>
       </DndProvider>
     </div>
   );
 }
 
-export default MyApp;
+const App = ({
+  themeState,
+  Component,
+  pageProps,
+}: AppProps & { themeState: any }) => {
+  const appBackgroundStyle = useRecoilValue(appBackgroundStyleState);
+  const onToggleTheme = () =>
+    themeState.setTheme(themeState.theme === "light" ? "dark" : "light");
+  return (
+    <>
+      <div className="flex min-h-screen flex-col h-full bg-gray-50 dark:bg-vulcan-900">
+        <Head>
+          <title>Genshin Builds | Genshin Impact Wiki Database</title>
+          <meta
+            name="description"
+            content="Learn about every character in Genshin Impact including their skills, talents, builds, and tier list."
+          ></meta>
+        </Head>
+        <LayoutHeader onToggleTheme={onToggleTheme} theme={themeState.theme} />
+        <div className="flex flex-col">
+          <div className="absolute top-12 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0">
+            {appBackgroundStyle.image && (
+              <img className="w-full" src={appBackgroundStyle.image} />
+            )}
+          </div>
+          <div
+            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            style={{ ...appBackgroundStyle.gradient }}
+          ></div>
+        </div>
+        <main className="container mb-8 mx-auto z-10 text-gray-800 dark:text-gray-400">
+          <Component {...pageProps} />
+        </main>
+      </div>
+      <LayoutFooter />
+    </>
+  );
+};
+
+export default Root;

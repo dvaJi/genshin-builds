@@ -11,6 +11,7 @@
   "dependencies": {
     "clsx": "^1.1.1",
     "framer-motion": "^2.9.4",
+    "gray-matter": "^4.0.2",
     "hexyjs": "^2.1.4",
     "next": "10.0.2",
     "react": "17.0.1",
@@ -19,7 +20,9 @@
     "react-dom": "17.0.1",
     "react-icons": "^3.11.0",
     "react-table": "^7.6.2",
-    "recoil": "^0.1.2"
+    "recoil": "^0.1.2",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.8",
