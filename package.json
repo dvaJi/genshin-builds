@@ -9,6 +9,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@welldone-software/why-did-you-render": "^6.0.3",
     "clsx": "^1.1.1",
     "framer-motion": "^2.9.4",
     "gray-matter": "^4.0.2",

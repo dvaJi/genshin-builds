@@ -24,6 +24,7 @@ import charactersData from "../utils/characters.json";
 import weaponsData from "../utils/weapons.json";
 import elementalResonancesData from "../utils/elemental_resonance.json";
 import { ElementalResonance } from "../interfaces/elemental-resonance";
+import ButtonGroup from "../components/ButtonGroup";
 
 type Props = {
   artifacts: Artifact[];
@@ -209,27 +210,29 @@ const CompBuilder = ({
           ))}
         </div>
         <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-vulcan-800 relative pt-16">
-          <div className="absolute -mt-12">
-            <Button
-              isActive={tab === "CHARACTERS"}
-              className="rounded-l"
-              onClick={() => setTab("CHARACTERS")}
-            >
-              Characters
-            </Button>
-            <Button
-              isActive={tab === "WEAPONS"}
-              onClick={() => setTab("WEAPONS")}
-            >
-              Weapons
-            </Button>
-            <Button
-              isActive={tab === "ARTIFACTS"}
-              className="rounded-r"
-              onClick={() => setTab("ARTIFACTS")}
-            >
-              Artifacts
-            </Button>
+          <div className="absolute flex h-12 -mt-12">
+            <ButtonGroup>
+              <Button
+                isActive={tab === "CHARACTERS"}
+                className="rounded-l"
+                onClick={() => setTab("CHARACTERS")}
+              >
+                Characters
+              </Button>
+              <Button
+                isActive={tab === "WEAPONS"}
+                onClick={() => setTab("WEAPONS")}
+              >
+                Weapons
+              </Button>
+              <Button
+                isActive={tab === "ARTIFACTS"}
+                className="rounded-r"
+                onClick={() => setTab("ARTIFACTS")}
+              >
+                Artifacts
+              </Button>
+            </ButtonGroup>
           </div>
           <div className="mt-4">
             {tab === "CHARACTERS" && (
@@ -260,23 +263,25 @@ const CharactersContent = ({
     .filter((i) => i.length > 0);
   return (
     <div className="grid grid-cols-9 gap-3">
-      <div className="absolute -mt-16 right-0">
-        {["Anemo", "Cryo", "Electro", "Dendro", "Geo", "Hydro", "Pyro"].map(
-          (element) => (
-            <Button
-              key={element}
-              className="inline-block mr-2 rounded"
-              isActive={elementFilter === element}
-              type="outline"
-              color="secondary"
-              onClick={() => {
-                setElementFilter(element !== elementFilter ? element : "");
-              }}
-            >
-              <img src={`/elements/${element}.png`} height={30} width={30} />
-            </Button>
-          )
-        )}
+      <div className="absolute flex h-12 -mt-16 right-3">
+        <ButtonGroup>
+          {["Anemo", "Cryo", "Electro", "Dendro", "Geo", "Hydro", "Pyro"].map(
+            (element) => (
+              <Button
+                key={element}
+                className="inline-block"
+                isActive={elementFilter === element}
+                type="outline"
+                color="secondary"
+                onClick={() => {
+                  setElementFilter(element !== elementFilter ? element : "");
+                }}
+              >
+                <img src={`/elements/${element}.png`} height={30} width={30} />
+              </Button>
+            )
+          )}
+        </ButtonGroup>
       </div>
       {characters
         .filter((c) => (elementFilter ? c.type === elementFilter : true))
@@ -298,25 +303,27 @@ const WeaponsContent = ({ weapons }: { weapons: Weapon[] }) => {
   const [typeFilter, setTypeFilter] = useState("");
   return (
     <div className="grid grid-cols-12 gap-4">
-      <div className="absolute -mt-16 right-0">
-        {["Bow", "Catalyst", "Claymore", "Polearm", "Sword"].map((type) => (
-          <Button
-            key={type}
-            className="inline-block mr-2 rounded"
-            isActive={typeFilter === type}
-            type="outline"
-            color="secondary"
-            onClick={() => {
-              setTypeFilter(type !== typeFilter ? type : "");
-            }}
-          >
-            <img
-              src={`https://rerollcdn.com/GENSHIN/Weapon/NEW/${type}.png`}
-              height={30}
-              width={30}
-            />
-          </Button>
-        ))}
+      <div className="absolute flex h-12 -mt-16 right-3">
+        <ButtonGroup>
+          {["Bow", "Catalyst", "Claymore", "Polearm", "Sword"].map((type) => (
+            <Button
+              key={type}
+              className="inline-block"
+              isActive={typeFilter === type}
+              type="outline"
+              color="secondary"
+              onClick={() => {
+                setTypeFilter(type !== typeFilter ? type : "");
+              }}
+            >
+              <img
+                src={`https://rerollcdn.com/GENSHIN/Weapon/NEW/${type}.png`}
+                height={30}
+                width={30}
+              />
+            </Button>
+          ))}
+        </ButtonGroup>
       </div>
       {weapons
         .filter((w) => (typeFilter ? w.type === typeFilter : true))

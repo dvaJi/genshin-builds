@@ -1,11 +1,22 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import {
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+  MutableRefObject,
+} from "react";
 
 const ESC_KEY = 27;
 
 const onEscapeKeyPress = (fn: () => void) => ({ keyCode }: KeyboardEvent) =>
   keyCode === ESC_KEY ? fn() : null;
 
-const useDropdown = () => {
+const useDropdown = (): [
+  MutableRefObject<any>,
+  boolean,
+  () => void,
+  () => void
+] => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<any>(null);
 

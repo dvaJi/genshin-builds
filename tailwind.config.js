@@ -27,6 +27,12 @@ module.exports = {
           900: "#121317",
         },
       },
+      boxShadow: {
+        innerCard: "rgba(204, 173, 112, 0.1) 0px 0px 100px 1px inset",
+      },
+      zIndex: {
+        1000: "1000",
+      },
     },
   },
   variants: {},

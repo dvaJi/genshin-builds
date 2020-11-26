@@ -160,7 +160,11 @@ const MobileNav = ({ isOpen }: { isOpen: boolean }) => {
             </motion.li>
             {r.dropdownMenu &&
               r.dropdownMenu.map((rd) => (
-                <motion.li className="flex w-1/2 m-0 p-3" variants={variantsli}>
+                <motion.li
+                  key={rd.name}
+                  className="flex w-1/2 m-0 p-3"
+                  variants={variantsli}
+                >
                   <Link href={rd.href}>
                     <a className="mobile-link">{rd.name}</a>
                   </Link>
