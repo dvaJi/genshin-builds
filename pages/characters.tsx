@@ -7,9 +7,10 @@ import { Character } from "../interfaces/character";
 import CharacterCard from "../components/CharacterCard";
 import useDropdown from "../hooks/use-dropdown";
 import WeaponIcon from "../components/WeaponIcon";
-import { memo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import ButtonGroup from "../components/ButtonGroup";
 import { Button } from "../components/Button";
+import ElementIcon from "../components/ElementIcon";
 
 type CharactersProps = {
   characters: Character[];
@@ -25,16 +26,42 @@ const CharactersPage = ({
   tierList,
 }: CharactersProps) => {
   const [textFilter, setTextFilter] = useState("");
+  const [weaponFilter, setWeaponFilter] = useState("");
+  const [typeFilter, setTypeFilter] = useState("");
+  const [tierFilter, setTierFilter] = useState(0);
+  const charactersFiltered = useMemo(
+    () =>
+      characters.filter((c) => {
+        if (textFilter) {
+          return c.name.toUpperCase().startsWith(textFilter.toUpperCase());
+        }
+
+        if (weaponFilter) {
+          return c.weapon === weaponFilter;
+        }
+
+        if (typeFilter) {
+          return c.type === typeFilter;
+        }
+
+        if (tierFilter) {
+          return c.tier === tierFilter;
+        }
+
+        return true;
+      }),
+    [textFilter, weaponFilter, typeFilter, tierFilter]
+  );
   return (
     <div>
       <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Characters
       </h2>
       <div className="w-full flex flex-wrap my-3">
-        <div className="flex focus:outline-none focus:ring-0 focus:border-transparent w-48 h-10 border border-gray-700 items-center rounded-lg">
-          <MdSearch className="flex" />
+        <div className="flex w-52 h-10 border border-gray-700 items-center rounded-lg">
+          <MdSearch className="flex mx-2" />
           <input
-            className="h-full relative bg-transparent text-white"
+            className="h-full relative bg-transparent text-white focus:outline-none focus:ring-0 focus:border-transparent"
             placeholder="Search by champion"
             type="text"
             onChange={(e) => setTextFilter(e.target.value)}
@@ -45,34 +72,36 @@ const CharactersPage = ({
           <Dropdown
             type="weapon"
             options={weapons}
-            onSelect={(value) => console.log(value)}
+            selected={weaponFilter}
+            onSelect={(value) => setWeaponFilter(value)}
           />
         </div>
         <div className="flex w-36 mx-2">
           <Dropdown
             type="class"
             options={types}
-            onSelect={(value) => console.log(value)}
+            selected={typeFilter}
+            onSelect={(value) => setTypeFilter(value)}
           />
         </div>
         <div className="flex">
           <ButtonGroup>
-            <Button>All Tiers</Button>
-            <Button>1</Button>
-            <Button>2</Button>
+            <Button onClick={() => setTierFilter(0)}>All Tiers</Button>
+            {tierList.map((tier) => (
+              <Button
+                onClick={() => setTierFilter(tier)}
+                isActive={tier === tierFilter}
+              >
+                {tier}
+              </Button>
+            ))}
           </ButtonGroup>
         </div>
       </div>
       <div className="grid gap-3 grid-cols-5">
-        {characters
-          .filter((c) =>
-            textFilter
-              ? c.name.toUpperCase().startsWith(textFilter.toUpperCase())
-              : true
-          )
-          .map((character) => (
-            <CharacterCard key={character.id} character={character} />
-          ))}
+        {charactersFiltered.map((character) => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
       </div>
     </div>
   );
@@ -89,14 +118,22 @@ const Dropdown = memo(
   ({ type, options, selected, onSelect }: DropdownProps) => {
     const [containerRef, isOpen, open, close] = useDropdown();
     return (
-      <div className="relative" ref={containerRef}>
+      <div className="relative w-full" ref={containerRef}>
         <div className="flex overflow-hidden cursor-pointer h-full flex-col relative border border-gray-700 rounded-lg px-2">
           <div
             className="flex justify-between items-center h-9"
             onClick={isOpen ? close : open}
           >
             <div className="flex items-center text-white">
-              <CgAsterisk className="fill-current text-white text-2xl" />
+              {selected ? (
+                type === "weapon" ? (
+                  <WeaponIcon weapon={selected} className="w-4 h-4" />
+                ) : (
+                  <ElementIcon type={selected} className="w-4 h-4" />
+                )
+              ) : (
+                <CgAsterisk className="w-5 h-5" />
+              )}
               <span className="ml-2 text-purple-500 text-sm">
                 {selected ? selected : `Any ${type}`}
               </span>
@@ -105,12 +142,12 @@ const Dropdown = memo(
           </div>
         </div>
         <div
-          className="w-full absolute z-1000 cursor-pointer block bg-gray-900 max-h-80"
+          className="w-full absolute z-1000 cursor-pointer block bg-gray-900 max-h-80 min-w-min"
           style={{
             display: isOpen ? "initial" : "none",
           }}
         >
-          <div className="relative overflow-y-auto max-h-80">
+          <div className="relative overflow-y-auto max-h-80 text-sm">
             <div
               onClick={() => {
                 onSelect("");
@@ -118,8 +155,8 @@ const Dropdown = memo(
               }}
             >
               <div className="flex items-center text-white py-3 px-4">
-                <CgAsterisk className="w-4 h-4" />
-                <span className="ml-4">{`Any ${type}`}</span>
+                <CgAsterisk className="w-5 h-5" />
+                <span className="ml-3">{`Any ${type}`}</span>
               </div>
             </div>
             {options.map((option) => (
@@ -131,8 +168,12 @@ const Dropdown = memo(
                 }}
               >
                 <div className="flex items-center text-white py-4 px-4">
-                  <WeaponIcon weapon={option} className="w-4 h-4" />
-                  <span className="ml-4">{option}</span>
+                  {type === "weapon" ? (
+                    <WeaponIcon weapon={option} className="w-4 h-4" />
+                  ) : (
+                    <ElementIcon type={option} className="w-4 h-4" />
+                  )}
+                  <span className="ml-3">{option}</span>
                 </div>
               </div>
             ))}
@@ -143,7 +184,6 @@ const Dropdown = memo(
   }
 );
 
-Dropdown.whyDidYouRender = true;
 CharactersPage.whyDidYouRender = true;
 
 export const getStaticProps: GetStaticProps = async () => {

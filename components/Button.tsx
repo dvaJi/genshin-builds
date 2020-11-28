@@ -30,7 +30,7 @@ export const Button: React.FC<
         //     ? "bg-purple-600"
         //     : "bg-gray-600"
         //   : "",
-        // isActive ? (color === "primary" ? "bg-purple-800" : "bg-gray-800") : ""
+        isActive ? (color === "primary" ? "bg-purple-800" : "bg-gray-800") : ""
       )}
       {...props}
     >
