@@ -1,12 +1,15 @@
 import Link from "next/link";
+import { memo } from "react";
 
-export const LayoutFooter = () => {
+const LayoutFooter = () => {
   return (
     <footer className="px-20 py-14 bg-white dark:bg-vulcan-800 text-gray-500 dark:text-gray-400">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="flex-1 flex flex-col">
-            <h4 className="text-gray-800 dark:text-gray-200 mb-3">GenshinBuilds</h4>
+            <h4 className="text-gray-800 dark:text-gray-200 mb-3">
+              GenshinBuilds
+            </h4>
             <Link href="/privacy-policy">
               <a className="my-2">Privacy Policy</a>
             </Link>
@@ -51,3 +54,5 @@ export const LayoutFooter = () => {
     </footer>
   );
 };
+
+export default memo(LayoutFooter);

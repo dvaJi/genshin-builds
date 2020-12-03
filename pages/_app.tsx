@@ -5,8 +5,8 @@ import { RecoilRoot, useRecoilValue } from "recoil";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import { LayoutHeader } from "../components/LayoutHeader";
-import { LayoutFooter } from "../components/LayoutFooter";
+import LayoutHeader from "../components/LayoutHeader";
+import LayoutFooter from "../components/LayoutFooter";
 
 import { appBackgroundStyleState } from "../state/background-atom";
 

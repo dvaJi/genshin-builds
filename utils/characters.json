@@ -530,7 +530,7 @@
   {
     "name": "Xinyan",
     "id": 27,
-    "soon": true,
+    "soon": false,
     "new": false,
     "region": "Liyue",
     "description": "Liyue's sole rock 'n' roll musician. She rebels against ossified prejudices using her music and passionate singing.",
@@ -542,7 +542,7 @@
   {
     "name": "Zhongli",
     "id": 28,
-    "soon": true,
+    "soon": false,
     "new": false,
     "region": "Liyue",
     "description": "A mysterious guest invited by the Wangsheng Funeral Parlor. Extremely knowledgeable in all things.",

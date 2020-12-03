@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, memo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NavLink from "./NavLink";
@@ -25,7 +25,7 @@ interface LayoutHeaderProps {
   theme: string;
 }
 
-export const LayoutHeader: React.FC<LayoutHeaderProps> = ({
+const LayoutHeader: React.FC<LayoutHeaderProps> = ({
   onToggleTheme,
   theme,
 }) => {
@@ -176,3 +176,5 @@ const MobileNav = ({ isOpen }: { isOpen: boolean }) => {
     </motion.div>
   );
 };
+
+export default memo(LayoutHeader);
