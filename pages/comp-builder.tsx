@@ -8,6 +8,7 @@ import {
   CharacterBuild,
   compBuildState,
   elementalResonancesState,
+  EMPTY_STATE,
 } from "../state/comp-builder-atoms";
 import { Artifact } from "../interfaces/artifacts";
 import { Character } from "../interfaces/character";
@@ -40,7 +41,6 @@ const CompBuilder = ({
   elementalResonances,
 }: Props) => {
   const router = useRouter();
-  const [tab, setTab] = useState("CHARACTERS");
   const [characterList, set] = useRecoilState(compBuildState);
   const setelementalResonance = useSetRecoilState(elementalResonancesState);
 
@@ -167,12 +167,18 @@ const CompBuilder = ({
       if (charactersBuilded === 0 && compsCount > 0) {
         set(() => comp);
       } else {
-        // TODO: don't add generated uuid if comp is empty
         const generateUuid = hexyjs.strToHex(charactersJoin);
-        router.push({
-          pathname: "/comp-builder",
-          query: { map: generateUuid },
-        });
+        if (generateUuid !== EMPTY_STATE) {
+          router.push({
+            pathname: "/comp-builder",
+            query: { map: generateUuid },
+          });
+        } else {
+          router.push({
+            pathname: "/comp-builder",
+            query: { map: "" },
+          });
+        }
       }
     }
   }, [map]);
@@ -187,16 +193,23 @@ const CompBuilder = ({
       )
       .join(",");
     const generateUuid = hexyjs.strToHex(charactersJoin);
-    router.push({
-      pathname: "/comp-builder",
-      query: { map: generateUuid },
-    });
+    if (generateUuid !== EMPTY_STATE) {
+      router.push({
+        pathname: "/comp-builder",
+        query: { map: generateUuid },
+      });
+    } else {
+      router.push({
+        pathname: "/comp-builder",
+        query: { map: "" },
+      });
+    }
   }, [characterList]);
 
   return (
     <div>
       <div>
-        <div className="grid grid-cols-4 gap-4 h-500px min-w-full mt-2">
+        <div className="grid md:grid-cols-4 grid-cols-1 gap-4 md:h-500px h-96 min-w-full md:mt-2 mt-0">
           {Object.keys(characterList).map((key) => (
             <CharacterBuildBox
               key={key}
@@ -209,42 +222,66 @@ const CompBuilder = ({
             />
           ))}
         </div>
-        <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-vulcan-800 relative pt-16">
-          <div className="absolute flex h-12 -mt-12">
-            <ButtonGroup>
-              <Button
-                isActive={tab === "CHARACTERS"}
-                className="rounded-l"
-                onClick={() => setTab("CHARACTERS")}
-              >
-                Characters
-              </Button>
-              <Button
-                isActive={tab === "WEAPONS"}
-                onClick={() => setTab("WEAPONS")}
-              >
-                Weapons
-              </Button>
-              <Button
-                isActive={tab === "ARTIFACTS"}
-                className="rounded-r"
-                onClick={() => setTab("ARTIFACTS")}
-              >
-                Artifacts
-              </Button>
-            </ButtonGroup>
-          </div>
-          <div className="mt-4">
-            {tab === "CHARACTERS" && (
-              <CharactersContent
-                characters={characters}
-                characterList={characterList}
-              />
-            )}
-            {tab === "WEAPONS" && <WeaponsContent weapons={weapons} />}
-            {tab === "ARTIFACTS" && <ArtifactsContent artifacts={artifacts} />}
-          </div>
-        </div>
+        <ItemsContent
+          characters={characters}
+          weapons={weapons}
+          artifacts={artifacts}
+          characterList={characterList}
+        />
+      </div>
+    </div>
+  );
+};
+
+type ItemsContentProps = {
+  artifacts: Artifact[];
+  characters: Character[];
+  weapons: Weapon[];
+  characterList: Record<string, CharacterBuild>;
+};
+
+const ItemsContent = ({
+  artifacts,
+  characters,
+  weapons,
+  characterList,
+}: ItemsContentProps) => {
+  const [tab, setTab] = useState("CHARACTERS");
+  return (
+    <div className="min-w-0 p-4 md:mt-4 mt-12 rounded-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-vulcan-800 relative pt-16">
+      <div className="absolute flex h-12 -mt-12">
+        <ButtonGroup>
+          <Button
+            isActive={tab === "CHARACTERS"}
+            className="rounded-l"
+            onClick={() => setTab("CHARACTERS")}
+          >
+            Characters
+          </Button>
+          <Button
+            isActive={tab === "WEAPONS"}
+            onClick={() => setTab("WEAPONS")}
+          >
+            Weapons
+          </Button>
+          <Button
+            isActive={tab === "ARTIFACTS"}
+            className="rounded-r"
+            onClick={() => setTab("ARTIFACTS")}
+          >
+            Artifacts
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div className="mt-4">
+        {tab === "CHARACTERS" && (
+          <CharactersContent
+            characters={characters}
+            characterList={characterList}
+          />
+        )}
+        {tab === "WEAPONS" && <WeaponsContent weapons={weapons} />}
+        {tab === "ARTIFACTS" && <ArtifactsContent artifacts={artifacts} />}
       </div>
     </div>
   );
@@ -262,8 +299,8 @@ const CharactersContent = ({
     .reduce<string[]>((r, c) => [...r, characterList[c].i], [])
     .filter((i) => i.length > 0);
   return (
-    <div className="grid grid-cols-9 gap-3">
-      <div className="absolute flex h-12 -mt-16 right-3">
+    <>
+      <div className="md:absolute relative flex h-12 -mt-0 md:-mt-16 mb-5 md:mb-0 right-3">
         <ButtonGroup>
           {["Anemo", "Cryo", "Electro", "Dendro", "Geo", "Hydro", "Pyro"].map(
             (element) => (
@@ -283,27 +320,29 @@ const CharactersContent = ({
           )}
         </ButtonGroup>
       </div>
-      {characters
-        .filter((c) => (elementFilter ? c.type === elementFilter : true))
-        .map((character) => (
-          <CharacterBox
-            key={character.id}
-            character={character}
-            isSelected={
-              charactersIds.includes(character.id.toString()) ||
-              charactersIds.length === 4
-            }
-          />
-        ))}
-    </div>
+      <div className="grid md:grid-cols-7 lg:grid-cols-10 grid-cols-3 gap-3">
+        {characters
+          .filter((c) => (elementFilter ? c.type === elementFilter : true))
+          .map((character) => (
+            <CharacterBox
+              key={character.id}
+              character={character}
+              isSelected={
+                charactersIds.includes(character.id.toString()) ||
+                charactersIds.length === 4
+              }
+            />
+          ))}
+      </div>
+    </>
   );
 };
 
 const WeaponsContent = ({ weapons }: { weapons: Weapon[] }) => {
   const [typeFilter, setTypeFilter] = useState("");
   return (
-    <div className="grid grid-cols-12 gap-4">
-      <div className="absolute flex h-12 -mt-16 right-3">
+    <>
+      <div className="md:absolute relative flex h-12 -mt-0 md:-mt-16 mb-5 md:mb-0 right-3">
         <ButtonGroup>
           {["Bow", "Catalyst", "Claymore", "Polearm", "Sword"].map((type) => (
             <Button
@@ -325,18 +364,20 @@ const WeaponsContent = ({ weapons }: { weapons: Weapon[] }) => {
           ))}
         </ButtonGroup>
       </div>
-      {weapons
-        .filter((w) => (typeFilter ? w.type === typeFilter : true))
-        .map((weapon) => (
-          <WeaponBox key={weapon.id} weapon={weapon} isSelected={false} />
-        ))}
-    </div>
+      <div className="grid grid-cols-4 md:grid-cols-12 gap-2 md:gap-4">
+        {weapons
+          .filter((w) => (typeFilter ? w.type === typeFilter : true))
+          .map((weapon) => (
+            <WeaponBox key={weapon.id} weapon={weapon} isSelected={false} />
+          ))}
+      </div>
+    </>
   );
 };
 
 const ArtifactsContent = ({ artifacts }: { artifacts: Artifact[] }) => {
   return (
-    <div className="grid grid-cols-10 gap-1">
+    <div className="grid grid-cols-4 md:grid-cols-10 gap-1">
       {artifacts.map((artifact) => (
         <ArtifactBox key={artifact.id} artifact={artifact} isSelected={false} />
       ))}

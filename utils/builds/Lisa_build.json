@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Electro Support",
+    "description": "This build empower's Lisa's Elemental Burst abilty. It would be much stronger if it didn't knock enemies out of it, but it can be very powerful on bosses.",
+    "weapon_1": "Wine and Song",
+    "weapon_2": "Favonius Codex",
+    "set_1": "Noblesse Oblige",
+    "stats": ["Energy Recharge", "Electro DMG", "ATK%"]
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Physical DPS",
+    "description": "This build empowers Razor's physical damage output, synergising with the bonuses from his Lightning Fang burst skill.",
+    "weapon_1": "Wolf's Gravestone",
+    "weapon_2": "Prototype Aminus",
+    "set_1": "Gladiator's Finale",
+    "stats": ["ATK%", "Physical DMG", "CRIT DMG"]
+  }
+]

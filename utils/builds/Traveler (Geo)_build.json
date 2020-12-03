@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Geo Support",
+    "description": "This build empowers the Traveler's Geo damage from his abilities. While Geo reactions are not great, his damage is good and the party-wide buff from his Constellation level 1 is also great.",
+    "weapon_1": "Skyward Blade",
+    "weapon_2": "Favonius Sword",
+    "set_1": "Noblesse Oblige",
+    "stats": ["ATK%", "Geo DMG", "ATK%"]
+  }
+]

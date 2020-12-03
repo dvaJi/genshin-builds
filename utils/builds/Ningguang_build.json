@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Geo DPS",
+    "description": "Ningguang is a character that scales extremely well with high constellation levels, making her one of the burstier single target units in the game.",
+    "weapon_1": "Skyward Atlas",
+    "weapon_2": "Eye of Perception",
+    "set_1": "Archaic Petra",
+    "set_2": "Noblesse Oblige",
+    "set2_1": "Martial Artist",
+    "stats": ["ATK%", "Geo DMG", "CRIT DMG"]
+  }
+]

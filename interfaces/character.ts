@@ -52,8 +52,9 @@ export interface Character {
   rarity: number;
   type: string;
   weapon: string;
-  builds: Build[];
-  skills: Skill[];
-  passives: Passive[];
-  constellations: Constellation[];
+  asc_stat: string;
+  builds?: Build[];
+  skills?: Skill[];
+  passives?: Passive[];
+  constellations?: Constellation[];
 }

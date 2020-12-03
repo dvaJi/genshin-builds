@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Pyro DPS",
+    "description": "This build can work without any constellations, but really shines when you have all 6. At constellation level 6, Diluc becomes an unstoppable Pyro DMG dealing machine, weaving 2 normal attacks in between every Searing Onslaught hit.",
+    "weapon_1": "Wolf's Gravestone",
+    "weapon_2": "Prototype Aminus",
+    "set_1": "Crimson Witch of Flames",
+    "set2_1": "Gladiator's Finale",
+    "stats": ["ATK%", "Pyro DMG", "CRIT DMG"]
+  }
+]

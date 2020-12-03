@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Hydro Support",
+    "description": "Mona excels at empowering DPS units through the use of her Burst Skill making energy recharge incredibly valuable.",
+    "weapon_1": "Wine and Song",
+    "weapon_2": "Favonius Codex",
+    "set_1": "Noblesse Oblige",
+    "stats": ["Energy Recharge", "Hydro DMG", "ATK%"]
+  }
+]

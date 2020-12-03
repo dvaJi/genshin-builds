@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Cryo Healer",
+    "description": "Qiqi is the ultimate healing support thanks to her powerful healing and Cryo damage while not active.",
+    "weapon_1": "Skyward Blade",
+    "weapon_2": "Favonius Sword",
+    "set_1": "The Exile",
+    "set2_1": "Maiden Beloved",
+    "stats": ["ATK%", "ATK%", "Healing Bonus"]
+  }
+]

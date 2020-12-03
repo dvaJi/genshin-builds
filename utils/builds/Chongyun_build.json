@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Cryo Support",
+    "description": "Melt is one of the strongest Elemental Reactions in the game and Chongyun has a consistent method of applying the Cryo debuff with his Elemental Skill ability. This makes him a strong support character when paired with Pyro carries.",
+    "weapon_1": "Wolf's Gravestone",
+    "weapon_2": "Skyward Pride",
+    "set_1": "Noblesse Oblige",
+    "stats": ["ATK%", "Cryo DMG", "CRIT DMG"]
+  },
+  {
+    "name": "Cryo DPS",
+    "description": "While Chongyun can be built like other standard Claymore users with a Gladiator set, his true power comes from his Elemental Burst skill. A lot of his constellations also empower this ability. As such, this build piles on, making his Ultimate as strong as possible.",
+    "weapon_1": "Wolf's Gravestone",
+    "weapon_2": "Skyward Pride",
+    "set_1": "Noblesse Oblige",
+    "stats": ["ATK%", "Cryo DMG", "CRIT DMG"]
+  }
+]

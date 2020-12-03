@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Anemo DPS",
+    "description": "This build empowers Xiao's Normal Attack and low CD Elemental Skill damage.",
+    "weapon_1": "Primordial Jade Winged-Spear",
+    "weapon_2": "Halberd",
+    "set_1": "Gladiator's Finale",
+    "stats": ["ATK%", "Anemo DMG", "CRIT DMG"]
+  }
+]

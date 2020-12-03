@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Anemo Support",
+    "description": "This build empowers Jean's Elemental Burst ability to maximize her healing, while simultaneously reducing enemies' Elemental RES for the rest of your party.",
+    "weapon_1": "Skyward Blade",
+    "weapon_2": "Favonius Sword",
+    "set_1": "Noblesse Oblige",
+    "set2_1": "Viridescent Venerer",
+    "stats": ["ATK%", "ATK%", "Healing Bonus"]
+  },
+  {
+    "name": "Physical DPS",
+    "description": "This build empowers Jean's physical damage output, turning her into a reliable hybrid between a DPS and a healer.",
+    "weapon_1": "Aquila Favonia",
+    "weapon_2": "Prototype Rancour",
+    "set_1": "Gladiator's Finale",
+    "set2_1": "Gladiator's Finale",
+    "set2_2": "Bloodstained Chivalry",
+    "stats": ["ATK%", "Physical DMG", "CRIT DMG"]
+  }
+]

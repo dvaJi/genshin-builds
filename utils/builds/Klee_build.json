@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Pyro DPS",
+    "description": "Klee's highest damage source comes from spamming her charged attack and she really comes online when paired with Bennet's ultimate, more so than Diluc.",
+    "weapon_1": "Skyward Atlas",
+    "weapon_2": "Mappa Mare",
+    "set_1": "Wanderer's Troupe",
+    "set2_1": "Crimson Witch of Flames",
+    "set2_2": "Gladiator's Finale",
+    "stats": ["ATK%", "Pyro DMG", "CRIT DMG"]
+  }
+]

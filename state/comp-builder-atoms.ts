@@ -1,6 +1,8 @@
 import { atom } from "recoil";
 import { ElementalResonance } from "../interfaces/elemental-resonance";
 
+export const EMPTY_STATE = "7c7e2c7c7e2c7c7e2c7c7e";
+
 export interface CharacterBuild {
   i: string;
   w: string;

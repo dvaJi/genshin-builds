@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Anemo Support",
+    "description": "This build empowers Venti's energy recharge to minimize the downtime of his Elemental Burst skill. The Stringless is the preferred weapon.",
+    "weapon_1": "The Stringless",
+    "weapon_2": "Favonius Warbow",
+    "set_1": "Noblesse Oblige",
+    "set2_1": "Viridescent Venerer",
+    "stats": ["Energy Recharge", "Anemo DMG", "ATK%"]
+  },
+  {
+    "name": "Aimed Shot",
+    "description": "The idea behind this build is to fire a powerful, fully charged Aimed Shot with Venti every 10 seconds, taking advantage of the extra 2 arrows from his first constellation, Splitting Gale.",
+    "weapon_1": "Sharpshooter's Oath",
+    "weapon_2": "Messenger",
+    "set_1": "Wanderer's Troupe",
+    "stats": ["ATK%", "Anemo DMG", "CRIT DMG"]
+  }
+]

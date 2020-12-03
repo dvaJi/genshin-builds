@@ -7,16 +7,16 @@ import { motion } from "framer-motion";
 import { BsSun, BsMoon } from "react-icons/bs";
 
 const navroutes = [
-  { name: "Characters", href: "/characters" },
-  { name: "Tierlist", href: "/tierlist" },
-  {
-    name: "Database",
-    href: "/#",
-    dropdownMenu: [
-      { name: "Weapons", href: "/weapons" },
-      { name: "Artifacts", href: "/artifacts" },
-    ],
-  },
+  // { name: "Characters", href: "/characters" },
+  // // { name: "Tierlist", href: "/tierlist" },
+  // {
+  //   name: "Database",
+  //   href: "/#",
+  //   dropdownMenu: [
+  //     { name: "Weapons", href: "/weapons" },
+  //     { name: "Artifacts", href: "/artifacts" },
+  //   ],
+  // },
   { name: "Team Builder", href: "/comp-builder" },
 ];
 
