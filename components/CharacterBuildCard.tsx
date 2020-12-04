@@ -9,48 +9,7 @@ import { ElementalResonance } from "../interfaces/elemental-resonance";
 import { Weapon } from "../interfaces/weapon";
 import { CharacterBuild } from "../state/comp-builder-atoms";
 import { Artifact } from "../interfaces/artifacts";
-
-const elResonanceColor = (er: ElementalResonance | undefined) => {
-  if (!er) {
-    return "initial";
-  }
-
-  let color = "";
-  switch (er.id) {
-    case "1":
-      // Geo
-      color = "#F59E0B";
-      break;
-
-    case "2":
-      // Pyro
-      color = "#DC2626";
-      break;
-
-    case "3":
-      // Hydro
-      color = "#08e3fe";
-      break;
-    case "4":
-      // Anemo
-      color = "#92dbb8";
-      break;
-    case "5":
-      // Electro
-      color = "#debaff";
-      break;
-    case "6":
-      // Hydro
-      color = "#a5e8ec";
-      break;
-
-    default:
-      color = "#283246";
-      break;
-  }
-
-  return `0 0 10px ${color}`;
-};
+import clsx from "clsx";
 
 interface CharacterBuildCardProps {
   character: Character;
@@ -76,14 +35,16 @@ const CharacterBuildCard = ({
   const [isHover, setIsHover] = useState(false);
   return (
     <div
-      className="md:h-500px h-24 mx-1 border-gray-400 dark:border-gray-800 border-4 relative"
+      className={clsx(
+        "md:h-500px h-24 mx-1 border-gray-400 dark:border-gray-800 border-4 relative",
+        `shadow-${elementalResonance?.name.toLowerCase().replace(/\s/g, "-")}`
+      )}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       style={{
         backgroundImage: `url('/regions/${character.region}_d.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        boxShadow: elResonanceColor(elementalResonance),
       }}
     >
       <div

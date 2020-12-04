@@ -26,6 +26,7 @@ import weaponsData from "../utils/weapons.json";
 import elementalResonancesData from "../utils/elemental_resonance.json";
 import { ElementalResonance } from "../interfaces/elemental-resonance";
 import ButtonGroup from "../components/ButtonGroup";
+import { motion } from "framer-motion";
 
 type Props = {
   artifacts: Artifact[];
@@ -209,7 +210,15 @@ const CompBuilder = ({
   return (
     <div>
       <div>
-        <div className="grid md:grid-cols-4 grid-cols-1 gap-4 md:h-500px h-96 min-w-full md:mt-2 mt-0">
+        <div className="flex justify-center mb-4">
+          {currentElementalResonance.map((elrs) => (
+            <div className="bg-gray-800 p-4 z-10 mx-2 rounded-md shadow-md max-w-md">
+              <h1 className="text-xl font-bold">{elrs?.name}</h1>
+              <p className="text-xs">{elrs?.effect}</p>
+            </div>
+          ))}
+        </div>
+        <div className="grid md:grid-cols-4 grid-cols-1 gap-4 md:h-500px h-96 min-w-full md:mt-2 mt-0 z-20">
           {Object.keys(characterList).map((key) => (
             <CharacterBuildBox
               key={key}
