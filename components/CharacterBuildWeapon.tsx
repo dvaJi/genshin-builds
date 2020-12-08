@@ -74,7 +74,7 @@ const CharacterBuildWeapon = ({
             )}
           </div>
           <img
-            src={`https://rerollcdn.com/GENSHIN/Weapon/NEW/${weaponsList[
+            src={`/weapons/${weaponsList[
               weaponSelected
             ].name.replace(/\s/g, "_")}.png`}
           />

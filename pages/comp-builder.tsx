@@ -361,11 +361,7 @@ const WeaponsContent = ({ weapons }: { weapons: Weapon[] }) => {
                 setTypeFilter(type !== typeFilter ? type : "");
               }}
             >
-              <img
-                src={`https://rerollcdn.com/GENSHIN/Weapon/NEW/${type}.png`}
-                height={30}
-                width={30}
-              />
+              <img src={`/elements/${type}.png`} height={30} width={30} />
             </Button>
           ))}
         </ButtonGroup>

@@ -79,7 +79,7 @@ const CharacterBox: React.FC<CharacterBoxProps> = ({
               x="4"
               y="4"
               preserveAspectRatio="xMidYMid slice"
-              href={`https://rerollcdn.com/GENSHIN/Characters/${character.name}.png`}
+              href={`/characters/portrait/${character.name}.png`}
               width="96px"
               height="96px"
             />

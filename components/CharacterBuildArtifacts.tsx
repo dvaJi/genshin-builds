@@ -85,7 +85,7 @@ const CharacterBuildArtifacts = ({
               )}
             </div>
             <img
-              src={`https://rerollcdn.com/GENSHIN/Gear/${artifactsList[key].name
+              src={`/artifacts/${artifactsList[key].name
                 .toLowerCase()
                 .replace(/\s/g, "_")}.png`}
             />
