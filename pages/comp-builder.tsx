@@ -361,7 +361,7 @@ const WeaponsContent = ({ weapons }: { weapons: Weapon[] }) => {
                 setTypeFilter(type !== typeFilter ? type : "");
               }}
             >
-              <img src={`/elements/${type}.png`} height={30} width={30} />
+              <img src={`/weapons_type/${type}.png`} height={30} width={30} />
             </Button>
           ))}
         </ButtonGroup>
