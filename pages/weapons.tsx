@@ -39,7 +39,9 @@ const WeaponsPage = ({ weapons }: Props) => {
       {
         Header: "Bonus",
         accessor: "bonus",
-        Cell: (row) => <span dangerouslySetInnerHTML={{ __html: row.value }} />,
+        Cell: (row) => (
+          <span dangerouslySetInnerHTML={{ __html: row.value || "" }} />
+        ),
       },
       {
         Header: "Location",

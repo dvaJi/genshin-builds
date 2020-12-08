@@ -6,7 +6,13 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { BsSun, BsMoon } from "react-icons/bs";
 
-const navroutes = [
+interface NavRoutes {
+  name: string;
+  href: string;
+  dropdownMenu?: NavRoutes[];
+}
+
+const navroutes: NavRoutes[] = [
   // { name: "Characters", href: "/characters" },
   // // { name: "Tierlist", href: "/tierlist" },
   // {
