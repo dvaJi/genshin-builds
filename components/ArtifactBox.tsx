@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useDrag, DragSourceMonitor } from "react-dnd";
 import { useSetRecoilState } from "recoil";
+import Image from "next/image";
 
 import { Artifact } from "../interfaces/artifacts";
 import { compBuildState } from "../state/comp-builder-atoms";
@@ -41,10 +42,12 @@ const ArtifactBox = ({ artifact, isSelected }: ArtifactBoxProps) => {
   return (
     <div ref={drag} style={{ opacity, pointerEvents }} className="text-center">
       <div className="border-gray-400 dark:border-gray-800 border-4 w-16 h-16 m-auto">
-        <img
+        <Image
           src={`/artifacts/${artifact.name
             .toLowerCase()
             .replace(/\s/g, "_")}.png`}
+            height={56}
+            width={56}
         />
       </div>
       <span className="text-gray-800 dark:text-gray-500 text-sm">

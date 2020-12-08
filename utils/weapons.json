@@ -1012,5 +1012,27 @@
     "secondary": "DEF",
     "passive": "Journey",
     "bonus": "Each Elemental Orb or Particle collected restores <b>1/1.25/1.5/1.75/2%</b> HP."
+  },
+  {
+    "name": "Vortex Vanquisher",
+    "id": 96,
+    "location": "Gacha",
+    "type": "Polearm",
+    "rarity": 5,
+    "base": 40,
+    "secondary": "ATK",
+    "passive": "Golden Majesty",
+    "bonus": "Increases Shield Strength by <b>20/25/30/35/40%</b>. Scoring hits on opponents increases ATK by <b>4/5/6/7/8%</b> for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%."
+  },
+  {
+    "name": "The Unforged",
+    "id": 97,
+    "location": "Gacha",
+    "type": "Claymore",
+    "rarity": 5,
+    "base": 40,
+    "secondary": "ATK",
+    "passive": "Golden Majesty",
+    "bonus": "Increases Shield Strength by <b>20/25/30/35/40%</b>. Scoring hits on opponents increases ATK by <b>4/5/6/7/8%</b> for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%."
   }
 ]

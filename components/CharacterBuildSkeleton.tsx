@@ -1,10 +1,11 @@
 import clsx from "clsx";
+import { memo } from "react";
 
 interface CharacterBuildSekeletonProps {
   isActive: boolean;
 }
 
-export const CharacterBuildSekeleton = ({
+const CharacterBuildSekeleton = ({
   isActive,
 }: CharacterBuildSekeletonProps) => {
   return (
@@ -22,8 +23,12 @@ export const CharacterBuildSekeleton = ({
           isActive ? "opacity-100 scale-100" : "opacity-0 scale-90"
         )}
       >
-        <div className="text-xl text-center absolute top-2/4 right-0 h-full w-full">DROP CHARACTER HERE</div>
+        <div className="text-xl text-center absolute top-2/4 right-0 h-full w-full">
+          DROP CHARACTER HERE
+        </div>
       </div>
     </div>
   );
 };
+
+export default memo(CharacterBuildSekeleton);

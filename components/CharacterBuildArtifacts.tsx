@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { useDrop } from "react-dnd";
 import { useSetRecoilState } from "recoil";
+import Image from "next/image";
 
 import { Artifact } from "../interfaces/artifacts";
 import { Character } from "../interfaces/character";
@@ -84,10 +85,12 @@ const CharacterBuildArtifacts = ({
                 </button>
               )}
             </div>
-            <img
+            <Image
               src={`/artifacts/${artifactsList[key].name
                 .toLowerCase()
                 .replace(/\s/g, "_")}.png`}
+              width={56}
+              height={56}
             />
             {/* <span className="text-white text-xs">{artifactsList[key].name}</span> */}
           </div>

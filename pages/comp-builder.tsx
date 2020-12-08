@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { GetStaticProps } from "next";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import hexyjs from "hexyjs";
 
 import {
@@ -320,7 +321,11 @@ const CharactersContent = ({
                   setElementFilter(element !== elementFilter ? element : "");
                 }}
               >
-                <img src={`/elements/${element}.png`} height={30} width={30} />
+                <Image
+                  src={`/elements/${element}.png`}
+                  height={30}
+                  width={30}
+                />
               </Button>
             )
           )}
@@ -361,7 +366,7 @@ const WeaponsContent = ({ weapons }: { weapons: Weapon[] }) => {
                 setTypeFilter(type !== typeFilter ? type : "");
               }}
             >
-              <img src={`/weapons_type/${type}.png`} height={30} width={30} />
+              <Image src={`/weapons_type/${type}.png`} height={30} width={30} />
             </Button>
           ))}
         </ButtonGroup>

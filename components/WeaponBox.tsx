@@ -2,6 +2,7 @@ import { memo } from "react";
 import { useDrag, DragSourceMonitor } from "react-dnd";
 import ReactTooltip from "react-tooltip";
 import { useSetRecoilState } from "recoil";
+import Image from "next/image";
 
 import { Weapon } from "../interfaces/weapon";
 import { compBuildState } from "../state/comp-builder-atoms";
@@ -50,7 +51,7 @@ const WeaponBox = ({ weapon, isSelected }: WeaponBoxProps) => {
         data-for={weaponName}
       >
         <div className="border-gray-400 dark:border-gray-800 border-4 w-16 h-16 m-auto overflow-hidden">
-          <img src={`/weapons/${weaponName}.png`} />
+          <Image src={`/weapons/${weaponName}.png`} width={56} height={56} />
         </div>
         <span className="text-gray-800 dark:text-gray-500 text-sm">
           {weapon.name}
@@ -67,10 +68,13 @@ const WeaponBox = ({ weapon, isSelected }: WeaponBoxProps) => {
             </span>
           )}
           {weapon.bonus && (
-            <p
-              className="text-xs max-w-xs"
-              dangerouslySetInnerHTML={{ __html: weapon.bonus }}
-            />
+            <div className="max-w-xs">
+              <b>{weapon.passive}: </b>
+              <span
+                className="text-xs "
+                dangerouslySetInnerHTML={{ __html: weapon.bonus }}
+              />
+            </div>
           )}
         </div>
       </ReactTooltip>

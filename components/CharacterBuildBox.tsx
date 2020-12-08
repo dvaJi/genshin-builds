@@ -1,14 +1,16 @@
+import { memo } from "react";
 import { useDrop } from "react-dnd";
 import { useSetRecoilState } from "recoil";
-import { Artifact } from "../interfaces/artifacts";
 
+import CharacterBuildCard from "./CharacterBuildCard";
+import CharacterBuildSekeleton from "./CharacterBuildSkeleton";
+
+import { Artifact } from "../interfaces/artifacts";
 import { Character } from "../interfaces/character";
 import { Weapon } from "../interfaces/weapon";
-import { CharacterBuild, compBuildState } from "../state/comp-builder-atoms";
-import { CharacterBuildSekeleton } from "./CharacterBuildSkeleton";
 import { ElementalResonance } from "../interfaces/elemental-resonance";
-import CharacterBuildCard from "./CharacterBuildCard";
-import { memo } from "react";
+
+import { CharacterBuild, compBuildState } from "../state/comp-builder-atoms";
 
 interface CharacterBuildBoxProps {
   artifactsList: Record<string, Artifact>;
@@ -34,6 +36,7 @@ const CharacterBuildBox = ({
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
+      dropType: monitor.getItemType(),
     }),
   });
 

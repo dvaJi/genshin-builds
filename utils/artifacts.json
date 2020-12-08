@@ -85,17 +85,6 @@
     ]
   },
   {
-    "name": "Glacier and Snowfield",
-    "id": "24",
-    "bonus": [
-      { "count": 2, "value": "Cryo DMG Bonus +15%" },
-      {
-        "count": 4,
-        "value": "Increases Superconduct DMG by 50%. Increases Melt DMG by 15%. Using an Elemental Burst increases Cryo DMG by 25% for 10s."
-      }
-    ]
-  },
-  {
     "name": "Gladiator's Finale",
     "id": "14",
     "bonus": [
@@ -103,17 +92,6 @@
       {
         "count": 4,
         "value": "If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%."
-      }
-    ]
-  },
-  {
-    "name": "Icebreaker",
-    "id": "25",
-    "bonus": [
-      { "count": 2, "value": "Cryo RES increased by 40%" },
-      {
-        "count": 4,
-        "value": "Increases DMG against enemies in a Frozen state or affected by cryo by 35%."
       }
     ]
   },

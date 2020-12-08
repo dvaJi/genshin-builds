@@ -2,6 +2,7 @@ import { memo, useState } from "react";
 import { useDrop } from "react-dnd";
 import { useSetRecoilState } from "recoil";
 import { GiSwitchWeapon } from "react-icons/gi";
+import Image from "next/image";
 
 import { Character } from "../interfaces/character";
 import { Weapon } from "../interfaces/weapon";
@@ -73,10 +74,13 @@ const CharacterBuildWeapon = ({
               </button>
             )}
           </div>
-          <img
-            src={`/weapons/${weaponsList[
-              weaponSelected
-            ].name.replace(/\s/g, "_")}.png`}
+          <Image
+            src={`/weapons/${weaponsList[weaponSelected].name.replace(
+              /\s/g,
+              "_"
+            )}.png`}
+            width={58}
+            height={58}
           />
           {/* {weaponsList[weaponSelected].name} */}
         </div>

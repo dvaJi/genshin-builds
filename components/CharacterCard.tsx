@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { memo, ReactNode } from "react";
 import { GiRoundStar } from "react-icons/gi";
+import Image from "next/image";
 
 import { Character } from "../interfaces/character";
 import RoleIcon from "./RoleIcon";
@@ -10,7 +11,7 @@ interface CharacterCardProps {
   character: Character;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+const CharacterCard = ({ character }: CharacterCardProps) => {
   return (
     <Link href={`/character/${character.name.replace(/\s/, "")}`}>
       <a>
@@ -40,7 +41,12 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
                 )}
               </div>
               <div className="absolute top-3 right-3">
-                <img className="w-12" src={`/elements/${character.type}.png`} />
+                <Image
+                  className="w-12"
+                  src={`/elements/${character.type}.png`}
+                  width={48}
+                  height={48}
+                />
               </div>
             </div>
           </div>
