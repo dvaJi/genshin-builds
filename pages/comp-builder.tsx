@@ -12,21 +12,21 @@ import {
 } from "../state/comp-builder-atoms";
 import { Artifact } from "../interfaces/artifacts";
 import { Character } from "../interfaces/character";
+import { ElementalResonance } from "../interfaces/elemental-resonance";
 import { Weapon } from "../interfaces/weapon";
 
-import { ArtifactBox } from "../components/ArtifactBox";
-import { CharacterBuildBox } from "../components/CharacterBuildBox";
+import ArtifactBox from "../components/ArtifactBox";
+import CharacterBuildBox from "../components/CharacterBuildBox";
+import ElementalResonanceCard from "../components/ElementalResonanceCard";
 import CharacterBox from "../components/CharacterBox";
-import { WeaponBox } from "../components/WeaponBox";
-import { Button } from "../components/Button";
+import WeaponBox from "../components/WeaponBox";
+import Button from "../components/Button";
+import ButtonGroup from "../components/ButtonGroup";
 
 import artifactsData from "../utils/artifacts.json";
 import charactersData from "../utils/characters.json";
 import weaponsData from "../utils/weapons.json";
 import elementalResonancesData from "../utils/elemental_resonance.json";
-import { ElementalResonance } from "../interfaces/elemental-resonance";
-import ButtonGroup from "../components/ButtonGroup";
-import { motion } from "framer-motion";
 
 type Props = {
   artifacts: Artifact[];
@@ -212,10 +212,7 @@ const CompBuilder = ({
       <div>
         <div className="flex justify-center mb-4">
           {currentElementalResonance.map((elrs) => (
-            <div className="bg-gray-800 p-4 z-10 mx-2 rounded-md shadow-md max-w-md">
-              <h1 className="text-xl font-bold">{elrs?.name}</h1>
-              <p className="text-xs">{elrs?.effect}</p>
-            </div>
+            <ElementalResonanceCard key={elrs?.id} elementalResonance={elrs} />
           ))}
         </div>
         <div className="grid md:grid-cols-4 grid-cols-1 gap-4 md:h-500px h-96 min-w-full md:mt-2 mt-0 z-20">

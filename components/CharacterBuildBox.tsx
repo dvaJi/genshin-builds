@@ -8,6 +8,7 @@ import { CharacterBuild, compBuildState } from "../state/comp-builder-atoms";
 import { CharacterBuildSekeleton } from "./CharacterBuildSkeleton";
 import { ElementalResonance } from "../interfaces/elemental-resonance";
 import CharacterBuildCard from "./CharacterBuildCard";
+import { memo } from "react";
 
 interface CharacterBuildBoxProps {
   artifactsList: Record<string, Artifact>;
@@ -18,14 +19,14 @@ interface CharacterBuildBoxProps {
   resonances: (ElementalResonance | undefined)[];
 }
 
-export const CharacterBuildBox: React.FC<CharacterBuildBoxProps> = ({
+const CharacterBuildBox = ({
   artifactsList,
   charactersList,
   weaponsList,
   teamBuild,
   positionKey,
   resonances,
-}) => {
+}: CharacterBuildBoxProps) => {
   const setCompBuild = useSetRecoilState(compBuildState);
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: "box",
@@ -70,3 +71,5 @@ export const CharacterBuildBox: React.FC<CharacterBuildBoxProps> = ({
     </div>
   );
 };
+
+export default memo(CharacterBuildBox);

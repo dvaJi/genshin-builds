@@ -5,7 +5,7 @@ export interface Weapon {
   type: string;
   rarity: number;
   base: number;
-  secondary: string;
+  secondary?: string;
   passive: string;
-  bonus: string;
+  bonus?: string;
 }

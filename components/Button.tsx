@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 import clsx from "clsx";
 
 interface ButtonProps {
@@ -9,7 +9,7 @@ interface ButtonProps {
   color?: "primary" | "secondary";
 }
 
-export const Button: React.FC<
+const Button: React.FC<
   ButtonProps & React.HTMLAttributes<HTMLButtonElement>
 > = ({
   children,
@@ -42,3 +42,5 @@ export const Button: React.FC<
     </button>
   );
 };
+
+export default memo(Button);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useDrag, DragSourceMonitor } from "react-dnd";
 import { useSetRecoilState } from "recoil";
 
@@ -9,10 +10,7 @@ interface ArtifactBoxProps {
   isSelected: boolean;
 }
 
-export const ArtifactBox: React.FC<ArtifactBoxProps> = ({
-  artifact,
-  isSelected,
-}) => {
+const ArtifactBox = ({ artifact, isSelected }: ArtifactBoxProps) => {
   const setCompBuild = useSetRecoilState(compBuildState);
   const [{ isDragging }, drag] = useDrag({
     item: { name: artifact.name, type: "artifact" },
@@ -44,12 +42,16 @@ export const ArtifactBox: React.FC<ArtifactBoxProps> = ({
     <div ref={drag} style={{ opacity, pointerEvents }} className="text-center">
       <div className="border-gray-400 dark:border-gray-800 border-4 w-16 h-16 m-auto">
         <img
-          src={`https://rerollcdn.com/GENSHIN/Gear/${artifact.name
+          src={`/artifacts/${artifact.name
             .toLowerCase()
             .replace(/\s/g, "_")}.png`}
         />
       </div>
-      <span className="text-gray-800 dark:text-gray-500 text-sm">{artifact.name}</span>
+      <span className="text-gray-800 dark:text-gray-500 text-sm">
+        {artifact.name}
+      </span>
     </div>
   );
 };
+
+export default memo(ArtifactBox);

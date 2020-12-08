@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { useDrop } from "react-dnd";
 import { useSetRecoilState } from "recoil";
+import { GiSwitchWeapon } from "react-icons/gi";
 
 import { Character } from "../interfaces/character";
 import { Weapon } from "../interfaces/weapon";
@@ -60,7 +61,7 @@ const CharacterBuildWeapon = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      {weaponSelected && (
+      {weaponSelected ? (
         <div key={weaponSelected}>
           <div className="text-white text-xs absolute right-0 mr-1">
             {isHover && (
@@ -79,6 +80,8 @@ const CharacterBuildWeapon = ({
           />
           {/* {weaponsList[weaponSelected].name} */}
         </div>
+      ) : (
+        <GiSwitchWeapon className="w-3/5 h-3/5 m-3 opacity-30" />
       )}
     </div>
   );

@@ -34,3 +34,26 @@
 .shadow-protective-canopy {
   box-shadow: 0 0 10px #283246;
 }
+
+/* Elemental Resonances border-color */
+.border-enduring-rock {
+  border-color: #f59e0b;
+}
+.border-fervent-flames {
+  border-color: #dc2626;
+}
+.border-soothing-waters {
+  border-color: #08e3fe;
+}
+.border-impetuous-winds {
+  border-color: #92dbb8;
+}
+.border-high-voltage {
+  border-color: #debaff;
+}
+.border-shattering-ice {
+  border-color: #a5e8ec;
+}
+.border-protective-canopy {
+  border-color: #283246;
+}
