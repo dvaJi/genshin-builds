@@ -9,7 +9,7 @@ import useDropdown from "../hooks/use-dropdown";
 import WeaponIcon from "../components/WeaponIcon";
 import { memo, useMemo, useState } from "react";
 import ButtonGroup from "../components/ButtonGroup";
-import { Button } from "../components/Button";
+import Button from "../components/Button";
 import ElementIcon from "../components/ElementIcon";
 
 type CharactersProps = {
