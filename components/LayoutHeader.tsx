@@ -5,6 +5,7 @@ import NavLink from "./NavLink";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { BsSun, BsMoon } from "react-icons/bs";
+import Logo from "./Logo";
 
 interface NavRoutes {
   name: string;
@@ -45,11 +46,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({
           aria-current="page"
           href="/"
         >
-          <img
-            className="w-20 mr-5 fill-current text-gray-900 dark:text-white"
-            src="/Genshin_Impact_logo.svg"
-            alt="Genshin Impact"
-          />
+          <Logo className="w-20 mr-5 fill-current text-gray-900 dark:text-white" />
           <span className="text-gray-900 dark:text-gray-100 text-lg font-normal">
             GenshinBuilds
           </span>
