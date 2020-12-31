@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import { CgAsterisk } from "react-icons/cg";
 import { MdKeyboardArrowDown, MdSearch } from "react-icons/md";
 
-import charactersData from "../utils/characters.json";
+import charactersData from "../_content/data/characters.json";
 import { Character } from "../interfaces/character";
 import CharacterCard from "../components/CharacterCard";
 import useDropdown from "../hooks/use-dropdown";

@@ -22,6 +22,8 @@ const ElementalResonanceCard = ({
           <ElementIcon
             className="w-7 h-7"
             type={elementalResonance?.primary[0] || ""}
+            width={28}
+            height={28}
           />
         </div>
         <div className="ml-2">

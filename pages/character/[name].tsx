@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 
 import { Character } from "../../interfaces/character";
 import { appBackgroundStyleState } from "../../state/background-atom";
-import charactersData from "../../utils/characters.json";
+import charactersData from "../../_content/data/characters.json";
 
 interface CharacterPageProps {
   character: Character;

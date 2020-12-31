@@ -3,13 +3,11 @@ import { GetStaticProps } from "next";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import hexyjs from "hexyjs";
 
 import {
   CharacterBuild,
   compBuildState,
   elementalResonancesState,
-  EMPTY_STATE,
 } from "../state/comp-builder-atoms";
 import { Artifact } from "../interfaces/artifacts";
 import { Character } from "../interfaces/character";
@@ -24,10 +22,11 @@ import WeaponBox from "../components/WeaponBox";
 import Button from "../components/Button";
 import ButtonGroup from "../components/ButtonGroup";
 
-import artifactsData from "../utils/artifacts.json";
-import charactersData from "../utils/characters.json";
-import weaponsData from "../utils/weapons.json";
-import elementalResonancesData from "../utils/elemental_resonance.json";
+import artifactsData from "../_content/data/artifacts.json";
+import charactersData from "../_content/data/characters.json";
+import weaponsData from "../_content/data/weapons.json";
+import elementalResonancesData from "../_content/data/elemental_resonance.json";
+import { encodeComp, decodeComp } from "../lib/comp-encoder";
 
 type Props = {
   artifacts: Artifact[];
@@ -136,76 +135,27 @@ const CompBuilder = ({
       },
       0
     );
-    const charactersJoin = Object.keys(characterList)
-      .map(
-        (k) =>
-          `${characterList[k].i}|${characterList[k].w}~${characterList[
-            k
-          ].a.join(";")}`
-      )
-      .join(",");
 
     if (map) {
-      const ch = hexyjs.hexToStr(map as string) || "";
-      // console.log("decoded string", ch);
-      const keys = ch.split(",");
-      let comp: Record<string, CharacterBuild> = {};
-      let compsCount = 0;
-
-      keys.forEach((k, i) => {
-        const [key, rest] = k.split("|");
-        const [w, a] = rest.split("~");
-        comp[i] = {
-          i: key,
-          w: w || "",
-          a: a ? a.split(";") : [],
-        };
-
-        if (key) {
-          compsCount++;
-        }
-      });
-
+      const [comp, compsCount] = decodeComp(map as string);
       if (charactersBuilded === 0 && compsCount > 0) {
         set(() => comp);
       } else {
-        const generateUuid = hexyjs.strToHex(charactersJoin);
-        if (generateUuid !== EMPTY_STATE) {
-          router.push({
-            pathname: "/comp-builder",
-            query: { map: generateUuid },
-          });
-        } else {
-          router.push({
-            pathname: "/comp-builder",
-            query: { map: "" },
-          });
-        }
+        const generateUuid = encodeComp(characterList);
+        router.push({
+          pathname: "/comp-builder",
+          query: { map: generateUuid },
+        });
       }
     }
   }, [map]);
 
   useEffect(() => {
-    const charactersJoin = Object.keys(characterList)
-      .map(
-        (k) =>
-          `${characterList[k].i}|${characterList[k].w}~${characterList[
-            k
-          ].a.join(";")}`
-      )
-      .join(",");
-    const generateUuid = hexyjs.strToHex(charactersJoin);
-    if (generateUuid !== EMPTY_STATE) {
-      router.push({
-        pathname: "/comp-builder",
-        query: { map: generateUuid },
-      });
-    } else {
-      router.push({
-        pathname: "/comp-builder",
-        query: { map: "" },
-      });
-    }
+    const generateUuid = encodeComp(characterList);
+    router.push({
+      pathname: "/comp-builder",
+      query: { map: generateUuid },
+    });
   }, [characterList]);
 
   return (

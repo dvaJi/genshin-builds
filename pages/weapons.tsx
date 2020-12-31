@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { GetStaticProps } from "next";
 import { Column, useSortBy, useTable } from "react-table";
 
-import weaponsData from "../utils/weapons.json";
+import weaponsData from "../_content/data/weapons.json";
 import { Weapon } from "../interfaces/weapon";
 
 type Props = {
