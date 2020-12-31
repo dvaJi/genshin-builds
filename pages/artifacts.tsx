@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 
-import artifactsData from "../utils/artifacts.json";
+import artifactsData from "../_content/data/artifacts.json";
 import { Artifact } from "../interfaces/artifacts";
 
 type Props = {

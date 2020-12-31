@@ -13,15 +13,13 @@ const ElementIcon = ({
   width = 64,
   height = 64,
   className,
-}: ElementIconProps) => {
-  return (
-    <Image
-      src={`/elements/${type}.png`}
-      className={className}
-      width={width}
-      height={height}
-    />
-  );
-};
-
+}: ElementIconProps) => (
+  <Image
+    src={`/elements/${type}.png`}
+    alt={type}
+    className={className}
+    width={width}
+    height={height}
+  />
+);
 export default memo(ElementIcon);
