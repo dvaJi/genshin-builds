@@ -54,9 +54,7 @@ const CharactersPage = ({
   );
   return (
     <div>
-      <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Characters
-      </h2>
+      <h2 className="my-6 text-2xl font-semibold text-gray-200">Characters</h2>
       <div className="w-full flex flex-wrap my-3">
         <div className="flex w-52 h-10 border border-gray-700 items-center rounded-lg">
           <MdSearch className="flex mx-2" />

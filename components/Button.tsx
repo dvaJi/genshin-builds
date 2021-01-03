@@ -22,7 +22,7 @@ const Button: React.FC<
   return (
     <button
       className={clsx(
-        "flex justify-center items-center h-full cursor-pointer bg-transparent focus:outline-none focus:ring focus:ring-purple-900 transition-all overflow-hidden relative dark:text-white px-4 border border-gray-300 dark:hover:bg-gray-800 dark:border-gray-800 hover:border-purple-900",
+        "flex justify-center items-center h-full cursor-pointer bg-transparent focus:outline-none focus:ring focus:ring-purple-900 transition-all overflow-hidden relative text-white px-4 border hover:bg-gray-800 border-gray-800 hover:border-purple-900",
         className,
         // color === "primary" ? "hover:bg-purple-700" : "hover:bg-gray-700",
         // type === "solid"
@@ -32,8 +32,8 @@ const Button: React.FC<
         //   : "",
         isActive
           ? color === "primary"
-            ? "bg-purple-600 text-white dark:bg-purple-800"
-            : "bg-gray-500 dark:bg-gray-800"
+            ? "text-white bg-purple-800"
+            : "bg-gray-800"
           : "text-gray-700"
       )}
       {...props}

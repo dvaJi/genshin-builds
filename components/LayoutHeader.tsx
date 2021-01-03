@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import NavLink from "./NavLink";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { BsSun, BsMoon } from "react-icons/bs";
 import Logo from "./Logo";
 
 interface NavRoutes {
@@ -27,27 +26,19 @@ const navroutes: NavRoutes[] = [
   { name: "Team Builder", href: "/comp-builder" },
 ];
 
-interface LayoutHeaderProps {
-  onToggleTheme: () => void;
-  theme: string;
-}
-
-const LayoutHeader: React.FC<LayoutHeaderProps> = ({
-  onToggleTheme,
-  theme,
-}) => {
+const LayoutHeader = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const router = useRouter();
   return (
-    <nav className="sticky top-0 h-12 mb-5 z-40 bg-white dark:bg-vulcan-800 border-b border-gray-200 dark:border-gray-800 shadow-md">
-      <div className="flex h-full mb-12 mx-auto container text-gray-500 dark:text-gray-400 ">
+    <nav className="sticky top-0 h-12 mb-5 z-40 bg-vulcan-800 border-b border-gray-800 shadow-md">
+      <div className="flex h-full mb-12 mx-auto container text-gray-400 ">
         <a
           className="flex items-center font-bold mr-6"
           aria-current="page"
           href="/"
         >
-          <Logo className="w-20 mr-5 fill-current text-gray-900 dark:text-white" />
-          <span className="text-gray-900 dark:text-gray-100 text-lg font-normal">
+          <Logo className="w-20 mr-5 fill-current text-white" />
+          <span className="text-gray-100 text-lg font-normal">
             GenshinBuilds
           </span>
         </a>
@@ -62,9 +53,6 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({
               {r.name}
             </NavLink>
           ))}
-          <button onClick={onToggleTheme} className="px-4">
-            {theme === "light" ? <BsSun /> : <BsMoon />}
-          </button>
         </ul>
         <div
           className="flex items-center overflow-visible m-0 p-6 cursor-pointer z-50 lg:hidden ml-auto"
@@ -106,7 +94,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({
 
 const Path = (props: any) => (
   <motion.path
-    className="stroke-current text-gray-800 dark:text-gray-200"
+    className="stroke-current text-gray-200"
     fill="transparent"
     strokeWidth="3"
     strokeLinecap="round"
@@ -143,7 +131,7 @@ const MobileNav = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <motion.div
       className={clsx(
-        "bg-white dark:bg-vulcan-800 text-gray-500 dark:text-gray-400 transition-all p-7 flex absolute top-12 left-0 flex-col items-center w-full z-20 opacity-0 pointer-events-none lg:hidden",
+        "bg-vulcan-800 text-gray-400 transition-all p-7 flex absolute top-12 left-0 flex-col items-center w-full z-20 opacity-0 pointer-events-none lg:hidden",
         isOpen ? "opacity-100 pointer-events-auto" : ""
       )}
       initial={false}

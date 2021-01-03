@@ -205,7 +205,7 @@ const ItemsContent = ({
 }: ItemsContentProps) => {
   const [tab, setTab] = useState("CHARACTERS");
   return (
-    <div className="min-w-0 p-4 md:mt-4 mt-12 rounded-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-vulcan-800 relative pt-16">
+    <div className="min-w-0 p-4 md:mt-4 mt-12 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative pt-16">
       <div className="absolute flex h-12 -mt-12">
         <ButtonGroup>
           <Button

@@ -50,12 +50,10 @@ const WeaponBox = ({ weapon, isSelected }: WeaponBoxProps) => {
         data-tip
         data-for={weaponName}
       >
-        <div className="border-gray-400 dark:border-gray-800 border-4 w-16 h-16 m-auto overflow-hidden">
+        <div className="border-gray-800 border-4 w-16 h-16 m-auto overflow-hidden">
           <Image src={`/weapons/${weaponName}.png`} width={56} height={56} />
         </div>
-        <span className="text-gray-800 dark:text-gray-500 text-sm">
-          {weapon.name}
-        </span>
+        <span className="text-gray-500 text-sm">{weapon.name}</span>
       </div>
       <ReactTooltip id={weaponName} type="dark" effect="solid" place="top">
         <div className="flex flex-col">

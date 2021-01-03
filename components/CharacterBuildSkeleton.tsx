@@ -11,15 +11,15 @@ const CharacterBuildSekeleton = ({
   return (
     <div
       className={clsx(
-        `md:h-500px h-24 mx-1 border-gray-200 dark:border-gray-800 border-4 p-3 relative transition-all transform`,
+        `md:h-500px h-24 mx-1 border-gray-800 border-4 p-3 relative transition-all transform`,
         isActive
-          ? "shadow-2xl bg-gray-400 dark:bg-gray-800 scale-105"
-          : "bg-white dark:bg-vulcan-800 scale-100"
+          ? "shadow-2xl bg-gray-800 scale-105"
+          : "bg-vulcan-800 scale-100"
       )}
     >
       <div
         className={clsx(
-          `border-4 border-dashed border-gray-300 dark:border-gray-700 h-full w-full transform transition-all rounded-lg relative`,
+          `border-4 border-dashed border-gray-700 h-full w-full transform transition-all rounded-lg relative`,
           isActive ? "opacity-100 scale-100" : "opacity-0 scale-90"
         )}
       >

@@ -27,7 +27,7 @@ const ElementalResonanceCard = ({
           />
         </div>
         <div className="ml-2">
-          <h1 className="text-lg font-bold text-gray-800 dark:text-gray-300">
+          <h1 className="text-lg font-bold text-gray-300">
             {elementalResonance?.name}
           </h1>
         </div>
