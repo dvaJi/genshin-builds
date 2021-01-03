@@ -26,8 +26,8 @@ const NavLink = ({ children, href, route, dropdownMenu }: NavLinkProps) => {
       <Link href={href}>
         <a
           className={clsx(
-            "flex items-center relative h-full text-sm text-center px-9 transition-all hover:text-black dark:hover:text-white",
-            isActive ? "text-gray-800 dark:text-gray-200" : ""
+            "flex items-center relative h-full text-sm text-center px-9 transition-all hover:text-white",
+            isActive ? "text-gray-200" : ""
           )}
         >
           {children}
@@ -35,15 +35,15 @@ const NavLink = ({ children, href, route, dropdownMenu }: NavLinkProps) => {
       </Link>
       {dropdownMenu && isHover ? (
         <div
-          className="absolute top-full m-0 py-4 bg-white dark:bg-vulcan-800 border-r border-l border-b border-gray-200 dark:border-gray-800 shadow-md"
+          className="absolute top-full m-0 py-4 bg-vulcan-800 border-r border-l border-b border-gray-800 shadow-md"
           aria-labelledby="navbarDropdown"
         >
           {dropdownMenu.map((dm) => (
             <Link key={dm.href} href={dm.href}>
               <a
                 className={clsx(
-                  "flex items-center relative h-full text-center transition-all py-3 px-6 content-start text-sm hover:text-black dark:hover:text-white",
-                  route === dm.href ? "text-gray-800 dark:text-gray-200" : ""
+                  "flex items-center relative h-full text-center transition-all py-3 px-6 content-start text-sm hover:text-white",
+                  route === dm.href ? "text-gray-200" : ""
                 )}
               >
                 {dm.name}

@@ -36,7 +36,7 @@ const CharacterBuildCard = ({
   return (
     <div
       className={clsx(
-        "md:h-500px h-24 mx-1 border-gray-400 dark:border-gray-800 border-4 relative",
+        "md:h-500px h-24 mx-1 border-gray-800 border-4 relative",
         `shadow-${elementalResonance?.name.toLowerCase().replace(/\s/g, "-")}`
       )}
       onMouseEnter={() => setIsHover(true)}

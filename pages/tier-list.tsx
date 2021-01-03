@@ -18,6 +18,7 @@ import { decodeComp } from "../lib/comp-encoder";
 import { RecommendedTeams } from "../interfaces/teams";
 import CharacterPortrait from "../components/CharacterPortrait";
 import ElementalResonanceCard from "../components/ElementalResonanceCard";
+import Button from "../components/Button";
 
 type Props = {
   characters: Record<string, Character>;
@@ -25,13 +26,23 @@ type Props = {
   teams: RecommendedTeams[];
 };
 
-const CompBuilder = ({ characters, teams, elementalResonances }: Props) => {
+const TierList = ({ characters, teams, elementalResonances }: Props) => {
+  const [showExplanation, setShowExplanation] = useState(false);
   return (
     <div>
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         Best Team Comp | Party Building Guide
       </h2>
-      <div>
+      <Button onClick={() => setShowExplanation(!showExplanation)}>
+        Show Explanation
+      </Button>
+      <div
+        className="transition-all"
+        style={{
+          height: showExplanation ? "auto" : 0,
+          opacity: showExplanation ? 1 : 0,
+        }}
+      >
         <p>
           While almost every team can get through most of Genshin Impact's
           content, there are simple team-building rules that will help you
@@ -139,7 +150,7 @@ const CompCard = ({ team, elementalResonances }: CompCardProps) => {
     <div className="block mb-4 relative overflow-hidden">
       <Link href={`/comp-builder?map=${team.code}`}>
         <a
-          className="grid grid-cols-3 items-center p-6 border border-gray-700 hover:border-purple-900 hover:shadow-innerCard rounded-md cursor-pointer relative overflow-hidden"
+          className="bg-gray-700 grid grid-cols-3 items-center p-6 border border-gray-700 hover:border-purple-900 hover:shadow-innerCard rounded-md cursor-pointer relative overflow-hidden"
           style={{ minHeight: "10rem" }}
         >
           <div
@@ -193,4 +204,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default CompBuilder;
+export default TierList;
