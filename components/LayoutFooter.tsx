@@ -3,7 +3,7 @@ import { memo } from "react";
 
 const LayoutFooter = () => {
   return (
-    <footer className="px-20 py-14 bg-vulcan-800text-gray-400">
+    <footer className="px-20 py-14 bg-vulcan-800 text-gray-400">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="flex-1 flex flex-col">
