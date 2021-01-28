@@ -9,7 +9,6 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@welldone-software/why-did-you-render": "^6.0.3",
     "clsx": "^1.1.1",
     "framer-motion": "^3.2.1",
     "genshin-data": "^0.1.0",
