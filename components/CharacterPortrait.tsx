@@ -4,8 +4,9 @@ import ElementIcon from "./ElementIcon";
 
 interface CharacterPortraitProps {
   character: {
+    id: string;
     name: string;
-    type?: string;
+    element?: string;
   };
 }
 
@@ -16,13 +17,13 @@ const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
         <div className="text-center relative">
           <Image
             className="rounded-full shadow-lg"
-            src={`/characters/portrait/${character.name}.png`}
+            src={`/characters/${character.id}/${character.id}_portrait.png`}
             width={80}
             height={80}
           />
-          {character.type && (
+          {character.element && (
             <div className="absolute top-0 right-5 bg-gray-800 pt-1 px-1 rounded-full">
-              <ElementIcon width={20} height={20} type={character.type} />
+              <ElementIcon width={20} height={20} type={character.element} />
             </div>
           )}
         </div>
