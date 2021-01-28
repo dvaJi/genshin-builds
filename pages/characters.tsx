@@ -37,8 +37,6 @@ const CharactersPage = ({ charactersByElement, elements }: CharactersProps) => {
   );
 };
 
-CharactersPage.whyDidYouRender = true;
-
 export const getStaticProps: GetStaticProps = async () => {
   const genshinData = new GenshinData();
   const characters = await genshinData.characters();
