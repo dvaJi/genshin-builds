@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo } from "react";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import { RecoilRoot, useRecoilValue } from "recoil";

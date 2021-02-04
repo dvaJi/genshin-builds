@@ -1,9 +1,10 @@
 import { GetStaticProps } from "next";
-import GenshinData from "genshin-data";
+import Link from "next/link";
+import GenshinData, { Character } from "genshin-data";
 
-import { Character } from "genshin-data/dist/types/character";
 import CharacterPortrait from "../components/CharacterPortrait";
 import ElementIcon from "../components/ElementIcon";
+import { localeToLang } from "../utils/locale-to-lang";
 
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
@@ -16,7 +17,10 @@ const CharactersPage = ({ charactersByElement, elements }: CharactersProps) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">Characters</h2>
       <div className="">
         {elements.map((element) => (
-          <div className="mb-3 p-5 rounded border border-gray-800 bg-no-repeat bg-fixed bg-center">
+          <div
+            key={element}
+            className="mb-3 p-5 rounded border border-gray-900 bg-gray-800"
+          >
             <div className="flex self-center mb-2">
               <ElementIcon type={element} height={32} width={32} />
               <h3 className="text-2xl font-bold ml-2">{element}</h3>
@@ -24,10 +28,11 @@ const CharactersPage = ({ charactersByElement, elements }: CharactersProps) => {
 
             <div className="flex justify-center items-center flex-wrap">
               {charactersByElement[element].map((character) => (
-                <CharacterPortrait
-                  key={character.id}
-                  character={character as any}
-                />
+                <Link href={`/character/${character.id}`}>
+                  <a>
+                    <CharacterPortrait character={character} />
+                  </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -37,8 +42,8 @@ const CharactersPage = ({ charactersByElement, elements }: CharactersProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const genshinData = new GenshinData();
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
   const elements: string[] = [];
   const charactersByElement = characters.reduce<Record<string, Character[]>>(

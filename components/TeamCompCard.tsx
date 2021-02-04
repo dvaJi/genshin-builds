@@ -5,7 +5,7 @@ import ElementalResonanceCard from "./ElementalResonanceCard";
 
 import { ElementalResonance } from "../interfaces/elemental-resonance";
 import { RecommendedTeams } from "../interfaces/teams";
-import { decodeComp } from "../lib/comp-encoder";
+// import { decodeComp } from "../lib/comp-encoder";
 
 interface TeamCompCardProps {
   team: RecommendedTeams;
@@ -13,7 +13,7 @@ interface TeamCompCardProps {
 }
 
 const TeamCompCard = ({ team, elementalResonances }: TeamCompCardProps) => {
-  const [comp] = decodeComp(team.code);
+  // const [comp] = decodeComp(team.code);
   return (
     <div className="block mb-4 relative overflow-hidden">
       <Link href={`/comp-builder?map=${team.code}`}>
@@ -38,7 +38,9 @@ const TeamCompCard = ({ team, elementalResonances }: TeamCompCardProps) => {
             {team.characters.map((character) => (
               <Link href={`/character/${character}`}>
                 <a>
-                  <CharacterPortrait character={{ name: character }} />
+                  <CharacterPortrait
+                    character={{ id: character, name: character }}
+                  />
                 </a>
               </Link>
             ))}
