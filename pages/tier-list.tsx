@@ -17,7 +17,7 @@ type Props = {
   teams: RecommendedTeams[];
 };
 
-const TierList = ({ characters, teams, elementalResonances }: Props) => {
+const TierList = ({ teams, elementalResonances }: Props) => {
   return (
     <div>
       <h2 className="my-6 text-2xl font-semibold text-gray-200">

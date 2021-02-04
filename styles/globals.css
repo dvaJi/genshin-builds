@@ -57,3 +57,35 @@
 .border-protective-canopy {
   border-color: #283246;
 }
+
+.build-option-divider {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: #a7b1c1;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.build-option-divider:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 45%;
+  height: 1px;
+  background: #36384a;
+}
+
+.build-option-divider:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 45%;
+  height: 1px;
+  background: #36384a;
+}

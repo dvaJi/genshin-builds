@@ -1,20 +1,20 @@
-import { useEffect, useMemo, useState } from "react";
+// import { useEffect, useMemo, useState } from "react";
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { useRouter } from "next/router";
-import Image from "next/image";
+// import { useRecoilState, useSetRecoilState } from "recoil";
+// import { useRouter } from "next/router";
+// import Image from "next/image";
 
-import { Artifact } from "../interfaces/artifacts";
+// import { Artifact } from "../interfaces/artifacts";
 import { Character } from "../interfaces/character";
 import { ElementalResonance } from "../interfaces/elemental-resonance";
-import { Weapon } from "../interfaces/weapon";
+// import { Weapon } from "../interfaces/weapon";
 
 import charactersData from "../_content/data/characters.json";
 import elementalResonancesData from "../_content/data/elemental_resonance.json";
 import recommendedTeams from "../_content/data/teams.json";
 
-import { decodeComp } from "../lib/comp-encoder";
+// import { decodeComp } from "../lib/comp-encoder";
 import { RecommendedTeams } from "../interfaces/teams";
 import CharacterPortrait from "../components/CharacterPortrait";
 import ElementalResonanceCard from "../components/ElementalResonanceCard";
@@ -25,7 +25,7 @@ type Props = {
   teams: RecommendedTeams[];
 };
 
-const CompBuilder = ({ characters, teams, elementalResonances }: Props) => {
+const CompBuilder = ({ teams, elementalResonances }: Props) => {
   return (
     <div>
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
@@ -134,7 +134,7 @@ interface CompCardProps {
 }
 
 const CompCard = ({ team, elementalResonances }: CompCardProps) => {
-  const [comp] = decodeComp(team.code);
+  // const [comp] = decodeComp(team.code);
   return (
     <div className="block mb-4 relative overflow-hidden">
       <Link href={`/comp-builder?map=${team.code}`}>
@@ -156,7 +156,9 @@ const CompCard = ({ team, elementalResonances }: CompCardProps) => {
             {team.characters.map((character) => (
               <Link href={`/character/${character}`}>
                 <a>
-                  <CharacterPortrait character={{ name: character }} />
+                  <CharacterPortrait
+                    character={{ id: character, name: character }}
+                  />
                 </a>
               </Link>
             ))}

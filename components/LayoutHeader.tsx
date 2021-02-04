@@ -13,7 +13,7 @@ interface NavRoutes {
 }
 
 const navroutes: NavRoutes[] = [
-  // { name: "Characters", href: "/characters" },
+  { name: "Characters", href: "/characters" },
   // // { name: "Tierlist", href: "/tierlist" },
   // {
   //   name: "Database",
