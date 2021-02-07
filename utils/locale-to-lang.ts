@@ -4,8 +4,8 @@ export const localeToLang = (locale: string | undefined) => {
       return "english";
     case "es":
       return "spanish";
-    // case "jp":
-    //   return "japanese";
+    case "jp":
+      return "japanese";
     default:
       return "english";
   }

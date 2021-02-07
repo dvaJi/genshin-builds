@@ -1,27 +1,34 @@
+import { ReactNode, useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
-import { localeToLang } from "../../utils/locale-to-lang";
-import ElementIcon from "../../components/ElementIcon";
-import { useSetRecoilState } from "recoil";
-import { appBackgroundStyleState } from "../../state/background-atom";
-import { ReactNode, useEffect } from "react";
-import Collapsible from "../../components/Collapsible";
-import StarRarity from "../../components/StarRarity";
-import WeaponCard from "../../components/WeaponCard";
-import ArtifactCard from "../../components/ArtifactCard";
+
+import useIntl from "@hooks/use-intl";
+
+import ElementIcon from "@components/ElementIcon";
+import Collapsible from "@components/Collapsible";
+import WeaponCard from "@components/WeaponCard";
+import ArtifactCard from "@components/ArtifactCard";
+
+import { localeToLang } from "@utils/locale-to-lang";
+
+import { appBackgroundStyleState } from "@state/background-atom";
 
 interface CharacterPageProps {
   character: Character;
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact>;
+  lngDict: Record<string, string>;
 }
 
 const CharacterPage = ({
   character,
   weapons,
   artifacts,
+  lngDict,
 }: CharacterPageProps) => {
   const setBg = useSetRecoilState(appBackgroundStyleState);
+  const [f] = useIntl(lngDict);
   useEffect(() => {
     setBg({
       image: `/regions/${character.region}_d.jpg`,
@@ -55,7 +62,9 @@ const CharacterPage = ({
       </div>
       <div className="min-w-0 p-4 md:mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
         <div className="mb-4">
-          <h2 className="text-3xl mb-2">Skills</h2>
+          <h2 className="text-3xl mb-2">
+            {f({ id: "character.skills", defaultMessage: "Skills" })}
+          </h2>
           {character.skills.map((skill) => (
             <Collapsible
               key={skill.id}
@@ -78,7 +87,9 @@ const CharacterPage = ({
           ))}
         </div>
         <div className="mb-4">
-          <h2 className="text-3xl mb-2">Passives</h2>
+          <h2 className="text-3xl mb-2">
+            {f({ id: "character.passives", defaultMessage: "Passives" })}
+          </h2>
           {character.passives.map((passive) => (
             <Collapsible
               key={passive.id}
@@ -99,7 +110,12 @@ const CharacterPage = ({
           ))}
         </div>
         <div className="mb-4">
-          <h2 className="text-3xl mb-2">Constellations</h2>
+          <h2 className="text-3xl mb-2">
+            {f({
+              id: "character.constellations",
+              defaultMessage: "Constellations",
+            })}
+          </h2>
           {character.constellations.map((constellation) => (
             <Collapsible
               key={constellation.id}
@@ -125,26 +141,48 @@ const CharacterPage = ({
         </div>
         {character.builds && (
           <div className="mb-4">
-            <h2 className="text-3xl">Builds</h2>
+            <h2 className="text-3xl">
+              {f({
+                id: "character.builds",
+                defaultMessage: "Builds",
+              })}
+            </h2>
             {character.builds.map((build) => (
               <div key={build.id} className="">
                 <h3 className="text-2xl">{build.role}</h3>
                 <p>{build.description}</p>
                 <div className="grid grid-cols-2">
                   <div className="flex flex-wrap w-4/5 pr-2 content-start">
-                    <b className="mb-2">Weapons:</b>
+                    <b className="mb-2">
+                      {f({
+                        id: "weapons",
+                        defaultMessage: "Weapons",
+                      })}
+                      :
+                    </b>
                     {build.weapons
                       .map<ReactNode>((weapon) => (
                         <WeaponCard weapon={weapons[weapon.id]} />
                       ))
                       .reduce((prev, curr) => [
                         prev,
-                        <div className="build-option-divider">or</div>,
+                        <div className="build-option-divider">
+                          {f({
+                            id: "or",
+                            defaultMessage: "Or",
+                          })}
+                        </div>,
                         curr,
                       ])}
                   </div>
                   <div className="flex flex-wrap w-4/5 ml-2 content-start">
-                    <b className="mb-2">Artifacts:</b>
+                    <b className="mb-2">
+                      {f({
+                        id: "artifacts",
+                        defaultMessage: "Artifacts",
+                      })}
+                      :
+                    </b>
                     {build.sets
                       .map<ReactNode>((set) => (
                         <>
@@ -152,19 +190,19 @@ const CharacterPage = ({
                             <div className="flex flex-row">
                               <ArtifactCard
                                 artifact={artifacts[set.set_1.id]}
-                                recommendedStats={build.stats}
+                                recommendedStats={build.stats_priority}
                                 pieces={2}
                               />
                               <ArtifactCard
                                 artifact={artifacts[set.set_2.id]}
-                                recommendedStats={build.stats}
+                                recommendedStats={build.stats_priority}
                                 pieces={2}
                               />
                             </div>
                           ) : (
                             <ArtifactCard
                               artifact={artifacts[set.set_1.id]}
-                              recommendedStats={build.stats}
+                              recommendedStats={build.stats_priority}
                               pieces={4}
                             />
                           )}
@@ -172,7 +210,12 @@ const CharacterPage = ({
                       ))
                       .reduce((prev, curr) => [
                         prev,
-                        <div className="build-option-divider">or</div>,
+                        <div className="build-option-divider">
+                          {f({
+                            id: "or",
+                            defaultMessage: "Or",
+                          })}
+                        </div>,
                         curr,
                       ])}
                   </div>
@@ -186,10 +229,24 @@ const CharacterPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  locale = "en",
+}) => {
+  const { default: lngDict = {} } = await import(
+    `../../locales/${locale}.json`
+  );
+
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
   const character = characters.find((c) => c.id === params?.name);
+
+  if (!character) {
+    return {
+      notFound: true,
+    };
+  }
+
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
 
@@ -231,6 +288,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       character,
       weapons,
       artifacts,
+      lngDict,
     },
     revalidate: 1,
   };

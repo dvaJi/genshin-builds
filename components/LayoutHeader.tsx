@@ -23,7 +23,7 @@ const navroutes: NavRoutes[] = [
   //     { name: "Artifacts", href: "/artifacts" },
   //   ],
   // },
-  { name: "Team Builder", href: "/comp-builder" },
+  // { name: "Team Builder", href: "/comp-builder" },
 ];
 
 const LayoutHeader = () => {

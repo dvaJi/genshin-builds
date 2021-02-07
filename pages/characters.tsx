@@ -2,19 +2,30 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import GenshinData, { Character } from "genshin-data";
 
-import CharacterPortrait from "../components/CharacterPortrait";
-import ElementIcon from "../components/ElementIcon";
-import { localeToLang } from "../utils/locale-to-lang";
+import CharacterPortrait from "@components/CharacterPortrait";
+import ElementIcon from "@components/ElementIcon";
+
+import useIntl from "@hooks/use-intl";
+
+import { localeToLang } from "@utils/locale-to-lang";
 
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
   elements: string[];
+  lngDict: Record<string, string>;
 };
 
-const CharactersPage = ({ charactersByElement, elements }: CharactersProps) => {
+const CharactersPage = ({
+  charactersByElement,
+  elements,
+  lngDict,
+}: CharactersProps) => {
+  const [f] = useIntl(lngDict);
   return (
     <div>
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">Characters</h2>
+      <h2 className="my-6 text-2xl font-semibold text-gray-200">
+        {f({ id: "characters", defaultMessage: "Characters" })}
+      </h2>
       <div className="">
         {elements.map((element) => (
           <div
@@ -43,6 +54,8 @@ const CharactersPage = ({ charactersByElement, elements }: CharactersProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
+
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
   const elements: string[] = [];
@@ -61,7 +74,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   );
 
   return {
-    props: { charactersByElement, elements },
+    props: { charactersByElement, elements, lngDict },
     revalidate: 1,
   };
 };
