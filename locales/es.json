@@ -12,7 +12,14 @@
   "ATK": "ATQ",
   "secondary": "Secundario",
   "passive": "Pasiva",
-  "bonus": "Bonus",
+  "bonus": "Efecto",
   "location": "Ubicación",
+  "2-4piece_artifact_sets": "Conjuntos de 2-4 Piezas",
+  "name": "Nombre",
+  "max_rarity": "Rareza Máxima",
+  "1piece_bonus": "Efecto de 1 Pieza",
+  "1piece_artifact_sets": "Conjuntos de 1 Pieza",
+  "2piece_bonus": "Efecto de 2 Piezas",
+  "4piece_bonus": "Efecto de 4 Piezas",
   "or": "Ó"
 }
