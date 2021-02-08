@@ -20,7 +20,7 @@ const WeaponCard = ({ weapon }: WeaponCardProps) => {
             alt={weapon.name}
           />
         </div>
-        <StarRarity rarity={weapon.rarity} />
+        <StarRarity className="absolute left-3 top-14" rarity={weapon.rarity} />
         <div>
           <h4 className="font-bold text-white">{weapon.name}</h4>
           <div className="text-white text-sm">{weapon.secondary}</div>
