@@ -18,10 +18,7 @@ const StarRarity = ({ className, rarity = 1 }: StarRarityProps) => {
   }, [rarity]);
   return (
     <div
-      className={clsx(
-        "absolute left-3 top-14 flex items-center justify-items-center w-10",
-        className
-      )}
+      className={clsx("flex items-center justify-items-center w-10", className)}
     >
       {starts.map((star) => (
         <div className={clsx("w-4 text-yellow-400", { "-m-1": star > 0 })}>

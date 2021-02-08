@@ -6,5 +6,13 @@
   "character.skills": "Habilidades",
   "artifacts": "Artefactos",
   "weapons": "Armas",
+  "weapon": "Arma",
+  "type": "Tipo",
+  "rarity": "Rareza",
+  "ATK": "ATQ",
+  "secondary": "Secundario",
+  "passive": "Pasiva",
+  "bonus": "Bonus",
+  "location": "Ubicación",
   "or": "Ó"
 }
