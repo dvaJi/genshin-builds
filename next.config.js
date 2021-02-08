@@ -8,7 +8,7 @@ module.exports = {
     return [
       {
         source: "/",
-        destination: "/comp-builder",
+        destination: "/characters",
         permanent: true,
       },
     ];
