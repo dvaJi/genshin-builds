@@ -21,7 +21,7 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
         Header: "",
         accessor: "id",
         Cell: (row) => (
-          <img height={54} width={54} src={`/weapons/${row.value}.png`} />
+          <img height={54} width={54} src={`/_assets/weapons/${row.value}.png`} />
         ),
       },
       {

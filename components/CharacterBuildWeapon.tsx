@@ -75,7 +75,7 @@ const CharacterBuildWeapon = ({
             )}
           </div>
           <Image
-            src={`/weapons/${weaponsList[weaponSelected].name.replace(
+            src={`/_assets/weapons/${weaponsList[weaponSelected].name.replace(
               /\s/g,
               "_"
             )}.png`}

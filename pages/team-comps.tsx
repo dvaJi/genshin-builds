@@ -145,7 +145,7 @@ const CompCard = ({ team, elementalResonances }: CompCardProps) => {
           <div
             className="absolute top-0 left-0 w-full h-full bg-auto bg-no-repeat"
             style={{
-              backgroundImage: `url('/characters/${team.characters[0]}_m.png')`,
+              backgroundImage: `url('/_assets/characters/${team.characters[0]}_m.png')`,
               backgroundPosition: "left center",
             }}
           />
