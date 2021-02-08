@@ -18,7 +18,7 @@ const ArtifactCard = ({
       <div className="flex items-center relative mb-3">
         <div className="mr-2">
           <Image
-            src={`/artifacts/${artifact.id}.png`}
+            src={`/_assets/artifacts/${artifact.id}.png`}
             height={60}
             width={60}
             alt={artifact.name}

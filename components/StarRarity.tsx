@@ -22,7 +22,7 @@ const StarRarity = ({ className, rarity = 1 }: StarRarityProps) => {
     >
       {starts.map((star) => (
         <div className={clsx("w-4 text-yellow-400", { "-m-1": star > 0 })}>
-          <Image src={`/1_star.png`} width={33} height={33} />
+          <Image src={`/_assets/1_star.png`} width={33} height={33} />
         </div>
       ))}
     </div>

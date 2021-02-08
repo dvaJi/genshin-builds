@@ -43,7 +43,7 @@ const ArtifactBox = ({ artifact, isSelected }: ArtifactBoxProps) => {
     <div ref={drag} style={{ opacity, pointerEvents }} className="text-center">
       <div className="border-gray-800 border-4 w-16 h-16 m-auto">
         <Image
-          src={`/artifacts/${artifact.name
+          src={`/_assets/artifacts/${artifact.name
             .toLowerCase()
             .replace(/\s/g, "_")}.png`}
           height={56}

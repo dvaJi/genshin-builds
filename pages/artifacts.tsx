@@ -23,7 +23,11 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
         Header: "",
         accessor: "id",
         Cell: (row) => (
-          <img height={54} width={54} src={`/artifacts/${row.value}.png`} />
+          <img
+            height={54}
+            width={54}
+            src={`/_assets/artifacts/${row.value}.png`}
+          />
         ),
       },
       {
@@ -140,28 +144,27 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
               </tr>
             </thead>
             <tbody>
-              {artifacts1set.map((row, index) => {
-                return (
-                  <tr
-                    className={
-                      index % 2 === 0 ? "bg-vulcan-600" : "bg-vulcan-700"
-                    }
-                  >
-                    <td>
-                      <img
-                        height={54}
-                        width={54}
-                        src={`/artifacts/${row.id}.png`}
-                      />
-                    </td>
-                    <td>{row.name}</td>
-                    <td>
-                      <StarRarity rarity={row.max_rarity} />
-                    </td>
-                    <td>{row["1pc"]}</td>
-                  </tr>
-                );
-              })}
+              {artifacts1set.map((row, index) => (
+                <tr
+                  key={row.id}
+                  className={
+                    index % 2 === 0 ? "bg-vulcan-600" : "bg-vulcan-700"
+                  }
+                >
+                  <td>
+                    <img
+                      height={54}
+                      width={54}
+                      src={`/_assets/artifacts/${row.id}.png`}
+                    />
+                  </td>
+                  <td>{row.name}</td>
+                  <td>
+                    <StarRarity rarity={row.max_rarity} />
+                  </td>
+                  <td>{row["1pc"]}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

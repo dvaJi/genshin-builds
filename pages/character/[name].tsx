@@ -31,7 +31,7 @@ const CharacterPage = ({
   const [f] = useIntl(lngDict);
   useEffect(() => {
     setBg({
-      image: `/regions/${character.region}_d.jpg`,
+      image: `/_assets/regions/${character.region}_d.jpg`,
       gradient: {
         background:
           "linear-gradient(rgba(26,28,35,.8),rgb(18, 19, 23) 620px),radial-gradient(at center top,rgba(21,28,36,0) 60%,rgb(18, 19, 23) 80%)",
@@ -45,7 +45,7 @@ const CharacterPage = ({
           <div className="flex-none relative mr-2 md:mr-5">
             <img
               className="w-24 h-24 bg-vulcan-800 p-1 rounded-full border border-gray-900"
-              src={`/characters/${character.id}/${character.id}_portrait.png`}
+              src={`/_assets/characters/${character.id}/${character.id}_portrait.png`}
               alt={character.name}
             />
           </div>
@@ -72,7 +72,7 @@ const CharacterPage = ({
                 <div className="flex self-center">
                   <img
                     className="block mr-2"
-                    src={`/characters/${character.id}/${skill.id}.png`}
+                    src={`/_assets/characters/${character.id}/${skill.id}.png`}
                     height={32}
                     width={32}
                   />
@@ -97,7 +97,7 @@ const CharacterPage = ({
                 <div className="flex self-center">
                   <img
                     className="block mr-2"
-                    src={`/characters/${character.id}/${passive.id}.png`}
+                    src={`/_assets/characters/${character.id}/${passive.id}.png`}
                     height={32}
                     width={32}
                   />
@@ -123,7 +123,7 @@ const CharacterPage = ({
                 <div className="flex self-center">
                   <img
                     className="block mr-2"
-                    src={`/characters/${character.id}/${constellation.id}.png`}
+                    src={`/_assets/characters/${character.id}/${constellation.id}.png`}
                     height={32}
                     width={32}
                   />

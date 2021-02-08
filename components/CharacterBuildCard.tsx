@@ -42,7 +42,7 @@ const CharacterBuildCard = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       style={{
-        backgroundImage: `url('/regions/${character.region}_d.jpg')`,
+        backgroundImage: `url('/_assets/regions/${character.region}_d.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -50,7 +50,7 @@ const CharacterBuildCard = ({
       <div
         className="p-3 min-h-full min-w-full transition-all"
         style={{
-          backgroundImage: `url('/characters/${character.name}_m.png')`,
+          backgroundImage: `url('/_assets/characters/${character.name}_m.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: isActive ? 0.5 : 1,
@@ -76,7 +76,7 @@ const CharacterBuildCard = ({
           <span>{character.name}</span>
           <img
             className="inline ml-3 align-baseline"
-            src={`/elements/${character.type}.png`}
+            src={`/_assets/elements/${character.type}.png`}
             height={20}
             width={20}
           />

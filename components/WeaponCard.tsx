@@ -14,7 +14,7 @@ const WeaponCard = ({ weapon }: WeaponCardProps) => {
       <div className="flex items-center relative mb-3">
         <div className="mr-3">
           <Image
-            src={`/weapons/${weapon.id}.png`}
+            src={`/_assets/weapons/${weapon.id}.png`}
             height={60}
             width={60}
             alt={weapon.name}

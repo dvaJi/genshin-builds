@@ -51,7 +51,7 @@ const WeaponBox = ({ weapon, isSelected }: WeaponBoxProps) => {
         data-for={weaponName}
       >
         <div className="border-gray-800 border-4 w-16 h-16 m-auto overflow-hidden">
-          <Image src={`/weapons/${weaponName}.png`} width={56} height={56} />
+          <Image src={`/_assets/weapons/${weaponName}.png`} width={56} height={56} />
         </div>
         <span className="text-gray-500 text-sm">{weapon.name}</span>
       </div>

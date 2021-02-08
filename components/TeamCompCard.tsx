@@ -24,7 +24,7 @@ const TeamCompCard = ({ team, elementalResonances }: TeamCompCardProps) => {
           <div
             className="absolute top-0 left-0 w-full h-full bg-auto bg-no-repeat"
             style={{
-              backgroundImage: `url('/characters/${team.characters[0]}_m.png')`,
+              backgroundImage: `url('/_assets/characters/${team.characters[0]}_m.png')`,
               backgroundPosition: "-80% 30%",
               filter: "brightness(0.3)",
             }}

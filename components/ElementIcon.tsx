@@ -15,7 +15,7 @@ const ElementIcon = ({
   className,
 }: ElementIconProps) => (
   <Image
-    src={`/elements/${type}.png`}
+    src={`/_assets/elements/${type}.png`}
     alt={type}
     className={className}
     width={width}

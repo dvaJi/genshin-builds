@@ -46,7 +46,7 @@ const CharacterBox: React.FC<CharacterBoxProps> = ({
         <div className="text-center relative">
           <Image
             className="rounded-full shadow-lg"
-            src={`/characters/portrait/${character.name}.png`}
+            src={`/_assets/characters/portrait/${character.name}.png`}
             width={80}
             height={80}
           />

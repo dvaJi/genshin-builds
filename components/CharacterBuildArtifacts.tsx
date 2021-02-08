@@ -86,7 +86,7 @@ const CharacterBuildArtifacts = ({
               )}
             </div>
             <Image
-              src={`/artifacts/${artifactsList[key].name
+              src={`/_assets/artifacts/${artifactsList[key].name
                 .toLowerCase()
                 .replace(/\s/g, "_")}.png`}
               width={56}
