@@ -14,5 +14,12 @@
   "passive": "Passive",
   "bonus": "Bonus",
   "location": "Location",
+  "2-4piece_artifact_sets": "2-4 Piece Artifact Sets",
+  "name": "Name",
+  "max_rarity": "Max Rarity",
+  "1piece_bonus": "1-Piece Bonus",
+  "1piece_artifact_sets": "1-Piece Artifact Sets",
+  "2piece_bonus": "2-Piece Bonus",
+  "4piece_bonus": "4-Piece Bonus",
   "or": "Or"
 }
