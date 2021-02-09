@@ -110,7 +110,7 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
