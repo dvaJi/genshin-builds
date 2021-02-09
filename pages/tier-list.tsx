@@ -1,62 +1,136 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
+import GenshinData, { Character } from "genshin-data";
 
-import TeamCompExplanation from "../components/TeamCompExplanation";
-import TeamCompCard from "../components/TeamCompCard";
-
-import { Character } from "../interfaces/character";
-import { ElementalResonance } from "../interfaces/elemental-resonance";
-import { RecommendedTeams } from "../interfaces/teams";
-
-import charactersData from "../_content/data/characters.json";
-import elementalResonancesData from "../_content/data/elemental_resonance.json";
-import recommendedTeams from "../_content/data/teams.json";
+import { localeToLang } from "@utils/locale-to-lang";
+import { Tierlist } from "genshin-data/dist/types/tierlist";
+import useIntl from "@hooks/use-intl";
+import CharacterPortrait from "@components/CharacterPortrait";
 
 type Props = {
-  characters: Record<string, Character>;
-  elementalResonances: Record<string, ElementalResonance>;
-  teams: RecommendedTeams[];
+  tierlist: Tierlist;
+  charactersMap: Record<string, Pick<Character, "id" | "name" | "element">>;
+  lngDict: Record<string, string>;
 };
 
-const TierList = ({ teams, elementalResonances }: Props) => {
+const TierList = ({ tierlist, charactersMap, lngDict }: Props) => {
+  const [f] = useIntl(lngDict);
   return (
     <div>
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        Best Team Comp | Party Building Guide
+        {f({
+          id: "tierlist.title",
+          defaultMessage: "Genshin Impact Best Characters Tier List",
+        })}
       </h2>
-      <TeamCompExplanation />
-      <div className="">
-        <h3 className="my-3 text-xl font-semibold text-gray-200">
-          Recommended Comps
-        </h3>
-        <div className="flex flex-col m-auto w-full">
-          {teams.map((team) => (
-            <TeamCompCard
-              key={team.code}
-              team={team}
-              elementalResonances={team.elemental_resonances.map(
-                (id) => elementalResonances[id]
-              )}
-            />
-          ))}
+      <div className="rounded">
+        <div className="grid grid-cols-8 gap-4 w-full">
+          <div className="p-5"></div>
+          <div className="col-span-2 p-5 bg-vulcan-800">
+            <h3 className="text-lg text-white text-center font-semibold">
+              Main DPS
+            </h3>
+          </div>
+          <div className="col-span-2 p-5 bg-vulcan-800">
+            <h3 className="text-lg text-white text-center font-semibold">
+              Sub DPS
+            </h3>
+          </div>
+          <div className="col-span-2 p-5 bg-vulcan-800">
+            <h3 className="text-lg text-white text-center font-semibold">
+              Support
+            </h3>
+          </div>
         </div>
+        <CharactersTier
+          tierlist={tierlist}
+          characters={charactersMap}
+          tier={"0"}
+        />
+        <CharactersTier
+          tierlist={tierlist}
+          characters={charactersMap}
+          tier={"1"}
+        />
+        <CharactersTier
+          tierlist={tierlist}
+          characters={charactersMap}
+          tier={"2"}
+        />
+        <CharactersTier
+          tierlist={tierlist}
+          characters={charactersMap}
+          tier={"3"}
+        />
       </div>
     </div>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const characters = (charactersData as Character[]).reduce<
-    Record<string, Character>
-  >((acc, val) => Object.assign(acc, { [val.id]: val }), {});
-  const elementalResonances = (elementalResonancesData as ElementalResonance[]).reduce<
-    Record<string, Character>
-  >((acc, val) => Object.assign(acc, { [val.id]: val }), {});
-  const teams = recommendedTeams as RecommendedTeams[];
+type CharactersTierProps = {
+  tierlist: Tierlist;
+  tier: "0" | "1" | "2" | "3";
+  characters: Record<string, Pick<Character, "id" | "name" | "element">>;
+};
+
+function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
+  return (
+    <div className="grid grid-cols-8 gap-4 w-full">
+      <div className="p-5">
+        <h3 className="text-2xl text-white text-center font-bold">T{tier}</h3>
+      </div>
+      <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
+        {tierlist.maindps[tier].map((t) => (
+          <div className="inline-block">
+            <CharacterPortrait
+              character={{ ...characters[t.id], constellation: t.min_c }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
+        {tierlist.subdps[tier].map((t) => (
+          <div className="inline-block">
+            <CharacterPortrait
+              character={{ ...characters[t.id], constellation: t.min_c }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
+        {tierlist.support[tier].map((t) => (
+          <div className="inline-block">
+            <CharacterPortrait
+              character={{ ...characters[t.id], constellation: t.min_c }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
+
+  const genshinData = new GenshinData({ language: localeToLang(locale) });
+  const characters = await genshinData.characters();
+  const tierlist = await genshinData.tierlist();
+
+  const charactersMap: any = {};
+  for (const character of characters) {
+    charactersMap[character.id] = {
+      id: character.id,
+      name: character.name,
+      element: character.element,
+    };
+  }
+
   return {
     props: {
-      characters,
-      elementalResonances,
-      teams,
+      tierlist,
+      charactersMap,
+      lngDict,
     },
     revalidate: 1,
   };
