@@ -73,7 +73,7 @@ const CharacterBuildArtifacts = ({
         {artifactSelected.map((key) => (
           <div
             key={key}
-            className="border-gray-800 border-4 w-16 h-16 bg-gray-900 relative"
+            className="border-gray-800 border-4 w-16 h-16 bg-vulcan-900 relative"
           >
             <div className="text-white text-xs absolute right-0 mr-1">
               {isHover && (

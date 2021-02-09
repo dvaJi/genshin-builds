@@ -50,7 +50,7 @@ const CharacterBox: React.FC<CharacterBoxProps> = ({
             width={80}
             height={80}
           />
-          <div className="absolute top-0 right-5 bg-gray-800 pt-1 px-1 rounded-full">
+          <div className="absolute top-0 right-5 bg-vulcan-800 pt-1 px-1 rounded-full">
             <ElementIcon width={20} height={20} type={character.type} />
           </div>
         </div>
