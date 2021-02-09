@@ -82,27 +82,39 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
         {tierlist.maindps[tier].map((t) => (
           <div className="inline-block">
-            <CharacterPortrait
-              character={{ ...characters[t.id], constellation: t.min_c }}
-            />
+            <Link key={t.id} href={`/character/${t.id}`}>
+              <a>
+                <CharacterPortrait
+                  character={{ ...characters[t.id], constellation: t.min_c }}
+                />
+              </a>
+            </Link>
           </div>
         ))}
       </div>
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
         {tierlist.subdps[tier].map((t) => (
           <div className="inline-block">
-            <CharacterPortrait
-              character={{ ...characters[t.id], constellation: t.min_c }}
-            />
+            <Link key={t.id} href={`/character/${t.id}`}>
+              <a>
+                <CharacterPortrait
+                  character={{ ...characters[t.id], constellation: t.min_c }}
+                />
+              </a>
+            </Link>
           </div>
         ))}
       </div>
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
         {tierlist.support[tier].map((t) => (
           <div className="inline-block">
-            <CharacterPortrait
-              character={{ ...characters[t.id], constellation: t.min_c }}
-            />
+            <Link key={t.id} href={`/character/${t.id}`}>
+              <a>
+                <CharacterPortrait
+                  character={{ ...characters[t.id], constellation: t.min_c }}
+                />
+              </a>
+            </Link>
           </div>
         ))}
       </div>
