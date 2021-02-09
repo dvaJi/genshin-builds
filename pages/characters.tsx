@@ -30,7 +30,7 @@ const CharactersPage = ({
         {elements.map((element) => (
           <div
             key={element}
-            className="mb-3 p-5 rounded border border-gray-900 bg-gray-800"
+            className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
           >
             <div className="flex self-center mb-2">
               <ElementIcon type={element} height={32} width={32} />
@@ -39,7 +39,7 @@ const CharactersPage = ({
 
             <div className="flex justify-center items-center flex-wrap">
               {charactersByElement[element].map((character) => (
-                <Link href={`/character/${character.id}`}>
+                <Link key={character.id} href={`/character/${character.id}`}>
                   <a>
                     <CharacterPortrait character={character} />
                   </a>

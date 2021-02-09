@@ -18,7 +18,7 @@ const TeamCompCard = ({ team, elementalResonances }: TeamCompCardProps) => {
     <div className="block mb-4 relative overflow-hidden">
       <Link href={`/comp-builder?map=${team.code}`}>
         <a
-          className="bg-gray-800 grid grid-cols-1 md:grid-cols-3 items-center p-6 border border-gray-700 hover:border-purple-900 hover:shadow-innerCard rounded-md cursor-pointer relative overflow-hidden"
+          className="bg-vulcan-800 grid grid-cols-1 md:grid-cols-3 items-center p-6 border border-vulcan-700 hover:border-purple-900 hover:shadow-innerCard rounded-md cursor-pointer relative overflow-hidden"
           style={{ minHeight: "10rem" }}
         >
           <div

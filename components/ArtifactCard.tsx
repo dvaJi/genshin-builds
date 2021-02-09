@@ -14,7 +14,7 @@ const ArtifactCard = ({
   pieces,
 }: ArtifactCardProps) => {
   return (
-    <div className="bg-gray-800 border border-gray-900 mb-2 rounded p-3 mr-1">
+    <div className="bg-vulcan-900 border border-vulcan-900 mb-2 rounded p-3 mr-1">
       <div className="flex items-center relative mb-3">
         <div className="mr-2">
           <Image

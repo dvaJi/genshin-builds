@@ -10,7 +10,7 @@ interface WeaponCardProps {
 
 const WeaponCard = ({ weapon }: WeaponCardProps) => {
   return (
-    <div className="bg-gray-800 border border-gray-900 mb-2 rounded p-3 flex flex-col">
+    <div className="bg-vulcan-900 border border-vulcan-900 mb-2 rounded p-3 flex flex-col">
       <div className="flex items-center relative mb-3">
         <div className="mr-3">
           <Image

@@ -77,7 +77,7 @@ const CharacterPage = ({
                     width={32}
                   />
                   <h3 className="text-xl">
-                    <b>{skill.type}</b>: {skill.name}
+                    <b className="font-semibold">{skill.type}</b>: {skill.name}
                   </h3>
                 </div>
               }

@@ -58,7 +58,7 @@ const CharacterBuildWeapon = ({
     <div
       ref={drop}
       style={{ backgroundColor, border }}
-      className="border-gray-800 border-4 w-16 h-16 bg-gray-900 overflow-hidden relative"
+      className="border-vulcan-800 border-4 w-16 h-16 bg-vulcan-900 overflow-hidden relative"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >

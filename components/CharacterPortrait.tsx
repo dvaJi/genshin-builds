@@ -23,7 +23,7 @@ const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
             height={80}
           />
           {character.element && (
-            <div className="absolute top-0 right-5 bg-gray-800 pt-1 px-1 rounded-full">
+            <div className="absolute top-0 right-5 bg-vulcan-900 pt-1 px-1 rounded-full">
               <ElementIcon width={20} height={20} type={character.element} />
             </div>
           )}

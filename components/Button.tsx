@@ -22,19 +22,19 @@ const Button: React.FC<
   return (
     <button
       className={clsx(
-        "flex justify-center items-center h-full cursor-pointer bg-transparent focus:outline-none focus:ring focus:ring-purple-900 transition-all overflow-hidden relative text-white hover:text-white px-4 border hover:bg-gray-800 border-gray-800 hover:border-purple-900",
+        "flex justify-center items-center h-full cursor-pointer bg-transparent focus:outline-none focus:ring focus:ring-purple-900 transition-all overflow-hidden relative text-white hover:text-white px-4 border hover:bg-vulcan-800 border-vulcan-800 hover:border-purple-900",
         className,
-        // color === "primary" ? "hover:bg-purple-700" : "hover:bg-gray-700",
+        // color === "primary" ? "hover:bg-purple-700" : "hover:bg-vulcan-700",
         // type === "solid"
         //   ? color === "primary"
         //     ? "bg-purple-600"
-        //     : "bg-gray-600"
+        //     : "bg-vulcan-600"
         //   : "",
         isActive
           ? color === "primary"
             ? "text-white bg-purple-800"
-            : "bg-gray-800"
-          : "text-gray-700"
+            : "bg-vulcan-800"
+          : "text-vulcan-700"
       )}
       {...props}
     >
