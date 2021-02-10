@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { memo } from "react";
 
 const LayoutFooter = () => {
+  const router = useRouter();
   return (
     <footer className="px-20 py-14 bg-vulcan-800 text-gray-400">
       <div className="container mx-auto">
@@ -16,25 +18,15 @@ const LayoutFooter = () => {
             </Link>
           </div>
           <div className="flex-1 flex flex-col">
-            {/* <h4 className="text-gray-200 mb-3">
-              Join the Community
-            </h4>
-            <a
-              href="https://discord.gg/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="my-2"
-            >
-              Discord
-            </a>
-            <a
-              href="https://www.reddit.com/r//"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="my-2"
-            >
-              Reddit
-            </a> */}
+            <Link href={router.asPath} locale="en">
+              <a className="my-2">English</a>
+            </Link>
+            <Link href={router.asPath} locale="es">
+              <a className="my-2">Español</a>
+            </Link>
+            <Link href={router.asPath} locale="jp">
+              <a className="my-2">日本語</a>
+            </Link>
           </div>
           <div className="flex-1">
             <p className="text-sm">
