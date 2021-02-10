@@ -33,8 +33,7 @@ const CharacterPage = ({
     setBg({
       image: `/_assets/regions/${character.region}_d.jpg`,
       gradient: {
-        background:
-          "linear-gradient(rgba(26,28,35,.8),rgb(18, 19, 23) 620px),radial-gradient(at center top,rgba(21,28,36,0) 60%,rgb(18, 19, 23) 80%)",
+        background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
     });
   }, [character]);

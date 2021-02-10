@@ -76,7 +76,7 @@ type CharactersTierProps = {
 function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
   return (
     <div className="grid grid-cols-8 gap-4 w-full">
-      <div className="p-5">
+      <div className="p-5 bg bg-vulcan-900 bg-opacity-50">
         <h3 className="text-2xl text-white text-center font-bold">T{tier}</h3>
       </div>
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
