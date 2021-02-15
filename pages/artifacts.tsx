@@ -1,12 +1,14 @@
+import clsx from "clsx";
 import { useMemo } from "react";
 import { GetStaticProps } from "next";
+import GenshinData, { Artifact } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
 
-import GenshinData, { Artifact } from "genshin-data";
+import Metadata from "@components/Metadata";
+import StarRarity from "@components/StarRarity";
+
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
-import StarRarity from "@components/StarRarity";
-import clsx from "clsx";
 
 type Props = {
   artifacts: Artifact[];
@@ -72,6 +74,18 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
 
   return (
     <div>
+      <Metadata
+        fn={fStr}
+        pageTitle={fStr({
+          id: "title.artifacts",
+          defaultMessage: "Genshin Artifacts Artifacts List",
+        })}
+        pageDescription={fStr({
+          id: "title.artifacts.description",
+          defaultMessage:
+            "All the best artifact gear sets, locations, and stats.",
+        })}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {f({ id: "artifacts", defaultMessage: "Artifacts" })}
       </h2>

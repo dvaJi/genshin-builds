@@ -5,6 +5,7 @@ import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 
 import useIntl from "@hooks/use-intl";
 
+import Metadata from "@components/Metadata";
 import ElementIcon from "@components/ElementIcon";
 import Collapsible from "@components/Collapsible";
 import WeaponCard from "@components/WeaponCard";
@@ -28,7 +29,7 @@ const CharacterPage = ({
   lngDict,
 }: CharacterPageProps) => {
   const setBg = useSetRecoilState(appBackgroundStyleState);
-  const [f] = useIntl(lngDict);
+  const [f, fn] = useIntl(lngDict);
   useEffect(() => {
     setBg({
       image: `/_assets/regions/${character.region}_d.jpg`,
@@ -39,6 +40,15 @@ const CharacterPage = ({
   }, [character]);
   return (
     <div>
+      <Metadata
+        fn={fn}
+        pageTitle={fn({
+          id: "title.character.detail",
+          defaultMessage: "{name} Genshin Impact Build Guide",
+          values: { name: character.name },
+        })}
+        pageDescription={character.description}
+      />
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center px-2 md:px-0">
           <div className="flex-none relative mr-2 md:mr-5">

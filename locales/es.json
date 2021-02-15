@@ -1,4 +1,15 @@
 {
+  "title": "Genshin-Builds.com Base de datos Wiki",
+  "title.description": "Todos los mejores personajes y sus builds clasificados en orden de potencia, viabilidad y versatilidad.",
+  "title.characters": "Lista de personajes Genshin Impact",
+  "title.characters.description": "Conozca todos los personajes de Genshin Impact, incluidas sus habilidades, talentos, builds y lista de niveles.",
+  "title.character.detail": "{name} Guía Builds Genshin Impact",
+  "title.weapons": "Lista de Armas Genshin Impact",
+  "title.weapons.description": "Todas las mejores armas, ubicaciones y estadísticas, incluidos Arcos, Catalizadores, Claymores, Espadas y Lanzas.",
+  "title.artifacts": "Lista de Artefactos Genshin Artifacts",
+  "title.artifacts.description": "Todos los mejores conjuntos de equipo de artefactos, ubicaciones y estadísticas.",
+  "title.tierlist": "Genshin Impact Tier List (Mejores personajes)",
+  "title.tierlist.description": "Todos los mejores personajes y sus builds clasificados en orden de potencia, viabilidad y versatilidad para borrar el contenido.",
   "characters": "Personajes",
   "character.builds": "Builds",
   "character.constellations": "Constelaciones",
@@ -21,5 +32,11 @@
   "1piece_artifact_sets": "Conjuntos de 1 Pieza",
   "2piece_bonus": "Efecto de 2 Piezas",
   "4piece_bonus": "Efecto de 4 Piezas",
-  "or": "Ó"
+  "or": "Ó",
+  "Anemo": "Anemo",
+  "Geo": "Geo",
+  "Pyro": "Pyro",
+  "Hydro": "Hydro",
+  "Electro": "Electro",
+  "Cryo": "Cryo"
 }

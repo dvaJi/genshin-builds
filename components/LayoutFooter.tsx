@@ -24,7 +24,7 @@ const LayoutFooter = () => {
             <Link href={router.asPath} locale="es">
               <a className="my-2">Español</a>
             </Link>
-            <Link href={router.asPath} locale="jp">
+            <Link href={router.asPath} locale="ja">
               <a className="my-2">日本語</a>
             </Link>
           </div>

@@ -2,11 +2,11 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import GenshinData, { Character } from "genshin-data";
 
+import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/CharacterPortrait";
 import ElementIcon from "@components/ElementIcon";
 
 import useIntl from "@hooks/use-intl";
-
 import { localeToLang } from "@utils/locale-to-lang";
 
 type CharactersProps = {
@@ -20,9 +20,21 @@ const CharactersPage = ({
   elements,
   lngDict,
 }: CharactersProps) => {
-  const [f] = useIntl(lngDict);
+  const [f, fn] = useIntl(lngDict);
   return (
     <div>
+      <Metadata
+        fn={fn}
+        pageTitle={fn({
+          id: "title.characters",
+          defaultMessage: "Genshin Impact Characters List",
+        })}
+        pageDescription={fn({
+          id: "title.characters.description",
+          defaultMessage:
+            "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+        })}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {f({ id: "characters", defaultMessage: "Characters" })}
       </h2>
@@ -34,7 +46,9 @@ const CharactersPage = ({
           >
             <div className="flex self-center mb-2">
               <ElementIcon type={element} height={32} width={32} />
-              <h3 className="text-2xl font-bold ml-2">{element}</h3>
+              <h3 className="text-2xl font-bold ml-2">
+                {f({ id: element, defaultMessage: element })}
+              </h3>
             </div>
 
             <div className="flex justify-center items-center flex-wrap">
