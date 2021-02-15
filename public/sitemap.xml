@@ -28,42 +28,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/404</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/artifacts</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/characters</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/comp-builder</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/contact</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/privacy-policy</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/team-comps</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/tier-list</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/weapons</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/es/404</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -100,159 +64,75 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/404</loc>
+    <loc>https://genshin-builds.com/en/404</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/artifacts</loc>
+    <loc>https://genshin-builds.com/en/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/characters</loc>
+    <loc>https://genshin-builds.com/en/characters</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/comp-builder</loc>
+    <loc>https://genshin-builds.com/en/comp-builder</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/contact</loc>
+    <loc>https://genshin-builds.com/en/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/privacy-policy</loc>
+    <loc>https://genshin-builds.com/en/privacy-policy</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/team-comps</loc>
+    <loc>https://genshin-builds.com/en/team-comps</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/tier-list</loc>
+    <loc>https://genshin-builds.com/en/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/weapons</loc>
+    <loc>https://genshin-builds.com/en/weapons</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/albedo</loc>
+    <loc>https://genshin-builds.com/ja/404</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/amber</loc>
+    <loc>https://genshin-builds.com/ja/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/barbara</loc>
+    <loc>https://genshin-builds.com/ja/characters</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/beidou</loc>
+    <loc>https://genshin-builds.com/ja/comp-builder</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/bennett</loc>
+    <loc>https://genshin-builds.com/ja/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/chongyun</loc>
+    <loc>https://genshin-builds.com/ja/privacy-policy</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/diluc</loc>
+    <loc>https://genshin-builds.com/ja/team-comps</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/diona</loc>
+    <loc>https://genshin-builds.com/ja/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/character/fischl</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/ganyu</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/jean</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/kaeya</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/keqing</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/klee</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/lisa</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/mona</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/ningguang</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/noelle</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/qiqi</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/razor</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/sucrose</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/tartaglia</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/traveler_anemo</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/traveler_geo</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/venti</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/xiangling</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/xiao</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/xingqiu</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/xinyan</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/character/zhongli</loc>
+    <loc>https://genshin-builds.com/ja/weapons</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -376,123 +256,243 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/albedo</loc>
+    <loc>https://genshin-builds.com/en/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/amber</loc>
+    <loc>https://genshin-builds.com/en/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/barbara</loc>
+    <loc>https://genshin-builds.com/en/character/barbara</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/beidou</loc>
+    <loc>https://genshin-builds.com/en/character/beidou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/bennett</loc>
+    <loc>https://genshin-builds.com/en/character/bennett</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/chongyun</loc>
+    <loc>https://genshin-builds.com/en/character/chongyun</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/diluc</loc>
+    <loc>https://genshin-builds.com/en/character/diluc</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/diona</loc>
+    <loc>https://genshin-builds.com/en/character/diona</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/fischl</loc>
+    <loc>https://genshin-builds.com/en/character/fischl</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/ganyu</loc>
+    <loc>https://genshin-builds.com/en/character/ganyu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/jean</loc>
+    <loc>https://genshin-builds.com/en/character/jean</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/kaeya</loc>
+    <loc>https://genshin-builds.com/en/character/kaeya</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/keqing</loc>
+    <loc>https://genshin-builds.com/en/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/klee</loc>
+    <loc>https://genshin-builds.com/en/character/klee</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/lisa</loc>
+    <loc>https://genshin-builds.com/en/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/mona</loc>
+    <loc>https://genshin-builds.com/en/character/mona</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/ningguang</loc>
+    <loc>https://genshin-builds.com/en/character/ningguang</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/noelle</loc>
+    <loc>https://genshin-builds.com/en/character/noelle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/qiqi</loc>
+    <loc>https://genshin-builds.com/en/character/qiqi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/razor</loc>
+    <loc>https://genshin-builds.com/en/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/sucrose</loc>
+    <loc>https://genshin-builds.com/en/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/tartaglia</loc>
+    <loc>https://genshin-builds.com/en/character/tartaglia</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/traveler_anemo</loc>
+    <loc>https://genshin-builds.com/en/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/traveler_geo</loc>
+    <loc>https://genshin-builds.com/en/character/traveler_geo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/venti</loc>
+    <loc>https://genshin-builds.com/en/character/venti</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/xiangling</loc>
+    <loc>https://genshin-builds.com/en/character/xiangling</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/xiao</loc>
+    <loc>https://genshin-builds.com/en/character/xiao</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/xingqiu</loc>
+    <loc>https://genshin-builds.com/en/character/xingqiu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/xinyan</loc>
+    <loc>https://genshin-builds.com/en/character/xinyan</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/jp/character/zhongli</loc>
+    <loc>https://genshin-builds.com/en/character/zhongli</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/albedo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/barbara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/beidou</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/bennett</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/chongyun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/diluc</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/diona</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/fischl</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/jean</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/kaeya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/keqing</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/klee</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/lisa</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/mona</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/ningguang</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/noelle</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/qiqi</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/razor</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/sucrose</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/tartaglia</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/traveler_anemo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/traveler_geo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/venti</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/xiangling</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/xiao</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/xingqiu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/xinyan</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
 </urlset>

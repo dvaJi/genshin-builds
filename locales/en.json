@@ -1,4 +1,15 @@
 {
+  "title": "Genshin-Builds.com Wiki Database",
+  "title.description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+  "title.characters": "Genshin Impact Characters List",
+  "title.characters.description": "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",
+  "title.character.detail": "{name} Genshin Impact Build Guide",
+  "title.weapons": "Genshin Impact Weapons List",
+  "title.weapons.description": "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+  "title.artifacts": "Genshin Artifacts Artifacts List",
+  "title.artifacts.description": "All the best artifact gear sets, locations, and stats.",
+  "title.tierlist": "Genshin Impact Tier List (Best Characters)",
+  "title.tierlist.description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
   "characters": "Characters",
   "character.builds": "Builds",
   "character.constellations": "Constellations",
@@ -21,5 +32,11 @@
   "1piece_artifact_sets": "1-Piece Artifact Sets",
   "2piece_bonus": "2-Piece Bonus",
   "4piece_bonus": "4-Piece Bonus",
-  "or": "Or"
+  "or": "Or",
+  "Anemo": "Anemo",
+  "Geo": "Geo",
+  "Pyro": "Pyro",
+  "Hydro": "Hydro",
+  "Electro": "Electro",
+  "Cryo": "Cryo"
 }

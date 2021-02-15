@@ -1,12 +1,14 @@
+import clsx from "clsx";
 import { useMemo } from "react";
 import { GetStaticProps } from "next";
+import GenshinData, { Weapon } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
 
-import GenshinData, { Weapon } from "genshin-data";
+import Metadata from "@components/Metadata";
+import StarRarity from "@components/StarRarity";
+
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
-import StarRarity from "@components/StarRarity";
-import clsx from "clsx";
 
 interface WeaponsPageProps {
   weapons: Weapon[];
@@ -21,7 +23,11 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
         Header: "",
         accessor: "id",
         Cell: (row) => (
-          <img height={54} width={54} src={`/_assets/weapons/${row.value}.png`} />
+          <img
+            height={54}
+            width={54}
+            src={`/_assets/weapons/${row.value}.png`}
+          />
         ),
       },
       {
@@ -82,6 +88,18 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
 
   return (
     <div>
+      <Metadata
+        fn={fStr}
+        pageTitle={fStr({
+          id: "title.weapons",
+          defaultMessage: "Genshin Impact Weapons List",
+        })}
+        pageDescription={fStr({
+          id: "title.weapons.description",
+          defaultMessage:
+            "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+        })}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {f({ id: "weapons", defaultMessage: "Weapons" })}
       </h2>

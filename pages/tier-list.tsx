@@ -1,11 +1,12 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import GenshinData, { Character } from "genshin-data";
+import GenshinData, { Character, Tierlist } from "genshin-data";
 
-import { localeToLang } from "@utils/locale-to-lang";
-import { Tierlist } from "genshin-data/dist/types/tierlist";
-import useIntl from "@hooks/use-intl";
 import CharacterPortrait from "@components/CharacterPortrait";
+import Metadata from "@components/Metadata";
+
+import useIntl from "@hooks/use-intl";
+import { localeToLang } from "@utils/locale-to-lang";
 
 type Props = {
   tierlist: Tierlist;
@@ -14,12 +15,24 @@ type Props = {
 };
 
 const TierList = ({ tierlist, charactersMap, lngDict }: Props) => {
-  const [f] = useIntl(lngDict);
+  const [f, fn] = useIntl(lngDict);
   return (
     <div>
+      <Metadata
+        fn={fn}
+        pageTitle={fn({
+          id: "title.tierlist",
+          defaultMessage: "Genshin Impact Tier List (Best Characters)",
+        })}
+        pageDescription={fn({
+          id: "title.tierlist.description",
+          defaultMessage:
+            "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+        })}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {f({
-          id: "tierlist.title",
+          id: "title.tierlist",
           defaultMessage: "Genshin Impact Best Characters Tier List",
         })}
       </h2>
@@ -81,8 +94,8 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
       </div>
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
         {tierlist.maindps[tier].map((t) => (
-          <div className="inline-block">
-            <Link key={t.id} href={`/character/${t.id}`}>
+          <div key={t.id} className="inline-block">
+            <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
                   character={{ ...characters[t.id], constellation: t.min_c }}
@@ -94,8 +107,8 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
       </div>
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
         {tierlist.subdps[tier].map((t) => (
-          <div className="inline-block">
-            <Link key={t.id} href={`/character/${t.id}`}>
+          <div key={t.id} className="inline-block">
+            <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
                   character={{ ...characters[t.id], constellation: t.min_c }}
@@ -107,8 +120,8 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
       </div>
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
         {tierlist.support[tier].map((t) => (
-          <div className="inline-block">
-            <Link key={t.id} href={`/character/${t.id}`}>
+          <div key={t.id} className="inline-block">
+            <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
                   character={{ ...characters[t.id], constellation: t.min_c }}
