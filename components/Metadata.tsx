@@ -6,9 +6,15 @@ interface MetadataProps {
   fn: (props: IntlFormatProps) => string;
   pageTitle?: string;
   pageDescription?: string;
+  jsonLD?: string;
 }
 
-const Metadata = ({ fn, pageTitle, pageDescription }: MetadataProps) => {
+const Metadata = ({
+  fn,
+  pageTitle,
+  pageDescription,
+  jsonLD,
+}: MetadataProps) => {
   const defaultTitle = fn({
     id: "title",
     defaultMessage: "Genshin-Builds.com Wiki Database",
@@ -30,6 +36,14 @@ const Metadata = ({ fn, pageTitle, pageDescription }: MetadataProps) => {
       <meta property="og:description" content={description} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
+      {jsonLD && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLD,
+          }}
+        />
+      )}
     </Head>
   );
 };
