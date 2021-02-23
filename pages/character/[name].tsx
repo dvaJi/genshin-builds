@@ -20,6 +20,7 @@ interface CharacterPageProps {
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact>;
   lngDict: Record<string, string>;
+  locale: string;
 }
 
 const CharacterPage = ({
@@ -27,6 +28,7 @@ const CharacterPage = ({
   weapons,
   artifacts,
   lngDict,
+  locale,
 }: CharacterPageProps) => {
   const setBg = useSetRecoilState(appBackgroundStyleState);
   const [f, fn] = useIntl(lngDict);
@@ -48,6 +50,7 @@ const CharacterPage = ({
           values: { name: character.name },
         })}
         pageDescription={character.description}
+        jsonLD={generateJsonLd(locale, lngDict)}
       />
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center px-2 md:px-0">
@@ -238,6 +241,31 @@ const CharacterPage = ({
   );
 };
 
+const generateJsonLd = (locale: string, lngDict: Record<string, string>) => {
+  return `{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://genshin-builds.com/${locale}/",
+          "name": "Genshin-Builds.com"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@id": "https://genshin-builds.com/${locale}/characters",
+          "name": "${lngDict["title.characters"]}"
+        }
+      }
+    ]
+  }`;
+};
+
 export const getStaticProps: GetStaticProps = async ({
   params,
   locale = "en",
@@ -298,6 +326,7 @@ export const getStaticProps: GetStaticProps = async ({
       weapons,
       artifacts,
       lngDict,
+      locale,
     },
     revalidate: 1,
   };
