@@ -15,11 +15,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       <div className="flex min-h-screen flex-col h-full bg-vulcan-900">
         <Head>
           <title>Genshin Builds | Genshin Impact Wiki Database</title>
-          <script
-            data-ad-client="ca-pub-8563239116285713"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
           <meta
             property="og:title"
             content="Genshin Builds | Genshin Impact Wiki Database"
