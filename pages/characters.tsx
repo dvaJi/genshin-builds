@@ -71,7 +71,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const characters = await genshinData.characters();
+  const characters = await genshinData.characters({
+    select: ["id", "name", "element"],
+  });
   const elements: string[] = [];
   const charactersByElement = characters.reduce<Record<string, Character[]>>(
     (map, value) => {
