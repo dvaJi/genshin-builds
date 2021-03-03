@@ -7,16 +7,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          />
-          <script
-            data-ad-client="ca-pub-8563239116285713"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -33,6 +23,10 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
         </body>
       </Html>
     );
