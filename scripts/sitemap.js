@@ -4,7 +4,7 @@ const globby = require("globby");
 const WEBSITE_URL = "https://genshin-builds.com";
 
 function addPage(page) {
-  console.log(page)
+  console.log(page);
   const path = page
     .replace("pages", "")
     .replace(".next/server/", "")
@@ -31,6 +31,7 @@ async function generateSitemap() {
   ]);
   const sitemap = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages
+  .sort((a, b) => a.localeCompare(b))
   .map(addPage)
   .join("\n")}
 </urlset>`;

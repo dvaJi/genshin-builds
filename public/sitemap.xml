@@ -8,39 +8,7 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/comp-builder</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/en</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/privacy-policy</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/team-comps</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/tier-list</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/weapons</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -49,106 +17,6 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/artifacts</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/characters</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/comp-builder</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/contact</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/privacy-policy</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/team-comps</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/tier-list</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/en/weapons</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/404</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/artifacts</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/characters</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/comp-builder</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/contact</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/privacy-policy</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/team-comps</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/tier-list</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/es/weapons</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/404</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/artifacts</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/characters</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/comp-builder</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/contact</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/privacy-policy</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/team-comps</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/tier-list</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
-    <loc>https://genshin-builds.com/ja/weapons</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -276,6 +144,38 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/weapons</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/404</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/artifacts</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -400,6 +300,42 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/weapons</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/404</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/artifacts</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -521,6 +457,38 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/character/zhongli</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/weapons</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/weapons</loc>
     <changefreq>hourly</changefreq>
   </url>
 </urlset>
