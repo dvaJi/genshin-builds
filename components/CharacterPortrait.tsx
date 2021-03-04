@@ -19,6 +19,7 @@ const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
           <Image
             className="rounded-full shadow-lg"
             src={`/_assets/characters/${character.id}/${character.id}_portrait.png`}
+            alt={character.name}
             width={80}
             height={80}
           />

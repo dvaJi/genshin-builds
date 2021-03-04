@@ -6,13 +6,4 @@ module.exports = {
     defaultLocale: "en",
     localeDetection: !isDev,
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/characters",
-        permanent: true,
-      },
-    ];
-  },
 };
