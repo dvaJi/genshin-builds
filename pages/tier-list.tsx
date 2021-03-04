@@ -139,16 +139,14 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const characters = await genshinData.characters();
+  const characters = await genshinData.characters({
+    select: ["id", "name", "element"],
+  });
   const tierlist = await genshinData.tierlist();
 
   const charactersMap: any = {};
   for (const character of characters) {
-    charactersMap[character.id] = {
-      id: character.id,
-      name: character.name,
-      element: character.element,
-    };
+    charactersMap[character.id] = character;
   }
 
   return {

@@ -29,6 +29,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
             height={54}
             width={54}
             src={`/_assets/artifacts/${row.value}.png`}
+            alt={row.value}
           />
         ),
       },
@@ -170,6 +171,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
                       height={54}
                       width={54}
                       src={`/_assets/artifacts/${row.id}.png`}
+                      alt={row.id}
                     />
                   </td>
                   <td>{row.name}</td>

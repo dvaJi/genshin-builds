@@ -27,6 +27,7 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
             height={54}
             width={54}
             src={`/_assets/weapons/${row.value}.png`}
+            alt={row.value}
           />
         ),
       },
