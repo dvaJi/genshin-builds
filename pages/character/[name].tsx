@@ -174,7 +174,10 @@ const CharacterPage = ({
                     </b>
                     {build.weapons
                       .map<ReactNode>((weapon) => (
-                        <WeaponCard weapon={weapons[weapon.id]} />
+                        <WeaponCard
+                          key={weapon.name}
+                          weapon={weapons[weapon.id]}
+                        />
                       ))
                       .reduce((prev, curr) => [
                         prev,
