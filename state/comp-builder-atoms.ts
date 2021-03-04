@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { ElementalResonance } from "../interfaces/elemental-resonance";
+// import { ElementalResonance } from "../interfaces/elemental-resonance";
 
 export interface CharacterBuild {
   i: string; // character id
@@ -7,10 +7,10 @@ export interface CharacterBuild {
   a: string[]; // artifacts
 }
 
-export const elementalResonancesState = atom<ElementalResonance[]>({
-  key: "elementalResonances",
-  default: [],
-});
+// export const elementalResonancesState = atom<ElementalResonance[]>({
+//   key: "elementalResonances",
+//   default: [],
+// });
 
 export const compBuildState = atom<Record<string, CharacterBuild>>({
   key: "compBuild",
