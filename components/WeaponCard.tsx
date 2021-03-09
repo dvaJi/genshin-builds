@@ -10,28 +10,28 @@ interface WeaponCardProps {
 
 const WeaponCard = ({ weapon }: WeaponCardProps) => {
   return (
-    <div className="bg-vulcan-900 border border-vulcan-900 mb-2 rounded p-3 flex flex-col">
-      <div className="flex items-center relative mb-3">
-        <div className="mr-3">
+    <div className="bg-vulcan-800 border border-vulcan-700 mb-2 rounded p-3 flex flex-col">
+      <div className="flex flex-row">
+        <div className="flex-none relative">
           <Image
             src={`/_assets/weapons/${weapon.id}.png`}
-            height={60}
-            width={60}
+            height={84}
+            width={84}
             alt={weapon.name}
           />
         </div>
-        <StarRarity className="absolute left-3 top-14" rarity={weapon.rarity} />
-        <div>
-          <h4 className="font-bold text-white">{weapon.name}</h4>
-          <div className="text-white text-sm">{weapon.secondary}</div>
+        <div className="ml-3">
+          <div className="flex">
+            <h4 className="font-bold text-white">{weapon.name}</h4>
+            <StarRarity className="ml-2" rarity={weapon.rarity} />
+          </div>
+          <p
+            className="text-sm"
+            dangerouslySetInnerHTML={{
+              __html: weapon.bonus || "",
+            }}
+          />
         </div>
-      </div>
-      <div>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: weapon.bonus || "",
-          }}
-        />
       </div>
     </div>
   );

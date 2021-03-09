@@ -6,11 +6,16 @@ interface CollapsibleProps {
   text: ReactNode;
   children: ReactNode;
   className?: string;
-  isOpen?: boolean;
+  defaultOpen?: boolean;
 }
 
-const Collapsible = ({ children, text, className }: CollapsibleProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Collapsible = ({
+  children,
+  text,
+  className,
+  defaultOpen = false,
+}: CollapsibleProps) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   return (
     <div
       className={clsx(

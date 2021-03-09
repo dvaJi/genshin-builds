@@ -14,6 +14,7 @@ import ArtifactCard from "@components/ArtifactCard";
 import { localeToLang } from "@utils/locale-to-lang";
 
 import { appBackgroundStyleState } from "@state/background-atom";
+import ArtifactRecommendedStats from "@components/ArtifactRecommendedStats";
 
 interface CharacterPageProps {
   character: Character;
@@ -153,89 +154,103 @@ const CharacterPage = ({
         </div>
         {character.builds && (
           <div className="mb-4">
-            <h2 className="text-3xl">
+            <h2 className="text-3xl mb-3">
               {f({
                 id: "character.builds",
                 defaultMessage: "Builds",
               })}
             </h2>
             {character.builds.map((build) => (
-              <div key={build.id} className="">
-                <h3 className="text-2xl">{build.role}</h3>
-                <p>{build.description}</p>
-                <div className="grid grid-cols-2">
-                  <div className="flex flex-wrap w-4/5 pr-2 content-start">
-                    <b className="mb-2">
-                      {f({
-                        id: "weapons",
-                        defaultMessage: "Weapons",
-                      })}
-                      :
-                    </b>
-                    {build.weapons
-                      .map<ReactNode>((weapon) => (
-                        <WeaponCard
-                          key={weapon.name}
-                          weapon={weapons[weapon.id]}
-                        />
-                      ))
-                      .reduce((prev, curr) => [
-                        prev,
-                        <div className="build-option-divider">
+              <Collapsible
+                key={build.id}
+                text={<h3 className="text-2xl">{build.role}</h3>}
+                defaultOpen={true}
+              >
+                <div className="">
+                  <p>{build.description}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className="flex flex-wrap w-full md:w-4/5 pr-2 content-start">
+                      <b className="mb-2">
+                        {f({
+                          id: "weapons",
+                          defaultMessage: "Weapons",
+                        })}
+                        :
+                      </b>
+                      {build.weapons
+                        .map<ReactNode>((weapon) => (
+                          <WeaponCard
+                            key={weapon.name}
+                            weapon={weapons[weapon.id]}
+                          />
+                        ))
+                        .reduce((prev, curr) => [
+                          prev,
+                          <div className="build-option-divider">
+                            {f({
+                              id: "or",
+                              defaultMessage: "Or",
+                            })}
+                          </div>,
+                          curr,
+                        ])}
+                    </div>
+                    <div className="flex flex-wrap w-full md:w-4/5 ml-2 content-start">
+                      <div>
+                        <b className="mb-2">
                           {f({
-                            id: "or",
-                            defaultMessage: "Or",
+                            id: "artifacts",
+                            defaultMessage: "Artifacts",
                           })}
-                        </div>,
-                        curr,
-                      ])}
-                  </div>
-                  <div className="flex flex-wrap w-4/5 ml-2 content-start">
-                    <b className="mb-2">
-                      {f({
-                        id: "artifacts",
-                        defaultMessage: "Artifacts",
-                      })}
-                      :
-                    </b>
-                    {build.sets
-                      .map<ReactNode>((set) => (
-                        <>
-                          {set.set_2 ? (
-                            <div className="flex flex-row">
+                          :
+                        </b>
+                      </div>
+                      <div className="w-full mb-3">
+                        <h2 className="font-bold">Recommended primary stats</h2>
+                        <ArtifactRecommendedStats stats={build.stats} />
+                        <div>
+                          <h2 className="font-bold">Substats priority</h2>
+                          <div className="text-sm">
+                            {build.stats_priority.join(" / ")}
+                          </div>
+                        </div>
+                      </div>
+                      {build.sets
+                        .map<ReactNode>((set) => (
+                          <>
+                            {set.set_2 ? (
+                              <div className="flex flex-row w-full">
+                                <ArtifactCard
+                                  artifact={artifacts[set.set_1.id]}
+                                  pieces={2}
+                                />
+                                <ArtifactCard
+                                  artifact={artifacts[set.set_2.id]}
+                                  pieces={2}
+                                />
+                              </div>
+                            ) : (
                               <ArtifactCard
                                 artifact={artifacts[set.set_1.id]}
-                                recommendedStats={build.stats_priority}
-                                pieces={2}
+                                pieces={4}
                               />
-                              <ArtifactCard
-                                artifact={artifacts[set.set_2.id]}
-                                recommendedStats={build.stats_priority}
-                                pieces={2}
-                              />
-                            </div>
-                          ) : (
-                            <ArtifactCard
-                              artifact={artifacts[set.set_1.id]}
-                              recommendedStats={build.stats_priority}
-                              pieces={4}
-                            />
-                          )}
-                        </>
-                      ))
-                      .reduce((prev, curr) => [
-                        prev,
-                        <div className="build-option-divider">
-                          {f({
-                            id: "or",
-                            defaultMessage: "Or",
-                          })}
-                        </div>,
-                        curr,
-                      ])}
+                            )}
+                          </>
+                        ))
+                        .reduce((prev, curr) => [
+                          prev,
+                          <div className="build-option-divider">
+                            {f({
+                              id: "or",
+                              defaultMessage: "Or",
+                            })}
+                          </div>,
+                          curr,
+                        ])}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Collapsible>
             ))}
           </div>
         )}
