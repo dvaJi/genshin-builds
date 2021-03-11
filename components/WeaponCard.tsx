@@ -10,20 +10,31 @@ interface WeaponCardProps {
 
 const WeaponCard = ({ weapon }: WeaponCardProps) => {
   return (
-    <div className="bg-vulcan-800 border border-vulcan-700 mb-2 rounded p-3 flex flex-col">
-      <div className="flex flex-row">
-        <div className="flex-none relative">
+    <div className="bg-vulcan-800 border border-vulcan-700 mb-2 rounded flex flex-col">
+      <div className="flex flex-row h-full">
+        <div
+          className="flex flex-none relative bg-cover p-1 rounded rounded-tr-none rounded-br-none items-center justify-center"
+          style={{
+            backgroundImage: `url(/_assets/bg_${weapon.rarity}star.png)`,
+          }}
+        >
           <Image
             src={`/_assets/weapons/${weapon.id}.png`}
-            height={84}
-            width={84}
+            height={92}
+            width={92}
             alt={weapon.name}
           />
+          <div className="absolute bottom-0 bg-gray-900 bg-opacity-50 w-full px-2 py-0.5 items-center justify-center flex">
+            <StarRarity
+              starClassname="w-4"
+              rarity={weapon.rarity}
+              starsSize={42}
+            />
+          </div>
         </div>
-        <div className="ml-3">
+        <div className="ml-3 p-3">
           <div className="flex">
             <h4 className="font-bold text-white">{weapon.name}</h4>
-            <StarRarity className="ml-2" rarity={weapon.rarity} />
           </div>
           <p
             className="text-sm"

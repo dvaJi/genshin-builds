@@ -38,5 +38,7 @@
   "Pyro": "Pyro",
   "Hydro": "Hydro",
   "Electro": "Electro",
-  "Cryo": "Cryo"
+  "Cryo": "Cryo",
+  "character.recommended_primary_stats": "Estadísticas Primarias Recomendadas",
+  "character.substats_priority": "Prioridad de las subestadísticas"
 }
