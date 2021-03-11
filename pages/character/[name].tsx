@@ -54,8 +54,8 @@ const CharacterPage = ({
         jsonLD={generateJsonLd(locale, lngDict)}
       />
       <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center px-2 md:px-0">
-          <div className="flex-none relative mr-2 md:mr-5">
+        <div className="flex items-center px-2 lg:px-0">
+          <div className="flex-none relative mr-2 lg:mr-5">
             <img
               className="w-24 h-24 bg-vulcan-800 p-1 rounded-full border border-gray-900"
               src={`/_assets/characters/${character.id}/${character.id}_portrait.png`}
@@ -73,7 +73,7 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
-      <div className="min-w-0 p-4 md:mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
+      <div className="min-w-0 p-4 lg:mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
         <div className="mb-4">
           <h2 className="text-3xl mb-2">
             {f({ id: "character.skills", defaultMessage: "Skills" })}
@@ -168,8 +168,8 @@ const CharacterPage = ({
               >
                 <div className="">
                   <p>{build.description}</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="flex flex-wrap w-full md:w-4/5 pr-2 content-start">
+                  <div className="grid grid-cols-1 lg:grid-cols-2">
+                    <div className="flex flex-wrap w-full lg:w-4/5 pr-2 content-start">
                       <b className="mb-2">
                         {f({
                           id: "weapons",
@@ -195,7 +195,7 @@ const CharacterPage = ({
                           curr,
                         ])}
                     </div>
-                    <div className="flex flex-wrap w-full md:w-4/5 ml-2 content-start">
+                    <div className="flex flex-wrap w-full lg:w-4/5 ml-2 content-start">
                       <div>
                         <b className="mb-2">
                           {f({
@@ -206,10 +206,20 @@ const CharacterPage = ({
                         </b>
                       </div>
                       <div className="w-full mb-3">
-                        <h2 className="font-bold">Recommended primary stats</h2>
+                        <h2 className="font-bold">
+                          {f({
+                            id: "character.recommended_primary_stats",
+                            defaultMessage: "Recommended Primary Stats",
+                          })}
+                        </h2>
                         <ArtifactRecommendedStats stats={build.stats} />
                         <div>
-                          <h2 className="font-bold">Substats priority</h2>
+                          <h2 className="font-bold">
+                            {f({
+                              id: "character.substats_priority",
+                              defaultMessage: "Substats priority",
+                            })}
+                          </h2>
                           <div className="text-sm">
                             {build.stats_priority.join(" / ")}
                           </div>

@@ -4,10 +4,17 @@ import Image from "next/image";
 
 interface StarRarityProps {
   rarity: number;
+  starsSize?: number;
   className?: string;
+  starClassname?: string;
 }
 
-const StarRarity = ({ className, rarity = 1 }: StarRarityProps) => {
+const StarRarity = ({
+  className,
+  starClassname,
+  rarity = 1,
+  starsSize = 33,
+}: StarRarityProps) => {
   const starts = useMemo(() => {
     let N = rarity,
       i = 0,
@@ -21,8 +28,16 @@ const StarRarity = ({ className, rarity = 1 }: StarRarityProps) => {
       className={clsx("flex items-center justify-items-center w-10", className)}
     >
       {starts.map((star) => (
-        <div className={clsx("w-4 text-yellow-400", { "-m-1": star > 0 })}>
-          <Image src={`/_assets/1_star.png`} width={33} height={33} />
+        <div
+          className={clsx("w-4 text-yellow-400", starClassname, {
+            "-m-1": star > 0,
+          })}
+        >
+          <Image
+            src={`/_assets/1_star.png`}
+            width={starsSize}
+            height={starsSize}
+          />
         </div>
       ))}
     </div>

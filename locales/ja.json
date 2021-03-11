@@ -38,5 +38,7 @@
   "Pyro": "炎",
   "Hydro": "水",
   "Electro": "雷",
-  "Cryo": "氷"
+  "Cryo": "氷",
+  "character.recommended_primary_stats": "聖遺物のおすすめステータス",
+  "character.substats_priority": "サブステータス"
 }
