@@ -170,40 +170,43 @@ const CharacterPage = ({
                   <p>{build.description}</p>
                   <div className="grid grid-cols-1 lg:grid-cols-2">
                     <div className="flex flex-wrap w-full lg:w-4/5 pr-2 content-start">
-                      <b className="mb-2">
+                      <div className="text-xl mb-2 font-semibold">
                         {f({
                           id: "weapons",
                           defaultMessage: "Weapons",
                         })}
                         :
-                      </b>
-                      {build.weapons
-                        .map<ReactNode>((weapon) => (
-                          <WeaponCard
-                            key={weapon.name}
-                            weapon={weapons[weapon.id]}
-                          />
-                        ))
-                        .reduce((prev, curr) => [
-                          prev,
-                          <div className="build-option-divider">
-                            {f({
-                              id: "or",
-                              defaultMessage: "Or",
-                            })}
-                          </div>,
-                          curr,
-                        ])}
+                      </div>
+                      <div>
+                        {build.weapons
+                          .map<ReactNode>((weapon) => (
+                            <WeaponCard
+                              key={weapon.name}
+                              weapon={weapons[weapon.id]}
+                            />
+                          ))
+                          .reduce((prev, curr, i) => [
+                            prev,
+                            <div
+                              key={`art_divider_${i}`}
+                              className="build-option-divider"
+                            >
+                              {f({
+                                id: "or",
+                                defaultMessage: "Or",
+                              })}
+                            </div>,
+                            curr,
+                          ])}
+                      </div>
                     </div>
                     <div className="flex flex-wrap w-full lg:w-4/5 ml-2 content-start">
-                      <div>
-                        <b className="mb-2">
-                          {f({
-                            id: "artifacts",
-                            defaultMessage: "Artifacts",
-                          })}
-                          :
-                        </b>
+                      <div className="text-xl mb-2 font-semibold">
+                        {f({
+                          id: "artifacts",
+                          defaultMessage: "Artifacts",
+                        })}
+                        :
                       </div>
                       <div className="w-full mb-3">
                         <h2 className="font-bold">
@@ -227,7 +230,7 @@ const CharacterPage = ({
                       </div>
                       {build.sets
                         .map<ReactNode>((set) => (
-                          <>
+                          <div key={`${set.set_1.name}-${set.set_2?.name}`}>
                             {set.set_2 ? (
                               <div className="flex flex-row w-full">
                                 <ArtifactCard
@@ -245,11 +248,14 @@ const CharacterPage = ({
                                 pieces={4}
                               />
                             )}
-                          </>
+                          </div>
                         ))
-                        .reduce((prev, curr) => [
+                        .reduce((prev, curr, i) => [
                           prev,
-                          <div className="build-option-divider">
+                          <div
+                            key={`art_divider_${i}`}
+                            className="build-option-divider"
+                          >
                             {f({
                               id: "or",
                               defaultMessage: "Or",
