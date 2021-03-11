@@ -29,6 +29,7 @@ const StarRarity = ({
     >
       {starts.map((star) => (
         <div
+          key={`star_${star}`}
           className={clsx("w-4 text-yellow-400", starClassname, {
             "-m-1": star > 0,
           })}

@@ -28,7 +28,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
         </div>
         <div className="text-xs">
           {stats.flower.map((s) => (
-            <p>{s}</p>
+            <p key={s}>{s}</p>
           ))}
         </div>
       </div>
@@ -38,7 +38,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
         </div>
         <div className="text-xs">
           {stats.plume.map((s) => (
-            <p>{s}</p>
+            <p key={s}>{s}</p>
           ))}
         </div>
       </div>
@@ -48,7 +48,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
         </div>
         <div className="text-xs">
           {stats.sands.map((s) => (
-            <p>{s}</p>
+            <p key={s}>{s}</p>
           ))}
         </div>
       </div>
@@ -58,7 +58,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
         </div>
         <div className="text-xs">
           {stats.goblet.map((s) => (
-            <p>{s}</p>
+            <p key={s}>{s}</p>
           ))}
         </div>
       </div>
@@ -68,7 +68,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
         </div>
         <div className="text-xs">
           {stats.circlet.map((s) => (
-            <p>{s}</p>
+            <p key={s}>{s}</p>
           ))}
         </div>
       </div>
