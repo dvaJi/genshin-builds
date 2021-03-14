@@ -10,8 +10,8 @@ export async function getLocale(lang: string) {
 
 export async function getCharacterBuild(id: string) {
   try {
-    const module = await import(`../_content/data/builds/${id}.json`);
-    return module.default;
+    const { default: builds } = await import(`../_content/data/builds.json`);
+    return (builds as any)[id];
   } catch (err) {
     console.error(err);
     return [];
