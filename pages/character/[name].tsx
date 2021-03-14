@@ -184,7 +184,7 @@ const CharacterPage = ({
                         {build.weapons
                           .map<ReactNode>((weapon) => (
                             <WeaponCard
-                              key={weapon.name}
+                              key={weapon.id}
                               weapon={weapons[weapon.id]}
                             />
                           ))
@@ -233,7 +233,7 @@ const CharacterPage = ({
                       </div>
                       {build.sets
                         .map<ReactNode>((set) => (
-                          <div key={`${set.set_1.name}-${set.set_2?.name}`}>
+                          <div key={`${set.set_1.id}-${set.set_2?.id}`}>
                             {set.set_2 ? (
                               <div className="flex flex-row w-full">
                                 <ArtifactCard
@@ -307,7 +307,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   locale = "en",
 }) => {
-  const lngDict = getLocale(locale);
+  const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
   const character = characters.find((c) => c.id === params?.name);
@@ -318,7 +318,8 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
-  const buildsOld: Build[] = getCharacterBuild(character.id);
+  // TODO: check why is not generating builds on prod
+  const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
 
@@ -343,13 +344,17 @@ export const getStaticProps: GetStaticProps = async ({
       );
       const newBuild = {
         ...build,
-        stats_priority: build.stats_priority.map((s) => lngDict[s]),
+        stats_priority: build.stats_priority.map((s) =>
+          lngDict[s] ? lngDict[s] : s
+        ),
         stats: {
-          circlet: build.stats.circlet.map((s) => lngDict[s]),
-          flower: build.stats.flower.map((s) => lngDict[s]),
-          goblet: build.stats.goblet.map((s) => lngDict[s]),
-          plume: build.stats.plume.map((s) => lngDict[s]),
-          sands: build.stats.sands.map((s) => lngDict[s]),
+          circlet: build.stats.circlet.map((s) =>
+            lngDict[s] ? lngDict[s] : s
+          ),
+          flower: build.stats.flower.map((s) => (lngDict[s] ? lngDict[s] : s)),
+          goblet: build.stats.goblet.map((s) => (lngDict[s] ? lngDict[s] : s)),
+          plume: build.stats.plume.map((s) => (lngDict[s] ? lngDict[s] : s)),
+          sands: build.stats.sands.map((s) => (lngDict[s] ? lngDict[s] : s)),
         },
       };
       builds.push(newBuild);

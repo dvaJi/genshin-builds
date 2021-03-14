@@ -118,7 +118,7 @@ const IngredientsPage = ({ ingredients, lngDict }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = getLocale(locale);
+  const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const ingredients = await genshinData.ingredients();
 
