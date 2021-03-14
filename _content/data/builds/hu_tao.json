@@ -1,0 +1,77 @@
+[
+  {
+    "id": "director_hu",
+    "name": "Director Hu",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "staff_of_homa",
+        "order": 1
+      },
+      {
+        "id": "primordial_jade_wingedspear",
+        "order": 2
+      },
+      {
+        "id": "dragons_bane",
+        "order": 3
+      },
+      {
+        "id": "deathmatch",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "set_2": {
+          "id": "wanderers_troupe"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "noblesse_oblige"
+        },
+        "set_2": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "HP%",
+      "Elemental Mastery",
+      "ATK%"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "HP%"
+      ],
+      "goblet": [
+        "Pyro DMG"
+      ],
+      "circlet": [
+        "CRIT Rate",
+        "CRIT DMG"
+      ]
+    }
+  }
+]

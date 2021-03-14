@@ -1,9 +1,0 @@
-[
-  {
-    "name": "Cryo Support",
-    "description": "This build empowers Kaeya's Elemental Burst ability which procs multiple times, leading to very consistent elemental reactions and damage. This build becomes much more powerful with Constellation level 6.",
-    "weapon_1": "Skyrider Sword",
-    "set_1": "Noblesse Oblige",
-    "stats": ["Energy Recharge", "Cryo DMG", "ATK%"]
-  }
-]

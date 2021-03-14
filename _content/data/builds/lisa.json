@@ -1,0 +1,146 @@
+[
+  {
+    "id": "ara_ara",
+    "name": "Ara Ara~",
+    "description": "",
+    "role": "Sub DPS",
+    "weapons": [
+      {
+        "id": "the_widsith",
+        "order": 1
+      },
+      {
+        "id": "skyward_atlas",
+        "order": 2
+      },
+      {
+        "id": "mappa_mare",
+        "order": 3
+      },
+      {
+        "id": "thrilling_tales_of_dragon_slayers",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "thundering_fury"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "noblesse_oblige"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "gambler"
+        },
+        "set_2": {
+          "id": "thundering_fury"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%",
+        "Energy Recharge%"
+      ],
+      "goblet": [
+        "Electro DMG"
+      ],
+      "circlet": [
+        "CRIT DMG",
+        "CRIT Rate"
+      ]
+    }
+  },
+  {
+    "id": "lightning_rose",
+    "name": "Lightning Rose",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "lost_prayer_to_the_sacred_winds",
+        "order": 1
+      },
+      {
+        "id": "solar_pearl",
+        "order": 2
+      },
+      {
+        "id": "eye_of_perception",
+        "order": 3
+      },
+      {
+        "id": "the_widsith",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "thundering_fury"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "thundersoother"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "gambler"
+        },
+        "set_2": {
+          "id": "thundering_fury"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%",
+        "Energy Recharge%"
+      ],
+      "goblet": [
+        "Electro DMG"
+      ],
+      "circlet": [
+        "CRIT DMG",
+        "CRIT Rate"
+      ]
+    }
+  }
+]

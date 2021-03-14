@@ -18,6 +18,13 @@ const navroutes: NavRoutes[] = [
     dropdownMenu: [
       { id: "weapons", name: "Weapons", href: "/weapons" },
       { id: "artifacts", name: "Artifacts", href: "/artifacts" },
+      {
+        id: "cooking_ingredient",
+        name: "Cooking Ingredient",
+        href: "/ingredients",
+      },
+      { id: "food", name: "Food", href: "/food" },
+      { id: "potions", name: "Potions", href: "/potions" },
     ],
   },
   // { name: "Team Builder", href: "/comp-builder" },

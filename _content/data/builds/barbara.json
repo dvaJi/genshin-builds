@@ -1,0 +1,136 @@
+[
+  {
+    "id": "blessed_magical_girl",
+    "name": "Blessed Magical Girl",
+    "description": "",
+    "role": "Support",
+    "weapons": [
+      {
+        "id": "thrilling_tales_of_dragon_slayers",
+        "order": 1
+      },
+      {
+        "id": "prototype_amber",
+        "order": 2
+      },
+      {
+        "id": "the_widsith",
+        "order": 3
+      },
+      {
+        "id": "favonius_codex",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "scholar"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "the_exile"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "maiden_beloved"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "HP%",
+      "ATK",
+      "Energy Recharge%",
+      "CRIT Rate"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "HP%",
+        "Energy Recharge%"
+      ],
+      "goblet": [
+        "HP%"
+      ],
+      "circlet": [
+        "Healing Bonus%",
+        "HP%"
+      ]
+    }
+  },
+  {
+    "id": "magikarp_idol",
+    "name": "Magikarp Idol",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "lost_prayer_to_the_sacred_winds",
+        "order": 1
+      },
+      {
+        "id": "the_widsith",
+        "order": 2
+      },
+      {
+        "id": "eye_of_perception",
+        "order": 3
+      },
+      {
+        "id": "frostbearer",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "heart_of_depth"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "gladiators_finale"
+        },
+        "set_2": {
+          "id": "heart_of_depth"
+        },
+        "order": 2
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%"
+      ],
+      "goblet": [
+        "Hydro DMG"
+      ],
+      "circlet": [
+        "CRIT DMG",
+        "CRIT Rate"
+      ]
+    }
+  }
+]

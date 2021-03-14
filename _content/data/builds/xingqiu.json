@@ -1,0 +1,78 @@
+[
+  {
+    "id": "fatal_rainscreen",
+    "name": "Fatal Rainscreen",
+    "description": "",
+    "role": "Support",
+    "weapons": [
+      {
+        "id": "sacrificial_sword",
+        "order": 1
+      },
+      {
+        "id": "primordial_jade_cutter",
+        "order": 2
+      },
+      {
+        "id": "festering_desire",
+        "order": 3
+      },
+      {
+        "id": "harbinger_of_dawn",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "noblesse_oblige"
+        },
+        "set_2": {
+          "id": "heart_of_depth"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "noblesse_oblige"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "noblesse_oblige"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 2
+      }
+    ],
+    "stats_priority": [
+      "Energy Recharge%",
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "Energy Recharge%",
+        "ATK%"
+      ],
+      "goblet": [
+        "Hydro DMG",
+        "ATK%"
+      ],
+      "circlet": [
+        "CRIT DMG",
+        "CRIT Rate"
+      ]
+    }
+  }
+]

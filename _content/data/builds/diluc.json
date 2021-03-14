@@ -1,0 +1,74 @@
+[
+  {
+    "id": "rising_phoenix",
+    "name": "Rising Phoenix",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "wolfs_gravestone",
+        "order": 1
+      },
+      {
+        "id": "skyward_pride",
+        "order": 2
+      },
+      {
+        "id": "serpent_spine",
+        "order": 3
+      },
+      {
+        "id": "prototype_archaic",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "gladiators_finale"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery",
+      "Energy Recharge%"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%"
+      ],
+      "goblet": [
+        "Pyro DMG"
+      ],
+      "circlet": [
+        "CRIT Rate",
+        "CRIT DMG"
+      ]
+    }
+  }
+]

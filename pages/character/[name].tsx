@@ -15,9 +15,11 @@ import { localeToLang } from "@utils/locale-to-lang";
 
 import { appBackgroundStyleState } from "@state/background-atom";
 import ArtifactRecommendedStats from "@components/ArtifactRecommendedStats";
+import { Build } from "interfaces/build";
 
 interface CharacterPageProps {
   character: Character;
+  builds: Build[];
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact>;
   lngDict: Record<string, string>;
@@ -26,6 +28,7 @@ interface CharacterPageProps {
 
 const CharacterPage = ({
   character,
+  builds,
   weapons,
   artifacts,
   lngDict,
@@ -152,7 +155,7 @@ const CharacterPage = ({
             </Collapsible>
           ))}
         </div>
-        {character.builds && (
+        {builds && (
           <div className="mb-4">
             <h2 className="text-3xl mb-3">
               {f({
@@ -160,14 +163,14 @@ const CharacterPage = ({
                 defaultMessage: "Builds",
               })}
             </h2>
-            {character.builds.map((build) => (
+            {builds.map((build) => (
               <Collapsible
                 key={build.id}
                 text={<h3 className="text-2xl">{build.role}</h3>}
                 defaultOpen={true}
               >
                 <div className="">
-                  <p>{build.description}</p>
+                  {/* <p>{build.description}</p> */}
                   <div className="grid grid-cols-1 lg:grid-cols-2">
                     <div className="flex flex-wrap w-full lg:w-4/5 pr-2 content-start">
                       <div className="text-xl mb-2 font-semibold">
@@ -318,16 +321,20 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
+  const { default: buildsOld = [] }: { default: Build[] } = await import(
+    `../../_content/data/builds/${params?.name}.json`
+  );
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
 
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact> = {};
+  let builds: Build[] = [];
 
-  if (character?.builds) {
+  if (buildsOld) {
     const weaponsIds: string[] = [];
     const artifactsIds: string[] = [];
-    character.builds.forEach((build) => {
+    buildsOld.forEach((build) => {
       weaponsIds.push(...build.weapons.map((w) => w.id));
       artifactsIds.push(
         ...build.sets.reduce<string[]>((arr, set) => {
@@ -339,6 +346,18 @@ export const getStaticProps: GetStaticProps = async ({
           return arr;
         }, [])
       );
+      const newBuild = {
+        ...build,
+        stats_priority: build.stats_priority.map((s) => lngDict[s]),
+        stats: {
+          circlet: build.stats.circlet.map((s) => lngDict[s]),
+          flower: build.stats.flower.map((s) => lngDict[s]),
+          goblet: build.stats.goblet.map((s) => lngDict[s]),
+          plume: build.stats.plume.map((s) => lngDict[s]),
+          sands: build.stats.sands.map((s) => lngDict[s]),
+        },
+      };
+      builds.push(newBuild);
     });
 
     weaponsList.forEach((weapon) => {
@@ -357,6 +376,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       character,
+      builds,
       weapons,
       artifacts,
       lngDict,

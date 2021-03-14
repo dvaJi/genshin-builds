@@ -1,19 +1,74 @@
 [
   {
-    "name": "Anemo Support",
-    "description": "This build empowers Venti's energy recharge to minimize the downtime of his Elemental Burst skill. The Stringless is the preferred weapon.",
-    "weapon_1": "The Stringless",
-    "weapon_2": "Favonius Warbow",
-    "set_1": "Noblesse Oblige",
-    "set2_1": "Viridescent Venerer",
-    "stats": ["Energy Recharge", "Anemo DMG", "ATK%"]
-  },
-  {
-    "name": "Aimed Shot",
-    "description": "The idea behind this build is to fire a powerful, fully charged Aimed Shot with Venti every 10 seconds, taking advantage of the extra 2 arrows from his first constellation, Splitting Gale.",
-    "weapon_1": "Sharpshooter's Oath",
-    "weapon_2": "Messenger",
-    "set_1": "Wanderer's Troupe",
-    "stats": ["ATK%", "Anemo DMG", "CRIT DMG"]
+    "id": "god_is_wind",
+    "name": "God is Wind",
+    "description": "",
+    "role": "Sub DPS",
+    "weapons": [
+      {
+        "id": "skyward_harp",
+        "order": 1
+      },
+      {
+        "id": "the_stringless",
+        "order": 2
+      },
+      {
+        "id": "amos_bow",
+        "order": 3
+      },
+      {
+        "id": "rust",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "viridescent_venerer"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "viridescent_venerer"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "instructor"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Energy Recharge%"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%",
+        "Energy Recharge%"
+      ],
+      "goblet": [
+        "Anemo DMG"
+      ],
+      "circlet": [
+        "CRIT Rate",
+        "CRIT DMG"
+      ]
+    }
   }
 ]
