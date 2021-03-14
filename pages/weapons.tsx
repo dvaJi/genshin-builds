@@ -9,6 +9,7 @@ import StarRarity from "@components/StarRarity";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
+import { getLocale } from "@lib/localData";
 
 interface WeaponsPageProps {
   weapons: Weapon[];
@@ -154,8 +155,7 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
-
+  const lngDict = getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons();
 

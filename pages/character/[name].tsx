@@ -12,10 +12,10 @@ import WeaponCard from "@components/WeaponCard";
 import ArtifactCard from "@components/ArtifactCard";
 
 import { localeToLang } from "@utils/locale-to-lang";
-
+import { getCharacterBuild, getLocale } from "@lib/localData";
+import { Build } from "interfaces/build";
 import { appBackgroundStyleState } from "@state/background-atom";
 import ArtifactRecommendedStats from "@components/ArtifactRecommendedStats";
-import { Build } from "interfaces/build";
 
 interface CharacterPageProps {
   character: Character;
@@ -307,10 +307,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   locale = "en",
 }) => {
-  const { default: lngDict = {} } = await import(
-    `../../locales/${locale}.json`
-  );
-
+  const lngDict = getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
   const character = characters.find((c) => c.id === params?.name);
@@ -321,9 +318,7 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
-  const { default: buildsOld = [] }: { default: Build[] } = await import(
-    `../../_content/data/builds/${params?.name}.json`
-  );
+  const buildsOld: Build[] = getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
 

@@ -8,6 +8,7 @@ import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Tierlist } from "interfaces/tierlist";
+import { getLocale } from "@lib/localData";
 
 type Props = {
   tierlist: Tierlist;
@@ -137,8 +138,7 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
-
+  const lngDict = getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
     select: ["id", "name", "element"],
