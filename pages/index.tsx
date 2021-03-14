@@ -3,6 +3,7 @@ import GenshinData, { Character } from "genshin-data";
 
 import CharactersPage from "./characters";
 import { localeToLang } from "@utils/locale-to-lang";
+import { getLocale } from "@lib/localData";
 
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
@@ -25,8 +26,7 @@ const IndexPage = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
-
+  const lngDict = getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
     select: ["id", "name", "element"],

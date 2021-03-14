@@ -9,6 +9,7 @@ import StarRarity from "@components/StarRarity";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
+import { getLocale } from "@lib/localData";
 
 type Props = {
   ingredients: Ingredients[];
@@ -117,8 +118,7 @@ const IngredientsPage = ({ ingredients, lngDict }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const { default: lngDict = {} } = await import(`../locales/${locale}.json`);
-
+  const lngDict = getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const ingredients = await genshinData.ingredients();
 
