@@ -1,8 +1,8 @@
 import fs from "fs";
 import { join } from "path";
 
-const contentsDirectory = join(process.cwd(), "_content");
-const localeDirectory = join(process.cwd(), "locales");
+const contentsDirectory = join(__dirname, "..", "_content");
+const localeDirectory = join(__dirname, "..", "locales");
 
 export function getLocale(lang: string) {
   const fullPath = join(localeDirectory, `${lang}.json`);
@@ -17,6 +17,7 @@ export function getLocale(lang: string) {
 }
 
 export function getCharacterBuild(id: string) {
+  console.log({ contentsDirectory, localeDirectory, __dirname, cwd: process.cwd() });
   const fullPath = join(contentsDirectory, "data", "builds", `${id}.json`);
 
   try {

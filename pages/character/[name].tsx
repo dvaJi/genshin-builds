@@ -184,7 +184,7 @@ const CharacterPage = ({
                         {build.weapons
                           .map<ReactNode>((weapon) => (
                             <WeaponCard
-                              key={weapon.name}
+                              key={weapon.id}
                               weapon={weapons[weapon.id]}
                             />
                           ))
@@ -233,7 +233,7 @@ const CharacterPage = ({
                       </div>
                       {build.sets
                         .map<ReactNode>((set) => (
-                          <div key={`${set.set_1.name}-${set.set_2?.name}`}>
+                          <div key={`${set.set_1.id}-${set.set_2?.id}`}>
                             {set.set_2 ? (
                               <div className="flex flex-row w-full">
                                 <ArtifactCard
@@ -318,6 +318,7 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
+  // TODO: check why is not generating builds on prod
   const buildsOld: Build[] = getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
