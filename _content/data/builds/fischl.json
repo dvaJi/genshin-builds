@@ -1,0 +1,148 @@
+[
+  {
+    "id": "kaiser_und_kaiserin",
+    "name": "Kaiser Und Kaiserin",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "skyward_harp",
+        "order": 1
+      },
+      {
+        "id": "amos_bow",
+        "order": 2
+      },
+      {
+        "id": "rust",
+        "order": 3
+      },
+      {
+        "id": "compound_bow",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "thundersoother"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "bloodstained_chivalry"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "bloodstained_chivalry"
+        },
+        "set_2": {
+          "id": "thundering_fury"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery",
+      "Energy Recharge%"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%"
+      ],
+      "goblet": [
+        "Electro DMG"
+      ],
+      "circlet": [
+        "CRIT DMG",
+        "CRIT Rate"
+      ]
+    }
+  },
+  {
+    "id": "wizard_of_oz",
+    "name": "Wizard of OZ",
+    "description": "",
+    "role": "Sub DPS",
+    "weapons": [
+      {
+        "id": "skyward_harp",
+        "order": 1
+      },
+      {
+        "id": "amos_bow",
+        "order": 2
+      },
+      {
+        "id": "the_stringless",
+        "order": 3
+      },
+      {
+        "id": "favonius_warbow",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "gambler"
+        },
+        "set_2": {
+          "id": "thundering_fury"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "thundersoother"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "thundering_fury"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "Elemental Mastery",
+      "Energy Recharge%"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%"
+      ],
+      "goblet": [
+        "Electro DMG"
+      ],
+      "circlet": [
+        "CRIT DMG",
+        "CRIT Rate"
+      ]
+    }
+  }
+]

@@ -1,0 +1,147 @@
+[
+  {
+    "id": "the_great_ruler",
+    "name": "The Great Ruler",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "memory_of_dust",
+        "order": 1
+      },
+      {
+        "id": "lost_prayer_to_the_sacred_winds",
+        "order": 2
+      },
+      {
+        "id": "skyward_atlas",
+        "order": 3
+      },
+      {
+        "id": "solar_pearl",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "archaic_petra"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "archaic_petra"
+        },
+        "set_2": {
+          "id": "noblesse_oblige"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "retracing_bolide"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "ATK"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%"
+      ],
+      "goblet": [
+        "Geo DMG"
+      ],
+      "circlet": [
+        "CRIT Rate",
+        "CRIT DMG"
+      ]
+    }
+  },
+  {
+    "id": "equilibrium",
+    "name": "Equilibrium",
+    "description": "",
+    "role": "Sub DPS",
+    "weapons": [
+      {
+        "id": "memory_of_dust",
+        "order": 1
+      },
+      {
+        "id": "lost_prayer_to_the_sacred_winds",
+        "order": 2
+      },
+      {
+        "id": "skyward_atlas",
+        "order": 3
+      },
+      {
+        "id": "solar_pearl",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "archaic_petra"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "retracing_bolide"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "archaic_petra"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%"
+      ],
+      "goblet": [
+        "Geo DMG"
+      ],
+      "circlet": [
+        "CRIT Rate",
+        "CRIT DMG"
+      ]
+    }
+  }
+]

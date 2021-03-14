@@ -1,55 +1,58 @@
 [
   {
-    "id": "god_is_wind",
-    "name": "God is Wind",
+    "id": "fatal_rainscreen",
+    "name": "Fatal Rainscreen",
     "description": "",
-    "role": "Sub DPS",
+    "role": "Support",
     "weapons": [
       {
-        "id": "skyward_harp",
+        "id": "sacrificial_sword",
         "order": 1
       },
       {
-        "id": "the_stringless",
+        "id": "primordial_jade_cutter",
         "order": 2
       },
       {
-        "id": "amos_bow",
+        "id": "festering_desire",
         "order": 3
       },
       {
-        "id": "rust",
+        "id": "harbinger_of_dawn",
         "order": 4
       }
     ],
     "sets": [
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "noblesse_oblige"
+        },
+        "set_2": {
+          "id": "heart_of_depth"
         },
         "order": 1
       },
       {
         "set_1": {
-          "id": "viridescent_venerer"
-        },
-        "set_2": {
-          "id": "gladiators_finale"
+          "id": "noblesse_oblige"
         },
         "order": 2
       },
       {
         "set_1": {
-          "id": "instructor"
+          "id": "noblesse_oblige"
         },
-        "order": 3
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 2
       }
     ],
     "stats_priority": [
+      "Energy Recharge%",
       "CRIT Rate",
       "CRIT DMG",
-      "ATK%",
-      "Energy Recharge%"
+      "ATK%"
     ],
     "stats": {
       "flower": [
@@ -59,15 +62,16 @@
         "ATK"
       ],
       "sands": [
-        "ATK%",
-        "Energy Recharge%"
+        "Energy Recharge%",
+        "ATK%"
       ],
       "goblet": [
-        "Anemo DMG"
+        "Hydro DMG",
+        "ATK%"
       ],
       "circlet": [
-        "CRIT Rate",
-        "CRIT DMG"
+        "CRIT DMG",
+        "CRIT Rate"
       ]
     }
   }

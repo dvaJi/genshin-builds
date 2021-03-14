@@ -1,37 +1,37 @@
 [
   {
-    "id": "god_is_wind",
-    "name": "God is Wind",
+    "id": "rising_phoenix",
+    "name": "Rising Phoenix",
     "description": "",
-    "role": "Sub DPS",
+    "role": "Main DPS",
     "weapons": [
       {
-        "id": "skyward_harp",
+        "id": "wolfs_gravestone",
         "order": 1
       },
       {
-        "id": "the_stringless",
+        "id": "skyward_pride",
         "order": 2
       },
       {
-        "id": "amos_bow",
+        "id": "serpent_spine",
         "order": 3
       },
       {
-        "id": "rust",
+        "id": "prototype_archaic",
         "order": 4
       }
     ],
     "sets": [
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "crimson_witch_of_flames"
         },
         "order": 1
       },
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "crimson_witch_of_flames"
         },
         "set_2": {
           "id": "gladiators_finale"
@@ -40,7 +40,7 @@
       },
       {
         "set_1": {
-          "id": "instructor"
+          "id": "gladiators_finale"
         },
         "order": 3
       }
@@ -49,6 +49,7 @@
       "CRIT Rate",
       "CRIT DMG",
       "ATK%",
+      "Elemental Mastery",
       "Energy Recharge%"
     ],
     "stats": {
@@ -59,11 +60,10 @@
         "ATK"
       ],
       "sands": [
-        "ATK%",
-        "Energy Recharge%"
+        "ATK%"
       ],
       "goblet": [
-        "Anemo DMG"
+        "Pyro DMG"
       ],
       "circlet": [
         "CRIT Rate",

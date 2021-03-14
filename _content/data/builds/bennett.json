@@ -1,0 +1,146 @@
+[
+  {
+    "id": "best_friend_forever",
+    "name": "Best Friend Forever",
+    "description": "",
+    "role": "Support",
+    "weapons": [
+      {
+        "id": "festering_desire",
+        "order": 1
+      },
+      {
+        "id": "skyward_blade",
+        "order": 2
+      },
+      {
+        "id": "favonius_sword",
+        "order": 3
+      },
+      {
+        "id": "lions_roar",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "noblesse_oblige"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "maiden_beloved"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "instructor"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "HP",
+      "Energy Recharge%",
+      "CRIT Rate",
+      "Elemental Mastery"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "Energy Recharge%"
+      ],
+      "goblet": [
+        "HP%"
+      ],
+      "circlet": [
+        "Healing Bonus%",
+        "HP%"
+      ]
+    }
+  },
+  {
+    "id": "burning_pasion",
+    "name": "Burning Passion",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "festering_desire",
+        "order": 1
+      },
+      {
+        "id": "skyward_blade",
+        "order": 2
+      },
+      {
+        "id": "favonius_sword",
+        "order": 3
+      },
+      {
+        "id": "lions_roar",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "gladiators_finale"
+        },
+        "set_2": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "gambler"
+        },
+        "set_2": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "Energy Recharge%",
+      "ATK%",
+      "Elemental Mastery"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%",
+        "Energy Recharge%"
+      ],
+      "goblet": [
+        "Pyro DMG"
+      ],
+      "circlet": [
+        "CRIT Rate",
+        "CRIT DMG"
+      ]
+    }
+  }
+]

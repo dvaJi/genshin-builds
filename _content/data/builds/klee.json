@@ -1,55 +1,61 @@
 [
   {
-    "id": "god_is_wind",
-    "name": "God is Wind",
+    "id": "explosion_build",
+    "name": "Explosion Build",
     "description": "",
-    "role": "Sub DPS",
+    "role": "Main DPS",
     "weapons": [
       {
-        "id": "skyward_harp",
+        "id": "lost_prayer_to_the_sacred_winds",
         "order": 1
       },
       {
-        "id": "the_stringless",
+        "id": "skyward_atlas",
         "order": 2
       },
       {
-        "id": "amos_bow",
+        "id": "the_widsith",
         "order": 3
       },
       {
-        "id": "rust",
+        "id": "solar_pearl",
         "order": 4
       }
     ],
     "sets": [
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "crimson_witch_of_flames"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
         },
         "order": 1
       },
       {
         "set_1": {
-          "id": "viridescent_venerer"
-        },
-        "set_2": {
-          "id": "gladiators_finale"
+          "id": "wanderers_troupe"
         },
         "order": 2
       },
       {
         "set_1": {
-          "id": "instructor"
+          "id": "crimson_witch_of_flames"
         },
         "order": 3
+      },
+      {
+        "set_1": {
+          "id": "lavawalker"
+        },
+        "order": 4
       }
     ],
     "stats_priority": [
       "CRIT Rate",
       "CRIT DMG",
       "ATK%",
-      "Energy Recharge%"
+      "Elemental Mastery"
     ],
     "stats": {
       "flower": [
@@ -59,15 +65,14 @@
         "ATK"
       ],
       "sands": [
-        "ATK%",
-        "Energy Recharge%"
+        "ATK%"
       ],
       "goblet": [
-        "Anemo DMG"
+        "Pyro DMG"
       ],
       "circlet": [
-        "CRIT Rate",
-        "CRIT DMG"
+        "CRIT DMG",
+        "CRIT Rate"
       ]
     }
   }

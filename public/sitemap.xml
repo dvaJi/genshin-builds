@@ -16,6 +16,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -152,6 +156,18 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/food</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/ingredients</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/potions</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/privacy-policy</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -169,6 +185,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/404</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/500</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -308,6 +328,18 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/food</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/ingredients</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/potions</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/privacy-policy</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -320,7 +352,15 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/food</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ingredients</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -329,6 +369,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/404</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/500</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -468,6 +512,18 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/food</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/ingredients</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/potions</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/privacy-policy</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -477,6 +533,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/weapons</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/potions</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>

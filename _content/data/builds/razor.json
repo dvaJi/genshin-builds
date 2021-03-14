@@ -1,46 +1,49 @@
 [
   {
-    "id": "god_is_wind",
-    "name": "God is Wind",
+    "id": "wolfs_instinct",
+    "name": "Wolf's Instinct",
     "description": "",
-    "role": "Sub DPS",
+    "role": "Main DPS",
     "weapons": [
       {
-        "id": "skyward_harp",
+        "id": "wolfs_gravestone",
         "order": 1
       },
       {
-        "id": "the_stringless",
+        "id": "skyward_pride",
         "order": 2
       },
       {
-        "id": "amos_bow",
+        "id": "serpent_spine",
         "order": 3
       },
       {
-        "id": "rust",
+        "id": "prototype_archaic",
         "order": 4
       }
     ],
     "sets": [
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "gladiators_finale"
         },
         "order": 1
       },
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "gladiators_finale"
         },
         "set_2": {
-          "id": "gladiators_finale"
+          "id": "bloodstained_chivalry"
         },
         "order": 2
       },
       {
         "set_1": {
-          "id": "instructor"
+          "id": "gladiators_finale"
+        },
+        "set_2": {
+          "id": "berserker"
         },
         "order": 3
       }
@@ -49,6 +52,7 @@
       "CRIT Rate",
       "CRIT DMG",
       "ATK%",
+      "ATK",
       "Energy Recharge%"
     ],
     "stats": {
@@ -59,15 +63,14 @@
         "ATK"
       ],
       "sands": [
-        "ATK%",
-        "Energy Recharge%"
+        "ATK%"
       ],
       "goblet": [
-        "Anemo DMG"
+        "Physical DMG"
       ],
       "circlet": [
-        "CRIT Rate",
-        "CRIT DMG"
+        "CRIT DMG",
+        "CRIT Rate"
       ]
     }
   }

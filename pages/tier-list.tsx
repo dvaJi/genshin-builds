@@ -1,12 +1,13 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import GenshinData, { Character, Tierlist } from "genshin-data";
+import GenshinData, { Character } from "genshin-data";
 
 import CharacterPortrait from "@components/CharacterPortrait";
 import Metadata from "@components/Metadata";
 
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
+import { Tierlist } from "interfaces/tierlist";
 
 type Props = {
   tierlist: Tierlist;
@@ -142,7 +143,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const characters = await genshinData.characters({
     select: ["id", "name", "element"],
   });
-  const tierlist = await genshinData.tierlist();
+  const { default: tierlist = {} } = await import(
+    `../_content/data/tierlist.json`
+  );
 
   const charactersMap: any = {};
   for (const character of characters) {

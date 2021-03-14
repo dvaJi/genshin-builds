@@ -1,0 +1,151 @@
+[
+  {
+    "id": "machine_gun_build",
+    "name": "Machine Gun Build",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "crescent_pike",
+        "order": 1
+      },
+      {
+        "id": "primordial_jade_wingedspear",
+        "order": 2
+      },
+      {
+        "id": "skyward_spine",
+        "order": 3
+      },
+      {
+        "id": "dragons_bane",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "bloodstained_chivalry"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "gladiators_finale"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "resolution_of_sojourner"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery",
+      "Energy Recharge%"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "ATK%"
+      ],
+      "goblet": [
+        "Physical DMG"
+      ],
+      "circlet": [
+        "CRIT Rate",
+        "CRIT DMG"
+      ]
+    }
+  },
+  {
+    "id": "red_hot_chili_peppers",
+    "name": "Red Hot Chili Peppers",
+    "description": "",
+    "role": "Sub DPS",
+    "weapons": [
+      {
+        "id": "crescent_pike",
+        "order": 1
+      },
+      {
+        "id": "primordial_jade_wingedspear",
+        "order": 2
+      },
+      {
+        "id": "skyward_spine",
+        "order": 3
+      },
+      {
+        "id": "dragons_bane",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "noblesse_oblige"
+        },
+        "set_2": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "instructor"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "set_2": {
+          "id": "wanderers_troupe"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "ATK%",
+      "Energy Recharge%",
+      "Elemental Mastery",
+      "CRIT Rate",
+      "CRIT DMG"
+    ],
+    "stats": {
+      "flower": [
+        "HP"
+      ],
+      "plume": [
+        "ATK"
+      ],
+      "sands": [
+        "Energy Recharge%"
+      ],
+      "goblet": [
+        "Pyro DMG"
+      ],
+      "circlet": [
+        "Elemental Mastery"
+      ]
+    }
+  }
+]

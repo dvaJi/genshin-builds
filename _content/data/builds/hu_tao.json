@@ -1,46 +1,49 @@
 [
   {
-    "id": "god_is_wind",
-    "name": "God is Wind",
+    "id": "director_hu",
+    "name": "Director Hu",
     "description": "",
-    "role": "Sub DPS",
+    "role": "Main DPS",
     "weapons": [
       {
-        "id": "skyward_harp",
+        "id": "staff_of_homa",
         "order": 1
       },
       {
-        "id": "the_stringless",
+        "id": "primordial_jade_wingedspear",
         "order": 2
       },
       {
-        "id": "amos_bow",
+        "id": "dragons_bane",
         "order": 3
       },
       {
-        "id": "rust",
+        "id": "deathmatch",
         "order": 4
       }
     ],
     "sets": [
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "crimson_witch_of_flames"
         },
         "order": 1
       },
       {
         "set_1": {
-          "id": "viridescent_venerer"
+          "id": "crimson_witch_of_flames"
         },
         "set_2": {
-          "id": "gladiators_finale"
+          "id": "wanderers_troupe"
         },
         "order": 2
       },
       {
         "set_1": {
-          "id": "instructor"
+          "id": "noblesse_oblige"
+        },
+        "set_2": {
+          "id": "crimson_witch_of_flames"
         },
         "order": 3
       }
@@ -48,8 +51,9 @@
     "stats_priority": [
       "CRIT Rate",
       "CRIT DMG",
-      "ATK%",
-      "Energy Recharge%"
+      "HP%",
+      "Elemental Mastery",
+      "ATK%"
     ],
     "stats": {
       "flower": [
@@ -59,11 +63,10 @@
         "ATK"
       ],
       "sands": [
-        "ATK%",
-        "Energy Recharge%"
+        "HP%"
       ],
       "goblet": [
-        "Anemo DMG"
+        "Pyro DMG"
       ],
       "circlet": [
         "CRIT Rate",
