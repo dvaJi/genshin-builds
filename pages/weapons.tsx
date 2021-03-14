@@ -155,7 +155,7 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = getLocale(locale);
+  const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons();
 

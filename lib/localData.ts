@@ -1,28 +1,17 @@
-import fs from "fs";
-import { join } from "path";
-
-const contentsDirectory = join(__dirname, "..", "_content");
-const localeDirectory = join(__dirname, "..", "locales");
-
-export function getLocale(lang: string) {
-  const fullPath = join(localeDirectory, `${lang}.json`);
-
+export async function getLocale(lang: string) {
   try {
-    const locale = fs.readFileSync(fullPath, "utf8");
-    return JSON.parse(locale);
+    const module = await import(`../locales/${lang}.json`);
+    return module.default;
   } catch (err) {
     console.error(err);
     return {};
   }
 }
 
-export function getCharacterBuild(id: string) {
-  console.log({ contentsDirectory, localeDirectory, __dirname, cwd: process.cwd() });
-  const fullPath = join(contentsDirectory, "data", "builds", `${id}.json`);
-
+export async function getCharacterBuild(id: string) {
   try {
-    const locale = fs.readFileSync(fullPath, "utf8");
-    return JSON.parse(locale);
+    const module = await import(`../_content/data/builds/${id}.json`);
+    return module.default;
   } catch (err) {
     console.error(err);
     return [];
