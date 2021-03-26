@@ -9,13 +9,18 @@ interface CharacterPortraitProps {
     element?: string;
     constellationNum?: number;
   };
+  weapon?: {
+    id: string;
+    name: string;
+    rarity: number;
+  };
 }
 
-const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
+const CharacterPortrait = ({ character, weapon }: CharacterPortraitProps) => {
   return (
     <div className="text-gray-400 cursor-pointer w-32 transition-all duration-200 ease-linear transform hover:scale-105 hover:text-white">
       <div>
-        <div className="text-center relative">
+        <div className="text-center relative group">
           <Image
             className="rounded-full shadow-lg"
             src={`/_assets/characters/${character.id}/${character.id}_portrait.png`}
@@ -31,6 +36,22 @@ const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
           {character.constellationNum !== undefined && (
             <div className="absolute bottom-0 right-2/3 bg-vulcan-700 p-1 rounded-full text-xs font-bold text-gray-300">
               {`C${character.constellationNum}`}
+            </div>
+          )}
+          {weapon && (
+            <div
+              className="absolute bg-cover rounded bottom-0 left-2/3 transition-opacity delay-100 opacity-0 group-hover:opacity-100"
+              style={{
+                backgroundImage: `url(/_assets/bg_${weapon.rarity}star.png)`,
+                height: 32,
+              }}
+            >
+              <Image
+                src={`/_assets/weapons/${weapon.id}.png`}
+                height={32}
+                width={32}
+                alt={weapon.name}
+              />
             </div>
           )}
         </div>

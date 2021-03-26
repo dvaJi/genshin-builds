@@ -2,83 +2,111 @@
   "maindps": {
     "0": [
       {
-        "id": "diluc",
-        "min_c": 0
-      },
-      {
         "id": "ganyu",
+        "w_id": "amos_bow",
         "min_c": 0
       },
       {
-        "id": "klee",
-        "min_c": 0
-      },
-      {
-        "id": "tartaglia",
-        "min_c": 6
-      },
-      {
-        "id": "xiao",
+        "id": "hu_tao",
+        "w_id": "staff_of_homa",
         "min_c": 0
       }
     ],
     "1": [
       {
-        "id": "fischl",
-        "min_c": 6
-      },
-      {
-        "id": "keqing",
+        "id": "klee",
+        "w_id": "lost_prayer_to_the_sacred_winds",
         "min_c": 0
       },
       {
-        "id": "ningguang",
-        "min_c": 1
+        "id": "xiao",
+        "w_id": "primordial_jade_wingedspear",
+        "min_c": 0
       },
       {
-        "id": "noelle",
-        "min_c": 6
+        "id": "diluc",
+        "w_id": "wolfs_gravestone",
+        "min_c": 0
       },
       {
-        "id": "razor",
-        "min_c": 4
+        "id": "tartaglia",
+        "w_id": "skyward_harp",
+        "min_c": 0
       }
     ],
     "2": [
       {
-        "id": "beidou",
-        "min_c": 4
+        "id": "keqing",
+        "w_id": "primordial_jade_cutter",
+        "min_c": 0
       },
       {
-        "id": "chongyun",
+        "id": "zhongli",
+        "w_id": "staff_of_homa",
+        "min_c": 0
+      },
+      {
+        "id": "noelle",
+        "w_id": "whiteblind",
         "min_c": 6
       },
       {
-        "id": "mona",
-        "min_c": 2
+        "id": "ningguang",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 1
       },
       {
-        "id": "xiangling",
+        "id": "razor",
+        "w_id": "skyward_pride",
         "min_c": 4
+      },
+      {
+        "id": "fischl",
+        "w_id": "skyward_harp",
+        "min_c": 6
       }
     ],
     "3": [
       {
-        "id": "amber",
-        "min_c": 1
-      },
-      {
-        "id": "kaeya",
+        "id": "mona",
+        "w_id": "lost_prayer_to_the_sacred_winds",
         "min_c": 2
       },
       {
-        "id": "xinyan",
+        "id": "chongyun",
+        "w_id": "wolfs_gravestone",
         "min_c": 6
+      },
+      {
+        "id": "beidou",
+        "w_id": "wolfs_gravestone",
+        "min_c": 4
+      },
+      {
+        "id": "xiangling",
+        "w_id": "primordial_jade_wingedspear",
+        "min_c": 4
+      },
+      {
+        "id": "xinyan",
+        "w_id": "the_unforged",
+        "min_c": 6
+      },
+      {
+        "id": "kaeya",
+        "w_id": "primordial_jade_cutter",
+        "min_c": 1
       }
     ],
     "4": [
       {
         "id": "lisa",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 0
+      },
+      {
+        "id": "amber",
+        "w_id": "amos_bow",
         "min_c": 0
       }
     ]
@@ -86,95 +114,116 @@
   "subdps": {
     "0": [
       {
-        "id": "klee",
-        "min_c": 4
-      },
-      {
-        "id": "mona",
-        "min_c": 0
-      },
-      {
         "id": "venti",
+        "w_id": "skyward_harp",
         "min_c": 0
+      },
+      {
+        "id": "ganyu",
+        "w_id": "amos_bow",
+        "min_c": 6
       },
       {
         "id": "xingqiu",
+        "w_id": "sacrificial_sword",
         "min_c": 6
       }
     ],
     "1": [
       {
-        "id": "albedo",
+        "id": "mona",
+        "w_id": "the_widsith",
         "min_c": 0
       },
       {
-        "id": "fischl",
-        "min_c": 0
-      },
-      {
-        "id": "ganyu",
-        "min_c": 0
+        "id": "klee",
+        "w_id": "skyward_atlas",
+        "min_c": 4
       },
       {
         "id": "tartaglia",
+        "w_id": "skyward_atlas",
         "min_c": 0
       },
       {
-        "id": "xiangling",
-        "min_c": 1
+        "id": "albedo",
+        "w_id": "harbinger_of_dawn",
+        "min_c": 0
       },
       {
         "id": "zhongli",
+        "w_id": "staff_of_homa",
         "min_c": 0
       }
     ],
     "2": [
       {
-        "id": "beidou",
+        "id": "jean",
+        "w_id": "primordial_jade_cutter",
         "min_c": 0
       },
       {
-        "id": "bennett",
+        "id": "xiangling",
+        "w_id": "skyward_spine",
         "min_c": 1
       },
       {
-        "id": "chongyun",
-        "min_c": 2
-      },
-      {
-        "id": "jean",
+        "id": "fischl",
+        "w_id": "skyward_atlas",
         "min_c": 0
       },
       {
         "id": "kaeya",
+        "w_id": "skyward_blade",
         "min_c": 0
       },
       {
-        "id": "sucrose",
-        "min_c": 1
+        "id": "beidou",
+        "w_id": "wolfs_gravestone",
+        "min_c": 6
+      },
+      {
+        "id": "chongyun",
+        "w_id": "wolfs_gravestone",
+        "min_c": 2
       }
     ],
     "3": [
       {
-        "id": "lisa",
-        "min_c": 0
-      },
-      {
         "id": "traveler_geo",
+        "w_id": "primordial_jade_cutter",
         "min_c": 6
       },
       {
         "id": "xinyan",
+        "w_id": "wolfs_gravestone",
+        "min_c": 2
+      },
+      {
+        "id": "lisa",
+        "w_id": "the_widsith",
         "min_c": 0
+      },
+      {
+        "id": "bennett",
+        "w_id": "skyward_blade",
+        "min_c": 1
+      },
+      {
+        "id": "sucrose",
+        "w_id": "the_widsith",
+        "min_c": 1
       }
     ],
     "4": [
       {
         "id": "amber",
+        "w_id": "skyward_harp",
         "min_c": 0
       },
       {
         "id": "traveler_anemo",
+        "w_id": "primordial_jade_cutter",
         "min_c": 6
       }
     ]
@@ -182,76 +231,97 @@
   "support": {
     "0": [
       {
+        "id": "venti",
+        "w_id": "skyward_harp",
+        "min_c": 0
+      },
+      {
         "id": "bennett",
+        "w_id": "skyward_blade",
         "min_c": 1
       },
       {
-        "id": "mona",
-        "min_c": 0
-      },
-      {
-        "id": "venti",
-        "min_c": 0
-      },
-      {
         "id": "zhongli",
+        "w_id": "staff_of_homa",
         "min_c": 0
       }
     ],
     "1": [
       {
-        "id": "diona",
-        "min_c": 1
-      },
-      {
-        "id": "jean",
+        "id": "mona",
+        "w_id": "the_widsith",
         "min_c": 0
       },
       {
-        "id": "qiqi",
+        "id": "jean",
+        "w_id": "aquila_favonia",
         "min_c": 0
       },
       {
         "id": "sucrose",
+        "w_id": "sacrificial_fragments",
         "min_c": 1
       },
       {
-        "id": "xingqiu",
-        "min_c": 2
+        "id": "qiqi",
+        "w_id": "sacrificial_sword",
+        "min_c": 0
+      },
+      {
+        "id": "diona",
+        "w_id": "sacrificial_bow",
+        "min_c": 6
       }
     ],
     "2": [
       {
         "id": "albedo",
+        "w_id": "harbinger_of_dawn",
         "min_c": 0
       },
       {
-        "id": "barbara",
-        "min_c": 0
+        "id": "xingqiu",
+        "w_id": "sacrificial_sword",
+        "min_c": 2
       },
       {
         "id": "chongyun",
+        "w_id": "wolfs_gravestone",
         "min_c": 2
+      },
+      {
+        "id": "barbara",
+        "w_id": "thrilling_tales_of_dragon_slayers",
+        "min_c": 0
       }
     ],
     "3": [
       {
         "id": "traveler_geo",
+        "w_id": "primordial_jade_cutter",
         "min_c": 6
       },
       {
         "id": "xinyan",
+        "w_id": "wolfs_gravestone",
         "min_c": 4
       }
     ],
     "4": [
       {
         "id": "ningguang",
-        "min_c": 1
+        "w_id": "thrilling_tales_of_dragon_slayers",
+        "min_c": 0
       },
       {
         "id": "noelle",
+        "w_id": "favonius_codex",
         "min_c": 0
+      },
+      {
+        "id": "traveler_anemo",
+        "w_id": "primordial_jade_cutter",
+        "min_c": 6
       }
     ]
   }

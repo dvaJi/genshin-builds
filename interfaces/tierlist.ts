@@ -1,5 +1,6 @@
 interface CharacterTier {
   id: string;
+  w_id: string;
   min_c: number;
 }
 

@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import GenshinData, { Character } from "genshin-data";
+import GenshinData, { Character, Weapon } from "genshin-data";
 
 import CharacterPortrait from "@components/CharacterPortrait";
 import Metadata from "@components/Metadata";
@@ -9,14 +9,16 @@ import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Tierlist } from "interfaces/tierlist";
 import { getLocale } from "@lib/localData";
+import Image from "next/image";
 
 type Props = {
   tierlist: Tierlist;
   charactersMap: Record<string, Pick<Character, "id" | "name" | "element">>;
+  weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
   lngDict: Record<string, string>;
 };
 
-const TierList = ({ tierlist, charactersMap, lngDict }: Props) => {
+const TierList = ({ tierlist, charactersMap, weaponsMap, lngDict }: Props) => {
   const [f, fn] = useIntl(lngDict);
   return (
     <div>
@@ -60,22 +62,32 @@ const TierList = ({ tierlist, charactersMap, lngDict }: Props) => {
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
+          weaponsMap={weaponsMap}
           tier={"0"}
         />
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
+          weaponsMap={weaponsMap}
           tier={"1"}
         />
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
+          weaponsMap={weaponsMap}
           tier={"2"}
         />
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
+          weaponsMap={weaponsMap}
           tier={"3"}
+        />
+        <CharactersTier
+          tierlist={tierlist}
+          characters={charactersMap}
+          weaponsMap={weaponsMap}
+          tier={"4"}
         />
       </div>
     </div>
@@ -84,11 +96,17 @@ const TierList = ({ tierlist, charactersMap, lngDict }: Props) => {
 
 type CharactersTierProps = {
   tierlist: Tierlist;
-  tier: "0" | "1" | "2" | "3";
+  tier: "0" | "1" | "2" | "3" | "4";
   characters: Record<string, Pick<Character, "id" | "name" | "element">>;
+  weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
 };
 
-function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
+function CharactersTier({
+  tierlist,
+  tier,
+  characters,
+  weaponsMap,
+}: CharactersTierProps) {
   return (
     <div className="grid grid-cols-8 gap-4 w-full">
       <div className="p-5 bg bg-vulcan-900 bg-opacity-50">
@@ -101,6 +119,7 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
               <a>
                 <CharacterPortrait
                   character={{ ...characters[t.id], constellationNum: t.min_c }}
+                  weapon={weaponsMap[t.w_id]}
                 />
               </a>
             </Link>
@@ -114,6 +133,7 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
               <a>
                 <CharacterPortrait
                   character={{ ...characters[t.id], constellationNum: t.min_c }}
+                  weapon={weaponsMap[t.w_id]}
                 />
               </a>
             </Link>
@@ -122,11 +142,12 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
       </div>
       <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
         {tierlist.support[tier].map((t) => (
-          <div key={t.id} className="inline-block">
+          <div key={t.id} className="inline-block relative">
             <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
                   character={{ ...characters[t.id], constellationNum: t.min_c }}
+                  weapon={weaponsMap[t.w_id]}
                 />
               </a>
             </Link>
@@ -143,19 +164,42 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const characters = await genshinData.characters({
     select: ["id", "name", "element"],
   });
-  const { default: tierlist = {} } = await import(
+  const weapons = await genshinData.weapons({
+    select: ["id", "name", "rarity"],
+  });
+  const { default: tierlist = {} }: any = await import(
     `../_content/data/tierlist.json`
   );
 
+  const tiers = ["0", "1", "2", "3", "4"];
+
+  const mergeTiers = (col: any) => {
+    let data: any[] = [];
+    tiers.forEach((k) => {
+      data = [...data, ...col[k]];
+    });
+
+    return data;
+  };
+
   const charactersMap: any = {};
-  for (const character of characters) {
-    charactersMap[character.id] = character;
+  const weaponsMap: any = {};
+  const mergedTierlist = [
+    ...mergeTiers(tierlist.maindps),
+    ...mergeTiers(tierlist.subdps),
+    ...mergeTiers(tierlist.support),
+  ];
+
+  for (const tl of mergedTierlist) {
+    charactersMap[tl.id] = characters.find((c) => c.id === tl.id);
+    weaponsMap[tl.w_id] = weapons.find((w) => w.id === tl.w_id);
   }
 
   return {
     props: {
       tierlist,
       charactersMap,
+      weaponsMap,
       lngDict,
     },
     revalidate: 1,
