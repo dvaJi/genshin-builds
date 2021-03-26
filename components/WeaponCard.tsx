@@ -37,7 +37,7 @@ const WeaponCard = ({ weapon }: WeaponCardProps) => {
             <h4 className="font-bold text-white">{weapon.name}</h4>
           </div>
           <p
-            className="text-sm"
+            className="text-sm weapon-bonus"
             dangerouslySetInnerHTML={{
               __html: weapon.bonus || "",
             }}

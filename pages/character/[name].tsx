@@ -93,7 +93,7 @@ const CharacterPage = ({
                     width={32}
                   />
                   <h3 className="text-xl">
-                    <b className="font-semibold">{skill.type}</b>: {skill.name}
+                    {skill.name}
                   </h3>
                 </div>
               }
@@ -277,6 +277,8 @@ const CharacterPage = ({
     </div>
   );
 };
+
+// TODO: ADD TALENT ASCENSION TABLE!!!!!
 
 const generateJsonLd = (locale: string, lngDict: Record<string, string>) => {
   return `{

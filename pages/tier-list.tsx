@@ -100,7 +100,7 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
             <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
-                  character={{ ...characters[t.id], constellation: t.min_c }}
+                  character={{ ...characters[t.id], constellationNum: t.min_c }}
                 />
               </a>
             </Link>
@@ -113,7 +113,7 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
             <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
-                  character={{ ...characters[t.id], constellation: t.min_c }}
+                  character={{ ...characters[t.id], constellationNum: t.min_c }}
                 />
               </a>
             </Link>
@@ -126,7 +126,7 @@ function CharactersTier({ tierlist, tier, characters }: CharactersTierProps) {
             <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
-                  character={{ ...characters[t.id], constellation: t.min_c }}
+                  character={{ ...characters[t.id], constellationNum: t.min_c }}
                 />
               </a>
             </Link>

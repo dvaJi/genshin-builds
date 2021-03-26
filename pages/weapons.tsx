@@ -47,11 +47,23 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
       },
       {
         Header: fStr({ id: "ATK", defaultMessage: "ATK" }),
-        accessor: "base",
+        accessor: "primary",
+        Cell: (row) => <div>{row.value?.value}</div>,
       },
       {
-        Header: fStr({ id: "secondary", defaultMessage: "Secondary" }),
+        Header: fStr({ id: "passive", defaultMessage: "Passive" }),
         accessor: "secondary",
+        Cell: (row) => (
+          <div>
+            {row.value ? (
+              <span>
+                {row.value?.name}: {row.value?.value}
+              </span>
+            ) : (
+              <span />
+            )}
+          </div>
+        ),
       },
       {
         Header: fStr({ id: "passive", defaultMessage: "Passive" }),
@@ -66,17 +78,7 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
             dangerouslySetInnerHTML={{ __html: row.value || "" }}
           />
         ),
-      },
-      {
-        Header: fStr({ id: "location", defaultMessage: "Location" }),
-        accessor: "location",
-        Cell: (row) => (
-          <div
-            className="w-10"
-            dangerouslySetInnerHTML={{ __html: row.value || "" }}
-          />
-        ),
-      },
+      }
     ],
     []
   );

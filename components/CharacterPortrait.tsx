@@ -7,7 +7,7 @@ interface CharacterPortraitProps {
     id: string;
     name: string;
     element?: string;
-    constellation?: number;
+    constellationNum?: number;
   };
 }
 
@@ -28,9 +28,9 @@ const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
               <ElementIcon width={20} height={20} type={character.element} />
             </div>
           )}
-          {character.constellation !== undefined && (
+          {character.constellationNum !== undefined && (
             <div className="absolute bottom-0 right-2/3 bg-vulcan-700 p-1 rounded-full text-xs font-bold text-gray-300">
-              {`C${character.constellation}`}
+              {`C${character.constellationNum}`}
             </div>
           )}
         </div>

@@ -12,6 +12,10 @@
 
 /* Your own custom utilities */
 
+.weapon-bonus > span {
+  font-weight: bold;
+}
+
 /* Elemental Resonances shadows */
 .shadow-enduring-rock {
   box-shadow: 0 0 10px #f59e0b;
