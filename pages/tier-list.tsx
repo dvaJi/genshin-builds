@@ -9,7 +9,6 @@ import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Tierlist } from "interfaces/tierlist";
 import { getLocale } from "@lib/localData";
-import Image from "next/image";
 
 type Props = {
   tierlist: Tierlist;

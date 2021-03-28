@@ -43,11 +43,8 @@ const FoodPage = ({ food, lngDict }: Props) => {
       },
       {
         Header: fStr({ id: "effect", defaultMessage: "Effect" }),
-        accessor: "effect",
-      },
-      {
-        Header: fStr({ id: "character", defaultMessage: "Character" }),
-        accessor: "character",
+        accessor: "results",
+        Cell: (row) => row.value.normal.effect,
       },
     ],
     []

@@ -12,7 +12,7 @@ type Props = {
   lngDict: Record<string, string>;
 };
 
-const AscensionPlanner = ({ characters, weapons, lngDict }: Props) => {
+const AscensionPlanner = ({ characters, weapons }: Props) => {
   const [myplanner, setPlanner] = useRecoilState(planner);
   return (
     <div>
