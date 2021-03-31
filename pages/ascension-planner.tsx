@@ -1,45 +1,95 @@
+import { useState } from "react";
+import Link from "next/link";
+import clsx from "clsx";
 import { GetStaticProps } from "next";
-import { useRecoilState } from "recoil";
+import format from "date-fns/format";
 import GenshinData, { Character, Weapon } from "genshin-data";
 
-import { planner } from "@state/planner";
 import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
+
+import planning from "../_content/data/talents.json";
+import SimpleRarityBox from "@components/SimpleRarityBox";
+import ServerTimers from "@components/ServerTimers";
+import useIntl from "@hooks/use-intl";
 
 type Props = {
   characters: Record<string, Character>;
   weapons: Record<string, Weapon>;
   lngDict: Record<string, string>;
+  planMap: Record<string, any>;
 };
 
-const AscensionPlanner = ({ characters, weapons }: Props) => {
-  const [myplanner, setPlanner] = useRecoilState(planner);
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const C_DOMAINS = ["Forsaken Rift", "Taishan Mansion"];
+const W_DOMAINS = ["Cecilia Garden", "Hidden Palace of Lianshan Formula"];
+
+const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
+  const [currentDay, setCurrentDay] = useState(format(new Date(), "iii"));
+  const [_, fn] = useIntl(lngDict);
   return (
     <div>
       <div>
-        <button
-          onClick={() =>
-            setPlanner((state) => ({
-              ...state,
-              characters: [...state.characters, "amber"],
-            }))
-          }
-        >
-          Add Character
-        </button>
-        <button>Add Weapon</button>
-      </div>
-      <div>
-        <div>
-          {myplanner.characters.map((character) => (
-            <div>{characters[character].name}</div>
+        <ServerTimers />
+        <div className="mb-2">
+          {DAYS.map((day) => (
+            <button
+              key={day}
+              className={clsx("rounded mr-4 p-2 px-4", {
+                "bg-vulcan-700": currentDay === day,
+                "text-white": currentDay === day,
+                "bg-vulcan-800": currentDay !== day,
+              })}
+              onClick={() => setCurrentDay(day)}
+            >
+              {fn({ id: day, defaultMessage: day })}
+            </button>
           ))}
         </div>
-        <div>
-          {myplanner.weapons.map((weapon) => (
-            <div>{weapons[weapon].name}</div>
-          ))}
-        </div>
+        {C_DOMAINS.map((domain) => (
+          <div
+            key={domain}
+            className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
+          >
+            <h2 className="mb-6 text-2xl font-semibold text-gray-200">
+              {fn({ id: domain, defaultMessage: domain })}
+            </h2>
+            <div className="flex flex-wrap justify-center">
+              {planMap[domain][currentDay].map((cId: string) => (
+                <Link key={cId} href={`/character/${cId}`}>
+                  <a>
+                    <SimpleRarityBox
+                      img={`/_assets/characters/${cId}/${cId}_portrait.png`}
+                      rarity={characters[cId].rarity}
+                      name={characters[cId].name}
+                    />
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
+        {W_DOMAINS.map((domain) => (
+          <div
+            key={domain}
+            className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
+          >
+            <h2 className="mb-6 text-2xl font-semibold text-gray-200">
+              {fn({ id: domain, defaultMessage: domain })}
+            </h2>
+            <div className="flex flex-wrap justify-center">
+              {planMap[domain][currentDay].map((cId: string) => (
+                <div key={cId}>
+                  <SimpleRarityBox
+                    img={`/_assets/weapons/${cId}.png`}
+                    rarity={weapons[cId].rarity}
+                    name={weapons[cId].name}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -49,10 +99,10 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
-    select: ["id", "name", "element"],
+    select: ["id", "name", "rarity"],
   });
   const weapons = await genshinData.weapons({
-    select: ["id", "name"],
+    select: ["id", "name", "rarity"],
   });
   const charactersMap = characters.reduce<Record<string, Character>>(
     (map, value) => {
@@ -68,7 +118,12 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   }, {});
 
   return {
-    props: { characters: charactersMap, weapons: weaponsMap, lngDict },
+    props: {
+      characters: charactersMap,
+      weapons: weaponsMap,
+      lngDict,
+      planMap: planning,
+    },
     revalidate: 1,
   };
 };

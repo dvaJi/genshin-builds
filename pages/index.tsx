@@ -1,25 +1,25 @@
 import { GetStaticProps } from "next";
-import GenshinData, { Character } from "genshin-data";
+import GenshinData, { Character, Weapon } from "genshin-data";
 
-import CharactersPage from "./characters";
+import planning from "../_content/data/talents.json";
+
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
+import AscensionPlanner from "./ascension-planner";
 
-type CharactersProps = {
-  charactersByElement: Record<string, Character[]>;
-  elements: string[];
+type Props = {
+  characters: Record<string, Character>;
+  weapons: Record<string, Weapon>;
   lngDict: Record<string, string>;
+  planMap: Record<string, any>;
 };
 
-const IndexPage = ({
-  charactersByElement,
-  elements,
-  lngDict,
-}: CharactersProps) => {
+const IndexPage = ({ characters, weapons, planMap, lngDict }: Props) => {
   return (
-    <CharactersPage
-      charactersByElement={charactersByElement}
-      elements={elements}
+    <AscensionPlanner
+      characters={characters}
+      weapons={weapons}
+      planMap={planMap}
       lngDict={lngDict}
     />
   );
@@ -29,25 +29,31 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
-    select: ["id", "name", "element"],
+    select: ["id", "name", "rarity"],
   });
-  const elements: string[] = [];
-  const charactersByElement = characters.reduce<Record<string, Character[]>>(
+  const weapons = await genshinData.weapons({
+    select: ["id", "name", "rarity"],
+  });
+  const charactersMap = characters.reduce<Record<string, Character>>(
     (map, value) => {
-      if (map[value.element]) {
-        map[value.element].push(value);
-      } else {
-        elements.push(value.element);
-        map[value.element] = [value];
-      }
-
+      map[value.id] = value;
       return map;
     },
     {}
   );
 
+  const weaponsMap = weapons.reduce<Record<string, Weapon>>((map, value) => {
+    map[value.id] = value;
+    return map;
+  }, {});
+
   return {
-    props: { charactersByElement, elements, lngDict },
+    props: {
+      characters: charactersMap,
+      weapons: weaponsMap,
+      lngDict,
+      planMap: planning,
+    },
     revalidate: 1,
   };
 };
