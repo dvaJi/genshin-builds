@@ -104,7 +104,7 @@ const CharacterPage = ({
                 </div>
               }
             >
-              <div dangerouslySetInnerHTML={{ __html: skill.description }} />
+              <div className="skill-description" dangerouslySetInnerHTML={{ __html: skill.description }} />
             </Collapsible>
           ))}
         </div>

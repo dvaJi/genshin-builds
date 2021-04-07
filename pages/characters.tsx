@@ -79,9 +79,8 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name", "element"],
   });
   const elements: string[] = [];
-  const charactersByElement = characters
-    .filter((c) => c.id !== "rosaria")
-    .reduce<Record<string, Character[]>>((map, value) => {
+  const charactersByElement = characters.reduce<Record<string, Character[]>>(
+    (map, value) => {
       if (map[value.element]) {
         map[value.element].push(value);
       } else {
@@ -90,7 +89,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       }
 
       return map;
-    }, {});
+    },
+    {}
+  );
 
   const common = require(`../_content/data/common_${locale}.json`);
 

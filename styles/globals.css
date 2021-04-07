@@ -12,7 +12,8 @@
 
 /* Your own custom utilities */
 
-.weapon-bonus > span {
+.weapon-bonus > span,
+.skill-description > span {
   font-weight: bold;
 }
 
