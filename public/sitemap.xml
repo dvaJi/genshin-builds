@@ -4,6 +4,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ascension-planner</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/characters</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -21,6 +25,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/artifacts</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/ascension-planner</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -105,6 +113,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/character/razor</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/character/rosaria</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -196,6 +208,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/ascension-planner</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -277,6 +293,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/character/razor</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/character/rosaria</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -380,6 +400,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/ascension-planner</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -461,6 +485,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/character/razor</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/rosaria</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
