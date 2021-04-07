@@ -15,9 +15,16 @@ type Props = {
   charactersMap: Record<string, Pick<Character, "id" | "name" | "element">>;
   weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
   lngDict: Record<string, string>;
+  common: Record<string, string>;
 };
 
-const TierList = ({ tierlist, charactersMap, weaponsMap, lngDict }: Props) => {
+const TierList = ({
+  tierlist,
+  charactersMap,
+  weaponsMap,
+  lngDict,
+  common,
+}: Props) => {
   const [f, fn] = useIntl(lngDict);
   return (
     <div>
@@ -63,30 +70,35 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, lngDict }: Props) => {
           characters={charactersMap}
           weaponsMap={weaponsMap}
           tier={"0"}
+          common={common}
         />
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
           weaponsMap={weaponsMap}
           tier={"1"}
+          common={common}
         />
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
           weaponsMap={weaponsMap}
           tier={"2"}
+          common={common}
         />
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
           weaponsMap={weaponsMap}
           tier={"3"}
+          common={common}
         />
         <CharactersTier
           tierlist={tierlist}
           characters={charactersMap}
           weaponsMap={weaponsMap}
           tier={"4"}
+          common={common}
         />
       </div>
     </div>
@@ -98,6 +110,7 @@ type CharactersTierProps = {
   tier: "0" | "1" | "2" | "3" | "4";
   characters: Record<string, Pick<Character, "id" | "name" | "element">>;
   weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
+  common: Record<string, string>;
 };
 
 function CharactersTier({
@@ -105,6 +118,7 @@ function CharactersTier({
   tier,
   characters,
   weaponsMap,
+  common,
 }: CharactersTierProps) {
   return (
     <div className="grid grid-cols-8 gap-4 w-full">
@@ -117,7 +131,11 @@ function CharactersTier({
             <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
-                  character={{ ...characters[t.id], constellationNum: t.min_c }}
+                  character={{
+                    ...characters[t.id],
+                    constellationNum: t.min_c,
+                    element: common[characters[t.id].element],
+                  }}
                   weapon={weaponsMap[t.w_id]}
                 />
               </a>
@@ -131,7 +149,11 @@ function CharactersTier({
             <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
-                  character={{ ...characters[t.id], constellationNum: t.min_c }}
+                  character={{
+                    ...characters[t.id],
+                    constellationNum: t.min_c,
+                    element: common[characters[t.id].element],
+                  }}
                   weapon={weaponsMap[t.w_id]}
                 />
               </a>
@@ -145,7 +167,11 @@ function CharactersTier({
             <Link href={`/character/${t.id}`}>
               <a>
                 <CharacterPortrait
-                  character={{ ...characters[t.id], constellationNum: t.min_c }}
+                  character={{
+                    ...characters[t.id],
+                    constellationNum: t.min_c,
+                    element: common[characters[t.id].element],
+                  }}
                   weapon={weaponsMap[t.w_id]}
                 />
               </a>
@@ -169,6 +195,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const { default: tierlist = {} }: any = await import(
     `../_content/data/tierlist.json`
   );
+  const common = require(`../_content/data/common_${locale}.json`);
 
   const tiers = ["0", "1", "2", "3", "4"];
 
@@ -200,6 +227,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       charactersMap,
       weaponsMap,
       lngDict,
+      common,
     },
     revalidate: 1,
   };

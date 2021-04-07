@@ -15,11 +15,12 @@ import SearchInput from "@components/SearchInput";
 interface WeaponsPageProps {
   weapons: Weapon[];
   lngDict: Record<string, string>;
+  common: Record<string, string>;
 }
 
 const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
 
-const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
+const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
   const [refinement, setRefinement] = useState(1);
@@ -58,7 +59,7 @@ const WeaponsPage = ({ weapons, lngDict }: WeaponsPageProps) => {
           }
 
           if (typeFilter) {
-            typeFil = w.type === typeFilter;
+            typeFil = common[w.type] === typeFilter;
           }
 
           return nameFilter && typeFil;
@@ -231,7 +232,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons();
 
-  return { props: { weapons, lngDict }, revalidate: 1 };
+  const common = require(`../_content/data/common_${locale}.json`);
+
+  return { props: { weapons, lngDict, common }, revalidate: 1 };
 };
 
 export default WeaponsPage;

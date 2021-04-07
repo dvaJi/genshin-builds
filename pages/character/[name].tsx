@@ -24,6 +24,7 @@ interface CharacterPageProps {
   artifacts: Record<string, Artifact>;
   lngDict: Record<string, string>;
   locale: string;
+  common: Record<string, string>;
 }
 
 const CharacterPage = ({
@@ -33,12 +34,13 @@ const CharacterPage = ({
   artifacts,
   lngDict,
   locale,
+  common,
 }: CharacterPageProps) => {
   const setBg = useSetRecoilState(appBackgroundStyleState);
   const [f, fn] = useIntl(lngDict);
   useEffect(() => {
     setBg({
-      image: `/_assets/regions/${character.region}_d.jpg`,
+      image: `/_assets/regions/${common[character.region]}_d.jpg`,
       gradient: {
         background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
@@ -70,7 +72,11 @@ const CharacterPage = ({
               <h1 className="text-3xl mr-2">
                 {character.name} ({character.rarity}★)
               </h1>
-              <ElementIcon type={character.element} width={30} height={30} />
+              <ElementIcon
+                type={common[character.element]}
+                width={30}
+                height={30}
+              />
             </div>
             <div>{character.description}</div>
           </div>
@@ -88,13 +94,13 @@ const CharacterPage = ({
                 <div className="flex self-center">
                   <img
                     className="block mr-2"
-                    src={`/_assets/characters/${character.id}/${skill.id}.png`}
+                    src={`/_assets/characters/${
+                      character.id
+                    }/${skill.id.replace("normal_attack_", "")}.png`}
                     height={32}
                     width={32}
                   />
-                  <h3 className="text-xl">
-                    {skill.name}
-                  </h3>
+                  <h3 className="text-xl">{skill.name}</h3>
                 </div>
               }
             >
@@ -375,6 +381,8 @@ export const getStaticProps: GetStaticProps = async ({
     });
   }
 
+  const common = require(`../../_content/data/common_${locale}.json`);
+
   return {
     props: {
       character,
@@ -383,6 +391,7 @@ export const getStaticProps: GetStaticProps = async ({
       artifacts,
       lngDict,
       locale,
+      common,
     },
     revalidate: 1,
   };

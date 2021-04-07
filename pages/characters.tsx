@@ -14,12 +14,14 @@ type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
   elements: string[];
   lngDict: Record<string, string>;
+  common: Record<string, string>;
 };
 
 const CharactersPage = ({
   charactersByElement,
   elements,
   lngDict,
+  common,
 }: CharactersProps) => {
   const [f, fn] = useIntl(lngDict);
   return (
@@ -46,7 +48,7 @@ const CharactersPage = ({
             className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
           >
             <div className="flex self-center mb-2">
-              <ElementIcon type={element} height={32} width={32} />
+              <ElementIcon type={common[element]} height={32} width={32} />
               <h3 className="text-2xl font-bold ml-2">
                 {f({ id: element, defaultMessage: element })}
               </h3>
@@ -56,7 +58,9 @@ const CharactersPage = ({
               {charactersByElement[element].map((character) => (
                 <Link key={character.id} href={`/character/${character.id}`}>
                   <a>
-                    <CharacterPortrait character={character} />
+                    <CharacterPortrait
+                      character={{ ...character, element: common[element] }}
+                    />
                   </a>
                 </Link>
               ))}
@@ -88,8 +92,10 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       return map;
     }, {});
 
+  const common = require(`../_content/data/common_${locale}.json`);
+
   return {
-    props: { charactersByElement, elements, lngDict },
+    props: { charactersByElement, elements, lngDict, common },
     revalidate: 1,
   };
 };
