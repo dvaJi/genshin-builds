@@ -64,6 +64,11 @@
         "id": "fischl",
         "w_id": "skyward_harp",
         "min_c": 6
+      },
+      {
+        "id": "rosaria",
+        "w_id": "staff_of_homa",
+        "min_c": 6
       }
     ],
     "3": [
@@ -186,6 +191,11 @@
         "id": "chongyun",
         "w_id": "wolfs_gravestone",
         "min_c": 2
+      },
+      {
+        "id": "rosaria",
+        "w_id": "staff_of_homa",
+        "min_c": 2
       }
     ],
     "3": [
@@ -270,6 +280,11 @@
       {
         "id": "diona",
         "w_id": "sacrificial_bow",
+        "min_c": 6
+      },
+      {
+        "id": "rosaria",
+        "w_id": "staff_of_homa",
         "min_c": 6
       }
     ],
