@@ -1,15 +1,27 @@
+import clsx from "clsx";
 import { memo } from "react";
 
 type Props = {
   img: string;
   rarity: number;
   name: string;
+  size?: number;
+  className?: string;
 };
 
-const SimpleRarityBox = ({ name, img, rarity }: Props) => {
+const SimpleRarityBox = ({
+  name,
+  img,
+  rarity,
+  size = 24,
+  className,
+}: Props) => {
   return (
     <div
-      className="relative w-24 h-24 m-1 bg-cover overflow-hidden text-center rounded group"
+      className={clsx(
+        `relative block w-14 h-14 lg:w-${size} lg:h-${size} m-1 bg-cover overflow-hidden text-center rounded group`,
+        className
+      )}
       style={{
         backgroundImage: `url(/_assets/bg_${rarity}star.png)`,
       }}

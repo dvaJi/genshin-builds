@@ -22,7 +22,7 @@ interface ArtifactRecommendedStatsProps {
 const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
   return (
     <div className="w-full flex flex-row py-2">
-      <div className="flex-1 text-center bg-vulcan-800 border-vulcan-700 rounded mr-1 py-2">
+      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
         <div>
           <GiCottonFlower className="inline text-xl text-white" />
         </div>
@@ -32,7 +32,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
           ))}
         </div>
       </div>
-      <div className="flex-1 text-center bg-vulcan-800 border-vulcan-700 rounded mr-1 py-2">
+      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
         <div>
           <GiFeather className="inline text-xl text-white" />
         </div>
@@ -42,7 +42,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
           ))}
         </div>
       </div>
-      <div className="flex-1 text-center bg-vulcan-800 border-vulcan-700 rounded mr-1 py-2">
+      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
         <div>
           <GiSandsOfTime className="inline text-xl text-white" />
         </div>
@@ -52,7 +52,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
           ))}
         </div>
       </div>
-      <div className="flex-1 text-center bg-vulcan-800 border-vulcan-700 rounded mr-1 py-2">
+      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
         <div>
           <RiGobletFill className="inline text-xl text-white" />
         </div>
@@ -62,7 +62,7 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
           ))}
         </div>
       </div>
-      <div className="flex-1 text-center bg-vulcan-800 border-vulcan-700 rounded py-2">
+      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded py-2">
         <div>
           <GiCrenelCrown className="inline text-xl text-white" />
         </div>

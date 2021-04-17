@@ -1,21 +1,33 @@
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { GetStaticProps, GetStaticPaths } from "next";
-import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
+import GenshinData, {
+  Artifact,
+  Character,
+  CommonMaterial,
+  ElementalStoneMaterial,
+  JewelMaterial,
+  LocalMaterial,
+  Weapon,
+} from "genshin-data";
+import clsx from "clsx";
 
 import useIntl from "@hooks/use-intl";
 
 import Metadata from "@components/Metadata";
 import ElementIcon from "@components/ElementIcon";
 import Collapsible from "@components/Collapsible";
-import WeaponCard from "@components/WeaponCard";
-import ArtifactCard from "@components/ArtifactCard";
+import CharacterSkill from "@components/CharacterSkill";
+import PassiveSkill from "@components/PassiveSkill";
+import ConstellationCard from "@components/ConstellationCard";
+import CharacterBuildCard from "@components/CharacterBuildCard";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getCharacterBuild, getLocale } from "@lib/localData";
 import { Build } from "interfaces/build";
 import { appBackgroundStyleState } from "@state/background-atom";
-import ArtifactRecommendedStats from "@components/ArtifactRecommendedStats";
+import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
+import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
 
 interface CharacterPageProps {
   character: Character;
@@ -25,6 +37,10 @@ interface CharacterPageProps {
   lngDict: Record<string, string>;
   locale: string;
   common: Record<string, string>;
+  materials: Record<
+    string,
+    CommonMaterial | ElementalStoneMaterial | LocalMaterial | JewelMaterial
+  >;
 }
 
 const CharacterPage = ({
@@ -35,12 +51,15 @@ const CharacterPage = ({
   lngDict,
   locale,
   common,
+  materials,
 }: CharacterPageProps) => {
   const setBg = useSetRecoilState(appBackgroundStyleState);
   const [f, fn] = useIntl(lngDict);
   useEffect(() => {
     setBg({
-      image: `/_assets/regions/${common[character.region]}_d.jpg`,
+      image: `/_assets/regions/${
+        common[character.region] || "Mondstadt"
+      }_d.jpg`,
       gradient: {
         background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
@@ -82,203 +101,100 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
-      <div className="min-w-0 p-4 lg:mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
-        <div className="mb-4">
-          <h2 className="text-3xl mb-2">
-            {f({ id: "character.skills", defaultMessage: "Skills" })}
-          </h2>
-          {character.skills.map((skill) => (
-            <Collapsible
-              key={skill.id}
-              text={
-                <div className="flex self-center">
-                  <img
-                    className="block mr-2"
-                    src={`/_assets/characters/${
-                      character.id
-                    }/${skill.id.replace("normal_attack_", "")}.png`}
-                    height={32}
-                    width={32}
-                  />
-                  <h3 className="text-xl">{skill.name}</h3>
-                </div>
-              }
-            >
-              <div className="skill-description" dangerouslySetInnerHTML={{ __html: skill.description }} />
-            </Collapsible>
-          ))}
-        </div>
-        <div className="mb-4">
-          <h2 className="text-3xl mb-2">
-            {f({ id: "character.passives", defaultMessage: "Passives" })}
-          </h2>
-          {character.passives.map((passive) => (
-            <Collapsible
-              key={passive.id}
-              text={
-                <div className="flex self-center">
-                  <img
-                    className="block mr-2"
-                    src={`/_assets/characters/${character.id}/${passive.id}.png`}
-                    height={32}
-                    width={32}
-                  />
-                  <h3 className="text-xl">{passive.name}</h3>
-                </div>
-              }
-            >
-              <div dangerouslySetInnerHTML={{ __html: passive.description }} />
-            </Collapsible>
-          ))}
-        </div>
-        <div className="mb-4">
-          <h2 className="text-3xl mb-2">
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+        {f({ id: "character.skills", defaultMessage: "Skills" })}
+      </h2>
+      <div
+        className={clsx(
+          "grid grid-cols-1 gap-4 w-full justify-center mb-4",
+          character.skills.length > 3
+            ? "lg:grid-cols-3 xl:grid-cols-4"
+            : "lg:grid-cols-3"
+        )}
+      >
+        {character.skills.map((skill) => (
+          <CharacterSkill
+            key={skill.id}
+            characterId={character.id}
+            skill={skill}
+          />
+        ))}
+      </div>
+      {builds && (
+        <div className="mb-4 mx-4 lg:mx-0">
+          <h2 className="text-3xl mb-3">
             {f({
-              id: "character.constellations",
-              defaultMessage: "Constellations",
+              id: "character.builds",
+              defaultMessage: "Builds",
             })}
           </h2>
-          {character.constellations.map((constellation) => (
+          {builds.map((build) => (
             <Collapsible
-              key={constellation.id}
-              text={
-                <div className="flex self-center">
-                  <img
-                    className="block mr-2"
-                    src={`/_assets/characters/${character.id}/${constellation.id}.png`}
-                    height={32}
-                    width={32}
-                  />
-                  <h3 className="text-xl">
-                    {constellation.level}: {constellation.name}
-                  </h3>
-                </div>
-              }
+              key={build.id}
+              text={<h3 className="text-2xl">{build.role}</h3>}
+              defaultOpen={true}
+              className="bg-vulcan-800 shadow-lg mb-4"
             >
-              <div
-                dangerouslySetInnerHTML={{ __html: constellation.description }}
+              <CharacterBuildCard
+                build={build}
+                artifacts={artifacts}
+                weapons={weapons}
+                f={f}
               />
             </Collapsible>
           ))}
         </div>
-        {builds && (
-          <div className="mb-4">
-            <h2 className="text-3xl mb-3">
-              {f({
-                id: "character.builds",
-                defaultMessage: "Builds",
-              })}
-            </h2>
-            {builds.map((build) => (
-              <Collapsible
-                key={build.id}
-                text={<h3 className="text-2xl">{build.role}</h3>}
-                defaultOpen={true}
-              >
-                <div className="">
-                  {/* <p>{build.description}</p> */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <div className="flex flex-wrap w-full lg:w-4/5 pr-2 content-start">
-                      <div className="text-xl mb-2 font-semibold">
-                        {f({
-                          id: "weapons",
-                          defaultMessage: "Weapons",
-                        })}
-                        :
-                      </div>
-                      <div>
-                        {build.weapons
-                          .map<ReactNode>((weapon) => (
-                            <WeaponCard
-                              key={weapon.id}
-                              weapon={weapons[weapon.id]}
-                            />
-                          ))
-                          .reduce((prev, curr, i) => [
-                            prev,
-                            <div
-                              key={`art_divider_${i}`}
-                              className="build-option-divider"
-                            >
-                              {f({
-                                id: "or",
-                                defaultMessage: "Or",
-                              })}
-                            </div>,
-                            curr,
-                          ])}
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap w-full lg:w-4/5 ml-2 content-start">
-                      <div className="text-xl mb-2 font-semibold">
-                        {f({
-                          id: "artifacts",
-                          defaultMessage: "Artifacts",
-                        })}
-                        :
-                      </div>
-                      <div className="w-full mb-3">
-                        <h2 className="font-bold">
-                          {f({
-                            id: "character.recommended_primary_stats",
-                            defaultMessage: "Recommended Primary Stats",
-                          })}
-                        </h2>
-                        <ArtifactRecommendedStats stats={build.stats} />
-                        <div>
-                          <h2 className="font-bold">
-                            {f({
-                              id: "character.substats_priority",
-                              defaultMessage: "Substats priority",
-                            })}
-                          </h2>
-                          <div className="text-sm">
-                            {build.stats_priority.join(" / ")}
-                          </div>
-                        </div>
-                      </div>
-                      {build.sets
-                        .map<ReactNode>((set) => (
-                          <div key={`${set.set_1.id}-${set.set_2?.id}`}>
-                            {set.set_2 ? (
-                              <div className="flex flex-row w-full">
-                                <ArtifactCard
-                                  artifact={artifacts[set.set_1.id]}
-                                  pieces={2}
-                                />
-                                <ArtifactCard
-                                  artifact={artifacts[set.set_2.id]}
-                                  pieces={2}
-                                />
-                              </div>
-                            ) : (
-                              <ArtifactCard
-                                artifact={artifacts[set.set_1.id]}
-                                pieces={4}
-                              />
-                            )}
-                          </div>
-                        ))
-                        .reduce((prev, curr, i) => [
-                          prev,
-                          <div
-                            key={`art_divider_${i}`}
-                            className="build-option-divider"
-                          >
-                            {f({
-                              id: "or",
-                              defaultMessage: "Or",
-                            })}
-                          </div>,
-                          curr,
-                        ])}
-                    </div>
-                  </div>
-                </div>
-              </Collapsible>
-            ))}
-          </div>
-        )}
+      )}
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+        {f({ id: "character.passives", defaultMessage: "Passives" })}
+      </h2>
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-4">
+        {character.passives.map((passive) => (
+          <PassiveSkill
+            key={passive.id}
+            characterId={character.id}
+            passive={passive}
+          />
+        ))}
+      </div>
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+        {f({
+          id: "character.constellations",
+          defaultMessage: "Constellations",
+        })}
+      </h2>
+      <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 w-full justify-center mb-4">
+        {character.constellations.map((constellation) => (
+          <ConstellationCard
+            key={constellation.id}
+            characterId={character.id}
+            constellation={constellation}
+          />
+        ))}
+      </div>
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+        {f({
+          id: "character.ascension_materials",
+          defaultMessage: "Ascension Materials",
+        })}
+      </h2>
+      <div className="bg-vulcan-800 rounded shadow-lg mb-4 mx-4 lg:mx-0">
+        <CharacterAscencionMaterials
+          ascension={character.ascension}
+          materials={materials}
+        />
+      </div>
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+        {f({
+          id: "character.talent_materials",
+          defaultMessage: "Talent Materials",
+        })}
+      </h2>
+      <div className="bg-vulcan-800 rounded shadow-lg mx-4 lg:mx-0">
+        <CharacterTalentMaterials
+          talents={character.talent_materials}
+          materials={materials}
+        />
       </div>
     </div>
   );
@@ -330,10 +246,19 @@ export const getStaticProps: GetStaticProps = async ({
   const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
+  const jewelsMaterialsList = await genshinData.jewelsMaterials();
+  const commonList = await genshinData.commonMaterials();
+  const elementalStoneMaterialsList = await genshinData.elementalStoneMaterials();
+  const localMaterialsList = await genshinData.localMaterials();
+  const talentLvlUpMaterialsList = await genshinData.talentLvlUpMaterials();
 
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact> = {};
   let builds: Build[] = [];
+  let materials: Record<
+    string,
+    CommonMaterial | ElementalStoneMaterial | LocalMaterial | JewelMaterial
+  > = {};
 
   if (buildsOld) {
     const weaponsIds: string[] = [];
@@ -381,6 +306,42 @@ export const getStaticProps: GetStaticProps = async ({
     });
   }
 
+  character.ascension.forEach((asce) => {
+    materials[asce.mat1.id] = jewelsMaterialsList.find(
+      (j) => j.id === asce.mat1.id
+    ) as JewelMaterial;
+    materials[asce.mat3.id] = localMaterialsList.find(
+      (j) => j.id === asce.mat3.id
+    ) as LocalMaterial;
+    materials[asce.mat4.id] = commonList.find(
+      (j) => j.id === asce.mat4.id
+    ) as CommonMaterial;
+
+    if (asce.mat2 && asce.mat2.id) {
+      materials[asce.mat2.id] = elementalStoneMaterialsList.find(
+        (j) => j.id === asce.mat2?.id
+      ) as ElementalStoneMaterial;
+    }
+  });
+
+  character.talent_materials.forEach((tal) => {
+    materials[tal.items[0].id] = talentLvlUpMaterialsList.find(
+      (j) => j.id === tal.items[0].id
+    ) as JewelMaterial;
+
+    if (tal.items[2]) {
+      materials[tal.items[2].id] = talentLvlUpMaterialsList.find(
+        (j) => j.id === tal.items[2].id
+      ) as JewelMaterial;
+    }
+
+    if (tal.items[3]) {
+      materials[tal.items[3].id] = talentLvlUpMaterialsList.find(
+        (j) => j.id === tal.items[3].id
+      ) as JewelMaterial;
+    }
+  });
+
   const common = require(`../../_content/data/common_${locale}.json`);
 
   return {
@@ -392,6 +353,7 @@ export const getStaticProps: GetStaticProps = async ({
       lngDict,
       locale,
       common,
+      materials,
     },
     revalidate: 1,
   };

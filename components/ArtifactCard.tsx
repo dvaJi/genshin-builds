@@ -9,7 +9,7 @@ interface ArtifactCardProps {
 
 const ArtifactCard = ({ artifact, pieces }: ArtifactCardProps) => {
   return (
-    <div className="bg-vulcan-800 border border-vulcan-700 mb-2 rounded mr-1 w-full">
+    <div className="bg-vulcan-900 border border-vulcan-700 mb-2 rounded mr-1 w-full">
       <div className="flex flex-col lg:flex-row h-full w-full">
         <div
           className="flex lg:flex-none bg-cover p-3 rounded lg:rounded-bl lg:rounded-tr-none rounded-bl-none rounded-br-none items-center justify-center"

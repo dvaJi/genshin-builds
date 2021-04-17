@@ -48,7 +48,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             style={{ ...appBackgroundStyle.gradient }}
           ></div>
         </div>
-        <main className="container mb-8 mx-auto z-10 text-gray-400">
+        <main className="container lg:px-20 mb-8 mx-auto z-10 text-gray-400">
           <Component {...pageProps} />
         </main>
       </div>

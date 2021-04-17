@@ -1,6 +1,7 @@
-import { memo, ReactNode, useState } from "react";
+import { memo, ReactNode } from "react";
 import { MdExpandMore } from "react-icons/md";
 import clsx from "clsx";
+import { useToggle } from "@hooks/use-toggle";
 
 interface CollapsibleProps {
   text: ReactNode;
@@ -15,17 +16,13 @@ const Collapsible = ({
   className,
   defaultOpen = false,
 }: CollapsibleProps) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const [isOpen, toggle] = useToggle(defaultOpen);
+
   return (
-    <div
-      className={clsx(
-        "bg-vulcan-900 border border-vulcan-900 mb-2 rounded",
-        className
-      )}
-    >
+    <div className={clsx("rounded", className)}>
       <div
         className="w-full py-1 px-2 hover:bg-vulcan-700 rounded cursor-pointer relative"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggle}
       >
         <span className="w-full">{text}</span>
         <span

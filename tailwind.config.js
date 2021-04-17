@@ -49,6 +49,12 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    variants: {
+      extend: {
+        backgroundColor: ["odd"],
+      },
+    },
+  },
   plugins: [],
 };
