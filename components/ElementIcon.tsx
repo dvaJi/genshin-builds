@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { IMGS_CDN } from "@lib/constants";
 import { memo } from "react";
 
 interface ElementIconProps {
@@ -14,8 +14,8 @@ const ElementIcon = ({
   height = 64,
   className,
 }: ElementIconProps) => (
-  <Image
-    src={`/_assets/elements/${type}.png`}
+  <img
+    src={`${IMGS_CDN}/elements/${type}.png`}
     alt={type}
     className={className}
     width={width}

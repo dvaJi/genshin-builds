@@ -7,6 +7,7 @@ import {
 } from "genshin-data";
 import clsx from "clsx";
 import SimpleRarityBox from "./SimpleRarityBox";
+import { IMGS_CDN } from "@lib/constants";
 
 type AscensionMaterial = {
   id: string;
@@ -47,7 +48,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
           </div>
           <div className="flex justify-center items-center">
             <SimpleRarityBox
-              img={`/_assets/materials/mora.png`}
+              img={`${IMGS_CDN}/materials/mora.png`}
               name={talent.cost.toString()}
               rarity={1}
               size={16}
@@ -56,7 +57,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`/_assets/talent_lvl_up_materials/${talent.items[0].id}.png`}
+              img={`${IMGS_CDN}/talent_lvl_up_materials/${talent.items[0].id}.png`}
               name={talent.items[0].amount.toString()}
               rarity={materials[talent.items[0].id].rarity || 1}
               size={16}
@@ -65,7 +66,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`/_assets/common_materials/${talent.items[1].id}.png`}
+              img={`${IMGS_CDN}/common_materials/${talent.items[1].id}.png`}
               name={talent.items[1].amount.toString()}
               rarity={materials[talent.items[1].id]?.rarity || 1}
               size={16}
@@ -76,7 +77,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
             {talent.items.length > 2 && (
               <>
                 <SimpleRarityBox
-                  img={`/_assets/talent_lvl_up_materials/${talent.items[2].id}.png`}
+                  img={`${IMGS_CDN}/talent_lvl_up_materials/${talent.items[2].id}.png`}
                   name={talent.items[2].amount.toString()}
                   rarity={materials[talent.items[2].id].rarity || 1}
                   size={16}
@@ -89,7 +90,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
             {talent.items.length > 3 && (
               <>
                 <SimpleRarityBox
-                  img={`/_assets/talent_lvl_up_materials/${talent.items[3].id}.png`}
+                  img={`${IMGS_CDN}/talent_lvl_up_materials/${talent.items[3].id}.png`}
                   name={talent.items[3].amount.toString()}
                   rarity={materials[talent.items[3].id].rarity || 1}
                   size={16}

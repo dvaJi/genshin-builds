@@ -1,8 +1,8 @@
 import { memo } from "react";
-import Image from "next/image";
 import { Weapon } from "genshin-data";
 
 import StarRarity from "./StarRarity";
+import { IMGS_CDN } from "@lib/constants";
 
 interface WeaponCardProps {
   weapon: Weapon;
@@ -15,11 +15,11 @@ const WeaponCard = ({ weapon }: WeaponCardProps) => {
         <div
           className="flex flex-none relative bg-cover p-1 rounded rounded-tr-none rounded-br-none items-center justify-center"
           style={{
-            backgroundImage: `url(/_assets/bg_${weapon.rarity}star.png)`,
+            backgroundImage: `url(${IMGS_CDN}/bg_${weapon.rarity}star.png)`,
           }}
         >
-          <Image
-            src={`/_assets/weapons/${weapon.id}.png`}
+          <img
+            src={`${IMGS_CDN}/weapons/${weapon.id}.png`}
             height={92}
             width={92}
             alt={weapon.name}

@@ -1,6 +1,6 @@
 import { memo } from "react";
-import Image from "next/image";
 import { Artifact } from "genshin-data";
+import { IMGS_CDN } from "@lib/constants";
 
 interface ArtifactCardProps {
   artifact: Artifact;
@@ -14,11 +14,11 @@ const ArtifactCard = ({ artifact, pieces }: ArtifactCardProps) => {
         <div
           className="flex lg:flex-none bg-cover p-3 rounded lg:rounded-bl lg:rounded-tr-none rounded-bl-none rounded-br-none items-center justify-center"
           style={{
-            backgroundImage: `url(/_assets/bg_${artifact.max_rarity}star.png)`,
+            backgroundImage: `url(${IMGS_CDN}/bg_${artifact.max_rarity}star.png)`,
           }}
         >
-          <Image
-            src={`/_assets/artifacts/${artifact.id}.png`}
+          <img
+            src={`${IMGS_CDN}/artifacts/${artifact.id}.png`}
             height={76}
             width={76}
             alt={artifact.name}

@@ -1,6 +1,6 @@
 import { memo } from "react";
-import Image from "next/image";
 import ElementIcon from "./ElementIcon";
+import { IMGS_CDN } from "@lib/constants";
 
 interface CharacterPortraitProps {
   character: {
@@ -21,9 +21,9 @@ const CharacterPortrait = ({ character, weapon }: CharacterPortraitProps) => {
     <div className="text-gray-400 cursor-pointer w-32 transition-all duration-200 ease-linear transform hover:scale-105 hover:text-white">
       <div>
         <div className="text-center relative group">
-          <Image
-            className="rounded-full shadow-lg"
-            src={`/_assets/characters/${character.id}/${character.id}_portrait.png`}
+          <img
+            className="inline-block rounded-full shadow-lg"
+            src={`${IMGS_CDN}/characters/${character.id}/${character.id}_portrait.png`}
             alt={character.name}
             width={80}
             height={80}
@@ -42,12 +42,12 @@ const CharacterPortrait = ({ character, weapon }: CharacterPortraitProps) => {
             <div
               className="absolute bg-cover rounded bottom-0 left-2/3 transition-opacity delay-100 opacity-0 group-hover:opacity-100"
               style={{
-                backgroundImage: `url(/_assets/bg_${weapon.rarity}star.png)`,
+                backgroundImage: `url(${IMGS_CDN}/bg_${weapon.rarity}star.png)`,
                 height: 32,
               }}
             >
-              <Image
-                src={`/_assets/weapons/${weapon.id}.png`}
+              <img
+                src={`${IMGS_CDN}/weapons/${weapon.id}.png`}
                 height={32}
                 width={32}
                 alt={weapon.name}

@@ -28,6 +28,7 @@ import { Build } from "interfaces/build";
 import { appBackgroundStyleState } from "@state/background-atom";
 import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
 import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
+import { IMGS_CDN } from "@lib/constants";
 
 interface CharacterPageProps {
   character: Character;
@@ -57,7 +58,7 @@ const CharacterPage = ({
   const [f, fn] = useIntl(lngDict);
   useEffect(() => {
     setBg({
-      image: `/_assets/regions/${
+      image: `${IMGS_CDN}/regions/${
         common[character.region] || "Mondstadt"
       }_d.jpg`,
       gradient: {
@@ -82,7 +83,7 @@ const CharacterPage = ({
           <div className="flex-none relative mr-2 lg:mr-5">
             <img
               className="w-24 h-24 bg-vulcan-800 p-1 rounded-full border border-gray-900"
-              src={`/_assets/characters/${character.id}/${character.id}_portrait.png`}
+              src={`${IMGS_CDN}/characters/${character.id}/${character.id}_portrait.png`}
               alt={character.name}
             />
           </div>

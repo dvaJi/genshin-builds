@@ -12,6 +12,7 @@ import planning from "../_content/data/talents.json";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import ServerTimers from "@components/ServerTimers";
 import useIntl from "@hooks/use-intl";
+import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   characters: Record<string, Character>;
@@ -59,7 +60,7 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
                 <Link key={cId} href={`/character/${cId}`}>
                   <a>
                     <SimpleRarityBox
-                      img={`/_assets/characters/${cId}/${cId}_portrait.png`}
+                      img={`${IMGS_CDN}/characters/${cId}/${cId}_portrait.png`}
                       rarity={characters[cId].rarity}
                       name={characters[cId].name}
                     />
@@ -81,7 +82,7 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
               {planMap[domain][currentDay].map((cId: string) => (
                 <div key={cId}>
                   <SimpleRarityBox
-                    img={`/_assets/weapons/${cId}.png`}
+                    img={`${IMGS_CDN}/weapons/${cId}.png`}
                     rarity={weapons[cId].rarity}
                     name={weapons[cId].name}
                   />

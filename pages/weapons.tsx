@@ -11,6 +11,7 @@ import { getLocale } from "@lib/localData";
 import useDebounce from "@hooks/use-debounce";
 import Crement from "@components/Crement";
 import SearchInput from "@components/SearchInput";
+import { IMGS_CDN } from "@lib/constants";
 
 interface WeaponsPageProps {
   weapons: Weapon[];
@@ -121,7 +122,7 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
                 >
                   <img
                     className="w-10 h-10"
-                    src={`/_assets/weapons_type/${type}.png`}
+                    src={`${IMGS_CDN}/weapons_type/${type}.png`}
                   />
                 </button>
               ))}
@@ -165,11 +166,11 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
               <div
                 className="flex flex-none relative bg-cover rounded rounded-tr-none rounded-br-none items-center justify-center"
                 style={{
-                  backgroundImage: `url(/_assets/bg_${weapon.rarity}star.png)`,
+                  backgroundImage: `url(${IMGS_CDN}/bg_${weapon.rarity}star.png)`,
                 }}
               >
                 <img
-                  src={`/_assets/weapons/${weapon.id}.png`}
+                  src={`${IMGS_CDN}/weapons/${weapon.id}.png`}
                   height={126}
                   width={126}
                   alt={weapon.name}

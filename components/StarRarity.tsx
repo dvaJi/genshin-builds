@@ -1,6 +1,6 @@
 import { memo, useMemo } from "react";
 import clsx from "clsx";
-import Image from "next/image";
+import { IMGS_CDN } from "@lib/constants";
 
 interface StarRarityProps {
   rarity: number;
@@ -34,8 +34,8 @@ const StarRarity = ({
             "-m-1": star > 0,
           })}
         >
-          <Image
-            src={`/_assets/1_star.png`}
+          <img
+            src={`${IMGS_CDN}/1_star.png`}
             width={starsSize}
             height={starsSize}
           />

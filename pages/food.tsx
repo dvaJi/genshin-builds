@@ -10,6 +10,7 @@ import StarRarity from "@components/StarRarity";
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
+import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   food: Food[];
@@ -27,7 +28,7 @@ const FoodPage = ({ food, lngDict }: Props) => {
           <img
             height={54}
             width={54}
-            src={`/_assets/food/${row.value}.png`}
+            src={`${IMGS_CDN}/food/${row.value}.png`}
             alt={row.value}
           />
         ),

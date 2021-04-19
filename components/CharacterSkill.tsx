@@ -4,6 +4,7 @@ import Crement from "./Crement";
 import clsx from "clsx";
 import { useToggle } from "@hooks/use-toggle";
 import { MdExpandMore } from "react-icons/md";
+import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   characterId: string;
@@ -23,14 +24,14 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
       <div
         className={clsx(
           "flex flex-col relative justify-start overflow-hidden rounded shadow-lg bg-vulcan-800 w-11/12 lg:w-full",
-          isOpen ? "h-full" : "h-60"
+          isOpen ? "h-auto" : "h-60"
         )}
       >
         <div className="flex flex-col">
           <div className="absolute top-0 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0 h-96">
             <img
               className="w-full"
-              src={`/_assets/characters/${characterId}/${skill.id.replace(
+              src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
                 "normal_attack_",
                 ""
               )}_an.gif`}

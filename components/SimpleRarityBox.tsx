@@ -1,3 +1,4 @@
+import { IMGS_CDN } from "@lib/constants";
 import clsx from "clsx";
 import { memo } from "react";
 
@@ -23,7 +24,7 @@ const SimpleRarityBox = ({
         className
       )}
       style={{
-        backgroundImage: `url(/_assets/bg_${rarity}star.png)`,
+        backgroundImage: `url(${IMGS_CDN}/bg_${rarity}star.png)`,
       }}
     >
       <img className="group-hover:opacity-70" src={img} alt={name} />

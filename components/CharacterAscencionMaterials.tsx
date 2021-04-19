@@ -8,6 +8,7 @@ import {
 import { Ascension } from "genshin-data/dist/types/character";
 import clsx from "clsx";
 import SimpleRarityBox from "./SimpleRarityBox";
+import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   ascension: Ascension[];
@@ -36,7 +37,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
           </div>
           <div className="flex justify-center items-center">
             <SimpleRarityBox
-              img={`/_assets/materials/mora.png`}
+              img={`${IMGS_CDN}/materials/mora.png`}
               name={ascen.cost.toString()}
               rarity={1}
               size={16}
@@ -45,7 +46,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`/_assets/jewels_materials/${ascen.mat1.id}.png`}
+              img={`${IMGS_CDN}/jewels_materials/${ascen.mat1.id}.png`}
               name={ascen.mat1.amount.toString()}
               rarity={materials[ascen.mat1.id].rarity || 1}
               size={16}
@@ -56,7 +57,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
             {ascen.mat2 && (
               <>
                 <SimpleRarityBox
-                  img={`/_assets/elemental_stone_materials/${ascen.mat2.id}.png`}
+                  img={`${IMGS_CDN}/elemental_stone_materials/${ascen.mat2.id}.png`}
                   name={ascen.mat2.amount.toString()}
                   rarity={materials[ascen.mat2.id].rarity || 1}
                   size={16}
@@ -67,7 +68,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`/_assets/local_materials/${ascen.mat3.id}.png`}
+              img={`${IMGS_CDN}/local_materials/${ascen.mat3.id}.png`}
               name={ascen.mat3.amount.toString()}
               rarity={materials[ascen.mat3.id].rarity || 1}
               size={16}
@@ -76,7 +77,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`/_assets/common_materials/${ascen.mat4.id}.png`}
+              img={`${IMGS_CDN}/common_materials/${ascen.mat4.id}.png`}
               name={ascen.mat4.amount.toString()}
               rarity={materials[ascen.mat4.id].rarity || 1}
               size={16}
