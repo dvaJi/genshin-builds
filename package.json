@@ -12,8 +12,8 @@
   "dependencies": {
     "clsx": "^1.1.1",
     "date-fns": "^2.21.1",
-    "framer-motion": "^4.1.4",
-    "genshin-data": "^0.7.5",
+    "framer-motion": "^4.1.8",
+    "genshin-data": "^0.8.1",
     "gray-matter": "^4.0.2",
     "hexyjs": "^2.1.4",
     "next": "^10.1.3",

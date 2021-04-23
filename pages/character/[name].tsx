@@ -40,7 +40,7 @@ interface CharacterPageProps {
   common: Record<string, string>;
   materials: Record<
     string,
-    CommonMaterial | ElementalStoneMaterial | LocalMaterial | JewelMaterial
+    CommonMaterial & ElementalStoneMaterial & LocalMaterial & JewelMaterial
   >;
 }
 

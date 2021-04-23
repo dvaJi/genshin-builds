@@ -135,4 +135,4 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 
 If you have any questions about this Privacy Policy, please contact us:
 
-- By email: [Genshin-Buildscom@gmail.com](mailto:Genshin-Buildscom@gmail.com)
+- By email: [GenshinBuildscom@gmail.com](mailto:genshinbuildscom@gmail.com)

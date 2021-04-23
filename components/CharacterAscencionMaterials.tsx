@@ -14,7 +14,7 @@ type Props = {
   ascension: Ascension[];
   materials: Record<
     string,
-    CommonMaterial | ElementalStoneMaterial | LocalMaterial | JewelMaterial
+    CommonMaterial & ElementalStoneMaterial & LocalMaterial & JewelMaterial
   >;
 };
 

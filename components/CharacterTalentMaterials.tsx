@@ -25,7 +25,7 @@ type Props = {
   talents: TalentMaterial[];
   materials: Record<
     string,
-    CommonMaterial | ElementalStoneMaterial | LocalMaterial | JewelMaterial
+    CommonMaterial & ElementalStoneMaterial & LocalMaterial & JewelMaterial
   >;
 };
 

@@ -5,7 +5,6 @@ import GenshinData, { Ingredients } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
 
 import Metadata from "@components/Metadata";
-import StarRarity from "@components/StarRarity";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
@@ -36,12 +35,7 @@ const IngredientsPage = ({ ingredients, lngDict }: Props) => {
       {
         Header: fStr({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
-      },
-      {
-        Header: fStr({ id: "rarity", defaultMessage: "Rarity" }),
-        accessor: "rarity",
-        Cell: (row) => (row.value ? <StarRarity rarity={row.value} /> : ""),
-      },
+      }
     ],
     []
   );

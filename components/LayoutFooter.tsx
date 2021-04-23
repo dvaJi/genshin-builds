@@ -27,6 +27,35 @@ const LayoutFooter = () => {
             <Link href={router.asPath} locale="ja">
               <a className="my-2">日本語</a>
             </Link>
+            <Link href={router.asPath} locale="zh-tw">
+              <a className="my-2">中文（繁體）</a>
+            </Link>
+            <Link href={router.asPath} locale="de">
+              <a className="my-2">Deutsch</a>
+            </Link>
+            <Link href={router.asPath} locale="fr">
+              <a className="my-2">Français</a>
+            </Link>
+          </div>
+          <div className="flex-1 flex flex-col">
+            <Link href={router.asPath} locale="id">
+              <a className="my-2">Indonesia</a>
+            </Link>
+            <Link href={router.asPath} locale="ko">
+              <a className="my-2">한국어</a>
+            </Link>
+            <Link href={router.asPath} locale="pt">
+              <a className="my-2">Português</a>
+            </Link>
+            <Link href={router.asPath} locale="ru">
+              <a className="my-2">Pусский</a>
+            </Link>
+            <Link href={router.asPath} locale="th">
+              <a className="my-2">ภาษาไทย</a>
+            </Link>
+            <Link href={router.asPath} locale="vi">
+              <a className="my-2">Tiếng Việt</a>
+            </Link>
           </div>
           <div className="flex-1">
             <p className="text-sm">
