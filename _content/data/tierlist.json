@@ -32,6 +32,11 @@
         "id": "tartaglia",
         "w_id": "skyward_harp",
         "min_c": 0
+      },
+      {
+        "id": "yanfei",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 0
       }
     ],
     "2": [

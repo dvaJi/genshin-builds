@@ -1,0 +1,63 @@
+[
+  {
+    "id": "yanfei_temp",
+    "name": "yanfei_temp",
+    "description": "",
+    "role": "Main DPS",
+    "weapons": [
+      {
+        "id": "lost_prayer_to_the_sacred_winds",
+        "order": 1
+      },
+      {
+        "id": "skyward_atlas",
+        "order": 2
+      },
+      {
+        "id": "the_widsith",
+        "order": 3
+      },
+      {
+        "id": "solar_pearl",
+        "order": 4
+      }
+    ],
+    "sets": [
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "order": 1
+      },
+      {
+        "set_1": {
+          "id": "wanderers_troupe"
+        },
+        "order": 2
+      },
+      {
+        "set_1": {
+          "id": "crimson_witch_of_flames"
+        },
+        "set_2": {
+          "id": "gladiators_finale"
+        },
+        "order": 3
+      }
+    ],
+    "stats_priority": [
+      "CRIT Rate",
+      "CRIT DMG",
+      "ATK%",
+      "Elemental Mastery",
+      "Energy Recharge%"
+    ],
+    "stats": {
+      "flower": ["HP"],
+      "plume": ["ATK"],
+      "sands": ["ATK%", "Elemental Mastery"],
+      "goblet": ["Pyro DMG"],
+      "circlet": ["CRIT Rate", "CRIT DMG"]
+    }
+  }
+]

@@ -106,7 +106,8 @@
       "traveler_geo",
       "xingqiu",
       "zhongli",
-      "xinyan"
+      "xinyan",
+      "yanfei"
     ],
     "Thu": [
       "keqing",
@@ -130,7 +131,8 @@
       "traveler_geo",
       "xingqiu",
       "zhongli",
-      "xinyan"
+      "xinyan",
+      "yanfei"
     ],
     "Sun": [
       "beidou",
@@ -144,7 +146,8 @@
       "zhongli",
       "xinyan",
       "ganyu",
-      "hu_tao"
+      "hu_tao",
+      "yanfei"
     ]
   },
   "Cecilia Garden": {

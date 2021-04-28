@@ -11,7 +11,7 @@ async function generateBuilds() {
   });
 
   const filePath = path.join(DATA_DIR, "builds.json");
-  const data = JSON.stringify(object, undefined, 2);
+  const data = JSON.stringify(object);
   fs.ensureDirSync(path.dirname(filePath));
   fs.writeFileSync(filePath, data);
 }
