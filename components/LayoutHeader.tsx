@@ -46,10 +46,7 @@ const LayoutHeader = ({ lngDict }: Props) => {
           aria-current="page"
           href="/"
         >
-          <Logo className="w-20 mr-5 fill-current text-white" />
-          <span className="text-gray-100 text-lg font-normal">
-            GenshinBuilds
-          </span>
+          <Logo />
         </a>
         <ul className="ml-auto hidden lg:flex">
           {navroutes.map((r) => (
@@ -99,7 +96,12 @@ const LayoutHeader = ({ lngDict }: Props) => {
           </motion.div>
         </div>
       </div>
-      <MobileNav isOpen={isMobileNavOpen} navroutes={navroutes} f={f} />
+      <MobileNav
+        isOpen={isMobileNavOpen}
+        navroutes={navroutes}
+        handleClick={setIsMobileNavOpen}
+        f={f}
+      />
     </nav>
   );
 };

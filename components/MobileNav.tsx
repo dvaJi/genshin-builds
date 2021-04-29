@@ -8,10 +8,11 @@ import { IntlFormatProps } from "@hooks/use-intl";
 type Props = {
   isOpen: boolean;
   navroutes: NavRoutes[];
+  handleClick: (value: boolean) => void;
   f: (props: IntlFormatProps) => JSX.Element;
 };
 
-const MobileNav = ({ isOpen, navroutes, f }: Props) => {
+const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
   const variants = {
     open: {
       transition: { staggerChildren: 0.07, delayChildren: 0.2 },
@@ -55,7 +56,7 @@ const MobileNav = ({ isOpen, navroutes, f }: Props) => {
           <Fragment key={r.name}>
             <motion.li className="flex w-1/2 m-0 p-3" variants={variantsli}>
               <Link href={r.href}>
-                <a className="mobile-link">
+                <a className="mobile-link" onClick={() => handleClick(false)}>
                   {f({ id: r.id, defaultMessage: r.name })}
                 </a>
               </Link>
@@ -70,7 +71,10 @@ const MobileNav = ({ isOpen, navroutes, f }: Props) => {
                     variants={variantsli}
                   >
                     <Link href={rd.href}>
-                      <a className="mobile-link">
+                      <a
+                        className="mobile-link"
+                        onClick={() => handleClick(false)}
+                      >
                         {f({ id: rd.id, defaultMessage: rd.name })}
                       </a>
                     </Link>
