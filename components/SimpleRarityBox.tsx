@@ -14,13 +14,12 @@ const SimpleRarityBox = ({
   name,
   img,
   rarity,
-  size = 24,
   className,
 }: Props) => {
   return (
     <div
       className={clsx(
-        `relative block w-14 h-14 lg:w-${size} lg:h-${size} m-1 bg-cover overflow-hidden text-center rounded group`,
+        `relative block m-1 bg-cover overflow-hidden text-center rounded group`,
         className
       )}
       style={{

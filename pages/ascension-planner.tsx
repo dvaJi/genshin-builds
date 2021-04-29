@@ -32,11 +32,11 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
     <div>
       <div>
         <ServerTimers />
-        <div className="mb-2">
+        <div className="mb-2 flex flex-wrap justify-center">
           {DAYS.map((day) => (
             <button
               key={day}
-              className={clsx("rounded mr-4 p-2 px-4", {
+              className={clsx("rounded mx-2 my-1 p-2 px-4", {
                 "bg-vulcan-700": currentDay === day,
                 "text-white": currentDay === day,
                 "bg-vulcan-800": currentDay !== day,
@@ -63,6 +63,7 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
                       img={`${IMGS_CDN}/characters/${cId}/${cId}_portrait.png`}
                       rarity={characters[cId].rarity}
                       name={characters[cId].name}
+                      className="h-24 w-24"
                     />
                   </a>
                 </Link>
@@ -85,6 +86,7 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
                     img={`${IMGS_CDN}/weapons/${cId}.png`}
                     rarity={weapons[cId].rarity}
                     name={weapons[cId].name}
+                    className="h-24 w-24"
                   />
                 </div>
               ))}

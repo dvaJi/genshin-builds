@@ -51,7 +51,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
               img={`${IMGS_CDN}/materials/mora.png`}
               name={talent.cost.toString()}
               rarity={1}
-              size={16}
+              className="w-16 h-16"
             />
             <p className="hidden lg:block">Mora</p>
           </div>
@@ -60,7 +60,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
               img={`${IMGS_CDN}/talent_lvl_up_materials/${talent.items[0].id}.png`}
               name={talent.items[0].amount.toString()}
               rarity={materials[talent.items[0].id].rarity || 1}
-              size={16}
+              className="w-16 h-16"
             />
             <p className="hidden lg:block">{talent.items[0].name}</p>
           </div>
@@ -69,7 +69,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
               img={`${IMGS_CDN}/common_materials/${talent.items[1].id}.png`}
               name={talent.items[1].amount.toString()}
               rarity={materials[talent.items[1].id]?.rarity || 1}
-              size={16}
+              className="w-16 h-16"
             />
             <p className="hidden lg:block">{talent.items[1].name}</p>
           </div>
@@ -80,7 +80,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
                   img={`${IMGS_CDN}/talent_lvl_up_materials/${talent.items[2].id}.png`}
                   name={talent.items[2].amount.toString()}
                   rarity={materials[talent.items[2].id].rarity || 1}
-                  size={16}
+                  className="w-16 h-16"
                 />
                 <p className="hidden lg:block">{talent.items[2].name}</p>
               </>
@@ -93,7 +93,7 @@ const CharacterTalentMaterials = ({ talents, materials }: Props) => {
                   img={`${IMGS_CDN}/talent_lvl_up_materials/${talent.items[3].id}.png`}
                   name={talent.items[3].amount.toString()}
                   rarity={materials[talent.items[3].id].rarity || 1}
-                  size={16}
+                  className="w-16 h-16"
                 />
                 <p className="hidden lg:block">{talent.items[3].name}</p>
               </>

@@ -40,7 +40,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
               img={`${IMGS_CDN}/materials/mora.png`}
               name={ascen.cost.toString()}
               rarity={1}
-              size={16}
+              className="w-16 h-16"
             />
             <p className="hidden lg:block">Mora</p>
           </div>
@@ -49,7 +49,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
               img={`${IMGS_CDN}/jewels_materials/${ascen.mat1.id}.png`}
               name={ascen.mat1.amount.toString()}
               rarity={materials[ascen.mat1.id].rarity || 1}
-              size={16}
+              className="w-16 h-16"
             />
             <p className="hidden lg:block">{ascen.mat1.name}</p>
           </div>
@@ -60,7 +60,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
                   img={`${IMGS_CDN}/elemental_stone_materials/${ascen.mat2.id}.png`}
                   name={ascen.mat2.amount.toString()}
                   rarity={materials[ascen.mat2.id].rarity || 1}
-                  size={16}
+                  className="w-16 h-16"
                 />
                 <p className="hidden lg:block">{ascen.mat2.name}</p>
               </>
@@ -71,7 +71,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
               img={`${IMGS_CDN}/local_materials/${ascen.mat3.id}.png`}
               name={ascen.mat3.amount.toString()}
               rarity={materials[ascen.mat3.id].rarity || 1}
-              size={16}
+              className="w-16 h-16"
             />
             <p className="hidden lg:block">{ascen.mat3.name}</p>
           </div>
@@ -80,7 +80,7 @@ const CharacterAscencionMaterials = ({ ascension, materials }: Props) => {
               img={`${IMGS_CDN}/common_materials/${ascen.mat4.id}.png`}
               name={ascen.mat4.amount.toString()}
               rarity={materials[ascen.mat4.id].rarity || 1}
-              size={16}
+              className="w-16 h-16"
             />
             <p className="hidden lg:block">{ascen.mat4.name}</p>
           </div>

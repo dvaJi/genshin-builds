@@ -1,9 +1,12 @@
 import { memo, useMemo, useState } from "react";
-import { Skill } from "genshin-data/dist/types/character";
-import Crement from "./Crement";
-import clsx from "clsx";
-import { useToggle } from "@hooks/use-toggle";
 import { MdExpandMore } from "react-icons/md";
+import clsx from "clsx";
+
+import { useToggle } from "@hooks/use-toggle";
+
+import Crement from "./Crement";
+
+import { Skill } from "genshin-data/dist/types/character";
 import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
@@ -24,7 +27,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
       <div
         className={clsx(
           "flex flex-col relative justify-start overflow-hidden rounded shadow-lg bg-vulcan-800 w-11/12 lg:w-full",
-          isOpen ? "h-auto" : "h-60"
+          isOpen ? "h-auto" : "h-30 lg:h-60"
         )}
       >
         <div className="flex flex-col">
@@ -63,7 +66,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
           <div
             className={clsx(
               "flex flex-col flex-grow transition-transform duration-500 transform translate-y-0",
-              isOpen ? "" : "translate-y-16"
+              isOpen ? "" : "translate-y-5 lg:translate-y-16"
             )}
           >
             <div className="font-bold text-lg text-white">{skill.name}</div>

@@ -18,17 +18,17 @@ import Metadata from "@components/Metadata";
 import ElementIcon from "@components/ElementIcon";
 import Collapsible from "@components/Collapsible";
 import CharacterSkill from "@components/CharacterSkill";
-import PassiveSkill from "@components/PassiveSkill";
-import ConstellationCard from "@components/ConstellationCard";
+import PassiveSkill from "@components/CharacterPassiveSkill";
+import ConstellationCard from "@components/CharacterConstellationCard";
 import CharacterBuildCard from "@components/CharacterBuildCard";
+import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
+import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getCharacterBuild, getLocale } from "@lib/localData";
-import { Build } from "interfaces/build";
 import { appBackgroundStyleState } from "@state/background-atom";
-import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
-import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
 import { IMGS_CDN } from "@lib/constants";
+import { Build } from "interfaces/build";
 
 interface CharacterPageProps {
   character: Character;
@@ -164,7 +164,7 @@ const CharacterPage = ({
           defaultMessage: "Constellations",
         })}
       </h2>
-      <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 w-full justify-center mb-4">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-4">
         {character.constellations.map((constellation) => (
           <ConstellationCard
             key={constellation.id}
@@ -200,8 +200,6 @@ const CharacterPage = ({
     </div>
   );
 };
-
-// TODO: ADD TALENT ASCENSION TABLE!!!!!
 
 const generateJsonLd = (locale: string, lngDict: Record<string, string>) => {
   return `{
