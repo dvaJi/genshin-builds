@@ -29,6 +29,7 @@ import { getCharacterBuild, getLocale } from "@lib/localData";
 import { appBackgroundStyleState } from "@state/background-atom";
 import { IMGS_CDN } from "@lib/constants";
 import { Build } from "interfaces/build";
+import StarRarity from "@components/StarRarity";
 
 interface CharacterPageProps {
   character: Character;
@@ -132,8 +133,17 @@ const CharacterPage = ({
           {builds.map((build) => (
             <Collapsible
               key={build.id}
-              text={<h3 className="text-2xl">{build.role}</h3>}
-              defaultOpen={true}
+              text={
+                <h3 className="text-2xl">
+                  {build.role}{" "}
+                  {build.recommended && (
+                    <div className="inline-block">
+                      <StarRarity rarity={1} />
+                    </div>
+                  )}
+                </h3>
+              }
+              defaultOpen={build.recommended}
               className="bg-vulcan-800 shadow-lg mb-4"
             >
               <CharacterBuildCard

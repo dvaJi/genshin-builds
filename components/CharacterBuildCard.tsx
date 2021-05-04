@@ -16,7 +16,7 @@ type Props = {
 const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
   return (
     <div className="">
-      {/* <p>{build.description}</p> */}
+      {/* <p>{build.name}</p> */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="flex flex-wrap w-full lg:w-4/5 pr-2 content-start">
           <div className="text-xl mb-2 font-semibold">
@@ -29,7 +29,11 @@ const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
           <div>
             {build.weapons
               .map<ReactNode>((weapon) => (
-                <WeaponCard key={weapon.id} weapon={weapons[weapon.id]} />
+                <WeaponCard
+                  key={weapon.id}
+                  weapon={weapons[weapon.id]}
+                  refinement={weapon.r}
+                />
               ))
               .reduce((prev, curr, i) => [
                 prev,
@@ -44,6 +48,23 @@ const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
           </div>
         </div>
         <div className="flex flex-wrap w-full lg:w-4/5 ml-2 content-start">
+          <div className="text-xl mb-2 font-semibold w-full">
+            {f({
+              id: "character.talents_priority",
+              defaultMessage: "Talents Priority",
+            })}
+          </div>
+          <div className="w-full mb-2">
+            {build.talent_priority
+              .map<ReactNode>((talent) => <span>{talent}</span>)
+              .reduce((prev, curr, i) => [
+                prev,
+                <span key={`art_divider_${i}`} className="mx-3">
+                  {">"}
+                </span>,
+                curr,
+              ])}
+          </div>
           <div className="text-xl mb-2 font-semibold">
             {f({
               id: "artifacts",

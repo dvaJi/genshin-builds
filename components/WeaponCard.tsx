@@ -6,9 +6,10 @@ import { IMGS_CDN } from "@lib/constants";
 
 interface WeaponCardProps {
   weapon: Weapon;
+  refinement?: number;
 }
 
-const WeaponCard = ({ weapon }: WeaponCardProps) => {
+const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
   return (
     <div className="bg-vulcan-900 border border-vulcan-700 mb-2 rounded flex flex-col">
       <div className="flex flex-row h-full">
@@ -24,7 +25,7 @@ const WeaponCard = ({ weapon }: WeaponCardProps) => {
             width={92}
             alt={weapon.name}
           />
-          <div className="absolute bottom-0 bg-gray-900 bg-opacity-50 w-full px-2 py-0.5 items-center justify-center flex">
+          <div className="absolute bottom-0 bg-gray-900 bg-opacity-50 w-full px-2 py-1 items-center justify-center flex">
             <StarRarity
               starClassname="w-4"
               rarity={weapon.rarity}
@@ -32,12 +33,20 @@ const WeaponCard = ({ weapon }: WeaponCardProps) => {
             />
           </div>
         </div>
-        <div className="ml-3 p-3">
+        <div className="ml-3 p-3 relative">
           <div className="flex">
-            <h4 className="font-bold text-white">{weapon.name}</h4>
+            <h4 className="font-bold text-white">
+              {weapon.name}{" "}
+              {refinement !== undefined && (
+                <span className="text-xs bg-vulcan-600 p-1 rounded">
+                  R{refinement}
+                </span>
+              )}
+            </h4>
+            <h3 className="text-xs text-gray-300 absolute right-4">{weapon.secondary?.name}</h3>
           </div>
           <p
-            className="text-sm weapon-bonus"
+            className="text-sm weapon-bonus max-h-24 overflow-y-auto custom-scroll"
             dangerouslySetInnerHTML={{
               __html: weapon.bonus || "",
             }}

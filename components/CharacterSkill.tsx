@@ -1,5 +1,5 @@
 import { memo, useMemo, useState } from "react";
-import { MdExpandMore } from "react-icons/md";
+import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import clsx from "clsx";
 
 import { useToggle } from "@hooks/use-toggle";
@@ -50,30 +50,39 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             ></div>
           </div>
         </div>
-        <div className="flex z-10 items-center text-center p-5 mb-10">
-          <div
-            className="flex flex-col cursor-pointer absolute top-0 right-1 p-4 z-1000"
-            onClick={toggle}
-          >
-            <span
-              className={clsx("text-2xl transition transform", {
-                "rotate-180": isOpen,
-              })}
-            >
-              <MdExpandMore />
-            </span>
-          </div>
+        <div className="flex z-10 items-center text-center p-5 mb-4">
           <div
             className={clsx(
-              "flex flex-col flex-grow transition-transform duration-500 transform translate-y-0",
-              isOpen ? "" : "translate-y-5 lg:translate-y-16"
+              "flex flex-col flex-grow cursor-pointer transition-transform duration-500 transform -translate-y-6",
+              isOpen ? "" : "translate-y-5 lg:translate-y-8"
             )}
+            onClick={toggle}
           >
+            <div
+              className={clsx(
+                "text-2xl mt-4 animate-bounce transition-all transform",
+                !isOpen
+                  ? "translate-y-5 lg:translate-y-16 opacity-0"
+                  : "opacity-100 translate-y-0"
+              )}
+            >
+              <MdExpandLess className="m-auto" />
+            </div>
             <div className="font-bold text-lg text-white">{skill.name}</div>
             <div
               className="text-xs"
               dangerouslySetInnerHTML={{ __html: skill.info }}
-            ></div>
+            />
+            <div
+              className={clsx(
+                "text-2xl mt-4 animate-bounce transition-all transform",
+                isOpen
+                  ? "translate-y-5 lg:translate-y-16 opacity-0"
+                  : "opacity-100 translate-y-0"
+              )}
+            >
+              <MdExpandMore className="m-auto" />
+            </div>
           </div>
         </div>
         <div
