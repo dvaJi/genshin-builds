@@ -241,7 +241,6 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
-  // TODO: check why is not generating builds on prod
   const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
@@ -266,9 +265,9 @@ export const getStaticProps: GetStaticProps = async ({
       weaponsIds.push(...build.weapons.map((w) => w.id));
       artifactsIds.push(
         ...build.sets.reduce<string[]>((arr, set) => {
-          arr.push(set.set_1.id);
+          arr.push(set.set_1);
           if (set.set_2) {
-            arr.push(set.set_2.id);
+            arr.push(set.set_2);
           }
 
           return arr;

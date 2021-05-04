@@ -6,9 +6,11 @@ import LayoutHeader from "@components/LayoutHeader";
 import LayoutFooter from "@components/LayoutFooter";
 
 import { appBackgroundStyleState } from "@state/background-atom";
+import clsx from "clsx";
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps, router }: AppProps) => {
   const appBackgroundStyle = useRecoilValue(appBackgroundStyleState);
+  console.log(router.route)
 
   return (
     <>
@@ -48,7 +50,12 @@ const App = ({ Component, pageProps }: AppProps) => {
             style={{ ...appBackgroundStyle.gradient }}
           ></div>
         </div>
-        <main className="container lg:px-20 mb-8 mx-auto z-10 text-gray-400">
+        <main
+          className={clsx(
+            "mb-8 z-10 text-gray-400",
+            router.route !== "/builds-builder" ? "mx-auto container lg:px-20" : ""
+          )}
+        >
           <Component {...pageProps} />
         </main>
       </div>

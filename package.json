@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "generate-sitemap": "npm run build && node ./scripts/sitemap.js",
-    "generate-builds": "node ./scripts/generate-builds.js",
     "generate-common-dict": "node ./scripts/generate-common-dict.js",
     "start": "next start",
     "type-check": "tsc"

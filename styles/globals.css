@@ -12,6 +12,12 @@
 
 /* Your own custom utilities */
 
+@layer base {
+  select {
+    @apply bg-vulcan-700;
+  }
+}
+
 .weapon-bonus > span,
 .skill-description > span {
   font-weight: bold;

@@ -71,20 +71,14 @@ const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
           </div>
           {build.sets
             .map<ReactNode>((set) => (
-              <div key={`${set.set_1.id}-${set.set_2?.id}`}>
+              <div key={`${set.set_1}-${set.set_2}`}>
                 {set.set_2 ? (
                   <div className="flex flex-row w-full">
-                    <ArtifactCard
-                      artifact={artifacts[set.set_1.id]}
-                      pieces={2}
-                    />
-                    <ArtifactCard
-                      artifact={artifacts[set.set_2.id]}
-                      pieces={2}
-                    />
+                    <ArtifactCard artifact={artifacts[set.set_1]} pieces={2} />
+                    <ArtifactCard artifact={artifacts[set.set_2]} pieces={2} />
                   </div>
                 ) : (
-                  <ArtifactCard artifact={artifacts[set.set_1.id]} pieces={4} />
+                  <ArtifactCard artifact={artifacts[set.set_1]} pieces={4} />
                 )}
               </div>
             ))

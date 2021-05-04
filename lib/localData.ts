@@ -8,10 +8,15 @@ export async function getLocale(lang: string) {
   }
 }
 
-export async function getCharacterBuild(id: string) {
+export async function getCharacterBuild(id?: string) {
   try {
     const { default: builds } = await import(`../_content/data/builds.json`);
-    return (builds as any)[id];
+
+    if (id) {
+      return (builds as any)[id];
+    }
+
+    return builds as any;
   } catch (err) {
     console.error(err);
     return [];
