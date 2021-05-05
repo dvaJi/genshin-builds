@@ -27,7 +27,9 @@ const useIntl = (
       return values ? templateReplacement(dict[id], values) : dict[id];
     }
 
-    return defaultMessage;
+    return values
+      ? templateReplacement(defaultMessage, values)
+      : defaultMessage;
   };
 
   return [format, formatFn];
