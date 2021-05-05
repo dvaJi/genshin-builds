@@ -53,26 +53,26 @@ const regionDict = {
 };
 
 async function generateBuilds() {
+  let object = {};
+
   for (const lang of LANGUAGES) {
-    let object = {};
+    object[lang] = {};
     const gdata = new GenshinData({ language: localeToLang(lang) });
     const characters = (await gdata.characters()).filter((c) =>
       charactersIds.includes(c.id)
     );
 
     for (const character of characters) {
-      object[character.weapon_type] = weaponsDict[character.id];
-      object[character.element] = elementDict[character.id];
-      object[character.region] = regionDict[character.id];
+      object[lang][character.weapon_type] = weaponsDict[character.id];
+      object[lang][character.element] = elementDict[character.id];
+      object[lang][character.region] = regionDict[character.id];
     }
-
-    // console.log(object);
-
-    const filePath = path.join(DATA_DIR, `common_${lang}.json`);
-    const data = JSON.stringify(object, undefined, 2);
-    fs.ensureDirSync(path.dirname(filePath));
-    fs.writeFileSync(filePath, data);
   }
+
+  const filePath = path.join(DATA_DIR, `common.json`);
+  const data = JSON.stringify(object, undefined, 2);
+  fs.ensureDirSync(path.dirname(filePath));
+  fs.writeFileSync(filePath, data);
 }
 
 const localeToLang = (locale) => {

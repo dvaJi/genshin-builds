@@ -350,7 +350,7 @@ export const getStaticProps: GetStaticProps = async ({
     }
   });
 
-  const common = require(`../../_content/data/common_${locale}.json`);
+  const common = require(`../../_content/data/common.json`)[locale];
 
   return {
     props: {
