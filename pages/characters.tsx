@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       return map;
     }, {});
 
-  const common = require(`../_content/data/common_${locale}.json`);
+  const common = require(`../_content/data/common.json`)[locale];
 
   return {
     props: { charactersByElement, elements, lngDict, common },

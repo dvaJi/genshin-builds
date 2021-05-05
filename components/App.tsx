@@ -10,7 +10,6 @@ import clsx from "clsx";
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const appBackgroundStyle = useRecoilValue(appBackgroundStyleState);
-  console.log(router.route)
 
   return (
     <>

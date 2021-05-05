@@ -195,7 +195,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const { default: tierlist = {} }: any = await import(
     `../_content/data/tierlist.json`
   );
-  const common = require(`../_content/data/common_${locale}.json`);
+  const common = require(`../_content/data/common.json`)[locale];
 
   const tiers = ["0", "1", "2", "3", "4"];
 

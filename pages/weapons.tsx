@@ -233,7 +233,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = (await genshinData.weapons()).filter(w => w.id !== 'song_of_broken_pines');
 
-  const common = require(`../_content/data/common_${locale}.json`);
+  const common = require(`../_content/data/common.json`)[locale];
 
   return { props: { weapons, lngDict, common }, revalidate: 1 };
 };
