@@ -1,1 +1,1 @@
-export const IMGS_CDN = "https://gi-builds.sfo3.digitaloceanspaces.com";
+export const IMGS_CDN = process.env.IMGS_CDN || "";
