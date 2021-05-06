@@ -1,1 +1,1 @@
-export const IMGS_CDN = process.env.IMGS_CDN || "";
+export const IMGS_CDN = process.env.NEXT_PUBLIC_IMGS_CDN || "";
