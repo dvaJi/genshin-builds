@@ -18,7 +18,8 @@
       "noelle",
       "razor",
       "traveler_anemo",
-      "traveler_geo"
+      "traveler_geo",
+      "eula"
     ],
     "Wed": [
       "fischl",
@@ -48,7 +49,8 @@
       "noelle",
       "razor",
       "traveler_anemo",
-      "traveler_geo"
+      "traveler_geo",
+      "eula"
     ],
     "Sat": [
       "fischl",
@@ -80,7 +82,8 @@
       "tartaglia",
       "diona",
       "albedo",
-      "rosaria"
+      "rosaria",
+      "eula"
     ]
   },
   "Taishan Mansion": {
@@ -169,7 +172,8 @@
       "pocket_grimoire",
       "magic_guide",
       "favonius_codex",
-      "royal_grimoire"
+      "royal_grimoire",
+      "song_of_broken_pines"
     ],
     "Tue": [
       "harbinger_of_dawn",
@@ -236,7 +240,8 @@
       "pocket_grimoire",
       "magic_guide",
       "favonius_codex",
-      "royal_grimoire"
+      "royal_grimoire",
+      "song_of_broken_pines"
     ],
     "Fri": [
       "harbinger_of_dawn",
@@ -346,7 +351,8 @@
       "wine_and_song",
       "frostbearer",
       "lost_prayer_to_the_sacred_winds",
-      "skyward_atlas"
+      "skyward_atlas",
+      "song_of_broken_pines"
     ]
   },
   "Hidden Palace of Lianshan Formula": {

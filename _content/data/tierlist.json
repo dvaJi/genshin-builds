@@ -14,6 +14,11 @@
     ],
     "1": [
       {
+        "id": "eula",
+        "w_id": "song_of_broken_pines",
+        "min_c": 0
+      },
+      {
         "id": "klee",
         "w_id": "lost_prayer_to_the_sacred_winds",
         "min_c": 0

@@ -80,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   });
   const elements: string[] = [];
   const charactersByElement = characters
-    .filter((c) => c.id !== "eula")
+    // .filter((c) => c.id !== "eula")
     .reduce<Record<string, Character[]>>((map, value) => {
       if (map[value.element]) {
         map[value.element].push(value);

@@ -231,7 +231,7 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const weapons = (await genshinData.weapons()).filter(w => w.id !== 'song_of_broken_pines');
+  const weapons = await genshinData.weapons();
 
   const common = require(`../_content/data/common.json`)[locale];
 
