@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { GetStaticProps } from "next";
-import Link from "next/link";
+import clsx from "clsx";
+import { isMobile } from "react-device-detect";
 import GenshinData, { Character, Weapon } from "genshin-data";
 
-import CharacterPortrait from "@components/CharacterPortrait";
+import CharactersTier from "@components/CharactersTier";
 import Metadata from "@components/Metadata";
 
+import { getLocale } from "@lib/localData";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
-import { Tierlist } from "interfaces/tierlist";
-import { getLocale } from "@lib/localData";
+import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 
 type Props = {
   tierlist: Tierlist;
@@ -25,7 +27,19 @@ const TierList = ({
   lngDict,
   common,
 }: Props) => {
+  const [selectedCol, setSelectedCol] = useState<Roles | null>(
+    isMobile ? Roles.maindps : null
+  );
   const [f, fn] = useIntl(lngDict);
+
+  const changeTierTab = (role: Roles) => {
+    if (isMobile) {
+      setSelectedCol(role);
+    } else {
+      setSelectedCol(null);
+    }
+  };
+
   return (
     <div>
       <Metadata
@@ -40,7 +54,7 @@ const TierList = ({
             "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
         })}
       />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
+      <h2 className="text-center lg:text-left my-6 text-2xl font-semibold text-gray-200">
         {f({
           id: "title.tierlist",
           defaultMessage: "Genshin Impact Best Characters Tier List",
@@ -49,139 +63,57 @@ const TierList = ({
       <div className="rounded">
         <div className="grid grid-cols-8 gap-4 w-full">
           <div className="p-5"></div>
-          <div className="col-span-2 p-5 bg-vulcan-800">
+          <button
+            className={clsx(
+              "col-span-2 p-5 bg-vulcan-800",
+              isMobile ? "rounded px-3" : "pointer-events-none",
+              isMobile && selectedCol !== Roles.maindps ? "opacity-50" : ""
+            )}
+            onClick={() => changeTierTab(Roles.maindps)}
+          >
             <h3 className="text-lg text-white text-center font-semibold">
               Main DPS
             </h3>
-          </div>
-          <div className="col-span-2 p-5 bg-vulcan-800">
+          </button>
+          <button
+            className={clsx(
+              "col-span-2 p-5 bg-vulcan-800",
+              isMobile ? "rounded px-3" : "pointer-events-none",
+              isMobile && selectedCol !== Roles.subdps ? "opacity-50" : ""
+            )}
+            onClick={() => changeTierTab(Roles.subdps)}
+          >
             <h3 className="text-lg text-white text-center font-semibold">
               Sub DPS
             </h3>
-          </div>
-          <div className="col-span-2 p-5 bg-vulcan-800">
+          </button>
+          <button
+            className={clsx(
+              "col-span-2 p-5 bg-vulcan-800",
+              isMobile ? "rounded px-3" : "pointer-events-none",
+              isMobile && selectedCol !== Roles.support ? "opacity-50" : ""
+            )}
+            onClick={() => changeTierTab(Roles.support)}
+          >
             <h3 className="text-lg text-white text-center font-semibold">
               Support
             </h3>
-          </div>
+          </button>
         </div>
-        <CharactersTier
-          tierlist={tierlist}
-          characters={charactersMap}
-          weaponsMap={weaponsMap}
-          tier={"0"}
-          common={common}
-        />
-        <CharactersTier
-          tierlist={tierlist}
-          characters={charactersMap}
-          weaponsMap={weaponsMap}
-          tier={"1"}
-          common={common}
-        />
-        <CharactersTier
-          tierlist={tierlist}
-          characters={charactersMap}
-          weaponsMap={weaponsMap}
-          tier={"2"}
-          common={common}
-        />
-        <CharactersTier
-          tierlist={tierlist}
-          characters={charactersMap}
-          weaponsMap={weaponsMap}
-          tier={"3"}
-          common={common}
-        />
-        <CharactersTier
-          tierlist={tierlist}
-          characters={charactersMap}
-          weaponsMap={weaponsMap}
-          tier={"4"}
-          common={common}
-        />
-      </div>
-    </div>
-  );
-};
-
-type CharactersTierProps = {
-  tierlist: Tierlist;
-  tier: "0" | "1" | "2" | "3" | "4";
-  characters: Record<string, Pick<Character, "id" | "name" | "element">>;
-  weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
-  common: Record<string, string>;
-};
-
-function CharactersTier({
-  tierlist,
-  tier,
-  characters,
-  weaponsMap,
-  common,
-}: CharactersTierProps) {
-  return (
-    <div className="grid grid-cols-8 gap-4 w-full">
-      <div className="p-5 bg bg-vulcan-900 bg-opacity-50">
-        <h3 className="text-2xl text-white text-center font-bold">T{tier}</h3>
-      </div>
-      <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
-        {tierlist.maindps[tier].map((t) => (
-          <div key={t.id} className="inline-block">
-            <Link href={`/character/${t.id}`}>
-              <a>
-                <CharacterPortrait
-                  character={{
-                    ...characters[t.id],
-                    constellationNum: t.min_c,
-                    element: common[characters[t.id].element],
-                  }}
-                  weapon={weaponsMap[t.w_id]}
-                />
-              </a>
-            </Link>
-          </div>
-        ))}
-      </div>
-      <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
-        {tierlist.subdps[tier].map((t) => (
-          <div key={t.id} className="inline-block">
-            <Link href={`/character/${t.id}`}>
-              <a>
-                <CharacterPortrait
-                  character={{
-                    ...characters[t.id],
-                    constellationNum: t.min_c,
-                    element: common[characters[t.id].element],
-                  }}
-                  weapon={weaponsMap[t.w_id]}
-                />
-              </a>
-            </Link>
-          </div>
-        ))}
-      </div>
-      <div className="col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
-        {tierlist.support[tier].map((t) => (
-          <div key={t.id} className="inline-block relative">
-            <Link href={`/character/${t.id}`}>
-              <a>
-                <CharacterPortrait
-                  character={{
-                    ...characters[t.id],
-                    constellationNum: t.min_c,
-                    element: common[characters[t.id].element],
-                  }}
-                  weapon={weaponsMap[t.w_id]}
-                />
-              </a>
-            </Link>
-          </div>
+        {["0", "1", "2", "3", "4"].map((key) => (
+          <CharactersTier
+            tierlist={tierlist}
+            characters={charactersMap}
+            weaponsMap={weaponsMap}
+            tier={key as TierNums}
+            common={common}
+            selectedCol={selectedCol}
+          />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
