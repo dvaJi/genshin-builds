@@ -14,13 +14,12 @@ type Props = {
   planMap: Record<string, any>;
 };
 
-const IndexPage = ({ characters, weapons, planMap, lngDict }: Props) => {
+const IndexPage = ({ characters, weapons, planMap }: Props) => {
   return (
     <AscensionPlanner
       characters={characters}
       weapons={weapons}
       planMap={planMap}
-      lngDict={lngDict}
     />
   );
 };
