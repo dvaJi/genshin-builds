@@ -12,7 +12,7 @@ import GenshinData, {
 } from "genshin-data";
 import clsx from "clsx";
 
-import useIntl from "@hooks/use-intl";
+import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
 import Metadata from "@components/Metadata";
 import ElementIcon from "@components/ElementIcon";
@@ -36,7 +36,6 @@ interface CharacterPageProps {
   builds: Build[];
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact>;
-  lngDict: Record<string, string>;
   locale: string;
   common: Record<string, string>;
   materials: Record<
@@ -50,13 +49,12 @@ const CharacterPage = ({
   builds,
   weapons,
   artifacts,
-  lngDict,
   locale,
   common,
   materials,
 }: CharacterPageProps) => {
   const setBg = useSetRecoilState(appBackgroundStyleState);
-  const [f, fn] = useIntl(lngDict);
+  const { t, tfn } = useIntl();
   useEffect(() => {
     setBg({
       image: `${IMGS_CDN}/regions/${
@@ -70,14 +68,14 @@ const CharacterPage = ({
   return (
     <div>
       <Metadata
-        fn={fn}
-        pageTitle={fn({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.character.detail",
           defaultMessage: "{name} Genshin Impact Build Guide",
           values: { name: character.name },
         })}
         pageDescription={character.description}
-        jsonLD={generateJsonLd(locale, lngDict)}
+        jsonLD={generateJsonLd(locale, tfn)}
       />
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center px-2 lg:px-0">
@@ -104,7 +102,7 @@ const CharacterPage = ({
         </div>
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
-        {f({ id: "character.skills", defaultMessage: "Skills" })}
+        {t({ id: "character.skills", defaultMessage: "Skills" })}
       </h2>
       <div
         className={clsx(
@@ -125,7 +123,7 @@ const CharacterPage = ({
       {builds && (
         <div className="mb-4 mx-4 lg:mx-0">
           <h2 className="text-3xl mb-3">
-            {f({
+            {t({
               id: "character.builds",
               defaultMessage: "Builds",
             })}
@@ -150,14 +148,14 @@ const CharacterPage = ({
                 build={build}
                 artifacts={artifacts}
                 weapons={weapons}
-                f={f}
+                f={t}
               />
             </Collapsible>
           ))}
         </div>
       )}
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
-        {f({ id: "character.passives", defaultMessage: "Passives" })}
+        {t({ id: "character.passives", defaultMessage: "Passives" })}
       </h2>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-4">
         {character.passives.map((passive) => (
@@ -169,7 +167,7 @@ const CharacterPage = ({
         ))}
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
-        {f({
+        {t({
           id: "character.constellations",
           defaultMessage: "Constellations",
         })}
@@ -184,7 +182,7 @@ const CharacterPage = ({
         ))}
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
-        {f({
+        {t({
           id: "character.ascension_materials",
           defaultMessage: "Ascension Materials",
         })}
@@ -196,7 +194,7 @@ const CharacterPage = ({
         />
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
-        {f({
+        {t({
           id: "character.talent_materials",
           defaultMessage: "Talent Materials",
         })}
@@ -211,7 +209,10 @@ const CharacterPage = ({
   );
 };
 
-const generateJsonLd = (locale: string, lngDict: Record<string, string>) => {
+const generateJsonLd = (
+  locale: string,
+  t: (props: IntlFormatProps) => string
+) => {
   return `{
     "@context": "http://schema.org",
     "@type": "BreadcrumbList",
@@ -229,7 +230,10 @@ const generateJsonLd = (locale: string, lngDict: Record<string, string>) => {
         "position": 2,
         "item": {
           "@id": "https://genshin-builds.com/${locale}/characters",
-          "name": "${lngDict["title.characters"]}"
+          "name": "${t({
+            id: "title.characters",
+            defaultMessage: "title.characters",
+          })}"
         }
       }
     ]
@@ -256,7 +260,8 @@ export const getStaticProps: GetStaticProps = async ({
   const artifactsList = await genshinData.artifacts();
   const jewelsMaterialsList = await genshinData.jewelsMaterials();
   const commonList = await genshinData.commonMaterials();
-  const elementalStoneMaterialsList = await genshinData.elementalStoneMaterials();
+  const elementalStoneMaterialsList =
+    await genshinData.elementalStoneMaterials();
   const localMaterialsList = await genshinData.localMaterials();
   const talentLvlUpMaterialsList = await genshinData.talentLvlUpMaterials();
 

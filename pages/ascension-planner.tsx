@@ -17,7 +17,6 @@ import { IMGS_CDN } from "@lib/constants";
 type Props = {
   characters: Record<string, Character>;
   weapons: Record<string, Weapon>;
-  lngDict: Record<string, string>;
   planMap: Record<string, any>;
 };
 
@@ -25,9 +24,9 @@ const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const C_DOMAINS = ["Forsaken Rift", "Taishan Mansion"];
 const W_DOMAINS = ["Cecilia Garden", "Hidden Palace of Lianshan Formula"];
 
-const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
+const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
   const [currentDay, setCurrentDay] = useState(format(new Date(), "iii"));
-  const [_, fn] = useIntl(lngDict);
+  const { tfn } = useIntl();
   return (
     <div>
       <div>
@@ -43,7 +42,7 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
               })}
               onClick={() => setCurrentDay(day)}
             >
-              {fn({ id: day, defaultMessage: day })}
+              {tfn({ id: day, defaultMessage: day })}
             </button>
           ))}
         </div>
@@ -53,7 +52,7 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
             className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
           >
             <h2 className="mb-6 text-2xl font-semibold text-gray-200">
-              {fn({ id: domain, defaultMessage: domain })}
+              {tfn({ id: domain, defaultMessage: domain })}
             </h2>
             <div className="flex flex-wrap justify-center">
               {planMap[domain][currentDay].map((cId: string) => (
@@ -77,7 +76,7 @@ const AscensionPlanner = ({ characters, weapons, planMap, lngDict }: Props) => {
             className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
           >
             <h2 className="mb-6 text-2xl font-semibold text-gray-200">
-              {fn({ id: domain, defaultMessage: domain })}
+              {tfn({ id: domain, defaultMessage: domain })}
             </h2>
             <div className="flex flex-wrap justify-center">
               {planMap[domain][currentDay].map((cId: string) => (

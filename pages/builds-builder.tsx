@@ -28,6 +28,11 @@ const BuildsBuilder = ({
     setBuilds({ ...builds, ...newBuild });
   };
 
+  // This page is only available for development env
+  if (process.env.NODE_ENV !== "development") {
+    return <div>...</div>;
+  }
+
   return (
     <div>
       <div>
@@ -74,9 +79,9 @@ const Builder = ({
   };
 
   const addnewBuild = ({ name, role }: { name: string; role: string }) => {
-    const id = `${charId}_${role
+    const id = `${charId}_${role.toLowerCase().replace(" ", "_")}${name
       .toLowerCase()
-      .replace(" ", "_")}${name.toLowerCase().replace(" ", "_")}`;
+      .replace(" ", "_")}`;
     const newBuild: Build = {
       id: id,
       name: id,

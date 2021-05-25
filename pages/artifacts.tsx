@@ -15,11 +15,10 @@ import { IMGS_CDN } from "@lib/constants";
 type Props = {
   artifacts: Artifact[];
   artifacts1set: Artifact[];
-  lngDict: Record<string, string>;
 };
 
-const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
-  const [f, fStr] = useIntl(lngDict);
+const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
+  const { t, tfn } = useIntl();
 
   const columns = useMemo<Column<Artifact>[]>(
     () => [
@@ -36,16 +35,16 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
         ),
       },
       {
-        Header: fStr({ id: "name", defaultMessage: "Name" }),
+        Header: tfn({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
       },
       {
-        Header: fStr({ id: "max_rarity", defaultMessage: "Max Rarity" }),
+        Header: tfn({ id: "max_rarity", defaultMessage: "Max Rarity" }),
         accessor: "min_rarity",
         Cell: (row) => <StarRarity rarity={row.value} />,
       },
       {
-        Header: fStr({ id: "2piece_bonus", defaultMessage: "2-Piece Bonus" }),
+        Header: tfn({ id: "2piece_bonus", defaultMessage: "2-Piece Bonus" }),
         accessor: "2pc",
         Cell: (row) => (
           <div
@@ -55,7 +54,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
         ),
       },
       {
-        Header: fStr({ id: "4piece_bonus", defaultMessage: "4-Piece Bonus" }),
+        Header: tfn({ id: "4piece_bonus", defaultMessage: "4-Piece Bonus" }),
         accessor: "4pc",
         Cell: (row) => (
           <div
@@ -67,34 +66,29 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
     ],
     []
   );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data: artifacts }, ...[useSortBy]);
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data: artifacts }, ...[useSortBy]);
 
   return (
     <div>
       <Metadata
-        fn={fStr}
-        pageTitle={fStr({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.artifacts",
           defaultMessage: "Genshin Artifacts Artifacts List",
         })}
-        pageDescription={fStr({
+        pageDescription={tfn({
           id: "title.artifacts.description",
           defaultMessage:
             "All the best artifact gear sets, locations, and stats.",
         })}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {f({ id: "artifacts", defaultMessage: "Artifacts" })}
+        {t({ id: "artifacts", defaultMessage: "Artifacts" })}
       </h2>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
         <h2 className="py-2 text-2xl font-semibold text-gray-200">
-          {f({
+          {t({
             id: "2-4piece_artifact_sets",
             defaultMessage: "2-4 Piece Artifact Sets",
           })}
@@ -144,7 +138,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
         </table>
         <div className="mt-6">
           <h2 className="py-2 text-2xl font-semibold text-gray-200">
-            {f({
+            {t({
               id: "1piece_artifact_sets",
               defaultMessage: "1-Piece Artifact Sets",
             })}
@@ -153,10 +147,10 @@ const ArtifactsPage = ({ artifacts, artifacts1set, lngDict }: Props) => {
             <thead>
               <tr>
                 <th></th>
-                <th>{f({ id: "name", defaultMessage: "Name" })}</th>
-                <th>{f({ id: "max_rarity", defaultMessage: "Max Rarity" })}</th>
+                <th>{t({ id: "name", defaultMessage: "Name" })}</th>
+                <th>{t({ id: "max_rarity", defaultMessage: "Max Rarity" })}</th>
                 <th>
-                  {f({ id: "1piece_bonus", defaultMessage: "1-Piece Bonus" })}
+                  {t({ id: "1piece_bonus", defaultMessage: "1-Piece Bonus" })}
                 </th>
               </tr>
             </thead>

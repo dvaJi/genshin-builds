@@ -15,13 +15,12 @@ import { IMGS_CDN } from "@lib/constants";
 
 interface WeaponsPageProps {
   weapons: Weapon[];
-  lngDict: Record<string, string>;
   common: Record<string, string>;
 }
 
 const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
 
-const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
+const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
   const [refinement, setRefinement] = useState(1);
@@ -74,25 +73,25 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
 
   useEffect(() => {
     filterWeapons();
-  }, [debouncedSearchTerm, typeFilter, sortBy, lngDict]);
+  }, [debouncedSearchTerm, typeFilter, sortBy]);
 
-  const [f, fStr] = useIntl(lngDict);
+  const { t, tfn } = useIntl();
   return (
     <div>
       <Metadata
-        fn={fStr}
-        pageTitle={fStr({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.weapons",
           defaultMessage: "Genshin Impact Weapons List",
         })}
-        pageDescription={fStr({
+        pageDescription={tfn({
           id: "title.weapons.description",
           defaultMessage:
             "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
         })}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {f({ id: "weapons", defaultMessage: "Weapons" })}
+        {t({ id: "weapons", defaultMessage: "Weapons" })}
       </h2>
       <div className="md:flex my-3">
         <div className="flex-1">
@@ -100,7 +99,7 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
             <SearchInput
               value={searchTerm}
               setValue={setSearchTerm}
-              placeholder={fStr({ id: "search", defaultMessage: "Search..." })}
+              placeholder={tfn({ id: "search", defaultMessage: "Search..." })}
             />
             <div className="ml-3 text-center">
               {weaponTypes.map((type) => (
@@ -140,7 +139,7 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
         <div className="flex justify-center">
           <div>
             <Crement
-              title={fStr({ id: "ascension", defaultMessage: "Ascension" })}
+              title={tfn({ id: "ascension", defaultMessage: "Ascension" })}
               currentValue={ascension}
               setValue={setAscension}
               values={[0, 1, 2, 3, 4, 5, 6]}
@@ -148,7 +147,7 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
           </div>
           <div>
             <Crement
-              title={fStr({ id: "refinement", defaultMessage: "Refinement" })}
+              title={tfn({ id: "refinement", defaultMessage: "Refinement" })}
               currentValue={refinement}
               values={[1, 2, 3, 4, 5]}
               setValue={setRefinement}
@@ -190,11 +189,11 @@ const WeaponsPage = ({ weapons, lngDict, common }: WeaponsPageProps) => {
                 <div>
                   <h3 className="text-sm text-gray-300">
                     <span className="font-semibold">
-                      {f({ id: "type", defaultMessage: "Type" })}:
+                      {t({ id: "type", defaultMessage: "Type" })}:
                     </span>{" "}
                     {weapon.type} |{" "}
                     <span className="font-semibold">
-                      {f({ id: "secondary", defaultMessage: "Secondary" })}:
+                      {t({ id: "secondary", defaultMessage: "Secondary" })}:
                     </span>{" "}
                     {weapon.secondary?.name}{" "}
                     {showPrimary(

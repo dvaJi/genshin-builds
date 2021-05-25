@@ -3,8 +3,8 @@ export const nextDayAndTime = (
   hour: number,
   minute: number
 ) => {
-  var now = new Date();
-  var result = new Date(
+  const now = new Date();
+  const result = new Date(
     now.getUTCFullYear(),
     now.getUTCMonth(),
     now.getUTCDate() + daydelta,

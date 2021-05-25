@@ -30,14 +30,10 @@ const navroutes: NavRoutes[] = [
   // { name: "Team Builder", href: "/comp-builder" },
 ];
 
-type Props = {
-  lngDict: Record<string, string>;
-};
-
-const LayoutHeader = ({ lngDict }: Props) => {
+const LayoutHeader = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const router = useRouter();
-  const [f, fStr] = useIntl(lngDict);
+  const { t, tfn } = useIntl();
   return (
     <nav className="sticky top-0 h-12 mb-5 z-40 bg-vulcan-800 border-b border-gray-800 shadow-md">
       <div className="flex h-full mb-12 mx-auto container text-gray-400 ">
@@ -56,10 +52,10 @@ const LayoutHeader = ({ lngDict }: Props) => {
               route={router.route}
               dropdownMenu={r.dropdownMenu?.map((d) => ({
                 ...d,
-                name: fStr({ id: d.id, defaultMessage: d.name }),
+                name: tfn({ id: d.id, defaultMessage: d.name }),
               }))}
             >
-              {f({ id: r.id, defaultMessage: r.name })}
+              {t({ id: r.id, defaultMessage: r.name })}
             </NavLink>
           ))}
         </ul>
@@ -100,7 +96,7 @@ const LayoutHeader = ({ lngDict }: Props) => {
         isOpen={isMobileNavOpen}
         navroutes={navroutes}
         handleClick={setIsMobileNavOpen}
-        f={f}
+        f={t}
       />
     </nav>
   );

@@ -16,21 +16,14 @@ type Props = {
   tierlist: Tierlist;
   charactersMap: Record<string, Pick<Character, "id" | "name" | "element">>;
   weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
-  lngDict: Record<string, string>;
   common: Record<string, string>;
 };
 
-const TierList = ({
-  tierlist,
-  charactersMap,
-  weaponsMap,
-  lngDict,
-  common,
-}: Props) => {
+const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
   const [selectedCol, setSelectedCol] = useState<Roles | null>(
     isMobile ? Roles.maindps : null
   );
-  const [f, fn] = useIntl(lngDict);
+  const { t, tfn } = useIntl();
 
   const changeTierTab = (role: Roles) => {
     if (isMobile) {
@@ -43,19 +36,19 @@ const TierList = ({
   return (
     <div>
       <Metadata
-        fn={fn}
-        pageTitle={fn({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.tierlist",
           defaultMessage: "Genshin Impact Tier List (Best Characters)",
         })}
-        pageDescription={fn({
+        pageDescription={tfn({
           id: "title.tierlist.description",
           defaultMessage:
             "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
         })}
       />
       <h2 className="text-center lg:text-left my-6 text-2xl font-semibold text-gray-200">
-        {f({
+        {t({
           id: "title.tierlist",
           defaultMessage: "Genshin Impact Best Characters Tier List",
         })}

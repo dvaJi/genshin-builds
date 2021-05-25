@@ -14,11 +14,10 @@ import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   potions: Potion[];
-  lngDict: Record<string, string>;
 };
 
-const PotionsPage = ({ potions, lngDict }: Props) => {
-  const [f, fStr] = useIntl(lngDict);
+const PotionsPage = ({ potions }: Props) => {
+  const { t, tfn } = useIntl();
   const columns = useMemo<Column<Potion>[]>(
     () => [
       {
@@ -34,45 +33,40 @@ const PotionsPage = ({ potions, lngDict }: Props) => {
         ),
       },
       {
-        Header: fStr({ id: "name", defaultMessage: "Name" }),
+        Header: tfn({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
       },
       {
-        Header: fStr({ id: "rarity", defaultMessage: "Rarity" }),
+        Header: tfn({ id: "rarity", defaultMessage: "Rarity" }),
         accessor: "rarity",
         Cell: (row) => (row.value ? <StarRarity rarity={row.value} /> : ""),
       },
       {
-        Header: fStr({ id: "effect", defaultMessage: "Effect" }),
+        Header: tfn({ id: "effect", defaultMessage: "Effect" }),
         accessor: "effect",
       },
     ],
     []
   );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data: potions }, ...[useSortBy]);
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data: potions }, ...[useSortBy]);
 
   return (
     <div>
       <Metadata
-        fn={fStr}
-        pageTitle={fStr({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.potions",
           defaultMessage: "Genshin Impact Potions List",
         })}
-        pageDescription={fStr({
+        pageDescription={tfn({
           id: "title.potions.description",
           defaultMessage:
             "Discover all the alchemy recipes and the best potions and oils to use for your team.",
         })}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {f({ id: "potions", defaultMessage: "Potions" })}
+        {t({ id: "potions", defaultMessage: "Potions" })}
       </h2>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
         <table

@@ -23,52 +23,6 @@
   font-weight: bold;
 }
 
-/* Elemental Resonances shadows */
-.shadow-enduring-rock {
-  box-shadow: 0 0 10px #f59e0b;
-}
-.shadow-fervent-flames {
-  box-shadow: 0 0 10px #dc2626;
-}
-.shadow-soothing-waters {
-  box-shadow: 0 0 10px #08e3fe;
-}
-.shadow-impetuous-winds {
-  box-shadow: 0 0 10px #92dbb8;
-}
-.shadow-high-voltage {
-  box-shadow: 0 0 10px #debaff;
-}
-.shadow-shattering-ice {
-  box-shadow: 0 0 10px #a5e8ec;
-}
-.shadow-protective-canopy {
-  box-shadow: 0 0 10px #283246;
-}
-
-/* Elemental Resonances border-color */
-.border-enduring-rock {
-  border-color: #f59e0b;
-}
-.border-fervent-flames {
-  border-color: #dc2626;
-}
-.border-soothing-waters {
-  border-color: #08e3fe;
-}
-.border-impetuous-winds {
-  border-color: #92dbb8;
-}
-.border-high-voltage {
-  border-color: #debaff;
-}
-.border-shattering-ice {
-  border-color: #a5e8ec;
-}
-.border-protective-canopy {
-  border-color: #283246;
-}
-
 .build-option-divider {
   position: relative;
   width: 100%;

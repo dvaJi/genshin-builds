@@ -14,11 +14,10 @@ import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   food: Food[];
-  lngDict: Record<string, string>;
 };
 
-const FoodPage = ({ food, lngDict }: Props) => {
-  const [f, fStr] = useIntl(lngDict);
+const FoodPage = ({ food }: Props) => {
+  const { t, tfn } = useIntl();
   const columns = useMemo<Column<Food>[]>(
     () => [
       {
@@ -34,46 +33,41 @@ const FoodPage = ({ food, lngDict }: Props) => {
         ),
       },
       {
-        Header: fStr({ id: "name", defaultMessage: "Name" }),
+        Header: tfn({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
       },
       {
-        Header: fStr({ id: "rarity", defaultMessage: "Rarity" }),
+        Header: tfn({ id: "rarity", defaultMessage: "Rarity" }),
         accessor: "rarity",
         Cell: (row) => <StarRarity rarity={row.value} />,
       },
       {
-        Header: fStr({ id: "effect", defaultMessage: "Effect" }),
+        Header: tfn({ id: "effect", defaultMessage: "Effect" }),
         accessor: "results",
         Cell: (row) => row.value.normal.effect,
       },
     ],
     []
   );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data: food }, ...[useSortBy]);
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data: food }, ...[useSortBy]);
 
   return (
     <div>
       <Metadata
-        fn={fStr}
-        pageTitle={fStr({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.food",
           defaultMessage: "Genshin Impact Cooking Recipes List",
         })}
-        pageDescription={fStr({
+        pageDescription={tfn({
           id: "title.food.description",
           defaultMessage:
             "Discover all the cooking recipes and the best food to cook for your team.",
         })}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {f({ id: "food", defaultMessage: "Food" })}
+        {t({ id: "food", defaultMessage: "Food" })}
       </h2>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
         <table

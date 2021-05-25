@@ -13,33 +13,31 @@ import { getLocale } from "@lib/localData";
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
   elements: string[];
-  lngDict: Record<string, string>;
   common: Record<string, string>;
 };
 
 const CharactersPage = ({
   charactersByElement,
   elements,
-  lngDict,
   common,
 }: CharactersProps) => {
-  const [f, fn] = useIntl(lngDict);
+  const { t, tfn } = useIntl();
   return (
     <div>
       <Metadata
-        fn={fn}
-        pageTitle={fn({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.characters",
           defaultMessage: "Genshin Impact Characters List",
         })}
-        pageDescription={fn({
+        pageDescription={tfn({
           id: "title.characters.description",
           defaultMessage:
             "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
         })}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {f({ id: "characters", defaultMessage: "Characters" })}
+        {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>
       <div className="">
         {elements.map((element) => (
@@ -50,7 +48,7 @@ const CharactersPage = ({
             <div className="flex self-center mb-2">
               <ElementIcon type={common[element]} height={32} width={32} />
               <h3 className="text-2xl font-bold ml-2">
-                {f({ id: element, defaultMessage: element })}
+                {t({ id: element, defaultMessage: element })}
               </h3>
             </div>
 

@@ -13,11 +13,10 @@ import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   ingredients: Ingredients[];
-  lngDict: Record<string, string>;
 };
 
-const IngredientsPage = ({ ingredients, lngDict }: Props) => {
-  const [f, fStr] = useIntl(lngDict);
+const IngredientsPage = ({ ingredients }: Props) => {
+  const { t, tfn } = useIntl();
   const columns = useMemo<Column<Ingredients>[]>(
     () => [
       {
@@ -33,35 +32,30 @@ const IngredientsPage = ({ ingredients, lngDict }: Props) => {
         ),
       },
       {
-        Header: fStr({ id: "name", defaultMessage: "Name" }),
+        Header: tfn({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
-      }
+      },
     ],
     []
   );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data: ingredients }, ...[useSortBy]);
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data: ingredients }, ...[useSortBy]);
 
   return (
     <div>
       <Metadata
-        fn={fStr}
-        pageTitle={fStr({
+        fn={tfn}
+        pageTitle={tfn({
           id: "title.ingredients",
           defaultMessage: "Genshin Impact Cooking Ingredient List",
         })}
-        pageDescription={fStr({
+        pageDescription={tfn({
           id: "title.ingredients.description",
           defaultMessage: "Discover all the cooking ingredients.",
         })}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {f({ id: "cooking_ingredient", defaultMessage: "Cooking Ingredient" })}
+        {t({ id: "cooking_ingredient", defaultMessage: "Cooking Ingredient" })}
       </h2>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
         <table

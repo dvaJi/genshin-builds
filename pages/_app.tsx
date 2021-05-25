@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 
+import IntlProvider from "@components/IntlProvider";
 import App from "@components/App";
 import * as gtag from "@lib/gtag";
 
@@ -22,7 +23,9 @@ function Root(props: AppProps) {
 
   return (
     <RecoilRoot>
-      <App {...props} />
+      <IntlProvider messages={props.pageProps.lngDict}>
+        <App {...props} />
+      </IntlProvider>
     </RecoilRoot>
   );
 }
