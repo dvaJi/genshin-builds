@@ -1,15 +1,7 @@
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { GetStaticProps, GetStaticPaths } from "next";
-import GenshinData, {
-  Artifact,
-  Character,
-  CommonMaterial,
-  ElementalStoneMaterial,
-  JewelMaterial,
-  LocalMaterial,
-  Weapon,
-} from "genshin-data";
+import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 import clsx from "clsx";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
@@ -38,10 +30,6 @@ interface CharacterPageProps {
   artifacts: Record<string, Artifact>;
   locale: string;
   common: Record<string, string>;
-  materials: Record<
-    string,
-    CommonMaterial & ElementalStoneMaterial & LocalMaterial & JewelMaterial
-  >;
 }
 
 const CharacterPage = ({
@@ -51,7 +39,6 @@ const CharacterPage = ({
   artifacts,
   locale,
   common,
-  materials,
 }: CharacterPageProps) => {
   const setBg = useSetRecoilState(appBackgroundStyleState);
   const { t, tfn } = useIntl();
@@ -188,10 +175,7 @@ const CharacterPage = ({
         })}
       </h2>
       <div className="bg-vulcan-800 rounded shadow-lg mb-4 mx-4 lg:mx-0">
-        <CharacterAscencionMaterials
-          ascension={character.ascension}
-          materials={materials}
-        />
+        <CharacterAscencionMaterials ascension={character.ascension} />
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
@@ -200,10 +184,7 @@ const CharacterPage = ({
         })}
       </h2>
       <div className="bg-vulcan-800 rounded shadow-lg mx-4 lg:mx-0">
-        <CharacterTalentMaterials
-          talents={character.talent_materials}
-          materials={materials}
-        />
+        <CharacterTalentMaterials talents={character.talent_materials} />
       </div>
     </div>
   );
@@ -258,20 +239,10 @@ export const getStaticProps: GetStaticProps = async ({
   const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons();
   const artifactsList = await genshinData.artifacts();
-  const jewelsMaterialsList = await genshinData.jewelsMaterials();
-  const commonList = await genshinData.commonMaterials();
-  const elementalStoneMaterialsList =
-    await genshinData.elementalStoneMaterials();
-  const localMaterialsList = await genshinData.localMaterials();
-  const talentLvlUpMaterialsList = await genshinData.talentLvlUpMaterials();
 
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact> = {};
   let builds: Build[] = [];
-  let materials: Record<
-    string,
-    CommonMaterial | ElementalStoneMaterial | LocalMaterial | JewelMaterial
-  > = {};
 
   if (buildsOld) {
     const weaponsIds: string[] = [];
@@ -319,42 +290,6 @@ export const getStaticProps: GetStaticProps = async ({
     });
   }
 
-  character.ascension.forEach((asce) => {
-    materials[asce.mat1.id] = jewelsMaterialsList.find(
-      (j) => j.id === asce.mat1.id
-    ) as JewelMaterial;
-    materials[asce.mat3.id] = localMaterialsList.find(
-      (j) => j.id === asce.mat3.id
-    ) as LocalMaterial;
-    materials[asce.mat4.id] = commonList.find(
-      (j) => j.id === asce.mat4.id
-    ) as CommonMaterial;
-
-    if (asce.mat2 && asce.mat2.id) {
-      materials[asce.mat2.id] = elementalStoneMaterialsList.find(
-        (j) => j.id === asce.mat2?.id
-      ) as ElementalStoneMaterial;
-    }
-  });
-
-  character.talent_materials.forEach((tal) => {
-    materials[tal.items[0].id] = talentLvlUpMaterialsList.find(
-      (j) => j.id === tal.items[0].id
-    ) as JewelMaterial;
-
-    if (tal.items[2]) {
-      materials[tal.items[2].id] = talentLvlUpMaterialsList.find(
-        (j) => j.id === tal.items[2].id
-      ) as JewelMaterial;
-    }
-
-    if (tal.items[3]) {
-      materials[tal.items[3].id] = talentLvlUpMaterialsList.find(
-        (j) => j.id === tal.items[3].id
-      ) as JewelMaterial;
-    }
-  });
-
   const common = require(`../../_content/data/common.json`)[locale];
 
   return {
@@ -366,7 +301,6 @@ export const getStaticProps: GetStaticProps = async ({
       lngDict,
       locale,
       common,
-      materials,
     },
     revalidate: 1,
   };
