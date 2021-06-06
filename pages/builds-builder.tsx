@@ -84,7 +84,7 @@ const Builder = ({
       .replace(" ", "_")}`;
     const newBuild: Build = {
       id: id,
-      name: id,
+      name: name,
       description: "",
       recommended: false,
       role: role,
@@ -219,6 +219,23 @@ const BuildDetail = ({
     });
   };
 
+  const addNewSet = (i: number) => {
+    onChange(index, {
+      ...build,
+      sets: [
+        ...build.sets.map((set, ind) => {
+          if (ind === i) {
+            return {
+              ...set,
+              set_2: artifacts[0],
+            };
+          }
+          return set;
+        }),
+      ],
+    });
+  };
+
   const removeArtifactFromSet = (i: number, ai: number) => {
     let newset = { ...build.sets[i] };
     if (ai !== 0) {
@@ -303,6 +320,13 @@ const BuildDetail = ({
     });
   };
 
+  const changeName = (newName: string) => {
+    onChange(index, {
+      ...build,
+      name: newName,
+    });
+  };
+
   return (
     <div
       className={clsx(
@@ -313,6 +337,12 @@ const BuildDetail = ({
       <div className="col-span-2">
         <h2>ROLE</h2>
         <div>{build.role}</div>
+        <div>
+          <input
+            onChange={(e) => changeName(e.target.value)}
+            value={build.name}
+          />
+        </div>
         <div>
           <button onClick={toggleRecommended}>
             {build.recommended ? "Recommended" : "Not recomended"}
@@ -383,6 +413,9 @@ const BuildDetail = ({
                 </span>
               ))}
               <button onClick={() => removeSet(iset)}>(-)</button>
+              {Object.keys(set).length === 1 && (
+                <button onClick={() => addNewSet(iset)}>(+)</button>
+              )}
             </li>
           ))}
           <button onClick={addSet}>add new set</button>
