@@ -1,0 +1,438 @@
+[
+  {
+    "primary": [
+      {
+        "characterId": "eula",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "fischl",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "rosaria",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "xinyan",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["fischl", "rosaria"],
+        "substitutes": ["lisa", "ganyu", "xingqiu", "mona"]
+      },
+      {
+        "characters": ["xinyan"],
+        "substitutes": ["bennett", "zhongli", "diona"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "yanfei",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "ganyu",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "xingqiu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["ganyu"],
+        "substitutes": ["chongyun"]
+      },
+      {
+        "characters": ["xingqiu"],
+        "substitutes": ["fischl", "mona"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["zhongli", "diona"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "rosaria",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "ganyu",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "xingqiu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["ganyu"],
+        "substitutes": ["tartaglia"]
+      },
+      {
+        "characters": ["xingqiu"],
+        "substitutes": ["fischl", "mona"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["zhongli", "diona"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "hu_tao",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "ganyu",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "xingqiu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "diona",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["ganyu"],
+        "substitutes": ["tartaglia"]
+      },
+      {
+        "characters": ["xingqiu"],
+        "substitutes": ["fischl", "mona"]
+      },
+      {
+        "characters": ["diona"],
+        "substitutes": ["zhongli", "albedo", "sucrose"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "xiao",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "jean",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "barbara",
+        "role": "Support"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["jean"],
+        "substitutes": ["albedo", "zhongli", "tartaglia"]
+      },
+      {
+        "characters": ["barbara", "bennett"],
+        "substitutes": ["diona", "qiqi"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "ganyu",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "tartaglia",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "albedo",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["tartaglia", "albedo"],
+        "substitutes": ["xiangling", "mona", "chongyun"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["diona", "qiqi", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "diluc",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "xingqiu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "chongyun",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["xingqiu", "chongyun"],
+        "substitutes": ["fischl", "mona", "ganyu"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["diona", "qiqi", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "klee",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "mona",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "sucrose",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "diona",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["mona"],
+        "substitutes": ["xingqiu"]
+      },
+      {
+        "characters": ["sucrose"],
+        "substitutes": ["venti", "albedo"]
+      },
+      {
+        "characters": ["diona"],
+        "substitutes": ["qiqi", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "tartaglia",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "hu_tao",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "ganyu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["hu_tao", "ganyu"],
+        "substitutes": ["xiangling", "kaeya", "fischl"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["diona", "qiqi"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "keqing",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "kaeya",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "albedo",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["kaeya", "albedo"],
+        "substitutes": ["xingqiu", "zhongli", "rosaria"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["diona", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "razor",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "xingqiu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "ganyu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["xingqiu", "ganyu"],
+        "substitutes": ["mona", "kaeya", "rosaria"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["diona", "barbara", "qiqi"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "ningguang",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "zhongli",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "albedo",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["zhongli", "albedo"],
+        "substitutes": ["xinyan", "traveler_geo"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["qiqi", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "xinyan",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "zhongli",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "albedo",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["zhongli", "albedo"],
+        "substitutes": ["mona", "fischl", "chongyun"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["qiqi", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "noelle",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "traveler_geo",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "kaeya",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "barbara",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["traveler_geo"],
+        "substitutes": ["xiangling", "lisa"]
+      },
+      {
+        "characters": ["kaeya"],
+        "substitutes": ["amber"]
+      }
+    ]
+  }
+]

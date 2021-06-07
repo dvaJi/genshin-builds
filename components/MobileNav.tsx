@@ -9,7 +9,7 @@ type Props = {
   isOpen: boolean;
   navroutes: NavRoutes[];
   handleClick: (value: boolean) => void;
-  f: (props: IntlFormatProps) => JSX.Element;
+  f: (props: IntlFormatProps) => string;
 };
 
 const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {

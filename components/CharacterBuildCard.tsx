@@ -10,7 +10,7 @@ type Props = {
   build: Build;
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact>;
-  f: (props: IntlFormatProps) => JSX.Element;
+  f: (props: IntlFormatProps) => string;
 };
 
 const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {

@@ -12,10 +12,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/contact</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/de</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -193,6 +189,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/teams</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -384,6 +384,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/teams</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -569,6 +573,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/teams</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -764,6 +772,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/teams</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -949,6 +961,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/teams</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1148,6 +1164,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/teams</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1333,6 +1353,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/teams</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1532,6 +1556,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/teams</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1720,11 +1748,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/teams</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/weapons</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/teams</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1905,6 +1941,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/teams</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2100,6 +2140,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/teams</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/tier-list</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2289,6 +2333,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/privacy-policy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/teams</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>

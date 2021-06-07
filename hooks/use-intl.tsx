@@ -1,6 +1,5 @@
 import useIntlContext from "./use-intl-context";
 import { templateReplacement } from "@utils/template-replacement";
-import Message from "@components/Message";
 
 export interface IntlFormatProps {
   id: string;
@@ -9,21 +8,12 @@ export interface IntlFormatProps {
 }
 
 export interface useIntlResponse {
-  t: (props: IntlFormatProps) => JSX.Element;
+  t: (props: IntlFormatProps) => string;
   tfn: (props: IntlFormatProps) => string;
 }
 
 const useIntl = (): useIntlResponse => {
   const { messages: dict = {} } = useIntlContext();
-
-  const format = ({ id, defaultMessage, values }: IntlFormatProps) => (
-    <Message
-      id={id}
-      defaultMessage={defaultMessage}
-      dict={dict}
-      values={values}
-    />
-  );
 
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
     if (dict[id]) {
@@ -35,7 +25,7 @@ const useIntl = (): useIntlResponse => {
       : defaultMessage;
   };
 
-  return { t: format, tfn: formatFn };
+  return { t: formatFn, tfn: formatFn };
 };
 
 export default useIntl;
