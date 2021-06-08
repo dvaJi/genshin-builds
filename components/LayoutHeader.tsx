@@ -11,6 +11,7 @@ import useIntl from "@hooks/use-intl";
 const navroutes: NavRoutes[] = [
   { id: "characters", name: "Characters", href: "/characters" },
   { id: "tierlist", name: "Tierlist", href: "/tier-list" },
+  { id: "teams", name: "Teams", href: "/teams" },
   {
     id: "database",
     name: "Database",

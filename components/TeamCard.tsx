@@ -24,8 +24,8 @@ const TeamCard = ({ team }: TeamCardProps) => {
         })}
       </h2>
       <div className="flex justify-between">
-        {team.primary.map((block) => (
-          <div>
+        {team.primary.map((block, i) => (
+          <div key={`${block.role}${block.character.id}${i}`}>
             <div className="text-xl">{block.role}</div>
             <div className=" text-center">
               <Link href={`/character/${block.character.id}`}>
@@ -48,7 +48,10 @@ const TeamCard = ({ team }: TeamCardProps) => {
           className="bg-vulcan-700 hover:bg-vulcan-600 rounded mx-2 my-3 p-2 px-4"
           onClick={() => setShow(!show)}
         >
-          {t({ id: "substitute_characters", defaultMessage: "Substitute Characters" })}
+          {t({
+            id: "substitute_characters",
+            defaultMessage: "Substitute Characters",
+          })}
         </button>
       </div>
       <div
@@ -57,17 +60,20 @@ const TeamCard = ({ team }: TeamCardProps) => {
           show ? "max-h-full" : "max-h-0"
         )}
       >
-        {team.alternatives.map((alt) => (
-          <div className="flex flex-row p-2 lg:p-5 justify-between items-center border-b border-gray-700">
+        {team.alternatives.map((alt, i) => (
+          <div
+            key={`sub-${team.primary[0].character.name}${i}`}
+            className="flex flex-row p-2 lg:p-5 justify-between items-center border-b border-gray-700"
+          >
             <div>
               {alt.characters.map((c) => (
-                <CharacterPortrait character={c} />
+                <CharacterPortrait key={`alt-char${c.id}${i}`} character={c} />
               ))}
             </div>
             <div className="text-4xl">→</div>
             <div className="grid grid-cols-2 justify-center items-center">
               {alt.substitutes.map((c) => (
-                <CharacterPortrait character={c} />
+                <CharacterPortrait key={`alt-sub${c.id}${i}`} character={c} />
               ))}
             </div>
           </div>
