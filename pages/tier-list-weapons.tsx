@@ -1,29 +1,32 @@
 import { useState } from "react";
 import { GetStaticProps } from "next";
 import clsx from "clsx";
-import GenshinData, { Character, Weapon } from "genshin-data";
+import GenshinData, { Weapon } from "genshin-data";
 
-import CharactersTier from "@components/CharactersTier";
 import Metadata from "@components/Metadata";
 
 import { getLocale } from "@lib/localData";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
-import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
+import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
+import WeaponsTier from "@components/WeaponsTier";
+import { IMGS_CDN } from "@lib/constants";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 
 type Props = {
-  tierlist: Tierlist;
-  charactersMap: Record<string, Pick<Character, "id" | "name" | "element">>;
+  tierlist: Record<string, TierlistWeapons>;
   weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
-  common: Record<string, string>;
 };
 
-const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
+const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
+
+const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
   const { isMobile } = useMobileDetect();
+  const [typeFilter, setTypeFilter] = useState("sword");
   const [selectedCol, setSelectedCol] = useState<Roles | null>(
     isMobile() ? Roles.maindps : null
   );
+
   const { t, tfn } = useIntl();
 
   const changeTierTab = (role: Roles) => {
@@ -39,22 +42,47 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
       <Metadata
         fn={tfn}
         pageTitle={tfn({
-          id: "title.tierlist",
-          defaultMessage: "Genshin Impact Tier List (Best Characters)",
+          id: "title.tierlist_weapons",
+          defaultMessage: "Genshin Impact Weapons Tier List (Best Weapons)",
         })}
         pageDescription={tfn({
-          id: "title.tierlist.description",
+          id: "title.tierlist_weapons.description",
           defaultMessage:
-            "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+            "All the best weapons ranked in order of power, viability, and versatility to clear content.",
         })}
       />
       <h2 className="text-center lg:text-left my-6 text-2xl font-semibold text-gray-200">
         {t({
-          id: "title.tierlist",
-          defaultMessage: "Genshin Impact Best Characters Tier List",
+          id: "title.tierlist_weapons",
+          defaultMessage: "Genshin Impact Weapons Tier List (Best Weapons)",
         })}
       </h2>
       <div className="rounded">
+        <div className="text-center my-4">
+          {weaponTypes.map((type) => (
+            <button
+              key={type}
+              className={clsx(
+                "border rounded hover:border-gray-700 hover:bg-vulcan-800 mr-1",
+                type.toLowerCase() === typeFilter
+                  ? "border-gray-700 bg-vulcan-800"
+                  : "border-gray-800"
+              )}
+              onClick={() => {
+                if (type === typeFilter) {
+                  setTypeFilter("");
+                } else {
+                  setTypeFilter(type.toLowerCase());
+                }
+              }}
+            >
+              <img
+                className="w-16 h-16"
+                src={`${IMGS_CDN}/weapons_type/${type}.png`}
+              />
+            </button>
+          ))}
+        </div>
         <div className="grid grid-cols-8 gap-4 w-full">
           <div className="p-5"></div>
           <button
@@ -92,13 +120,11 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
           </button>
         </div>
         {["0", "1", "2", "3", "4"].map((key) => (
-          <CharactersTier
-            key={`tier_${key}`}
-            tierlist={tierlist}
-            characters={charactersMap}
+          <WeaponsTier
+            key={`${typeFilter}_${key}`}
+            tierlist={tierlist[typeFilter]}
             weaponsMap={weaponsMap}
             tier={key as TierNums}
-            common={common}
             selectedCol={selectedCol}
           />
         ))}
@@ -110,51 +136,26 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const characters = await genshinData.characters({
-    select: ["id", "name", "element"],
-  });
   const weapons = await genshinData.weapons({
     select: ["id", "name", "rarity"],
   });
   const { default: tierlist = {} }: any = await import(
-    `../_content/data/tierlist.json`
+    `../_content/data/tierlist-weapons.json`
   );
-  const common = require(`../_content/data/common.json`)[locale];
 
-  const tiers = ["0", "1", "2", "3", "4"];
-
-  const mergeTiers = (col: any) => {
-    let data: any[] = [];
-    tiers.forEach((k) => {
-      data = [...data, ...col[k]];
-    });
-
-    return data;
-  };
-
-  const charactersMap: any = {};
-  const weaponsMap: any = {};
-  const mergedTierlist = [
-    ...mergeTiers(tierlist.maindps),
-    ...mergeTiers(tierlist.subdps),
-    ...mergeTiers(tierlist.support),
-  ];
-
-  for (const tl of mergedTierlist) {
-    charactersMap[tl.id] = characters.find((c) => c.id === tl.id);
-    weaponsMap[tl.w_id] = weapons.find((w) => w.id === tl.w_id);
-  }
+  const weaponsMap = weapons.reduce<Record<string, Weapon>>((map, val) => {
+    map[val.id] = val;
+    return map;
+  }, {});
 
   return {
     props: {
       tierlist,
-      charactersMap,
       weaponsMap,
       lngDict,
-      common,
     },
     revalidate: 1,
   };
 };
 
-export default TierList;
+export default TierListWeapons;

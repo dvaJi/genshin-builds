@@ -52,10 +52,9 @@ const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
         className="flex items-center flex-row flex-wrap"
         variants={variants}
       >
-        {navroutes
-          .filter((r) => r.href !== "/#")
-          .map((r) => (
-            <Fragment key={r.name}>
+        {navroutes.map((r) => (
+          <Fragment key={r.name}>
+            {r.href !== "/#" && (
               <motion.li className="flex w-1/2 m-0 p-3" variants={variantsli}>
                 <Link href={r.href}>
                   <a className="mobile-link" onClick={() => handleClick(false)}>
@@ -63,27 +62,28 @@ const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
                   </a>
                 </Link>
               </motion.li>
-              {r.dropdownMenu &&
-                r.dropdownMenu
-                  .filter((d) => d.href !== "/#")
-                  .map((rd) => (
-                    <motion.li
-                      key={rd.name}
-                      className="flex w-1/2 m-0 p-3"
-                      variants={variantsli}
-                    >
-                      <Link href={rd.href}>
-                        <a
-                          className="mobile-link"
-                          onClick={() => handleClick(false)}
-                        >
-                          {f({ id: rd.id, defaultMessage: rd.name })}
-                        </a>
-                      </Link>
-                    </motion.li>
-                  ))}
-            </Fragment>
-          ))}
+            )}
+            {r.dropdownMenu &&
+              r.dropdownMenu
+                .filter((d) => d.href !== "/#")
+                .map((rd) => (
+                  <motion.li
+                    key={rd.name}
+                    className="flex w-1/2 m-0 p-3"
+                    variants={variantsli}
+                  >
+                    <Link href={rd.href}>
+                      <a
+                        className="mobile-link"
+                        onClick={() => handleClick(false)}
+                      >
+                        {f({ id: rd.id, defaultMessage: rd.name })}
+                      </a>
+                    </Link>
+                  </motion.li>
+                ))}
+          </Fragment>
+        ))}
       </motion.ul>
     </motion.div>
   );

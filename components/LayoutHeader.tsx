@@ -10,7 +10,23 @@ import useIntl from "@hooks/use-intl";
 
 const navroutes: NavRoutes[] = [
   { id: "characters", name: "Characters", href: "/characters" },
-  { id: "tierlist", name: "Tierlist", href: "/tier-list" },
+  {
+    id: "tierlist",
+    name: "Tierlist",
+    href: "/#",
+    dropdownMenu: [
+      {
+        id: "tierlist_characters",
+        name: "Tierlist Characters",
+        href: "/tier-list",
+      },
+      {
+        id: "tierlist_weapons",
+        name: "Tierlist Weapons",
+        href: "/tier-list-weapons",
+      },
+    ],
+  },
   { id: "teams", name: "Teams", href: "/teams" },
   {
     id: "database",
@@ -48,7 +64,7 @@ const LayoutHeader = () => {
         <ul className="ml-auto hidden lg:flex">
           {navroutes.map((r) => (
             <NavLink
-              key={r.href}
+              key={r.name}
               href={r.href}
               route={router.route}
               dropdownMenu={r.dropdownMenu?.map((d) => ({

@@ -6,12 +6,12 @@ export interface CharacterTier {
 
 export type TierNums = "0" | "1" | "2" | "3" | "4";
 
-interface Tier {
-  "0": CharacterTier[];
-  "1": CharacterTier[];
-  "2": CharacterTier[];
-  "3": CharacterTier[];
-  "4": CharacterTier[];
+interface Tier<T> {
+  "0": T[];
+  "1": T[];
+  "2": T[];
+  "3": T[];
+  "4": T[];
 }
 
 export enum Roles {
@@ -20,4 +20,5 @@ export enum Roles {
   support = "support",
 }
 
-export type Tierlist = Record<Roles, Tier>;
+export type Tierlist = Record<Roles, Tier<CharacterTier>>;
+export type TierlistWeapons = Record<Roles, Tier<string>>;
