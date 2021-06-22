@@ -37,7 +37,10 @@ const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
               ))
               .reduce((prev, curr, i) => [
                 prev,
-                <div key={`art_divider_${i}`} className="build-option-divider">
+                <div
+                  key={`weapon_divider_${i}`}
+                  className="build-option-divider"
+                >
                   {f({
                     id: "or",
                     defaultMessage: "Or",
@@ -59,7 +62,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
               .map<ReactNode>((talent) => <span>{talent}</span>)
               .reduce((prev, curr, i) => [
                 prev,
-                <span key={`art_divider_${i}`} className="mx-3">
+                <span key={`talent_p_divider_${i}`} className="mx-3">
                   {">"}
                 </span>,
                 curr,
@@ -105,7 +108,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
             ))
             .reduce((prev, curr, i) => [
               prev,
-              <div key={`art_divider_${i}`} className="build-option-divider">
+              <div key={`set_divider_${i}`} className="build-option-divider">
                 {f({
                   id: "or",
                   defaultMessage: "Or",
