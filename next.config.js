@@ -19,7 +19,4 @@ module.exports = {
     defaultLocale: "en",
     localeDetection: !isDev,
   },
-  future: {
-    webpack5: true,
-  },
 };

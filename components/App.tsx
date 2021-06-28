@@ -1,15 +1,17 @@
 import Head from "next/head";
 import { AppProps } from "next/app";
 import { useRecoilValue } from "recoil";
+import clsx from "clsx";
 
 import LayoutHeader from "@components/LayoutHeader";
 import LayoutFooter from "@components/LayoutFooter";
 
 import { appBackgroundStyleState } from "@state/background-atom";
-import clsx from "clsx";
+import { AD_BOTTOM_ZONEID } from "@lib/constants";
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const appBackgroundStyle = useRecoilValue(appBackgroundStyleState);
+  console.log(router);
 
   return (
     <>
@@ -52,11 +54,26 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <main
           className={clsx(
             "mb-8 z-10 text-gray-400",
-            router.route !== "/builds-builder" ? "mx-auto container lg:px-20" : ""
+            router.route !== "/builds-builder"
+              ? "mx-auto container lg:px-20"
+              : ""
           )}
         >
           <Component {...pageProps} />
         </main>
+        <div className="mx-auto">
+          {AD_BOTTOM_ZONEID && (
+            <iframe
+              src={`//a.exdynsrv.com/iframe.php?idzone=${AD_BOTTOM_ZONEID}&size=900x250`}
+              width="900"
+              height="250"
+              scrolling="no"
+              marginWidth={0}
+              marginHeight={0}
+              frameBorder="0"
+            />
+          )}
+        </div>
       </div>
       <LayoutFooter />
     </>
