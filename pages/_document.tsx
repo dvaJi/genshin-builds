@@ -1,15 +1,17 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import { GA_TRACKING_ID } from "../lib/gtag";
+import { GAD_ID } from "@lib/constants";
+import { GA_TRACKING_ID } from "@lib/gtag";
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+          {GA_TRACKING_ID && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -17,8 +19,16 @@ export default class MyDocument extends Document {
               page_path: window.location.pathname,
             });
           `,
-            }}
-          />
+              }}
+            />
+          )}
+          {GAD_ID && (
+            <script
+              data-ad-client={GAD_ID}
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            />
+          )}
           <link
             rel="apple-touch-icon"
             sizes="57x57"
@@ -99,10 +109,12 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          />
+          {GA_TRACKING_ID && (
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            />
+          )}
         </body>
       </Html>
     );

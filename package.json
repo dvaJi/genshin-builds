@@ -15,7 +15,6 @@
   "dependencies": {
     "clsx": "^1.1.1",
     "date-fns": "^2.22.1",
-    "exoclick-react": "^1.0.3",
     "framer-motion": "^4.1.17",
     "genshin-data": "^0.10.0",
     "gray-matter": "^4.0.3",
