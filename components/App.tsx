@@ -60,19 +60,6 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         >
           <Component {...pageProps} />
         </main>
-        <div className="mx-auto">
-          {AD_BOTTOM_ZONEID && (
-            <iframe
-              src={`//a.exdynsrv.com/iframe.php?idzone=${AD_BOTTOM_ZONEID}&size=900x250`}
-              width="900"
-              height="250"
-              scrolling="no"
-              marginWidth={0}
-              marginHeight={0}
-              frameBorder="0"
-            />
-          )}
-        </div>
       </div>
       <LayoutFooter />
     </>
