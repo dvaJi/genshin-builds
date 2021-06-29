@@ -104,6 +104,13 @@ const Builder = ({
     setNewBuild({ name: "", role: "Main DPS" });
   };
 
+  const deleteBuild = (id: string) => {
+    onUpdate(
+      charId,
+      charBuild.filter((cb) => cb.id !== id)
+    );
+  };
+
   return (
     <div className="grid grid-cols-12 border-b border-gray-900 bg-vulcan-700 text-sm overflow-auto">
       <div>
@@ -132,6 +139,7 @@ const Builder = ({
             build={build}
             index={i}
             onChange={handleOnChange}
+            onRemoveBuild={deleteBuild}
             artifacts={artifacts}
             weapons={weapons}
           />
@@ -145,6 +153,7 @@ type BuildDetailProps = {
   index: number;
   build: Build;
   onChange: (index: number, build: Build) => void;
+  onRemoveBuild: (id: string) => void;
   artifacts: string[];
   weapons: string[];
 };
@@ -153,6 +162,7 @@ const BuildDetail = ({
   build,
   index,
   onChange,
+  onRemoveBuild,
   artifacts,
   weapons,
 }: BuildDetailProps) => {
@@ -337,6 +347,7 @@ const BuildDetail = ({
       <div className="col-span-2">
         <h2>ROLE</h2>
         <div>{build.role}</div>
+        <button onClick={() => onRemoveBuild(build.id)}>Remove</button>
         <div>
           <input
             onChange={(e) => changeName(e.target.value)}
