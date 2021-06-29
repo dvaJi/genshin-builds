@@ -7,7 +7,6 @@ import LayoutHeader from "@components/LayoutHeader";
 import LayoutFooter from "@components/LayoutFooter";
 
 import { appBackgroundStyleState } from "@state/background-atom";
-import { AD_BOTTOM_ZONEID } from "@lib/constants";
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const appBackgroundStyle = useRecoilValue(appBackgroundStyleState);
