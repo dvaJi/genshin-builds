@@ -2,6 +2,40 @@
   {
     "primary": [
       {
+        "characterId": "kaedehara_kazuha",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "hu_tao",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "bennett",
+        "role": "Support"
+      },
+      {
+        "characterId": "xingqiu",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["hu_tao"],
+        "substitutes": ["diluc", "ganyu", "klee"]
+      },
+      {
+        "characters": ["bennett"],
+        "substitutes": ["diona"]
+      },
+      {
+        "characters": ["xingqiu"],
+        "substitutes": ["fischl", "beidou", "xiangling", "chongyun"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
         "characterId": "eula",
         "role": "Main DPS"
       },
