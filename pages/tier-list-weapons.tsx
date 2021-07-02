@@ -3,14 +3,15 @@ import { GetStaticProps } from "next";
 import clsx from "clsx";
 import GenshinData, { Weapon } from "genshin-data";
 
+import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
+import WeaponsTier from "@components/WeaponsTier";
 
 import { getLocale } from "@lib/localData";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
-import WeaponsTier from "@components/WeaponsTier";
-import { IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 
 type Props = {
@@ -51,6 +52,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
             "All the best weapons ranked in order of power, viability, and versatility to clear content.",
         })}
       />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-center lg:text-left my-6 text-2xl font-semibold text-gray-200">
         {t({
           id: "title.tierlist_weapons",

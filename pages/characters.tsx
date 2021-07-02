@@ -38,14 +38,11 @@ const CharactersPage = ({
             "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
         })}
       />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>
       <div className="">
-        <Ads
-          className="w-800px h-24 max-h-28 my-0 mx-auto"
-          adSlot={AD_ARTICLE_SLOT}
-        />
         {elements.map((element) => (
           <div
             key={element}

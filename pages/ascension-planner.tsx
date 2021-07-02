@@ -5,14 +5,17 @@ import { GetStaticProps } from "next";
 import format from "date-fns/format";
 import GenshinData, { Character, Weapon } from "genshin-data";
 
-import { getLocale } from "@lib/localData";
-import { localeToLang } from "@utils/locale-to-lang";
-
-import planning from "../_content/data/talents.json";
+import Ads from "@components/Ads";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import ServerTimers from "@components/ServerTimers";
+
+import { getLocale } from "@lib/localData";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { localeToLang } from "@utils/locale-to-lang";
+
 import useIntl from "@hooks/use-intl";
-import { IMGS_CDN } from "@lib/constants";
+
+import planning from "../_content/data/talents.json";
 
 type Props = {
   characters: Record<string, Character>;
@@ -31,6 +34,7 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
     <div>
       <div>
         <ServerTimers />
+        <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
         <div className="mb-2 flex flex-wrap justify-center">
           {DAYS.map((day) => (
             <button

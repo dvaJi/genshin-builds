@@ -506,6 +506,18 @@ const BuildDetail = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  if (process.env.NODE_ENV !== "development") {
+    return {
+      props: {
+        characters: {},
+        weapons: {},
+        artifacts: [],
+        currentbuilds: {},
+      },
+      revalidate: 1,
+    };
+  }
+
   const genshinData = new GenshinData({ language: localeToLang("en") });
   const characters = await genshinData.characters({
     select: ["id", "name", "rarity", "weapon_type"],

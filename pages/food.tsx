@@ -4,13 +4,14 @@ import { GetStaticProps } from "next";
 import GenshinData, { Food } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
 
+import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
-import { IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 
 type Props = {
   food: Food[];
@@ -66,6 +67,7 @@ const FoodPage = ({ food }: Props) => {
             "Discover all the cooking recipes and the best food to cook for your team.",
         })}
       />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "food", defaultMessage: "Food" })}
       </h2>
@@ -121,7 +123,9 @@ const FoodPage = ({ food }: Props) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const food = await genshinData.food();
+  const food = await genshinData.food({
+    select: ["id", "name", "rarity", "results"],
+  });
 
   return { props: { food, lngDict }, revalidate: 1 };
 };

@@ -157,10 +157,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
           </div>
         </div>
       </div>
-      <Ads
-        className="w-800px h-24 max-h-28 my-0 mx-auto"
-        adSlot={AD_ARTICLE_SLOT}
-      />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="">
         {filteredWeapons.map((weapon) => (
           <div
@@ -236,7 +233,17 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const weapons = await genshinData.weapons();
+  const weapons = await genshinData.weapons({
+    select: [
+      "id",
+      "rarity",
+      "name",
+      "primary",
+      "ascensions",
+      "refinements",
+      "type",
+    ],
+  });
 
   const common = require(`../_content/data/common.json`)[locale];
 

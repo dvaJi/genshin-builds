@@ -4,13 +4,14 @@ import { GetStaticProps } from "next";
 import GenshinData, { Potion } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
 
+import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
-import { IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 
 type Props = {
   potions: Potion[];
@@ -65,6 +66,7 @@ const PotionsPage = ({ potions }: Props) => {
             "Discover all the alchemy recipes and the best potions and oils to use for your team.",
         })}
       />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "potions", defaultMessage: "Potions" })}
       </h2>
@@ -120,7 +122,9 @@ const PotionsPage = ({ potions }: Props) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const potions = await genshinData.potions();
+  const potions = await genshinData.potions({
+    select: ["id", "name", "rarity", "effect"],
+  });
 
   return { props: { potions, lngDict }, revalidate: 1 };
 };

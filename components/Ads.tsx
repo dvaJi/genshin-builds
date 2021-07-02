@@ -9,15 +9,19 @@ type AdsProps = {
 
 const Ads = ({ className, adSlot }: AdsProps) => {
   useEffect(() => {
-    if (GAD_ID && typeof window !== "undefined") {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {}
-      );
+    if (GAD_ID && adSlot && typeof window !== "undefined") {
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {}
+        );
+      } catch (err) {
+        console.error(err);
+      }
     }
   }, []);
 
   if (!GAD_ID || !adSlot) {
-    return null;
+    return <div />;
   }
 
   return (

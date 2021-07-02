@@ -35,13 +35,15 @@ const CharactersPage = ({ teams }: CharactersProps) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
-      <Ads
-        className="w-800px h-24 max-h-28 my-0 mx-auto"
-        adSlot={AD_ARTICLE_SLOT}
-      />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="">
         {teams.map((team, i) => (
-          <TeamCard key={team.primary[0].character.id + i} team={team} />
+          <>
+            <TeamCard key={team.primary[0].character.id + i} team={team} />
+            {i % 3 === 0 && (
+              <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+            )}
+          </>
         ))}
       </div>
     </div>

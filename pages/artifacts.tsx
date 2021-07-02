@@ -4,13 +4,14 @@ import { GetStaticProps } from "next";
 import GenshinData, { Artifact } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
 
+import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
-import { IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 
 type Props = {
   artifacts: Artifact[];
@@ -83,6 +84,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
             "All the best artifact gear sets, locations, and stats.",
         })}
       />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "artifacts", defaultMessage: "Artifacts" })}
       </h2>

@@ -89,10 +89,7 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
-      <Ads
-        className="w-800px h-24 max-h-28 my-0 mx-auto"
-        adSlot={AD_ARTICLE_SLOT}
-      />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({ id: "character.skills", defaultMessage: "Skills" })}
       </h2>
@@ -146,6 +143,7 @@ const CharacterPage = ({
           ))}
         </div>
       )}
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({ id: "character.passives", defaultMessage: "Passives" })}
       </h2>
@@ -242,8 +240,12 @@ export const getStaticProps: GetStaticProps = async ({
   }
 
   const buildsOld: Build[] = await getCharacterBuild(character.id);
-  const weaponsList = await genshinData.weapons();
-  const artifactsList = await genshinData.artifacts();
+  const weaponsList = await genshinData.weapons({
+    select: ["id", "name", "rarity", "secondary", "bonus"],
+  });
+  const artifactsList = await genshinData.artifacts({
+    select: ["id", "name", "max_rarity", "2pc", "4pc"],
+  });
 
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact> = {};
@@ -313,7 +315,7 @@ export const getStaticProps: GetStaticProps = async ({
 
 export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const genshinData = new GenshinData();
-  const characters = await genshinData.characters();
+  const characters = await genshinData.characters({ select: ["id"] });
 
   const paths: { params: { name: string }; locale: string }[] = [];
 

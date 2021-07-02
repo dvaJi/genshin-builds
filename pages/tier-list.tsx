@@ -93,10 +93,7 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
             </h3>
           </button>
         </div>
-        <Ads
-          className="w-800px h-24 max-h-28 my-0 mx-auto"
-          adSlot={AD_ARTICLE_SLOT}
-        />
+        <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
         {["0", "1", "2", "3", "4"].map((key) => (
           <CharactersTier
             key={`tier_${key}`}
