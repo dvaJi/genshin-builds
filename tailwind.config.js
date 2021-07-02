@@ -13,6 +13,9 @@ module.exports = {
       height: {
         "500px": "500px",
       },
+      width: {
+        "800px": "800px",
+      },
       backgroundColor: {
         vulcan: {
           50: "#868fac",

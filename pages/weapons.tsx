@@ -2,16 +2,18 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import GenshinData, { Weapon } from "genshin-data";
+
+import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
+import Crement from "@components/Crement";
+import SearchInput from "@components/SearchInput";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
 import useDebounce from "@hooks/use-debounce";
-import Crement from "@components/Crement";
-import SearchInput from "@components/SearchInput";
-import { IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 
 interface WeaponsPageProps {
   weapons: Weapon[];
@@ -155,6 +157,10 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
           </div>
         </div>
       </div>
+      <Ads
+        className="w-800px h-24 max-h-28 my-0 mx-auto"
+        adSlot={AD_ARTICLE_SLOT}
+      />
       <div className="">
         {filteredWeapons.map((weapon) => (
           <div

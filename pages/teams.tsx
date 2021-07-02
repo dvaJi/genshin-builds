@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import GenshinData, { Character } from "genshin-data";
 
+import Ads from "@components/Ads";
 import TeamCard from "@components/TeamCard";
 import Metadata from "@components/Metadata";
 
@@ -8,6 +9,7 @@ import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
 import { Team, TeamFull } from "interfaces/teams";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 type CharactersProps = {
   teams: TeamFull[];
@@ -33,6 +35,10 @@ const CharactersPage = ({ teams }: CharactersProps) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
+      <Ads
+        className="w-800px h-24 max-h-28 my-0 mx-auto"
+        adSlot={AD_ARTICLE_SLOT}
+      />
       <div className="">
         {teams.map((team, i) => (
           <TeamCard key={team.primary[0].character.id + i} team={team} />

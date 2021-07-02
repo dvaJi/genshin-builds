@@ -19,9 +19,10 @@ import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getCharacterBuild, getLocale } from "@lib/localData";
 import { appBackgroundStyleState } from "@state/background-atom";
-import { IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 import { Build } from "interfaces/build";
 import StarRarity from "@components/StarRarity";
+import Ads from "@components/Ads";
 
 interface CharacterPageProps {
   character: Character;
@@ -88,6 +89,10 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
+      <Ads
+        className="w-800px h-24 max-h-28 my-0 mx-auto"
+        adSlot={AD_ARTICLE_SLOT}
+      />
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({ id: "character.skills", defaultMessage: "Skills" })}
       </h2>

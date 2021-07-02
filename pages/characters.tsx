@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import GenshinData, { Character } from "genshin-data";
 
+import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/CharacterPortrait";
 import ElementIcon from "@components/ElementIcon";
@@ -9,6 +10,7 @@ import ElementIcon from "@components/ElementIcon";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
@@ -40,6 +42,10 @@ const CharactersPage = ({
         {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>
       <div className="">
+        <Ads
+          className="w-800px h-24 max-h-28 my-0 mx-auto"
+          adSlot={AD_ARTICLE_SLOT}
+        />
         {elements.map((element) => (
           <div
             key={element}

@@ -5,7 +5,9 @@ import clsx from "clsx";
 
 import LayoutHeader from "@components/LayoutHeader";
 import LayoutFooter from "@components/LayoutFooter";
+import Ads from "@components/Ads";
 
+import { AD_LEFT_SLOT, AD_RIGHT_SLOT } from "@lib/constants";
 import { appBackgroundStyleState } from "@state/background-atom";
 
 const App = ({ Component, pageProps, router }: AppProps) => {
@@ -58,6 +60,14 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           )}
         >
           <Component {...pageProps} />
+          <Ads
+            className="w-60 block absolute z-10 top-0 left-0"
+            adSlot={AD_LEFT_SLOT}
+          />
+          <Ads
+            className="w-60 block absolute z-10 top-0 right-0"
+            adSlot={AD_RIGHT_SLOT}
+          />
         </main>
       </div>
       <LayoutFooter />

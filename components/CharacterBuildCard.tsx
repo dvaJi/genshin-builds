@@ -59,7 +59,9 @@ const CharacterBuildCard = ({ build, weapons, artifacts, f }: Props) => {
           </div>
           <div className="w-full mb-2">
             {build.talent_priority
-              .map<ReactNode>((talent) => <span>{talent}</span>)
+              .map<ReactNode>((talent) => (
+                <span key={`tal-${talent}`}>{talent}</span>
+              ))
               .reduce((prev, curr, i) => [
                 prev,
                 <span key={`talent_p_divider_${i}`} className="mx-3">

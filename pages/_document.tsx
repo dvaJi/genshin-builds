@@ -23,11 +23,12 @@ export default class MyDocument extends Document {
             />
           )}
           {GAD_ID && (
-            <script
-              data-ad-client={GAD_ID}
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-            />
+            <>
+              <script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+              />
+            </>
           )}
           <link
             rel="apple-touch-icon"
