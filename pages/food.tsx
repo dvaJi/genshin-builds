@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import clsx from "clsx";
 import { useMemo } from "react";
 import { GetStaticProps } from "next";
@@ -48,7 +49,7 @@ const FoodPage = ({ food }: Props) => {
         Cell: (row) => row.value.normal.effect,
       },
     ],
-    []
+    [tfn]
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: food }, ...[useSortBy]);

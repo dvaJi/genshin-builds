@@ -32,6 +32,7 @@ const TeamCard = ({ team }: TeamCardProps) => {
                 <a>
                   <img
                     className="rounded-lg"
+                    alt={block.character.id}
                     src={`${IMGS_CDN}/characters/${block.character.id}/image.png`}
                   />
                   <span className="text-white text-2xl leading-10">

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "next lint",
     "generate-all": "npm run generate-sitemap && npm run generate-common-dict && npm run generate-common-locale",
     "generate-sitemap": "node ./scripts/sitemap.js",
     "generate-common-dict": "node ./scripts/generate-common-dict.js",
@@ -35,6 +36,8 @@
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.8",
     "@types/react-table": "^7.7.1",
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
     "globby": "^11.0.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",

@@ -45,7 +45,11 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <div className="flex flex-col">
           <div className="absolute top-12 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0">
             {appBackgroundStyle.image && (
-              <img className="w-full" src={appBackgroundStyle.image} />
+              <img
+                className="w-full"
+                alt="Background image"
+                src={appBackgroundStyle.image}
+              />
             )}
           </div>
           <div

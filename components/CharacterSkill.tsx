@@ -34,6 +34,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
           <div className="absolute top-0 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0 h-96">
             <img
               className="w-full"
+              alt={skill.id}
               src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
                 "normal_attack_",
                 ""

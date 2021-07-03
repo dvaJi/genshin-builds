@@ -80,6 +80,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
             >
               <img
                 className="w-16 h-16"
+                alt={type}
                 src={`${IMGS_CDN}/weapons_type/${type}.png`}
               />
             </button>

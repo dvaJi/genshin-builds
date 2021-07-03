@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -54,13 +55,11 @@ const LayoutHeader = () => {
   return (
     <nav className="sticky top-0 h-12 mb-5 z-40 bg-vulcan-800 border-b border-gray-800 shadow-md">
       <div className="flex h-full mb-12 mx-auto container text-gray-400 ">
-        <a
-          className="flex items-center font-bold mr-6"
-          aria-current="page"
-          href="/"
-        >
-          <Logo />
-        </a>
+        <Link href="/">
+          <a className="flex items-center font-bold mr-6" aria-current="page">
+            <Logo />
+          </a>
+        </Link>
         <ul className="ml-auto hidden lg:flex">
           {navroutes.map((r) => (
             <NavLink

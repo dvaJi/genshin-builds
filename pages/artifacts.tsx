@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import clsx from "clsx";
 import { useMemo } from "react";
 import { GetStaticProps } from "next";
@@ -65,7 +66,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
         ),
       },
     ],
-    []
+    [tfn]
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: artifacts }, ...[useSortBy]);

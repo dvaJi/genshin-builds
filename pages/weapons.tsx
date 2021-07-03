@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
@@ -123,6 +124,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                 >
                   <img
                     className="w-10 h-10"
+                    alt={type}
                     src={`${IMGS_CDN}/weapons_type/${type}.png`}
                   />
                 </button>

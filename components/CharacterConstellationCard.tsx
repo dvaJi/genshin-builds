@@ -15,6 +15,7 @@ const ConstellationCard = ({ constellation, characterId }: Props) => {
           <div className="absolute top-0 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0 h-96">
             <img
               className="w-24 opacity-20"
+              alt={constellation.id}
               src={`${IMGS_CDN}/characters/${characterId}/${constellation.id.replace(
                 "normal_attack_",
                 ""

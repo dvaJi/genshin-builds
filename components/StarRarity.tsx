@@ -36,6 +36,7 @@ const StarRarity = ({
         >
           <img
             src={`${IMGS_CDN}/1_star.png`}
+            alt="1_star.png"
             width={starsSize}
             height={starsSize}
           />

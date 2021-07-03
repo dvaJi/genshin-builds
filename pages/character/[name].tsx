@@ -52,7 +52,7 @@ const CharacterPage = ({
         background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
     });
-  }, [character]);
+  }, [character, common, setBg]);
   return (
     <div>
       <Metadata
