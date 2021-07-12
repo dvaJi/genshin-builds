@@ -101,7 +101,8 @@
       "traveler_geo",
       "xiangling",
       "ganyu",
-      "hu_tao"
+      "hu_tao",
+      "kaedehara_kazuha"
     ],
     "Wed": [
       "beidou",
@@ -126,7 +127,8 @@
       "traveler_geo",
       "xiangling",
       "ganyu",
-      "hu_tao"
+      "hu_tao",
+      "kaedehara_kazuha"
     ],
     "Sat": [
       "beidou",
@@ -150,7 +152,8 @@
       "xinyan",
       "ganyu",
       "hu_tao",
-      "yanfei"
+      "yanfei",
+      "kaedehara_kazuha"
     ]
   },
   "Cecilia Garden": {
@@ -173,7 +176,8 @@
       "magic_guide",
       "favonius_codex",
       "royal_grimoire",
-      "song_of_broken_pines"
+      "song_of_broken_pines",
+      "mitternachts_waltz"
     ],
     "Tue": [
       "harbinger_of_dawn",
@@ -197,7 +201,8 @@
       "thrilling_tales_of_dragon_slayers",
       "the_widsith",
       "wine_and_song",
-      "skyward_atlas"
+      "skyward_atlas",
+      "dodoco_tales"
     ],
     "Wed": [
       "travelers_handy_sword",
@@ -220,7 +225,8 @@
       "otherworldly_story",
       "sacrificial_fragments",
       "frostbearer",
-      "lost_prayer_to_the_sacred_winds"
+      "lost_prayer_to_the_sacred_winds",
+      "freedomsworn"
     ],
     "Thu": [
       "dull_blade",
@@ -241,7 +247,8 @@
       "magic_guide",
       "favonius_codex",
       "royal_grimoire",
-      "song_of_broken_pines"
+      "song_of_broken_pines",
+      "mitternachts_waltz"
     ],
     "Fri": [
       "harbinger_of_dawn",
@@ -265,7 +272,8 @@
       "thrilling_tales_of_dragon_slayers",
       "the_widsith",
       "wine_and_song",
-      "skyward_atlas"
+      "skyward_atlas",
+      "dodoco_tales"
     ],
     "Sat": [
       "travelers_handy_sword",
@@ -288,7 +296,8 @@
       "otherworldly_story",
       "sacrificial_fragments",
       "frostbearer",
-      "lost_prayer_to_the_sacred_winds"
+      "lost_prayer_to_the_sacred_winds",
+      "freedomsworn"
     ],
     "Sun": [
       "dull_blade",
@@ -352,7 +361,10 @@
       "frostbearer",
       "lost_prayer_to_the_sacred_winds",
       "skyward_atlas",
-      "song_of_broken_pines"
+      "song_of_broken_pines",
+      "mitternachts_waltz",
+      "dodoco_tales",
+      "freedomsworn"
     ]
   },
   "Hidden Palace of Lianshan Formula": {
