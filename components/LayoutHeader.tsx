@@ -43,6 +43,7 @@ const navroutes: NavRoutes[] = [
       },
       { id: "food", name: "Food", href: "/food" },
       { id: "potions", name: "Potions", href: "/potions" },
+      { id: "codes", name: "Codes", href: "/codes/" },
     ],
   },
   // { name: "Team Builder", href: "/comp-builder" },

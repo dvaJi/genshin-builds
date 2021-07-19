@@ -1,0 +1,302 @@
+[
+  {
+    "code": "GENSHINGIFT",
+    "rewards": [
+      { "id": "primogem", "amount": 50, "rarity": 5 },
+      { "id": "heros_wit", "amount": 3, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "GenshinEpic",
+    "rewards": [
+      { "id": "mora", "amount": 10000, "rarity": 1 },
+      { "id": "squirrel_fish", "amount": 3, "rarity": 1 },
+      { "id": "northern_apple_stew", "amount": 3, "rarity": 1 },
+      { "id": "adventurers_experience", "amount": 10, "rarity": 3 },
+      { "id": "fine_enhancement_ore", "amount": 5, "rarity": 2 }
+    ]
+  },
+  {
+    "code": "GenshinGalaxy",
+    "rewards": [
+      { "id": "mora", "amount": 10000, "rarity": 1 },
+      { "id": "mondstadt_hash_brown", "amount": 3, "rarity": 3 },
+      { "id": "adventurers_experience", "amount": 10, "rarity": 3 },
+      { "id": "fine_enhancement_ore", "amount": 5, "rarity": 2 },
+      { "id": "northern_smoked_chicken", "amount": 3, "rarity": 2 }
+    ]
+  },
+  {
+    "code": "LS6T4L9ZZ7TH",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "GBNA9J5H9Y4H",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "AS6BQKLY9GLD",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "GS6ACJ775KNV",
+    "rewards": [
+      { "id": "primogem", "amount": 60, "rarity": 5 },
+      { "id": "mora", "amount": 10000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "SBNBUK67M37Z",
+    "rewards": [
+      { "id": "primogem", "amount": 30, "rarity": 5 },
+      { "id": "adventurers_experience", "amount": 5, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "WTNTBYSZJNRD",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "8A6ABHTH2N9Z",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "UTNBBGSZ3NQM",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "8TNZ8FVFQFFA",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "DB6G9WVW9FV6",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "EBNGQWDXQFCJ",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "ATPTUJPP53QH",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "FS6SU367M279",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "4BNSD3675J8D",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "CBNXRD6S7H3N",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "EBPWQU6SNZ22",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "2T7E9CPA7YJE",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "TT7BVJNPL249",
+    "rewards": [{ "id": "primogem", "amount": 60, "rarity": 5 }]
+  },
+  {
+    "code": "GSIMPTQ125",
+    "rewards": [
+      { "id": "primogem", "amount": 60, "rarity": 5 },
+      { "id": "mora", "amount": 10000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "153YuSaenh",
+    "rewards": [
+      { "id": "primogem", "amount": 30, "rarity": 5 },
+      { "id": "adventurers_experience", "amount": 5, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "KTNSCQWW922M",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "ET7ADQFF8KJR",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "PSNTC8FEQK4D",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "Cuupmbjsvd",
+    "rewards": [{ "id": "primogem", "amount": 50, "rarity": 5 }]
+  },
+  {
+    "code": "nBEm3myAL2b",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "dU2mhjQL1ZT",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "jsSK8n23jzR",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "5KVeIbSxDUU",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mystic_enhancement_ore", "amount": 10, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "G3tQq6TOqmE",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "heros_wit", "amount": 5, "rarity": 4 }
+    ]
+  },
+  {
+    "code": "eATDgIXLD56",
+    "rewards": [
+      { "id": "primogem", "amount": 100, "rarity": 5 },
+      { "id": "mora", "amount": 50000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "GOLNXLAKC58",
+    "rewards": [{ "id": "primogem", "amount": 50, "rarity": 5 }]
+  },
+  {
+    "code": "GENSHIN1111",
+    "rewards": [
+      { "id": "primogem", "amount": 60, "rarity": 5 },
+      { "id": "mora", "amount": 10000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "GENSHINZHB30",
+    "rewards": [{ "id": "primogem", "amount": 160, "rarity": 5 }]
+  },
+  {
+    "code": "GENSHINMYYOI",
+    "rewards": [{ "id": "primogem", "amount": 30, "rarity": 5 }]
+  },
+  {
+    "code": "GENSHINMHYOM",
+    "rewards": [{ "id": "primogem", "amount": 30, "rarity": 5 }]
+  },
+  {
+    "code": "GENSHINMHYOO",
+    "rewards": [{ "id": "primogem", "amount": 30, "rarity": 5 }]
+  },
+  {
+    "code": "GENSHIN0928A",
+    "rewards": [
+      { "id": "primogem", "amount": 60, "rarity": 5 },
+      { "id": "mora", "amount": 10000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "GENSHIN0928E",
+    "rewards": [
+      { "id": "primogem", "amount": 60, "rarity": 5 },
+      { "id": "mora", "amount": 10000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "GENSHIN0928N",
+    "rewards": [
+      { "id": "primogem", "amount": 60, "rarity": 5 },
+      { "id": "mora", "amount": 10000, "rarity": 1 }
+    ]
+  },
+  {
+    "code": "GENSHIN1006A",
+    "rewards": [
+      { "id": "primogem", "amount": 30, "rarity": 5 },
+      { "id": "adventurers_experience", "amount": 5, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "GENSHIN1006S",
+    "rewards": [
+      { "id": "primogem", "amount": 30, "rarity": 5 },
+      { "id": "adventurers_experience", "amount": 5, "rarity": 3 }
+    ]
+  },
+  {
+    "code": "GENSHIN1006U",
+    "rewards": [
+      { "id": "primogem", "amount": 30, "rarity": 5 },
+      { "id": "adventurers_experience", "amount": 5, "rarity": 3 }
+    ]
+  }
+]

@@ -49,7 +49,7 @@ const FoodPage = ({ food }: Props) => {
         Cell: (row) => row.value.normal.effect,
       },
     ],
-    [tfn]
+    [food]
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: food }, ...[useSortBy]);
