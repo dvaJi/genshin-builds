@@ -12,6 +12,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/codes</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -92,6 +96,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -125,6 +133,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -168,11 +180,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/de/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -292,6 +312,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -325,6 +349,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -368,11 +396,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/en/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -492,6 +528,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -525,6 +565,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -568,11 +612,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/es/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -696,6 +748,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -729,6 +785,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -772,11 +832,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -896,6 +964,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -929,6 +1001,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -972,11 +1048,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/id/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1104,6 +1188,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1137,6 +1225,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1180,11 +1272,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1304,6 +1404,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1337,6 +1441,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1380,11 +1488,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1512,6 +1628,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1545,6 +1665,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1588,11 +1712,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1712,6 +1844,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1745,6 +1881,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1788,11 +1928,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1916,6 +2064,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1949,6 +2101,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1992,11 +2148,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/th/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2124,6 +2288,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2157,6 +2325,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2200,11 +2372,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2328,6 +2508,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/kamisato_ayaka</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/keqing</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2361,6 +2545,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/character/sayu</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2404,11 +2592,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/yoimiya</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/characters</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/codes</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
