@@ -1,7 +1,7 @@
 {
   "character.constellations": "Созвездия",
   "character.passives": "Пассивный талант",
-  "characters": "Выберите персонажа",
+  "characters": "Персонажа",
   "character": "Персонаж",
   "cooking_ingredient": "Кухонный ингредиент",
   "artifacts": "Артефакты",
@@ -45,6 +45,7 @@
   "Forsaken Rift": "Забытый каньон",
   "Taishan Mansion": "Тайшаньфу",
   "Cecilia Garden": "Сад Сесилии",
-  "Hidden Palace of Lianshan Formula": "Лабиринт Ляншань",
+  "Violet Court": "Фиалковый зал",
+  "Court of Flowing Sand": "Зал текущего песка",
   "or": "или"
 }

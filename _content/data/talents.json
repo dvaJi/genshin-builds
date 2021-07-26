@@ -156,6 +156,42 @@
       "kaedehara_kazuha"
     ]
   },
+  "Violet Court": {
+    "Mon": [
+      "traveler_anemo",
+      "traveler_geo",
+      "traveler_electro"
+    ],
+    "Tue": [
+      "traveler_anemo",
+      "traveler_geo",
+      "kamisato_ayaka"
+    ],
+    "Wed": [
+      "traveler_anemo",
+      "traveler_geo"
+    ],
+    "Thu": [
+      "traveler_anemo",
+      "traveler_geo",
+      "traveler_electro"
+    ],
+    "Fri": [
+      "traveler_anemo",
+      "traveler_geo",
+      "kamisato_ayaka"
+    ],
+    "Sat": [
+      "traveler_anemo",
+      "traveler_geo"
+    ],
+    "Sun": [
+      "traveler_anemo",
+      "traveler_geo",
+      "kamisato_ayaka",
+      "traveler_electro"
+    ]
+  },
   "Cecilia Garden": {
     "Mon": [
       "dull_blade",
@@ -513,6 +549,43 @@
       "solar_pearl",
       "eye_of_perception",
       "memory_of_dust"
+    ]
+  },
+  "Court of Flowing Sand": {
+    "Mon": [
+      "amenoma_kageuchi",
+      "mistsplitter_reforged",
+      "hakushin_ring"
+    ],
+    "Tue": [
+      "katsuragikiri_nagamasa",
+      "hamayumi",
+      "thundering_pulse"
+    ],
+    "Wed": [
+      "kitain_cross_spear"
+    ],
+    "Thu": [
+      "amenoma_kageuchi",
+      "mistsplitter_reforged",
+      "hakushin_ring"
+    ],
+    "Fri": [
+      "katsuragikiri_nagamasa",
+      "hamayumi",
+      "thundering_pulse"
+    ],
+    "Sat": [
+      "kitain_cross_spear"
+    ],
+    "Sun": [
+      "amenoma_kageuchi",
+      "mistsplitter_reforged",
+      "hakushin_ring",
+      "katsuragikiri_nagamasa",
+      "hamayumi",
+      "thundering_pulse",
+      "kitain_cross_spear"
     ]
   }
 }

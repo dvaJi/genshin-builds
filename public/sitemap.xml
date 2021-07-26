@@ -152,6 +152,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/traveler_electro</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/traveler_geo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -368,6 +372,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/traveler_electro</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/traveler_geo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -581,6 +589,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/character/traveler_anemo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/character/traveler_electro</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -804,6 +816,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/traveler_electro</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/traveler_geo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1017,6 +1033,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/character/traveler_anemo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/character/traveler_electro</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1244,6 +1264,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/traveler_electro</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/traveler_geo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1457,6 +1481,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/character/traveler_anemo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/character/traveler_electro</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1684,6 +1712,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/traveler_electro</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/traveler_geo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1897,6 +1929,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/character/traveler_anemo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/character/traveler_electro</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2117,6 +2153,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/character/traveler_anemo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/character/traveler_electro</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2344,6 +2384,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/traveler_electro</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/traveler_geo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2561,6 +2605,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/character/traveler_anemo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/character/traveler_electro</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>

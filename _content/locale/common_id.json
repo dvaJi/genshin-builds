@@ -1,7 +1,7 @@
 {
   "character.constellations": "Konstelasi",
   "character.passives": "Talenta Pasif",
-  "characters": "Pilih Karakter",
+  "characters": "Karakter",
   "character": "Karakter",
   "cooking_ingredient": "Bahan Masak",
   "artifacts": "Artefak",
@@ -45,6 +45,7 @@
   "Forsaken Rift": "Forsaken Rift",
   "Taishan Mansion": "Taishan Mansion",
   "Cecilia Garden": "Cecilia Garden",
-  "Hidden Palace of Lianshan Formula": "Hidden Palace of Lianshan Formula",
+  "Violet Court": "Violet Court",
+  "Court of Flowing Sand": "Court of Flowing Sand",
   "or": "atau"
 }

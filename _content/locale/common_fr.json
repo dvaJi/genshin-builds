@@ -1,8 +1,8 @@
 {
   "character.constellations": "Constellations",
   "character.passives": "Aptitude passive",
-  "characters": "Choix du personnage",
-  "character": "Personnages",
+  "characters": "Personnages",
+  "character": "Personnage",
   "cooking_ingredient": "Ingrédient",
   "artifacts": "Artéfact",
   "weapons": "Armes",
@@ -45,6 +45,7 @@
   "Forsaken Rift": "Gorge de l'oubli",
   "Taishan Mansion": "Manoir Taishan",
   "Cecilia Garden": "Pépinière de cécilias",
-  "Hidden Palace of Lianshan Formula": "Palais secret de Lianshan",
+  "Violet Court": "Cour violette",
+  "Court of Flowing Sand": "Cour des sables mouvants",
   "or": "ou"
 }

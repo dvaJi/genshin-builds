@@ -20,6 +20,11 @@
         "id": "xiao",
         "w_id": "primordial_jade_wingedspear",
         "min_c": 1
+      },
+      {
+        "id": "kamisato_ayaka",
+        "w_id": "mistsplitter_reforged",
+        "min_c": 1
       }
     ],
     "1": [
@@ -136,7 +141,7 @@
       {
         "id": "kaedehara_kazuha",
         "w_id": "song_of_broken_pines",
-        "min_c": 2
+        "min_c": 0
       }
     ],
     "1": [
@@ -173,6 +178,11 @@
     ],
     "2": [
       {
+        "id": "kamisato_ayaka",
+        "w_id": "mistsplitter_reforged",
+        "min_c": 0
+      },
+      {
         "id": "xiangling",
         "w_id": "skyward_spine",
         "min_c": 4
@@ -199,6 +209,11 @@
       }
     ],
     "3": [
+      {
+        "id": "traveler_electro",
+        "w_id": "favonius_sword",
+        "min_c": 0
+      },
       {
         "id": "jean",
         "w_id": "primordial_jade_cutter",
@@ -340,6 +355,11 @@
         "id": "klee",
         "w_id": "skyward_atlas",
         "min_c": 2
+      },
+      {
+        "id": "traveler_electro",
+        "w_id": "favonius_sword",
+        "min_c": 0
       }
     ],
     "4": [

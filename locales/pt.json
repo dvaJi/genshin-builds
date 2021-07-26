@@ -42,7 +42,7 @@
   "refinement": "Refinamento",
   "character.constellations": "Constelação",
   "character.passives": "Talento Passivo",
-  "characters": "Seleção de Personagem",
+  "characters": "Personagem",
   "character": "Personagem",
   "cooking_ingredient": "Ingrediente",
   "artifacts": "Artefatos",
@@ -86,6 +86,7 @@
   "Forsaken Rift": "Fenda Abandonada",
   "Taishan Mansion": "Mansão Taishan",
   "Cecilia Garden": "Jardim de Cecilia",
-  "Hidden Palace of Lianshan Formula": "Palácio Oculto da Fórmula Lianshan",
+  "Violet Court": "Jardim Violeta",
+  "Court of Flowing Sand": "Jardim da Areia Fluente",
   "or": "Ou"
 }

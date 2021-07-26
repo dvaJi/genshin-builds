@@ -44,7 +44,7 @@
   "refinement": "정제",
   "character.constellations": "운명의 자리",
   "character.passives": "고유 특성",
-  "characters": "캐릭터 선택",
+  "characters": "캐릭터",
   "character": "캐릭터",
   "cooking_ingredient": "식자재",
   "artifacts": "성유물",
@@ -88,6 +88,7 @@
   "Forsaken Rift": "잊혀진 협곡",
   "Taishan Mansion": "태산부",
   "Cecilia Garden": "세실리아의 모밭",
-  "Hidden Palace of Lianshan Formula": "천둥 연산 밀궁",
+  "Violet Court": "보랏빛 정원",
+  "Court of Flowing Sand": "유사의 정원",
   "or": "혹은"
 }

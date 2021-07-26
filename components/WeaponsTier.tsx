@@ -30,6 +30,8 @@ const WeaponsTier = ({
                 rarity={weaponsMap[t].rarity}
                 name={weaponsMap[t].name}
                 className="h-24 w-24"
+                nameSeparateBlock={true}
+                classNameBlock="w-24"
               />
             </div>
           ))}
@@ -44,6 +46,8 @@ const WeaponsTier = ({
                 rarity={weaponsMap[t].rarity}
                 name={weaponsMap[t].name}
                 className="h-24 w-24"
+                nameSeparateBlock={true}
+                classNameBlock="w-24"
               />
             </div>
           ))}
@@ -58,6 +62,8 @@ const WeaponsTier = ({
                 rarity={weaponsMap[t].rarity}
                 name={weaponsMap[t].name}
                 className="h-24 w-24"
+                nameSeparateBlock={true}
+                classNameBlock="w-24"
               />
             </div>
           ))}

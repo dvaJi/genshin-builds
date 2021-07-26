@@ -1,7 +1,7 @@
 {
   "character.constellations": "命ノ星座",
   "character.passives": "固有天賦",
-  "characters": "キャラ選択",
+  "characters": "キャラ一覧",
   "character": "キャラクター",
   "cooking_ingredient": "食材",
   "artifacts": "聖遺物",
@@ -45,6 +45,7 @@
   "Forsaken Rift": "忘却の峡谷",
   "Taishan Mansion": "太山府",
   "Cecilia Garden": "セシリアの苗床",
-  "Hidden Palace of Lianshan Formula": "震雷連山密宮",
+  "Violet Court": "菫色ノ庭",
+  "Court of Flowing Sand": "砂流ノ庭",
   "or": "又は"
 }

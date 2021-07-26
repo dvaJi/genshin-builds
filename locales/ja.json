@@ -20,7 +20,7 @@
   "title.potions.description": "原神(げんしん)における薬剤の入手方法まとめです。",
   "title.teams": "原神(げんしん)最強パーティと編成のポイント",
   "title.teams.description": "原神(げんしん)における最強パーティと編成のポイントについて紹介しています。特定のメインアタッカーを主体とした最強パーティを元に、ボス周回、秘境周回、探索などそれぞれの場面で最適なパーティを紹介しているので、パーティ編成に悩む方はぜひご覧ください。",
-  "characters": "キャラ選択",
+  "characters": "キャラ一覧",
   "character": "キャラクター",
   "character.builds": "ビルド",
   "character.constellations": "命ノ星座",
@@ -95,5 +95,7 @@
   "Hidden Palace of Lianshan Formula": "震雷連山密宮",
   "search": "探す...",
   "ascension": "上昇",
-  "refinement": "精製"
+  "refinement": "精製",
+  "Violet Court": "菫色ノ庭",
+  "Court of Flowing Sand": "砂流ノ庭"
 }

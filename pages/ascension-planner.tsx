@@ -15,8 +15,6 @@ import { localeToLang } from "@utils/locale-to-lang";
 
 import useIntl from "@hooks/use-intl";
 
-import planning from "../_content/data/talents.json";
-
 type Props = {
   characters: Record<string, Character>;
   weapons: Record<string, Weapon>;
@@ -24,8 +22,12 @@ type Props = {
 };
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const C_DOMAINS = ["Forsaken Rift", "Taishan Mansion"];
-const W_DOMAINS = ["Cecilia Garden", "Hidden Palace of Lianshan Formula"];
+const C_DOMAINS = ["Forsaken Rift", "Taishan Mansion", "Violet Court"];
+const W_DOMAINS = [
+  "Cecilia Garden",
+  "Hidden Palace of Lianshan Formula",
+  "Court of Flowing Sand",
+];
 
 const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
   const [currentDay, setCurrentDay] = useState(format(new Date(), "iii"));
@@ -67,6 +69,8 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
                       rarity={characters[cId].rarity}
                       name={characters[cId].name}
                       className="h-24 w-24"
+                      nameSeparateBlock={true}
+                      classNameBlock="w-24"
                     />
                   </a>
                 </Link>
@@ -85,12 +89,18 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
             <div className="flex flex-wrap justify-center">
               {planMap[domain][currentDay].map((cId: string) => (
                 <div key={cId}>
-                  <SimpleRarityBox
-                    img={`${IMGS_CDN}/weapons/${cId}.png`}
-                    rarity={weapons[cId].rarity}
-                    name={weapons[cId].name}
-                    className="h-24 w-24"
-                  />
+                  {weapons[cId] ? (
+                    <SimpleRarityBox
+                      img={`${IMGS_CDN}/weapons/${cId}.png`}
+                      rarity={weapons[cId].rarity}
+                      name={weapons[cId].name}
+                      className="h-24 w-24"
+                      nameSeparateBlock={true}
+                      classNameBlock="w-24"
+                    />
+                  ) : (
+                    `NOT FOUND ${cId}`
+                  )}
                 </div>
               ))}
             </div>
@@ -103,6 +113,8 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
+  const planning = require(`../_content/data/talents.json`);
+
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
     select: ["id", "name", "rarity"],

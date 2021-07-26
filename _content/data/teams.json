@@ -2,6 +2,40 @@
   {
     "primary": [
       {
+        "characterId": "kamisato_ayaka",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "klee",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "kaedehara_kazuha",
+        "role": "Support"
+      },
+      {
+        "characterId": "zhongli",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["klee"],
+        "substitutes": ["hu_tao", "diluc", "yanfei"]
+      },
+      {
+        "characters": ["kaedehara_kazuha"],
+        "substitutes": ["tartaglia", "rosaria", "xingqiu", "xiangling"]
+      },
+      {
+        "characters": ["zhongli"],
+        "substitutes": ["xinyan", "diona", "bennett", "qiqi", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
         "characterId": "kaedehara_kazuha",
         "role": "Sub DPS"
       },
@@ -55,11 +89,19 @@
     "alternatives": [
       {
         "characters": ["fischl", "rosaria"],
-        "substitutes": ["lisa", "ganyu", "xingqiu", "mona"]
+        "substitutes": [
+          "lisa",
+          "ganyu",
+          "xingqiu",
+          "mona",
+          "venti",
+          "hu_tao",
+          "xiao"
+        ]
       },
       {
         "characters": ["xinyan"],
-        "substitutes": ["bennett", "zhongli", "diona"]
+        "substitutes": ["bennett", "zhongli", "diona", "jean"]
       }
     ]
   },
@@ -74,7 +116,7 @@
         "role": "Main DPS"
       },
       {
-        "characterId": "xingqiu",
+        "characterId": "sucrose",
         "role": "Sub DPS"
       },
       {
@@ -88,12 +130,12 @@
         "substitutes": ["chongyun"]
       },
       {
-        "characters": ["xingqiu"],
-        "substitutes": ["fischl", "mona"]
+        "characters": ["sucrose"],
+        "substitutes": ["kaeya", "rosaria", "fischl", "mona"]
       },
       {
         "characters": ["bennett"],
-        "substitutes": ["zhongli", "diona"]
+        "substitutes": ["zhongli", "diona", "qiqi", "barbara"]
       }
     ]
   },
