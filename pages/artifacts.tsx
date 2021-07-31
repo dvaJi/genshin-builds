@@ -197,7 +197,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   return {
     props: { artifacts: artifacts4set, artifacts1set: artifacts1set, lngDict },
-    revalidate: 1,
   };
 };
 

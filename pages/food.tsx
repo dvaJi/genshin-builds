@@ -128,7 +128,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name", "rarity", "results"],
   });
 
-  return { props: { food, lngDict }, revalidate: 1 };
+  return { props: { food, lngDict } };
 };
 
 export default FoodPage;

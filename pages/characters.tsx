@@ -97,7 +97,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   return {
     props: { charactersByElement, elements, lngDict, common },
-    revalidate: 1,
   };
 };
 

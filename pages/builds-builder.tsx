@@ -514,7 +514,6 @@ export const getStaticProps: GetStaticProps = async () => {
         artifacts: [],
         currentbuilds: {},
       },
-      revalidate: 1,
     };
   }
 
@@ -552,7 +551,6 @@ export const getStaticProps: GetStaticProps = async () => {
       artifacts: artifacts.map((a) => a.id),
       currentbuilds,
     },
-    revalidate: 1,
   };
 };
 

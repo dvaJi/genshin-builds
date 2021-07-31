@@ -127,7 +127,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name", "rarity", "effect"],
   });
 
-  return { props: { potions, lngDict }, revalidate: 1 };
+  return { props: { potions, lngDict } };
 };
 
 export default PotionsPage;

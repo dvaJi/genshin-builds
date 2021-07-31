@@ -156,7 +156,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
       common,
     },
-    revalidate: 1,
   };
 };
 

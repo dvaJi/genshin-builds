@@ -53,7 +53,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
       planMap: planning,
     },
-    revalidate: 1,
   };
 };
 

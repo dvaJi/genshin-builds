@@ -249,7 +249,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   const common = require(`../_content/data/common.json`)[locale];
 
-  return { props: { weapons, lngDict, common }, revalidate: 1 };
+  return { props: { weapons, lngDict, common } };
 };
 
 export default WeaponsPage;

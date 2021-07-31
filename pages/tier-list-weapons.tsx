@@ -157,7 +157,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       weaponsMap,
       lngDict,
     },
-    revalidate: 1,
   };
 };
 

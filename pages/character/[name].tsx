@@ -309,7 +309,6 @@ export const getStaticProps: GetStaticProps = async ({
       locale,
       common,
     },
-    revalidate: 1,
   };
 };
 

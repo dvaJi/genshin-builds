@@ -123,7 +123,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   const codes = require(`../_content/data/codes.json`) as Code[];
 
-  return { props: { codes, lngDict }, revalidate: 1 };
+  return { props: { codes, lngDict } };
 };
 
 export default Codes;

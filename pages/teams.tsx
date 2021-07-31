@@ -79,7 +79,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   return {
     props: { teams: teamsf, lngDict },
-    revalidate: 1,
   };
 };
 
