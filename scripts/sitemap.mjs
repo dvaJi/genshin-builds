@@ -1,5 +1,5 @@
-const fs = require("fs");
-const globby = require("globby");
+import fs from "fs";
+import { globby } from "globby";
 
 const WEBSITE_URL = "https://genshin-builds.com";
 

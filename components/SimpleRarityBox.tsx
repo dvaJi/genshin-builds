@@ -5,7 +5,7 @@ import { memo } from "react";
 type Props = {
   img: string;
   rarity: number;
-  name: string;
+  name?: string;
   size?: number;
   className?: string;
   nameSeparateBlock?: boolean;
@@ -32,11 +32,12 @@ const SimpleRarityBox = ({
           className
         )}
         style={{
-          backgroundImage: `url(${IMGS_CDN}/bg_${rarity}star.png)`,
+          backgroundImage:
+            rarity > 0 ? `url(${IMGS_CDN}/bg_${rarity}star.png)` : "",
         }}
       >
         <img className="group-hover:opacity-70" src={img} alt={name} />
-        {!nameSeparateBlock && (
+        {!nameSeparateBlock && name && (
           <span
             className="absolute inline-block bottom-0 text-xs bg-gray-900 bg-opacity-90 rounded rounded-t-none p-1 transition-all opacity-80 group-hover:text-white group-hover:opacity-100"
             style={{ width: "calc(100% + 2px)", left: -2 }}
@@ -45,7 +46,7 @@ const SimpleRarityBox = ({
           </span>
         )}
       </div>
-      {nameSeparateBlock && (
+      {nameSeparateBlock && name && (
         <span
           className={clsx(
             "inline-block m-1 mt-0 overflow-hidden text-center text-xs bg-gray-900 bg-opacity-90 rounded rounded-t-none p-1",

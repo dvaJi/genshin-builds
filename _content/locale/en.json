@@ -46,5 +46,10 @@
   "character.talents_priority": "Talents Priority",
   "search": "Search...",
   "ascension": "Ascension",
-  "refinement": "Refinement"
+  "refinement": "Refinement",
+  "all": "All",
+  "normal": "Normal",
+  "delicious": "Delicious",
+  "suspicious": "Suspicious",
+  "special": "Special"
 }
