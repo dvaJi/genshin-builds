@@ -122,9 +122,9 @@ const CharacterPage = ({
               key={build.id}
               text={
                 <h3 className="text-2xl">
-                  {build.role}{" "}
+                  {build.role} {build.name}
                   {build.recommended && (
-                    <div className="inline-block">
+                    <div className="ml-2 inline-block">
                       <StarRarity rarity={1} />
                     </div>
                   )}
