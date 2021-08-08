@@ -28,8 +28,8 @@
     "react-icons": "^4.2.0",
     "react-table": "^7.7.0",
     "recoil": "^0.4.0",
-    "remark": "^14.0.1",
-    "remark-html": "^14.0.0"
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.17.9",
