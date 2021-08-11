@@ -81,7 +81,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   });
   const elements: string[] = [];
   const charactersByElement = characters
-    .filter((c) => !["yoimiya", "sayu"].includes(c.id))
+    // .filter((c) => !["yoimiya", "sayu"].includes(c.id))
     .reduce<Record<string, Character[]>>((map, value) => {
       if (map[value.element]) {
         map[value.element].push(value);

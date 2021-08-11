@@ -25,6 +25,11 @@
         "id": "kamisato_ayaka",
         "w_id": "mistsplitter_reforged",
         "min_c": 1
+      },
+      {
+        "id": "yoimiya",
+        "w_id": "thundering_pulse",
+        "min_c": 2
       }
     ],
     "1": [
@@ -91,6 +96,11 @@
         "id": "xinyan",
         "w_id": "the_unforged",
         "min_c": 4
+      },
+      {
+        "id": "sayu",
+        "w_id": "wolfs_gravestone",
+        "min_c": 2
       }
     ],
     "4": [
@@ -206,6 +216,11 @@
         "id": "sucrose",
         "w_id": "the_widsith",
         "min_c": 2
+      },
+      {
+        "id": "sayu",
+        "w_id": "bloodtainted_greatsword",
+        "min_c": 4
       }
     ],
     "3": [

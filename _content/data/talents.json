@@ -160,7 +160,8 @@
     "Mon": [
       "traveler_anemo",
       "traveler_geo",
-      "traveler_electro"
+      "traveler_electro",
+      "yoimiya"
     ],
     "Tue": [
       "traveler_anemo",
@@ -169,12 +170,14 @@
     ],
     "Wed": [
       "traveler_anemo",
-      "traveler_geo"
+      "traveler_geo",
+      "sayu"
     ],
     "Thu": [
       "traveler_anemo",
       "traveler_geo",
-      "traveler_electro"
+      "traveler_electro",
+      "yoimiya"
     ],
     "Fri": [
       "traveler_anemo",
@@ -183,13 +186,16 @@
     ],
     "Sat": [
       "traveler_anemo",
-      "traveler_geo"
+      "traveler_geo",
+      "sayu"
     ],
     "Sun": [
       "traveler_anemo",
       "traveler_geo",
       "kamisato_ayaka",
-      "traveler_electro"
+      "traveler_electro",
+      "yoimiya",
+      "sayu"
     ]
   },
   "Cecilia Garden": {
