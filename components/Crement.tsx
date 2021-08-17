@@ -3,7 +3,7 @@ import { memo } from "react";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
 interface Props {
-  title: string;
+  title?: string;
   currentValue: number;
   values: number[];
   setValue: (value: number) => void;

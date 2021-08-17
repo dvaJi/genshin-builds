@@ -3,6 +3,7 @@ import { Weapon } from "genshin-data";
 
 import StarRarity from "./StarRarity";
 import { IMGS_CDN } from "@lib/constants";
+import Link from "next/link";
 
 interface WeaponCardProps {
   weapon: Weapon;
@@ -34,23 +35,29 @@ const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
           </div>
         </div>
         <div className="ml-3 p-3 relative">
-          <div className="flex">
-            <h4 className="font-bold text-white">
-              {weapon.name}{" "}
-              {refinement !== undefined && (
-                <span className="text-xs bg-vulcan-600 p-1 rounded">
-                  R{refinement}
-                </span>
-              )}
-            </h4>
-            <h3 className="text-xs text-gray-300 absolute right-4">{weapon.secondary?.name}</h3>
-          </div>
-          <p
-            className="text-sm weapon-bonus max-h-24 overflow-y-auto custom-scroll"
-            dangerouslySetInnerHTML={{
-              __html: weapon.bonus || "",
-            }}
-          />
+          <Link href={`/weapon/${weapon.id}`}>
+            <a>
+              <div className="flex">
+                <h4 className="font-bold text-white">
+                  {weapon.name}{" "}
+                  {refinement !== undefined && (
+                    <span className="text-xs bg-vulcan-600 p-1 rounded">
+                      R{refinement}
+                    </span>
+                  )}
+                </h4>
+                <h3 className="text-xs text-gray-300 absolute right-4">
+                  {weapon.stats.secondary}
+                </h3>
+              </div>
+              <p
+                className="text-sm weapon-bonus max-h-24 overflow-y-auto custom-scroll"
+                dangerouslySetInnerHTML={{
+                  __html: weapon.bonus || "",
+                }}
+              />
+            </a>
+          </Link>
         </div>
       </div>
     </div>

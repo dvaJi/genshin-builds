@@ -6,6 +6,7 @@
   "title.character.detail": "{name} Guía Builds Genshin Impact",
   "title.weapons": "Lista de Armas Genshin Impact",
   "title.weapons.description": "Todas las mejores armas, ubicaciones y estadísticas, incluidos Arcos, Catalizadores, Claymores, Espadas y Lanzas.",
+  "title.weapon.detail": "{name} Genshin Impact Detalles del Arma",
   "title.artifacts": "Lista de Artefactos Genshin Impact",
   "title.artifacts.description": "Todos los mejores conjuntos de equipo de artefactos, ubicaciones y estadísticas.",
   "title.tierlist": "Genshin Impact Tier List (Mejores personajes)",
@@ -101,5 +102,7 @@
   "normal": "Normal",
   "delicious": "Deliciosos",
   "suspicious": "Sospechosos",
-  "special": "Especiales"
+  "special": "Especiales",
+  "level": "Nivel",
+  "stats": "Estadísticas"
 }

@@ -6,6 +6,7 @@
   "title.character.detail": "{name}の評価とおすすめ装備(聖遺物・武器)",
   "title.weapons": "原神（げんしん）武器の一覧",
   "title.weapons.description": "原神(げんしん)における武器一覧です。武器種ごとに攻撃力と追加効果を掲載しています。原神で武器の性能一覧を見たい方はぜひご覧ください。",
+  "title.weapon.detail": "{name} 原神（げんしん）武器の詳細",
   "title.artifacts": "原神（げんしん）原神おすすめ聖遺物とセット効果一覧",
   "title.artifacts.description": "原神(げんしん)における聖遺物の入手場所一覧です。聖遺物のセットスキルや秘境・討伐での入手方法を一覧で掲載しています。原神で聖遺物がどこで手に入るか知りたい方は是非参考にしてください。",
   "title.tierlist": "原神（げんしん）最強キャラランキング",
@@ -101,6 +102,8 @@
   "delicious": "美味し",
   "suspicious": "微妙",
   "special": "特別",
+  "level": "レベル",
+  "stats": "統計",
   "Violet Court": "菫色ノ庭",
   "Court of Flowing Sand": "砂流ノ庭"
 }

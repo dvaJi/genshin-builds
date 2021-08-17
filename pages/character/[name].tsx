@@ -241,7 +241,7 @@ export const getStaticProps: GetStaticProps = async ({
 
   const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons({
-    select: ["id", "name", "rarity", "secondary", "bonus"],
+    select: ["id", "name", "rarity", "stats", "bonus"],
   });
   const artifactsList = await genshinData.artifacts({
     select: ["id", "name", "max_rarity", "2pc", "4pc"],
