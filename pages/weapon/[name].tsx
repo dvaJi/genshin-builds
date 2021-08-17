@@ -1,65 +1,34 @@
-import { useEffect, useState } from "react";
-import { useSetRecoilState } from "recoil";
-import { GetStaticProps, GetStaticPaths } from "next";
-import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 import clsx from "clsx";
+import { useState } from "react";
+import { GetStaticProps, GetStaticPaths } from "next";
+import GenshinData, { Weapon } from "genshin-data";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
 import Metadata from "@components/Metadata";
-import ElementIcon from "@components/ElementIcon";
-import Collapsible from "@components/Collapsible";
-import CharacterSkill from "@components/CharacterSkill";
-import PassiveSkill from "@components/CharacterPassiveSkill";
-import ConstellationCard from "@components/CharacterConstellationCard";
-import CharacterBuildCard from "@components/CharacterBuildCard";
-import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
-import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
+import WeaponAscensionMaterials from "@components/WeaponAscensionMaterials";
 
 import { localeToLang } from "@utils/locale-to-lang";
-import { getCharacterBuild, getLocale } from "@lib/localData";
-import { appBackgroundStyleState } from "@state/background-atom";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
-import { Build } from "interfaces/build";
-import StarRarity from "@components/StarRarity";
-import Ads from "@components/Ads";
-import Crement from "@components/Crement";
-import WeaponAscensionMaterials from "@components/WeaponAscensionMaterials";
+import { getLocale } from "@lib/localData";
+import { IMGS_CDN } from "@lib/constants";
 
 interface WeaponPageProps {
   weapon: Weapon;
   locale: string;
-  common: Record<string, string>;
 }
 
-const WeaponPage = ({ weapon, locale, common }: WeaponPageProps) => {
-  const [refinement, setRefinement] = useState(1);
-  const [ascension, setAscension] = useState(0);
+const WeaponPage = ({ weapon, locale }: WeaponPageProps) => {
+  const [refinement, setRefinement] = useState(0);
+  const [weaponStatIndex, setWeaponStatIndex] = useState(0);
   const { t } = useIntl();
-
-  const showPrimary = (
-    base: number,
-    values: any[],
-    type: "primary" | "secondary"
-  ) => {
-    if (values[ascension]) {
-      return values[ascension][type];
-    }
-
-    if (values.length > 0) {
-      return values[values.length - 1][type];
-    }
-
-    return base;
-  };
 
   return (
     <div>
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.character.detail",
-          defaultMessage: "{name} Genshin Impact Build Guide",
+          id: "title.weapon.detail",
+          defaultMessage: "{name} Genshin Impact Weapon Details",
           values: { name: weapon.name },
         })}
         pageDescription={weapon.description}
@@ -67,9 +36,14 @@ const WeaponPage = ({ weapon, locale, common }: WeaponPageProps) => {
       />
       <div className="flex items-start justify-between mb-4">
         <div className="flex flex-wrap lg:flex-nowrap relative items-center px-2 lg:px-0">
-          <div className="flex-none relative mr-2 lg:mr-5">
+          <div
+            className="flex-none relative mr-2 lg:mr-5  rounded-lg border border-gray-900 bg-cover"
+            style={{
+              backgroundImage: `url(${IMGS_CDN}/bg_${weapon.rarity}star.png)`,
+            }}
+          >
             <img
-              className="w-52 h-52 bg-vulcan-800 p-1 rounded-lg border border-gray-900"
+              className="w-52 h-52"
               src={`${IMGS_CDN}/weapons/${weapon.id}.png`}
               alt={weapon.name}
             />
@@ -81,57 +55,109 @@ const WeaponPage = ({ weapon, locale, common }: WeaponPageProps) => {
               </h1>
             </div>
             <ul>
-              <li>Type: {weapon.type}</li>
-              <li>Secondary: {weapon.secondary?.name}</li>
-              <li>Type: {weapon.type}</li>
+              <li>
+                {t({ id: "type", defaultMessage: "Type" })}: {weapon.type}
+              </li>
+              <li>
+                {t({ id: "secondary", defaultMessage: "Secondary" })}:{" "}
+                {weapon.stats.secondary || "N/A"}
+              </li>
             </ul>
             <div>{weapon.description}</div>
-          </div>
-          <div className="lg:absolute top-0 right-0 lg:flex justify-center">
-            <Crement
-              title={t({ id: "ascension", defaultMessage: "Ascension" })}
-              currentValue={ascension}
-              setValue={setAscension}
-              values={[0, 1, 2, 3, 4, 5, 6]}
-            />
-            <Crement
-              title={t({ id: "refinement", defaultMessage: "Refinement" })}
-              currentValue={refinement}
-              values={[1, 2, 3, 4, 5]}
-              setValue={setRefinement}
-            />
           </div>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <h2 className="text-3xl">Stats</h2>
-          <div className="rounded shadow-lg bg-vulcan-800 p-4">
-            <div className="text-xl">
-              {weapon.primary.name}:{" "}
-              {showPrimary(weapon.primary.value, weapon.ascensions, "primary")}
-            </div>
-            {weapon.secondary && (
-              <div className="text-xl">
-                {weapon.secondary.name}:{" "}
-                {showPrimary(
-                  weapon.primary.value,
-                  weapon.ascensions,
-                  "secondary"
-                )}
-              </div>
-            )}
+          <div className="float-right">
+            <button
+              className={clsx("rounded mx-2 my-1 p-1 px-4", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white":
+                  weaponStatIndex > 0,
+                "bg-vulcan-800": weaponStatIndex === 0,
+              })}
+              disabled={weaponStatIndex === 0}
+              onClick={() => setWeaponStatIndex(weaponStatIndex - 1)}
+            >
+              -
+            </button>
+            <button
+              className={clsx("rounded mx-2 my-1 p-1 px-4", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white":
+                  weaponStatIndex < weapon.stats.levels.length,
+                "bg-vulcan-800":
+                  weaponStatIndex === weapon.stats.levels.length - 1,
+              })}
+              disabled={weaponStatIndex === weapon.stats.levels.length - 1}
+              onClick={() => setWeaponStatIndex(weaponStatIndex + 1)}
+            >
+              +
+            </button>
           </div>
-        </div>
-        <div>
-          <h2 className="text-3xl">
-            {t({ id: "refinement", defaultMessage: "Refinement" })}
+          <h2 className="text-3xl mb-2">
+            {t({ id: "stats", defaultMessage: "Stats" })}
           </h2>
 
           <div className="rounded shadow-lg bg-vulcan-800 p-4">
+            <div className="grid grid-cols-2">
+              <div>
+                <div className="text-xl">
+                  {weapon.stats.primary}:{" "}
+                  {weapon.stats.levels[weaponStatIndex].primary}
+                </div>
+                {weapon.stats.secondary && (
+                  <div className="text-xl">
+                    {weapon.stats.secondary}:{" "}
+                    {weapon.stats.levels[weaponStatIndex].secondary}
+                  </div>
+                )}
+              </div>
+              <div>
+                <div>
+                  <div className="text-xl">
+                    {t({ id: "level", defaultMessage: "Level" })}:{" "}
+                    {weapon.stats.levels[weaponStatIndex].level}
+                  </div>
+                  <div className="text-xl">
+                    {t({ id: "ascension", defaultMessage: "Ascension" })}:{" "}
+                    {weapon.stats.levels[weaponStatIndex].ascension}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="float-right">
+            <button
+              className={clsx("rounded mx-2 my-1 p-1 px-4", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white": refinement > 0,
+                "bg-vulcan-800": refinement === 0,
+              })}
+              disabled={refinement === 0}
+              onClick={() => setRefinement(refinement - 1)}
+            >
+              -
+            </button>
+            <button
+              className={clsx("rounded mx-2 my-1 p-1 px-4", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white":
+                  refinement < weapon.refinements.length - 1,
+                "bg-vulcan-800": refinement === weapon.refinements.length - 1,
+              })}
+              disabled={refinement === weapon.refinements.length - 1}
+              onClick={() => setRefinement(refinement + 1)}
+            >
+              +
+            </button>
+          </div>
+          <h2 className="text-3xl mb-2">
+            {t({ id: "refinement", defaultMessage: "Refinement" })}
+          </h2>
+          <div className="rounded shadow-lg bg-vulcan-800 p-4">
             <div
               dangerouslySetInnerHTML={{
-                __html: weapon.refinements[refinement - 1]?.desc,
+                __html: weapon.refinements[refinement]?.desc,
               }}
             />
           </div>

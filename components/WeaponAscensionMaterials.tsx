@@ -3,21 +3,7 @@ import clsx from "clsx";
 import SimpleRarityBox from "./SimpleRarityBox";
 import { IMGS_CDN } from "@lib/constants";
 import { useCallback } from "react";
-
-type AscensionMaterial = {
-  id: string;
-  name: string;
-  amount: number;
-};
-
-type WeaponAscension = {
-  ascensionLevel: number;
-  maxLevel: number;
-  primary: number;
-  secondary: number;
-  cost: number;
-  materials: AscensionMaterial[];
-};
+import { WeaponAscension } from "genshin-data/dist/types/weapon";
 
 type Props = {
   ascension: WeaponAscension[];
@@ -46,7 +32,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
         .filter((ascen) => ascen.materials.length > 0)
         .map((ascen, i) => (
           <div
-            key={ascen.ascensionLevel}
+            key={ascen.ascension}
             className={clsx(
               "grid grid-cols-6 lg:grid-cols-10 items-center px-4",
               {
@@ -56,10 +42,10 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
             )}
           >
             <div className="flex justify-center items-center text-sm lg:text-base">
-              ascension {ascen.ascensionLevel}
+              ascension {ascen.ascension}
             </div>
             <div className="flex justify-center items-center text-sm lg:text-base">
-              [{ascension[i].maxLevel}/{ascen.maxLevel}]
+              [{ascension[i].level}/{ascen.level}]
             </div>
             <div className="flex justify-center items-center">
               <SimpleRarityBox
