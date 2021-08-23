@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     return map;
   }, {});
 
-  let teamsf: TeamFull[] = teams.map((team) => {
+  const teamsf: TeamFull[] = teams.map((team) => {
     return {
       primary: team.primary.map((prim) => ({
         character: characters[prim.characterId],

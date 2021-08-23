@@ -2,6 +2,36 @@
   {
     "primary": [
       {
+        "characterId": "yoimiya",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "ganyu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "kaedehara_kazuha",
+        "role": "Support"
+      },
+      {
+        "characterId": "diona",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["ganyu"],
+        "substitutes": ["mona", "tartaglia", "venti", "rosaria", "xingqiu"]
+      },
+      {
+        "characters": ["kaedehara_kazuha"],
+        "substitutes": ["zhongli", "jean", "qiqi", "xinyan", "bennett", "barbara"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
         "characterId": "kamisato_ayaka",
         "role": "Main DPS"
       },

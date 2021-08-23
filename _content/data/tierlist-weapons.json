@@ -135,7 +135,7 @@
   },
   "bow": {
     "maindps": {
-      "0": ["skyward_harp", "amos_bow", "rust"],
+      "0": ["thundering_pulse", "skyward_harp", "amos_bow", "rust"],
       "1": [
         "mitternachts_waltz",
         "windblume_ode",

@@ -14,7 +14,7 @@
       {
         "id": "eula",
         "w_id": "song_of_broken_pines",
-        "min_c": 1
+        "min_c": 2
       },
       {
         "id": "xiao",
@@ -41,7 +41,7 @@
       {
         "id": "diluc",
         "w_id": "wolfs_gravestone",
-        "min_c": 10
+        "min_c": 1
       },
       {
         "id": "tartaglia",
@@ -184,14 +184,14 @@
         "id": "fischl",
         "w_id": "skyward_atlas",
         "min_c": 6
-      }
-    ],
-    "2": [
+      },
       {
         "id": "kamisato_ayaka",
         "w_id": "mistsplitter_reforged",
         "min_c": 0
-      },
+      }
+    ],
+    "2": [
       {
         "id": "xiangling",
         "w_id": "skyward_spine",
@@ -232,12 +232,12 @@
       {
         "id": "jean",
         "w_id": "primordial_jade_cutter",
-        "min_c": 0
+        "min_c": 1
       },
       {
         "id": "beidou",
         "w_id": "wolfs_gravestone",
-        "min_c": 6
+        "min_c": 2
       }
     ],
     "4": [
@@ -314,6 +314,11 @@
       }
     ],
     "2": [
+      {
+        "id": "sayu",
+        "w_id": "wolfs_gravestone",
+        "min_c": 1
+      },
       {
         "id": "qiqi",
         "w_id": "sacrificial_sword",

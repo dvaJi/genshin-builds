@@ -20,7 +20,7 @@ type Props = {
 };
 
 const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
-  const { t, tfn } = useIntl();
+  const { t } = useIntl();
 
   const columns = useMemo<Column<Artifact>[]>(
     () => [
@@ -37,16 +37,16 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
         ),
       },
       {
-        Header: tfn({ id: "name", defaultMessage: "Name" }),
+        Header: t({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
       },
       {
-        Header: tfn({ id: "max_rarity", defaultMessage: "Max Rarity" }),
+        Header: t({ id: "max_rarity", defaultMessage: "Max Rarity" }),
         accessor: "min_rarity",
         Cell: (row) => <StarRarity rarity={row.value} />,
       },
       {
-        Header: tfn({ id: "2piece_bonus", defaultMessage: "2-Piece Bonus" }),
+        Header: t({ id: "2piece_bonus", defaultMessage: "2-Piece Bonus" }),
         accessor: "2pc",
         Cell: (row) => (
           <div
@@ -56,7 +56,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
         ),
       },
       {
-        Header: tfn({ id: "4piece_bonus", defaultMessage: "4-Piece Bonus" }),
+        Header: t({ id: "4piece_bonus", defaultMessage: "4-Piece Bonus" }),
         accessor: "4pc",
         Cell: (row) => (
           <div
@@ -66,7 +66,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
         ),
       },
     ],
-    [tfn]
+    []
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: artifacts }, ...[useSortBy]);
@@ -74,12 +74,12 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
+        fn={t}
+        pageTitle={t({
           id: "title.artifacts",
           defaultMessage: "Genshin Artifacts Artifacts List",
         })}
-        pageDescription={tfn({
+        pageDescription={t({
           id: "title.artifacts.description",
           defaultMessage:
             "All the best artifact gear sets, locations, and stats.",
