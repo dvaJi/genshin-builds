@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-key */
+/* eslint-disable react/jsx-key, react-hooks/exhaustive-deps */
 import clsx from "clsx";
 import { useMemo } from "react";
 import { GetStaticProps } from "next";
@@ -48,7 +48,7 @@ const PotionsPage = ({ potions }: Props) => {
         accessor: "effect",
       },
     ],
-    [tfn]
+    []
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: potions }, ...[useSortBy]);
