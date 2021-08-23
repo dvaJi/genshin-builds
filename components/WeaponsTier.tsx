@@ -2,6 +2,7 @@ import { Weapon } from "genshin-data";
 import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
 import { IMGS_CDN } from "@lib/constants";
 import SimpleRarityBox from "./SimpleRarityBox";
+import Link from "next/link";
 
 interface WeaponsTierProps {
   tierlist: TierlistWeapons;
@@ -25,14 +26,18 @@ const WeaponsTier = ({
         <div className="col-span-3 lg:col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
           {tierlist.maindps[tier].map((t) => (
             <div key={t} className="inline-block">
-              <SimpleRarityBox
-                img={`${IMGS_CDN}/weapons/${t}.png`}
-                rarity={weaponsMap[t].rarity}
-                name={weaponsMap[t].name}
-                className="h-24 w-24"
-                nameSeparateBlock={true}
-                classNameBlock="w-24"
-              />
+              <Link key={t} href={`/weapon/${t}`}>
+                <a>
+                  <SimpleRarityBox
+                    img={`${IMGS_CDN}/weapons/${t}.png`}
+                    rarity={weaponsMap[t].rarity}
+                    name={weaponsMap[t].name}
+                    className="h-24 w-24"
+                    nameSeparateBlock={true}
+                    classNameBlock="w-24"
+                  />
+                </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -41,14 +46,18 @@ const WeaponsTier = ({
         <div className="col-span-3 lg:col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
           {tierlist.subdps[tier].map((t) => (
             <div key={t} className="inline-block">
-              <SimpleRarityBox
-                img={`${IMGS_CDN}/weapons/${t}.png`}
-                rarity={weaponsMap[t].rarity}
-                name={weaponsMap[t].name}
-                className="h-24 w-24"
-                nameSeparateBlock={true}
-                classNameBlock="w-24"
-              />
+              <Link key={t} href={`/weapon/${t}`}>
+                <a>
+                  <SimpleRarityBox
+                    img={`${IMGS_CDN}/weapons/${t}.png`}
+                    rarity={weaponsMap[t].rarity}
+                    name={weaponsMap[t].name}
+                    className="h-24 w-24"
+                    nameSeparateBlock={true}
+                    classNameBlock="w-24"
+                  />
+                </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -57,14 +66,18 @@ const WeaponsTier = ({
         <div className="col-span-3 lg:col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center">
           {tierlist.support[tier].map((t) => (
             <div key={t} className="inline-block relative">
-              <SimpleRarityBox
-                img={`${IMGS_CDN}/weapons/${t}.png`}
-                rarity={weaponsMap[t].rarity}
-                name={weaponsMap[t].name}
-                className="h-24 w-24"
-                nameSeparateBlock={true}
-                classNameBlock="w-24"
-              />
+              <Link key={t} href={`/weapon/${t}`}>
+                <a>
+                  <SimpleRarityBox
+                    img={`${IMGS_CDN}/weapons/${t}.png`}
+                    rarity={weaponsMap[t].rarity}
+                    name={weaponsMap[t].name}
+                    className="h-24 w-24"
+                    nameSeparateBlock={true}
+                    classNameBlock="w-24"
+                  />
+                </a>
+              </Link>
             </div>
           ))}
         </div>

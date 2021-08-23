@@ -90,14 +90,18 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
               {planMap[domain][currentDay].map((cId: string) => (
                 <div key={cId}>
                   {weapons[cId] ? (
-                    <SimpleRarityBox
-                      img={`${IMGS_CDN}/weapons/${cId}.png`}
-                      rarity={weapons[cId].rarity}
-                      name={weapons[cId].name}
-                      className="h-24 w-24"
-                      nameSeparateBlock={true}
-                      classNameBlock="w-24"
-                    />
+                    <Link key={cId} href={`/weapon/${cId}`}>
+                      <a>
+                        <SimpleRarityBox
+                          img={`${IMGS_CDN}/weapons/${cId}.png`}
+                          rarity={weapons[cId].rarity}
+                          name={weapons[cId].name}
+                          className="h-24 w-24"
+                          nameSeparateBlock={true}
+                          classNameBlock="w-24"
+                        />
+                      </a>
+                    </Link>
                   ) : (
                     `NOT FOUND ${cId}`
                   )}
