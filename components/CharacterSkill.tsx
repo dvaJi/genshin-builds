@@ -32,14 +32,16 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
       >
         <div className="flex flex-col">
           <div className="absolute top-0 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0 h-96">
-            <img
-              className="w-full"
-              alt={skill.id}
-              src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
-                "normal_attack_",
-                ""
-              )}_an.gif`}
-            />
+            {isOpen && (
+              <img
+                className="w-full"
+                alt={skill.id}
+                src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
+                  "normal_attack_",
+                  ""
+                )}_an.gif`}
+              />
+            )}
             <div
               className={clsx(
                 "absolute top-0 left-0 w-full h-full pointer-events-none transition-opacity",
@@ -61,7 +63,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
           >
             <div
               className={clsx(
-                "text-2xl mt-4 animate-bounce transition-all transform",
+                "text-2xl mt-4 transition-all transform",
                 !isOpen
                   ? "translate-y-5 lg:translate-y-16 opacity-0"
                   : "opacity-100 translate-y-0"
@@ -76,7 +78,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             />
             <div
               className={clsx(
-                "text-2xl mt-4 animate-bounce transition-all transform",
+                "text-2xl mt-4 transition-all transform",
                 isOpen
                   ? "translate-y-5 lg:translate-y-16 opacity-0"
                   : "opacity-100 translate-y-0"

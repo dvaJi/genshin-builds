@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   });
   const charactersMap = characters.reduce<Record<string, Character>>(
     (map, value) => {
-      map[value.id] = value;
+      map[value.id] = { ...value, rarity: value.rarity || 5 };
       return map;
     },
     {}

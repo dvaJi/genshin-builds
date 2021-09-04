@@ -163,13 +163,15 @@ const CharacterPage = ({
         })}
       </h2>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-4">
-        {character.constellations.map((constellation) => (
-          <ConstellationCard
-            key={constellation.id}
-            characterId={character.id}
-            constellation={constellation}
-          />
-        ))}
+        {character.constellations
+          .filter((c) => c.level > 0)
+          .map((constellation) => (
+            <ConstellationCard
+              key={constellation.id}
+              characterId={character.id}
+              constellation={constellation}
+            />
+          ))}
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
