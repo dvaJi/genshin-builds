@@ -2,6 +2,55 @@
   {
     "primary": [
       {
+        "characterId": "raiden_shogun",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "eula",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "xingqiu",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "zhongli",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["eula"],
+        "substitutes": ["tartaglia", "ganyu", "hu_tao"]
+      },
+      {
+        "characters": ["xingqiu"],
+        "substitutes": [
+          "mona",
+          "kaedehara_kazuha",
+          "venti",
+          "kamisato_ayaka",
+          "fischl"
+        ]
+      },
+      {
+        "characters": ["zhongli"],
+        "substitutes": [
+          "diona",
+          "jean",
+          "qiqi",
+          "kujou_sara",
+          "xinyan",
+          "bennett",
+          "barbara",
+          "sayu"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
         "characterId": "yoimiya",
         "role": "Main DPS"
       },
@@ -25,7 +74,14 @@
       },
       {
         "characters": ["kaedehara_kazuha"],
-        "substitutes": ["zhongli", "jean", "qiqi", "xinyan", "bennett", "barbara"]
+        "substitutes": [
+          "zhongli",
+          "jean",
+          "qiqi",
+          "xinyan",
+          "bennett",
+          "barbara"
+        ]
       }
     ]
   },

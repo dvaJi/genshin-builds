@@ -3,8 +3,8 @@
     "maindps": {
       "0": [
         "summit_shaper",
-        "aquila_favonia",
         "mistsplitter_reforged",
+        "aquila_favonia",
         "primordial_jade_cutter"
       ],
       "1": [
@@ -106,8 +106,10 @@
     "maindps": {
       "0": ["staff_of_homa", "primordial_jade_wingedspear"],
       "1": [
+        "engulfing_lightning",
         "vortex_vanquisher",
         "skyward_spine",
+        "the_catch",
         "crescent_pike",
         "blackcliff_pole",
         "deathmatch",
@@ -119,14 +121,20 @@
       "4": ["halberd", "black_tassel"]
     },
     "subdps": {
-      "0": ["staff_of_homa", "skyward_spine"],
-      "1": ["primordial_jade_wingedspear", "dragons_bane", "favonius_lance"],
-      "2": ["royal_spear"],
+      "0": ["engulfing_lightning", "staff_of_homa"],
+      "1": [
+        "primordial_jade_wingedspear",
+        "skyward_spine",
+        "the_catch",
+        "dragons_bane",
+        "favonius_lance"
+      ],
+      "2": ["kitain_cross_spear", "royal_spear"],
       "3": [],
       "4": ["black_tassel"]
     },
     "support": {
-      "0": ["favonius_lance"],
+      "0": ["engulfing_lightning", "favonius_lance"],
       "1": ["vortex_vanquisher", "staff_of_homa", "prototype_starglitter"],
       "2": ["skyward_spine", "deathmatch"],
       "3": ["black_tassel"],
@@ -142,7 +150,7 @@
         "blackcliff_warbow",
         "the_viridescent_hunt"
       ],
-      "2": ["royal_bow", "prototype_crescent", "compound_bow"],
+      "2": ["predator", "royal_bow", "prototype_crescent", "compound_bow"],
       "3": ["raven_bow", "sharpshooters_oath", "slingshot"],
       "4": ["messenger"]
     },
