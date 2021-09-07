@@ -1,7 +1,7 @@
 {
   "character.constellations": "กลุ่มดาว",
   "character.passives": "พรสวรรค์ติดตัว",
-  "characters": "เลือกตัวละคร",
+  "characters": "ตัวอักษร",
   "character": "ตัวละคร",
   "cooking_ingredient": "วัตถุดิบประกอบอาหาร",
   "artifacts": "อาร์ติแฟกต์",
@@ -47,5 +47,6 @@
   "Cecilia Garden": "สวนดอก Cecilia",
   "Violet Court": "โถงสีม่วง",
   "Court of Flowing Sand": "โถงแห่งห้วงทราย",
+  "Hidden Palace of Lianshan Formula": "ราชวังลับแห่ง Lianshan Formula",
   "or": "หรือ"
 }

@@ -45,7 +45,7 @@
   "refinement": "Sàng lọc",
   "character.constellations": "Cung Mệnh",
   "character.passives": "Thiên Phú Cố Định",
-  "characters": "Chọn Nhân Vật",
+  "characters": "Nhân vật",
   "character": "Nhân Vật",
   "cooking_ingredient": "Nguyên Liệu Thực Phẩm",
   "artifacts": "Thánh Di Vật",
@@ -91,5 +91,6 @@
   "Cecilia Garden": "Vườn Hoa Cecilia",
   "Violet Court": "Sân Vườn Màu Tím",
   "Court of Flowing Sand": "Sân Vườn Sunagare",
+  "Hidden Palace of Lianshan Formula": "Chấn Lôi Liên Sơn Mật Cung",
   "or": "hoặc"
 }

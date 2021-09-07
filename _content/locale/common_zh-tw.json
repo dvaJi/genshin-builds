@@ -1,7 +1,7 @@
 {
   "character.constellations": "命之座",
   "character.passives": "固有天賦",
-  "characters": "角色選擇",
+  "characters": "角色",
   "character": "角色",
   "cooking_ingredient": "食材",
   "artifacts": "聖遺物",
@@ -47,5 +47,6 @@
   "Cecilia Garden": "塞西莉亞苗圃",
   "Violet Court": "菫色之庭",
   "Court of Flowing Sand": "砂流之庭",
+  "Hidden Palace of Lianshan Formula": "震雷連山密宮",
   "or": "或"
 }
