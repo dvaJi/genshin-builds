@@ -31,7 +31,7 @@ async function generateSitemap() {
   ]);
   const sitemap = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages
-  .filter((p) => !p.includes("/builds-builder"))
+  .filter((p) => !p.includes("/builder/builds"))
   .sort((a, b) => a.localeCompare(b))
   .map(addPage)
   .join("\n")}

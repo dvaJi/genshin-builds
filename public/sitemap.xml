@@ -40,6 +40,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -108,6 +112,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -128,11 +136,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/de/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -201,6 +217,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -332,6 +352,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -428,6 +456,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -461,6 +493,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -628,6 +664,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -724,6 +764,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -792,6 +836,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -812,11 +860,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/en/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -885,6 +941,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1016,6 +1076,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1112,6 +1180,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1145,6 +1217,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1312,6 +1388,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1408,6 +1488,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1476,6 +1560,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1496,11 +1584,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/es/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1569,6 +1665,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1700,6 +1800,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1796,6 +1904,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1829,6 +1941,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1996,6 +2112,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2068,6 +2188,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fishing</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/food</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2093,6 +2217,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/character/albedo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/character/aloy</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2164,6 +2292,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2184,11 +2316,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2257,6 +2397,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2388,6 +2532,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2484,6 +2636,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2517,6 +2673,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2684,6 +2844,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2780,6 +2944,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2848,6 +3016,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2868,11 +3040,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/id/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2941,6 +3121,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3072,6 +3256,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3168,6 +3360,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3201,6 +3397,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3368,6 +3568,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3472,6 +3676,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3540,6 +3748,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3560,11 +3772,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3633,6 +3853,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3764,6 +3988,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3860,6 +4092,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3893,6 +4129,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4060,6 +4300,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4156,6 +4400,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4224,6 +4472,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4244,11 +4496,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4317,6 +4577,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4448,6 +4712,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4544,6 +4816,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4577,6 +4853,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4744,6 +5024,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4848,6 +5132,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4916,6 +5204,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4936,11 +5228,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5009,6 +5309,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5140,6 +5444,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5236,6 +5548,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5269,6 +5585,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5436,6 +5756,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5532,6 +5856,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5600,6 +5928,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5620,11 +5952,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5693,6 +6033,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5824,6 +6168,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5920,6 +6272,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5953,6 +6309,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6120,6 +6480,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6220,6 +6584,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6288,6 +6656,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6308,11 +6680,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/th/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6381,6 +6761,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6512,6 +6896,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6608,6 +7000,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6641,6 +7037,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6808,6 +7208,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6912,6 +7316,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6980,6 +7388,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7000,11 +7412,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7073,6 +7493,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7204,6 +7628,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7300,6 +7732,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7333,6 +7769,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7500,6 +7940,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/weapon/the_catch</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/weapon/the_flute</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7600,6 +8044,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/aloy</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/amber</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7668,6 +8116,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/kujou_sara</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/lisa</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7688,11 +8140,19 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/raiden_shogun</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/razor</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/character/rosaria</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/character/sangonomiya_kokomi</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7761,6 +8221,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/contact</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/fishing</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7892,6 +8356,14 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/engulfing_lightning</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/everlasting_moonglow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/eye_of_perception</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7988,6 +8460,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/luxurious_sealord</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/magic_guide</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8021,6 +8497,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/predator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8185,6 +8665,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/the_black_sword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/the_catch</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
