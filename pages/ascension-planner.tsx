@@ -10,10 +10,11 @@ import SimpleRarityBox from "@components/SimpleRarityBox";
 import ServerTimers from "@components/ServerTimers";
 
 import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToLang } from "@utils/locale-to-lang";
 
 import useIntl from "@hooks/use-intl";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   characters: Record<string, Character>;
@@ -65,7 +66,11 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
                 <Link key={cId} href={`/character/${cId}`}>
                   <a>
                     <SimpleRarityBox
-                      img={`${IMGS_CDN}/characters/${cId}/${cId}_portrait.png`}
+                      img={getUrl(
+                        `/characters/${cId}/${cId}_portrait.png`,
+                        96,
+                        96
+                      )}
                       rarity={characters[cId].rarity}
                       name={characters[cId].name}
                       className="h-24 w-24"
@@ -93,7 +98,7 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
                     <Link key={cId} href={`/weapon/${cId}`}>
                       <a>
                         <SimpleRarityBox
-                          img={`${IMGS_CDN}/weapons/${cId}.png`}
+                          img={getUrl(`/weapons/${cId}.png`, 96, 96)}
                           rarity={weapons[cId].rarity}
                           name={weapons[cId].name}
                           className="h-24 w-24"

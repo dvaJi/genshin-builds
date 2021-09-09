@@ -1,5 +1,5 @@
 import useIntl from "@hooks/use-intl";
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 import { Fish } from "genshin-data";
 import { FishingPoint } from "interfaces/fishing";
 import { memo } from "react";
@@ -33,7 +33,7 @@ const FishingPointCard = ({
           <div className="flex-grow lg:flex-grow-0 overflow-hidden w-80 pt-5 lg:pt-0">
             <img
               className="w-80 rounded-lg lg:rounded-r-none transition-transform transform hover:scale-110"
-              src={`${IMGS_CDN}/fishing_points/${point.id}.jpg`}
+              src={getUrl(`/fishing_points/${point.id}.jpg`, 320, 320)}
               alt={point.id}
             />
           </div>

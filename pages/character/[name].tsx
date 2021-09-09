@@ -6,6 +6,8 @@ import clsx from "clsx";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
+import Ads from "@components/Ads";
+import StarRarity from "@components/StarRarity";
 import Metadata from "@components/Metadata";
 import ElementIcon from "@components/ElementIcon";
 import Collapsible from "@components/Collapsible";
@@ -19,10 +21,9 @@ import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getCharacterBuild, getLocale } from "@lib/localData";
 import { appBackgroundStyleState } from "@state/background-atom";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { Build } from "interfaces/build";
-import StarRarity from "@components/StarRarity";
-import Ads from "@components/Ads";
+import { getUrl } from "@lib/imgUrl";
 
 interface CharacterPageProps {
   character: Character;
@@ -45,9 +46,9 @@ const CharacterPage = ({
   const { t, tfn } = useIntl();
   useEffect(() => {
     setBg({
-      image: `${IMGS_CDN}/regions/${
-        common[character.region] || "Mondstadt"
-      }_d.jpg`,
+      image: getUrl(
+        `/regions/${common[character.region] || "Mondstadt"}_d.jpg`
+      ),
       gradient: {
         background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
@@ -70,7 +71,11 @@ const CharacterPage = ({
           <div className="flex-none relative mr-2 lg:mr-5">
             <img
               className="w-24 h-24 bg-vulcan-800 p-1 rounded-full border border-gray-900"
-              src={`${IMGS_CDN}/characters/${character.id}/${character.id}_portrait.png`}
+              src={getUrl(
+                `/characters/${character.id}/${character.id}_portrait.png`,
+                86,
+                86
+              )}
               alt={character.name}
             />
           </div>

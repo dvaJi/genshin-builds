@@ -11,7 +11,8 @@ import Metadata from "@components/Metadata";
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   ingredients: Ingredients[];
@@ -28,7 +29,7 @@ const IngredientsPage = ({ ingredients }: Props) => {
           <img
             height={54}
             width={54}
-            src={`${IMGS_CDN}/ingredients/${row.value}.png`}
+            src={getUrl(`/ingredients/${row.value}.png`, 54, 54)}
             alt={row.value}
           />
         ),

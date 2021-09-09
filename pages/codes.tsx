@@ -8,8 +8,9 @@ import SimpleRarityBox from "@components/SimpleRarityBox";
 
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useLocalStorage } from "@hooks/use-local-storage";
+import { getUrl } from "@lib/imgUrl";
 
 type Reward = {
   id: string;
@@ -92,7 +93,7 @@ const Codes = ({ codes }: Props) => {
                     className="inline-block mr-2"
                   >
                     <SimpleRarityBox
-                      img={`${IMGS_CDN}/materials/${reward.id}.png`}
+                      img={getUrl(`/materials/${reward.id}.png`, 40, 40)}
                       rarity={reward.rarity}
                       name={reward.amount.toString()}
                       className="h-10 w-10"

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Constellation } from "genshin-data/dist/types/character";
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   characterId: string;
@@ -16,10 +16,14 @@ const ConstellationCard = ({ constellation, characterId }: Props) => {
             <img
               className="w-24 opacity-20"
               alt={constellation.id}
-              src={`${IMGS_CDN}/characters/${characterId}/${constellation.id.replace(
-                "normal_attack_",
-                ""
-              )}_w.png`}
+              src={getUrl(
+                `/characters/${characterId}/${constellation.id.replace(
+                  "normal_attack_",
+                  ""
+                )}_w.png`,
+                76,
+                76
+              )}
             />
           </div>
         </div>

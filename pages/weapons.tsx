@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import clsx from "clsx";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import GenshinData, { Weapon } from "genshin-data";
@@ -14,8 +15,8 @@ import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
 import useDebounce from "@hooks/use-debounce";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
-import Link from "next/link";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 interface WeaponsPageProps {
   weapons: Weapon[];
@@ -110,7 +111,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                   <img
                     className="w-10 h-10"
                     alt={type}
-                    src={`${IMGS_CDN}/weapons_type/${type}.png`}
+                    src={getUrl(`/weapons_type/${type}.png`, 40, 40)}
                   />
                 </button>
               ))}
@@ -170,11 +171,13 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                 <div
                   className="flex flex-none relative bg-cover rounded rounded-tr-none rounded-br-none items-center justify-center"
                   style={{
-                    backgroundImage: `url(${IMGS_CDN}/bg_${weapon.rarity}star.png)`,
+                    backgroundImage: `url(${getUrl(
+                      `/bg_${weapon.rarity}star.png`
+                    )})`,
                   }}
                 >
                   <img
-                    src={`${IMGS_CDN}/weapons/${weapon.id}.png`}
+                    src={getUrl(`/weapons/${weapon.id}.png`, 126, 126)}
                     height={126}
                     width={126}
                     alt={weapon.name}

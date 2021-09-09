@@ -1,4 +1,4 @@
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 import { Fish } from "genshin-data";
 import { memo } from "react";
 
@@ -12,18 +12,18 @@ const FishMiniCard = ({ fish, isSelected }: FishMiniCardProps) => (
     <div
       className="relative block m-1 bg-cover overflow-hidden text-center mb-0 rounded rounded-b-none h-24 w-24"
       style={{
-        backgroundImage: `url("${IMGS_CDN}/bg_${fish.rarity}star.png")`,
+        backgroundImage: `url("${getUrl(`/bg_${fish.rarity}star.png`)}")`,
         opacity: isSelected(fish.id) ? "1" : "0.3",
       }}
     >
       <img
         className="absolute bottom-1 right-1 bg-vulcan-800 rounded-full w-7"
-        src={`${IMGS_CDN}/baits/${fish.bait.id}.png`}
+        src={getUrl(`/baits/${fish.bait.id}.png`, 28, 28)}
         alt={fish.bait.name}
         title={fish.bait.name}
       />
       <img
-        src={`${IMGS_CDN}/fish/${fish.id}.png`}
+        src={getUrl(`/fish/${fish.id}.png`, 96, 96)}
         alt={fish.name}
         title={fish.name}
       />

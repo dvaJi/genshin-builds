@@ -11,8 +11,9 @@ import { getLocale } from "@lib/localData";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   tierlist: Record<string, TierlistWeapons>;
@@ -81,7 +82,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
               <img
                 className="w-16 h-16"
                 alt={type}
-                src={`${IMGS_CDN}/weapons_type/${type}.png`}
+                src={getUrl(`/weapons_type/${type}.png`, 64, 64)}
               />
             </button>
           ))}

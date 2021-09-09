@@ -1,11 +1,12 @@
-import { memo, useState } from "react";
-
-import { IMGS_CDN } from "@lib/constants";
-import { TeamFull } from "interfaces/teams";
-import useIntl from "@hooks/use-intl";
-import CharacterPortrait from "./CharacterPortrait";
 import clsx from "clsx";
 import Link from "next/link";
+import { memo, useState } from "react";
+
+import CharacterPortrait from "./CharacterPortrait";
+
+import { TeamFull } from "interfaces/teams";
+import useIntl from "@hooks/use-intl";
+import { getUrl } from "@lib/imgUrl";
 
 interface TeamCardProps {
   team: TeamFull;
@@ -33,7 +34,11 @@ const TeamCard = ({ team }: TeamCardProps) => {
                   <img
                     className="rounded-lg"
                     alt={block.character.id}
-                    src={`${IMGS_CDN}/characters/${block.character.id}/image.png`}
+                    src={getUrl(
+                      `/characters/${block.character.id}/image.png`,
+                      256,
+                      256
+                    )}
                   />
                   <span className="text-white text-2xl leading-10">
                     {block.character.name}

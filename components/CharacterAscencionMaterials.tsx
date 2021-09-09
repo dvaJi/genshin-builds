@@ -1,8 +1,10 @@
 import { memo } from "react";
 import { Ascension } from "genshin-data/dist/types/character";
 import clsx from "clsx";
+
 import SimpleRarityBox from "./SimpleRarityBox";
-import { IMGS_CDN } from "@lib/constants";
+
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   ascension: Ascension[];
@@ -27,7 +29,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
           </div>
           <div className="flex justify-center items-center">
             <SimpleRarityBox
-              img={`${IMGS_CDN}/materials/mora.png`}
+              img={getUrl(`/materials/mora.png`, 64, 64)}
               name={ascen.cost.toString()}
               rarity={1}
               className="w-16 h-16"
@@ -36,7 +38,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`${IMGS_CDN}/jewels_materials/${ascen.mat1.id}.png`}
+              img={getUrl(`/jewels_materials/${ascen.mat1.id}.png`, 64, 64)}
               name={ascen.mat1.amount.toString()}
               rarity={ascen.mat1.rarity}
               className="w-16 h-16"
@@ -47,7 +49,11 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
             {ascen.mat2 && (
               <>
                 <SimpleRarityBox
-                  img={`${IMGS_CDN}/elemental_stone_materials/${ascen.mat2.id}.png`}
+                  img={getUrl(
+                    `/elemental_stone_materials/${ascen.mat2.id}.png`,
+                    64,
+                    64
+                  )}
                   name={ascen.mat2.amount.toString()}
                   rarity={ascen.mat2.rarity || 1}
                   className="w-16 h-16"
@@ -58,7 +64,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`${IMGS_CDN}/local_materials/${ascen.mat3.id}.png`}
+              img={getUrl(`/local_materials/${ascen.mat3.id}.png`, 64, 64)}
               name={ascen.mat3.amount.toString()}
               rarity={ascen.mat3.rarity || 1}
               className="w-16 h-16"
@@ -67,7 +73,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
           </div>
           <div className="lg:col-span-2 flex items-center">
             <SimpleRarityBox
-              img={`${IMGS_CDN}/common_materials/${ascen.mat4.id}.png`}
+              img={getUrl(`/common_materials/${ascen.mat4.id}.png`, 64, 64)}
               name={ascen.mat4.amount.toString()}
               rarity={ascen.mat4.rarity || 1}
               className="w-16 h-16"

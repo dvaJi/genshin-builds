@@ -1,9 +1,9 @@
-import { memo } from "react";
 import clsx from "clsx";
-import SimpleRarityBox from "./SimpleRarityBox";
-import { IMGS_CDN } from "@lib/constants";
-import { useCallback } from "react";
+import { useCallback, memo } from "react";
 import { WeaponAscension } from "genshin-data/dist/types/weapon";
+
+import SimpleRarityBox from "./SimpleRarityBox";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   ascension: WeaponAscension[];
@@ -49,7 +49,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
             </div>
             <div className="flex justify-center items-center">
               <SimpleRarityBox
-                img={`${IMGS_CDN}/materials/mora.png`}
+                img={getUrl(`/materials/mora.png`, 64, 64)}
                 name={ascen.cost?.toString()}
                 rarity={1}
                 className="w-16 h-16"
@@ -62,7 +62,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
                 className="lg:col-span-2 flex items-center"
               >
                 <SimpleRarityBox
-                  img={`${IMGS_CDN}/${getFolder(i)}/${mat.id}.png`}
+                  img={getUrl(`/${getFolder(i)}/${mat.id}.png`, 64, 64)}
                   name={mat.amount.toString()}
                   rarity={mat.rarity}
                   className="w-16 h-16"

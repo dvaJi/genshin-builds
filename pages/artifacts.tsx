@@ -12,7 +12,8 @@ import StarRarity from "@components/StarRarity";
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   artifacts: Artifact[];
@@ -31,7 +32,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
           <img
             height={54}
             width={54}
-            src={`${IMGS_CDN}/artifacts/${row.value}.png`}
+            src={getUrl(`/artifacts/${row.value}.png`, 54, 54)}
             alt={row.value}
           />
         ),
@@ -169,7 +170,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
                     <img
                       height={54}
                       width={54}
-                      src={`${IMGS_CDN}/artifacts/${row.id}.png`}
+                      src={getUrl(`/artifacts/${row.id}.png`, 54, 54)}
                       alt={row.id}
                     />
                   </td>

@@ -1,8 +1,9 @@
-import { Weapon } from "genshin-data";
-import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
-import { IMGS_CDN } from "@lib/constants";
-import SimpleRarityBox from "./SimpleRarityBox";
 import Link from "next/link";
+import { Weapon } from "genshin-data";
+
+import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
+import SimpleRarityBox from "./SimpleRarityBox";
+import { getUrl } from "@lib/imgUrl";
 
 interface WeaponsTierProps {
   tierlist: TierlistWeapons;
@@ -29,7 +30,7 @@ const WeaponsTier = ({
               <Link key={t} href={`/weapon/${t}`}>
                 <a>
                   <SimpleRarityBox
-                    img={`${IMGS_CDN}/weapons/${t}.png`}
+                    img={getUrl(`/weapons/${t}.png`, 96, 96)}
                     rarity={weaponsMap[t].rarity}
                     name={weaponsMap[t].name}
                     className="h-24 w-24"
@@ -49,7 +50,7 @@ const WeaponsTier = ({
               <Link key={t} href={`/weapon/${t}`}>
                 <a>
                   <SimpleRarityBox
-                    img={`${IMGS_CDN}/weapons/${t}.png`}
+                    img={getUrl(`/weapons/${t}.png`, 96, 96)}
                     rarity={weaponsMap[t].rarity}
                     name={weaponsMap[t].name}
                     className="h-24 w-24"
@@ -69,7 +70,7 @@ const WeaponsTier = ({
               <Link key={t} href={`/weapon/${t}`}>
                 <a>
                   <SimpleRarityBox
-                    img={`${IMGS_CDN}/weapons/${t}.png`}
+                    img={getUrl(`/weapons/${t}.png`, 96, 96)}
                     rarity={weaponsMap[t].rarity}
                     name={weaponsMap[t].name}
                     className="h-24 w-24"

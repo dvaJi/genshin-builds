@@ -10,7 +10,7 @@ import { FishingPoint } from "interfaces/fishing";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   fish: Record<string, Fish>;
@@ -80,9 +80,10 @@ const FishingPage = ({ fish, fishingPoints }: Props) => {
             )}
           >
             <img
-              className="w-10 h-10 mr-3"
-              src={`${IMGS_CDN}/fish/${f.id}.png`}
+              className="w-12 h-12 mr-3"
+              src={getUrl(`/fish/${f.id}.png`, 48, 48)}
               alt={f.name}
+              title={f.name}
             />
           </button>
         ))}

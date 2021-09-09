@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { memo } from "react";
 
-import StarRarity from "./StarRarity";
-import { IMGS_CDN } from "@lib/constants";
-import { FoodItem } from "@pages/food";
-import Link from "next/link";
 import SimpleRarityBox from "./SimpleRarityBox";
+import StarRarity from "./StarRarity";
+
+import { FoodItem } from "@pages/food";
+import { getUrl } from "@lib/imgUrl";
 
 interface FoodCardProps {
   item: FoodItem;
@@ -17,11 +18,11 @@ const FoodCard = ({ item }: FoodCardProps) => {
         <div
           className="flex flex-none relative bg-cover rounded rounded-tr-none rounded-br-none items-center justify-center"
           style={{
-            backgroundImage: `url(${IMGS_CDN}/bg_${item.rarity}star.png)`,
+            backgroundImage: `url(${getUrl(`/bg_${item.rarity}star.png`)})`,
           }}
         >
           <img
-            src={`${IMGS_CDN}/food/${item.id}_${item.type}.png`}
+            src={getUrl(`/food/${item.id}_${item.type}.png`, 100, 100)}
             height={100}
             width={100}
             alt={item.name}
@@ -49,7 +50,11 @@ const FoodCard = ({ item }: FoodCardProps) => {
               <Link href={`/character/${item.character.id}`}>
                 <a>
                   <SimpleRarityBox
-                    img={`${IMGS_CDN}/characters/${item.character.id}/${item.character.id}_portrait.png`}
+                    img={getUrl(
+                      `/characters/${item.character.id}/${item.character.id}_portrait.png`,
+                      48,
+                      48
+                    )}
                     rarity={0}
                     className="h-12 w-12"
                   />

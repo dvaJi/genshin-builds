@@ -1,6 +1,7 @@
 import { memo } from "react";
 import ElementIcon from "./ElementIcon";
-import { IMGS_CDN } from "@lib/constants";
+
+import { getUrl } from "@lib/imgUrl";
 
 interface CharacterPortraitProps {
   character: {
@@ -23,7 +24,11 @@ const CharacterPortrait = ({ character, weapon }: CharacterPortraitProps) => {
         <div className="text-center relative group">
           <img
             className="inline-block rounded-full shadow-lg"
-            src={`${IMGS_CDN}/characters/${character.id}/${character.id}_portrait.png`}
+            src={getUrl(
+              `/characters/${character.id}/${character.id}_portrait.png`,
+              80,
+              80
+            )}
             alt={character.name}
             width={80}
             height={80}
@@ -42,12 +47,14 @@ const CharacterPortrait = ({ character, weapon }: CharacterPortraitProps) => {
             <div
               className="absolute bg-cover rounded bottom-0 left-2/3 transition-opacity delay-100 opacity-0 group-hover:opacity-100"
               style={{
-                backgroundImage: `url(${IMGS_CDN}/bg_${weapon.rarity}star.png)`,
+                backgroundImage: `url(${getUrl(
+                  `/bg_${weapon.rarity}star.png`
+                )})`,
                 height: 32,
               }}
             >
               <img
-                src={`${IMGS_CDN}/weapons/${weapon.id}.png`}
+                src={getUrl(`/weapons/${weapon.id}.png`, 32, 32)}
                 height={32}
                 width={32}
                 alt={weapon.name}

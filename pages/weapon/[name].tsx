@@ -10,7 +10,7 @@ import WeaponAscensionMaterials from "@components/WeaponAscensionMaterials";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 interface WeaponPageProps {
   weapon: Weapon;
@@ -39,12 +39,12 @@ const WeaponPage = ({ weapon, locale }: WeaponPageProps) => {
           <div
             className="flex-none relative mr-2 lg:mr-5  rounded-lg border border-gray-900 bg-cover"
             style={{
-              backgroundImage: `url(${IMGS_CDN}/bg_${weapon.rarity}star.png)`,
+              backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
             }}
           >
             <img
               className="w-52 h-52"
-              src={`${IMGS_CDN}/weapons/${weapon.id}.png`}
+              src={getUrl(`/weapons/${weapon.id}.png`, 208, 208)}
               alt={weapon.name}
             />
           </div>
