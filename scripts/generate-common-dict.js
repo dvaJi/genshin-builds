@@ -68,8 +68,11 @@ async function generateBuilds() {
 
     for (const character of characters) {
       object[lang][character.weapon_type] = weaponsDict[character.id];
+      object[lang][weaponsDict[character.id]] = character.weapon_type;
       object[lang][character.element] = elementDict[character.id];
+      object[lang][elementDict[character.id]] = character.element;
       object[lang][character.region] = regionDict[character.id];
+      object[lang][regionDict[character.id]] = character.region;
     }
   }
 

@@ -2,6 +2,7 @@
   "extends": "next",
   "rules": {
     "@next/next/no-img-element": 0,
+    "@next/next/no-document-import-in-page": 0,
     "react/display-name": 0
   }
 }

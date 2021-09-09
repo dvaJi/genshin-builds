@@ -1,0 +1,278 @@
+{
+  "Mondstadt": [
+    {
+      "id": "ciderlake_1",
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "venomspine_fish",
+        "akai_maou",
+        "teacolored_shirakodai",
+        "pufferfish",
+        "bitter_pufferfish"
+      ],
+      "total": 7
+    },
+    {
+      "id": "ciderlake_2",
+      "fish": [
+        "aizen_medaka",
+        "crystalfish",
+        "venomspine_fish",
+        "rusty_koi",
+        "teacolored_shirakodai"
+      ],
+      "total": 7
+    },
+    {
+      "id": "stormbearermountains",
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "venomspine_fish",
+        "golden_koi",
+        "teacolored_shirakodai"
+      ],
+      "total": 7
+    },
+    {
+      "id": "stormterrorslair_1",
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "dawncatcher",
+        "teacolored_shirakodai"
+      ],
+      "total": 6
+    },
+    {
+      "id": "stormterrorslair_2",
+      "fish": ["medaka", "aizen_medaka", "dawncatcher", "crystalfish"],
+      "total": 6
+    },
+    {
+      "id": "windrise",
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "venomspine_fish",
+        "teacolored_shirakodai"
+      ],
+      "total": 6
+    },
+    {
+      "id": "dawnwinery",
+      "fish": [
+        "aizen_medaka",
+        "dawncatcher",
+        "venomspine_fish",
+        "akai_maou",
+        "teacolored_shirakodai",
+        "pufferfish",
+        "bitter_pufferfish"
+      ],
+      "total": 11
+    },
+    {
+      "id": "dragonspine",
+      "fish": [
+        "aizen_medaka",
+        "venomspine_fish",
+        "snowstrider",
+        "teacolored_shirakodai"
+      ],
+      "total": 6
+    }
+  ],
+  "Liyue": [
+    {
+      "id": "qingcevillage",
+      "fish": [
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "betta",
+        "brown_shirakodai",
+        "bitter_pufferfish"
+      ],
+      "total": 6
+    },
+    {
+      "id": "dihuamarsh",
+      "fish": [
+        "medaka",
+        "sweetflower_medaka",
+        "dawncatcher",
+        "brown_shirakodai"
+      ],
+      "total": 8
+    },
+    {
+      "id": "wangshuinn",
+      "fish": [
+        "sweetflower_medaka",
+        "betta",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "brown_shirakodai"
+      ],
+      "total": 10
+    },
+    {
+      "id": "guiliplains",
+      "fish": [
+        "sweetflower_medaka",
+        "betta",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "brown_shirakodai"
+      ],
+      "total": 10
+    },
+    {
+      "id": "bishuiplain_1",
+      "fish": ["medaka", "betta", "brown_shirakodai"],
+      "total": 5
+    },
+    {
+      "id": "bishuiplain_2",
+      "fish": ["medaka", "dawncatcher", "crystalfish", "brown_shirakodai"],
+      "total": 8
+    },
+    {
+      "id": "mthulao",
+      "fish": [
+        "medaka",
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "betta",
+        "brown_shirakodai"
+      ],
+      "total": 8
+    },
+    {
+      "id": "luhuapool",
+      "fish": [
+        "sweetflower_medaka",
+        "betta",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "brown_shirakodai"
+      ],
+      "total": 11
+    },
+    {
+      "id": "tianqiuvalley",
+      "fish": ["medaka", "crystalfish", "betta"],
+      "total": 7
+    },
+    {
+      "id": "liyueharbor",
+      "fish": [
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "betta",
+        "pufferfish"
+      ],
+      "total": 7
+    },
+    {
+      "id": "mtaocang",
+      "fish": [
+        "medaka",
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "abiding_angelfish"
+      ],
+      "total": 7
+    }
+  ],
+  "Inazuma": [
+    {
+      "id": "ritou",
+      "fish": [
+        "glaze_medaka",
+        "lunged_stickleback",
+        "akai_maou",
+        "pufferfish",
+        "bitter_pufferfish"
+      ],
+      "total": 9
+    },
+    {
+      "id": "amakaneisland",
+      "fish": ["glaze_medaka", "lunged_stickleback", "purple_shirakodai"],
+      "total": 11
+    },
+    {
+      "id": "nazuchibeach",
+      "fish": [
+        "medaka",
+        "lunged_stickleback",
+        "purple_shirakodai",
+        "bitter_pufferfish"
+      ],
+      "total": 8
+    },
+    {
+      "id": "sangonomiyashrine",
+      "fish": [
+        "medaka",
+        "glaze_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "lunged_stickleback",
+        "purple_shirakodai"
+      ],
+      "total": 5
+    },
+    {
+      "id": "suigetsupool",
+      "fish": [
+        "medaka",
+        "glaze_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "lunged_stickleback",
+        "purple_shirakodai"
+      ],
+      "total": 9
+    },
+    {
+      "id": "kosekivillage_1",
+      "fish": [
+        "glaze_medaka",
+        "lunged_stickleback",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "purple_shirakodai"
+      ],
+      "total": 10
+    },
+    {
+      "id": "kosekivillage_2",
+      "fish": [
+        "medaka",
+        "dawncatcher",
+        "crystalfish",
+        "purple_shirakodai",
+        "pufferfish"
+      ],
+      "total": 9
+    },
+    {
+      "id": "tatarasuna",
+      "fish": ["raimei_angelfish"],
+      "total": 5
+    }
+  ]
+}
