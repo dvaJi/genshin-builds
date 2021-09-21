@@ -2,6 +2,40 @@
   {
     "primary": [
       {
+        "characterId": "sangonomiya_kokomi",
+        "role": "Support"
+      },
+      {
+        "characterId": "kamisato_ayaka",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "venti",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "rosaria",
+        "role": "Sub DPS"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["kamisato_ayaka"],
+        "substitutes": ["ganyu", "aloy"]
+      },
+      {
+        "characters": ["venti"],
+        "substitutes": ["sucrose", "kaedehara_kazuha"]
+      },
+      {
+        "characters": ["rosaria"],
+        "substitutes": ["diona", "kaeya"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
         "characterId": "raiden_shogun",
         "role": "Sub DPS"
       },
