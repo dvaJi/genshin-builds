@@ -1,6 +1,7 @@
 import { IMGS_CDN } from "@lib/constants";
 import clsx from "clsx";
 import { memo } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 type Props = {
   img: string;
@@ -36,7 +37,7 @@ const SimpleRarityBox = ({
             rarity > 0 ? `url(${IMGS_CDN}/bg_${rarity}star.png)` : "",
         }}
       >
-        <img className="group-hover:opacity-70" src={img} alt={name} />
+        <LazyLoadImage className="group-hover:opacity-70" src={img} alt={name} />
         {!nameSeparateBlock && name && (
           <span
             className="absolute inline-block bottom-0 text-xs bg-gray-900 bg-opacity-90 rounded rounded-t-none p-1 transition-all opacity-80 group-hover:text-white group-hover:opacity-100"

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import GenshinData, { Weapon } from "genshin-data";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
@@ -108,10 +109,12 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                     }
                   }}
                 >
-                  <img
+                  <LazyLoadImage
                     className="w-10 h-10"
                     alt={type}
                     src={getUrl(`/weapons_type/${type}.png`, 40, 40)}
+                    width={40}
+                    height={40}
                   />
                 </button>
               ))}
@@ -176,7 +179,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                     )})`,
                   }}
                 >
-                  <img
+                  <LazyLoadImage
                     src={getUrl(`/weapons/${weapon.id}.png`, 126, 126)}
                     height={126}
                     width={126}

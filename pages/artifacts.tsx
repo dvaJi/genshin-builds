@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { GetStaticProps } from "next";
 import GenshinData, { Artifact } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
@@ -29,7 +30,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
         Header: "",
         accessor: "id",
         Cell: (row) => (
-          <img
+          <LazyLoadImage
             height={54}
             width={54}
             src={getUrl(`/artifacts/${row.value}.png`, 54, 54)}
@@ -167,7 +168,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
                   }
                 >
                   <td>
-                    <img
+                    <LazyLoadImage
                       height={54}
                       width={54}
                       src={getUrl(`/artifacts/${row.id}.png`, 54, 54)}

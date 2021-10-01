@@ -1,6 +1,7 @@
 import { memo } from "react";
 import Link from "next/link";
 import { Weapon } from "genshin-data";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import StarRarity from "./StarRarity";
 
@@ -21,7 +22,7 @@ const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
             backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
           }}
         >
-          <img
+          <LazyLoadImage
             src={getUrl(`/weapons/${weapon.id}.png`, 92, 92)}
             height={92}
             width={92}

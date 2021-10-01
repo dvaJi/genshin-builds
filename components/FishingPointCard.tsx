@@ -1,9 +1,13 @@
+import { memo } from "react";
+import { Fish } from "genshin-data";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import FishMiniCard from "./FishMiniCard";
+
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
-import { Fish } from "genshin-data";
+
 import { FishingPoint } from "interfaces/fishing";
-import { memo } from "react";
-import FishMiniCard from "./FishMiniCard";
 
 interface FishingPointCardProps {
   city: string;
@@ -31,10 +35,12 @@ const FishingPointCard = ({
           className="border border-vulcan-900 bg-vulcan-800 rounded-lg mb-4 flex flex-col lg:flex-row items-center w-full"
         >
           <div className="flex-grow lg:flex-grow-0 overflow-hidden w-80 pt-5 lg:pt-0">
-            <img
+            <LazyLoadImage
               className="w-80 rounded-lg lg:rounded-r-none transition-transform transform hover:scale-110"
               src={getUrl(`/fishing_points/${point.id}.jpg`, 320, 320)}
               alt={point.id}
+              width={320}
+              height={320}
             />
           </div>
           <div className="flex-grow  text-center h-full p-5">

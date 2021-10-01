@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { memo, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import CharacterPortrait from "./CharacterPortrait";
 
@@ -31,7 +32,7 @@ const TeamCard = ({ team }: TeamCardProps) => {
             <div className=" text-center">
               <Link href={`/character/${block.character.id}`}>
                 <a>
-                  <img
+                  <LazyLoadImage
                     className="rounded-lg"
                     alt={block.character.id}
                     src={getUrl(

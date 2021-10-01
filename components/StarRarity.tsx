@@ -1,5 +1,7 @@
-import { memo, useMemo } from "react";
 import clsx from "clsx";
+import { memo, useMemo } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import { IMGS_CDN } from "@lib/constants";
 
 interface StarRarityProps {
@@ -34,7 +36,7 @@ const StarRarity = ({
             "-m-1": star > 0,
           })}
         >
-          <img
+          <LazyLoadImage
             src={`${IMGS_CDN}/1_star.png`}
             alt="1_star.png"
             width={starsSize}

@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import ElementIcon from "./ElementIcon";
 
 import { getUrl } from "@lib/imgUrl";
@@ -22,7 +24,7 @@ const CharacterPortrait = ({ character, weapon }: CharacterPortraitProps) => {
     <div className="text-gray-400 cursor-pointer w-32 transition-all duration-200 ease-linear transform hover:scale-105 hover:text-white">
       <div>
         <div className="text-center relative group">
-          <img
+          <LazyLoadImage
             className="inline-block rounded-full shadow-lg"
             src={getUrl(
               `/characters/${character.id}/${character.id}_portrait.png`,
@@ -53,7 +55,7 @@ const CharacterPortrait = ({ character, weapon }: CharacterPortraitProps) => {
                 height: 32,
               }}
             >
-              <img
+              <LazyLoadImage
                 src={getUrl(`/weapons/${weapon.id}.png`, 32, 32)}
                 height={32}
                 width={32}

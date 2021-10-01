@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { memo } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import SimpleRarityBox from "./SimpleRarityBox";
 import StarRarity from "./StarRarity";
@@ -21,7 +22,7 @@ const FoodCard = ({ item }: FoodCardProps) => {
             backgroundImage: `url(${getUrl(`/bg_${item.rarity}star.png`)})`,
           }}
         >
-          <img
+          <LazyLoadImage
             src={getUrl(`/food/${item.id}_${item.type}.png`, 100, 100)}
             height={100}
             width={100}

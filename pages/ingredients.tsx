@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { GetStaticProps } from "next";
 import GenshinData, { Ingredients } from "genshin-data";
 import { Column, useSortBy, useTable } from "react-table";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
@@ -26,7 +27,7 @@ const IngredientsPage = ({ ingredients }: Props) => {
         Header: "",
         accessor: "id",
         Cell: (row) => (
-          <img
+          <LazyLoadImage
             height={54}
             width={54}
             src={getUrl(`/ingredients/${row.value}.png`, 54, 54)}

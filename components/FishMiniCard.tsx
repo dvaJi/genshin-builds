@@ -1,6 +1,8 @@
-import { getUrl } from "@lib/imgUrl";
-import { Fish } from "genshin-data";
 import { memo } from "react";
+import { Fish } from "genshin-data";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import { getUrl } from "@lib/imgUrl";
 
 interface FishMiniCardProps {
   fish: Fish;
@@ -16,16 +18,20 @@ const FishMiniCard = ({ fish, isSelected }: FishMiniCardProps) => (
         opacity: isSelected(fish.id) ? "1" : "0.3",
       }}
     >
-      <img
+      <LazyLoadImage
         className="absolute bottom-1 right-1 bg-vulcan-800 rounded-full w-7"
         src={getUrl(`/baits/${fish.bait.id}.png`, 28, 28)}
         alt={fish.bait.name}
         title={fish.bait.name}
+        width={28}
+        height={28}
       />
-      <img
+      <LazyLoadImage
         src={getUrl(`/fish/${fish.id}.png`, 96, 96)}
         alt={fish.name}
         title={fish.name}
+        width={96}
+        height={96}
       />
     </div>
     <span className="inline-block m-1 mt-0 overflow-hidden text-center text-xs bg-gray-900 bg-opacity-90 rounded rounded-t-none p-1 w-24">

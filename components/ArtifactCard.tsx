@@ -1,5 +1,7 @@
 import { memo } from "react";
 import { Artifact } from "genshin-data";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import { getUrl } from "@lib/imgUrl";
 
 interface ArtifactCardProps {
@@ -19,7 +21,7 @@ const ArtifactCard = ({ artifact, pieces }: ArtifactCardProps) => {
             )})`,
           }}
         >
-          <img
+          <LazyLoadImage
             src={getUrl(`/artifacts/${artifact.id}.png`, 76, 76)}
             height={76}
             width={76}
