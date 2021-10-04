@@ -111,6 +111,11 @@
         "id": "mona",
         "w_id": "lost_prayer_to_the_sacred_winds",
         "min_c": 2
+      },
+      {
+        "id": "sangonomiya_kokomi",
+        "w_id": "everlasting_moonglow",
+        "min_c": 1
       }
     ],
     "4": [
@@ -242,7 +247,12 @@
         "w_id": "the_widsith",
         "min_c": 2
       },
-      { "id": "kujou_sara", "w_id": "skyward_harp", "min_c": 4 }
+      { "id": "kujou_sara", "w_id": "skyward_harp", "min_c": 4 },
+      {
+        "id": "sangonomiya_kokomi",
+        "w_id": "everlasting_moonglow",
+        "min_c": 0
+      }
     ],
     "3": [
       {
@@ -340,6 +350,11 @@
       }
     ],
     "2": [
+      {
+        "id": "sangonomiya_kokomi",
+        "w_id": "everlasting_moonglow",
+        "min_c": 0
+      },
       {
         "id": "sayu",
         "w_id": "wolfs_gravestone",
