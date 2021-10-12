@@ -164,6 +164,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -249,6 +253,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -484,6 +492,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -493,6 +505,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -712,6 +728,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -888,6 +908,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -973,6 +997,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1208,6 +1236,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1217,6 +1249,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1436,6 +1472,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1612,6 +1652,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1697,6 +1741,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1932,6 +1980,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1941,6 +1993,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2160,6 +2216,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2344,6 +2404,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2429,6 +2493,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2664,6 +2732,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2673,6 +2745,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2892,6 +2968,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3068,6 +3148,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3153,6 +3237,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3388,6 +3476,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3397,6 +3489,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3616,6 +3712,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3800,6 +3900,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3885,6 +3989,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4120,6 +4228,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4129,6 +4241,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4348,6 +4464,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4524,6 +4644,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4609,6 +4733,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4844,6 +4972,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4853,6 +4985,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5072,6 +5208,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5256,6 +5396,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5341,6 +5485,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5576,6 +5724,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5585,6 +5737,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5804,6 +5960,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5980,6 +6140,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6065,6 +6229,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6300,6 +6468,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6309,6 +6481,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6528,6 +6704,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6708,6 +6888,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6793,6 +6977,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7028,6 +7216,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7037,6 +7229,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7256,6 +7452,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7440,6 +7640,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7525,6 +7729,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7760,6 +7968,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7769,6 +7981,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7988,6 +8204,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/weapon/wavebreakers_fin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/weapon/white_iron_greatsword</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8168,6 +8388,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/thoma</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/traveler_anemo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8253,6 +8477,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/akuoumaru</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8488,6 +8716,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/mouuns_moon</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/old_mercs_pal</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8497,6 +8729,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/pocket_grimoire</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/polar_star</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8713,6 +8949,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/waster_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/wavebreakers_fin</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
