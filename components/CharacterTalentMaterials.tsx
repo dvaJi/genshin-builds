@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { AscensionMaterial } from "genshin-data/dist/types/character";
 
 import SimpleRarityBox from "./SimpleRarityBox";
@@ -16,7 +16,58 @@ type Props = {
   talents: TalentMaterial[];
 };
 
+type MaterialTotal = {
+  id: string;
+  name: string;
+  amount: number;
+  rarity: number;
+  type: string;
+  index: number;
+};
+
+type TalentTotal = {
+  items: MaterialTotal[];
+  cost: number;
+};
+
 const CharacterTalentMaterials = ({ talents }: Props) => {
+  const talentsTotal = useMemo(() => {
+    const talentIndexFolder = [
+      "talent_lvl_up_materials",
+      "common_materials",
+      "talent_lvl_up_materials",
+      "talent_lvl_up_materials",
+    ];
+    return talents.reduce<TalentTotal>(
+      (acc, cur) => {
+        acc.cost = acc.cost + cur.cost;
+        acc.items = [
+          ...cur.items.map((item, index) => ({
+            id: item.id,
+            name: item.name,
+            type: talentIndexFolder[index],
+            rarity: item.rarity,
+            amount: item.amount,
+            index: index,
+          })),
+          ...acc.items,
+        ]
+          .reduce<MaterialTotal[]>((acc2, cur2) => {
+            const existing = acc2.find((item) => item.id === cur2.id);
+            if (existing) {
+              existing.amount = existing.amount + cur2.amount;
+            } else {
+              acc2.push(cur2);
+            }
+            return acc2;
+          }, [])
+          .sort((a, b) => a.index - b.index || a.rarity - b.rarity);
+        return acc;
+      },
+      { cost: 0, items: [] }
+    );
+  }, [talents]);
+
   return (
     <>
       {talents.map((talent, i) => (
@@ -104,6 +155,29 @@ const CharacterTalentMaterials = ({ talents }: Props) => {
           </div>
         </div>
       ))}
+      <div className="grid grid-cols-6 lg:grid-cols-10 items-center px-4 py-5 rounded-b">
+        <div className="flex justify-center items-center text-sm lg:text-base font-bold">
+          TOTAL
+        </div>
+        <div className="flex justify-center items-center">
+          <SimpleRarityBox
+            img={getUrl(`/materials/mora.png`, 64, 64)}
+            name={talentsTotal.cost.toString()}
+            rarity={1}
+            className="w-16 h-16"
+          />
+        </div>
+        {talentsTotal.items.map((item) => (
+          <div key={item.id} className="flex items-center">
+            <SimpleRarityBox
+              img={getUrl(`/${item.type}/${item.id}.png`, 64, 64)}
+              name={item.amount.toString()}
+              rarity={item.rarity || 1}
+              className="w-16 h-16"
+            />
+          </div>
+        ))}
+      </div>
     </>
   );
 };
