@@ -19,7 +19,9 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
   const [isOpen, toggle] = useToggle();
   const showCrement = useMemo(() => {
     return (
-      skill.attributes[1] && skill.attributes[1][1] && skill.attributes[1][1][1]
+      skill.attributes[1] &&
+      skill.attributes[1].values &&
+      skill.attributes[1].values[1]
     );
   }, [skill]);
   return (
@@ -121,12 +123,12 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
         >
           {skill.attributes.map((value, i) => (
             <div
-              key={value[0]}
+              key={value.label}
               className={clsx({ "bg-vulcan-700": i % 2 === 0 })}
             >
               <div className="flex items-center justify-between px-3 py-1 h-10">
-                <p className="text-sm">{value[0]}</p>
-                <p className="text-sm ml-2">{value[1][level - 1]}</p>
+                <p className="text-sm">{value.label}</p>
+                <p className="text-sm ml-2">{value.values[level - 1]}</p>
               </div>
             </div>
           ))}
