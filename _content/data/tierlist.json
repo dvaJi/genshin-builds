@@ -149,13 +149,18 @@
         "min_c": 6
       },
       {
-        "id": "venti",
-        "w_id": "skyward_harp",
+        "id": "kaedehara_kazuha",
+        "w_id": "song_of_broken_pines",
         "min_c": 0
       },
       {
-        "id": "kaedehara_kazuha",
-        "w_id": "song_of_broken_pines",
+        "id": "xiangling",
+        "w_id": "dragons_bane",
+        "min_c": 4
+      },
+      {
+        "id": "venti",
+        "w_id": "skyward_harp",
         "min_c": 0
       },
       {
@@ -213,11 +218,6 @@
     ],
     "2": [
       {
-        "id": "xiangling",
-        "w_id": "skyward_spine",
-        "min_c": 4
-      },
-      {
         "id": "kaeya",
         "w_id": "skyward_blade",
         "min_c": 2
@@ -247,7 +247,11 @@
         "w_id": "the_widsith",
         "min_c": 2
       },
-      { "id": "kujou_sara", "w_id": "skyward_harp", "min_c": 4 },
+      {
+        "id": "traveler_electro",
+        "w_id": "skyward_blade",
+        "min_c": 6
+      },
       {
         "id": "sangonomiya_kokomi",
         "w_id": "everlasting_moonglow",
@@ -255,11 +259,6 @@
       }
     ],
     "3": [
-      {
-        "id": "traveler_electro",
-        "w_id": "favonius_sword",
-        "min_c": 0
-      },
       {
         "id": "jean",
         "w_id": "primordial_jade_cutter",
@@ -269,6 +268,11 @@
         "id": "beidou",
         "w_id": "wolfs_gravestone",
         "min_c": 2
+      },
+      {
+        "id": "kujou_sara",
+        "w_id": "skyward_harp",
+        "min_c": 4
       }
     ],
     "4": [
@@ -334,6 +338,11 @@
     ],
     "1": [
       {
+        "id": "kujou_sara",
+        "w_id": "skyward_harp",
+        "min_c": 2
+      },
+      {
         "id": "albedo",
         "w_id": "harbinger_of_dawn",
         "min_c": 0
@@ -361,11 +370,6 @@
         "min_c": 1
       },
       {
-        "id": "kujou_sara",
-        "w_id": "skyward_harp",
-        "min_c": 2
-      },
-      {
         "id": "qiqi",
         "w_id": "sacrificial_sword",
         "min_c": 0
@@ -379,6 +383,11 @@
         "id": "xingqiu",
         "w_id": "sacrificial_sword",
         "min_c": 2
+      },
+      {
+        "id": "traveler_electro",
+        "w_id": "skyward_blade",
+        "min_c": 4
       },
       {
         "id": "amber",
