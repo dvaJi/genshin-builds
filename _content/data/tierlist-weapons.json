@@ -69,23 +69,39 @@
   },
   "claymore": {
     "maindps": {
-      "0": ["song_of_broken_pines", "wolfs_gravestone", "skyward_pride"],
+      "0": [
+        "song_of_broken_pines",
+        "wolfs_gravestone",
+        "skyward_pride",
+        "the_unforged"
+      ],
       "1": [
-        "the_unforged",
         "prototype_archaic",
         "blackcliff_slasher",
         "serpent_spine",
         "lithic_blade",
         "snowtombed_starsilver"
       ],
-      "2": ["rainslasher", "royal_greatsword"],
+      "2": ["luxurious_sealord", "rainslasher", "royal_greatsword"],
       "3": ["skyrider_greatsword", "bloodtainted_greatsword", "debate_club"],
       "4": ["the_bell", "ferrous_shadow"]
     },
     "subdps": {
       "0": ["wolfs_gravestone"],
-      "1": ["skyward_pride", "favonius_greatsword", "sacrificial_greatsword"],
-      "2": ["rainslasher", "royal_greatsword", "whiteblind", "serpent_spine"],
+      "1": [
+        "skyward_pride",
+        "luxurious_sealord",
+        "akuoumaru",
+        "favonius_greatsword",
+        "sacrificial_greatsword"
+      ],
+      "2": [
+        "katsuragikiri_nagamasa",
+        "rainslasher",
+        "royal_greatsword",
+        "whiteblind",
+        "serpent_spine"
+      ],
       "3": ["the_bell", "bloodtainted_greatsword"],
       "4": ["white_iron_greatsword"]
     },
@@ -97,7 +113,7 @@
         "sacrificial_greatsword"
       ],
       "1": ["skyward_pride", "the_unforged", "the_bell"],
-      "2": ["whiteblind"],
+      "2": ["katsuragikiri_nagamasa", "whiteblind"],
       "3": ["white_iron_greatsword"],
       "4": ["ferrous_shadow"]
     }
@@ -143,10 +159,17 @@
   },
   "bow": {
     "maindps": {
-      "0": ["thundering_pulse", "skyward_harp", "amos_bow", "rust"],
+      "0": [
+        "polar_star",
+        "thundering_pulse",
+        "skyward_harp",
+        "amos_bow",
+        "rust"
+      ],
       "1": [
         "mitternachts_waltz",
         "windblume_ode",
+        "hamayumi",
         "blackcliff_warbow",
         "the_viridescent_hunt"
       ],
@@ -155,7 +178,12 @@
       "4": ["messenger"]
     },
     "subdps": {
-      "0": ["elegy_for_the_end", "skyward_harp", "the_stringless"],
+      "0": [
+        "polar_star",
+        "elegy_for_the_end",
+        "skyward_harp",
+        "the_stringless"
+      ],
       "1": [
         "alley_hunter",
         "windblume_ode",
@@ -176,10 +204,10 @@
   },
   "catalyst": {
     "maindps": {
-      "0": ["skyward_atlas", "the_widsith"],
+      "0": ["skyward_atlas", "lost_prayer_to_the_sacred_winds", "the_widsith"],
       "1": [
+        "everlasting_moonglow",
         "memory_of_dust",
-        "lost_prayer_to_the_sacred_winds",
         "dodoco_tales",
         "eye_of_perception",
         "solar_pearl",
@@ -210,7 +238,7 @@
         "hakushin_ring",
         "prototype_amber"
       ],
-      "3": ["twin_nephrite", "otherworldly_story"],
+      "3": ["everlasting_moonglow", "twin_nephrite", "otherworldly_story"],
       "4": []
     }
   }
