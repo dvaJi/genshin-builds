@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
@@ -42,6 +42,9 @@ const CharacterPage = ({
   locale,
   common,
 }: CharacterPageProps) => {
+  const [buildSelected, setBuildSelected] = useState(
+    builds.findIndex((b) => b.recommended)
+  );
   const setBg = useSetRecoilState(appBackgroundStyleState);
   const { t, tfn } = useIntl();
   useEffect(() => {
@@ -122,30 +125,33 @@ const CharacterPage = ({
               defaultMessage: "Builds",
             })}
           </h2>
-          {builds.map((build) => (
-            <Collapsible
-              key={build.id}
-              text={
-                <h3 className="text-2xl">
-                  {build.role} {build.name}
-                  {build.recommended && (
-                    <div className="ml-2 inline-block">
-                      <StarRarity rarity={1} />
-                    </div>
-                  )}
-                </h3>
-              }
-              defaultOpen={build.recommended}
-              className="bg-vulcan-800 shadow-lg mb-4"
-            >
-              <CharacterBuildCard
-                build={build}
-                artifacts={artifacts}
-                weapons={weapons}
-                f={t}
-              />
-            </Collapsible>
-          ))}
+          <div>
+            {builds.map((build, index) => (
+              <button
+                key={build.id}
+                className={clsx("rounded text-lg mr-2 my-1 p-3 px-5", {
+                  "bg-vulcan-700 text-white": buildSelected === index,
+                  "bg-vulcan-800": buildSelected !== index,
+                })}
+                onClick={() => setBuildSelected(index)}
+              >
+                {build.recommended && (
+                  <div className="inline-block w-5">
+                    <StarRarity rarity={1} />
+                  </div>
+                )}
+                {build.role} {build.name}
+              </button>
+            ))}
+          </div>
+          <div className="bg-vulcan-800 shadow-lg mb-4 p-4">
+            <CharacterBuildCard
+              build={builds[buildSelected]}
+              artifacts={artifacts}
+              weapons={weapons}
+              f={t}
+            />
+          </div>
         </div>
       )}
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
