@@ -25,15 +25,14 @@ const TeamCard = ({ team }: TeamCardProps) => {
           values: { name: team.primary[0].character.name },
         })}
       </h2>
-      <div className="flex justify-between">
+      <div className="grid grid-cols-4">
         {team.primary.map((block, i) => (
           <div key={`${block.role}${block.character.id}${i}`}>
             <div className="text-xl">{block.role}</div>
-            <div className=" text-center">
+            <div className="flex justify-center text-center">
               <Link href={`/character/${block.character.id}`}>
                 <a>
                   <LazyLoadImage
-                    className="rounded-lg"
                     alt={block.character.id}
                     src={getUrl(
                       `/characters/${block.character.id}/image.png`,
@@ -41,7 +40,7 @@ const TeamCard = ({ team }: TeamCardProps) => {
                       256
                     )}
                   />
-                  <span className="text-white text-2xl leading-10">
+                  <span className="text-white lg:text-2xl lg:leading-10">
                     {block.character.name}
                   </span>
                 </a>
