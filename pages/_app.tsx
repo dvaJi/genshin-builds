@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
 
 import IntlProvider from "@components/IntlProvider";
 import App from "@components/App";
@@ -22,11 +21,9 @@ function Root(props: AppProps) {
   }, [router.events]);
 
   return (
-    <RecoilRoot>
-      <IntlProvider messages={props.pageProps.lngDict}>
-        <App {...props} />
-      </IntlProvider>
-    </RecoilRoot>
+    <IntlProvider messages={props.pageProps.lngDict}>
+      <App {...props} />
+    </IntlProvider>
   );
 }
 

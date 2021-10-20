@@ -10,6 +10,7 @@
     "generate-sitemap": "node ./scripts/sitemap.mjs",
     "generate-common-dict": "node ./scripts/generate-common-dict.js",
     "generate-common-locale": "node ./scripts/generate-locale.js",
+    "analize": "cross-env ANALYZE=true npm run build",
     "start": "next start",
     "type-check": "tsc"
   },
@@ -20,6 +21,7 @@
     "genshin-data": "^0.14.0",
     "gray-matter": "^4.0.3",
     "hexyjs": "^2.1.4",
+    "nanostores": "^0.4.9",
     "next": "^11.1.2",
     "react": "17.0.2",
     "react-adsense": "^0.1.0",
@@ -28,22 +30,23 @@
     "react-icons": "^4.3.1",
     "react-lazy-load-image-component": "^1.5.1",
     "react-table": "^7.7.0",
-    "recoil": "^0.4.1",
-    "remark": "^13.0.0",
-    "remark-html": "^13.0.1"
+    "remark": "^14.0.1",
+    "remark-html": "^15.0.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^11.1.2",
     "@types/node": "^14.17.20",
-    "@types/react": "^17.0.27",
+    "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
     "@types/react-lazy-load-image-component": "^1.5.2",
-    "@types/react-table": "^7.7.6",
+    "@types/react-table": "^7.7.7",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.2",
     "globby": "^12.0.2",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^2.2.16",
-    "typescript": "^4.4.3"
+    "tailwindcss": "^2.2.17",
+    "typescript": "^4.4.4"
   }
 }

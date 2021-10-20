@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useSetRecoilState } from "recoil";
 import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 import clsx from "clsx";
@@ -10,7 +9,6 @@ import Ads from "@components/Ads";
 import StarRarity from "@components/StarRarity";
 import Metadata from "@components/Metadata";
 import ElementIcon from "@components/ElementIcon";
-import Collapsible from "@components/Collapsible";
 import CharacterSkill from "@components/CharacterSkill";
 import PassiveSkill from "@components/CharacterPassiveSkill";
 import ConstellationCard from "@components/CharacterConstellationCard";
@@ -20,7 +18,7 @@ import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getCharacterBuild, getLocale } from "@lib/localData";
-import { appBackgroundStyleState } from "@state/background-atom";
+import { setBackground } from "@state/background-atom";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { Build } from "interfaces/build";
 import { getUrl } from "@lib/imgUrl";
@@ -45,10 +43,9 @@ const CharacterPage = ({
   const [buildSelected, setBuildSelected] = useState(
     builds.findIndex((b) => b.recommended)
   );
-  const setBg = useSetRecoilState(appBackgroundStyleState);
   const { t, tfn } = useIntl();
   useEffect(() => {
-    setBg({
+    setBackground({
       image: getUrl(
         `/regions/${common[character.region] || "Mondstadt"}_d.jpg`
       ),
@@ -56,7 +53,7 @@ const CharacterPage = ({
         background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
     });
-  }, [character, common, setBg]);
+  }, [character, common]);
   return (
     <div>
       <Metadata
@@ -117,7 +114,7 @@ const CharacterPage = ({
           />
         ))}
       </div>
-      {builds && (
+      {builds.length > 0 && (
         <div className="mb-4 mx-4 lg:mx-0">
           <h2 className="text-3xl mb-3">
             {t({

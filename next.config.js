@@ -1,6 +1,10 @@
 const isDev = process.env.NODE_ENV === "development";
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer({
   i18n: {
     locales: [
       "en",
@@ -19,4 +23,4 @@ module.exports = {
     defaultLocale: "en",
     localeDetection: !isDev,
   },
-};
+})

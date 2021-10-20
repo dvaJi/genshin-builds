@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { AppProps } from "next/app";
-import { useRecoilValue } from "recoil";
+import { useStore } from "nanostores/react";
 import clsx from "clsx";
 
 import LayoutHeader from "@components/LayoutHeader";
@@ -8,11 +8,11 @@ import LayoutFooter from "@components/LayoutFooter";
 import Ads from "@components/Ads";
 
 import { AD_LEFT_SLOT, AD_RIGHT_SLOT } from "@lib/constants";
-import { appBackgroundStyleState } from "@state/background-atom";
+import { background } from "@state/background-atom";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 
 const App = ({ Component, pageProps, router }: AppProps) => {
-  const appBackgroundStyle = useRecoilValue(appBackgroundStyleState);
+  const appBackgroundStyle = useStore(background);
   const { isMobile } = useMobileDetect();
 
   return (
