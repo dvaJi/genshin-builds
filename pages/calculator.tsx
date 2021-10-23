@@ -11,10 +11,15 @@ import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useLocalStorage } from "@hooks/use-local-storage";
 import { getUrl } from "@lib/imgUrl";
+import CharacterCalculator from "@components/CharacterCalculator";
+import GenshinData, { Character } from "genshin-data";
+import { localeToLang } from "@utils/locale-to-lang";
 
-type Props = {};
+type Props = {
+  characters: Character[];
+};
 
-const Calculator = ({}: Props) => {
+const Calculator = ({ characters }: Props) => {
   const { t } = useIntl();
 
   return (
@@ -36,51 +41,7 @@ const Calculator = ({}: Props) => {
         {t({ id: "codes", defaultMessage: "Codes" })}
       </h2>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-          <div>
-            <div>Calculate Ascnesion materials?</div>
-            <div>
-              <select>
-                <option>Hu tao</option>
-              </select>
-            </div>
-            <div>
-              <span>Current character Level, Exp, and ascension</span>
-              <div>
-                <input type="number" />
-              </div>
-              <div>
-                <input type="number" />
-              </div>
-            </div>
-            <div>
-              <span>Expected level</span>
-              <div>
-                <input type="number" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <span>Itms</span>
-            <div>Hero`s Wit</div>
-            <div>Adventurer`s Experience</div>
-            <div>Wanderer`s Advice</div>
-            <div>Calculate talent ascension materials</div>
-            <div className="grid grid-cols-3">
-              <input type="number" />
-              <input type="number" />
-              <input type="number" />
-            </div>
-            <div className="grid grid-cols-3">
-              <input type="number" />
-              <input type="number" />
-              <input type="number" />
-            </div>
-          </div>
-          <div>
-            <button>Calculate</button>
-          </div>
-        </div>
+        <CharacterCalculator characters={characters} />
       </div>
     </div>
   );
@@ -88,8 +49,12 @@ const Calculator = ({}: Props) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
+  const genshinData = new GenshinData({ language: localeToLang(locale) });
+  const characters = await genshinData.characters({
+    select: ["id", "name", "element"],
+  });
 
-  return { props: { lngDict } };
+  return { props: { lngDict, characters } };
 };
 
 export default Calculator;
