@@ -13,8 +13,12 @@
 /* Your own custom utilities */
 
 @layer base {
-  select {
+  input, select {
     @apply bg-vulcan-700;
+  }
+
+  input {
+    @apply border border-vulcan-500;
   }
 }
 
