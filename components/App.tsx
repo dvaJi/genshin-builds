@@ -60,7 +60,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <main
           className={clsx(
             "mb-8 z-10 text-gray-400",
-            router.route !== "/builds-builder"
+            router.route !== "/builder/builds"
               ? "mx-auto container lg:px-20"
               : ""
           )}

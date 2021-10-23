@@ -2,6 +2,12 @@ import { useState } from "react";
 import clsx from "clsx";
 import { GetStaticProps } from "next";
 import GenshinData, { Character } from "genshin-data";
+import {
+  IoCaretUp,
+  IoCaretDown,
+  IoRemoveCircle,
+  IoAddCircle,
+} from "react-icons/io5";
 
 import { getCharacterBuild } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
@@ -330,6 +336,16 @@ const BuildDetail = ({
     });
   };
 
+  const moveWeaponPriority = (i: number, newIndex: number) => {
+    let newWeapons = [...build.weapons];
+    newWeapons.splice(newIndex, 0, ...newWeapons.splice(i, 1));
+
+    onChange(index, {
+      ...build,
+      weapons: newWeapons,
+    });
+  };
+
   const changeName = (newName: string) => {
     onChange(index, {
       ...build,
@@ -347,7 +363,12 @@ const BuildDetail = ({
       <div className="col-span-2">
         <h2>ROLE</h2>
         <div>{build.role}</div>
-        <button onClick={() => onRemoveBuild(build.id)}>Remove</button>
+        <button
+          className="p-2 hover:text-white"
+          onClick={() => onRemoveBuild(build.id)}
+        >
+          <IoRemoveCircle className="cursor-pointer inline-block" /> Remove
+        </button>
         <div>
           <input
             onChange={(e) => changeName(e.target.value)}
@@ -366,7 +387,7 @@ const BuildDetail = ({
           {build.weapons.map((wId, i) => (
             <li key={i}>
               <select
-                className="w-32"
+                className="w-28"
                 value={wId.id}
                 onChange={(e) =>
                   updateWeapon(i, { ...wId, id: e.target.value })
@@ -391,7 +412,22 @@ const BuildDetail = ({
                   </option>
                 ))}
               </select>
-              <button onClick={() => removeWeapon(i)}>(x)</button>
+              <IoRemoveCircle
+                className="cursor-pointer inline-block hover:text-white"
+                onClick={() => removeWeapon(i)}
+              />
+              {i > 0 && (
+                <IoCaretUp
+                  className="cursor-pointer inline-block hover:text-white"
+                  onClick={() => moveWeaponPriority(i, i - 1)}
+                />
+              )}
+              {i + 1 < build.weapons.length && (
+                <IoCaretDown
+                  className="cursor-pointer inline-block hover:text-white"
+                  onClick={() => moveWeaponPriority(i, i + 1)}
+                />
+              )}
             </li>
           ))}
         </ol>
@@ -417,9 +453,10 @@ const BuildDetail = ({
                       </option>
                     ))}
                   </select>{" "}
-                  <button onClick={() => removeArtifactFromSet(iset, ai)}>
-                    (-)
-                  </button>
+                  <IoRemoveCircle
+                    className="cursor-pointer inline-block hover:text-white"
+                    onClick={() => removeArtifactFromSet(iset, ai)}
+                  />
                   <br />
                 </span>
               ))}
@@ -437,7 +474,7 @@ const BuildDetail = ({
         <ol className="list-decimal">
           {["sands", "goblet", "circlet"].map((st) => (
             <li key={st}>
-              {st} <button onClick={() => addMainstat(st)}>(+)</button> - <br />
+              {st}<br />
               {(build.stats as any)[st].map((s: string, i: number) => (
                 <span key={s + i}>
                   <select
@@ -451,10 +488,17 @@ const BuildDetail = ({
                       </option>
                     ))}
                   </select>{" "}
-                  <button onClick={() => removeMainstat(st, s)}>(-)</button>
+                  <IoRemoveCircle
+                    className="cursor-pointer inline-block hover:text-white"
+                    onClick={() => removeMainstat(st, s)}
+                  />
                   <br />
                 </span>
               ))}
+              <IoAddCircle
+                className="cursor-pointer inline-block hover:text-white"
+                onClick={() => addMainstat(st)}
+              />
             </li>
           ))}
         </ol>
@@ -475,7 +519,10 @@ const BuildDetail = ({
                   </option>
                 ))}
               </select>
-              <button onClick={() => removeSubstat(stat)}>(x)</button>
+              <IoRemoveCircle
+                className="cursor-pointer inline-block hover:text-white"
+                onClick={() => removeSubstat(stat)}
+              />
             </li>
           ))}
         </ol>
@@ -486,16 +533,18 @@ const BuildDetail = ({
         <ol className="list-decimal">
           {build.talent_priority.map((talent, i) => (
             <li key={talent}>
-              {talent}{" "}
+              {talent}
               {i > 0 && (
-                <button onClick={() => moveTalentPriority(i, i - 1)}>
-                  (ᐱ)
-                </button>
+                <IoCaretUp
+                  className="cursor-pointer inline-block hover:text-white"
+                  onClick={() => moveTalentPriority(i, i - 1)}
+                />
               )}
-              {i < 2 && (
-                <button onClick={() => moveTalentPriority(i, i + 1)}>
-                  (ᐯ)
-                </button>
+              {i + 1 < build.talent_priority.length && (
+                <IoCaretDown
+                  className="cursor-pointer inline-block hover:text-white"
+                  onClick={() => moveTalentPriority(i, i + 1)}
+                />
               )}
             </li>
           ))}
