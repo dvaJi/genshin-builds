@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { AppProps } from "next/app";
-import { useStore } from "nanostores/react";
+import { useStore } from "@nanostores/react";
 import clsx from "clsx";
 
 import LayoutHeader from "@components/LayoutHeader";

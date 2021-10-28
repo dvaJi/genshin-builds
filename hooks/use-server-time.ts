@@ -26,7 +26,7 @@ const calcRemaining = (endDate: Date) => {
     now.getUTCSeconds()
   );
 
-  const distance = <any>endDate - <any>nowUTC;
+  const distance = (endDate as any) - (nowUTC as any);
 
   const hours = Math.floor((distance % _day) / _hour);
   const minutes = Math.floor((distance % _hour) / _minute);
