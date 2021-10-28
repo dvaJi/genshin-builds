@@ -13,6 +13,7 @@ import { getCharacterBuild } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 import { Build, BuildSet, BuildWeapon } from "interfaces/build";
+import Button from "@components/Button";
 
 type Props = {
   characters: Record<string, Character>;
@@ -54,9 +55,9 @@ const BuildsBuilder = ({
         ))}
       </div>
       <div>
-        <button onClick={() => console.log(JSON.stringify(builds))}>
+        <Button onClick={() => console.log(JSON.stringify(builds))}>
           EXPORT
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -135,7 +136,7 @@ const Builder = ({
             <option value="Sub DPS">Sub DPS</option>
             <option value="Support">Support</option>
           </select>
-          <button onClick={() => addnewBuild(newBuild)}>Add new build</button>
+          <Button onClick={() => addnewBuild(newBuild)}>Add new build</Button>
         </div>
       </div>
       <div className="col-span-11">
@@ -363,12 +364,12 @@ const BuildDetail = ({
       <div className="col-span-2">
         <h2>ROLE</h2>
         <div>{build.role}</div>
-        <button
+        <Button
           className="p-2 hover:text-white"
           onClick={() => onRemoveBuild(build.id)}
         >
           <IoRemoveCircle className="cursor-pointer inline-block" /> Remove
-        </button>
+        </Button>
         <div>
           <input
             onChange={(e) => changeName(e.target.value)}
@@ -376,9 +377,9 @@ const BuildDetail = ({
           />
         </div>
         <div>
-          <button onClick={toggleRecommended}>
+          <Button onClick={toggleRecommended}>
             {build.recommended ? "Recommended" : "Not recomended"}
-          </button>
+          </Button>
         </div>
       </div>
       <div className="col-span-2">
@@ -431,7 +432,7 @@ const BuildDetail = ({
             </li>
           ))}
         </ol>
-        <button onClick={addWeapon}>Add Weapon</button>
+        <Button className="mt-2" onClick={addWeapon}>Add Weapon</Button>
       </div>
       <div className="col-span-2">
         <h2>ARTIFACTS</h2>
@@ -466,7 +467,7 @@ const BuildDetail = ({
               )}
             </li>
           ))}
-          <button onClick={addSet}>add new set</button>
+          <Button className="mt-2" onClick={addSet}>Add new set</Button>
         </ol>
       </div>
       <div className="col-span-2">
@@ -526,7 +527,7 @@ const BuildDetail = ({
             </li>
           ))}
         </ol>
-        <button onClick={addSubstat}>Add substats</button>
+        <Button className="mt-2" onClick={addSubstat}>Add substats</Button>
       </div>
       <div className="col-span-2">
         <h2>TALENT PRIORITY</h2>

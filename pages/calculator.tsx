@@ -14,12 +14,14 @@ import { getUrl } from "@lib/imgUrl";
 import CharacterCalculator from "@components/CharacterCalculator";
 import GenshinData, { Character } from "genshin-data";
 import { localeToLang } from "@utils/locale-to-lang";
+import { CharacterLvlExp } from "interfaces/characterlvlexp";
 
 type Props = {
   characters: Character[];
+  lvlExp: number[];
 };
 
-const Calculator = ({ characters }: Props) => {
+const Calculator = ({ characters, lvlExp }: Props) => {
   const { t } = useIntl();
 
   return (
@@ -41,7 +43,7 @@ const Calculator = ({ characters }: Props) => {
         {t({ id: "codes", defaultMessage: "Codes" })}
       </h2>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
-        <CharacterCalculator characters={characters} />
+        <CharacterCalculator characters={characters} lvlExp={lvlExp} />
       </div>
     </div>
   );
@@ -51,10 +53,12 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
-    select: ["id", "name", "element"],
+    select: ["id", "name", "talent_materials", "ascension"],
   });
 
-  return { props: { lngDict, characters } };
+  const lvlExp = require("../_content/data/character_lvl_exp.json");
+
+  return { props: { lngDict, characters, lvlExp } };
 };
 
 export default Calculator;

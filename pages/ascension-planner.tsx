@@ -15,6 +15,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
+import Button from "@components/Button";
 
 type Props = {
   characters: Record<string, Character>;
@@ -40,7 +41,7 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
         <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
         <div className="mb-2 flex flex-wrap justify-center">
           {DAYS.map((day) => (
-            <button
+            <Button
               key={day}
               className={clsx("rounded mx-2 my-1 p-2 px-4", {
                 "bg-vulcan-700": currentDay === day,
@@ -50,7 +51,7 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
               onClick={() => setCurrentDay(day)}
             >
               {tfn({ id: day, defaultMessage: day })}
-            </button>
+            </Button>
           ))}
         </div>
         {C_DOMAINS.map((domain) => (

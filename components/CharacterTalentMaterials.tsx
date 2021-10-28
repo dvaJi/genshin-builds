@@ -5,6 +5,7 @@ import { AscensionMaterial } from "genshin-data/dist/types/character";
 import SimpleRarityBox from "./SimpleRarityBox";
 
 import { getUrl } from "@lib/imgUrl";
+import { calculateTotalTalentMaterials } from "@utils/character";
 
 type TalentMaterial = {
   level: number;
@@ -16,57 +17,11 @@ type Props = {
   talents: TalentMaterial[];
 };
 
-type MaterialTotal = {
-  id: string;
-  name: string;
-  amount: number;
-  rarity: number;
-  type: string;
-  index: number;
-};
-
-type TalentTotal = {
-  items: MaterialTotal[];
-  cost: number;
-};
-
 const CharacterTalentMaterials = ({ talents }: Props) => {
-  const talentsTotal = useMemo(() => {
-    const talentIndexFolder = [
-      "talent_lvl_up_materials",
-      "common_materials",
-      "talent_lvl_up_materials",
-      "talent_lvl_up_materials",
-    ];
-    return talents.reduce<TalentTotal>(
-      (acc, cur) => {
-        acc.cost = acc.cost + cur.cost;
-        acc.items = [
-          ...cur.items.map((item, index) => ({
-            id: item.id,
-            name: item.name,
-            type: talentIndexFolder[index],
-            rarity: item.rarity,
-            amount: item.amount,
-            index: index,
-          })),
-          ...acc.items,
-        ]
-          .reduce<MaterialTotal[]>((acc2, cur2) => {
-            const existing = acc2.find((item) => item.id === cur2.id);
-            if (existing) {
-              existing.amount = existing.amount + cur2.amount;
-            } else {
-              acc2.push(cur2);
-            }
-            return acc2;
-          }, [])
-          .sort((a, b) => a.index - b.index || a.rarity - b.rarity);
-        return acc;
-      },
-      { cost: 0, items: [] }
-    );
-  }, [talents]);
+  const talentsTotal = useMemo(
+    () => calculateTotalTalentMaterials(talents),
+    [talents]
+  );
 
   return (
     <>

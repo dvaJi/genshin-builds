@@ -8,6 +8,7 @@ import CharacterPortrait from "./CharacterPortrait";
 import { TeamFull } from "interfaces/teams";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
+import Button from "./Button";
 
 interface TeamCardProps {
   team: TeamFull;
@@ -50,15 +51,12 @@ const TeamCard = ({ team }: TeamCardProps) => {
         ))}
       </div>
       <div>
-        <button
-          className="bg-vulcan-700 hover:bg-vulcan-600 rounded mx-2 my-3 p-2 px-4"
-          onClick={() => setShow(!show)}
-        >
+        <Button className="my-3" onClick={() => setShow(!show)}>
           {t({
             id: "substitute_characters",
             defaultMessage: "Substitute Characters",
           })}
-        </button>
+        </Button>
       </div>
       <div
         className={clsx(
