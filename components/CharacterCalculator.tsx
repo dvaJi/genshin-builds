@@ -1,12 +1,16 @@
-import { IMGS_CDN } from "@lib/constants";
+import { useMemo, useState } from "react";
+import clsx from "clsx";
+import { Character } from "genshin-data";
+
+import Button from "./Button";
+import Input from "./Input";
+import Select from "./Select";
+
+import { getUrl } from "@lib/imgUrl";
 import {
   calculateTotalAscensionMaterials,
   calculateTotalTalentMaterials,
 } from "@utils/character";
-import clsx from "clsx";
-import { Character } from "genshin-data";
-import { useState } from "react";
-import Button from "./Button";
 
 type Props = {
   characters: Character[];
@@ -29,19 +33,19 @@ type Level = {
 const charExpMaterial = [
   {
     id: "heros_wit",
-    img: `${IMGS_CDN}/heros_wit.png`,
+    img: `/heros_wit.png`,
     name: "Hero's Wit",
     value: 20000,
   },
   {
     id: "adventurers_experience",
-    img: `${IMGS_CDN}/adventurers_experience.png`,
+    img: `/adventurers_experience.png`,
     name: "Adventurer's Experience",
     value: 5000,
   },
   {
     id: "wanderers_advice",
-    img: `${IMGS_CDN}/wanderers_advice.png`,
+    img: `/wanderers_advice.png`,
     name: "Wanderer's Advice",
     value: 1000,
   },
@@ -122,6 +126,7 @@ const levels: Level[] = [
 
 const CharacterCalculator = ({ characters, lvlExp }: Props) => {
   const [result, setResult] = useState<Result[]>([]);
+  const [expWasted, setExpWasted] = useState(0);
   const [character, setCharacter] = useState<Character>(characters[0]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[0]);
@@ -134,6 +139,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
 
   const calculate = () => {
     setResult([]);
+    setExpWasted(0);
 
     let current = 0;
     let moraNeeded = 0;
@@ -183,7 +189,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
         items.forEach((item) => {
           newresult.push({
             id: item.id,
-            img: `${IMGS_CDN}/${item.type}/${item.id}.png`,
+            img: `/${item.type}/${item.id}.png`,
             name: item.name,
             amount: item.amount,
           });
@@ -201,7 +207,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
         totalTalentMaterials.items.forEach((item) => {
           newresult.push({
             id: item.id,
-            img: `${IMGS_CDN}/${item.type}/${item.id}.png`,
+            img: `/${item.type}/${item.id}.png`,
             name: item.name,
             amount: item.amount,
           });
@@ -219,7 +225,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
         totalTalentMaterials.items.forEach((item) => {
           newresult.push({
             id: item.id,
-            img: `${IMGS_CDN}/${item.type}/${item.id}.png`,
+            img: `/${item.type}/${item.id}.png`,
             name: item.name,
             amount: item.amount,
           });
@@ -237,7 +243,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
         totalTalentMaterials.items.forEach((item) => {
           newresult.push({
             id: item.id,
-            img: `${IMGS_CDN}/${item.type}/${item.id}.png`,
+            img: `/${item.type}/${item.id}.png`,
             name: item.name,
             amount: item.amount,
           });
@@ -261,24 +267,47 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
       return acc;
     }, []);
 
-    newresult.push({
-      id: "mora",
-      img: `${IMGS_CDN}/materials/mora.png`,
-      name: "Mora",
-      amount: moraNeeded,
-    });
+    if (moraNeeded > 0) {
+      newresult.push({
+        id: "mora",
+        img: `/materials/mora.png`,
+        name: "Mora",
+        amount: moraNeeded,
+      });
+    }
 
-    // if (current < 0) {
-    //   newresult.push({
-    //     id: "exp",
-    //     img: `${IMGS_CDN}/materials/mora.png`,
-    //     name: "Exp Wasted",
-    //     amount: current,
-    //   });
-    // }
+    if (current < 0) {
+      setExpWasted(current);
+    }
 
     setResult(newresult);
   };
+
+  const canCalculate = useMemo(() => {
+    const characterIsSelected = !!character;
+    const intendedLevelIsAcceptable = intendedLevel.lvl >= currentLevel.lvl;
+    const intendedTalent1IsAcceptable = intendedTalent1Lvl >= currentTalent1Lvl;
+    const intendedTalent2IsAcceptable = intendedTalent2Lvl >= currentTalent2Lvl;
+    const intendedTalent3IsAcceptable = intendedTalent3Lvl >= currentTalent3Lvl;
+
+    return (
+      characterIsSelected &&
+      intendedLevelIsAcceptable &&
+      intendedTalent1IsAcceptable &&
+      intendedTalent2IsAcceptable &&
+      intendedTalent3IsAcceptable
+    );
+  }, [
+    character,
+    currentLevel,
+    currentTalent1Lvl,
+    currentTalent2Lvl,
+    currentTalent3Lvl,
+    intendedLevel,
+    intendedTalent1Lvl,
+    intendedTalent2Lvl,
+    intendedTalent3Lvl,
+  ]);
 
   const numFormat = Intl.NumberFormat();
 
@@ -287,15 +316,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
       <div>
         <div>Calculate Ascnesion materials?</div>
         <div>
-          <select
-            onChange={(e) => setCharacter(characters[Number(e.target.value)])}
-          >
-            {characters.map((character, i) => (
-              <option key={character.id} value={i}>
-                {character.name}
-              </option>
-            ))}
-          </select>
+          <Select options={characters} onChange={setCharacter} />
         </div>
         <div>
           <span>Current character Level, Exp, and ascension</span>
@@ -308,16 +329,16 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
               >
                 <div
                   className={clsx(
-                    "flex items-center justify-center font-semibold rounded-full w-10 h-10 leading-none flex-col",
+                    "flex items-center justify-center font-semibold rounded-full w-10 h-10 leading-none flex-col hover:bg-vulcan-400",
                     level.lvl === currentLevel.lvl &&
                       level.asclLvl === currentLevel.asclLvl
-                      ? "bg-blue-500"
-                      : "bg-gray-500"
+                      ? "bg-gray-500"
+                      : "bg-vulcan-500"
                   )}
                 >
                   <div className="">{level.lvl}</div>
                   <img
-                    src={`${IMGS_CDN}/ascension.png`}
+                    src={getUrl(`/ascension.png`, 16, 16)}
                     className={clsx("w-4 opacity-25", {
                       "opacity-100": level.asc,
                     })}
@@ -339,16 +360,16 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
               >
                 <div
                   className={clsx(
-                    "flex items-center justify-center font-semibold rounded-full w-10 h-10 leading-none flex-col",
+                    "flex items-center justify-center font-semibold rounded-full w-10 h-10 leading-none flex-col hover:bg-vulcan-400",
                     level.lvl === intendedLevel.lvl &&
                       level.asclLvl === intendedLevel.asclLvl
-                      ? "bg-blue-500"
-                      : "bg-gray-500"
+                      ? "bg-gray-500"
+                      : "bg-vulcan-500"
                   )}
                 >
                   <div className="">{level.lvl}</div>
                   <img
-                    src={`${IMGS_CDN}/ascension.png`}
+                    src={getUrl(`/ascension.png`, 16, 16)}
                     className={clsx("w-4 opacity-25", {
                       "opacity-100": level.asc,
                     })}
@@ -362,27 +383,43 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
       </div>
       <div>
         <div>Calculate talent ascension materials</div>
-        <div className="grid grid-cols-3">
-          <div>Auto Attack</div>
-          <div>Skill</div>
-          <div>Burst</div>
+        <div className="grid grid-cols-3 gap-2">
+          <div className="my-2 text-center">
+            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
+              AA
+            </span>
+            Auto Attack
+          </div>
+          <div className="my-2 text-center">
+            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
+              E
+            </span>
+            Skill
+          </div>
+          <div className="my-2 text-center">
+            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
+              Q
+            </span>
+            Burst
+          </div>
         </div>
-        <div className="grid grid-cols-3">
-          <input
+        <div>Current Level</div>
+        <div className="grid grid-cols-3 gap-2">
+          <Input
             type="number"
             value={currentTalent1Lvl}
             onChange={(e) => setCurrentTalent1Lvl(Number(e.target.value))}
             min="1"
             max="10"
           />
-          <input
+          <Input
             type="number"
             value={currentTalent2Lvl}
             onChange={(e) => setCurrentTalent2Lvl(Number(e.target.value))}
             min="1"
             max="10"
           />
-          <input
+          <Input
             type="number"
             value={currentTalent3Lvl}
             onChange={(e) => setCurrentTalent3Lvl(Number(e.target.value))}
@@ -390,22 +427,23 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
             max="10"
           />
         </div>
-        <div className="grid grid-cols-3">
-          <input
+        <div>Intended Level</div>
+        <div className="grid grid-cols-3 gap-2">
+          <Input
             type="number"
             value={intendedTalent1Lvl}
             onChange={(e) => setIntendedTalent1Lvl(Number(e.target.value))}
             min="1"
             max="10"
           />
-          <input
+          <Input
             type="number"
             value={intendedTalent2Lvl}
             onChange={(e) => setIntendedTalent2Lvl(Number(e.target.value))}
             min="1"
             max="10"
           />
-          <input
+          <Input
             type="number"
             value={intendedTalent3Lvl}
             onChange={(e) => setIntendedTalent3Lvl(Number(e.target.value))}
@@ -414,37 +452,51 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
           />
         </div>
       </div>
-      <div>
+      <div className="flex flex-col items-center justify-center">
         <div>
-          <Button onClick={calculate}>Calculate</Button>
+          <Button disabled={!canCalculate} onClick={calculate}>
+            Calculate
+          </Button>
         </div>
-        <div>
-          <div className="bg-vulcan-900 rounded-xl p-4 mt-2 block md:inline-block">
-            <table>
-              {result.map((res) => (
-                <tr key={res.name}>
-                  <td className="text-right border-b border-gray-700 py-1">
-                    <span className="text-white mr-2 whitespace-no-wrap">
-                      {numFormat.format(res.amount)} X
-                    </span>
-                  </td>
-                  <td className="border-b border-gray-700 py-1">
-                    <span className="text-white">
-                      <span className="w-6 inline-block">
-                        <img
-                          className="h-6 inline-block mr-1"
-                          src={res.img}
-                          alt={res.name}
-                        />
+        {result.length > 0 && (
+          <div className="w-full lg:w-auto">
+            <div className="bg-vulcan-900 rounded-lg p-4 mt-2 block md:inline-block">
+              <table>
+                {result.map((res) => (
+                  <tr key={res.name}>
+                    <td className="text-right border-b border-gray-800 py-1">
+                      <div className="text-white mr-2 whitespace-no-wrap">
+                        <span className="mr-2">{numFormat.format(res.amount)}</span>
+                        <span>x</span>
+                      </div>
+                    </td>
+                    <td className="border-b border-gray-800 py-1">
+                      <span className="text-white">
+                        <span className="w-7 inline-block">
+                          <img
+                            className="h-7 inline-block mr-1"
+                            src={getUrl(res.img, 32, 32)}
+                            alt={res.name}
+                          />
+                        </span>
+                        {res.name}
                       </span>
-                      {res.name}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </table>
+                    </td>
+                  </tr>
+                ))}
+                {expWasted < 0 && (
+                  <tr>
+                    <td colSpan={2} className="text-center">
+                      <span className="text-center italic text-pink-900">
+                        EXP Wasted {numFormat.format(expWasted)}
+                      </span>
+                    </td>
+                  </tr>
+                )}
+              </table>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
