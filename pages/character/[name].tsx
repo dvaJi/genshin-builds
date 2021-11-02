@@ -41,7 +41,7 @@ const CharacterPage = ({
   common,
 }: CharacterPageProps) => {
   const [buildSelected, setBuildSelected] = useState(
-    builds.findIndex((b) => b.recommended)
+    builds.findIndex((b) => b.recommended) ?? 0
   );
   const { t, tfn } = useIntl();
   useEffect(() => {
