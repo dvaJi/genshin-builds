@@ -1,4 +1,5 @@
 import { Ascension, TalentMaterial } from "genshin-data/dist/types/character";
+import { WeaponAscension } from "genshin-data/dist/types/weapon";
 
 export type AscensionTotal = {
   items: MaterialTotal[];
@@ -17,6 +18,12 @@ export type MaterialTotal = {
   rarity: number;
   type: string;
   index: number;
+};
+
+type Level = {
+  lvl: number;
+  asc: boolean;
+  asclLvl: number;
 };
 
 export function calculateTotalAscensionMaterials(
@@ -136,3 +143,122 @@ export function calculateTotalTalentMaterials(
       { cost: 0, items: [] }
     );
 }
+
+export function calculateTotalWeaponAscensionMaterials(
+  ascension: WeaponAscension[],
+  ascensionMin = 1,
+  ascensionMax = 6
+) {
+  const talentIndexFolder = [
+    "weapon_primary_materials",
+    "weapon_secondary_materials",
+    "common_materials",
+    "weapon_primary_materials",
+  ];
+
+  return ascension
+    .filter(
+      (asc) => asc.ascension >= ascensionMin && asc.ascension <= ascensionMax
+    )
+    .reduce<AscensionTotal>(
+      (acc, cur) => {
+        acc.cost = acc.cost + cur.cost;
+        acc.items = [
+          ...cur.materials.map((item, index) => ({
+            id: item.id,
+            name: item.name,
+            type: talentIndexFolder[index],
+            rarity: item.rarity,
+            amount: item.amount,
+            index: index,
+          })),
+          ...acc.items,
+        ]
+          .reduce<MaterialTotal[]>((acc2, cur2) => {
+            const existing = acc2.find((item) => item.id === cur2.id);
+            if (existing) {
+              existing.amount = existing.amount + cur2.amount;
+            } else {
+              acc2.push(cur2);
+            }
+            return acc2;
+          }, [])
+          .sort((a, b) => a.index - b.index || a.rarity - b.rarity);
+        return acc;
+      },
+      { cost: 0, items: [] }
+    );
+}
+
+export const levels: Level[] = [
+  {
+    lvl: 1,
+    asc: false,
+    asclLvl: 0,
+  },
+  {
+    lvl: 20,
+    asc: false,
+    asclLvl: 0,
+  },
+  {
+    lvl: 20,
+    asc: true,
+    asclLvl: 1,
+  },
+  {
+    lvl: 40,
+    asc: false,
+    asclLvl: 1,
+  },
+  {
+    lvl: 40,
+    asc: true,
+    asclLvl: 2,
+  },
+  {
+    lvl: 50,
+    asc: false,
+    asclLvl: 2,
+  },
+  {
+    lvl: 50,
+    asc: true,
+    asclLvl: 3,
+  },
+  {
+    lvl: 60,
+    asc: false,
+    asclLvl: 3,
+  },
+  {
+    lvl: 60,
+    asc: true,
+    asclLvl: 4,
+  },
+  {
+    lvl: 70,
+    asc: false,
+    asclLvl: 4,
+  },
+  {
+    lvl: 70,
+    asc: true,
+    asclLvl: 5,
+  },
+  {
+    lvl: 80,
+    asc: false,
+    asclLvl: 5,
+  },
+  {
+    lvl: 80,
+    asc: true,
+    asclLvl: 6,
+  },
+  {
+    lvl: 90,
+    asc: false,
+    asclLvl: 6,
+  },
+];

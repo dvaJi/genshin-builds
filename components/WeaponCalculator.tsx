@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import clsx from "clsx";
-import { Character } from "genshin-data";
+import { Weapon } from "genshin-data";
 
 import Button from "./Button";
 import Input from "./Input";
@@ -10,11 +10,13 @@ import { getUrl } from "@lib/imgUrl";
 import {
   calculateTotalAscensionMaterials,
   calculateTotalTalentMaterials,
+  calculateTotalWeaponAscensionMaterials,
+  levels,
 } from "@utils/totals";
 
 type Props = {
-  characters: Character[];
-  lvlExp: number[];
+  weapons: Weapon[];
+  lvlExp: number[][];
 };
 
 type Result = {
@@ -24,118 +26,33 @@ type Result = {
   amount: number;
 };
 
-type Level = {
-  lvl: number;
-  asc: boolean;
-  asclLvl: number;
-};
-
-const charExpMaterial = [
+const weaponExpMaterial = [
   {
-    id: "heros_wit",
-    img: `/materials/heros_wit.png`,
-    name: "Hero's Wit",
-    value: 20000,
+    id: "mystic_enhancement_ore",
+    img: `/materials/mystic_enhancement_ore.png`,
+    name: "Mystic Enhancement Ore",
+    value: 10000,
   },
   {
-    id: "adventurers_experience",
-    img: `/materials/adventurers_experience.png`,
-    name: "Adventurer's Experience",
-    value: 5000,
+    id: "fine_enhancement_ore",
+    img: `/materials/fine_enhancement_ore.png`,
+    name: "Fine Enhancement Ore",
+    value: 2000,
   },
   {
-    id: "wanderers_advice",
-    img: `/materials/wanderers_advice.png`,
-    name: "Wanderer's Advice",
-    value: 1000,
+    id: "enhancement_ore",
+    img: `/materials/enhancement_ore.png`,
+    name: "Enhancement Ore",
+    value: 400,
   },
 ];
 
-const levels: Level[] = [
-  {
-    lvl: 1,
-    asc: false,
-    asclLvl: 0,
-  },
-  {
-    lvl: 20,
-    asc: false,
-    asclLvl: 0,
-  },
-  {
-    lvl: 20,
-    asc: true,
-    asclLvl: 1,
-  },
-  {
-    lvl: 40,
-    asc: false,
-    asclLvl: 1,
-  },
-  {
-    lvl: 40,
-    asc: true,
-    asclLvl: 2,
-  },
-  {
-    lvl: 50,
-    asc: false,
-    asclLvl: 2,
-  },
-  {
-    lvl: 50,
-    asc: true,
-    asclLvl: 3,
-  },
-  {
-    lvl: 60,
-    asc: false,
-    asclLvl: 3,
-  },
-  {
-    lvl: 60,
-    asc: true,
-    asclLvl: 4,
-  },
-  {
-    lvl: 70,
-    asc: false,
-    asclLvl: 4,
-  },
-  {
-    lvl: 70,
-    asc: true,
-    asclLvl: 5,
-  },
-  {
-    lvl: 80,
-    asc: false,
-    asclLvl: 5,
-  },
-  {
-    lvl: 80,
-    asc: true,
-    asclLvl: 6,
-  },
-  {
-    lvl: 90,
-    asc: false,
-    asclLvl: 6,
-  },
-];
-
-const CharacterCalculator = ({ characters, lvlExp }: Props) => {
+const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
   const [result, setResult] = useState<Result[]>([]);
   const [expWasted, setExpWasted] = useState(0);
-  const [character, setCharacter] = useState<Character>(characters[0]);
+  const [weapon, setWeapon] = useState<Weapon>(weapons[10]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[0]);
-  const [currentTalent1Lvl, setCurrentTalent1Lvl] = useState(1);
-  const [currentTalent2Lvl, setCurrentTalent2Lvl] = useState(1);
-  const [currentTalent3Lvl, setCurrentTalent3Lvl] = useState(1);
-  const [intendedTalent1Lvl, setIntendedTalent1Lvl] = useState(1);
-  const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(1);
-  const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(1);
 
   const calculate = () => {
     setResult([]);
@@ -146,14 +63,15 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
     let newresult: Result[] = [];
 
     // Calculate EXP
-    if (intendedLevel.lvl > currentLevel.lvl) {
+    if (intendedLevel.lvl >= currentLevel.lvl) {
       const target =
-        lvlExp[intendedLevel.lvl - 1] - (lvlExp[currentLevel.lvl - 1] + 0);
+        lvlExp[weapon.rarity - 3][intendedLevel.lvl - 1] -
+        (lvlExp[weapon.rarity - 3][currentLevel.lvl - 1] + 0);
       current = target;
       moraNeeded = (Math.floor(target / 1000) * 1000) / 5;
 
-      for (const expItem of charExpMaterial) {
-        if (charExpMaterial[2].id === expItem.id) {
+      for (const expItem of weaponExpMaterial) {
+        if (weaponExpMaterial[2].id === expItem.id) {
           const amount = Math.ceil(current / expItem.value);
           newresult.push({
             id: expItem.id,
@@ -176,71 +94,15 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
     }
 
     // Calculate Ascension materials
-    if (character) {
+    if (weapon) {
       if (currentLevel.asclLvl < intendedLevel.asclLvl) {
-        const { cost, items } = calculateTotalAscensionMaterials(
-          character.ascension,
+        const { cost, items } = calculateTotalWeaponAscensionMaterials(
+          weapon.ascensions,
           currentLevel.asclLvl,
           intendedLevel.asclLvl
         );
-
         moraNeeded += cost;
-
         items.forEach((item) => {
-          newresult.push({
-            id: item.id,
-            img: `/${item.type}/${item.id}.png`,
-            name: item.name,
-            amount: item.amount,
-          });
-        });
-      }
-
-      if (intendedTalent1Lvl > currentTalent1Lvl) {
-        const totalTalentMaterials = calculateTotalTalentMaterials(
-          character.talent_materials,
-          currentTalent1Lvl,
-          intendedTalent1Lvl
-        );
-
-        moraNeeded += totalTalentMaterials.cost;
-        totalTalentMaterials.items.forEach((item) => {
-          newresult.push({
-            id: item.id,
-            img: `/${item.type}/${item.id}.png`,
-            name: item.name,
-            amount: item.amount,
-          });
-        });
-      }
-
-      if (intendedTalent2Lvl > currentTalent2Lvl) {
-        const totalTalentMaterials = calculateTotalTalentMaterials(
-          character.talent_materials,
-          currentTalent2Lvl,
-          intendedTalent2Lvl
-        );
-
-        moraNeeded += totalTalentMaterials.cost;
-        totalTalentMaterials.items.forEach((item) => {
-          newresult.push({
-            id: item.id,
-            img: `/${item.type}/${item.id}.png`,
-            name: item.name,
-            amount: item.amount,
-          });
-        });
-      }
-
-      if (intendedTalent3Lvl > currentTalent3Lvl) {
-        const totalTalentMaterials = calculateTotalTalentMaterials(
-          character.talent_materials,
-          currentTalent3Lvl,
-          intendedTalent3Lvl
-        );
-
-        moraNeeded += totalTalentMaterials.cost;
-        totalTalentMaterials.items.forEach((item) => {
           newresult.push({
             id: item.id,
             img: `/${item.type}/${item.id}.png`,
@@ -284,30 +146,11 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
   };
 
   const canCalculate = useMemo(() => {
-    const characterIsSelected = !!character;
+    const weaponIsSelected = !!weapon;
     const intendedLevelIsAcceptable = intendedLevel.lvl >= currentLevel.lvl;
-    const intendedTalent1IsAcceptable = intendedTalent1Lvl >= currentTalent1Lvl;
-    const intendedTalent2IsAcceptable = intendedTalent2Lvl >= currentTalent2Lvl;
-    const intendedTalent3IsAcceptable = intendedTalent3Lvl >= currentTalent3Lvl;
 
-    return (
-      characterIsSelected &&
-      intendedLevelIsAcceptable &&
-      intendedTalent1IsAcceptable &&
-      intendedTalent2IsAcceptable &&
-      intendedTalent3IsAcceptable
-    );
-  }, [
-    character,
-    currentLevel,
-    currentTalent1Lvl,
-    currentTalent2Lvl,
-    currentTalent3Lvl,
-    intendedLevel,
-    intendedTalent1Lvl,
-    intendedTalent2Lvl,
-    intendedTalent3Lvl,
-  ]);
+    return weaponIsSelected && intendedLevelIsAcceptable;
+  }, [weapon, currentLevel, intendedLevel]);
 
   const numFormat = Intl.NumberFormat();
 
@@ -316,7 +159,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
       <div>
         <div>Calculate Ascnesion materials?</div>
         <div>
-          <Select options={characters} onChange={setCharacter} />
+          {/* <Select options={characters} onChange={setCharacter} /> */}
         </div>
         <div>
           <span>Current character Level, Exp, and ascension</span>
@@ -381,77 +224,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
           </div>
         </div>
       </div>
-      <div>
-        <div>Calculate talent ascension materials</div>
-        <div className="grid grid-cols-3 gap-2">
-          <div className="my-2 text-center">
-            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
-              AA
-            </span>
-            Auto Attack
-          </div>
-          <div className="my-2 text-center">
-            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
-              E
-            </span>
-            Skill
-          </div>
-          <div className="my-2 text-center">
-            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
-              Q
-            </span>
-            Burst
-          </div>
-        </div>
-        <div>Current Level</div>
-        <div className="grid grid-cols-3 gap-2">
-          <Input
-            type="number"
-            value={currentTalent1Lvl}
-            onChange={(e) => setCurrentTalent1Lvl(Number(e.target.value))}
-            min="1"
-            max="10"
-          />
-          <Input
-            type="number"
-            value={currentTalent2Lvl}
-            onChange={(e) => setCurrentTalent2Lvl(Number(e.target.value))}
-            min="1"
-            max="10"
-          />
-          <Input
-            type="number"
-            value={currentTalent3Lvl}
-            onChange={(e) => setCurrentTalent3Lvl(Number(e.target.value))}
-            min="1"
-            max="10"
-          />
-        </div>
-        <div>Intended Level</div>
-        <div className="grid grid-cols-3 gap-2">
-          <Input
-            type="number"
-            value={intendedTalent1Lvl}
-            onChange={(e) => setIntendedTalent1Lvl(Number(e.target.value))}
-            min="1"
-            max="10"
-          />
-          <Input
-            type="number"
-            value={intendedTalent2Lvl}
-            onChange={(e) => setIntendedTalent2Lvl(Number(e.target.value))}
-            min="1"
-            max="10"
-          />
-          <Input
-            type="number"
-            value={intendedTalent3Lvl}
-            onChange={(e) => setIntendedTalent3Lvl(Number(e.target.value))}
-            min="1"
-            max="10"
-          />
-        </div>
-      </div>
+      <div></div>
       <div className="flex flex-col items-center justify-center">
         <div>
           <Button disabled={!canCalculate} onClick={calculate}>
@@ -504,4 +277,4 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
   );
 };
 
-export default CharacterCalculator;
+export default WeaponCalculator;

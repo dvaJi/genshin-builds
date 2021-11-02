@@ -5,7 +5,7 @@ import { AscensionMaterial } from "genshin-data/dist/types/character";
 import SimpleRarityBox from "./SimpleRarityBox";
 
 import { getUrl } from "@lib/imgUrl";
-import { calculateTotalTalentMaterials } from "@utils/character";
+import { calculateTotalTalentMaterials } from "@utils/totals";
 
 type TalentMaterial = {
   level: number;

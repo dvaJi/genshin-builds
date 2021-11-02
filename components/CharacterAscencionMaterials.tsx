@@ -5,7 +5,7 @@ import clsx from "clsx";
 import SimpleRarityBox from "./SimpleRarityBox";
 
 import { getUrl } from "@lib/imgUrl";
-import { calculateTotalAscensionMaterials } from "@utils/character";
+import { calculateTotalAscensionMaterials } from "@utils/totals";
 
 type Props = {
   ascension: Ascension[];

@@ -12,16 +12,19 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useLocalStorage } from "@hooks/use-local-storage";
 import { getUrl } from "@lib/imgUrl";
 import CharacterCalculator from "@components/CharacterCalculator";
-import GenshinData, { Character } from "genshin-data";
+import GenshinData, { Character, Weapon } from "genshin-data";
 import { localeToLang } from "@utils/locale-to-lang";
 import { CharacterLvlExp } from "interfaces/characterlvlexp";
+import WeaponCalculator from "@components/WeaponCalculator";
 
 type Props = {
   characters: Character[];
+  weapons: Weapon[];
   lvlExp: number[];
+  wlvlExp: number[][];
 };
 
-const Calculator = ({ characters, lvlExp }: Props) => {
+const Calculator = ({ characters, weapons, lvlExp, wlvlExp }: Props) => {
   const { t } = useIntl();
 
   return (
@@ -45,6 +48,9 @@ const Calculator = ({ characters, lvlExp }: Props) => {
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
         <CharacterCalculator characters={characters} lvlExp={lvlExp} />
       </div>
+      <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
+        <WeaponCalculator weapons={weapons} lvlExp={wlvlExp} />
+      </div>
     </div>
   );
 };
@@ -55,10 +61,14 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const characters = await genshinData.characters({
     select: ["id", "name", "talent_materials", "ascension"],
   });
+  const weapons = await genshinData.weapons({
+    select: ["id", "name", "rarity", "ascensions"],
+  });
 
   const lvlExp = require("../_content/data/character_lvl_exp.json");
+  const wlvlExp = require("../_content/data/weapon_lvl_exp.json");
 
-  return { props: { lngDict, characters, lvlExp } };
+  return { props: { lngDict, characters, weapons, lvlExp, wlvlExp } };
 };
 
 export default Calculator;

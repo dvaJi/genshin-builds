@@ -1,9 +1,10 @@
 import clsx from "clsx";
-import { useCallback, memo } from "react";
+import { useCallback, memo, useMemo } from "react";
 import { WeaponAscension } from "genshin-data/dist/types/weapon";
 
 import SimpleRarityBox from "./SimpleRarityBox";
 import { getUrl } from "@lib/imgUrl";
+import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
 
 type Props = {
   ascension: WeaponAscension[];
@@ -25,6 +26,11 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
 
     return "weapon_primary_materials";
   }, []);
+
+  const talentsTotal = useMemo(
+    () => calculateTotalWeaponAscensionMaterials(ascension),
+    [ascension]
+  );
 
   return (
     <>
@@ -72,6 +78,29 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
             ))}
           </div>
         ))}
+      <div className="grid grid-cols-6 lg:grid-cols-12 items-center px-4 py-5 rounded-b bg-vulcan-700">
+        <div className="flex justify-center items-center text-sm lg:text-base font-bold">
+          TOTAL
+        </div>
+        <div className="flex justify-center items-center">
+          <SimpleRarityBox
+            img={getUrl(`/materials/mora.png`, 64, 64)}
+            name={talentsTotal.cost.toString()}
+            rarity={1}
+            className="w-16 h-16"
+          />
+        </div>
+        {talentsTotal.items.map((item) => (
+          <div key={item.id} className="flex items-center">
+            <SimpleRarityBox
+              img={getUrl(`/${item.type}/${item.id}.png`, 64, 64)}
+              name={item.amount.toString()}
+              rarity={item.rarity || 1}
+              className="w-16 h-16"
+            />
+          </div>
+        ))}
+      </div>
     </>
   );
 };
