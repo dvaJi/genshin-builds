@@ -10,6 +10,7 @@ import { getUrl } from "@lib/imgUrl";
 import {
   calculateTotalAscensionMaterials,
   calculateTotalTalentMaterials,
+  levels,
 } from "@utils/totals";
 
 type Props = {
@@ -48,79 +49,6 @@ const charExpMaterial = [
     img: `/materials/wanderers_advice.png`,
     name: "Wanderer's Advice",
     value: 1000,
-  },
-];
-
-const levels: Level[] = [
-  {
-    lvl: 1,
-    asc: false,
-    asclLvl: 0,
-  },
-  {
-    lvl: 20,
-    asc: false,
-    asclLvl: 0,
-  },
-  {
-    lvl: 20,
-    asc: true,
-    asclLvl: 1,
-  },
-  {
-    lvl: 40,
-    asc: false,
-    asclLvl: 1,
-  },
-  {
-    lvl: 40,
-    asc: true,
-    asclLvl: 2,
-  },
-  {
-    lvl: 50,
-    asc: false,
-    asclLvl: 2,
-  },
-  {
-    lvl: 50,
-    asc: true,
-    asclLvl: 3,
-  },
-  {
-    lvl: 60,
-    asc: false,
-    asclLvl: 3,
-  },
-  {
-    lvl: 60,
-    asc: true,
-    asclLvl: 4,
-  },
-  {
-    lvl: 70,
-    asc: false,
-    asclLvl: 4,
-  },
-  {
-    lvl: 70,
-    asc: true,
-    asclLvl: 5,
-  },
-  {
-    lvl: 80,
-    asc: false,
-    asclLvl: 5,
-  },
-  {
-    lvl: 80,
-    asc: true,
-    asclLvl: 6,
-  },
-  {
-    lvl: 90,
-    asc: false,
-    asclLvl: 6,
   },
 ];
 
@@ -316,7 +244,37 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
       <div>
         <div>Calculate Ascnesion materials?</div>
         <div>
-          <Select options={characters} onChange={setCharacter} />
+          <Select
+            options={characters.map((c) => ({ id: c.id, name: c.name }))}
+            onChange={(option) =>
+              setCharacter(characters.find((c) => c.id === option.id)!!)
+            }
+            selectedIconRender={(selected) => (
+              <img
+                className="w-6 h-6 mr-2"
+                src={getUrl(
+                  `/characters/${selected.id}/${selected.id}_portrait.png`,
+                  32,
+                  32
+                )}
+                alt={selected.name}
+              />
+            )}
+            itemsListRender={(option) => (
+              <>
+                <img
+                  className="w-6 h-6 mr-3"
+                  src={getUrl(
+                    `/characters/${option.id}/${option.id}_portrait.png`,
+                    32,
+                    32
+                  )}
+                  alt={option.name}
+                />
+                <span className="flex-1 text-base">{option.name}</span>
+              </>
+            )}
+          />
         </div>
         <div>
           <span>Current character Level, Exp, and ascension</span>

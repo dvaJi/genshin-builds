@@ -1,23 +1,34 @@
 import clsx from "clsx";
-import { Character } from "genshin-data";
 import { useMemo, useRef, useState } from "react";
 
 import { getUrl } from "@lib/imgUrl";
 
-type SelectProps = {
-  options: Character[];
-  placeholder?: string;
-  className?: string;
-  onChange: (character: Character) => void;
+type Option = {
+  name: string;
+  [props: string]: string;
 };
 
-const Select = ({ options, className, onChange, ...props }: SelectProps) => {
+type SelectProps = {
+  options: Option[];
+  placeholder?: string;
+  onChange: (value: Option) => void;
+  itemsListRender: (option: Option) => React.ReactNode;
+  selectedIconRender: (option: Option) => React.ReactNode;
+};
+
+const Select = ({
+  options,
+  onChange,
+  itemsListRender,
+  selectedIconRender,
+  ...props
+}: SelectProps) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [selected, setSelected] = useState<Character>(options[0]);
+  const [selected, setSelected] = useState<Option>(options[0]);
   const [filter, setFilter] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const filteredCharacter = useMemo<Character[]>(() => {
+  const filteredOptions = useMemo<Option[]>(() => {
     return options.filter((op) =>
       op.name.toLowerCase().includes(filter.toLowerCase())
     );
@@ -27,20 +38,8 @@ const Select = ({ options, className, onChange, ...props }: SelectProps) => {
 
   return (
     <div className="select-none relative">
-      <div
-        className={`flex w-full relative items-center px-4 bg-vulcan-900 rounded-2xl h-12 focus-within:outline-none focus-within:border-vulcan-500 border-2 border-transparent ease-in duration-100 ${className}`}
-      >
-        {selected && (
-          <img
-            className="w-6 h-6 mr-2"
-            src={getUrl(
-              `/characters/${selected.id}/${selected.id}_portrait.png`,
-              32,
-              32
-            )}
-            alt={selected.name}
-          />
-        )}
+      <div className="flex w-full relative items-center px-4 bg-vulcan-900 rounded-2xl h-12 focus-within:outline-none focus-within:border-vulcan-500 border-2 border-transparent ease-in duration-100">
+        {selected && selectedIconRender(selected)}
         <input
           ref={inputRef}
           className="bg-transparent focus:outline-none border-0 h-full w-full"
@@ -57,39 +56,40 @@ const Select = ({ options, className, onChange, ...props }: SelectProps) => {
           isFocused ? "" : "hidden"
         )}
       >
-        {filteredCharacter.length ? (
+        {filteredOptions.length ? (
           <div className="h-64 overflow-x-auto">
-            {filteredCharacter.map((character) => (
+            {filteredOptions.map((option) => (
               <span
-                key={character.id}
+                key={option.id}
                 onClick={() => {
-                  setSelected(character);
-                  onChange(character);
+                  setSelected(option);
+                  onChange(option);
                   setFilter("");
                 }}
                 className={clsx(
                   "p-3 rounded-md cursor-pointer flex mr-2 hover:bg-vulcan-600",
                   {
-                    "bg-vulcan-500": selected === character,
+                    "bg-vulcan-500": selected === option,
                   }
                 )}
               >
-                <img
+                {itemsListRender(option)}
+                {/* <img
                   className="w-6 h-6 mr-3"
                   src={getUrl(
-                    `/characters/${character.id}/${character.id}_portrait.png`,
+                    `/characters/${option.id}/${option.id}_portrait.png`,
                     32,
                     32
                   )}
-                  alt={character.name}
+                  alt={option.name}
                 />
-                <span className="flex-1 text-base">{character.name}</span>
+                <span className="flex-1 text-base">{option.name}</span> */}
               </span>
             ))}
           </div>
         ) : (
           <span className="p-3 rounded-xl cursor-pointer flex mr-2 my-2">
-            Character not found
+            No results
           </span>
         )}
       </div>

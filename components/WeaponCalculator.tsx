@@ -159,7 +159,29 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
       <div>
         <div>Calculate Ascnesion materials?</div>
         <div>
-          {/* <Select options={characters} onChange={setCharacter} /> */}
+          <Select
+            options={weapons.map((c) => ({ id: c.id, name: c.name }))}
+            onChange={(option) =>
+              setWeapon(weapons.find((c) => c.id === option.id)!!)
+            }
+            selectedIconRender={(selected) => (
+              <img
+                className="w-6 h-6 mr-2"
+                src={getUrl(`/weapons/${selected.id}.png`, 32, 32)}
+                alt={selected.name}
+              />
+            )}
+            itemsListRender={(option) => (
+              <>
+                <img
+                  className="w-6 h-6 mr-3"
+                  src={getUrl(`/weapons/${option.id}.png`, 32, 32)}
+                  alt={option.name}
+                />
+                <span className="flex-1 text-base">{option.name}</span>
+              </>
+            )}
+          />
         </div>
         <div>
           <span>Current character Level, Exp, and ascension</span>
