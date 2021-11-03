@@ -218,6 +218,11 @@
     ],
     "2": [
       {
+        "id": "thoma",
+        "w_id": "staff_of_homa",
+        "min_c": 2
+      },
+      {
         "id": "kaeya",
         "w_id": "skyward_blade",
         "min_c": 2
@@ -337,6 +342,11 @@
       }
     ],
     "1": [
+      {
+        "id": "thoma",
+        "w_id": "staff_of_homa",
+        "min_c": 6
+      },
       {
         "id": "kujou_sara",
         "w_id": "skyward_harp",

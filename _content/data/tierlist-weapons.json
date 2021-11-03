@@ -120,7 +120,7 @@
   },
   "polearm": {
     "maindps": {
-      "0": ["staff_of_homa", "primordial_jade_wingedspear"],
+      "0": ["staff_of_homa", "primordial_jade_wingedspear", "wavebreakers_fin"],
       "1": [
         "engulfing_lightning",
         "vortex_vanquisher",
@@ -142,6 +142,7 @@
         "primordial_jade_wingedspear",
         "skyward_spine",
         "the_catch",
+        "wavebreakers_fin",
         "dragons_bane",
         "favonius_lance"
       ],
@@ -168,6 +169,7 @@
       ],
       "1": [
         "mitternachts_waltz",
+        "mouuns_moon",
         "windblume_ode",
         "hamayumi",
         "blackcliff_warbow",
@@ -185,6 +187,7 @@
         "the_stringless"
       ],
       "1": [
+        "mouuns_moon",
         "alley_hunter",
         "windblume_ode",
         "favonius_warbow",
