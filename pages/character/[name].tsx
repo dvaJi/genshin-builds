@@ -254,7 +254,7 @@ export const getStaticProps: GetStaticProps = async ({
     select: ["id", "name", "rarity", "stats", "bonus"],
   });
   const artifactsList = await genshinData.artifacts({
-    select: ["id", "name", "max_rarity", "2pc", "4pc"],
+    select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
   });
 
   let weapons: Record<string, Weapon> = {};

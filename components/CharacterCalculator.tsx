@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import clsx from "clsx";
-import { Character } from "genshin-data";
+import { Character, ExpMaterial } from "genshin-data";
 
 import Button from "./Button";
 import Input from "./Input";
@@ -12,10 +12,12 @@ import {
   calculateTotalTalentMaterials,
   levels,
 } from "@utils/totals";
+import useIntl from "@hooks/use-intl";
 
 type Props = {
   characters: Character[];
   lvlExp: number[];
+  charExpMaterial: ExpMaterial[];
 };
 
 type Result = {
@@ -25,34 +27,7 @@ type Result = {
   amount: number;
 };
 
-type Level = {
-  lvl: number;
-  asc: boolean;
-  asclLvl: number;
-};
-
-const charExpMaterial = [
-  {
-    id: "heros_wit",
-    img: `/materials/heros_wit.png`,
-    name: "Hero's Wit",
-    value: 20000,
-  },
-  {
-    id: "adventurers_experience",
-    img: `/materials/adventurers_experience.png`,
-    name: "Adventurer's Experience",
-    value: 5000,
-  },
-  {
-    id: "wanderers_advice",
-    img: `/materials/wanderers_advice.png`,
-    name: "Wanderer's Advice",
-    value: 1000,
-  },
-];
-
-const CharacterCalculator = ({ characters, lvlExp }: Props) => {
+const CharacterCalculator = ({ characters, lvlExp, charExpMaterial }: Props) => {
   const [result, setResult] = useState<Result[]>([]);
   const [expWasted, setExpWasted] = useState(0);
   const [character, setCharacter] = useState<Character>(characters[0]);
@@ -64,6 +39,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
   const [intendedTalent1Lvl, setIntendedTalent1Lvl] = useState(1);
   const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(1);
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(1);
+  const { t } = useIntl();
 
   const calculate = () => {
     setResult([]);
@@ -82,23 +58,23 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
 
       for (const expItem of charExpMaterial) {
         if (charExpMaterial[2].id === expItem.id) {
-          const amount = Math.ceil(current / expItem.value);
+          const amount = Math.ceil(current / expItem.exp);
           newresult.push({
             id: expItem.id,
-            img: expItem.img,
+            img: `/materials/${expItem.id}.png`,
             name: expItem.name,
             amount,
           });
-          current = target - Math.ceil(target / expItem.value) * expItem.value;
+          current = target - Math.ceil(target / expItem.exp) * expItem.exp;
         } else if (current > 0) {
-          const amount = Math.round(current / expItem.value);
+          const amount = Math.round(current / expItem.exp);
           newresult.push({
             id: expItem.id,
-            img: expItem.img,
+            img: `/materials/${expItem.id}.png`,
             name: expItem.name,
             amount,
           });
-          current = target - Math.floor(target / expItem.value) * expItem.value;
+          current = target - Math.floor(target / expItem.exp) * expItem.exp;
         }
       }
     }
@@ -182,9 +158,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
     // Sum all items
     newresult = newresult.reduce<Result[]>((acc, cur) => {
       const existing = acc.find((item) => item.id === cur.id);
-      console.log(existing, acc);
       if (existing) {
-        console.log(cur.id, existing.amount, cur.amount);
         acc[acc.findIndex((item) => item.id === cur.id)] = {
           ...existing,
           amount: existing.amount + cur.amount,
@@ -242,7 +216,9 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
       <div>
-        <div>Calculate Ascnesion materials?</div>
+        <span className="text-lg my-4">
+          {t({ id: "character_level", defaultMessage: "Character Level" })}
+        </span>
         <div>
           <Select
             options={characters.map((c) => ({ id: c.id, name: c.name }))}
@@ -276,8 +252,10 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
             )}
           />
         </div>
-        <div>
-          <span>Current character Level, Exp, and ascension</span>
+        <div className="mt-4">
+          <span>
+            {t({ id: "current_level", defaultMessage: "Current Level" })}
+          </span>
           <div className="flex items-center flex-wrap">
             {levels.map((level) => (
               <button
@@ -308,7 +286,9 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
           </div>
         </div>
         <div>
-          <span>Expected level</span>
+          <span>
+            {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+          </span>
           <div className="flex items-center flex-wrap">
             {levels.map((level) => (
               <button
@@ -340,28 +320,30 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
         </div>
       </div>
       <div>
-        <div>Calculate talent ascension materials</div>
+        <span className="text-lg my-4">
+          {t({ id: "talents_level", defaultMessage: "Talents Level" })}
+        </span>
         <div className="grid grid-cols-3 gap-2">
           <div className="my-2 text-center">
             <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
               AA
             </span>
-            Auto Attack
+            {t({ id: "auto_attack", defaultMessage: "Auto Attack" })}
           </div>
           <div className="my-2 text-center">
             <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
               E
             </span>
-            Skill
+            {t({ id: "skill", defaultMessage: "Skill" })}
           </div>
           <div className="my-2 text-center">
             <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
               Q
             </span>
-            Burst
+            {t({ id: "burst", defaultMessage: "Burst" })}
           </div>
         </div>
-        <div>Current Level</div>
+        <div>{t({ id: "current_level", defaultMessage: "Current Level" })}</div>
         <div className="grid grid-cols-3 gap-2">
           <Input
             type="number"
@@ -385,7 +367,9 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
             max="10"
           />
         </div>
-        <div>Intended Level</div>
+        <div>
+          {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+        </div>
         <div className="grid grid-cols-3 gap-2">
           <Input
             type="number"
@@ -413,7 +397,7 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
       <div className="flex flex-col items-center justify-center">
         <div>
           <Button disabled={!canCalculate} onClick={calculate}>
-            Calculate
+            {t({ id: "calculate", defaultMessage: "Calculate" })}
           </Button>
         </div>
         {result.length > 0 && (
@@ -448,7 +432,8 @@ const CharacterCalculator = ({ characters, lvlExp }: Props) => {
                   <tr>
                     <td colSpan={2} className="text-center">
                       <span className="text-center italic text-pink-900">
-                        EXP Wasted {numFormat.format(expWasted)}
+                        {t({ id: "exp_wasted", defaultMessage: "EXP Wasted" })}{" "}
+                        {numFormat.format(expWasted)}
                       </span>
                     </td>
                   </tr>

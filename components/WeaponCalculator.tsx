@@ -1,22 +1,18 @@
 import { useMemo, useState } from "react";
+import { ExpMaterial, Weapon } from "genshin-data";
 import clsx from "clsx";
-import { Weapon } from "genshin-data";
 
 import Button from "./Button";
-import Input from "./Input";
 import Select from "./Select";
 
 import { getUrl } from "@lib/imgUrl";
-import {
-  calculateTotalAscensionMaterials,
-  calculateTotalTalentMaterials,
-  calculateTotalWeaponAscensionMaterials,
-  levels,
-} from "@utils/totals";
+import { calculateTotalWeaponAscensionMaterials, levels } from "@utils/totals";
+import useIntl from "@hooks/use-intl";
 
 type Props = {
   weapons: Weapon[];
   lvlExp: number[][];
+  weaponExpMaterial: ExpMaterial[];
 };
 
 type Result = {
@@ -26,33 +22,13 @@ type Result = {
   amount: number;
 };
 
-const weaponExpMaterial = [
-  {
-    id: "mystic_enhancement_ore",
-    img: `/materials/mystic_enhancement_ore.png`,
-    name: "Mystic Enhancement Ore",
-    value: 10000,
-  },
-  {
-    id: "fine_enhancement_ore",
-    img: `/materials/fine_enhancement_ore.png`,
-    name: "Fine Enhancement Ore",
-    value: 2000,
-  },
-  {
-    id: "enhancement_ore",
-    img: `/materials/enhancement_ore.png`,
-    name: "Enhancement Ore",
-    value: 400,
-  },
-];
-
-const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
+const WeaponCalculator = ({ weapons, lvlExp, weaponExpMaterial }: Props) => {
   const [result, setResult] = useState<Result[]>([]);
   const [expWasted, setExpWasted] = useState(0);
   const [weapon, setWeapon] = useState<Weapon>(weapons[10]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[0]);
+  const { t } = useIntl();
 
   const calculate = () => {
     setResult([]);
@@ -72,23 +48,23 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
 
       for (const expItem of weaponExpMaterial) {
         if (weaponExpMaterial[2].id === expItem.id) {
-          const amount = Math.ceil(current / expItem.value);
+          const amount = Math.ceil(current / expItem.exp);
           newresult.push({
             id: expItem.id,
-            img: expItem.img,
+            img: `/materials/${expItem.id}.png`,
             name: expItem.name,
             amount,
           });
-          current = target - Math.ceil(target / expItem.value) * expItem.value;
+          current = target - Math.ceil(target / expItem.exp) * expItem.exp;
         } else if (current > 0) {
-          const amount = Math.round(current / expItem.value);
+          const amount = Math.round(current / expItem.exp);
           newresult.push({
             id: expItem.id,
-            img: expItem.img,
+            img: `/materials/${expItem.id}.png`,
             name: expItem.name,
             amount,
           });
-          current = target - Math.floor(target / expItem.value) * expItem.value;
+          current = target - Math.floor(target / expItem.exp) * expItem.exp;
         }
       }
     }
@@ -116,9 +92,7 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
     // Sum all items
     newresult = newresult.reduce<Result[]>((acc, cur) => {
       const existing = acc.find((item) => item.id === cur.id);
-      console.log(existing, acc);
       if (existing) {
-        console.log(cur.id, existing.amount, cur.amount);
         acc[acc.findIndex((item) => item.id === cur.id)] = {
           ...existing,
           amount: existing.amount + cur.amount,
@@ -157,7 +131,9 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
       <div>
-        <div>Calculate Ascnesion materials?</div>
+        <span className="text-lg my-4">
+          {t({ id: "choose_weapon", defaultMessage: "Choose Weapon" })}
+        </span>
         <div>
           <Select
             options={weapons.map((c) => ({ id: c.id, name: c.name }))}
@@ -183,8 +159,10 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
             )}
           />
         </div>
-        <div>
-          <span>Current character Level, Exp, and ascension</span>
+        <div className="mt-4">
+          <span>
+            {t({ id: "current_level", defaultMessage: "Current Level" })}
+          </span>
           <div className="flex items-center flex-wrap">
             {levels.map((level) => (
               <button
@@ -215,7 +193,9 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
           </div>
         </div>
         <div>
-          <span>Expected level</span>
+          <span>
+            {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+          </span>
           <div className="flex items-center flex-wrap">
             {levels.map((level) => (
               <button
@@ -250,7 +230,7 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
       <div className="flex flex-col items-center justify-center">
         <div>
           <Button disabled={!canCalculate} onClick={calculate}>
-            Calculate
+            {t({ id: "calculate", defaultMessage: "Calculate" })}
           </Button>
         </div>
         {result.length > 0 && (
@@ -285,7 +265,8 @@ const WeaponCalculator = ({ weapons, lvlExp }: Props) => {
                   <tr>
                     <td colSpan={2} className="text-center">
                       <span className="text-center italic text-pink-900">
-                        EXP Wasted {numFormat.format(expWasted)}
+                        {t({ id: "exp_wasted", defaultMessage: "EXP Wasted" })}{" "}
+                        {numFormat.format(expWasted)}
                       </span>
                     </td>
                   </tr>

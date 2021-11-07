@@ -36,12 +36,12 @@ const ArtifactCard = ({ artifact, pieces }: ArtifactCardProps) => {
           </div>
           <div className="flex items-start mb-1">
             <div className="text-white mr-1 font-bold">(2)</div>
-            <p>{artifact["2pc"]}</p>
+            <p>{artifact["two_pc"]}</p>
           </div>
           {pieces === 4 && (
             <div className="flex items-start">
               <div className="text-white mr-1 font-bold">(4)</div>
-              <p>{artifact["4pc"]}</p>
+              <p>{artifact["four_pc"]}</p>
             </div>
           )}
         </div>

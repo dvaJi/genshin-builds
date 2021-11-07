@@ -49,7 +49,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
       },
       {
         Header: t({ id: "2piece_bonus", defaultMessage: "2-Piece Bonus" }),
-        accessor: "2pc",
+        accessor: "two_pc",
         Cell: (row) => (
           <div
             className="max-w-sm"
@@ -59,7 +59,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
       },
       {
         Header: t({ id: "4piece_bonus", defaultMessage: "4-Piece Bonus" }),
-        accessor: "4pc",
+        accessor: "four_pc",
         Cell: (row) => (
           <div
             className="max-w-sm"
@@ -179,7 +179,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
                   <td>
                     <StarRarity rarity={row.max_rarity} />
                   </td>
-                  <td>{row["1pc"]}</td>
+                  <td>{row["one_pc"]}</td>
                 </tr>
               ))}
             </tbody>
@@ -194,8 +194,8 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const artifacts = await genshinData.artifacts();
-  const artifacts1set = artifacts.filter((a) => a["1pc"]);
-  const artifacts4set = artifacts.filter((a) => !a["1pc"]);
+  const artifacts1set = artifacts.filter((a) => a["one_pc"]);
+  const artifacts4set = artifacts.filter((a) => !a["one_pc"]);
 
   return {
     props: { artifacts: artifacts4set, artifacts1set: artifacts1set, lngDict },
