@@ -13,14 +13,19 @@ import CharacterSkill from "@components/CharacterSkill";
 import PassiveSkill from "@components/CharacterPassiveSkill";
 import ConstellationCard from "@components/CharacterConstellationCard";
 import CharacterBuildCard from "@components/CharacterBuildCard";
+import CharacterCommonBuildCard from "@components/CharacterCommonBuildCard";
 import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
 import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
 
 import { localeToLang } from "@utils/locale-to-lang";
-import { getCharacterBuild, getLocale } from "@lib/localData";
+import {
+  getCharacterBuild,
+  getCharacterMostUsedBuild,
+  getLocale,
+} from "@lib/localData";
 import { setBackground } from "@state/background-atom";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { Build } from "interfaces/build";
+import { Build, MostUsedBuild } from "interfaces/build";
 import { getUrl } from "@lib/imgUrl";
 
 interface CharacterPageProps {
@@ -30,6 +35,7 @@ interface CharacterPageProps {
   artifacts: Record<string, Artifact>;
   locale: string;
   common: Record<string, string>;
+  mubuild: MostUsedBuild;
 }
 
 const CharacterPage = ({
@@ -39,9 +45,10 @@ const CharacterPage = ({
   artifacts,
   locale,
   common,
+  mubuild,
 }: CharacterPageProps) => {
   const [buildSelected, setBuildSelected] = useState(
-    builds.findIndex((b) => b.recommended) ?? 0
+    mubuild ? -1 : builds.findIndex((b) => b.recommended) ?? 0
   );
   const { t, tfn } = useIntl();
   useEffect(() => {
@@ -123,6 +130,20 @@ const CharacterPage = ({
             })}
           </h2>
           <div>
+            {mubuild && (
+              <button
+                className={clsx("rounded text-lg mr-2 my-1 p-3 px-5", {
+                  "bg-vulcan-700 text-white": buildSelected === -1,
+                  "bg-vulcan-800": buildSelected !== -1,
+                })}
+                onClick={() => setBuildSelected(-1)}
+              >
+                <div className="inline-block w-5">
+                  <StarRarity rarity={1} />
+                </div>
+                {t({ id: "most_used", defaultMessage: "Most Used" })}
+              </button>
+            )}
             {builds.map((build, index) => (
               <button
                 key={build.id}
@@ -142,12 +163,19 @@ const CharacterPage = ({
             ))}
           </div>
           <div className="bg-vulcan-800 shadow-lg mb-4 p-4">
-            <CharacterBuildCard
-              build={builds[buildSelected]}
-              artifacts={artifacts}
-              weapons={weapons}
-              f={t}
-            />
+            {buildSelected === -1 ? (
+              <CharacterCommonBuildCard
+                build={mubuild}
+                artifacts={artifacts}
+                weapons={weapons}
+              />
+            ) : (
+              <CharacterBuildCard
+                build={builds[buildSelected]}
+                artifacts={artifacts}
+                weapons={weapons}
+              />
+            )}
           </div>
         </div>
       )}
@@ -260,6 +288,7 @@ export const getStaticProps: GetStaticProps = async ({
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact> = {};
   let builds: Build[] = [];
+  const mubuild: MostUsedBuild = await getCharacterMostUsedBuild(character.id);
 
   if (buildsOld) {
     const weaponsIds: string[] = [];
@@ -318,6 +347,7 @@ export const getStaticProps: GetStaticProps = async ({
       lngDict,
       locale,
       common,
+      mubuild,
     },
   };
 };

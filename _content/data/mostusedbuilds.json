@@ -1,0 +1,572 @@
+{
+  "kaedehara_kazuha": {
+    "weapons": [
+      "iron_sting",
+      "freedomsworn",
+      "primordial_jade_cutter",
+      "sacrificial_sword",
+      "the_black_sword"
+    ],
+    "artifacts": [
+      ["viridescent_venerer"],
+      ["gladiators_finale", "viridescent_venerer"],
+      ["viridescent_venerer"]
+    ]
+  },
+  "bennett": {
+    "weapons": [
+      "festering_desire",
+      "skyward_blade",
+      "aquila_favonia",
+      "favonius_sword",
+      "prototype_rancour"
+    ],
+    "artifacts": [
+      ["noblesse_oblige"],
+      ["crimson_witch_of_flames"],
+      ["noblesse_oblige"]
+    ]
+  },
+  "zhongli": {
+    "weapons": [
+      "black_tassel",
+      "deathmatch",
+      "favonius_lance",
+      "staff_of_homa",
+      "skyward_spine"
+    ],
+    "artifacts": [
+      ["tenacity_of_the_millelith"],
+      ["noblesse_oblige", "archaic_petra"],
+      ["noblesse_oblige", "tenacity_of_the_millelith"]
+    ]
+  },
+  "raiden_shogun": {
+    "weapons": [
+      "engulfing_lightning",
+      "the_catch",
+      "skyward_spine",
+      "primordial_jade_wingedspear",
+      "favonius_lance"
+    ],
+    "artifacts": [
+      ["emblem_of_severed_fate"],
+      ["emblem_of_severed_fate"],
+      ["gladiators_finale", "emblem_of_severed_fate"]
+    ]
+  },
+  "kamisato_ayaka": {
+    "weapons": [
+      "mistsplitter_reforged",
+      "amenoma_kageuchi",
+      "the_black_sword",
+      "blackcliff_longsword",
+      "primordial_jade_cutter"
+    ],
+    "artifacts": [
+      ["blizzard_strayer"],
+      ["blizzard_strayer", "gladiators_finale"],
+      ["blizzard_strayer", "noblesse_oblige"]
+    ]
+  },
+  "xingqiu": {
+    "weapons": [
+      "sacrificial_sword",
+      "favonius_sword",
+      "festering_desire",
+      "primordial_jade_cutter",
+      "lions_roar"
+    ],
+    "artifacts": [
+      ["noblesse_oblige", "heart_of_depth"],
+      ["emblem_of_severed_fate"],
+      ["noblesse_oblige"]
+    ]
+  },
+  "venti": {
+    "weapons": [
+      "the_stringless",
+      "favonius_warbow",
+      "elegy_for_the_end",
+      "skyward_harp",
+      "windblume_ode"
+    ],
+    "artifacts": [
+      ["viridescent_venerer"],
+      ["viridescent_venerer"],
+      ["gladiators_finale", "viridescent_venerer"]
+    ]
+  },
+  "ganyu": {
+    "weapons": [
+      "amos_bow",
+      "prototype_crescent",
+      "skyward_harp",
+      "blackcliff_warbow",
+      "hamayumi"
+    ],
+    "artifacts": [
+      ["wanderers_troupe"],
+      ["blizzard_strayer"],
+      ["blizzard_strayer", "gladiators_finale"]
+    ]
+  },
+  "xiangling": {
+    "weapons": [
+      "the_catch",
+      "dragons_bane",
+      "favonius_lance",
+      "skyward_spine",
+      "deathmatch"
+    ],
+    "artifacts": [
+      ["emblem_of_severed_fate"],
+      ["crimson_witch_of_flames"],
+      ["crimson_witch_of_flames", "noblesse_oblige"]
+    ]
+  },
+  "hu_tao": {
+    "weapons": [
+      "staff_of_homa",
+      "deathmatch",
+      "dragons_bane",
+      "primordial_jade_wingedspear",
+      "blackcliff_pole"
+    ],
+    "artifacts": [
+      ["crimson_witch_of_flames"],
+      ["shimenawas_reminiscence"],
+      ["wanderers_troupe", "crimson_witch_of_flames"]
+    ]
+  },
+  "sangonomiya_kokomi": {
+    "weapons": [
+      "prototype_amber",
+      "thrilling_tales_of_dragon_slayers",
+      "everlasting_moonglow",
+      "skyward_atlas",
+      "sacrificial_fragments"
+    ],
+    "artifacts": [
+      ["tenacity_of_the_millelith"],
+      ["maiden_beloved", "heart_of_depth"],
+      ["heart_of_depth"]
+    ]
+  },
+  "mona": {
+    "weapons": [
+      "the_widsith",
+      "thrilling_tales_of_dragon_slayers",
+      "favonius_codex",
+      "lost_prayer_to_the_sacred_winds",
+      "skyward_atlas"
+    ],
+    "artifacts": [
+      ["emblem_of_severed_fate"],
+      ["noblesse_oblige", "heart_of_depth"],
+      ["noblesse_oblige"]
+    ]
+  },
+  "tartaglia": {
+    "weapons": [
+      "polar_star",
+      "skyward_harp",
+      "rust",
+      "the_viridescent_hunt",
+      "thundering_pulse"
+    ],
+    "artifacts": [
+      ["heart_of_depth"],
+      ["gladiators_finale", "heart_of_depth"],
+      ["heart_of_depth", "shimenawas_reminiscence"]
+    ]
+  },
+  "diona": {
+    "weapons": [
+      "sacrificial_bow",
+      "favonius_warbow",
+      "elegy_for_the_end",
+      "recurve_bow",
+      "windblume_ode"
+    ],
+    "artifacts": [
+      ["noblesse_oblige"],
+      ["maiden_beloved", "tenacity_of_the_millelith"],
+      ["maiden_beloved"]
+    ]
+  },
+  "eula": {
+    "weapons": [
+      "wolfs_gravestone",
+      "song_of_broken_pines",
+      "serpent_spine",
+      "the_unforged",
+      "skyward_pride"
+    ],
+    "artifacts": [
+      ["pale_flame"],
+      ["bloodstained_chivalry", "pale_flame"],
+      ["gladiators_finale", "bloodstained_chivalry"]
+    ]
+  },
+  "albedo": {
+    "weapons": [
+      "harbinger_of_dawn",
+      "festering_desire",
+      "primordial_jade_cutter",
+      "the_black_sword",
+      "mistsplitter_reforged"
+    ],
+    "artifacts": [
+      ["noblesse_oblige", "archaic_petra"],
+      ["archaic_petra"],
+      ["tenacity_of_the_millelith"]
+    ]
+  },
+  "xiao": {
+    "weapons": [
+      "primordial_jade_wingedspear",
+      "deathmatch",
+      "blackcliff_pole",
+      "staff_of_homa",
+      "skyward_spine"
+    ],
+    "artifacts": [
+      ["gladiators_finale", "viridescent_venerer"],
+      ["viridescent_venerer", "shimenawas_reminiscence"],
+      ["gladiators_finale", "shimenawas_reminiscence"]
+    ]
+  },
+  "yoimiya": {
+    "weapons": [
+      "rust",
+      "thundering_pulse",
+      "skyward_harp",
+      "amos_bow",
+      "hamayumi"
+    ],
+    "artifacts": [
+      ["shimenawas_reminiscence"],
+      ["gladiators_finale", "crimson_witch_of_flames"],
+      ["crimson_witch_of_flames", "shimenawas_reminiscence"]
+    ]
+  },
+  "sucrose": {
+    "weapons": [
+      "sacrificial_fragments",
+      "thrilling_tales_of_dragon_slayers",
+      "mappa_mare",
+      "favonius_codex",
+      "the_widsith"
+    ],
+    "artifacts": [
+      ["viridescent_venerer"],
+      ["viridescent_venerer"],
+      ["viridescent_venerer", "wanderers_troupe"]
+    ]
+  },
+  "jean": {
+    "weapons": [
+      "festering_desire",
+      "favonius_sword",
+      "aquila_favonia",
+      "amenoma_kageuchi",
+      "the_black_sword"
+    ],
+    "artifacts": [
+      ["viridescent_venerer"],
+      ["gladiators_finale", "viridescent_venerer"],
+      ["noblesse_oblige"]
+    ]
+  },
+  "fischl": {
+    "weapons": [
+      "the_stringless",
+      "skyward_harp",
+      "the_viridescent_hunt",
+      "rust",
+      "alley_hunter"
+    ],
+    "artifacts": [
+      ["gladiators_finale", "thundering_fury"],
+      ["tenacity_of_the_millelith"],
+      ["thundering_fury"]
+    ]
+  },
+  "klee": {
+    "weapons": [
+      "lost_prayer_to_the_sacred_winds",
+      "the_widsith",
+      "skyward_atlas",
+      "dodoco_tales",
+      "solar_pearl"
+    ],
+    "artifacts": [
+      ["crimson_witch_of_flames"],
+      ["gladiators_finale", "crimson_witch_of_flames"],
+      ["crimson_witch_of_flames"]
+    ]
+  },
+  "diluc": {
+    "weapons": [
+      "wolfs_gravestone",
+      "serpent_spine",
+      "the_unforged",
+      "prototype_archaic",
+      "luxurious_sealord"
+    ],
+    "artifacts": [
+      ["crimson_witch_of_flames"],
+      ["crimson_witch_of_flames"],
+      ["gladiators_finale", "crimson_witch_of_flames"]
+    ]
+  },
+  "rosaria": {
+    "weapons": [
+      "favonius_lance",
+      "deathmatch",
+      "skyward_spine",
+      "primordial_jade_wingedspear",
+      "blackcliff_pole"
+    ],
+    "artifacts": [
+      ["blizzard_strayer", "noblesse_oblige"],
+      ["noblesse_oblige"],
+      ["blizzard_strayer", "gladiators_finale"]
+    ]
+  },
+  "barbara": {
+    "weapons": [
+      "thrilling_tales_of_dragon_slayers",
+      "prototype_amber",
+      "the_widsith",
+      "favonius_codex",
+      "sacrificial_fragments"
+    ],
+    "artifacts": [
+      ["maiden_beloved"],
+      ["maiden_beloved"],
+      ["maiden_beloved", "tenacity_of_the_millelith"]
+    ]
+  },
+  "kujou_sara": {
+    "weapons": [
+      "skyward_harp",
+      "sacrificial_bow",
+      "favonius_warbow",
+      "elegy_for_the_end",
+      "amos_bow"
+    ],
+    "artifacts": [
+      ["emblem_of_severed_fate"],
+      ["noblesse_oblige"],
+      ["emblem_of_severed_fate"]
+    ]
+  },
+  "beidou": {
+    "weapons": [
+      "serpent_spine",
+      "wolfs_gravestone",
+      "luxurious_sealord",
+      "skyward_pride",
+      "sacrificial_greatsword"
+    ],
+    "artifacts": [
+      ["emblem_of_severed_fate"],
+      ["gladiators_finale", "thundering_fury"],
+      ["thundering_fury", "noblesse_oblige"]
+    ]
+  },
+  "chongyun": {
+    "weapons": [
+      "sacrificial_greatsword",
+      "luxurious_sealord",
+      "serpent_spine",
+      "wolfs_gravestone",
+      "skyward_pride"
+    ],
+    "artifacts": [
+      ["blizzard_strayer", "noblesse_oblige"],
+      ["noblesse_oblige"],
+      ["blizzard_strayer", "gladiators_finale"]
+    ]
+  },
+  "keqing": {
+    "weapons": [
+      "lions_roar",
+      "mistsplitter_reforged",
+      "the_black_sword",
+      "primordial_jade_cutter",
+      "aquila_favonia"
+    ],
+    "artifacts": [
+      ["gladiators_finale", "thundering_fury"],
+      ["thundersoother"],
+      ["thundering_fury", "shimenawas_reminiscence"]
+    ]
+  },
+  "ningguang": {
+    "weapons": [
+      "lost_prayer_to_the_sacred_winds",
+      "solar_pearl",
+      "skyward_atlas",
+      "the_widsith",
+      "memory_of_dust"
+    ],
+    "artifacts": [
+      ["gladiators_finale", "archaic_petra"],
+      ["archaic_petra", "shimenawas_reminiscence"],
+      ["noblesse_oblige", "archaic_petra"]
+    ]
+  },
+  "qiqi": {
+    "weapons": [
+      "the_flute",
+      "sacrificial_sword",
+      "favonius_sword",
+      "festering_desire",
+      "aquila_favonia"
+    ],
+    "artifacts": [
+      ["maiden_beloved"],
+      ["maiden_beloved", "gladiators_finale"],
+      ["tenacity_of_the_millelith"]
+    ]
+  },
+  "kaeya": {
+    "weapons": [
+      "favonius_sword",
+      "the_black_sword",
+      "festering_desire",
+      "amenoma_kageuchi",
+      "blackcliff_longsword"
+    ],
+    "artifacts": [
+      ["blizzard_strayer"],
+      ["blizzard_strayer", "noblesse_oblige"],
+      ["blizzard_strayer", "gladiators_finale"]
+    ]
+  },
+  "noelle": {
+    "weapons": [
+      "whiteblind",
+      "serpent_spine",
+      "favonius_greatsword",
+      "skyward_pride",
+      "the_unforged"
+    ],
+    "artifacts": [
+      ["gladiators_finale"],
+      ["retracing_bolide"],
+      ["gladiators_finale"]
+    ]
+  },
+  "yanfei": {
+    "weapons": [
+      "the_widsith",
+      "lost_prayer_to_the_sacred_winds",
+      "dodoco_tales",
+      "skyward_atlas",
+      "solar_pearl"
+    ],
+    "artifacts": [
+      ["wanderers_troupe"],
+      ["crimson_witch_of_flames"],
+      ["gladiators_finale", "crimson_witch_of_flames"]
+    ]
+  },
+  "traveler": {
+    "weapons": [
+      "festering_desire",
+      "favonius_sword",
+      "the_black_sword",
+      "harbinger_of_dawn",
+      "primordial_jade_cutter"
+    ],
+    "artifacts": [
+      ["gladiators_finale", "archaic_petra"],
+      ["noblesse_oblige"],
+      ["noblesse_oblige", "archaic_petra"]
+    ]
+  },
+  "sayu": {
+    "weapons": [
+      "favonius_greatsword",
+      "wolfs_gravestone",
+      "sacrificial_greatsword",
+      "skyward_pride",
+      "katsuragikiri_nagamasa"
+    ],
+    "artifacts": [
+      ["viridescent_venerer"],
+      ["viridescent_venerer"],
+      ["noblesse_oblige"]
+    ]
+  },
+  "xinyan": {
+    "weapons": [
+      "sacrificial_greatsword",
+      "whiteblind",
+      "luxurious_sealord",
+      "skyward_pride",
+      "wolfs_gravestone"
+    ],
+    "artifacts": [
+      ["tenacity_of_the_millelith"],
+      ["bloodstained_chivalry", "pale_flame"],
+      ["noblesse_oblige", "bloodstained_chivalry"]
+    ]
+  },
+  "amber": {
+    "weapons": [
+      "elegy_for_the_end",
+      "favonius_warbow",
+      "skyward_harp",
+      "prototype_crescent",
+      "amos_bow"
+    ],
+    "artifacts": [["wanderers_troupe"], ["noblesse_oblige"], ["instructor"]]
+  },
+  "aloy": {
+    "weapons": [
+      "sacrificial_bow",
+      "the_stringless",
+      "skyward_harp",
+      "the_viridescent_hunt",
+      "rust"
+    ],
+    "artifacts": [
+      ["blizzard_strayer", "noblesse_oblige"],
+      ["blizzard_strayer"],
+      ["blizzard_strayer", "gladiators_finale"]
+    ]
+  },
+  "razor": {
+    "weapons": [
+      "wolfs_gravestone",
+      "prototype_archaic",
+      "serpent_spine",
+      "song_of_broken_pines",
+      "snowtombed_starsilver"
+    ],
+    "artifacts": [
+      ["gladiators_finale"],
+      ["pale_flame"],
+      ["bloodstained_chivalry", "pale_flame"]
+    ]
+  },
+  "lisa": {
+    "weapons": [
+      "thrilling_tales_of_dragon_slayers",
+      "the_widsith",
+      "lost_prayer_to_the_sacred_winds",
+      "favonius_codex",
+      "skyward_atlas"
+    ],
+    "artifacts": [
+      ["noblesse_oblige"],
+      ["gladiators_finale", "thundering_fury"],
+      ["thundering_fury"]
+    ]
+  }
+}

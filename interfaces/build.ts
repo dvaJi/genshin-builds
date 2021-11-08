@@ -28,3 +28,8 @@ export interface Build {
   stats: SetsStats;
   talent_priority: string[];
 }
+
+export type MostUsedBuild = {
+  weapons: string[];
+  artifacts: string[][];
+};

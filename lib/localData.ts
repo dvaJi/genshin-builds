@@ -22,3 +22,18 @@ export async function getCharacterBuild(id?: string) {
     return [];
   }
 }
+
+export async function getCharacterMostUsedBuild(id?: string) {
+  try {
+    const { default: builds } = await import(`../_content/data/mostusedbuilds.json`);
+
+    if (id) {
+      return (builds as any)[id] || "";
+    }
+
+    return builds as any;
+  } catch (err) {
+    console.error(err);
+    return {};
+  }
+}
