@@ -48,7 +48,7 @@ const CharacterPage = ({
   mubuild,
 }: CharacterPageProps) => {
   const [buildSelected, setBuildSelected] = useState(
-    mubuild ? -1 : builds.findIndex((b) => b.recommended) ?? 0
+    builds.findIndex((b) => b.recommended) ?? 0
   );
   const { t, tfn } = useIntl();
   useEffect(() => {
@@ -324,13 +324,19 @@ export const getStaticProps: GetStaticProps = async ({
     });
 
     weaponsList.forEach((weapon) => {
-      if (weaponsIds.includes(weapon.id)) {
+      if (
+        weaponsIds.includes(weapon.id) ||
+        mubuild?.weapons?.includes(weapon.id)
+      ) {
         weapons[weapon.id] = weapon;
       }
     });
 
     artifactsList.forEach((artifact) => {
-      if (artifactsIds.includes(artifact.id)) {
+      if (
+        artifactsIds.includes(artifact.id) ||
+        mubuild?.artifacts?.find((a) => a.includes(artifact.id))
+      ) {
         artifacts[artifact.id] = artifact;
       }
     });
