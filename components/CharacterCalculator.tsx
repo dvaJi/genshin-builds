@@ -1,23 +1,40 @@
-import { useMemo, useState } from "react";
 import clsx from "clsx";
-import { Character, ExpMaterial } from "genshin-data";
+import { useMemo, useState } from "react";
+import { Character } from "genshin-data";
+import { gql, useLazyQuery } from "@apollo/client";
 
 import Button from "./Button";
 import Input from "./Input";
 import Select from "./Select";
 
 import { getUrl } from "@lib/imgUrl";
-import {
-  calculateTotalAscensionMaterials,
-  calculateTotalTalentMaterials,
-  levels,
-} from "@utils/totals";
+import { levels } from "@utils/totals";
 import useIntl from "@hooks/use-intl";
+
+const QUERY = gql`
+  query CharacterAscensionMaterials(
+    $characterId: String!
+    $lang: String!
+    $params: CalculateCharacterParams!
+  ) {
+    calculateCharacterLevel(
+      characterId: $characterId
+      lang: $lang
+      params: $params
+    ) {
+      expWasted
+      items {
+        id
+        img
+        name
+        amount
+      }
+    }
+  }
+`;
 
 type Props = {
   characters: Character[];
-  lvlExp: number[];
-  charExpMaterial: ExpMaterial[];
 };
 
 type Result = {
@@ -27,9 +44,7 @@ type Result = {
   amount: number;
 };
 
-const CharacterCalculator = ({ characters, lvlExp, charExpMaterial }: Props) => {
-  const [result, setResult] = useState<Result[]>([]);
-  const [expWasted, setExpWasted] = useState(0);
+const CharacterCalculator = ({ characters }: Props) => {
   const [character, setCharacter] = useState<Character>(characters[0]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[0]);
@@ -39,151 +54,8 @@ const CharacterCalculator = ({ characters, lvlExp, charExpMaterial }: Props) => 
   const [intendedTalent1Lvl, setIntendedTalent1Lvl] = useState(1);
   const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(1);
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(1);
-  const { t } = useIntl();
-
-  const calculate = () => {
-    setResult([]);
-    setExpWasted(0);
-
-    let current = 0;
-    let moraNeeded = 0;
-    let newresult: Result[] = [];
-
-    // Calculate EXP
-    if (intendedLevel.lvl > currentLevel.lvl) {
-      const target =
-        lvlExp[intendedLevel.lvl - 1] - (lvlExp[currentLevel.lvl - 1] + 0);
-      current = target;
-      moraNeeded = (Math.floor(target / 1000) * 1000) / 5;
-
-      for (const expItem of charExpMaterial) {
-        if (charExpMaterial[2].id === expItem.id) {
-          const amount = Math.ceil(current / expItem.exp);
-          newresult.push({
-            id: expItem.id,
-            img: `/materials/${expItem.id}.png`,
-            name: expItem.name,
-            amount,
-          });
-          current = target - Math.ceil(target / expItem.exp) * expItem.exp;
-        } else if (current > 0) {
-          const amount = Math.round(current / expItem.exp);
-          newresult.push({
-            id: expItem.id,
-            img: `/materials/${expItem.id}.png`,
-            name: expItem.name,
-            amount,
-          });
-          current = target - Math.floor(target / expItem.exp) * expItem.exp;
-        }
-      }
-    }
-
-    // Calculate Ascension materials
-    if (character) {
-      if (currentLevel.asclLvl < intendedLevel.asclLvl) {
-        const { cost, items } = calculateTotalAscensionMaterials(
-          character.ascension,
-          currentLevel.asclLvl,
-          intendedLevel.asclLvl
-        );
-
-        moraNeeded += cost;
-
-        items.forEach((item) => {
-          newresult.push({
-            id: item.id,
-            img: `/${item.type}/${item.id}.png`,
-            name: item.name,
-            amount: item.amount,
-          });
-        });
-      }
-
-      if (intendedTalent1Lvl > currentTalent1Lvl) {
-        const totalTalentMaterials = calculateTotalTalentMaterials(
-          character.talent_materials,
-          currentTalent1Lvl,
-          intendedTalent1Lvl
-        );
-
-        moraNeeded += totalTalentMaterials.cost;
-        totalTalentMaterials.items.forEach((item) => {
-          newresult.push({
-            id: item.id,
-            img: `/${item.type}/${item.id}.png`,
-            name: item.name,
-            amount: item.amount,
-          });
-        });
-      }
-
-      if (intendedTalent2Lvl > currentTalent2Lvl) {
-        const totalTalentMaterials = calculateTotalTalentMaterials(
-          character.talent_materials,
-          currentTalent2Lvl,
-          intendedTalent2Lvl
-        );
-
-        moraNeeded += totalTalentMaterials.cost;
-        totalTalentMaterials.items.forEach((item) => {
-          newresult.push({
-            id: item.id,
-            img: `/${item.type}/${item.id}.png`,
-            name: item.name,
-            amount: item.amount,
-          });
-        });
-      }
-
-      if (intendedTalent3Lvl > currentTalent3Lvl) {
-        const totalTalentMaterials = calculateTotalTalentMaterials(
-          character.talent_materials,
-          currentTalent3Lvl,
-          intendedTalent3Lvl
-        );
-
-        moraNeeded += totalTalentMaterials.cost;
-        totalTalentMaterials.items.forEach((item) => {
-          newresult.push({
-            id: item.id,
-            img: `/${item.type}/${item.id}.png`,
-            name: item.name,
-            amount: item.amount,
-          });
-        });
-      }
-    }
-
-    // Sum all items
-    newresult = newresult.reduce<Result[]>((acc, cur) => {
-      const existing = acc.find((item) => item.id === cur.id);
-      if (existing) {
-        acc[acc.findIndex((item) => item.id === cur.id)] = {
-          ...existing,
-          amount: existing.amount + cur.amount,
-        };
-      } else {
-        acc.push(cur);
-      }
-      return acc;
-    }, []);
-
-    if (moraNeeded > 0) {
-      newresult.push({
-        id: "mora",
-        img: `/materials/mora.png`,
-        name: "Mora",
-        amount: moraNeeded,
-      });
-    }
-
-    if (current < 0) {
-      setExpWasted(current);
-    }
-
-    setResult(newresult);
-  };
+  const { t, localeGI } = useIntl();
+  const [calculate, { called, loading, data }] = useLazyQuery(QUERY);
 
   const canCalculate = useMemo(() => {
     const characterIsSelected = !!character;
@@ -396,48 +268,79 @@ const CharacterCalculator = ({ characters, lvlExp, charExpMaterial }: Props) => 
       </div>
       <div className="flex flex-col items-center justify-center">
         <div>
-          <Button disabled={!canCalculate} onClick={calculate}>
+          <Button
+            disabled={!canCalculate}
+            onClick={() =>
+              calculate({
+                variables: {
+                  characterId: character.id,
+                  lang: localeGI,
+                  params: {
+                    currentLevel,
+                    intendedLevel,
+                    currentTalentLvl: {
+                      aa: currentTalent1Lvl,
+                      skill: currentTalent2Lvl,
+                      burst: currentTalent3Lvl,
+                    },
+                    intendedTalentLvl: {
+                      aa: intendedTalent1Lvl,
+                      skill: intendedTalent2Lvl,
+                      burst: intendedTalent3Lvl,
+                    },
+                  },
+                },
+              })
+            }
+          >
             {t({ id: "calculate", defaultMessage: "Calculate" })}
           </Button>
         </div>
-        {result.length > 0 && (
+        {called && !loading && data && (
           <div className="w-full lg:w-auto">
             <div className="bg-vulcan-900 rounded-lg p-4 mt-2 block md:inline-block">
               <table>
-                {result.map((res) => (
-                  <tr key={res.name}>
-                    <td className="text-right border-b border-gray-800 py-1">
-                      <div className="text-white mr-2 whitespace-no-wrap">
-                        <span className="mr-2">
-                          {numFormat.format(res.amount)}
+                <tbody>
+                  {data.calculateCharacterLevel.items.map((res: Result) => (
+                    <tr key={res.name}>
+                      <td className="text-right border-b border-gray-800 py-1">
+                        <div className="text-white mr-2 whitespace-no-wrap">
+                          <span className="mr-2">
+                            {numFormat.format(res.amount)}
+                          </span>
+                          <span>x</span>
+                        </div>
+                      </td>
+                      <td className="border-b border-gray-800 py-1">
+                        <span className="text-white">
+                          <span className="w-7 inline-block">
+                            <img
+                              className="h-7 inline-block mr-1"
+                              src={getUrl(res.img, 32, 32)}
+                              alt={res.name}
+                            />
+                          </span>
+                          {res.name}
                         </span>
-                        <span>x</span>
-                      </div>
-                    </td>
-                    <td className="border-b border-gray-800 py-1">
-                      <span className="text-white">
-                        <span className="w-7 inline-block">
-                          <img
-                            className="h-7 inline-block mr-1"
-                            src={getUrl(res.img, 32, 32)}
-                            alt={res.name}
-                          />
+                      </td>
+                    </tr>
+                  ))}
+                  {data.calculateCharacterLevel.expWasted < 0 && (
+                    <tr>
+                      <td colSpan={2} className="text-center">
+                        <span className="text-center italic text-pink-900">
+                          {t({
+                            id: "exp_wasted",
+                            defaultMessage: "EXP Wasted",
+                          })}{" "}
+                          {numFormat.format(
+                            data.calculateCharacterLevel.expWasted
+                          )}
                         </span>
-                        {res.name}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-                {expWasted < 0 && (
-                  <tr>
-                    <td colSpan={2} className="text-center">
-                      <span className="text-center italic text-pink-900">
-                        {t({ id: "exp_wasted", defaultMessage: "EXP Wasted" })}{" "}
-                        {numFormat.format(expWasted)}
-                      </span>
-                    </td>
-                  </tr>
-                )}
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
               </table>
             </div>
           </div>

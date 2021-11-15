@@ -12,7 +12,7 @@ export default function IntlProvider({
 }: IntlProviderProps) {
   const nextLocale = useRouter().locale;
   let locale = "en";
-  if (!locale && nextLocale) locale = nextLocale;
+  if (nextLocale) locale = nextLocale;
 
   return (
     <IntlContext.Provider value={{ ...contextValues, locale }}>

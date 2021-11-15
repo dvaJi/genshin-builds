@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-key */
-import GenshinData, { Character, ExpMaterial, Weapon } from "genshin-data";
+import GenshinData, { Character, Weapon } from "genshin-data";
 import { GetStaticProps } from "next";
 
 import Ads from "@components/Ads";
@@ -15,20 +14,9 @@ import useIntl from "@hooks/use-intl";
 type Props = {
   characters: Character[];
   weapons: Weapon[];
-  lvlExp: number[];
-  wlvlExp: number[][];
-  charExpMaterials: ExpMaterial[];
-  weaponExpMaterials: ExpMaterial[];
 };
 
-const Calculator = ({
-  characters,
-  weapons,
-  lvlExp,
-  wlvlExp,
-  charExpMaterials,
-  weaponExpMaterials,
-}: Props) => {
+const Calculator = ({ characters, weapons }: Props) => {
   const { t } = useIntl();
 
   return (
@@ -50,21 +38,13 @@ const Calculator = ({
         <h1 className="text-xl">Character Calculator</h1>
       </div>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
-        <CharacterCalculator
-          characters={characters}
-          lvlExp={lvlExp}
-          charExpMaterial={charExpMaterials}
-        />
+        <CharacterCalculator characters={characters} />
       </div>
       <div className="mt-6">
         <h1 className="text-xl">Weapon Calculator</h1>
       </div>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
-        <WeaponCalculator
-          weapons={weapons}
-          lvlExp={wlvlExp}
-          weaponExpMaterial={weaponExpMaterials}
-        />
+        <WeaponCalculator weapons={weapons} />
       </div>
     </div>
   );
@@ -74,26 +54,17 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
-    select: ["id", "name", "talent_materials", "ascension"],
+    select: ["id", "name"],
   });
   const weapons = await genshinData.weapons({
-    select: ["id", "name", "rarity", "ascensions"],
+    select: ["id", "name"],
   });
-  const charExpMaterials = await genshinData.characterExpMaterials();
-  const weaponExpMaterials = await genshinData.weaponExpMaterials();
-
-  const lvlExp = require("../_content/data/character_lvl_exp.json");
-  const wlvlExp = require("../_content/data/weapon_lvl_exp.json");
 
   return {
     props: {
       lngDict,
       characters,
       weapons,
-      lvlExp,
-      wlvlExp,
-      charExpMaterials: charExpMaterials.sort((a, b) => b.exp - a.exp),
-      weaponExpMaterials: weaponExpMaterials.sort((a, b) => b.exp - a.exp),
     },
   };
 };
