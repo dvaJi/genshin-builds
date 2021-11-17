@@ -1,8 +1,6 @@
 import clsx from "clsx";
 import { useMemo, useRef, useState } from "react";
 
-import { getUrl } from "@lib/imgUrl";
-
 type Option = {
   name: string;
   [props: string]: string;

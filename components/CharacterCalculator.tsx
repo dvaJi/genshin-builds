@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { useMemo, useState } from "react";
 import { Character } from "genshin-data";
-import { gql, useLazyQuery } from "@apollo/client";
 
 import Button from "./Button";
 import Input from "./Input";
@@ -10,8 +9,9 @@ import Select from "./Select";
 import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";
 import useIntl from "@hooks/use-intl";
+import useLazyQuery from "@hooks/use-lazy-gql";
 
-const QUERY = gql`
+const QUERY = `
   query CharacterAscensionMaterials(
     $characterId: String!
     $lang: String!
@@ -272,22 +272,20 @@ const CharacterCalculator = ({ characters }: Props) => {
             disabled={!canCalculate}
             onClick={() =>
               calculate({
-                variables: {
-                  characterId: character.id,
-                  lang: localeGI,
-                  params: {
-                    currentLevel,
-                    intendedLevel,
-                    currentTalentLvl: {
-                      aa: currentTalent1Lvl,
-                      skill: currentTalent2Lvl,
-                      burst: currentTalent3Lvl,
-                    },
-                    intendedTalentLvl: {
-                      aa: intendedTalent1Lvl,
-                      skill: intendedTalent2Lvl,
-                      burst: intendedTalent3Lvl,
-                    },
+                characterId: character.id,
+                lang: localeGI,
+                params: {
+                  currentLevel,
+                  intendedLevel,
+                  currentTalentLvl: {
+                    aa: currentTalent1Lvl,
+                    skill: currentTalent2Lvl,
+                    burst: currentTalent3Lvl,
+                  },
+                  intendedTalentLvl: {
+                    aa: intendedTalent1Lvl,
+                    skill: intendedTalent2Lvl,
+                    burst: intendedTalent3Lvl,
                   },
                 },
               })

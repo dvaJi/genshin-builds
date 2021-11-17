@@ -15,13 +15,11 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@apollo/client": "^3.4.17",
     "@nanostores/react": "^0.1.2",
     "clsx": "^1.1.1",
     "date-fns": "^2.25.0",
     "framer-motion": "^5.0.2",
     "genshin-data": "^0.14.1",
-    "graphql": "^15.7.2",
     "gray-matter": "^4.0.3",
     "hexyjs": "^2.1.4",
     "nanostores": "^0.5.4",
