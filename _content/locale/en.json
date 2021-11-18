@@ -58,5 +58,16 @@
   "suspicious": "Suspicious",
   "special": "Special",
   "level": "Level",
-  "stats": "Stats"
+  "stats": "Stats",
+  "character_level": "Character Level",
+  "current_level": "Current Level",
+  "intended_level": "Intended Level",
+  "talents_level": "Talents Level",
+  "normal_attack": "Normal Attack",
+  "normal attack": "Normal Attack",
+  "skill": "Skill",
+  "burst": "Burst",
+  "calculate": "Calculate",
+  "city": "City",
+  "choose_weapon": "Choose Weapon"
 }

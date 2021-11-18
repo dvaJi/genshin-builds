@@ -200,7 +200,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
               AA
             </span>
-            {t({ id: "auto_attack", defaultMessage: "Auto Attack" })}
+            {t({ id: "normal_attack", defaultMessage: "Normal Attack" })}
           </div>
           <div className="my-2 text-center">
             <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
