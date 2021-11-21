@@ -1,13 +1,17 @@
 import Link from "next/link";
 import { memo, useState } from "react";
-import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 import NavLink from "./NavLink";
 import Logo from "./Logo";
-import MobileNav from "./MobileNav";
 import { NavRoutes } from "interfaces/nav-routes";
 import useIntl from "@hooks/use-intl";
+
+const MobileNav = dynamic(() => import("./MobileNav"), {
+  ssr: false,
+});
 
 const navroutes: NavRoutes[] = [
   { id: "characters", name: "Characters", href: "/characters" },
@@ -29,6 +33,7 @@ const navroutes: NavRoutes[] = [
     ],
   },
   { id: "teams", name: "Teams", href: "/teams" },
+  { id: "calculator", name: "Calculator", href: "/calculator" },
   {
     id: "database",
     name: "Database",
@@ -81,33 +86,7 @@ const LayoutHeader = () => {
           className="flex items-center overflow-visible m-0 p-6 cursor-pointer z-50 lg:hidden ml-auto"
           onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
         >
-          <motion.div
-            initial={false}
-            animate={isMobileNavOpen ? "open" : "closed"}
-          >
-            <svg width="23" height="23" viewBox="0 0 23 23">
-              <Path
-                variants={{
-                  closed: { d: "M 2 2.5 L 20 2.5" },
-                  open: { d: "M 3 16.5 L 17 2.5" },
-                }}
-              />
-              <Path
-                d="M 2 9.423 L 20 9.423"
-                variants={{
-                  closed: { opacity: 1 },
-                  open: { opacity: 0 },
-                }}
-                transition={{ duration: 0.1 }}
-              />
-              <Path
-                variants={{
-                  closed: { d: "M 2 16.346 L 20 16.346" },
-                  open: { d: "M 3 2.5 L 17 16.346" },
-                }}
-              />
-            </svg>
-          </motion.div>
+          <div>{isMobileNavOpen ? <AiOutlineClose /> : <AiOutlineMenu />}</div>
         </div>
       </div>
       <MobileNav
@@ -119,15 +98,5 @@ const LayoutHeader = () => {
     </nav>
   );
 };
-
-const Path = (props: any) => (
-  <motion.path
-    className="stroke-current text-gray-200"
-    fill="transparent"
-    strokeWidth="3"
-    strokeLinecap="round"
-    {...props}
-  />
-);
 
 export default memo(LayoutHeader);

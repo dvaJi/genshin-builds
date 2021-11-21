@@ -69,5 +69,10 @@
   "burst": "Burst",
   "calculate": "Calculate",
   "city": "City",
-  "choose_weapon": "Choose Weapon"
+  "choose_weapon": "Choose Weapon",
+  "calculator": "Calculator",
+  "tierlist_characters": "Tierlist Characters",
+  "tierlist_weapons": "Tierlist Weapons",
+  "teams": "Teams",
+  "fishing": "Fishing"
 }

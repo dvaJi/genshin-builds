@@ -14,7 +14,7 @@ interface WeaponCardProps {
 
 const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
   return (
-    <div className="bg-vulcan-900 border border-vulcan-700 mb-2 rounded flex flex-col">
+    <div className="bg-vulcan-900 border border-vulcan-700 mb-2 rounded flex flex-col hover:border-vulcan-600 hover:bg-vulcan-800 transition">
       <div className="flex flex-row h-full">
         <div
           className="flex flex-none relative bg-cover p-1 rounded rounded-tr-none rounded-br-none items-center justify-center"

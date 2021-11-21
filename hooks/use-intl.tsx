@@ -23,6 +23,14 @@ const useIntl = (): useIntlResponse => {
       return values ? templateReplacement(dict[id], values) : dict[id];
     }
 
+    if (process.env.NODE_ENV === "development") {
+      console.warn(
+        `[useIntl] Missing translation for "${id}" in "${localeToLang(
+          locale
+        )}" locale.`
+      );
+    }
+
     return values
       ? templateReplacement(defaultMessage, values)
       : defaultMessage;

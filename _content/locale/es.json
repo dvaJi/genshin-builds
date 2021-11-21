@@ -69,5 +69,10 @@
   "burst": "Habilidad Definitiva",
   "calculate": "Calcular",
   "city": "Ciudad",
-  "choose_weapon": "seleccione Arma"
+  "choose_weapon": "seleccione Arma",
+  "calculator": "Calculadora",
+  "tierlist_characters": "Tierlist Personajes",
+  "tierlist_weapons": "Tierlist Armas",
+  "teams": "Equipos",
+  "fishing": "Pesca"
 }

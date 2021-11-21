@@ -11,7 +11,7 @@
   "title.artifacts.description": "Die besten Artefakt-Ausrüstungssätze, Standorte und Statistiken.",
   "title.tierlist": "Genshin Impact Stufenliste (Beste Charaktere)",
   "title.tierlist.description": "Alle besten Charaktere und ihre Builds wurden nach Leistung, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte zu löschen.",
-  "title.tierlist_weapons": "Genshin ImpactListe der Waffenstufen (Beste Waffen)",
+  "title.tierlist_weapons": "Genshin Impact Liste der Waffenstufen (Beste Waffen)",
   "title.tierlist_weapons.description": "Die besten Waffen sortiert nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu löschen.",
   "title.food": "Genshin Impact Liste der Kochrezepte",
   "title.food.description": "Entdecken Sie alle Kochrezepte und das beste Essen für Ihr Team.",
@@ -69,5 +69,10 @@
   "burst": "Platzen",
   "calculate": "Berechnung",
   "city": "Stadt",
-  "choose_weapon": "Waffe wählen"
+  "choose_weapon": "Waffe wählen",
+  "calculator": "Taschenrechner",
+  "tierlist_characters": "Beste Charaktere",
+  "tierlist_weapons": "Beste Waffen",
+  "teams": "Team-Comp",
+  "fishing": "Angeln"
 }

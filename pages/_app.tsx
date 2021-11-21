@@ -21,7 +21,7 @@ function Root(props: AppProps) {
   }, [router.events]);
 
   return (
-    <IntlProvider messages={props.pageProps.lngDict}>
+    <IntlProvider messages={props.pageProps.lngDict} locale={router.locale}>
       <App {...props} />
     </IntlProvider>
   );

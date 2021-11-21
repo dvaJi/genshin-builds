@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { GetStaticProps } from "next";
 import format from "date-fns/format";
@@ -7,7 +8,6 @@ import GenshinData, { Character, Weapon } from "genshin-data";
 
 import Ads from "@components/Ads";
 import SimpleRarityBox from "@components/SimpleRarityBox";
-import ServerTimers from "@components/ServerTimers";
 
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -16,6 +16,10 @@ import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 import Button from "@components/Button";
+
+const ServerTimers = dynamic(() => import("@components/ServerTimers"), {
+  ssr: false,
+});
 
 type Props = {
   characters: Record<string, Character>;

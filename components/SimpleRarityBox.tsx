@@ -37,7 +37,11 @@ const SimpleRarityBox = ({
             rarity > 0 ? `url(${IMGS_CDN}/bg_${rarity}star.png)` : "",
         }}
       >
-        <LazyLoadImage className="group-hover:opacity-70" src={img} alt={name} />
+        <LazyLoadImage
+          className="group-hover:opacity-70"
+          src={img}
+          alt={name}
+        />
         {!nameSeparateBlock && name && (
           <span
             className="absolute inline-block bottom-0 text-xs bg-gray-900 bg-opacity-90 rounded rounded-t-none p-1 transition-all opacity-80 group-hover:text-white group-hover:opacity-100"
@@ -50,7 +54,7 @@ const SimpleRarityBox = ({
       {nameSeparateBlock && name && (
         <span
           className={clsx(
-            "inline-block m-1 mt-0 overflow-hidden text-center text-xs bg-gray-900 bg-opacity-90 rounded rounded-t-none p-1",
+            "inline-block m-1 mt-0 overflow-hidden text-center text-xs bg-vulcan-900 bg-opacity-90 rounded rounded-t-none p-1",
             classNameBlock
           )}
         >
