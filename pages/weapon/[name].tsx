@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
+import Link from "next/link";
 import GenshinData, { Weapon } from "genshin-data";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
@@ -9,15 +10,20 @@ import Metadata from "@components/Metadata";
 import WeaponAscensionMaterials from "@components/WeaponAscensionMaterials";
 
 import { localeToLang } from "@utils/locale-to-lang";
-import { getLocale } from "@lib/localData";
+import { getCharacterMostUsedBuild, getLocale } from "@lib/localData";
 import { getUrl } from "@lib/imgUrl";
 
 interface WeaponPageProps {
   weapon: Weapon;
+  recommendedCharacters: string[];
   locale: string;
 }
 
-const WeaponPage = ({ weapon, locale }: WeaponPageProps) => {
+const WeaponPage = ({
+  weapon,
+  recommendedCharacters,
+  locale,
+}: WeaponPageProps) => {
   const [refinement, setRefinement] = useState(0);
   const [weaponStatIndex, setWeaponStatIndex] = useState(0);
   const { t } = useIntl();
@@ -163,6 +169,35 @@ const WeaponPage = ({ weapon, locale }: WeaponPageProps) => {
           </div>
         </div>
       </div>
+      {recommendedCharacters.length > 0 && (
+        <>
+          <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+            {t({
+              id: "recommended_characters",
+              defaultMessage: "Recomended Characters",
+            })}
+          </h2>
+          <div className="mb-4 mx-4 lg:mx-0 flex">
+            {recommendedCharacters.map((character) => (
+              <Link key={character} href={`/character/${character}`}>
+                <a className="mr-10 group rounded-full transition border-4 border-transparent hover:border-vulcan-500">
+                  <img
+                    className="rounded-full group-hover:shadow-xl"
+                    src={getUrl(
+                      `/characters/${character}/${character}_portrait.png`,
+                      100,
+                      100
+                    )}
+                    alt={character}
+                    width="100"
+                    height="100"
+                  />
+                </a>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
           id: "character.ascension_materials",
@@ -222,11 +257,22 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
+  const builds = await getCharacterMostUsedBuild();
+  const recommendedCharacters = [];
+
+  for (const character in builds) {
+    const weapons = builds[character].weapons;
+    if (weapons.includes(weapon.id)) {
+      recommendedCharacters.push(character);
+    }
+  }
+
   return {
     props: {
       weapon,
       lngDict,
       locale,
+      recommendedCharacters,
     },
   };
 };
