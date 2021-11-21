@@ -11,12 +11,12 @@ import { getLocale } from "@lib/localData";
 import { Team, TeamFull } from "interfaces/teams";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
-type CharactersProps = {
+type TeamsProps = {
   teams: TeamFull[];
   common: Record<string, string>;
 };
 
-const CharactersPage = ({ teams }: CharactersProps) => {
+const TeamsPage = ({ teams }: TeamsProps) => {
   const { t } = useIntl();
   return (
     <div>
@@ -38,12 +38,12 @@ const CharactersPage = ({ teams }: CharactersProps) => {
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="">
         {teams.map((team, i) => (
-          <>
+          <div key={team.primary.join("-") + i}>
             <TeamCard key={team.primary[0].character.id + i} team={team} />
             {i % 3 === 0 && (
               <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
             )}
-          </>
+          </div>
         ))}
       </div>
     </div>
@@ -82,4 +82,4 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   };
 };
 
-export default CharactersPage;
+export default TeamsPage;

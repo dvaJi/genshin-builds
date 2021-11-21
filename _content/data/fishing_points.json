@@ -1,5 +1,5 @@
 {
-  "Mondstadt": [
+  "mondstadt": [
     {
       "id": "ciderlake_1",
       "fish": [
@@ -86,7 +86,7 @@
       "total": 6
     }
   ],
-  "Liyue": [
+  "liyue": [
     {
       "id": "qingcevillage",
       "fish": [
@@ -195,7 +195,7 @@
       "total": 7
     }
   ],
-  "Inazuma": [
+  "inazuma": [
     {
       "id": "ritou",
       "fish": [

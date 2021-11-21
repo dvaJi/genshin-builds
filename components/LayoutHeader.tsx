@@ -48,7 +48,6 @@ const navroutes: NavRoutes[] = [
       },
       { id: "food", name: "Food", href: "/food" },
       { id: "potions", name: "Potions", href: "/potions" },
-      { id: "codes", name: "Codes", href: "/codes" },
       { id: "fishing", name: "Fishing", href: "/fishing" },
     ],
   },
