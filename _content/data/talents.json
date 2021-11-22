@@ -1,7 +1,7 @@
 {
   "Violet Court": {
-    "Tue": ["kamisato_ayaka", "kujou_sara"],
-    "Fri": ["kamisato_ayaka", "kujou_sara"],
+    "Tue": ["kamisato_ayaka", "kujou_sara", "arataki_itto"],
+    "Fri": ["kamisato_ayaka", "kujou_sara", "arataki_itto"],
     "Sun": [
       "kamisato_ayaka",
       "yoimiya",
@@ -9,12 +9,15 @@
       "raiden_shogun",
       "sayu",
       "sangonomiya_kokomi",
-      "kujou_sara"
+      "gorou",
+      "kujou_sara",
+      "arataki_itto",
+      "traveler_electro"
     ],
     "Mon": ["yoimiya", "thoma", "sangonomiya_kokomi"],
     "Thu": ["yoimiya", "thoma", "sangonomiya_kokomi"],
-    "Wed": ["raiden_shogun", "sayu"],
-    "Sat": ["raiden_shogun", "sayu"]
+    "Wed": ["raiden_shogun", "sayu", "gorou", "traveler_electro"],
+    "Sat": ["raiden_shogun", "sayu", "gorou", "traveler_electro"]
   },
   "Forsaken Rift": {
     "Tue": ["jean", "diluc", "razor", "bennett", "noelle", "mona", "eula"],
@@ -39,10 +42,27 @@
       "sucrose",
       "rosaria",
       "eula",
-      "aloy"
+      "aloy",
+      "traveler_anemo"
     ],
-    "Wed": ["lisa", "kaeya", "venti", "fischl", "albedo", "rosaria"],
-    "Sat": ["lisa", "kaeya", "venti", "fischl", "albedo", "rosaria"],
+    "Wed": [
+      "lisa",
+      "kaeya",
+      "venti",
+      "fischl",
+      "albedo",
+      "rosaria",
+      "traveler_anemo"
+    ],
+    "Sat": [
+      "lisa",
+      "kaeya",
+      "venti",
+      "fischl",
+      "albedo",
+      "rosaria",
+      "traveler_anemo"
+    ],
     "Mon": [
       "barbara",
       "amber",
@@ -71,10 +91,11 @@
       "xinyan",
       "hu_tao",
       "kaedehara_kazuha",
-      "yanfei"
+      "yanfei",
+      "traveler_geo"
     ],
-    "Wed": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei"],
-    "Sat": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei"],
+    "Wed": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei", "traveler_geo"],
+    "Sat": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei", "traveler_geo"],
     "Mon": ["xiao", "ningguang", "qiqi", "keqing"],
     "Thu": ["xiao", "ningguang", "qiqi", "keqing"]
   },
@@ -86,6 +107,7 @@
       "favonius_sword",
       "royal_longsword",
       "the_alley_flash",
+      "cinnabar_spindle",
       "aquila_favonia",
       "ferrous_shadow",
       "the_bell",
@@ -108,6 +130,7 @@
       "favonius_sword",
       "royal_longsword",
       "the_alley_flash",
+      "cinnabar_spindle",
       "aquila_favonia",
       "ferrous_shadow",
       "the_bell",
@@ -137,6 +160,7 @@
       "the_alley_flash",
       "sword_of_descension",
       "festering_desire",
+      "cinnabar_spindle",
       "aquila_favonia",
       "skyward_blade",
       "freedomsworn",
@@ -460,6 +484,7 @@
       "mistsplitter_reforged",
       "katsuragikiri_nagamasa",
       "akuoumaru",
+      "redhorn_stonethresher",
       "kitain_cross_spear",
       "the_catch",
       "wavebreakers_fin",
@@ -474,6 +499,7 @@
     ],
     "Tue": [
       "katsuragikiri_nagamasa",
+      "redhorn_stonethresher",
       "hamayumi",
       "predator",
       "mouuns_moon",
@@ -481,6 +507,7 @@
     ],
     "Fri": [
       "katsuragikiri_nagamasa",
+      "redhorn_stonethresher",
       "hamayumi",
       "predator",
       "mouuns_moon",

@@ -8,11 +8,11 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/characters</loc>
+    <loc>https://genshin-builds.com/calculator</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/codes</loc>
+    <loc>https://genshin-builds.com/characters</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -36,6 +36,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -45,6 +49,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -81,6 +89,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -216,10 +228,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/de/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/de/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -309,6 +317,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -556,6 +568,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -780,6 +796,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -789,6 +809,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -825,6 +849,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -960,10 +988,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/en/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/en/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1053,6 +1077,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1300,6 +1328,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1524,6 +1556,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1533,6 +1569,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1569,6 +1609,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1704,10 +1748,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/es/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/es/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1797,6 +1837,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2044,6 +2088,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2276,6 +2324,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2285,6 +2337,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2321,6 +2377,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2456,10 +2516,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/fr/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/fr/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2549,6 +2605,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2796,6 +2856,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3020,6 +3084,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3029,6 +3097,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3065,6 +3137,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3200,10 +3276,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/id/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/id/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3293,6 +3365,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3540,6 +3616,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3772,6 +3852,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3781,6 +3865,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3817,6 +3905,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3952,10 +4044,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/ja/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/ja/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4045,6 +4133,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4292,6 +4384,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4516,6 +4612,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4525,6 +4625,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4561,6 +4665,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4696,10 +4804,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/ko/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/ko/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4789,6 +4893,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5036,6 +5144,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5268,6 +5380,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5277,6 +5393,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5313,6 +5433,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5448,10 +5572,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/pt/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/pt/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5541,6 +5661,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5788,6 +5912,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6012,6 +6140,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6021,6 +6153,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6057,6 +6193,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6192,10 +6332,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/ru/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/ru/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6285,6 +6421,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6532,6 +6672,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6760,6 +6904,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6769,6 +6917,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6805,6 +6957,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6940,10 +7096,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/th/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/th/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7033,6 +7185,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7280,6 +7436,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7512,6 +7672,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7521,6 +7685,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7557,6 +7725,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7692,10 +7864,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/vi/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/vi/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7785,6 +7953,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8032,6 +8204,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/weapon/redhorn_stonethresher</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/weapon/royal_bow</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8260,6 +8436,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/calculator</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/albedo</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8269,6 +8449,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/character/amber</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/character/arataki_itto</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8305,6 +8489,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/character/ganyu</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/character/gorou</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8440,10 +8628,6 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
-    <loc>https://genshin-builds.com/zh-tw/codes</loc>
-    <changefreq>hourly</changefreq>
-  </url>
-  <url>
     <loc>https://genshin-builds.com/zh-tw/contact</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8533,6 +8717,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/cinnabar_spindle</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8777,6 +8965,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/recurve_bow</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/redhorn_stonethresher</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
