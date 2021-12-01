@@ -270,6 +270,21 @@
       "total": 9
     },
     {
+      "id": "chirai_shrine",
+      "fish": ["medaka", "glaze_medaka", "dawncatcher", "crystalfish"],
+      "total": 4
+    },
+    {
+      "id": "autake_plains",
+      "fish": [
+        "medaka",
+        "lunged_stickleback",
+        "akai_maou",
+        "purple_shirakodai"
+      ],
+      "total": 3
+    },
+    {
       "id": "tatarasuna",
       "fish": ["raimei_angelfish"],
       "total": 5

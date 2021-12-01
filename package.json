@@ -15,14 +15,14 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@nanostores/react": "^0.1.2",
+    "@nanostores/react": "^0.1.3",
     "clsx": "^1.1.1",
-    "date-fns": "^2.26.0",
-    "framer-motion": "^5.3.1",
+    "date-fns": "^2.27.0",
+    "framer-motion": "^5.3.3",
     "genshin-data": "^0.15.0",
     "gray-matter": "^4.0.3",
     "hexyjs": "^2.1.4",
-    "nanostores": "^0.5.6",
+    "nanostores": "^0.5.7",
     "next": "^12.0.4",
     "react": "17.0.2",
     "react-adsense": "^0.1.0",
@@ -32,12 +32,12 @@
     "react-lazy-load-image-component": "^1.5.1",
     "react-table": "^7.7.0",
     "remark": "^14.0.2",
-    "remark-html": "^15.0.0"
+    "remark-html": "^15.0.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.4",
     "@types/node": "^14.17.34",
-    "@types/react": "^17.0.35",
+    "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/react-lazy-load-image-component": "^1.5.2",
     "@types/react-table": "^7.7.8",
