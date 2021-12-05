@@ -10,6 +10,8 @@ import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";
 import useIntl from "@hooks/use-intl";
 import useLazyQuery from "@hooks/use-lazy-gql";
+import { todos } from "@state/todo";
+import { useStore } from "@nanostores/react";
 
 const QUERY = `
   query CharacterAscensionMaterials(
@@ -54,6 +56,7 @@ const CharacterCalculator = ({ characters }: Props) => {
   const [intendedTalent1Lvl, setIntendedTalent1Lvl] = useState(1);
   const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(1);
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(1);
+  const todo = useStore(todos);
   const { t, localeGI } = useIntl();
   const [calculate, { called, loading, data }] = useLazyQuery(QUERY);
 
@@ -82,6 +85,31 @@ const CharacterCalculator = ({ characters }: Props) => {
     intendedTalent2Lvl,
     intendedTalent3Lvl,
   ]);
+
+  function addToTodo() {
+    const resourcesMap = data.calculateCharacterLevel.items.reduce(
+      (map: any, item: any) => {
+        map[item.id] = item.amount;
+        return map;
+      },
+      {} as Record<string, number>
+    );
+
+    todos.set([
+      ...(todos.get() || []),
+      [
+        { id: character.id, name: character.name },
+        "character",
+        [currentLevel.lvl, intendedLevel.lvl],
+        {
+          aa: [currentTalent1Lvl, intendedTalent1Lvl],
+          skill: [currentTalent2Lvl, intendedTalent2Lvl],
+          burst: [currentTalent3Lvl, intendedTalent3Lvl],
+        },
+        resourcesMap,
+      ],
+    ]);
+  }
 
   const numFormat = Intl.NumberFormat();
 
@@ -340,6 +368,7 @@ const CharacterCalculator = ({ characters }: Props) => {
                   )}
                 </tbody>
               </table>
+              <Button onClick={addToTodo}>Add Todo</Button>
             </div>
           </div>
         )}
