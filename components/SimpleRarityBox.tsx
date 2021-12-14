@@ -8,6 +8,7 @@ type Props = {
   rarity: number;
   name?: string;
   size?: number;
+  alt?: string;
   className?: string;
   nameSeparateBlock?: boolean;
   classNameBlock?: string;
@@ -15,6 +16,7 @@ type Props = {
 
 const SimpleRarityBox = ({
   name,
+  alt,
   img,
   rarity,
   className,
@@ -40,7 +42,8 @@ const SimpleRarityBox = ({
         <LazyLoadImage
           className="group-hover:opacity-70"
           src={img}
-          alt={name}
+          alt={alt ?? name}
+          title={alt ?? name}
         />
         {!nameSeparateBlock && name && (
           <span

@@ -30,6 +30,7 @@ const QUERY = `
         img
         name
         amount
+        rarity
       }
     }
   }
@@ -56,7 +57,6 @@ const CharacterCalculator = ({ characters }: Props) => {
   const [intendedTalent1Lvl, setIntendedTalent1Lvl] = useState(1);
   const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(1);
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(1);
-  const todo = useStore(todos);
   const { t, localeGI } = useIntl();
   const [calculate, { called, loading, data }] = useLazyQuery(QUERY);
 
@@ -89,7 +89,7 @@ const CharacterCalculator = ({ characters }: Props) => {
   function addToTodo() {
     const resourcesMap = data.calculateCharacterLevel.items.reduce(
       (map: any, item: any) => {
-        map[item.id] = item.amount;
+        map[item.id] = [item.amount, item.img, item.rarity];
         return map;
       },
       {} as Record<string, number>

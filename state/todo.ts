@@ -10,7 +10,7 @@ type Stats = {
   skill?: [Current, Intended];
   burst?: [Current, Intended];
 };
-type Resources = { [id: string]: number };
+type Resources = { [id: string]: [number, string, number] };
 export type Todo = [ID, Type, Level, Stats, Resources[]];
 
 export const todos = persistentAtom<Todo[]>("todo", [], {

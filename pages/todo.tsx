@@ -1,9 +1,8 @@
 import { GetStaticProps } from "next";
 import { useStore } from "@nanostores/react";
-import GenshinData, { Character } from "genshin-data";
+import GenshinData from "genshin-data";
 
 import Ads from "@components/Ads";
-import TeamCard from "@components/TeamCard";
 import Metadata from "@components/Metadata";
 
 import { todos as todosAtom } from "../state/todo";
@@ -11,39 +10,46 @@ import { todos as todosAtom } from "../state/todo";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
-import { Team, TeamFull } from "interfaces/teams";
+import { TeamFull } from "interfaces/teams";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import Button from "@components/Button";
 import { useMemo } from "react";
+import { getUrl } from "@lib/imgUrl";
+import SimpleRarityBox from "@components/SimpleRarityBox";
 
 type TodoProps = {
   teams: TeamFull[];
   common: Record<string, string>;
 };
 
-const TodoPage = ({ teams }: TodoProps) => {
+const TodoPage = ({}: TodoProps) => {
   const todos = useStore(todosAtom);
-  // const summary = useMemo<any>(() => {
-  //   return todos.reduce((acc, value) => {
-  //     for (const [id, amount] of Object.entries(value.resources)) {
-  //       if (!isSunday && itemList[id].day && itemList[id].day.includes(today)) {
-  //         if (todayOnly[id] === undefined) {
-  //           todayOnly[id] = 0;
-  //         }
-  //         todayOnly[id] += amount;
-  //       }
-  //       if (acc[id] === undefined) {
-  //         acc[id] = 0;
-  //       }
-  //       acc[id] += amount;
-  //     }
-  //     return acc;
-  //   }, {});
-  // }, [todos]);
+  // TODO: Calculate total Resin (amount and days)
+  // Tabs to select days
+  // Items that do not needs resin (separated by type, and grouped by rarity)
+  // Items that needs resin, separated by resin cost, by type, and grouped by rarity
+
+  const summary = useMemo<any>(() => {
+    return todos.reduce<any>((acc, value) => {
+      for (const [id, data] of Object.entries(value[4])) {
+        // if (!isSunday && itemList[id].day && itemList[id].day.includes(today)) {
+        //   if (todayOnly[id] === undefined) {
+        //     todayOnly[id] = 0;
+        //   }
+        //   todayOnly[id] += amount;
+        // }
+        if (acc[id] === undefined) {
+          acc[id] = 0;
+        }
+        acc[id] += data[0];
+      }
+      return acc;
+    }, {});
+  }, [todos]);
   const { t } = useIntl();
 
-  const numFormat = Intl.NumberFormat();
-  console.log(todos, todos[0]);
+  const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
+  console.log(todos, summary);
   return (
     <div>
       <Metadata
@@ -62,99 +68,118 @@ const TodoPage = ({ teams }: TodoProps) => {
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <div className="">
+      <div className="grid grid-cols-4 gap-3 m-3">
         {todos.map((todo, i) => (
-          <div key={todo[0].id + i} class="bg-item rounded-xl p-4 text-white">
-            <div class="flex items-center mb-2">
-              {todo[1] === "weapon" && (
-                <>
-                  <img
-                    class="h-8 inline-block mr-2"
-                    src={`/images/weapons/${todo[0].id}.png`}
-                    alt={todo[0].name}
-                  />
-                  <div class="flex-1">
-                    <p class="font-bold">{todo[0].name}</p>
-                    <p class="text-gray-500">
-                      Level {`${todo[2][0]}-${todo[2][1]}`}
-                    </p>
+          <div key={todo[0].id + i} className="flex w-full h-full rounded border border-vulcan-900 bg-vulcan-800">
+            <div className="flex flex-col w-full relative flex-shrink-0">
+              <div className="flex justify-center">
+                <p className="text-lg font-semibold text-white">{todo[0].name}</p>
+              </div>
+              <div className="flex flex-col p-2 flex-grow">
+                <div className="flex items-center mb-2">
+                  <div className="flex justify-center mx-auto">
+                    <div className="w-24 h-24 rounded-md shadow-md overflow-hidden">
+                      <img
+                        draggable="false"
+                        height="128"
+                        width="128"
+                        loading="lazy"
+                        src={getUrl(
+                          `/characters/${todo[0].id}/${todo[0].id}_portrait.png`
+                        )}
+                        alt="Fischl"
+                        className="w-full h-auto"
+                      />
+                    </div>
                   </div>
-                </>
-              )}
-              {todo[1] === "character" && (
-                <>
-                  <img
-                    class="h-8 inline-block mr-2"
-                    src={`/characters/${todo[0].id}.png`}
-                    alt={todo[0].name}
-                  />
-                  <div class="flex-1">
-                    <p class="font-bold">{todo[0].name}</p>
-                    <p class="text-gray-500">
-                      Level {`${todo[2][0]}-${todo[2][1]}`}
-                    </p>
+                  <div className="flex flex-col h-full">
+                    <div className="flex flex-col">
+                      <div className="flex">
+                        <div>
+                          <h4 className="w-28 text-sm text-center font-semibold text-white">
+                            Levels
+                          </h4>
+                          <div className="flex justify-center">
+                            <div class="ItemPanel_summaryLabel__3Nm32">
+                              <p>{todo[2][0]}</p>
+                            </div>
+                            <div class="ItemPanel_arrows__1biWK">-{">"}</div>
+                            <div class="ItemPanel_summaryLabel__3Nm32">
+                              <p>{todo[2][1]}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ItemPanel_travelerToggle__3vHMZ"></div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col">
+                      <h4 className="w-28 text-sm text-center font-semibold text-white">
+                        Talents
+                      </h4>
+                      <div className="flex">
+                        <div>
+                          <div className="flex">
+                            <div className="flex justify-center w-28">
+                              <div class="ItemPanel_summaryLabel__3Nm32">
+                                <p>{todo[3].aa?.[0]}</p>
+                              </div>
+                              <div class="ItemPanel_arrows__1biWK">-{">"}</div>
+                              <div class="ItemPanel_summaryLabel__3Nm32">
+                                <p>{todo[3].aa?.[1]}</p>
+                              </div>
+                            </div>
+                            <div className="text-xs leading-4 text-gray-500 whitespace-nowrap">
+                              Attack
+                            </div>
+                          </div>
+                          <div className="flex">
+                            <div className="flex justify-center w-28">
+                              <div class="ItemPanel_summaryLabel__3Nm32">
+                                <p>{todo[3].skill?.[0]}</p>
+                              </div>
+                              <div class="ItemPanel_arrows__1biWK">-{">"}</div>
+                              <div class="ItemPanel_summaryLabel__3Nm32">
+                                <p>{todo[3].skill?.[1]}</p>
+                              </div>
+                            </div>
+                            <div className="text-xs leading-4 text-gray-500 whitespace-nowrap">
+                              Skill
+                            </div>
+                          </div>
+                          <div className="flex">
+                            <div className="flex justify-center w-28">
+                              <div class="ItemPanel_summaryLabel__3Nm32">
+                                <p>{todo[3].burst?.[0]}</p>
+                              </div>
+                              <div class="ItemPanel_arrows__1biWK">-{">"}</div>
+                              <div class="ItemPanel_summaryLabel__3Nm32">
+                                <p>{todo[3].burst?.[1]}</p>
+                              </div>
+                            </div>
+                            <div className="text-xs leading-4 text-gray-500 whitespace-nowrap">
+                              Burst
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </>
-              )}
-              <Button
-                disabled={i === 0}
-                onClick={() => console.log("reorder(i, -1)")}
-                className="rounded-l-xl"
-              >
-                L
-              </Button>
-              <Button
-                disabled={i === todos.length - 1}
-                onClick={() => console.log("reorder(i, 1)")}
-                className="rounded-r-xl"
-              >
-                R
-              </Button>
-              <table class="w-full">
-                {Object.entries(todo[4])
-                  .sort((a: any, b: any) => b[1] - a[1])
-                  .map(([id, amount]) => (
-                    <tr key={id + amount}>
-                      <td class="text-right border-b border-gray-700 py-1">
-                        <span
-                          className={`${
-                            amount === 0
-                              ? "line-through text-gray-600"
-                              : "text-white"
-                          } mr-2 whitespace-no-wrap`}
-                        >
-                          {numFormat.format(amount)}X
-                        </span>
-                      </td>
-                      <td class="border-b border-gray-700 py-1">
-                        <span
-                          className={
-                            amount === 0
-                              ? "line-through text-gray-600"
-                              : "text-white"
-                          }
-                        >
-                          <span class="w-6 inline-block">
-                            <img
-                              class="h-6 inline-block mr-1"
-                              src={`/images/items/${id}.png`}
-                              alt={id}
-                            />
-                          </span>
-                          {id}
-                        </span>
-                      </td>
-                    </tr>
+                </div>
+                <div className="flex justify-center flex-wrap">
+                  {Object.entries(todo[4]).map(([id, data]) => (
+                    <div key={id} className="">
+                      <SimpleRarityBox
+                        img={getUrl(data[1] as any, 45, 45)}
+                        rarity={data[2] as any}
+                        name={numFormat.format(data[0] as any)}
+                        alt={id}
+                        nameSeparateBlock
+                        className="w-10 h-10"
+                        classNameBlock="w-10"
+                      />
+                    </div>
                   ))}
-              </table>
-              <div class="flex mt-2 items-end">
-                <p class="flex-1 text-gray-400"># {i + 1}</p>
-                <Button
-                  onClick={() => console.log("askDeleteTodo(i)")}
-                  className="px-2"
-                >
-                  RM Delete
-                </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -166,33 +191,11 @@ const TodoPage = ({ teams }: TodoProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
-  const teams = require(`../_content/data/teams.json`) as Team[];
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const characters = (
-    await genshinData.characters({
-      select: ["id", "name", "element"],
-    })
-  ).reduce<Record<string, Character>>((map, val) => {
-    map[val.id] = val;
-    return map;
-  }, {});
-
-  const teamsf: TeamFull[] = teams.map((team) => {
-    return {
-      primary: team.primary.map((prim) => ({
-        character: characters[prim.characterId],
-        role: prim.role,
-      })),
-      alternatives: team.alternatives.map((alt) => ({
-        characters: alt.characters.map((c) => characters[c]),
-        substitutes: alt.substitutes.map((c) => characters[c]),
-      })),
-    };
-  });
 
   return {
-    props: { teams: teamsf, lngDict },
+    props: { lngDict },
   };
 };
 
