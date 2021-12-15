@@ -7,65 +7,41 @@
         "aquila_favonia",
         "primordial_jade_cutter"
       ],
-      "1": [
-        "skyward_blade",
-        "prototype_rancour",
-        "blackcliff_longsword",
-        "the_black_sword"
-      ],
+      "1": ["skyward_blade", "prototype_rancour", "the_black_sword"],
       "2": [
         "amenoma_kageuchi",
-        "the_flute",
         "lions_roar",
         "royal_longsword",
-        "iron_sting",
-        "dark_iron_sword"
+        "blackcliff_longsword",
+        "harbinger_of_dawn"
       ],
-      "3": [
-        "sword_of_descension",
-        "fillet_blade",
-        "harbinger_of_dawn",
-        "skyrider_sword"
-      ],
-      "4": ["cool_steel"]
+      "3": ["the_flute", "iron_sting", "sword_of_descension", "fillet_blade"],
+      "4": ["dark_iron_sword", "cool_steel", "skyrider_sword"]
     },
     "subdps": {
-      "0": [
-        "freedomsworn",
-        "primordial_jade_cutter",
-        "sacrificial_sword",
-        "festering_desire"
-      ],
+      "0": ["freedomsworn", "mistsplitter_reforged", "primordial_jade_cutter"],
       "1": [
         "skyward_blade",
-        "mistsplitter_reforged",
         "the_alley_flash",
-        "favonius_sword",
+        "sacrificial_sword",
+        "festering_desire",
         "harbinger_of_dawn"
       ],
       "2": [
         "amenoma_kageuchi",
-        "lions_roar",
-        "cinnabar_spindle",
+        "favonius_sword",
         "royal_longsword",
-        "iron_sting",
-        "dark_iron_sword"
+        "iron_sting"
       ],
-      "3": ["cool_steel", "skyrider_sword"],
-      "4": ["travelers_handy_sword"]
+      "3": ["lions_roar", "cinnabar_spindle"],
+      "4": ["dark_iron_sword", "cool_steel", "skyrider_sword"]
     },
     "support": {
-      "0": ["freedomsworn", "favonius_sword", "sacrificial_sword"],
-      "1": ["skyward_blade", "favonius_sword"],
-      "2": [
-        "summit_shaper",
-        "prototype_rancour",
-        "the_black_sword",
-        "festering_desire",
-        "skyrider_sword"
-      ],
-      "3": ["travelers_handy_sword"],
-      "4": []
+      "0": ["freedomsworn"],
+      "1": ["skyward_blade", "favonius_sword", "sacrificial_sword"],
+      "2": ["primordial_jade_cutter", "festering_desire", "skyrider_sword"],
+      "3": [],
+      "4": ["travelers_handy_sword"]
     }
   },
   "claymore": {
@@ -74,89 +50,83 @@
         "song_of_broken_pines",
         "wolfs_gravestone",
         "skyward_pride",
-        "the_unforged"
+        "the_unforged",
+        "redhorn_stonethresher"
       ],
       "1": [
         "prototype_archaic",
-        "blackcliff_slasher",
+        "whiteblind",
         "serpent_spine",
-        "lithic_blade",
-        "snowtombed_starsilver"
+        "snowtombed_starsilver",
+        "skyrider_greatsword"
       ],
-      "2": ["luxurious_sealord", "rainslasher", "royal_greatsword"],
-      "3": ["skyrider_greatsword", "bloodtainted_greatsword", "debate_club"],
-      "4": ["the_bell", "ferrous_shadow"]
-    },
-    "subdps": {
-      "0": ["wolfs_gravestone"],
-      "1": [
-        "skyward_pride",
-        "luxurious_sealord",
-        "akuoumaru",
-        "favonius_greatsword",
-        "sacrificial_greatsword"
-      ],
-      "2": [
-        "katsuragikiri_nagamasa",
+      "2": ["luxurious_sealord", "akuoumaru", "blackcliff_slasher"],
+      "3": [
+        "the_bell",
         "rainslasher",
         "royal_greatsword",
-        "whiteblind",
-        "serpent_spine"
+        "lithic_blade",
+        "debate_club"
       ],
-      "3": ["the_bell", "bloodtainted_greatsword"],
-      "4": ["white_iron_greatsword"]
+      "4": [
+        "white_iron_greatsword",
+        "ferrous_shadow",
+        "bloodtainted_greatsword"
+      ]
+    },
+    "subdps": {
+      "0": ["skyward_pride", "sacrificial_greatsword"],
+      "1": [
+        "katsuragikiri_nagamasa",
+        "luxurious_sealord",
+        "akuoumaru",
+        "favonius_greatsword"
+      ],
+      "2": [],
+      "3": ["rainslasher"],
+      "4": ["bloodtainted_greatsword"]
     },
     "support": {
-      "0": [
-        "song_of_broken_pines",
-        "wolfs_gravestone",
-        "favonius_greatsword",
-        "sacrificial_greatsword"
-      ],
-      "1": ["skyward_pride", "the_unforged", "the_bell"],
-      "2": ["katsuragikiri_nagamasa", "whiteblind"],
-      "3": ["white_iron_greatsword"],
+      "0": ["song_of_broken_pines", "wolfs_gravestone"],
+      "1": ["skyward_pride", "favonius_greatsword", "sacrificial_greatsword"],
+      "2": ["katsuragikiri_nagamasa"],
+      "3": [],
       "4": ["ferrous_shadow"]
     }
   },
   "polearm": {
     "maindps": {
-      "0": ["staff_of_homa", "primordial_jade_wingedspear", "wavebreakers_fin"],
-      "1": [
-        "engulfing_lightning",
-        "vortex_vanquisher",
-        "skyward_spine",
-        "the_catch",
+      "0": ["staff_of_homa", "primordial_jade_wingedspear"],
+      "1": ["engulfing_lightning", "vortex_vanquisher", "skyward_spine"],
+      "2": [
+        "wavebreakers_fin",
+        "prototype_starglitter",
         "crescent_pike",
         "blackcliff_pole",
-        "deathmatch",
-        "lithic_spear",
         "dragonspine_spear"
       ],
-      "2": ["dragons_bane", "royal_spear", "prototype_starglitter"],
-      "3": ["white_tassel"],
-      "4": ["halberd", "black_tassel"]
+      "3": [
+        "the_catch",
+        "dragons_bane",
+        "royal_spear",
+        "deathmatch",
+        "lithic_spear"
+      ],
+      "4": ["halberd", "white_tassel", "black_tassel"]
     },
     "subdps": {
-      "0": ["engulfing_lightning", "staff_of_homa"],
-      "1": [
-        "primordial_jade_wingedspear",
-        "skyward_spine",
-        "the_catch",
-        "wavebreakers_fin",
-        "dragons_bane",
-        "favonius_lance"
-      ],
-      "2": ["kitain_cross_spear", "royal_spear"],
-      "3": [],
+      "0": ["engulfing_lightning", "staff_of_homa", "the_catch"],
+      "1": ["skyward_spine", "wavebreakers_fin", "favonius_lance"],
+      "2": ["kitain_cross_spear", "dragons_bane"],
+      "3": ["prototype_starglitter"],
       "4": ["black_tassel"]
     },
     "support": {
-      "0": ["engulfing_lightning", "favonius_lance"],
-      "1": ["vortex_vanquisher", "staff_of_homa", "prototype_starglitter"],
-      "2": ["skyward_spine", "deathmatch"],
-      "3": ["black_tassel"],
-      "4": []
+      "0": ["engulfing_lightning", "staff_of_homa", "skyward_spine"],
+      "1": ["the_catch", "favonius_lance", "prototype_starglitter"],
+      "2": [],
+      "3": [],
+      "4": ["black_tassel"]
     }
   },
   "bow": {
@@ -168,81 +138,73 @@
         "amos_bow",
         "rust"
       ],
-      "1": [
-        "mitternachts_waltz",
-        "mouuns_moon",
-        "windblume_ode",
-        "hamayumi",
-        "blackcliff_warbow",
-        "the_viridescent_hunt"
+      "1": ["mouuns_moon", "blackcliff_warbow", "the_viridescent_hunt"],
+      "2": ["mitternachts_waltz", "windblume_ode", "hamayumi", "compound_bow"],
+      "3": [
+        "predator",
+        "royal_bow",
+        "prototype_crescent",
+        "messenger",
+        "raven_bow",
+        "slingshot"
       ],
-      "2": ["predator", "royal_bow", "prototype_crescent", "compound_bow"],
-      "3": ["raven_bow", "sharpshooters_oath", "slingshot"],
-      "4": ["messenger"]
+      "4": ["recurve_bow", "sharpshooters_oath"]
     },
     "subdps": {
-      "0": [
-        "polar_star",
-        "elegy_for_the_end",
-        "skyward_harp",
-        "the_stringless"
-      ],
+      "0": ["polar_star", "the_stringless"],
       "1": [
+        "elegy_for_the_end",
         "mouuns_moon",
-        "alley_hunter",
-        "windblume_ode",
         "favonius_warbow",
         "sacrificial_bow"
       ],
-      "2": ["royal_bow"],
-      "3": ["raven_bow"],
-      "4": ["recurve_bow", "sharpshooters_oath"]
+      "2": ["windblume_ode"],
+      "3": ["alley_hunter"],
+      "4": ["sharpshooters_oath"]
     },
     "support": {
-      "0": ["elegy_for_the_end", "favonius_warbow", "sacrificial_bow"],
-      "1": ["the_viridescent_hunt"],
+      "0": ["elegy_for_the_end"],
+      "1": ["favonius_warbow", "sacrificial_bow"],
       "2": [],
-      "3": ["recurve_bow"],
-      "4": []
+      "3": ["the_viridescent_hunt"],
+      "4": ["recurve_bow"]
     }
   },
   "catalyst": {
     "maindps": {
-      "0": ["skyward_atlas", "lost_prayer_to_the_sacred_winds", "the_widsith"],
+      "0": ["the_widsith"],
       "1": [
-        "everlasting_moonglow",
+        "skyward_atlas",
         "memory_of_dust",
+        "lost_prayer_to_the_sacred_winds",
         "dodoco_tales",
-        "eye_of_perception",
-        "solar_pearl",
-        "blackcliff_agate"
-      ],
-      "2": ["royal_grimoire", "frostbearer"],
-      "3": ["magic_guide", "emerald_orb"],
-      "4": ["twin_nephrite"]
-    },
-    "subdps": {
-      "0": ["skyward_atlas", "the_widsith"],
-      "1": [
-        "wine_and_song",
-        "favonius_codex",
-        "sacrificial_fragments",
         "solar_pearl"
       ],
-      "2": ["royal_grimoire", "prototype_amber", "mappa_mare"],
-      "3": ["magic_guide"],
-      "4": ["otherworldly_story", "emerald_orb"]
+      "2": [
+        "everlasting_moonglow",
+        "wine_and_song",
+        "royal_grimoire",
+        "blackcliff_agate"
+      ],
+      "3": ["eye_of_perception", "frostbearer"],
+      "4": ["twin_nephrite", "magic_guide", "emerald_orb"]
+    },
+    "subdps": {
+      "0": ["the_widsith"],
+      "1": ["skyward_atlas", "favonius_codex", "sacrificial_fragments"],
+      "2": ["hakushin_ring", "solar_pearl", "mappa_mare"],
+      "3": ["wine_and_song", "otherworldly_story"],
+      "4": ["magic_guide", "emerald_orb"]
     },
     "support": {
       "0": ["the_widsith", "thrilling_tales_of_dragon_slayers"],
-      "1": ["favonius_codex", "sacrificial_fragments"],
+      "1": ["everlasting_moonglow", "favonius_codex", "prototype_amber"],
       "2": [
-        "memory_of_dust",
         "lost_prayer_to_the_sacred_winds",
         "hakushin_ring",
-        "prototype_amber"
+        "sacrificial_fragments"
       ],
-      "3": ["everlasting_moonglow", "twin_nephrite", "otherworldly_story"],
+      "3": ["wine_and_song", "otherworldly_story"],
       "4": []
     }
   }
