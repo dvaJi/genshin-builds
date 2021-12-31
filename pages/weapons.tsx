@@ -246,7 +246,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       "id",
       "rarity",
       "name",
-      "ascensions",
       "stats",
       "refinements",
       "type",
@@ -255,7 +254,13 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   const common = require(`../_content/data/common.json`)[locale];
 
-  return { props: { weapons, lngDict, common } };
+  return {
+    props: {
+      weapons,
+      lngDict,
+      common,
+    },
+  };
 };
 
 export default WeaponsPage;
