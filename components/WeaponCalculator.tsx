@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Weapon } from "genshin-data";
 
 import Button from "./Button";
@@ -9,6 +9,7 @@ import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";
 import useIntl from "@hooks/use-intl";
 import useLazyQuery from "@hooks/use-lazy-gql";
+import { todos } from "@state/todo";
 
 const QUERY = `
   query CharacterAscensionMaterials(
@@ -21,6 +22,7 @@ const QUERY = `
       img
       name
       amount
+      rarity
     }
   }
 `;
@@ -39,9 +41,9 @@ type Result = {
 const WeaponCalculator = ({ weapons }: Props) => {
   const [weapon, setWeapon] = useState<Weapon>(weapons[10]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
-  const [intendedLevel, setIntendedLevel] = useState(levels[0]);
+  const [intendedLevel, setIntendedLevel] = useState(levels[13]);
   const { t, localeGI } = useIntl();
-  const [calculate, { called, loading, data }] = useLazyQuery(QUERY);
+  const [calculate, { called, loading, data, reset }] = useLazyQuery(QUERY);
 
   const canCalculate = useMemo(() => {
     const weaponIsSelected = !!weapon;
@@ -49,6 +51,46 @@ const WeaponCalculator = ({ weapons }: Props) => {
 
     return weaponIsSelected && intendedLevelIsAcceptable;
   }, [weapon, currentLevel, intendedLevel]);
+
+  const addToTodo = useCallback(() => {
+    const resourcesMap = data.calculateWeaponLevel.reduce(
+      (map: any, item: any) => {
+        map[item.id] = [
+          item.amount,
+          item.img.replace("/", "").replaceAll(/\/.*.png/g, ""),
+          item.rarity,
+        ];
+        return map;
+      },
+      {} as Record<string, number>
+    );
+
+    todos.set([
+      ...(todos.get() || []),
+      [
+        { id: weapon.id, name: weapon.name, r: weapon.rarity },
+        "weapons",
+        [
+          currentLevel.lvl,
+          currentLevel.asc,
+          intendedLevel.lvl,
+          intendedLevel.asc,
+        ],
+        {},
+        resourcesMap,
+        resourcesMap,
+      ],
+    ]);
+  }, [
+    currentLevel.asc,
+    currentLevel.lvl,
+    data?.calculateWeaponLevel,
+    intendedLevel.asc,
+    intendedLevel.lvl,
+    weapon.id,
+    weapon.name,
+    weapon.rarity,
+  ]);
 
   const numFormat = Intl.NumberFormat();
 
@@ -61,9 +103,10 @@ const WeaponCalculator = ({ weapons }: Props) => {
         <div>
           <Select
             options={weapons.map((c) => ({ id: c.id, name: c.name }))}
-            onChange={(option) =>
-              setWeapon(weapons.find((c) => c.id === option.id)!!)
-            }
+            onChange={(option) => {
+              setWeapon(weapons.find((c) => c.id === option.id)!!);
+              reset();
+            }}
             selectedIconRender={(selected) => (
               <img
                 className="w-6 h-6 mr-2"
@@ -91,27 +134,27 @@ const WeaponCalculator = ({ weapons }: Props) => {
             {levels.map((level) => (
               <button
                 key={level.lvl + level.asclLvl}
-                className="m-1"
-                onClick={() => setCurrentLevel(level)}
+                className={clsx(
+                  "flex items-center justify-center font-semibold rounded-full w-10 h-10 m-1 leading-none flex-col transition duration-100 border-2 border-vulcan-400 border-opacity-20 hover:border-opacity-100 focus:border-vulcan-500 focus:outline-none",
+                  level.lvl === currentLevel.lvl &&
+                    level.asclLvl === currentLevel.asclLvl
+                    ? "text-white border-opacity-100 bg-vulcan-600"
+                    : ""
+                )}
+                onClick={() => {
+                  setCurrentLevel(level);
+                  reset();
+                }}
               >
-                <div
-                  className={clsx(
-                    "flex items-center justify-center font-semibold rounded-full w-10 h-10 leading-none flex-col hover:bg-vulcan-400",
-                    level.lvl === currentLevel.lvl &&
-                      level.asclLvl === currentLevel.asclLvl
-                      ? "bg-gray-500"
-                      : "bg-vulcan-500"
-                  )}
-                >
-                  <div className="">{level.lvl}</div>
-                  <img
-                    src={getUrl(`/ascension.png`, 16, 16)}
-                    className={clsx("w-4 opacity-25", {
-                      "opacity-100": level.asc,
-                    })}
-                    alt="ascension"
-                  />
-                </div>
+                <div className="font-semibold">{level.lvl}</div>
+                <img
+                  src={getUrl(`/ascension.png`, 16, 16)}
+                  className={clsx("w-4", {
+                    "opacity-100": level.asc,
+                    "opacity-25": !level.asc,
+                  })}
+                  alt="ascension"
+                />
               </button>
             ))}
           </div>
@@ -124,27 +167,26 @@ const WeaponCalculator = ({ weapons }: Props) => {
             {levels.map((level) => (
               <button
                 key={level.lvl + level.asclLvl}
-                className="m-1"
-                onClick={() => setIntendedLevel(level)}
+                className={clsx(
+                  "flex items-center justify-center font-semibold rounded-full w-10 h-10 m-1 leading-none flex-col transition duration-100 border-2 border-vulcan-400 border-opacity-20 hover:border-opacity-100 focus:border-vulcan-500 focus:outline-none",
+                  level.lvl === intendedLevel.lvl &&
+                    level.asclLvl === intendedLevel.asclLvl
+                    ? "text-white border-opacity-100 bg-vulcan-600"
+                    : ""
+                )}
+                onClick={() => {
+                  setIntendedLevel(level);
+                  reset();
+                }}
               >
-                <div
-                  className={clsx(
-                    "flex items-center justify-center font-semibold rounded-full w-10 h-10 leading-none flex-col hover:bg-vulcan-400",
-                    level.lvl === intendedLevel.lvl &&
-                      level.asclLvl === intendedLevel.asclLvl
-                      ? "bg-gray-500"
-                      : "bg-vulcan-500"
-                  )}
-                >
-                  <div className="">{level.lvl}</div>
-                  <img
-                    src={getUrl(`/ascension.png`, 16, 16)}
-                    className={clsx("w-4 opacity-25", {
-                      "opacity-100": level.asc,
-                    })}
-                    alt="ascension"
-                  />
-                </div>
+                <div className="">{level.lvl}</div>
+                <img
+                  src={getUrl(`/ascension.png`, 16, 16)}
+                  className={clsx("w-4 opacity-25", {
+                    "opacity-100": level.asc,
+                  })}
+                  alt="ascension"
+                />
               </button>
             ))}
           </div>
@@ -200,6 +242,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
                   ))}
                 </tbody>
               </table>
+              <Button onClick={addToTodo}>Add Todo</Button>
             </div>
           </div>
         )}

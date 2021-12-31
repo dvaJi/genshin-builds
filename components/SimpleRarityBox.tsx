@@ -44,6 +44,7 @@ const SimpleRarityBox = ({
           src={img}
           alt={alt ?? name}
           title={alt ?? name}
+          draggable="false"
         />
         {!nameSeparateBlock && name && (
           <span

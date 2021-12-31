@@ -1,17 +1,20 @@
 import { persistentAtom } from "@nanostores/persistent";
 
-type ID = { id: string; name: string };
+type ID = { id: string; name: string, r: number };
 type Type = string;
 type Current = number;
 type Intended = number;
-type Level = [Current, Intended];
+type CurrentAscension = boolean;
+type IntendedAscension = boolean;
+type Level = [Current, CurrentAscension, Intended, IntendedAscension];
 type Stats = {
-  aa?: [Current, Intended];
+  normal_attack?: [Current, Intended];
   skill?: [Current, Intended];
   burst?: [Current, Intended];
 };
 type Resources = { [id: string]: [number, string, number] };
-export type Todo = [ID, Type, Level, Stats, Resources[]];
+type ResourcesOriginal = { [id: string]: [number, string, number] };
+export type Todo = [ID, Type, Level, Stats, Resources[], ResourcesOriginal[]];
 
 export const todos = persistentAtom<Todo[]>("todo", [], {
   encode(value) {

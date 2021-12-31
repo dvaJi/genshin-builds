@@ -5,6 +5,7 @@ type UseLazyQuery = {
   loading: boolean;
   error: any;
   called: boolean;
+  reset: () => void;
 };
 
 function useLazyQuery(
@@ -61,7 +62,14 @@ function useLazyQuery(
     [query]
   );
 
-  return [fetchData, { data, loading, error, called }];
+  const reset = useCallback(() => {
+    setData(null);
+    setLoading(false);
+    setError(null);
+    setCalled(false);
+  }, []);
+
+  return [fetchData, { data, loading, error, called, reset }];
 }
 
 export default useLazyQuery;

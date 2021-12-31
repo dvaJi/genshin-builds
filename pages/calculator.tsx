@@ -54,10 +54,10 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
-    select: ["id", "name"],
+    select: ["id", "name", "rarity"],
   });
   const weapons = await genshinData.weapons({
-    select: ["id", "name"],
+    select: ["id", "name", "rarity"],
   });
 
   return {
