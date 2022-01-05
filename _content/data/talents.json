@@ -75,8 +75,22 @@
     "Thu": ["barbara", "amber", "klee", "tartaglia", "diona", "sucrose", "aloy"]
   },
   "Taishan Mansion": {
-    "Tue": ["xiangling", "chongyun", "ganyu", "hu_tao", "kaedehara_kazuha"],
-    "Fri": ["xiangling", "chongyun", "ganyu", "hu_tao", "kaedehara_kazuha"],
+    "Tue": [
+      "xiangling",
+      "chongyun",
+      "ganyu",
+      "hu_tao",
+      "kaedehara_kazuha",
+      "yun_jin"
+    ],
+    "Fri": [
+      "xiangling",
+      "chongyun",
+      "ganyu",
+      "hu_tao",
+      "kaedehara_kazuha",
+      "yun_jin"
+    ],
     "Sun": [
       "xiangling",
       "beidou",
@@ -92,12 +106,14 @@
       "hu_tao",
       "kaedehara_kazuha",
       "yanfei",
+      "shenhe",
+      "yun_jin",
       "traveler_geo"
     ],
     "Wed": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei", "traveler_geo"],
     "Sat": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei", "traveler_geo"],
-    "Mon": ["xiao", "ningguang", "qiqi", "keqing"],
-    "Thu": ["xiao", "ningguang", "qiqi", "keqing"]
+    "Mon": ["xiao", "ningguang", "qiqi", "keqing", "shenhe"],
+    "Thu": ["xiao", "ningguang", "qiqi", "keqing", "shenhe"]
   },
   "Cecilia Garden": {
     "Mon": [
@@ -380,6 +396,7 @@
       "staff_of_homa",
       "vortex_vanquisher",
       "primordial_jade_wingedspear",
+      "calamity_queller",
       "emerald_orb",
       "twin_nephrite",
       "solar_pearl",
@@ -407,6 +424,7 @@
       "dragons_bane",
       "blackcliff_pole",
       "royal_spear",
+      "calamity_queller",
       "twin_nephrite",
       "prototype_amber",
       "eye_of_perception",
@@ -425,6 +443,7 @@
       "dragons_bane",
       "blackcliff_pole",
       "royal_spear",
+      "calamity_queller",
       "twin_nephrite",
       "prototype_amber",
       "eye_of_perception",
