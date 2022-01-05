@@ -10,20 +10,23 @@ import {
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 
-import { todos as todosAtom } from "../state/todo";
+import {
+  getSummary,
+  getSummaryOriginal,
+  todos as todosAtom,
+} from "../state/todo";
 
 import useIntl from "@hooks/use-intl";
-import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 import Button from "@components/Button";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { getUrl } from "@lib/imgUrl";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import clsx from "clsx";
 import { format } from "date-fns";
-import { Popover } from "react-tiny-popover";
 import { usePopover } from "@hooks/use-popover";
+import Input from "@components/Input";
 
 type TodoProps = {
   planning: Record<string, any>;
@@ -33,7 +36,6 @@ type TodoProps = {
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const TodoPage = ({ planning }: TodoProps) => {
-  const [open, trigger, content] = usePopover(false);
   const todos = useStore(todosAtom);
   // TODO: Calculate total Resin (amount and days)
   // Tabs to select days
@@ -41,21 +43,18 @@ const TodoPage = ({ planning }: TodoProps) => {
   // Items that needs resin, separated by resin cost, by type, and grouped by rarity
   const [currentDay, setCurrentDay] = useState(format(new Date(), "iii"));
 
-  const summary = useMemo<any>(() => {
-    return todos.reduce<any>((acc, value) => {
-      for (const [id, data] of Object.entries(value[4])) {
-        // if (!isSunday && itemList[id].day && itemList[id].day.includes(today)) {
-        //   if (todayOnly[id] === undefined) {
-        //     todayOnly[id] = 0;
-        //   }
-        //   todayOnly[id] += amount;
-        // }
-        if (acc[id] === undefined) {
-          console.log(data);
-          acc[id] = [0, data[1], data[2]];
+  const summary = useStore(getSummary);
+  const summaryOriginal = useStore(getSummaryOriginal);
+  const todoIdsByResource = useMemo(() => {
+    return todos.reduce<Record<string, any[]>>((acc, todo) => {
+      Object.keys(todo[4]).forEach((key) => {
+        if (!acc[key]) {
+          acc[key] = [];
         }
-        acc[id][0] += data[0];
-      }
+
+        acc[key].push([todo[0].id, todo[5][key][0] - todo[4][key][0]]);
+      });
+
       return acc;
     }, {});
   }, [todos]);
@@ -86,23 +85,46 @@ const TodoPage = ({ planning }: TodoProps) => {
     }, {});
   }, [currentDay, planning, todos]);
 
-  const removeTodo = (id: string) => {
-    todosAtom.set(todos.filter((todo) => todo[0].id !== id));
-  };
+  const removeTodo = useCallback(
+    (id: string) => {
+      todosAtom.set(todos.filter((todo) => todo[0].id !== id));
+    },
+    [todos]
+  );
 
   // Move todos based on index to a new index
-  const moveTodo = (id: string, index: number, newIndex: number) => {
-    const todo = todos.find((todo) => todo[0].id === id);
-    if (todo) {
-      const newTodos = [...todos];
-      newTodos.splice(index, 1);
-      newTodos.splice(newIndex, 0, todo);
-      todosAtom.set(newTodos);
-    }
-  };
+  const moveTodo = useCallback(
+    (id: string, index: number, newIndex: number) => {
+      const todo = todos.find((todo) => todo[0].id === id);
+      if (todo) {
+        const newTodos = [...todos];
+        newTodos.splice(index, 1);
+        newTodos.splice(newIndex, 0, todo);
+        todosAtom.set(newTodos);
+      }
+    },
+    [todos]
+  );
+
+  const updateTodoResourcesById = useCallback(
+    (id: string, newData: any) => {
+      const todo = todos.find((todo) => todo[0].id === id);
+      if (todo) {
+        todo[4][newData.id][0] = newData.value;
+        console.log(
+          "updateTodoResourcesById",
+          id,
+          newData,
+          todo[4][newData.id][0]
+        );
+        todosAtom.set(todos);
+      }
+    },
+    [todos]
+  );
 
   const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
-  console.log(todos, summary, planning);
+  console.log(todos, summary, planning, todoIdsByResource);
   return (
     <div className="px-4">
       <Metadata
@@ -121,23 +143,20 @@ const TodoPage = ({ planning }: TodoProps) => {
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <div className="inline-grid grid-cols-4">
+      <div className="inline-grid grid-cols-1 lg:grid-cols-4">
         <div className="">
           <div>
             <h1>Farm Today</h1>
             <div className="flex justify-center flex-wrap">
               {Object.entries(farmToday).map(([id, data]) => (
-                <div key={id}>
-                  <SimpleRarityBox
-                    img={getUrl(`/${data[1]}/${id}.png`, 45, 45)}
-                    rarity={data[2] as any}
-                    name={numFormat.format(data[0] as any)}
-                    alt={id}
-                    nameSeparateBlock
-                    className="w-10 h-10"
-                    classNameBlock="w-10"
-                  />
-                </div>
+                <ItemPopoverCommon
+                  key={id}
+                  id={id}
+                  data={data}
+                  originalData={summaryOriginal[id]}
+                  idsByResource={todoIdsByResource[id]}
+                  handleOnChange={(newValues) => console.log(newValues)}
+                />
               ))}
             </div>
           </div>
@@ -145,22 +164,19 @@ const TodoPage = ({ planning }: TodoProps) => {
             <h1>Summary</h1>
             <div className="flex justify-center flex-wrap">
               {Object.entries(summary).map(([id, data]) => (
-                <div key={id} className="">
-                  <SimpleRarityBox
-                    img={getUrl(`/${data[1]}/${id}.png`, 45, 45)}
-                    rarity={data[2] as any}
-                    name={numFormat.format(data[0] as any)}
-                    alt={id}
-                    nameSeparateBlock
-                    className="w-10 h-10"
-                    classNameBlock="w-10"
-                  />
-                </div>
+                <ItemPopoverCommon
+                  key={id}
+                  id={id}
+                  data={data}
+                  originalData={summaryOriginal[id]}
+                  idsByResource={todoIdsByResource[id]}
+                  handleOnChange={(newValues) => console.log(newValues)}
+                />
               ))}
             </div>
           </div>
         </div>
-        <div className="col-span-3 inline-grid grid-cols-4 gap-3 m-3">
+        <div className="col-span-3 inline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 m-3">
           {todos.map((todo, i) => (
             <div
               key={todo[0].id + i}
@@ -276,18 +292,15 @@ const TodoPage = ({ planning }: TodoProps) => {
 
                   <div className="flex justify-center flex-wrap">
                     {Object.entries(todo[4]).map(([id, data]) => (
-                      <div key={id} className="cursor-pointer" {...trigger}>
-                        <SimpleRarityBox
-                          img={getUrl(`/${data[1]}/${id}.png`, 45, 45)}
-                          rarity={data[2] as any}
-                          name={numFormat.format(data[0] as any)}
-                          alt={id}
-                          nameSeparateBlock
-                          className="w-10 h-10"
-                          classNameBlock="w-10"
-                        />
-                        {open && <div {...content}>Popover content</div>}
-                      </div>
+                      <ItemPopover
+                        key={id}
+                        id={id}
+                        data={data}
+                        originalData={todo[5][id]}
+                        handleOnChange={(newValues) =>
+                          updateTodoResourcesById(todo[0].id, newValues)
+                        }
+                      />
                     ))}
                   </div>
 
@@ -306,6 +319,200 @@ const TodoPage = ({ planning }: TodoProps) => {
     </div>
   );
 };
+
+function ItemPopoverCommon({
+  id,
+  data,
+  originalData,
+  idsByResource,
+  handleOnChange,
+}) {
+  const [inventory, setInventory] = useState(originalData[0] - data[0]);
+  const [open, trigger, content] = usePopover(false);
+  const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
+
+  const remaining = useMemo(() => {
+    return originalData[0] - inventory;
+  }, [inventory, originalData]);
+
+  const remainingById = useMemo(() => {
+    let remainingInventory = originalData[0];
+    return idsByResource.map((data, i) => {
+      // Check if this can be reversed, it should be 0 if it matches the originalData value
+      if (remainingInventory < 0) {
+        return data[1];
+      }
+      console.log(i, data[1], remainingInventory, remainingInventory - data[1]);
+      const rem = remainingInventory - data[1];
+
+      remainingInventory -= data[1];
+
+      return rem < 0 ? 0 : rem;
+    });
+  }, [idsByResource, originalData]);
+
+  const onChange = (value: number) => {
+    setInventory(value);
+  };
+
+  return (
+    <div className="cursor-pointer" {...trigger}>
+      <SimpleRarityBox
+        img={getUrl(`/${data[1]}/${id}.png`, 45, 45)}
+        rarity={data[2] as any}
+        name={numFormat.format(data[0] as any)}
+        alt={id}
+        nameSeparateBlock
+        className={clsx("w-12 h-12", { grayscale: data[0] === 0 })}
+        classNameBlock="w-12"
+      />
+      {open && (
+        <div
+          {...content}
+          className="bg-vulcan-800 border-2 border-vulcan-800 rounded shadow-2xl z-1000"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
+            {id}
+          </div>
+
+          <div className="p-2 text-sm">
+            <span>Priority:</span>
+            <div className="text-xs">
+              {idsByResource.map((data, i) => (
+                <span
+                  className={clsx("block", {
+                    "line-through": remainingById[i] === 0,
+                  })}
+                  key={id}
+                >
+                  {i + 1} - {data[0]} - {remainingById[i]}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="px-2 text-sm">Total remaining: {remaining}</div>
+          <div className="px-2 text-sm">Inventory: {inventory}</div>
+          <div className="p-2 flex items-center content-around">
+            <button
+              disabled={remaining === originalData[0]}
+              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              onClick={() => onChange(inventory - 1)}
+            >
+              -
+            </button>
+            <Input
+              type="number"
+              className="w-24"
+              value={inventory}
+              onChange={(e) => onChange(Number(e.target.value))}
+              min={0}
+              max={originalData[0]}
+            />
+            <button
+              disabled={remaining === 0}
+              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              onClick={() => onChange(inventory + 1)}
+            >
+              +
+            </button>
+          </div>
+          <div className="flex justify-center">
+            <Button
+              className="py-1 mb-2"
+              onClick={() => {
+                handleOnChange({ id, value: data[0] - inventory });
+                setInventory(0);
+                // close the popover
+                trigger.onClick();
+              }}
+            >
+              Save and Close
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ItemPopover({ id, data, originalData, handleOnChange }) {
+  const [inventory, setInventory] = useState(originalData[0] - data[0]);
+  const [open, trigger, content] = usePopover(false);
+  const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
+
+  const remaining = useMemo(() => {
+    return originalData[0] - inventory;
+  }, [inventory, originalData]);
+
+  const onChange = (value: number) => {
+    console.log(id, value);
+    setInventory(value);
+  };
+
+  return (
+    <div className="cursor-pointer" {...trigger}>
+      <SimpleRarityBox
+        img={getUrl(`/${data[1]}/${id}.png`, 45, 45)}
+        rarity={data[2] as any}
+        name={numFormat.format(data[0] as any)}
+        alt={id}
+        nameSeparateBlock
+        className={clsx("w-11 h-11", { grayscale: data[0] === 0 })}
+        classNameBlock="w-11"
+      />
+      {open && (
+        <div
+          {...content}
+          className="bg-vulcan-800 border-2 border-vulcan-800 rounded shadow-2xl z-1000"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
+            {id}
+          </div>
+          <div className="p-2">Remaining: {remaining}</div>
+          <div className="px-2 text-xs italic">Inventory: {inventory}</div>
+          <div className="p-2 flex items-center content-around">
+            <button
+              disabled={remaining === originalData[0]}
+              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              onClick={() => onChange(inventory - 1)}
+            >
+              -
+            </button>
+            <Input
+              type="number"
+              className="w-24"
+              value={inventory}
+              onChange={(e) => onChange(Number(e.target.value))}
+              min={0}
+              max={originalData[0]}
+            />
+            <button
+              disabled={remaining === 0}
+              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              onClick={() => onChange(inventory + 1)}
+            >
+              +
+            </button>
+          </div>
+          <div className="flex justify-center">
+            <Button
+              onClick={() => {
+                handleOnChange({ id, value: data[0] - inventory });
+                setInventory(0);
+                // close the popover
+                trigger.onClick();
+              }}
+            >
+              Save and Close
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);

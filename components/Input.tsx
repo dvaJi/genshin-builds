@@ -10,7 +10,7 @@ const Input = forwardRef<HTMLInputElement, ButtonProps>(
         <input
           ref={ref}
           className={clsx(
-            "w-full pl-4 min-h-full pr-4 text-white placeholder-gray-500 leading-none bg-transparent border-none focus:outline-none",
+            "w-full pl-4 min-h-full text-white placeholder-gray-500 leading-none bg-transparent border-none focus:outline-none",
             className
           )}
           {...props}

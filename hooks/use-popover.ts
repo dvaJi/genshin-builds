@@ -46,7 +46,7 @@ const useClickOutside = <E extends HTMLElement>(
   // useEffect wrapper to be safe for concurrent mode
   useEffect(() => {
     callbackRef.current = handler;
-  });
+  }, [handler, dependencies]);
 
   useEffect(() => {
     document?.addEventListener("click", outsideClickHandler);
@@ -96,7 +96,7 @@ const usePopover = <T extends HTMLElement, C extends HTMLElement>(
   }, []);
 
   const [open, setOpen] = useState(defaultOpen);
-  const toggle = useCallback(() => setOpen(!open), []);
+  const toggle = useCallback(() => setOpen(!open), [open]);
   const close = useCallback(() => setOpen(false), []);
 
   useEscapeHandler(close, []);
