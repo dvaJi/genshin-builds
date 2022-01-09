@@ -55,11 +55,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
   const addToTodo = useCallback(() => {
     const resourcesMap = data.calculateWeaponLevel.reduce(
       (map: any, item: any) => {
-        map[item.id] = [
-          item.amount,
-          item.img.replace("/", "").replaceAll(/\/.*.png/g, ""),
-          item.rarity,
-        ];
+        map[item.id] = item.amount;
         return map;
       },
       {} as Record<string, number>

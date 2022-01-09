@@ -13,8 +13,8 @@ type Stats = {
   skill?: [Current, Intended];
   burst?: [Current, Intended];
 };
-type Resources = { [id: string]: [number, string, number] };
-type ResourcesOriginal = { [id: string]: [number, string, number] };
+export type Resources = { [id: string]: number };
+type ResourcesOriginal = { [id: string]: number };
 export type Todo = [ID, Type, Level, Stats, Resources, ResourcesOriginal];
 
 export const todos = persistentAtom<Todo[]>("todo", [], {
@@ -31,39 +31,19 @@ export const todos = persistentAtom<Todo[]>("todo", [], {
 });
 
 export const getSummary = computed(todos, (list: Todo[]) => {
-  return list.reduce<any>((acc, value) => {
-    for (const [id, data] of Object.entries(value[4])) {
-      // if (!isSunday && itemList[id].day && itemList[id].day.includes(today)) {
-      //   if (todayOnly[id] === undefined) {
-      //     todayOnly[id] = 0;
-      //   }
-      //   todayOnly[id] += amount;
-      // }
-      if (acc[id] === undefined) {
-        console.log(data);
-        acc[id] = [0, data[1], data[2]];
-      }
-      acc[id][0] += data[0];
-    }
-    return acc;
-  }, {});
-});
+  const summary: Record<string, number> = {};
+  const originalSummary: Record<string, number> = {};
 
-export const getSummaryOriginal = computed(todos, (list: Todo[]) => {
-  return list.reduce<any>((acc, value) => {
-    for (const [id, data] of Object.entries(value[5])) {
-      // if (!isSunday && itemList[id].day && itemList[id].day.includes(today)) {
-      //   if (todayOnly[id] === undefined) {
-      //     todayOnly[id] = 0;
-      //   }
-      //   todayOnly[id] += amount;
-      // }
-      if (acc[id] === undefined) {
-        console.log(data);
-        acc[id] = [0, data[1], data[2]];
+  list.forEach((todo) => {
+    Object.entries(todo[4]).forEach(([id, value]) => {
+      if (!summary[id]) {
+        summary[id] = 0;
+        originalSummary[id] = 0;
       }
-      acc[id][0] += data[0];
-    }
-    return acc;
-  }, {});
+      summary[id] += value;
+      originalSummary[id] += todo[5][id];
+    });
+  });
+
+  return { summary, originalSummary };
 });

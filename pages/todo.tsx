@@ -1,3 +1,4 @@
+import { useCallback, useMemo, useState } from "react";
 import { GetStaticProps } from "next";
 import { useStore } from "@nanostores/react";
 import GenshinData from "genshin-data";
@@ -6,84 +7,98 @@ import {
   CgChevronRight,
   CgChevronLeft,
 } from "react-icons/cg";
-
-import Ads from "@components/Ads";
-import Metadata from "@components/Metadata";
-
-import {
-  getSummary,
-  getSummaryOriginal,
-  todos as todosAtom,
-} from "../state/todo";
-
-import useIntl from "@hooks/use-intl";
-import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
-import Button from "@components/Button";
-import { useCallback, useMemo, useState } from "react";
-import { getUrl } from "@lib/imgUrl";
-import SimpleRarityBox from "@components/SimpleRarityBox";
 import clsx from "clsx";
 import { format } from "date-fns";
-import { usePopover } from "@hooks/use-popover";
-import Input from "@components/Input";
+
+import Ads from "@components/Ads";
+import Button from "@components/Button";
+import Metadata from "@components/Metadata";
+import ItemPopover from "@components/ItemPopover";
+import ItemPopoverSummary from "@components/ItemPopoverSummary";
+
+import { getSummary, todos as todosAtom } from "../state/todo";
+
+import useIntl from "@hooks/use-intl";
+import { getUrl } from "@lib/imgUrl";
+import { getLocale } from "@lib/localData";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+
+import { localeToLang } from "@utils/locale-to-lang";
 
 type TodoProps = {
   planning: Record<string, any>;
   common: Record<string, string>;
+  materialsMap: Record<string, any>;
 };
 
-const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-const TodoPage = ({ planning }: TodoProps) => {
+const TodoPage = ({ planning, materialsMap }: TodoProps) => {
+  const [currentDay] = useState(format(new Date(), "iii"));
   const todos = useStore(todosAtom);
-  // TODO: Calculate total Resin (amount and days)
-  // Tabs to select days
-  // Items that do not needs resin (separated by type, and grouped by rarity)
-  // Items that needs resin, separated by resin cost, by type, and grouped by rarity
-  const [currentDay, setCurrentDay] = useState(format(new Date(), "iii"));
+  // const { summary, originalSummary } = useStore(getSummary);
+  const { t } = useIntl();
 
-  const summary = useStore(getSummary);
-  const summaryOriginal = useStore(getSummaryOriginal);
+  const { summary, originalSummary } = useMemo(() => {
+    const summary: Record<string, number> = {};
+    const originalSummary: Record<string, number> = {};
+
+    todos.forEach((todo) => {
+      Object.entries(todo[4]).forEach(([id, value]) => {
+        if (!summary[id]) {
+          summary[id] = 0;
+          originalSummary[id] = 0;
+        }
+        summary[id] += value;
+        originalSummary[id] += todo[5][id];
+      });
+    });
+
+    return { summary, originalSummary };
+  }, [todos]);
+
   const todoIdsByResource = useMemo(() => {
-    return todos.reduce<Record<string, any[]>>((acc, todo) => {
+    return todos.reduce<Record<string, any[]>>((acc, todo, i) => {
       Object.keys(todo[4]).forEach((key) => {
         if (!acc[key]) {
           acc[key] = [];
         }
 
-        acc[key].push([todo[0].id, todo[5][key][0] - todo[4][key][0]]);
+        acc[key].push([
+          todo[0].id,
+          todo[5][key] - todo[4][key],
+          todo[5][key],
+          i,
+        ]);
       });
 
       return acc;
     }, {});
   }, [todos]);
-  const { t } = useIntl();
 
   const farmToday = useMemo<any>(() => {
     const isSunday = currentDay === "Sun";
     return todos.reduce<any>((acc, value) => {
       if (isSunday || planning[currentDay].includes(value[0].id)) {
         for (const [id, data] of Object.entries(value[4])) {
+          const mat = materialsMap[id];
           const isWeeklyBoss =
-            data[1] === "talent_lvl_up_materials" && data[2] === 5;
+            mat.type === "talent_lvl_up_materials" && mat.rarity === 5;
           if (
             id !== "crown_of_insight" &&
             ["talent_lvl_up_materials", "weapon_primary_materials"].includes(
-              data[1]
+              mat.type
             ) &&
             !isWeeklyBoss
           ) {
             if (acc[id] === undefined) {
-              acc[id] = [0, data[1], data[2]];
+              acc[id] = 0;
             }
-            acc[id][0] += data[0];
+            acc[id] += data;
           }
         }
       }
       return acc;
     }, {});
-  }, [currentDay, planning, todos]);
+  }, [currentDay, materialsMap, planning, todos]);
 
   const removeTodo = useCallback(
     (id: string) => {
@@ -92,7 +107,6 @@ const TodoPage = ({ planning }: TodoProps) => {
     [todos]
   );
 
-  // Move todos based on index to a new index
   const moveTodo = useCallback(
     (id: string, index: number, newIndex: number) => {
       const todo = todos.find((todo) => todo[0].id === id);
@@ -110,12 +124,12 @@ const TodoPage = ({ planning }: TodoProps) => {
     (id: string, newData: any) => {
       const todo = todos.find((todo) => todo[0].id === id);
       if (todo) {
-        todo[4][newData.id][0] = newData.value;
+        todo[4][newData.id] = newData.value;
         console.log(
           "updateTodoResourcesById",
           id,
           newData,
-          todo[4][newData.id][0]
+          todo[4][newData.id]
         );
         todosAtom.set(todos);
       }
@@ -123,54 +137,84 @@ const TodoPage = ({ planning }: TodoProps) => {
     [todos]
   );
 
-  const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
-  console.log(todos, summary, planning, todoIdsByResource);
+  const updateAllTodoResourcesById = useCallback(
+    (newData: any) => {
+      const { idsByResource, remainingById } = newData;
+      // console.log(idsByResource, remainingById);
+      idsByResource.forEach((data, index) => {
+        const todo = todos[data[3]];
+        todo[4][newData.id] = remainingById[index];
+        console.log(
+          "updateAllTodoResourcesById",
+          newData.id,
+          todo[4][newData.id]
+        );
+      });
+      todosAtom.set(todos);
+    },
+    [todos]
+  );
+
+  // console.log(todos, summary, planning, todoIdsByResource);
   return (
     <div className="px-4">
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.teams",
-          defaultMessage: "Best Team Comp | Party Building Guide",
+          id: "title.todo",
+          defaultMessage: "Todo List",
         })}
         pageDescription={t({
-          id: "title.teams.description",
+          id: "title.todo.description",
           defaultMessage:
-            "This is a guide to making the best party in Genshin Impact. Learn how to make the best party! We introduce the best party composition for each task including exploring areas, slaying field bosses, and more!",
+            "Todo List for Genshin Impact to plan and track resources you need!",
         })}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
+        {t({ id: "todo", defaultMessage: "Todo List" })}
       </h2>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      {}
       <div className="inline-grid grid-cols-1 lg:grid-cols-4">
         <div className="">
           <div>
-            <h1>Farm Today</h1>
+            <h1 className="p-2 text-lg font-semibold text-white">
+              {t({
+                id: "farm_today",
+                defaultMessage: "Farm today",
+              })}
+            </h1>
             <div className="flex justify-center flex-wrap">
               {Object.entries(farmToday).map(([id, data]) => (
-                <ItemPopoverCommon
+                <ItemPopoverSummary
                   key={id}
                   id={id}
                   data={data}
-                  originalData={summaryOriginal[id]}
+                  originalData={originalSummary[id]}
                   idsByResource={todoIdsByResource[id]}
-                  handleOnChange={(newValues) => console.log(newValues)}
+                  handleOnChange={updateAllTodoResourcesById}
+                  materialInfo={materialsMap[id]}
                 />
               ))}
             </div>
           </div>
           <div className="w-full rounded border border-vulcan-900 bg-vulcan-800">
-            <h1>Summary</h1>
+            <h1 className="p-2 text-lg font-semibold text-white">
+              {t({
+                id: "summary",
+                defaultMessage: "Summary",
+              })}
+            </h1>
             <div className="flex justify-center flex-wrap">
               {Object.entries(summary).map(([id, data]) => (
-                <ItemPopoverCommon
+                <ItemPopoverSummary
                   key={id}
                   id={id}
                   data={data}
-                  originalData={summaryOriginal[id]}
+                  originalData={originalSummary[id]}
                   idsByResource={todoIdsByResource[id]}
-                  handleOnChange={(newValues) => console.log(newValues)}
+                  handleOnChange={updateAllTodoResourcesById}
+                  materialInfo={materialsMap[id]}
                 />
               ))}
             </div>
@@ -205,8 +249,8 @@ const TodoPage = ({ planning }: TodoProps) => {
                   </div>
                 </div>
                 <div className="flex flex-col p-2 flex-grow justify-between">
-                  <div className="flex items-center mb-2 min-h-[108px]">
-                    <div className="flex justify-center mx-auto">
+                  <div className="flex items-center justify-between mb-2 min-h-[104px]">
+                    <div className="flex justify-center ml-2">
                       <div
                         className="w-24 h-24 rounded-md shadow-md overflow-hidden bg-cover"
                         style={{
@@ -231,10 +275,13 @@ const TodoPage = ({ planning }: TodoProps) => {
                     </div>
                     <div className="flex flex-col h-full justify-center">
                       <div className="flex flex-col">
-                        <div className="flex">
+                        <div className="flex w-36">
                           <div>
-                            <h4 className="w-20 text-sm text-center font-semibold text-white">
-                              Levels
+                            <h4 className="text-sm font-semibold text-white">
+                              {t({
+                                id: "levels",
+                                defaultMessage: "Levels",
+                              })}
                             </h4>
                             <div className="flex justify-center text-sm">
                               <div>
@@ -247,7 +294,7 @@ const TodoPage = ({ planning }: TodoProps) => {
                                 <p>{todo[2][2]}</p>
                                 <img
                                   src={getUrl(`/ascension.png`, 16, 16)}
-                                  className={clsx("w-3 h-3", {
+                                  className={clsx("ml-1 w-3 h-3", {
                                     "opacity-100": todo[2][3],
                                     "opacity-0": !todo[2][3],
                                   })}
@@ -259,15 +306,18 @@ const TodoPage = ({ planning }: TodoProps) => {
                         </div>
                       </div>
                       {Object.keys(todo[3]).length > 0 && (
-                        <div className="flex flex-col">
-                          <h4 className="w-20 text-sm text-center font-semibold text-white">
-                            Talents
+                        <div className="flex flex-col mt-2">
+                          <h4 className="text-sm font-semibold text-white">
+                            {t({
+                              id: "talents",
+                              defaultMessage: "Talents",
+                            })}
                           </h4>
                           <div className="flex">
                             <div>
                               {Object.entries(todo[3]).map(([id, value]) => (
                                 <div key={id} className="flex">
-                                  <div className="flex justify-center w-20 text-xs">
+                                  <div className="flex justify-center text-xs">
                                     <div>
                                       <p>{value[0]}</p>
                                     </div>
@@ -278,7 +328,7 @@ const TodoPage = ({ planning }: TodoProps) => {
                                       <p>{value[1]}</p>
                                     </div>
                                   </div>
-                                  <div className="text-xs text-gray-500">
+                                  <div className="ml-2 text-xs text-gray-500">
                                     {t({ id: id, defaultMessage: id })}
                                   </div>
                                 </div>
@@ -300,6 +350,7 @@ const TodoPage = ({ planning }: TodoProps) => {
                         handleOnChange={(newValues) =>
                           updateTodoResourcesById(todo[0].id, newValues)
                         }
+                        materialInfo={materialsMap[id]}
                       />
                     ))}
                   </div>
@@ -307,7 +358,11 @@ const TodoPage = ({ planning }: TodoProps) => {
                   <div className="flex justify-between mx-2">
                     <span className="text-lg text-white">#{i + 1}</span>
                     <Button className="" onClick={() => removeTodo(todo[0].id)}>
-                      X Delete
+                      X{" "}
+                      {t({
+                        id: "delete",
+                        defaultMessage: "Delete",
+                      })}
                     </Button>
                   </div>
                 </div>
@@ -320,200 +375,6 @@ const TodoPage = ({ planning }: TodoProps) => {
   );
 };
 
-function ItemPopoverCommon({
-  id,
-  data,
-  originalData,
-  idsByResource,
-  handleOnChange,
-}) {
-  const [inventory, setInventory] = useState(originalData[0] - data[0]);
-  const [open, trigger, content] = usePopover(false);
-  const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
-
-  const remaining = useMemo(() => {
-    return originalData[0] - inventory;
-  }, [inventory, originalData]);
-
-  const remainingById = useMemo(() => {
-    let remainingInventory = originalData[0];
-    return idsByResource.map((data, i) => {
-      // Check if this can be reversed, it should be 0 if it matches the originalData value
-      if (remainingInventory < 0) {
-        return data[1];
-      }
-      console.log(i, data[1], remainingInventory, remainingInventory - data[1]);
-      const rem = remainingInventory - data[1];
-
-      remainingInventory -= data[1];
-
-      return rem < 0 ? 0 : rem;
-    });
-  }, [idsByResource, originalData]);
-
-  const onChange = (value: number) => {
-    setInventory(value);
-  };
-
-  return (
-    <div className="cursor-pointer" {...trigger}>
-      <SimpleRarityBox
-        img={getUrl(`/${data[1]}/${id}.png`, 45, 45)}
-        rarity={data[2] as any}
-        name={numFormat.format(data[0] as any)}
-        alt={id}
-        nameSeparateBlock
-        className={clsx("w-12 h-12", { grayscale: data[0] === 0 })}
-        classNameBlock="w-12"
-      />
-      {open && (
-        <div
-          {...content}
-          className="bg-vulcan-800 border-2 border-vulcan-800 rounded shadow-2xl z-1000"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
-            {id}
-          </div>
-
-          <div className="p-2 text-sm">
-            <span>Priority:</span>
-            <div className="text-xs">
-              {idsByResource.map((data, i) => (
-                <span
-                  className={clsx("block", {
-                    "line-through": remainingById[i] === 0,
-                  })}
-                  key={id}
-                >
-                  {i + 1} - {data[0]} - {remainingById[i]}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="px-2 text-sm">Total remaining: {remaining}</div>
-          <div className="px-2 text-sm">Inventory: {inventory}</div>
-          <div className="p-2 flex items-center content-around">
-            <button
-              disabled={remaining === originalData[0]}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
-              onClick={() => onChange(inventory - 1)}
-            >
-              -
-            </button>
-            <Input
-              type="number"
-              className="w-24"
-              value={inventory}
-              onChange={(e) => onChange(Number(e.target.value))}
-              min={0}
-              max={originalData[0]}
-            />
-            <button
-              disabled={remaining === 0}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
-              onClick={() => onChange(inventory + 1)}
-            >
-              +
-            </button>
-          </div>
-          <div className="flex justify-center">
-            <Button
-              className="py-1 mb-2"
-              onClick={() => {
-                handleOnChange({ id, value: data[0] - inventory });
-                setInventory(0);
-                // close the popover
-                trigger.onClick();
-              }}
-            >
-              Save and Close
-            </Button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function ItemPopover({ id, data, originalData, handleOnChange }) {
-  const [inventory, setInventory] = useState(originalData[0] - data[0]);
-  const [open, trigger, content] = usePopover(false);
-  const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
-
-  const remaining = useMemo(() => {
-    return originalData[0] - inventory;
-  }, [inventory, originalData]);
-
-  const onChange = (value: number) => {
-    console.log(id, value);
-    setInventory(value);
-  };
-
-  return (
-    <div className="cursor-pointer" {...trigger}>
-      <SimpleRarityBox
-        img={getUrl(`/${data[1]}/${id}.png`, 45, 45)}
-        rarity={data[2] as any}
-        name={numFormat.format(data[0] as any)}
-        alt={id}
-        nameSeparateBlock
-        className={clsx("w-11 h-11", { grayscale: data[0] === 0 })}
-        classNameBlock="w-11"
-      />
-      {open && (
-        <div
-          {...content}
-          className="bg-vulcan-800 border-2 border-vulcan-800 rounded shadow-2xl z-1000"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
-            {id}
-          </div>
-          <div className="p-2">Remaining: {remaining}</div>
-          <div className="px-2 text-xs italic">Inventory: {inventory}</div>
-          <div className="p-2 flex items-center content-around">
-            <button
-              disabled={remaining === originalData[0]}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
-              onClick={() => onChange(inventory - 1)}
-            >
-              -
-            </button>
-            <Input
-              type="number"
-              className="w-24"
-              value={inventory}
-              onChange={(e) => onChange(Number(e.target.value))}
-              min={0}
-              max={originalData[0]}
-            />
-            <button
-              disabled={remaining === 0}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
-              onClick={() => onChange(inventory + 1)}
-            >
-              +
-            </button>
-          </div>
-          <div className="flex justify-center">
-            <Button
-              onClick={() => {
-                handleOnChange({ id, value: data[0] - inventory });
-                setInventory(0);
-                // close the popover
-                trigger.onClick();
-              }}
-            >
-              Save and Close
-            </Button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
 
@@ -522,15 +383,116 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     any
   > = require(`../_content/data/talents.json`);
 
-  // const genshinData = new GenshinData({ language: localeToLang(locale) });
-  // const characterExpMaterials = await genshinData.characterExpMaterials();
-  // const commonMaterials = await genshinData.commonMaterials();
-  // const elementalStoneMaterials = await genshinData.elementalStoneMaterials();
-  // const jewelsMaterials = await genshinData.jewelsMaterials();
-  // const localMaterials = await genshinData.localMaterials();
-  // const talentLvlUpMaterials = await genshinData.talentLvlUpMaterials();
-  // const weaponExpMaterials = await genshinData.weaponExpMaterials();
-  // const talentLvlUpMaterials = await genshinData.();
+  const genshinData = new GenshinData({ language: localeToLang(locale) });
+  const characterExpMaterials = await genshinData.characterExpMaterials({
+    select: ["id", "name", "rarity"],
+  });
+  const commonMaterials = await genshinData.commonMaterials({
+    select: ["id", "name", "rarity"],
+  });
+  const elementalStoneMaterials = await genshinData.elementalStoneMaterials({
+    select: ["id", "name", "rarity"],
+  });
+  const jewelsMaterials = await genshinData.jewelsMaterials({
+    select: ["id", "name", "rarity"],
+  });
+  const localMaterials = await genshinData.localMaterials({
+    select: ["id", "name"],
+  });
+  const talentLvlUpMaterials = await genshinData.talentLvlUpMaterials({
+    select: ["id", "name", "rarity"],
+  });
+  const weaponExpMaterials = await genshinData.weaponExpMaterials({
+    select: ["id", "name", "rarity"],
+  });
+  const weaponPrimaryMaterials = await genshinData.weaponPrimaryMaterials({
+    select: ["id", "name", "rarity"],
+  });
+  const weaponSecondaryMaterials = await genshinData.weaponSecondaryMaterials({
+    select: ["id", "name", "rarity"],
+  });
+
+  const materialsMap: any = {};
+  // iterate through all materials arrays
+  characterExpMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "materials",
+    };
+  });
+
+  commonMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "common_materials",
+    };
+  });
+
+  elementalStoneMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "elemental_stone_materials",
+    };
+  });
+
+  jewelsMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "jewels_materials",
+    };
+  });
+
+  localMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: 1,
+      type: "local_materials",
+    };
+  });
+
+  talentLvlUpMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "talent_lvl_up_materials",
+    };
+  });
+
+  weaponExpMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "materials",
+    };
+  });
+
+  weaponPrimaryMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "weapon_primary_materials",
+    };
+  });
+
+  weaponSecondaryMaterials.forEach((mat) => {
+    materialsMap[mat.id] = {
+      name: mat.name,
+      rarity: mat.rarity,
+      type: "weapon_secondary_materials",
+    };
+  });
+
+  materialsMap["mora"] = {
+    name: "Mora",
+    rarity: 1,
+    type: "materials",
+  };
+
+  // console.log(materialsMap);
 
   const planning = Object.entries(talentsPlanning).reduce<
     Record<string, string[]>
@@ -548,7 +510,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   }, {});
 
   return {
-    props: { planning, lngDict },
+    props: { planning, materialsMap, lngDict },
   };
 };
 
