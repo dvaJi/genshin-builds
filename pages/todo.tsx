@@ -16,7 +16,7 @@ import Metadata from "@components/Metadata";
 import ItemPopover from "@components/ItemPopover";
 import ItemPopoverSummary from "@components/ItemPopoverSummary";
 
-import { getSummary, todos as todosAtom } from "../state/todo";
+import { todos as todosAtom } from "../state/todo";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
@@ -74,9 +74,9 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
     }, {});
   }, [todos]);
 
-  const farmToday = useMemo<any>(() => {
+  const farmToday = useMemo(() => {
     const isSunday = currentDay === "Sun";
-    return todos.reduce<any>((acc, value) => {
+    return todos.reduce<Record<string, number>>((acc, value) => {
       if (isSunday || planning[currentDay].includes(value[0].id)) {
         for (const [id, data] of Object.entries(value[4])) {
           const mat = materialsMap[id];
@@ -141,7 +141,7 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
     (newData: any) => {
       const { idsByResource, remainingById } = newData;
       // console.log(idsByResource, remainingById);
-      idsByResource.forEach((data, index) => {
+      idsByResource.forEach((data: any, index: number) => {
         const todo = todos[data[3]];
         todo[4][newData.id] = remainingById[index];
         console.log(

@@ -35,7 +35,7 @@ const useClickOutside = <E extends HTMLElement>(
   const ref = useRef<E>(null);
   const outsideClickHandler = (e: MouseEvent) => {
     if (
-      callbackRef.current &&
+      callbackRef.current !== null &&
       ref.current &&
       !ref.current.contains(e.target as Node)
     ) {
