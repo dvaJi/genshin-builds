@@ -1,4 +1,4 @@
-const fs = require("fs-extra");
+const fs = require("fs");
 const path = require("path");
 
 const DATA_DIR = path.join(__dirname, "..", "_content", "locale");

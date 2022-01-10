@@ -1,4 +1,4 @@
-const fs = require("fs-extra");
+const fs = require("fs");
 const path = require("path");
 const GenshinData = require("genshin-data").default;
 
@@ -78,8 +78,17 @@ async function generateBuilds() {
 
   const filePath = path.join(DATA_DIR, `common.json`);
   const data = JSON.stringify(object, undefined, 2);
-  fs.ensureDirSync(path.dirname(filePath));
-  fs.writeFileSync(filePath, data);
+
+  try {
+    fs.mkdirSync(path.dirname(filePath));
+  } catch (err) {
+    if (err.code !== "EEXIST") {
+      console.error(err);
+      throw err;
+    }
+
+    fs.writeFileSync(filePath, data);
+  }
 }
 
 const localeToLang = (locale) => {

@@ -168,6 +168,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -220,6 +224,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/de/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/de/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -261,6 +269,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -317,6 +329,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -928,6 +944,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -980,6 +1000,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1021,6 +1045,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1077,6 +1105,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/en/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/en/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1688,6 +1720,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1740,6 +1776,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/es/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/es/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1781,6 +1821,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -1837,6 +1881,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2456,6 +2504,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2508,6 +2560,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -2549,6 +2605,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2605,6 +2665,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/fr/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/fr/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3216,6 +3280,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3268,6 +3336,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/id/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/id/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3309,6 +3381,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3365,6 +3441,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3984,6 +4064,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4036,6 +4120,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4077,6 +4165,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4133,6 +4225,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ja/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ja/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4744,6 +4840,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4796,6 +4896,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ko/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ko/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4837,6 +4941,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -4893,6 +5001,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5512,6 +5624,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5564,6 +5680,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -5605,6 +5725,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5661,6 +5785,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/pt/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/pt/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6272,6 +6400,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6324,6 +6456,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ru/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ru/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6365,6 +6501,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -6421,6 +6561,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7036,6 +7180,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7088,6 +7236,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/th/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/th/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7129,6 +7281,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7185,6 +7341,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7652,6 +7812,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/todo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7804,6 +7968,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7856,6 +8024,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -7897,6 +8069,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7953,6 +8129,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/vi/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/vi/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8568,6 +8748,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/shenhe</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/sucrose</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8620,6 +8804,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/zh-tw/character/yun_jin</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/zh-tw/character/zhongli</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8661,6 +8849,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/tier-list</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/todo</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -8717,6 +8909,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/weapon/bloodtainted_greatsword</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/weapon/calamity_queller</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
