@@ -60,7 +60,7 @@ function ItemPopover({
           <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
             {materialInfo.name}
           </div>
-          <div className="p-2">
+          <div className="px-2">
             {t({
               id: "remaining",
               defaultMessage: "Remaining",

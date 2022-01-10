@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useCallback, useMemo, useState } from "react";
 import { Weapon } from "genshin-data";
+import { GiCheckMark } from "react-icons/gi";
 
 import Button from "./Button";
 import Select from "./Select";
@@ -42,6 +43,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
   const [weapon, setWeapon] = useState<Weapon>(weapons[10]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[13]);
+  const [addedToTodo, setAddedToTodo] = useState(false);
   const { t, localeGI } = useIntl();
   const [calculate, { called, loading, data, reset }] = useLazyQuery(QUERY);
 
@@ -53,6 +55,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
   }, [weapon, currentLevel, intendedLevel]);
 
   const addToTodo = useCallback(() => {
+    setAddedToTodo(true);
     const resourcesMap = data.calculateWeaponLevel.reduce(
       (map: any, item: any) => {
         map[item.id] = item.amount;
@@ -102,6 +105,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
             onChange={(option) => {
               setWeapon(weapons.find((c) => c.id === option.id)!!);
               reset();
+              setAddedToTodo(false);
             }}
             selectedIconRender={(selected) => (
               <img
@@ -140,6 +144,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
                 onClick={() => {
                   setCurrentLevel(level);
                   reset();
+                  setAddedToTodo(false);
                 }}
               >
                 <div className="font-semibold">{level.lvl}</div>
@@ -173,6 +178,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
                 onClick={() => {
                   setIntendedLevel(level);
                   reset();
+                  setAddedToTodo(false);
                 }}
               >
                 <div className="">{level.lvl}</div>
@@ -238,7 +244,26 @@ const WeaponCalculator = ({ weapons }: Props) => {
                   ))}
                 </tbody>
               </table>
-              <Button onClick={addToTodo}>Add Todo</Button>
+              <div className="flex justify-center mt-2">
+                {addedToTodo ? (
+                  <div className="inline-flex p-1 justify-center content-center">
+                    <GiCheckMark className="mr-2" />
+                    <span>
+                      {t({
+                        id: "added_to_todo_list",
+                        defaultMessage: "Added to Todo List",
+                      })}
+                    </span>
+                  </div>
+                ) : (
+                  <Button onClick={addToTodo}>
+                    {t({
+                      id: "add_to_todo_list",
+                      defaultMessage: "Add to Todo List",
+                    })}
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         )}

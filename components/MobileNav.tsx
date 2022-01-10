@@ -15,7 +15,7 @@ type Props = {
 const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
   const variants = {
     open: {
-      transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.03, delayChildren: 0.2 },
     },
     closed: {
       transition: { staggerChildren: 0.05, staggerDirection: -1 },
@@ -41,8 +41,8 @@ const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
   return (
     <motion.div
       className={clsx(
-        "bg-vulcan-800 text-gray-400 transition-all p-7 flex absolute top-12 left-0 flex-col items-center w-full z-20 opacity-0 pointer-events-none lg:hidden",
-        isOpen ? "opacity-100 pointer-events-auto" : ""
+        "bg-vulcan-800 text-gray-400 transition-all p-7 flex absolute top-12 left-0 flex-col items-center w-full z-20 lg:hidden",
+        isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       )}
       initial={false}
       animate={isOpen ? "open" : "closed"}

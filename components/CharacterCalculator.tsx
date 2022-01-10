@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useCallback, useMemo, useState } from "react";
 import { Character } from "genshin-data";
+import { GiCheckMark } from "react-icons/gi";
 
 import Button from "./Button";
 import Input from "./Input";
@@ -56,6 +57,7 @@ const CharacterCalculator = ({ characters }: Props) => {
   const [intendedTalent1Lvl, setIntendedTalent1Lvl] = useState(10);
   const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(10);
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(10);
+  const [addedToTodo, setAddedToTodo] = useState(false);
   const { t, localeGI } = useIntl();
   const [calculate, { called, loading, data, reset }] = useLazyQuery(QUERY);
 
@@ -86,6 +88,7 @@ const CharacterCalculator = ({ characters }: Props) => {
   ]);
 
   const addToTodo = useCallback(() => {
+    setAddedToTodo(true);
     const resourcesMap = data.calculateCharacterLevel.items.reduce(
       (map: any, item: any) => {
         map[item.id] = item.amount;
@@ -145,6 +148,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             onChange={(option) => {
               setCharacter(characters.find((c) => c.id === option.id)!!);
               reset();
+              setAddedToTodo(false);
             }}
             selectedIconRender={(selected) => (
               <img
@@ -191,6 +195,7 @@ const CharacterCalculator = ({ characters }: Props) => {
                 onClick={() => {
                   setCurrentLevel(level);
                   reset();
+                  setAddedToTodo(false);
                 }}
               >
                 <div className="">{level.lvl}</div>
@@ -224,6 +229,7 @@ const CharacterCalculator = ({ characters }: Props) => {
                 onClick={() => {
                   setIntendedLevel(level);
                   reset();
+                  setAddedToTodo(false);
                 }}
               >
                 <div className="">{level.lvl}</div>
@@ -272,6 +278,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             onChange={(e) => {
               setCurrentTalent1Lvl(Number(e.target.value));
               reset();
+              setAddedToTodo(false);
             }}
             min="1"
             max="10"
@@ -282,6 +289,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             onChange={(e) => {
               setCurrentTalent2Lvl(Number(e.target.value));
               reset();
+              setAddedToTodo(false);
             }}
             min="1"
             max="10"
@@ -292,6 +300,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             onChange={(e) => {
               setCurrentTalent3Lvl(Number(e.target.value));
               reset();
+              setAddedToTodo(false);
             }}
             min="1"
             max="10"
@@ -307,6 +316,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             onChange={(e) => {
               setIntendedTalent1Lvl(Number(e.target.value));
               reset();
+              setAddedToTodo(false);
             }}
             min="1"
             max="10"
@@ -317,6 +327,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             onChange={(e) => {
               setIntendedTalent2Lvl(Number(e.target.value));
               reset();
+              setAddedToTodo(false);
             }}
             min="1"
             max="10"
@@ -327,6 +338,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             onChange={(e) => {
               setIntendedTalent3Lvl(Number(e.target.value));
               reset();
+              setAddedToTodo(false);
             }}
             min="1"
             max="10"
@@ -407,7 +419,26 @@ const CharacterCalculator = ({ characters }: Props) => {
                   )}
                 </tbody>
               </table>
-              <Button onClick={addToTodo}>Add Todo</Button>
+              <div className="flex justify-center mt-2">
+                {addedToTodo ? (
+                  <div className="inline-flex p-1 justify-center content-center">
+                    <GiCheckMark className="mr-2" />
+                    <span>
+                      {t({
+                        id: "added_to_todo_list",
+                        defaultMessage: "Added to Todo List",
+                      })}
+                    </span>
+                  </div>
+                ) : (
+                  <Button onClick={addToTodo}>
+                    {t({
+                      id: "add_to_todo_list",
+                      defaultMessage: "Add to Todo List",
+                    })}
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         )}
