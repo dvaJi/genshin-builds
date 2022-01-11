@@ -36,7 +36,6 @@ function ItemPopover({
   }, [inventory, originalData]);
 
   const onChange = (value: number) => {
-    console.log(id, value);
     setInventory(value);
   };
 
@@ -102,8 +101,7 @@ function ItemPopover({
             <Button
               className="py-1 mb-2"
               onClick={() => {
-                handleOnChange({ id, value: data - inventory });
-                setInventory(0);
+                handleOnChange({ id, value: remaining });
                 // close the popover
                 trigger.onClick();
               }}
