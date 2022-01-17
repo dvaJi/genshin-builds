@@ -116,13 +116,23 @@
     },
     "subdps": {
       "0": ["engulfing_lightning", "staff_of_homa", "the_catch"],
-      "1": ["skyward_spine", "wavebreakers_fin", "favonius_lance"],
+      "1": [
+        "calamity_queller",
+        "skyward_spine",
+        "wavebreakers_fin",
+        "favonius_lance"
+      ],
       "2": ["kitain_cross_spear", "dragons_bane"],
       "3": ["prototype_starglitter"],
       "4": ["black_tassel"]
     },
     "support": {
-      "0": ["engulfing_lightning", "staff_of_homa", "skyward_spine"],
+      "0": [
+        "engulfing_lightning",
+        "calamity_queller",
+        "staff_of_homa",
+        "skyward_spine"
+      ],
       "1": ["the_catch", "favonius_lance", "prototype_starglitter"],
       "2": [],
       "3": [],

@@ -10,17 +10,22 @@
         "id": "kamisato_ayaka",
         "w_id": "mistsplitter_reforged",
         "min_c": 0
-      }
-    ],
-    "1": [
-      {
-        "id": "ganyu",
-        "w_id": "amos_bow",
-        "min_c": 0
       },
       {
         "id": "arataki_itto",
         "w_id": "redhorn_stonethresher",
+        "min_c": 2
+      }
+    ],
+    "1": [
+      {
+        "id": "raiden_shogun",
+        "w_id": "engulfing_lightning",
+        "min_c": 2
+      },
+      {
+        "id": "ganyu",
+        "w_id": "amos_bow",
         "min_c": 0
       },
       {
@@ -32,11 +37,6 @@
         "id": "xiao",
         "w_id": "primordial_jade_wingedspear",
         "min_c": 1
-      },
-      {
-        "id": "raiden_shogun",
-        "w_id": "engulfing_lightning",
-        "min_c": 2
       }
     ],
     "2": [
@@ -66,14 +66,19 @@
         "min_c": 0
       },
       {
+        "id": "ningguang",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 6
+      },
+      {
         "id": "klee",
         "w_id": "lost_prayer_to_the_sacred_winds",
         "min_c": 0
       },
       {
-        "id": "ningguang",
-        "w_id": "lost_prayer_to_the_sacred_winds",
-        "min_c": 6
+        "id": "sangonomiya_kokomi",
+        "w_id": "everlasting_moonglow",
+        "min_c": 0
       }
     ],
     "3": [
@@ -83,14 +88,14 @@
         "min_c": 0
       },
       {
+        "id": "mona",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 0
+      },
+      {
         "id": "razor",
         "w_id": "skyward_pride",
         "min_c": 4
-      },
-      {
-        "id": "qiqi",
-        "w_id": "sacrificial_sword",
-        "min_c": 2
       },
       {
         "id": "fischl",
@@ -98,14 +103,19 @@
         "min_c": 1
       },
       {
-        "id": "sangonomiya_kokomi",
-        "w_id": "everlasting_moonglow",
-        "min_c": 0
+        "id": "qiqi",
+        "w_id": "sacrificial_sword",
+        "min_c": 2
       },
       {
         "id": "beidou",
         "w_id": "wolfs_gravestone",
         "min_c": 4
+      },
+      {
+        "id": "yun_jin",
+        "w_id": "primordial_jade_wingedspear",
+        "min_c": 0
       }
     ],
     "4": [
@@ -171,6 +181,11 @@
         "min_c": 0
       },
       {
+        "id": "shenhe",
+        "w_id": "calamity_queller",
+        "min_c": 2
+      },
+      {
         "id": "tartaglia",
         "w_id": "skyward_atlas",
         "min_c": 0
@@ -193,23 +208,23 @@
     ],
     "2": [
       {
-        "id": "beidou",
-        "w_id": "wolfs_gravestone",
-        "min_c": 2
-      },
-      {
         "id": "kaeya",
         "w_id": "skyward_blade",
         "min_c": 2
       },
       {
-        "id": "rosaria",
-        "w_id": "staff_of_homa",
+        "id": "beidou",
+        "w_id": "wolfs_gravestone",
         "min_c": 2
       },
       {
-        "id": "sayu",
-        "w_id": "bloodtainted_greatsword",
+        "id": "sangonomiya_kokomi",
+        "w_id": "everlasting_moonglow",
+        "min_c": 0
+      },
+      {
+        "id": "rosaria",
+        "w_id": "staff_of_homa",
         "min_c": 2
       },
       {
@@ -225,14 +240,14 @@
     ],
     "3": [
       {
+        "id": "sayu",
+        "w_id": "bloodtainted_greatsword",
+        "min_c": 2
+      },
+      {
         "id": "chongyun",
         "w_id": "wolfs_gravestone",
         "min_c": 6
-      },
-      {
-        "id": "sangonomiya_kokomi",
-        "w_id": "everlasting_moonglow",
-        "min_c": 0
       },
       {
         "id": "jean",
@@ -308,19 +323,14 @@
         "min_c": 6
       },
       {
-        "id": "albedo",
-        "w_id": "harbinger_of_dawn",
-        "min_c": 0
+        "id": "yun_jin",
+        "w_id": "engulfing_lightning",
+        "min_c": 6
       },
       {
         "id": "venti",
         "w_id": "skyward_harp",
         "min_c": 0
-      },
-      {
-        "id": "jean",
-        "w_id": "aquila_favonia",
-        "min_c": 2
       },
       {
         "id": "kujou_sara",
@@ -331,9 +341,24 @@
         "id": "gorou",
         "w_id": "polar_star",
         "min_c": 4
+      },
+      {
+        "id": "shenhe",
+        "w_id": "calamity_queller",
+        "min_c": 2
+      },
+      {
+        "id": "albedo",
+        "w_id": "harbinger_of_dawn",
+        "min_c": 0
       }
     ],
     "2": [
+      {
+        "id": "jean",
+        "w_id": "aquila_favonia",
+        "min_c": 0
+      },
       {
         "id": "sangonomiya_kokomi",
         "w_id": "everlasting_moonglow",
