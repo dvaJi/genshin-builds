@@ -289,5 +289,22 @@
       "fish": ["raimei_angelfish"],
       "total": 5
     }
+  ],
+  "enkanomiya": [
+    {
+      "id": "the_serpents_bowels",
+      "fish": ["crystalfish", "lunged_stickleback", "divda_ray", "formalo_ray"],
+      "total": 4
+    },
+    {
+      "id": "the_serpentss_heart_altar",
+      "fish": ["dawncatcher", "akai_maou", "divda_ray", "formalo_ray"],
+      "total": 6
+    },
+    {
+      "id": "the_serpents_heart_altar_southwest",
+      "fish": ["dawncatcher", "purple_shirakodai", "divda_ray", "formalo_ray"],
+      "total": 6
+    }
   ]
 }
