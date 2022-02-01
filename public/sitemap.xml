@@ -1,5 +1,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://genshin-builds.com/achievements</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -25,6 +29,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/de/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/de/achievements</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -804,6 +812,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/en/achievements</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/en/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -1577,6 +1589,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/es/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/es/achievements</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -2364,6 +2380,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/fr/achievements</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/fr/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -3137,6 +3157,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/id/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/id/achievements</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -3924,6 +3948,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/ja/achievements</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/ja/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -4697,6 +4725,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ko/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ko/achievements</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -5484,6 +5516,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/pt/achievements</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/pt/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -6257,6 +6293,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/ru/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/ru/achievements</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7037,6 +7077,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/th/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/th/achievements</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
@@ -7828,6 +7872,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://genshin-builds.com/vi/achievements</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
     <loc>https://genshin-builds.com/vi/artifacts</loc>
     <changefreq>hourly</changefreq>
   </url>
@@ -8605,6 +8653,10 @@
   </url>
   <url>
     <loc>https://genshin-builds.com/zh-tw/500</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+  <url>
+    <loc>https://genshin-builds.com/zh-tw/achievements</loc>
     <changefreq>hourly</changefreq>
   </url>
   <url>
