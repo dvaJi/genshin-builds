@@ -1,37 +1,116 @@
 {
-  "title": "Genshin-Builds.com Wiki Database",
-  "title.description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
-  "title.characters": "Genshin Impact Characters List",
-  "title.characters.description": "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",
-  "title.character.detail": "{name} Genshin Impact Build Guide",
-  "title.weapons": "Genshin Impact Weapons List",
-  "title.weapons.description": "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
-  "title.weapon.detail": "{name} Genshin Impact Weapon Details",
-  "title.artifacts": "Genshin Impact Artifacts List",
-  "title.artifacts.description": "All the best artifact gear sets, locations, and stats.",
-  "title.tierlist": "Genshin Impact Tier List (Best Characters)",
-  "title.tierlist.description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
-  "title.tierlist_weapons": "Genshin Impact Weapons Tier List (Best Weapons)",
-  "title.tierlist_weapons.description": "All the best weapons ranked in order of power, viability, and versatility to clear content.",
-  "title.food": "Genshin Impact Cooking Recipes List",
-  "title.food.description": "Discover all the cooking recipes and the best food to cook for your team.",
-  "title.ingredients": "Genshin Impact Cooking Ingredient List",
-  "title.ingredients.description": "Discover all the cooking ingredients.",
-  "title.potions": "Genshin Impact Potions List",
-  "title.potions.description": "Discover all the alchemy recipes and the best potions and oils to use for your team.",
-  "title.teams": "Best Team Comp | Party Building Guide | Genshin Impact",
-  "title.teams.description": "This is a guide to making the best party in Genshin Impact. Learn how to make the best party! We introduce the best party composition for each task including exploring areas, slaying field bosses, and more!",
-  "title.fishing": "Genshin Impact Fishing (Fish, Baits, Fishing Rods and Fishing points)",
-  "title.fishing.description": "This is an article about the list of fishing spots (points/spots) and the fish that appear in Genshin. The fishing points for Mondstadt, Liyue, Dragon Spine, and Inazuma are also summarized.",
-  "title.calculator": "Genshin Impact Calculator",
-  "title.calculator.description": "Genshin Impact Calculator to calculate how many mora and materials needed for your character or weapon ascension",
+  "layout": {
+    "title": "Genshin-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "potions": "Potions",
+    "tierlist": "Tierlist",
+    "database": "Database",
+    "calculator": "Calculator",
+    "tierlist_characters": "Tierlist Characters",
+    "tierlist_weapons": "Tierlist Weapons",
+    "teams": "Teams",
+    "fishing": "Fishing",
+    "characters": "Characters",
+    "cooking_ingredient": "Cooking Ingredient",
+    "artifacts": "Artifacts",
+    "weapons": "Weapons",
+    "todo": "Todo",
+    "achievements": "Achievements",
+    "food": "Food"
+  },
+  "ascension_planner": {
+    "title": "Genshin-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "Mon": "Monday",
+    "Tue": "Tuesday",
+    "Wed": "Wednesday",
+    "Thu": "Thursday",
+    "Fri": "Friday",
+    "Sat": "Saturday",
+    "Sun": "Sunday",
+    "Forsaken Rift": "Forsaken Rift",
+    "Taishan Mansion": "Taishan Mansion",
+    "Cecilia Garden": "Cecilia Garden",
+    "Violet Court": "Violet Court",
+    "Court of Flowing Sand": "Court of Flowing Sand",
+    "Hidden Palace of Lianshan Formula": "Hidden Palace of Lianshan Formula"
+  },
+  "characters": {
+    "title": "Genshin Impact Characters List",
+    "description": "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",
+    "characters": "Characters",
+    "anemo": "Anemo",
+    "geo": "Geo",
+    "pyro": "Pyro",
+    "hydro": "Hydro",
+    "electro": "Electro",
+    "cryo": "Cryo"
+  },
+  "character": {
+    "title": "{name} Genshin Impact Build Guide",
+    "character": "Character"
+  },
+  "weapons": {
+    "title": "Genshin Impact Weapons List",
+    "description": "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+    "weapons": "Weapons"
+  },
+  "weapon": {
+    "title": "{name} Genshin Impact Weapon Details",
+    "weapon": "Weapon"
+  },
+  "artifacts": {
+    "title": "Genshin Impact Artifacts List",
+    "description": "All the best artifact gear sets, locations, and stats.",
+    "artifacts": "Artifacts"
+  },
+  "tierlist": {
+    "title": "Genshin Impact Tier List (Best Characters)",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "tierlist": "Tierlist"
+  },
+  "tierlist_weapons": {
+    "title": "Genshin Impact Weapons Tier List (Best Weapons)",
+    "description": "All the best weapons ranked in order of power, viability, and versatility to clear content.",
+    "tierlist_weapons": "Tierlist Weapons"
+  },
+  "food": {
+    "title": "Genshin Impact Cooking Recipes List",
+    "description": "Discover all the cooking recipes and the best food to cook for your team.",
+    "food": "Food"
+  },
+  "ingredients": {
+    "title": "Genshin Impact Cooking Ingredient List",
+    "description": "Discover all the cooking ingredients."
+  },
+  "potions": {
+    "title": "Genshin Impact Potions List",
+    "description": "Discover all the alchemy recipes and the best potions and oils to use for your team.",
+    "potions": "Potions"
+  },
+  "teams": {
+    "title": "Best Team Comp | Party Building Guide | Genshin Impact",
+    "description": "This is a guide to making the best party in Genshin Impact. Learn how to make the best party! We introduce the best party composition for each task including exploring areas, slaying field bosses, and more!",
+    "teams": "Teams"
+  },
+  "fishing": {
+    "title": "Genshin Impact Fishing (Fish, Baits, Fishing Rods and Fishing points)",
+    "description": "This is an article about the list of fishing spots (points/spots) and the fish that appear in Genshin. The fishing points for Mondstadt, Liyue, Dragon Spine, and Inazuma are also summarized.",
+    "fishing": "Fishing"
+  },
+  "calculator": {
+    "title.calculator": "Genshin Impact Calculator",
+    "title.calculator.description": "Genshin Impact Calculator to calculate how many mora and materials needed for your character or weapon ascension",
+    "calculator": "Calculator"
+  },
+  "todo": {
+    "title": ""
+  },
   "character.builds": "Builds",
   "character.skills": "Skills",
   "best_team_comp": "Best Team Comp",
   "character_team": "Best Team for {name}",
   "substitute_characters": "Substitute Characters",
-  "potions": "Potions",
-  "tierlist": "Tierlist",
   "database": "Database",
   "rarity": "Rarity",
   "secondary": "Secondary",
@@ -70,30 +149,14 @@
   "calculate": "Calculate",
   "city": "City",
   "choose_weapon": "Choose Weapon",
-  "calculator": "Calculator",
   "tierlist_characters": "Tierlist Characters",
-  "tierlist_weapons": "Tierlist Weapons",
-  "teams": "Teams",
-  "fishing": "Fishing",
   "recommended_characters": "Recommended Characters",
   "character.constellations": "Constellations",
   "character.passives": "Passive Talent",
-  "characters": "Characters",
-  "character": "Character",
   "cooking_ingredient": "Cooking Ingredient",
-  "artifacts": "Artifacts",
-  "weapons": "Weapons",
-  "weapon": "Weapon",
-  "food": "Food",
   "location": "Location",
   "bonus": "Bonus",
   "type": "Type",
-  "Anemo": "Anemo",
-  "Geo": "Geo",
-  "Pyro": "Pyro",
-  "Hydro": "Hydro",
-  "Electro": "Electro",
-  "Cryo": "Cryo",
   "ATK": "ATK",
   "HP": "HP",
   "DEF": "DEF",

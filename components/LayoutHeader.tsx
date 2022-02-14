@@ -59,7 +59,7 @@ const navroutes: NavRoutes[] = [
 const LayoutHeader = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const router = useRouter();
-  const { t, tfn } = useIntl();
+  const { t } = useIntl("layout");
   return (
     <nav className="sticky top-0 h-12 mb-5 z-40 bg-vulcan-800 border-b border-gray-800 shadow-md">
       <div className="flex h-full mb-12 mx-auto container text-gray-400 ">
@@ -76,7 +76,7 @@ const LayoutHeader = () => {
               route={router.route}
               dropdownMenu={r.dropdownMenu?.map((d) => ({
                 ...d,
-                name: tfn({ id: d.id, defaultMessage: d.name }),
+                name: t({ id: d.id, defaultMessage: d.name }),
               }))}
             >
               {t({ id: r.id, defaultMessage: r.name })}

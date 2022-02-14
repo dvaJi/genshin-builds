@@ -23,7 +23,7 @@ const CharactersPage = ({
   elements,
   common,
 }: CharactersProps) => {
-  const { t, tfn } = useIntl();
+  const { t, tfn } = useIntl("characters");
   return (
     <div>
       <Metadata
@@ -51,7 +51,7 @@ const CharactersPage = ({
             <div className="flex self-center mb-2">
               <ElementIcon type={common[element]} height={32} width={32} />
               <h3 className="text-2xl font-bold ml-2">
-                {t({ id: element, defaultMessage: element })}
+                {t({ id: element.toLowerCase(), defaultMessage: element })}
               </h3>
             </div>
 

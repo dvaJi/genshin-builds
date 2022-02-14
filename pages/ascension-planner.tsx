@@ -37,7 +37,7 @@ const W_DOMAINS = [
 
 const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
   const [currentDay, setCurrentDay] = useState(format(new Date(), "iii"));
-  const { tfn } = useIntl();
+  const { tfn } = useIntl("ascension_planner");
   return (
     <div>
       <div>

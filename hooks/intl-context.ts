@@ -1,9 +1,12 @@
 import { createContext } from "react";
 
+export type IntlMessage = Record<string, string>;
+
 export type IntlContextShape = {
-  messages?: Record<string, string>;
+  messages?: IntlMessage;
   locale: string;
 };
 
-export const IntlContext =
-  createContext<IntlContextShape | undefined>(undefined);
+export const IntlContext = createContext<IntlContextShape | undefined>(
+  undefined
+);
