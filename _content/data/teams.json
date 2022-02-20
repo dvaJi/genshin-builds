@@ -2,6 +2,40 @@
   {
     "primary": [
       {
+        "characterId": "yae_miko",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "raiden_shogun",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "sangonomiya_kokomi",
+        "role": "Support"
+      },
+      {
+        "characterId": "sucrose",
+        "role": "Sub DPS"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["raiden_shogun"],
+        "substitutes": ["fischl"]
+      },
+      {
+        "characters": ["kaedehara_kazuha"],
+        "substitutes": ["mona"]
+      },
+      {
+        "characters": ["sucrose"],
+        "substitutes": ["kaedehara_kazuha"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
         "characterId": "sangonomiya_kokomi",
         "role": "Support"
       },

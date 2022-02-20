@@ -185,6 +185,7 @@
       "0": ["the_widsith"],
       "1": [
         "skyward_atlas",
+        "kaguras_verity",
         "memory_of_dust",
         "lost_prayer_to_the_sacred_winds",
         "dodoco_tales",
@@ -200,7 +201,7 @@
       "4": ["twin_nephrite", "magic_guide", "emerald_orb"]
     },
     "subdps": {
-      "0": ["the_widsith"],
+      "0": ["kaguras_verity", "the_widsith"],
       "1": ["skyward_atlas", "favonius_codex", "sacrificial_fragments"],
       "2": ["hakushin_ring", "solar_pearl", "mappa_mare"],
       "3": ["wine_and_song", "otherworldly_story"],
