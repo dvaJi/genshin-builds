@@ -43,7 +43,7 @@ const useIntl = (namespace?: string): useIntlResponse => {
   const message = resolvePath(dict, namespace);
 
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
-    if (message) {
+    if (message && message[id]) {
       return values ? templateReplacement(message[id], values) : message[id];
     }
 
@@ -51,7 +51,7 @@ const useIntl = (namespace?: string): useIntlResponse => {
       console.warn(
         `[useIntl] Missing translation for "${id}" in "${localeToLang(
           locale
-        )}" locale.`
+        )}" locale, ${namespace}.`
       );
     }
 

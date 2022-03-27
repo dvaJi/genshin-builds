@@ -23,17 +23,17 @@ const CharactersPage = ({
   elements,
   common,
 }: CharactersProps) => {
-  const { t, tfn } = useIntl("characters");
+  const { t } = useIntl("characters");
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
-          id: "title.characters",
+        fn={t}
+        pageTitle={t({
+          id: "title",
           defaultMessage: "Genshin Impact Characters List",
         })}
-        pageDescription={tfn({
-          id: "title.characters.description",
+        pageDescription={t({
+          id: "description",
           defaultMessage:
             "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
         })}

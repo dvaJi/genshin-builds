@@ -22,7 +22,7 @@ const Metadata = ({
   const title = pageTitle ? `${pageTitle} - ${defaultTitle}` : defaultTitle;
 
   const defaultDescription = fn({
-    id: "title.description",
+    id: "description",
     defaultMessage:
       "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",
   });

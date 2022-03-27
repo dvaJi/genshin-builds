@@ -36,34 +36,30 @@ const calcRemaining = (endDate: Date) => {
 };
 
 const useServerTime = (): ServerTime => {
-  const [EURemaining, setEURemaining] = useState(calcRemaining(endEU()));
-  const [NARemaining, setNARemaining] = useState(calcRemaining(endNA()));
-  const [AsiaRemaining, setAsiaRemaining] = useState(calcRemaining(endAsia()));
-  const [EU, setEU] = useState(endEU());
-  const [NA, setNA] = useState(endNA());
-  const [Asia, setAsia] = useState(endAsia());
+  const [serverTime, setServerTime] = useState<ServerTime>({
+    EURemaining: calcRemaining(endEU()),
+    NARemaining: calcRemaining(endNA()),
+    AsiaRemaining: calcRemaining(endAsia()),
+    NA: endNA(),
+    EU: endEU(),
+    Asia: endAsia(),
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setEU(endEU());
-      setNA(endNA());
-      setAsia(endAsia());
-
-      setEURemaining(calcRemaining(endEU()));
-      setNARemaining(calcRemaining(endNA()));
-      setAsiaRemaining(calcRemaining(endAsia()));
+      setServerTime({
+        EURemaining: calcRemaining(endEU()),
+        NARemaining: calcRemaining(endNA()),
+        AsiaRemaining: calcRemaining(endAsia()),
+        NA: endNA(),
+        EU: endEU(),
+        Asia: endAsia(),
+      });
     }, 1000);
     return () => clearInterval(interval);
-  }, [EURemaining, NARemaining, AsiaRemaining]);
+  }, [serverTime]);
 
-  return {
-    EURemaining,
-    NARemaining,
-    AsiaRemaining,
-    NA,
-    EU,
-    Asia,
-  };
+  return serverTime;
 };
 
 export default useServerTime;
