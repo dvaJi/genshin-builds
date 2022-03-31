@@ -1,7 +1,7 @@
 {
   "Violet Court": {
-    "Tue": ["kamisato_ayaka", "kujou_sara", "arataki_itto"],
-    "Fri": ["kamisato_ayaka", "kujou_sara", "arataki_itto"],
+    "Tue": ["kamisato_ayaka", "kujou_sara", "arataki_itto", "kamisato_ayato"],
+    "Fri": ["kamisato_ayaka", "kujou_sara", "arataki_itto", "kamisato_ayato"],
     "Sun": [
       "kamisato_ayaka",
       "yoimiya",
@@ -12,12 +12,14 @@
       "gorou",
       "kujou_sara",
       "arataki_itto",
+      "yae_miko",
+      "kamisato_ayato",
       "traveler_electro"
     ],
     "Mon": ["yoimiya", "thoma", "sangonomiya_kokomi"],
     "Thu": ["yoimiya", "thoma", "sangonomiya_kokomi"],
-    "Wed": ["raiden_shogun", "sayu", "gorou", "traveler_electro"],
-    "Sat": ["raiden_shogun", "sayu", "gorou", "traveler_electro"]
+    "Wed": ["raiden_shogun", "sayu", "gorou", "yae_miko", "traveler_electro"],
+    "Sat": ["raiden_shogun", "sayu", "gorou", "yae_miko", "traveler_electro"]
   },
   "Forsaken Rift": {
     "Tue": ["jean", "diluc", "razor", "bennett", "noelle", "mona", "eula"],
@@ -489,6 +491,7 @@
       "mistsplitter_reforged",
       "akuoumaru",
       "hakushin_ring",
+      "oathsworn_eye",
       "everlasting_moonglow"
     ],
     "Thu": [
@@ -496,11 +499,13 @@
       "mistsplitter_reforged",
       "akuoumaru",
       "hakushin_ring",
+      "oathsworn_eye",
       "everlasting_moonglow"
     ],
     "Sun": [
       "amenoma_kageuchi",
       "mistsplitter_reforged",
+      "haran_geppaku_futsu",
       "katsuragikiri_nagamasa",
       "akuoumaru",
       "redhorn_stonethresher",
@@ -509,7 +514,9 @@
       "wavebreakers_fin",
       "engulfing_lightning",
       "hakushin_ring",
+      "oathsworn_eye",
       "everlasting_moonglow",
+      "kaguras_verity",
       "hamayumi",
       "predator",
       "mouuns_moon",
@@ -517,6 +524,7 @@
       "thundering_pulse"
     ],
     "Tue": [
+      "haran_geppaku_futsu",
       "katsuragikiri_nagamasa",
       "redhorn_stonethresher",
       "hamayumi",
@@ -525,6 +533,7 @@
       "thundering_pulse"
     ],
     "Fri": [
+      "haran_geppaku_futsu",
       "katsuragikiri_nagamasa",
       "redhorn_stonethresher",
       "hamayumi",
@@ -537,6 +546,7 @@
       "the_catch",
       "wavebreakers_fin",
       "engulfing_lightning",
+      "kaguras_verity",
       "polar_star"
     ],
     "Sat": [
@@ -544,6 +554,7 @@
       "the_catch",
       "wavebreakers_fin",
       "engulfing_lightning",
+      "kaguras_verity",
       "polar_star"
     ]
   }
