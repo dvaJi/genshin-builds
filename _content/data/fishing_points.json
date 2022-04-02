@@ -306,5 +306,29 @@
       "fish": ["dawncatcher", "purple_shirakodai", "divda_ray", "formalo_ray"],
       "total": 6
     }
+  ],
+  "the_chasm": [
+    {
+      "id": "underground_waterway",
+      "fish": [
+        "medaka",
+        "betta",
+        "akai_maou",
+        "brown_shirakodai",
+        "bitter_pufferfish"
+      ],
+      "total": 6
+    },
+    {
+      "id": "underground_waterway_2",
+      "fish": [
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "akai_maou",
+        "pufferfish"
+      ],
+      "total": 6
+    }
   ]
 }
