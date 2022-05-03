@@ -2,44 +2,51 @@
   "sword": {
     "maindps": {
       "0": [
-        "summit_shaper",
         "mistsplitter_reforged",
-        "aquila_favonia",
-        "primordial_jade_cutter"
+        "primordial_jade_cutter",
+        "haran_geppaku_futsu"
       ],
-      "1": ["skyward_blade", "prototype_rancour", "the_black_sword"],
+      "1": [
+        "summit_shaper",
+        "skyward_blade",
+        "aquila_favonia",
+        "the_black_sword"
+      ],
       "2": [
-        "amenoma_kageuchi",
         "lions_roar",
-        "royal_longsword",
+        "prototype_rancour",
         "blackcliff_longsword",
         "harbinger_of_dawn"
       ],
-      "3": ["the_flute", "iron_sting", "sword_of_descension", "fillet_blade"],
-      "4": ["dark_iron_sword", "cool_steel", "skyrider_sword"]
+      "3": ["the_flute", "royal_longsword", "iron_sting", "fillet_blade"],
+      "4": [
+        "sword_of_descension",
+        "dark_iron_sword",
+        "cool_steel",
+        "skyrider_sword"
+      ]
     },
     "subdps": {
       "0": ["freedomsworn", "mistsplitter_reforged", "primordial_jade_cutter"],
       "1": [
         "skyward_blade",
-        "the_alley_flash",
+        "favonius_sword",
         "sacrificial_sword",
-        "festering_desire",
         "harbinger_of_dawn"
       ],
       "2": [
         "amenoma_kageuchi",
-        "favonius_sword",
-        "royal_longsword",
-        "iron_sting"
+        "the_alley_flash",
+        "iron_sting",
+        "festering_desire"
       ],
       "3": ["lions_roar", "cinnabar_spindle"],
       "4": ["dark_iron_sword", "cool_steel", "skyrider_sword"]
     },
     "support": {
-      "0": ["freedomsworn"],
-      "1": ["skyward_blade", "favonius_sword", "sacrificial_sword"],
-      "2": ["primordial_jade_cutter", "festering_desire", "skyrider_sword"],
+      "0": ["freedomsworn", "favonius_sword"],
+      "1": ["sacrificial_sword"],
+      "2": ["summit_shaper", "primordial_jade_cutter"],
       "3": [],
       "4": ["travelers_handy_sword"]
     }

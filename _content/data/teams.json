@@ -2,6 +2,66 @@
   {
     "primary": [
       {
+        "characterId": "kamisato_ayato",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "rosaria",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "kaedehara_kazuha",
+        "role": "Support"
+      },
+      {
+        "characterId": "yun_jin",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["rosaria"],
+        "substitutes": ["kamisato_ayaka", "kaeya"]
+      },
+      {
+        "characters": ["kaedehara_kazuha"],
+        "substitutes": ["venti", "sucrose"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
+        "characterId": "arataki_itto",
+        "role": "Main DPS"
+      },
+      {
+        "characterId": "albedo",
+        "role": "Sub DPS"
+      },
+      {
+        "characterId": "zhongli",
+        "role": "Support"
+      },
+      {
+        "characterId": "gorou",
+        "role": "Support"
+      }
+    ],
+    "alternatives": [
+      {
+        "characters": ["albedo"],
+        "substitutes": ["ningguang", "traveler_geo"]
+      },
+      {
+        "characters": ["zhongli"],
+        "substitutes": ["ningguang", "traveler_geo"]
+      }
+    ]
+  },
+  {
+    "primary": [
+      {
         "characterId": "yae_miko",
         "role": "Main DPS"
       },
