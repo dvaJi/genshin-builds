@@ -29,7 +29,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
     isMobile() ? Roles.maindps : null
   );
 
-  const { t, tfn } = useIntl();
+  const { t } = useIntl("tierlist_weapons");
 
   const changeTierTab = (role: Roles) => {
     if (isMobile()) {
@@ -42,13 +42,13 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
-          id: "title.tierlist_weapons",
+        fn={t}
+        pageTitle={t({
+          id: "title",
           defaultMessage: "Genshin Impact Weapons Tier List (Best Weapons)",
         })}
-        pageDescription={tfn({
-          id: "title.tierlist_weapons.description",
+        pageDescription={t({
+          id: "description",
           defaultMessage:
             "All the best weapons ranked in order of power, viability, and versatility to clear content.",
         })}
@@ -56,7 +56,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-center lg:text-left my-6 text-2xl font-semibold text-gray-200">
         {t({
-          id: "title.tierlist_weapons",
+          id: "title",
           defaultMessage: "Genshin Impact Weapons Tier List (Best Weapons)",
         })}
       </h2>
@@ -92,34 +92,37 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
           <button
             className={clsx(
               "col-span-2 p-5 bg-vulcan-800",
+              !isMobile() ? "pointer-events-none" : "",
               isMobile() && selectedCol !== Roles.maindps ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.maindps)}
           >
             <h3 className="text-lg text-white text-center font-semibold">
-              Main DPS
+              {t({ id: "main_dps", defaultMessage: "Main DPS" })}
             </h3>
           </button>
           <button
             className={clsx(
               "col-span-2 p-5 bg-vulcan-800",
+              !isMobile() ? "pointer-events-none" : "",
               isMobile() && selectedCol !== Roles.subdps ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.subdps)}
           >
             <h3 className="text-lg text-white text-center font-semibold">
-              Sub DPS
+              {t({ id: "sub_dps", defaultMessage: "Sub DPS" })}
             </h3>
           </button>
           <button
             className={clsx(
               "col-span-2 p-5 bg-vulcan-800",
+              !isMobile() ? "pointer-events-none" : "",
               isMobile() && selectedCol !== Roles.support ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.support)}
           >
             <h3 className="text-lg text-white text-center font-semibold">
-              Support
+              {t({ id: "support", defaultMessage: "Support" })}
             </h3>
           </button>
         </div>

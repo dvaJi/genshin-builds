@@ -50,7 +50,7 @@ const CharacterPage = ({
   const [buildSelected, setBuildSelected] = useState(
     builds.findIndex((b) => b.recommended) ?? 0
   );
-  const { t, tfn } = useIntl();
+  const { t } = useIntl("character");
   useEffect(() => {
     setBackground({
       image: getUrl(
@@ -64,14 +64,14 @@ const CharacterPage = ({
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
-          id: "title.character.detail",
+        fn={t}
+        pageTitle={t({
+          id: "title",
           defaultMessage: "{name} Genshin Impact Build Guide",
           values: { name: character.name },
         })}
         pageDescription={character.description}
-        jsonLD={generateJsonLd(locale, tfn)}
+        jsonLD={generateJsonLd(locale, t)}
       />
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center px-2 lg:px-0">
@@ -103,7 +103,7 @@ const CharacterPage = ({
       </div>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
-        {t({ id: "character.skills", defaultMessage: "Skills" })}
+        {t({ id: "skills", defaultMessage: "Skills" })}
       </h2>
       <div
         className={clsx(
@@ -125,7 +125,7 @@ const CharacterPage = ({
         <div className="mb-4 mx-4 lg:mx-0">
           <h2 className="text-3xl mb-3">
             {t({
-              id: "character.builds",
+              id: "builds",
               defaultMessage: "Builds",
             })}
           </h2>
@@ -181,7 +181,7 @@ const CharacterPage = ({
       )}
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
-        {t({ id: "character.passives", defaultMessage: "Passives" })}
+        {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-4">
         {character.passives.map((passive) => (
@@ -194,7 +194,7 @@ const CharacterPage = ({
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
-          id: "character.constellations",
+          id: "constellations",
           defaultMessage: "Constellations",
         })}
       </h2>
@@ -211,7 +211,7 @@ const CharacterPage = ({
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
-          id: "character.ascension_materials",
+          id: "ascension_materials",
           defaultMessage: "Ascension Materials",
         })}
       </h2>
@@ -220,7 +220,7 @@ const CharacterPage = ({
       </div>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
-          id: "character.talent_materials",
+          id: "talent_materials",
           defaultMessage: "Talent Materials",
         })}
       </h2>
@@ -253,8 +253,8 @@ const generateJsonLd = (
         "item": {
           "@id": "https://genshin-builds.com/${locale}/characters",
           "name": "${t({
-            id: "title.characters",
-            defaultMessage: "title.characters",
+            id: "characters",
+            defaultMessage: "Characters",
           })}"
         }
       }

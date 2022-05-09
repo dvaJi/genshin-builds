@@ -8,6 +8,7 @@ import {
   CgChevronLeft,
 } from "react-icons/cg";
 import clsx from "clsx";
+import Link from "next/link";
 import { format } from "date-fns";
 
 import Ads from "@components/Ads";
@@ -24,7 +25,6 @@ import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 
 import { localeToLang } from "@utils/locale-to-lang";
-import Link from "next/link";
 
 type TodoProps = {
   planning: Record<string, any>;
@@ -36,7 +36,7 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
   const [currentDay] = useState(format(new Date(), "iii"));
   const todos = useStore(todosAtom);
   // const { summary, originalSummary } = useStore(getSummary);
-  const { t } = useIntl();
+  const { t } = useIntl("todo");
 
   const { summary, originalSummary } = useMemo(() => {
     const summary: Record<string, number> = {};
@@ -162,11 +162,11 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.todo",
+          id: "title",
           defaultMessage: "Todo List",
         })}
         pageDescription={t({
-          id: "title.todo.description",
+          id: "description",
           defaultMessage:
             "Todo List for Genshin Impact to plan and track resources you need!",
         })}

@@ -65,17 +65,17 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
     filterWeapons();
   }, [debouncedSearchTerm, typeFilter, sortBy]);
 
-  const { t } = useIntl();
+  const { t } = useIntl("weapons");
   return (
     <div>
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.weapons",
+          id: "title",
           defaultMessage: "Genshin Impact Weapons List",
         })}
         pageDescription={t({
-          id: "title.weapons.description",
+          id: "description",
           defaultMessage:
             "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
         })}
@@ -242,14 +242,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons({
-    select: [
-      "id",
-      "rarity",
-      "name",
-      "stats",
-      "refinements",
-      "type",
-    ],
+    select: ["id", "rarity", "name", "stats", "refinements", "type"],
   });
 
   const common = require(`../_content/data/common.json`)[locale];

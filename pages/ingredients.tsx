@@ -20,7 +20,7 @@ type Props = {
 };
 
 const IngredientsPage = ({ ingredients }: Props) => {
-  const { t, tfn } = useIntl();
+  const { t } = useIntl("ingredients");
   const columns = useMemo<Column<Ingredients>[]>(
     () => [
       {
@@ -36,7 +36,7 @@ const IngredientsPage = ({ ingredients }: Props) => {
         ),
       },
       {
-        Header: tfn({ id: "name", defaultMessage: "Name" }),
+        Header: t({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
       },
     ],
@@ -48,13 +48,13 @@ const IngredientsPage = ({ ingredients }: Props) => {
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
-          id: "title.ingredients",
+        fn={t}
+        pageTitle={t({
+          id: "title",
           defaultMessage: "Genshin Impact Cooking Ingredient List",
         })}
-        pageDescription={tfn({
-          id: "title.ingredients.description",
+        pageDescription={t({
+          id: "description",
           defaultMessage: "Discover all the cooking ingredients.",
         })}
       />

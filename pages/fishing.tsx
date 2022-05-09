@@ -22,7 +22,7 @@ type Props = {
 
 const FishingPage = ({ fish, fishingPoints }: Props) => {
   const [fishFilter, setFishFilter] = useState<string[]>([]);
-  const { t, tfn } = useIntl();
+  const { t } = useIntl("fishing");
 
   const toggleFish = (id: string) => {
     const exist = fishFilter.includes(id);
@@ -52,14 +52,14 @@ const FishingPage = ({ fish, fishingPoints }: Props) => {
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
-          id: "title.fishing",
+        fn={t}
+        pageTitle={t({
+          id: "title",
           defaultMessage:
             "Genshin Impact Fishing (Fish, Baits, Fishing Rods and Fishing points)",
         })}
-        pageDescription={tfn({
-          id: "title.fishing.description",
+        pageDescription={t({
+          id: "description",
           defaultMessage:
             "This is an article about the list of fishing spots (points/spots) and the fish that appear in Genshin. The fishing points for Mondstadt, Liyue, Dragon Spine, and Inazuma are also summarized.",
         })}

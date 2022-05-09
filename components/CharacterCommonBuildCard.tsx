@@ -14,7 +14,7 @@ type Props = {
 };
 
 const CharacterCommonBuildCard = ({ build, weapons, artifacts }: Props) => {
-  const { t: f } = useIntl();
+  const { t: f } = useIntl("character");
   return (
     <div className="">
       {/* <p>{build.name}</p> */}

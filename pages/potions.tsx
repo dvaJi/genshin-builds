@@ -21,7 +21,7 @@ type Props = {
 };
 
 const PotionsPage = ({ potions }: Props) => {
-  const { t, tfn } = useIntl();
+  const { t } = useIntl("potions");
   const columns = useMemo<Column<Potion>[]>(
     () => [
       {
@@ -37,16 +37,16 @@ const PotionsPage = ({ potions }: Props) => {
         ),
       },
       {
-        Header: tfn({ id: "name", defaultMessage: "Name" }),
+        Header: t({ id: "name", defaultMessage: "Name" }),
         accessor: "name",
       },
       {
-        Header: tfn({ id: "rarity", defaultMessage: "Rarity" }),
+        Header: t({ id: "rarity", defaultMessage: "Rarity" }),
         accessor: "rarity",
         Cell: (row) => (row.value ? <StarRarity rarity={row.value} /> : ""),
       },
       {
-        Header: tfn({ id: "effect", defaultMessage: "Effect" }),
+        Header: t({ id: "effect", defaultMessage: "Effect" }),
         accessor: "effect",
       },
     ],
@@ -58,13 +58,13 @@ const PotionsPage = ({ potions }: Props) => {
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
-          id: "title.potions",
+        fn={t}
+        pageTitle={t({
+          id: "title",
           defaultMessage: "Genshin Impact Potions List",
         })}
-        pageDescription={tfn({
-          id: "title.potions.description",
+        pageDescription={t({
+          id: "description",
           defaultMessage:
             "Discover all the alchemy recipes and the best potions and oils to use for your team.",
         })}

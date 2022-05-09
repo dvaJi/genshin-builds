@@ -44,7 +44,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[13]);
   const [addedToTodo, setAddedToTodo] = useState(false);
-  const { t, localeGI } = useIntl();
+  const { t, localeGI } = useIntl("calculator");
   const [calculate, { called, loading, data, reset }] = useLazyQuery(QUERY);
 
   const canCalculate = useMemo(() => {

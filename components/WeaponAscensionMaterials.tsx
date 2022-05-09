@@ -48,7 +48,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
             )}
           >
             <div className="flex justify-center items-center text-sm lg:text-base">
-              ascension {ascen.ascension}
+              Ascension {ascen.ascension}
             </div>
             <div className="flex justify-center items-center text-sm lg:text-base">
               [{ascension[i].level}/{ascen.level}]

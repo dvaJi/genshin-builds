@@ -36,7 +36,7 @@ const FoodPage = ({ food }: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
-  const { t, tfn } = useIntl();
+  const { t } = useIntl("food");
 
   const filterWeapons = () => {
     setFoodFilter(
@@ -65,13 +65,13 @@ const FoodPage = ({ food }: Props) => {
   return (
     <div>
       <Metadata
-        fn={tfn}
-        pageTitle={tfn({
-          id: "title.food",
+        fn={t}
+        pageTitle={t({
+          id: "title",
           defaultMessage: "Genshin Impact Cooking Recipes List",
         })}
-        pageDescription={tfn({
-          id: "title.food.description",
+        pageDescription={t({
+          id: "description",
           defaultMessage:
             "Discover all the cooking recipes and the best food to cook for your team.",
         })}
@@ -84,7 +84,7 @@ const FoodPage = ({ food }: Props) => {
         <SearchInput
           value={searchTerm}
           setValue={setSearchTerm}
-          placeholder={tfn({ id: "search", defaultMessage: "Search..." })}
+          placeholder={t({ id: "search", defaultMessage: "Search..." })}
         />
         <div className="ml-3 mt-4 md:mt-0">
           {["all", "normal", "delicious", "suspicious", "special"].map(

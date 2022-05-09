@@ -58,7 +58,7 @@ const CharacterCalculator = ({ characters }: Props) => {
   const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(10);
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(10);
   const [addedToTodo, setAddedToTodo] = useState(false);
-  const { t, localeGI } = useIntl();
+  const { t, localeGI } = useIntl("calculator");
   const [calculate, { called, loading, data, reset }] = useLazyQuery(QUERY);
 
   const canCalculate = useMemo(() => {

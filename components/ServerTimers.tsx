@@ -4,7 +4,6 @@ import useServerTime from "@hooks/use-server-time";
 function ServerTimers() {
   const { tfn } = useIntl("ascension_planner");
   const { NARemaining, EURemaining, AsiaRemaining } = useServerTime();
-  console.log(tfn({ id: "europe", defaultMessage: "Europe" }))
 
   return (
     <div className="grid grid-cols-3 ">

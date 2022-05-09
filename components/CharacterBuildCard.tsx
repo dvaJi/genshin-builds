@@ -15,7 +15,7 @@ type Props = {
 };
 
 const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
-  const { t: f } = useIntl();
+  const { t: f } = useIntl("character");
   return (
     <div className="">
       {/* <p>{build.name}</p> */}
@@ -55,7 +55,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
         <div className="flex flex-wrap w-full lg:w-4/5 ml-2 content-start">
           <div className="text-xl mb-2 font-semibold w-full">
             {f({
-              id: "character.talents_priority",
+              id: "talents_priority",
               defaultMessage: "Talents Priority",
             })}
           </div>
@@ -87,7 +87,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
           <div className="w-full mb-3">
             <h2 className="font-bold">
               {f({
-                id: "character.recommended_primary_stats",
+                id: "recommended_primary_stats",
                 defaultMessage: "Recommended Primary Stats",
               })}
             </h2>
@@ -95,7 +95,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
             <div>
               <h2 className="font-bold">
                 {f({
-                  id: "character.substats_priority",
+                  id: "substats_priority",
                   defaultMessage: "Substats priority",
                 })}
               </h2>

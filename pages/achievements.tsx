@@ -26,7 +26,7 @@ const AchivementsPage = ({ categories }: TodoProps) => {
   const [showAchieved, setShowAchieved] = useState(false);
   const [searchText, setSearchText] = useState("");
   const achievementsDone = useStore(achievementsCompleted);
-  const { t } = useIntl();
+  const { t } = useIntl("achievements");
 
   const filteredAchievements = useMemo(
     () =>
@@ -63,11 +63,11 @@ const AchivementsPage = ({ categories }: TodoProps) => {
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.achievements",
+          id: "title",
           defaultMessage: "Achievements",
         })}
         pageDescription={t({
-          id: "title.achievements.description",
+          id: "description",
           defaultMessage: "Track your Genshin Impact achievement easily",
         })}
       />

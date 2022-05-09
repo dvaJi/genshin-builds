@@ -26,14 +26,14 @@ const WeaponPage = ({
 }: WeaponPageProps) => {
   const [refinement, setRefinement] = useState(0);
   const [weaponStatIndex, setWeaponStatIndex] = useState(0);
-  const { t } = useIntl();
+  const { t } = useIntl("weapon");
 
   return (
     <div>
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.weapon.detail",
+          id: "title",
           defaultMessage: "{name} Genshin Impact Weapon Details",
           values: { name: weapon.name },
         })}
@@ -200,7 +200,7 @@ const WeaponPage = ({
       )}
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
-          id: "character.ascension_materials",
+          id: "ascension_materials",
           defaultMessage: "Ascension Materials",
         })}
       </h2>
@@ -233,8 +233,8 @@ const generateJsonLd = (
         "item": {
           "@id": "https://genshin-builds.com/${locale}/weapons",
           "name": "${t({
-            id: "title.weapons",
-            defaultMessage: "title.weapons",
+            id: "weapons",
+            defaultMessage: "weapons",
           })}"
         }
       }

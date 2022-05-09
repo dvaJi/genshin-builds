@@ -17,17 +17,17 @@ type TeamsProps = {
 };
 
 const TeamsPage = ({ teams }: TeamsProps) => {
-  const { t } = useIntl();
+  const { t } = useIntl("teams");
   return (
     <div>
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.teams",
+          id: "title",
           defaultMessage: "Best Team Comp | Party Building Guide",
         })}
         pageDescription={t({
-          id: "title.teams.description",
+          id: "description",
           defaultMessage:
             "This is a guide to making the best party in Genshin Impact. Learn how to make the best party! We introduce the best party composition for each task including exploring areas, slaying field bosses, and more!",
         })}

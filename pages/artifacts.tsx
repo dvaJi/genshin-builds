@@ -22,7 +22,7 @@ type Props = {
 };
 
 const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
-  const { t } = useIntl();
+  const { t } = useIntl("artifacts");
 
   const columns = useMemo<Column<Artifact>[]>(
     () => [
@@ -78,11 +78,11 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.artifacts",
+          id: "title",
           defaultMessage: "Genshin Artifacts Artifacts List",
         })}
         pageDescription={t({
-          id: "title.artifacts.description",
+          id: "description",
           defaultMessage:
             "All the best artifact gear sets, locations, and stats.",
         })}

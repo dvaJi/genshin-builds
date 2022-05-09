@@ -17,18 +17,18 @@ type Props = {
 };
 
 const Calculator = ({ characters, weapons }: Props) => {
-  const { t } = useIntl();
+  const { t } = useIntl("calculator");
 
   return (
     <div>
       <Metadata
         fn={t}
         pageTitle={t({
-          id: "title.calculator",
+          id: "title",
           defaultMessage: "Genshin Impact Calculator",
         })}
         pageDescription={t({
-          id: "title.calculator.description",
+          id: "description",
           defaultMessage:
             "Genshin Impact Calculator to calculate how many mora and materials needed for your character or weapon ascension",
         })}

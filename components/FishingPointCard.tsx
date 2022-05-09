@@ -22,7 +22,7 @@ const FishingPointCard = ({
   fish,
   isFishSelected,
 }: FishingPointCardProps) => {
-  const { t } = useIntl();
+  const { t } = useIntl("fishing");
 
   return (
     <div>

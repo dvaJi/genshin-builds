@@ -16,7 +16,7 @@ interface TeamCardProps {
 
 const TeamCard = ({ team }: TeamCardProps) => {
   const [show, setShow] = useState(false);
-  const { t } = useIntl();
+  const { t } = useIntl("teams");
   return (
     <div className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800">
       <h2 className="text-2xl font-bold text-white">
@@ -29,7 +29,9 @@ const TeamCard = ({ team }: TeamCardProps) => {
       <div className="grid grid-cols-4">
         {team.primary.map((block, i) => (
           <div key={`${block.role}${block.character.id}${i}`}>
-            <div className="text-xl">{block.role}</div>
+            <div className="text-xl">
+              {t({ id: block.role.toLowerCase(), defaultMessage: block.role })}
+            </div>
             <div className="flex justify-center text-center">
               <Link href={`/character/${block.character.id}`}>
                 <a>
