@@ -14,6 +14,8 @@
     "cooking_ingredient": "Zutat",
     "artifacts": "Artefakte",
     "weapons": "Waffen",
+    "todo": "Machen",
+    "achievements": "Erfolge",
     "food": "Nahrung"
   },
   "ascension_planner": {
@@ -26,6 +28,9 @@
     "Fri": "Freitag",
     "Sat": "Samstag",
     "Sun": "Sonntag",
+    "asia": "Asien",
+    "europe": "Europe",
+    "north_america": "Nordamerika",
     "Forsaken Rift": "Vergessene Schlucht",
     "Taishan Mansion": "Villa Taishan",
     "Cecilia Garden": "Ceciliagarten",
@@ -36,15 +41,31 @@
   "characters": {
     "title": "Genshin Impact Zeichenliste",
     "description": "Erfahren Sie mehr über jeden Charakter in Genshin Impact, einschließlich seiner Fähigkeiten, Talente, Builds und Stufenlisten.",
-    "characters": "Figurenwahl"
+    "characters": "Figurenwahl",
+    "anemo": "Anemo",
+    "geo": "Geo",
+    "pyro": "Pyro",
+    "hydro": "Hydro",
+    "electro": "Electro",
+    "cryo": "Cryo"
   },
   "character": {
     "title": "{name} Genshin Impact Build Guide",
     "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
     "characters": "Figurenwahl",
     "character": "Figuren",
+    "builds": "Builds",
+    "most_used": "Meist genutzt",
+    "skills": "Kompetenzen",
     "weapons": "Waffen",
     "artifacts": "Artefakte",
+    "recommended_primary_stats": "Empfohlene Primärstatistik",
+    "substats_priority": "Substats Priorität",
+    "ascension_materials": "Aufstiegsmaterialien",
+    "talent_materials": "Talentmaterialien",
+    "talents_priority": "Talent Priorität",
+    "constellations": "Sternbilder",
+    "passives": "Passives Talent",
     "normal attack": "Normaler Angriff",
     "skill": "Fähigkeit",
     "burst": "Platzen",
@@ -72,7 +93,9 @@
     "level": "Niveau",
     "stats": "Statistiken",
     "ascension": "Aufstieg",
-    "refinement": "Raffinesse"
+    "refinement": "Raffinesse",
+    "recommended_characters": "Empfohlene Charaktere",
+    "ascension_materials": "Aufstiegsmaterialien"
   },
   "artifacts": {
     "title": "Genshin Impact Artefaktliste",
@@ -89,12 +112,18 @@
   "tierlist": {
     "title": "Genshin Impact Stufenliste (Beste Charaktere)",
     "description": "Alle besten Charaktere und ihre Builds wurden nach Leistung, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte zu löschen.",
-    "tierlist": "Tierlist"
+    "tierlist": "Tierlist",
+    "main_dps": "Main DPS",
+    "sub_dps": "Sub DPS",
+    "support": "Support"
   },
   "tierlist_weapons": {
     "title": "Genshin Impact Liste der Waffenstufen (Beste Waffen)",
     "description": "Die besten Waffen sortiert nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu löschen.",
-    "tierlist_weapons": "Beste Waffen"
+    "tierlist_weapons": "Beste Waffen",
+    "main_dps": "Main DPS",
+    "sub_dps": "Sub DPS",
+    "support": "Support"
   },
   "food": {
     "title": "Genshin Impact Liste der Kochrezepte",
@@ -127,7 +156,10 @@
     "teams": "Team-Comp",
     "best_team_comp": "Beste Teamzusammensetzung",
     "character_team": "Bestes Team für {name}",
-    "substitute_characters": "Substitute Characters"
+    "substitute_characters": "Substitute Characters",
+    "main dps": "Main DPS",
+    "sub dps": "Sub DPS",
+    "support": "Support"
   },
   "fishing": {
     "title": "Genshin Impact Angeln (Fische, Köder, Angelruten und Angelpunkte)",
@@ -136,7 +168,8 @@
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
-    "enkanomiya": "Enkanomiya"
+    "enkanomiya": "Enkanomiya",
+    "the_chasm": "Große Kluft"
   },
   "calculator": {
     "title": "Genshin Impact Taschenrechner",
@@ -150,14 +183,31 @@
     "skill": "Fähigkeit",
     "burst": "Platzen",
     "calculate": "Berechnung",
-    "choose_weapon": "Waffe wählen"
+    "choose_weapon": "Waffe wählen",
+    "add_to_todo_list": "Zur Aufgabenliste hinzufügen",
+    "added_to_todo_list": "Zur Aufgabenliste hinzugefügt",
+    "exp_wasted": "EXP verschwendet"
   },
   "todo": {
+    "title": "Genshin Impact Aufgabenliste",
+    "description": "Todo-Liste zum Planen und Verfolgen von Artikeln und Mora, die Sie benötigen",
+    "todo": "Machen",
+    "no_todo_msg": "Nein Noch zu tun. Fügen Sie einige von der Rechnerseite hinzu.",
+    "go_to_calculator": "Gehen Sie zum Rechner",
+    "farm_today": "Bauernhof heute",
+    "summary": "Zusammenfassung",
+    "levels": "Ebenen",
+    "talents": "Talente",
     "normal_attack": "Normaler Angriff",
     "skill": "Fähigkeit",
-    "burst": "Platzen"
+    "burst": "Platzen",
+    "delete": "Delete"
   },
   "achievements": {
+    "title": "Genshin Impact Erfolge",
+    "description": "Erfolge, um neue Funktionen und Belohnungen freizuschalten",
+    "achievements": "Erfolge",
+    "show_achieved": "Erreicht anzeigen",
     "search": "Suche..."
   }
 }
