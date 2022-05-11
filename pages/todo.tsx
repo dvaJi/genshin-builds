@@ -64,7 +64,7 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
         }
 
         acc[key].push([
-          todo[0].id,
+          todo[0].name,
           todo[5][key] - todo[4][key],
           todo[5][key],
           i,
