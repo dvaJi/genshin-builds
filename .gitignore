@@ -38,3 +38,5 @@ yarn-error.log*
 /_pds
 
 target/
+
+_content/tmp/*

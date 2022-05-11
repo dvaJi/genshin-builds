@@ -1,56 +1,67 @@
 {
-  "character.constellations": "กลุ่มดาว",
-  "character.passives": "พรสวรรค์ติดตัว",
-  "characters": "ตัวอักษร",
-  "character": "ตัวละคร",
-  "cooking_ingredient": "วัตถุดิบประกอบอาหาร",
-  "artifacts": "อาร์ติแฟกต์",
-  "weapons": "อาวุธ",
-  "weapon": "ใช้อาวุธ",
-  "food": "อาหาร",
-  "location": "ตำแหน่ง",
-  "bonus": "ของขวัญพิเศษ",
-  "type": "ประเภท",
-  "Anemo": "ลม",
-  "Geo": "หิน",
-  "Pyro": "ไฟ",
-  "Hydro": "น้ำ",
-  "Electro": "ไฟฟ้า",
-  "Cryo": "น้ำแข็ง",
-  "ATK": "พลังโจมตี",
-  "HP": "พลังชีวิต",
-  "DEF": "พลังป้องกัน",
-  "HP%": "พลังชีวิต%",
-  "ATK%": "พลังโจมตี%",
-  "Elemental Mastery": "ความชำนาญธาตุ",
-  "Energy Recharge": "การฟื้นฟูพลังงาน",
-  "CRIT Rate": "อัตราคริ",
-  "CRIT DMG": "ความแรงคริ",
-  "Healing Bonus": "โบนัสการรักษา",
-  "Physical DMG": "โบนัสความเสียหายกายภาพ",
-  "Physical DMG Bonus": "โบนัสความเสียหายกายภาพ",
-  "Pyro DMG": "โบนัสความเสียหายไฟ",
-  "Hydro DMG": "โบนัสความเสียหายน้ำ",
-  "Cryo DMG": "โบนัสความเสียหายน้ำแข็ง",
-  "Electro DMG": "โบนัสความเสียหายไฟฟ้า",
-  "Geo DMG": "โบนัสความเสียหายหิน",
-  "Anemo DMG": "โบนัสความเสียหายลม",
-  "Mon": "วันจันทร์",
-  "Tue": "วันอังคาร",
-  "Wed": "วันพุธ",
-  "Thu": "วันพฤหัสบดี",
-  "Fri": "วันศุกร์",
-  "Sat": "วันเสาร์",
-  "Sun": "วันอาทิตย์",
-  "Forsaken Rift": "หุบเขาแห่งการลืมเลือน",
-  "Taishan Mansion": "วัง Taishan Mansion",
-  "Cecilia Garden": "สวนดอก Cecilia",
-  "Violet Court": "โถงสีม่วง",
-  "Court of Flowing Sand": "โถงแห่งห้วงทราย",
-  "Hidden Palace of Lianshan Formula": "ราชวังลับแห่ง Lianshan Formula",
-  "or": "หรือ",
-  "mondstadt": "Mondstadt",
-  "liyue": "Liyue",
-  "inazuma": "Inazuma",
-  "enkanomiya": "Enkanomiya"
+  "layout": {
+    "characters": "ตัวอักษร",
+    "cooking_ingredient": "วัตถุดิบประกอบอาหาร",
+    "artifacts": "อาร์ติแฟกต์",
+    "weapons": "อาวุธ",
+    "food": "อาหาร"
+  },
+  "ascension_planner": {
+    "Mon": "วันจันทร์",
+    "Tue": "วันอังคาร",
+    "Wed": "วันพุธ",
+    "Thu": "วันพฤหัสบดี",
+    "Fri": "วันศุกร์",
+    "Sat": "วันเสาร์",
+    "Sun": "วันอาทิตย์",
+    "Forsaken Rift": "หุบเขาแห่งการลืมเลือน",
+    "Taishan Mansion": "วัง Taishan Mansion",
+    "Cecilia Garden": "สวนดอก Cecilia",
+    "Violet Court": "โถงสีม่วง",
+    "Court of Flowing Sand": "โถงแห่งห้วงทราย",
+    "Hidden Palace of Lianshan Formula": "ราชวังลับแห่ง Lianshan Formula"
+  },
+  "characters": {
+    "characters": "ตัวอักษร"
+  },
+  "character": {
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "characters": "ตัวอักษร",
+    "character": "ตัวละคร",
+    "weapons": "อาวุธ",
+    "artifacts": "อาร์ติแฟกต์",
+    "or": "หรือ"
+  },
+  "weapons": {
+    "weapons": "อาวุธ",
+    "type": "ประเภท"
+  },
+  "weapon": {
+    "description": "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+    "weapons": "อาวุธ",
+    "weapon": "ใช้อาวุธ",
+    "type": "ประเภท"
+  },
+  "artifacts": {
+    "artifacts": "อาร์ติแฟกต์"
+  },
+  "tierlist": {},
+  "tierlist_weapons": {},
+  "food": {
+    "food": "อาหาร"
+  },
+  "ingredients": {
+    "cooking_ingredient": "วัตถุดิบประกอบอาหาร"
+  },
+  "potions": {},
+  "teams": {},
+  "fishing": {
+    "mondstadt": "Mondstadt",
+    "liyue": "Liyue",
+    "inazuma": "Inazuma",
+    "enkanomiya": "Enkanomiya"
+  },
+  "calculator": {},
+  "todo": {},
+  "achievements": {}
 }

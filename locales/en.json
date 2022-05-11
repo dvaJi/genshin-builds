@@ -172,8 +172,8 @@
     "the_chasm": "The Chasm"
   },
   "calculator": {
-    "title.calculator": "Genshin Impact Calculator",
-    "title.calculator.description": "Genshin Impact Calculator to calculate how many mora and materials needed for your character or weapon ascension",
+    "title": "Genshin Impact Calculator",
+    "description": "Genshin Impact Calculator to calculate how many mora and materials needed for your character or weapon ascension",
     "calculator": "Calculator",
     "character_level": "Character Level",
     "current_level": "Current Level",
