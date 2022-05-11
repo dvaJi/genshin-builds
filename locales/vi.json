@@ -5,10 +5,17 @@
     "potions": "Độc dược",
     "tierlist": "Tierlist",
     "database": "Database",
+    "calculator": "Máy tính",
+    "tierlist_characters": "Tierlist Nhân vật",
+    "tierlist_weapons": "Tierlist Vũ Khí",
+    "teams": "Đội",
+    "fishing": "Đánh bắt cá",
     "characters": "Nhân vật",
     "cooking_ingredient": "Nguyên Liệu Thực Phẩm",
     "artifacts": "Thánh Di Vật",
     "weapons": "Vũ Khí",
+    "todo": "Làm",
+    "achievements": "Thành tựu",
     "food": "Thực Phẩm"
   },
   "ascension_planner": {
@@ -21,6 +28,9 @@
     "Fri": "Thứ 6",
     "Sat": "Thứ 7",
     "Sun": "Chủ Nhật",
+    "asia": "Châu Á",
+    "europe": "Châu Âu",
+    "north_america": "Bắc Mỹ",
     "Forsaken Rift": "Vách Núi Quên",
     "Taishan Mansion": "Thái Sơn Phủ",
     "Cecilia Garden": "Vườn Hoa Cecilia",
@@ -31,15 +41,31 @@
   "characters": {
     "title": "Genshin Impact Danh sách nhân vật",
     "description": "Tìm hiểu về mọi nhân vật trong Genshin Impact bao gồm kỹ năng, tài năng, cách xây dựng và danh sách cấp của họ.",
-    "characters": "Nhân vật"
+    "characters": "Nhân vật",
+    "anemo": "Phong",
+    "geo": "Nham",
+    "pyro": "Hỏa",
+    "hydro": "Thủy",
+    "electro": "Lôi",
+    "cryo": "Băng"
   },
   "character": {
     "title": "{name} Genshin Impact Hướng dẫn xây dựng (Build Guide)",
-    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "description": "Tìm hiểu về mọi nhân vật trong Genshin Impact bao gồm kỹ năng, tài năng, cách xây dựng và danh sách cấp của họ.",
     "characters": "Nhân vật",
     "character": "Nhân Vật",
+    "builds": "Công trình",
+    "most_used": "Được dùng nhiều nhất",
+    "skills": "Kỹ năng",
     "weapons": "Vũ Khí",
     "artifacts": "Thánh Di Vật",
+    "recommended_primary_stats": "Số liệu thống kê chính được đề xuất",
+    "substats_priority": "Mức độ ưu tiên của chất nền",
+    "ascension_materials": "Vật liệu thăng thiên",
+    "talent_materials": "Tài liệu Tài năng",
+    "talents_priority": "Ưu tiên tài năng",
+    "constellations": "Cung Mệnh",
+    "passives": "Thiên Phú Cố Định",
     "normal attack": "Tấn công bình thường",
     "skill": "Kỹ năng",
     "burst": "Nổ",
@@ -49,9 +75,9 @@
     "title": "Genshin Impact Danh sách vũ khí",
     "description": "Tất cả các loại vũ khí, vị trí và chỉ số tốt nhất, bao gồm cung tên, chất xúc tác, súng bắn sét, kiếm và vũ khí.",
     "weapons": "Vũ Khí",
-    "search": "Search...",
+    "search": "Tìm kiếm...",
     "type": "Loại",
-    "secondary": "Secondary",
+    "secondary": "Thứ hai",
     "level": "Cấp độ",
     "stats": "Số liệu thống kê",
     "ascension": "Thăng thiên",
@@ -63,32 +89,41 @@
     "weapons": "Vũ Khí",
     "weapon": "Dùng vũ khí",
     "type": "Loại",
-    "secondary": "Secondary",
+    "secondary": "Thứ hai",
     "level": "Cấp độ",
     "stats": "Số liệu thống kê",
     "ascension": "Thăng thiên",
-    "refinement": "Sàng lọc"
+    "refinement": "Sàng lọc",
+    "recommended_characters": "Nhân vật được đề xuất",
+    "ascension_materials": "Vật liệu thăng thiên"
   },
   "artifacts": {
     "title": "Genshin Impact Danh sách đồ tạo tác",
     "description": "Tất cả các bộ bánh răng hiện vật, vị trí và số liệu thống kê tốt nhất.",
     "artifacts": "Thánh Di Vật",
     "2-4piece_artifact_sets": "2-4 Piece Artifact Sets",
-    "name": "Name",
-    "max_rarity": "Max Rarity",
-    "1piece_bonus": "1-Piece Bonus",
-    "1piece_artifact_sets": "1-Piece Artifact Sets",
-    "2piece_bonus": "2-Piece Bonus",
-    "4piece_bonus": "4-Piece Bonus"
+    "name": "Tên",
+    "max_rarity": "Độ chẵn lẻ tối đa",
+    "1piece_bonus": "Tiền thưởng 1 phần",
+    "1piece_artifact_sets": "Bộ đồ tạo tác 1 mảnh",
+    "2piece_bonus": "Tiền thưởng 2 phần",
+    "4piece_bonus": "Tiền thưởng 4 phần"
   },
   "tierlist": {
     "title": "Genshin Impact Danh sách Bậc (Nhân vật xuất sắc nhất) - Tierlist",
     "description": "Tất cả các nhân vật tốt nhất và bản dựng của họ được xếp hạng theo thứ tự sức mạnh, khả năng tồn tại và tính linh hoạt cho nội dung rõ ràng.",
-    "tierlist": "Tierlist"
+    "tierlist": "Tierlist",
+    "main_dps": "Main DPS",
+    "sub_dps": "Sub DPS",
+    "support": "Support"
   },
   "tierlist_weapons": {
     "title": "Genshin Impact Danh sách cấp vũ khí tác động (Vũ khí tốt nhất) - Tierlist",
-    "description": "Tất cả các loại vũ khí tốt nhất được xếp hạng theo thứ tự sức mạnh, khả năng tồn tại và tính linh hoạt cho đến nội dung rõ ràng."
+    "description": "Tất cả các loại vũ khí tốt nhất được xếp hạng theo thứ tự sức mạnh, khả năng tồn tại và tính linh hoạt cho đến nội dung rõ ràng.",
+    "tierlist_weapons": "Tierlist Nhân vật",
+    "main_dps": "Main DPS",
+    "sub_dps": "Sub DPS",
+    "support": "Support"
   },
   "food": {
     "title": "Genshin Impact Danh sách công thức nấu ăn",
@@ -99,34 +134,47 @@
     "delicious": "Ngon",
     "suspicious": "Khả nghi",
     "special": "Đặc biệt",
-    "search": "Search..."
+    "search": "Tìm kiếm..."
   },
   "ingredients": {
     "title": "Genshin Impact Danh sách thành phần nấu ăn",
     "description": "Khám phá tất cả các thành phần nấu ăn.",
     "cooking_ingredient": "Nguyên Liệu Thực Phẩm",
-    "name": "Name"
+    "name": "Tên"
   },
   "potions": {
     "title": "Genshin Impact Danh sách thuốc",
     "description": "Khám phá tất cả các công thức giả kim thuật cũng như các loại thuốc và dầu tốt nhất để sử dụng cho nhóm của bạn.",
     "potions": "Độc dược",
-    "name": "Name",
-    "rarity": "Rarity",
-    "effect": "Effect"
+    "name": "Tên",
+    "rarity": "việc hiếm có",
+    "effect": "Hiệu ứng"
   },
-  "teams": {},
+  "teams": {
+    "title": "Đội tuyển xuất sắc nhất | Hướng dẫn xây dựng Đảng | Genshin Impact",
+    "description": "Đây là hướng dẫn tạo bữa tiệc tốt nhất trong Genshin Impact. Tìm hiểu làm thế nào để làm cho bữa tiệc tốt nhất! Chúng tôi giới thiệu thành phần nhóm tốt nhất cho mỗi nhiệm vụ, bao gồm khám phá các khu vực, tiêu diệt trùm lĩnh vực và hơn thế nữa!",
+    "teams": "Đội",
+    "best_team_comp": "Sáng tác nhóm hay nhất",
+    "character_team": "Đội xuất sắc nhất cho {name}",
+    "substitute_characters": "Nhân vật thay thế",
+    "main dps": "Main DPS",
+    "sub dps": "Sub DPS",
+    "support": "Support"
+  },
   "fishing": {
     "title": "Genshin Impact Câu cá (Cá, Mồi, Cần câu và Điểm câu cá)",
     "description": "Đây là bài viết về danh sách các điểm câu cá (điểm / điểm) và các loài cá xuất hiện ở Genshin. Các điểm câu cá cho Mondstadt, Liyue, Dragonspine và Inazuma cũng được tóm tắt.",
+    "fishing": "Đánh bắt cá",
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
-    "enkanomiya": "Enkanomiya"
+    "enkanomiya": "Enkanomiya",
+    "the_chasm": "Vực Đá Sâu"
   },
   "calculator": {
     "title": "Genshin Impact Máy tính",
     "description": "Genshin Impact Máy tính để tính toán số lượng mora và nguyên liệu cần thiết cho việc thăng thiên nhân vật hoặc vũ khí của bạn",
+    "calculator": "Máy tính",
     "character_level": "Cấp độ nhân vật",
     "current_level": "Mức hiện tại",
     "intended_level": "Mức độ dự định",
@@ -135,14 +183,31 @@
     "skill": "Kỹ năng",
     "burst": "Nổ",
     "calculate": "Tính toán",
-    "choose_weapon": "Chọn vũ khí"
+    "choose_weapon": "Chọn vũ khí",
+    "add_to_todo_list": "Thêm vào danh sách",
+    "added_to_todo_list": "Đã thêm vào danh sách",
+    "exp_wasted": "EXP lãng phí"
   },
   "todo": {
+    "title": "Genshin Impact Những việc cần làm",
+    "description": "Danh sách Todo để lập kế hoạch và theo dõi các mặt hàng và tiền bạn cần",
+    "todo": "Làm",
+    "no_todo_msg": "Không có gì để làm được nêu ra. Thêm một số từ trang máy tính.",
+    "go_to_calculator": "Đi tới Máy tính",
+    "farm_today": "Trang trại Hôm nay",
+    "summary": "Tóm lược",
+    "levels": "Cấp độ",
+    "talents": "Tài năng",
     "normal_attack": "Tấn công bình thường",
     "skill": "Kỹ năng",
-    "burst": "Nổ"
+    "burst": "Nổ",
+    "delete": "Xóa bỏ"
   },
   "achievements": {
-    "search": "Search..."
+    "title": "Genshin Impact Thành tựu",
+    "description": "Thành tích để mở khóa các tính năng và phần thưởng mới",
+    "achievements": "Thành tựu",
+    "show_achieved": "Hiển thị đã đạt được",
+    "search": "Tìm kiếm..."
   }
 }
