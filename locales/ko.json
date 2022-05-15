@@ -5,10 +5,17 @@
     "potions": "물약",
     "tierlist": "계층 목록",
     "database": "데이터 베이스",
+    "calculator": "계산자",
+    "tierlist_characters": "티어리스트 캐릭터",
+    "tierlist_weapons": "등급 목록 무기",
+    "teams": "팀",
+    "fishing": "어업",
     "characters": "캐릭터",
     "cooking_ingredient": "식자재",
     "artifacts": "성유물",
     "weapons": "무기",
+    "todo": "할 것",
+    "achievements": "업적",
     "food": "음식"
   },
   "ascension_planner": {
@@ -21,6 +28,9 @@
     "Fri": "금요일",
     "Sat": "토요일",
     "Sun": "일요일",
+    "asia": "아시아",
+    "europe": "유럽",
+    "north_america": "북아메리카",
     "Forsaken Rift": "잊혀진 협곡",
     "Taishan Mansion": "태산부",
     "Cecilia Garden": "세실리아의 모밭",
@@ -31,15 +41,34 @@
   "characters": {
     "title": "원신 캐릭터 목록",
     "description": "기술, 재능, 빌드 및 티어 목록을 포함하여 원신 의 모든 캐릭터에 대해 알아보십시오.",
-    "characters": "캐릭터"
+    "characters": "캐릭터",
+    "anemo": "바람",
+    "geo": "바위 원소",
+    "pyro": "불",
+    "hydro": "물 원소",
+    "electro": "번개",
+    "cryo": "얼음"
   },
   "character": {
     "title": "{name} 원신 빌드 가이드",
-    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "description": "기술, 재능, 빌드 및 티어 목록을 포함하여 원신 의 모든 캐릭터에 대해 알아보십시오.",
     "characters": "캐릭터",
     "character": "캐릭터",
+    "builds": "빌드",
+    "most_used": "가장 많이 사용",
+    "skills": "기술",
     "weapons": "무기",
     "artifacts": "성유물",
+    "recommended_primary_stats": "권장 기본 통계",
+    "substats_priority": "하위 통계 우선 순위",
+    "ascension_materials": "승천 재료",
+    "talent_materials": "인재상",
+    "talents_priority": "인재 우선",
+    "constellations": "운명의 자리",
+    "passives": "고유 특성",
+    "normal attack": "일반 공격",
+    "skill": "기술",
+    "burst": "터지다",
     "or": "혹은"
   },
   "weapons": {
@@ -49,6 +78,8 @@
     "search": "검색...",
     "type": "타입",
     "secondary": "반성",
+    "level": "수준",
+    "stats": "통계",
     "ascension": "승천",
     "refinement": "정제"
   },
@@ -59,8 +90,12 @@
     "weapon": "무기 사용",
     "type": "타입",
     "secondary": "반성",
+    "level": "수준",
+    "stats": "통계",
     "ascension": "승천",
-    "refinement": "정제"
+    "refinement": "정제",
+    "recommended_characters": "추천 캐릭터",
+    "ascension_materials": "승천 재료"
   },
   "artifacts": {
     "title": "원신 아티팩트 목록",
@@ -77,16 +112,28 @@
   "tierlist": {
     "title": "원신 계층 목록 (최고 캐릭터)",
     "description": "모든 최고의 캐릭터와 그들의 빌드는 콘텐츠를 클리어 할 수있는 힘, 생존력, 다양성 순으로 순위가 매겨졌습니다.",
-    "tierlist": "계층 목록"
+    "tierlist": "계층 목록",
+    "main_dps": "메인 DPS",
+    "sub_dps": "서브 DPS",
+    "support": "지원하다"
   },
   "tierlist_weapons": {
     "title": "원신 무기 티어 목록 (최고 무기)",
-    "description": "모든 최고의 무기는 콘텐츠를 클리어 할 수있는 힘, 생존력, 다양성 순으로 순위를 매겼습니다."
+    "description": "모든 최고의 무기는 콘텐츠를 클리어 할 수있는 힘, 생존력, 다양성 순으로 순위를 매겼습니다.",
+    "tierlist_weapons": "등급 목록 무기",
+    "main_dps": "메인 DPS",
+    "sub_dps": "서브 DPS",
+    "support": "지원하다"
   },
   "food": {
     "title": "원신 요리법 목록",
     "description": "팀을 위해 요리 할 모든 요리 레시피와 최고의 음식을 찾아보세요.",
     "food": "음식",
+    "all": "모두",
+    "normal": "정상",
+    "delicious": "맛있는",
+    "suspicious": "의심스러운",
+    "special": "특별한",
     "search": "검색..."
   },
   "ingredients": {
@@ -103,18 +150,64 @@
     "rarity": "희박",
     "effect": "효과"
   },
-  "teams": {},
+  "teams": {
+    "title": "최고의 팀 구성 | 파티 빌딩 가이드 | 원신",
+    "description": "원신에서 최고의 파티를 만들기 위한 가이드입니다. 최고의 파티를 만드는 방법을 배우십시오! 지역 탐험, 필드 보스 처치 등 각 작업에 가장 적합한 파티 구성을 소개합니다!",
+    "teams": "팀",
+    "best_team_comp": "최고의 팀 콤프",
+    "character_team": "{name} 최고의 팀",
+    "substitute_characters": "대체 문자",
+    "main dps": "메인 DPS",
+    "sub dps": "서브 DPS",
+    "support": "지원하다"
+  },
   "fishing": {
     "title": "원신 낚시(물고기, 미끼, 낚싯대 및 낚싯대)",
     "description": "겐신에 등장하는 낚시터(포인트/포인트)와 물고기에 관한 글입니다. Mondstadt, Liyue, Dragonspine, Inazuma의 낚시 포인트도 정리되어 있습니다.",
+    "fishing": "어업",
     "mondstadt": "몬드",
     "liyue": "리월",
     "inazuma": "이나즈마",
-    "enkanomiya": "연하궁"
+    "enkanomiya": "연하궁",
+    "the_chasm": "층암거연"
   },
-  "calculator": {},
-  "todo": {},
+  "calculator": {
+    "title": "원신 계산자",
+    "description": "원신 캐릭터 또는 무기 승천에 필요한 모라와 재료의 수를 계산하는 계산기",
+    "calculator": "계산자",
+    "character_level": "캐릭터 레벨",
+    "current_level": "현재 레벨",
+    "intended_level": "의도 수준",
+    "talents_level": "인재 수준",
+    "normal_attack": "일반 공격",
+    "skill": "기술",
+    "burst": "터지다",
+    "calculate": "계산하다",
+    "choose_weapon": "무기 선택",
+    "add_to_todo_list": "할 일 목록에 추가",
+    "added_to_todo_list": "할 일 목록에 추가됨",
+    "exp_wasted": "경험치 낭비"
+  },
+  "todo": {
+    "title": "원신 할 일 목록",
+    "description": "할 일 목록 필요한 항목과 모라를 계획하고 추적하기 위해",
+    "todo": "할 것",
+    "no_todo_msg": "아직 할 일이 없습니다. 계산기 페이지에서 추가하십시오.",
+    "go_to_calculator": "계산기로 이동",
+    "farm_today": "오늘 농장",
+    "summary": "요약",
+    "levels": "레벨",
+    "talents": "재능",
+    "normal_attack": "일반 공격",
+    "skill": "기술",
+    "burst": "터지다",
+    "delete": "삭제"
+  },
   "achievements": {
+    "title": "원신 업적",
+    "description": "새로운 기능과 보상을 잠금 해제하기 위한 업적",
+    "achievements": "업적",
+    "show_achieved": "달성 표시",
     "search": "검색..."
   }
 }
