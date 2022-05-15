@@ -14,6 +14,8 @@
     "cooking_ingredient": "Ingrédient",
     "artifacts": "Artéfact",
     "weapons": "Armes",
+    "todo": "Faire",
+    "achievements": "Réalisations",
     "food": "Nourriture"
   },
   "ascension_planner": {
@@ -26,6 +28,9 @@
     "Fri": "Vendredi",
     "Sat": "Samedi",
     "Sun": "Dimanche",
+    "asia": "Asie",
+    "europe": "L'Europe",
+    "north_america": "Amérique du Nord",
     "Forsaken Rift": "Gorge de l'oubli",
     "Taishan Mansion": "Manoir Taishan",
     "Cecilia Garden": "Pépinière de cécilias",
@@ -36,15 +41,31 @@
   "characters": {
     "title": "Genshin Impact Liste des personnages",
     "description": "Découvrez tous les personnages de Genshin Impact, y compris leurs compétences, leurs talents, leurs constructions et leur liste de niveaux.",
-    "characters": "Personnages"
+    "characters": "Personnages",
+    "anemo": "Anémo",
+    "geo": "Géo",
+    "pyro": "Pyro",
+    "hydro": "Hydro",
+    "electro": "Électro",
+    "cryo": "Cryo"
   },
   "character": {
     "title": "{name} Genshin Impact Build Guide - Guide de construction",
-    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "description": "Découvrez tous les personnages de Genshin Impact, y compris leurs compétences, leurs talents, leurs constructions et leur liste de niveaux.",
     "characters": "Personnages",
     "character": "Personnage",
+    "builds": "Builds",
+    "most_used": "Most Used",
+    "skills": "Skills",
     "weapons": "Armes",
     "artifacts": "Artéfact",
+    "recommended_primary_stats": "Statistiques principales recommandées",
+    "substats_priority": "Priorité des sous-statistiques",
+    "ascension_materials": "Matériaux d'ascension",
+    "talent_materials": "Matériaux de talent",
+    "talents_priority": "Priorité aux talents",
+    "constellations": "Constellations",
+    "passives": "Aptitude passive",
     "normal attack": "Attaque normale",
     "skill": "Compétence",
     "burst": "Déchaînement élémentaire",
@@ -64,7 +85,7 @@
   },
   "weapon": {
     "title": "{name} Détails de l'arme à Genshin Impact",
-    "description": "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+    "description": "Toutes les meilleures armes, emplacements et statistiques, y compris les arcs, les catalyseurs, les argiles, les épées et les armes à feu.",
     "weapons": "Armes",
     "weapon": "Arme",
     "type": "Type",
@@ -72,7 +93,9 @@
     "level": "Niveau",
     "stats": "Statistiques",
     "ascension": "Ascension",
-    "refinement": "Raffinement"
+    "refinement": "Raffinement",
+    "recommended_characters": "Caractères recommandés",
+    "ascension_materials": "Matériaux d'ascension"
   },
   "artifacts": {
     "title": "Genshin Impact Liste des artefacts",
@@ -89,12 +112,18 @@
   "tierlist": {
     "title": "Genshin Impact Tier List (Meilleurs personnages)",
     "description": "Tous les meilleurs personnages et leurs constructions sont classés par ordre de puissance, de viabilité et de polyvalence pour effacer le contenu.",
-    "tierlist": "Tierlist"
+    "tierlist": "Tierlist",
+    "main_dps": "DPS principal",
+    "sub_dps": "Sous DPS",
+    "support": "Soutien"
   },
   "tierlist_weapons": {
     "title": "Genshin Impact Liste des niveaux d'armes (meilleures armes)",
     "description": "Toutes les meilleures armes classées par ordre de puissance, de viabilité et de polyvalence pour effacer le contenu.",
-    "tierlist_weapons": "Meilleurs Armes"
+    "tierlist_weapons": "Meilleurs Armes",
+    "main_dps": "DPS principal",
+    "sub_dps": "Sous DPS",
+    "support": "Soutien"
   },
   "food": {
     "title": "Genshin Impact Liste des recettes de cuisine",
@@ -127,7 +156,10 @@
     "teams": "Teams",
     "best_team_comp": "Meilleure composition d'équipe",
     "character_team": "Meilleure équipe pour {name}",
-    "substitute_characters": "Caractères de substitution"
+    "substitute_characters": "Caractères de substitution",
+    "main dps": "DPS principal",
+    "sub dps": "Sous DPS",
+    "support": "Soutien"
   },
   "fishing": {
     "title": "Genshin Impact Pêche (poissons, appâts, cannes à pêche et points de pêche)",
@@ -136,7 +168,8 @@
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
-    "enkanomiya": "Enkanomiya"
+    "enkanomiya": "Enkanomiya",
+    "the_chasm": "Gouffre"
   },
   "calculator": {
     "title": "Genshin Impact Calculatrice",
@@ -150,14 +183,31 @@
     "skill": "Compétence",
     "burst": "Déchaînement élémentaire",
     "calculate": "Calculer",
-    "choose_weapon": "Choisissez l'arme"
+    "choose_weapon": "Choisissez l'arme",
+    "add_to_todo_list": "Ajouter à la liste de choses à faire",
+    "added_to_todo_list": "Ajouté à la liste des tâches",
+    "exp_wasted": "EXP gaspillée"
   },
   "todo": {
+    "title": "Genshin Impact Liste des choses à faire",
+    "description": "Liste de tâches pour planifier et suivre les éléments et mora dont vous avez besoin",
+    "todo": "Faire",
+    "no_todo_msg": "Non à faire pour l'instant. Ajoutez-en à partir de la page de la calculatrice.",
+    "go_to_calculator": "Aller à la calculatrice",
+    "farm_today": "Ferme aujourd'hui",
+    "summary": "Résumé",
+    "levels": "Niveaux",
+    "talents": "Talents",
     "normal_attack": "Attaque normale",
     "skill": "Compétence",
-    "burst": "Déchaînement élémentaire"
+    "burst": "Déchaînement élémentaire",
+    "delete": "Supprimer"
   },
   "achievements": {
+    "title": "Genshin Impact Réalisations",
+    "description": "Réalisations pour débloquer de nouvelles fonctionnalités et récompenses",
+    "achievements": "Réalisations",
+    "show_achieved": "Afficher atteint",
     "search": "Rechercher..."
   }
 }
