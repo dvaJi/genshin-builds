@@ -1,5 +1,7 @@
 {
   "layout": {
+    "title": "Genshin-Builds.com Basis Data Wiki",
+    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
     "characters": "Karakter",
     "cooking_ingredient": "Bahan Masak",
     "artifacts": "Artefak",
@@ -7,6 +9,8 @@
     "food": "Makanan"
   },
   "ascension_planner": {
+    "title": "Genshin-Builds.com Basis Data Wiki",
+    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
     "Mon": "Senin",
     "Tue": "Selasa",
     "Wed": "Rabu",
@@ -22,10 +26,13 @@
     "Hidden Palace of Lianshan Formula": "Hidden Palace of Lianshan Formula"
   },
   "characters": {
+    "title": "Genshin Impact Daftar Karakter",
+    "description": "Pelajari tentang setiap karakter di Genshin Impact termasuk keterampilan, bakat, build, dan daftar tier mereka.",
     "characters": "Karakter"
   },
   "character": {
-    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "title": "{name} Genshin Impact Panduan Membangun",
+    "description": "Pelajari tentang setiap karakter di Genshin Impact termasuk keterampilan, bakat, build, dan daftar tier mereka.",
     "characters": "Karakter",
     "character": "Karakter",
     "weapons": "Senjata",
@@ -33,35 +40,70 @@
     "or": "atau"
   },
   "weapons": {
+    "title": "Genshin Impact Daftar Senjata",
+    "description": "Semua senjata, lokasi, dan statistik terbaik, termasuk Busur, Katalis, Claymores, Pedang, dan Polearms.",
     "weapons": "Senjata",
     "type": "Tipe"
   },
   "weapon": {
-    "description": "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+    "title": "{name} Genshin Impact Detail Senjata",
+    "description": "Semua senjata, lokasi, dan statistik terbaik, termasuk Busur, Katalis, Claymores, Pedang, dan Polearms.",
     "weapons": "Senjata",
     "weapon": "Senjata:",
     "type": "Tipe"
   },
   "artifacts": {
+    "title": "Genshin Impact Daftar Artefak",
+    "description": "Semua set peralatan, lokasi, dan statistik artefak terbaik.",
     "artifacts": "Artefak"
   },
-  "tierlist": {},
-  "tierlist_weapons": {},
+  "tierlist": {
+    "title": "Genshin Impact Daftar Tier (Karakter Terbaik)",
+    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten."
+  },
+  "tierlist_weapons": {
+    "title": "Genshin Impact Daftar Tingkat Senjata (Senjata Terbaik)",
+    "description": "Semua senjata terbaik diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten."
+  },
   "food": {
+    "title": "Genshin Impact Daftar Resep Memasak",
+    "description": "Temukan semua resep memasak dan makanan terbaik untuk dimasak untuk tim Anda.",
     "food": "Makanan"
   },
   "ingredients": {
+    "title": "Genshin Impact Daftar Bahan Memasak",
+    "description": "Temukan semua bahan memasak.",
     "cooking_ingredient": "Bahan Masak"
   },
-  "potions": {},
-  "teams": {},
+  "potions": {
+    "title": "Genshin Impact Daftar Ramuan",
+    "description": "Temukan semua resep alkimia dan ramuan dan minyak terbaik untuk digunakan untuk tim Anda."
+  },
+  "teams": {
+    "title": "Kompi Tim Terbaik | Panduan Membangun Pesta | Genshin Impact",
+    "description": "Ini adalah panduan untuk membuat pesta terbaik di Genshin Impact. Pelajari cara membuat pesta terbaik! Kami memperkenalkan komposisi partai terbaik untuk setiap tugas termasuk menjelajahi area, membunuh bos lapangan, dan banyak lagi!"
+  },
   "fishing": {
+    "title": "Genshin Impact Memancing (Ikan, Umpan, Pancing, dan Poin Pancing)",
+    "description": "Ini adalah artikel tentang daftar tempat memancing (titik/spot) dan ikan yang muncul di Genshin. Poin memancing untuk Mondstadt, Liyue, Dragon Spine, dan Inazuma juga dirangkum.",
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
     "enkanomiya": "Enkanomiya"
   },
-  "calculator": {},
-  "todo": {},
-  "achievements": {}
+  "calculator": {
+    "title": "Genshin Impact Kalkulator",
+    "description": "Genshin Impact Kalkulator untuk menghitung berapa banyak mora dan bahan yang dibutuhkan untuk kenaikan karakter atau senjata Anda"
+  },
+  "todo": {
+    "title": "Genshin Impact Daftar yang harus dilakukan",
+    "description": "Untuk melakukan Daftar untuk merencanakan dan melacak item dan mora yang Anda butuhkan"
+  },
+  "achievements": {
+    "title": "Genshin Impact Prestasi",
+    "description": "Prestasi untuk membuka fitur dan hadiah baru",
+    "achievements": "Prestasi",
+    "show_achieved": "Tampilkan Tercapai",
+    "search": "Mencari..."
+  }
 }

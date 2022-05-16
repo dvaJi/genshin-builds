@@ -1,5 +1,7 @@
 {
   "layout": {
+    "title": "Genshin-Builds.com ฐานข้อมูล Wiki",
+    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
     "characters": "ตัวอักษร",
     "cooking_ingredient": "วัตถุดิบประกอบอาหาร",
     "artifacts": "อาร์ติแฟกต์",
@@ -7,6 +9,8 @@
     "food": "อาหาร"
   },
   "ascension_planner": {
+    "title": "Genshin-Builds.com ฐานข้อมูล Wiki",
+    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
     "Mon": "วันจันทร์",
     "Tue": "วันอังคาร",
     "Wed": "วันพุธ",
@@ -22,10 +26,13 @@
     "Hidden Palace of Lianshan Formula": "ราชวังลับแห่ง Lianshan Formula"
   },
   "characters": {
+    "title": "Genshin Impact รายชื่อตัวละคร",
+    "description": "เรียนรู้เกี่ยวกับตัวละครทุกตัวใน Genshin Impact รวมถึงทักษะ ความสามารถ การสร้าง และรายการระดับ",
     "characters": "ตัวอักษร"
   },
   "character": {
-    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "title": "คู่มือการประกอบ {name} Genshin Impact",
+    "description": "เรียนรู้เกี่ยวกับตัวละครทุกตัวใน Genshin Impact รวมถึงทักษะ ความสามารถ การสร้าง และรายการระดับ",
     "characters": "ตัวอักษร",
     "character": "ตัวละคร",
     "weapons": "อาวุธ",
@@ -33,35 +40,67 @@
     "or": "หรือ"
   },
   "weapons": {
+    "title": "Genshin Impact รายการอาวุธ",
+    "description": "อาวุธ สถานที่ และสถิติที่ดีที่สุดทั้งหมด รวมถึงธนู, ตัวเร่งปฏิกิริยา, เคลย์มอร์ส, ดาบ และโพลอาร์ม",
     "weapons": "อาวุธ",
     "type": "ประเภท"
   },
   "weapon": {
-    "description": "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+    "title": "รายละเอียดอาวุธ {name} Genshin Impact",
+    "description": "อาวุธ สถานที่ และสถิติที่ดีที่สุดทั้งหมด รวมถึงธนู, ตัวเร่งปฏิกิริยา, เคลย์มอร์ส, ดาบ และโพลอาร์ม",
     "weapons": "อาวุธ",
     "weapon": "ใช้อาวุธ",
     "type": "ประเภท"
   },
   "artifacts": {
+    "title": "Genshin Impact รายการสิ่งประดิษฐ์",
+    "description": "ชุดอุปกรณ์ สถานที่ และสถิติสิ่งประดิษฐ์ที่ดีที่สุดทั้งหมด",
     "artifacts": "อาร์ติแฟกต์"
   },
-  "tierlist": {},
-  "tierlist_weapons": {},
+  "tierlist": {
+    "title": "Genshin Impact รายการระดับ (ตัวละครที่ดีที่สุด)",
+    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา"
+  },
+  "tierlist_weapons": {
+    "title": "Genshin Impact รายการระดับอาวุธ (อาวุธที่ดีที่สุด)",
+    "description": "อาวุธที่ดีที่สุดทั้งหมดเรียงลำดับตามกำลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา"
+  },
   "food": {
+    "title": "Genshin Impact รายการสูตรทำอาหาร",
+    "description": "ค้นพบสูตรการทำอาหารทั้งหมดและอาหารที่ดีที่สุดสำหรับทีมของคุณ",
     "food": "อาหาร"
   },
   "ingredients": {
+    "title": "Genshin Impact รายการส่วนผสมในการทำอาหาร",
+    "description": "ค้นพบส่วนผสมในการทำอาหารทั้งหมด",
     "cooking_ingredient": "วัตถุดิบประกอบอาหาร"
   },
-  "potions": {},
-  "teams": {},
+  "potions": {
+    "title": "Genshin Impact รายการยา",
+    "description": "ค้นพบสูตรการเล่นแร่แปรธาตุและโพชั่นและน้ำมันที่ดีที่สุดสำหรับทีมของคุณ"
+  },
+  "teams": {
+    "title": "สุดยอดทีมคอมพ์ | คู่มือการสร้างปาร์ตี้ | Genshin Impact",
+    "description": "นี่คือแนวทางในการสร้างปาร์ตี้ที่ดีที่สุดใน Genshin Impact เรียนรู้วิธีการสร้างปาร์ตี้ที่ดีที่สุด! เราขอแนะนำองค์ประกอบปาร์ตี้ที่ดีที่สุดสำหรับแต่ละงาน รวมถึงการสำรวจพื้นที่ การสังหารหัวหน้าภาคสนาม และอื่นๆ อีกมากมาย!"
+  },
   "fishing": {
+    "title": "Genshin Impact ตกปลา (ปลา เหยื่อ คันเบ็ด และจุดตกปลา)",
+    "description": "นี่คือบทความเกี่ยวกับรายการจุดตกปลา (จุด/จุด) และปลาที่ปรากฏในเก็นชิน จุดตกปลาสำหรับ Mondstadt, Liyue, Dragon Spine และ Inazuma ก็ถูกสรุปไว้เช่นกัน",
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
     "enkanomiya": "Enkanomiya"
   },
-  "calculator": {},
-  "todo": {},
-  "achievements": {}
+  "calculator": {
+    "title": "Genshin Impact เครื่องคิดเลข",
+    "description": "Genshin Impact เครื่องคิดเลข เพื่อคำนวณจำนวนโมราและวัสดุที่จำเป็นสำหรับตัวละครหรืออาวุธของคุณ"
+  },
+  "todo": {
+    "title": "Genshin Impact สิ่งที่ต้องทำ",
+    "description": "รายการสิ่งที่ต้องทำเพื่อวางแผนและติดตามรายการและโมราที่คุณต้องการ"
+  },
+  "achievements": {
+    "title": "Genshin Impact ความสำเร็จ",
+    "description": "ความสำเร็จเพื่อปลดล็อกคุณสมบัติและรางวัลใหม่"
+  }
 }

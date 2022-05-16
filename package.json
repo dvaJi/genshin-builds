@@ -6,10 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "generate-all": "npm run generate-sitemap && npm run generate-common-dict && npm run generate-common-locale",
+    "generate-all": "npm run generate-sitemap && npm run generate-common-dict",
     "generate-sitemap": "node ./scripts/sitemap.mjs",
     "generate-common-dict": "node ./scripts/generate-common-dict.js",
-    "generate-common-locale": "node ./scripts/generate-locale.js",
     "analize": "cross-env ANALYZE=true npm run build",
     "start": "next start",
     "type-check": "tsc"

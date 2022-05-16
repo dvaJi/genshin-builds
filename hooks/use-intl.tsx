@@ -16,14 +16,14 @@ export interface useIntlResponse {
   localeGI: string;
 }
 
-const resolvePath = (dict: IntlMessage, namespace = "") => {
+const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
   let message: unknown = dict;
 
   namespace.split(".").forEach((part) => {
     const next = (message as any)[part];
 
     if (part == null || next == null) {
-      const errorMsg = `Could not resolve \`${namespace}\` in messages.`;
+      const errorMsg = `Could not resolve \`${namespace}\` in messages. ${locale}`;
       if (process.env.NODE_ENV === "development") {
         // throw new Error(errorMsg);
       } else {
@@ -40,7 +40,7 @@ const resolvePath = (dict: IntlMessage, namespace = "") => {
 const useIntl = (namespace?: string): useIntlResponse => {
   const { messages: dict = {}, locale } = useIntlContext();
 
-  const message = resolvePath(dict, namespace);
+  const message = resolvePath(dict, namespace, locale);
 
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
     if (message && message[id]) {
@@ -49,9 +49,9 @@ const useIntl = (namespace?: string): useIntlResponse => {
 
     if (process.env.NODE_ENV === "development") {
       console.warn(
-        `[useIntl] Missing translation for "${id}" in "${localeToLang(
-          locale
-        )}" locale, ${namespace}.`
+        `[useIntl] Missing translation for "${id}" in "${
+          localeToLang(locale) || locale
+        }" locale, ${namespace}.`
       );
     }
 

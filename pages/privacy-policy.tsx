@@ -1,3 +1,5 @@
+import { getLocale } from "@lib/localData";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -26,7 +28,8 @@ const PrivacyPolicy = ({ data }: MdPage) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+  const lngDict = await getLocale(locale);
   const post = getContentBySlug("privacy-policy", [
     "title",
     "date",
@@ -44,6 +47,7 @@ export async function getStaticProps() {
         ...post,
         content,
       },
+      lngDict,
     },
   };
 }
