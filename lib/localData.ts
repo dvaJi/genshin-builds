@@ -1,7 +1,7 @@
 export async function getLocale(lang: string) {
   try {
-    const module = await import(`../locales/${lang}.json`);
-    return module.default;
+    const locale = await import(`../locales/${lang}.json`);
+    return locale.default;
   } catch (err) {
     console.error(err);
     return {};
