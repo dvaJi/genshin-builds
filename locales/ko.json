@@ -209,5 +209,11 @@
     "achievements": "업적",
     "show_achieved": "달성 표시",
     "search": "검색..."
+  },
+  "materials": {
+    "title": "원신 재료 목록",
+    "description": "모든 재료 알아보기",
+    "materials": "재료",
+    "search": "검색..."
   }
 }

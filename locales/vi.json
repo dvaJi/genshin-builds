@@ -209,5 +209,11 @@
     "achievements": "Thành tựu",
     "show_achieved": "Hiển thị đã đạt được",
     "search": "Tìm kiếm..."
+  },
+  "materials": {
+    "title": "Genshin Impact Danh sách vật liệu",
+    "description": "Khám phá tất cả các tài liệu",
+    "materials": "Vật liệu",
+    "search": "Tìm kiếm..."
   }
 }

@@ -25,6 +25,7 @@ import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 
 import { localeToLang } from "@utils/locale-to-lang";
+import { getAllMaterialsMap } from "@utils/materials";
 
 type TodoProps = {
   planning: Record<string, any>;
@@ -415,113 +416,8 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   > = require(`../_content/data/talents.json`);
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const characterExpMaterials = await genshinData.characterExpMaterials({
-    select: ["id", "name", "rarity"],
-  });
-  const commonMaterials = await genshinData.commonMaterials({
-    select: ["id", "name", "rarity"],
-  });
-  const elementalStoneMaterials = await genshinData.elementalStoneMaterials({
-    select: ["id", "name", "rarity"],
-  });
-  const jewelsMaterials = await genshinData.jewelsMaterials({
-    select: ["id", "name", "rarity"],
-  });
-  const localMaterials = await genshinData.localMaterials({
-    select: ["id", "name"],
-  });
-  const talentLvlUpMaterials = await genshinData.talentLvlUpMaterials({
-    select: ["id", "name", "rarity"],
-  });
-  const weaponExpMaterials = await genshinData.weaponExpMaterials({
-    select: ["id", "name", "rarity"],
-  });
-  const weaponPrimaryMaterials = await genshinData.weaponPrimaryMaterials({
-    select: ["id", "name", "rarity"],
-  });
-  const weaponSecondaryMaterials = await genshinData.weaponSecondaryMaterials({
-    select: ["id", "name", "rarity"],
-  });
 
-  const materialsMap: any = {};
-  // iterate through all materials arrays
-  characterExpMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "materials",
-    };
-  });
-
-  commonMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "common_materials",
-    };
-  });
-
-  elementalStoneMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "elemental_stone_materials",
-    };
-  });
-
-  jewelsMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "jewels_materials",
-    };
-  });
-
-  localMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: 1,
-      type: "local_materials",
-    };
-  });
-
-  talentLvlUpMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "talent_lvl_up_materials",
-    };
-  });
-
-  weaponExpMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "materials",
-    };
-  });
-
-  weaponPrimaryMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "weapon_primary_materials",
-    };
-  });
-
-  weaponSecondaryMaterials.forEach((mat) => {
-    materialsMap[mat.id] = {
-      name: mat.name,
-      rarity: mat.rarity,
-      type: "weapon_secondary_materials",
-    };
-  });
-
-  materialsMap["mora"] = {
-    name: "Mora",
-    rarity: 1,
-    type: "materials",
-  };
+  const materialsMap = await getAllMaterialsMap(genshinData);
 
   // console.log(materialsMap);
 

@@ -105,5 +105,11 @@
     "achievements": "Prestasi",
     "show_achieved": "Tampilkan Tercapai",
     "search": "Mencari..."
+  },
+  "materials": {
+    "title": "Genshin Impact Daftar Bahan",
+    "description": "Temukan semua Materi",
+    "materials": "bahan",
+    "search": "Mencari..."
   }
 }

@@ -209,5 +209,11 @@
     "achievements": "Erfolge",
     "show_achieved": "Erreicht anzeigen",
     "search": "Suche..."
+  },
+  "materials": {
+    "title": "Genshin Impact Materialliste",
+    "description": "Entdecken Sie alle Materialien",
+    "materials": "Materialien",
+    "search": "Suche..."
   }
 }

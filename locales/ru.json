@@ -160,5 +160,11 @@
   },
   "achievements": {
     "search": "Поиск..."
+  },
+  "materials": {
+    "title": "Список материалов Genshin Impact",
+    "description": "Откройте для себя все материалы",
+    "materials": "Материалы",
+    "search": "Поиск..."
   }
 }

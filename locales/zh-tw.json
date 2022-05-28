@@ -43,6 +43,7 @@
     "title": "原神 武器清單",
     "description": "所有最好的武器、位置和統計數據，包括弓、催化劑、Claymores、劍和長柄武器。",
     "weapons": "武器",
+    "search": "搜索...",
     "type": "類型順序"
   },
   "weapon": {
@@ -68,7 +69,8 @@
   "food": {
     "title": "原神 烹飪食譜清單",
     "description": "發現所有烹飪食譜和為您的團隊烹飪的最佳食物。",
-    "food": "食物"
+    "food": "食物",
+    "search": "搜索..."
   },
   "ingredients": {
     "title": "原神 烹飪配料表",
@@ -101,6 +103,13 @@
   },
   "achievements": {
     "title": "原神 成就",
-    "description": "解鎖新功能和獎勵的成就"
+    "description": "解鎖新功能和獎勵的成就",
+    "search": "搜索..."
+  },
+  "materials": {
+    "title": "原神 材料清單",
+    "description": "發現所有材料",
+    "materials": "材料",
+    "search": "搜索..."
   }
 }

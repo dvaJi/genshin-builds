@@ -113,5 +113,11 @@
   "todo": {},
   "achievements": {
     "search": "Procurar..."
+  },
+  "materials": {
+    "title": "Genshin Impact Lista de Materiais",
+    "description": "Conheça todos os materiais",
+    "materials": "Materiais",
+    "search": "Procurar..."
   }
 }

@@ -159,5 +159,11 @@
   },
   "achievements": {
     "search": "探す..."
+  },
+  "materials": {
+    "title": "原神(げんしん)材料リスト",
+    "description": "すべての資料をご覧ください",
+    "materials": "材料",
+    "search": "探す..."
   }
 }
