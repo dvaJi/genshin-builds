@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://genshin-builds.com
+
+# Sitemaps
+Sitemap: https://genshin-builds.com/sitemap.xml

@@ -23,4 +23,8 @@ module.exports = withBundleAnalyzer({
     defaultLocale: "en",
     localeDetection: !isDev,
   },
+  experimental: {
+    legacyBrowsers: false,
+    browsersListForSwc: true,
+  }
 })
