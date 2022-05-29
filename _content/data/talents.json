@@ -1,7 +1,19 @@
 {
   "Violet Court": {
-    "Tue": ["kamisato_ayaka", "kujou_sara", "arataki_itto", "kamisato_ayato"],
-    "Fri": ["kamisato_ayaka", "kujou_sara", "arataki_itto", "kamisato_ayato"],
+    "Tue": [
+      "kamisato_ayaka",
+      "kujou_sara",
+      "arataki_itto",
+      "kuki_shinobu",
+      "kamisato_ayato"
+    ],
+    "Fri": [
+      "kamisato_ayaka",
+      "kujou_sara",
+      "arataki_itto",
+      "kuki_shinobu",
+      "kamisato_ayato"
+    ],
     "Sun": [
       "kamisato_ayaka",
       "yoimiya",
@@ -13,6 +25,7 @@
       "kujou_sara",
       "arataki_itto",
       "yae_miko",
+      "kuki_shinobu",
       "kamisato_ayato",
       "traveler_electro"
     ],
@@ -108,14 +121,15 @@
       "hu_tao",
       "kaedehara_kazuha",
       "yanfei",
+      "yelan",
       "shenhe",
       "yun_jin",
       "traveler_geo"
     ],
     "Wed": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei", "traveler_geo"],
     "Sat": ["beidou", "xingqiu", "zhongli", "xinyan", "yanfei", "traveler_geo"],
-    "Mon": ["xiao", "ningguang", "qiqi", "keqing", "shenhe"],
-    "Thu": ["xiao", "ningguang", "qiqi", "keqing", "shenhe"]
+    "Mon": ["xiao", "ningguang", "qiqi", "keqing", "yelan", "shenhe"],
+    "Thu": ["xiao", "ningguang", "qiqi", "keqing", "yelan", "shenhe"]
   },
   "Cecilia Garden": {
     "Mon": [
@@ -347,7 +361,8 @@
       "blackcliff_agate",
       "slingshot",
       "rust",
-      "blackcliff_warbow"
+      "blackcliff_warbow",
+      "aqua_simulacra"
     ],
     "Thu": [
       "dark_iron_sword",
@@ -364,7 +379,8 @@
       "blackcliff_agate",
       "slingshot",
       "rust",
-      "blackcliff_warbow"
+      "blackcliff_warbow",
+      "aqua_simulacra"
     ],
     "Sun": [
       "dark_iron_sword",
@@ -412,7 +428,9 @@
       "rust",
       "prototype_crescent",
       "compound_bow",
-      "blackcliff_warbow"
+      "blackcliff_warbow",
+      "fading_twilight",
+      "aqua_simulacra"
     ],
     "Tue": [
       "fillet_blade",
@@ -466,7 +484,8 @@
       "vortex_vanquisher",
       "mappa_mare",
       "memory_of_dust",
-      "compound_bow"
+      "compound_bow",
+      "fading_twilight"
     ],
     "Sat": [
       "skyrider_sword",
@@ -482,7 +501,8 @@
       "vortex_vanquisher",
       "mappa_mare",
       "memory_of_dust",
-      "compound_bow"
+      "compound_bow",
+      "fading_twilight"
     ]
   },
   "Court of Flowing Sand": {
