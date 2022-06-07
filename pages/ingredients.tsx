@@ -1,9 +1,5 @@
-/* eslint-disable react/jsx-key, react-hooks/exhaustive-deps */
-import clsx from "clsx";
-import { useMemo } from "react";
 import { GetStaticProps } from "next";
 import GenshinData, { Ingredients } from "genshin-data";
-import { Column, useSortBy, useTable } from "react-table";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Ads from "@components/Ads";
@@ -21,29 +17,6 @@ type Props = {
 
 const IngredientsPage = ({ ingredients }: Props) => {
   const { t } = useIntl("ingredients");
-  const columns = useMemo<Column<Ingredients>[]>(
-    () => [
-      {
-        Header: "",
-        accessor: "id",
-        Cell: (row) => (
-          <LazyLoadImage
-            height={54}
-            width={54}
-            src={getUrl(`/ingredients/${row.value}.png`, 54, 54)}
-            alt={row.value}
-          />
-        ),
-      },
-      {
-        Header: t({ id: "name", defaultMessage: "Name" }),
-        accessor: "name",
-      },
-    ],
-    []
-  );
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data: ingredients }, ...[useSortBy]);
 
   return (
     <div>
@@ -63,47 +36,30 @@ const IngredientsPage = ({ ingredients }: Props) => {
         {t({ id: "cooking_ingredient", defaultMessage: "Cooking Ingredient" })}
       </h2>
       <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
-        <table
-          {...getTableProps()}
-          className={clsx(getTableProps().className, "w-full")}
-        >
+        <table className="w-full">
           <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                    {column.render("Header")}
-                    {/* Add a sort direction indicator */}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? " 🔽"
-                          : " 🔼"
-                        : ""}
-                    </span>
-                  </th>
-                ))}
+            <tr>
+              <th></th>
+              <th>{t({ id: "name", defaultMessage: "Name" })}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ingredients.map((row, index) => (
+              <tr
+                key={row.id}
+                className={index % 2 === 0 ? "bg-vulcan-600" : "bg-vulcan-700"}
+              >
+                <td>
+                  <LazyLoadImage
+                    height={54}
+                    width={54}
+                    src={getUrl(`/ingredients/${row.id}.png`, 54, 54)}
+                    alt={row.name}
+                  />
+                </td>
+                <td>{row.name}</td>
               </tr>
             ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr
-                  {...row.getRowProps()}
-                  className={
-                    row.index % 2 === 0 ? "bg-vulcan-600" : "bg-vulcan-700"
-                  }
-                >
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
           </tbody>
         </table>
       </div>

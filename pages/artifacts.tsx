@@ -1,9 +1,5 @@
-/* eslint-disable react/jsx-key, react-hooks/exhaustive-deps */
-import clsx from "clsx";
-import { useMemo } from "react";
 import { GetStaticProps } from "next";
 import GenshinData, { Artifact } from "genshin-data";
-import { Column, useSortBy, useTable } from "react-table";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Ads from "@components/Ads";
@@ -23,55 +19,6 @@ type Props = {
 
 const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
   const { t } = useIntl("artifacts");
-
-  const columns = useMemo<Column<Artifact>[]>(
-    () => [
-      {
-        Header: "",
-        accessor: "id",
-        Cell: (row) => (
-          <LazyLoadImage
-            height={54}
-            width={54}
-            src={getUrl(`/artifacts/${row.value}.png`, 54, 54)}
-            alt={row.value}
-          />
-        ),
-      },
-      {
-        Header: t({ id: "name", defaultMessage: "Name" }),
-        accessor: "name",
-      },
-      {
-        Header: t({ id: "max_rarity", defaultMessage: "Max Rarity" }),
-        accessor: "min_rarity",
-        Cell: (row) => <StarRarity rarity={row.value} />,
-      },
-      {
-        Header: t({ id: "2piece_bonus", defaultMessage: "2-Piece Bonus" }),
-        accessor: "two_pc",
-        Cell: (row) => (
-          <div
-            className="max-w-sm"
-            dangerouslySetInnerHTML={{ __html: row.value || "" }}
-          />
-        ),
-      },
-      {
-        Header: t({ id: "4piece_bonus", defaultMessage: "4-Piece Bonus" }),
-        accessor: "four_pc",
-        Cell: (row) => (
-          <div
-            className="max-w-sm"
-            dangerouslySetInnerHTML={{ __html: row.value || "" }}
-          />
-        ),
-      },
-    ],
-    []
-  );
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data: artifacts }, ...[useSortBy]);
 
   return (
     <div>
@@ -98,49 +45,44 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
             defaultMessage: "2-4 Piece Artifact Sets",
           })}
         </h2>
-        <table
-          {...getTableProps()}
-          className={clsx(getTableProps().className, "w-full")}
-        >
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                    {column.render("Header")}
-                    {/* Add a sort direction indicator */}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? " 🔽"
-                          : " 🔼"
-                        : ""}
-                    </span>
-                  </th>
-                ))}
+        <div>
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th></th>
+                <th>{t({ id: "name", defaultMessage: "Name" })}</th>
+                <th>{t({ id: "max_rarity", defaultMessage: "Max Rarity" })}</th>
+                <th>
+                  {t({ id: "2piece_bonus", defaultMessage: "2-Piece Bonus" })}
+                </th>
               </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
+            </thead>
+            <tbody>
+              {artifacts.map((row, index) => (
                 <tr
-                  {...row.getRowProps()}
+                  key={row.id}
                   className={
-                    row.index % 2 === 0 ? "bg-vulcan-600" : "bg-vulcan-700"
+                    index % 2 === 0 ? "bg-vulcan-600" : "bg-vulcan-700"
                   }
                 >
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
+                  <td>
+                    <LazyLoadImage
+                      height={54}
+                      width={54}
+                      src={getUrl(`/artifacts/${row.id}.png`, 54, 54)}
+                      alt={row.id}
+                    />
+                  </td>
+                  <td>{row.name}</td>
+                  <td>
+                    <StarRarity rarity={row.max_rarity} />
+                  </td>
+                  <td>{row["two_pc"]}</td>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div className="mt-6">
           <h2 className="py-2 text-2xl font-semibold text-gray-200">
             {t({
@@ -148,7 +90,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
               defaultMessage: "1-Piece Artifact Sets",
             })}
           </h2>
-          <table className={"w-full"}>
+          <table className="w-full">
             <thead>
               <tr>
                 <th></th>
