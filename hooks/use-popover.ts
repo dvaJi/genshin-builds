@@ -3,58 +3,11 @@ import {
   useState,
   CSSProperties,
   useLayoutEffect,
-  useEffect,
   useCallback,
-  DependencyList,
   AriaAttributes,
   Ref,
 } from "react";
-
-const noop = () => {};
-
-const useEscapeHandler = (
-  handler = noop,
-  dependencies: DependencyList = []
-) => {
-  useEffect(() => {
-    const escapeHandler = (e: KeyboardEvent) => {
-      if (e.code === "Escape") {
-        handler();
-      }
-    };
-    document?.addEventListener("keyup", escapeHandler);
-    return () => document?.removeEventListener("keyup", escapeHandler);
-  }, [dependencies, handler]);
-};
-
-const useClickOutside = <E extends HTMLElement>(
-  handler: (e: MouseEvent) => void = noop,
-  dependencies: DependencyList
-) => {
-  const callbackRef = useRef(handler);
-  const ref = useRef<E>(null);
-  const outsideClickHandler = (e: MouseEvent) => {
-    if (
-      callbackRef.current !== null &&
-      ref.current &&
-      !ref.current.contains(e.target as Node)
-    ) {
-      callbackRef.current(e);
-    }
-  };
-
-  // useEffect wrapper to be safe for concurrent mode
-  useEffect(() => {
-    callbackRef.current = handler;
-  }, [handler, dependencies]);
-
-  useEffect(() => {
-    document?.addEventListener("click", outsideClickHandler);
-    return () => document?.removeEventListener("click", outsideClickHandler);
-  }, [dependencies]);
-
-  return ref;
-};
+import { useClickOutside, useEscapeHandler } from "./use-clickoutside";
 
 const style: CSSProperties = {
   position: "absolute",
