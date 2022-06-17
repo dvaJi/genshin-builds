@@ -14,6 +14,10 @@
   }
 }
 
+.weapon-bonus {
+  word-break: break-word;
+}
+
 .weapon-bonus > span,
 .skill-description > span {
   font-weight: bold;

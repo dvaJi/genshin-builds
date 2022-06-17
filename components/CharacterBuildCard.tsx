@@ -20,7 +20,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
     <div className="">
       {/* <p>{build.name}</p> */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex flex-wrap w-full lg:w-4/5 pr-2 content-start">
+        <div className="flex flex-wrap w-full lg:pr-4 pr-2 content-start">
           <div className="text-xl mb-2 font-semibold">
             {f({
               id: "weapons",
