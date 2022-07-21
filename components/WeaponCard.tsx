@@ -39,7 +39,7 @@ const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
         <div className="ml-3 p-3 relative">
           <Link href={`/weapon/${weapon.id}`}>
             <a>
-              <div className="flex">
+              <div className="flex items-center">
                 <h4 className="font-bold text-white">
                   {weapon.name}{" "}
                   {refinement !== undefined && (
@@ -48,7 +48,7 @@ const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
                     </span>
                   )}
                 </h4>
-                <h3 className="text-xs text-gray-300 absolute right-4">
+                <h3 className="relative ml-2 text-xs text-gray-300 sm:ml-0 sm:absolute sm:right-4">
                   {weapon.stats.secondary}
                 </h3>
               </div>

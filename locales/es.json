@@ -70,7 +70,9 @@
     "normal attack": "Ataque Normal",
     "skill": "Habilidad Elemental",
     "burst": "Habilidad Definitiva",
-    "or": "o"
+    "or": "o",
+    "18atk_set": "Conjuntos ATQ +18%",
+    "bonus": "Bonus"
   },
   "weapons": {
     "title": "Lista de Armas Genshin Impact",

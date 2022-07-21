@@ -32,7 +32,7 @@ interface ContentProps<C> {
 
 const usePopover = <T extends HTMLElement, C extends HTMLElement>(
   defaultOpen = false
-): [boolean, TriggerProps<T>, ContentProps<C>] => {
+): [boolean, TriggerProps<T>, ContentProps<C>, (value: boolean) => void] => {
   const triggerRef = useRef<T>(null);
   const [position, setPosition] = useState<CSSProperties>({
     top: "auto",
@@ -51,6 +51,7 @@ const usePopover = <T extends HTMLElement, C extends HTMLElement>(
   const [open, setOpen] = useState(defaultOpen);
   const toggle = useCallback(() => setOpen(!open), [open]);
   const close = useCallback(() => setOpen(false), []);
+  const manualToggle = useCallback((value: boolean) => setOpen(value), []);
 
   useEscapeHandler(close, []);
 
@@ -67,7 +68,7 @@ const usePopover = <T extends HTMLElement, C extends HTMLElement>(
     role,
     style: { ...style, ...position },
   };
-  return [open, trigger, content];
+  return [open, trigger, content, manualToggle];
 };
 
 export { usePopover };

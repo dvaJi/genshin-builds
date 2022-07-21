@@ -32,7 +32,7 @@ interface CharacterPageProps {
   character: Character;
   builds: Build[];
   weapons: Record<string, Weapon>;
-  artifacts: Record<string, Artifact>;
+  artifacts: Record<string, Artifact & { children?: Artifact[] }>;
   locale: string;
   common: Record<string, string>;
   mubuild: MostUsedBuild;
@@ -286,7 +286,7 @@ export const getStaticProps: GetStaticProps = async ({
   });
 
   let weapons: Record<string, Weapon> = {};
-  let artifacts: Record<string, Artifact> = {};
+  let artifacts: Record<string, Artifact & { children?: Artifact[] }> = {};
   let builds: Build[] = [];
   const mubuild: MostUsedBuild = await getCharacterMostUsedBuild(character.id);
 
@@ -340,6 +340,47 @@ export const getStaticProps: GetStaticProps = async ({
         artifacts[artifact.id] = artifact;
       }
     });
+
+    const ATK18BONUS = [
+      "gladiators_finale",
+      "shimenawas_reminiscence",
+      "vermillion_hereafter",
+      "echoes_of_an_offering",
+    ];
+
+    if (artifactsIds.includes("18atk_set")) {
+      artifacts["18atk_set"] = {
+        ...artifactsList.find((a) => a.id === "gladiators_finale")!,
+        name: lngDict?.character["18atk_set"]
+          ? lngDict.character["18atk_set"]
+          : "ATK +18% set",
+        children: artifactsList.filter((a) => ATK18BONUS.includes(a.id)),
+      };
+    }
+
+    const Energy20BONUS = ["emblem_of_severed_fate", "the_exile", "scholar"];
+
+    if (artifactsIds.includes("20energyrecharge_set")) {
+      artifacts["20energyrecharge_set"] = {
+        ...artifactsList.find((a) => a.id === "emblem_of_severed_fate")!,
+        name: lngDict?.character["20energyrecharge_set"]
+          ? lngDict.character["20energyrecharge_set"]
+          : "Energy Recharge +20% set",
+        children: artifactsList.filter((a) => Energy20BONUS.includes(a.id)),
+      };
+    }
+
+    const Physical25BONUS = ["bloodstained_chivalry", "pale_flame", "scholar"];
+
+    if (artifactsIds.includes("25physicaldmg_set")) {
+      artifacts["25physicaldmg_set"] = {
+        ...artifactsList.find((a) => a.id === "gladiators_finale")!,
+        name: lngDict?.character["25physicaldmg_set"]
+          ? lngDict.character["25physicaldmg_set"]
+          : "Physical DMG +25% set",
+        children: artifactsList.filter((a) => Physical25BONUS.includes(a.id)),
+      };
+    }
   }
 
   const common = require(`../../_content/data/common.json`)[locale];
