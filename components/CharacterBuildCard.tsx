@@ -106,12 +106,16 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
             >
               {set.choose ? (
                 <ArtifactChooseCard
-                  artifacts={Object.values(set)
-                    .map(
-                      (artifactId) =>
-                        artifacts[artifactId] && artifacts[artifactId]
-                    )
-                    .filter((a) => a !== undefined)}
+                  artifacts={
+                    Object.values(set)
+                      .map(
+                        (artifactId) =>
+                          artifacts[artifactId] && artifacts[artifactId]
+                      )
+                      .filter((a) => a !== undefined) as [
+                      Artifact & { children?: Artifact[] | undefined }
+                    ]
+                  }
                 />
               ) : (
                 <ArtifactCard

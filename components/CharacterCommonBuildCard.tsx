@@ -58,14 +58,10 @@ const CharacterCommonBuildCard = ({ build, weapons, artifacts }: Props) => {
           {build.artifacts
             .map<ReactNode>((set) => (
               <div key={`${set[0]}-${set[1]}`}>
-                {set.length === 2 ? (
-                  <div className="flex flex-row w-full">
-                    <ArtifactCard artifact={artifacts[set[0]]} pieces={2} />
-                    <ArtifactCard artifact={artifacts[set[1]]} pieces={2} />
-                  </div>
-                ) : (
-                  <ArtifactCard artifact={artifacts[set[0]]} pieces={4} />
-                )}
+                <ArtifactCard
+                  artifact={artifacts[set[0]]}
+                  artifact2={set.length === 2 ? artifacts[set[1]] : undefined}
+                />
               </div>
             ))
             .reduce((prev, curr, i) => [
