@@ -29,10 +29,20 @@ const BuildsBuilder = ({
   currentbuilds,
 }: Props) => {
   const [builds, setBuilds] = useState(currentbuilds);
+  const [open, setOpen] = useState<string[]>([]);
 
   const updateBuild = (id: string, newbuilds: Build[]) => {
     const newBuild: Record<string, Build[]> = { [id]: newbuilds };
     setBuilds({ ...builds, ...newBuild });
+  };
+
+  const toggleCard = (charId: string) => {
+    console.log(open);
+    if (open.includes(charId)) {
+      setOpen((o) => o.filter((a) => a !== charId));
+    } else {
+      setOpen((o) => [...o, charId]);
+    }
   };
 
   // This page is only available for development env
@@ -44,14 +54,25 @@ const BuildsBuilder = ({
     <div>
       <div>
         {Object.keys(builds).map((charId) => (
-          <Builder
-            key={charId}
-            charId={charId}
-            charBuild={builds[charId]}
-            onUpdate={updateBuild}
-            artifacts={artifacts}
-            weapons={weapons[characters[charId].weapon_type]}
-          />
+          <div key={charId} className="bg-vulcan-700 m-2 p-2 rounded">
+            <div
+              className="bg-gray-700 p-2 rounded"
+              onClick={() => toggleCard(charId)}
+            >
+              {charId}
+            </div>
+            <div>
+              {open.includes(charId) && (
+                <Builder
+                  charId={charId}
+                  charBuild={builds[charId]}
+                  onUpdate={updateBuild}
+                  artifacts={artifacts}
+                  weapons={weapons[characters[charId].weapon_type]}
+                />
+              )}
+            </div>
+          </div>
         ))}
       </div>
       <div>
@@ -253,6 +274,23 @@ const BuildDetail = ({
     });
   };
 
+  const setIsChoose = (i: number) => {
+    onChange(index, {
+      ...build,
+      sets: [
+        ...build.sets.map((set, ind) => {
+          if (ind === i) {
+            return {
+              ...set,
+              choose: !set.choose,
+            };
+          }
+          return set;
+        }),
+      ],
+    });
+  };
+
   const removeArtifactFromSet = (i: number, ai: number) => {
     let newset = { ...build.sets[i] };
     if (ai !== 0) {
@@ -432,13 +470,15 @@ const BuildDetail = ({
             </li>
           ))}
         </ol>
-        <Button className="mt-2" onClick={addWeapon}>Add Weapon</Button>
+        <Button className="mt-2" onClick={addWeapon}>
+          Add Weapon
+        </Button>
       </div>
       <div className="col-span-2">
         <h2>ARTIFACTS</h2>
         <ol className="list-decimal">
           {build.sets.map((set, iset) => (
-            <li key={`set${iset}`}>
+            <li key={`set${iset}`} className="mb-4">
               {Object.keys(set).map((k, ai) => (
                 <span key={`set${iset}${ai}`}>
                   <select
@@ -461,13 +501,29 @@ const BuildDetail = ({
                   <br />
                 </span>
               ))}
-              <button onClick={() => removeSet(iset)}>(-)</button>
-              {Object.keys(set).length === 1 && (
-                <button onClick={() => addNewSet(iset)}>(+)</button>
-              )}
+              <button
+                onClick={() => removeSet(iset)}
+                className="text-xs hover:text-white"
+              >
+                Remove
+              </button>
+              <button
+                className="ml-2 text-xs hover:text-white"
+                onClick={() => addNewSet(iset)}
+              >
+                Add
+              </button>
+              <button
+                className="ml-2 text-xs hover:text-white"
+                onClick={() => setIsChoose(iset)}
+              >
+                Is choose ({set.choose ? "X" : ""})
+              </button>
             </li>
           ))}
-          <Button className="mt-2" onClick={addSet}>Add new set</Button>
+          <Button className="mt-2" onClick={addSet}>
+            Add new set
+          </Button>
         </ol>
       </div>
       <div className="col-span-2">
@@ -475,7 +531,8 @@ const BuildDetail = ({
         <ol className="list-decimal">
           {["sands", "goblet", "circlet"].map((st) => (
             <li key={st}>
-              {st}<br />
+              {st}
+              <br />
               {(build.stats as any)[st].map((s: string, i: number) => (
                 <span key={s + i}>
                   <select
@@ -527,7 +584,9 @@ const BuildDetail = ({
             </li>
           ))}
         </ol>
-        <Button className="mt-2" onClick={addSubstat}>Add substats</Button>
+        <Button className="mt-2" onClick={addSubstat}>
+          Add substats
+        </Button>
       </div>
       <div className="col-span-2">
         <h2>TALENT PRIORITY</h2>
@@ -598,7 +657,12 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       characters: charactersMap,
       weapons: weaponsMap,
-      artifacts: artifacts.map((a) => a.id),
+      artifacts: [
+        ...artifacts.map((a) => a.id),
+        "18atk_set",
+        "20energyrecharge_set",
+        "25physicaldmg_set",
+      ],
       currentbuilds,
     },
   };
