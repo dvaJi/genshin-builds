@@ -1,6 +1,11 @@
 export interface BuildSet {
+  choose?: boolean;
   set_1: string;
   set_2?: string;
+  set_3?: string;
+  set_4?: string;
+  set_5?: string;
+  set_6?: string;
 }
 
 export interface BuildWeapon {

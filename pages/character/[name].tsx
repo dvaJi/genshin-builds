@@ -301,6 +301,21 @@ export const getStaticProps: GetStaticProps = async ({
           if (set.set_2) {
             arr.push(set.set_2);
           }
+          if (set.set_3) {
+            arr.push(set.set_3);
+          }
+
+          if (set.set_4) {
+            arr.push(set.set_4);
+          }
+
+          if (set.set_5) {
+            arr.push(set.set_5);
+          }
+
+          if (set.set_6) {
+            arr.push(set.set_6);
+          }
 
           return arr;
         }, [])

@@ -3,11 +3,12 @@ import clsx from "clsx";
 import { ReactNode } from "react";
 
 type Props = {
+  className?: string;
   children: ReactNode;
   contents: ReactNode;
 };
 
-function Tooltip({ children, contents }: Props) {
+function Tooltip({ className, children, contents }: Props) {
   const [open, trigger, content, toggle] = usePopover<
     HTMLDivElement,
     HTMLDivElement
@@ -15,7 +16,7 @@ function Tooltip({ children, contents }: Props) {
 
   return (
     <div
-      className="cursor-pointer"
+      className={clsx("cursor-pointer", className)}
       {...trigger}
       onMouseLeave={() => toggle(false)}
       onMouseEnter={() => toggle(true)}

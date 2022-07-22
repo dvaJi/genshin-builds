@@ -7,6 +7,7 @@ import ArtifactCard from "./ArtifactCard";
 
 import { Build } from "interfaces/build";
 import useIntl from "@hooks/use-intl";
+import ArtifactChooseCard from "./ArtifactChooseCard";
 
 type Props = {
   build: Build;
@@ -103,10 +104,21 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
               className="flex flex-row w-full"
               key={`${set.set_1}-${set.set_2}`}
             >
-              <ArtifactCard
-                artifact={artifacts[set.set_1]}
-                artifact2={set.set_2 ? artifacts[set.set_2] : undefined}
-              />
+              {set.choose ? (
+                <ArtifactChooseCard
+                  artifacts={Object.values(set)
+                    .map(
+                      (artifactId) =>
+                        artifacts[artifactId] && artifacts[artifactId]
+                    )
+                    .filter((a) => a !== undefined)}
+                />
+              ) : (
+                <ArtifactCard
+                  artifact={artifacts[set.set_1]}
+                  artifact2={set.set_2 ? artifacts[set.set_2] : undefined}
+                />
+              )}
             </div>
           ))
           .reduce((prev, curr, i) => [
