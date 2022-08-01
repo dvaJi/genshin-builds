@@ -9,10 +9,10 @@ import {
   IoAddCircle,
 } from "react-icons/io5";
 
-import { getCharacterBuild } from "@lib/localData";
+import { getCharacterBuild, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
-import { Build, BuildSet, BuildWeapon } from "interfaces/build";
+import { Build, BuildWeapon } from "interfaces/build";
 import Button from "@components/Button";
 
 type Props = {
@@ -37,7 +37,6 @@ const BuildsBuilder = ({
   };
 
   const toggleCard = (charId: string) => {
-    console.log(open);
     if (open.includes(charId)) {
       setOpen((o) => o.filter((a) => a !== charId));
     } else {
@@ -116,7 +115,7 @@ const Builder = ({
       description: "",
       recommended: false,
       role: role,
-      sets: [],
+      sets: [["gladiators_finale"]],
       stats: {
         flower: ["HP"],
         plume: ["ATK"],
@@ -246,7 +245,7 @@ const BuildDetail = ({
   const addSet = () => {
     onChange(index, {
       ...build,
-      sets: [...build.sets, { set_1: artifacts[0], set_2: artifacts[0] }],
+      sets: [...build.sets, [artifacts[0], artifacts[0]]],
     });
   };
 
@@ -257,33 +256,13 @@ const BuildDetail = ({
     });
   };
 
-  const addNewSet = (i: number) => {
+  const addNewSet = (i: number, setNum: number) => {
     onChange(index, {
       ...build,
       sets: [
         ...build.sets.map((set, ind) => {
           if (ind === i) {
-            return {
-              ...set,
-              set_2: artifacts[0],
-            };
-          }
-          return set;
-        }),
-      ],
-    });
-  };
-
-  const setIsChoose = (i: number) => {
-    onChange(index, {
-      ...build,
-      sets: [
-        ...build.sets.map((set, ind) => {
-          if (ind === i) {
-            return {
-              ...set,
-              choose: !set.choose,
-            };
+            return [...set, artifacts[0]];
           }
           return set;
         }),
@@ -292,16 +271,15 @@ const BuildDetail = ({
   };
 
   const removeArtifactFromSet = (i: number, ai: number) => {
-    let newset = { ...build.sets[i] };
-    if (ai !== 0) {
-      newset = { set_1: build.sets[i].set_1 };
-    } else {
-      newset = { set_1: build.sets[i].set_2 || "" };
-    }
-    updateSet(i, newset);
+    let newset = [...build.sets[i]];
+
+    updateSet(
+      i,
+      newset.filter((_, index) => index !== ai)
+    );
   };
 
-  const updateSet = (i: number, st: BuildSet) => {
+  const updateSet = (i: number, st: string[]) => {
     let allsets: any = [...build.sets];
     allsets[i] = st;
 
@@ -484,9 +462,11 @@ const BuildDetail = ({
                   <select
                     className="w-32"
                     value={(set as any)[k]}
-                    onChange={(e) =>
-                      updateSet(iset, { ...set, [k]: e.target.value })
-                    }
+                    onChange={(e) => {
+                      let newSet = [...set];
+                      newSet[k as any] = e.target.value;
+                      updateSet(iset, newSet);
+                    }}
                   >
                     {artifacts.map((w) => (
                       <option key={w} value={w}>
@@ -509,15 +489,9 @@ const BuildDetail = ({
               </button>
               <button
                 className="ml-2 text-xs hover:text-white"
-                onClick={() => addNewSet(iset)}
+                onClick={() => addNewSet(iset, Object.keys(set).length + 1)}
               >
                 Add
-              </button>
-              <button
-                className="ml-2 text-xs hover:text-white"
-                onClick={() => setIsChoose(iset)}
-              >
-                Is choose ({set.choose ? "X" : ""})
               </button>
             </li>
           ))}
@@ -614,7 +588,7 @@ const BuildDetail = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   if (process.env.NODE_ENV !== "development") {
     return {
       props: {
@@ -653,6 +627,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const currentbuilds: Record<string, Build[]> = await getCharacterBuild();
 
+  const lngDict = await getLocale(locale);
+
   return {
     props: {
       characters: charactersMap,
@@ -664,6 +640,7 @@ export const getStaticProps: GetStaticProps = async () => {
         "25physicaldmg_set",
       ],
       currentbuilds,
+      lngDict,
     },
   };
 };

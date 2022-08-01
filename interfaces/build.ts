@@ -1,13 +1,3 @@
-export interface BuildSet {
-  choose?: boolean;
-  set_1: string;
-  set_2?: string;
-  set_3?: string;
-  set_4?: string;
-  set_5?: string;
-  set_6?: string;
-}
-
 export interface BuildWeapon {
   id: string;
   r: number;
@@ -28,7 +18,7 @@ export interface Build {
   role: string;
   recommended: boolean;
   weapons: BuildWeapon[];
-  sets: BuildSet[];
+  sets: string[][];
   stats_priority: string[];
   stats: SetsStats;
   talent_priority: string[];

@@ -297,25 +297,7 @@ export const getStaticProps: GetStaticProps = async ({
       weaponsIds.push(...build.weapons.map((w) => w.id));
       artifactsIds.push(
         ...build.sets.reduce<string[]>((arr, set) => {
-          arr.push(set.set_1);
-          if (set.set_2) {
-            arr.push(set.set_2);
-          }
-          if (set.set_3) {
-            arr.push(set.set_3);
-          }
-
-          if (set.set_4) {
-            arr.push(set.set_4);
-          }
-
-          if (set.set_5) {
-            arr.push(set.set_5);
-          }
-
-          if (set.set_6) {
-            arr.push(set.set_6);
-          }
+          arr.push(...set);
 
           return arr;
         }, [])

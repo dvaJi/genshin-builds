@@ -100,14 +100,11 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
         </div>
         {build.sets
           .map<ReactNode>((set) => (
-            <div
-              className="flex flex-row w-full"
-              key={`${set.set_1}-${set.set_2}`}
-            >
-              {set.choose ? (
+            <div className="flex flex-row w-full" key={`${set.join("")}`}>
+              {set.length > 2 ? (
                 <ArtifactChooseCard
                   artifacts={
-                    Object.values(set)
+                    set
                       .map(
                         (artifactId) =>
                           artifacts[artifactId] && artifacts[artifactId]
@@ -119,8 +116,8 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
                 />
               ) : (
                 <ArtifactCard
-                  artifact={artifacts[set.set_1]}
-                  artifact2={set.set_2 ? artifacts[set.set_2] : undefined}
+                  artifact={artifacts[set[0]]}
+                  artifact2={set.length > 1 ? artifacts[set[1]] : undefined}
                 />
               )}
             </div>
