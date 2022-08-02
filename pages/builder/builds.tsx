@@ -256,7 +256,7 @@ const BuildDetail = ({
     });
   };
 
-  const addNewSet = (i: number, setNum: number) => {
+  const addNewSet = (i: number) => {
     onChange(index, {
       ...build,
       sets: [
@@ -489,7 +489,7 @@ const BuildDetail = ({
               </button>
               <button
                 className="ml-2 text-xs hover:text-white"
-                onClick={() => addNewSet(iset, Object.keys(set).length + 1)}
+                onClick={() => addNewSet(iset)}
               >
                 Add
               </button>
