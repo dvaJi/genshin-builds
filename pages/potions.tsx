@@ -5,6 +5,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
+import Card from "@components/ui/Card";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
@@ -37,16 +38,14 @@ const PotionsPage = ({ potions }: Props) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "potions", defaultMessage: "Potions" })}
       </h2>
-      <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
+      <Card>
         <table className="w-full">
           <thead>
             <tr>
               <th></th>
               <th>{t({ id: "name", defaultMessage: "Name" })}</th>
               <th>{t({ id: "rarity", defaultMessage: "Rarity" })}</th>
-              <th>
-                {t({ id: "effect", defaultMessage: "Effect" })}
-              </th>
+              <th>{t({ id: "effect", defaultMessage: "Effect" })}</th>
             </tr>
           </thead>
           <tbody>
@@ -72,7 +71,7 @@ const PotionsPage = ({ potions }: Props) => {
             ))}
           </tbody>
         </table>
-      </div>
+      </Card>
     </div>
   );
 };

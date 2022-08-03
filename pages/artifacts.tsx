@@ -5,6 +5,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
+import Card from "@components/ui/Card";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
@@ -38,7 +39,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "artifacts", defaultMessage: "Artifacts" })}
       </h2>
-      <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
+      <Card>
         <h2 className="py-2 text-2xl font-semibold text-gray-200">
           {t({
             id: "2-4piece_artifact_sets",
@@ -127,7 +128,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 import { FishingPoint } from "interfaces/fishing";
+import Card from "./ui/Card";
 
 interface FishingPointCardProps {
   city: string;
@@ -30,9 +31,9 @@ const FishingPointCard = ({
         {t({ id: city, defaultMessage: city })}
       </h2>
       {fishingPoints.map((point) => (
-        <div
+        <Card
           key={city + point.id}
-          className="border border-vulcan-900 bg-vulcan-800 rounded-lg mb-4 flex flex-col lg:flex-row items-center w-full"
+          className="p-0 flex flex-col lg:flex-row items-center w-full"
         >
           <div className="flex-grow lg:flex-grow-0 overflow-hidden w-80 pt-5 lg:pt-0">
             <LazyLoadImage
@@ -52,7 +53,7 @@ const FishingPointCard = ({
               />
             ))}
           </div>
-        </div>
+        </Card>
       ))}
     </div>
   );

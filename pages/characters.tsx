@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import GenshinData, { Character } from "genshin-data";
 
+import Card from "@components/ui/Card";
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/CharacterPortrait";
@@ -44,10 +45,7 @@ const CharactersPage = ({
       </h2>
       <div className="">
         {elements.map((element) => (
-          <div
-            key={element}
-            className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
-          >
+          <Card key={element}>
             <div className="flex self-center mb-2">
               <ElementIcon type={common[element]} height={32} width={32} />
               <h3 className="text-2xl font-bold ml-2">
@@ -66,7 +64,7 @@ const CharactersPage = ({
                 </Link>
               ))}
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>

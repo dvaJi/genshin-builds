@@ -6,6 +6,7 @@ import { GetStaticProps } from "next";
 import format from "date-fns/format";
 import GenshinData, { Character, Weapon } from "genshin-data";
 
+import Card from "@components/ui/Card";
 import Ads from "@components/Ads";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 
@@ -59,10 +60,7 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
           ))}
         </div>
         {C_DOMAINS.map((domain) => (
-          <div
-            key={domain}
-            className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
-          >
+          <Card key={domain}>
             <h2 className="mb-6 text-2xl font-semibold text-gray-200">
               {tfn({ id: domain, defaultMessage: domain })}
             </h2>
@@ -86,13 +84,10 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
                 </Link>
               ))}
             </div>
-          </div>
+          </Card>
         ))}
         {W_DOMAINS.map((domain) => (
-          <div
-            key={domain}
-            className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800"
-          >
+          <Card key={domain}>
             <h2 className="mb-6 text-2xl font-semibold text-gray-200">
               {tfn({ id: domain, defaultMessage: domain })}
             </h2>
@@ -118,7 +113,7 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>

@@ -3,6 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Constellation } from "genshin-data/dist/types/character";
 
 import { getUrl } from "@lib/imgUrl";
+import Card from "./ui/Card";
 
 type Props = {
   characterId: string;
@@ -12,7 +13,7 @@ type Props = {
 const ConstellationCard = ({ constellation, characterId }: Props) => {
   return (
     <div className="flex justify-center lg:block">
-      <div className="flex flex-col relative justify-start overflow-hidden rounded shadow-lg bg-vulcan-800 w-11/12 lg:w-full">
+      <Card className="flex flex-col relative justify-start overflow-hidden w-11/12 lg:w-full">
         <div className="flex flex-col">
           <div className="absolute top-0 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0 h-96">
             <LazyLoadImage
@@ -43,7 +44,7 @@ const ConstellationCard = ({ constellation, characterId }: Props) => {
           className="px-5 text-sm z-10 skill-description mb-4"
           dangerouslySetInnerHTML={{ __html: constellation.description }}
         />
-      </div>
+      </Card>
     </div>
   );
 };

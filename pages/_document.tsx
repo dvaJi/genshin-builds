@@ -107,7 +107,7 @@ export default class MyDocument extends Document {
           />
           <meta name="theme-color" content="#1a1d27" />
         </Head>
-        <body>
+        <body className="antialiased dark:text-slate-400">
           <Main />
           <NextScript />
           {GA_TRACKING_ID && (

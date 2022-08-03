@@ -6,6 +6,7 @@ import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import SearchInput from "@components/SearchInput";
+import Card from "@components/ui/Card";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useDebounce from "@hooks/use-debounce";
@@ -58,7 +59,7 @@ const MaterialsPage = ({ materials }: Props) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "materials", defaultMessage: "Materials" })}
       </h2>
-      <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
+      <Card>
         <SearchInput
           value={searchTerm}
           setValue={setSearchTerm}
@@ -79,7 +80,7 @@ const MaterialsPage = ({ materials }: Props) => {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

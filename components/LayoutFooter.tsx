@@ -5,7 +5,7 @@ import { memo } from "react";
 const LayoutFooter = () => {
   const router = useRouter();
   return (
-    <footer className="px-20 py-14 bg-vulcan-800 text-gray-400">
+    <footer className="px-20 py-14 bg-vulcan-800 text-gray-400 border-t border-gray-700 border-opacity-50">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="flex-1 flex flex-col">

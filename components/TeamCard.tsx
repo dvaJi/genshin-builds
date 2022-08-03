@@ -4,11 +4,12 @@ import { memo, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import CharacterPortrait from "./CharacterPortrait";
+import Button from "./Button";
+import Card from "./ui/Card";
 
 import { TeamFull } from "interfaces/teams";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
-import Button from "./Button";
 
 interface TeamCardProps {
   team: TeamFull;
@@ -18,7 +19,7 @@ const TeamCard = ({ team }: TeamCardProps) => {
   const [show, setShow] = useState(false);
   const { t } = useIntl("teams");
   return (
-    <div className="mb-3 p-5 rounded border border-vulcan-900 bg-vulcan-800">
+    <Card>
       <h2 className="text-2xl font-bold text-white">
         {t({
           id: "character_team",
@@ -85,7 +86,7 @@ const TeamCard = ({ team }: TeamCardProps) => {
           </div>
         ))}
       </div>
-    </div>
+    </Card>
   );
 };
 

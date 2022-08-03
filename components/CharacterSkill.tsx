@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { useToggle } from "@hooks/use-toggle";
 
 import Crement from "./Crement";
+import Card from "./ui/Card";
 
 import { Skill } from "genshin-data/dist/types/character";
 import { IMGS_CDN } from "@lib/constants";
@@ -26,9 +27,9 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
   }, [skill]);
   return (
     <div className="flex justify-center lg:block">
-      <div
+      <Card
         className={clsx(
-          "flex flex-col relative justify-start overflow-hidden rounded shadow-lg bg-vulcan-800 w-11/12 lg:w-full",
+          "flex flex-col relative justify-start overflow-hidden w-11/12 lg:w-full",
           isOpen ? "h-auto" : "h-30 lg:h-60"
         )}
       >
@@ -133,7 +134,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

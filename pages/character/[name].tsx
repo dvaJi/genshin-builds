@@ -16,6 +16,7 @@ import CharacterBuildCard from "@components/CharacterBuildCard";
 import CharacterCommonBuildCard from "@components/CharacterCommonBuildCard";
 import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
 import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
+import Card from "@components/ui/Card";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import {
@@ -60,7 +61,7 @@ const CharacterPage = ({
         background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
     });
-  }, [character, common]);
+  }, [character.region, common]);
   return (
     <div>
       <Metadata
@@ -88,7 +89,7 @@ const CharacterPage = ({
           </div>
           <div className="flex flex-col flex-grow">
             <div className="flex items-center mr-2">
-              <h1 className="text-3xl mr-2">
+              <h1 className="text-3xl mr-2 text-white">
                 {character.name} ({character.rarity}★)
               </h1>
               <ElementIcon
@@ -162,7 +163,7 @@ const CharacterPage = ({
               </button>
             ))}
           </div>
-          <div className="bg-vulcan-800 shadow-lg mb-4 p-4">
+          <Card>
             {buildSelected === -1 ? (
               <CharacterCommonBuildCard
                 build={mubuild}
@@ -176,7 +177,7 @@ const CharacterPage = ({
                 weapons={weapons}
               />
             )}
-          </div>
+          </Card>
         </div>
       )}
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
@@ -215,18 +216,18 @@ const CharacterPage = ({
           defaultMessage: "Ascension Materials",
         })}
       </h2>
-      <div className="bg-vulcan-800 rounded shadow-lg mb-4 mx-4 lg:mx-0">
+      <Card className="p-0 mb-4 mx-4 lg:mx-0">
         <CharacterAscencionMaterials ascension={character.ascension} />
-      </div>
+      </Card>
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
         {t({
           id: "talent_materials",
           defaultMessage: "Talent Materials",
         })}
       </h2>
-      <div className="bg-vulcan-800 rounded shadow-lg mx-4 lg:mx-0">
+      <Card className="p-0 mx-4 lg:mx-0">
         <CharacterTalentMaterials talents={character.talent_materials} />
-      </div>
+      </Card>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { Passive } from "genshin-data/dist/types/character";
+import Card from "./ui/Card";
 
 type Props = {
   characterId: string;
@@ -9,7 +10,7 @@ type Props = {
 const PassiveSkill = ({ passive }: Props) => {
   return (
     <div className="flex justify-center lg:block">
-      <div className="flex flex-col relative justify-start overflow-hidden rounded shadow-lg bg-vulcan-800 w-11/12 lg:w-full">
+      <Card className="flex flex-col relative justify-start overflow-hidden w-11/12 lg:w-full">
         <div className="flex items-center text-center p-5">
           <div className="flex flex-col flex-grow">
             <div className="font-bold text-lg text-white">{passive.name}</div>
@@ -22,7 +23,7 @@ const PassiveSkill = ({ passive }: Props) => {
           className="px-5 text-sm skill-description mb-5"
           dangerouslySetInnerHTML={{ __html: passive.description }}
         />
-      </div>
+      </Card>
     </div>
   );
 };

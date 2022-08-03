@@ -17,6 +17,7 @@ import { IMGS_CDN } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { Todo } from "@state/todo";
 import { todos as todosAtom } from "@state/todo";
+import Card from "./ui/Card";
 
 type Props = {
   todos: Todo[];
@@ -172,7 +173,7 @@ const Todo = ({ todos, materialsMap, planning }: Props) => {
                 ))}
               </div>
             </div>
-            <div className="w-full rounded border border-vulcan-900 bg-vulcan-800">
+            <Card className="w-full">
               <h1 className="p-2 text-lg font-semibold text-white">
                 {t({
                   id: "summary",
@@ -192,14 +193,11 @@ const Todo = ({ todos, materialsMap, planning }: Props) => {
                   />
                 ))}
               </div>
-            </div>
+            </Card>
           </div>
           <div className="col-span-3 inline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 m-3">
             {todos.map((todo, i) => (
-              <div
-                key={todo[0].id + i}
-                className="flex w-full h-full rounded border border-vulcan-900 bg-vulcan-800"
-              >
+              <Card key={todo[0].id + i} className="flex w-full h-full p-0">
                 <div className="flex flex-col w-full relative flex-shrink-0">
                   <div className="flex justify-between p-2 mx-2">
                     <p className="text-lg font-semibold text-white">
@@ -344,7 +342,7 @@ const Todo = ({ todos, materialsMap, planning }: Props) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
