@@ -1,6 +1,7 @@
 import GenshinData, { Character, Weapon } from "genshin-data";
 import { GetStaticProps } from "next";
 
+import Card from "@components/ui/Card";
 import Ads from "@components/Ads";
 import Metadata from "@components/Metadata";
 import WeaponCalculator from "@components/WeaponCalculator";
@@ -37,15 +38,15 @@ const Calculator = ({ characters, weapons }: Props) => {
       <div>
         <h1 className="text-xl">Character Calculator</h1>
       </div>
-      <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
+      <Card>
         <CharacterCalculator characters={characters} />
-      </div>
+      </Card>
       <div className="mt-6">
         <h1 className="text-xl">Weapon Calculator</h1>
       </div>
-      <div className="min-w-0 p-4 mt-4 rounded-lg ring-1 ring-black ring-opacity-5 bg-vulcan-800 relative">
+      <Card>
         <WeaponCalculator weapons={weapons} />
-      </div>
+      </Card>
     </div>
   );
 };

@@ -8,9 +8,9 @@ type UseLazyQuery<T> = {
   reset: () => void;
 };
 
-function useLazyQuery<T>(
-  query: string
-): [(variables: Record<string, any>) => void, UseLazyQuery<T>] {
+function useLazyFetch<T>(
+  path: string
+): [(body: Record<string, any>) => void, UseLazyQuery<T>] {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,13 +18,13 @@ function useLazyQuery<T>(
   const cache = useRef<any>({});
 
   const fetchData = useCallback(
-    async (variables: Record<string, any>) => {
+    async (body: Record<string, any>) => {
       setLoading(true);
       setCalled(true);
       setData(null);
       setError(null);
 
-      const cacheKey = JSON.stringify({ query, variables });
+      const cacheKey = JSON.stringify(body);
 
       let cancelRequest = false;
 
@@ -34,18 +34,18 @@ function useLazyQuery<T>(
         setError(null);
       } else {
         try {
-          const response = await fetch(process.env.NEXT_PUBLIC_GQL_ENDPOINT!, {
+          const response = await fetch(`/api/${path}`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
               Accept: "application/json",
             },
-            body: JSON.stringify({ query, variables }),
+            body: JSON.stringify(body),
           });
           const data = await response.json();
-          cache.current[cacheKey] = data.data;
+          cache.current[cacheKey] = data;
           if (cancelRequest) return;
-          setData(data.data);
+          setData(data);
           setLoading(false);
 
           if (data.errors) {
@@ -59,7 +59,7 @@ function useLazyQuery<T>(
         }
       }
     },
-    [query]
+    [path]
   );
 
   const reset = useCallback(() => {
@@ -72,4 +72,4 @@ function useLazyQuery<T>(
   return [fetchData, { data, loading, error, called, reset }];
 }
 
-export default useLazyQuery;
+export default useLazyFetch;

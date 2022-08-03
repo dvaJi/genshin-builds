@@ -10,41 +10,12 @@ import Select from "./Select";
 import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";
 import useIntl from "@hooks/use-intl";
-import useLazyQuery from "@hooks/use-lazy-gql";
+import useLazyFetch from "@hooks/use-lazy-fetch";
 import { todos } from "@state/todo";
-
-const QUERY = `
-  query CharacterAscensionMaterials(
-    $characterId: String!
-    $lang: String!
-    $params: CalculateCharacterParams!
-  ) {
-    calculateCharacterLevel(
-      characterId: $characterId
-      lang: $lang
-      params: $params
-    ) {
-      expWasted
-      items {
-        id
-        img
-        name
-        amount
-        rarity
-      }
-    }
-  }
-`;
+import { CalculationCharacterResult } from "interfaces/calculator";
 
 type Props = {
   characters: Character[];
-};
-
-type Result = {
-  id: string;
-  img: string;
-  name: string;
-  amount: number;
 };
 
 const CharacterCalculator = ({ characters }: Props) => {
@@ -59,7 +30,8 @@ const CharacterCalculator = ({ characters }: Props) => {
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(10);
   const [addedToTodo, setAddedToTodo] = useState(false);
   const { t, localeGI } = useIntl("calculator");
-  const [calculate, { called, loading, data, reset }] = useLazyQuery(QUERY);
+  const [calculate, { called, loading, data, reset }] =
+    useLazyFetch<CalculationCharacterResult>("calculate_character_level");
 
   const canCalculate = useMemo(() => {
     const characterIsSelected = !!character;
@@ -89,13 +61,10 @@ const CharacterCalculator = ({ characters }: Props) => {
 
   const addToTodo = useCallback(() => {
     setAddedToTodo(true);
-    const resourcesMap = data.calculateCharacterLevel.items.reduce(
-      (map: any, item: any) => {
-        map[item.id] = item.amount;
-        return map;
-      },
-      {} as Record<string, number>
-    );
+    const resourcesMap = data?.items.reduce((map: any, item: any) => {
+      map[item.id] = item.amount;
+      return map;
+    }, {} as Record<string, number>);
 
     todos.set([
       ...(todos.get() || []),
@@ -126,7 +95,7 @@ const CharacterCalculator = ({ characters }: Props) => {
     currentTalent1Lvl,
     currentTalent2Lvl,
     currentTalent3Lvl,
-    data?.calculateCharacterLevel?.items,
+    data?.items,
     intendedLevel.asc,
     intendedLevel.lvl,
     intendedTalent1Lvl,
@@ -378,7 +347,7 @@ const CharacterCalculator = ({ characters }: Props) => {
             <div className="bg-vulcan-900 rounded-lg p-4 mt-2 block md:inline-block">
               <table>
                 <tbody>
-                  {data.calculateCharacterLevel.items.map((res: Result) => (
+                  {data.items.map((res) => (
                     <tr key={res.name}>
                       <td className="text-right border-b border-gray-800 py-1">
                         <div className="text-white mr-2 whitespace-no-wrap">
@@ -402,7 +371,7 @@ const CharacterCalculator = ({ characters }: Props) => {
                       </td>
                     </tr>
                   ))}
-                  {data.calculateCharacterLevel.expWasted < 0 && (
+                  {data.expWasted < 0 && (
                     <tr>
                       <td colSpan={2} className="text-center">
                         <span className="text-center italic text-pink-900">
@@ -410,9 +379,7 @@ const CharacterCalculator = ({ characters }: Props) => {
                             id: "exp_wasted",
                             defaultMessage: "EXP Wasted",
                           })}{" "}
-                          {numFormat.format(
-                            data.calculateCharacterLevel.expWasted
-                          )}
+                          {numFormat.format(data.expWasted)}
                         </span>
                       </td>
                     </tr>

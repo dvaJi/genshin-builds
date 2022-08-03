@@ -6,6 +6,7 @@ import GenshinData, { Weapon } from "genshin-data";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
+import Card from "@components/ui/Card";
 import Metadata from "@components/Metadata";
 import WeaponAscensionMaterials from "@components/WeaponAscensionMaterials";
 
@@ -56,7 +57,7 @@ const WeaponPage = ({
           </div>
           <div className="flex flex-col flex-grow">
             <div className="flex items-center mr-2">
-              <h1 className="text-3xl mr-2">
+              <h1 className="text-3xl mr-2 text-white">
                 {weapon.name} ({weapon.rarity}★)
               </h1>
             </div>
@@ -77,10 +78,10 @@ const WeaponPage = ({
         <div>
           <div className="float-right">
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white":
+              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
                   weaponStatIndex > 0,
-                "bg-vulcan-800": weaponStatIndex === 0,
+                "bg-vulcan-800 border-gray-800": weaponStatIndex === 0,
               })}
               disabled={weaponStatIndex === 0}
               onClick={() => setWeaponStatIndex(weaponStatIndex - 1)}
@@ -88,10 +89,10 @@ const WeaponPage = ({
               -
             </button>
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white":
+              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
                   weaponStatIndex < weapon.stats.levels.length,
-                "bg-vulcan-800":
+                "bg-vulcan-800 border-gray-800":
                   weaponStatIndex === weapon.stats.levels.length - 1,
               })}
               disabled={weaponStatIndex === weapon.stats.levels.length - 1}
@@ -104,7 +105,7 @@ const WeaponPage = ({
             {t({ id: "stats", defaultMessage: "Stats" })}
           </h2>
 
-          <div className="rounded shadow-lg bg-vulcan-800 p-4">
+          <Card>
             <div className="grid grid-cols-2">
               <div>
                 <div className="text-xl">
@@ -131,14 +132,14 @@ const WeaponPage = ({
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
         </div>
         <div>
           <div className="float-right">
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white": refinement > 0,
-                "bg-vulcan-800": refinement === 0,
+              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700": refinement > 0,
+                "bg-vulcan-800 border-gray-800": refinement === 0,
               })}
               disabled={refinement === 0}
               onClick={() => setRefinement(refinement - 1)}
@@ -146,10 +147,10 @@ const WeaponPage = ({
               -
             </button>
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white":
+              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
                   refinement < weapon.refinements.length - 1,
-                "bg-vulcan-800": refinement === weapon.refinements.length - 1,
+                "bg-vulcan-800 border-gray-800": refinement === weapon.refinements.length - 1,
               })}
               disabled={refinement === weapon.refinements.length - 1}
               onClick={() => setRefinement(refinement + 1)}
@@ -160,13 +161,13 @@ const WeaponPage = ({
           <h2 className="text-3xl mb-2">
             {t({ id: "refinement", defaultMessage: "Refinement" })}
           </h2>
-          <div className="rounded shadow-lg bg-vulcan-800 p-4">
+          <Card>
             <div
               dangerouslySetInnerHTML={{
                 __html: weapon.refinements[refinement]?.desc,
               }}
             />
-          </div>
+          </Card>
         </div>
       </div>
       {recommendedCharacters.length > 0 && (
@@ -204,9 +205,9 @@ const WeaponPage = ({
           defaultMessage: "Ascension Materials",
         })}
       </h2>
-      <div className="bg-vulcan-800 rounded shadow-lg mb-4 mx-4 lg:mx-0">
+      <Card className="p-0 mx-4 lg:mx-0">
         <WeaponAscensionMaterials ascension={weapon.ascensions} />
-      </div>
+      </Card>
     </div>
   );
 };

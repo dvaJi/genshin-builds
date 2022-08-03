@@ -9,34 +9,12 @@ import Select from "./Select";
 import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";
 import useIntl from "@hooks/use-intl";
-import useLazyQuery from "@hooks/use-lazy-gql";
+import useLazyFetch from "@hooks/use-lazy-fetch";
 import { todos } from "@state/todo";
-
-const QUERY = `
-  query CharacterAscensionMaterials(
-    $weaponId: String!
-    $lang: String!
-    $params: CalculateWeaponParams!
-  ) {
-    calculateWeaponLevel(weaponId: $weaponId, lang: $lang, params: $params) {
-      id
-      img
-      name
-      amount
-      rarity
-    }
-  }
-`;
+import { CalculationItemResult } from "interfaces/calculator";
 
 type Props = {
   weapons: Weapon[];
-};
-
-type Result = {
-  id: string;
-  img: string;
-  name: string;
-  amount: number;
 };
 
 const WeaponCalculator = ({ weapons }: Props) => {
@@ -45,7 +23,9 @@ const WeaponCalculator = ({ weapons }: Props) => {
   const [intendedLevel, setIntendedLevel] = useState(levels[13]);
   const [addedToTodo, setAddedToTodo] = useState(false);
   const { t, localeGI } = useIntl("calculator");
-  const [calculate, { called, loading, data, reset }] = useLazyQuery(QUERY);
+  const [calculate, { called, loading, data, reset }] = useLazyFetch<
+    CalculationItemResult[]
+  >("calculate_weapon_level");
 
   const canCalculate = useMemo(() => {
     const weaponIsSelected = !!weapon;
@@ -56,13 +36,10 @@ const WeaponCalculator = ({ weapons }: Props) => {
 
   const addToTodo = useCallback(() => {
     setAddedToTodo(true);
-    const resourcesMap = data.calculateWeaponLevel.reduce(
-      (map: any, item: any) => {
-        map[item.id] = item.amount;
-        return map;
-      },
-      {} as Record<string, number>
-    );
+    const resourcesMap = data?.reduce((map: any, item: any) => {
+      map[item.id] = item.amount;
+      return map;
+    }, {} as Record<string, number>);
 
     todos.set([
       ...(todos.get() || []),
@@ -83,7 +60,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
   }, [
     currentLevel.asc,
     currentLevel.lvl,
-    data?.calculateWeaponLevel,
+    data,
     intendedLevel.asc,
     intendedLevel.lvl,
     weapon.id,
@@ -218,7 +195,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
             <div className="bg-vulcan-900 rounded-lg p-4 mt-2 block md:inline-block">
               <table>
                 <tbody>
-                  {data.calculateWeaponLevel.map((res: Result) => (
+                  {data.map((res) => (
                     <tr key={res.name}>
                       <td className="text-right border-b border-gray-800 py-1">
                         <div className="text-white mr-2 whitespace-no-wrap">
