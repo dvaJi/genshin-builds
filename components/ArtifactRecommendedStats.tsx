@@ -1,11 +1,7 @@
 import { memo } from "react";
 import { RiGobletFill } from "react-icons/ri";
-import {
-  GiCottonFlower,
-  GiFeather,
-  GiSandsOfTime,
-  GiCrenelCrown,
-} from "react-icons/gi";
+import { GiSandsOfTime, GiCrenelCrown } from "react-icons/gi";
+import useIntl from "@hooks/use-intl";
 
 type Sets = {
   flower: string[];
@@ -20,57 +16,35 @@ interface ArtifactRecommendedStatsProps {
 }
 
 const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
+  const { t } = useIntl("character");
   return (
-    <div className="w-full flex flex-row py-2">
-      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
-        <div>
-          <GiCottonFlower className="inline text-xl text-white" />
+    <div className="mb-4">
+      <div className="flex items-center">
+        <div className="px-2 py-1 mr-2 bg-vulcan-900 rounded-md">
+          <GiSandsOfTime className="inline text-xl text-white mr-1" />
+          <span className="font-semibold">
+            {t({ id: "sands", defaultMessage: "Sands" })}
+          </span>
         </div>
-        <div className="text-xs">
-          {stats.flower.map((s) => (
-            <p key={s}>{s}</p>
-          ))}
-        </div>
+        <p>{stats.sands.join(" / ")}</p>
       </div>
-      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
-        <div>
-          <GiFeather className="inline text-xl text-white" />
+      <div className="flex items-center mt-1 svelte-ti79zj">
+        <div className="px-2 py-1 mr-2 bg-vulcan-900 rounded-md">
+          <RiGobletFill className="inline text-xl text-white mr-1" />
+          <span className="font-semibold">
+            {t({ id: "goblet", defaultMessage: "Goblet" })}
+          </span>
         </div>
-        <div className="text-xs">
-          {stats.plume.map((s) => (
-            <p key={s}>{s}</p>
-          ))}
-        </div>
+        <p>{stats.goblet.join(" / ")}</p>
       </div>
-      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
-        <div>
-          <GiSandsOfTime className="inline text-xl text-white" />
+      <div className="flex items-center mt-1 svelte-ti79zj">
+        <div className="px-2 py-1 mr-2 bg-vulcan-900 rounded-md">
+          <GiCrenelCrown className="inline text-xl text-white mr-1" />
+          <span className="font-semibold">
+            {t({ id: "circlet", defaultMessage: "Circlet" })}
+          </span>
         </div>
-        <div className="text-xs">
-          {stats.sands.map((s) => (
-            <p key={s}>{s}</p>
-          ))}
-        </div>
-      </div>
-      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded mr-1 py-2">
-        <div>
-          <RiGobletFill className="inline text-xl text-white" />
-        </div>
-        <div className="text-xs">
-          {stats.goblet.map((s) => (
-            <p key={s}>{s}</p>
-          ))}
-        </div>
-      </div>
-      <div className="flex-1 text-center bg-vulcan-900 border-vulcan-700 rounded py-2">
-        <div>
-          <GiCrenelCrown className="inline text-xl text-white" />
-        </div>
-        <div className="text-xs">
-          {stats.circlet.map((s) => (
-            <p key={s}>{s}</p>
-          ))}
-        </div>
+        <p>{stats.circlet.join(" / ")}</p>
       </div>
     </div>
   );

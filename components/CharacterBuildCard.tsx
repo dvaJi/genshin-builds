@@ -3,11 +3,12 @@ import { Artifact, Weapon } from "genshin-data";
 
 import WeaponCard from "./WeaponCard";
 import ArtifactRecommendedStats from "./ArtifactRecommendedStats";
+import ArtifactChooseCard from "./ArtifactChooseCard";
 import ArtifactCard from "./ArtifactCard";
+import SkillLabel from "./SkillLabel";
 
 import { Build } from "interfaces/build";
 import useIntl from "@hooks/use-intl";
-import ArtifactChooseCard from "./ArtifactChooseCard";
 
 type Props = {
   build: Build;
@@ -59,10 +60,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
           {build.talent_priority
             .map<ReactNode>((talent) => (
               <span key={`tal-${talent}`}>
-                {f({
-                  id: talent.toLowerCase(),
-                  defaultMessage: talent.toLowerCase(),
-                })}
+                <SkillLabel skill={talent.toLowerCase()} />
               </span>
             ))
             .reduce((prev, curr, i) => [
@@ -88,14 +86,14 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
             })}
           </h2>
           <ArtifactRecommendedStats stats={build.stats} />
-          <div>
+          <div className="mb-2">
             <h2 className="font-bold">
               {f({
                 id: "substats_priority",
                 defaultMessage: "Substats priority",
               })}
             </h2>
-            <div className="text-sm">{build.stats_priority.join(" / ")}</div>
+            <div>{build.stats_priority.join(" / ")}</div>
           </div>
         </div>
         {build.sets

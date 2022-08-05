@@ -13,6 +13,7 @@ import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
 import { todos } from "@state/todo";
 import { CalculationCharacterResult } from "interfaces/calculator";
+import SkillLabel from "./SkillLabel";
 
 type Props = {
   characters: Character[];
@@ -221,22 +222,13 @@ const CharacterCalculator = ({ characters }: Props) => {
         </span>
         <div className="grid grid-cols-3 gap-2">
           <div className="my-2 text-center">
-            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
-              NA
-            </span>
-            {t({ id: "normal_attack", defaultMessage: "Normal Attack" })}
+            <SkillLabel skill="normal_attack" />
           </div>
           <div className="my-2 text-center">
-            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
-              E
-            </span>
-            {t({ id: "skill", defaultMessage: "Skill" })}
+            <SkillLabel skill="skill" />
           </div>
           <div className="my-2 text-center">
-            <span className="bg-gray-600 rounded p-1 text-xs mr-1 font-bold">
-              Q
-            </span>
-            {t({ id: "burst", defaultMessage: "Burst" })}
+            <SkillLabel skill="burst" />
           </div>
         </div>
         <div>{t({ id: "current_level", defaultMessage: "Current Level" })}</div>
