@@ -72,7 +72,14 @@
     "burst": "Habilidad Definitiva",
     "or": "o",
     "18atk_set": "Conjuntos ATQ +18%",
-    "bonus": "Bonus"
+    "bonus": "Bonus",
+    "normal_attack": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "Lista de Armas Genshin Impact",

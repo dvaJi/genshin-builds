@@ -10,7 +10,14 @@
     "artifacts": "Artefatos",
     "weapons": "Arma",
     "food": "Alimento",
-    "materials": "Materiais"
+    "materials": "Materiais",
+    "calculator": "",
+    "tierlist_characters": "",
+    "tierlist_weapons": "",
+    "teams": "",
+    "fishing": "",
+    "todo": "",
+    "achievements": ""
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Banco de dados Wiki",
@@ -27,12 +34,21 @@
     "Cecilia Garden": "Jardim de Cecilia",
     "Violet Court": "Jardim Violeta",
     "Court of Flowing Sand": "Jardim da Areia Fluente",
-    "Hidden Palace of Lianshan Formula": "Palácio Oculto da Fórmula Lianshan"
+    "Hidden Palace of Lianshan Formula": "Palácio Oculto da Fórmula Lianshan",
+    "asia": "",
+    "europe": "",
+    "north_america": ""
   },
   "characters": {
     "title": "Lista de personagens de impacto de Genshin Impact",
     "description": "Aprenda sobre cada personagem em Genshin Impact, incluindo suas habilidades, talentos, builds e lista de níveis.",
-    "characters": "Personagem"
+    "characters": "Personagem",
+    "anemo": "",
+    "geo": "",
+    "pyro": "",
+    "hydro": "",
+    "electro": "",
+    "cryo": ""
   },
   "character": {
     "title": "{name} Genshin Impact Guia de construção",
@@ -41,7 +57,28 @@
     "character": "Personagem",
     "weapons": "Arma",
     "artifacts": "Artefatos",
-    "or": "Ou"
+    "or": "Ou",
+    "builds": "",
+    "most_used": "",
+    "skills": "",
+    "recommended_primary_stats": "",
+    "substats_priority": "",
+    "ascension_materials": "",
+    "talent_materials": "",
+    "talents_priority": "",
+    "constellations": "",
+    "passives": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "18atk_set": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "bonus": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "Genshin Impact Lista de Armas",
@@ -51,7 +88,9 @@
     "type": "Ordem de Categoria",
     "secondary": "Secundária",
     "ascension": "Ascensão",
-    "refinement": "Refinamento"
+    "refinement": "Refinamento",
+    "level": "",
+    "stats": ""
   },
   "weapon": {
     "title": "{name} Detalhes da arma de Genshin Impact",
@@ -61,7 +100,11 @@
     "type": "Ordem de Categoria",
     "secondary": "Secundária",
     "ascension": "Ascensão",
-    "refinement": "Refinamento"
+    "refinement": "Refinamento",
+    "level": "",
+    "stats": "",
+    "recommended_characters": "",
+    "ascension_materials": ""
   },
   "artifacts": {
     "title": "Genshin Impact Lista de Artefatos",
@@ -78,14 +121,29 @@
   "tierlist": {
     "title": "Genshin Impact Lista de níveis (melhores personagens)",
     "description": "Todos os melhores personagens e suas construções classificadas em ordem de poder, viabilidade e versatilidade para limpar o conteúdo.",
-    "tierlist": "Tierlist"
+    "tierlist": "Tierlist",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
-  "tierlist_weapons": {},
+  "tierlist_weapons": {
+    "title": "",
+    "description": "",
+    "tierlist_weapons": "",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
+  },
   "food": {
     "title": "Genshin Impact Lista de receitas culinárias",
     "description": "Descubra todas as receitas culinárias e os melhores alimentos para cozinhar para sua equipe.",
     "food": "Alimento",
-    "search": "Procurar..."
+    "search": "Procurar...",
+    "all": "",
+    "normal": "",
+    "delicious": "",
+    "suspicious": "",
+    "special": ""
   },
   "ingredients": {
     "title": "Genshin Impact Lista de Ingredientes para Cozinha",
@@ -101,19 +159,65 @@
     "rarity": "Raridade",
     "effect": "Efeito"
   },
-  "teams": {},
+  "teams": {
+    "title": "",
+    "description": "",
+    "teams": "",
+    "best_team_comp": "",
+    "character_team": "",
+    "substitute_characters": "",
+    "main dps": "",
+    "sub dps": "",
+    "support": ""
+  },
   "fishing": {
     "title": "Genshin Impact Pesca (peixes, iscas, varas de pesca e pontos de pesca)",
     "description": "Este é um artigo sobre a lista de pontos de pesca (pontos / pontos) e os peixes que aparecem em Genshin. Os pontos de pesca de Mondstadt, Liyue, Dragon Spine e Inazuma também estão resumidos.",
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
-    "enkanomiya": "Enkanomiya"
+    "enkanomiya": "Enkanomiya",
+    "fishing": "",
+    "the_chasm": ""
   },
-  "calculator": {},
-  "todo": {},
+  "calculator": {
+    "title": "",
+    "description": "",
+    "calculator": "",
+    "character_level": "",
+    "current_level": "",
+    "intended_level": "",
+    "talents_level": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "calculate": "",
+    "choose_weapon": "",
+    "add_to_todo_list": "",
+    "added_to_todo_list": "",
+    "exp_wasted": ""
+  },
+  "todo": {
+    "title": "",
+    "description": "",
+    "todo": "",
+    "no_todo_msg": "",
+    "go_to_calculator": "",
+    "farm_today": "",
+    "summary": "",
+    "levels": "",
+    "talents": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "delete": ""
+  },
   "achievements": {
-    "search": "Procurar..."
+    "search": "Procurar...",
+    "title": "",
+    "description": "",
+    "achievements": "",
+    "show_achieved": ""
   },
   "materials": {
     "title": "Genshin Impact Lista de Materiais",

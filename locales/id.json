@@ -7,7 +7,17 @@
     "artifacts": "Artefak",
     "weapons": "Senjata",
     "food": "Makanan",
-    "materials": "bahan"
+    "materials": "bahan",
+    "potions": "",
+    "tierlist": "",
+    "database": "",
+    "calculator": "",
+    "tierlist_characters": "",
+    "tierlist_weapons": "",
+    "teams": "",
+    "fishing": "",
+    "todo": "",
+    "achievements": ""
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Basis Data Wiki",
@@ -24,12 +34,21 @@
     "Cecilia Garden": "Cecilia Garden",
     "Violet Court": "Violet Court",
     "Court of Flowing Sand": "Court of Flowing Sand",
-    "Hidden Palace of Lianshan Formula": "Hidden Palace of Lianshan Formula"
+    "Hidden Palace of Lianshan Formula": "Hidden Palace of Lianshan Formula",
+    "asia": "",
+    "europe": "",
+    "north_america": ""
   },
   "characters": {
     "title": "Genshin Impact Daftar Karakter",
     "description": "Pelajari tentang setiap karakter di Genshin Impact termasuk keterampilan, bakat, build, dan daftar tier mereka.",
-    "characters": "Karakter"
+    "characters": "Karakter",
+    "anemo": "",
+    "geo": "",
+    "pyro": "",
+    "hydro": "",
+    "electro": "",
+    "cryo": ""
   },
   "character": {
     "title": "{name} Genshin Impact Panduan Membangun",
@@ -38,51 +57,118 @@
     "character": "Karakter",
     "weapons": "Senjata",
     "artifacts": "Artefak",
-    "or": "atau"
+    "or": "atau",
+    "builds": "",
+    "most_used": "",
+    "skills": "",
+    "recommended_primary_stats": "",
+    "substats_priority": "",
+    "ascension_materials": "",
+    "talent_materials": "",
+    "talents_priority": "",
+    "constellations": "",
+    "passives": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "18atk_set": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "bonus": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "Genshin Impact Daftar Senjata",
     "description": "Semua senjata, lokasi, dan statistik terbaik, termasuk Busur, Katalis, Claymores, Pedang, dan Polearms.",
     "weapons": "Senjata",
-    "type": "Tipe"
+    "type": "Tipe",
+    "search": "",
+    "secondary": "",
+    "level": "",
+    "stats": "",
+    "ascension": "",
+    "refinement": ""
   },
   "weapon": {
     "title": "{name} Genshin Impact Detail Senjata",
     "description": "Semua senjata, lokasi, dan statistik terbaik, termasuk Busur, Katalis, Claymores, Pedang, dan Polearms.",
     "weapons": "Senjata",
     "weapon": "Senjata:",
-    "type": "Tipe"
+    "type": "Tipe",
+    "secondary": "",
+    "level": "",
+    "stats": "",
+    "ascension": "",
+    "refinement": "",
+    "recommended_characters": "",
+    "ascension_materials": ""
   },
   "artifacts": {
     "title": "Genshin Impact Daftar Artefak",
     "description": "Semua set peralatan, lokasi, dan statistik artefak terbaik.",
-    "artifacts": "Artefak"
+    "artifacts": "Artefak",
+    "2-4piece_artifact_sets": "",
+    "name": "",
+    "max_rarity": "",
+    "1piece_bonus": "",
+    "1piece_artifact_sets": "",
+    "2piece_bonus": "",
+    "4piece_bonus": ""
   },
   "tierlist": {
     "title": "Genshin Impact Daftar Tier (Karakter Terbaik)",
-    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten."
+    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
+    "tierlist": "",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "tierlist_weapons": {
     "title": "Genshin Impact Daftar Tingkat Senjata (Senjata Terbaik)",
-    "description": "Semua senjata terbaik diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten."
+    "description": "Semua senjata terbaik diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
+    "tierlist_weapons": "",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "food": {
     "title": "Genshin Impact Daftar Resep Memasak",
     "description": "Temukan semua resep memasak dan makanan terbaik untuk dimasak untuk tim Anda.",
-    "food": "Makanan"
+    "food": "Makanan",
+    "all": "",
+    "normal": "",
+    "delicious": "",
+    "suspicious": "",
+    "special": "",
+    "search": ""
   },
   "ingredients": {
     "title": "Genshin Impact Daftar Bahan Memasak",
     "description": "Temukan semua bahan memasak.",
-    "cooking_ingredient": "Bahan Masak"
+    "cooking_ingredient": "Bahan Masak",
+    "name": ""
   },
   "potions": {
     "title": "Genshin Impact Daftar Ramuan",
-    "description": "Temukan semua resep alkimia dan ramuan dan minyak terbaik untuk digunakan untuk tim Anda."
+    "description": "Temukan semua resep alkimia dan ramuan dan minyak terbaik untuk digunakan untuk tim Anda.",
+    "potions": "",
+    "name": "",
+    "rarity": "",
+    "effect": ""
   },
   "teams": {
     "title": "Kompi Tim Terbaik | Panduan Membangun Pesta | Genshin Impact",
-    "description": "Ini adalah panduan untuk membuat pesta terbaik di Genshin Impact. Pelajari cara membuat pesta terbaik! Kami memperkenalkan komposisi partai terbaik untuk setiap tugas termasuk menjelajahi area, membunuh bos lapangan, dan banyak lagi!"
+    "description": "Ini adalah panduan untuk membuat pesta terbaik di Genshin Impact. Pelajari cara membuat pesta terbaik! Kami memperkenalkan komposisi partai terbaik untuk setiap tugas termasuk menjelajahi area, membunuh bos lapangan, dan banyak lagi!",
+    "teams": "",
+    "best_team_comp": "",
+    "character_team": "",
+    "substitute_characters": "",
+    "main dps": "",
+    "sub dps": "",
+    "support": ""
   },
   "fishing": {
     "title": "Genshin Impact Memancing (Ikan, Umpan, Pancing, dan Poin Pancing)",
@@ -90,15 +176,41 @@
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
-    "enkanomiya": "Enkanomiya"
+    "enkanomiya": "Enkanomiya",
+    "fishing": "",
+    "the_chasm": ""
   },
   "calculator": {
     "title": "Genshin Impact Kalkulator",
-    "description": "Genshin Impact Kalkulator untuk menghitung berapa banyak mora dan bahan yang dibutuhkan untuk kenaikan karakter atau senjata Anda"
+    "description": "Genshin Impact Kalkulator untuk menghitung berapa banyak mora dan bahan yang dibutuhkan untuk kenaikan karakter atau senjata Anda",
+    "calculator": "",
+    "character_level": "",
+    "current_level": "",
+    "intended_level": "",
+    "talents_level": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "calculate": "",
+    "choose_weapon": "",
+    "add_to_todo_list": "",
+    "added_to_todo_list": "",
+    "exp_wasted": ""
   },
   "todo": {
     "title": "Genshin Impact Daftar yang harus dilakukan",
-    "description": "Untuk melakukan Daftar untuk merencanakan dan melacak item dan mora yang Anda butuhkan"
+    "description": "Untuk melakukan Daftar untuk merencanakan dan melacak item dan mora yang Anda butuhkan",
+    "todo": "",
+    "no_todo_msg": "",
+    "go_to_calculator": "",
+    "farm_today": "",
+    "summary": "",
+    "levels": "",
+    "talents": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "delete": ""
   },
   "achievements": {
     "title": "Genshin Impact Prestasi",

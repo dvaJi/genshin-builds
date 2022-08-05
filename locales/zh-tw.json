@@ -7,7 +7,17 @@
     "artifacts": "聖遺物",
     "weapons": "武器",
     "food": "食物",
-    "materials": "材料"
+    "materials": "材料",
+    "potions": "",
+    "tierlist": "",
+    "database": "",
+    "calculator": "",
+    "tierlist_characters": "",
+    "tierlist_weapons": "",
+    "teams": "",
+    "fishing": "",
+    "todo": "",
+    "achievements": ""
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com 原神 維基數據庫",
@@ -24,12 +34,21 @@
     "Cecilia Garden": "塞西莉亞苗圃",
     "Violet Court": "菫色之庭",
     "Court of Flowing Sand": "砂流之庭",
-    "Hidden Palace of Lianshan Formula": "震雷連山密宮"
+    "Hidden Palace of Lianshan Formula": "震雷連山密宮",
+    "asia": "",
+    "europe": "",
+    "north_america": ""
   },
   "characters": {
     "title": "原神 字符列表",
     "description": "了解 原神 中的每個角色，包括他們的技能、天賦、構建和等級列表。",
-    "characters": "角色"
+    "characters": "角色",
+    "anemo": "",
+    "geo": "",
+    "pyro": "",
+    "hydro": "",
+    "electro": "",
+    "cryo": ""
   },
   "character": {
     "title": "{name} 原神 構建指南",
@@ -38,53 +57,118 @@
     "character": "角色",
     "weapons": "武器",
     "artifacts": "聖遺物",
-    "or": "或"
+    "or": "或",
+    "builds": "",
+    "most_used": "",
+    "skills": "",
+    "recommended_primary_stats": "",
+    "substats_priority": "",
+    "ascension_materials": "",
+    "talent_materials": "",
+    "talents_priority": "",
+    "constellations": "",
+    "passives": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "18atk_set": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "bonus": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "原神 武器清單",
     "description": "所有最好的武器、位置和統計數據，包括弓、催化劑、Claymores、劍和長柄武器。",
     "weapons": "武器",
     "search": "搜索...",
-    "type": "類型順序"
+    "type": "類型順序",
+    "secondary": "",
+    "level": "",
+    "stats": "",
+    "ascension": "",
+    "refinement": ""
   },
   "weapon": {
     "title": "{name} 原神 武器詳情",
     "description": "所有最好的武器、位置和統計數據，包括弓、催化劑、Claymores、劍和長柄武器。",
     "weapons": "武器",
     "weapon": "使用武器",
-    "type": "類型順序"
+    "type": "類型順序",
+    "secondary": "",
+    "level": "",
+    "stats": "",
+    "ascension": "",
+    "refinement": "",
+    "recommended_characters": "",
+    "ascension_materials": ""
   },
   "artifacts": {
     "title": "原神 工件列表",
     "description": "所有最好的神器裝備、位置和統計數據。",
-    "artifacts": "聖遺物"
+    "artifacts": "聖遺物",
+    "2-4piece_artifact_sets": "",
+    "name": "",
+    "max_rarity": "",
+    "1piece_bonus": "",
+    "1piece_artifact_sets": "",
+    "2piece_bonus": "",
+    "4piece_bonus": ""
   },
   "tierlist": {
     "title": "原神 等級列表（最佳角色）",
-    "description": "所有最好的角色和他們的建築都按照力量、生存能力和多功能性的順序排列，以清除內容。"
+    "description": "所有最好的角色和他們的建築都按照力量、生存能力和多功能性的順序排列，以清除內容。",
+    "tierlist": "",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "tierlist_weapons": {
     "title": "原神 武器等級列表（最佳武器）",
-    "description": "所有最好的武器都按力量、生存能力和多功能性的順序排列，以清除內容。"
+    "description": "所有最好的武器都按力量、生存能力和多功能性的順序排列，以清除內容。",
+    "tierlist_weapons": "",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "food": {
     "title": "原神 烹飪食譜清單",
     "description": "發現所有烹飪食譜和為您的團隊烹飪的最佳食物。",
     "food": "食物",
-    "search": "搜索..."
+    "search": "搜索...",
+    "all": "",
+    "normal": "",
+    "delicious": "",
+    "suspicious": "",
+    "special": ""
   },
   "ingredients": {
     "title": "原神 烹飪配料表",
     "description": "發現所有烹飪原料。",
-    "cooking_ingredient": "食材"
+    "cooking_ingredient": "食材",
+    "name": ""
   },
   "potions": {
     "title": "原神 藥水清單",
-    "description": "發現所有煉金術配方以及為您的團隊使用的最好的藥水和油。"
+    "description": "發現所有煉金術配方以及為您的團隊使用的最好的藥水和油。",
+    "potions": "",
+    "name": "",
+    "rarity": "",
+    "effect": ""
   },
   "teams": {
     "title": "最佳團隊組合 | 黨建指南 | 原神",
-    "description": "這是在 原神 中打造最佳派對的指南。 學習如何舉辦最好的派對！ 我們為每個任務介紹了最佳的隊伍組成，包括探索區域、殺死現場老闆等等！"
+    "description": "這是在 原神 中打造最佳派對的指南。 學習如何舉辦最好的派對！ 我們為每個任務介紹了最佳的隊伍組成，包括探索區域、殺死現場老闆等等！",
+    "teams": "",
+    "best_team_comp": "",
+    "character_team": "",
+    "substitute_characters": "",
+    "main dps": "",
+    "sub dps": "",
+    "support": ""
   },
   "fishing": {
     "title": "原神 釣魚（魚、餌、釣竿和釣魚點）",
@@ -92,20 +176,48 @@
     "mondstadt": "蒙德",
     "liyue": "璃月",
     "inazuma": "稻妻",
-    "enkanomiya": "淵下宮"
+    "enkanomiya": "淵下宮",
+    "fishing": "",
+    "the_chasm": ""
   },
   "calculator": {
     "title": "原神 計算器",
-    "description": "原神 計算器來計算你的角色或武器提升需要多少莫拉和材料"
+    "description": "原神 計算器來計算你的角色或武器提升需要多少莫拉和材料",
+    "calculator": "",
+    "character_level": "",
+    "current_level": "",
+    "intended_level": "",
+    "talents_level": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "calculate": "",
+    "choose_weapon": "",
+    "add_to_todo_list": "",
+    "added_to_todo_list": "",
+    "exp_wasted": ""
   },
   "todo": {
     "title": "原神 待辦事項列表",
-    "description": "待辦事項列表以計劃和跟踪您需要的項目和 Mora"
+    "description": "待辦事項列表以計劃和跟踪您需要的項目和 Mora",
+    "todo": "",
+    "no_todo_msg": "",
+    "go_to_calculator": "",
+    "farm_today": "",
+    "summary": "",
+    "levels": "",
+    "talents": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "delete": ""
   },
   "achievements": {
     "title": "原神 成就",
     "description": "解鎖新功能和獎勵的成就",
-    "search": "搜索..."
+    "search": "搜索...",
+    "achievements": "",
+    "show_achieved": ""
   },
   "materials": {
     "title": "原神 材料清單",

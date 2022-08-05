@@ -7,7 +7,17 @@
     "artifacts": "อาร์ติแฟกต์",
     "weapons": "อาวุธ",
     "food": "อาหาร",
-    "materials": "วัสดุ"
+    "materials": "วัสดุ",
+    "potions": "",
+    "tierlist": "",
+    "database": "",
+    "calculator": "",
+    "tierlist_characters": "",
+    "tierlist_weapons": "",
+    "teams": "",
+    "fishing": "",
+    "todo": "",
+    "achievements": ""
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com ฐานข้อมูล Wiki",
@@ -24,12 +34,21 @@
     "Cecilia Garden": "สวนดอก Cecilia",
     "Violet Court": "โถงสีม่วง",
     "Court of Flowing Sand": "โถงแห่งห้วงทราย",
-    "Hidden Palace of Lianshan Formula": "ราชวังลับแห่ง Lianshan Formula"
+    "Hidden Palace of Lianshan Formula": "ราชวังลับแห่ง Lianshan Formula",
+    "asia": "",
+    "europe": "",
+    "north_america": ""
   },
   "characters": {
     "title": "Genshin Impact รายชื่อตัวละคร",
     "description": "เรียนรู้เกี่ยวกับตัวละครทุกตัวใน Genshin Impact รวมถึงทักษะ ความสามารถ การสร้าง และรายการระดับ",
-    "characters": "ตัวอักษร"
+    "characters": "ตัวอักษร",
+    "anemo": "",
+    "geo": "",
+    "pyro": "",
+    "hydro": "",
+    "electro": "",
+    "cryo": ""
   },
   "character": {
     "title": "คู่มือการประกอบ {name} Genshin Impact",
@@ -38,53 +57,118 @@
     "character": "ตัวละคร",
     "weapons": "อาวุธ",
     "artifacts": "อาร์ติแฟกต์",
-    "or": "หรือ"
+    "or": "หรือ",
+    "builds": "",
+    "most_used": "",
+    "skills": "",
+    "recommended_primary_stats": "",
+    "substats_priority": "",
+    "ascension_materials": "",
+    "talent_materials": "",
+    "talents_priority": "",
+    "constellations": "",
+    "passives": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "18atk_set": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "bonus": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "Genshin Impact รายการอาวุธ",
     "description": "อาวุธ สถานที่ และสถิติที่ดีที่สุดทั้งหมด รวมถึงธนู, ตัวเร่งปฏิกิริยา, เคลย์มอร์ส, ดาบ และโพลอาร์ม",
     "weapons": "อาวุธ",
     "search": "ค้นหา...",
-    "type": "ประเภท"
+    "type": "ประเภท",
+    "secondary": "",
+    "level": "",
+    "stats": "",
+    "ascension": "",
+    "refinement": ""
   },
   "weapon": {
     "title": "รายละเอียดอาวุธ {name} Genshin Impact",
     "description": "อาวุธ สถานที่ และสถิติที่ดีที่สุดทั้งหมด รวมถึงธนู, ตัวเร่งปฏิกิริยา, เคลย์มอร์ส, ดาบ และโพลอาร์ม",
     "weapons": "อาวุธ",
     "weapon": "ใช้อาวุธ",
-    "type": "ประเภท"
+    "type": "ประเภท",
+    "secondary": "",
+    "level": "",
+    "stats": "",
+    "ascension": "",
+    "refinement": "",
+    "recommended_characters": "",
+    "ascension_materials": ""
   },
   "artifacts": {
     "title": "Genshin Impact รายการสิ่งประดิษฐ์",
     "description": "ชุดอุปกรณ์ สถานที่ และสถิติสิ่งประดิษฐ์ที่ดีที่สุดทั้งหมด",
-    "artifacts": "อาร์ติแฟกต์"
+    "artifacts": "อาร์ติแฟกต์",
+    "2-4piece_artifact_sets": "",
+    "name": "",
+    "max_rarity": "",
+    "1piece_bonus": "",
+    "1piece_artifact_sets": "",
+    "2piece_bonus": "",
+    "4piece_bonus": ""
   },
   "tierlist": {
     "title": "Genshin Impact รายการระดับ (ตัวละครที่ดีที่สุด)",
-    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา"
+    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
+    "tierlist": "",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "tierlist_weapons": {
     "title": "Genshin Impact รายการระดับอาวุธ (อาวุธที่ดีที่สุด)",
-    "description": "อาวุธที่ดีที่สุดทั้งหมดเรียงลำดับตามกำลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา"
+    "description": "อาวุธที่ดีที่สุดทั้งหมดเรียงลำดับตามกำลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
+    "tierlist_weapons": "",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "food": {
     "title": "Genshin Impact รายการสูตรทำอาหาร",
     "description": "ค้นพบสูตรการทำอาหารทั้งหมดและอาหารที่ดีที่สุดสำหรับทีมของคุณ",
     "food": "อาหาร",
-    "search": "ค้นหา..."
+    "search": "ค้นหา...",
+    "all": "",
+    "normal": "",
+    "delicious": "",
+    "suspicious": "",
+    "special": ""
   },
   "ingredients": {
     "title": "Genshin Impact รายการส่วนผสมในการทำอาหาร",
     "description": "ค้นพบส่วนผสมในการทำอาหารทั้งหมด",
-    "cooking_ingredient": "วัตถุดิบประกอบอาหาร"
+    "cooking_ingredient": "วัตถุดิบประกอบอาหาร",
+    "name": ""
   },
   "potions": {
     "title": "Genshin Impact รายการยา",
-    "description": "ค้นพบสูตรการเล่นแร่แปรธาตุและโพชั่นและน้ำมันที่ดีที่สุดสำหรับทีมของคุณ"
+    "description": "ค้นพบสูตรการเล่นแร่แปรธาตุและโพชั่นและน้ำมันที่ดีที่สุดสำหรับทีมของคุณ",
+    "potions": "",
+    "name": "",
+    "rarity": "",
+    "effect": ""
   },
   "teams": {
     "title": "สุดยอดทีมคอมพ์ | คู่มือการสร้างปาร์ตี้ | Genshin Impact",
-    "description": "นี่คือแนวทางในการสร้างปาร์ตี้ที่ดีที่สุดใน Genshin Impact เรียนรู้วิธีการสร้างปาร์ตี้ที่ดีที่สุด! เราขอแนะนำองค์ประกอบปาร์ตี้ที่ดีที่สุดสำหรับแต่ละงาน รวมถึงการสำรวจพื้นที่ การสังหารหัวหน้าภาคสนาม และอื่นๆ อีกมากมาย!"
+    "description": "นี่คือแนวทางในการสร้างปาร์ตี้ที่ดีที่สุดใน Genshin Impact เรียนรู้วิธีการสร้างปาร์ตี้ที่ดีที่สุด! เราขอแนะนำองค์ประกอบปาร์ตี้ที่ดีที่สุดสำหรับแต่ละงาน รวมถึงการสำรวจพื้นที่ การสังหารหัวหน้าภาคสนาม และอื่นๆ อีกมากมาย!",
+    "teams": "",
+    "best_team_comp": "",
+    "character_team": "",
+    "substitute_characters": "",
+    "main dps": "",
+    "sub dps": "",
+    "support": ""
   },
   "fishing": {
     "title": "Genshin Impact ตกปลา (ปลา เหยื่อ คันเบ็ด และจุดตกปลา)",
@@ -92,20 +176,48 @@
     "mondstadt": "Mondstadt",
     "liyue": "Liyue",
     "inazuma": "Inazuma",
-    "enkanomiya": "Enkanomiya"
+    "enkanomiya": "Enkanomiya",
+    "fishing": "",
+    "the_chasm": ""
   },
   "calculator": {
     "title": "Genshin Impact เครื่องคิดเลข",
-    "description": "Genshin Impact เครื่องคิดเลข เพื่อคำนวณจำนวนโมราและวัสดุที่จำเป็นสำหรับตัวละครหรืออาวุธของคุณ"
+    "description": "Genshin Impact เครื่องคิดเลข เพื่อคำนวณจำนวนโมราและวัสดุที่จำเป็นสำหรับตัวละครหรืออาวุธของคุณ",
+    "calculator": "",
+    "character_level": "",
+    "current_level": "",
+    "intended_level": "",
+    "talents_level": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "calculate": "",
+    "choose_weapon": "",
+    "add_to_todo_list": "",
+    "added_to_todo_list": "",
+    "exp_wasted": ""
   },
   "todo": {
     "title": "Genshin Impact สิ่งที่ต้องทำ",
-    "description": "รายการสิ่งที่ต้องทำเพื่อวางแผนและติดตามรายการและโมราที่คุณต้องการ"
+    "description": "รายการสิ่งที่ต้องทำเพื่อวางแผนและติดตามรายการและโมราที่คุณต้องการ",
+    "todo": "",
+    "no_todo_msg": "",
+    "go_to_calculator": "",
+    "farm_today": "",
+    "summary": "",
+    "levels": "",
+    "talents": "",
+    "normal_attack": "",
+    "skill": "",
+    "burst": "",
+    "delete": ""
   },
   "achievements": {
     "title": "Genshin Impact ความสำเร็จ",
     "description": "ความสำเร็จเพื่อปลดล็อกคุณสมบัติและรางวัลใหม่",
-    "search": "ค้นหา..."
+    "search": "ค้นหา...",
+    "achievements": "",
+    "show_achieved": ""
   },
   "materials": {
     "title": "Genshin Impact รายการวัสดุ",

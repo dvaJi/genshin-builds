@@ -15,7 +15,9 @@
     "artifacts": "Артефакты",
     "weapons": "Оружие",
     "food": "Еда",
-    "materials": "Материалы"
+    "materials": "Материалы",
+    "todo": "",
+    "achievements": ""
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com - База данных Genshin Impact",
@@ -32,12 +34,21 @@
     "Cecilia Garden": "Сад Сесилии",
     "Violet Court": "Фиалковый зал",
     "Court of Flowing Sand": "Зал текущего песка",
-    "Hidden Palace of Lianshan Formula": "Лабиринт Ляншань"
+    "Hidden Palace of Lianshan Formula": "Лабиринт Ляншань",
+    "asia": "",
+    "europe": "",
+    "north_america": ""
   },
   "characters": {
     "title": "Список персонажей Genshin Impact",
     "description": "Узнайте о каждом персонаже в Genshin Impact, включая его навыки, таланты, сборки и список уровней.",
-    "characters": "Персонажи"
+    "characters": "Персонажи",
+    "anemo": "",
+    "geo": "",
+    "pyro": "",
+    "hydro": "",
+    "electro": "",
+    "cryo": ""
   },
   "character": {
     "title": "Информация о персонаже {name}",
@@ -49,7 +60,26 @@
     "normal attack": "Обычная атака",
     "skill": "Особый навык",
     "burst": "Ультимейт",
-    "or": "или"
+    "or": "или",
+    "builds": "",
+    "most_used": "",
+    "skills": "",
+    "recommended_primary_stats": "",
+    "substats_priority": "",
+    "ascension_materials": "",
+    "talent_materials": "",
+    "talents_priority": "",
+    "constellations": "",
+    "passives": "",
+    "normal_attack": "",
+    "18atk_set": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "bonus": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "Список оружий Genshin Impact",
@@ -74,7 +104,8 @@
     "stats": "Статистика",
     "ascension": "Вознесение",
     "refinement": "Пробуждение",
-    "recommended_characters": "Рекомендуемые персонажи"
+    "recommended_characters": "Рекомендуемые персонажи",
+    "ascension_materials": ""
   },
   "artifacts": {
     "title": "Список артефактов Genshin Impact",
@@ -91,12 +122,18 @@
   "tierlist": {
     "title": "Уровневый список персонажей Genshin Impact",
     "description": "Все лучшие персонажи и их сборки класифицированы в порядке мощности, жизнеспособности и универсальности для прохождения контента.",
-    "tierlist": "Уровневые списки"
+    "tierlist": "Уровневые списки",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "tierlist_weapons": {
     "title": "Уровневый список оружия Genshin Impact",
     "description": "Все лучшие оружия класифицированы в порядке мощности, жизнеспособности и универсальности для прохождения контента.",
-    "tierlist_weapons": "Список оружия"
+    "tierlist_weapons": "Список оружия",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "food": {
     "title": "Кулинарные рецепты Genshin Impact",
@@ -129,7 +166,10 @@
     "teams": "Команды",
     "best_team_comp": "Лучший командный состав",
     "character_team": "Лучшая команда для {name}",
-    "substitute_characters": "Замещающие персонажи"
+    "substitute_characters": "Замещающие персонажи",
+    "main dps": "",
+    "sub dps": "",
+    "support": ""
   },
   "fishing": {
     "title": "Рыбалка Genshin Impact",
@@ -138,7 +178,8 @@
     "mondstadt": "Мондштадт",
     "liyue": "Ли Юэ",
     "inazuma": "Инадзума",
-    "enkanomiya": "Энканомия"
+    "enkanomiya": "Энканомия",
+    "the_chasm": ""
   },
   "calculator": {
     "title": "Калькулятор Genshin Impact",
@@ -152,15 +193,32 @@
     "skill": "Особый навык",
     "burst": "Ультимейт",
     "calculate": "Рассчитать",
-    "choose_weapon": "Выберите оружие"
+    "choose_weapon": "Выберите оружие",
+    "add_to_todo_list": "",
+    "added_to_todo_list": "",
+    "exp_wasted": ""
   },
   "todo": {
     "normal_attack": "Обычная атака",
     "skill": "Особый навык",
-    "burst": "Ультимейт"
+    "burst": "Ультимейт",
+    "title": "",
+    "description": "",
+    "todo": "",
+    "no_todo_msg": "",
+    "go_to_calculator": "",
+    "farm_today": "",
+    "summary": "",
+    "levels": "",
+    "talents": "",
+    "delete": ""
   },
   "achievements": {
-    "search": "Поиск..."
+    "search": "Поиск...",
+    "title": "",
+    "description": "",
+    "achievements": "",
+    "show_achieved": ""
   },
   "materials": {
     "title": "Список материалов Genshin Impact",

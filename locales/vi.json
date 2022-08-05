@@ -70,7 +70,16 @@
     "normal attack": "Tấn công thường",
     "skill": "Kỹ năng",
     "burst": "Nộ",
-    "or": "hoặc"
+    "or": "hoặc",
+    "normal_attack": "",
+    "18atk_set": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "bonus": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "Genshin Impact Danh sách vũ khí",

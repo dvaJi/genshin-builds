@@ -15,7 +15,9 @@
     "artifacts": "聖遺物",
     "weapons": "武器",
     "food": "食べ物",
-    "materials": "材料"
+    "materials": "材料",
+    "todo": "",
+    "achievements": ""
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com 原神 Wiki",
@@ -32,12 +34,21 @@
     "Cecilia Garden": "セシリアの苗床",
     "Violet Court": "菫色ノ庭",
     "Court of Flowing Sand": "砂流ノ庭",
-    "Hidden Palace of Lianshan Formula": "震雷連山密宮"
+    "Hidden Palace of Lianshan Formula": "震雷連山密宮",
+    "asia": "",
+    "europe": "",
+    "north_america": ""
   },
   "characters": {
     "title": "原神（げんしん） キャラ評価一覧",
     "description": "原神(げんしん)におけるキャラ評価一覧です。レア度別・属性別・武器別の絞り込みやキャラ名検索に対応しています。原神で全キャラの評価を知りたいからはこちらを参考にして下さい。",
-    "characters": "キャラ一覧"
+    "characters": "キャラ一覧",
+    "anemo": "",
+    "geo": "",
+    "pyro": "",
+    "hydro": "",
+    "electro": "",
+    "cryo": ""
   },
   "character": {
     "title": "{name}の評価とおすすめ装備(聖遺物・武器)",
@@ -49,7 +60,26 @@
     "normal attack": "攻撃攻撃",
     "skill": "元素スキル",
     "burst": "元素爆発",
-    "or": "又は"
+    "or": "又は",
+    "builds": "",
+    "most_used": "",
+    "skills": "",
+    "recommended_primary_stats": "",
+    "substats_priority": "",
+    "ascension_materials": "",
+    "talent_materials": "",
+    "talents_priority": "",
+    "constellations": "",
+    "passives": "",
+    "normal_attack": "",
+    "18atk_set": "",
+    "20energyrecharge_set": "",
+    "25physicaldmg_set": "",
+    "bonus": "",
+    "choose_2": "",
+    "sands": "",
+    "goblet": "",
+    "circlet": ""
   },
   "weapons": {
     "title": "原神（げんしん）武器の一覧",
@@ -73,7 +103,9 @@
     "level": "レベル",
     "stats": "統計",
     "ascension": "上昇",
-    "refinement": "精製"
+    "refinement": "精製",
+    "recommended_characters": "",
+    "ascension_materials": ""
   },
   "artifacts": {
     "title": "原神（げんしん）原神おすすめ聖遺物とセット効果一覧",
@@ -90,12 +122,18 @@
   "tierlist": {
     "title": "原神（げんしん）最強キャラランキング",
     "description": "原神(げんしん)における最強キャラランキング(Tier表)です。総合版と役割別に分けて最強キャラをランキング形式で掲載し、今何のキャラが強いかをポイント立てて紹介。アンケートもあるので、原神最強キャラが知りたい方は是非参考にしてください。",
-    "tierlist": "最強キャラ"
+    "tierlist": "最強キャラ",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "tierlist_weapons": {
     "title": "原神（げんしん）最強武器ランキング",
     "description": "原神(げんしん)における、最強武器ランキングを武器種別にTier表紹介した記事です。片手剣・両手剣・長柄武器・法器・弓それぞれの最強装備とおすすめキャラまで詳しく掲載しているので原神武器最強について知りたい方はぜひご覧ください。",
-    "tierlist_weapons": "最強武器"
+    "tierlist_weapons": "最強武器",
+    "main_dps": "",
+    "sub_dps": "",
+    "support": ""
   },
   "food": {
     "title": "原神（げんしん）料理レシピ一覧",
@@ -128,7 +166,10 @@
     "teams": "最強パーティ",
     "best_team_comp": "最強パーティ",
     "character_team": "{name}のパーティ",
-    "substitute_characters": "入れ替え候補"
+    "substitute_characters": "入れ替え候補",
+    "main dps": "",
+    "sub dps": "",
+    "support": ""
   },
   "fishing": {
     "title": "原神(げんしん) 釣り場所(ポイント)一覧｜出現する魚",
@@ -137,7 +178,8 @@
     "mondstadt": "モンド",
     "liyue": "璃月",
     "inazuma": "稲妻",
-    "enkanomiya": "淵下宮"
+    "enkanomiya": "淵下宮",
+    "the_chasm": ""
   },
   "calculator": {
     "title": "原神(げんしん)電卓",
@@ -151,15 +193,32 @@
     "skill": "元素スキル",
     "burst": "元素爆発",
     "calculate": "計算する",
-    "choose_weapon": "武器を選択してください"
+    "choose_weapon": "武器を選択してください",
+    "add_to_todo_list": "",
+    "added_to_todo_list": "",
+    "exp_wasted": ""
   },
   "todo": {
     "normal_attack": "攻撃攻撃",
     "skill": "元素スキル",
-    "burst": "元素爆発"
+    "burst": "元素爆発",
+    "title": "",
+    "description": "",
+    "todo": "",
+    "no_todo_msg": "",
+    "go_to_calculator": "",
+    "farm_today": "",
+    "summary": "",
+    "levels": "",
+    "talents": "",
+    "delete": ""
   },
   "achievements": {
-    "search": "探す..."
+    "search": "探す...",
+    "title": "",
+    "description": "",
+    "achievements": "",
+    "show_achieved": ""
   },
   "materials": {
     "title": "原神(げんしん)材料リスト",
