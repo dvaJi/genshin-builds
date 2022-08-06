@@ -36,13 +36,13 @@ const Calculator = ({ characters, weapons }: Props) => {
       />
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div>
-        <h1 className="text-xl">Character Calculator</h1>
+        <h1 className="text-xl text-white">Character Calculator</h1>
       </div>
       <Card>
         <CharacterCalculator characters={characters} />
       </Card>
       <div className="mt-6">
-        <h1 className="text-xl">Weapon Calculator</h1>
+        <h1 className="text-xl text-white">Weapon Calculator</h1>
       </div>
       <Card>
         <WeaponCalculator weapons={weapons} />

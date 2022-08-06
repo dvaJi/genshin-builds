@@ -44,7 +44,7 @@ const WeaponPage = ({
       <div className="flex items-start justify-between mb-4">
         <div className="flex flex-wrap lg:flex-nowrap relative items-center px-2 lg:px-0">
           <div
-            className="flex-none relative mr-2 lg:mr-5  rounded-lg border border-gray-900 bg-cover"
+            className="flex-none relative mr-2 lg:mr-5 rounded-lg border border-gray-900 bg-cover"
             style={{
               backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
             }}
@@ -101,10 +101,9 @@ const WeaponPage = ({
               +
             </button>
           </div>
-          <h2 className="text-3xl mb-2">
+          <h2 className="text-3xl mb-2 text-white">
             {t({ id: "stats", defaultMessage: "Stats" })}
           </h2>
-
           <Card>
             <div className="grid grid-cols-2">
               <div>
@@ -134,7 +133,7 @@ const WeaponPage = ({
             </div>
           </Card>
         </div>
-        <div>
+        <div className="mb-8">
           <div className="float-right">
             <button
               className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
@@ -158,7 +157,7 @@ const WeaponPage = ({
               +
             </button>
           </div>
-          <h2 className="text-3xl mb-2">
+          <h2 className="text-3xl mb-2 text-white">
             {t({ id: "refinement", defaultMessage: "Refinement" })}
           </h2>
           <Card>
@@ -172,7 +171,7 @@ const WeaponPage = ({
       </div>
       {recommendedCharacters.length > 0 && (
         <>
-          <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+          <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
             {t({
               id: "recommended_characters",
               defaultMessage: "Recomended Characters",
@@ -199,7 +198,7 @@ const WeaponPage = ({
           </div>
         </>
       )}
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
         {t({
           id: "ascension_materials",
           defaultMessage: "Ascension Materials",

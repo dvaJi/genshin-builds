@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+import Card from "@components/ui/Card";
 import { MDContent } from "../interfaces/md-content";
 import markdownToHtml from "../lib/markdownToHtml";
 import { getContentBySlug } from "../lib/mdApi";
@@ -14,7 +15,7 @@ interface MdPage {
 const PrivacyPolicy = ({ data }: MdPage) => {
   const router = useRouter();
   return (
-    <div>
+    <Card>
       <Head>
         <title>{data.title} | GenshinBuilds</title>
         <meta property="og:image" content={data.ogImage?.url} />
@@ -24,7 +25,7 @@ const PrivacyPolicy = ({ data }: MdPage) => {
       ) : (
         <div dangerouslySetInnerHTML={{ __html: data.content }}></div>
       )}
-    </div>
+    </Card>
   );
 };
 
@@ -50,6 +51,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
     },
   };
-}
+};
 
 export default PrivacyPolicy;

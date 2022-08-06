@@ -103,12 +103,12 @@ const CharacterPage = ({
         </div>
       </div>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
         {t({ id: "skills", defaultMessage: "Skills" })}
       </h2>
       <div
         className={clsx(
-          "grid grid-cols-1 gap-4 w-full justify-center mb-4",
+          "grid grid-cols-1 gap-4 w-full justify-center mb-8",
           character.skills.length > 3
             ? "lg:grid-cols-3 xl:grid-cols-4"
             : "lg:grid-cols-3"
@@ -123,8 +123,8 @@ const CharacterPage = ({
         ))}
       </div>
       {builds.length > 0 && (
-        <div className="mb-4 mx-4 lg:mx-0">
-          <h2 className="text-3xl mb-3">
+        <div className="mb-8 mx-4 lg:mx-0">
+          <h2 className="text-3xl mb-3 text-white">
             {t({
               id: "builds",
               defaultMessage: "Builds",
@@ -181,10 +181,10 @@ const CharacterPage = ({
         </div>
       )}
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
-      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-4">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-8">
         {character.passives.map((passive) => (
           <PassiveSkill
             key={passive.id}
@@ -193,13 +193,13 @@ const CharacterPage = ({
           />
         ))}
       </div>
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
         {t({
           id: "constellations",
           defaultMessage: "Constellations",
         })}
       </h2>
-      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-4">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-8">
         {character.constellations
           .filter((c) => c.level > 0)
           .map((constellation) => (
@@ -210,16 +210,16 @@ const CharacterPage = ({
             />
           ))}
       </div>
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
         {t({
           id: "ascension_materials",
           defaultMessage: "Ascension Materials",
         })}
       </h2>
-      <Card className="p-0 mb-4 mx-4 lg:mx-0">
+      <Card className="p-0 mb-8 mx-4 lg:mx-0">
         <CharacterAscencionMaterials ascension={character.ascension} />
       </Card>
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
         {t({
           id: "talent_materials",
           defaultMessage: "Talent Materials",
