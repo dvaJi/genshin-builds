@@ -1,7 +1,7 @@
 import { persistentAtom } from "@nanostores/persistent";
 
 export type AchievementsCompleted = {
-  [id: number]: number[];
+  [id: string]: number[];
 };
 
 export const achievementsCompleted = persistentAtom<AchievementsCompleted>(
