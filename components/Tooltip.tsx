@@ -16,7 +16,7 @@ function Tooltip({ className, children, contents }: Props) {
 
   return (
     <div
-      className={clsx("cursor-pointer", className)}
+      className={clsx("cursor-pointer w-full", className)}
       {...trigger}
       onMouseLeave={() => toggle(false)}
       onMouseEnter={() => toggle(true)}
