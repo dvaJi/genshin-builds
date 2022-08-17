@@ -17,7 +17,8 @@
     "todo": "Machen",
     "achievements": "Erfolge",
     "food": "Nahrung",
-    "materials": "Materialien"
+    "materials": "Materialien",
+    "guides": "Leitfaden"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki-Datenbank",
@@ -225,5 +226,16 @@
     "description": "Entdecken Sie alle Materialien",
     "materials": "Materialien",
     "search": "Suche..."
+  },
+  "guides": {
+    "title": "Genshin Impact Leitfaden",
+    "title_detail": "{title} - Genshin Impact Leitfaden",
+    "description": "Anleitungen, die Ihnen helfen, das Spiel zu lernen",
+    "guides": "Leitfaden",
+    "back_to_guides": "Zurück zu Führungen",
+    "published_at": "Veröffentlicht um {date}",
+    "youtube_tutorial": "YouTube-Tutorial",
+    "interactive_map": "Interaktive Karte",
+    "related_guides": "Verwandte Anleitungen"
   }
 }

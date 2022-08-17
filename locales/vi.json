@@ -17,7 +17,8 @@
     "todo": "To-do",
     "achievements": "Thành tựu",
     "food": "Thực Phẩm",
-    "materials": "Vật liệu"
+    "materials": "Vật liệu",
+    "guides": "Hướng dẫn"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Cơ sở dữ liệu Wiki",
@@ -225,5 +226,16 @@
     "description": "Khám phá tất cả các nguyên liệu",
     "materials": "Nguyên liệu",
     "search": "Tìm kiếm..."
+  },
+  "guides": {
+    "title": "Genshin Impact Hướng dẫn",
+    "title_detail": "{title} - Genshin Impact Hướng dẫn",
+    "description": "Hướng dẫn giúp bạn tìm hiểu trò chơi",
+    "guides": "Hướng dẫn",
+    "back_to_guides": "Quay lại Hướng dẫn",
+    "published_at": "Xuất bản vào {date}",
+    "youtube_tutorial": "Hướng dẫn trên YouTube",
+    "interactive_map": "Bản đồ tương tác",
+    "related_guides": "Hướng dẫn liên quan"
   }
 }

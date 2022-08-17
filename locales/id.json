@@ -17,7 +17,8 @@
     "teams": "",
     "fishing": "",
     "todo": "",
-    "achievements": ""
+    "achievements": "",
+    "guides": "Panduan"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Basis Data Wiki",
@@ -224,5 +225,16 @@
     "description": "Temukan semua Materi",
     "materials": "bahan",
     "search": "Mencari..."
+  },
+  "guides": {
+    "title": "Genshin Impact Panduan",
+    "title_detail": "{title} - Genshin Impact Panduan",
+    "description": "Panduan untuk membantu Anda mempelajari permainan",
+    "guides": "Panduan",
+    "back_to_guides": "Kembali ke Panduan",
+    "published_at": "Diterbitkan pada {date}",
+    "youtube_tutorial": "Tutorial YouTube",
+    "interactive_map": "Peta Interaktif",
+    "related_guides": "Panduan Terkait"
   }
 }

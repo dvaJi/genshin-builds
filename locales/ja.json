@@ -17,7 +17,8 @@
     "food": "食べ物",
     "materials": "材料",
     "todo": "",
-    "achievements": ""
+    "achievements": "",
+    "guides": "ガイド"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com 原神 Wiki",
@@ -225,5 +226,16 @@
     "description": "すべての資料をご覧ください",
     "materials": "材料",
     "search": "探す..."
+  },
+  "guides": {
+    "title": "原神(げんしん) ガイド",
+    "title_detail": "{title} - 原神(げんしん) ガイド",
+    "description": "ゲームの学習に役立つガイド",
+    "guides": "ガイド",
+    "back_to_guides": "ガイドに戻る",
+    "published_at": "{date}年公開",
+    "youtube_tutorial": "YouTube チュートリアル",
+    "interactive_map": "インタラクティブ マップ",
+    "related_guides": "関連ガイド"
   }
 }

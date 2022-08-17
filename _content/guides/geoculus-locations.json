@@ -1,0 +1,37 @@
+{
+  "title": {
+    "en": "Geoculus Locations",
+    "es": "Ubicaciones de Geóculus",
+    "de": "Geoculus Standorte",
+    "fr": "Emplacements d'Géoculus",
+    "id": "Lokasi Geoculus",
+    "ja": "岩神場所",
+    "ko": "바위 위치",
+    "pt": "Locais Geoculus",
+    "ru": "Геокул местоположения",
+    "th": "Geoculus สถานที่ตั้ง",
+    "vi": "Nham Vị trí",
+    "zh-tw": "的岩位置"
+  },
+  "description": {
+    "en": "A full geoculus locations map for Genshin Impact! This guide includes a fully interactive map with a checker.",
+    "es": "¡Un mapa completo de ubicaciones Geóculus para Genshin Impact! Esta guía incluye un mapa totalmente interactivo con un verificador.",
+    "de": "Eine vollständige Geoculus -Spositionskarte für Genshin Impact! Diese Anleitung enthält eine vollständig interaktive Karte mit einem Checker.",
+    "fr": "Une carte des emplacements Géoculus complète pour l'impact de Genshin! Ce guide comprend une carte entièrement interactive avec un vérificateur.",
+    "id": "Peta lokasi Geoculus lengkap untuk dampak Genshin! Panduan ini mencakup peta yang sepenuhnya interaktif dengan pemeriksa.",
+    "ja": "完全な岩神ロケーションマップ（げんしん）！ このガイドには、チェッカーを使用した完全にインタラクティブなマップが含まれています。",
+    "ko": "원신에 대한 전체 바위 위치 맵! 이 안내서에는 체커가있는 완전히 대화식지도가 포함되어 있습니다.",
+    "pt": "Um mapa completo de locais Geoculus para o impacto de Genshin! Este guia inclui um mapa totalmente interativo com um verificador.",
+    "ru": "Полная карта местоположения Геокул для воздействия Genshin! Это руководство включает в себя полностью интерактивную карту с контролером.",
+    "th": "แผนที่สถานที่ Geoculus เต็มรูปแบบสำหรับการกระแทกของ Genshin! คู่มือนี้มีแผนที่แบบโต้ตอบอย่างสมบูรณ์พร้อมตัวตรวจสอบ",
+    "vi": "Một bản đồ địa điểm đầy đủ Nham cho tác động của Genshin! Hướng dẫn này bao gồm một bản đồ tương tác đầy đủ với một trình kiểm tra.",
+    "zh-tw": "完整的的岩位置映射原神！ 本指南包括帶有檢查器的完全互動地圖。"
+  },
+  "type": "locations",
+  "tags": ["v2.7", "oculus"],
+  "version": "2.7",
+  "date": "2022-08-15",
+  "thumbnail": "/imgs/guides/geoculus_locations.jpeg",
+  "ytVideosUrl": ["CUrV-_-oyTg"],
+  "giMapIDs": ["Geoculus"]
+}

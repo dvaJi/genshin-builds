@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "Spiral Abyss v2.8 Best Teams",
+    "es": "Espiral del Abismo v2.8 mejores equipos",
+    "de": "Gewundener Abgrund v2.8 Beste Teams",
+    "fr": "Profondeurs spiralées v2.8 Meilleures équipes",
+    "id": "Spiral Abyss v2.8 Tim Terbaik",
+    "ja": "深境螺旋 v2.8最高のチーム",
+    "ko": "나선 비경 v2.8 최고의 팀",
+    "pt": "Abismo do Espiral V2.8 Melhores equipes",
+    "ru": "Витая Бездна v2.8 Лучшие команды",
+    "th": "Spiral Abyss V2.8 ทีมที่ดีที่สุด",
+    "vi": "La Hoàn Thâm Cảnh V2.8 Các đội tốt nhất",
+    "zh-tw": "深境螺旋 v2.8最佳團隊"
+  },
+  "description": {
+    "en": "Here's what you need to know to beat the Spiral Abyss floors 11 and 12 in Genshin Impact 2.8!",
+    "es": "¡Esto es lo que necesita saber para vencer los pisos del Espiral del Abismo 11 y 12 en Genshin Impact 2.8!",
+    "de": "Hier ist, was Sie wissen müssen, um die Gewundener Abgrund -Föden 11 und 12 in Genshin Impact 2.8 zu schlagen!",
+    "fr": "Voici ce que vous devez savoir pour battre les étages Profondeurs spiralées 11 et 12 dans Genshin Impact 2.8!",
+    "id": "Inilah yang perlu Anda ketahui untuk mengalahkan lantai Spiral Abyss 11 dan 12 di Genshin Impact 2.8!",
+    "ja": "これは、原神（げんしん）2.8で深境螺旋 11階と12を倒すために知っておく必要があることです。",
+    "ko": "다음은 나선 비경 층 11과 12에서 원신 2.8을이기려면 알아야 할 사항입니다!",
+    "pt": "Aqui está o que você precisa saber para vencer os pisos Abismo do Espiral 11 e 12 em Genshin Impact 2.8!",
+    "ru": "Вот что вам нужно знать, чтобы победить Витая Бездна полы 11 и 12 в Genshin Impact 2.8!",
+    "th": "นี่คือสิ่งที่คุณต้องรู้ว่าจะเอาชนะ Spiral Abyss ชั้น 11 และ 12 ใน Genshin Impact 2.8!",
+    "vi": "Đây là những gì bạn cần biết để đánh bại La Hoàn Thâm Cảnh Sàn 11 và 12 trong Genshin Impact 2.8!",
+    "zh-tw": "這是您需要知道的，以擊敗深境螺旋地板11和12 in原神2.8！"
+  },
+  "type": "spiralabyss",
+  "tags": ["v2.8", "spiralabyss"],
+  "version": "2.8",
+  "date": "2022-08-17",
+  "thumbnail": "/imgs/guides/spiralabyss_v2-8.jpg",
+  "ytVideosUrl": ["KoFRu7Sh48w", "pdquMNoJjnU", "0nHBSHwbhP8", "DsKSNFAq1l0", "rGEtRoYBGOE"]
+}

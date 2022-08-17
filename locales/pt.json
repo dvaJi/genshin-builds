@@ -17,7 +17,8 @@
     "teams": "",
     "fishing": "",
     "todo": "",
-    "achievements": ""
+    "achievements": "",
+    "guides": "Guias"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Banco de dados Wiki",
@@ -224,5 +225,16 @@
     "description": "Conheça todos os materiais",
     "materials": "Materiais",
     "search": "Procurar..."
+  },
+  "guides": {
+    "title": "Genshin Impact Guias",
+    "title_detail": "{title} - Genshin Impact Guias",
+    "description": "Guias para ajudá-lo a aprender o jogo",
+    "guides": "Guias",
+    "back_to_guides": "Voltar aos guias",
+    "published_at": "Publicado em {date}",
+    "youtube_tutorial": "Tutorial do YouTube",
+    "interactive_map": "Mapa interativo",
+    "related_guides": "Guias relacionados"
   }
 }

@@ -17,7 +17,8 @@
     "todo": "할 것",
     "achievements": "업적",
     "food": "음식",
-    "materials": "재료"
+    "materials": "재료",
+    "guides": "가이드"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki 데이터베이스",
@@ -225,5 +226,16 @@
     "description": "모든 재료 알아보기",
     "materials": "재료",
     "search": "검색..."
+  },
+  "guides": {
+    "title": "원신 가이드",
+    "title_detail": "{title} - 원신 가이",
+    "description": "게임을 배우는 데 도움이 되는 가이드",
+    "guides": "가이드",
+    "back_to_guides": "가이드로 돌아가기",
+    "published_at": "{date}년 발행",
+    "youtube_tutorial": "유튜브 튜토리얼",
+    "interactive_map": "인터랙티브 맵",
+    "related_guides": "관련 가이드"
   }
 }

@@ -17,7 +17,8 @@
     "teams": "",
     "fishing": "",
     "todo": "",
-    "achievements": ""
+    "achievements": "",
+    "guides": "ไกด์"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com ฐานข้อมูล Wiki",
@@ -224,5 +225,16 @@
     "description": "ค้นพบวัสดุทั้งหมด",
     "materials": "วัสดุ",
     "search": "ค้นหา..."
+  },
+  "guides": {
+    "title": "Genshin Impact ไกด์",
+    "title_detail": "{title} - Genshin Impact ไกด์",
+    "description": "คำแนะนำเพื่อช่วยให้คุณเรียนรู้เกม",
+    "guides": "ไกด์",
+    "back_to_guides": "กลับไปที่คำแนะนำ",
+    "published_at": "เผยแพร่เมื่อ {date}",
+    "youtube_tutorial": "บทช่วยสอนของ YouTube",
+    "interactive_map": "แผนที่แบบโต้ตอบ",
+    "related_guides": "คำแนะนำที่เกี่ยวข้อง"
   }
 }

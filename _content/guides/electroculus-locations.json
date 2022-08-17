@@ -1,0 +1,37 @@
+{
+  "title": {
+    "en": "Electroculus Locations",
+    "es": "Ubicaciones de Electróculus",
+    "de": "Elektroculus Standorte",
+    "fr": "Électroculus Emplacements",
+    "id": "Lokasi Electroculus",
+    "ja": "雷神場所",
+    "ko": "잃어버린 위치",
+    "pt": "Locais Electroculus",
+    "ru": "Электрокул местоположения",
+    "th": "Electroculus สถานที่ตั้ง",
+    "vi": "Lôi Vị trí",
+    "zh-tw": "的雷位置"
+  },
+  "description": {
+    "en": "A full electroculus locations map for Genshin Impact! This guide includes a fully interactive map with a checker.",
+    "es": "¡Un mapa completo de ubicaciones Electróculus para el impacto de Genshin! Esta guía incluye un mapa totalmente interactivo con un verificador.",
+    "de": "Eine vollständige Elektroculus -Spositionskarte für Genshin Impact! Diese Anleitung enthält eine vollständig interaktive Karte mit einem Checker.",
+    "fr": "Une carte des emplacements Électroculus complète pour l'impact de Genshin! Ce guide comprend une carte entièrement interactive avec un vérificateur.",
+    "id": "Peta lokasi Electroculus penuh untuk dampak genshin! Panduan ini mencakup peta yang sepenuhnya interaktif dengan pemeriksa.",
+    "ja": "完全な雷神ロケーションマップ（げんしん）！ このガイドには、チェッカーを使用した完全にインタラクティブなマップが含まれています。",
+    "ko": "원신에 대한 전체 잃어버린 위치 맵! 이 안내서에는 체커가있는 완전히 대화식지도가 포함되어 있습니다.",
+    "pt": "Um mapa completo de locais Electroculus para o impacto de genshin! Este guia inclui um mapa totalmente interativo com um verificador.",
+    "ru": "Полная карта местоположения Электрокул для воздействия Геншина! Это руководство включает в себя полностью интерактивную карту с контролером.",
+    "th": "แผนที่สถานที่ Electroculus เต็มรูปแบบสำหรับ Genshin Impact! คู่มือนี้มีแผนที่แบบโต้ตอบอย่างสมบูรณ์พร้อมตัวตรวจสอบ",
+    "vi": "Một vị trí đầy đủ Lôi Bản đồ cho tác động của Genshin! Hướng dẫn này bao gồm một bản đồ tương tác đầy đủ với một trình kiểm tra.",
+    "zh-tw": "完整的的雷位置圖！ 本指南包括帶有檢查器的完全互動地圖。"
+  },
+  "type": "locations",
+  "tags": ["v2.7", "oculus"],
+  "version": "2.7",
+  "date": "2022-08-16",
+  "thumbnail": "/imgs/guides/electroculus_locations.jpg",
+  "ytVideosUrl": ["yfikeaNpeco"],
+  "giMapIDs": ["Electroculus"]
+}

@@ -17,7 +17,8 @@
     "food": "Еда",
     "materials": "Материалы",
     "todo": "",
-    "achievements": ""
+    "achievements": "",
+    "guides": "Гиды"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com - База данных Genshin Impact",
@@ -225,5 +226,16 @@
     "description": "Откройте для себя все материалы",
     "materials": "Материалы",
     "search": "Поиск..."
+  },
+  "guides": {
+    "title": "Направляющие Genshin Impact",
+    "title_detail": "{title} - Направляющие Genshin Impact",
+    "description": "Гайды, которые помогут вам освоить игру",
+    "guides": "Гиды",
+    "back_to_guides": "Назад к руководствам",
+    "published_at": "Опубликовано {date}",
+    "youtube_tutorial": "Учебник по YouTube",
+    "interactive_map": "Интерактивная карта",
+    "related_guides": "Связанные руководства"
   }
 }

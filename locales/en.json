@@ -17,7 +17,8 @@
     "todo": "Todo",
     "achievements": "Achievements",
     "food": "Food",
-    "materials": "Materials"
+    "materials": "Materials",
+    "guides": "Guides"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki Database",
@@ -224,5 +225,16 @@
     "description": "Discover all the Materials",
     "materials": "Materials",
     "search": "Search..."
+  },
+  "guides": {
+    "title": "Genshin Impact Guides",
+    "title_detail": "{title} - Genshin Impact Guides",
+    "description": "Guides to help you learn the game",
+    "guides": "Guides",
+    "back_to_guides": "Back to Guides",
+    "published_at": "Published at {date}",
+    "youtube_tutorial": "YouTube Tutorial",
+    "interactive_map": "Interactive Map",
+    "related_guides": "Related Guides"
   }
 }

@@ -17,7 +17,8 @@
     "todo": "Todo",
     "achievements": "Logros",
     "food": "Comida",
-    "materials": "Materiales"
+    "materials": "Materiales",
+    "guides": "Guías"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Base de datos Wiki",
@@ -225,5 +226,16 @@
     "description": "Descubre todos los materiales del juego",
     "materials": "Materiales",
     "search": "Buscar..."
+  },
+  "guides": {
+    "title": "Guías de Genshin Impact",
+    "title_detail": "{title} - Guías de Genshin Impact",
+    "description": "Guías de Genshin Impact",
+    "guides": "Guías",
+    "back_to_guides": "Volver a las guías",
+    "published_at": "Publicado el {date}",
+    "youtube_tutorial": "Tutorial en Youtube",
+    "interactive_map": "Mapa interactivo",
+    "related_guides": "Guías relacionadas"
   }
 }

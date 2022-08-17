@@ -5,15 +5,10 @@ import clsx from "clsx";
 
 import LayoutHeader from "@components/LayoutHeader";
 import LayoutFooter from "@components/LayoutFooter";
-import Ads from "@components/Ads";
-
-import { AD_LEFT_SLOT, AD_RIGHT_SLOT } from "@lib/constants";
 import { background } from "@state/background-atom";
-import { useMobileDetect } from "@hooks/use-mobile-detect";
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   const appBackgroundStyle = useStore(background);
-  const { isMobile } = useMobileDetect();
 
   return (
     <>
@@ -46,7 +41,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           <div className="absolute top-0 pointer-events-none left-0 right-0 bottom-0 flex items-start justify-center overflow-hidden z-0">
             {appBackgroundStyle.image && (
               <img
-                className="w-full"
+                className="w-full scale-150 md:scale-100"
                 alt="Background image"
                 src={appBackgroundStyle.image}
               />
@@ -66,18 +61,6 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           )}
         >
           <Component {...pageProps} />
-          {!isMobile && (
-            <>
-              <Ads
-                className="w-60 block absolute z-10 top-0 left-0"
-                adSlot={AD_LEFT_SLOT}
-              />
-              <Ads
-                className="w-60 block absolute z-10 top-0 right-0"
-                adSlot={AD_RIGHT_SLOT}
-              />
-            </>
-          )}
         </main>
       </div>
       <LayoutFooter />

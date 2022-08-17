@@ -35,6 +35,7 @@ const navroutes: NavRoutes[] = [
   { id: "teams", name: "Teams", href: "/teams" },
   { id: "todo", name: "Todo", href: "/todo" },
   { id: "calculator", name: "Calculator", href: "/calculator" },
+  { id: "guides", name: "Guides", href: "/guides" },
   {
     id: "database",
     name: "Database",

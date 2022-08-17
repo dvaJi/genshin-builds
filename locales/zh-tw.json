@@ -17,7 +17,8 @@
     "teams": "",
     "fishing": "",
     "todo": "",
-    "achievements": ""
+    "achievements": "",
+    "guides": "指南"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com 原神 維基數據庫",
@@ -224,5 +225,16 @@
     "description": "發現所有材料",
     "materials": "材料",
     "search": "搜索..."
+  },
+  "guides": {
+    "title": "原神 指南",
+    "title_detail": "{title} - 原神 指南",
+    "description": "幫助您學習遊戲的指南",
+    "guides": "指南",
+    "back_to_guides": "返回指南",
+    "published_at": "P發表於 {date}",
+    "youtube_tutorial": "YouTube 教程",
+    "interactive_map": "互動地圖",
+    "related_guides": "相關指南"
   }
 }

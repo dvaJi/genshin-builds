@@ -1,0 +1,37 @@
+{
+  "title": {
+    "en": "Anemoculus Locations",
+    "es": "Ubicaciones de Anemóculus",
+    "de": "Anemoculus-Standorte",
+    "fr": "Emplacements d'Anémoculus",
+    "id": "Lokasi Anemoculus",
+    "ja": "風神の瞳の場所",
+    "ko": "바람 위치",
+    "pt": "Localizações de Anemoculus",
+    "ru": "Место Анемокул",
+    "th": "ตำแหน่ง Anemoculus",
+    "vi": "Vị trí Phong",
+    "zh-tw": "風神瞳的位置"
+  },
+  "description": {
+    "en": "A full anemoculus locations map for Genshin Impact! This guide includes a fully interactive map with a checker.",
+    "es": "¡Un mapa completo de ubicaciones de anemóculus para Genshin Impact! Esta guía incluye un mapa completamente interactivo con un verificador.",
+    "de": "Eine vollständige Anemoculus -Positionskarte für Genshin Impact! Diese Anleitung enthält eine vollständig interaktive Karte mit einem Checker.",
+    "fr": "Une carte des emplacements Anémoculus complète pour l'impact de Genshin! Ce guide comprend une carte entièrement interactive avec un vérificateur.",
+    "id": "Lokasi penuh Anemoculus peta untuk dampak genshin! Panduan ini mencakup peta yang sepenuhnya interaktif dengan pemeriksa.",
+    "ja": "完全な風神の場所は、原神（げんしん）のマップです！ このガイドには、チェッカーを使用した完全にインタラクティブなマップが含まれています。",
+    "ko": "원신에 대한 전체 바람 위치 맵! 이 안내서에는 체커가있는 완전히 대화식지도가 포함되어 있습니다.",
+    "pt": "Um mapa completo de locais Anemoculus para o impacto de Genshin! Este guia inclui um mapa totalmente interativo com um verificador.",
+    "ru": "Полная карта местоположения Анемокул для воздействия Genshin! Это руководство включает в себя полностью интерактивную карту с контролером.",
+    "th": "แผนที่สถานที่ Anemoculus เต็มรูปแบบสำหรับการกระแทกของ Genshin! คู่มือนี้มีแผนที่แบบโต้ตอบอย่างสมบูรณ์พร้อมตัวตรวจสอบ",
+    "vi": "Một địa điểm đầy đủ Phong Bản đồ cho tác động của Genshin! Hướng dẫn này bao gồm một bản đồ tương tác đầy đủ với một trình kiểm tra.",
+    "zh-tw": "完整的風神瞳位置圖！ 本指南包括帶有檢查器的完全互動地圖。"
+  },
+  "type": "locations",
+  "tags": ["v2.7", "oculus"],
+  "version": "2.7",
+  "date": "2022-08-14",
+  "thumbnail": "/imgs/guides/anemoculus_locations.webp",
+  "ytVideosUrl": ["yfikeaNpeco"],
+  "giMapIDs": ["Anemoculus"]
+}

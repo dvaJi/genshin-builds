@@ -24,12 +24,12 @@ type Props = {
 const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
   const { isMobile } = useMobileDetect();
   const [selectedCol, setSelectedCol] = useState<Roles | null>(
-    isMobile() ? Roles.maindps : null
+    isMobile ? Roles.maindps : null
   );
   const { t } = useIntl("tierlist");
 
   const changeTierTab = (role: Roles) => {
-    if (isMobile()) {
+    if (isMobile) {
       setSelectedCol(role);
     } else {
       setSelectedCol(null);
@@ -62,8 +62,8 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
           <button
             className={clsx(
               "col-span-2 p-5 bg-vulcan-800",
-              !isMobile() ? "pointer-events-none" : "",
-              isMobile() && selectedCol !== Roles.maindps ? "opacity-50" : ""
+              !isMobile ? "pointer-events-none" : "",
+              isMobile && selectedCol !== Roles.maindps ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.maindps)}
           >
@@ -74,8 +74,8 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
           <button
             className={clsx(
               "col-span-2 p-5 bg-vulcan-800",
-              !isMobile() ? "pointer-events-none" : "",
-              isMobile() && selectedCol !== Roles.subdps ? "opacity-50" : ""
+              !isMobile ? "pointer-events-none" : "",
+              isMobile && selectedCol !== Roles.subdps ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.subdps)}
           >
@@ -86,8 +86,8 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
           <button
             className={clsx(
               "col-span-2 p-5 bg-vulcan-800",
-              !isMobile() ? "pointer-events-none" : "",
-              isMobile() && selectedCol !== Roles.support ? "opacity-50" : ""
+              !isMobile ? "pointer-events-none" : "",
+              isMobile && selectedCol !== Roles.support ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.support)}
           >
