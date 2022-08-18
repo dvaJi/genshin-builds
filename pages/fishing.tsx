@@ -52,7 +52,6 @@ const FishingPage = ({ fish, fishingPoints }: Props) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage:

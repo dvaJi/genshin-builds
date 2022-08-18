@@ -28,7 +28,6 @@ const CharactersPage = ({
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Genshin Impact Characters List",

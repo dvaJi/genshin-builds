@@ -39,7 +39,6 @@ const GuideDetail = ({ guide }: GuideProps) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title_detail",
           defaultMessage: "{title} - Genshin Impact Guides",

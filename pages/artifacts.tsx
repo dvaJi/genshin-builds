@@ -24,7 +24,6 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Genshin Artifacts Artifacts List",

@@ -77,7 +77,6 @@ const AchivementsPage = ({ categories }: TodoProps) => {
   return (
     <div className="w-full">
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Achievements",

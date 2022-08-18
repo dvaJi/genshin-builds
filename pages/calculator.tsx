@@ -23,7 +23,6 @@ const Calculator = ({ characters, weapons }: Props) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Genshin Impact Calculator",

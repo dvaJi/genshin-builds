@@ -1,27 +1,22 @@
 import { memo } from "react";
 import Head from "next/head";
-import { IntlFormatProps } from "@hooks/use-intl";
+import useIntl from "@hooks/use-intl";
 
 interface MetadataProps {
-  fn: (props: IntlFormatProps) => string;
   pageTitle?: string;
   pageDescription?: string;
   jsonLD?: string;
 }
 
-const Metadata = ({
-  fn,
-  pageTitle,
-  pageDescription,
-  jsonLD,
-}: MetadataProps) => {
-  const defaultTitle = fn({
+const Metadata = ({ pageTitle, pageDescription, jsonLD }: MetadataProps) => {
+  const { t } = useIntl("layout");
+  const defaultTitle = t({
     id: "title",
     defaultMessage: "Genshin-Builds.com Wiki Database",
   });
   const title = pageTitle ? `${pageTitle} - ${defaultTitle}` : defaultTitle;
 
-  const defaultDescription = fn({
+  const defaultDescription = t({
     id: "description",
     defaultMessage:
       "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",

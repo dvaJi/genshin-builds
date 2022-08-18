@@ -42,7 +42,6 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Genshin Impact Weapons Tier List (Best Weapons)",

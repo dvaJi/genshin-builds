@@ -21,7 +21,6 @@ const TeamsPage = ({ teams }: TeamsProps) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Best Team Comp | Party Building Guide",

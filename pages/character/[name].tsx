@@ -65,7 +65,6 @@ const CharacterPage = ({
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "{name} Genshin Impact Build Guide",

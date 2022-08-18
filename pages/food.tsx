@@ -65,7 +65,6 @@ const FoodPage = ({ food }: Props) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Genshin Impact Cooking Recipes List",

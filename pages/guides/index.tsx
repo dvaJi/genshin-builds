@@ -17,7 +17,6 @@ const Guides = ({ guides }: TodoProps) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Guides",

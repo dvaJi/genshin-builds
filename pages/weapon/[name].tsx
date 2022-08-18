@@ -32,7 +32,6 @@ const WeaponPage = ({
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "{name} Genshin Impact Weapon Details",
@@ -137,7 +136,8 @@ const WeaponPage = ({
           <div className="float-right">
             <button
               className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700": refinement > 0,
+                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
+                  refinement > 0,
                 "bg-vulcan-800 border-gray-800": refinement === 0,
               })}
               disabled={refinement === 0}
@@ -149,7 +149,8 @@ const WeaponPage = ({
               className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
                 "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
                   refinement < weapon.refinements.length - 1,
-                "bg-vulcan-800 border-gray-800": refinement === weapon.refinements.length - 1,
+                "bg-vulcan-800 border-gray-800":
+                  refinement === weapon.refinements.length - 1,
               })}
               disabled={refinement === weapon.refinements.length - 1}
               onClick={() => setRefinement(refinement + 1)}

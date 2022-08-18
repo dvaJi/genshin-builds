@@ -39,7 +39,6 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Genshin Impact Tier List (Best Characters)",

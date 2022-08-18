@@ -69,7 +69,6 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
   return (
     <div>
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Genshin Impact Weapons List",

@@ -33,7 +33,6 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
   return (
     <div className="px-4">
       <Metadata
-        fn={t}
         pageTitle={t({
           id: "title",
           defaultMessage: "Todo List",
