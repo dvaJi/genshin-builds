@@ -23,10 +23,11 @@ type Props = {
   todos: Todo[];
   planning: Record<string, any>;
   materialsMap: Record<string, any>;
+  days: string[];
 };
 
-const Todo = ({ todos, materialsMap, planning }: Props) => {
-  const [currentDay] = useState(format(new Date(), "iii"));
+const Todo = ({ todos, materialsMap, planning, days }: Props) => {
+  const [currentDay] = useState(days[Number(format(new Date(), "i")) - 1]);
   const { t } = useIntl("todo");
 
   const { summary, originalSummary } = useMemo(() => {

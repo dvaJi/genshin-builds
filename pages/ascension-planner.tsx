@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { GetStaticProps } from "next";
 import format from "date-fns/format";
-import GenshinData, { Character, Weapon } from "genshin-data";
+import GenshinData, { Character, Domains, Weapon } from "genshin-data";
 
 import Card from "@components/ui/Card";
 import Ads from "@components/Ads";
@@ -14,7 +14,6 @@ import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToLang } from "@utils/locale-to-lang";
 
-import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 import Button from "@components/Button";
 
@@ -25,27 +24,21 @@ const ServerTimers = dynamic(() => import("@components/ServerTimers"), {
 type Props = {
   characters: Record<string, Character>;
   weapons: Record<string, Weapon>;
-  planMap: Record<string, any>;
+  domains: Domains;
+  days: string[];
 };
 
-const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const C_DOMAINS = ["Forsaken Rift", "Taishan Mansion", "Violet Court"];
-const W_DOMAINS = [
-  "Cecilia Garden",
-  "Hidden Palace of Lianshan Formula",
-  "Court of Flowing Sand",
-];
-
-const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
-  const [currentDay, setCurrentDay] = useState(format(new Date(), "iii"));
-  const { tfn } = useIntl("ascension_planner");
+const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
+  const [currentDay, setCurrentDay] = useState(
+    days[Number(format(new Date(), "i")) - 1]
+  );
   return (
     <div>
       <div>
         <ServerTimers />
         <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
         <div className="mb-2 flex flex-wrap justify-center">
-          {DAYS.map((day) => (
+          {days.map((day) => (
             <Button
               key={day}
               className={clsx("rounded mx-2 my-1 p-2 px-4", {
@@ -55,63 +48,67 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
               })}
               onClick={() => setCurrentDay(day)}
             >
-              {tfn({ id: day, defaultMessage: day })}
+              {day}
             </Button>
           ))}
         </div>
-        {C_DOMAINS.map((domain) => (
-          <Card key={domain}>
+        {domains.characters.map((charactersDomain) => (
+          <Card key={charactersDomain.domainName}>
             <h2 className="mb-6 text-2xl font-semibold text-gray-200">
-              {tfn({ id: domain, defaultMessage: domain })}
+              {charactersDomain.domainName}
             </h2>
             <div className="flex flex-wrap justify-center">
-              {planMap[domain][currentDay].map((cId: string) => (
-                <Link key={cId} href={`/character/${cId}`}>
-                  <a>
-                    <SimpleRarityBox
-                      img={getUrl(
-                        `/characters/${cId}/${cId}_portrait.png`,
-                        96,
-                        96
-                      )}
-                      rarity={characters[cId].rarity}
-                      name={characters[cId].name}
-                      className="h-24 w-24"
-                      nameSeparateBlock={true}
-                      classNameBlock="w-24"
-                    />
-                  </a>
-                </Link>
-              ))}
+              {charactersDomain.rotation
+                .find((r) => r.day === currentDay)
+                ?.ids.map((cId) => (
+                  <Link key={cId} href={`/character/${cId}`}>
+                    <a>
+                      <SimpleRarityBox
+                        img={getUrl(
+                          `/characters/${cId}/${cId}_portrait.png`,
+                          96,
+                          96
+                        )}
+                        rarity={characters[cId].rarity}
+                        name={characters[cId].name}
+                        className="h-24 w-24"
+                        nameSeparateBlock={true}
+                        classNameBlock="w-24"
+                      />
+                    </a>
+                  </Link>
+                ))}
             </div>
           </Card>
         ))}
-        {W_DOMAINS.map((domain) => (
-          <Card key={domain}>
+        {domains.weapons.map((weaponsDomain) => (
+          <Card key={weaponsDomain.domainName}>
             <h2 className="mb-6 text-2xl font-semibold text-gray-200">
-              {tfn({ id: domain, defaultMessage: domain })}
+              {weaponsDomain.domainName}
             </h2>
             <div className="flex flex-wrap justify-center">
-              {planMap[domain][currentDay].map((cId: string) => (
-                <div key={cId}>
-                  {weapons[cId] ? (
-                    <Link key={cId} href={`/weapon/${cId}`}>
-                      <a>
-                        <SimpleRarityBox
-                          img={getUrl(`/weapons/${cId}.png`, 96, 96)}
-                          rarity={weapons[cId].rarity}
-                          name={weapons[cId].name}
-                          className="h-24 w-24"
-                          nameSeparateBlock={true}
-                          classNameBlock="w-24"
-                        />
-                      </a>
-                    </Link>
-                  ) : (
-                    `NOT FOUND ${cId}`
-                  )}
-                </div>
-              ))}
+              {weaponsDomain.rotation
+                .find((r) => r.day === currentDay)
+                ?.ids.map((cId) => (
+                  <div key={cId}>
+                    {weapons[cId] ? (
+                      <Link key={cId} href={`/weapon/${cId}`}>
+                        <a>
+                          <SimpleRarityBox
+                            img={getUrl(`/weapons/${cId}.png`, 96, 96)}
+                            rarity={weapons[cId].rarity}
+                            name={weapons[cId].name}
+                            className="h-24 w-24"
+                            nameSeparateBlock={true}
+                            classNameBlock="w-24"
+                          />
+                        </a>
+                      </Link>
+                    ) : (
+                      `NOT FOUND ${cId}`
+                    )}
+                  </div>
+                ))}
             </div>
           </Card>
         ))}
@@ -122,9 +119,9 @@ const AscensionPlanner = ({ characters, weapons, planMap }: Props) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
-  const planning = require(`../_content/data/talents.json`);
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
+  const domains = await genshinData.domains();
   const characters = await genshinData.characters({
     select: ["id", "name", "rarity"],
   });
@@ -149,7 +146,8 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       characters: charactersMap,
       weapons: weaponsMap,
       lngDict,
-      planMap: planning,
+      domains: domains,
+      days: domains.characters[0].rotation.map((r) => r.day),
     },
   };
 };

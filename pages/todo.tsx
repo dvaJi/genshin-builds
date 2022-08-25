@@ -22,9 +22,10 @@ const Todo = dynamic(() => import("@components/Todo"), {
 type TodoProps = {
   planning: Record<string, any>;
   materialsMap: Record<string, any>;
+  days: string[];
 };
 
-const TodoPage = ({ planning, materialsMap }: TodoProps) => {
+const TodoPage = ({ planning, materialsMap, days }: TodoProps) => {
   const todos = useStore(todosAtom);
   // const { summary, originalSummary } = useStore(getSummary);
   const { t } = useIntl("todo");
@@ -47,7 +48,7 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
         {t({ id: "todo", defaultMessage: "Todo List" })}
       </h2>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <Todo todos={todos} materialsMap={materialsMap} planning={planning} />
+      <Todo todos={todos} materialsMap={materialsMap} planning={planning} days={days} />
     </div>
   );
 };
@@ -55,34 +56,35 @@ const TodoPage = ({ planning, materialsMap }: TodoProps) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
 
-  const talentsPlanning: Record<
-    string,
-    any
-  > = require(`../_content/data/talents.json`);
-
   const genshinData = new GenshinData({ language: localeToLang(locale) });
 
   const materialsMap = await getAllMaterialsMap(genshinData);
 
   // console.log(materialsMap);
 
-  const planning = Object.entries(talentsPlanning).reduce<
+  const domains = await genshinData.domains();
+  const planning = [...domains.characters, ...domains.weapons].reduce<
     Record<string, string[]>
   >((acc, cur) => {
-    const [_, data] = cur;
+    const { rotation } = cur;
 
-    Object.entries(data).forEach(([day, iId]) => {
+    rotation.forEach(({ day, ids }) => {
       if (!acc[day]) {
         acc[day] = [];
       }
-      acc[day].push(...(iId as string[]));
+      acc[day].push(...ids);
     });
 
     return acc;
   }, {});
 
   return {
-    props: { planning, materialsMap, lngDict },
+    props: {
+      planning,
+      materialsMap,
+      lngDict,
+      days: domains.characters[0].rotation.map((r) => r.day),
+    },
   };
 };
 
