@@ -26,6 +26,7 @@ const charactersIds = [
   "chongyun",
   "barbara",
   "kamisato_ayaka",
+  "collei",
 ];
 
 const weaponsDict = {
@@ -36,6 +37,7 @@ const weaponsDict = {
   chongyun: "Claymore",
   barbara: "Catalyst",
   kamisato_ayaka: "Sword",
+  collei: 'Bow',
 };
 const elementDict = {
   zhongli: "Geo",
@@ -45,6 +47,7 @@ const elementDict = {
   chongyun: "Cryo",
   barbara: "Hydro",
   kamisato_ayaka: "Cryo",
+  collei: "Dendro",
 };
 const regionDict = {
   zhongli: "Liyue",
@@ -54,6 +57,7 @@ const regionDict = {
   chongyun: "Liyue",
   barbara: "Mondstadt",
   kamisato_ayaka: "Inazuma",
+  collei: "Sumeru",
 };
 
 async function generateBuilds() {
