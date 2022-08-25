@@ -46,6 +46,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<CalculationItemResult[] | null>
 ) {
+  console.log(req.body);
   const { weaponId, lang, params } = req.body as {
     weaponId: string;
     lang: string;

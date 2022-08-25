@@ -24,6 +24,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<CalculationCharacterResult | null>
 ) {
+  console.log(req.body);
   const { characterId, lang, params } = req.body as {
     characterId: string;
     lang: string;
