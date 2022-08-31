@@ -2,6 +2,12 @@ import { getUniqueListBy } from "@utils/unique-by";
 import fs from "fs";
 import { join } from "path";
 
+export interface GiCustomMap {
+  imageOverlay: string;
+  markIcon: string;
+  marks: number[][];
+}
+
 export interface Guide {
   title: string;
   description: string;
@@ -15,6 +21,7 @@ export interface Guide {
   relatedGuides: Guide[];
   ytVideosUrl?: string[];
   giMapIDs?: string[];
+  giCustomMap?: GiCustomMap;
 }
 
 const guidesDirectory = join(process.cwd(), "_content", "guides");

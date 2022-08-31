@@ -28,7 +28,7 @@
     "zh-tw": "完整的的雷位置圖！ 本指南包括帶有檢查器的完全互動地圖。"
   },
   "type": "locations",
-  "tags": ["v2.7", "oculus"],
+  "tags": ["v2.7", "oculi"],
   "version": "2.7",
   "date": "2022-08-16",
   "thumbnail": "/imgs/guides/electroculus_locations.jpg",

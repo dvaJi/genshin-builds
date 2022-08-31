@@ -21,6 +21,10 @@ const GIMapEmbed = dynamic(() => import("@components/GIMapEmbed"), {
   ssr: false,
 });
 
+const CustomMap = dynamic(() => import("@components/CustomMap"), {
+  ssr: false,
+});
+
 type GuideProps = {
   guide: Guide;
 };
@@ -106,6 +110,16 @@ const GuideDetail = ({ guide }: GuideProps) => {
           </h3>
           <Card>
             <GIMapEmbed mapIds={guide.giMapIDs} />
+          </Card>
+        </div>
+      )}
+      {guide.giCustomMap && (
+        <div className="mt-8">
+          <h3 className="mx-6 lg:mx-0 text-xl text-slate-200 my-2">
+            {t({ id: "interactive_map", defaultMessage: "Interactive Map" })}
+          </h3>
+          <Card>
+            <CustomMap data={guide.giCustomMap} />
           </Card>
         </div>
       )}
