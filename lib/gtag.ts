@@ -14,14 +14,18 @@ interface EventProps {
   action: string;
   category: string;
   label: string;
-  value: string;
+  value?: number;
 }
 export const event = ({ action, category, label, value }: EventProps) => {
   if (typeof window !== "undefined" && (window as any).gtag) {
     (window as any).gtag("event", action, {
       event_category: category,
       event_label: label,
-      value: value,
+      value,
     });
   }
+};
+
+export const trackClick = (label: string) => {
+  event({ action: "click", category: "button", label });
 };

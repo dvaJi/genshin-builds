@@ -3,6 +3,7 @@ import { getUrl } from "@lib/imgUrl";
 import { AchievementCategory } from "genshin-data";
 import { useMemo } from "react";
 import { AchievementsCompleted } from "@state/achievements";
+import { trackClick } from "@lib/gtag";
 
 type Props = {
   categorySelected: AchievementCategory;
@@ -34,7 +35,10 @@ const AchievementsCategories = ({
                 : "bg-vulcan-700 border-opacity-0"
             )}
             key={cat.id}
-            onClick={() => onClickCategory(cat)}
+            onClick={() => {
+              trackClick("achievement_category");
+              onClickCategory(cat);
+            }}
           >
             <p className="font-semibold text-white">{cat.name}</p>
             <div className="flex">

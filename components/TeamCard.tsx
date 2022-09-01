@@ -10,6 +10,7 @@ import Card from "./ui/Card";
 import { TeamFull } from "interfaces/teams";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
+import { trackClick } from "@lib/gtag";
 
 interface TeamCardProps {
   team: TeamFull;
@@ -54,7 +55,13 @@ const TeamCard = ({ team }: TeamCardProps) => {
         ))}
       </div>
       <div>
-        <Button className="my-3" onClick={() => setShow(!show)}>
+        <Button
+          className="my-3"
+          onClick={() => {
+            trackClick("team_show");
+            setShow(!show);
+          }}
+        >
           {t({
             id: "substitute_characters",
             defaultMessage: "Substitute Characters",

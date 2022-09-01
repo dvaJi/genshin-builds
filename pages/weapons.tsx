@@ -18,6 +18,7 @@ import { getLocale } from "@lib/localData";
 import useDebounce from "@hooks/use-debounce";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
+import { trackClick } from "@lib/gtag";
 
 interface WeaponsPageProps {
   weapons: Weapon[];
@@ -87,7 +88,10 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
           <div className="md:flex">
             <SearchInput
               value={searchTerm}
-              setValue={setSearchTerm}
+              setValue={(e) => {
+                trackClick(`weapon_search`);
+                setSearchTerm(e);
+              }}
               placeholder={t({ id: "search", defaultMessage: "Search..." })}
             />
             <div className="ml-3 text-center">
@@ -101,6 +105,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                       : "border-gray-800"
                   )}
                   onClick={() => {
+                    trackClick(`weapon_${type}`);
                     if (type === typeFilter) {
                       setTypeFilter("");
                     } else {

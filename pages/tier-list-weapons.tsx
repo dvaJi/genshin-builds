@@ -14,6 +14,7 @@ import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 import { getUrl } from "@lib/imgUrl";
+import { trackClick } from "@lib/gtag";
 
 type Props = {
   tierlist: Record<string, TierlistWeapons>;
@@ -71,6 +72,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
                   : "border-gray-800"
               )}
               onClick={() => {
+                trackClick(`tierlist_${type}`);
                 if (type === typeFilter) {
                   setTypeFilter("");
                 } else {

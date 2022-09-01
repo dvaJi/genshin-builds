@@ -18,6 +18,7 @@ import { getUrl } from "@lib/imgUrl";
 import { Todo } from "@state/todo";
 import { todos as todosAtom } from "@state/todo";
 import Card from "./ui/Card";
+import { trackClick } from "@lib/gtag";
 
 type Props = {
   todos: Todo[];
@@ -95,6 +96,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
 
   const removeTodo = useCallback(
     (id: string) => {
+      trackClick("todo_remove_todo");
       todosAtom.set(todos.filter((todo) => todo[0].id !== id));
     },
     [todos]
@@ -102,6 +104,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
 
   const moveTodo = useCallback(
     (id: string, index: number, newIndex: number) => {
+      trackClick("todo_move_todo");
       const todo = todos.find((todo) => todo[0].id === id);
       if (todo) {
         const newTodos = [...todos];
@@ -115,6 +118,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
 
   const updateTodoResourcesById = useCallback(
     (id: string, newData: any) => {
+      trackClick("todo_update_todo_byid");
       const todo = todos.find((todo) => todo[0].id === id);
       if (todo) {
         todo[4][newData.id] = newData.value;
@@ -132,6 +136,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
 
   const updateAllTodoResourcesById = useCallback(
     (newData: any) => {
+      trackClick("todo_update_todo_all");
       const { idsByResource, remainingById } = newData;
       // console.log(idsByResource, remainingById);
       idsByResource.forEach((data: any, index: number) => {

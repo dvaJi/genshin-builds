@@ -13,6 +13,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { trackClick } from "@lib/gtag";
 
 type Props = {
   tierlist: Tierlist;
@@ -64,7 +65,10 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
               !isMobile ? "pointer-events-none" : "",
               isMobile && selectedCol !== Roles.maindps ? "opacity-50" : ""
             )}
-            onClick={() => changeTierTab(Roles.maindps)}
+            onClick={() => {
+              trackClick(`tierlist_${Roles.maindps}`);
+              changeTierTab(Roles.maindps);
+            }}
           >
             <h3 className="text-lg text-white text-center font-semibold">
               {t({ id: "main_dps", defaultMessage: "Main DPS" })}
@@ -76,7 +80,10 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
               !isMobile ? "pointer-events-none" : "",
               isMobile && selectedCol !== Roles.subdps ? "opacity-50" : ""
             )}
-            onClick={() => changeTierTab(Roles.subdps)}
+            onClick={() => {
+              trackClick(`tierlist_${Roles.subdps}`);
+              changeTierTab(Roles.subdps);
+            }}
           >
             <h3 className="text-lg text-white text-center font-semibold">
               {t({ id: "sub_dps", defaultMessage: "Sub DPS" })}
@@ -88,7 +95,10 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
               !isMobile ? "pointer-events-none" : "",
               isMobile && selectedCol !== Roles.support ? "opacity-50" : ""
             )}
-            onClick={() => changeTierTab(Roles.support)}
+            onClick={() => {
+              trackClick(`tierlist_${Roles.support}`);
+              changeTierTab(Roles.support);
+            }}
           >
             <h3 className="text-lg text-white text-center font-semibold">
               {t({ id: "support", defaultMessage: "Support" })}

@@ -16,6 +16,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 
 import { getUrl } from "@lib/imgUrl";
 import Button from "@components/Button";
+import { trackClick } from "@lib/gtag";
 
 const ServerTimers = dynamic(() => import("@components/ServerTimers"), {
   ssr: false,
@@ -46,7 +47,10 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
                 "text-white": currentDay === day,
                 "bg-vulcan-800": currentDay !== day,
               })}
-              onClick={() => setCurrentDay(day)}
+              onClick={() => {
+                trackClick(`planner_day`);
+                setCurrentDay(day);
+              }}
             >
               {day}
             </Button>

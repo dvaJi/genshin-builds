@@ -3,6 +3,7 @@ import { getUrl } from "@lib/imgUrl";
 import { Achievement } from "genshin-data";
 import { AiOutlineCheck } from "react-icons/ai";
 import useIntl from "@hooks/use-intl";
+import { trackClick } from "@lib/gtag";
 
 type Props = {
   achievements: Achievement[];
@@ -53,7 +54,14 @@ const AchievementsList = ({
             </div>
             <div>
               <button
-                onClick={() => selectAchievement(ach.id)}
+                onClick={() => {
+                  trackClick(
+                    `achievement_${
+                      achievementsDone?.includes(ach.id) ? "revert" : "done"
+                    }`
+                  );
+                  selectAchievement(ach.id);
+                }}
                 className="rounded-xl ml-1 flex items-center justify-center p-2 transition-all bg-gray-700"
                 title={t({
                   id: "show_achieved",
