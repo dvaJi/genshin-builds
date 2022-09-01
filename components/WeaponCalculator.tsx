@@ -12,6 +12,7 @@ import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
 import { todos } from "@state/todo";
 import { CalculationItemResult } from "interfaces/calculator";
+import { trackClick } from "@lib/gtag";
 
 type Props = {
   weapons: Weapon[];
@@ -35,6 +36,7 @@ const WeaponCalculator = ({ weapons }: Props) => {
   }, [weapon, currentLevel, intendedLevel]);
 
   const addToTodo = useCallback(() => {
+    trackClick("calculator_add_weapon_todo");
     setAddedToTodo(true);
     const resourcesMap = data?.reduce((map: any, item: any) => {
       map[item.id] = item.amount;
@@ -176,7 +178,8 @@ const WeaponCalculator = ({ weapons }: Props) => {
         <div>
           <Button
             disabled={!canCalculate}
-            onClick={() =>
+            onClick={() => {
+              trackClick("calculate_weapon");
               calculate({
                 weaponId: weapon.id,
                 lang: localeGI,
@@ -184,8 +187,8 @@ const WeaponCalculator = ({ weapons }: Props) => {
                   currentLevel: currentLevel,
                   intendedLevel: intendedLevel,
                 },
-              })
-            }
+              });
+            }}
           >
             {t({ id: "calculate", defaultMessage: "Calculate" })}
           </Button>

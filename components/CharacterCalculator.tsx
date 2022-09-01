@@ -6,6 +6,7 @@ import { GiCheckMark } from "react-icons/gi";
 import Button from "./Button";
 import Input from "./Input";
 import Select from "./Select";
+import SkillLabel from "./SkillLabel";
 
 import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";
@@ -13,7 +14,7 @@ import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
 import { todos } from "@state/todo";
 import { CalculationCharacterResult } from "interfaces/calculator";
-import SkillLabel from "./SkillLabel";
+import { trackClick } from "@lib/gtag";
 
 type Props = {
   characters: Character[];
@@ -61,6 +62,7 @@ const CharacterCalculator = ({ characters }: Props) => {
   ]);
 
   const addToTodo = useCallback(() => {
+    trackClick("calculator_add_character_todo");
     setAddedToTodo(true);
     const resourcesMap = data?.items.reduce((map: any, item: any) => {
       map[item.id] = item.amount;
@@ -310,7 +312,8 @@ const CharacterCalculator = ({ characters }: Props) => {
         <div>
           <Button
             disabled={!canCalculate}
-            onClick={() =>
+            onClick={() => {
+              trackClick("calculate_character");
               calculate({
                 characterId: character.id,
                 lang: localeGI,
@@ -328,8 +331,8 @@ const CharacterCalculator = ({ characters }: Props) => {
                     burst: intendedTalent3Lvl,
                   },
                 },
-              })
-            }
+              });
+            }}
           >
             {t({ id: "calculate", defaultMessage: "Calculate" })}
           </Button>

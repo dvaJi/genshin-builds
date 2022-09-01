@@ -56,9 +56,11 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const characters = await genshinData.characters({
     select: ["id", "name", "rarity"],
   });
-  const weapons = await genshinData.weapons({
-    select: ["id", "name", "rarity"],
-  });
+  const weapons = (
+    await genshinData.weapons({
+      select: ["id", "name", "rarity"],
+    })
+  ).filter((w) => w.rarity > 2);
 
   return {
     props: {
