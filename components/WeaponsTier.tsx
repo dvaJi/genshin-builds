@@ -33,8 +33,8 @@ const WeaponsTier = ({
                 <a>
                   <SimpleRarityBox
                     img={getUrl(`/weapons/${t}.png`, 96, 96)}
-                    rarity={weaponsMap[t].rarity}
-                    name={weaponsMap[t].name}
+                    rarity={weaponsMap[t]?.rarity}
+                    name={weaponsMap[t]?.name}
                     className="h-24 w-24"
                     nameSeparateBlock={true}
                     classNameBlock="w-24"

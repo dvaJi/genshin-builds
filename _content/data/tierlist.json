@@ -2,28 +2,23 @@
   "maindps": {
     "0": [
       {
-        "id": "hu_tao",
-        "w_id": "staff_of_homa",
-        "min_c": 1
-      },
-      {
         "id": "kamisato_ayaka",
         "w_id": "mistsplitter_reforged",
         "min_c": 0
       },
       {
-        "id": "kamisato_ayato",
-        "w_id": "haran_geppaku_futsu",
+        "id": "raiden_shogun",
+        "w_id": "engulfing_lightning",
         "min_c": 2
       },
       {
-        "id": "ganyu",
-        "w_id": "amos_bow",
+        "id": "hu_tao",
+        "w_id": "staff_of_homa",
         "min_c": 1
       },
       {
-        "id": "raiden_shogun",
-        "w_id": "engulfing_lightning",
+        "id": "kamisato_ayato",
+        "w_id": "haran_geppaku_futsu",
         "min_c": 2
       },
       {
@@ -34,14 +29,9 @@
     ],
     "1": [
       {
-        "id": "eula",
-        "w_id": "song_of_broken_pines",
-        "min_c": 1
-      },
-      {
-        "id": "xiao",
-        "w_id": "primordial_jade_wingedspear",
-        "min_c": 1
+        "id": "ganyu",
+        "w_id": "amos_bow",
+        "min_c": 0
       },
       {
         "id": "yoimiya",
@@ -52,28 +42,38 @@
         "id": "tartaglia",
         "w_id": "skyward_harp",
         "min_c": 0
+      },
+      {
+        "id": "tighnari",
+        "w_id": "hunters_path",
+        "min_c": 2
+      },
+      {
+        "id": "xiao",
+        "w_id": "primordial_jade_wingedspear",
+        "min_c": 1
+      },
+      {
+        "id": "eula",
+        "w_id": "song_of_broken_pines",
+        "min_c": 1
       }
     ],
     "2": [
       {
-        "id": "noelle",
-        "w_id": "whiteblind",
-        "min_c": 6
+        "id": "shikanoin_heizou",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 1
       },
       {
         "id": "yanfei",
         "w_id": "lost_prayer_to_the_sacred_winds",
-        "min_c": 4
+        "min_c": 2
       },
       {
-        "id": "ningguang",
-        "w_id": "lost_prayer_to_the_sacred_winds",
+        "id": "noelle",
+        "w_id": "whiteblind",
         "min_c": 6
-      },
-      {
-        "id": "diluc",
-        "w_id": "wolfs_gravestone",
-        "min_c": 0
       },
       {
         "id": "klee",
@@ -81,20 +81,20 @@
         "min_c": 0
       },
       {
-        "id": "sangonomiya_kokomi",
-        "w_id": "everlasting_moonglow",
+        "id": "diluc",
+        "w_id": "wolfs_gravestone",
         "min_c": 0
+      },
+      {
+        "id": "ningguang",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 6
       }
     ],
     "3": [
       {
-        "id": "keqing",
-        "w_id": "primordial_jade_cutter",
-        "min_c": 0
-      },
-      {
-        "id": "mona",
-        "w_id": "lost_prayer_to_the_sacred_winds",
+        "id": "sangonomiya_kokomi",
+        "w_id": "everlasting_moonglow",
         "min_c": 0
       },
       {
@@ -103,24 +103,14 @@
         "min_c": 4
       },
       {
+        "id": "keqing",
+        "w_id": "primordial_jade_cutter",
+        "min_c": 0
+      },
+      {
         "id": "fischl",
         "w_id": "skyward_harp",
-        "min_c": 1
-      },
-      {
-        "id": "qiqi",
-        "w_id": "sacrificial_sword",
-        "min_c": 2
-      },
-      {
-        "id": "beidou",
-        "w_id": "wolfs_gravestone",
-        "min_c": 4
-      },
-      {
-        "id": "yun_jin",
-        "w_id": "vortex_vanquisher",
-        "min_c": 1
+        "min_c": 7
       }
     ],
     "4": [
@@ -130,8 +120,8 @@
         "min_c": 1
       },
       {
-        "id": "xinyan",
-        "w_id": "the_unforged",
+        "id": "chongyun",
+        "w_id": "wolfs_gravestone",
         "min_c": 2
       },
       {
@@ -144,9 +134,19 @@
   "subdps": {
     "0": [
       {
-        "id": "xingqiu",
-        "w_id": "sacrificial_sword",
-        "min_c": 6
+        "id": "raiden_shogun",
+        "w_id": "engulfing_lightning",
+        "min_c": 0
+      },
+      {
+        "id": "yelan",
+        "w_id": "aqua_simulacra",
+        "min_c": 0
+      },
+      {
+        "id": "xiangling",
+        "w_id": "dragons_bane",
+        "min_c": 4
       },
       {
         "id": "kamisato_ayaka",
@@ -154,19 +154,31 @@
         "min_c": 0
       },
       {
+        "id": "xingqiu",
+        "w_id": "sacrificial_sword",
+        "min_c": 6
+      }
+    ],
+    "1": [
+      {
+        "id": "yae_miko",
+        "w_id": "kaguras_verity",
+        "min_c": 2
+      },
+      {
+        "id": "mona",
+        "w_id": "the_widsith",
+        "min_c": 0
+      },
+      {
+        "id": "fischl",
+        "w_id": "skyward_atlas",
+        "min_c": 6
+      },
+      {
         "id": "albedo",
-        "w_id": "harbinger_of_dawn",
+        "w_id": "cinnabar_spindle",
         "min_c": 0
-      },
-      {
-        "id": "raiden_shogun",
-        "w_id": "engulfing_lightning",
-        "min_c": 0
-      },
-      {
-        "id": "xiangling",
-        "w_id": "dragons_bane",
-        "min_c": 4
       },
       {
         "id": "kaedehara_kazuha",
@@ -177,12 +189,27 @@
         "id": "venti",
         "w_id": "skyward_harp",
         "min_c": 0
+      },
+      {
+        "id": "beidou",
+        "w_id": "wolfs_gravestone",
+        "min_c": 2
       }
     ],
-    "1": [
+    "2": [
       {
-        "id": "kamisato_ayato",
-        "w_id": "haran_geppaku_futsu",
+        "id": "collei",
+        "w_id": "polar_star",
+        "min_c": 2
+      },
+      {
+        "id": "shikanoin_heizou",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 2
+      },
+      {
+        "id": "zhongli",
+        "w_id": "staff_of_homa",
         "min_c": 0
       },
       {
@@ -191,40 +218,8 @@
         "min_c": 0
       },
       {
-        "id": "shenhe",
-        "w_id": "calamity_queller",
-        "min_c": 2
-      },
-      {
-        "id": "tartaglia",
-        "w_id": "skyward_atlas",
-        "min_c": 0
-      },
-      {
-        "id": "fischl",
-        "w_id": "skyward_atlas",
-        "min_c": 6
-      },
-      {
-        "id": "zhongli",
-        "w_id": "staff_of_homa",
-        "min_c": 0
-      },
-      {
-        "id": "mona",
-        "w_id": "the_widsith",
-        "min_c": 0
-      }
-    ],
-    "2": [
-      {
-        "id": "yae_miko",
-        "w_id": "kaguras_verity",
-        "min_c": 2
-      },
-      {
-        "id": "sangonomiya_kokomi",
-        "w_id": "everlasting_moonglow",
+        "id": "kamisato_ayato",
+        "w_id": "haran_geppaku_futsu",
         "min_c": 0
       },
       {
@@ -233,31 +228,21 @@
         "min_c": 2
       },
       {
-        "id": "beidou",
-        "w_id": "wolfs_gravestone",
-        "min_c": 2
-      },
-      {
         "id": "rosaria",
         "w_id": "staff_of_homa",
         "min_c": 2
       },
       {
-        "id": "kujou_sara",
-        "w_id": "skyward_harp",
-        "min_c": 4
-      },
-      {
-        "id": "sucrose",
-        "w_id": "the_widsith",
-        "min_c": 2
+        "id": "sangonomiya_kokomi",
+        "w_id": "everlasting_moonglow",
+        "min_c": 0
       }
     ],
     "3": [
       {
-        "id": "sayu",
-        "w_id": "bloodtainted_greatsword",
-        "min_c": 2
+        "id": "traveler_dendro",
+        "w_id": "freedomsworn",
+        "min_c": 0
       },
       {
         "id": "chongyun",
@@ -265,46 +250,56 @@
         "min_c": 6
       },
       {
-        "id": "jean",
+        "id": "sucrose",
+        "w_id": "the_widsith",
+        "min_c": 2
+      },
+      {
+        "id": "kuki_shinobu",
         "w_id": "primordial_jade_cutter",
-        "min_c": 1
+        "min_c": 4
+      },
+      {
+        "id": "xinyan",
+        "w_id": "redhorn_stonethresher",
+        "min_c": 2
       }
     ],
     "4": [
-      {
-        "id": "lisa",
-        "w_id": "the_widsith",
-        "min_c": 4
-      },
-      {
-        "id": "thoma",
-        "w_id": "staff_of_homa",
-        "min_c": 4
-      },
       {
         "id": "traveler_geo",
         "w_id": "primordial_jade_cutter",
         "min_c": 4
       },
       {
-        "id": "amber",
-        "w_id": "skyward_harp",
+        "id": "lisa",
+        "w_id": "the_widsith",
+        "min_c": 4
+      },
+      {
+        "id": "sayu",
+        "w_id": "bloodtainted_greatsword",
         "min_c": 2
       },
       {
         "id": "traveler_anemo",
         "w_id": "primordial_jade_cutter",
         "min_c": 6
+      },
+      {
+        "id": "thoma",
+        "w_id": "staff_of_homa",
+        "min_c": 2
+      },
+      {
+        "id": "amber",
+        "w_id": "skyward_harp",
+        "min_c": 2
       }
     ]
   },
   "support": {
     "0": [
-      {
-        "id": "zhongli",
-        "w_id": "staff_of_homa",
-        "min_c": 0
-      },
       {
         "id": "bennett",
         "w_id": "skyward_blade",
@@ -316,26 +311,19 @@
         "min_c": 0
       },
       {
-        "id": "raiden_shogun",
-        "w_id": "engulfing_lightning",
+        "id": "yelan",
+        "w_id": "aqua_simulacra",
         "min_c": 0
       },
       {
-        "id": "diona",
-        "w_id": "sacrificial_bow",
-        "min_c": 6
-      }
-    ],
-    "1": [
-      {
-        "id": "sucrose",
-        "w_id": "sacrificial_fragments",
-        "min_c": 6
+        "id": "zhongli",
+        "w_id": "staff_of_homa",
+        "min_c": 0
       },
       {
-        "id": "yun_jin",
+        "id": "raiden_shogun",
         "w_id": "engulfing_lightning",
-        "min_c": 6
+        "min_c": 0
       },
       {
         "id": "mona",
@@ -343,14 +331,16 @@
         "min_c": 0
       },
       {
-        "id": "venti",
-        "w_id": "skyward_harp",
-        "min_c": 0
-      },
-      {
         "id": "sangonomiya_kokomi",
         "w_id": "everlasting_moonglow",
         "min_c": 0
+      }
+    ],
+    "1": [
+      {
+        "id": "diona",
+        "w_id": "sacrificial_bow",
+        "min_c": 6
       },
       {
         "id": "jean",
@@ -358,21 +348,9 @@
         "min_c": 0
       },
       {
-        "id": "albedo",
-        "w_id": "harbinger_of_dawn",
-        "min_c": 0
-      },
-      {
-        "id": "shenhe",
-        "w_id": "calamity_queller",
-        "min_c": 2
-      }
-    ],
-    "2": [
-      {
-        "id": "gorou",
-        "w_id": "polar_star",
-        "min_c": 4
+        "id": "sucrose",
+        "w_id": "sacrificial_fragments",
+        "min_c": 6
       },
       {
         "id": "kujou_sara",
@@ -380,8 +358,45 @@
         "min_c": 2
       },
       {
-        "id": "barbara",
-        "w_id": "thrilling_tales_of_dragon_slayers",
+        "id": "shenhe",
+        "w_id": "calamity_queller",
+        "min_c": 2
+      },
+      {
+        "id": "yun_jin",
+        "w_id": "engulfing_lightning",
+        "min_c": 6
+      },
+      {
+        "id": "gorou",
+        "w_id": "polar_star",
+        "min_c": 6
+      }
+    ],
+    "2": [
+      {
+        "id": "venti",
+        "w_id": "skyward_harp",
+        "min_c": 0
+      },
+      {
+        "id": "traveler_electro",
+        "w_id": "favonius_sword",
+        "min_c": 6
+      },
+      {
+        "id": "shikanoin_heizou",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 0
+      },
+      {
+        "id": "albedo",
+        "w_id": "cinnabar_spindle",
+        "min_c": 0
+      },
+      {
+        "id": "traveler_dendro",
+        "w_id": "freedomsworn",
         "min_c": 0
       },
       {
@@ -392,18 +407,50 @@
       {
         "id": "sayu",
         "w_id": "wolfs_gravestone",
+        "min_c": 1
+      },
+      {
+        "id": "barbara",
+        "w_id": "thrilling_tales_of_dragon_slayers",
         "min_c": 0
       }
     ],
     "3": [
       {
-        "id": "traveler_electro",
-        "w_id": "favonius_sword",
-        "min_c": 6
+        "id": "kuki_shinobu",
+        "w_id": "primordial_jade_cutter",
+        "min_c": 4
+      },
+      {
+        "id": "klee",
+        "w_id": "lost_prayer_to_the_sacred_winds",
+        "min_c": 2
+      },
+      {
+        "id": "lisa",
+        "w_id": "the_widsith",
+        "min_c": 4
       },
       {
         "id": "rosaria",
         "w_id": "staff_of_homa",
+        "min_c": 6
+      },
+      {
+        "id": "chongyun",
+        "w_id": "wolfs_gravestone",
+        "min_c": 2
+      }
+    ],
+    "4": [
+      {
+        "id": "xingqiu",
+        "w_id": "sacrificial_sword",
+        "min_c": 1
+      },
+      {
+        "id": "traveler_geo",
+        "w_id": "primordial_jade_cutter",
         "min_c": 6
       },
       {
@@ -417,31 +464,14 @@
         "min_c": 2
       },
       {
-        "id": "traveler_geo",
-        "w_id": "primordial_jade_cutter",
-        "min_c": 6
-      },
-      {
-        "id": "chongyun",
-        "w_id": "wolfs_gravestone",
-        "min_c": 2
-      }
-    ],
-    "4": [
-      {
-        "id": "xingqiu",
-        "w_id": "sacrificial_sword",
+        "id": "noelle",
+        "w_id": "favonius_codex",
         "min_c": 1
       },
       {
         "id": "ningguang",
         "w_id": "thrilling_tales_of_dragon_slayers",
         "min_c": 4
-      },
-      {
-        "id": "noelle",
-        "w_id": "favonius_codex",
-        "min_c": 1
       }
     ]
   }

@@ -378,6 +378,18 @@ export const getStaticProps: GetStaticProps = async ({
         children: artifactsList.filter((a) => Physical25BONUS.includes(a.id)),
       };
     }
+
+    const EM80BONUS = ["gilded_dreams", "instructor", "wanderers_troupe"];
+
+    if (artifactsIds.includes("80elementalmastery_set")) {
+      artifacts["80elementalmastery_set"] = {
+        ...artifactsList.find((a) => a.id === "wanderers_troupe")!,
+        name: lngDict?.character["80elementalmastery_set"]
+          ? lngDict.character["80elementalmastery_set"]
+          : "Elemental Mastery +80 set",
+        children: artifactsList.filter((a) => EM80BONUS.includes(a.id)),
+      };
+    }
   }
 
   const common = require(`../../_content/data/common.json`)[locale];

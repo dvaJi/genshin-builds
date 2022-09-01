@@ -211,6 +211,7 @@ const BuildDetail = ({
     "Hydro DMG",
     "Cryo DMG",
     "Electro DMG",
+    "Dendro DMG",
     "Geo DMG",
     "Anemo DMG",
   ];
@@ -638,6 +639,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
         "18atk_set",
         "20energyrecharge_set",
         "25physicaldmg_set",
+        "80elementalmastery_set",
       ],
       currentbuilds,
       lngDict,
