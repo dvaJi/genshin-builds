@@ -1,31 +1,24 @@
-import { Character } from "genshin-data";
-
-type Primary = {
-  characterId: string;
+export type CharacterTeam = {
+  id: string;
+  c_min: number;
   role: string;
+  description: string;
+  artifacts: string[];
+  main_stats: {
+    sand: string[];
+    globet: string[];
+    circlet: string[];
+  };
+  sub_stats: string[];
+  weapons: string[];
+  name?: string;
 };
 
-type Alternative = {
-  characters: string[];
-  substitutes: string[];
+export type TeamData = {
+  name: string;
+  tier: string;
+  description: string;
+  characters: CharacterTeam[];
 };
 
-export interface Team {
-  primary: Primary[];
-  alternatives: Alternative[];
-}
-
-type PrimaryFull = {
-  character: Character;
-  role: string;
-};
-
-type AlternativeFull = {
-  characters: Character[];
-  substitutes: Character[];
-};
-
-export interface TeamFull {
-  primary: PrimaryFull[];
-  alternatives: AlternativeFull[];
-}
+export type Teams = Record<string, TeamData[]>;

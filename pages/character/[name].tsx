@@ -27,7 +27,9 @@ import {
 import { setBackground } from "@state/background-atom";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { Build, MostUsedBuild } from "interfaces/build";
+import { TeamData } from "interfaces/teams";
 import { getUrl } from "@lib/imgUrl";
+import Link from "next/link";
 
 interface CharacterPageProps {
   character: Character;
@@ -37,6 +39,7 @@ interface CharacterPageProps {
   locale: string;
   common: Record<string, string>;
   mubuild: MostUsedBuild;
+  recommendedTeams: TeamData[];
 }
 
 const CharacterPage = ({
@@ -47,6 +50,7 @@ const CharacterPage = ({
   locale,
   common,
   mubuild,
+  recommendedTeams,
 }: CharacterPageProps) => {
   const [buildSelected, setBuildSelected] = useState(
     builds.findIndex((b) => b.recommended) ?? 0
@@ -179,6 +183,48 @@ const CharacterPage = ({
           </Card>
         </div>
       )}
+      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+        {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
+      </h2>
+      <Card className="flex flex-wrap">
+        {recommendedTeams.map((team, index) => (
+          <div
+            key={team.name}
+            className="mb-4 pb-4 flex items-center border-b border-vulcan-600"
+          >
+            <div className="lg:mx-2">#{index + 1}</div>
+            <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div>
+            {team.characters.map((character) => (
+              <Link key={character.id} href={`/character/${character.id}`}>
+                <a className="relative lg:mr-8 group text-center">
+                  <img
+                    className="rounded-full transition border-4 border-transparent group-hover:border-vulcan-500 group-hover:shadow-xl"
+                    src={getUrl(
+                      `/characters/${character.id}/${character.id}_portrait.png`,
+                      100,
+                      100
+                    )}
+                    alt={character.name}
+                    width="100"
+                    height="100"
+                  />
+                  {character.c_min > 0 && (
+                    <div className="absolute bottom-5 right-2/3 bg-vulcan-700 p-1 rounded-full text-xs font-bold text-gray-300">
+                      {`C${character.c_min}`}
+                    </div>
+                  )}
+                  <span className="text-xs lg:text-sm">
+                    {t({
+                      id: character.role.toLowerCase(),
+                      defaultMessage: character.role,
+                    })}
+                  </span>
+                </a>
+              </Link>
+            ))}
+          </div>
+        ))}
+      </Card>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
         {t({ id: "passives", defaultMessage: "Passives" })}
@@ -393,6 +439,9 @@ export const getStaticProps: GetStaticProps = async ({
   }
 
   const common = require(`../../_content/data/common.json`)[locale];
+  const recommendedTeams = require(`../../_content/data/teams.json`)[
+    character.id
+  ];
 
   return {
     props: {
@@ -404,6 +453,7 @@ export const getStaticProps: GetStaticProps = async ({
       locale,
       common,
       mubuild,
+      recommendedTeams: recommendedTeams ?? [],
     },
   };
 };

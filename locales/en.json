@@ -80,7 +80,11 @@
     "choose_2": "Choose 2",
     "sands": "Sands",
     "goblet": "Goblet",
-    "circlet": "Circlet"
+    "circlet": "Circlet",
+    "best_team_comp": "Best Team Comp",
+    "main dps": "Main DPS",
+    "sub dps": "Sub DPS",
+    "support": "Support"
   },
   "weapons": {
     "title": "Genshin Impact Weapons List",
@@ -167,7 +171,6 @@
     "teams": "Teams",
     "best_team_comp": "Best Team Comp",
     "character_team": "Best Team for {name}",
-    "substitute_characters": "Substitute Characters",
     "main dps": "Main DPS",
     "sub dps": "Sub DPS",
     "support": "Support"

@@ -8,15 +8,18 @@ import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
-import { Team, TeamFull } from "interfaces/teams";
+import { TeamData, Teams, CharacterTeam } from "interfaces/teams";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 type TeamsProps = {
-  teams: TeamFull[];
+  teamsByName: Record<
+    string,
+    (TeamData & { characters: (CharacterTeam & { name: string })[] })[]
+  >;
   common: Record<string, string>;
 };
 
-const TeamsPage = ({ teams }: TeamsProps) => {
+const TeamsPage = ({ teamsByName }: TeamsProps) => {
   const { t } = useIntl("teams");
   return (
     <div>
@@ -36,12 +39,11 @@ const TeamsPage = ({ teams }: TeamsProps) => {
       </h2>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="">
-        {teams.map((team, i) => (
-          <div key={team.primary.join("-") + i}>
-            <TeamCard key={team.primary[0].character.id + i} team={team} />
-            {i % 3 === 0 && (
-              <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-            )}
+        {Object.entries(teamsByName).map(([mainName, teams]) => (
+          <div key={mainName}>
+            {teams.map((team) => (
+              <TeamCard key={team.name} team={team} mainName={mainName} />
+            ))}
           </div>
         ))}
       </div>
@@ -51,7 +53,7 @@ const TeamsPage = ({ teams }: TeamsProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
-  const teams = require(`../_content/data/teams.json`) as Team[];
+  const teams = require(`../_content/data/teams.json`) as Teams;
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = (
@@ -63,21 +65,26 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     return map;
   }, {});
 
-  const teamsf: TeamFull[] = teams.map((team) => {
-    return {
-      primary: team.primary.map((prim) => ({
-        character: characters[prim.characterId],
-        role: prim.role,
-      })),
-      alternatives: team.alternatives.map((alt) => ({
-        characters: alt.characters.map((c) => characters[c]),
-        substitutes: alt.substitutes.map((c) => characters[c]),
-      })),
-    };
+  let teamsf: any = {};
+
+  Object.entries(teams).forEach(([id, tims]) => {
+    if (!teamsf[characters[id].name]) {
+      teamsf[characters[id].name] = [];
+    }
+
+    teamsf[characters[id].name].push({
+      ...tims[0],
+      characters: tims[0].characters.map((c) => {
+        return {
+          ...c,
+          name: characters[c.id]?.name || "",
+        }
+      }),
+    });
   });
 
   return {
-    props: { teams: teamsf, lngDict },
+    props: { teamsByName: teamsf, lngDict },
   };
 };
 
