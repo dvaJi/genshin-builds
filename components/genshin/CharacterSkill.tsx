@@ -4,8 +4,8 @@ import clsx from "clsx";
 
 import { useToggle } from "@hooks/use-toggle";
 
-import Crement from "./Crement";
-import Card from "./ui/Card";
+import Crement from "../Crement";
+import Card from "../ui/Card";
 
 import { Skill } from "genshin-data/dist/types/character";
 import { IMGS_CDN } from "@lib/constants";

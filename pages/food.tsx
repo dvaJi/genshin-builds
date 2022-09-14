@@ -4,10 +4,10 @@ import { GetStaticProps } from "next";
 import GenshinData from "genshin-data";
 import clsx from "clsx";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import SearchInput from "@components/SearchInput";
-import FoodCard from "@components/FoodCard";
+import FoodCard from "@components/genshin/FoodCard";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";

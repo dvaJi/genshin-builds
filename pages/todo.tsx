@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/react";
 import GenshinData from "genshin-data";
 import dynamic from "next/dynamic";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 
 import { todos as todosAtom } from "../state/todo";
@@ -15,7 +15,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getAllMaterialsMap } from "@utils/materials";
 
-const Todo = dynamic(() => import("@components/Todo"), {
+const Todo = dynamic(() => import("@components/genshin/Todo"), {
   ssr: false,
 });
 

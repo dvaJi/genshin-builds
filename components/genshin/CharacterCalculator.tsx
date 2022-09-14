@@ -3,10 +3,10 @@ import { useCallback, useMemo, useState } from "react";
 import { Character } from "genshin-data";
 import { GiCheckMark } from "react-icons/gi";
 
-import Button from "./Button";
-import Input from "./Input";
-import Select from "./Select";
-import SkillLabel from "./SkillLabel";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
+import Select from "../Select";
+import SkillLabel from "../SkillLabel";
 
 import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";

@@ -17,7 +17,7 @@ const YoutubeEmbed = dynamic(() => import("@components/YoutubeEmbed"), {
   ssr: false,
 });
 
-const GIMapEmbed = dynamic(() => import("@components/GIMapEmbed"), {
+const GIMapEmbed = dynamic(() => import("@components/genshin/GIMapEmbed"), {
   ssr: false,
 });
 

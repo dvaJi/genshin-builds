@@ -2,7 +2,7 @@ import { memo, useMemo } from "react";
 import { Ascension } from "genshin-data/dist/types/character";
 import clsx from "clsx";
 
-import SimpleRarityBox from "./SimpleRarityBox";
+import SimpleRarityBox from "../SimpleRarityBox";
 
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalAscensionMaterials } from "@utils/totals";

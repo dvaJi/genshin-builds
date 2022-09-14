@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import GenshinData from "genshin-data";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import SearchInput from "@components/SearchInput";

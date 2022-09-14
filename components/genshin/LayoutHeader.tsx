@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
-import NavLink from "./NavLink";
+import NavLink from "../NavLink";
 import Logo from "./Logo";
 import { NavRoutes } from "interfaces/nav-routes";
 import useIntl from "@hooks/use-intl";
 
-const MobileNav = dynamic(() => import("./MobileNav"), {
+const MobileNav = dynamic(() => import("../MobileNav"), {
   ssr: false,
 });
 

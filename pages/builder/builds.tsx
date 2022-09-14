@@ -13,7 +13,7 @@ import { getCharacterBuild, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 import { Build, BuildWeapon } from "interfaces/build";
-import Button from "@components/Button";
+import Button from "@components/ui/Button";
 
 type Props = {
   characters: Record<string, Character>;

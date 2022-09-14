@@ -2,10 +2,10 @@ import GenshinData, { Character, Weapon } from "genshin-data";
 import { GetStaticProps } from "next";
 
 import Card from "@components/ui/Card";
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
-import WeaponCalculator from "@components/WeaponCalculator";
-import CharacterCalculator from "@components/CharacterCalculator";
+import WeaponCalculator from "@components/genshin/WeaponCalculator";
+import CharacterCalculator from "@components/genshin/CharacterCalculator";
 
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";

@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
 import GenshinData, { Character } from "genshin-data";
 
-import Ads from "@components/Ads";
-import TeamCard from "@components/TeamCard";
+import Ads from "@components/ui/Ads";
+import TeamCard from "@components/genshin/TeamCard";
 import Metadata from "@components/Metadata";
 
 import useIntl from "@hooks/use-intl";

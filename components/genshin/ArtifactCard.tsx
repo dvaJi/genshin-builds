@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { getUrl } from "@lib/imgUrl";
 import useIntl from "@hooks/use-intl";
 
-const Tooltip = dynamic(() => import("./Tooltip"), {
+const Tooltip = dynamic(() => import("../Tooltip"), {
   ssr: false,
 });
 

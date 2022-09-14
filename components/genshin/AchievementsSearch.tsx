@@ -1,5 +1,5 @@
 import useIntl from "@hooks/use-intl";
-import Input from "./Input";
+import Input from "../ui/Input";
 
 type Props = {
   onSearch: (searchText: string) => void;

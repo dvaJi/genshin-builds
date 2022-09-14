@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Passive } from "genshin-data/dist/types/character";
-import Card from "./ui/Card";
+import Card from "../ui/Card";
 
 type Props = {
   characterId: string;

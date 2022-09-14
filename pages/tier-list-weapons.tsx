@@ -3,9 +3,9 @@ import { GetStaticProps } from "next";
 import clsx from "clsx";
 import GenshinData, { Weapon } from "genshin-data";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
-import WeaponsTier from "@components/WeaponsTier";
+import WeaponsTier from "@components/genshin/WeaponsTier";
 
 import { getLocale } from "@lib/localData";
 import useIntl from "@hooks/use-intl";

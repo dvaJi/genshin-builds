@@ -5,17 +5,17 @@ import clsx from "clsx";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import StarRarity from "@components/StarRarity";
 import Metadata from "@components/Metadata";
-import ElementIcon from "@components/ElementIcon";
-import CharacterSkill from "@components/CharacterSkill";
-import PassiveSkill from "@components/CharacterPassiveSkill";
-import ConstellationCard from "@components/CharacterConstellationCard";
-import CharacterBuildCard from "@components/CharacterBuildCard";
-import CharacterCommonBuildCard from "@components/CharacterCommonBuildCard";
-import CharacterAscencionMaterials from "@components/CharacterAscencionMaterials";
-import CharacterTalentMaterials from "@components/CharacterTalentMaterials";
+import ElementIcon from "@components/genshin/ElementIcon";
+import CharacterSkill from "@components/genshin/CharacterSkill";
+import PassiveSkill from "@components/genshin/CharacterPassiveSkill";
+import ConstellationCard from "@components/genshin/CharacterConstellationCard";
+import CharacterBuildCard from "@components/genshin/CharacterBuildCard";
+import CharacterCommonBuildCard from "@components/genshin/CharacterCommonBuildCard";
+import CharacterAscencionMaterials from "@components/genshin/CharacterAscencionMaterials";
+import CharacterTalentMaterials from "@components/genshin/CharacterTalentMaterials";
 import Card from "@components/ui/Card";
 
 import { localeToLang } from "@utils/locale-to-lang";

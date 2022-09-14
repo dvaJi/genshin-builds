@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Weapon } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import StarRarity from "./StarRarity";
+import StarRarity from "../StarRarity";
 
 import { getUrl } from "@lib/imgUrl";
 

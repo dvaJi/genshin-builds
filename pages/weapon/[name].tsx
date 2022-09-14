@@ -8,7 +8,7 @@ import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
 import Card from "@components/ui/Card";
 import Metadata from "@components/Metadata";
-import WeaponAscensionMaterials from "@components/WeaponAscensionMaterials";
+import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getCharacterMostUsedBuild, getLocale } from "@lib/localData";

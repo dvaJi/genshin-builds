@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import GenshinData, { Ingredients } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import Card from "@components/ui/Card";
 

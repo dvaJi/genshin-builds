@@ -5,31 +5,24 @@ import useIntl from "@hooks/use-intl";
 import { usePopover } from "@hooks/use-popover";
 import { getUrl } from "@lib/imgUrl";
 
-import Button from "./Button";
-import Input from "./Input";
-import SimpleRarityBox from "./SimpleRarityBox";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
+import SimpleRarityBox from "../SimpleRarityBox";
 
 type PopoverProps = {
   id: string;
-  idsByResource: any[];
   data: number;
   originalData: number;
   materialInfo: Record<string, any>;
-  handleOnChange: (value: {
-    id: string;
-    value: number;
-    idsByResource: any[];
-    remainingById: number[];
-  }) => void;
+  handleOnChange: (value: { id: string; value: number }) => void;
 };
 
-function ItemPopoverSummary({
+function ItemPopover({
   id,
-  idsByResource,
   data,
   originalData,
-  handleOnChange,
   materialInfo,
+  handleOnChange,
 }: PopoverProps) {
   const [inventory, setInventory] = useState(originalData - data);
   const [open, trigger, content] = usePopover<HTMLDivElement, HTMLDivElement>(
@@ -42,36 +35,6 @@ function ItemPopoverSummary({
     return originalData - inventory;
   }, [inventory, originalData]);
 
-  const remainingById = useMemo(() => {
-    let remainingInventory = inventory;
-    const hasDone = idsByResource
-      .sort((d1: any, d2: any) => {
-        return d1[1] === d1[2] ? -1 : d1[2] - d2[2];
-      })
-      .filter((data: any) => data[1] > 0);
-    return idsByResource.map((data: any) => {
-      if (remainingInventory < 0) {
-        return data[2];
-      }
-
-      let alreadyUsedResources = 0;
-
-      const hasDoneResource = hasDone.find((dd: any) => dd[0] === data[0]);
-      if (hasDoneResource) {
-        alreadyUsedResources = hasDoneResource[1];
-      }
-
-      const result = data[2] - remainingInventory - alreadyUsedResources;
-      remainingInventory = remainingInventory - data[2];
-
-      if (result < 0) {
-        return 0;
-      }
-
-      return result;
-    });
-  }, [idsByResource, inventory]);
-
   const onChange = (value: number) => {
     setInventory(value);
   };
@@ -81,11 +44,11 @@ function ItemPopoverSummary({
       <SimpleRarityBox
         img={getUrl(`/${materialInfo.type}/${id}.png`, 45, 45)}
         rarity={materialInfo.rarity}
-        name={numFormat.format(data as any)}
+        name={numFormat.format(data)}
         alt={materialInfo.name}
         nameSeparateBlock
-        className={clsx("w-12 h-12", { grayscale: data === 0 })}
-        classNameBlock="w-12"
+        className={clsx("w-11 h-11", { grayscale: data === 0 })}
+        classNameBlock="w-11"
       />
       {open && (
         <div
@@ -96,36 +59,14 @@ function ItemPopoverSummary({
           <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
             {materialInfo.name}
           </div>
-
-          <div className="p-2 text-sm">
-            <span>
-              {t({
-                id: "priority",
-                defaultMessage: "Priority",
-              })}
-              :
-            </span>
-            <div className="text-xs">
-              {idsByResource.map((data, i) => (
-                <span
-                  className={clsx("block", {
-                    "line-through": remainingById[i] === 0,
-                  })}
-                  key={id + i}
-                >
-                  {i + 1} - {data[0]} - {remainingById[i]}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="px-2 text-sm">
+          <div className="px-2">
             {t({
-              id: "total_remaining",
-              defaultMessage: "Total remaining",
+              id: "remaining",
+              defaultMessage: "Remaining",
             })}
             : {remaining}
           </div>
-          <div className="px-2 text-sm">
+          <div className="px-2">
             {t({
               id: "inventory",
               defaultMessage: "Inventory",
@@ -160,12 +101,7 @@ function ItemPopoverSummary({
             <Button
               className="py-1 mb-2"
               onClick={() => {
-                handleOnChange({
-                  id,
-                  value: data - inventory,
-                  idsByResource,
-                  remainingById,
-                });
+                handleOnChange({ id, value: remaining });
                 // close the popover
                 trigger.onClick();
               }}
@@ -182,4 +118,4 @@ function ItemPopoverSummary({
   );
 }
 
-export default ItemPopoverSummary;
+export default ItemPopover;

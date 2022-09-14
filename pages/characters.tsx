@@ -3,10 +3,10 @@ import Link from "next/link";
 import GenshinData, { Character } from "genshin-data";
 
 import Card from "@components/ui/Card";
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
-import CharacterPortrait from "@components/CharacterPortrait";
-import ElementIcon from "@components/ElementIcon";
+import CharacterPortrait from "@components/genshin/CharacterPortrait";
+import ElementIcon from "@components/genshin/ElementIcon";
 
 import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";

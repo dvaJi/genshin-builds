@@ -5,7 +5,7 @@ import WeaponCard from "./WeaponCard";
 import ArtifactRecommendedStats from "./ArtifactRecommendedStats";
 import ArtifactChooseCard from "./ArtifactChooseCard";
 import ArtifactCard from "./ArtifactCard";
-import SkillLabel from "./SkillLabel";
+import SkillLabel from "../SkillLabel";
 
 import { Build } from "interfaces/build";
 import useIntl from "@hooks/use-intl";

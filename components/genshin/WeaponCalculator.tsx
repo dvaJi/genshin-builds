@@ -3,8 +3,8 @@ import { useCallback, useMemo, useState } from "react";
 import { Weapon } from "genshin-data";
 import { GiCheckMark } from "react-icons/gi";
 
-import Button from "./Button";
-import Select from "./Select";
+import Button from "../ui/Button";
+import Select from "../Select";
 
 import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";

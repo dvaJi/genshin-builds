@@ -6,7 +6,7 @@ import { GetStaticProps } from "next";
 import GenshinData, { Weapon } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
 import Crement from "@components/Crement";

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Card from "./ui/Card";
+import Card from "../ui/Card";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";

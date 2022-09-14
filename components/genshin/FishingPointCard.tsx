@@ -8,7 +8,7 @@ import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 import { FishingPoint } from "interfaces/fishing";
-import Card from "./ui/Card";
+import Card from "../ui/Card";
 
 interface FishingPointCardProps {
   city: string;

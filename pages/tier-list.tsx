@@ -3,8 +3,8 @@ import { GetStaticProps } from "next";
 import clsx from "clsx";
 import GenshinData, { Character, Weapon } from "genshin-data";
 
-import Ads from "@components/Ads";
-import CharactersTier from "@components/CharactersTier";
+import Ads from "@components/ui/Ads";
+import CharactersTier from "@components/genshin/CharactersTier";
 import Metadata from "@components/Metadata";
 
 import { getLocale } from "@lib/localData";

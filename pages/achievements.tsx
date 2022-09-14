@@ -4,7 +4,7 @@ import { GetStaticProps } from "next";
 import { useStore } from "@nanostores/react";
 import GenshinData, { AchievementCategory } from "genshin-data";
 
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 
 import useIntl from "@hooks/use-intl";
@@ -15,18 +15,18 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { achievementsCompleted } from "@state/achievements";
 
 const AchievementsSearch = dynamic(
-  () => import("@components/AchievementsSearch"),
+  () => import("@components/genshin/AchievementsSearch"),
   {
     ssr: false,
   }
 );
 
-const AchievementsList = dynamic(() => import("@components/AchievementsList"), {
+const AchievementsList = dynamic(() => import("@components/genshin/AchievementsList"), {
   ssr: false,
 });
 
 const AchievementsCategories = dynamic(
-  () => import("@components/AchievementsCategories"),
+  () => import("@components/genshin/AchievementsCategories"),
   {
     ssr: false,
   }

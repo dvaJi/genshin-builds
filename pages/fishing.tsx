@@ -4,7 +4,7 @@ import GenshinData, { Fish } from "genshin-data";
 import clsx from "clsx";
 
 import Metadata from "@components/Metadata";
-import FishingPointCard from "@components/FishingPointCard";
+import FishingPointCard from "@components/genshin/FishingPointCard";
 
 import { FishingPoint } from "interfaces/fishing";
 import useIntl from "@hooks/use-intl";

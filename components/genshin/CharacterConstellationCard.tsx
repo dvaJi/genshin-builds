@@ -3,7 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Constellation } from "genshin-data/dist/types/character";
 
 import { getUrl } from "@lib/imgUrl";
-import Card from "./ui/Card";
+import Card from "../ui/Card";
 
 type Props = {
   characterId: string;

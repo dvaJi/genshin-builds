@@ -7,7 +7,7 @@ import format from "date-fns/format";
 import GenshinData, { Character, Domains, Weapon } from "genshin-data";
 
 import Card from "@components/ui/Card";
-import Ads from "@components/Ads";
+import Ads from "@components/ui/Ads";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 
 import { getLocale } from "@lib/localData";
@@ -15,7 +15,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToLang } from "@utils/locale-to-lang";
 
 import { getUrl } from "@lib/imgUrl";
-import Button from "@components/Button";
+import Button from "@components/ui/Button";
 import { trackClick } from "@lib/gtag";
 
 const ServerTimers = dynamic(() => import("@components/ServerTimers"), {

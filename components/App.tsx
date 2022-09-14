@@ -3,8 +3,8 @@ import { AppProps } from "next/app";
 import { useStore } from "@nanostores/react";
 import clsx from "clsx";
 
-import LayoutHeader from "@components/LayoutHeader";
-import LayoutFooter from "@components/LayoutFooter";
+import LayoutHeader from "@components/genshin/LayoutHeader";
+import LayoutFooter from "@components/genshin/LayoutFooter";
 import { background } from "@state/background-atom";
 
 const App = ({ Component, pageProps, router }: AppProps) => {

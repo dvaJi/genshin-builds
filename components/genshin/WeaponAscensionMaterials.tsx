@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useCallback, memo, useMemo } from "react";
 import { WeaponAscension } from "genshin-data/dist/types/weapon";
 
-import SimpleRarityBox from "./SimpleRarityBox";
+import SimpleRarityBox from "../SimpleRarityBox";
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
 

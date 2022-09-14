@@ -8,7 +8,7 @@ import {
   CgChevronLeft,
 } from "react-icons/cg";
 
-import Button from "./Button";
+import Button from "../ui/Button";
 import ItemPopover from "./ItemPopover";
 import ItemPopoverSummary from "./ItemPopoverSummary";
 
@@ -17,7 +17,7 @@ import { IMGS_CDN } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { Todo } from "@state/todo";
 import { todos as todosAtom } from "@state/todo";
-import Card from "./ui/Card";
+import Card from "../ui/Card";
 import { trackClick } from "@lib/gtag";
 
 type Props = {

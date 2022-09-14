@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Weapon } from "genshin-data";
 
 import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
-import SimpleRarityBox from "./SimpleRarityBox";
+import SimpleRarityBox from "../SimpleRarityBox";
 import { getUrl } from "@lib/imgUrl";
 
 interface WeaponsTierProps {
