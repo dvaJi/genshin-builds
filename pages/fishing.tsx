@@ -114,8 +114,8 @@ const FishingPage = ({ fish, fishingPoints }: Props) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
-  // const common = require(`../_content/data/common.json`)[locale];
-  const fishingPoints = require(`../_content/data/fishing_points.json`);
+  // const common = require(`../_content/genshin/data/common.json`)[locale];
+  const fishingPoints = require(`../_content/genshin/data/fishing_points.json`);
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const fish = await genshinData.fish();
   // const baits = await genshinData.baits();

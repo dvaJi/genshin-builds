@@ -185,7 +185,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const lngDict = await getLocale(locale);
 
-  const guide = getGuideBySlug(`${params?.slug}`, locale);
+  const guide = getGuideBySlug(`${params?.slug}`, locale, "genshin");
 
   return {
     props: { lngDict, guide },
@@ -196,7 +196,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const paths: { params: { slug: string }; locale: string }[] = [];
 
   for (const locale of locales) {
-    const guides = getAllGuides(locale);
+    const guides = getAllGuides(locale, "genshin");
 
     for (const guide of guides) {
       paths.push({

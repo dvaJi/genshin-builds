@@ -148,7 +148,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name", "rarity"],
   });
   const { default: tierlist = {} }: any = await import(
-    `../_content/data/tierlist-weapons.json`
+    `../_content/genshin/data/tierlist-weapons.json`
   );
 
   const weaponsMap = weapons.reduce<Record<string, Weapon>>((map, val) => {

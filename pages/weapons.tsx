@@ -249,7 +249,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "rarity", "name", "stats", "refinements", "type"],
   });
 
-  const common = require(`../_content/data/common.json`)[locale];
+  const common = require(`../_content/genshin/data/common.json`)[locale];
 
   return {
     props: {

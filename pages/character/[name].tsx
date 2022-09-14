@@ -438,8 +438,8 @@ export const getStaticProps: GetStaticProps = async ({
     }
   }
 
-  const common = require(`../../_content/data/common.json`)[locale];
-  const recommendedTeams = require(`../../_content/data/teams.json`)[
+  const common = require(`../../_content/genshin/data/common.json`)[locale];
+  const recommendedTeams = require(`../../_content/genshin/data/teams.json`)[
     character.id
   ];
 

@@ -24,14 +24,15 @@ export interface Guide {
   giCustomMap?: GiCustomMap;
 }
 
-const guidesDirectory = join(process.cwd(), "_content", "guides");
+const guidesDirectory = (game: string) =>
+  join(process.cwd(), "_content", game, "guides");
 
-export function getAllGuides(locale: string): Guide[] {
-  const guidesDir = fs.readdirSync(guidesDirectory);
+export function getAllGuides(locale: string, game: string): Guide[] {
+  const guidesDir = fs.readdirSync(guidesDirectory(game));
 
   return guidesDir
     .map((guide) => {
-      const guideJson = require(`../_content/guides/${guide}`);
+      const guideJson = require(`../_content/genshin/guides/${guide}`);
       return normalizeGuide(guideJson, guide, locale);
     })
     .sort((a, b) => {
@@ -45,17 +46,25 @@ export function getAllGuides(locale: string): Guide[] {
     });
 }
 
-export function getGuideByTag(tag: string, locale: string): Guide[] {
-  return getAllGuides(locale).filter((guide) => guide.tags.includes(tag));
+export function getGuideByTag(
+  tag: string,
+  locale: string,
+  game: string
+): Guide[] {
+  return getAllGuides(locale, game).filter((guide) => guide.tags.includes(tag));
 }
 
-export function getGuideBySlug(slug: string, locale: string): Guide {
-  const guidePath = join(guidesDirectory, `${slug}.json`);
+export function getGuideBySlug(
+  slug: string,
+  locale: string,
+  game: string
+): Guide {
+  const guidePath = join(guidesDirectory(game), `${slug}.json`);
   const guideData = fs.readFileSync(guidePath, "utf8");
   const guideJson = JSON.parse(guideData);
 
   const relatedGuides = guideJson.tags.flatMap((tag: string) => {
-    const guides = getGuideByTag(tag, locale);
+    const guides = getGuideByTag(tag, locale, game);
     return guides.map((guide) => normalizeGuide(guide, guide.slug, locale));
   });
   return normalizeGuide(

@@ -132,9 +132,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name", "rarity"],
   });
   const { default: tierlist = {} }: any = await import(
-    `../_content/data/tierlist.json`
+    `../_content/genshin/data/tierlist.json`
   );
-  const common = require(`../_content/data/common.json`)[locale];
+  const common = require(`../_content/genshin/data/common.json`)[locale];
 
   const tiers = ["0", "1", "2", "3", "4"];
 

@@ -41,7 +41,7 @@ const Guides = ({ guides }: TodoProps) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
 
-  const guides = getAllGuides(locale).map((guide) => ({
+  const guides = getAllGuides(locale, "genshin").map((guide) => ({
     title: guide.title,
     slug: guide.slug,
     tags: guide.tags,

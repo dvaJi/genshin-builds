@@ -10,7 +10,9 @@ export async function getLocale(lang: string) {
 
 export async function getCharacterBuild(id?: string) {
   try {
-    const { default: builds } = await import(`../_content/data/builds.json`);
+    const { default: builds } = await import(
+      `../_content/genshin/data/builds.json`
+    );
 
     if (id) {
       return (builds as any)[id];
@@ -25,7 +27,9 @@ export async function getCharacterBuild(id?: string) {
 
 export async function getCharacterMostUsedBuild(id?: string) {
   try {
-    const { default: builds } = await import(`../_content/data/mostusedbuilds.json`);
+    const { default: builds } = await import(
+      `../_content/genshin/data/mostusedbuilds.json`
+    );
 
     if (id) {
       return (builds as any)[id] || "";

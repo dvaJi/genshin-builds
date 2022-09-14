@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       return map;
     }, {});
 
-  const common = require(`../_content/data/common.json`)[locale];
+  const common = require(`../_content/genshin/data/common.json`)[locale];
 
   return {
     props: { charactersByElement, elements, lngDict, common },

@@ -53,7 +53,7 @@ const TeamsPage = ({ teamsByName }: TeamsProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale);
-  const teams = require(`../_content/data/teams.json`) as Teams;
+  const teams = require(`../_content/genshin/data/teams.json`) as Teams;
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = (
@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
         return {
           ...c,
           name: characters[c.id]?.name || "",
-        }
+        };
       }),
     });
   });
