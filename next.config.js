@@ -1,10 +1,13 @@
 const isDev = process.env.NODE_ENV === "development";
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
 
-module.exports = withBundleAnalyzer({
+/**
+ * @type {import('next').NextConfig}
+ **/
+const nextConfig = {
   i18n: {
     locales: [
       "en",
@@ -26,5 +29,7 @@ module.exports = withBundleAnalyzer({
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
-  }
-})
+  },
+};
+
+module.exports = withBundleAnalyzer(nextConfig);
