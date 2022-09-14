@@ -114,7 +114,7 @@ const FoodPage = ({ food }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const dishesList = await genshinData.food({
     select: ["id", "name", "rarity", "results"],

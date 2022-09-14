@@ -247,7 +247,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   locale = "en",
 }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons();
   const weapon = weapons.find((c) => c.id === params?.name);

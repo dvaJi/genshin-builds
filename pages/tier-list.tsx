@@ -123,7 +123,7 @@ const TierList = ({ tierlist, charactersMap, weaponsMap, common }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
     select: ["id", "name", "element"],

@@ -142,7 +142,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons({
     select: ["id", "name", "rarity"],

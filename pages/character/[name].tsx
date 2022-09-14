@@ -312,7 +312,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   locale = "en",
 }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
   const character = characters.find((c) => c.id === params?.name);

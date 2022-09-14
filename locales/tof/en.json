@@ -1,0 +1,23 @@
+{
+  "layout": {
+    "title": "Genshin-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "potions": "Potions",
+    "tierlist": "Tierlist",
+    "database": "Database",
+    "calculator": "Calculator",
+    "tierlist_characters": "Tierlist Characters",
+    "tierlist_weapons": "Tierlist Weapons",
+    "teams": "Teams",
+    "fishing": "Fishing",
+    "characters": "Characters",
+    "cooking_ingredient": "Cooking Ingredient",
+    "artifacts": "Artifacts",
+    "weapons": "Weapons",
+    "todo": "Todo",
+    "achievements": "Achievements",
+    "food": "Food",
+    "materials": "Materials",
+    "guides": "Guides"
+  }
+}

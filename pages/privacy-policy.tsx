@@ -30,7 +30,7 @@ const PrivacyPolicy = ({ data }: MdPage) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
   const post = getContentBySlug("privacy-policy", [
     "title",
     "date",

@@ -133,7 +133,7 @@ const ArtifactsPage = ({ artifacts, artifacts1set }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const artifacts = await genshinData.artifacts();
   const artifacts1set = artifacts.filter((a) => a["one_pc"]);

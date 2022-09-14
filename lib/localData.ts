@@ -1,6 +1,6 @@
-export async function getLocale(lang: string) {
+export async function getLocale(lang: string, game: string) {
   try {
-    const locale = await import(`../locales/${lang}.json`);
+    const locale = await import(`../locales/${game}/${lang}.json`);
     return locale.default;
   } catch (err) {
     console.error(err);

@@ -628,7 +628,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   const currentbuilds: Record<string, Build[]> = await getCharacterBuild();
 
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
 
   return {
     props: {

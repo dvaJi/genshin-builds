@@ -183,7 +183,7 @@ export const getStaticProps: GetStaticProps = async ({
   locale = "en",
   params,
 }) => {
-  const lngDict = await getLocale(locale);
+  const lngDict = await getLocale(locale, "genshin");
 
   const guide = getGuideBySlug(`${params?.slug}`, locale, "genshin");
 
