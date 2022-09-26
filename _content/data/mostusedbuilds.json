@@ -7,29 +7,30 @@
     ],
     "artifacts": [
       ["blizzard_strayer"],
-      ["blizzard_strayer", "gladiators_finale"],
-      ["blizzard_strayer", "shimenawas_reminiscence"]
+      ["blizzard_strayer", "gladiators_finale"]
     ]
   },
   "jean": {
-    "weapons": ["favonius_sword", "amenoma_kageuchi", "festering_desire"],
+    "weapons": ["favonius_sword", "amenoma_kageuchi", "dull_blade"],
     "artifacts": [
       ["viridescent_venerer"],
-      ["gladiators_finale", "viridescent_venerer"],
-      ["viridescent_venerer"]
+      ["gladiators_finale", "viridescent_venerer"]
     ]
   },
   "traveler": {
-    "weapons": ["dull_blade", "prototype_rancour", "favonius_sword"],
+    "weapons": ["favonius_sword", "prototype_rancour", "dull_blade"],
     "artifacts": [
-      ["gladiators_finale"],
       ["emblem_of_severed_fate"],
-      ["emblem_of_severed_fate"]
+      ["deepwood_memories"]
     ]
   },
   "lisa": {
-    "weapons": ["apprentices_notes", "favonius_codex", "eye_of_perception"],
-    "artifacts": [["wanderers_troupe"], ["instructor"], ["wanderers_troupe"]]
+    "weapons": ["apprentices_notes", "eye_of_perception", "favonius_codex"],
+    "artifacts": [
+      ["wanderers_troupe"],
+      ["instructor"],
+      ["emblem_of_severed_fate"]
+    ]
   },
   "barbara": {
     "weapons": [
@@ -43,7 +44,6 @@
     "weapons": ["dull_blade", "favonius_sword", "prototype_rancour"],
     "artifacts": [
       ["blizzard_strayer"],
-      ["blizzard_strayer"],
       ["emblem_of_severed_fate"]
     ]
   },
@@ -51,46 +51,37 @@
     "weapons": ["wolfs_gravestone", "serpent_spine", "luxurious_sealord"],
     "artifacts": [
       ["crimson_witch_of_flames"],
-      ["crimson_witch_of_flames"],
-      ["gladiators_finale", "crimson_witch_of_flames"]
+      ["gladiators_finale"]
     ]
   },
   "razor": {
-    "weapons": [
-      "snowtombed_starsilver",
-      "waster_greatsword",
-      "prototype_archaic"
-    ],
+    "weapons": ["snowtombed_starsilver", "waster_greatsword", "rainslasher"],
     "artifacts": [["gladiators_finale"], ["gladiators_finale"], ["pale_flame"]]
   },
   "amber": {
-    "weapons": ["hunters_bow", "rust", "favonius_warbow"],
+    "weapons": ["hunters_bow", "favonius_warbow", "rust"],
     "artifacts": [
       ["wanderers_troupe"],
-      ["wanderers_troupe"],
-      ["shimenawas_reminiscence"]
+      ["crimson_witch_of_flames"]
     ]
   },
   "venti": {
     "weapons": ["the_stringless", "elegy_for_the_end", "favonius_warbow"],
     "artifacts": [
       ["viridescent_venerer"],
-      ["viridescent_venerer"],
       ["gladiators_finale", "viridescent_venerer"]
     ]
   },
   "xiangling": {
-    "weapons": ["the_catch", "favonius_lance", "skyward_spine"],
+    "weapons": ["the_catch", "favonius_lance", "dragons_bane"],
     "artifacts": [
       ["emblem_of_severed_fate"],
-      ["crimson_witch_of_flames"],
-      ["emblem_of_severed_fate"]
+      ["crimson_witch_of_flames"]
     ]
   },
   "beidou": {
-    "weapons": ["rainslasher", "waster_greatsword", "serpent_spine"],
+    "weapons": ["waster_greatsword", "rainslasher", "favonius_greatsword"],
     "artifacts": [
-      ["emblem_of_severed_fate"],
       ["emblem_of_severed_fate"],
       ["gladiators_finale"]
     ]
@@ -106,8 +97,8 @@
   "xiao": {
     "weapons": ["primordial_jade_wingedspear", "deathmatch", "staff_of_homa"],
     "artifacts": [
-      ["gladiators_finale", "viridescent_venerer"],
       ["vermillion_hereafter"],
+      ["gladiators_finale", "viridescent_venerer"],
       ["viridescent_venerer", "shimenawas_reminiscence"]
     ]
   },
@@ -136,27 +127,27 @@
     "artifacts": [
       ["tenacity_of_the_millelith"],
       ["noblesse_oblige", "tenacity_of_the_millelith"],
-      ["noblesse_oblige", "archaic_petra"]
+      ["tenacity_of_the_millelith"]
     ]
   },
   "fischl": {
-    "weapons": ["the_stringless", "hunters_bow", "rust"],
+    "weapons": ["the_stringless", "hunters_bow", "mitternachts_waltz"],
     "artifacts": [
       ["gladiators_finale", "thundering_fury"],
-      ["tenacity_of_the_millelith"],
+      ["thundering_fury"],
       ["gladiators_finale", "shimenawas_reminiscence"]
     ]
   },
   "bennett": {
-    "weapons": ["skyward_blade", "aquila_favonia", "favonius_sword"],
+    "weapons": ["skyward_blade", "favonius_sword", "aquila_favonia"],
     "artifacts": [["noblesse_oblige"], ["noblesse_oblige"], ["instructor"]]
   },
   "tartaglia": {
-    "weapons": ["rust", "polar_star", "skyward_harp"],
+    "weapons": ["polar_star", "skyward_harp", "rust"],
     "artifacts": [
-      ["heart_of_depth"],
       ["gladiators_finale", "heart_of_depth"],
-      ["heart_of_depth"]
+      ["heart_of_depth"],
+      ["heart_of_depth", "shimenawas_reminiscence"]
     ]
   },
   "noelle": {
@@ -179,24 +170,21 @@
     ],
     "artifacts": [
       ["blizzard_strayer"],
-      ["blizzard_strayer"],
       ["blizzard_strayer", "noblesse_oblige"]
     ]
   },
   "ganyu": {
-    "weapons": ["amos_bow", "prototype_crescent", "hamayumi"],
+    "weapons": ["amos_bow", "hamayumi", "prototype_crescent"],
     "artifacts": [
       ["wanderers_troupe"],
-      ["blizzard_strayer"],
-      ["wanderers_troupe"]
+      ["blizzard_strayer"]
     ]
   },
   "albedo": {
-    "weapons": ["cinnabar_spindle", "harbinger_of_dawn", "favonius_sword"],
+    "weapons": ["cinnabar_spindle", "harbinger_of_dawn", "festering_desire"],
     "artifacts": [
       ["husk_of_opulent_dreams"],
-      ["husk_of_opulent_dreams"],
-      ["tenacity_of_the_millelith"]
+      ["archaic_petra"]
     ]
   },
   "diona": {
@@ -216,15 +204,15 @@
     "artifacts": [
       ["noblesse_oblige"],
       ["emblem_of_severed_fate"],
-      ["tenacity_of_the_millelith"]
+      ["instructor"]
     ]
   },
   "keqing": {
     "weapons": ["lions_roar", "the_black_sword", "dull_blade"],
     "artifacts": [
+      ["thundering_fury"],
       ["gladiators_finale", "thundering_fury"],
-      ["gladiators_finale"],
-      ["thundersoother"]
+      ["gladiators_finale"]
     ]
   },
   "sucrose": {
@@ -235,22 +223,20 @@
     ],
     "artifacts": [
       ["viridescent_venerer"],
-      ["viridescent_venerer"],
       ["instructor"]
     ]
   },
   "xinyan": {
     "weapons": ["waster_greatsword", "the_bell", "favonius_greatsword"],
     "artifacts": [
-      ["bloodstained_chivalry"],
       ["gladiators_finale"],
-      ["bloodstained_chivalry", "pale_flame"]
+      ["tenacity_of_the_millelith"],
+      ["crimson_witch_of_flames"]
     ]
   },
   "rosaria": {
     "weapons": ["favonius_lance", "beginners_protector", "dragonspine_spear"],
     "artifacts": [
-      ["noblesse_oblige"],
       ["noblesse_oblige"],
       ["blizzard_strayer"]
     ]
@@ -267,12 +253,11 @@
     "weapons": ["iron_sting", "freedomsworn", "sacrificial_sword"],
     "artifacts": [
       ["viridescent_venerer"],
-      ["viridescent_venerer"],
       ["gladiators_finale", "viridescent_venerer"]
     ]
   },
   "yanfei": {
-    "weapons": ["apprentices_notes", "dodoco_tales", "the_widsith"],
+    "weapons": ["apprentices_notes", "the_widsith", "dodoco_tales"],
     "artifacts": [
       ["wanderers_troupe"],
       ["crimson_witch_of_flames"],
@@ -283,12 +268,11 @@
     "weapons": ["rust", "thundering_pulse", "skyward_harp"],
     "artifacts": [
       ["shimenawas_reminiscence"],
-      ["shimenawas_reminiscence"],
       ["echoes_of_an_offering"]
     ]
   },
   "thoma": {
-    "weapons": ["beginners_protector", "favonius_lance", "black_tassel"],
+    "weapons": ["beginners_protector", "black_tassel", "favonius_lance"],
     "artifacts": [
       ["tenacity_of_the_millelith", "emblem_of_severed_fate"],
       ["emblem_of_severed_fate"],
@@ -307,18 +291,16 @@
     "weapons": ["engulfing_lightning", "the_catch", "skyward_spine"],
     "artifacts": [
       ["emblem_of_severed_fate"],
-      ["emblem_of_severed_fate"],
-      ["noblesse_oblige"]
+      ["gladiators_finale", "emblem_of_severed_fate"]
     ]
   },
   "sayu": {
     "weapons": [
       "sacrificial_greatsword",
-      "luxurious_sealord",
-      "waster_greatsword"
+      "waster_greatsword",
+      "luxurious_sealord"
     ],
     "artifacts": [
-      ["viridescent_venerer"],
       ["viridescent_venerer"],
       ["maiden_beloved"]
     ]
@@ -332,21 +314,19 @@
     "artifacts": [
       ["oceanhued_clam"],
       ["tenacity_of_the_millelith"],
-      ["oceanhued_clam"]
+      ["maiden_beloved"]
     ]
   },
   "gorou": {
     "weapons": ["hunters_bow", "favonius_warbow", "sacrificial_bow"],
     "artifacts": [
       ["husk_of_opulent_dreams"],
-      ["noblesse_oblige"],
       ["emblem_of_severed_fate", "husk_of_opulent_dreams"]
     ]
   },
   "kujou_sara": {
-    "weapons": ["fading_twilight", "hunters_bow", "skyward_harp"],
+    "weapons": ["hunters_bow", "fading_twilight", "skyward_harp"],
     "artifacts": [
-      ["emblem_of_severed_fate"],
       ["emblem_of_severed_fate"],
       ["noblesse_oblige"]
     ]
@@ -354,7 +334,6 @@
   "arataki_itto": {
     "weapons": ["serpent_spine", "redhorn_stonethresher", "whiteblind"],
     "artifacts": [
-      ["husk_of_opulent_dreams"],
       ["husk_of_opulent_dreams"],
       ["gladiators_finale"]
     ]
@@ -368,15 +347,10 @@
     ]
   },
   "shikanoin_heizou": {
-    "weapons": [
-      "apprentices_notes",
-      "the_widsith",
-      "lost_prayer_to_the_sacred_winds"
-    ],
+    "weapons": ["apprentices_notes", "the_widsith", "solar_pearl"],
     "artifacts": [
       ["viridescent_venerer"],
-      ["gladiators_finale", "viridescent_venerer"],
-      ["viridescent_venerer"]
+      ["gladiators_finale", "viridescent_venerer"]
     ]
   },
   "yelan": {
@@ -388,19 +362,18 @@
     ]
   },
   "aloy": {
-    "weapons": ["hunters_bow", "rust", "windblume_ode"],
+    "weapons": ["hunters_bow", "rust", "the_stringless"],
     "artifacts": [
-      ["blizzard_strayer"],
       ["blizzard_strayer"],
       ["wanderers_troupe"]
     ]
   },
   "shenhe": {
-    "weapons": ["calamity_queller", "favonius_lance", "skyward_spine"],
+    "weapons": ["favonius_lance", "skyward_spine", "calamity_queller"],
     "artifacts": [
       ["gladiators_finale", "shimenawas_reminiscence"],
       ["noblesse_oblige"],
-      ["gladiators_finale", "emblem_of_severed_fate"]
+      ["gladiators_finale"]
     ]
   },
   "yun_jin": {
@@ -415,7 +388,6 @@
     "weapons": ["dull_blade", "iron_sting", "favonius_sword"],
     "artifacts": [
       ["tenacity_of_the_millelith"],
-      ["oceanhued_clam"],
       ["maiden_beloved"]
     ]
   },
@@ -427,8 +399,32 @@
     ],
     "artifacts": [
       ["gladiators_finale"],
-      ["heart_of_depth"],
-      ["echoes_of_an_offering"]
+      ["echoes_of_an_offering"],
+      ["heart_of_depth"]
+    ]
+  },
+  "collei": {
+    "weapons": ["hunters_bow", "favonius_warbow", "the_stringless"],
+    "artifacts": [
+      ["deepwood_memories"],
+      ["emblem_of_severed_fate"],
+      ["deepwood_memories"]
+    ]
+  },
+  "dori": {
+    "weapons": ["waster_greatsword", "sacrificial_greatsword", "the_bell"],
+    "artifacts": [
+      ["noblesse_oblige"],
+      ["emblem_of_severed_fate"],
+      ["tenacity_of_the_millelith", "emblem_of_severed_fate"]
+    ]
+  },
+  "tighnari": {
+    "weapons": ["hunters_path", "skyward_harp", "the_stringless"],
+    "artifacts": [
+      ["wanderers_troupe"],
+      ["gilded_dreams"],
+      ["deepwood_memories"]
     ]
   }
 }

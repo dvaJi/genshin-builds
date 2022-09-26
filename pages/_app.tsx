@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { AppProps } from "next/app";
+// import { AppProps } from "next/app";
 
 import IntlProvider from "@components/IntlProvider";
 import App from "@components/App";
@@ -8,7 +8,7 @@ import * as gtag from "@lib/gtag";
 
 import "../styles/globals.css";
 
-function Root(props: AppProps) {
+function Root(props: any) {
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: string) => {
