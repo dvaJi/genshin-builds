@@ -16,48 +16,7 @@ const MobileNav = dynamic(() => import("../MobileNav"), {
 });
 
 const navroutes: NavRoutes[] = [
-  { id: "characters", name: "Characters", href: "/characters" },
-  {
-    id: "tierlist",
-    name: "Tierlist",
-    href: "/#",
-    dropdownMenu: [
-      {
-        id: "tierlist_characters",
-        name: "Tierlist Characters",
-        href: "/tier-list",
-      },
-      {
-        id: "tierlist_weapons",
-        name: "Tierlist Weapons",
-        href: "/tier-list-weapons",
-      },
-    ],
-  },
-  { id: "teams", name: "Teams", href: "/teams" },
-  { id: "todo", name: "Todo", href: "/todo" },
-  { id: "calculator", name: "Calculator", href: "/calculator" },
-  { id: "guides", name: "Guides", href: "/guides" },
-  {
-    id: "database",
-    name: "Database",
-    href: "/#",
-    dropdownMenu: [
-      { id: "weapons", name: "Weapons", href: "/weapons" },
-      { id: "artifacts", name: "Artifacts", href: "/artifacts" },
-      { id: "materials", name: "Materials", href: "/materials" },
-      { id: "achievements", name: "Achievements", href: "/achievements" },
-      {
-        id: "cooking_ingredient",
-        name: "Cooking Ingredient",
-        href: "/ingredients",
-      },
-      { id: "food", name: "Food", href: "/food" },
-      { id: "potions", name: "Potions", href: "/potions" },
-      { id: "fishing", name: "Fishing", href: "/fishing" },
-    ],
-  },
-  // { name: "Team Builder", href: "/comp-builder" },
+  { id: "characters", name: "Characters", href: "/tof" },
 ];
 
 const LayoutHeader = () => {
@@ -68,11 +27,14 @@ const LayoutHeader = () => {
     <nav className="sticky top-0 z-40 mb-5 h-12 border-b border-gray-700 border-opacity-60 bg-vulcan-800/70 shadow-md backdrop-blur">
       <div className="container mx-auto mb-12 flex h-full text-gray-400 ">
         <Link href="/">
-          <a className="mr-6 flex items-center font-bold" aria-current="page">
+          <a
+            className="mr-6 flex items-center font-bold text-white"
+            aria-current="page"
+          >
             <Logo />
           </a>
         </Link>
-        <GameSelector currentGame={GAME.GENSHIN} />
+        <GameSelector currentGame={GAME.TOF} />
         <ul className="ml-auto hidden lg:flex">
           {navroutes.map((r) => (
             <NavLink

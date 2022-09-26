@@ -18,14 +18,14 @@ function Characters({ characters }: Props) {
     setBackground({
       image: `${TOF_IMGS_CDN}/bg/fulilingqu_bg_OS1.png`,
       gradient: {
-        background: "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
+        background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
       },
     });
   }, []);
   return (
     <div>
       <h2>Characters</h2>
-      <div className="grid grid-cols-2 gap-1 rounded border border-vulcan-700 bg-vulcan-700/90 py-4 px-4 shadow-lg md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-3 lg:grid-cols-4">
         {characters.map((character) => (
           <Link key={character.id} href={`/tof/character/${character.id}`}>
             <a>
@@ -40,7 +40,7 @@ function Characters({ characters }: Props) {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
-  const characters = getCharacters(locale) || [];
+  const characters = getCharacters(locale);
 
   return {
     props: {
@@ -49,8 +49,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
         name: c.name,
         weapon_id: c.weapon_id,
         weapon: c.weapon,
-        element: c.element,
-        resonance: c.resonance,
       })),
       lngDict,
     },
