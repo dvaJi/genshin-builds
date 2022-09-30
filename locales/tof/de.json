@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "title": "ToF-Builds.com Wiki-Datenbank",
+    "description": "Die besten Charaktere und ihre Builds, geordnet nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu klären.",
+    "tierlist": "Rangliste",
+    "database": "Datenbank",
+    "calculator": "Taschenrechner",
+    "teams": "Mannschaften",
+    "characters": "Figuren",
+    "matrices": "Matrizen",
+    "guides": "Führer"
+  },
+  "characters": {
+    "title": "ToF-Builds.com Wiki-Datenbank",
+    "description": "Die besten Charaktere und ihre Builds, geordnet nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu klären.",
+    "search": "Suche..."
+  },
+  "character": {
+    "title": "{name} ToF Bauanleitung",
+    "characters": "Figuren",
+    "simulacrum": "Simulakrum",
+    "recommended_matrices": "Empfohlene Matrizen",
+    "pieces": "Stücke",
+    "teams": "Mannschaften",
+    "skills": "Fähigkeiten",
+    "awakening": "Erwachen",
+    "advancement": "Förderung",
+    "gifts": "Geschenke",
+    "upgrade_cost_planner": "Upgrade-Kostenplaner",
+    "level": "Eben",
+    "materials": "Materialien",
+    "cost": "Kosten",
+    "attack": "Attacke",
+    "fortitude": "Kraft",
+    "benediction": "Segen",
+    "balance": "Gleichgewicht",
+    "jump": "Springen",
+    "hold: attack": "Halten: Angriff",
+    "croch": "Croch",
+    "dodge": "Ausweichen",
+    "skill": "Können",
+    "discharge": "Entladung"
+  },
+  "matrices": {
+    "title": "Liste der ToF-Auswirkungsmatrizen",
+    "description": "Alle Matrizen sind in der Reihenfolge ihrer Leistung, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte zu klären.",
+    "matrices": "Matrizen"
+  },
+  "matrix": {
+    "title": "ToF-Builds.com Wiki-Datenbank",
+    "description": "Die besten Charaktere und ihre Builds, geordnet nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu klären.",
+    "matrix": "Matrix",
+    "2pcbonus": "2-teiliger Set-Bonus",
+    "3pcbonus": "3-teiliger Set-Bonus",
+    "4pcbonus": "4-teiliger Set-Bonus",
+    "sets": "Sets"
+  }
+}

@@ -72,7 +72,7 @@ const LayoutHeader = () => {
             <Logo />
           </a>
         </Link>
-        <GameSelector currentGame={GAME.GENSHIN} />
+        <GameSelector currentGame={GAME.GENSHIN} className="hidden md:block" />
         <ul className="ml-auto hidden lg:flex">
           {navroutes.map((r) => (
             <NavLink
@@ -98,6 +98,7 @@ const LayoutHeader = () => {
       <MobileNav
         isOpen={isMobileNavOpen}
         navroutes={navroutes}
+        game={GAME.GENSHIN}
         handleClick={setIsMobileNavOpen}
         f={t}
       />

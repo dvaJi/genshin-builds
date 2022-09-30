@@ -1,3 +1,7 @@
+export function getDefaultLocale(locale: string, locales: string[]) {
+  return locales.includes(locale) ? locale : "en";
+}
+
 export async function getLocale(lang: string, game: string) {
   try {
     const locale = await import(`../locales/${game}/${lang}.json`);

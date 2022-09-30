@@ -5,7 +5,7 @@ import { memo } from "react";
 const LayoutFooter = () => {
   const router = useRouter();
   return (
-    <footer className="border-t border-gray-700 border-opacity-50 bg-vulcan-800 px-20 py-14 text-gray-400">
+    <footer className="z-20 border-t border-gray-700 border-opacity-50 bg-vulcan-800 px-20 py-14 text-gray-400">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
@@ -30,11 +30,11 @@ const LayoutFooter = () => {
             <Link href={router.asPath} locale="de">
               <a className="my-2">Deutsch</a>
             </Link>
+          </div>
+          <div className="flex flex-1 flex-col">
             <Link href={router.asPath} locale="fr">
               <a className="my-2">Français</a>
             </Link>
-          </div>
-          <div className="flex flex-1 flex-col">
             <Link href={router.asPath} locale="id">
               <a className="my-2">Indonesia</a>
             </Link>

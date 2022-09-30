@@ -14,7 +14,7 @@ function Layout({ children }: Props) {
   const router = useRouter();
 
   return (
-    <div className="flex h-full min-h-screen flex-col bg-tof-900">
+    <div className="flex h-full min-h-screen flex-col bg-vulcan-900">
       <Head>
         <title>Tower of Fantasy Builds | Tower of Fantasy Wiki Database</title>
         <meta

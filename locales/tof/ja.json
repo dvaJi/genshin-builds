@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "title": "ToF-Builds.com ウィキ データベース",
+    "description": "すべての最高のキャラクターとそのビルドは、コンテンツをクリアするために、パワー、実行可能性、および多様性の順にランク付けされています.",
+    "tierlist": "ティアリスト",
+    "database": "データベース",
+    "calculator": "電卓",
+    "teams": "チーム",
+    "characters": "キャラクター",
+    "matrices": "行列",
+    "guides": "ガイド"
+  },
+  "characters": {
+    "title": "ToF-Builds.com ウィキ データベース",
+    "description": "すべての最高のキャラクターとそのビルドは、コンテンツをクリアするために、パワー、実行可能性、および多様性の順にランク付けされています.",
+    "search": "探す..."
+  },
+  "character": {
+    "title": "{name} ToF ビルドガイド",
+    "characters": "キャラクター",
+    "simulacrum": "シミュラクラム",
+    "recommended_matrices": "推奨マトリックス",
+    "pieces": "ピース",
+    "teams": "チーム",
+    "skills": "スキル",
+    "awakening": "目覚め",
+    "advancement": "アドバンス",
+    "gifts": "ギフト",
+    "upgrade_cost_planner": "コスト プランナーのアップグレード",
+    "level": "レベル",
+    "materials": "材料",
+    "cost": "料金",
+    "attack": "攻撃",
+    "fortitude": "不屈の精神",
+    "benediction": "祝祷",
+    "balance": "バランス",
+    "jump": "ジャンプ",
+    "hold: attack": "長押し：攻撃",
+    "croch": "クロッチ",
+    "dodge": "ドッジ",
+    "skill": "スキル",
+    "discharge": "放電"
+  },
+  "matrices": {
+    "title": "ToFマトリックス一覧",
+    "description": "すべてのマトリックスは、コンテンツをクリアするためのパワー、実行可能性、および汎用性の順にランク付けされています。",
+    "matrices": "行列"
+  },
+  "matrix": {
+    "title": "ToF-Builds.com ウィキ データベース",
+    "description": "すべての最高のキャラクターとそのビルドは、コンテンツをクリアするために、パワー、実行可能性、および多様性の順にランク付けされています.",
+    "matrix": "マトリックス",
+    "2pcbonus": "2点セット特典",
+    "3pcbonus": "3点セット特典",
+    "4pcbonus": "4点セット特典",
+    "sets": "セット"
+  }
+}

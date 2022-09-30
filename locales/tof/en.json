@@ -1,23 +1,58 @@
 {
   "layout": {
-    "title": "Genshin-Builds.com Wiki Database",
+    "title": "ToF-Builds.com Wiki Database",
     "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
-    "potions": "Potions",
     "tierlist": "Tierlist",
     "database": "Database",
     "calculator": "Calculator",
-    "tierlist_characters": "Tierlist Characters",
-    "tierlist_weapons": "Tierlist Weapons",
     "teams": "Teams",
-    "fishing": "Fishing",
     "characters": "Characters",
-    "cooking_ingredient": "Cooking Ingredient",
-    "artifacts": "Artifacts",
-    "weapons": "Weapons",
-    "todo": "Todo",
-    "achievements": "Achievements",
-    "food": "Food",
-    "materials": "Materials",
+    "matrices": "Matrices",
     "guides": "Guides"
+  },
+  "characters": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "search": "Search..."
+  },
+  "character": {
+    "title": "{name} ToF Build Guide",
+    "characters": "Characters",
+    "simulacrum": "Simulacrum",
+    "recommended_matrices": "Recommended Matrices",
+    "pieces": "Pieces",
+    "teams": "Teams",
+    "skills": "Skills",
+    "awakening": "Awakening",
+    "advancement": "Advancement",
+    "gifts": "Gifts",
+    "upgrade_cost_planner": "Upgrade Cost Planner",
+    "level": "Level",
+    "materials": "Materials",
+    "cost": "Cost",
+    "attack": "Attack",
+    "fortitude": "Fortitude",
+    "benediction": "Benediction",
+    "balance": "Balance",
+    "jump": "Jump",
+    "hold: attack": "Hold: Attack",
+    "croch": "Croch",
+    "dodge": "Dodge",
+    "skill": "Skill",
+    "discharge": "Discharge"
+  },
+  "matrices": {
+    "title": "ToF Matrices List",
+    "description": "All Matrices ranked in order of power, viability, and versatility to clear content.",
+    "matrices": "Matrices"
+  },
+  "matrix": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "matrix": "Matrix",
+    "2pcbonus": "2-piece Set Bonus",
+    "3pcbonus": "3-piece Set Bonus",
+    "4pcbonus": "4-piece Set Bonus",
+    "sets": "Sets"
   }
 }

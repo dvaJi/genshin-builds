@@ -4,15 +4,18 @@ import { motion } from "framer-motion";
 import { Fragment } from "react";
 import { NavRoutes } from "interfaces/nav-routes";
 import { IntlFormatProps } from "@hooks/use-intl";
+import GameSelector from "./GameSelector";
+import type { GameProps } from "@utils/games";
 
 type Props = {
   isOpen: boolean;
   navroutes: NavRoutes[];
+  game: GameProps;
   handleClick: (value: boolean) => void;
   f: (props: IntlFormatProps) => string;
 };
 
-const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
+const MobileNav = ({ isOpen, navroutes, game, handleClick, f }: Props) => {
   const variants = {
     open: {
       transition: { staggerChildren: 0.01, delayChildren: 0.1 },
@@ -41,21 +44,24 @@ const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
   return (
     <motion.div
       className={clsx(
-        "bg-vulcan-800/95 text-gray-400 transition-all p-7 flex absolute top-12 left-0 flex-col items-center w-full z-20 lg:hidden",
-        isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        "absolute top-12 left-0 z-20 flex w-full flex-col items-center bg-vulcan-800/95 p-7 pt-0 text-gray-400 transition-all lg:hidden",
+        isOpen
+          ? "pointer-events-auto opacity-100"
+          : "pointer-events-none opacity-0"
       )}
       initial={false}
       animate={isOpen ? "open" : "closed"}
     >
-      <h2 className="text-lg mb-5">Navigation</h2>
+      <GameSelector currentGame={game} className="my-4 block md:hidden" />
+      <h2 className="mb-5 text-lg text-tof-50">Navigation</h2>
       <motion.ul
-        className="flex items-center flex-row flex-wrap"
+        className="flex flex-row flex-wrap items-center"
         variants={variants}
       >
         {navroutes.map((r) => (
           <Fragment key={r.name}>
             {r.href !== "/#" && (
-              <motion.li className="flex w-1/2 m-0 p-3" variants={variantsli}>
+              <motion.li className="m-0 flex w-1/2 p-3" variants={variantsli}>
                 <Link href={r.href}>
                   <a className="mobile-link" onClick={() => handleClick(false)}>
                     {f({ id: r.id, defaultMessage: r.name })}
@@ -69,7 +75,7 @@ const MobileNav = ({ isOpen, navroutes, handleClick, f }: Props) => {
                 .map((rd) => (
                   <motion.li
                     key={rd.name}
-                    className="flex w-1/2 m-0 p-3"
+                    className="m-0 flex w-1/2 p-3"
                     variants={variantsli}
                   >
                     <Link href={rd.href}>

@@ -6,14 +6,15 @@ import { TOF_IMGS_CDN } from "@lib/constants";
 
 type Props = {
   currentGame: GameProps;
+  className?: string;
 };
 
-function GameSelector({ currentGame }: Props) {
+function GameSelector({ currentGame, className }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   // Selector for each GAME and a Link to the game
 
   return (
-    <div className="relative">
+    <div className={clsx("relative", className)}>
       <button
         type="button"
         aria-haspopup="true"

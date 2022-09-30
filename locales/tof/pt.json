@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "title": "Banco de dados de Wiki ToF-Builds.com",
+    "description": "Todos os melhores personagens e suas construções classificadas em ordem de poder, viabilidade e versatilidade para limpar o conteúdo.",
+    "tierlist": "Lista de níveis",
+    "database": "Base de dados",
+    "calculator": "Calculadora",
+    "teams": "Equipes",
+    "characters": "Personagens",
+    "matrices": "Matrizes",
+    "guides": "Guias"
+  },
+  "characters": {
+    "title": "Banco de dados de Wiki ToF-Builds.com",
+    "description": "Todos os melhores personagens e suas construções classificadas em ordem de poder, viabilidade e versatilidade para limpar o conteúdo.",
+    "search": "Procurar..."
+  },
+  "character": {
+    "title": "{name} Guia de criação do ToF",
+    "characters": "Personagens",
+    "simulacrum": "Simulacro",
+    "recommended_matrices": "Matrizes recomendadas",
+    "pieces": "Peças",
+    "teams": "Equipes",
+    "skills": "Habilidades",
+    "awakening": "Despertar",
+    "advancement": "Avanço",
+    "gifts": "Presentes",
+    "upgrade_cost_planner": "Planejador de custos de atualização",
+    "level": "Nível",
+    "materials": "Materiais",
+    "cost": "Custo",
+    "attack": "Ataque",
+    "fortitude": "Fortitude",
+    "benediction": "Bênção",
+    "balance": "Equilíbrio",
+    "jump": "Pular",
+    "hold: attack": "Segurar: Ataque",
+    "croch": "Croch",
+    "dodge": "Desviar",
+    "skill": "Habilidade",
+    "discharge": "Descarga"
+  },
+  "matrices": {
+    "title": "Lista de Matrizes ToF",
+    "description": "Todas as Matrizes classificadas em ordem de poder, viabilidade e versatilidade para limpar o conteúdo.",
+    "matrices": "Matrizes"
+  },
+  "matrix": {
+    "title": "Banco de dados de Wiki ToF-Builds.com",
+    "description": "Todos os melhores personagens e suas construções classificadas em ordem de poder, viabilidade e versatilidade para limpar o conteúdo.",
+    "matrix": "Matriz",
+    "2pcbonus": "Bônus de conjunto de 2 peças",
+    "3pcbonus": "Bônus de conjunto de 3 peças",
+    "4pcbonus": "Bônus de conjunto de 4 peças",
+    "sets": "Conjuntos"
+  }
+}

@@ -17,6 +17,7 @@ const MobileNav = dynamic(() => import("../MobileNav"), {
 
 const navroutes: NavRoutes[] = [
   { id: "characters", name: "Characters", href: "/tof" },
+  { id: "matrices", name: "Matrices", href: "/tof/matrices" },
 ];
 
 const LayoutHeader = () => {
@@ -34,7 +35,7 @@ const LayoutHeader = () => {
             <Logo />
           </a>
         </Link>
-        <GameSelector currentGame={GAME.TOF} />
+        <GameSelector currentGame={GAME.TOF} className="hidden md:block" />
         <ul className="ml-auto hidden lg:flex">
           {navroutes.map((r) => (
             <NavLink
@@ -60,6 +61,7 @@ const LayoutHeader = () => {
       <MobileNav
         isOpen={isMobileNavOpen}
         navroutes={navroutes}
+        game={GAME.TOF}
         handleClick={setIsMobileNavOpen}
         f={t}
       />

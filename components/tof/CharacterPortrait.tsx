@@ -1,9 +1,8 @@
 import { memo } from "react";
-
+import { Character } from "@dvaji/tof-builds";
 import TypeIcon from "./TypeIcon";
 
 import { TOF_IMGS_CDN } from "@lib/constants";
-import { Character } from "interfaces/tof/character";
 
 interface CharacterPortraitProps {
   character: Character;
@@ -17,7 +16,6 @@ const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
           className="scale-125 transition-transform group-hover:scale-150"
           src={`${TOF_IMGS_CDN}/characters/${character.id}.png`}
           alt={character.name}
-          loading="lazy"
         />
       </div>
       <img

@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "title": "Basis Data Wiki ToF-Builds.com",
+    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
+    "tierlist": "Daftar Tingkat",
+    "database": "Basis Data",
+    "calculator": "Kalkulator",
+    "teams": "tim",
+    "characters": "Karakter",
+    "matrices": "Matriks",
+    "guides": "Panduan"
+  },
+  "characters": {
+    "title": "Basis Data Wiki ToF-Builds.com",
+    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
+    "search": "Mencari..."
+  },
+  "character": {
+    "title": "{name} Panduan Pembuatan ToF",
+    "characters": "Karakter",
+    "simulacrum": "Patung",
+    "recommended_matrices": "Matriks yang Direkomendasikan",
+    "pieces": "Bagian-bagian",
+    "teams": "tim",
+    "skills": "Keterampilan",
+    "awakening": "Bangun",
+    "advancement": "Kemajuan",
+    "gifts": "Hadiah",
+    "upgrade_cost_planner": "Tingkatkan Perencana Biaya",
+    "level": "Tingkat",
+    "materials": "Bahan:",
+    "cost": "Biaya",
+    "attack": "Menyerang",
+    "fortitude": "Ketabahan",
+    "benediction": "Doa",
+    "balance": "Keseimbangan",
+    "jump": "Melompat",
+    "hold: attack": "Tahan: Serang",
+    "croch": "Croch",
+    "dodge": "Menghindari",
+    "skill": "Keahlian",
+    "discharge": "Memulangkan"
+  },
+  "matrices": {
+    "title": "Daftar Matriks ToF",
+    "description": "Semua Matriks diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
+    "matrices": "Matriks"
+  },
+  "matrix": {
+    "title": "Basis Data Wiki ToF-Builds.com",
+    "description": "Semua karakter terbaik dan bangunannya diberi peringkat berdasarkan kekuatan, kelangsungan hidup, dan keserbagunaan untuk menghapus konten.",
+    "matrix": "Matriks",
+    "2pcbonus": "Bonus Set 2 potong",
+    "3pcbonus": "Bonus Set 3 potong",
+    "4pcbonus": "Bonus Set 4 potong",
+    "sets": "Set"
+  }
+}
