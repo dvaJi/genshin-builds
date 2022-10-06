@@ -79,10 +79,10 @@ function ItemPopoverSummary({
   return (
     <div className="cursor-pointer" {...trigger}>
       <SimpleRarityBox
-        img={getUrl(`/${materialInfo.type}/${id}.png`, 45, 45)}
-        rarity={materialInfo.rarity}
+        img={getUrl(`/${materialInfo?.type}/${id}.png`, 45, 45)}
+        rarity={materialInfo?.rarity}
         name={numFormat.format(data as any)}
-        alt={materialInfo.name}
+        alt={materialInfo?.name}
         nameSeparateBlock
         className={clsx("w-12 h-12", { grayscale: data === 0 })}
         classNameBlock="w-12"
@@ -94,7 +94,7 @@ function ItemPopoverSummary({
           onClick={(e) => e.stopPropagation()}
         >
           <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
-            {materialInfo.name}
+            {materialInfo?.name}
           </div>
 
           <div className="p-2 text-sm">

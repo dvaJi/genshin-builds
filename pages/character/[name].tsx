@@ -77,11 +77,11 @@ const CharacterPage = ({
         pageDescription={character.description}
         jsonLD={generateJsonLd(locale, t)}
       />
-      <div className="flex items-start justify-between mb-4">
+      <div className="mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
-          <div className="flex-none relative mr-2 lg:mr-5">
+          <div className="relative mr-2 flex-none lg:mr-5">
             <img
-              className="w-24 h-24 bg-vulcan-800 p-1 rounded-full border border-gray-900"
+              className="h-24 w-24 rounded-full border border-gray-900 bg-vulcan-800 p-1"
               src={getUrl(
                 `/characters/${character.id}/${character.id}_portrait.png`,
                 86,
@@ -90,9 +90,9 @@ const CharacterPage = ({
               alt={character.name}
             />
           </div>
-          <div className="flex flex-col flex-grow">
-            <div className="flex items-center mr-2">
-              <h1 className="text-3xl mr-2 text-white">
+          <div className="flex flex-grow flex-col">
+            <div className="mr-2 flex items-center">
+              <h1 className="mr-2 text-3xl text-white">
                 {character.name} ({character.rarity}★)
               </h1>
               <ElementIcon
@@ -106,12 +106,12 @@ const CharacterPage = ({
         </div>
       </div>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "skills", defaultMessage: "Skills" })}
       </h2>
       <div
         className={clsx(
-          "grid grid-cols-1 gap-4 w-full justify-center mb-8",
+          "mb-8 grid w-full grid-cols-1 justify-center gap-4",
           character.skills.length > 3
             ? "lg:grid-cols-3 xl:grid-cols-4"
             : "lg:grid-cols-3"
@@ -126,8 +126,8 @@ const CharacterPage = ({
         ))}
       </div>
       {builds.length > 0 && (
-        <div className="mb-8 mx-4 lg:mx-0">
-          <h2 className="text-3xl mb-3 text-white">
+        <div className="mx-4 mb-8 lg:mx-0">
+          <h2 className="mb-3 text-3xl text-white">
             {t({
               id: "builds",
               defaultMessage: "Builds",
@@ -136,7 +136,7 @@ const CharacterPage = ({
           <div>
             {mubuild && (
               <button
-                className={clsx("rounded text-lg mr-2 my-1 p-3 px-5", {
+                className={clsx("my-1 mr-2 rounded p-3 px-5 text-lg", {
                   "bg-vulcan-700 text-white": buildSelected === -1,
                   "bg-vulcan-800": buildSelected !== -1,
                 })}
@@ -151,7 +151,7 @@ const CharacterPage = ({
             {builds.map((build, index) => (
               <button
                 key={build.id}
-                className={clsx("rounded text-lg mr-2 my-1 p-3 px-5", {
+                className={clsx("my-1 mr-2 rounded p-3 px-5 text-lg", {
                   "bg-vulcan-700 text-white": buildSelected === index,
                   "bg-vulcan-800": buildSelected !== index,
                 })}
@@ -183,22 +183,22 @@ const CharacterPage = ({
           </Card>
         </div>
       )}
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
-      <Card className="flex flex-wrap">
+      <Card className="mb-4 flex flex-wrap">
         {recommendedTeams.map((team, index) => (
           <div
             key={team.name}
-            className="mb-4 pb-4 flex items-center border-b border-vulcan-600"
+            className="mb-4 flex items-center border-b border-vulcan-600 pb-4"
           >
             <div className="lg:mx-2">#{index + 1}</div>
             <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div>
             {team.characters.map((character) => (
               <Link key={character.id} href={`/character/${character.id}`}>
-                <a className="relative lg:mr-8 group text-center">
+                <a className="group relative text-center lg:mr-8">
                   <img
-                    className="rounded-full transition border-4 border-transparent group-hover:border-vulcan-500 group-hover:shadow-xl"
+                    className="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
                     src={getUrl(
                       `/characters/${character.id}/${character.id}_portrait.png`,
                       100,
@@ -209,7 +209,7 @@ const CharacterPage = ({
                     height="100"
                   />
                   {character.c_min > 0 && (
-                    <div className="absolute bottom-5 right-2/3 bg-vulcan-700 p-1 rounded-full text-xs font-bold text-gray-300">
+                    <div className="absolute bottom-5 right-2/3 rounded-full bg-vulcan-700 p-1 text-xs font-bold text-gray-300">
                       {`C${character.c_min}`}
                     </div>
                   )}
@@ -226,10 +226,10 @@ const CharacterPage = ({
         ))}
       </Card>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
-      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-8">
+      <div className="mb-8 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-3">
         {character.passives.map((passive) => (
           <PassiveSkill
             key={passive.id}
@@ -238,13 +238,13 @@ const CharacterPage = ({
           />
         ))}
       </div>
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "constellations",
           defaultMessage: "Constellations",
         })}
       </h2>
-      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 w-full justify-center mb-8">
+      <div className="mb-8 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-3">
         {character.constellations
           .filter((c) => c.level > 0)
           .map((constellation) => (
@@ -255,22 +255,22 @@ const CharacterPage = ({
             />
           ))}
       </div>
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "ascension_materials",
           defaultMessage: "Ascension Materials",
         })}
       </h2>
-      <Card className="p-0 mb-8 mx-4 lg:mx-0">
+      <Card className="mx-4 mb-8 p-0 lg:mx-0">
         <CharacterAscencionMaterials ascension={character.ascension} />
       </Card>
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "talent_materials",
           defaultMessage: "Talent Materials",
         })}
       </h2>
-      <Card className="p-0 mx-4 lg:mx-0">
+      <Card className="mx-4 p-0 lg:mx-0">
         <CharacterTalentMaterials talents={character.talent_materials} />
       </Card>
     </div>

@@ -20,8 +20,8 @@ function GameSelector({ currentGame, className }: Props) {
         aria-haspopup="true"
         aria-expanded="true"
         className={clsx(
-          "mt-1 flex h-10 w-60 items-center rounded border border-tof-900 border-opacity-70 px-2",
-          isOpen ? "bg-tof-700 bg-opacity-20" : "bg-transparent"
+          "mt-1 flex h-10 w-60 items-center rounded px-2 backdrop-blur-sm",
+          isOpen ? "bg-tof-700/50" : "bg-tof-700/10"
         )}
         onClick={() => setIsOpen((o) => !o)}
       >
@@ -37,7 +37,7 @@ function GameSelector({ currentGame, className }: Props) {
         role="menu"
         aria-hidden={!isOpen}
         className={clsx(
-          "absolute top-11 w-full rounded-b bg-tof-700 bg-opacity-90 shadow-lg",
+          "absolute top-11 w-full rounded-b bg-tof-700/90 shadow-md backdrop-blur-xl",
           isOpen ? "block" : "hidden"
         )}
       >
