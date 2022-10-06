@@ -14,6 +14,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getAllMaterialsMap } from "@utils/materials";
+import { getUrl } from "@lib/imgUrl";
 
 const Todo = dynamic(() => import("@components/genshin/Todo"), {
   ssr: false,
@@ -84,6 +85,15 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       materialsMap,
       lngDict,
       days: domains.characters[0].rotation.map((r) => r.day),
+      bgStyle: {
+        image: getUrl(
+          `/regions/Mondstadt_n.jpg`
+        ),
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
+        },
+      },
     },
   };
 };

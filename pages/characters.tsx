@@ -12,6 +12,7 @@ import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
@@ -45,14 +46,14 @@ const CharactersPage = ({
       <div className="">
         {elements.map((element) => (
           <Card key={element}>
-            <div className="flex self-center mb-2">
+            <div className="mb-2 flex self-center">
               <ElementIcon type={common[element]} height={32} width={32} />
-              <h3 className="text-2xl font-bold ml-2">
+              <h3 className="ml-2 text-2xl font-bold">
                 {t({ id: element.toLowerCase(), defaultMessage: element })}
               </h3>
             </div>
 
-            <div className="flex justify-center items-center flex-wrap">
+            <div className="flex flex-wrap items-center justify-center">
               {charactersByElement[element].map((character) => (
                 <Link key={character.id} href={`/character/${character.id}`}>
                   <a>
@@ -93,7 +94,19 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const common = require(`../_content/genshin/data/common.json`)[locale];
 
   return {
-    props: { charactersByElement, elements, lngDict, common },
+    props: {
+      charactersByElement,
+      elements,
+      lngDict,
+      common,
+      bgStyle: {
+        image: getUrl(`/regions/Inazuma_d.jpg`),
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
+        },
+      },
+    },
   };
 };
 

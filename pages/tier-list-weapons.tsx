@@ -161,6 +161,13 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       tierlist,
       weaponsMap,
       lngDict,
+      bgStyle: {
+        image: getUrl(`/regions/Sumeru_d.jpg`),
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
+        },
+      },
     },
   };
 };

@@ -152,6 +152,13 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
       domains: domains,
       days: domains.characters[0].rotation.map((r) => r.day),
+      bgStyle: {
+        image: getUrl(`/regions/Inazuma_d.jpg`),
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
+        },
+      },
     },
   };
 };
