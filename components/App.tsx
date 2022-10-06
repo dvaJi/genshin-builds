@@ -1,15 +1,23 @@
-import { AppProps } from "next/app";
+import { AppProps as NextAppProps } from "next/app";
 
 import LayoutGenshin from "@components/genshin/Layout";
 import TOFLayout from "@components/tof/Layout";
 
 import { isTOF } from "@utils/games";
+import { AppBackgroundStyle } from "@state/background-atom";
 
-const App = ({ Component, pageProps, router }: AppProps) => {
+type AppProps<P = any> = { pageProps: P } & Omit<NextAppProps<P>, "pageProps">;
+
+type Props = {
+  lngDict?: Record<string, string>;
+  bgStyle?: AppBackgroundStyle;
+};
+
+const App = ({ Component, pageProps, router }: AppProps<Props>) => {
   // Render the correct layout based on the game
   if (isTOF(router.route)) {
     return (
-      <TOFLayout>
+      <TOFLayout bgStyle={pageProps?.bgStyle}>
         <Component {...pageProps} />
       </TOFLayout>
     );
@@ -17,7 +25,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
 
   // Render Genshin Layout by default
   return (
-    <LayoutGenshin>
+    <LayoutGenshin bgStyle={pageProps?.bgStyle}>
       <Component {...pageProps} />
     </LayoutGenshin>
   );

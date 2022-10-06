@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { useEffect } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import TOFData, {
   Languages,
@@ -19,7 +18,6 @@ import { getDefaultLocale, getLocale } from "@lib/localData";
 import { TOF_IMGS_CDN } from "@lib/constants";
 import { getBuildsByCharacterId } from "@lib/tofdata";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
-import { setBackground } from "@state/background-atom";
 import { Build } from "interfaces/tof/build";
 
 type BuildFull = Build & {
@@ -43,14 +41,7 @@ const CharacterPage = ({
   locale,
 }: CharacterPageProps) => {
   const { t } = useIntl("character");
-  useEffect(() => {
-    setBackground({
-      image: `${TOF_IMGS_CDN}/bg_characters/${character.id}.png`,
-      gradient: {
-        background: "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
-      },
-    });
-  }, [character.id]);
+
   return (
     <div>
       <Metadata
@@ -460,6 +451,13 @@ export const getStaticProps: GetStaticProps = async ({
         hash: matrices.find((m) => m.id === b.id)?.hash,
       })),
       locale: defaultLocale,
+      bgStyle: {
+        image: `${TOF_IMGS_CDN}/bg_characters/${character?.id}.png`,
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
+        },
+      },
     },
   };
 };

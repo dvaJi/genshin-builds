@@ -6,11 +6,14 @@ import LayoutHeader from "@components/tof/LayoutHeader";
 import LayoutFooter from "@components/tof/LayoutFooter";
 import DynamicBackground from "@components/DynamicBackground";
 
+import { AppBackgroundStyle } from "@state/background-atom";
+
 type Props = {
   children: React.ReactNode;
+  bgStyle?: AppBackgroundStyle;
 };
 
-function Layout({ children }: Props) {
+function Layout({ children, bgStyle }: Props) {
   const router = useRouter();
 
   return (
@@ -39,7 +42,7 @@ function Layout({ children }: Props) {
         />
       </Head>
       <LayoutHeader />
-      <DynamicBackground />
+      <DynamicBackground bgStyle={bgStyle} />
       <main
         className={clsx(
           "z-10 mb-8 text-gray-400",

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 import clsx from "clsx";
@@ -24,7 +24,6 @@ import {
   getCharacterMostUsedBuild,
   getLocale,
 } from "@lib/localData";
-import { setBackground } from "@state/background-atom";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
@@ -56,16 +55,7 @@ const CharacterPage = ({
     builds.findIndex((b) => b.recommended) ?? 0
   );
   const { t } = useIntl("character");
-  useEffect(() => {
-    setBackground({
-      image: getUrl(
-        `/regions/${common[character.region] || "Mondstadt"}_d.jpg`
-      ),
-      gradient: {
-        background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
-      },
-    });
-  }, [character.region, common]);
+
   return (
     <div>
       <Metadata
@@ -454,6 +444,15 @@ export const getStaticProps: GetStaticProps = async ({
       common,
       mubuild,
       recommendedTeams: recommendedTeams ?? [],
+      bgStyle: {
+        image: getUrl(
+          `/regions/${common[character.region] || "Mondstadt"}_d.jpg`
+        ),
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
+        },
+      },
     },
   };
 };

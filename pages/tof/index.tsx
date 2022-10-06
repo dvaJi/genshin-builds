@@ -4,15 +4,14 @@ import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import TOFData, { Languages, Character, languages } from "@dvaji/tof-builds";
 
+import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/tof/CharacterPortrait";
 
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
-import { getDefaultLocale, getLocale } from "@lib/localData";
 import { TOF_IMGS_CDN } from "@lib/constants";
-import { setBackground } from "@state/background-atom";
+import { getDefaultLocale, getLocale } from "@lib/localData";
 import { getRarityColor, rarityToNumber } from "@utils/rarity";
-import Metadata from "@components/Metadata";
 
 type Props = {
   characters: Character[];
@@ -94,14 +93,6 @@ function Characters({ characters }: Props) {
     { value: "Support", label: "support" },
   ];
 
-  useEffect(() => {
-    setBackground({
-      image: `${TOF_IMGS_CDN}/bg/fulilingqu_bg_OS1.png`,
-      gradient: {
-        background: "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
-      },
-    });
-  }, []);
   return (
     <div>
       <Metadata
@@ -237,6 +228,13 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     props: {
       characters: characters.sort((a, b) => a.name.localeCompare(b.name)),
       lngDict,
+      bgStyle: {
+        image: `${TOF_IMGS_CDN}/bg/fulilingqu_bg_OS1.png`,
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
+        },
+      },
     },
   };
 };

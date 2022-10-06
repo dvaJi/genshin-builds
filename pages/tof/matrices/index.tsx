@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useEffect } from "react";
 import { GetStaticProps } from "next";
 import { TOF_IMGS_CDN } from "@lib/constants";
 import TOFData, { Languages, Matrix, languages } from "@dvaji/tof-builds";
@@ -8,7 +7,6 @@ import Metadata from "@components/Metadata";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
 
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { setBackground } from "@state/background-atom";
 import { getRarityColor } from "@utils/rarity";
 import useIntl from "@hooks/use-intl";
 
@@ -21,14 +19,7 @@ type Props = {
 
 function Matrices({ ssr, sr, r, n }: Props) {
   const { t } = useIntl("matrices");
-  useEffect(() => {
-    setBackground({
-      image: `${TOF_IMGS_CDN}/bg/fulilingqu_bg_OS1.png`,
-      gradient: {
-        background: "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
-      },
-    });
-  }, []);
+
   return (
     <div>
       <Metadata
@@ -139,6 +130,13 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       r,
       n,
       lngDict,
+      bgStyle: {
+        image: `${TOF_IMGS_CDN}/bg/fulilingqu_bg_OS1.png`,
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
+        },
+      },
     },
   };
 };

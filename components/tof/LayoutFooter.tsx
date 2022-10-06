@@ -9,7 +9,7 @@ const LayoutFooter = () => {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
-            <h4 className="mb-3 text-gray-200">GenshinBuilds</h4>
+            <h4 className="mb-3 text-gray-200">TOFBuilds</h4>
             <Link href="/privacy-policy">
               <a className="my-2">Privacy Policy</a>
             </Link>
@@ -47,8 +47,8 @@ const LayoutFooter = () => {
           </div>
           <div className="flex-1">
             <p className="text-sm">
-              TOFBuilds is a Database, Tier List, and Guide for Tower of Fantasy
-              on PC, mobile and consoles.
+              TOFBuilds is a Database, Tier List, and Guide for Tower of
+              Fantasy.
             </p>
             <p className="mt-3 text-sm">
               TOFBuilds is not endorsed by mHotta Studio or Perfect World, and

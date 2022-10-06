@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 import { atom } from "nanostores";
 
-interface AppBackgroundStyle {
+export interface AppBackgroundStyle {
   image?: string;
   gradient: CSSProperties;
 }

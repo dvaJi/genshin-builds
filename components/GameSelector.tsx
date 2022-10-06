@@ -53,7 +53,7 @@ function GameSelector({ currentGame, className }: Props) {
                 <img
                   className="mr-3 h-6 w-6 rounded"
                   src={`${TOF_IMGS_CDN}/gameicons/${game.slug}.webp`}
-                  alt="Genshin Impact"
+                  alt={game.name}
                 />
                 <span>{game.name}</span>
               </button>

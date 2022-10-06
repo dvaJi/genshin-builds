@@ -1,17 +1,16 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { ReactNode } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FiChevronLeft } from "react-icons/fi";
 
 import Card from "@components/ui/Card";
+import Metadata from "@components/Metadata";
 import GuideCard from "@components/GuideCard";
 
 import { getLocale } from "@lib/localData";
 import { getAllGuides, getGuideBySlug, Guide } from "@lib/guides_api";
-import { ReactNode, useEffect } from "react";
-import { setBackground } from "@state/background-atom";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
-import Metadata from "@components/Metadata";
 
 const YoutubeEmbed = dynamic(() => import("@components/YoutubeEmbed"), {
   ssr: false,
@@ -31,14 +30,6 @@ type GuideProps = {
 
 const GuideDetail = ({ guide }: GuideProps) => {
   const { t, locale } = useIntl("guides");
-  useEffect(() => {
-    setBackground({
-      image: guide.thumbnail,
-      gradient: {
-        background: "linear-gradient(rgba(26,28,35,.9),rgb(26, 29, 39) 620px)",
-      },
-    });
-  }, [guide.thumbnail]);
 
   return (
     <div>
@@ -52,8 +43,8 @@ const GuideDetail = ({ guide }: GuideProps) => {
         jsonLD={generateJsonLd(guide, locale, t)}
       />
       <Link href="/guides">
-        <a className="flex items-center group hover:text-slate-200">
-          <FiChevronLeft className="text-xl mr-2" />
+        <a className="group flex items-center hover:text-slate-200">
+          <FiChevronLeft className="mr-2 text-xl" />
           {t({ id: "back_to_guides", defaultMessage: "Back to Guides" })}
         </a>
       </Link>
@@ -64,13 +55,13 @@ const GuideDetail = ({ guide }: GuideProps) => {
         <p>{guide.description}</p>
         <div className="my-4">
           <div className="inline-block">
-            <span className="bg-vulcan-600 rounded mr-2 p-1 px-1.5 text-xs">
+            <span className="mr-2 rounded bg-vulcan-600 p-1 px-1.5 text-xs">
               {guide.type}
             </span>
             {guide.tags.map((tag) => (
               <span
                 key={tag}
-                className="bg-vulcan-700 text-slate-500 rounded mr-2 p-1 px-1.5 text-xs"
+                className="mr-2 rounded bg-vulcan-700 p-1 px-1.5 text-xs text-slate-500"
               >
                 #{tag}
               </span>
@@ -87,7 +78,7 @@ const GuideDetail = ({ guide }: GuideProps) => {
       </div>
       {guide.ytVideosUrl && (
         <div className="mt-8">
-          <h3 className="mx-6 lg:mx-0 text-xl text-slate-200 my-2">
+          <h3 className="mx-6 my-2 text-xl text-slate-200 lg:mx-0">
             {t({ id: "youtube_tutorial", defaultMessage: "Youtube Tutorial" })}
           </h3>
           <Card>
@@ -105,7 +96,7 @@ const GuideDetail = ({ guide }: GuideProps) => {
       )}
       {guide.giMapIDs && (
         <div className="mt-8">
-          <h3 className="mx-6 lg:mx-0 text-xl text-slate-200 my-2">
+          <h3 className="mx-6 my-2 text-xl text-slate-200 lg:mx-0">
             {t({ id: "interactive_map", defaultMessage: "Interactive Map" })}
           </h3>
           <Card>
@@ -115,7 +106,7 @@ const GuideDetail = ({ guide }: GuideProps) => {
       )}
       {guide.giCustomMap && (
         <div className="mt-8">
-          <h3 className="mx-6 lg:mx-0 text-xl text-slate-200 my-2">
+          <h3 className="mx-6 my-2 text-xl text-slate-200 lg:mx-0">
             {t({ id: "interactive_map", defaultMessage: "Interactive Map" })}
           </h3>
           <Card>
@@ -124,11 +115,11 @@ const GuideDetail = ({ guide }: GuideProps) => {
         </div>
       )}
       {guide.relatedGuides && (
-        <div className="mx-6 lg:mx-0 mt-8">
+        <div className="mx-6 mt-8 lg:mx-0">
           <h2 className="my-6 text-2xl font-semibold text-gray-200">
             {t({ id: "related_guides", defaultMessage: "Related Guides" })}
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4">
+          <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
             {guide.relatedGuides.map((guide) => (
               <GuideCard key={guide.title} guide={guide} />
             ))}
@@ -188,7 +179,17 @@ export const getStaticProps: GetStaticProps = async ({
   const guide = getGuideBySlug(`${params?.slug}`, locale, "genshin");
 
   return {
-    props: { lngDict, guide },
+    props: {
+      lngDict,
+      guide,
+      bgStyle: {
+        image: guide.thumbnail,
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.9),rgb(26, 29, 39) 620px)",
+        },
+      },
+    },
   };
 };
 
