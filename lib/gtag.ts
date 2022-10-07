@@ -1,11 +1,18 @@
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+export const TOF_GA_TRACKING_ID = process.env.NEXT_PUBLIC_TOF_GA_ID;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
+  console.log(url);
   if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("config", GA_TRACKING_ID, {
-      page_path: url,
-    });
+    const isTOF = url.startsWith("/tof");
+    (window as any).gtag(
+      "config",
+      isTOF ? TOF_GA_TRACKING_ID : GA_TRACKING_ID,
+      {
+        page_path: url,
+      }
+    );
   }
 };
 
