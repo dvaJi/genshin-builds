@@ -33,28 +33,28 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
       <div className="flex items-center justify-between">
         <div className="z-10 flex items-center">
           <img
-            className="h-48 w-48"
+            className="h-36 w-36 lg:h-48 lg:w-48"
             src={`${TOF_IMGS_CDN}/matrices/icon_matrix_${matrix.hash}_256.png`}
             alt={matrix.name}
           />
           <div className="">
-            <h2 className="mb-4 text-6xl font-extrabold text-tof-50">
+            <h2 className="mb-4 text-4xl font-extrabold text-tof-50 lg:text-6xl">
               {matrix.name}
             </h2>
             <span
               className={clsx(
-                "text-3xl font-bold",
+                "text-xl font-bold lg:text-3xl",
                 getRarityColor(matrix.rarity)
               )}
             >
               {matrix.rarity}
             </span>
-            <span className="ml-2 text-3xl uppercase">
+            <span className="ml-2 text-xl uppercase lg:text-3xl">
               {t({ id: "matrix", defaultMessage: "Matrix" })}
             </span>
           </div>
         </div>
-        <div>
+        <div className="w-full">
           <img
             className="h-44 w-full lg:h-48"
             src={`${TOF_IMGS_CDN}/matrices/avatar_matrix_${matrix.hash}_256.png`}
@@ -88,28 +88,28 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
             {t({ id: "sets", defaultMessage: "Sets" })}:
           </h3>
           <div className="mb-2 flex items-center">
-            <GiOvermind className="mr-2 text-4xl text-tof-300" />
+            <GiOvermind className="mr-4 h-8 w-8 flex-shrink-0 text-tof-300" />
             <div>
               <h4 className="text-xl text-tof-200">{matrix.mind.name}</h4>
               <p>{matrix.mind.desc}</p>
             </div>
           </div>
           <div className="mb-2 flex items-center">
-            <MdMemory className="mr-2 text-4xl text-tof-300" />
+            <MdMemory className="mr-4 h-8 w-8 flex-shrink-0 text-tof-300" />
             <div>
               <h4 className="text-xl text-tof-200">{matrix.memory.name}</h4>
               <p>{matrix.memory.desc}</p>
             </div>
           </div>
           <div className="mb-2 flex items-center">
-            <FaPrayingHands className="mr-2 text-4xl text-tof-300" />
+            <FaPrayingHands className="mr-4 h-8 w-8 flex-shrink-0 text-tof-300" />
             <div>
               <h4 className="text-xl text-tof-200">{matrix.belief.name}</h4>
               <p>{matrix.belief.desc}</p>
             </div>
           </div>
           <div className="mb-2 flex items-center">
-            <GiNestedHearts className="mr-2 text-4xl text-tof-300" />
+            <GiNestedHearts className="mr-4 h-8 w-8 flex-shrink-0 text-tof-300" />
             <div>
               <h4 className="text-xl text-tof-200">{matrix.emotion.name}</h4>
               <p>{matrix.emotion.desc}</p>

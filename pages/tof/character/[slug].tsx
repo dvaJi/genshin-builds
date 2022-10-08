@@ -53,110 +53,118 @@ const CharacterPage = ({
         pageDescription={character.description}
         jsonLD={generateJsonLd(locale, character, t)}
       />
-      <div className="flex items-center justify-between">
+      <div className="flex w-full  flex-wrap items-center justify-between">
         <div className="flex items-center">
           <img
-            className="h-48 w-48"
+            className="h-36 w-36 lg:h-48 lg:w-48"
             src={`${TOF_IMGS_CDN}/characters/${character.id}.png`}
             alt={character.name}
           />
           <div className="">
-            <h2 className="mb-4 text-6xl font-extrabold text-tof-50">
+            <h2 className="mb-4 text-4xl font-extrabold text-tof-50 lg:text-6xl">
               {character.name}
             </h2>
             <span
-              className={clsx("text-3xl font-bold", {
+              className={clsx("text-xl font-bold lg:text-3xl", {
                 "text-purple-500": character.rarity === "SR",
                 "text-yellow-200": character.rarity === "SSR",
               })}
             >
               {character.rarity}
             </span>
-            <span className="ml-2 text-3xl uppercase">
+            <span className="ml-2 text-xl uppercase lg:text-3xl">
               {t({ id: "simulacrum", defaultMessage: "Simulacrum" })}
             </span>
           </div>
         </div>
-        <div className="flex flex-row-reverse items-center">
+        <div className="mx-4 flex w-full lg:w-auto flex-row-reverse items-center justify-between">
           <img
             src={`${TOF_IMGS_CDN}/weapons/${character.weapon_id}.png`}
-            className="h-48 w-48"
+            className="h-24 w-24 lg:h-48 lg:w-48"
             alt={character.weapon}
           />
           <div>
-            <h2 className="mb-4 text-4xl font-extrabold text-tof-50">
+            <h2 className="mb-4 text-xl font-extrabold text-tof-50 lg:text-4xl">
               {character.weapon}
             </h2>
             <div className="flex justify-between">
               <div className="flex items-center">
                 <TypeIcon type={character.element} className="w-8" />
-                <span className="ml-1 text-xl">{character.element}</span>
+                <span className="ml-1 text-lg lg:text-xl">
+                  {character.element}
+                </span>
               </div>
               <div className="flex items-center">
                 <TypeIcon type={character.resonance} className="w-8" />
-                <span className="ml-1 text-xl">{character.resonance}</span>
+                <span className="ml-1 text-lg lg:text-xl">
+                  {character.resonance}
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="rounded border border-vulcan-700 bg-vulcan-700/90 py-4 px-4 shadow-lg">
-        <div className="mb-10 block">
-          <h2 className="text-2xl font-bold uppercase text-tof-50">
-            {t({
-              id: "recommended_matrices",
-              defaultMessage: "Recommended Matrices",
-            })}
-          </h2>
-          <div className="flex">
-            {builds.map((build) => (
-              <Link key={build.id} href={`/tof/matrices/${build.id}`}>
-                <a className="relative flex">
-                  <div className="absolute top-4 w-full text-center text-sm">
-                    <span className="rounded bg-vulcan-600 py-1 px-2">
-                      {t({
-                        id: "pieces",
-                        defaultMessage: "Pieces",
-                      })}
-                      : {build.pieces}
-                    </span>
-                  </div>
-                  <MatrixPortrait matrix={build as any} />
-                </a>
-              </Link>
+        {builds.length > 0 && (
+          <div className="mb-10 block">
+            <h2 className="text-2xl font-bold uppercase text-tof-50">
+              {t({
+                id: "recommended_matrices",
+                defaultMessage: "Recommended Matrices",
+              })}
+            </h2>
+            <div className="flex flex-wrap">
+              {builds.map((build) => (
+                <Link key={build.id} href={`/tof/matrices/${build.id}`}>
+                  <a className="relative flex">
+                    <div className="absolute top-4 w-full text-center text-sm">
+                      <span className="rounded bg-vulcan-600 py-1 px-2">
+                        {t({
+                          id: "pieces",
+                          defaultMessage: "Pieces",
+                        })}
+                        : {build.pieces}
+                      </span>
+                    </div>
+                    <MatrixPortrait matrix={build as any} />
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+        {teams.length > 0 && (
+          <div className="mb-10 block">
+            <h2 className="text-2xl font-bold uppercase text-tof-50">
+              {t({
+                id: "teams",
+                defaultMessage: "Teams",
+              })}
+            </h2>
+            {teams.map((team) => (
+              <div key={team.id} className="relative mb-4">
+                <div className="text-xl font-bold text-tof-100 lg:ml-2">
+                  {team.mode} - {team.comp}
+                </div>
+                <div className="flex border-b border-tof-900 pb-4 lg:mx-4">
+                  {team.characters.map((character) => (
+                    <Link
+                      key={character.id}
+                      href={`/tof/character/${character.id}`}
+                    >
+                      <a className="flex w-full flex-col items-center justify-center">
+                        <CharacterPortrait character={character} />
+                        <div className="rounded bg-vulcan-600 py-1 px-2 text-sm">
+                          {character.role}
+                        </div>
+                      </a>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-        <div className="mb-10 block">
-          <h2 className="text-2xl font-bold uppercase text-tof-50">
-            {t({
-              id: "teams",
-              defaultMessage: "Teams",
-            })}
-          </h2>
-          {teams.map((team) => (
-            <div key={team.id} className="relative mb-4">
-              <div className="ml-2 text-xl font-bold text-tof-100">
-                {team.mode} - {team.comp}
-              </div>
-              <div className="mx-4 flex border-b border-tof-900 pb-4">
-                {team.characters.map((character) => (
-                  <Link
-                    key={character.id}
-                    href={`/tof/character/${character.id}`}
-                  >
-                    <a className="flex w-full flex-col items-center justify-center">
-                      <CharacterPortrait character={character} />
-                      <div className="rounded bg-vulcan-600 py-1 px-2 text-sm">
-                        {character.role}
-                      </div>
-                    </a>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        )}
         <div className="mb-10 block">
           <h2 className="text-2xl font-bold uppercase text-tof-50">
             {t({
@@ -234,7 +242,7 @@ const CharacterPage = ({
                 className={clsx("m-1 rounded shadow", `TOF-bg-${gift.rarity}`)}
               >
                 <img
-                  className="h-24 w-24"
+                  className="h-16 w-16 lg:h-24 lg:w-24"
                   src={`${TOF_IMGS_CDN}/gifts/${gift.id}.png`}
                   title={gift.name}
                   alt={gift.name}
@@ -286,7 +294,7 @@ const CharacterPage = ({
                     <div className="relative">
                       <div
                         className={clsx(
-                          "mr-2 flex w-16 items-center justify-center rounded",
+                          "mr-2 flex w-12 items-center justify-center rounded lg:w-16",
                           `TOF-bg-${ascension.mat1.rarity}`
                         )}
                       >
@@ -305,7 +313,7 @@ const CharacterPage = ({
                       <div className="relative">
                         <div
                           className={clsx(
-                            "mr-2 flex w-16 items-center justify-center rounded",
+                            "mr-2 flex w-12 items-center justify-center rounded lg:w-16",
                             `TOF-bg-${ascension.mat2.rarity}`
                           )}
                         >
@@ -324,7 +332,7 @@ const CharacterPage = ({
                       <div className="relative">
                         <div
                           className={clsx(
-                            "mr-2 flex w-16 items-center justify-center rounded",
+                            "mr-2 flex w-12 items-center justify-center rounded lg:w-16",
                             `TOF-bg-${ascension.mat3.rarity}`
                           )}
                         >
@@ -345,6 +353,7 @@ const CharacterPage = ({
                       <img
                         src={`${TOF_IMGS_CDN}/icons/icon_gold_64.png`}
                         alt="Gold"
+                        className="w-12 lg:w-16"
                       />
                       {ascension.cost}
                     </div>
