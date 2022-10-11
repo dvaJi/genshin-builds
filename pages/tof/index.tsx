@@ -4,12 +4,13 @@ import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import TOFData, { Languages, Character, languages } from "@dvaji/tof-builds";
 
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/tof/CharacterPortrait";
 
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
-import { TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
 import { getDefaultLocale, getLocale } from "@lib/localData";
 import { getRarityColor, rarityToNumber } from "@utils/rarity";
 
@@ -108,6 +109,7 @@ function Characters({ characters }: Props) {
       />
       <div className="flex justify-between py-3">
         <h2 className="text-2xl text-tof-100">Characters and Weapons</h2>
+        <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
         <div>
           <input
             type="text"

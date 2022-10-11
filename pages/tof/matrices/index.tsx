@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
-import { TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
 import TOFData, { Languages, Matrix, languages } from "@dvaji/tof-builds";
 
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
 
@@ -50,6 +51,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
           ))}
         </div>
       </div>
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="mb-8">
         <h2 className="mb-2 text-3xl">
           <span className={getRarityColor("SR")}>SR</span>{" "}

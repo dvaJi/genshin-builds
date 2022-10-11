@@ -9,13 +9,14 @@ import TOFData, {
   languages,
 } from "@dvaji/tof-builds";
 
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import TypeIcon from "@components/tof/TypeIcon";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
 import CharacterPortrait from "@components/tof/CharacterPortrait";
 
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
 import { getBuildsByCharacterId } from "@lib/tofdata";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 import { Build } from "interfaces/tof/build";
@@ -53,6 +54,7 @@ const CharacterPage = ({
         pageDescription={character.description}
         jsonLD={generateJsonLd(locale, character, t)}
       />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="flex w-full  flex-wrap items-center justify-between">
         <div className="flex items-center">
           <img

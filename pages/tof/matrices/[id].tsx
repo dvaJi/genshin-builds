@@ -5,10 +5,11 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { GiNestedHearts, GiOvermind } from "react-icons/gi";
 import TOFData, { Languages, Matrix, languages } from "@dvaji/tof-builds";
 
+import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
 import { getRarityColor } from "@utils/rarity";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
@@ -62,6 +63,7 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
           />
         </div>
       </div>
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="rounded border border-vulcan-700 bg-vulcan-700/90 py-4 px-4 shadow-lg">
         {matrix.bonus.map((bonus) => (
           <div key={bonus.value} className="flex flex-col">
