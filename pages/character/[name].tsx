@@ -24,7 +24,7 @@ import {
   getCharacterMostUsedBuild,
   getLocale,
 } from "@lib/localData";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
 import { getUrl } from "@lib/imgUrl";
@@ -57,7 +57,12 @@ const CharacterPage = ({
   const { t } = useIntl("character");
 
   return (
-    <div>
+    <div className="relative overflow-hidden">
+      <img
+        src={`${IMGS_CDN}/characters/${character.id}/header_image.png`}
+        className="absolute -top-10 z-0 w-full select-none opacity-60"
+        alt={character.name}
+      />
       <Metadata
         pageTitle={t({
           id: "title",
@@ -67,16 +72,12 @@ const CharacterPage = ({
         pageDescription={character.description}
         jsonLD={generateJsonLd(locale, t)}
       />
-      <div className="mb-4 flex items-start justify-between">
+      <div className="relative z-20 mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
           <div className="relative mr-2 flex-none lg:mr-5">
             <img
-              className="h-24 w-24 rounded-full border border-gray-900 bg-vulcan-800 p-1"
-              src={getUrl(
-                `/characters/${character.id}/${character.id}_portrait.png`,
-                86,
-                86
-              )}
+              className="h-40 w-40 rounded-full border border-gray-900 bg-vulcan-800 p-1"
+              src={getUrl(`/characters/${character.id}/image.png`, 160, 160)}
               alt={character.name}
             />
           </div>
@@ -91,17 +92,22 @@ const CharacterPage = ({
                 height={30}
               />
             </div>
-            <div>{character.description}</div>
+            <div className="shadow-black text-shadow">
+              {character.description}
+            </div>
+            <div className="shadow-black text-shadow">
+              {character.affiliation}
+            </div>
           </div>
         </div>
       </div>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
+      <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
         {t({ id: "skills", defaultMessage: "Skills" })}
       </h2>
       <div
         className={clsx(
-          "mb-8 grid w-full grid-cols-1 justify-center gap-4",
+          "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
           character.skills.length > 3
             ? "lg:grid-cols-3 xl:grid-cols-4"
             : "lg:grid-cols-3"
@@ -116,7 +122,7 @@ const CharacterPage = ({
         ))}
       </div>
       {builds.length > 0 && (
-        <div className="mx-4 mb-8 lg:mx-0">
+        <div className="relative z-50 mx-4 mb-8 lg:mx-0">
           <h2 className="mb-3 text-3xl text-white">
             {t({
               id: "builds",
@@ -126,10 +132,13 @@ const CharacterPage = ({
           <div>
             {mubuild && (
               <button
-                className={clsx("my-1 mr-2 rounded p-3 px-5 text-lg", {
-                  "bg-vulcan-700 text-white": buildSelected === -1,
-                  "bg-vulcan-800": buildSelected !== -1,
-                })}
+                className={clsx(
+                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 text-lg backdrop-blur",
+                  {
+                    "bg-vulcan-700 text-white": buildSelected === -1,
+                    "bg-vulcan-800": buildSelected !== -1,
+                  }
+                )}
                 onClick={() => setBuildSelected(-1)}
               >
                 <div className="inline-block w-5">
@@ -141,10 +150,13 @@ const CharacterPage = ({
             {builds.map((build, index) => (
               <button
                 key={build.id}
-                className={clsx("my-1 mr-2 rounded p-3 px-5 text-lg", {
-                  "bg-vulcan-700 text-white": buildSelected === index,
-                  "bg-vulcan-800": buildSelected !== index,
-                })}
+                className={clsx(
+                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 text-lg backdrop-blur",
+                  {
+                    "bg-vulcan-700 text-white": buildSelected === index,
+                    "bg-vulcan-800": buildSelected !== index,
+                  }
+                )}
                 onClick={() => setBuildSelected(index)}
               >
                 {build.recommended && (

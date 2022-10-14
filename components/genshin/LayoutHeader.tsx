@@ -65,7 +65,7 @@ const LayoutHeader = () => {
   const router = useRouter();
   const { t } = useIntl("layout");
   return (
-    <nav className="sticky top-0 z-40 mb-5 h-12 border-b border-gray-700 border-opacity-60 bg-vulcan-800/70 shadow-md backdrop-blur">
+    <nav className="sticky top-0 z-40 h-12 border-b border-gray-700 border-opacity-60 bg-vulcan-800/70 shadow-md backdrop-blur">
       <div className="container mx-auto mb-12 flex h-full text-gray-400 ">
         <Link href="/">
           <a className="mr-6 flex items-center font-bold" aria-current="page">

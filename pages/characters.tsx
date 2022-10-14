@@ -48,7 +48,7 @@ const CharactersPage = ({
           <Card key={element}>
             <div className="mb-2 flex self-center">
               <ElementIcon type={common[element]} height={32} width={32} />
-              <h3 className="ml-2 text-2xl font-bold">
+              <h3 className="ml-2 text-2xl font-bold text-white">
                 {t({ id: element.toLowerCase(), defaultMessage: element })}
               </h3>
             </div>
@@ -56,7 +56,7 @@ const CharactersPage = ({
             <div className="flex flex-wrap items-center justify-center">
               {charactersByElement[element].map((character) => (
                 <Link key={character.id} href={`/character/${character.id}`}>
-                  <a>
+                  <a className="my-2 min-h-[120px]">
                     <CharacterPortrait
                       character={{ ...character, element: common[element] }}
                     />

@@ -20,8 +20,8 @@
   "traveler": {
     "weapons": ["favonius_sword", "prototype_rancour", "dull_blade"],
     "artifacts": [
-      ["emblem_of_severed_fate"],
-      ["deepwood_memories"]
+      ["deepwood_memories"],
+      ["emblem_of_severed_fate"]
     ]
   },
   "lisa": {
@@ -66,7 +66,7 @@
     ]
   },
   "venti": {
-    "weapons": ["the_stringless", "elegy_for_the_end", "favonius_warbow"],
+    "weapons": ["elegy_for_the_end", "favonius_warbow", "the_stringless"],
     "artifacts": [
       ["viridescent_venerer"],
       ["gladiators_finale", "viridescent_venerer"]
@@ -188,7 +188,7 @@
     ]
   },
   "diona": {
-    "weapons": ["sacrificial_bow", "favonius_warbow", "hunters_bow"],
+    "weapons": ["sacrificial_bow", "hunters_bow", "favonius_warbow"],
     "artifacts": [
       ["maiden_beloved"],
       ["maiden_beloved", "tenacity_of_the_millelith"],
@@ -219,7 +219,7 @@
     "weapons": [
       "sacrificial_fragments",
       "thrilling_tales_of_dragon_slayers",
-      "favonius_codex"
+      "apprentices_notes"
     ],
     "artifacts": [
       ["viridescent_venerer"],
@@ -272,7 +272,7 @@
     ]
   },
   "thoma": {
-    "weapons": ["beginners_protector", "black_tassel", "favonius_lance"],
+    "weapons": ["beginners_protector", "favonius_lance", "black_tassel"],
     "artifacts": [
       ["tenacity_of_the_millelith", "emblem_of_severed_fate"],
       ["emblem_of_severed_fate"],
@@ -362,7 +362,7 @@
     ]
   },
   "aloy": {
-    "weapons": ["hunters_bow", "rust", "the_stringless"],
+    "weapons": ["hunters_bow", "rust", "windblume_ode"],
     "artifacts": [
       ["blizzard_strayer"],
       ["wanderers_troupe"]
@@ -407,8 +407,7 @@
     "weapons": ["hunters_bow", "favonius_warbow", "the_stringless"],
     "artifacts": [
       ["deepwood_memories"],
-      ["emblem_of_severed_fate"],
-      ["deepwood_memories"]
+      ["emblem_of_severed_fate"]
     ]
   },
   "dori": {
@@ -425,6 +424,21 @@
       ["wanderers_troupe"],
       ["gilded_dreams"],
       ["deepwood_memories"]
+    ]
+  },
+  "cyno": {
+    "weapons": [
+      "staff_of_the_scarlet_sands",
+      "primordial_jade_wingedspear",
+      "deathmatch"
+    ],
+    "artifacts": [["gilded_dreams"], ["gladiators_finale"], ["thundering_fury"]]
+  },
+  "candace": {
+    "weapons": ["beginners_protector", "black_tassel", "favonius_lance"],
+    "artifacts": [
+      ["tenacity_of_the_millelith", "emblem_of_severed_fate"],
+      ["emblem_of_severed_fate"]
     ]
   }
 }
