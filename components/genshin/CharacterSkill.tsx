@@ -28,18 +28,20 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
     <div className="flex justify-center lg:block">
       <Card
         className={clsx(
-          "relative flex w-11/12 flex-col justify-start overflow-hidden bg-opacity-50 p-0 backdrop-blur lg:w-full",
-          isOpen ? "h-auto" : "h-30 lg:h-60"
+          "relative flex w-11/12 flex-col justify-start overflow-hidden  p-0 lg:w-full",
+          isOpen
+            ? "h-auto bg-opacity-90"
+            : "h-30 bg-opacity-50 backdrop-blur-sm lg:h-60"
         )}
       >
-        <div className="relative flex h-60  flex-col">
+        <div className="relative flex h-60 flex-col">
           <div
             onClick={toggle}
             className="absolute top-0 left-0 right-0 bottom-0 z-0 flex cursor-pointer items-start justify-center overflow-hidden"
           >
             <div className="absolute bottom-10 cursor-pointer">
               <img
-                className="h-16 opacity-50 select-none"
+                className="h-16 select-none opacity-50"
                 src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
                   "normal_attack_",
                   ""

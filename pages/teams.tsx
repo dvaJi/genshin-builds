@@ -69,7 +69,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   let teamsf: any = {};
 
   Object.entries(teams).forEach(([id, tims]) => {
-    if (!teamsf[characters[id].name]) {
+    if (!characters[id]?.name) return;
+
+    if (!teamsf[characters[id]?.name]) {
       teamsf[characters[id].name] = [];
     }
 
@@ -77,8 +79,10 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       ...tims[0],
       characters: tims[0].characters.map((c) => {
         return {
-          ...c,
+          id: c.id,
           name: characters[c.id]?.name || "",
+          role: c.role,
+          element: characters[c.id]?.element || "",
         };
       }),
     });

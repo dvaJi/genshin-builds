@@ -195,9 +195,7 @@ function Characters({ characters }: Props) {
       <div className="grid grid-cols-2 gap-1 rounded border border-vulcan-700 bg-vulcan-700/90 py-4 px-4 shadow-lg md:grid-cols-3 lg:grid-cols-4">
         {filteredCharacters.map((character) => (
           <Link key={character.id} href={`/tof/character/${character.id}`}>
-            <a>
-              <CharacterPortrait character={character} key={character.id} />
-            </a>
+            <CharacterPortrait character={character} key={character.id} />
           </Link>
         ))}
       </div>

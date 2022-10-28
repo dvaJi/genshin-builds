@@ -55,12 +55,15 @@ const CharactersPage = ({
 
             <div className="flex flex-wrap items-center justify-center">
               {charactersByElement[element].map((character) => (
-                <Link key={character.id} href={`/character/${character.id}`}>
-                  <a className="my-2 min-h-[120px]">
-                    <CharacterPortrait
-                      character={{ ...character, element: common[element] }}
-                    />
-                  </a>
+                <Link
+                  key={character.id}
+                  href={`/character/${character.id}`}
+                  className="my-2 min-h-[120px]"
+                >
+                  <CharacterPortrait
+                    character={character}
+                    showElement={false}
+                  />
                 </Link>
               ))}
             </div>

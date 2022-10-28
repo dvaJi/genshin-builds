@@ -43,21 +43,19 @@ function GameSelector({ currentGame, className }: Props) {
       >
         {Object.values(GAME).map((game) => (
           <Link key={game.name} href={game.path}>
-            <a>
-              <button
-                type="button"
-                tabIndex={0}
-                role="menuitem"
-                className="flex h-full w-full items-center py-2 px-2 text-left text-sm hover:bg-tof-600"
-              >
-                <img
-                  className="mr-3 h-6 w-6 rounded"
-                  src={`${TOF_IMGS_CDN}/gameicons/${game.slug}.webp`}
-                  alt={game.name}
-                />
-                <span>{game.name}</span>
-              </button>
-            </a>
+            <button
+              type="button"
+              tabIndex={0}
+              role="menuitem"
+              className="flex h-full w-full items-center py-2 px-2 text-left text-sm hover:bg-tof-600"
+            >
+              <img
+                className="mr-3 h-6 w-6 rounded"
+                src={`${TOF_IMGS_CDN}/gameicons/${game.slug}.webp`}
+                alt={game.name}
+              />
+              <span>{game.name}</span>
+            </button>
           </Link>
         ))}
       </div>

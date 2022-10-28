@@ -14,10 +14,10 @@ interface WeaponCardProps {
 
 const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
   return (
-    <div className="bg-vulcan-900 border border-vulcan-700 mb-2 rounded flex flex-col hover:border-vulcan-600 hover:bg-vulcan-800 transition">
-      <div className="flex flex-row h-full">
+    <div className="mb-2 flex flex-col rounded border border-vulcan-700 bg-vulcan-900 transition hover:border-vulcan-600 hover:bg-vulcan-800">
+      <div className="flex h-full flex-row">
         <div
-          className="flex flex-none relative bg-cover p-1 rounded rounded-tr-none rounded-br-none items-center justify-center"
+          className="relative flex flex-none items-center justify-center rounded rounded-tr-none rounded-br-none bg-cover p-1"
           style={{
             backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
           }}
@@ -28,7 +28,7 @@ const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
             width={92}
             alt={weapon.name}
           />
-          <div className="absolute bottom-0 bg-gray-900 bg-opacity-50 w-full px-2 py-1 items-center justify-center flex">
+          <div className="absolute bottom-0 flex w-full items-center justify-center bg-gray-900 bg-opacity-50 px-2 py-1">
             <StarRarity
               starClassname="w-4"
               rarity={weapon.rarity}
@@ -36,29 +36,27 @@ const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
             />
           </div>
         </div>
-        <div className="ml-3 p-3 relative">
+        <div className="relative ml-3 p-3">
           <Link href={`/weapon/${weapon.id}`}>
-            <a>
-              <div className="flex items-center">
-                <h4 className="font-bold text-white">
-                  {weapon.name}{" "}
-                  {refinement !== undefined && (
-                    <span className="text-xs bg-vulcan-600 p-1 rounded">
-                      R{refinement}
-                    </span>
-                  )}
-                </h4>
-                <h3 className="relative ml-2 text-xs text-gray-300 sm:ml-0 sm:absolute sm:right-4">
-                  {weapon.stats.secondary}
-                </h3>
-              </div>
-              <p
-                className="text-sm weapon-bonus max-h-24 overflow-y-auto custom-scroll"
-                dangerouslySetInnerHTML={{
-                  __html: weapon.bonus || "",
-                }}
-              />
-            </a>
+            <div className="flex items-center">
+              <h4 className="font-bold text-white">
+                {weapon.name}{" "}
+                {refinement !== undefined && (
+                  <span className="rounded bg-vulcan-600 p-1 text-xs">
+                    R{refinement}
+                  </span>
+                )}
+              </h4>
+              <h3 className="relative ml-2 text-xs text-gray-300 sm:absolute sm:right-4 sm:ml-0">
+                {weapon.stats.secondary}
+              </h3>
+            </div>
+            <p
+              className="weapon-bonus custom-scroll max-h-24 overflow-y-auto text-sm"
+              dangerouslySetInnerHTML={{
+                __html: weapon.bonus || "",
+              }}
+            />
           </Link>
         </div>
       </div>

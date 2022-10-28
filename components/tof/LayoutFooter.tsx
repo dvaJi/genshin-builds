@@ -10,39 +10,39 @@ const LayoutFooter = () => {
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-3 text-gray-200">TOFBuilds</h4>
-            <Link href="/privacy-policy">
-              <a className="my-2">Privacy Policy</a>
+            <Link href="/privacy-policy" className="my-2">
+              Privacy Policy
             </Link>
-            <Link href="/contact">
-              <a className="my-2">Contact</a>
-            </Link>
-          </div>
-          <div className="flex flex-1 flex-col">
-            <Link href={router.asPath} locale="en">
-              <a className="my-2">English</a>
-            </Link>
-            <Link href={router.asPath} locale="es">
-              <a className="my-2">Español</a>
-            </Link>
-            <Link href={router.asPath} locale="ja">
-              <a className="my-2">日本語</a>
-            </Link>
-            <Link href={router.asPath} locale="de">
-              <a className="my-2">Deutsch</a>
+            <Link href="/contact" className="my-2">
+              Contact
             </Link>
           </div>
           <div className="flex flex-1 flex-col">
-            <Link href={router.asPath} locale="fr">
-              <a className="my-2">Français</a>
+            <Link href={router.asPath} locale="en" className="my-2">
+              English
             </Link>
-            <Link href={router.asPath} locale="id">
-              <a className="my-2">Indonesia</a>
+            <Link href={router.asPath} locale="es" className="my-2">
+              Español
             </Link>
-            <Link href={router.asPath} locale="pt">
-              <a className="my-2">Português</a>
+            <Link href={router.asPath} locale="ja" className="my-2">
+              日本語
             </Link>
-            <Link href={router.asPath} locale="th">
-              <a className="my-2">ภาษาไทย</a>
+            <Link href={router.asPath} locale="de" className="my-2">
+              Deutsch
+            </Link>
+          </div>
+          <div className="flex flex-1 flex-col">
+            <Link href={router.asPath} locale="fr" className="my-2">
+              Français
+            </Link>
+            <Link href={router.asPath} locale="id" className="my-2">
+              Indonesia
+            </Link>
+            <Link href={router.asPath} locale="pt" className="my-2">
+              Português
+            </Link>
+            <Link href={router.asPath} locale="th" className="my-2">
+              ภาษาไทย
             </Link>
           </div>
           <div className="flex-1">

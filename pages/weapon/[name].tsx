@@ -40,23 +40,23 @@ const WeaponPage = ({
         pageDescription={weapon.description}
         jsonLD={generateJsonLd(locale, t)}
       />
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex flex-wrap lg:flex-nowrap relative items-center px-2 lg:px-0">
+      <div className="mb-4 flex items-start justify-between">
+        <div className="relative flex flex-wrap items-center px-2 lg:flex-nowrap lg:px-0">
           <div
-            className="flex-none relative mr-2 lg:mr-5 rounded-lg border border-gray-900 bg-cover"
+            className="relative mr-2 flex-none rounded-lg border border-gray-900 bg-cover lg:mr-5"
             style={{
               backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
             }}
           >
             <img
-              className="w-52 h-52"
+              className="h-52 w-52"
               src={getUrl(`/weapons/${weapon.id}.png`, 208, 208)}
               alt={weapon.name}
             />
           </div>
-          <div className="flex flex-col flex-grow">
-            <div className="flex items-center mr-2">
-              <h1 className="text-3xl mr-2 text-white">
+          <div className="flex flex-grow flex-col">
+            <div className="mr-2 flex items-center">
+              <h1 className="mr-2 text-3xl text-white">
                 {weapon.name} ({weapon.rarity}★)
               </h1>
             </div>
@@ -73,14 +73,14 @@ const WeaponPage = ({
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div>
           <div className="float-right">
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
+              className={clsx("mx-2 my-1 rounded border p-1 px-4", {
+                "border-gray-700 bg-vulcan-700 text-white hover:bg-vulcan-600":
                   weaponStatIndex > 0,
-                "bg-vulcan-800 border-gray-800": weaponStatIndex === 0,
+                "border-gray-800 bg-vulcan-800": weaponStatIndex === 0,
               })}
               disabled={weaponStatIndex === 0}
               onClick={() => setWeaponStatIndex(weaponStatIndex - 1)}
@@ -88,10 +88,10 @@ const WeaponPage = ({
               -
             </button>
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
+              className={clsx("mx-2 my-1 rounded border p-1 px-4", {
+                "border-gray-700 bg-vulcan-700 text-white hover:bg-vulcan-600":
                   weaponStatIndex < weapon.stats.levels.length,
-                "bg-vulcan-800 border-gray-800":
+                "border-gray-800 bg-vulcan-800":
                   weaponStatIndex === weapon.stats.levels.length - 1,
               })}
               disabled={weaponStatIndex === weapon.stats.levels.length - 1}
@@ -100,7 +100,7 @@ const WeaponPage = ({
               +
             </button>
           </div>
-          <h2 className="text-3xl mb-2 text-white">
+          <h2 className="mb-2 text-3xl text-white">
             {t({ id: "stats", defaultMessage: "Stats" })}
           </h2>
           <Card>
@@ -135,10 +135,10 @@ const WeaponPage = ({
         <div className="mb-8">
           <div className="float-right">
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
+              className={clsx("mx-2 my-1 rounded border p-1 px-4", {
+                "border-gray-700 bg-vulcan-700 text-white hover:bg-vulcan-600":
                   refinement > 0,
-                "bg-vulcan-800 border-gray-800": refinement === 0,
+                "border-gray-800 bg-vulcan-800": refinement === 0,
               })}
               disabled={refinement === 0}
               onClick={() => setRefinement(refinement - 1)}
@@ -146,10 +146,10 @@ const WeaponPage = ({
               -
             </button>
             <button
-              className={clsx("rounded mx-2 my-1 p-1 px-4 border", {
-                "bg-vulcan-700 hover:bg-vulcan-600 text-white border-gray-700":
+              className={clsx("mx-2 my-1 rounded border p-1 px-4", {
+                "border-gray-700 bg-vulcan-700 text-white hover:bg-vulcan-600":
                   refinement < weapon.refinements.length - 1,
-                "bg-vulcan-800 border-gray-800":
+                "border-gray-800 bg-vulcan-800":
                   refinement === weapon.refinements.length - 1,
               })}
               disabled={refinement === weapon.refinements.length - 1}
@@ -158,7 +158,7 @@ const WeaponPage = ({
               +
             </button>
           </div>
-          <h2 className="text-3xl mb-2 text-white">
+          <h2 className="mb-2 text-3xl text-white">
             {t({ id: "refinement", defaultMessage: "Refinement" })}
           </h2>
           <Card>
@@ -172,40 +172,42 @@ const WeaponPage = ({
       </div>
       {recommendedCharacters.length > 0 && (
         <>
-          <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+          <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
             {t({
               id: "recommended_characters",
               defaultMessage: "Recomended Characters",
             })}
           </h2>
-          <div className="mb-4 mx-4 lg:mx-0 flex">
+          <div className="mx-4 mb-4 flex lg:mx-0">
             {recommendedCharacters.map((character) => (
-              <Link key={character} href={`/character/${character}`}>
-                <a className="mr-10 group rounded-full transition border-4 border-transparent hover:border-vulcan-500">
-                  <img
-                    className="rounded-full group-hover:shadow-xl"
-                    src={getUrl(
-                      `/characters/${character}/${character}_portrait.png`,
-                      100,
-                      100
-                    )}
-                    alt={character}
-                    width="100"
-                    height="100"
-                  />
-                </a>
+              <Link
+                key={character}
+                href={`/character/${character}`}
+                className="group mr-10 rounded-full border-4 border-transparent transition hover:border-vulcan-500"
+              >
+                <img
+                  className="rounded-full group-hover:shadow-xl"
+                  src={getUrl(
+                    `/characters/${character}/${character}_portrait.png`,
+                    100,
+                    100
+                  )}
+                  alt={character}
+                  width="100"
+                  height="100"
+                />
               </Link>
             ))}
           </div>
         </>
       )}
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0 text-white">
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "ascension_materials",
           defaultMessage: "Ascension Materials",
         })}
       </h2>
-      <Card className="p-0 mx-4 lg:mx-0">
+      <Card className="mx-4 p-0 lg:mx-0">
         <WeaponAscensionMaterials ascension={weapon.ascensions} />
       </Card>
     </div>

@@ -8,21 +8,31 @@ function DynamicBackground({ bgStyle }: Props) {
   // const appBackgroundStyle = useStore(background);
 
   return (
-    <div className="flex flex-col">
-      <div className="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex items-start justify-center overflow-hidden">
-        {bgStyle?.image && (
+    <>
+      {bgStyle?.image && (
+        <div className="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex items-start justify-center overflow-hidden">
           <img
             className="w-full scale-100 md:scale-100"
             alt="Background image"
             src={bgStyle?.image}
           />
-        )}
-      </div>
-      <div
-        className="pointer-events-none absolute top-0 left-0 h-full w-full"
-        style={{ ...bgStyle?.gradient }}
-      />
-    </div>
+        </div>
+      )}
+      {bgStyle?.gradient && (
+        <div
+          className="pointer-events-none absolute top-0 left-0 h-full w-full"
+          style={{ ...bgStyle?.gradient }}
+        />
+      )}
+      {bgStyle?.stickyImage && (
+        <div
+          className="absolute top-0 left-0 right-0 bottom-0 z-0 h-full overflow-hidden bg-fixed bg-center bg-no-repeat lg:h-[1300px]"
+          style={{
+            backgroundImage: `url('${bgStyle?.stickyImage}')`,
+          }}
+        />
+      )}
+    </>
   );
 }
 

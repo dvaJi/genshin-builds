@@ -83,7 +83,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "weapons", defaultMessage: "Weapons" })}
       </h2>
-      <div className="md:flex my-3">
+      <div className="my-3 md:flex">
         <div className="flex-1">
           <div className="md:flex">
             <SearchInput
@@ -99,7 +99,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                 <button
                   key={type}
                   className={clsx(
-                    "border rounded hover:border-gray-700 hover:bg-vulcan-800 mr-1",
+                    "mr-1 rounded border hover:border-gray-700 hover:bg-vulcan-800",
                     type === typeFilter
                       ? "border-gray-700 bg-vulcan-800"
                       : "border-gray-800"
@@ -114,7 +114,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
                   }}
                 >
                   <LazyLoadImage
-                    className="w-10 h-10"
+                    className="h-10 w-10"
                     alt={type}
                     src={getUrl(`/weapons_type/${type}.png`, 40, 40)}
                     width={40}
@@ -142,19 +142,19 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
               values={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}
             />
           </div>
-          <div className="flex flex-col items-center mr-2">
+          <div className="mr-2 flex flex-col items-center">
             <h3 className="font-semibold">
               {t({ id: "level", defaultMessage: "Level" })}
             </h3>
-            <div className="text-lg font-bold text-white mx-2">
+            <div className="mx-2 text-lg font-bold text-white">
               {weapons[0].stats.levels[weaponStatIndex].level}
             </div>
           </div>
-          <div className="flex flex-col items-center mr-2">
+          <div className="mr-2 flex flex-col items-center">
             <h3 className="font-semibold">
               {t({ id: "ascension", defaultMessage: "Ascension" })}
             </h3>
-            <div className="text-lg font-bold text-white mx-2">
+            <div className="mx-2 text-lg font-bold text-white">
               {weapons[0].stats.levels[weaponStatIndex].ascension}
             </div>
           </div>
@@ -172,69 +172,71 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="">
         {filteredWeapons.map((weapon) => (
-          <Link key={weapon.id} href={`/weapon/${weapon.id}`}>
-            <a className="bg-vulcan-800 border border-vulcan-700 mb-2 rounded flex flex-col hover:bg-vulcan-700 hover:border-vulcan-500">
-              <div className="flex flex-row h-full">
-                <div
-                  className="flex flex-none relative bg-cover rounded rounded-tr-none rounded-br-none items-center justify-center"
-                  style={{
-                    backgroundImage: `url(${getUrl(
-                      `/bg_${weapon.rarity}star.png`
-                    )})`,
-                  }}
-                >
-                  <LazyLoadImage
-                    src={getUrl(`/weapons/${weapon.id}.png`, 126, 126)}
-                    height={126}
-                    width={126}
-                    alt={weapon.name}
-                  />
-                  <div className="absolute bottom-0 bg-gray-900 bg-opacity-50 w-full px-2 py-0.5 items-center justify-center flex">
-                    <StarRarity
-                      starClassname="w-4"
-                      rarity={weapon.rarity}
-                      starsSize={42}
-                    />
-                  </div>
-                </div>
-                <div className="ml-1 p-3">
-                  <div className="flex">
-                    <h3 className="font-bold text-white">{weapon.name}</h3>
-                  </div>
-                  <div>
-                    <h3 className="text-sm text-gray-300">
-                      <span className="font-semibold">
-                        {t({ id: "type", defaultMessage: "Type" })}:
-                      </span>{" "}
-                      {weapon.type} |{" "}
-                      {weapon.stats.secondary && (
-                        <>
-                          <span className="font-semibold">
-                            {t({
-                              id: "secondary",
-                              defaultMessage: "Secondary",
-                            })}
-                            :
-                          </span>{" "}
-                          {weapon.stats.secondary}{" "}
-                          {weapon.stats.levels[weaponStatIndex]?.secondary} |{" "}
-                        </>
-                      )}
-                      <span className="font-semibold">
-                        {weapon.stats.primary}:
-                      </span>{" "}
-                      {weapon.stats.levels[weaponStatIndex]?.primary}
-                    </h3>
-                  </div>
-                  <p
-                    className="weapon-bonus"
-                    dangerouslySetInnerHTML={{
-                      __html: weapon.refinements[refinement - 1]?.desc,
-                    }}
+          <Link
+            key={weapon.id}
+            href={`/weapon/${weapon.id}`}
+            className="mb-2 flex flex-col rounded border border-vulcan-700 bg-vulcan-800 hover:border-vulcan-500 hover:bg-vulcan-700"
+          >
+            <div className="flex h-full flex-row">
+              <div
+                className="relative flex flex-none items-center justify-center rounded rounded-tr-none rounded-br-none bg-cover"
+                style={{
+                  backgroundImage: `url(${getUrl(
+                    `/bg_${weapon.rarity}star.png`
+                  )})`,
+                }}
+              >
+                <LazyLoadImage
+                  src={getUrl(`/weapons/${weapon.id}.png`, 126, 126)}
+                  height={126}
+                  width={126}
+                  alt={weapon.name}
+                />
+                <div className="absolute bottom-0 flex w-full items-center justify-center bg-gray-900 bg-opacity-50 px-2 py-0.5">
+                  <StarRarity
+                    starClassname="w-4"
+                    rarity={weapon.rarity}
+                    starsSize={42}
                   />
                 </div>
               </div>
-            </a>
+              <div className="ml-1 p-3">
+                <div className="flex">
+                  <h3 className="font-bold text-white">{weapon.name}</h3>
+                </div>
+                <div>
+                  <h3 className="text-sm text-gray-300">
+                    <span className="font-semibold">
+                      {t({ id: "type", defaultMessage: "Type" })}:
+                    </span>{" "}
+                    {weapon.type} |{" "}
+                    {weapon.stats.secondary && (
+                      <>
+                        <span className="font-semibold">
+                          {t({
+                            id: "secondary",
+                            defaultMessage: "Secondary",
+                          })}
+                          :
+                        </span>{" "}
+                        {weapon.stats.secondary}{" "}
+                        {weapon.stats.levels[weaponStatIndex]?.secondary} |{" "}
+                      </>
+                    )}
+                    <span className="font-semibold">
+                      {weapon.stats.primary}:
+                    </span>{" "}
+                    {weapon.stats.levels[weaponStatIndex]?.primary}
+                  </h3>
+                </div>
+                <p
+                  className="weapon-bonus"
+                  dangerouslySetInnerHTML={{
+                    __html: weapon.refinements[refinement - 1]?.desc,
+                  }}
+                />
+              </div>
+            </div>
           </Link>
         ))}
       </div>

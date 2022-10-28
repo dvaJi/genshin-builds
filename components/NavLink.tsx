@@ -19,35 +19,34 @@ const NavLink = ({ children, href, route, dropdownMenu }: NavLinkProps) => {
   const isActive = route === href;
   return (
     <li
-      className="flex items-center content-center m-0"
+      className="m-0 flex content-center items-center"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Link href={href}>
-        <a
-          className={clsx(
-            "flex items-center relative h-full text-sm text-center px-9 transition-all hover:text-white",
-            isActive ? "text-gray-200" : ""
-          )}
-        >
-          {children}
-        </a>
+      <Link
+        href={href}
+        className={clsx(
+          "relative flex h-full items-center px-9 text-center text-sm transition-all hover:text-white",
+          isActive ? "text-gray-200" : ""
+        )}
+      >
+        {children}
       </Link>
       {dropdownMenu && isHover ? (
         <div
-          className="absolute top-full m-0 py-4 bg-vulcan-800 border-r border-l border-b border-gray-800 shadow-md"
+          className="absolute top-full m-0 border-r border-l border-b border-gray-800 bg-vulcan-800 py-4 shadow-md"
           aria-labelledby="navbarDropdown"
         >
           {dropdownMenu.map((dm) => (
-            <Link key={dm.href} href={dm.href}>
-              <a
-                className={clsx(
-                  "flex items-center relative h-full text-center transition-all py-3 px-6 content-start text-sm hover:text-white",
-                  route === dm.href ? "text-gray-200" : ""
-                )}
-              >
-                {dm.name}
-              </a>
+            <Link
+              key={dm.href}
+              href={dm.href}
+              className={clsx(
+                "relative flex h-full content-start items-center py-3 px-6 text-center text-sm transition-all hover:text-white",
+                route === dm.href ? "text-gray-200" : ""
+              )}
+            >
+              {dm.name}
             </Link>
           ))}
         </div>

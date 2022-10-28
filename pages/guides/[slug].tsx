@@ -42,11 +42,12 @@ const GuideDetail = ({ guide }: GuideProps) => {
         pageDescription={guide.description}
         jsonLD={generateJsonLd(guide, locale, t)}
       />
-      <Link href="/guides">
-        <a className="group flex items-center hover:text-slate-200">
-          <FiChevronLeft className="mr-2 text-xl" />
-          {t({ id: "back_to_guides", defaultMessage: "Back to Guides" })}
-        </a>
+      <Link
+        href="/guides"
+        className="group flex items-center hover:text-slate-200"
+      >
+        <FiChevronLeft className="mr-2 text-xl" />
+        {t({ id: "back_to_guides", defaultMessage: "Back to Guides" })}
       </Link>
       <div className="mx-6 lg:mx-0">
         <h2 className="my-4 text-2xl font-semibold text-gray-200">

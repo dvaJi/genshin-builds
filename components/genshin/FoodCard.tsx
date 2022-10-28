@@ -14,10 +14,10 @@ interface FoodCardProps {
 
 const FoodCard = ({ item }: FoodCardProps) => {
   return (
-    <div className="bg-vulcan-800 border border-vulcan-700 mb-2 rounded flex flex-col">
-      <div className="flex flex-row h-full">
+    <div className="mb-2 flex flex-col rounded border border-vulcan-700 bg-vulcan-800">
+      <div className="flex h-full flex-row">
         <div
-          className="flex flex-none relative bg-cover rounded rounded-tr-none rounded-br-none items-center justify-center"
+          className="relative flex flex-none items-center justify-center rounded rounded-tr-none rounded-br-none bg-cover"
           style={{
             backgroundImage: `url(${getUrl(`/bg_${item.rarity}star.png`)})`,
           }}
@@ -28,7 +28,7 @@ const FoodCard = ({ item }: FoodCardProps) => {
             width={100}
             alt={item.name}
           />
-          <div className="absolute bottom-0 bg-gray-900 bg-opacity-50 w-full px-2 py-0.5 items-center justify-center flex">
+          <div className="absolute bottom-0 flex w-full items-center justify-center bg-gray-900 bg-opacity-50 px-2 py-0.5">
             <StarRarity
               starClassname="w-4"
               rarity={item.rarity}
@@ -47,19 +47,20 @@ const FoodCard = ({ item }: FoodCardProps) => {
             }}
           />
           {item.character && (
-            <div className="float-right bottom-0 right-0">
+            <div className="bottom-0 right-0 float-right">
               <Link href={`/character/${item.character.id}`}>
-                <a>
+                <div className="group overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500 hover:shadow-xl">
                   <SimpleRarityBox
                     img={getUrl(
                       `/characters/${item.character.id}/${item.character.id}_portrait.png`,
                       48,
                       48
                     )}
+                    alt={item.character.name}
                     rarity={0}
-                    className="h-12 w-12"
+                    className="h-12 w-12 rounded-full transition-transform group-hover:scale-125"
                   />
-                </a>
+                </div>
               </Link>
             </div>
           )}

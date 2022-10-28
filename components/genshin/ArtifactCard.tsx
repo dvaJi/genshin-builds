@@ -30,7 +30,7 @@ const ArtifactCard = ({ artifact, artifact2 }: ArtifactCardProps) => {
             key={artifact.id}
             contents={
               <div className="p-2 text-sm">
-                {artifact.children ? (
+                {artifact?.children ? (
                   artifact.children.map((ca, i) => (
                     <div
                       key={ca.id + artifact.id}

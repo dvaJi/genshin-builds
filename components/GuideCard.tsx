@@ -14,37 +14,35 @@ const GuideCard = ({ guide }: Props) => {
   const { locale } = useIntl("guides");
   const timeAgo = getTimeAgo(new Date(guide.date).getTime(), locale);
   return (
-    <Link href={`/guides/${guide.slug}`}>
-      <a className="p-2 group">
-        <div className="relative overflow-hidden">
-          <LazyLoadImage
-            src={guide.thumbnail}
-            alt={guide.title}
-            className="rounded shadow-2xl group-hover:brightness-110 group-hover:scale-105 transition-all object-scale-down"
-          />
-        </div>
-        <div>
-          <h5 className="text-lg text-slate-300 my-1 group-hover:text-slate-100 transition-all">
-            {guide.title}
-          </h5>
-          <div className="flex justify-between">
-            <div>
-              <span className="bg-vulcan-600 rounded mr-2 p-1 px-1.5 text-xs">
-                {guide.type}
+    <Link href={`/guides/${guide.slug}`} className="group p-2">
+      <div className="relative overflow-hidden">
+        <LazyLoadImage
+          src={guide.thumbnail}
+          alt={guide.title}
+          className="rounded object-scale-down shadow-2xl transition-all group-hover:scale-105 group-hover:brightness-110"
+        />
+      </div>
+      <div>
+        <h5 className="my-1 text-lg text-slate-300 transition-all group-hover:text-slate-100">
+          {guide.title}
+        </h5>
+        <div className="flex justify-between">
+          <div>
+            <span className="mr-2 rounded bg-vulcan-600 p-1 px-1.5 text-xs">
+              {guide.type}
+            </span>
+            {guide.tags.map((tag) => (
+              <span
+                key={tag}
+                className="mr-2 rounded bg-vulcan-700 p-1 px-1.5 text-xs text-slate-500"
+              >
+                #{tag}
               </span>
-              {guide.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-vulcan-700 text-slate-500 rounded mr-2 p-1 px-1.5 text-xs"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-            <div className="text-xs flex items-baseline">{timeAgo}</div>
+            ))}
           </div>
+          <div className="flex items-baseline text-xs">{timeAgo}</div>
         </div>
-      </a>
+      </div>
     </Link>
   );
 };

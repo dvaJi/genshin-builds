@@ -42,7 +42,7 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
           {days.map((day) => (
             <Button
               key={day}
-              className={clsx("rounded mx-2 my-1 p-2 px-4", {
+              className={clsx("mx-2 my-1 rounded p-2 px-4", {
                 "bg-vulcan-700": currentDay === day,
                 "text-white": currentDay === day,
                 "bg-vulcan-800": currentDay !== day,
@@ -66,20 +66,18 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
                 .find((r) => r.day === currentDay)
                 ?.ids.map((cId) => (
                   <Link key={cId} href={`/character/${cId}`}>
-                    <a>
-                      <SimpleRarityBox
-                        img={getUrl(
-                          `/characters/${cId}/${cId}_portrait.png`,
-                          96,
-                          96
-                        )}
-                        rarity={characters[cId].rarity}
-                        name={characters[cId].name}
-                        className="h-24 w-24"
-                        nameSeparateBlock={true}
-                        classNameBlock="w-24"
-                      />
-                    </a>
+                    <SimpleRarityBox
+                      img={getUrl(
+                        `/characters/${cId}/${cId}_portrait.png`,
+                        96,
+                        96
+                      )}
+                      rarity={characters[cId].rarity}
+                      name={characters[cId].name}
+                      className="h-24 w-24"
+                      nameSeparateBlock={true}
+                      classNameBlock="w-24"
+                    />
                   </Link>
                 ))}
             </div>
@@ -97,16 +95,14 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
                   <div key={cId}>
                     {weapons[cId] ? (
                       <Link key={cId} href={`/weapon/${cId}`}>
-                        <a>
-                          <SimpleRarityBox
-                            img={getUrl(`/weapons/${cId}.png`, 96, 96)}
-                            rarity={weapons[cId].rarity}
-                            name={weapons[cId].name}
-                            className="h-24 w-24"
-                            nameSeparateBlock={true}
-                            classNameBlock="w-24"
-                          />
-                        </a>
+                        <SimpleRarityBox
+                          img={getUrl(`/weapons/${cId}.png`, 96, 96)}
+                          rarity={weapons[cId].rarity}
+                          name={weapons[cId].name}
+                          className="h-24 w-24"
+                          nameSeparateBlock={true}
+                          classNameBlock="w-24"
+                        />
                       </Link>
                     ) : (
                       `NOT FOUND ${cId}`

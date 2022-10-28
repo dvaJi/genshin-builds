@@ -62,10 +62,12 @@ const MobileNav = ({ isOpen, navroutes, game, handleClick, f }: Props) => {
           <Fragment key={r.name}>
             {r.href !== "/#" && (
               <motion.li className="m-0 flex w-1/2 p-3" variants={variantsli}>
-                <Link href={r.href}>
-                  <a className="mobile-link" onClick={() => handleClick(false)}>
-                    {f({ id: r.id, defaultMessage: r.name })}
-                  </a>
+                <Link
+                  href={r.href}
+                  className="mobile-link"
+                  onClick={() => handleClick(false)}
+                >
+                  {f({ id: r.id, defaultMessage: r.name })}
                 </Link>
               </motion.li>
             )}
@@ -78,13 +80,12 @@ const MobileNav = ({ isOpen, navroutes, game, handleClick, f }: Props) => {
                     className="m-0 flex w-1/2 p-3"
                     variants={variantsli}
                   >
-                    <Link href={rd.href}>
-                      <a
-                        className="mobile-link"
-                        onClick={() => handleClick(false)}
-                      >
-                        {f({ id: rd.id, defaultMessage: rd.name })}
-                      </a>
+                    <Link
+                      href={rd.href}
+                      className="mobile-link"
+                      onClick={() => handleClick(false)}
+                    >
+                      {f({ id: rd.id, defaultMessage: rd.name })}
                     </Link>
                   </motion.li>
                 ))}

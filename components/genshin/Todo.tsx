@@ -165,7 +165,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                   defaultMessage: "Farm today",
                 })}
               </h1>
-              <div className="flex justify-center flex-wrap">
+              <div className="flex flex-wrap justify-center">
                 {Object.entries(farmToday).map(([id, data]) => (
                   <ItemPopoverSummary
                     key={id}
@@ -186,7 +186,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                   defaultMessage: "Summary",
                 })}
               </h1>
-              <div className="flex justify-center flex-wrap">
+              <div className="flex flex-wrap justify-center">
                 {Object.entries(summary).map(([id, data]) => (
                   <ItemPopoverSummary
                     key={id}
@@ -201,11 +201,11 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
               </div>
             </Card>
           </div>
-          <div className="col-span-3 inline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 m-3">
+          <div className="col-span-3 m-3 inline-grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {todos.map((todo, i) => (
-              <Card key={todo[0].id + i} className="flex w-full h-full p-0">
-                <div className="flex flex-col w-full relative flex-shrink-0">
-                  <div className="flex justify-between p-2 mx-2">
+              <Card key={todo[0].id + i} className="flex h-full w-full p-0">
+                <div className="relative flex w-full flex-shrink-0 flex-col">
+                  <div className="mx-2 flex justify-between p-2">
                     <p className="text-lg font-semibold text-white">
                       {todo[0].name}
                     </p>
@@ -213,24 +213,24 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                       <button
                         onClick={() => moveTodo(todo[0].id, i, i - 1)}
                         disabled={i === 0}
-                        className="text-white border-2 border-white border-opacity-10 rounded-none px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600 rounded-l-xl"
+                        className="rounded-none rounded-l-xl border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
                       >
                         <CgChevronLeft />
                       </button>
                       <button
                         onClick={() => moveTodo(todo[0].id, i, i + 1)}
                         disabled={i + 1 === todos.length}
-                        className="text-white border-2 border-white border-opacity-10 rounded-none px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600 rounded-r-xl"
+                        className="rounded-none rounded-r-xl border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
                       >
                         <CgChevronRight />
                       </button>
                     </div>
                   </div>
-                  <div className="flex flex-col p-2 flex-grow justify-between">
-                    <div className="flex items-center justify-between mb-2 min-h-[104px]">
-                      <div className="flex justify-center ml-2">
+                  <div className="flex flex-grow flex-col justify-between p-2">
+                    <div className="mb-2 flex min-h-[104px] items-center justify-between">
+                      <div className="ml-2 flex justify-center">
                         <div
-                          className="w-24 h-24 rounded-md shadow-md overflow-hidden bg-cover"
+                          className="h-24 w-24 overflow-hidden rounded-md bg-cover shadow-md"
                           style={{
                             backgroundImage: `url(${IMGS_CDN}/bg_${todo[0].r}star.png)`,
                           }}
@@ -247,11 +247,11 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                               96
                             )}
                             alt={todo[0].name}
-                            className="w-full h-auto"
+                            className="h-auto w-full"
                           />
                         </div>
                       </div>
-                      <div className="flex flex-col h-full justify-center">
+                      <div className="flex h-full flex-col justify-center">
                         <div className="flex flex-col">
                           <div className="flex w-36">
                             <div>
@@ -266,13 +266,13 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                                   <p>{todo[2][0]}</p>
                                 </div>
                                 <div>
-                                  <CgArrowLongRight className="h-full mx-2" />
+                                  <CgArrowLongRight className="mx-2 h-full" />
                                 </div>
-                                <div className="inline-flex justify-center items-center">
+                                <div className="inline-flex items-center justify-center">
                                   <p>{todo[2][2]}</p>
                                   <img
                                     src={getUrl(`/ascension.png`, 16, 16)}
-                                    className={clsx("ml-1 w-3 h-3", {
+                                    className={clsx("ml-1 h-3 w-3", {
                                       "opacity-100": todo[2][3],
                                       "opacity-0": !todo[2][3],
                                     })}
@@ -284,7 +284,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                           </div>
                         </div>
                         {Object.keys(todo[3]).length > 0 && (
-                          <div className="flex flex-col mt-2">
+                          <div className="mt-2 flex flex-col">
                             <h4 className="text-sm font-semibold text-white">
                               {t({
                                 id: "talents",
@@ -300,7 +300,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                                         <p>{value[0]}</p>
                                       </div>
                                       <div>
-                                        <CgArrowLongRight className="h-full mx-2" />
+                                        <CgArrowLongRight className="mx-2 h-full" />
                                       </div>
                                       <div>
                                         <p>{value[1]}</p>
@@ -318,7 +318,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                       </div>
                     </div>
 
-                    <div className="flex justify-center flex-wrap">
+                    <div className="flex flex-wrap justify-center">
                       {Object.entries(todo[4]).map(([id, data]) => (
                         <ItemPopover
                           key={id}
@@ -333,7 +333,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                       ))}
                     </div>
 
-                    <div className="flex justify-between mx-2">
+                    <div className="mx-2 flex justify-between">
                       <span className="text-lg text-white">#{i + 1}</span>
                       <Button
                         className=""
@@ -353,7 +353,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="rounded border border-vulcan-900 bg-vulcan-800 w-72 p-4">
+        <div className="w-72 rounded border border-vulcan-900 bg-vulcan-800 p-4">
           <p>
             {t({
               id: "no_todo_msg",
@@ -361,13 +361,14 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
             })}
           </p>
           <p>
-            <Link href="/calculator">
-              <a className="text-slate-300 hover:text-white">
-                {t({
-                  id: "go_to_calculator",
-                  defaultMessage: "Go to Calculator page",
-                })}
-              </a>
+            <Link
+              href="/calculator"
+              className="text-slate-300 hover:text-white"
+            >
+              {t({
+                id: "go_to_calculator",
+                defaultMessage: "Go to Calculator page",
+              })}
             </Link>
           </p>
         </div>

@@ -24,25 +24,23 @@ const CharactersTier = ({
   const blockStyle =
     "col-span-3 lg:col-span-2 p-5 border border-l-0 border-r-0 border-vulcan-900 bg-vulcan-800 text-center flex flex-wrap justify-center content-start";
   return (
-    <div className="grid grid-cols-4 lg:grid-cols-8 gap-4 w-full">
-      <div className="p-5 bg bg-vulcan-900 bg-opacity-50">
-        <h3 className="text-2xl text-white text-center font-bold">T{tier}</h3>
+    <div className="grid w-full grid-cols-4 gap-4 lg:grid-cols-8">
+      <div className="bg bg-vulcan-900 bg-opacity-50 p-5">
+        <h3 className="text-center text-2xl font-bold text-white">T{tier}</h3>
       </div>
       {(!selectedCol || selectedCol === Roles.maindps) && (
         <div className={blockStyle}>
           {tierlist.maindps[tier].map((t) => (
             <div key={t.id} className="inline-block">
               <Link href={`/character/${t.id}`}>
-                <a>
-                  <CharacterPortrait
-                    character={{
-                      ...characters[t.id],
-                      constellationNum: t.min_c,
-                      element: common[characters[t.id].element],
-                    }}
-                    weapon={weaponsMap[t.w_id]}
-                  />
-                </a>
+                <CharacterPortrait
+                  character={{
+                    ...characters[t.id],
+                    constellationNum: t.min_c,
+                    element: common[characters[t.id].element],
+                  }}
+                  weapon={weaponsMap[t.w_id]}
+                />
               </Link>
             </div>
           ))}
@@ -53,16 +51,14 @@ const CharactersTier = ({
           {tierlist.subdps[tier].map((t) => (
             <div key={t.id} className="inline-block">
               <Link href={`/character/${t.id}`}>
-                <a>
-                  <CharacterPortrait
-                    character={{
-                      ...characters[t.id],
-                      constellationNum: t.min_c,
-                      element: common[characters[t.id].element],
-                    }}
-                    weapon={weaponsMap[t.w_id]}
-                  />
-                </a>
+                <CharacterPortrait
+                  character={{
+                    ...characters[t.id],
+                    constellationNum: t.min_c,
+                    element: common[characters[t.id].element],
+                  }}
+                  weapon={weaponsMap[t.w_id]}
+                />
               </Link>
             </div>
           ))}
@@ -71,18 +67,16 @@ const CharactersTier = ({
       {(!selectedCol || selectedCol === Roles.support) && (
         <div className={blockStyle}>
           {tierlist.support[tier].map((t) => (
-            <div key={t.id} className="inline-block relative">
+            <div key={t.id} className="relative inline-block">
               <Link href={`/character/${t.id}`}>
-                <a>
-                  <CharacterPortrait
-                    character={{
-                      ...characters[t.id],
-                      constellationNum: t.min_c,
-                      element: common[characters[t.id].element],
-                    }}
-                    weapon={weaponsMap[t.w_id]}
-                  />
-                </a>
+                <CharacterPortrait
+                  character={{
+                    ...characters[t.id],
+                    constellationNum: t.min_c,
+                    element: common[characters[t.id].element],
+                  }}
+                  weapon={weaponsMap[t.w_id]}
+                />
               </Link>
             </div>
           ))}

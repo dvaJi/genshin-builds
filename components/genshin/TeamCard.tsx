@@ -27,21 +27,19 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
       <div className="grid grid-cols-4">
         {team.characters.map((block, i) => (
           <div key={`${block.role}${block.id}${i}`}>
-            <div className="text-xs lg:text-xl text-center">
+            <div className="text-center text-xs lg:text-xl">
               {t({ id: block.role.toLowerCase(), defaultMessage: block.role })}
             </div>
             <div className="flex justify-center text-center">
               <Link href={`/character/${block.id}`}>
-                <a>
-                  <LazyLoadImage
-                    className="rounded"
-                    alt={block.id}
-                    src={getUrl(`/characters/${block.id}/image.png`, 256, 256)}
-                  />
-                  <span className="text-white lg:text-2xl lg:leading-10">
-                    {block.name}
-                  </span>
-                </a>
+                <LazyLoadImage
+                  className="rounded"
+                  alt={block.id}
+                  src={getUrl(`/characters/${block.id}/image.png`, 256, 256)}
+                />
+                <span className="text-white lg:text-2xl lg:leading-10">
+                  {block.name}
+                </span>
               </Link>
             </div>
           </div>

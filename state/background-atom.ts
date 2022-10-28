@@ -3,6 +3,7 @@ import { atom } from "nanostores";
 
 export interface AppBackgroundStyle {
   image?: string;
+  stickyImage?: string;
   gradient: CSSProperties;
 }
 

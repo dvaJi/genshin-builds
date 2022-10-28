@@ -44,9 +44,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {ssr.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
-              <a>
-                <MatrixPortrait matrix={matrix} />
-              </a>
+              <MatrixPortrait matrix={matrix} />
             </Link>
           ))}
         </div>
@@ -62,9 +60,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {sr.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
-              <a>
-                <MatrixPortrait matrix={matrix} />
-              </a>
+              <MatrixPortrait matrix={matrix} />
             </Link>
           ))}
         </div>
@@ -79,9 +75,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {r.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
-              <a>
-                <MatrixPortrait matrix={matrix} />
-              </a>
+              <MatrixPortrait matrix={matrix} />
             </Link>
           ))}
         </div>
@@ -96,9 +90,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {n.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
-              <a>
-                <MatrixPortrait matrix={matrix} />
-              </a>
+              <MatrixPortrait matrix={matrix} />
             </Link>
           ))}
         </div>

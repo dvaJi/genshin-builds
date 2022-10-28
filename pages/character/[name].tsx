@@ -57,12 +57,7 @@ const CharacterPage = ({
   const { t } = useIntl("character");
 
   return (
-    <div className="relative overflow-hidden">
-      <img
-        src={`${IMGS_CDN}/characters/${character.id}/header_image.png`}
-        className="absolute -top-10 z-0 w-full select-none opacity-60"
-        alt={character.name}
-      />
+    <div className="relative">
       <Metadata
         pageTitle={t({
           id: "title",
@@ -83,7 +78,7 @@ const CharacterPage = ({
           </div>
           <div className="flex flex-grow flex-col">
             <div className="mr-2 flex items-center">
-              <h1 className="mr-2 text-3xl text-white">
+              <h1 className="mr-2 text-3xl text-white shadow-black text-shadow">
                 {character.name} ({character.rarity}★)
               </h1>
               <ElementIcon
@@ -92,10 +87,10 @@ const CharacterPage = ({
                 height={30}
               />
             </div>
-            <div className="shadow-black text-shadow">
+            <div className="hidden text-gray-200 shadow-black text-shadow md:block">
               {character.description}
             </div>
-            <div className="shadow-black text-shadow">
+            <div className="hidden text-gray-200 shadow-black text-shadow md:block">
               {character.affiliation}
             </div>
           </div>
@@ -197,31 +192,33 @@ const CharacterPage = ({
             <div className="lg:mx-2">#{index + 1}</div>
             <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div>
             {team.characters.map((character) => (
-              <Link key={character.id} href={`/character/${character.id}`}>
-                <a className="group relative text-center lg:mr-8">
-                  <img
-                    className="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
-                    src={getUrl(
-                      `/characters/${character.id}/${character.id}_portrait.png`,
-                      100,
-                      100
-                    )}
-                    alt={character.name}
-                    width="100"
-                    height="100"
-                  />
-                  {character.c_min > 0 && (
-                    <div className="absolute bottom-5 right-2/3 rounded-full bg-vulcan-700 p-1 text-xs font-bold text-gray-300">
-                      {`C${character.c_min}`}
-                    </div>
+              <Link
+                key={character.id}
+                href={`/character/${character.id}`}
+                className="group relative text-center lg:mr-8"
+              >
+                <img
+                  className="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
+                  src={getUrl(
+                    `/characters/${character.id}/${character.id}_portrait.png`,
+                    100,
+                    100
                   )}
-                  <span className="text-xs lg:text-sm">
-                    {t({
-                      id: character.role.toLowerCase(),
-                      defaultMessage: character.role,
-                    })}
-                  </span>
-                </a>
+                  alt={character.name}
+                  width="100"
+                  height="100"
+                />
+                {character.c_min > 0 && (
+                  <div className="absolute bottom-5 right-2/3 rounded-full bg-vulcan-700 p-1 text-xs font-bold text-gray-300">
+                    {`C${character.c_min}`}
+                  </div>
+                )}
+                <span className="text-xs lg:text-sm">
+                  {t({
+                    id: character.role.toLowerCase(),
+                    defaultMessage: character.role,
+                  })}
+                </span>
               </Link>
             ))}
           </div>
@@ -464,6 +461,7 @@ export const getStaticProps: GetStaticProps = async ({
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
         },
+        stickyImage: `${IMGS_CDN}/characters/${character.id}/header_image.png`,
       },
     },
   };

@@ -79,7 +79,7 @@ const CharacterPage = ({
             </span>
           </div>
         </div>
-        <div className="mx-4 flex w-full lg:w-auto flex-row-reverse items-center justify-between">
+        <div className="mx-4 flex w-full flex-row-reverse items-center justify-between lg:w-auto">
           <img
             src={`${TOF_IMGS_CDN}/weapons/${character.weapon_id}.png`}
             className="h-24 w-24 lg:h-48 lg:w-48"
@@ -117,19 +117,21 @@ const CharacterPage = ({
             </h2>
             <div className="flex flex-wrap">
               {builds.map((build) => (
-                <Link key={build.id} href={`/tof/matrices/${build.id}`}>
-                  <a className="relative flex">
-                    <div className="absolute top-4 w-full text-center text-sm">
-                      <span className="rounded bg-vulcan-600 py-1 px-2">
-                        {t({
-                          id: "pieces",
-                          defaultMessage: "Pieces",
-                        })}
-                        : {build.pieces}
-                      </span>
-                    </div>
-                    <MatrixPortrait matrix={build as any} />
-                  </a>
+                <Link
+                  key={build.id}
+                  href={`/tof/matrices/${build.id}`}
+                  className="relative flex"
+                >
+                  <div className="absolute top-4 w-full text-center text-sm">
+                    <span className="rounded bg-vulcan-600 py-1 px-2">
+                      {t({
+                        id: "pieces",
+                        defaultMessage: "Pieces",
+                      })}
+                      : {build.pieces}
+                    </span>
+                  </div>
+                  <MatrixPortrait matrix={build as any} />
                 </Link>
               ))}
             </div>
@@ -153,13 +155,12 @@ const CharacterPage = ({
                     <Link
                       key={character.id}
                       href={`/tof/character/${character.id}`}
+                      className="flex w-full flex-col items-center justify-center"
                     >
-                      <a className="flex w-full flex-col items-center justify-center">
-                        <CharacterPortrait character={character} />
-                        <div className="rounded bg-vulcan-600 py-1 px-2 text-sm">
-                          {character.role}
-                        </div>
-                      </a>
+                      <CharacterPortrait character={character} />
+                      <div className="rounded bg-vulcan-600 py-1 px-2 text-sm">
+                        {character.role}
+                      </div>
                     </Link>
                   ))}
                 </div>
