@@ -4,9 +4,10 @@ import clsx from "clsx";
 interface CollapsibleProps {
   children: ReactNode;
   className?: string;
+  ref?: any;
 }
 
-const Card = ({ children, className }: CollapsibleProps) => {
+const Card = ({ children, className, ref }: CollapsibleProps) => {
   return (
     <div
       className={clsx(
@@ -14,6 +15,7 @@ const Card = ({ children, className }: CollapsibleProps) => {
         className?.includes("p-0") ? "" : "p-4",
         className
       )}
+      ref={ref}
     >
       {children}
     </div>

@@ -36,7 +36,23 @@ const navroutes: NavRoutes[] = [
   },
   { id: "teams", name: "Teams", href: "/teams" },
   { id: "todo", name: "Todo", href: "/todo" },
-  { id: "calculator", name: "Calculator", href: "/calculator" },
+  {
+    id: "banners",
+    name: "Banners",
+    href: "/#",
+    dropdownMenu: [
+      {
+        id: "banners_characters",
+        name: "Banners Characters",
+        href: "/banners/characters",
+      },
+      {
+        id: "banners_weapons",
+        name: "Banners Weapons",
+        href: "/banners/weapons",
+      },
+    ],
+  },
   { id: "guides", name: "Guides", href: "/guides" },
   {
     id: "database",
@@ -44,6 +60,7 @@ const navroutes: NavRoutes[] = [
     href: "/#",
     dropdownMenu: [
       { id: "weapons", name: "Weapons", href: "/weapons" },
+      { id: "calculator", name: "Calculator", href: "/calculator" },
       { id: "artifacts", name: "Artifacts", href: "/artifacts" },
       { id: "materials", name: "Materials", href: "/materials" },
       { id: "achievements", name: "Achievements", href: "/achievements" },

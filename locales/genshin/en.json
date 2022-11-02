@@ -18,7 +18,10 @@
     "achievements": "Achievements",
     "food": "Food",
     "materials": "Materials",
-    "guides": "Guides"
+    "guides": "Guides",
+    "banners": "Banners",
+    "banners_characters": "Banners Characters",
+    "banners_weapons": "Banners Weapons"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki Database",
@@ -242,5 +245,19 @@
     "youtube_tutorial": "YouTube Tutorial",
     "interactive_map": "Interactive Map",
     "related_guides": "Related Guides"
+  },
+  "banners_characters": {
+    "title": "Genshin Impact Character Banners",
+    "description": "Discover all the character banners and their rates",
+    "rerun_prediction": "Rerun Prediction",
+    "historical": "Historical",
+    "runs": "{runs} runs"
+  },
+  "banners_weapons": {
+    "title": "Genshin Impact Weapons Banners",
+    "description": "Discover all the weapons banners and their rates",
+    "rerun_prediction": "Rerun Prediction",
+    "historical": "Historical",
+    "runs": "{runs} runs"
   }
 }
