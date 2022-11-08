@@ -23,15 +23,26 @@ const NavLink = ({ children, href, route, dropdownMenu }: NavLinkProps) => {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Link
-        href={href}
-        className={clsx(
-          "relative flex h-full items-center px-9 text-center text-sm transition-all hover:text-white",
-          isActive ? "text-gray-200" : ""
-        )}
-      >
-        {children}
-      </Link>
+      {dropdownMenu ? (
+        <div
+          className={clsx(
+            "relative flex h-full cursor-pointer items-center px-9 text-center text-sm transition-all hover:text-white",
+            isActive ? "text-gray-200" : ""
+          )}
+        >
+          {children}
+        </div>
+      ) : (
+        <Link
+          href={href}
+          className={clsx(
+            "relative flex h-full items-center px-9 text-center text-sm transition-all hover:text-white",
+            isActive ? "text-gray-200" : ""
+          )}
+        >
+          {children}
+        </Link>
+      )}
       {dropdownMenu && isHover ? (
         <div
           className="absolute top-full m-0 border-r border-l border-b border-gray-800 bg-vulcan-800 py-4 shadow-md"

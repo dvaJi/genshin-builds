@@ -1,4 +1,4 @@
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 import clsx from "clsx";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -30,13 +30,15 @@ const SimpleRarityBox = ({
     <>
       <div
         className={clsx(
-          `relative block m-1 bg-cover overflow-hidden text-center rounded group`,
+          `group relative m-1 block overflow-hidden rounded bg-cover text-center`,
           imgAdditionalStyle,
           className
         )}
         style={{
           backgroundImage:
-            rarity > 0 ? `url(${IMGS_CDN}/bg_${rarity}star.png)` : "",
+            rarity > 0
+              ? `url('${getUrl(`/bg_${rarity}star.png`, 32, 32)})'`
+              : "",
         }}
       >
         <LazyLoadImage
@@ -49,7 +51,7 @@ const SimpleRarityBox = ({
         />
         {!nameSeparateBlock && name && (
           <span
-            className="absolute inline-block bottom-0 text-xs bg-gray-900 bg-opacity-90 rounded rounded-t-none p-1 transition-all opacity-80 group-hover:text-white group-hover:opacity-100"
+            className="absolute bottom-0 inline-block rounded rounded-t-none bg-gray-900 bg-opacity-90 p-1 text-xs opacity-80 transition-all group-hover:text-white group-hover:opacity-100"
             style={{ width: "calc(100% + 2px)", left: -2 }}
           >
             {name}
@@ -59,7 +61,7 @@ const SimpleRarityBox = ({
       {nameSeparateBlock && name && (
         <span
           className={clsx(
-            "inline-block m-1 mt-0 overflow-hidden text-center text-xs bg-vulcan-900 bg-opacity-90 rounded rounded-t-none p-1",
+            "m-1 mt-0 inline-block overflow-hidden rounded rounded-t-none bg-vulcan-900 bg-opacity-90 p-1 text-center text-xs",
             classNameBlock
           )}
         >

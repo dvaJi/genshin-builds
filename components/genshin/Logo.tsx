@@ -1,14 +1,17 @@
+import Image from "next/image";
 import { memo } from "react";
 
 const Logo = () => {
   return (
     <>
-      <img
+      <Image
         src="/logo.png"
-        className="ml-5 lg:ml-0 lg:mr-5 fill-current text-white"
+        className="ml-5 fill-current text-white lg:ml-0 lg:mr-5"
         alt="GenshinBuilds logo"
+        width={90}
+        height={38}
       />
-      <span className="text-gray-100 text-lg font-normal hidden">
+      <span className="hidden text-lg font-normal text-gray-100">
         GenshinBuilds
       </span>
     </>
