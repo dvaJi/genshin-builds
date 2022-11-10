@@ -5,13 +5,13 @@ import { memo } from "react";
 const LayoutFooter = () => {
   const router = useRouter();
   return (
-    <footer className="border-t border-gray-700 border-opacity-50 bg-vulcan-800 px-20 py-14 text-gray-400">
+    <footer className="z-50 border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-20 py-14 text-gray-400 backdrop-blur">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-3 text-gray-200">GenshinBuilds</h4>
             <Link href="/privacy-policy" className="my-2">
-              Privacy Policy¿
+              Privacy Policy
             </Link>
             <Link href="/contact" className="my-2">
               Contact

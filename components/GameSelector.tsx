@@ -2,7 +2,7 @@ import { GAME, GameProps } from "utils/games";
 import Link from "next/link";
 import { useState } from "react";
 import clsx from "clsx";
-import { TOF_IMGS_CDN } from "@lib/constants";
+import { getTofUrl } from "@lib/imgUrl";
 
 type Props = {
   currentGame: GameProps;
@@ -27,7 +27,7 @@ function GameSelector({ currentGame, className }: Props) {
       >
         <img
           className="mr-3 h-6 w-6 rounded"
-          src={`${TOF_IMGS_CDN}/gameicons/${currentGame.slug}.webp`}
+          src={getTofUrl(`/gameicons/${currentGame.slug}.webp`)}
           alt="Genshin Impact"
         />
         <span className="text-sm">{currentGame.name}</span>
@@ -51,7 +51,7 @@ function GameSelector({ currentGame, className }: Props) {
             >
               <img
                 className="mr-3 h-6 w-6 rounded"
-                src={`${TOF_IMGS_CDN}/gameicons/${game.slug}.webp`}
+                src={getTofUrl(`/gameicons/${game.slug}.webp`)}
                 alt={game.name}
               />
               <span>{game.name}</span>

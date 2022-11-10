@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
@@ -24,11 +25,10 @@ import {
   getCharacterMostUsedBuild,
   getLocale,
 } from "@lib/localData";
-import { AD_ARTICLE_SLOT, IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
-import { getUrl } from "@lib/imgUrl";
-import Link from "next/link";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
 
 interface CharacterPageProps {
   character: Character;
@@ -435,6 +435,19 @@ export const getStaticProps: GetStaticProps = async ({
         children: artifactsList.filter((a) => EM80BONUS.includes(a.id)),
       };
     }
+
+    artifacts["others"] = {
+      _id: -1,
+      id: "others",
+      name: lngDict?.character["others"]
+        ? lngDict.character["others"]
+        : "Others",
+      max_rarity: 0,
+      min_rarity: 0,
+      two_pc: lngDict?.character["others_desc"]
+        ? lngDict.character["others_desc"]
+        : "Others",
+    };
   }
 
   const common = require(`../../_content/genshin/data/common.json`)[locale];
@@ -454,14 +467,14 @@ export const getStaticProps: GetStaticProps = async ({
       mubuild,
       recommendedTeams: recommendedTeams ?? [],
       bgStyle: {
-        image: getUrl(
+        image: getUrlLQ(
           `/regions/${common[character.region] || "Mondstadt"}_d.jpg`
         ),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
         },
-        stickyImage: `${IMGS_CDN}/characters/${character.id}/header_image.png`,
+        stickyImage: getUrlLQ(`/characters/${character.id}/header_image.png`),
       },
     },
   };

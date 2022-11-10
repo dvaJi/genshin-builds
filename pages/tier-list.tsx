@@ -14,7 +14,7 @@ import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
-import { getUrl } from "@lib/imgUrl";
+import { getUrlLQ } from "@lib/imgUrl";
 
 type Props = {
   tierlist: Tierlist;
@@ -169,7 +169,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
       common,
       bgStyle: {
-        image: getUrl(`/regions/Sumeru_d.jpg`),
+        image: getUrlLQ(`/regions/Sumeru_d.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

@@ -9,7 +9,7 @@ import SimpleRarityBox from "@components/SimpleRarityBox";
 import { BannerHistorical, BannerReRunPrediction } from "interfaces/banner";
 import { getLocale } from "@lib/localData";
 import { getTimeAgo } from "@lib/timeago";
-import { getUrl } from "@lib/imgUrl";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
@@ -163,7 +163,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       rerunPrediction: banners.weapons.rerunPrediction,
       locale,
       bgStyle: {
-        image: getUrl(`/regions/Inazuma_d.jpg`),
+        image: getUrlLQ(`/regions/Inazuma_d.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 690px)",

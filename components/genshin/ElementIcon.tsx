@@ -1,4 +1,4 @@
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -16,7 +16,7 @@ const ElementIcon = ({
   className,
 }: ElementIconProps) => (
   <LazyLoadImage
-    src={`${IMGS_CDN}/elements/${type}.png`}
+    src={getUrl(`/elements/${type}.png`, height, width)}
     alt={type}
     className={className}
     width={width}

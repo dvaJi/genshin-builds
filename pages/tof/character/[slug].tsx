@@ -16,10 +16,11 @@ import MatrixPortrait from "@components/tof/MatrixPortrait";
 import CharacterPortrait from "@components/tof/CharacterPortrait";
 
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getBuildsByCharacterId } from "@lib/tofdata";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 import { Build } from "interfaces/tof/build";
+import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
 
 type BuildFull = Build & {
   name: string;
@@ -59,7 +60,7 @@ const CharacterPage = ({
         <div className="flex items-center">
           <img
             className="h-36 w-36 lg:h-48 lg:w-48"
-            src={`${TOF_IMGS_CDN}/characters/${character.id}.png`}
+            src={getTofUrl(`/characters/${character.id}.png`)}
             alt={character.name}
           />
           <div className="">
@@ -81,7 +82,7 @@ const CharacterPage = ({
         </div>
         <div className="mx-4 flex w-full flex-row-reverse items-center justify-between lg:w-auto">
           <img
-            src={`${TOF_IMGS_CDN}/weapons/${character.weapon_id}.png`}
+            src={getTofUrl(`/weapons/${character.weapon_id}.png`)}
             className="h-24 w-24 lg:h-48 lg:w-48"
             alt={character.weapon}
           />
@@ -246,7 +247,7 @@ const CharacterPage = ({
               >
                 <img
                   className="h-16 w-16 lg:h-24 lg:w-24"
-                  src={`${TOF_IMGS_CDN}/gifts/${gift.id}.png`}
+                  src={getTofUrl(`/gifts/${gift.id}.png`)}
                   title={gift.name}
                   alt={gift.name}
                 />
@@ -302,7 +303,7 @@ const CharacterPage = ({
                         )}
                       >
                         <img
-                          src={`${TOF_IMGS_CDN}/items/${ascension.mat1.id}.png`}
+                          src={getTofUrl(`/items/${ascension.mat1.id}.png`)}
                           alt={ascension.mat1.name}
                           title={ascension.mat1.name}
                         />
@@ -321,7 +322,7 @@ const CharacterPage = ({
                           )}
                         >
                           <img
-                            src={`${TOF_IMGS_CDN}/items/${ascension.mat2.id}.png`}
+                            src={getTofUrl(`/items/${ascension.mat2.id}.png`)}
                             alt={ascension.mat2.name}
                             title={ascension.mat2.name}
                           />
@@ -340,7 +341,7 @@ const CharacterPage = ({
                           )}
                         >
                           <img
-                            src={`${TOF_IMGS_CDN}/items/${ascension.mat3.id}.png`}
+                            src={getTofUrl(`/items/${ascension.mat3.id}.png`)}
                             alt={ascension.mat3.name}
                             title={ascension.mat3.name}
                           />
@@ -354,7 +355,7 @@ const CharacterPage = ({
                   <td>
                     <div className="flex items-center text-lg text-tof-100">
                       <img
-                        src={`${TOF_IMGS_CDN}/icons/icon_gold_64.png`}
+                        src={getTofUrl(`/icons/icon_gold_64.png`)}
                         alt="Gold"
                         className="w-12 lg:w-16"
                       />
@@ -464,7 +465,7 @@ export const getStaticProps: GetStaticProps = async ({
       })),
       locale: defaultLocale,
       bgStyle: {
-        image: `${TOF_IMGS_CDN}/bg_characters/${character?.id}.png`,
+        image: getTofUrlLQ(`/bg_characters/${character?.id}.png`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",

@@ -10,7 +10,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
 import { TeamData, Teams, CharacterTeam } from "interfaces/teams";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getUrl } from "@lib/imgUrl";
+import { getUrlLQ } from "@lib/imgUrl";
 
 type TeamsProps = {
   teamsByName: Record<
@@ -93,7 +93,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       teamsByName: teamsf,
       lngDict,
       bgStyle: {
-        image: getUrl(`/regions/Mondstadt_d.jpg`),
+        image: getUrlLQ(`/regions/Mondstadt_d.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

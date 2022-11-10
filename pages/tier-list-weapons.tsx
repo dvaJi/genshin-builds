@@ -13,7 +13,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
-import { getUrl } from "@lib/imgUrl";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { trackClick } from "@lib/gtag";
 
 type Props = {
@@ -162,7 +162,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       weaponsMap,
       lngDict,
       bgStyle: {
-        image: getUrl(`/regions/Sumeru_d.jpg`),
+        image: getUrlLQ(`/regions/Sumeru_d.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

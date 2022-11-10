@@ -9,9 +9,10 @@ import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRarityColor } from "@utils/rarity";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
+import { getTofUrl } from "@lib/imgUrl";
 
 interface CharacterPageProps {
   matrix: Matrix;
@@ -35,7 +36,7 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
         <div className="z-10 flex items-center">
           <img
             className="h-36 w-36 lg:h-48 lg:w-48"
-            src={`${TOF_IMGS_CDN}/matrices/icon_matrix_${matrix.hash}_256.png`}
+            src={getTofUrl(`/matrices/icon_matrix_${matrix.hash}_256.png`)}
             alt={matrix.name}
           />
           <div className="">
@@ -58,7 +59,7 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
         <div className="w-full">
           <img
             className="h-44 w-full lg:h-48"
-            src={`${TOF_IMGS_CDN}/matrices/avatar_matrix_${matrix.hash}_256.png`}
+            src={getTofUrl(`/matrices/avatar_matrix_${matrix.hash}_256.png`)}
             alt={matrix.name}
           />
         </div>

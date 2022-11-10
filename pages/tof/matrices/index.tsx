@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
-import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import TOFData, { Languages, Matrix, languages } from "@dvaji/tof-builds";
 
 import Ads from "@components/ui/Ads";
@@ -10,6 +10,7 @@ import MatrixPortrait from "@components/tof/MatrixPortrait";
 import { getDefaultLocale, getLocale } from "@lib/localData";
 import { getRarityColor } from "@utils/rarity";
 import useIntl from "@hooks/use-intl";
+import { getTofUrlLQ } from "@lib/imgUrl";
 
 type Props = {
   ssr: Matrix[];
@@ -125,7 +126,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       n,
       lngDict,
       bgStyle: {
-        image: `${TOF_IMGS_CDN}/bg/fulilingqu_bg_OS1.png`,
+        image: getTofUrlLQ(`/bg/fulilingqu_bg_OS1.png`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

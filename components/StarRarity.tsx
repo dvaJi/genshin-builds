@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { memo, useMemo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import { IMGS_CDN } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
 
 interface StarRarityProps {
   rarity: number;
@@ -27,7 +27,7 @@ const StarRarity = ({
   }, [rarity]);
   return (
     <div
-      className={clsx("flex items-center justify-items-center w-10", className)}
+      className={clsx("flex w-10 items-center justify-items-center", className)}
     >
       {starts.map((star) => (
         <div
@@ -37,7 +37,7 @@ const StarRarity = ({
           })}
         >
           <LazyLoadImage
-            src={`${IMGS_CDN}/1_star.png`}
+            src={getUrl(`/1_star.png`)}
             alt="1_star.png"
             width={starsSize}
             height={starsSize}

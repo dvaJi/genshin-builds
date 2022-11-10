@@ -7,11 +7,11 @@ import Metadata from "@components/Metadata";
 import WeaponCalculator from "@components/genshin/WeaponCalculator";
 import CharacterCalculator from "@components/genshin/CharacterCalculator";
 
+import { getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
-import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   characters: Character[];
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       characters,
       weapons,
       bgStyle: {
-        image: getUrl(`/regions/Inazuma_d.jpg`),
+        image: getUrlLQ(`/regions/Inazuma_d.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

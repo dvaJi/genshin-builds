@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { TOF_IMGS_CDN } from "@lib/constants";
+
+import { getTofUrl } from "@lib/imgUrl";
 
 interface ElementIconProps {
   type: string;
@@ -16,7 +17,7 @@ const TypeIcon = ({
   className,
 }: ElementIconProps) => (
   <LazyLoadImage
-    src={`${TOF_IMGS_CDN}/icons/${type.toLowerCase()}.png`}
+    src={getTofUrl(`/icons/${type.toLowerCase()}.png`, height, width)}
     alt={type}
     className={className}
     width={width}

@@ -9,12 +9,12 @@ import Metadata from "@components/Metadata";
 import { todos as todosAtom } from "../state/todo";
 
 import useIntl from "@hooks/use-intl";
+import { getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getAllMaterialsMap } from "@utils/materials";
-import { getUrl } from "@lib/imgUrl";
 
 const Todo = dynamic(() => import("@components/genshin/Todo"), {
   ssr: false,
@@ -49,7 +49,12 @@ const TodoPage = ({ planning, materialsMap, days }: TodoProps) => {
         {t({ id: "todo", defaultMessage: "Todo List" })}
       </h2>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <Todo todos={todos} materialsMap={materialsMap} planning={planning} days={days} />
+      <Todo
+        todos={todos}
+        materialsMap={materialsMap}
+        planning={planning}
+        days={days}
+      />
     </div>
   );
 };
@@ -86,9 +91,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
       days: domains.characters[0].rotation.map((r) => r.day),
       bgStyle: {
-        image: getUrl(
-          `/regions/Mondstadt_n.jpg`
-        ),
+        image: getUrlLQ(`/regions/Mondstadt_n.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

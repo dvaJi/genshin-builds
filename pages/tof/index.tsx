@@ -10,9 +10,10 @@ import CharacterPortrait from "@components/tof/CharacterPortrait";
 
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
-import { AD_ARTICLE_SLOT, TOF_IMGS_CDN } from "@lib/constants";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getDefaultLocale, getLocale } from "@lib/localData";
 import { getRarityColor, rarityToNumber } from "@utils/rarity";
+import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
 
 type Props = {
   characters: Character[];
@@ -160,7 +161,7 @@ function Characters({ characters }: Props) {
               }}
             >
               <img
-                src={`${TOF_IMGS_CDN}/icons/${element.label}.png`}
+                src={getTofUrl(`/icons/${element.label}.png`)}
                 className="h-7 w-7"
                 alt={element.value}
               />
@@ -184,7 +185,7 @@ function Characters({ characters }: Props) {
               }}
             >
               <img
-                src={`${TOF_IMGS_CDN}/icons/${resonance.label}.png`}
+                src={getTofUrl(`/icons/${resonance.label}.png`)}
                 className="h-7 w-7"
                 alt={resonance.value}
               />
@@ -229,7 +230,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       characters: characters.sort((a, b) => a.name.localeCompare(b.name)),
       lngDict,
       bgStyle: {
-        image: `${TOF_IMGS_CDN}/bg/fulilingqu_bg_OS1.png`,
+        image: getTofUrlLQ(`/bg/fulilingqu_bg_OS1.png`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",

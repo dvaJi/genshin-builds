@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 
 import { getLocale } from "@lib/localData";
-import { getUrl } from "@lib/imgUrl";
+import { getUrlLQ } from "@lib/imgUrl";
 import Card from "@components/ui/Card";
 
 const WeaponsPage = () => {
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     props: {
       lngDict,
       bgStyle: {
-        image: getUrl(`/regions/Sumeru_n.jpg`),
+        image: getUrlLQ(`/regions/Sumeru_n.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

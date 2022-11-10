@@ -1,8 +1,7 @@
 import { memo } from "react";
 import { Character } from "@dvaji/tof-builds";
 import TypeIcon from "./TypeIcon";
-
-import { TOF_IMGS_CDN } from "@lib/constants";
+import { getTofUrl } from "@lib/imgUrl";
 
 interface CharacterPortraitProps {
   character: Character;
@@ -14,12 +13,12 @@ const CharacterPortrait = ({ character }: CharacterPortraitProps) => {
       <div className="h-24 w-24 overflow-hidden rounded-full ring-0 transition-shadow duration-200 ease-in-out group-hover:ring-4 group-hover:ring-slate-50">
         <img
           className="scale-125 transition-transform group-hover:scale-150"
-          src={`${TOF_IMGS_CDN}/characters/${character.id}.png`}
+          src={getTofUrl(`/characters/${character.id}.png`, 126, 126)}
           alt={character.name}
         />
       </div>
       <img
-        src={`${TOF_IMGS_CDN}/weapons/${character.weapon_id}.png`}
+        src={getTofUrl(`/weapons/${character.weapon_id}.png`, 86, 86)}
         className="absolute top-16 left-8 h-14 w-14 transition-transform group-hover:translate-y-5 group-hover:-translate-x-8 group-hover:scale-150 md:left-10 lg:top-12 lg:left-16 xl:left-20"
         alt={character.weapon}
         loading="lazy"

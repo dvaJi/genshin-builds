@@ -12,7 +12,7 @@ import useIntl from "@hooks/use-intl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getUrl } from "@lib/imgUrl";
+import { getUrlLQ } from "@lib/imgUrl";
 
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;
@@ -103,7 +103,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
       common,
       bgStyle: {
-        image: getUrl(`/regions/Inazuma_d.jpg`),
+        image: getUrlLQ(`/regions/Inazuma_d.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",

@@ -17,7 +17,7 @@ import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
 import useDebounce from "@hooks/use-debounce";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getUrl } from "@lib/imgUrl";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { trackClick } from "@lib/gtag";
 
 interface WeaponsPageProps {
@@ -259,7 +259,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       lngDict,
       common,
       bgStyle: {
-        image: getUrl(`/regions/Sumeru_n.jpg`),
+        image: getUrlLQ(`/regions/Sumeru_n.jpg`),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
