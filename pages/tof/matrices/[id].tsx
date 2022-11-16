@@ -56,9 +56,9 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
             </span>
           </div>
         </div>
-        <div className="w-full">
+        <div className="flex w-full justify-end">
           <img
-            className="h-44 w-full lg:h-48"
+            className="h-36 md:h-40 lg:h-48"
             src={getTofUrl(`/matrices/avatar_matrix_${matrix.hash}_256.png`)}
             alt={matrix.name}
           />
