@@ -109,9 +109,11 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const tofData = new TOFData({
     language: defaultLocale as Languages,
   });
-  const matrices = await tofData.matrices({
-    select: ["id", "name", "suitName", "rarity", "hash"],
-  });
+  const matrices = (
+    await tofData.matrices({
+      select: ["id", "name", "suitName", "rarity", "hash"],
+    })
+  ).map((matrix) => ({ ...matrix, suitName: matrix.suitName ?? "" }));
 
   const ssr = matrices.filter((m) => m.rarity === "SSR");
   const sr = matrices.filter((m) => m.rarity === "SR");

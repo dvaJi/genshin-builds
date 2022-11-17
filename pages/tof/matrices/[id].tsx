@@ -182,7 +182,10 @@ export const getStaticProps: GetStaticProps = async ({
 
   return {
     props: {
-      matrix,
+      matrix: {
+        ...matrix,
+        suitName: matrix?.suitName || "",
+      },
       lngDict,
       locale: defaultLocale,
     },
