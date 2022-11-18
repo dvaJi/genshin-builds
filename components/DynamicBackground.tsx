@@ -8,7 +8,7 @@ function DynamicBackground({ bgStyle }: Props) {
   // const appBackgroundStyle = useStore(background);
 
   return (
-    <div className="relative">
+    <div className="">
       {bgStyle?.image && (
         <div className="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex items-start justify-center overflow-hidden">
           <img
@@ -28,6 +28,7 @@ function DynamicBackground({ bgStyle }: Props) {
         <div className="fixed z-0 flex w-full items-center justify-center">
           <img
             className="z-0"
+            loading="lazy"
             alt="Background image"
             src={bgStyle?.stickyImage}
           />
