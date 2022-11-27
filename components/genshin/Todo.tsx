@@ -75,11 +75,11 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
         for (const [id, data] of Object.entries(value[4])) {
           const mat = materialsMap[id];
           const isWeeklyBoss =
-            mat.type === "talent_lvl_up_materials" && mat.rarity === 5;
+            mat?.type === "talent_lvl_up_materials" && mat.rarity === 5;
           if (
             id !== "crown_of_insight" &&
             ["talent_lvl_up_materials", "weapon_primary_materials"].includes(
-              mat.type
+              mat?.type
             ) &&
             !isWeeklyBoss
           ) {

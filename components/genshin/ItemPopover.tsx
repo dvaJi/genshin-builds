@@ -40,23 +40,23 @@ function ItemPopover({
   };
 
   return (
-    <div className="cursor-pointer" {...trigger}>
+    <div className="cursor-pointer relative" {...trigger}>
       <SimpleRarityBox
         img={getUrl(`/${materialInfo?.type}/${id}.png`, 45, 45)}
         rarity={materialInfo?.rarity}
         name={numFormat.format(data)}
         alt={materialInfo?.name}
         nameSeparateBlock
-        className={clsx("w-11 h-11", { grayscale: data === 0 })}
+        className={clsx("h-11 w-11", { grayscale: data === 0 })}
         classNameBlock="w-11"
       />
       {open && (
         <div
           {...content}
-          className="bg-vulcan-800 border-2 border-vulcan-800 rounded shadow-2xl z-1000"
+          className="z-1000 rounded border-2 border-vulcan-800 bg-vulcan-800 shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
+          <div className="rounded-t bg-vulcan-600 p-1 text-sm text-white">
             {materialInfo?.name}
           </div>
           <div className="px-2">
@@ -73,10 +73,10 @@ function ItemPopover({
             })}
             : {inventory}
           </div>
-          <div className="p-2 flex items-center content-around">
+          <div className="flex content-around items-center p-2">
             <button
               disabled={remaining === originalData}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              className="w-7 rounded border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
               onClick={() => onChange(inventory - 1)}
             >
               -
@@ -91,7 +91,7 @@ function ItemPopover({
             />
             <button
               disabled={remaining === 0}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              className="w-7 rounded border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
               onClick={() => onChange(inventory + 1)}
             >
               +
@@ -99,7 +99,7 @@ function ItemPopover({
           </div>
           <div className="flex justify-center">
             <Button
-              className="py-1 mb-2"
+              className="mb-2 py-1"
               onClick={() => {
                 handleOnChange({ id, value: remaining });
                 // close the popover

@@ -5,7 +5,7 @@ import { memo } from "react";
 const LayoutFooter = () => {
   const router = useRouter();
   return (
-    <footer className="z-50 border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-20 py-14 text-gray-400 backdrop-blur">
+    <footer className="border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-20 py-14 text-gray-400 backdrop-blur" style={{zIndex: 1}}>
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
