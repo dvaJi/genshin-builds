@@ -358,6 +358,26 @@
         "lazurite_axe_marlin",
         "halcyon_jade_axe_marlin"
       ]
+    },
+    {
+      "id": "38143",
+      "fish": [
+        "medaka",
+        "crystalfish",
+        "sandstorm_angler",
+        "sunset_cloud_angler",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "38144",
+      "fish": [
+        "medaka",
+        "dawncatcher",
+        "akai_maou",
+        "true_fruit_angler",
+        "lazurite_axe_marlin"
+      ]
     }
   ]
 }
