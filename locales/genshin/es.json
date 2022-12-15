@@ -242,5 +242,38 @@
     "youtube_tutorial": "Tutorial en Youtube",
     "interactive_map": "Mapa interactivo",
     "related_guides": "Guías relacionadas"
+  },
+  "banners_characters": {
+    "title": "Banner de personajes de Genshin Impact",
+    "description": "Descubre todos los banners de personajes y sus estadisticas",
+    "rerun_prediction": "Predicción de Próxima Aparicición",
+    "historical": "Histórico",
+    "runs": "{runs} veces"
+  },
+  "banners_weapons": {
+    "title": "Banner de armas de impacto de Genshin",
+    "description": "Descubre todos los banners de armas y sus estadisticas",
+    "rerun_prediction": "Predicción de Próxima Aparicición",
+    "historical": "Histórico",
+    "runs": "{runs} veces"
+  },
+  "tcg_cards": {
+    "title": "Juego de cartas Invocación del Sabio TCG",
+    "description": "Invocación del Sabio TCG es una nueva función de juego de cartas en Genshin Impact. ",
+    "cards": "Tarjetas"
+  },
+  "tcg_card": {
+    "title": "{name} - Lista de cartas de Genshin Impact TCG",
+    "description": "{name} es una carta para Genshin Impact Invocación del Sabio TCG. ",
+    "tcg_cards_title": "Juego de cartas Invocación del Sabio TCG",
+    "back": "Atrás",
+    "hp": "HP",
+    "energy": "Energía",
+    "weapon": "Arma",
+    "cost": "Costo",
+    "cost_type": "Tipo de costo",
+    "card_type": "Tipo de tarjeta",
+    "source": "Fuente",
+    "card_effects": "Efectos de cartas"
   }
 }

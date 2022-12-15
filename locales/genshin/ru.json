@@ -243,5 +243,38 @@
     "youtube_tutorial": "Учебник по YouTube",
     "interactive_map": "Интерактивная карта",
     "related_guides": "Связанные руководства"
+  },
+  "banners_characters": {
+    "title": "Баннеры персонажей Genshin Impact",
+    "description": "Откройте для себя все знамёна персонажей и их рейты",
+    "rerun_prediction": "Повторить прогноз",
+    "historical": "Исторический",
+    "runs": "{runs} бежит"
+  },
+  "banners_weapons": {
+    "title": "Баннеры ударного оружия Genshin",
+    "description": "Откройте для себя все оружейные знамена и их рейты",
+    "rerun_prediction": "Повторить прогноз",
+    "historical": "Исторический",
+    "runs": "{runs} бежит"
+  },
+  "tcg_cards": {
+    "title": "Genius Invokation ККИ Карточная игра",
+    "description": "Genius Invokation TCG — это новая функция карточной игры в Genshin Impact. ",
+    "cards": "Открытки"
+  },
+  "tcg_card": {
+    "title": "{name} - Список карт Genshin Impact TCG",
+    "description": "{name} — карточка для Genshin Impact Genius Invokation TCG. ",
+    "tcg_cards_title": "Genius Invokation ККИ Карточная игра",
+    "back": "Назад",
+    "hp": "HP",
+    "energy": "Энергия",
+    "weapon": "Оружие",
+    "cost": "Расходы",
+    "cost_type": "Тип стоимости",
+    "card_type": "Тип карты",
+    "source": "Источник",
+    "card_effects": "Эффекты карт"
   }
 }

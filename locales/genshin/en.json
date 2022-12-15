@@ -259,5 +259,24 @@
     "rerun_prediction": "Rerun Prediction",
     "historical": "Historical",
     "runs": "{runs} runs"
+  },
+  "tcg_cards": {
+    "title": "Genius Invokation TCG Card Game",
+    "description": "Genius Invokation TCG is a new card game feature in Genshin Impact. Guide includes what is the Genius Invocation TCG, character card game, how to get cards!",
+    "cards": "Cards"
+  },
+  "tcg_card": {
+    "title": "{name} - Genshin Impact TCG Card List",
+    "description": "{name} is a card for Genshin Impact Genius Invokation TCG. See how to get , skills, effects, how to get, and more of {name} Card for Genius Invokation.",
+    "tcg_cards_title": "Genius Invokation TCG Card Game",
+    "back": "Back",
+    "hp": "HP",
+    "energy": "Energy",
+    "weapon": "Weapon",
+    "cost": "Cost",
+    "cost_type": "Cost Type",
+    "card_type": "Card Type",
+    "source": "Source",
+    "card_effects": "Card Effects"
   }
 }

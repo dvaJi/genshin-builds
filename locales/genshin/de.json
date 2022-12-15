@@ -243,5 +243,38 @@
     "youtube_tutorial": "YouTube-Tutorial",
     "interactive_map": "Interaktive Karte",
     "related_guides": "Verwandte Anleitungen"
+  },
+  "banners_characters": {
+    "title": "Genshin Impact Charakter-Banner",
+    "description": "Entdecken Sie alle Zeichenbanner und ihre Preise",
+    "rerun_prediction": "Vorhersage erneut ausführen",
+    "historical": "Historisch",
+    "runs": "{runs} läuft"
+  },
+  "banners_weapons": {
+    "title": "Genshin Impact Waffenbanner",
+    "description": "Entdecken Sie alle Waffenbanner und ihre Preise",
+    "rerun_prediction": "Vorhersage erneut ausführen",
+    "historical": "Historisch",
+    "runs": "{runs} läuft"
+  },
+  "tcg_cards": {
+    "title": "Genius Invokation TCG-Kartenspiel",
+    "description": "Genius Invokation TCG ist eine neue Kartenspielfunktion in Genshin Impact. ",
+    "cards": "Karten"
+  },
+  "tcg_card": {
+    "title": "{name} - Genshin Impact TCG-Kartenliste",
+    "description": "{name} ist eine Karte für Genshin Impact Genius Invokation TCG. ",
+    "tcg_cards_title": "Genius Invokation TCG-Kartenspiel",
+    "back": "Der Rücken",
+    "hp": "PS",
+    "energy": "Energie",
+    "weapon": "Waffe",
+    "cost": "Kosten",
+    "cost_type": "Kostenart",
+    "card_type": "Speicherkarten-Typ",
+    "source": "Quelle",
+    "card_effects": "Karteneffekte"
   }
 }

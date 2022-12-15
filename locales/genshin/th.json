@@ -242,5 +242,38 @@
     "youtube_tutorial": "บทช่วยสอนของ YouTube",
     "interactive_map": "แผนที่แบบโต้ตอบ",
     "related_guides": "คำแนะนำที่เกี่ยวข้อง"
+  },
+  "banners_characters": {
+    "title": "แบนเนอร์ตัวละคร Genshin Impact",
+    "description": "ค้นพบแบนเนอร์ตัวละครทั้งหมดและอัตราของพวกเขา",
+    "rerun_prediction": "เรียกใช้การทำนายอีกครั้ง",
+    "historical": "ประวัติศาสตร์",
+    "runs": "{runs} วิ่ง"
+  },
+  "banners_weapons": {
+    "title": "แบนเนอร์อาวุธ Genshin Impact",
+    "description": "ค้นพบแบนเนอร์อาวุธทั้งหมดและอัตรา",
+    "rerun_prediction": "เรียกใช้การทำนายอีกครั้ง",
+    "historical": "ประวัติศาสตร์",
+    "runs": "{runs} วิ่ง"
+  },
+  "tcg_cards": {
+    "title": "เกมไพ่ TCG อัญเชิญอัจฉริยะ",
+    "description": "Genius Invokation TCG เป็นฟีเจอร์การ์ดเกมใหม่ใน Genshin Impact ",
+    "cards": "การ์ด"
+  },
+  "tcg_card": {
+    "title": "{name} - รายการการ์ด Genshin Impact TCG",
+    "description": "{name} เป็นการ์ดสำหรับ Genshin Impact Genius Invokation TCG ",
+    "tcg_cards_title": "เกมไพ่ TCG อัญเชิญอัจฉริยะ",
+    "back": "กลับ",
+    "hp": "เอชพี",
+    "energy": "พลังงาน",
+    "weapon": "อาวุธ",
+    "cost": "ค่าใช้จ่าย",
+    "cost_type": "ประเภทค่าใช้จ่าย",
+    "card_type": "ประเภทบัตร",
+    "source": "แหล่งที่มา",
+    "card_effects": "เอฟเฟคการ์ด"
   }
 }

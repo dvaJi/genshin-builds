@@ -242,5 +242,38 @@
     "youtube_tutorial": "Tutorial do YouTube",
     "interactive_map": "Mapa interativo",
     "related_guides": "Guias relacionados"
+  },
+  "banners_characters": {
+    "title": "Banners de personagens de impacto de Genshin",
+    "description": "Descubra todos os banners de personagens e suas taxas",
+    "rerun_prediction": "Previsão de reexecução",
+    "historical": "Histórico",
+    "runs": "{runs} corre"
+  },
+  "banners_weapons": {
+    "title": "Banners de armas de impacto Genshin",
+    "description": "Descubra todos os banners de armas e suas taxas",
+    "rerun_prediction": "Previsão de reexecução",
+    "historical": "Histórico",
+    "runs": "{runs} corre"
+  },
+  "tcg_cards": {
+    "title": "Jogo de Cartas TCG de Invocação Genial",
+    "description": "Genius Invokation TCG é um novo recurso de jogo de cartas em Genshin Impact. ",
+    "cards": "cartões"
+  },
+  "tcg_card": {
+    "title": "{name} - Lista de Cartas TCG do Genshin Impact",
+    "description": "{name} é uma carta para Genshin Impact Genius Invokation TCG. ",
+    "tcg_cards_title": "Jogo de Cartas TCG de Invocação Genial",
+    "back": "De volta",
+    "hp": "HP",
+    "energy": "Energia",
+    "weapon": "Arma",
+    "cost": "Custo",
+    "cost_type": "Tipo de custo",
+    "card_type": "Tipo de carta",
+    "source": "Fonte",
+    "card_effects": "Efeitos de cartas"
   }
 }

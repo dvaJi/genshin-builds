@@ -243,5 +243,38 @@
     "youtube_tutorial": "유튜브 튜토리얼",
     "interactive_map": "인터랙티브 맵",
     "related_guides": "관련 가이드"
+  },
+  "banners_characters": {
+    "title": "원신 임팩트 캐릭터 배너",
+    "description": "모든 캐릭터 배너 및 요금 알아보기",
+    "rerun_prediction": "재방송 예측",
+    "historical": "역사적인",
+    "runs": "{runs} 실행"
+  },
+  "banners_weapons": {
+    "title": "원신 임팩트 무기 배너",
+    "description": "모든 무기 배너와 그 가격을 알아보세요",
+    "rerun_prediction": "재방송 예측",
+    "historical": "역사적인",
+    "runs": "{runs} 실행"
+  },
+  "tcg_cards": {
+    "title": "Genius Invokation TCG 카드 게임",
+    "description": "Genius Invokation TCG는 Genshin Impact의 새로운 카드 게임 기능입니다. ",
+    "cards": "카드"
+  },
+  "tcg_card": {
+    "title": "{name} - Genshin Impact TCG 카드 목록",
+    "description": "{name}은 Genshin Impact Genius Invokation TCG의 카드입니다. ",
+    "tcg_cards_title": "Genius Invokation TCG 카드 게임",
+    "back": "뒤쪽에",
+    "hp": "HP",
+    "energy": "에너지",
+    "weapon": "무기",
+    "cost": "비용",
+    "cost_type": "비용 유형",
+    "card_type": "카드 종류",
+    "source": "원천",
+    "card_effects": "카드 효과"
   }
 }

@@ -242,5 +242,38 @@
     "youtube_tutorial": "Tutorial YouTube",
     "interactive_map": "Peta Interaktif",
     "related_guides": "Panduan Terkait"
+  },
+  "banners_characters": {
+    "title": "Spanduk Karakter Dampak Genshin",
+    "description": "Temukan semua spanduk karakter dan tarifnya",
+    "rerun_prediction": "Jalankan Ulang Prediksi",
+    "historical": "Historis",
+    "runs": "{runs} berlari"
+  },
+  "banners_weapons": {
+    "title": "Spanduk Senjata Dampak Genshin",
+    "description": "Temukan semua spanduk senjata dan tarifnya",
+    "rerun_prediction": "Jalankan Ulang Prediksi",
+    "historical": "Historis",
+    "runs": "{runs} berlari"
+  },
+  "tcg_cards": {
+    "title": "Permainan Kartu TCG Invokasi Jenius",
+    "description": "Genius Invokasi TCG adalah fitur permainan kartu baru di Genshin Impact. ",
+    "cards": "Kartu-kartu"
+  },
+  "tcg_card": {
+    "title": "{name} - Daftar Kartu TCG Genshin Impact",
+    "description": "{name} adalah kartu untuk Genshin Impact Genius Invokasi TCG. ",
+    "tcg_cards_title": "Permainan Kartu TCG Invokasi Jenius",
+    "back": "Kembali",
+    "hp": "HP",
+    "energy": "Energi",
+    "weapon": "Senjata",
+    "cost": "Biaya",
+    "cost_type": "Jenis Biaya",
+    "card_type": "Tipe kartu",
+    "source": "Sumber",
+    "card_effects": "Efek Kartu"
   }
 }

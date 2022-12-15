@@ -242,5 +242,38 @@
     "youtube_tutorial": "YouTube 教程",
     "interactive_map": "互動地圖",
     "related_guides": "相關指南"
+  },
+  "banners_characters": {
+    "title": "Genshin Impact 角色橫幅",
+    "description": "發現所有角色橫幅及其價格",
+    "rerun_prediction": "重新運行預測",
+    "historical": "歷史的",
+    "runs": "{runs} 次運行"
+  },
+  "banners_weapons": {
+    "title": "Genshin Impact 武器橫幅",
+    "description": "發現所有武器旗幟及其價格",
+    "rerun_prediction": "重新運行預測",
+    "historical": "歷史的",
+    "runs": "{runs} 次運行"
+  },
+  "tcg_cards": {
+    "title": "天才召喚卡牌遊戲",
+    "description": "Genius Invokation TCG 是 Genshin Impact 中的一項新紙牌遊戲功能。",
+    "cards": "牌"
+  },
+  "tcg_card": {
+    "title": "{name} - Genshin Impact TCG 卡片列表",
+    "description": "{name} 是 Genshin Impact Genius Invokation TCG 的卡片。",
+    "tcg_cards_title": "天才召喚卡牌遊戲",
+    "back": "後退",
+    "hp": "生命值",
+    "energy": "活力",
+    "weapon": "武器",
+    "cost": "成本",
+    "cost_type": "成本類型",
+    "card_type": "卡的種類",
+    "source": "資源",
+    "card_effects": "卡片效果"
   }
 }

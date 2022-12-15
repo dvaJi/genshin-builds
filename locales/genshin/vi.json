@@ -243,5 +243,38 @@
     "youtube_tutorial": "Hướng dẫn trên YouTube",
     "interactive_map": "Bản đồ tương tác",
     "related_guides": "Hướng dẫn liên quan"
+  },
+  "banners_characters": {
+    "title": "Biểu ngữ nhân vật tác động Genshin",
+    "description": "Khám phá tất cả các biểu ngữ nhân vật và tỷ lệ của họ",
+    "rerun_prediction": "chạy lại dự đoán",
+    "historical": "lịch sử",
+    "runs": "{runs} chạy"
+  },
+  "banners_weapons": {
+    "title": "Biểu ngữ vũ khí tác động Genshin",
+    "description": "Khám phá tất cả các biểu ngữ vũ khí và tỷ lệ của chúng",
+    "rerun_prediction": "chạy lại dự đoán",
+    "historical": "lịch sử",
+    "runs": "{runs} chạy"
+  },
+  "tcg_cards": {
+    "title": "Trò chơi bài TCG triệu hồi thiên tài",
+    "description": "Genius Invokation TCG là một tính năng thẻ bài mới trong Genshin Impact. ",
+    "cards": "thẻ"
+  },
+  "tcg_card": {
+    "title": "{name} - Danh sách thẻ Genshin Impact TCG",
+    "description": "{name} là một lá bài dành cho TCG Genshin Impact Genius Invokation. ",
+    "tcg_cards_title": "Trò chơi bài TCG triệu hồi thiên tài",
+    "back": "Mặt sau",
+    "hp": "HP",
+    "energy": "Năng lượng",
+    "weapon": "vũ khí",
+    "cost": "Trị giá",
+    "cost_type": "Loại chi phí",
+    "card_type": "Loại thẻ",
+    "source": "Nguồn",
+    "card_effects": "Hiệu ứng thẻ"
   }
 }

@@ -243,5 +243,38 @@
     "youtube_tutorial": "YouTube チュートリアル",
     "interactive_map": "インタラクティブ マップ",
     "related_guides": "関連ガイド"
+  },
+  "banners_characters": {
+    "title": "原神インパクトキャラクターバナー",
+    "description": "すべてのキャラクター バナーとそのレートを確認する",
+    "rerun_prediction": "予測の再実行",
+    "historical": "歴史的",
+    "runs": "{runs} ラン"
+  },
+  "banners_weapons": {
+    "title": "原神インパクトウェポンバナー",
+    "description": "すべての武器のバナーとそのレートを発見する",
+    "rerun_prediction": "予測の再実行",
+    "historical": "歴史的",
+    "runs": "{runs} ラン"
+  },
+  "tcg_cards": {
+    "title": "天才召喚TCGカードゲーム",
+    "description": "Genius Invokation TCG は Genshin Impact の新しいカードゲーム機能です。",
+    "cards": "カード"
+  },
+  "tcg_card": {
+    "title": "{name} - 原神インパクトTCGカードリスト",
+    "description": "{name}はGenshin Impact Genius Invokation TCGのカードです。",
+    "tcg_cards_title": "天才召喚TCGカードゲーム",
+    "back": "戻る",
+    "hp": "HP",
+    "energy": "エネルギー",
+    "weapon": "武器",
+    "cost": "料金",
+    "cost_type": "コストタイプ",
+    "card_type": "カードの種類",
+    "source": "ソース",
+    "card_effects": "カードの効果"
   }
 }
