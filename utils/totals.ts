@@ -39,13 +39,24 @@ export function calculateTotalAscensionMaterials(
     "common_materials",
   ];
   return ascension
-    .filter(
-      (asc) => asc.ascension >= ascensionMin && asc.ascension <= ascensionMax
-    )
+    .filter((asc) => asc.cost)
     .reduce<AscensionTotal>(
       (acc, cur) => {
         acc.cost = acc.cost + cur.cost;
+        let mat1: any = {};
         let mat2: any = {};
+        let mat3: any = {};
+        let mat4: any = {};
+        if (cur.mat1) {
+          mat1 = {
+            id: cur.mat1.id,
+            name: cur.mat1.name,
+            type: talentIndexFolder[0],
+            rarity: cur.mat1.rarity,
+            amount: cur.mat1.amount,
+            index: 0,
+          };
+        }
         if (cur.mat2) {
           mat2 = {
             id: cur.mat2.id,
@@ -56,32 +67,31 @@ export function calculateTotalAscensionMaterials(
             index: 1,
           };
         }
-        acc.items = [
-          {
-            id: cur.mat1.id,
-            name: cur.mat1.name,
-            type: talentIndexFolder[0],
-            rarity: cur.mat1.rarity,
-            amount: cur.mat1.amount,
-            index: 0,
-          },
-          mat2,
-          {
+        if (cur.mat3) {
+          mat3 = {
             id: cur.mat3.id,
             name: cur.mat3.name,
             type: talentIndexFolder[2],
             rarity: cur.mat3.rarity,
             amount: cur.mat3.amount,
             index: 2,
-          },
-          {
+          };
+        }
+        if (cur.mat4) {
+          mat4 = {
             id: cur.mat4.id,
             name: cur.mat4.name,
             type: talentIndexFolder[3],
             rarity: cur.mat4.rarity,
             amount: cur.mat4.amount,
             index: 3,
-          },
+          };
+        }
+        acc.items = [
+          mat1,
+          mat2,
+          mat3,
+          mat4,
           ...acc.items,
         ]
           .filter((item) => item.id)

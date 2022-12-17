@@ -57,7 +57,7 @@ const CharacterCommonBuildCard = ({ build, weapons, artifacts }: Props) => {
           </div>
           {build.artifacts
             .map<ReactNode>((set) => (
-              <div key={`${set[0]}-${set[1]}`}>
+              <div key={`${set[0]}-${set[1]}`} className="w-full">
                 <ArtifactCard
                   artifact={artifacts[set[0]]}
                   artifact2={set.length === 2 ? artifacts[set[1]] : undefined}

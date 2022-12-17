@@ -53,7 +53,7 @@ const navroutes: NavRoutes[] = [
       },
     ],
   },
-  { id: "guides", name: "Guides", href: "/guides" },
+  { id: "tcg", name: "TCG Cards", href: "/tcg" },
   {
     id: "database",
     name: "Database",
@@ -61,6 +61,7 @@ const navroutes: NavRoutes[] = [
     dropdownMenu: [
       { id: "weapons", name: "Weapons", href: "/weapons" },
       { id: "calculator", name: "Calculator", href: "/calculator" },
+      { id: "guides", name: "Guides", href: "/guides" },
       { id: "artifacts", name: "Artifacts", href: "/artifacts" },
       { id: "materials", name: "Materials", href: "/materials" },
       { id: "achievements", name: "Achievements", href: "/achievements" },

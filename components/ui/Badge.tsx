@@ -9,7 +9,10 @@ interface CollapsibleProps {
 const Badge = ({ children, className }: CollapsibleProps) => {
   return (
     <span
-      className={clsx("bg-gray-600 rounded p-1 text-xs mr-1 font-bold", className)}
+      className={clsx(
+        "mr-1 rounded border border-gray-500/40 bg-gray-600/70 p-1 text-xs font-bold",
+        className
+      )}
     >
       {children}
     </span>

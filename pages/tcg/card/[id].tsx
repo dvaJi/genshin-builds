@@ -71,14 +71,16 @@ const TCGCardPage = ({ card, locale }: Props) => {
               dangerouslySetInnerHTML={{ __html: card.desc }}
             />
           </div>
-          <div className="mt-6 text-sm">
-            <span className="text-slate-200">
-              {t({ id: "source", defaultMessage: "Source" })}:
-            </span>{" "}
-            <span className="text-slate-400">
-              {card.attributes.source.join(", ")}
-            </span>
-          </div>
+          {card.attributes.source && (
+            <div className="mt-6 text-sm">
+              <span className="text-slate-200">
+                {t({ id: "source", defaultMessage: "Source" })}:
+              </span>{" "}
+              <span className="text-slate-400">
+                {card.attributes.source.join(", ")}
+              </span>
+            </div>
+          )}
         </div>
       </div>
       <h2 className="text-3xl font-semibold text-gray-200">

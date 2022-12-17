@@ -96,27 +96,29 @@ export default async function handler(
 
   // Calculate Ascension materials
   if (params.currentLevel.asclLvl < params.intendedLevel.asclLvl) {
-    for (const item of character.ascension) {
+    for (const [index, item] of character.ascension.entries()) {
       if (
-        item.ascension <= params.currentLevel.asclLvl ||
-        item.ascension > params.intendedLevel.asclLvl
+        index + 1 <= params.currentLevel.asclLvl ||
+        index + 1 > params.intendedLevel.asclLvl
       ) {
         continue;
       }
 
       moraNeeded += item.cost;
       // Mat one
-      if (!itemsMap[item.mat1.id]) {
-        itemsMap[item.mat1.id] = {
-          id: item.mat1.id,
-          name: item.mat1.name,
-          img: "/jewels_materials/" + item.mat1.id + ".png",
-          amount: item.mat1.amount,
-          rarity: item.mat1.rarity,
-        };
-        setSortMap(item.mat1.id, 100 + item.mat1.rarity);
-      } else {
-        itemsMap[item.mat1.id].amount += item.mat1.amount;
+      if (item.mat1) {
+        if (!itemsMap[item.mat1.id]) {
+          itemsMap[item.mat1.id] = {
+            id: item.mat1.id,
+            name: item.mat1.name,
+            img: "/jewels_materials/" + item.mat1.id + ".png",
+            amount: item.mat1.amount,
+            rarity: item.mat1.rarity,
+          };
+          setSortMap(item.mat1.id, 100 + item.mat1.rarity);
+        } else {
+          itemsMap[item.mat1.id].amount += item.mat1.amount;
+        }
       }
 
       // Mat two
@@ -136,31 +138,35 @@ export default async function handler(
       }
 
       // Mat three
-      if (!itemsMap[item.mat3.id]) {
-        itemsMap[item.mat3.id] = {
-          id: item.mat3.id,
-          name: item.mat3.name,
-          img: "/local_materials/" + item.mat3.id + ".png",
-          amount: item.mat3.amount,
-          rarity: item.mat3.rarity,
-        };
-        setSortMap(item.mat3.id, 300 + item.mat3.rarity);
-      } else {
-        itemsMap[item.mat3.id].amount += item.mat3.amount;
+      if (item.mat3) {
+        if (!itemsMap[item.mat3.id]) {
+          itemsMap[item.mat3.id] = {
+            id: item.mat3.id,
+            name: item.mat3.name,
+            img: "/local_materials/" + item.mat3.id + ".png",
+            amount: item.mat3.amount,
+            rarity: item.mat3.rarity,
+          };
+          setSortMap(item.mat3.id, 300 + item.mat3.rarity);
+        } else {
+          itemsMap[item.mat3.id].amount += item.mat3.amount;
+        }
       }
 
       // Mat four
-      if (!itemsMap[item.mat4.id]) {
-        itemsMap[item.mat4.id] = {
-          id: item.mat4.id,
-          name: item.mat4.name,
-          img: "/common_materials/" + item.mat4.id + ".png",
-          amount: item.mat4.amount,
-          rarity: item.mat4.rarity,
-        };
-        setSortMap(item.mat4.id, 400 + item.mat4.rarity);
-      } else {
-        itemsMap[item.mat4.id].amount += item.mat4.amount;
+      if (item.mat4) {
+        if (!itemsMap[item.mat4.id]) {
+          itemsMap[item.mat4.id] = {
+            id: item.mat4.id,
+            name: item.mat4.name,
+            img: "/common_materials/" + item.mat4.id + ".png",
+            amount: item.mat4.amount,
+            rarity: item.mat4.rarity,
+          };
+          setSortMap(item.mat4.id, 400 + item.mat4.rarity);
+        } else {
+          itemsMap[item.mat4.id].amount += item.mat4.amount;
+        }
       }
     }
   }
