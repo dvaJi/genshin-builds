@@ -14,6 +14,8 @@ export const localeToLang = (locale: string | undefined) => {
       return "french";
     case "id":
       return "indonesian";
+    case "it":
+      return "italian";
     case "ko":
       return "korean";
     case "pt":
@@ -22,6 +24,8 @@ export const localeToLang = (locale: string | undefined) => {
       return "russian";
     case "th":
       return "thai";
+    case "tr":
+      return "turkish";
     case "vi":
       return "vietnamese";
 

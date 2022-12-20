@@ -48,9 +48,11 @@ export const genshinLocales = [
   "de",
   "fr",
   "id",
+  "it",
   "ko",
   "pt",
   "ru",
   "th",
+  "tr",
   "vi",
 ];

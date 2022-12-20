@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const GenshinData = require("genshin-data").default;
 
-const DATA_DIR = path.join(__dirname, "..", "_content", "data");
+const DATA_DIR = path.join(__dirname, "..", "_content", "genshin", "data");
 const LANGUAGES = [
   "en",
   "es",
@@ -11,10 +11,12 @@ const LANGUAGES = [
   "de",
   "fr",
   "id",
+  "it",
   "ko",
   "pt",
   "ru",
   "th",
+  "tr",
   "vi",
 ];
 
@@ -37,7 +39,7 @@ const weaponsDict = {
   chongyun: "Claymore",
   barbara: "Catalyst",
   kamisato_ayaka: "Sword",
-  collei: 'Bow',
+  collei: "Bow",
 };
 const elementDict = {
   zhongli: "Geo",
@@ -111,6 +113,8 @@ const localeToLang = (locale) => {
       return "french";
     case "id":
       return "indonesian";
+    case "it":
+      return "italian";
     case "ko":
       return "korean";
     case "pt":
@@ -119,6 +123,8 @@ const localeToLang = (locale) => {
       return "russian";
     case "th":
       return "thai";
+    case "tr":
+      return "turkish";
     case "vi":
       return "vietnamese";
 
