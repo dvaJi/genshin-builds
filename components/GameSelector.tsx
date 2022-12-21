@@ -20,7 +20,7 @@ function GameSelector({ currentGame, className }: Props) {
         aria-haspopup="true"
         aria-expanded="true"
         className={clsx(
-          "mt-1 flex h-10 w-60 items-center rounded px-2 backdrop-blur-sm",
+          "mt-4 flex h-10 w-full lg:w-44 items-center rounded px-2 backdrop-blur-sm md:w-10",
           isOpen ? "bg-tof-700/50" : "bg-tof-700/10"
         )}
         onClick={() => setIsOpen((o) => !o)}
@@ -30,14 +30,14 @@ function GameSelector({ currentGame, className }: Props) {
           src={getTofUrl(`/gameicons/${currentGame.slug}.webp`)}
           alt="Genshin Impact"
         />
-        <span className="text-sm">{currentGame.name}</span>
+        <span className="text-sm md:hidden lg:inline-block">{currentGame.name}</span>
       </button>
       <div
         tabIndex={-1}
         role="menu"
         aria-hidden={!isOpen}
         className={clsx(
-          "absolute top-11 w-full rounded-b bg-tof-700/90 shadow-md backdrop-blur-xl",
+          "absolute top-13 w-full rounded-b bg-tof-700/90 shadow-md backdrop-blur-xl",
           isOpen ? "block" : "hidden"
         )}
       >
@@ -54,7 +54,7 @@ function GameSelector({ currentGame, className }: Props) {
                 src={getTofUrl(`/gameicons/${game.slug}.webp`)}
                 alt={game.name}
               />
-              <span>{game.name}</span>
+              <span className="md:hidden lg:block">{game.name}</span>
             </button>
           </Link>
         ))}

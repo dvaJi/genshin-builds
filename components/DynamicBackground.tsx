@@ -27,7 +27,7 @@ function DynamicBackground({ bgStyle }: Props) {
       {bgStyle?.stickyImage && (
         <div className="fixed z-0 flex w-full items-center justify-center">
           <img
-            className="z-0"
+            className="z-0 -mt-24 min-w-[900px]"
             loading="lazy"
             alt="Background image"
             src={bgStyle?.stickyImage}

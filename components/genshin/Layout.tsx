@@ -16,7 +16,7 @@ function Layout({ children, bgStyle }: Props) {
   const router = useRouter();
 
   return (
-    <div className="flex h-full min-h-screen flex-col bg-vulcan-900">
+    <div className="flex min-h-screen flex-col bg-vulcan-900">
       <Head>
         <title>Genshin Builds | Genshin Impact Wiki Database</title>
         <meta
@@ -40,6 +40,7 @@ function Layout({ children, bgStyle }: Props) {
           content="Learn about every character in Genshin Impact including their skills, talents, builds, and tier list."
         />
       </Head>
+      <div className="h-20" />
       <LayoutHeader />
       <DynamicBackground bgStyle={bgStyle} />
       <main

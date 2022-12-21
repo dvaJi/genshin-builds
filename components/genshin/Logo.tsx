@@ -6,7 +6,7 @@ const Logo = () => {
     <>
       <Image
         src="/logo.png"
-        className="ml-5 fill-current text-white lg:ml-0 lg:mr-5"
+        className="fill-current text-white md:w-48"
         alt="GenshinBuilds logo"
         width={90}
         height={38}
