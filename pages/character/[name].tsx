@@ -23,6 +23,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import {
   getCharacterBuild,
   getCharacterMostUsedBuild,
+  getCharacterOfficialBuild,
   getLocale,
 } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -38,6 +39,7 @@ interface CharacterPageProps {
   locale: string;
   common: Record<string, string>;
   mubuild: MostUsedBuild;
+  officialbuild?: MostUsedBuild;
   recommendedTeams: TeamData[];
 }
 
@@ -49,6 +51,7 @@ const CharacterPage = ({
   locale,
   common,
   mubuild,
+  officialbuild,
   recommendedTeams,
 }: CharacterPageProps) => {
   const [buildSelected, setBuildSelected] = useState(
@@ -142,6 +145,23 @@ const CharacterPage = ({
                 {t({ id: "most_used", defaultMessage: "Most Used" })}
               </button>
             )}
+            {officialbuild && (
+              <button
+                className={clsx(
+                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 text-lg backdrop-blur",
+                  {
+                    "bg-vulcan-700 text-white": buildSelected === -2,
+                    "bg-vulcan-800": buildSelected !== -2,
+                  }
+                )}
+                onClick={() => setBuildSelected(-2)}
+              >
+                <div className="inline-block w-5">
+                  <StarRarity rarity={1} />
+                </div>
+                {t({ id: "official_build", defaultMessage: "Official Build" })}
+              </button>
+            )}
             {builds.map((build, index) => (
               <button
                 key={build.id}
@@ -164,9 +184,9 @@ const CharacterPage = ({
             ))}
           </div>
           <Card>
-            {buildSelected === -1 ? (
+            {buildSelected < 0 ? (
               <CharacterCommonBuildCard
-                build={mubuild}
+                build={buildSelected === -1 ? mubuild : officialbuild!}
                 artifacts={artifacts}
                 weapons={weapons}
               />
@@ -334,6 +354,9 @@ export const getStaticProps: GetStaticProps = async ({
   let artifacts: Record<string, Artifact & { children?: Artifact[] }> = {};
   let builds: Build[] = [];
   const mubuild: MostUsedBuild = await getCharacterMostUsedBuild(character.id);
+  const officialbuild: MostUsedBuild = await getCharacterOfficialBuild(
+    character.id
+  );
 
   if (buildsOld) {
     const weaponsIds: string[] = [];
@@ -368,7 +391,8 @@ export const getStaticProps: GetStaticProps = async ({
     weaponsList.forEach((weapon) => {
       if (
         weaponsIds.includes(weapon.id) ||
-        mubuild?.weapons?.includes(weapon.id)
+        mubuild?.weapons?.includes(weapon.id) ||
+        officialbuild?.weapons?.includes(weapon.id)
       ) {
         weapons[weapon.id] = weapon;
       }
@@ -377,7 +401,8 @@ export const getStaticProps: GetStaticProps = async ({
     artifactsList.forEach((artifact) => {
       if (
         artifactsIds.includes(artifact.id) ||
-        mubuild?.artifacts?.find((a) => a.includes(artifact.id))
+        mubuild?.artifacts?.find((a) => a.includes(artifact.id)) ||
+        officialbuild?.artifacts?.find((a) => a.includes(artifact.id))
       ) {
         artifacts[artifact.id] = artifact;
       }
@@ -409,6 +434,18 @@ export const getStaticProps: GetStaticProps = async ({
           ? lngDict.character["20energyrecharge_set"]
           : "Energy Recharge +20% set",
         children: artifactsList.filter((a) => Energy20BONUS.includes(a.id)),
+      };
+    }
+
+    const Anemo15BONUS = ["viridescent_venerer", "desert_pavilion_chronicle"];
+
+    if (artifactsIds.includes("15anemodmg_set")) {
+      artifacts["15anemodmg_set"] = {
+        ...artifactsList.find((a) => a.id === "viridescent_venerer")!,
+        name: lngDict?.character["15anemodmg_set"]
+          ? lngDict.character["15anemodmg_set"]
+          : "Anemo DMG Bonus +15% set",
+        children: artifactsList.filter((a) => Anemo15BONUS.includes(a.id)),
       };
     }
 
@@ -465,6 +502,7 @@ export const getStaticProps: GetStaticProps = async ({
       locale,
       common,
       mubuild,
+      officialbuild,
       recommendedTeams: recommendedTeams ?? [],
       bgStyle: {
         image: getUrlLQ(

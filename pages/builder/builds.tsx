@@ -640,6 +640,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
         "20energyrecharge_set",
         "25physicaldmg_set",
         "80elementalmastery_set",
+        "15anemodmg_set",
       ],
       currentbuilds,
       lngDict,

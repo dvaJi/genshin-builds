@@ -20,8 +20,8 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
   const { t: f } = useIntl("character");
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
-      <div className="flex flex-wrap w-full lg:pr-4 pr-2 content-start">
-        <div className="text-xl mb-2 font-semibold">
+      <div className="flex w-full flex-wrap content-start pr-2 lg:pr-4">
+        <div className="mb-2 text-xl font-semibold">
           {f({
             id: "weapons",
             defaultMessage: "Weapons",
@@ -49,14 +49,14 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
             ])}
         </div>
       </div>
-      <div className="flex flex-wrap w-full ml-2 content-start">
-        <div className="text-xl mb-2 font-semibold w-full">
+      <div className="flex w-full flex-wrap content-start md:ml-2">
+        <div className="mb-2 w-full text-xl font-semibold">
           {f({
             id: "talents_priority",
             defaultMessage: "Talents Priority",
           })}
         </div>
-        <div className="w-full mb-2">
+        <div className="mb-2 w-full">
           {build.talent_priority
             .map<ReactNode>((talent) => (
               <span key={`tal-${talent}`}>
@@ -71,14 +71,14 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
               curr,
             ])}
         </div>
-        <div className="text-xl mb-2 font-semibold">
+        <div className="mb-2 text-xl font-semibold">
           {f({
             id: "artifacts",
             defaultMessage: "Artifacts",
           })}
           :
         </div>
-        <div className="w-full mb-3">
+        <div className="mb-3 w-full">
           <h2 className="font-bold">
             {f({
               id: "recommended_primary_stats",
@@ -98,7 +98,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
         </div>
         {build.sets
           .map<ReactNode>((set) => (
-            <div className="flex flex-row w-full" key={`${set.join("")}`}>
+            <div className="flex w-full flex-row" key={`${set.join("")}`}>
               {set.length > 2 ? (
                 <ArtifactChooseCard
                   artifacts={

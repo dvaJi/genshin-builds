@@ -87,7 +87,9 @@ const TcgPage = ({ cards }: Props) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const cards = await genshinData.tcgCards();
+  const cards = await genshinData.tcgCards({
+    select: ["id", "name", "attributes"],
+  });
 
   // Gather all types from card.attributes.card_type without duplicates
   const types = cards

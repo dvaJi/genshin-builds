@@ -19,8 +19,8 @@ const CharacterCommonBuildCard = ({ build, weapons, artifacts }: Props) => {
     <div className="">
       {/* <p>{build.name}</p> */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex flex-wrap w-full lg:w-4/5 pr-2 content-start">
-          <div className="text-xl mb-2 font-semibold">
+        <div className="flex w-full flex-wrap content-start pr-2 lg:pr-4">
+          <div className="mb-2 text-xl font-semibold">
             {f({
               id: "weapons",
               defaultMessage: "Weapons",
@@ -47,33 +47,38 @@ const CharacterCommonBuildCard = ({ build, weapons, artifacts }: Props) => {
               ])}
           </div>
         </div>
-        <div className="flex flex-wrap w-full lg:w-4/5 ml-2 content-start">
-          <div className="text-xl mb-2 font-semibold">
+        <div className="flex w-full flex-wrap content-start md:ml-2">
+          <div className="mb-2 w-full text-xl font-semibold">
             {f({
               id: "artifacts",
               defaultMessage: "Artifacts",
             })}
             :
           </div>
-          {build.artifacts
-            .map<ReactNode>((set) => (
-              <div key={`${set[0]}-${set[1]}`} className="w-full">
-                <ArtifactCard
-                  artifact={artifacts[set[0]]}
-                  artifact2={set.length === 2 ? artifacts[set[1]] : undefined}
-                />
-              </div>
-            ))
-            .reduce((prev, curr, i) => [
-              prev,
-              <div key={`set_divider_${i}`} className="build-option-divider">
-                {f({
-                  id: "or",
-                  defaultMessage: "Or",
-                })}
-              </div>,
-              curr,
-            ])}
+          <div className="mb-2 w-full">
+            {build.artifacts
+              .map<ReactNode>((set) => (
+                <div
+                  key={`${set[0]}-${set[1]}`}
+                  className="flex w-full flex-row"
+                >
+                  <ArtifactCard
+                    artifact={artifacts[set[0]]}
+                    artifact2={set.length === 2 ? artifacts[set[1]] : undefined}
+                  />
+                </div>
+              ))
+              .reduce((prev, curr, i) => [
+                prev,
+                <div key={`set_divider_${i}`} className="build-option-divider">
+                  {f({
+                    id: "or",
+                    defaultMessage: "Or",
+                  })}
+                </div>,
+                curr,
+              ])}
+          </div>
         </div>
       </div>
     </div>

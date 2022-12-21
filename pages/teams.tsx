@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   let teamsf: any = {};
 
   Object.entries(teams).forEach(([id, tims]) => {
-    if (!characters[id]?.name) return;
+    if (!characters[id]?.name || !tims[0]) return;
 
     if (!teamsf[characters[id]?.name]) {
       teamsf[characters[id].name] = [];

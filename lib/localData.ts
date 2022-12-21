@@ -36,7 +36,24 @@ export async function getCharacterMostUsedBuild(id?: string) {
     );
 
     if (id) {
-      return (builds as any)[id] || "";
+      return (builds as any)[id] || null;
+    }
+
+    return builds as any;
+  } catch (err) {
+    console.error(err);
+    return {};
+  }
+}
+
+export async function getCharacterOfficialBuild(id?: string) {
+  try {
+    const { default: builds } = await import(
+      `../_content/genshin/data/officialbuilds.json`
+    );
+
+    if (id) {
+      return (builds as any)[id] || null;
     }
 
     return builds as any;
