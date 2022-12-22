@@ -39,7 +39,7 @@ function NavItem({ route }: Props) {
           className="ml-4 mt-4 block font-semibold text-slate-300 hover:text-slate-50 md:mt-0 md:ml-0 md:py-2 md:px-3"
           href={route.href!}
         >
-          {route.name}
+          {t({ id: route.id, defaultMessage: route.name })}
         </Link>
       ) : (
         <>
@@ -66,7 +66,7 @@ function NavItem({ route }: Props) {
                   {route.children.map((child) => (
                     <Link
                       key={child.id}
-                      className="mb-2 flex transition-all opacity-80 hover:opacity-100 items-center rounded-sm border border-transparent text-sm text-slate-200 md:mb-0 md:ml-0 md:items-start md:p-4 md:transition-none"
+                      className="mb-2 flex items-center rounded-sm border border-transparent text-sm text-slate-200 opacity-80 transition-all hover:opacity-100 md:mb-0 md:ml-0 md:items-start md:p-4 md:transition-none"
                       href={child.href!}
                     >
                       <div className="mr-1 scale-75 transform rounded bg-vulcan-600 p-2 text-white md:mr-4 md:scale-100">
