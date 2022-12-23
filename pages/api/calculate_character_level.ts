@@ -98,8 +98,9 @@ export default async function handler(
   if (params.currentLevel.asclLvl < params.intendedLevel.asclLvl) {
     for (const [index, item] of character.ascension.entries()) {
       if (
-        index + 1 <= params.currentLevel.asclLvl ||
-        index + 1 > params.intendedLevel.asclLvl
+        index === 0 ||
+        index <= params.currentLevel.asclLvl ||
+        index > params.intendedLevel.asclLvl
       ) {
         continue;
       }
