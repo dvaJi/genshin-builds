@@ -167,13 +167,7 @@ const LayoutHeader = () => {
         >
           <ul className="flex flex-col md:flex-row">
             {navRoutes.map((route) => (
-              <div
-                key={route.id}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMobileNavOpen(false);
-                }}
-              >
+              <div key={route.id} onClick={() => setIsMobileNavOpen(false)}>
                 <NavItem route={route} />
               </div>
             ))}
