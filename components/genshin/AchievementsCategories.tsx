@@ -23,7 +23,7 @@ const AchievementsCategories = ({
     []
   );
   return (
-    <div className="lg:h-[91vh] w-full lg:w-[260px] lg:sticky flex-shrink-0 text-white lg:overflow-y-scroll custom-scroll flex flex-col pb-4 pr-2 gap-2">
+    <div className="h-[300px] overflow-y-auto pl-2 md:pl-0 lg:h-[91vh] w-full lg:w-[260px] lg:sticky flex-shrink-0 text-white lg:overflow-y-scroll custom-scroll flex flex-col pb-4 pr-2 gap-2">
       {categories
         .sort((a, b) => a.order - b.order)
         .map((cat) => (
@@ -31,7 +31,7 @@ const AchievementsCategories = ({
             className={clsx(
               "rounded-xl p-2 cursor-pointer flex flex-col border-2 border-white hover:border-vulcan-500 focus:border-vulcan-500 hover:bg-vulcan-600 transition-all",
               cat.id === categorySelected.id
-                ? "bg-vulcan-600 border-opacity-10"
+                ? "bg-vulcan-600 border-opacity-30"
                 : "bg-vulcan-700 border-opacity-0"
             )}
             key={cat.id}

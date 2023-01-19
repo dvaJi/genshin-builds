@@ -49,11 +49,11 @@ const TCGCardPage = ({ card, locale }: Props) => {
         />
         <div className="ml-4">
           <h2 className="text-4xl font-semibold text-gray-200">{card.name}</h2>
-          <div className="my-2">
+          <div className="my-2 flex flex-wrap">
             {["hp", "energy", "weapon", "cost", "cost_type", "card_type"]
               .filter((key) => (card.attributes as any)[key])
               .map((key) => (
-                <Badge key={key}>
+                <Badge key={key} className="my-0.5">
                   <span className="text-white">
                     {t({ id: key, defaultMessage: key })}:
                   </span>{" "}
@@ -87,34 +87,36 @@ const TCGCardPage = ({ card, locale }: Props) => {
         {t({ id: "card_effects", defaultMessage: "Card Effects" })}
       </h2>
       <Card>
-        {card.skills.map((skill) => (
-          <div
-            key={skill.name}
-            className="my-2 flex justify-between border-b border-vulcan-900 py-4 first:mt-0 first:pt-0 last:border-b-0 last:pb-0"
-          >
-            <div>
-              <h3 className="py-2 text-xl font-semibold text-gray-200">
-                {skill.name}
-              </h3>
-              <p dangerouslySetInnerHTML={{ __html: skill.desc }} />
-            </div>
-            {skill?.points?.length > 0 && (
-              <div className="flex h-full flex-col content-center items-center justify-center">
-                {skill.points.map((point) => (
-                  <div key={point.id} className="flex whitespace-nowrap">
-                    <span className="text-lg">{point.count}</span>
-                    <img
-                      alt={point.id}
-                      src={getUrl(`/tcg/${point.id}.png`, 90, 90)}
-                      className="mx-1 h-8 align-middle"
-                      title={point.type}
-                    />
-                  </div>
-                ))}
+        {card.skills
+          .filter((s) => s)
+          .map((skill) => (
+            <div
+              key={skill.name}
+              className="my-2 flex justify-between border-b border-vulcan-900 py-4 first:mt-0 first:pt-0 last:border-b-0 last:pb-0"
+            >
+              <div>
+                <h3 className="py-2 text-xl font-semibold text-gray-200">
+                  {skill.name}
+                </h3>
+                <p dangerouslySetInnerHTML={{ __html: skill.desc }} />
               </div>
-            )}
-          </div>
-        ))}
+              {skill?.points?.length > 0 && (
+                <div className="flex h-full flex-col content-center items-center justify-center">
+                  {skill.points.map((point) => (
+                    <div key={point.id} className="flex whitespace-nowrap">
+                      <span className="text-lg">{point.count}</span>
+                      <img
+                        alt={point.id}
+                        src={getUrl(`/tcg/${point.id}.png`, 90, 90)}
+                        className="mx-1 h-8 align-middle"
+                        title={point.type}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
       </Card>
     </div>
   );

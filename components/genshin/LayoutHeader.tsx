@@ -167,7 +167,15 @@ const LayoutHeader = () => {
         >
           <ul className="flex flex-col md:flex-row">
             {navRoutes.map((route) => (
-              <NavItem key={route.id} route={route} />
+              <div
+                key={route.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileNavOpen(false);
+                }}
+              >
+                <NavItem route={route} />
+              </div>
             ))}
           </ul>
           <GameSelector
