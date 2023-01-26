@@ -10,6 +10,7 @@ const Logo = () => {
         alt="GenshinBuilds logo"
         width={90}
         height={38}
+        priority
       />
       <span className="hidden text-lg font-normal text-gray-100">
         GenshinBuilds

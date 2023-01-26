@@ -1,8 +1,9 @@
-import { GAME, GameProps } from "utils/games";
-import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import clsx from "clsx";
-import { getTofUrl } from "@lib/imgUrl";
+
+import { GAME, GameProps } from "utils/games";
 
 type Props = {
   currentGame: GameProps;
@@ -25,12 +26,16 @@ function GameSelector({ currentGame, className }: Props) {
         )}
         onClick={() => setIsOpen((o) => !o)}
       >
-        <img
+        <Image
           className="mr-3 h-6 w-6 rounded"
-          src={getTofUrl(`/gameicons/${currentGame.slug}.webp`)}
-          alt="Genshin Impact"
+          src={`/imgs/games/${currentGame.slug}.webp`}
+          alt={currentGame.name}
+          width={32}
+          height={32}
         />
-        <span className="text-sm md:hidden lg:inline-block">{currentGame.name}</span>
+        <span className="text-sm md:hidden lg:inline-block">
+          {currentGame.name}
+        </span>
       </button>
       <div
         tabIndex={-1}
@@ -49,10 +54,12 @@ function GameSelector({ currentGame, className }: Props) {
               role="menuitem"
               className="flex h-full w-full items-center py-2 px-2 text-left text-sm hover:bg-tof-600"
             >
-              <img
+              <Image
                 className="mr-3 h-6 w-6 rounded"
-                src={getTofUrl(`/gameicons/${game.slug}.webp`)}
+                src={`/imgs/games/${game.slug}.webp`}
                 alt={game.name}
+                width={32}
+                height={32}
               />
               <span className="md:hidden lg:block">{game.name}</span>
             </button>
