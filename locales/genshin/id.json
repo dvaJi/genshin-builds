@@ -14,6 +14,10 @@
     "guides": "Panduan",
     "guides_desc": "Panduan untuk membantu Anda mempelajari permainan",
     "tcg": "TCG",
+    "cards_list": "Daftar Kartu",
+    "cards_list_desc": "Daftar semua kartu dalam permainan",
+    "best_decks": "Dek Terbaik",
+    "best_decks_desc": "Daftar deck terbaik untuk dimainkan",
     "tierlist": "Daftar tingkatan",
     "tierlist_characters": "Karakter Daftar Tingkat",
     "tierlist_characters_desc": "Semua karakter terbaik dan build mereka diberi peringkat berdasarkan kekuatan, kelayakan, dan keserbagunaan untuk membersihkan konten",
@@ -296,5 +300,10 @@
     "card_type": "Tipe kartu",
     "source": "Sumber",
     "card_effects": "Efek Kartu"
+  },
+  "tcg_decks": {
+    "title": "Temukan Dek Teratas di Genius Invokasi TCG: Meta Builds untuk Genshin Impact Card Game",
+    "description": "Artikel ini memberikan daftar lengkap deck terbaik di TCG, Genius Invokasi. ",
+    "best_decks": "Dek Teratas"
   }
 }

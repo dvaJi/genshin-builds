@@ -14,6 +14,10 @@
     "guides": "Guides",
     "guides_desc": "Guides to help you to learn the game",
     "tcg": "TCG",
+    "cards_list": "Cards List",
+    "cards_list_desc": "List of all the cards in the game",
+    "best_decks": "Best Decks",
+    "best_decks_desc": "List of the best decks to play",
     "tierlist": "Tierlist",
     "tierlist_characters": "Tierlist Characters",
     "tierlist_characters_desc": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content",
@@ -296,5 +300,10 @@
     "card_type": "Card Type",
     "source": "Source",
     "card_effects": "Card Effects"
+  },
+  "tcg_decks": {
+    "title": "Discover the Top Decks in Genius Invokation TCG: Meta Builds for Genshin Impact Card Game",
+    "description": "This article provides a comprehensive list of the best decks in the TCG, Genius Invokation. It includes the meta builds for Genshin Impact's card game, making it the ultimate guide for players looking to improve their gameplay and climb the ranks. With this information, readers can stay up-to-date on the current meta and make informed decisions when building their own decks.",
+    "best_decks": "Top Decks"
   }
 }

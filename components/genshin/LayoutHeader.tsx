@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { memo, useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { BsListCheck, BsCalculator, BsTrophyFill } from "react-icons/bs";
+import {
+  BsListCheck,
+  BsCalculator,
+  BsTrophyFill,
+  BsCardList,
+} from "react-icons/bs";
 import { HiOutlineBookOpen } from "react-icons/hi";
 import {
   GiCharacter,
@@ -32,7 +37,24 @@ const navRoutes: Route[] = [
   { id: "home", name: "Home", href: "/" },
   { id: "characters", name: "Characters", href: "/characters" },
   { id: "teams", name: "Teams", href: "/teams" },
-  { id: "tcg", name: "TCG", href: "/tcg" },
+  {
+    id: "tcg",
+    name: "TCG",
+    children: [
+      {
+        id: "cards_list",
+        name: "Cards List",
+        href: "/tcg",
+        icon: <BsCardList />,
+      },
+      {
+        id: "best_decks",
+        name: "Best Decks",
+        href: "/tcg/best-decks",
+        icon: <BsListCheck />,
+      },
+    ],
+  },
   {
     id: "tools",
     name: "Tools",

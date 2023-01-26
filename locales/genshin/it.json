@@ -14,6 +14,10 @@
     "guides": "Guide",
     "guides_desc": "Guide per aiutarti a imparare il gioco",
     "tcg": "TCG",
+    "cards_list": "Elenco carte",
+    "cards_list_desc": "Elenco di tutte le carte del gioco",
+    "best_decks": "I migliori mazzi",
+    "best_decks_desc": "Elenco dei migliori mazzi con cui giocare",
     "tierlist": "Elenco dei livelli",
     "tierlist_characters": "Personaggi dell'elenco di livelli",
     "tierlist_characters_desc": "Tutti i migliori personaggi e le loro build sono classificati in ordine di potenza, fattibilità e versatilità per cancellare i contenuti",
@@ -296,5 +300,10 @@
     "card_type": "Tipo di carta",
     "source": "Fonte",
     "card_effects": "Effetti delle carte"
+  },
+  "tcg_decks": {
+    "title": "Scopri i migliori mazzi in Genius Invokation TCG: Meta Builds per Genshin Impact Card Game",
+    "description": "Questo articolo fornisce un elenco completo dei migliori mazzi del GCC, Genius Invokation. ",
+    "best_decks": "I migliori mazzi"
   }
 }

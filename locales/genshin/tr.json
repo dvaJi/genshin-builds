@@ -14,6 +14,10 @@
     "guides": "Kılavuzlar",
     "guides_desc": "Oyunu öğrenmenize yardımcı olacak kılavuzlar",
     "tcg": "TCG",
+    "cards_list": "Kart Listesi",
+    "cards_list_desc": "Oyundaki tüm kartların listesi",
+    "best_decks": "En İyi Desteler",
+    "best_decks_desc": "Oynamak için en iyi destelerin listesi",
     "tierlist": "Katman listesi",
     "tierlist_characters": "Katman Listesi Karakterleri",
     "tierlist_characters_desc": "En iyi karakterlerin tümü ve yapıları, içeriği temizlemek için güç, uygulanabilirlik ve çok yönlülük sırasına göre sıralanmıştır.",
@@ -296,5 +300,10 @@
     "card_type": "Kart tipi",
     "source": "Kaynak",
     "card_effects": "Kart Efektleri"
+  },
+  "tcg_decks": {
+    "title": "Genius Invokation TCG'deki En İyi Desteleri Keşfedin: Genshin Impact Card Game için Meta Yapılar",
+    "description": "Bu makale, TCG Genius Invokation'daki en iyi destelerin kapsamlı bir listesini sunar. ",
+    "best_decks": "Üst Güverte"
   }
 }

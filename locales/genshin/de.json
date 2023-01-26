@@ -14,6 +14,10 @@
     "guides": "Führer",
     "guides_desc": "Anleitungen, die Ihnen helfen, das Spiel zu lernen",
     "tcg": "TCG",
+    "cards_list": "Kartenliste",
+    "cards_list_desc": "Liste aller Karten im Spiel",
+    "best_decks": "Beste Decks",
+    "best_decks_desc": "Liste der besten Decks zum Spielen",
     "tierlist": "Rangliste",
     "tierlist_characters": "Tierlist-Charaktere",
     "tierlist_characters_desc": "Die besten Charaktere und ihre Builds, geordnet nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu klären",
@@ -297,5 +301,10 @@
     "card_type": "Speicherkarten-Typ",
     "source": "Quelle",
     "card_effects": "Karteneffekte"
+  },
+  "tcg_decks": {
+    "title": "Entdecken Sie die Top-Decks in Genius Invokation TCG: Meta Builds für das Kartenspiel Genshin Impact",
+    "description": "Dieser Artikel enthält eine umfassende Liste der besten Decks im TCG Genius Invokation. ",
+    "best_decks": "Top-Decks"
   }
 }

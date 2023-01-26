@@ -14,6 +14,10 @@
     "guides": "คู่มือ",
     "guides_desc": "คำแนะนำเพื่อช่วยให้คุณเรียนรู้เกม",
     "tcg": "บสย",
+    "cards_list": "รายการการ์ด",
+    "cards_list_desc": "รายชื่อการ์ดทั้งหมดในเกม",
+    "best_decks": "สุดยอดเด็ค",
+    "best_decks_desc": "รายชื่อเด็คที่ดีที่สุดในการเล่น",
     "tierlist": "รายการระดับ",
     "tierlist_characters": "ตัวละคร Tierlist",
     "tierlist_characters_desc": "ตัวละครที่ดีที่สุดทั้งหมดและงานสร้างของพวกเขาถูกจัดอันดับตามลำดับของพลัง ความมีชีวิต และความเก่งกาจเพื่อเคลียร์เนื้อหา",
@@ -296,5 +300,10 @@
     "card_type": "ประเภทบัตร",
     "source": "แหล่งที่มา",
     "card_effects": "เอฟเฟคการ์ด"
+  },
+  "tcg_decks": {
+    "title": "ค้นพบเด็คชั้นนำใน Genius Invokation TCG: Meta Builds สำหรับเกมการ์ด Genshin Impact",
+    "description": "บทความนี้แสดงรายชื่อสำรับที่ดีที่สุดใน TCG, Genius Invokation ",
+    "best_decks": "ชั้นดาดฟ้า"
   }
 }

@@ -14,6 +14,10 @@
     "guides": "導遊",
     "guides_desc": "幫助您學習遊戲的指南",
     "tcg": "集換式",
+    "cards_list": "卡片列表",
+    "cards_list_desc": "遊戲中所有卡牌列表",
+    "best_decks": "最佳套牌",
+    "best_decks_desc": "最好玩的套牌列表",
     "tierlist": "等級清單",
     "tierlist_characters": "Tierlist字符",
     "tierlist_characters_desc": "所有最好的角色和他們的構建按照力量、生存能力和多功能性的順序排列以清除內容",
@@ -296,5 +300,10 @@
     "card_type": "卡的種類",
     "source": "資源",
     "card_effects": "卡片效果"
+  },
+  "tcg_decks": {
+    "title": "發現 Genius Invokation TCG 中的頂級套牌：Genshin Impact 紙牌遊戲的元構建",
+    "description": "本文提供了 TCG Genius Invokation 中最佳套牌的完整列表。",
+    "best_decks": "頂層甲板"
   }
 }

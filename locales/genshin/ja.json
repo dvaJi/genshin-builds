@@ -14,6 +14,10 @@
     "guides": "ガイド",
     "guides_desc": "ゲームの学習に役立つガイド",
     "tcg": "TCG",
+    "cards_list": "カード一覧",
+    "cards_list_desc": "ゲーム内のすべてのカードのリスト",
+    "best_decks": "ベストデッキ",
+    "best_decks_desc": "プレイするのに最適なデッキのリスト",
     "tierlist": "ティアリスト",
     "tierlist_characters": "ティアリストのキャラクター",
     "tierlist_characters_desc": "すべての最高のキャラクターとそのビルドは、コンテンツをクリアするために、パワー、実行可能性、および多様性の順にランク付けされています",
@@ -296,5 +300,10 @@
     "card_type": "カードの種類",
     "source": "ソース",
     "card_effects": "カードの効果"
+  },
+  "tcg_decks": {
+    "title": "Genius Invokation TCG のトップ デッキを発見: Genshin Impact Card Game のメタ ビルド",
+    "description": "この記事では、TCG の最高のデッキ、Genius Invokation の包括的なリストを提供します。 ",
+    "best_decks": "トップデッキ"
   }
 }

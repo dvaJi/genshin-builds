@@ -14,6 +14,10 @@
     "guides": "Guías",
     "guides_desc": "Guías para ayudarte a aprender el juego.",
     "tcg": "JCC",
+    "cards_list": "Lista de cartas",
+    "cards_list_desc": "Lista de todas las cartas del juego",
+    "best_decks": "mejores mazos",
+    "best_decks_desc": "Lista de las mejores barajas para jugar",
     "tierlist": "Tierlist",
     "tierlist_characters": "Tierlist de Personajes",
     "tierlist_characters_desc": "Todos los mejores personajes y sus construcciones clasificados en orden de poder, viabilidad y versatilidad para borrar el contenido.",
@@ -296,5 +300,10 @@
     "card_type": "Tipo de tarjeta",
     "source": "Fuente",
     "card_effects": "Efectos de cartas"
+  },
+  "tcg_decks": {
+    "title": "Descubre los mejores mazos en Invocación del Sabio TCG: Meta Builds para Genshin Impact Juego de Cartas",
+    "description": "Este artículo proporciona una lista completa de los mejores mazos en TCG, Invocación del Sabio. ",
+    "best_decks": "Mejores Mazos"
   }
 }

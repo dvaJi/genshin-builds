@@ -14,6 +14,10 @@
     "guides": "hướng dẫn",
     "guides_desc": "Hướng dẫn giúp bạn tìm hiểu trò chơi",
     "tcg": "TCG",
+    "cards_list": "Danh sách thẻ",
+    "cards_list_desc": "Danh sách tất cả các thẻ trong trò chơi",
+    "best_decks": "Bộ bài tốt nhất",
+    "best_decks_desc": "Danh sách các sàn tốt nhất để chơi",
     "tierlist": "danh sách cấp bậc",
     "tierlist_characters": "Danh sách nhân vật",
     "tierlist_characters_desc": "Tất cả các nhân vật tốt nhất và bản dựng của họ được xếp hạng theo thứ tự sức mạnh, khả năng tồn tại và tính linh hoạt để làm rõ nội dung",
@@ -296,5 +300,10 @@
     "card_type": "Loại thẻ",
     "source": "Nguồn",
     "card_effects": "Hiệu ứng thẻ"
+  },
+  "tcg_decks": {
+    "title": "Khám phá những bộ bài hàng đầu trong Genius Invokation TCG: Meta Builds cho Genshin Impact Card Game",
+    "description": "Bài viết này cung cấp danh sách đầy đủ các bộ bài tốt nhất trong TCG, Genius Invokation. ",
+    "best_decks": "Bộ bài hàng đầu"
   }
 }
