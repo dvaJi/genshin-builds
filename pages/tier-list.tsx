@@ -151,10 +151,16 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const charactersMap: any = {};
   const weaponsMap: any = {};
   const mergedTierlist = [
-    ...mergeTiers(tierlist.maindps),
-    ...mergeTiers(tierlist.subdps),
-    ...mergeTiers(tierlist.support),
+    ...mergeTiers(tierlist.tierlist.maindps),
+    ...mergeTiers(tierlist.tierlist.subdps),
+    ...mergeTiers(tierlist.tierlist.support),
   ];
+
+  // const mergedTierlistZero = [
+  //   ...mergeTiers(tierlist.maindps),
+  //   ...mergeTiers(tierlist.subdps),
+  //   ...mergeTiers(tierlist.support),
+  // ];
 
   for (const tl of mergedTierlist) {
     charactersMap[tl.id] = characters.find((c) => c.id === tl.id);
@@ -163,7 +169,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   return {
     props: {
-      tierlist,
+      tierlist: tierlist.tierlist,
+      // tierlist,
+      // tierlist,
       charactersMap,
       weaponsMap,
       lngDict,
