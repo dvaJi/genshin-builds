@@ -1,6 +1,7 @@
 export interface CharacterTier {
   id: string;
   w_id: string;
+  a_ids: string[];
   min_c: number;
 }
 

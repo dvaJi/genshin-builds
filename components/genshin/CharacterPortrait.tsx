@@ -17,12 +17,17 @@ interface CharacterPortraitProps {
     name: string;
     rarity: number;
   };
+  artifacts?: {
+    id: string;
+    name: string;
+  }[];
   showElement?: boolean;
 }
 
 const CharacterPortrait = ({
   character,
   weapon,
+  artifacts,
   showElement = true,
 }: CharacterPortraitProps) => {
   return (
@@ -52,7 +57,7 @@ const CharacterPortrait = ({
           )}
           {weapon && (
             <div
-              className="absolute bottom-0 left-2/3 rounded bg-cover opacity-0 transition-opacity delay-100 group-hover:opacity-100"
+              className="absolute bottom-0 left-2/3 rounded bg-cover opacity-0 transition-all delay-100 translate-x-0 group-hover:translate-x-2 group-hover:opacity-100"
               style={{
                 backgroundImage: `url(${getUrl(
                   `/bg_${weapon.rarity}star.png`
@@ -67,6 +72,26 @@ const CharacterPortrait = ({
                 alt={weapon.name}
               />
             </div>
+          )}
+          {artifacts && (
+            <>
+              {artifacts.map((artifact, i) => (
+                <div
+                  key={artifact.id}
+                  className="absolute right-2/3 scale-0 rounded bg-cover transition-all delay-100 translate-x-0 group-hover:-translate-x-2 group-hover:scale-105"
+                  style={{
+                    bottom: i * 32,
+                  }}
+                >
+                  <LazyLoadImage
+                    src={getUrl(`/artifacts/${artifact.id}.png`, 32, 32)}
+                    height={32}
+                    width={32}
+                    alt={artifact.name}
+                  />
+                </div>
+              ))}
+            </>
           )}
         </div>
       </div>
