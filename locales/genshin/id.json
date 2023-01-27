@@ -110,7 +110,11 @@
     "best_team_comp": "Komp Tim Terbaik",
     "main dps": "DPS Utama",
     "sub dps": "Sub DPS",
-    "support": "Mendukung"
+    "support": "Mendukung",
+    "lv.": "Lv.",
+    "before_ascension": "Sebelum Kenaikan",
+    "after_ascension": "Setelah Kenaikan",
+    "constellation_lvl": "Konstelasi Lv. {level}"
   },
   "weapons": {
     "title": "Daftar Senjata Genshin Impact",

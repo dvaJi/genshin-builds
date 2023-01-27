@@ -74,7 +74,8 @@
     "pyro": "Pyro",
     "hydro": "Hydro",
     "electro": "Electro",
-    "cryo": "Cryo"
+    "cryo": "Cryo",
+    "dendro": "Dendro"
   },
   "character": {
     "title": "{name} Guía Builds Genshin Impact",
@@ -100,16 +101,20 @@
     "18atk_set": "Conjuntos ATQ +18%",
     "20energyrecharge_set": "Conjuntos Recarga de Energía +20%",
     "25physicaldmg_set": "Conjuntos Daño Físico +25%",
+    "80elementalmastery_set": "Conjuntos Maestría Elemental +80",
     "bonus": "Bonus",
     "choose_2": "Elige 2",
     "sands": "Arena",
     "goblet": "Copa",
     "circlet": "Diadema",
-    "80elementalmastery_set": "",
-    "best_team_comp": "",
-    "main dps": "",
-    "sub dps": "",
-    "support": ""
+    "best_team_comp": "Mejor composiciónes de equipo",
+    "main dps": "DPS Principal",
+    "sub dps": "DPS Secundario",
+    "support": "Soporte",
+    "lv.": "Nv.",
+    "before_ascension": "Antes de la Ascensión",
+    "after_ascension": "Después de la Ascensión",
+    "constellation_lvl": "Constelación Nv. {level}"
   },
   "weapons": {
     "title": "Lista de Armas Genshin Impact",

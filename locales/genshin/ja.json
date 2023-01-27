@@ -110,7 +110,11 @@
     "best_team_comp": "ベストチームコンプ",
     "main dps": "メインDPS",
     "sub dps": "サブDPS",
-    "support": "サポート"
+    "support": "サポート",
+    "lv.": "Lv。",
+    "before_ascension": "アセンション前",
+    "after_ascension": "アセンション後",
+    "constellation_lvl": "星座 Lv. {level}"
   },
   "weapons": {
     "title": "原神インパクト武器一覧",

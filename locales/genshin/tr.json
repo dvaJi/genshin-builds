@@ -110,7 +110,11 @@
     "best_team_comp": "En İyi Takım Yarışması",
     "main dps": "Ana DPS",
     "sub dps": "Alt DPS",
-    "support": "Destek olmak"
+    "support": "Destek olmak",
+    "lv.": "Sv.",
+    "before_ascension": "Yükselişten Önce",
+    "after_ascension": "Yükselişten Sonra",
+    "constellation_lvl": "Takımyıldızı Sv. {level}"
   },
   "weapons": {
     "title": "Genshin Etki Silahları Listesi",

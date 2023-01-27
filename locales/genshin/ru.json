@@ -110,7 +110,11 @@
     "best_team_comp": "Лучший командный состав",
     "main dps": "Основной ДПС",
     "sub dps": "Дополнительный ДПС",
-    "support": "Поддерживать"
+    "support": "Поддерживать",
+    "lv.": "Ур.",
+    "before_ascension": "Перед Вознесением",
+    "after_ascension": "После Вознесения",
+    "constellation_lvl": "Созвездие ур. {level}"
   },
   "weapons": {
     "title": "Список ударного оружия Genshin",

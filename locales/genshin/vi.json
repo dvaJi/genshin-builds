@@ -110,7 +110,11 @@
     "best_team_comp": "Đội hình xuất sắc nhất",
     "main dps": "DPS chính",
     "sub dps": "DPS phụ",
-    "support": "Hỗ trợ"
+    "support": "Hỗ trợ",
+    "lv.": "Lv.",
+    "before_ascension": "Trước khi thăng thiên",
+    "after_ascension": "sau khi thăng thiên",
+    "constellation_lvl": "Chòm sao Lv. {level}"
   },
   "weapons": {
     "title": "Danh sách vũ khí Genshin Impact",

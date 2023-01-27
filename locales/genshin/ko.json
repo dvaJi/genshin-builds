@@ -110,7 +110,11 @@
     "best_team_comp": "최고의 팀 경쟁",
     "main dps": "메인 DPS",
     "sub dps": "서브 DPS",
-    "support": "지원하다"
+    "support": "지원하다",
+    "lv.": "LV.",
+    "before_ascension": "승천 전",
+    "after_ascension": "승천 후",
+    "constellation_lvl": "별자리 Lv. {level}"
   },
   "weapons": {
     "title": "원신 임팩트 무기 목록",

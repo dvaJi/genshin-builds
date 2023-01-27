@@ -110,7 +110,11 @@
     "best_team_comp": "ทีมที่ดีที่สุด Comp",
     "main dps": "DPS หลัก",
     "sub dps": "ย่อย DPS",
-    "support": "สนับสนุน"
+    "support": "สนับสนุน",
+    "lv.": "เลเวล",
+    "before_ascension": "ก่อนขึ้นสวรรค์",
+    "after_ascension": "หลังจากขึ้นสวรรค์",
+    "constellation_lvl": "ระดับกลุ่มดาว {level}"
   },
   "weapons": {
     "title": "รายการอาวุธ Genshin Impact",

@@ -110,7 +110,11 @@
     "best_team_comp": "最佳陣容",
     "main dps": "主要DPS",
     "sub dps": "亞DPS",
-    "support": "支持"
+    "support": "支持",
+    "lv.": "呂。",
+    "before_ascension": "提升之前",
+    "after_ascension": "揚升之後",
+    "constellation_lvl": "星座 呂. {level}"
   },
   "weapons": {
     "title": "Genshin Impact 武器列表",

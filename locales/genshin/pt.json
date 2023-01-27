@@ -110,7 +110,11 @@
     "best_team_comp": "Melhor Equipe Comp",
     "main dps": "DPS principal",
     "sub dps": "Sub DPS",
-    "support": "Apoio, suporte"
+    "support": "Apoio, suporte",
+    "lv.": "Nv.",
+    "before_ascension": "Antes da Ascensão",
+    "after_ascension": "Depois da Ascensão",
+    "constellation_lvl": "Constelação Nv. {level}"
   },
   "weapons": {
     "title": "Lista de Armas de Impacto Genshin",

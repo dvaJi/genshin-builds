@@ -30,6 +30,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
+import CharacterStats from "@components/genshin/CharacterStats";
 
 interface CharacterPageProps {
   character: Character;
@@ -274,6 +275,15 @@ const CharacterPage = ({
             />
           ))}
       </div>
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
+        {t({
+          id: "stats",
+          defaultMessage: "Stats",
+        })}
+      </h2>
+      <Card className="mx-4 mb-8 p-0 lg:mx-0">
+        <CharacterStats ascensions={character.ascension} />
+      </Card>
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "ascension_materials",
