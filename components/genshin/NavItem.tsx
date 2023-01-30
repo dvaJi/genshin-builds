@@ -16,7 +16,7 @@ type Props = {
 };
 
 function NavItem({ route }: Props) {
-  const [isHovering, setIsHovering] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
   const { t } = useIntl("layout");
 
   const handleMouseEnter = () => {
