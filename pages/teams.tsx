@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     }
 
     teamsf[characters[id].name].push({
-      ...tims[0],
+      name: tims[0].name,
       characters: tims[0].characters.map((c) => {
         return {
           id: c.id,
