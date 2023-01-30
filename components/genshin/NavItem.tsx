@@ -16,7 +16,7 @@ type Props = {
 };
 
 function NavItem({ route }: Props) {
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useState(true);
   const { t } = useIntl("layout");
 
   const handleMouseEnter = () => {
@@ -45,19 +45,18 @@ function NavItem({ route }: Props) {
         <>
           <span
             className={clsx(
-              "mt-6 ml-4 block cursor-default text-xs font-semibold uppercase text-slate-500 md:ml-0 md:mt-0 md:mr-1 md:inline-block md:py-2 md:px-3 md:text-sm md:normal-case md:text-slate-300",
-              { "md:text-white": isHovering }
+              "mt-6 ml-4 block cursor-default text-xs font-semibold uppercase text-slate-500 md:ml-0 md:mt-0 md:mr-1 md:inline-block md:py-2 md:px-3 md:text-sm md:normal-case",
+              isHovering ? "md:text-white" : "md:text-slate-300"
             )}
           >
             {route.name}
           </span>
           <div
             className={clsx(
-              "transform px-0 text-xs transition-all md:pointer-events-none md:absolute md:z-10 md:mt-4 md:ml-0 md:-translate-y-1 md:px-0  md:opacity-0",
-              {
-                "md:pointer-events-auto md:translate-y-0 md:opacity-100":
-                  isHovering,
-              }
+              "transform px-0 text-xs transition-all md:absolute md:z-10 md:mt-4 md:ml-0 md:px-0",
+              isHovering
+                ? "md:pointer-events-auto md:translate-y-0 md:opacity-100"
+                : "md:pointer-events-none md:-translate-y-1 md:opacity-0"
             )}
           >
             <div className="mt-2 max-h-[calc(100vh-80px)] min-w-[140px] overflow-y-auto overflow-x-hidden md:mt-0 md:w-[650px] md:max-w-[calc(100vw-250px)] md:rounded-sm md:border md:border-vulcan-800 md:bg-vulcan-800 md:shadow-xl">
