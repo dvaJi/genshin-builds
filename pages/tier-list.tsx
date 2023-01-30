@@ -70,9 +70,7 @@ const TierList = ({
           <button
             className={clsx(
               "col-span-2 rounded-xl bg-vulcan-800 p-5 hover:bg-vulcan-700",
-              selectedList.id !== "tierlist"
-                ? "opacity-50 md:opacity-100"
-                : "text-white"
+              selectedList.id !== "tierlist" ? "opacity-50" : "text-white"
             )}
             onClick={() => {
               trackClick(`tierlist_original`);
@@ -84,9 +82,7 @@ const TierList = ({
           <button
             className={clsx(
               "col-span-2 rounded-xl bg-vulcan-800 p-5 hover:bg-vulcan-700",
-              selectedList.id !== "tierlistCZero"
-                ? "opacity-50 md:opacity-100"
-                : "text-white"
+              selectedList.id !== "tierlistCZero" ? "opacity-50" : "text-white"
             )}
             onClick={() => {
               trackClick(`tierlist_c0`);
@@ -98,9 +94,7 @@ const TierList = ({
           <button
             className={clsx(
               "col-span-2 rounded-xl bg-vulcan-800 p-5 hover:bg-vulcan-700",
-              selectedList.id !== "tierlistCSix"
-                ? "opacity-50 md:opacity-100"
-                : "text-white"
+              selectedList.id !== "tierlistCSix" ? "opacity-50" : "text-white"
             )}
             onClick={() => {
               trackClick(`tierlist_c6`);
@@ -115,8 +109,8 @@ const TierList = ({
           <button
             className={clsx(
               "col-span-2 rounded-xl bg-vulcan-800 p-5",
-              "pointer-events-auto md:pointer-events-none",
-              selectedCol !== Roles.maindps ? "opacity-50 md:opacity-100" : ""
+              "pointer-events-auto lg:pointer-events-none",
+              selectedCol !== Roles.maindps ? "opacity-50 lg:opacity-100" : ""
             )}
             onClick={() => {
               trackClick(`tierlist_${Roles.maindps}`);
@@ -130,8 +124,8 @@ const TierList = ({
           <button
             className={clsx(
               "col-span-2 rounded-xl bg-vulcan-800 p-5",
-              "pointer-events-auto md:pointer-events-none",
-              selectedCol !== Roles.subdps ? "opacity-50 md:opacity-100" : ""
+              "pointer-events-auto lg:pointer-events-none",
+              selectedCol !== Roles.subdps ? "opacity-50 lg:opacity-100" : ""
             )}
             onClick={() => {
               trackClick(`tierlist_${Roles.subdps}`);
@@ -145,8 +139,8 @@ const TierList = ({
           <button
             className={clsx(
               "col-span-2 rounded-xl bg-vulcan-800 p-5",
-              "pointer-events-auto md:pointer-events-none",
-              selectedCol !== Roles.support ? "opacity-50 md:opacity-100" : ""
+              "pointer-events-auto lg:pointer-events-none",
+              selectedCol !== Roles.support ? "opacity-50 lg:opacity-100" : ""
             )}
             onClick={() => {
               trackClick(`tierlist_${Roles.support}`);

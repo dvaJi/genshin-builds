@@ -64,7 +64,7 @@ const CharactersTier = ({
       </div>
       <div
         className={clsx(blockStyle, {
-          "hidden md:block": selectedCol !== Roles.maindps,
+          "hidden lg:block": selectedCol !== Roles.maindps,
         })}
       >
         {tierlist.maindps[tier].map((t) => (
@@ -85,7 +85,7 @@ const CharactersTier = ({
       </div>
       <div
         className={clsx(blockStyle, {
-          "hidden md:block": selectedCol !== Roles.subdps,
+          "hidden lg:block": selectedCol !== Roles.subdps,
         })}
       >
         {tierlist.subdps[tier].map((t) => (
@@ -106,7 +106,7 @@ const CharactersTier = ({
       </div>
       <div
         className={clsx(blockStyle, {
-          "hidden md:block": selectedCol !== Roles.support,
+          "hidden lg:block": selectedCol !== Roles.support,
         })}
       >
         {tierlist.support[tier].map((t) => (
