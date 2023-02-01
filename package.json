@@ -24,7 +24,7 @@
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "framer-motion": "^8.5.5",
-    "genshin-data": "^0.28.0",
+    "genshin-data": "^0.28.2",
     "gray-matter": "^4.0.3",
     "leaflet": "^1.9.3",
     "nanostores": "^0.7.1",

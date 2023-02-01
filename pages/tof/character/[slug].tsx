@@ -64,7 +64,7 @@ const CharacterPage = ({
             alt={character.name}
           />
           <div className="">
-            <h2 className="mb-4 text-4xl font-extrabold text-tof-50 lg:text-6xl">
+            <h2 className="mb-4 text-4xl font-bold text-tof-50 lg:text-6xl">
               {character.name}
             </h2>
             <span
@@ -87,7 +87,7 @@ const CharacterPage = ({
             alt={character.weapon}
           />
           <div>
-            <h2 className="mb-4 text-xl font-extrabold text-tof-50 lg:text-4xl">
+            <h2 className="mb-4 text-xl font-bold text-tof-50 lg:text-4xl">
               {character.weapon}
             </h2>
             <div className="flex justify-between">

@@ -1,0 +1,168 @@
+[
+  {
+    "items": {
+      "avatar": ["collei", "dori", "tighnari", "traveler_dendro"],
+      "weapon": [
+        "sapwood_blade",
+        "forest_regalia",
+        "moonpiercer",
+        "fruit_of_fulfillment",
+        "kings_squire",
+        "end_of_the_line",
+        "hunters_path"
+      ],
+      "material": [
+        "harra_fruit",
+        "zaytun_peach",
+        "sumeru_rose",
+        "viparyas",
+        "rukkhashava_mushrooms",
+        "padisarah",
+        "nilotpala_lotus",
+        "kalpalata_lotus",
+        "spice",
+        "majestic_hooked_beak",
+        "thunderclap_fruitcore",
+        "copper_talisman_of_the_forest_dew",
+        "iron_talisman_of_the_forest_dew",
+        "silver_talisman_of_the_forest_dew",
+        "golden_talisman_of_the_forest_dew",
+        "oasis_gardens_reminiscence",
+        "oasis_gardens_kindness",
+        "oasis_gardens_mourning",
+        "oasis_gardens_truth",
+        "echo_of_scorching_might",
+        "remnant_glow_of_scorching_might",
+        "dream_of_scorching_might",
+        "olden_days_of_scorching_might",
+        "inactivated_fungal_nucleus",
+        "dormant_fungal_nucleus",
+        "robust_fungal_nucleus",
+        "faded_red_satin",
+        "trimmed_red_silk",
+        "rich_red_brocade",
+        "chaos_storage",
+        "chaos_module",
+        "chaos_bolt",
+        "teachings_of_admonition",
+        "guide_to_admonition",
+        "philosophies_of_admonition",
+        "teachings_of_ingenuity",
+        "guide_to_ingenuity",
+        "philosophies_of_ingenuity",
+        "teachings_of_praxis",
+        "guide_to_praxis",
+        "philosophies_of_praxis"
+      ],
+      "food": [
+        "forest_watchers_choice",
+        "yearning",
+        "show_me_the_mora",
+        "butter_chicken",
+        "shawarma_wrap",
+        "selva_salad",
+        "masala_cheese_balls",
+        "mushroom_hodgepodge",
+        "pita_pocket",
+        "panipuri",
+        "minty_bean_soup",
+        "biryani",
+        "tahchin",
+        "lambad_fish_roll",
+        "curry_shrimp",
+        "tandoori_roast_chicken",
+        "potato_boat",
+        "fish_with_cream_sauce",
+        "meat_lovers_mushroom_pizza",
+        "sunset_berry_tea",
+        "milky_mushroom_crisp_tower"
+      ],
+      "artifact": ["deepwood_memories", "gilded_dreams"]
+    },
+    "version": "3.0"
+  },
+  {
+    "items": {
+      "avatar": ["nilou", "cyno", "candace"],
+      "weapon": [
+        "xiphos_moonlight",
+        "makhaira_aquamarine",
+        "missive_windspear",
+        "wandering_evenstar",
+        "key_of_khajnisut",
+        "staff_of_the_scarlet_sands"
+      ],
+      "material": [
+        "ajilenakh_nut",
+        "henna_berry",
+        "scarab",
+        "glabrous_beans",
+        "perpetual_caliber",
+        "light_guiding_tetrahedron",
+        "damaged_prism",
+        "turbid_prism",
+        "radiant_prism"
+      ],
+      "food": [
+        "swirling_steps",
+        "duel_soul",
+        "utmost_care",
+        "charcoalbaked_ajilenakh_cake",
+        "baklava",
+        "candied_ajilenakh_nut",
+        "padisarah_pudding",
+        "aaru_mixed_rice",
+        "fruits_of_the_festival"
+      ]
+    },
+    "version": "3.1"
+  },
+  {
+    "items": {
+      "avatar": ["nahida", "layla"],
+      "weapon": ["a_thousand_floating_dreams"],
+      "material": [
+        "puppet_strings",
+        "mirror_of_mushin",
+        "dakas_bell",
+        "quelled_creeper"
+      ],
+      "food": ["extravagant_slumber", "halvamazd", "rose_custard"]
+    },
+    "version": "3.2"
+  },
+  {
+    "items": {
+      "avatar": ["wanderer", "faruzan"],
+      "weapon": ["toukabou_shigure", "tulaytullahs_remembrance"],
+      "artifact": ["desert_pavilion_chronicle", "flower_of_paradise_lost"],
+      "food": [
+        "traditionallymade_charcoalbaked_ajilenakh_cake",
+        "shimi_chazuke",
+        "samosa"
+      ]
+    },
+    "version": "3.3"
+  },
+  {
+    "items": {
+      "avatar": ["yaoyao", "alhaitham"],
+      "weapon": ["light_of_foliar_incision"],
+      "material": [
+        "sand_grease_pupa",
+        "mysterious_meat",
+        "pseudostamens",
+        "desiccated_shell",
+        "sturdy_shell",
+        "marked_shell"
+      ],
+      "food": [
+        "ideal_circumstance",
+        "qingce_household_dish",
+        "sabz_meat_stew",
+        "scented_meat_balls"
+      ]
+    },
+    "version": "3.4"
+  }
+]

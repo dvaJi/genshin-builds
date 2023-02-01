@@ -22,7 +22,7 @@ specifiers:
   eslint: ^8.33.0
   eslint-config-next: ^13.1.6
   framer-motion: ^8.5.5
-  genshin-data: ^0.28.0
+  genshin-data: ^0.28.2
   globby: ^13.1.3
   gray-matter: ^4.0.3
   leaflet: ^1.9.3
@@ -54,7 +54,7 @@ dependencies:
   date-fns: 2.29.3
   dotenv: 16.0.3
   framer-motion: 8.5.5_biqbaboplfbrettd7655fr4n2y
-  genshin-data: 0.28.0
+  genshin-data: 0.28.2
   gray-matter: 4.0.3
   leaflet: 1.9.3
   nanostores: 0.7.1
@@ -1560,8 +1560,8 @@ packages:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
 
-  /genshin-data/0.28.0:
-    resolution: {integrity: sha512-dHGUjkoPxmQbeCnVDZ7zgblF0cmyjhdSFggL9QryVO+Tx0R25N+kYgFV8NoQvU8/CFlKGZ9/u2VycySRQ748jA==}
+  /genshin-data/0.28.2:
+    resolution: {integrity: sha512-jMIQDlDmi5LZjZV8MJVOHI0bCXVQuaPjiZno1dZIiPofQ2AstMHcXWrEyVnut4kT+iFrVotiI2gAQQNoBAdN0A==}
     engines: {node: '>=13'}
     dev: false
 

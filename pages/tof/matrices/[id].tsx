@@ -40,7 +40,7 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
             alt={matrix.name}
           />
           <div className="">
-            <h2 className="mb-4 text-4xl font-extrabold text-tof-50 lg:text-6xl">
+            <h2 className="mb-4 text-4xl font-bold text-tof-50 lg:text-6xl">
               {matrix.name}
             </h2>
             <span

@@ -14,3 +14,13 @@ export function hashToNum(host: string, index: number, min = 0, max = 1) {
 
   return Math.floor(random(hash, min, max));
 }
+
+export function slugify(value?: string) {
+  if (!value) return "";
+
+  return value
+    .toLowerCase()
+    .replace(/\s/g, "_")
+    .replace(/\W/g, "")
+    .replace(/__+/g, "_");
+}
