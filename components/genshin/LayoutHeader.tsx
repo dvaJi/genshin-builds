@@ -20,9 +20,10 @@ import {
 } from "react-icons/gi";
 import clsx from "clsx";
 
-import Logo from "./Logo";
-import NavItem from "./NavItem";
 import GameSelector from "@components/GameSelector";
+import NavItem from "@components/NavItem";
+import Logo from "@components/genshin/Logo";
+
 import { GAME } from "@utils/games";
 
 type Route = {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Ascension } from "genshin-data/dist/types/character";
 import useIntl from "@hooks/use-intl";
 
@@ -43,7 +43,7 @@ function CharacterStats({ ascensions }: Props) {
           })}
         </div>
         {selected.stats.map((stat) => (
-          <>
+          <Fragment key={stat.label}>
             <div className="border-b border-vulcan-700 py-1 px-2">
               {stat.label}
             </div>
@@ -53,7 +53,7 @@ function CharacterStats({ ascensions }: Props) {
             <div className="border-b border-vulcan-700 py-1">
               {stat.values[1]}
             </div>
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

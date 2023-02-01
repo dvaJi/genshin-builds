@@ -516,13 +516,19 @@ export const getStaticProps: GetStaticProps = async ({
       recommendedTeams: recommendedTeams ?? [],
       bgStyle: {
         image: getUrlLQ(
-          `/regions/${common[character.region] || "Mondstadt"}_d.jpg`
+          `/regions/${common[character.region] || "Mondstadt"}_d.jpg`,
+          900,
+          900
         ),
         gradient: {
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
         },
-        stickyImage: getUrlLQ(`/characters/${character.id}/header_image.png`),
+        stickyImage: getUrlLQ(
+          `/characters/${character.id}/header_image.png`,
+          900,
+          900
+        ),
       },
     },
   };
