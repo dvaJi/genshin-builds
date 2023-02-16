@@ -1,0 +1,146 @@
+---
+import type { HTMLTag } from "astro/types";
+
+import { intl } from "@/lib/intl";
+import Link from "@/components/Link.astro";
+
+type Route = {
+  id: string;
+  name: string;
+  href?: string;
+  children?: Route[];
+  icon?: HTMLTag;
+};
+
+export interface Props {
+  route: Route;
+  locale: string;
+  game: string;
+}
+
+const { route, locale, game } = Astro.props;
+
+const { t } = await intl(locale, game, "layout");
+---
+
+<script>
+  const navItems = document.querySelectorAll("li.nav-item");
+
+  let isHovering = false;
+
+  const handleMouseEnter = (ev: Event) => {
+    isHovering = true;
+    updateNav(ev.target);
+  };
+
+  const handleMouseLeave = (ev: Event) => {
+    isHovering = false;
+    updateNav(ev.target);
+  };
+
+  const updateNav = (target: any) => {
+    const navItemNames = target.querySelectorAll("span.nav-item-name");
+    const navItemDropdowns = target.querySelectorAll("div.nav-item-dropdown");
+
+    if (isHovering) {
+      navItemNames.forEach((navItemName: any) => {
+        navItemName.classList.remove("md:text-slate-300");
+        navItemName.classList.add("md:text-white");
+      });
+
+      navItemDropdowns.forEach((navItemDropdown: any) => {
+        navItemDropdown.classList.remove("md:-translate-y-1");
+        navItemDropdown.classList.remove("md:opacity-0");
+        navItemDropdown.classList.remove("md:pointer-events-none");
+        navItemDropdown.classList.add("md:translate-y-0");
+        navItemDropdown.classList.add("md:opacity-100");
+        navItemDropdown.classList.add("md:pointer-events-auto");
+      });
+    } else {
+      navItemNames.forEach((navItemName: any) => {
+        navItemName.classList.remove("md:text-white");
+        navItemName.classList.add("md:text-slate-300");
+      });
+
+      navItemDropdowns.forEach((navItemDropdown: any) => {
+        navItemDropdown.classList.remove("md:translate-y-0");
+        navItemDropdown.classList.remove("md:opacity-100");
+        navItemDropdown.classList.remove("md:pointer-events-auto");
+        navItemDropdown.classList.add("md:-translate-y-1");
+        navItemDropdown.classList.add("md:opacity-0");
+        navItemDropdown.classList.add("md:pointer-events-none");
+      });
+    }
+  };
+
+  navItems.forEach((navItem) => {
+    let timeout: number;
+
+    navItem.addEventListener("mouseenter", (e) => {
+      clearTimeout(timeout);
+      handleMouseEnter(e);
+    });
+    navItem.addEventListener("mouseleave", (e: any) => {
+      if (!e.relatedTarget || !navItem.contains(e.relatedTarget)) {
+        handleMouseLeave(e);
+      }
+    });
+  });
+</script>
+
+<li class:list={["nav-item", "group relative md:py-4"]}>
+  <div>
+    {
+      !route.children ? (
+        <a
+          class="ml-4 mt-4 block font-semibold text-slate-300 hover:text-slate-50 md:mt-0 md:ml-0 md:py-2 md:px-3"
+          href={route.href!}
+        >
+          {t({ id: route.id, defaultMessage: route.name })}
+        </a>
+      ) : (
+        <>
+          <span
+            class:list={[
+              "nav-item-name",
+              "mt-6 ml-4 block cursor-default text-xs font-semibold uppercase text-slate-500 md:ml-0 md:mt-0 md:mr-1 md:inline-block md:py-2 md:px-3 md:text-sm md:normal-case md:text-slate-300",
+            ]}
+          >
+            {route.name}
+          </span>
+          <div
+            class:list={[
+              "nav-item-dropdown",
+              "transform px-0 text-xs transition-all md:absolute md:z-10 md:mt-4 md:ml-0 md:px-0 md:pointer-events-none md:-translate-y-1 md:opacity-0",
+            ]}
+          >
+            <div class="mt-2 max-h-[calc(100vh-80px)] min-w-[140px] overflow-y-auto overflow-x-hidden md:mt-0 md:w-[650px] md:max-w-[calc(100vw-250px)] md:rounded-sm md:border md:border-vulcan-800 md:bg-vulcan-800 md:shadow-xl">
+              <div class="px-4 pb-2 pt-2">
+                <div class="grid gap-0 md:grid-cols-2">
+                  {route.children.map((child) => (
+                    <Link
+                      class="mb-2 flex items-center rounded-sm border border-transparent text-sm text-slate-200 opacity-80 transition-all hover:opacity-100 md:mb-0 md:ml-0 md:items-start md:p-4 md:transition-none"
+                      href={child.href!}
+                    >
+                      <div class="mr-1 scale-75 transform rounded bg-vulcan-600 p-2 text-white md:mr-4 md:scale-100">
+                        {child.icon}
+                      </div>
+                      <div>
+                        <p class="mb-0 leading-4 md:font-semibold">
+                          {t({ id: child.id, defaultMessage: child.name })}
+                        </p>
+                        <p class="mt-0.5 hidden text-xs text-slate-500 md:block">
+                          {t({ id: `${child.id}_desc`, defaultMessage: "" })}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )
+    }
+  </div>
+</li>

@@ -1,0 +1,192 @@
+---
+import LayoutFooter from "@/components/genshin/LayoutFooter.astro";
+import LayoutHeader from "@/components/genshin/LayoutHeader.astro";
+import DynamicBackground from "@/components/ui/DynamicBackground.astro";
+
+import { AD_ARTICLE_SLOT, GAD_ID, GA_TRACKING_ID } from "@/lib/constants";
+
+export interface Props {
+  title: string;
+  description: string;
+  jsonLD?: string;
+  bgImage?: string;
+  stickyImage?: string;
+  gradient?: string;
+  locale: string;
+}
+
+const { title, description, jsonLD, bgImage, gradient, stickyImage, locale } =
+  Astro.props;
+---
+
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="author" content={title} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    {jsonLD && <script type="application/ld+json" set:html={jsonLD} />}
+    <title>{title}</title>
+
+    {
+      GA_TRACKING_ID && (
+        <script
+          set:html={`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${GA_TRACKING_ID}', {
+        page_path: window.location.pathname,
+      });
+    `}
+        />
+      )
+    }
+    {
+      GAD_ID && (
+        <script
+          type="text/partytown"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        />
+      )
+    }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/icons/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/icons/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/icons/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/icons/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/icons/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/icons/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/icons/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/icons/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/icons/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="msapplication-TileColor" content="#1a1d27" />
+    <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#1a1d27" />
+  </head>
+  <body class="antialiased dark:text-slate-400">
+    <div class="flex min-h-screen flex-col bg-vulcan-900 pt-20">
+      <LayoutHeader locale={locale} />
+      <DynamicBackground bgStyle={{ image: bgImage, gradient, stickyImage }} />
+      <main
+        class:list={[
+          "z-10 mb-8 text-gray-400",
+          !["/builder/builds", "/todo"].includes("")
+            ? "container mx-auto lg:px-20"
+            : "",
+        ]}
+      >
+        {
+          GAD_ID && (
+            <ins
+              class="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client={GAD_ID}
+              data-adtest={import.meta.env.DEV ? "on" : "off"}
+              data-ad-slot={AD_ARTICLE_SLOT}
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            />
+          )
+        }
+        <slot />
+      </main>
+      <LayoutFooter />
+    </div>
+    {
+      GA_TRACKING_ID && (
+        <script
+          type="text/partytown"
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+      )
+    }
+    {
+      GAD_ID && (
+        <script
+          set:html={`
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    `}
+        />
+      )
+    }
+  </body>
+  <style is:global></style>
+</html>

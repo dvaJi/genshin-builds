@@ -1,0 +1,225 @@
+---
+import type { HTMLTag } from "astro/types";
+
+import Link from "@/components/Link.astro";
+import NavItem from "@/components/ui/NavItem.astro";
+import Logo from "@/components/genshin/Logo.astro";
+import GameSelector from "@/components/GameSelector.astro";
+import { GAME } from "@/utils/games";
+
+type Route = {
+  id: string;
+  name: string;
+  href?: string;
+  children?: Route[];
+  icon?: HTMLTag;
+};
+
+const navRoutes: Route[] = [
+  { id: "home", name: "Home", href: "/" },
+  { id: "characters", name: "Characters", href: "/characters" },
+  { id: "teams", name: "Teams", href: "/teams" },
+  {
+    id: "tcg",
+    name: "TCG",
+    children: [
+      {
+        id: "cards_list",
+        name: "Cards List",
+        href: "/tcg",
+      },
+      {
+        id: "best_decks",
+        name: "Best Decks",
+        href: "/tcg/best-decks",
+      },
+    ],
+  },
+  {
+    id: "tools",
+    name: "Tools",
+    children: [
+      { id: "todo", name: "Todo", href: "/todo" },
+      {
+        id: "calculator",
+        name: "Calculator",
+        href: "/calculator",
+      },
+      {
+        id: "achievements",
+        name: "Achievements",
+        href: "/achievements",
+      },
+      {
+        id: "guides",
+        name: "Guides",
+        href: "/guides",
+      },
+    ],
+  },
+  {
+    id: "tierlist",
+    name: "Tierlist",
+    children: [
+      {
+        id: "tierlist_characters",
+        name: "Tierlist Characters",
+        href: "/tier-list",
+      },
+      {
+        id: "tierlist_weapons",
+        name: "Tierlist Weapons",
+        href: "/tier-list-weapons",
+      },
+    ],
+  },
+  {
+    id: "banners",
+    name: "Banners",
+    href: "/#",
+    children: [
+      {
+        id: "banners_characters",
+        name: "Banners Characters",
+        href: "/banners/characters",
+      },
+      {
+        id: "banners_weapons",
+        name: "Banners Weapons",
+        href: "/banners/weapons",
+      },
+    ],
+  },
+  {
+    id: "wiki",
+    name: "Wiki",
+    children: [
+      {
+        id: "weapons",
+        name: "Weapons",
+        href: "/weapons",
+      },
+      {
+        id: "artifacts",
+        name: "Artifacts",
+        href: "/artifacts",
+      },
+      {
+        id: "materials",
+        name: "Materials",
+        href: "/materials",
+      },
+      {
+        id: "cooking_ingredient",
+        name: "Cooking Ingredient",
+        href: "/ingredients",
+      },
+      { id: "food", name: "Food", href: "/food" },
+      {
+        id: "potions",
+        name: "Potions",
+        href: "/potions",
+      },
+      {
+        id: "fishing",
+        name: "Fishing",
+        href: "/fishing",
+      },
+    ],
+  },
+];
+
+export interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+---
+
+<script>
+  let isMobileNavOpen = false;
+
+  const buttons = document.querySelectorAll("button.mobile-nav-button");
+
+  function onChange(isOpen: boolean) {
+    isMobileNavOpen = isOpen;
+
+    const content = document.querySelector("div.mobile-nav-content");
+
+    if (content) {
+      content.innerHTML = isOpen
+        ? `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+</svg>
+`
+        : `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+</svg>
+`;
+    }
+
+    const nav = document.querySelector("div.mobile-nav-menu");
+
+    if (nav) {
+      nav.classList.toggle("hidden", !isOpen);
+    }
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      onChange(!isMobileNavOpen);
+    });
+  });
+</script>
+
+<div
+  class="fixed top-0 left-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0"
+>
+  <div
+    class="mx-auto block w-full max-w-6xl items-center py-2 px-4 text-sm md:flex md:py-0"
+  >
+    <div class="flex items-center justify-between pr-4 md:inline-block md:pr-0">
+      <Link href="/" class="h-full w-full">
+        <Logo />
+      </Link>
+      <button class:list={["mobile-nav-button", "z-50 md:hidden"]}>
+        <div class:list={["mobile-nav-content", "h-4 w-6 text-xl text-white"]}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+    <div
+      class:list={[
+        "mobile-nav-menu",
+        "hidden",
+        "absolute left-0 z-10 mt-2 block max-h-[80vh] w-screen overflow-auto bg-vulcan-800 pb-4 pt-2 md:relative md:ml-10 md:mt-0 md:flex md:flex-grow md:justify-between md:overflow-visible md:bg-transparent md:py-0",
+      ]}
+    >
+      <ul class="flex flex-col md:flex-row">
+        {
+          navRoutes.map((route) => (
+            <div>
+              <NavItem route={route} locale={locale} game="genshin" />
+            </div>
+          ))
+        }
+      </ul>
+      <GameSelector
+        currentGame={GAME.GENSHIN}
+        className="z-40 text-slate-200"
+      />
+    </div>
+  </div>
+</div>

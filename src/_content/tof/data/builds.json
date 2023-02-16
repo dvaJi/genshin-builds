@@ -1,0 +1,154 @@
+{
+  "zero": [
+    { "id": "cocoritter", "pieces": 4 },
+    { "id": "pepper", "pieces": 3 }
+  ],
+  "tsubasa": [
+    { "id": "frigg", "pieces": 2 },
+    { "id": "crow", "pieces": 2 },
+    { "id": "sobek", "pieces": 3 }
+  ],
+  "shiro": [
+    { "id": "shiro", "pieces": 2 },
+    { "id": "king", "pieces": 2 },
+    { "id": "crow", "pieces": 2 },
+    { "id": "sobek", "pieces": 3 }
+  ],
+  "samir": [
+    { "id": "samir", "pieces": 2 },
+    { "id": "crow", "pieces": 2 },
+    { "id": "claudia", "pieces": 2 },
+    { "id": "sobek", "pieces": 3 }
+  ],
+  "nemesis": [
+    { "id": "cocoritter", "pieces": 4 },
+    { "id": "nemesis", "pieces": 2 },
+    { "id": "pepper", "pieces": 3 }
+  ],
+  "meryl": [
+    {
+      "id": "shiro",
+      "pieces": 2
+    },
+    {
+      "id": "king",
+      "pieces": 2
+    },
+    {
+      "id": "crow",
+      "pieces": 2
+    },
+    {
+      "id": "sobek",
+      "pieces": 3
+    }
+  ],
+  "king": [
+    {
+      "id": "shiro",
+      "pieces": 2
+    },
+    {
+      "id": "king",
+      "pieces": 2
+    },
+    {
+      "id": "crow",
+      "pieces": 2
+    },
+    {
+      "id": "sobek",
+      "pieces": 3
+    }
+  ],
+  "huma": [
+    {
+      "id": "shiro",
+      "pieces": 2
+    },
+    {
+      "id": "king",
+      "pieces": 2
+    },
+    {
+      "id": "crow",
+      "pieces": 2
+    },
+    {
+      "id": "sobek",
+      "pieces": 3
+    }
+  ],
+  "frigg": [
+    {
+      "id": "samir",
+      "pieces": 2
+    },
+    {
+      "id": "crow",
+      "pieces": 2
+    },
+    {
+      "id": "frigg",
+      "pieces": 2
+    },
+    {
+      "id": "sobek",
+      "pieces": 3
+    }
+  ],
+  "crow": [
+    {
+      "id": "samir",
+      "pieces": 2
+    },
+    {
+      "id": "crow",
+      "pieces": 2
+    },
+    {
+      "id": "claudia",
+      "pieces": 2
+    },
+    {
+      "id": "sobek",
+      "pieces": 3
+    }
+  ],
+  "cocoritter": [
+    {
+      "id": "cocoritter",
+      "pieces": 4
+    },
+    {
+      "id": "zero",
+      "pieces": 4
+    },
+    {
+      "id": "meryl",
+      "pieces": 2
+    },
+    {
+      "id": "pepper",
+      "pieces": 3
+    }
+  ],
+  "claudia": [
+    {
+      "id": "shiro",
+      "pieces": 2
+    },
+    {
+      "id": "crow",
+      "pieces": 2
+    },
+    {
+      "id": "claudia",
+      "pieces": 4
+    },
+    {
+      "id": "sobek",
+      "pieces": 3
+    }
+  ]
+}

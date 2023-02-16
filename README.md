@@ -10,24 +10,14 @@ Site: [https://genshin-builds.com/](genshin-builds.com)
 
 ## Getting Started
 
-First, run the development server:
+To get started, you can simply clone this repository and install the dependencies.
 
 ```bash
-npm run dev
-# or
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Planned Features
-
-- Weapons tierlist
-- Best teams
-- Team Card Generator
-- Wish simulator
-- Map integration for materials
-- Inventory (import from hoyolab API)
 
 ## Contributing
 

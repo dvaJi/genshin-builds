@@ -1,0 +1,50 @@
+---
+export interface Props {
+  bgStyle?: {
+    image?: string;
+    stickyImage?: string;
+    gradient?: any;
+  };
+}
+
+const { bgStyle } = Astro.props;
+const gradient =
+  bgStyle?.gradient ??
+  "linear-gradient(rgba(27,22,53,.8),#1f183a 620px),radial-gradient(at center top,rgba(28,22,54,0) 60%,#1f183a 80%)";
+---
+
+<style define:vars={{ gradient }}>
+  .bg-gradient-custom {
+    background: var(--gradient);
+  }
+</style>
+<div class="">
+  {
+    bgStyle?.image ? (
+      <div class="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex items-start justify-center overflow-hidden">
+        <img
+          class="w-full h-full object-cover select-none"
+          alt="Background image"
+          src={bgStyle?.image}
+        />
+      </div>
+    ) : null
+  }
+  {
+    bgStyle?.gradient ? (
+      <div class="pointer-events-none absolute top-0 left-0 h-full w-full bg-gradient-custom" />
+    ) : null
+  }
+  {
+    bgStyle?.stickyImage ? (
+      <div class="fixed z-0 flex w-full items-center justify-center">
+        <img
+          class="z-0 -mt-24 min-w-[900px]"
+          loading="lazy"
+          alt="Background image"
+          src={bgStyle?.stickyImage}
+        />
+      </div>
+    ) : null
+  }
+</div>

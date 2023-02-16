@@ -1,0 +1,109 @@
+---
+import { GAME, GameProps } from "@/utils/games";
+
+export interface Props {
+  currentGame: GameProps;
+  className?: string;
+}
+
+const { currentGame, className } = Astro.props;
+---
+
+<script>
+  let isOpen = false;
+  const buttons = document.querySelectorAll("button.game-selector-button");
+  const menu = document.querySelector("div.game-selector-menu");
+
+  function onChange() {
+    if (isOpen) {
+      menu?.classList.add("block");
+      menu?.classList.remove("hidden");
+      menu?.setAttribute("aria-hidden", "false");
+      buttons.forEach((button) => {
+        button.classList.remove("bg-tof-700/10");
+        button.classList.add("bg-tof-700/50");
+        button.setAttribute("aria-expanded", "true");
+      });
+    } else {
+      menu?.classList.add("hidden");
+      menu?.classList.remove("block");
+      menu?.setAttribute("aria-hidden", "true");
+      buttons.forEach((button) => {
+        button.classList.remove("bg-tof-700/50");
+        button.classList.add("bg-tof-700/10");
+        button.setAttribute("aria-expanded", "false");
+      });
+    }
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      isOpen = !isOpen;
+      onChange();
+    });
+  });
+
+  // document.addEventListener("click", (event) => {
+  //   const myElement = document.querySelector('div.game-selector-menu');
+  //   console.log(event.target, myElement)
+  //   // Check if the clicked element is inside or outside the specific element
+  //   if (!myElement?.contains(event.target as any) && isOpen) {
+  //     console.log("Clicked outside the element");
+  //     // isOpen = false;
+  //     // onChange();
+  //   }
+  // });
+</script>
+
+<div class:list={["relative", className]}>
+  <button
+    type="button"
+    aria-haspopup="true"
+    aria-expanded="true"
+    class:list={[
+      "game-selector-button",
+      "mt-4 flex h-10 w-full lg:w-44 items-center rounded px-2 backdrop-blur-sm md:w-10",
+    ]}
+  >
+    <img
+      class="mr-3 h-6 w-6 rounded"
+      src={`/imgs/games/${currentGame.slug}.webp`}
+      alt={currentGame.name}
+      width={32}
+      height={32}
+    />
+    <span class="text-sm md:hidden lg:inline-block">
+      {currentGame.name}
+    </span>
+  </button>
+  <div
+    tabindex={-1}
+    role="menu"
+    class:list={[
+      "game-selector-menu",
+      "absolute top-13 w-full rounded-b bg-tof-700/90 shadow-md backdrop-blur-xl hidden",
+    ]}
+  >
+    {
+      Object.values(GAME).map((game) => (
+        <a href={game.path}>
+          <button
+            type="button"
+            tabindex={0}
+            role="menuitem"
+            class="flex h-full w-full items-center py-2 px-2 text-left text-sm hover:bg-tof-600"
+          >
+            <img
+              class="mr-3 h-6 w-6 rounded"
+              src={`/imgs/games/${game.slug}.webp`}
+              alt={game.name}
+              width={32}
+              height={32}
+            />
+            <span class="md:hidden lg:block">{game.name}</span>
+          </button>
+        </a>
+      ))
+    }
+  </div>
+</div>

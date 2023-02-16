@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
+    "tierlist": "ลำดับชั้น",
+    "database": "ฐานข้อมูล",
+    "calculator": "เครื่องคิดเลข",
+    "teams": "ทีม",
+    "characters": "ตัวละคร",
+    "matrices": "เมทริกซ์",
+    "guides": "ไกด์"
+  },
+  "characters": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
+    "search": "ค้นหา..."
+  },
+  "character": {
+    "title": "{name} คู่มือการสร้าง ToF",
+    "characters": "ตัวละคร",
+    "simulacrum": "Simulacrum",
+    "recommended_matrices": "เมทริกซ์ที่แนะนำ",
+    "pieces": "ชิ้นส่วน",
+    "teams": "ทีม",
+    "skills": "ทักษะ",
+    "awakening": "การตื่นขึ้น",
+    "advancement": "ความก้าวหน้า",
+    "gifts": "ของขวัญ",
+    "upgrade_cost_planner": "อัปเกรดเครื่องมือวางแผนต้นทุน",
+    "level": "ระดับ",
+    "materials": "วัสดุ",
+    "cost": "ค่าใช้จ่าย",
+    "attack": "จู่โจม",
+    "fortitude": "ความอดทน",
+    "benediction": "พร",
+    "balance": "สมดุล",
+    "jump": "กระโดด",
+    "hold: attack": "ถือ: โจมตี",
+    "croch": "Croch",
+    "dodge": "หลบ",
+    "skill": "ทักษะ",
+    "discharge": "ปล่อย"
+  },
+  "matrices": {
+    "title": "รายการเมทริกซ์ ToF",
+    "description": "Matrices ทั้งหมดจัดลำดับตามกำลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
+    "matrices": "เมทริกซ์"
+  },
+  "matrix": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "ตัวละครที่ดีที่สุดและงานสร้างทั้งหมดถูกจัดลำดับตามพลัง ความมีชีวิต และความเก่งกาจในการเคลียร์เนื้อหา",
+    "matrix": "เมทริกซ์",
+    "2pcbonus": "โบนัสเซ็ต 2 ชิ้น",
+    "3pcbonus": "โบนัสเซ็ต 3 ชิ้น",
+    "4pcbonus": "โบนัสเซ็ต 4 ชิ้น",
+    "sets": "ชุด"
+  }
+}

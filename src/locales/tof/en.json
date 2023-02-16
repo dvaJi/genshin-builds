@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "tierlist": "Tierlist",
+    "database": "Database",
+    "calculator": "Calculator",
+    "teams": "Teams",
+    "characters": "Characters",
+    "matrices": "Matrices",
+    "guides": "Guides"
+  },
+  "characters": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "search": "Search..."
+  },
+  "character": {
+    "title": "{name} ToF Build Guide",
+    "characters": "Characters",
+    "simulacrum": "Simulacrum",
+    "recommended_matrices": "Recommended Matrices",
+    "pieces": "Pieces",
+    "teams": "Teams",
+    "skills": "Skills",
+    "awakening": "Awakening",
+    "advancement": "Advancement",
+    "gifts": "Gifts",
+    "upgrade_cost_planner": "Upgrade Cost Planner",
+    "level": "Level",
+    "materials": "Materials",
+    "cost": "Cost",
+    "attack": "Attack",
+    "fortitude": "Fortitude",
+    "benediction": "Benediction",
+    "balance": "Balance",
+    "jump": "Jump",
+    "hold: attack": "Hold: Attack",
+    "croch": "Croch",
+    "dodge": "Dodge",
+    "skill": "Skill",
+    "discharge": "Discharge"
+  },
+  "matrices": {
+    "title": "ToF Matrices List",
+    "description": "All Matrices ranked in order of power, viability, and versatility to clear content.",
+    "matrices": "Matrices"
+  },
+  "matrix": {
+    "title": "ToF-Builds.com Wiki Database",
+    "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+    "matrix": "Matrix",
+    "2pcbonus": "2-piece Set Bonus",
+    "3pcbonus": "3-piece Set Bonus",
+    "4pcbonus": "4-piece Set Bonus",
+    "sets": "Sets"
+  }
+}

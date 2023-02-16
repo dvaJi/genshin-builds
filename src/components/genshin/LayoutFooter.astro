@@ -1,0 +1,78 @@
+---
+import Link from "../Link.astro";
+---
+    <footer
+      class="border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-20 py-14 text-gray-400 backdrop-blur"
+      style={{ zIndex: 1 }}
+    >
+      <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row">
+          <div class="flex flex-1 flex-col">
+            <h4 class="mb-3 text-gray-200">GenshinBuilds</h4>
+            <Link href="/privacy-policy" class="my-2">
+              Privacy Policy
+            </Link>
+            <Link href="/contact" class="my-2">
+              Contact
+            </Link>
+          </div>
+          <div class="flex flex-1 flex-col">
+            <!-- <Link href={router.asPath} locale="en" class="my-2">
+              English
+            </a>
+            <Link href={router.asPath} locale="es" class="my-2">
+              Español
+            </Link>
+            <Link href={router.asPath} locale="ja" class="my-2">
+              日本語
+            </Link>
+            <Link href={router.asPath} locale="zh-tw" class="my-2">
+              中文（繁體）
+            </Link>
+            <Link href={router.asPath} locale="de" class="my-2">
+              Deutsch
+            </Link>
+            <Link href={router.asPath} locale="fr" class="my-2">
+              Français
+            </Link>
+            <Link href={router.asPath} locale="it" class="my-2">
+              Italiano
+            </Link> -->
+          </div>
+          <div class="flex flex-1 flex-col">
+            <!-- <Link href={router.asPath} locale="id" class="my-2">
+              Indonesia
+            </Link>
+            <Link href={router.asPath} locale="ko" class="my-2">
+              한국어
+            </Link>
+            <Link href={router.asPath} locale="pt" class="my-2">
+              Português
+            </Link>
+            <Link href={router.asPath} locale="ru" class="my-2">
+              Pусский
+            </Link>
+            <Link href={router.asPath} locale="th" class="my-2">
+              ภาษาไทย
+            </Link>
+            <Link href={router.asPath} locale="tr" class="my-2">
+              Türkçe
+            </Link>
+            <Link href={router.asPath} locale="vi" class="my-2">
+              Tiếng Việt
+            </Link> -->
+          </div>
+          <div class="flex-1">
+            <p class="text-sm">
+              GenshinBuilds is a Database, Tier List, and Guide for Genshin
+              Impact on PC, mobile and consoles.
+            </p>
+            <p class="mt-3 text-sm">
+              GenshinBuilds is not endorsed by miHoYo Co Ltd. and does not
+              reflect the views or opinions of MiHoyo or anyone officially
+              involved in producing or managing Genshin Impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>

@@ -1,0 +1,383 @@
+{
+  "mondstadt": [
+    {
+      "id": "17668",
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "venomspine_fish",
+        "teacolored_shirakodai"
+      ]
+    },
+    {
+      "id": "17669",
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "venomspine_fish",
+        "golden_koi",
+        "teacolored_shirakodai"
+      ]
+    },
+    {
+      "id": "17670",
+      "fish": ["medaka", "aizen_medaka", "dawncatcher", "teacolored_shirakodai"]
+    },
+    {
+      "id": "17671",
+      "fish": ["medaka", "aizen_medaka", "dawncatcher", "crystalfish"]
+    },
+    {
+      "id": "17672",
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "venomspine_fish",
+        "akai_maou",
+        "teacolored_shirakodai",
+        "pufferfish",
+        "bitter_pufferfish"
+      ]
+    },
+    {
+      "id": "17673",
+      "fish": [
+        "aizen_medaka",
+        "crystalfish",
+        "venomspine_fish",
+        "rusty_koi",
+        "teacolored_shirakodai"
+      ]
+    },
+    {
+      "id": "17674",
+      "fish": [
+        "aizen_medaka",
+        "dawncatcher",
+        "venomspine_fish",
+        "akai_maou",
+        "teacolored_shirakodai",
+        "pufferfish",
+        "bitter_pufferfish"
+      ]
+    },
+    {
+      "id": "17676",
+      "fish": [
+        "medaka",
+        "venomspine_fish",
+        "snowstrider",
+        "teacolored_shirakodai"
+      ]
+    }
+  ],
+  "liyue": [
+    {
+      "id": "17675",
+      "fish": [
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "betta",
+        "brown_shirakodai",
+        "bitter_pufferfish"
+      ]
+    },
+    {
+      "id": "17677",
+      "fish": [
+        "medaka",
+        "sweetflower_medaka",
+        "dawncatcher",
+        "brown_shirakodai"
+      ]
+    },
+    {
+      "id": "17678",
+      "fish": ["medaka", "betta", "brown_shirakodai"]
+    },
+    {
+      "id": "17679",
+      "fish": ["medaka", "dawncatcher", "crystalfish", "brown_shirakodai"]
+    },
+    {
+      "id": "17680",
+      "fish": [
+        "medaka",
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "abiding_angelfish"
+      ]
+    },
+    {
+      "id": "17681",
+      "fish": [
+        "medaka",
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "betta",
+        "brown_shirakodai"
+      ]
+    },
+    {
+      "id": "17682",
+      "fish": [
+        "sweetflower_medaka",
+        "betta",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "brown_shirakodai"
+      ]
+    },
+    {
+      "id": "17683",
+      "fish": ["medaka", "crystalfish", "betta"]
+    },
+    {
+      "id": "17684",
+      "fish": [
+        "sweetflower_medaka",
+        "betta",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "brown_shirakodai"
+      ]
+    },
+    {
+      "id": "17685",
+      "fish": [
+        "sweetflower_medaka",
+        "betta",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "brown_shirakodai"
+      ]
+    },
+    {
+      "id": "17686",
+      "fish": [
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "betta",
+        "pufferfish"
+      ]
+    }
+  ],
+  "inazuma": [
+    {
+      "id": "17687",
+      "fish": [
+        "medaka",
+        "glaze_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "lunged_stickleback",
+        "purple_shirakodai"
+      ]
+    },
+    {
+      "id": "17688",
+      "fish": [
+        "medaka",
+        "glaze_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "lunged_stickleback",
+        "purple_shirakodai"
+      ]
+    },
+    {
+      "id": "17689",
+      "fish": [
+        "medaka",
+        "lunged_stickleback",
+        "purple_shirakodai",
+        "bitter_pufferfish"
+      ]
+    },
+    {
+      "id": "17690",
+      "fish": ["raimei_angelfish"]
+    },
+    {
+      "id": "17691",
+      "fish": [
+        "medaka",
+        "dawncatcher",
+        "crystalfish",
+        "purple_shirakodai",
+        "pufferfish"
+      ]
+    },
+    {
+      "id": "17692",
+      "fish": [
+        "glaze_medaka",
+        "lunged_stickleback",
+        "akai_maou",
+        "pufferfish",
+        "bitter_pufferfish"
+      ]
+    },
+    {
+      "id": "17693",
+      "fish": ["glaze_medaka", "lunged_stickleback", "purple_shirakodai"]
+    },
+    {
+      "id": "17694",
+      "fish": [
+        "glaze_medaka",
+        "lunged_stickleback",
+        "akai_maou",
+        "golden_koi",
+        "rusty_koi",
+        "purple_shirakodai"
+      ]
+    },
+    {
+      "id": "18686",
+      "fish": ["medaka", "glaze_medaka", "dawncatcher", "crystalfish"]
+    },
+    {
+      "id": "20055",
+      "fish": ["medaka", "lunged_stickleback", "akai_maou", "purple_shirakodai"]
+    }
+  ],
+  "enkanomiya": [
+    {
+      "id": "22148",
+      "fish": ["crystalfish", "lunged_stickleback", "divda_ray", "formalo_ray"]
+    },
+    {
+      "id": "22149",
+      "fish": ["dawncatcher", "purple_shirakodai", "divda_ray", "formalo_ray"]
+    },
+    {
+      "id": "22150",
+      "fish": ["dawncatcher", "akai_maou", "divda_ray", "formalo_ray"]
+    }
+  ],
+  "the_chasm": [
+    {
+      "id": "25943",
+      "fish": [
+        "medaka",
+        "betta",
+        "akai_maou",
+        "brown_shirakodai",
+        "bitter_pufferfish"
+      ]
+    },
+    {
+      "id": "25944",
+      "fish": [
+        "sweetflower_medaka",
+        "dawncatcher",
+        "crystalfish",
+        "akai_maou",
+        "pufferfish"
+      ]
+    }
+  ],
+  "sumeru": [
+    {
+      "id": "30459",
+      "fish": [
+        "crystalfish",
+        "true_fruit_angler",
+        "sandstorm_angler",
+        "sunset_cloud_angler",
+        "lazurite_axe_marlin",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "30460",
+      "fish": [
+        "dawncatcher",
+        "true_fruit_angler",
+        "sunset_cloud_angler",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "30461",
+      "fish": [
+        "medaka",
+        "true_fruit_angler",
+        "sandstorm_angler",
+        "sunset_cloud_angler",
+        "lazurite_axe_marlin",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "30462",
+      "fish": [
+        "akai_maou",
+        "true_fruit_angler",
+        "sandstorm_angler",
+        "sunset_cloud_angler",
+        "lazurite_axe_marlin",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "30463",
+      "fish": [
+        "dawncatcher",
+        "sandstorm_angler",
+        "sunset_cloud_angler",
+        "lazurite_axe_marlin"
+      ]
+    },
+    {
+      "id": "30464",
+      "fish": [
+        "medaka",
+        "true_fruit_angler",
+        "sandstorm_angler",
+        "sunset_cloud_angler",
+        "lazurite_axe_marlin",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "30465",
+      "fish": [
+        "peach_of_the_deep_waves",
+        "sunset_cloud_angler",
+        "lazurite_axe_marlin",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "38143",
+      "fish": [
+        "medaka",
+        "crystalfish",
+        "sandstorm_angler",
+        "sunset_cloud_angler",
+        "halcyon_jade_axe_marlin"
+      ]
+    },
+    {
+      "id": "38144",
+      "fish": [
+        "medaka",
+        "dawncatcher",
+        "akai_maou",
+        "true_fruit_angler",
+        "lazurite_axe_marlin"
+      ]
+    }
+  ]
+}

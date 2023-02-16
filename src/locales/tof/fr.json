@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "title": "Base de données Wiki ToF-Builds.com",
+    "description": "Tous les meilleurs personnages et leurs constructions sont classés par ordre de puissance, de viabilité et de polyvalence pour effacer le contenu.",
+    "tierlist": "Liste de niveaux",
+    "database": "Base de données",
+    "calculator": "Calculatrice",
+    "teams": "Équipes",
+    "characters": "Personnages",
+    "matrices": "Matrices",
+    "guides": "Guides"
+  },
+  "characters": {
+    "title": "Base de données Wiki ToF-Builds.com",
+    "description": "Tous les meilleurs personnages et leurs constructions sont classés par ordre de puissance, de viabilité et de polyvalence pour effacer le contenu.",
+    "search": "Chercher..."
+  },
+  "character": {
+    "title": "{name} Guide de construction ToF",
+    "characters": "Personnages",
+    "simulacrum": "Simulacre",
+    "recommended_matrices": "Matrices recommandées",
+    "pieces": "Pièces",
+    "teams": "Équipes",
+    "skills": "Compétences",
+    "awakening": "Éveil",
+    "advancement": "Avancement",
+    "gifts": "Cadeaux",
+    "upgrade_cost_planner": "Planificateur des coûts de mise à niveau",
+    "level": "Niveau",
+    "materials": "Matériaux",
+    "cost": "Coût",
+    "attack": "Attaque",
+    "fortitude": "Courage",
+    "benediction": "Bénédiction",
+    "balance": "Solde",
+    "jump": "Saut",
+    "hold: attack": "Tenir : Attaquer",
+    "croch": "Croch",
+    "dodge": "Esquiver",
+    "skill": "Compétence",
+    "discharge": "Décharge"
+  },
+  "matrices": {
+    "title": "Liste des matrices ToF",
+    "description": "Toutes les matrices sont classées par ordre de puissance, de viabilité et de polyvalence pour effacer le contenu.",
+    "matrices": "Matrices"
+  },
+  "matrix": {
+    "title": "Base de données Wiki ToF-Builds.com",
+    "description": "Tous les meilleurs personnages et leurs constructions sont classés par ordre de puissance, de viabilité et de polyvalence pour effacer le contenu.",
+    "matrix": "Matrice",
+    "2pcbonus": "Bonus d'ensemble 2 pièces",
+    "3pcbonus": "Bonus d'ensemble de 3 pièces",
+    "4pcbonus": "Bonus d'ensemble de 4 pièces",
+    "sets": "Ensembles"
+  }
+}
