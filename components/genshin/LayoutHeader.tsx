@@ -172,7 +172,6 @@ const LayoutHeader = () => {
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
           <Link href="/" className="h-full w-full">
             <Logo />
-            <div>test!</div>
           </Link>
           <button
             className="z-50 md:hidden"
