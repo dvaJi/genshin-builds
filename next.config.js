@@ -6,6 +6,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 const withPWA = require("next-pwa")({
   dynamicStartUrl: false,
+  disable: isDev,
 });
 
 /**
