@@ -1,0 +1,798 @@
+---
+import GenshinData, { Artifact, Weapon, type Character } from "genshin-data";
+import Layout from "@/layouts/GenshinLayout.astro";
+import { localeToLang } from "@/utils/locale-to-lang";
+import { intl } from "@/lib/intl";
+import { getUrl, getUrlLQ } from "@/lib/img";
+import ElementIcon from "@/components/genshin/ElementIcon.astro";
+import CharacterSkill from "@/components/genshin/CharacterSkill";
+import type { Build, MostUsedBuild } from "@/interfaces/genshin/build";
+import {
+  getCharacterBuild,
+  getCharacterMostUsedBuild,
+  getCharacterOfficialBuild,
+  getCharacterRecommendedTeams,
+  getCommon,
+} from "@/lib/gi-content";
+import CharacterBuilds from "@/components/genshin/CharacterBuilds";
+import Link from "@/components/Link.astro";
+import CharacterStats from "@/components/genshin/CharacterStats";
+import SimpleRarityBox from "@/components/ui/SimpleRarityBox.astro";
+import {
+  calculateTotalAscensionMaterials,
+  calculateTotalTalentMaterials,
+} from "@/utils/totals";
+
+export async function getStaticPaths() {
+  const genshinData = new GenshinData();
+  const characters = await genshinData.characters({ select: ["id"] });
+
+  return characters.map((character: Character) => ({
+    params: { name: character.id },
+  }));
+}
+
+const { name } = Astro.params;
+
+const locale = "en";
+const giData = new GenshinData({ language: localeToLang(locale) });
+const characters = await giData.characters();
+const character = characters.find((c) => c.id === name);
+console.log(name);
+
+if (!character) {
+  return {
+    notFound: true,
+  };
+}
+
+const common = await getCommon(locale);
+
+const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
+const talentsTotal = calculateTotalTalentMaterials(character.talent_materials);
+const recommendedTeams = await getCharacterRecommendedTeams(character.id);
+const buildsOld: Build[] = await getCharacterBuild(character.id);
+const mubuild: MostUsedBuild = await getCharacterMostUsedBuild(character.id);
+const officialbuild: MostUsedBuild = await getCharacterOfficialBuild(
+  character.id
+);
+const weaponsList = await giData.weapons({
+  select: ["id", "name", "rarity", "stats", "bonus"],
+});
+const artifactsList = await giData.artifacts({
+  select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
+});
+let weapons: Record<string, Weapon> = {};
+let artifacts: Record<string, Artifact & { children?: Artifact[] }> = {};
+let builds: Build[] = [];
+const { t } = await intl(locale, "genshin", "character");
+
+if (buildsOld) {
+  const weaponsIds: string[] = [];
+  const artifactsIds: string[] = [];
+  buildsOld.forEach((build) => {
+    weaponsIds.push(...build.weapons.map((w) => w.id));
+    artifactsIds.push(
+      ...build.sets.reduce<string[]>((arr, set) => {
+        arr.push(...set);
+
+        return arr;
+      }, [])
+    );
+    const newBuild = {
+      ...build,
+      stats_priority: build.stats_priority.map((s) => common[s]),
+      stats: {
+        circlet: build.stats.circlet.map((s) => common[s]),
+        flower: build.stats.flower.map((s) => common[s]),
+        goblet: build.stats.goblet.map((s) => common[s]),
+        plume: build.stats.plume.map((s) => common[s]),
+        sands: build.stats.sands.map((s) => common[s]),
+      },
+    };
+    builds.push(newBuild);
+  });
+
+  weaponsList.forEach((weapon) => {
+    if (
+      weaponsIds.includes(weapon.id) ||
+      mubuild?.weapons?.includes(weapon.id) ||
+      officialbuild?.weapons?.includes(weapon.id)
+    ) {
+      const trimmedBonus = weapon.bonus.slice(0, 164);
+      weapons[weapon.id] = {
+        ...weapon,
+        bonus: `${trimmedBonus}${trimmedBonus.length === 164 ? "..." : ""}`,
+      };
+    }
+  });
+
+  artifactsList.forEach((artifact) => {
+    if (
+      artifactsIds.includes(artifact.id) ||
+      mubuild?.artifacts?.find((a) => a.includes(artifact.id)) ||
+      officialbuild?.artifacts?.find((a) => a.includes(artifact.id))
+    ) {
+      artifacts[artifact.id] = artifact;
+    }
+  });
+
+  const ATK18BONUS = [
+    "gladiators_finale",
+    "shimenawas_reminiscence",
+    "vermillion_hereafter",
+    "echoes_of_an_offering",
+  ];
+
+  if (artifactsIds.includes("18atk_set")) {
+    artifacts["18atk_set"] = {
+      ...artifactsList.find((a) => a.id === "gladiators_finale")!,
+      name: t({ id: "18atk_set", defaultMessage: "ATK +18% set" }),
+      children: artifactsList.filter((a) => ATK18BONUS.includes(a.id)),
+    };
+  }
+
+  const Energy20BONUS = ["emblem_of_severed_fate", "the_exile", "scholar"];
+
+  if (artifactsIds.includes("20energyrecharge_set")) {
+    artifacts["20energyrecharge_set"] = {
+      ...artifactsList.find((a) => a.id === "emblem_of_severed_fate")!,
+      name: t({
+        id: "20energyrecharge_set",
+        defaultMessage: "Energy Recharge +20% set",
+      }),
+      children: artifactsList.filter((a) => Energy20BONUS.includes(a.id)),
+    };
+  }
+
+  const Anemo15BONUS = ["viridescent_venerer", "desert_pavilion_chronicle"];
+
+  if (artifactsIds.includes("15anemodmg_set")) {
+    artifacts["15anemodmg_set"] = {
+      ...artifactsList.find((a) => a.id === "viridescent_venerer")!,
+      name: t({
+        id: "15anemodmg_set",
+        defaultMessage: "Anemo DMG Bonus +15% set",
+      }),
+      children: artifactsList.filter((a) => Anemo15BONUS.includes(a.id)),
+    };
+  }
+
+  const Physical25BONUS = ["bloodstained_chivalry", "pale_flame", "scholar"];
+
+  if (artifactsIds.includes("25physicaldmg_set")) {
+    artifacts["25physicaldmg_set"] = {
+      ...artifactsList.find((a) => a.id === "gladiators_finale")!,
+      name: t({
+        id: "25physicaldmg_set",
+        defaultMessage: "Physical DMG +25% set",
+      }),
+      children: artifactsList.filter((a) => Physical25BONUS.includes(a.id)),
+    };
+  }
+
+  const EM80BONUS = ["gilded_dreams", "instructor", "wanderers_troupe"];
+
+  if (artifactsIds.includes("80elementalmastery_set")) {
+    artifacts["80elementalmastery_set"] = {
+      ...artifactsList.find((a) => a.id === "wanderers_troupe")!,
+      name: t({
+        id: "80elementalmastery_set",
+        defaultMessage: "Elemental Mastery +80 set",
+      }),
+      children: artifactsList.filter((a) => EM80BONUS.includes(a.id)),
+    };
+  }
+
+  artifacts["others"] = {
+    _id: -1,
+    id: "others",
+    name: t({ id: "others", defaultMessage: "Others" }),
+    max_rarity: 0,
+    min_rarity: 0,
+    two_pc: t({ id: "others_desc", defaultMessage: "Others" }),
+  };
+}
+---
+
+<Layout
+  locale={locale}
+  title={t({
+    id: "title",
+    defaultMessage: "{name} Genshin Impact Build Guide",
+    values: { name: character.name },
+  })}
+  description={character.description}
+  jsonLD={JSON.stringify({
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        item: {
+          "@id": `https://genshin-builds.com/${locale}/`,
+          name: "Genshin-Builds.com",
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        item: {
+          "@id": `https://genshin-builds.com/${locale}/characters`,
+          name: t({
+            id: "characters",
+            defaultMessage: "Characters",
+          }),
+        },
+      },
+    ],
+  })}
+  bgImage={getUrlLQ(
+    `/regions/${common[character.region] || "Mondstadt"}_d.jpg`,
+    900,
+    900
+  )}
+  gradient="linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)"
+  stickyImage={getUrlLQ(
+    `/characters/${character.id}/header_image.png`,
+    900,
+    900
+  )}
+>
+  <div class="relative">
+    <div class="relative z-20 mb-4 flex items-start justify-between">
+      <div class="flex items-center px-2 lg:px-0">
+        <div class="relative mr-2 flex-none lg:mr-5">
+          <img
+            class="h-40 w-40 rounded-full border border-gray-900 bg-vulcan-800 p-1"
+            src={getUrl(`/characters/${character.id}/image.png`, 160, 160)}
+            alt={character.name}
+          />
+        </div>
+        <div class="flex flex-grow flex-col">
+          <div class="mr-2 flex items-center">
+            <h1 class="mr-2 text-3xl text-white shadow-black text-shadow">
+              {character.name} ({character.rarity}★)
+            </h1>
+            <ElementIcon
+              type={common[character.element]}
+              width={30}
+              height={30}
+            />
+          </div>
+          <div class="hidden text-gray-200 shadow-black text-shadow md:block">
+            {character.description}
+          </div>
+          <div class="hidden text-gray-200 shadow-black text-shadow md:block">
+            {character.affiliation}
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2
+      class="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0"
+    >
+      {t({ id: "skills", defaultMessage: "Skills" })}
+    </h2>
+    <div
+      class:list={[
+        "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
+        character.skills.length > 3
+          ? "lg:grid-cols-3 xl:grid-cols-4"
+          : "lg:grid-cols-3",
+      ]}
+    >
+      {
+        character.skills.map((skill) => (
+          <CharacterSkill
+            skill={skill}
+            characterId={character.id}
+            client:visible
+          />
+        ))
+      }
+    </div>
+    <CharacterBuilds
+      artifacts={artifacts}
+      weapons={weapons}
+      builds={builds}
+      mubuild={mubuild}
+      officialbuild={officialbuild}
+      dict={{
+        builds: t({ id: "builds", defaultMessage: "Builds" }),
+        official_build: t({
+          id: "official_build",
+          defaultMessage: "Official Build",
+        }),
+        most_used: t({
+          id: "most_used",
+          defaultMessage: "Most Used Build",
+        }),
+        weapons: t({ id: "weapons", defaultMessage: "Weapons" }),
+        or: t({ id: "or", defaultMessage: "Or" }),
+        artifacts: t({ id: "artifacts", defaultMessage: "Artifacts" }),
+        talents_priority: t({
+          id: "talents_priority",
+          defaultMessage: "Talents Priority",
+        }),
+        recommended_primary_stats: t({
+          id: "recommended_primary_stats",
+          defaultMessage: "Recommended Primary Stats",
+        }),
+        substats_priority: t({
+          id: "substats_priority",
+          defaultMessage: "Substats Priority",
+        }),
+        sands: t({ id: "sands", defaultMessage: "Sands" }),
+        goblet: t({
+          id: "goblet",
+          defaultMessage: "Goblet",
+        }),
+        circlet: t({
+          id: "circlet",
+          defaultMessage: "Circlet",
+        }),
+        choose_2: t({
+          id: "choose_2",
+          defaultMessage: "Choose 2",
+        }),
+        normal_attack: t({
+          id: "normal_attack",
+          defaultMessage: "Normal Attack",
+        }),
+        skill: t({
+          id: "skill",
+          defaultMessage: "Skill",
+        }),
+        burst: t({
+          id: "burst",
+          defaultMessage: "Burst",
+        }),
+      }}
+      client:only
+    />
+    {
+      recommendedTeams?.length > 0 ? (
+        <>
+          <h2 class="mb-2 ml-4 text-3xl text-white lg:ml-0">
+            {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
+          </h2>
+          <div class="card mb-4 flex flex-wrap">
+            {recommendedTeams.map((team, index) => (
+              <div class="mb-4 flex items-center border-b border-vulcan-600 pb-4">
+                <div class="lg:mx-2">#{index + 1}</div>
+                <div class="hidden lg:mx-4 lg:block">Tier: {team.tier}</div>
+                {team.characters.map((character) => (
+                  <Link
+                    key={character.id}
+                    href={`/character/${character.id}`}
+                    class="group relative text-center lg:mr-8"
+                  >
+                    <img
+                      class="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
+                      src={getUrl(
+                        `/characters/${character.id}/${character.id}_portrait.png`,
+                        100,
+                        100
+                      )}
+                      loading="lazy"
+                      alt={character.name}
+                      width="100"
+                      height="100"
+                    />
+                    {character.c_min > 0 && (
+                      <div class="absolute bottom-5 right-2/3 rounded-full bg-vulcan-700 p-1 text-xs font-bold text-gray-300">
+                        {`C${character.c_min}`}
+                      </div>
+                    )}
+                    <span class="text-xs lg:text-sm">
+                      {t({
+                        id: character.role.toLowerCase(),
+                        defaultMessage: character.role,
+                      })}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
+        </>
+      ) : null
+    }
+    <h2 class="mb-2 ml-4 text-3xl text-white lg:ml-0">
+      {t({ id: "passives", defaultMessage: "Passives" })}
+    </h2>
+    <div
+      class="mb-8 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-3"
+    >
+      {
+        character.passives.map((passive) => (
+          <div class="flex justify-center lg:block">
+            <div class="card relative flex w-11/12 flex-col justify-start overflow-hidden lg:w-full">
+              <div class="flex flex-col">
+                <div class="pointer-events-none absolute top-4 left-0 right-0 bottom-0 z-0 flex h-96 items-start justify-center overflow-hidden">
+                  <img
+                    class="w-16 opacity-20"
+                    alt={passive.id}
+                    loading="lazy"
+                    src={getUrl(
+                      `/characters/${character.id}/${passive.id}.png`,
+                      76,
+                      76
+                    )}
+                  />
+                </div>
+              </div>
+              <div class="flex items-center p-5 text-center">
+                <div class="flex flex-grow flex-col">
+                  <div class="text-lg font-bold text-white">{passive.name}</div>
+                  {passive.level > 0 && (
+                    <div class="text-sm">
+                      {t({
+                        id: "ascension_phase_num",
+                        defaultMessage: "Ascension Phase {num}",
+                        values: { num: passive.level.toString() },
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div
+                class="skill-description mb-5 px-5 text-sm"
+                set:html={passive.description}
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <h2 class="mb-2 ml-4 text-3xl text-white lg:ml-0">
+      {
+        t({
+          id: "constellations",
+          defaultMessage: "Constellations",
+        })
+      }
+    </h2>
+    <div
+      class="mb-8 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-3"
+    >
+      {
+        character.constellations
+          .filter((c) => c.level > 0)
+          .map((constellation) => (
+            <div class="flex justify-center lg:block">
+              <div class="card relative flex w-11/12 flex-col justify-start overflow-hidden lg:w-full">
+                <div class="flex flex-col">
+                  <div class="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex h-96 items-start justify-center overflow-hidden">
+                    <img
+                      class="w-24 opacity-20"
+                      alt={constellation.id}
+                      loading="lazy"
+                      src={getUrl(
+                        `/characters/${character.id}/${constellation.id.replace(
+                          "normal_attack_",
+                          ""
+                        )}_w.png`,
+                        76,
+                        76
+                      )}
+                    />
+                  </div>
+                </div>
+                <div class="z-10 mb-2 flex items-center p-5 text-center">
+                  <div class="flex flex-grow flex-col">
+                    <div class="text-lg font-bold text-white">
+                      {constellation.name}
+                    </div>
+                    <div class="text-sm">
+                      {t({
+                        id: "constellation_lvl",
+                        defaultMessage: "Constellation Lv. {level}",
+                        values: { level: constellation.level.toString() },
+                      })}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="skill-description z-10 mb-4 px-5 text-sm"
+                  set:html={constellation.description}
+                />
+              </div>
+            </div>
+          ))
+      }
+    </div>
+    <h2 class="mb-2 ml-4 text-3xl text-white lg:ml-0">
+      {
+        t({
+          id: "stats",
+          defaultMessage: "Stats",
+        })
+      }
+    </h2>
+    <div class="card mx-4 mb-8 p-0 lg:mx-0">
+      <CharacterStats
+        ascensions={character.ascension}
+        dict={{
+          ["lv."]: t({
+            id: "lv.",
+            defaultMessage: "Lv.",
+          }),
+          before_ascension: t({
+            id: "before_ascension",
+            defaultMessage: "Before Ascension",
+          }),
+          after_ascension: t({
+            id: "after_ascension",
+            defaultMessage: "After Ascension",
+          }),
+        }}
+        client:visible
+      />
+    </div>
+    <h2 class="mb-2 ml-4 text-3xl text-white lg:ml-0">
+      {
+        t({
+          id: "ascension_materials",
+          defaultMessage: "Ascension Materials",
+        })
+      }
+    </h2>
+    <div class="card mx-4 mb-8 p-0 lg:mx-0">
+      {
+        character.ascension.map((ascen, i) => (
+          <div
+            class:list={[
+              "grid grid-cols-6 items-center px-4 lg:grid-cols-10",
+              i % 2 === 0 ? "bg-vulcan-700" : "",
+              i === 0 ? "rounded rounded-b-none" : "",
+            ]}
+          >
+            <div class="flex items-center justify-center text-sm lg:text-base">
+              LV.{ascen.level.join(" - ")}
+            </div>
+            <div class="flex items-center justify-center">
+              <SimpleRarityBox
+                img={getUrl(`/materials/mora.png`, 64, 64)}
+                name={ascen?.cost?.toString() || "0"}
+                rarity={1}
+                classNames="h-16 w-16"
+              />
+              <p class="hidden lg:block">Mora</p>
+            </div>
+            <div class="flex items-center lg:col-span-2">
+              {ascen?.mat1 && (
+                <>
+                  <SimpleRarityBox
+                    img={getUrl(
+                      `/jewels_materials/${ascen.mat1.id}.png`,
+                      64,
+                      64
+                    )}
+                    name={ascen.mat1.amount.toString()}
+                    rarity={ascen.mat1.rarity}
+                    classNames="h-16 w-16"
+                  />
+                  <p class="hidden lg:block">{ascen.mat1.name}</p>
+                </>
+              )}
+            </div>
+            <div class="flex items-center lg:col-span-2">
+              {ascen.mat2 && (
+                <>
+                  <SimpleRarityBox
+                    img={getUrl(
+                      `/elemental_stone_materials/${ascen.mat2.id}.png`,
+                      64,
+                      64
+                    )}
+                    name={ascen.mat2.amount.toString()}
+                    rarity={ascen.mat2.rarity || 1}
+                    classNames="h-16 w-16"
+                  />
+                  <p class="hidden lg:block">{ascen.mat2.name}</p>
+                </>
+              )}
+            </div>
+            <div class="flex items-center lg:col-span-2">
+              {ascen.mat3 && (
+                <>
+                  <SimpleRarityBox
+                    img={getUrl(
+                      `/local_materials/${ascen.mat3.id}.png`,
+                      64,
+                      64
+                    )}
+                    name={ascen.mat3.amount.toString()}
+                    rarity={ascen.mat3.rarity || 1}
+                    classNames="h-16 w-16"
+                  />
+                  <p class="hidden lg:block">{ascen.mat3.name}</p>
+                </>
+              )}
+            </div>
+            <div class="flex items-center lg:col-span-2">
+              {ascen.mat4 && (
+                <>
+                  <SimpleRarityBox
+                    img={getUrl(
+                      `/common_materials/${ascen.mat4.id}.png`,
+                      64,
+                      64
+                    )}
+                    name={ascen.mat4.amount.toString()}
+                    rarity={ascen.mat4.rarity || 1}
+                    classNames="h-16 w-16"
+                  />
+                  <p class="hidden lg:block">{ascen.mat4.name}</p>
+                </>
+              )}
+            </div>
+          </div>
+        ))
+      }
+      <div
+        class="grid grid-cols-7 items-center rounded-b bg-vulcan-700 px-4 py-5 lg:grid-cols-11"
+      >
+        <div
+          class="flex items-center justify-center text-sm font-bold lg:text-base"
+        >
+          TOTAL
+        </div>
+        <div class="flex items-center justify-center">
+          <SimpleRarityBox
+            img={getUrl(`/materials/mora.png`, 64, 64)}
+            name={ascensionTotal.cost.toString()}
+            rarity={1}
+            classNames="h-16 w-16"
+          />
+        </div>
+        {
+          ascensionTotal.items.map((item) => (
+            <div class="flex items-center">
+              <SimpleRarityBox
+                img={getUrl(`/${item.type}/${item.id}.png`, 64, 64)}
+                name={item.amount.toString()}
+                rarity={item.rarity}
+                classNames="h-16 w-16"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <h2 class="mb-2 ml-4 text-3xl text-white lg:ml-0">
+      {
+        t({
+          id: "talent_materials",
+          defaultMessage: "Talent Materials",
+        })
+      }
+    </h2>
+    <div class="card mx-4 p-0 lg:mx-0">
+      {
+        character.talent_materials.map((talent, i) => (
+          <div
+            class:list={[
+              "grid grid-cols-6 lg:grid-cols-10 items-center px-4",
+              i % 2 === 0 ? "bg-vulcan-700" : "",
+              i === 0 ? "rounded rounded-b-none" : "",
+            ]}
+          >
+            <div class="flex justify-center items-center text-sm lg:text-base">
+              LV.{talent.level - 1}→{talent.level}
+            </div>
+            <div class="flex justify-center items-center">
+              <SimpleRarityBox
+                img={getUrl(`/materials/mora.png`, 64, 64)}
+                name={talent.cost.toString()}
+                rarity={1}
+                classNames="w-16 h-16"
+              />
+              <p class="hidden lg:block">Mora</p>
+            </div>
+            <div class="lg:col-span-2 flex items-center">
+              <SimpleRarityBox
+                img={getUrl(
+                  `/talent_lvl_up_materials/${talent.items[0].id}.png`,
+                  64,
+                  64
+                )}
+                name={talent.items[0].amount.toString()}
+                rarity={talent.items[0].rarity || 1}
+                classNames="w-16 h-16"
+              />
+              <p class="hidden lg:block">{talent.items[0].name}</p>
+            </div>
+            <div class="lg:col-span-2 flex items-center">
+              <SimpleRarityBox
+                img={getUrl(
+                  `/common_materials/${talent.items[1].id}.png`,
+                  64,
+                  64
+                )}
+                name={talent.items[1].amount.toString()}
+                rarity={talent.items[1].rarity || 1}
+                classNames="w-16 h-16"
+              />
+              <p class="hidden lg:block">{talent.items[1].name}</p>
+            </div>
+            <div class="lg:col-span-2 flex items-center">
+              {talent.items.length > 2 && (
+                <>
+                  <SimpleRarityBox
+                    img={getUrl(
+                      `/talent_lvl_up_materials/${talent.items[2].id}.png`,
+                      64,
+                      64
+                    )}
+                    name={talent.items[2].amount.toString()}
+                    rarity={talent.items[2].rarity || 1}
+                    classNames="w-16 h-16"
+                  />
+                  <p class="hidden lg:block">{talent.items[2].name}</p>
+                </>
+              )}
+            </div>
+            <div class="lg:col-span-2 flex items-center">
+              {talent.items.length > 3 && (
+                <>
+                  <SimpleRarityBox
+                    img={getUrl(
+                      `/talent_lvl_up_materials/${talent.items[3].id}.png`,
+                      64,
+                      64
+                    )}
+                    name={talent.items[3].amount.toString()}
+                    rarity={talent.items[3].rarity || 1}
+                    classNames="w-16 h-16"
+                  />
+                  <p class="hidden lg:block">{talent.items[3].name}</p>
+                </>
+              )}
+            </div>
+          </div>
+        ))
+      }
+      <div
+        class="grid grid-cols-6 lg:grid-cols-10 items-center px-4 py-5 rounded-b"
+      >
+        <div
+          class="flex justify-center items-center text-sm lg:text-base font-bold uppercase"
+        >
+          {
+            t({
+              id: "total",
+              defaultMessage: "Total",
+            })
+          }
+        </div>
+        <div class="flex justify-center items-center">
+          <SimpleRarityBox
+            img={getUrl(`/materials/mora.png`, 64, 64)}
+            alt="Mora"
+            name={talentsTotal.cost.toString()}
+            rarity={1}
+            classNames="w-16 h-16"
+          />
+        </div>
+        {
+          talentsTotal.items.map((item) => (
+            <div class="flex items-center">
+              <SimpleRarityBox
+                img={getUrl(`/${item.type}/${item.id}.png`, 64, 64)}
+                alt={item.name}
+                name={item.amount.toString()}
+                rarity={item.rarity || 1}
+                classNames="w-16 h-16"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>

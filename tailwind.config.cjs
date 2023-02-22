@@ -1,12 +1,11 @@
-const plugin = require('tailwindcss/plugin');
+const plugin = require("tailwindcss/plugin");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "src/**/*.{astro,js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -95,6 +94,30 @@ module.exports = {
         },
         { values: theme("textShadow") }
       );
+    }),
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        ".card": {
+          position: "relative",
+          backgroundColor: "rgba(35,39,52,var(--tw-bg-opacity))",
+          marginTop: theme("spacing.4"),
+          minWidth: "0",
+          borderRadius: theme("borderRadius.lg"),
+          boxShadow: "0 0 0 1px rgba(55, 65, 81, 0.6)",
+          padding: theme("spacing.4"),
+        },
+        ".badge": {
+          backgroundColor: theme("backgroundColor.gray.600"),
+          backgroundOpacity: theme("backgroundOpacity.70"),
+          marginRight: theme("spacing.1"),
+          borderRadius: theme("borderRadius.DEFAULT"),
+          border: theme("border.gray.500"),
+          borderOpacity: theme("borderOpacity.40"),
+          padding: theme("spacing.1"),
+          fontSize: theme("fontSize.xs"),
+          fontWeight: theme("fontWeight.bold"),
+        }
+      });
     }),
   ],
 };

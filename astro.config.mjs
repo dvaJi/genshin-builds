@@ -1,13 +1,13 @@
 import { defineConfig } from "astro/config";
-import solidJs from "@astrojs/solid-js";
 import vercel from "@astrojs/vercel/static";
 import tailwind from "@astrojs/tailwind";
 import partytown from "@astrojs/partytown";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    solidJs(),
+    react(),
     tailwind(),
     partytown({
       config: {

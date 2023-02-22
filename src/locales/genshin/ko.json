@@ -114,7 +114,13 @@
     "lv.": "LV.",
     "before_ascension": "승천 전",
     "after_ascension": "승천 후",
-    "constellation_lvl": "별자리 Lv. {level}"
+    "constellation_lvl": "별자리 Lv. {level}",
+    "others": "기타",
+    "others_desc": "다른 아티팩트, 최고의 통계를 가진 것을 사용하십시오.",
+    "official_build": "공식 빌드",
+    "stats": "통계",
+    "total": "총",
+    "ascension_phase_num": "승천 단계 {num}"
   },
   "weapons": {
     "title": "원신 임팩트 무기 목록",

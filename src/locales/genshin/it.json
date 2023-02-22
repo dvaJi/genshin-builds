@@ -114,7 +114,13 @@
     "lv.": "liv.",
     "before_ascension": "Prima dell'Ascensione",
     "after_ascension": "Dopo l'Ascensione",
-    "constellation_lvl": "Costellazione Liv. {level}"
+    "constellation_lvl": "Costellazione Liv. {level}",
+    "others": "Altri",
+    "others_desc": "Altri artefatti, usa quelli con le statistiche migliori",
+    "official_build": "Costruzione ufficiale",
+    "stats": "Statistiche",
+    "total": "Totale",
+    "ascension_phase_num": "Fase di Ascensione {num}"
   },
   "weapons": {
     "title": "Elenco delle armi da impatto Genshin",

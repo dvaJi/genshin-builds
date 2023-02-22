@@ -114,7 +114,13 @@
     "lv.": "呂。",
     "before_ascension": "提升之前",
     "after_ascension": "揚升之後",
-    "constellation_lvl": "星座 呂. {level}"
+    "constellation_lvl": "星座 呂. {level}",
+    "others": "其他的",
+    "others_desc": "其他工件，使用具有最佳統計數據的工件",
+    "official_build": "官方構建",
+    "stats": "統計數據",
+    "total": "全部的",
+    "ascension_phase_num": "提升階段 {num}"
   },
   "weapons": {
     "title": "Genshin Impact 武器列表",

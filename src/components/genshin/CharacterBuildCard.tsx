@@ -1,33 +1,25 @@
 import { memo, ReactNode } from "react";
-import { Artifact, Weapon } from "genshin-data";
+import type { Artifact, Weapon } from "genshin-data";
+import type { Build } from "@/interfaces/genshin/build";
 
-import WeaponCard from "./WeaponCard";
-import ArtifactRecommendedStats from "./ArtifactRecommendedStats";
-import ArtifactChooseCard from "./ArtifactChooseCard";
-import ArtifactCard from "./ArtifactCard";
-import SkillLabel from "../SkillLabel";
-
-import { Build } from "interfaces/build";
-import useIntl from "@hooks/use-intl";
+import WeaponCard from "@/components/genshin/WeaponCard";
+import ArtifactRecommendedStats from "@/components/genshin/ArtifactRecommendedStats";
+import ArtifactChooseCard from "@/components/genshin/ArtifactChooseCard";
+import ArtifactCard from "@/components/genshin/ArtifactCard";
+import SkillLabel from "@/components/genshin/SkillLabel";
 
 type Props = {
   build: Build;
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact>;
+  dict: Record<string, string>;
 };
 
-const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
-  const { t: f } = useIntl("character");
+const CharacterBuildCard = ({ build, weapons, artifacts, dict }: Props) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
       <div className="flex w-full flex-wrap content-start pr-2 lg:pr-4">
-        <div className="mb-2 text-xl font-semibold">
-          {f({
-            id: "weapons",
-            defaultMessage: "Weapons",
-          })}
-          :
-        </div>
+        <div className="mb-2 text-xl font-semibold">{dict["weapons"]}:</div>
         <div>
           {build.weapons
             .map<ReactNode>((weapon) => (
@@ -40,10 +32,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
             .reduce((prev, curr, i) => [
               prev,
               <div key={`weapon_divider_${i}`} className="build-option-divider">
-                {f({
-                  id: "or",
-                  defaultMessage: "Or",
-                })}
+                {dict["or"]}
               </div>,
               curr,
             ])}
@@ -51,16 +40,16 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
       </div>
       <div className="flex w-full flex-wrap content-start md:ml-2">
         <div className="mb-2 w-full text-xl font-semibold">
-          {f({
-            id: "talents_priority",
-            defaultMessage: "Talents Priority",
-          })}
+          {dict["talents_priority"]}:
         </div>
         <div className="mb-2 w-full">
           {build.talent_priority
             .map<ReactNode>((talent) => (
               <span key={`tal-${talent}`}>
-                <SkillLabel skill={talent.toLowerCase()} />
+                <SkillLabel
+                  skillId={talent.toLowerCase()}
+                  skill={dict[talent.toLowerCase().replace(" ", "_")]}
+                />
               </span>
             ))
             .reduce((prev, curr, i) => [
@@ -71,28 +60,12 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
               curr,
             ])}
         </div>
-        <div className="mb-2 text-xl font-semibold">
-          {f({
-            id: "artifacts",
-            defaultMessage: "Artifacts",
-          })}
-          :
-        </div>
+        <div className="mb-2 text-xl font-semibold">{dict["artifacts"]}:</div>
         <div className="mb-3 w-full">
-          <h2 className="font-bold">
-            {f({
-              id: "recommended_primary_stats",
-              defaultMessage: "Recommended Primary Stats",
-            })}
-          </h2>
-          <ArtifactRecommendedStats stats={build.stats} />
+          <h2 className="font-bold">{dict["recommended_primary_stats"]}</h2>
+          <ArtifactRecommendedStats stats={build.stats} dict={dict} />
           <div className="mb-2">
-            <h2 className="font-bold">
-              {f({
-                id: "substats_priority",
-                defaultMessage: "Substats priority",
-              })}
-            </h2>
+            <h2 className="font-bold">{dict["substats_priority"]}</h2>
             <div>{build.stats_priority.join(" / ")}</div>
           </div>
         </div>
@@ -101,6 +74,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
             <div className="flex w-full flex-row" key={`${set.join("")}`}>
               {set.length > 2 ? (
                 <ArtifactChooseCard
+                  dict={dict}
                   artifacts={
                     set
                       .map(
@@ -114,6 +88,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
                 />
               ) : (
                 <ArtifactCard
+                  dict={dict}
                   artifact={artifacts[set[0]]}
                   artifact2={set.length > 1 ? artifacts[set[1]] : undefined}
                 />
@@ -123,10 +98,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
           .reduce((prev, curr, i) => [
             prev,
             <div key={`set_divider_${i}`} className="build-option-divider">
-              {f({
-                id: "or",
-                defaultMessage: "Or",
-              })}
+              {dict["or"]}
             </div>,
             curr,
           ])}

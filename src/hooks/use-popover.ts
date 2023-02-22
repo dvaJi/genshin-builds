@@ -7,7 +7,10 @@ import {
   AriaAttributes,
   Ref,
 } from "react";
-import { useClickOutside, useEscapeHandler } from "./use-clickoutside";
+import {
+  useClickOutside,
+  useEscapeHandler,
+} from "../../hooks/use-clickoutside";
 
 const style: CSSProperties = {
   position: "absolute",

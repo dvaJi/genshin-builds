@@ -6,7 +6,7 @@ import { GiCheckMark } from "react-icons/gi";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import Select from "../Select";
-import SkillLabel from "../SkillLabel";
+import SkillLabel from "../../src/components/genshin/SkillLabel";
 
 import { getUrl } from "@lib/imgUrl";
 import { levels } from "@utils/totals";

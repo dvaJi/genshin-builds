@@ -1,13 +1,11 @@
-import { memo, useMemo, useState } from "react";
 import clsx from "clsx";
+import { memo, useMemo, useState } from "react";
+import type { Skill } from "genshin-data/dist/types/character";
 
-import { useToggle } from "@hooks/use-toggle";
+import Crement from "@/components/Crement";
 
-import Crement from "../Crement";
-import Card from "../ui/Card";
-
-import { Skill } from "genshin-data/dist/types/character";
-import { IMGS_CDN } from "@lib/constants";
+import { useToggle } from "@/hooks/use-toggle";
+import { getUrl, getUrlLQ } from "@/lib/img";
 
 type Props = {
   characterId: string;
@@ -24,14 +22,15 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
       skill.attributes[1].values[1]
     );
   }, [skill]);
+  const skillId = skill.id.replace("normal_attack_", "");
   return (
     <div className="flex justify-center lg:block">
-      <Card
+      <div
         className={clsx(
-          "relative flex w-11/12 flex-col justify-start overflow-hidden  p-0 lg:w-full",
+          "card relative flex w-11/12 flex-col justify-start overflow-hidden p-0 lg:w-full",
           isOpen
             ? "h-auto bg-opacity-90"
-            : "h-30 bg-opacity-50 backdrop-blur-sm lg:h-60"
+            : "h-32 bg-opacity-50 backdrop-blur-sm lg:h-60"
         )}
       >
         <div className="relative flex h-60 flex-col">
@@ -42,10 +41,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             <div className="absolute bottom-10 cursor-pointer">
               <img
                 className="h-16 select-none opacity-50"
-                src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
-                  "normal_attack_",
-                  ""
-                )}.png`}
+                src={getUrl(`/characters/${characterId}/${skillId}.png`)}
                 alt={skill.name}
               />
             </div>
@@ -53,10 +49,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
               <img
                 className="w-full select-none"
                 alt={skill.id}
-                src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
-                  "normal_attack_",
-                  ""
-                )}_an.gif`}
+                src={getUrlLQ(`/characters/${characterId}/${skillId}_an.gif`)}
               />
             )}
             <div
@@ -135,7 +128,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             </div>
           ))}
         </div>
-      </Card>
+      </div>
     </div>
   );
 };

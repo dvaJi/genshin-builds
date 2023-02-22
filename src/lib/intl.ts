@@ -4,7 +4,7 @@ export interface IntlFormatProps {
   values?: Record<string, string>;
 }
 
-let dict = {};
+let dict: Record<string, Record<string, Record<string, string>>> = {};
 
 const loadLocale = async (locale: string, game: string) => {
   if (dict[locale]) {

@@ -114,7 +114,13 @@
     "lv.": "Nv.",
     "before_ascension": "Antes de la Ascensión",
     "after_ascension": "Después de la Ascensión",
-    "constellation_lvl": "Constelación Nv. {level}"
+    "constellation_lvl": "Constelación Nv. {level}",
+    "others": "Otros",
+    "others_desc": "Otros artefactos, usa los que tengan las mejores estadísticas",
+    "official_build": "Construcción oficial",
+    "stats": "Estadísticas",
+    "total": "Total",
+    "ascension_phase_num": "Fase de Ascensión {num}"
   },
   "weapons": {
     "title": "Lista de Armas Genshin Impact",

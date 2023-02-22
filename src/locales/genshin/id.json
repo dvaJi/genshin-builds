@@ -114,7 +114,13 @@
     "lv.": "Lv.",
     "before_ascension": "Sebelum Kenaikan",
     "after_ascension": "Setelah Kenaikan",
-    "constellation_lvl": "Konstelasi Lv. {level}"
+    "constellation_lvl": "Konstelasi Lv. {level}",
+    "others": "Yang lain",
+    "others_desc": "Artefak lainnya, gunakan yang memiliki statistik terbaik",
+    "official_build": "Bangun Resmi",
+    "stats": "Statistik",
+    "total": "Total",
+    "ascension_phase_num": "Fase Kenaikan {num}"
   },
   "weapons": {
     "title": "Daftar Senjata Genshin Impact",

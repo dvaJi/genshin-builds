@@ -1,6 +1,6 @@
-import { usePopover } from "@hooks/use-popover";
+import { usePopover } from "@/hooks/use-popover";
 import clsx from "clsx";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type Props = {
   className?: string;

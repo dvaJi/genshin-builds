@@ -1,11 +1,7 @@
 import { memo } from "react";
-import Link from "next/link";
-import { Weapon } from "genshin-data";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-
-import StarRarity from "../StarRarity";
-
-import { getUrl } from "@lib/imgUrl";
+import type { Weapon } from "genshin-data";
+import Link from "@/components/ui/Link";
+import { getUrl } from "@/lib/img";
 
 interface WeaponCardProps {
   weapon: Weapon;
@@ -22,18 +18,28 @@ const WeaponCard = ({ weapon, refinement }: WeaponCardProps) => {
             backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
           }}
         >
-          <LazyLoadImage
+          <img
             src={getUrl(`/weapons/${weapon.id}.png`, 92, 92)}
             height={92}
             width={92}
             alt={weapon.name}
           />
           <div className="absolute bottom-0 flex w-full items-center justify-center bg-gray-900 bg-opacity-50 px-2 py-1">
-            <StarRarity
-              starClassname="w-4"
-              rarity={weapon.rarity}
-              starsSize={42}
-            />
+            {Array.from({ length: weapon.rarity }, (_, i) => (
+              <svg
+                key={i}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="#facc15"
+                className="h-3 w-3 fill-yellow-400"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            ))}
           </div>
         </div>
         <div className="relative ml-3 p-3">

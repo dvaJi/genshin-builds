@@ -2,10 +2,9 @@
 import GenshinData, { type Character } from "genshin-data";
 
 import Layout from "../layouts/GenshinLayout.astro";
-import Card from "@/components/ui/Card.astro";
 import ElementIcon from "@/components/genshin/ElementIcon.astro";
 
-import { getCommon } from "@/lib/content";
+import { getCommon } from "@/lib/gi-content";
 import { intl } from "@/lib/intl";
 import CharacterAvatar from "@/components/genshin/CharacterAvatar.astro";
 import { getUrlLQ } from "@/lib/img";
@@ -51,25 +50,13 @@ const { t } = await intl(locale, "genshin", "characters");
   locale={locale}
 >
   <div>
-    <!-- <Metadata
-        pageTitle={t({
-          id: "title",
-          defaultMessage: "Genshin Impact Characters List",
-        })}
-        pageDescription={t({
-          id: "description",
-          defaultMessage:
-            "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
-        })}
-      />
-      <Ads class="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} /> -->
     <h2 class="my-6 text-2xl font-semibold text-gray-200">
       {t({ id: "characters", defaultMessage: "Characters" })}
     </h2>
     <div class="">
       {
         elements.map((element) => (
-          <Card>
+          <div class="card">
             <div class="mb-2 flex self-center">
               <ElementIcon type={common[element]} height={32} width={32} />
               <h3 class="ml-2 text-2xl font-bold text-white">
@@ -87,7 +74,7 @@ const { t } = await intl(locale, "genshin", "characters");
                 </a>
               ))}
             </div>
-          </Card>
+          </div>
         ))
       }
     </div>

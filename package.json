@@ -11,15 +11,19 @@
   },
   "dependencies": {
     "@astrojs/partytown": "^1.0.3",
+    "@astrojs/react": "^2.0.2",
     "@astrojs/solid-js": "^2.0.2",
     "@astrojs/tailwind": "^3.0.1",
     "@astrojs/vercel": "^3.1.1",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "astro": "^2.0.12",
     "astro-heroicons": "^0.3.0",
     "clsx": "^1.2.1",
     "genshin-data": "^0.28.2",
     "nanostores": "^0.7.3",
-    "solid-js": "^1.4.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {

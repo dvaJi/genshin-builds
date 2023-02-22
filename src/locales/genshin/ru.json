@@ -114,7 +114,13 @@
     "lv.": "Ур.",
     "before_ascension": "Перед Вознесением",
     "after_ascension": "После Вознесения",
-    "constellation_lvl": "Созвездие ур. {level}"
+    "constellation_lvl": "Созвездие ур. {level}",
+    "others": "Другие",
+    "others_desc": "Другие артефакты, используйте те, у которых лучшие характеристики.",
+    "official_build": "Официальная сборка",
+    "stats": "Статистика",
+    "total": "Общий",
+    "ascension_phase_num": "Фаза Вознесения {num}"
   },
   "weapons": {
     "title": "Список ударного оружия Genshin",

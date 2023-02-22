@@ -1,0 +1,73 @@
+---
+import { getUrl } from "@/lib/img";
+
+export interface Props {
+  img: string;
+  rarity: number;
+  name?: string;
+  size?: number;
+  alt?: string;
+  classNames?: string;
+  nameSeparateBlock?: boolean;
+  classBlock?: string;
+}
+
+const {
+  name,
+  alt,
+  img,
+  rarity,
+  classNames,
+  nameSeparateBlock = false,
+  classBlock,
+} = Astro.props;
+
+const imgAdditionalStyle = nameSeparateBlock
+  ? "mb-0 rounded rounded-b-none"
+  : "";
+---
+
+<Fragment>
+  <div
+    class:list={[
+      `group relative m-1 block overflow-hidden rounded bg-cover text-center`,
+      imgAdditionalStyle,
+      classNames,
+    ]}
+    style={{
+      backgroundImage:
+        rarity > 0 ? `url('${getUrl(`/bg_${rarity}star.png`, 32, 32)}')` : "",
+    }}
+  >
+    <img
+      class="group-hover:opacity-70"
+      src={img}
+      alt={alt ?? name}
+      title={alt ?? name}
+      loading="lazy"
+      draggable="false"
+    />
+    {
+      !nameSeparateBlock && name && (
+        <span
+          class="absolute bottom-0 inline-block rounded rounded-t-none bg-gray-900 bg-opacity-90 p-1 text-xs transition-all group-hover:text-white group-hover:opacity-100"
+          style={{ width: "calc(100% + 2px)", left: '-1px' }}
+        >
+          {name}
+        </span>
+      )
+    }
+  </div>
+  {
+    nameSeparateBlock && name && (
+      <span
+        class:list={[
+          "m-1 mt-0 inline-block overflow-hidden rounded rounded-t-none bg-vulcan-900 bg-opacity-90 p-1 text-center text-xs",
+          classBlock,
+        ]}
+      >
+        {name}
+      </span>
+    )
+  }
+</Fragment>
