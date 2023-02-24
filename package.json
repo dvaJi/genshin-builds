@@ -15,7 +15,6 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@dvaji/tof-builds": "^0.7.0",
     "@nanostores/persistent": "^0.7.0",
     "@nanostores/react": "^0.4.1",
     "@next/font": "^13.1.6",
@@ -38,6 +37,7 @@
     "react-leaflet": "^4.2.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
+    "tof-builds": "^0.8.1",
     "zod": "^3.20.6"
   },
   "devDependencies": {

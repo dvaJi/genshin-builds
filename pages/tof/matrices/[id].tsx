@@ -3,7 +3,7 @@ import { MdMemory } from "react-icons/md";
 import { FaPrayingHands } from "react-icons/fa";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { GiNestedHearts, GiOvermind } from "react-icons/gi";
-import TOFData, { Languages, Matrix, languages } from "@dvaji/tof-builds";
+import TOFData, { Languages, Matrix, languages } from "tof-builds";
 
 import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";

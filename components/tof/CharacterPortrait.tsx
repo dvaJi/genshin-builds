@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Character } from "@dvaji/tof-builds";
+import { Character } from "tof-builds";
 import TypeIcon from "./TypeIcon";
 import { getTofUrl } from "@lib/imgUrl";
 

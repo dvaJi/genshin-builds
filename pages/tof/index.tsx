@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
-import TOFData, { Languages, Character, languages } from "@dvaji/tof-builds";
+import TOFData, { Languages, Character, languages } from "tof-builds";
 
 import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";

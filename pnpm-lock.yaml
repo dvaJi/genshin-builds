@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@builder.io/partytown': ^0.7.5
-  '@dvaji/tof-builds': ^0.7.0
   '@nanostores/persistent': ^0.7.0
   '@nanostores/react': ^0.4.1
   '@next/bundle-analyzer': ^13.1.6
@@ -42,11 +41,11 @@ specifiers:
   remark: ^14.0.2
   remark-html: ^15.0.2
   tailwindcss: ^3.2.7
+  tof-builds: ^0.8.1
   typescript: ^4.9.5
   zod: ^3.20.6
 
 dependencies:
-  '@dvaji/tof-builds': 0.7.0
   '@nanostores/persistent': 0.7.0_nanostores@0.7.4
   '@nanostores/react': 0.4.1_nkfnbc2tpc77iht7asm3uqwau4
   '@next/font': 13.1.6
@@ -69,6 +68,7 @@ dependencies:
   react-leaflet: 4.2.0_yydtlhsdonbqao6vgvkwhv2zki
   remark: 14.0.2
   remark-html: 15.0.2
+  tof-builds: 0.8.1
   zod: 3.20.6
 
 devDependencies:
@@ -1266,11 +1266,6 @@ packages:
 
   /@corex/deepmerge/4.0.37:
     resolution: {integrity: sha512-PX90bEnrLdxd5e6rSFWsghExMuSw0Uov3fWJuuaoFuUQIS/446diu/4seExK5b+43L+SOBbd2uBGwYUkG1JfCw==}
-    dev: false
-
-  /@dvaji/tof-builds/0.7.0:
-    resolution: {integrity: sha512-yy8ogutxFnXby5nV7/EYIuYYqI8HAu1yNHIqUUHmIJHN9p0u+hQSzvKHWmzzQEi7P+rhijp65iWe3CvdLB6JiA==, tarball: download/@dvaji/tof-builds/0.7.0/b7bfba5eaeb02c1be61b95a1c736f696016a51ba}
-    engines: {node: '>=13'}
     dev: false
 
   /@emotion/is-prop-valid/0.8.8:
@@ -5235,6 +5230,11 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+
+  /tof-builds/0.8.1:
+    resolution: {integrity: sha512-0zXbNERPYh7tewdQaP1xrM5qlcPepiN9Ie4EeKTQkazrcElXK8Yp3fpnkQlPuBiRPgGjfDYxuWsvEqGBjzT0NQ==}
+    engines: {node: '>=13'}
+    dev: false
 
   /totalist/1.1.0:
     resolution: {integrity: sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==}

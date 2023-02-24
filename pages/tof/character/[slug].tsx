@@ -4,16 +4,14 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import TOFData, {
   Languages,
   Character,
-  TeamFull,
   Gift,
   languages,
-} from "@dvaji/tof-builds";
+} from "tof-builds";
 
 import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import TypeIcon from "@components/tof/TypeIcon";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
-import CharacterPortrait from "@components/tof/CharacterPortrait";
 
 import { getDefaultLocale, getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -30,7 +28,6 @@ type BuildFull = Build & {
 interface CharacterPageProps {
   character: Character;
   gifts: Gift[];
-  teams: TeamFull[];
   builds: BuildFull[];
   locale: string;
 }
@@ -38,7 +35,6 @@ interface CharacterPageProps {
 const CharacterPage = ({
   character,
   gifts,
-  teams,
   builds,
   locale,
 }: CharacterPageProps) => {
@@ -136,37 +132,6 @@ const CharacterPage = ({
                 </Link>
               ))}
             </div>
-          </div>
-        )}
-        {teams.length > 0 && (
-          <div className="mb-10 block">
-            <h2 className="text-2xl font-bold uppercase text-tof-50">
-              {t({
-                id: "teams",
-                defaultMessage: "Teams",
-              })}
-            </h2>
-            {teams.map((team) => (
-              <div key={team.id} className="relative mb-4">
-                <div className="text-xl font-bold text-tof-100 lg:ml-2">
-                  {team.mode} - {team.comp}
-                </div>
-                <div className="flex border-b border-tof-900 pb-4 lg:mx-4">
-                  {team.characters.map((character) => (
-                    <Link
-                      key={character.id}
-                      href={`/tof/character/${character.id}`}
-                      className="flex w-full flex-col items-center justify-center"
-                    >
-                      <CharacterPortrait character={character} />
-                      <div className="rounded bg-vulcan-600 py-1 px-2 text-sm">
-                        {character.role}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
         )}
         <div className="mb-10 block">
@@ -426,23 +391,11 @@ export const getStaticProps: GetStaticProps = async ({
   const tofData = new TOFData({
     language: defaultLocale as Languages,
   });
-  const characters = await tofData.characters({
-    select: [
-      "id",
-      "name",
-      "rarity",
-      "element",
-      "resonance",
-      "weapon_id",
-      "weapon",
-    ],
-  });
   const character = await tofData.characterbyId(params?.slug as string);
   const favoritesGift = await tofData.getFavoriteGiftByCharacterId(
     `${params?.slug}`
   );
   const gifts = await tofData.getGiftsByCharacterId(`${params?.slug}`);
-  const teams = await tofData.getTeamsByCharacterId(`${params?.slug}`);
   const matrices = await tofData.matrices();
   const builds = getBuildsByCharacterId(`${params?.slug}`);
 
@@ -451,13 +404,6 @@ export const getStaticProps: GetStaticProps = async ({
       character,
       lngDict,
       gifts: [...favoritesGift, ...gifts],
-      teams: teams.map((t) => ({
-        ...t,
-        characters: t.characters.map((c) => ({
-          ...characters.find((ch) => ch.id === c.id),
-          role: c.role || characters.find((ch) => ch.id === c.id)?.role || "",
-        })),
-      })),
       builds: builds.map((b) => ({
         ...b,
         name: matrices.find((m) => m.id === b.id)?.name,

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import TOFData, { Languages, Matrix, languages } from "@dvaji/tof-builds";
+import TOFData, { Languages, Matrix, languages } from "tof-builds";
 
 import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";

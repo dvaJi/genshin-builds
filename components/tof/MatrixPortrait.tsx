@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Matrix } from "@dvaji/tof-builds";
+import { Matrix } from "tof-builds";
 import { getTofUrl } from "@lib/imgUrl";
 
 interface Props {
