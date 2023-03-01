@@ -110,6 +110,12 @@ export default class MyDocument extends Document {
           />
           <link rel="manifest" href="/manifest.json" />
           <meta name="msapplication-TileColor" content="#1a1d27" />
+          {process.env.NEXT_PUBLIC_CUSTOM_HEAD_ONE_NAME && (
+            <meta
+              name={process.env.NEXT_PUBLIC_CUSTOM_HEAD_ONE_NAME}
+              content={process.env.NEXT_PUBLIC_CUSTOM_HEAD_ONE_CONTENT}
+            />
+          )}
           <meta
             name="msapplication-TileImage"
             content="/icons/ms-icon-144x144.png"
