@@ -114,7 +114,13 @@
     "lv.": "เลเวล",
     "before_ascension": "ก่อนขึ้นสวรรค์",
     "after_ascension": "หลังจากขึ้นสวรรค์",
-    "constellation_lvl": "ระดับกลุ่มดาว {level}"
+    "constellation_lvl": "ระดับกลุ่มดาว {level}",
+    "others": "คนอื่น",
+    "others_desc": "สิ่งประดิษฐ์อื่นๆ ใช้ของที่มีสถิติดีที่สุด",
+    "official_build": "สร้างอย่างเป็นทางการ",
+    "stats": "สถิติ",
+    "total": "ทั้งหมด",
+    "ascension_phase_num": "ขั้นตอนการขึ้นสวรรค์ {num}"
   },
   "weapons": {
     "title": "รายการอาวุธ Genshin Impact",

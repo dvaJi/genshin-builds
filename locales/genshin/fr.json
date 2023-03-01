@@ -98,9 +98,9 @@
     "skill": "Compétence",
     "burst": "Éclatement",
     "or": "ou alors",
-    "18atk_set": "ATT 18 % défini",
-    "20energyrecharge_set": "Recharge d'énergie 20 %",
-    "25physicaldmg_set": "Ensemble de DMG physiques à 25 %",
+    "18atk_set": "ATT 18 % défini",
+    "20energyrecharge_set": "Recharge d'énergie 20 %",
+    "25physicaldmg_set": "Ensemble de DMG physiques à 25 %",
     "80elementalmastery_set": "Ensemble de maîtrise élémentaire 80",
     "bonus": "Prime",
     "choose_2": "Choisissez 2",
@@ -114,7 +114,13 @@
     "lv.": "Niv.",
     "before_ascension": "Avant l'Ascension",
     "after_ascension": "Après l'Ascension",
-    "constellation_lvl": "Constellation Niv. {level}"
+    "constellation_lvl": "Constellation Niv. {level}",
+    "others": "Autres",
+    "others_desc": "Autres artefacts, utilisez ceux qui ont les meilleures statistiques",
+    "official_build": "Version officielle",
+    "stats": "Statistiques",
+    "total": "Total",
+    "ascension_phase_num": "Phase d'Ascension {num}"
   },
   "weapons": {
     "title": "Genshin Impact Liste des armes",
@@ -197,7 +203,7 @@
   },
   "teams": {
     "title": "Genshin Impact Meilleure composition d'équipe | Guide de construction de fête",
-    "description": "Ceci est un guide pour faire la meilleure fête à Genshin Impact. Apprenez à faire la meilleure fête! Nous présentons la meilleure composition de groupe pour chaque tâche, y compris l'exploration de zones, la destruction de chefs de terrain et plus encore !",
+    "description": "Ceci est un guide pour faire la meilleure fête à Genshin Impact. Apprenez à faire la meilleure fête! Nous présentons la meilleure composition de groupe pour chaque tâche, y compris l'exploration de zones, la destruction de chefs de terrain et plus encore !",
     "teams": "Teams",
     "best_team_comp": "Meilleure composition d'équipe",
     "character_team": "Meilleure équipe pour {name}",

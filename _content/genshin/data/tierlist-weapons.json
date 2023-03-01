@@ -89,10 +89,11 @@
   "claymore": {
     "maindps": {
       "0": [
-        "song_of_broken_pines",
+        "beacon_of_the_reed_sea",
         "wolfs_gravestone",
         "redhorn_stonethresher",
-        "serpent_spine"
+        "serpent_spine",
+        "song_of_broken_pines"
       ],
       "1": [
         "skyward_pride",
@@ -122,13 +123,14 @@
     },
     "subdps": {
       "0": [
+        "beacon_of_the_reed_sea",
         "skyward_pride",
         "favonius_greatsword",
         "sacrificial_greatsword"
       ],
       "1": [
-        "wolfs_gravestone",
         "katsuragikiri_nagamasa",
+        "wolfs_gravestone",
         "luxurious_sealord",
         "akuoumaru"
       ],
@@ -144,8 +146,9 @@
     },
     "support": {
       "0": [
-        "song_of_broken_pines",
         "wolfs_gravestone",
+        "song_of_broken_pines",
+        "beacon_of_the_reed_sea",
         "favonius_greatsword"
       ],
       "1": [

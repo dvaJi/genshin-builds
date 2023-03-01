@@ -114,7 +114,13 @@
     "lv.": "Lv.",
     "before_ascension": "Before Ascension",
     "after_ascension": "After Ascension",
-    "constellation_lvl": "Constellation Lv. {level}"
+    "constellation_lvl": "Constellation Lv. {level}",
+    "others": "Others",
+    "others_desc": "Other artifacts, use the ones with the best stats",
+    "official_build": "Official Build",
+    "stats": "Stats",
+    "total": "Total",
+    "ascension_phase_num": "Ascension Phase {num}"
   },
   "weapons": {
     "title": "Genshin Impact Weapons List",

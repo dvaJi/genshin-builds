@@ -114,7 +114,13 @@
     "lv.": "Lv。",
     "before_ascension": "アセンション前",
     "after_ascension": "アセンション後",
-    "constellation_lvl": "星座 Lv. {level}"
+    "constellation_lvl": "星座 Lv. {level}",
+    "others": "その他",
+    "others_desc": "他のアーティファクト、最高の統計を持つものを使用してください",
+    "official_build": "公式ビルド",
+    "stats": "統計",
+    "total": "合計",
+    "ascension_phase_num": "アセンション フェーズ {num}"
   },
   "weapons": {
     "title": "原神インパクト武器一覧",

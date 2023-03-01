@@ -114,7 +114,13 @@
     "lv.": "Lv.",
     "before_ascension": "Vor Himmelfahrt",
     "after_ascension": "Nach Himmelfahrt",
-    "constellation_lvl": "Konstellation Lv. {level}"
+    "constellation_lvl": "Konstellation Lv. {level}",
+    "others": "Andere",
+    "others_desc": "Verwenden Sie für andere Artefakte die mit den besten statistiken",
+    "official_build": "Offizieller Bau",
+    "stats": "Statistiken",
+    "total": "Gesamt",
+    "ascension_phase_num": "Aufstiegsphase {num}"
   },
   "weapons": {
     "title": "Genshin Impact Waffenliste",

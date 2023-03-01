@@ -164,5 +164,31 @@
       ]
     },
     "version": "3.4"
+  },
+  {
+    "items": {
+      "avatar": ["dehya", "mika"],
+      "weapon": ["mailed_flower", "beacon_of_the_reed_sea"],
+      "material": [
+        "coffee_beans"
+      ],
+      "food": [
+        "surveyors_breakfast_sandwich",
+        "tulumba",
+        "super_magnificent_pizza",
+        "minty_fruit_tea"
+      ],
+      "tcg": [
+        "eula",
+        "sangonomiya_kokomi",
+        "kujou_sara",
+        "wellspring_of_warlust",
+        "tamanooyas_casket",
+        "sin_of_pride",
+        "ornate_kabuto",
+        "generals_ancient_helm"
+      ]
+    },
+    "version": "3.4"
   }
 ]

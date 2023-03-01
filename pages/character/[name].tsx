@@ -282,7 +282,9 @@ const CharacterPage = ({
         })}
       </h2>
       <Card className="mx-4 mb-8 p-0 lg:mx-0">
-        <CharacterStats ascensions={character.ascension} />
+        {character.ascension[1].stats && (
+          <CharacterStats ascensions={character.ascension} />
+        )}
       </Card>
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
@@ -352,6 +354,8 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
+  const common = require(`../../_content/genshin/data/common.json`)[locale];
+
   const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons({
     select: ["id", "name", "rarity", "stats", "bonus"],
@@ -383,16 +387,14 @@ export const getStaticProps: GetStaticProps = async ({
       const newBuild = {
         ...build,
         stats_priority: build.stats_priority.map((s) =>
-          lngDict[s] ? lngDict[s] : s
+          common[s] ? common[s] : s
         ),
         stats: {
-          circlet: build.stats.circlet.map((s) =>
-            lngDict[s] ? lngDict[s] : s
-          ),
-          flower: build.stats.flower.map((s) => (lngDict[s] ? lngDict[s] : s)),
-          goblet: build.stats.goblet.map((s) => (lngDict[s] ? lngDict[s] : s)),
-          plume: build.stats.plume.map((s) => (lngDict[s] ? lngDict[s] : s)),
-          sands: build.stats.sands.map((s) => (lngDict[s] ? lngDict[s] : s)),
+          circlet: build.stats.circlet.map((s) => (common[s] ? common[s] : s)),
+          flower: build.stats.flower.map((s) => (common[s] ? common[s] : s)),
+          goblet: build.stats.goblet.map((s) => (common[s] ? common[s] : s)),
+          plume: build.stats.plume.map((s) => (common[s] ? common[s] : s)),
+          sands: build.stats.sands.map((s) => (common[s] ? common[s] : s)),
         },
       };
       builds.push(newBuild);
@@ -497,7 +499,6 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
-  const common = require(`../../_content/genshin/data/common.json`)[locale];
   const recommendedTeams = require(`../../_content/genshin/data/teams.json`)[
     character.id
   ];

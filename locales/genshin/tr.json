@@ -114,7 +114,13 @@
     "lv.": "Sv.",
     "before_ascension": "Yükselişten Önce",
     "after_ascension": "Yükselişten Sonra",
-    "constellation_lvl": "Takımyıldızı Sv. {level}"
+    "constellation_lvl": "Takımyıldızı Sv. {level}",
+    "others": "Diğerleri",
+    "others_desc": "Diğer eserler, en iyi istatistiklere sahip olanları kullanın",
+    "official_build": "Resmi Yapı",
+    "stats": "İstatistikler",
+    "total": "Toplam",
+    "ascension_phase_num": "Yükseliş Aşaması {num}"
   },
   "weapons": {
     "title": "Genshin Etki Silahları Listesi",

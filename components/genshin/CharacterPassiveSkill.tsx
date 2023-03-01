@@ -4,6 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Card from "../ui/Card";
 import { getUrl } from "@lib/imgUrl";
+import useIntl from "@hooks/use-intl";
 
 type Props = {
   characterId: string;
@@ -11,6 +12,7 @@ type Props = {
 };
 
 const PassiveSkill = ({ passive, characterId }: Props) => {
+  const { t } = useIntl("character");
   return (
     <div className="flex justify-center lg:block">
       <Card className="relative flex w-11/12 flex-col justify-start overflow-hidden lg:w-full">
@@ -31,7 +33,13 @@ const PassiveSkill = ({ passive, characterId }: Props) => {
           <div className="flex flex-grow flex-col">
             <div className="text-lg font-bold text-white">{passive.name}</div>
             {passive.level > 0 && (
-              <div className="text-sm">Ascension Phase {passive.level}</div>
+              <div className="text-sm">
+                {t({
+                  id: "ascension_phase_num",
+                  defaultMessage: "Ascension Phase {num}",
+                  values: { num: passive.level.toString() },
+                })}
+              </div>
             )}
           </div>
         </div>

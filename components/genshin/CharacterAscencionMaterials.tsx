@@ -6,12 +6,14 @@ import SimpleRarityBox from "../SimpleRarityBox";
 
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalAscensionMaterials } from "@utils/totals";
+import useIntl from "@hooks/use-intl";
 
 type Props = {
   ascension: Ascension[];
 };
 
 const CharacterAscencionMaterials = ({ ascension }: Props) => {
+  const { t } = useIntl("character");
   const ascensionTotal = useMemo(
     () => calculateTotalAscensionMaterials(ascension),
     [ascension]
@@ -102,7 +104,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
       ))}
       <div className="grid grid-cols-7 items-center rounded-b bg-vulcan-700 px-4 py-5 lg:grid-cols-11">
         <div className="flex items-center justify-center text-sm font-bold lg:text-base">
-          TOTAL
+          {t({ id: "total", defaultMessage: "Total" })}
         </div>
         <div className="flex items-center justify-center">
           <SimpleRarityBox

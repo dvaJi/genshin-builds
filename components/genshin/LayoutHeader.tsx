@@ -1,23 +1,7 @@
 import Link from "next/link";
 import { memo, useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import {
-  BsListCheck,
-  BsCalculator,
-  BsTrophyFill,
-  BsCardList,
-} from "react-icons/bs";
-import { HiOutlineBookOpen } from "react-icons/hi";
-import {
-  GiCharacter,
-  GiBroadsword,
-  GiFishingLure,
-  GiMinerals,
-  GiFlowerEmblem,
-  GiMeat,
-  GiCampCookingPot,
-  GiHealthPotion,
-} from "react-icons/gi";
+import { BsListCheck, BsCalculator, BsCardList } from "react-icons/bs";
 import clsx from "clsx";
 
 import GameSelector from "@components/GameSelector";
@@ -71,13 +55,11 @@ const navRoutes: Route[] = [
         id: "achievements",
         name: "Achievements",
         href: "/achievements",
-        icon: <BsTrophyFill />,
       },
       {
         id: "guides",
         name: "Guides",
         href: "/guides",
-        icon: <HiOutlineBookOpen />,
       },
     ],
   },
@@ -89,13 +71,11 @@ const navRoutes: Route[] = [
         id: "tierlist_characters",
         name: "Tierlist Characters",
         href: "/tier-list",
-        icon: <GiCharacter />,
       },
       {
         id: "tierlist_weapons",
         name: "Tierlist Weapons",
         href: "/tier-list-weapons",
-        icon: <GiBroadsword />,
       },
     ],
   },
@@ -108,13 +88,11 @@ const navRoutes: Route[] = [
         id: "banners_characters",
         name: "Banners Characters",
         href: "/banners/characters",
-        icon: <GiCharacter />,
       },
       {
         id: "banners_weapons",
         name: "Banners Weapons",
         href: "/banners/weapons",
-        icon: <GiBroadsword />,
       },
     ],
   },
@@ -126,38 +104,32 @@ const navRoutes: Route[] = [
         id: "weapons",
         name: "Weapons",
         href: "/weapons",
-        icon: <GiBroadsword />,
       },
       {
         id: "artifacts",
         name: "Artifacts",
         href: "/artifacts",
-        icon: <GiFlowerEmblem />,
       },
       {
         id: "materials",
         name: "Materials",
         href: "/materials",
-        icon: <GiMinerals />,
       },
       {
         id: "cooking_ingredient",
         name: "Cooking Ingredient",
         href: "/ingredients",
-        icon: <GiMeat />,
       },
-      { id: "food", name: "Food", href: "/food", icon: <GiCampCookingPot /> },
+      { id: "food", name: "Food", href: "/food" },
       {
         id: "potions",
         name: "Potions",
         href: "/potions",
-        icon: <GiHealthPotion />,
       },
       {
         id: "fishing",
         name: "Fishing",
         href: "/fishing",
-        icon: <GiFishingLure />,
       },
     ],
   },

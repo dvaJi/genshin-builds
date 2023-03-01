@@ -114,7 +114,13 @@
     "lv.": "Lv.",
     "before_ascension": "Trước khi thăng thiên",
     "after_ascension": "sau khi thăng thiên",
-    "constellation_lvl": "Chòm sao Lv. {level}"
+    "constellation_lvl": "Chòm sao Lv. {level}",
+    "others": "Người khác",
+    "others_desc": "Các cổ vật khác, hãy sử dụng những cổ vật có chỉ số tốt nhất",
+    "official_build": "Bản dựng chính thức",
+    "stats": "số liệu thống kê",
+    "total": "Tổng cộng",
+    "ascension_phase_num": "Giai đoạn thăng thiên {num}"
   },
   "weapons": {
     "title": "Danh sách vũ khí Genshin Impact",
