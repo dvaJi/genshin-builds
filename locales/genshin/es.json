@@ -253,7 +253,12 @@
     "normal_attack": "Ataque Normal",
     "skill": "Habilidad Elemental",
     "burst": "Habilidad Definitiva",
-    "delete": "Eliminar"
+    "delete": "Eliminar",
+    "remaining": "Restante",
+    "total_remaining": "Total restante",
+    "priority": "Prioridad",
+    "inventory": "Inventario",
+    "save_and_close": "Guardar y cerrar"
   },
   "achievements": {
     "title": "Genshin Impact Logros",

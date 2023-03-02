@@ -252,7 +252,12 @@
     "normal_attack": "通常攻撃",
     "skill": "スキル",
     "burst": "バースト",
-    "delete": "消去"
+    "delete": "消去",
+    "remaining": "残り",
+    "total_remaining": "残りの合計",
+    "priority": "優先順位",
+    "inventory": "在庫",
+    "save_and_close": "保存して閉じます"
   },
   "achievements": {
     "title": "原神インパクトの実績",

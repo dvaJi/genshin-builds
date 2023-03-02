@@ -252,7 +252,12 @@
     "normal_attack": "Attacco normale",
     "skill": "Abilità",
     "burst": "Scoppiare",
-    "delete": "Elimina"
+    "delete": "Elimina",
+    "remaining": "Residuo",
+    "total_remaining": "Totale rimanente",
+    "priority": "Priorità",
+    "inventory": "Inventario",
+    "save_and_close": "Salva e chiudi"
   },
   "achievements": {
     "title": "Risultati dell'impatto di Genshin",

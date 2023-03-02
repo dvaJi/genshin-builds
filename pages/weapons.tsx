@@ -2,8 +2,8 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { GetStaticProps } from "next";
-import GenshinData, { Weapon } from "genshin-data";
+import { InferGetStaticPropsType } from "next";
+import GenshinData from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Ads from "@components/ui/Ads";
@@ -20,14 +20,9 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { trackClick } from "@lib/gtag";
 
-interface WeaponsPageProps {
-  weapons: Weapon[];
-  common: Record<string, string>;
-}
-
 const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
 
-const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
+const WeaponsPage = ({ weapons, common }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
   const [refinement, setRefinement] = useState(1);
@@ -244,7 +239,7 @@ const WeaponsPage = ({ weapons, common }: WeaponsPageProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+export const getStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons({

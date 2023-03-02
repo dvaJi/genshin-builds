@@ -18,7 +18,9 @@ export const allTypes = [
   "weapon_secondary_materials",
 ];
 
-export async function getAllMaterialsMap(genshinData: GenshinData) {
+export async function getAllMaterialsMap(
+  genshinData: GenshinData
+): Promise<Record<string, Material>> {
   const characterExpMaterials = await genshinData.characterExpMaterials({
     select: ["id", "name", "rarity"],
   });

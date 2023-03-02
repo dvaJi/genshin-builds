@@ -1,12 +1,9 @@
-import { GetStaticProps } from "next";
-import { useStore } from "@nanostores/react";
+import { InferGetStaticPropsType } from "next";
 import GenshinData from "genshin-data";
 import dynamic from "next/dynamic";
 
 import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
-
-import { todos as todosAtom } from "../state/todo";
 
 import useIntl from "@hooks/use-intl";
 import { getUrlLQ } from "@lib/imgUrl";
@@ -20,18 +17,13 @@ const Todo = dynamic(() => import("@components/genshin/Todo"), {
   ssr: false,
 });
 
-type TodoProps = {
-  planning: Record<string, any>;
-  materialsMap: Record<string, any>;
-  days: string[];
-};
-
-const TodoPage = ({ planning, materialsMap, days }: TodoProps) => {
-  const todos = useStore(todosAtom);
-  // const { summary, originalSummary } = useStore(getSummary);
+const TodoPage = ({
+  planning,
+  materialsMap,
+  days,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useIntl("todo");
 
-  // console.log(todos, summary, planning, todoIdsByResource);
   return (
     <div className="px-4">
       <Metadata
@@ -49,17 +41,12 @@ const TodoPage = ({ planning, materialsMap, days }: TodoProps) => {
         {t({ id: "todo", defaultMessage: "Todo List" })}
       </h2>
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <Todo
-        todos={todos}
-        materialsMap={materialsMap}
-        planning={planning}
-        days={days}
-      />
+      <Todo materialsMap={materialsMap} planning={planning} days={days} />
     </div>
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+export const getStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });

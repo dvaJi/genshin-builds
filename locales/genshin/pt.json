@@ -252,7 +252,12 @@
     "normal_attack": "Ataque normal",
     "skill": "Habilidade",
     "burst": "Explodido",
-    "delete": "Excluir"
+    "delete": "Excluir",
+    "remaining": "Restante",
+    "total_remaining": "Total restante",
+    "priority": "Prioridade",
+    "inventory": "Inventário",
+    "save_and_close": "Salvar e fechar"
   },
   "achievements": {
     "title": "Conquistas do Impacto Genshin",

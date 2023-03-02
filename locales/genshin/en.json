@@ -252,7 +252,12 @@
     "normal_attack": "Normal Attack",
     "skill": "Skill",
     "burst": "Burst",
-    "delete": "Delete"
+    "delete": "Delete",
+    "remaining": "Remaining",
+    "total_remaining": "Total Remaining",
+    "priority": "Priority",
+    "inventory": "Inventory",
+    "save_and_close": "Save and Close"
   },
   "achievements": {
     "title": "Genshin Impact Achievements",

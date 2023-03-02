@@ -252,7 +252,12 @@
     "normal_attack": "Normal Saldırı",
     "skill": "Beceri",
     "burst": "Patlamak",
-    "delete": "Silmek"
+    "delete": "Silmek",
+    "remaining": "Geriye kalan",
+    "total_remaining": "Toplam Kalan",
+    "priority": "Öncelik",
+    "inventory": "Envanter",
+    "save_and_close": "Kaydet ve kapat"
   },
   "achievements": {
     "title": "Genshin Etki Başarıları",

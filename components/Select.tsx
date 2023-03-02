@@ -58,7 +58,7 @@ const Select = ({
           <div className="h-64 overflow-x-auto">
             {filteredOptions.map((option) => (
               <span
-                key={option.id}
+                key={option.name}
                 onClick={() => {
                   setSelected(option);
                   onChange(option);

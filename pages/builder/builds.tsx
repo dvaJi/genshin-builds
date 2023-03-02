@@ -53,9 +53,9 @@ const BuildsBuilder = ({
     <div>
       <div>
         {Object.keys(builds).map((charId) => (
-          <div key={charId} className="bg-vulcan-700 m-2 p-2 rounded">
+          <div key={charId} className="m-2 rounded bg-vulcan-700 p-2">
             <div
-              className="bg-gray-700 p-2 rounded"
+              className="rounded bg-gray-700 p-2"
               onClick={() => toggleCard(charId)}
             >
               {charId}
@@ -139,7 +139,7 @@ const Builder = ({
   };
 
   return (
-    <div className="grid grid-cols-12 border-b border-gray-900 bg-vulcan-700 text-sm overflow-auto">
+    <div className="grid grid-cols-12 overflow-auto border-b border-gray-900 bg-vulcan-700 text-sm">
       <div>
         {charId}
         <div>
@@ -385,7 +385,7 @@ const BuildDetail = ({
           className="p-2 hover:text-white"
           onClick={() => onRemoveBuild(build.id)}
         >
-          <IoRemoveCircle className="cursor-pointer inline-block" /> Remove
+          <IoRemoveCircle className="inline-block cursor-pointer" /> Remove
         </Button>
         <div>
           <input
@@ -431,18 +431,18 @@ const BuildDetail = ({
                 ))}
               </select>
               <IoRemoveCircle
-                className="cursor-pointer inline-block hover:text-white"
+                className="inline-block cursor-pointer hover:text-white"
                 onClick={() => removeWeapon(i)}
               />
               {i > 0 && (
                 <IoCaretUp
-                  className="cursor-pointer inline-block hover:text-white"
+                  className="inline-block cursor-pointer hover:text-white"
                   onClick={() => moveWeaponPriority(i, i - 1)}
                 />
               )}
               {i + 1 < build.weapons.length && (
                 <IoCaretDown
-                  className="cursor-pointer inline-block hover:text-white"
+                  className="inline-block cursor-pointer hover:text-white"
                   onClick={() => moveWeaponPriority(i, i + 1)}
                 />
               )}
@@ -476,7 +476,7 @@ const BuildDetail = ({
                     ))}
                   </select>{" "}
                   <IoRemoveCircle
-                    className="cursor-pointer inline-block hover:text-white"
+                    className="inline-block cursor-pointer hover:text-white"
                     onClick={() => removeArtifactFromSet(iset, ai)}
                   />
                   <br />
@@ -522,14 +522,14 @@ const BuildDetail = ({
                     ))}
                   </select>{" "}
                   <IoRemoveCircle
-                    className="cursor-pointer inline-block hover:text-white"
+                    className="inline-block cursor-pointer hover:text-white"
                     onClick={() => removeMainstat(st, s)}
                   />
                   <br />
                 </span>
               ))}
               <IoAddCircle
-                className="cursor-pointer inline-block hover:text-white"
+                className="inline-block cursor-pointer hover:text-white"
                 onClick={() => addMainstat(st)}
               />
             </li>
@@ -553,7 +553,7 @@ const BuildDetail = ({
                 ))}
               </select>
               <IoRemoveCircle
-                className="cursor-pointer inline-block hover:text-white"
+                className="inline-block cursor-pointer hover:text-white"
                 onClick={() => removeSubstat(stat)}
               />
             </li>
@@ -571,13 +571,13 @@ const BuildDetail = ({
               {talent}
               {i > 0 && (
                 <IoCaretUp
-                  className="cursor-pointer inline-block hover:text-white"
+                  className="inline-block cursor-pointer hover:text-white"
                   onClick={() => moveTalentPriority(i, i - 1)}
                 />
               )}
               {i + 1 < build.talent_priority.length && (
                 <IoCaretDown
-                  className="cursor-pointer inline-block hover:text-white"
+                  className="inline-block cursor-pointer hover:text-white"
                   onClick={() => moveTalentPriority(i, i + 1)}
                 />
               )}
@@ -590,6 +590,7 @@ const BuildDetail = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+  const lngDict = await getLocale(locale, "genshin");
   if (process.env.NODE_ENV !== "development") {
     return {
       props: {
@@ -597,6 +598,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
         weapons: {},
         artifacts: [],
         currentbuilds: {},
+        lngDict,
       },
     };
   }
@@ -627,8 +629,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   }, {});
 
   const currentbuilds: Record<string, Build[]> = await getCharacterBuild();
-
-  const lngDict = await getLocale(locale, "genshin");
 
   return {
     props: {

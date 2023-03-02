@@ -8,27 +8,29 @@ import {
   CgChevronLeft,
 } from "react-icons/cg";
 
-import Button from "../ui/Button";
-import ItemPopover from "./ItemPopover";
-import ItemPopoverSummary from "./ItemPopoverSummary";
+import Button from "@components/ui/Button";
+import ItemPopover from "@components/genshin/ItemPopover";
+import ItemPopoverSummary from "@components/genshin/ItemPopoverSummary";
+import Select from "@components/Select";
 
 import useIntl from "@hooks/use-intl";
 import { IMGS_CDN } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
-import { Todo } from "@state/todo";
-import { todos as todosAtom } from "@state/todo";
-import Card from "../ui/Card";
+import { Todo, todos as todosAtom } from "@state/todo";
 import { trackClick } from "@lib/gtag";
+import { useStore } from "@nanostores/react";
 
 type Props = {
-  todos: Todo[];
   planning: Record<string, any>;
   materialsMap: Record<string, any>;
   days: string[];
 };
 
-const Todo = ({ todos, materialsMap, planning, days }: Props) => {
-  const [currentDay] = useState(days[Number(format(new Date(), "i")) - 1]);
+const TodoList = ({ materialsMap, planning, days }: Props) => {
+  const todos = useStore(todosAtom);
+  const [currentDay, setCurrentDay] = useState(
+    days[Number(format(new Date(), "i")) - 1]
+  );
   const { t } = useIntl("todo");
 
   const { summary, originalSummary } = useMemo(() => {
@@ -118,17 +120,21 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
 
   const updateTodoResourcesById = useCallback(
     (id: string, newData: any) => {
-      trackClick("todo_update_todo_byid");
+      // trackClick("todo_update_todo_byid");
       const todo = todos.find((todo) => todo[0].id === id);
       if (todo) {
-        todo[4][newData.id] = newData.value;
+        todo[4] = { ...todo[4], [newData.id]: newData.value };
         console.log(
           "updateTodoResourcesById",
           id,
           newData,
           todo[4][newData.id]
         );
-        todosAtom.set(todos);
+
+        const newTodos = [...todos].filter((todo) => todo[0].id !== id);
+        newTodos.push(todo);
+
+        todosAtom.set(newTodos);
       }
     },
     [todos]
@@ -139,6 +145,8 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
       trackClick("todo_update_todo_all");
       const { idsByResource, remainingById } = newData;
       // console.log(idsByResource, remainingById);
+
+      const modifiedTodos: Todo[] = [];
       idsByResource.forEach((data: any, index: number) => {
         const todo = todos[data[3]];
         todo[4][newData.id] = remainingById[index];
@@ -147,8 +155,18 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
           newData.id,
           todo[4][newData.id]
         );
+        modifiedTodos.push(todo);
       });
-      todosAtom.set(todos);
+
+      const newTodos = [...todos].filter(
+        (todo) =>
+          !modifiedTodos.find(
+            (modifiedTodo) => modifiedTodo[0].id === todo[0].id
+          )
+      );
+      // console.log(newTodos, modifiedTodos);
+
+      todosAtom.set([...newTodos, ...modifiedTodos]);
     },
     [todos]
   );
@@ -159,27 +177,39 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
         <div className="inline-grid grid-cols-1 lg:grid-cols-4">
           <div className="">
             <div>
-              <h1 className="p-2 text-lg font-semibold text-white">
-                {t({
-                  id: "farm_today",
-                  defaultMessage: "Farm today",
-                })}
-              </h1>
-              <div className="flex flex-wrap justify-center">
-                {Object.entries(farmToday).map(([id, data]) => (
-                  <ItemPopoverSummary
-                    key={id}
-                    id={id}
-                    data={data}
-                    originalData={originalSummary[id]}
-                    idsByResource={todoIdsByResource[id]}
-                    handleOnChange={updateAllTodoResourcesById}
-                    materialInfo={materialsMap[id]}
-                  />
-                ))}
+              <div className="relative z-50 flex">
+                <h1 className="p-2 text-lg font-semibold text-white">
+                  {t({
+                    id: "farm_today",
+                    defaultMessage: "Farm today",
+                  })}
+                </h1>
+                <Select
+                  selectedIconRender={() => null}
+                  onChange={(e) => setCurrentDay(e.name)}
+                  options={days.map((day) => ({ value: day, name: day }))}
+                  itemsListRender={(items) => <>{items.name}</>}
+                />
+              </div>
+              <div className="card flex flex-wrap justify-center">
+                {Object.keys(farmToday).length === 0 ? (
+                  <div>Nothing to farm today!</div>
+                ) : (
+                  Object.entries(farmToday).map(([id, data]) => (
+                    <ItemPopoverSummary
+                      key={id}
+                      id={id}
+                      data={data}
+                      originalData={originalSummary[id]}
+                      idsByResource={todoIdsByResource[id]}
+                      handleOnChange={updateAllTodoResourcesById}
+                      materialInfo={materialsMap[id]}
+                    />
+                  ))
+                )}
               </div>
             </div>
-            <Card className="w-full">
+            <div className="card w-full">
               <h1 className="p-2 text-lg font-semibold text-white">
                 {t({
                   id: "summary",
@@ -199,11 +229,11 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                   />
                 ))}
               </div>
-            </Card>
+            </div>
           </div>
           <div className="col-span-3 m-3 inline-grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {todos.map((todo, i) => (
-              <Card key={todo[0].id + i} className="flex h-full w-full p-0">
+              <div key={todo[0].id + i} className="card flex h-full w-full p-0">
                 <div className="relative flex w-full flex-shrink-0 flex-col">
                   <div className="mx-2 flex justify-between p-2">
                     <p className="text-lg font-semibold text-white">
@@ -348,7 +378,7 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -377,4 +407,4 @@ const Todo = ({ todos, materialsMap, planning, days }: Props) => {
   );
 };
 
-export default Todo;
+export default TodoList;

@@ -252,7 +252,12 @@
     "normal_attack": "일반 공격",
     "skill": "기술",
     "burst": "터지다",
-    "delete": "삭제"
+    "delete": "삭제",
+    "remaining": "남은",
+    "total_remaining": "남은 총계",
+    "priority": "우선 사항",
+    "inventory": "목록",
+    "save_and_close": "저장하고 닫습니다"
   },
   "achievements": {
     "title": "원신 임팩트 성과",

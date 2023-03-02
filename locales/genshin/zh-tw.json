@@ -252,7 +252,12 @@
     "normal_attack": "普通攻擊",
     "skill": "技能",
     "burst": "爆裂",
-    "delete": "刪除"
+    "delete": "刪除",
+    "remaining": "其餘的",
+    "total_remaining": "總剩餘",
+    "priority": "優先事項",
+    "inventory": "存貨",
+    "save_and_close": "保存並關閉"
   },
   "achievements": {
     "title": "原神影響成就",

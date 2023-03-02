@@ -252,7 +252,12 @@
     "normal_attack": "การโจมตีปกติ",
     "skill": "ทักษะ",
     "burst": "ระเบิด",
-    "delete": "ลบ"
+    "delete": "ลบ",
+    "remaining": "ที่เหลืออยู่",
+    "total_remaining": "คงเหลือทั้งหมด",
+    "priority": "ลำดับความสำคัญ",
+    "inventory": "รายการสิ่งของ",
+    "save_and_close": "บันทึกและปิด"
   },
   "achievements": {
     "title": "ความสำเร็จของ Genshin Impact",

@@ -252,7 +252,12 @@
     "normal_attack": "tấn công bình thường",
     "skill": "Kỹ năng",
     "burst": "Nổ",
-    "delete": "Xóa bỏ"
+    "delete": "Xóa bỏ",
+    "remaining": "còn lại",
+    "total_remaining": "Tổng số còn lại",
+    "priority": "Sự ưu tiên",
+    "inventory": "Hàng tồn kho",
+    "save_and_close": "Lưu và Đóng"
   },
   "achievements": {
     "title": "Thành tựu Genshin Impact",

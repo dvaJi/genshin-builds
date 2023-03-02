@@ -253,7 +253,12 @@
     "normal_attack": "Attaque normale",
     "skill": "Compétence",
     "burst": "Déchaînement élémentaire",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "remaining": "Restant",
+    "total_remaining": "Total restant",
+    "priority": "Priorité",
+    "inventory": "Inventaire",
+    "save_and_close": "Sauver et fermer"
   },
   "achievements": {
     "title": "Genshin Impact Réalisations",

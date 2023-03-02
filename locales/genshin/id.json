@@ -252,7 +252,12 @@
     "normal_attack": "Serangan Biasa",
     "skill": "Keahlian",
     "burst": "Meletus",
-    "delete": "Menghapus"
+    "delete": "Menghapus",
+    "remaining": "Tersisa",
+    "total_remaining": "Total Sisa",
+    "priority": "Prioritas",
+    "inventory": "Inventaris",
+    "save_and_close": "Simpan dan tutup"
   },
   "achievements": {
     "title": "Pencapaian Dampak Genshin",

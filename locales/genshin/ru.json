@@ -252,7 +252,12 @@
     "normal_attack": "Обычная атака",
     "skill": "Навык",
     "burst": "Лопаться",
-    "delete": "Удалить"
+    "delete": "Удалить",
+    "remaining": "Оставшийся",
+    "total_remaining": "Всего осталось",
+    "priority": "приоритет",
+    "inventory": "Инвентарь",
+    "save_and_close": "Сохрани и закрой"
   },
   "achievements": {
     "title": "Достижения Genshin Impact",

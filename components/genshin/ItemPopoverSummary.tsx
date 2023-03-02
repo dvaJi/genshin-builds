@@ -35,7 +35,7 @@ function ItemPopoverSummary({
   const [open, trigger, content] = usePopover<HTMLDivElement, HTMLDivElement>(
     false
   );
-  const { t } = useIntl();
+  const { t } = useIntl('todo');
   const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
 
   const remaining = useMemo(() => {
@@ -84,16 +84,16 @@ function ItemPopoverSummary({
         name={numFormat.format(data as any)}
         alt={materialInfo?.name}
         nameSeparateBlock
-        className={clsx("w-12 h-12", { grayscale: data === 0 })}
+        className={clsx("h-12 w-12", { grayscale: data === 0 })}
         classNameBlock="w-12"
       />
       {open && (
         <div
           {...content}
-          className="bg-vulcan-800 border-2 border-vulcan-800 rounded shadow-2xl z-1000"
+          className="z-1000 min-w-[140px] rounded border-2 border-vulcan-800 bg-vulcan-800 shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="bg-vulcan-600 p-1 rounded-t text-sm text-white">
+          <div className="rounded-t bg-vulcan-600 p-1 text-sm text-white">
             {materialInfo?.name}
           </div>
 
@@ -132,10 +132,10 @@ function ItemPopoverSummary({
             })}
             : {inventory}
           </div>
-          <div className="p-2 flex items-center content-around">
+          <div className="flex content-around items-center p-2">
             <button
               disabled={remaining === originalData}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              className="w-7 rounded border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
               onClick={() => onChange(inventory - 1)}
             >
               -
@@ -150,7 +150,7 @@ function ItemPopoverSummary({
             />
             <button
               disabled={remaining === 0}
-              className="text-white w-7 border-2 border-white border-opacity-10 rounded px-1 py-1 transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:opacity-50 disabled:border-gray-600"
+              className="w-7 rounded border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
               onClick={() => onChange(inventory + 1)}
             >
               +
@@ -158,7 +158,7 @@ function ItemPopoverSummary({
           </div>
           <div className="flex justify-center">
             <Button
-              className="py-1 mb-2"
+              className="py-1"
               onClick={() => {
                 handleOnChange({
                   id,

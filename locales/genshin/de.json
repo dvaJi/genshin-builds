@@ -253,7 +253,12 @@
     "normal_attack": "Normaler Angriff",
     "skill": "Fähigkeit",
     "burst": "Platzen",
-    "delete": "Delete"
+    "delete": "Delete",
+    "remaining": "Verblieben",
+    "total_remaining": "Gesamt verbleibend",
+    "priority": "Priorität",
+    "inventory": "Inventar",
+    "save_and_close": "Speichern und schließen"
   },
   "achievements": {
     "title": "Genshin Impact Erfolge",
