@@ -12,12 +12,12 @@ function CharacterStats({ ascensions }: Props) {
 
   return (
     <div className="p-4">
-      <div className="flex">
+      <div className="flex flex-wrap justify-center">
         {ascensions.map((ascension) => (
           <div
             key={ascension.level.join()}
             onClick={() => setSelected(ascension)}
-            className="mr-2 cursor-pointer rounded bg-vulcan-700 px-4 py-2 hover:bg-vulcan-600 data-[selected=true]:bg-vulcan-600 data-[selected=true]:text-white"
+            className="my-1 mr-2 cursor-pointer rounded bg-vulcan-700 px-3 py-2 hover:bg-vulcan-600 data-[selected=true]:bg-vulcan-600 data-[selected=true]:text-white"
             data-selected={ascension.level.join() === selected.level.join()}
           >
             {t({

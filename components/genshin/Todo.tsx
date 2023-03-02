@@ -131,8 +131,12 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           todo[4][newData.id]
         );
 
-        const newTodos = [...todos].filter((todo) => todo[0].id !== id);
-        newTodos.push(todo);
+        const newTodos = [...todos].map((oldtodo) => {
+          if (oldtodo[0].id === id) {
+            return todo;
+          }
+          return oldtodo;
+        });
 
         todosAtom.set(newTodos);
       }
@@ -158,15 +162,15 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         modifiedTodos.push(todo);
       });
 
-      const newTodos = [...todos].filter(
-        (todo) =>
-          !modifiedTodos.find(
-            (modifiedTodo) => modifiedTodo[0].id === todo[0].id
-          )
-      );
+      const newTodos = [...todos].map((todo) => {
+        if (modifiedTodos.some((t) => t[0].id === todo[0].id)) {
+          return modifiedTodos.find((t) => t[0].id === todo[0].id) || todo;
+        }
+        return todo;
+      });
       // console.log(newTodos, modifiedTodos);
 
-      todosAtom.set([...newTodos, ...modifiedTodos]);
+      todosAtom.set(newTodos);
     },
     [todos]
   );
