@@ -485,6 +485,18 @@ export const getStaticProps: GetStaticProps = async ({
       };
     }
 
+    const HEAL15BONUS = ["maiden_beloved", "oceanhued_clam"];
+
+    if (artifactsIds.includes("15healingbonus_set")) {
+      artifacts["15healingbonus_set"] = {
+        ...artifactsList.find((a) => a.id === "maiden_beloved")!,
+        name: common["Healing Bonus"]
+          ? `${common["Healing Bonus"]} +15%`
+          : "Healing Bonus +15% set",
+        children: artifactsList.filter((a) => HEAL15BONUS.includes(a.id)),
+      };
+    }
+
     artifacts["others"] = {
       _id: -1,
       id: "others",
