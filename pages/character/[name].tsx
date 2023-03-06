@@ -180,7 +180,7 @@ const CharacterPage = ({
                     <StarRarity rarity={1} />
                   </div>
                 )}
-                {build.role} {build.name}
+                {build.name}
               </button>
             ))}
           </div>
