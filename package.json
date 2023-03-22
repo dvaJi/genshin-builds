@@ -12,13 +12,21 @@
     "generate-common-dict": "node ./scripts/generate-common-dict.js",
     "analize": "cross-env ANALYZE=true npm run build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "db:generate": "prisma generate --schema=./db/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema=./db/schema.prisma --skip-seed",
+    "db:reset": "prisma migrate reset --schema=./db/schema.prisma --skip-seed",
+    "db:push": "prisma db push --schema=./db/schema.prisma",
+    "db:seed": "npx prisma db seed",
+    "db:studio": "prisma studio --schema=./db/schema.prisma",
+    "now-build": "yarn generate --schema=./db/schema.prisma && next build"
   },
   "dependencies": {
     "@nanostores/persistent": "^0.7.0",
     "@nanostores/react": "^0.4.1",
     "@next/font": "^13.2.3",
-    "@planetscale/database": "^1.5.0",
+    "@prisma/client": "^4.11.0",
+    "@tanstack/react-table": "^8.7.9",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
@@ -58,6 +66,7 @@
     "prettier": "^2.8.4",
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-tailwindcss": "^0.2.3",
+    "prisma": "^4.11.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   }

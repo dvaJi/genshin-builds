@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+datasource db {
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Player {
+    id                   String   @id @default(cuid())
+    createdAt            DateTime @default(now())
+    updatedAt            DateTime @updatedAt
+    uuid                 String   @unique
+    nickname             String
+    profilePictureId     Int
+    profileCostumeId     Int
+    namecardId           Int
+    level                Int
+    signature            String
+    worldLevel           Int
+    finishAchievementNum Int
+    Build                Build[]
+}
+
+model Build {
+    id            String @id @default(cuid())
+    avatarId      Int
+    level         Int
+    ascension     Int
+    fetterLevel   Int
+    constellation Int
+    fightProps    String @db.Text
+    skillLevel    String @db.Text
+
+    // Plume
+    plumeId         Int
+    plumeMainStat   String @db.Text
+    plumeSubStats   String @db.Text
+    plumeSubstatsId String @db.Text
+
+    // Flower
+    flowerId         Int
+    flowerMainStat   String @db.Text
+    flowerSubStats   String @db.Text
+    flowerSubstatsId String @db.Text
+
+    // Sands
+    sandsId         Int
+    sandsMainStat   String @db.Text
+    sandsSubStats   String @db.Text
+    sandsSubstatsId String @db.Text
+
+    // Goblet
+    gobletId         Int
+    gobletMainStat   String @db.Text
+    gobletSubStats   String @db.Text
+    gobletSubstatsId String @db.Text
+
+    // Circlet
+    circletId         Int
+    circletMainStat   String @db.Text
+    circletSubStats   String @db.Text
+    circletSubstatsId String @db.Text
+
+    // Weapon
+    weaponId           Int
+    weaponLevel        Int
+    weaponPromoteLevel Int
+    weaponRefinement   Int
+    weaponStat         String @db.Text
+
+    player   Player @relation(fields: [playerId], references: [id])
+    playerId String
+
+    @@index([playerId])
+}

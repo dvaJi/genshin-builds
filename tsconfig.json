@@ -27,10 +27,11 @@
       "@pages/*": ["pages/*"],
       "@state/*": ["state/*"],
       "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@db/*": ["db/*"]
     },
     "incremental": true
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "interfaces/global.d.ts", "**/*.ts", "**/*.tsx"]
 }
