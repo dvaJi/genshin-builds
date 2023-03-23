@@ -1,6 +1,10 @@
 [
   {
-    "c": ["kamisato_ayaka", "chongyun", "xingqiu"],
+    "c": [
+      "kamisato_ayaka",
+      "chongyun",
+      "xingqiu"
+    ],
     "a": [
       "strategize|2",
       "changing_shifts|2",
@@ -24,7 +28,11 @@
     ]
   },
   {
-    "c": ["kamisato_ayaka", "yoimiya", "fatui_pyro_agent"],
+    "c": [
+      "kamisato_ayaka",
+      "yoimiya",
+      "fatui_pyro_agent"
+    ],
     "a": [
       "gamblers_earrings|2",
       "strategize|1",
@@ -46,7 +54,11 @@
     ]
   },
   {
-    "c": ["fischl", "xiangling", "keqing"],
+    "c": [
+      "fischl",
+      "xiangling",
+      "keqing"
+    ],
     "a": [
       "exiles_circlet|2",
       "thundering_fury|1",
@@ -70,7 +82,11 @@
     ]
   },
   {
-    "c": ["mona", "ganyu", "kamisato_ayaka"],
+    "c": [
+      "mona",
+      "ganyu",
+      "kamisato_ayaka"
+    ],
     "a": [
       "winestained_tricorne|1",
       "broken_rimes_echo|1",
@@ -93,7 +109,11 @@
     ]
   },
   {
-    "c": ["xiangling", "chongyun", "mona"],
+    "c": [
+      "xiangling",
+      "chongyun",
+      "mona"
+    ],
     "a": [
       "witchs_scorching_hat|1",
       "exiles_circlet|2",
@@ -115,7 +135,11 @@
     ]
   },
   {
-    "c": ["keqing", "collei", "fischl"],
+    "c": [
+      "keqing",
+      "collei",
+      "fischl"
+    ],
     "a": [
       "laurel_coronet|1",
       "thunder_summoners_crown|1",
@@ -144,7 +168,11 @@
     ]
   },
   {
-    "c": ["keqing", "kaeya", "razor"],
+    "c": [
+      "keqing",
+      "kaeya",
+      "razor"
+    ],
     "a": [
       "thunder_summoners_crown|1",
       "thundering_fury|1",
@@ -166,7 +194,11 @@
     ]
   },
   {
-    "c": ["noelle", "keqing", "fischl"],
+    "c": [
+      "noelle",
+      "keqing",
+      "fischl"
+    ],
     "a": [
       "gamblers_earrings|2",
       "strategize|2",
@@ -186,7 +218,11 @@
     ]
   },
   {
-    "c": ["fischl", "collei", "beidou"],
+    "c": [
+      "fischl",
+      "collei",
+      "beidou"
+    ],
     "a": [
       "lucky_dogs_silver_circlet|2",
       "changing_shifts|2",
@@ -207,7 +243,11 @@
     ]
   },
   {
-    "c": ["mirror_maiden", "klee", "mona"],
+    "c": [
+      "mirror_maiden",
+      "klee",
+      "mona"
+    ],
     "a": [
       "strategize|2",
       "changing_shifts|2",
@@ -228,7 +268,11 @@
     ]
   },
   {
-    "c": ["diluc", "kaeya", "sucrose"],
+    "c": [
+      "diluc",
+      "kaeya",
+      "sucrose"
+    ],
     "a": [
       "laurel_coronet|1",
       "mask_of_solitude_basalt|1",
@@ -263,7 +307,11 @@
     ]
   },
   {
-    "c": ["noelle", "barbara", "ningguang"],
+    "c": [
+      "noelle",
+      "barbara",
+      "ningguang"
+    ],
     "a": [
       "changing_shifts|2",
       "leave_it_to_me|2",
@@ -287,7 +335,11 @@
     ]
   },
   {
-    "c": ["jean", "sucrose", "bennett"],
+    "c": [
+      "jean",
+      "sucrose",
+      "bennett"
+    ],
     "a": [
       "exiles_circlet|2",
       "crimson_witch_of_flames|1",
@@ -310,7 +362,11 @@
     ]
   },
   {
-    "c": ["rhodeia_of_loch", "maguu_kenki", "mona"],
+    "c": [
+      "rhodeia_of_loch",
+      "maguu_kenki",
+      "mona"
+    ],
     "a": [
       "instructors_cap|1",
       "strategize|2",
