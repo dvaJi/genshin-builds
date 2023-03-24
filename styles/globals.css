@@ -121,6 +121,12 @@
   z-index: 1;
 }
 
+.gradient-image {
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, transparent 100%);
+  width: 100%;
+  height: 100%;
+}
+
 /* TOF */
 .TOF-bg-SSR {
   @apply bg-yellow-400;

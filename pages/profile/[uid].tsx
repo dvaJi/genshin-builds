@@ -4,6 +4,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { GetServerSideProps } from "next";
 import BuildsTable from "@components/genshin/ProfileBuildsTable";
 import ArtifactsTable from "@components/genshin/ProfileArtifactsTable";
+import { getURL } from "@utils/helpers";
 
 function Profile({ profile }: any) {
   return (
@@ -90,16 +91,20 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   if (typeof uid !== "string") {
     return {
-      notFound: true,
+      redirect: {
+        destination: "/profile",
+        permanent: false,
+      }
     };
   }
 
   const res = await fetch(
-    `http://localhost:3000/api/get_build?uid=${uid}&lang=${localeToLang(
+    `${getURL()}/api/get_build?uid=${uid}&lang=${localeToLang(
       locale
     )}`
   );
 
+  // TODO: handle when the profile is not processed yet, vs when the profile is not found (uuid not valid)
   if (!res.ok) {
     console.log(res.body);
     return {

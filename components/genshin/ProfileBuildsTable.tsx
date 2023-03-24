@@ -11,6 +11,7 @@ import {
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import { Fragment, useMemo, useState } from "react";
+import StatIcon from "./StatIcon";
 
 export interface Props {
   data: any[];
@@ -331,42 +332,30 @@ const renderSubComponent = ({ row }: { row: Row<any> }) => {
 
   const cvQuality = (cv: number) => {
     if (cv < 10) {
-      return "text-slate-400";
+      return ["text-slate-400", "border-slate-400"];
     } else if (cv >= 10 && cv < 20) {
-      return "text-blue-400";
+      return ["text-blue-400", "border-blue-400"];
     } else if (cv >= 20 && cv < 30) {
-      return "text-purple-400";
+      return ["text-purple-400", "border-purple-400"];
     } else if (cv >= 30 && cv < 40) {
-      return "text-yellow-500";
+      return ["text-yellow-500", "border-yellow-500"];
     } else if (cv >= 40 && cv < 50) {
-      return "text-yellow-400";
+      return ["text-yellow-400", "border-yellow-400"];
     } else if (cv >= 50 && cv < 70) {
-      return "text-cyan-400";
-    } else if (cv >= 70) {
-      return "text-red-500";
+      return ["text-cyan-400", "border-cyan-400"];
     }
+    //  else if (cv >= 70) {
+    return ["text-red-500", "border-red-500"];
+    // }
   };
 
   return (
-    <div className="flex justify-between">
-      <div className="flex flex-col">
-        <div className="flex justify-between">
-          <div className="flex">
-            <span>{data.name}</span>
-            <div className="relative">
-              <span className="refinement-display">
-                <span className={"strike-through"}>
-                  C{data.constellation ?? 0}
-                </span>
-              </span>
-            </div>
-          </div>
-          <div className="">
-            Level {data.level}
-            <span className="">/{data.ascension}</span>
-          </div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="mt-1 mb-2 flex w-80 flex-col bg-vulcan-700 p-2">
+        <div className="flex justify-center">
+          Level {data.level} / Ascension {data.ascension}
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between border-b border-vulcan-600">
           <div className="flex">
             <img
               src={getUrlLQ(`/weapons/${data.weapon.id}.png`, 25, 25)}
@@ -384,8 +373,29 @@ const renderSubComponent = ({ row }: { row: Row<any> }) => {
             <span className="">/{data.weapon.promoteLevel}</span>
           </div>
         </div>
+        {data.sets.map((set: any) => (
+          <div
+            key={set.id}
+            className="flex justify-between border-b border-vulcan-600"
+            title={`${set.name} ${pieces}PC`}
+          >
+            <div className="flex">
+              <img
+                src={getUrlLQ(`/artifacts/${set.id}.png`, 36, 36)}
+                width={25}
+                height={25}
+                alt={set.name}
+              />
+              <span>{set.name}</span>
+            </div>
+            <div>{pieces} PC</div>
+          </div>
+        ))}
         {Object.entries(generalStats).map(([key, value]) => (
-          <div key={key} className="flex  justify-between">
+          <div
+            key={key}
+            className="flex justify-between border-b border-vulcan-600"
+          >
             <div>{key}</div>
             <div className="ml-2">{value}</div>
           </div>
@@ -398,46 +408,58 @@ const renderSubComponent = ({ row }: { row: Row<any> }) => {
               <div className="ml-2">{(value * 100).toFixed(1)}%</div>
             </div>
           ))}
-        {data.sets.map((set: any) => (
-          <div key={set.id} className="flex" title={`${set.name} ${pieces}PC`}>
-            <img
-              src={getUrlLQ(`/artifacts/${set.id}.png`, 36, 36)}
-              width={36}
-              height={36}
-              alt={set.name}
-            />
-            <span>{set.name}</span>
-            <span className="text-green-200 shadow-black text-shadow">
-              x{pieces}
-            </span>
-          </div>
-        ))}
       </div>
-      <div className="flex flex-col">
+      <div className="mb-4 flex items-center justify-center">
         {Object.entries(artifacts).map(([key, value]) => (
-          <div key={key} className="flex">
-            <img
-              src={getUrlLQ(`/artifacts/${value.id}.png`, 36, 36)}
-              width={36}
-              height={36}
-              alt={value.name}
-            />
-            <span>{value.name}</span>
-            <span>
-              {Object.entries(value.mainStat)
-                .map(([key, value]) => `${key} ${value}`)
-                .join(" ")}
-            </span>
-            <div>
+          <div
+            key={key}
+            className={clsx(
+              "group relative mx-2 flex overflow-hidden rounded-lg border shadow-2xl",
+              cvQuality(calcCv(value))[1]
+            )}
+          >
+            <div className="h-32 w-24">
+              <span
+                className={clsx(
+                  "absolute top-0 left-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
+                  cvQuality(calcCv(value))[0]
+                )}
+              >
+                CV {calcCv(value).toFixed(1)}
+              </span>
+              <div className="gradient-image overflow-hidden">
+                <img
+                  src={getUrlLQ(`/artifacts/${value.id}.png`, 200, 200)}
+                  className="absolute -top-5 -left-9 transform transition-all group-hover:scale-125"
+                  width={200}
+                  height={200}
+                  alt={value.name}
+                  title={value.name}
+                />
+              </div>
+              <span className="absolute bottom-0 left-0 m-1 rounded bg-gray-900/50 py-1 px-2 text-xs shadow-black text-shadow">
+                {Object.entries(value.mainStat)
+                  .map(([key, value]) => `${key} ${value}`)
+                  .join(" ")}
+              </span>
+            </div>
+            <div className="mr-2 mt-4">
               {Object.entries(value.subStats).map(([key, values]: any) => (
-                <div key={key} className="flex">
-                  <span>{key}</span>
-                  <span className="ml-2">
-                    {values.value} x{values.count}
-                  </span>
+                <div
+                  key={key}
+                  className={clsx("flex items-center text-white", {
+                    "opacity-100": values.count >= 4,
+                    "opacity-90": values.count >= 3 && values.count < 4,
+                    "opacity-60": values.count >= 2 && values.count < 3,
+                    "opacity-40": values.count >= 1 && values.count < 2,
+                    "opacity-20": values.count < 1,
+                  })}
+                >
+                  <span className="mr-px text-xxs">{values.count}</span>
+                  <StatIcon type={key} width={16} height={16} />
+                  <span className="mx-2 text-slate-50">{values.value}</span>
                 </div>
               ))}
-              CV {calcCv(value).toFixed(1)} - {cvQuality(calcCv(value))}
             </div>
           </div>
         ))}
