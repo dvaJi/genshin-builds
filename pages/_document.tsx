@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import { GAD_ID } from "@lib/constants";
+import { GAD_ID, PRADS_ID } from "@lib/constants";
 import { GA_TRACKING_ID, TOF_GA_TRACKING_ID } from "@lib/gtag";
 
 export default class MyDocument extends Document {
@@ -132,6 +132,15 @@ export default class MyDocument extends Document {
                 isTOF ? TOF_GA_TRACKING_ID : GA_TRACKING_ID
               }`}
             />
+          )}
+          {PRADS_ID && (
+            <div>
+              <script
+                src={`https://cdn.prplads.com/agent.js?publisherId=${PRADS_ID}`}
+                data-pa-tag
+                async
+              ></script>
+            </div>
           )}
         </body>
       </Html>
