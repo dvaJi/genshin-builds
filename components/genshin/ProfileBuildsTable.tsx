@@ -10,14 +10,37 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 
 export interface Props {
   data: any[];
 }
 
 function ProfileBuildsTable({ data }: Props) {
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([
+    {
+      id: "critValue",
+      desc: true,
+    },
+  ]);
+
+  const cvQuality = (cv: number) => {
+    if (cv < 180) {
+      return "text-slate-400";
+    } else if (cv >= 180 && cv < 200) {
+      return "text-blue-400";
+    } else if (cv >= 200 && cv < 220) {
+      return "text-purple-400";
+    } else if (cv >= 220 && cv < 240) {
+      return "text-yellow-500";
+    } else if (cv >= 240 && cv < 250) {
+      return "text-yellow-400";
+    } else if (cv >= 250 && cv < 300) {
+      return "text-cyan-400";
+    } else if (cv >= 300) {
+      return "text-red-500";
+    }
+  };
 
   const columns = useMemo<ColumnDef<any>[]>(
     () => [
@@ -29,7 +52,6 @@ function ProfileBuildsTable({ data }: Props) {
             <div className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
               <img
                 key={info.row.original.avatarId}
-                className=""
                 src={getUrlLQ(
                   `/profile/${info.row.original.avatarId}.png`,
                   25,
@@ -37,7 +59,7 @@ function ProfileBuildsTable({ data }: Props) {
                 )}
                 alt="Avatar"
               />
-              {info.getValue()}
+              {info.getValue<string>()}
             </div>
           );
         },
@@ -133,16 +155,14 @@ function ProfileBuildsTable({ data }: Props) {
       },
       {
         header: "Crit Value",
+        accessorKey: "critValue",
         cell: (info) => {
-          const cv = (
-            info.row.original.stats["CRIT DMG"] * 100 +
-            info.row.original.stats["CRIT Rate"] * 10 * 2
-          ).toFixed(1);
+          const cv = info.row.original.critValue.toFixed(1);
           return (
             <div className="text-xs">
               {(info.row.original.stats["CRIT Rate"] * 100).toFixed(1)} :{" "}
               {(info.row.original.stats["CRIT DMG"] * 100).toFixed(1)}
-              <span className="ml-2 text-slate-400">{cv}</span>
+              <span className={clsx("ml-2", cvQuality(cv))}>{cv}</span>
             </div>
           );
         },
@@ -168,7 +188,7 @@ function ProfileBuildsTable({ data }: Props) {
         cell: (info) => info.row.original.stats["Elemental Mastery"].toFixed(0),
       },
       {
-        header: "ER",
+        header: "ER%",
         accessorKey: "stats.Energy Recharge",
         cell: (info) =>
           (info.row.original.stats["Energy Recharge"] * 100).toFixed(1) + "%",
@@ -236,7 +256,7 @@ function ProfileBuildsTable({ data }: Props) {
             .rows.slice(0, 10)
             .map((row) => {
               return (
-                <>
+                <Fragment key={row.id}>
                   <tr
                     key={row.id}
                     className="h-8 cursor-pointer odd:bg-vulcan-300/10 hover:bg-vulcan-50/20"
@@ -260,7 +280,7 @@ function ProfileBuildsTable({ data }: Props) {
                       </td>
                     </tr>
                   )}
-                </>
+                </Fragment>
               );
             })}
         </tbody>
@@ -304,32 +324,26 @@ const renderSubComponent = ({ row }: { row: Row<any> }) => {
   };
 
   const calcCv = (artifact: any) => {
-    const critDMG =
-      artifact.subStats["CRIT DMG"]?.value ||
-      artifact.mainStat["CRIT DMG"] ||
-      0;
-    const critRate =
-      artifact.subStats["CRIT Rate"]?.value ||
-      artifact.mainStat["CRIT Rate"] ||
-      0;
+    const critDMG = artifact.subStats["CRIT DMG"]?.value || 0;
+    const critRate = artifact.subStats["CRIT Rate"]?.value || 0;
     return critDMG + critRate * 2;
   };
 
   const cvQuality = (cv: number) => {
     if (cv < 10) {
-      return "No upgrades";
+      return "text-slate-400";
     } else if (cv >= 10 && cv < 20) {
-      return "Average";
+      return "text-blue-400";
     } else if (cv >= 20 && cv < 30) {
-      return "Decent";
+      return "text-purple-400";
     } else if (cv >= 30 && cv < 40) {
-      return "Very good";
+      return "text-yellow-500";
     } else if (cv >= 40 && cv < 50) {
-      return "Jewel";
+      return "text-yellow-400";
     } else if (cv >= 50 && cv < 70) {
-      return "Unicorn ...?";
+      return "text-cyan-400";
     } else if (cv >= 70) {
-      return "No cheating. >_>";
+      return "text-red-500";
     }
   };
 
@@ -384,8 +398,6 @@ const renderSubComponent = ({ row }: { row: Row<any> }) => {
               <div className="ml-2">{(value * 100).toFixed(1)}%</div>
             </div>
           ))}
-      </div>
-      <div>
         {data.sets.map((set: any) => (
           <div key={set.id} className="flex" title={`${set.name} ${pieces}PC`}>
             <img
@@ -412,12 +424,12 @@ const renderSubComponent = ({ row }: { row: Row<any> }) => {
             />
             <span>{value.name}</span>
             <span>
-              {Object.entries(value.mainStat).map(
-                ([key, value]) => `${key} ${value}`
-              )}
+              {Object.entries(value.mainStat)
+                .map(([key, value]) => `${key} ${value}`)
+                .join(" ")}
             </span>
             <div>
-              {Object.entries(value.subStats).map(([key, values]) => (
+              {Object.entries(value.subStats).map(([key, values]: any) => (
                 <div key={key} className="flex">
                   <span>{key}</span>
                   <span className="ml-2">

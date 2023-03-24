@@ -3,6 +3,7 @@ import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { GetServerSideProps } from "next";
 import BuildsTable from "@components/genshin/ProfileBuildsTable";
+import ArtifactsTable from "@components/genshin/ProfileArtifactsTable";
 
 function Profile({ profile }: any) {
   return (
@@ -59,7 +60,9 @@ function Profile({ profile }: any) {
       <div>
         <BuildsTable data={profile.builds} />
       </div>
-      <div>artifacts list</div>
+      <div>
+        <ArtifactsTable data={profile.builds} />
+      </div>
       <div className="flex justify-center">
         <a href="https://enka.network/" target="_blank" rel="noreferrer">
           <img

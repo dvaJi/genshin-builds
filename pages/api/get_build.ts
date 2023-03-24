@@ -84,7 +84,7 @@ async function decodeBuilds(
   const artifactsDetail = await import(
     "../../_content/genshin/data/artifacts_detail.json"
   );
-  const decodeStr = (str: string) =>
+  const decodeStr = (str: string): Record<string, number> =>
     str.split(",").reduce((acc, stat) => {
       const [key, value] = stat.split("|");
       return {
@@ -92,7 +92,7 @@ async function decodeBuilds(
         [key]: Number(value),
       };
     }, {});
-  const decodeSubstatStr = (str: string) =>
+  const decodeSubstatStr = (str: string): Record<string, number> =>
     str.split(",").reduce((acc, stat) => {
       const [key, data] = stat.split("|");
       const [value, count] = data.split("/");
@@ -169,6 +169,45 @@ async function decodeBuilds(
       })
       .map((id) => artifacts.find((a) => a.id === id) as Artifact);
 
+    const stats = decodeStr(build.fightProps);
+
+    const calcCv = (dmg: any, rate: any) => {
+      console.log(dmg, rate, dmg + rate * 2);
+      return (dmg?.value || 0) + (rate?.value || 0) * 2;
+    };
+    const flowerSubstats = decodeSubstatStr(build.flowerSubStats);
+    const flowerCV = calcCv(
+      flowerSubstats["CRIT DMG"],
+      flowerSubstats["CRIT Rate"]
+    );
+    const plumeSubstats = decodeSubstatStr(build.plumeSubStats);
+    const plumeCV = calcCv(
+      plumeSubstats["CRIT DMG"],
+      plumeSubstats["CRIT Rate"]
+    );
+    const sandsSubstats = decodeSubstatStr(build.sandsSubStats);
+    const sandsCV = calcCv(
+      sandsSubstats["CRIT DMG"],
+      sandsSubstats["CRIT Rate"]
+    );
+    const gobletSubstats = decodeSubstatStr(build.gobletSubStats);
+    const gobletCV = calcCv(
+      gobletSubstats["CRIT DMG"],
+      gobletSubstats["CRIT Rate"]
+    );
+    const circletSubstats = decodeSubstatStr(build.circletSubStats);
+    const circletCV = calcCv(
+      circletSubstats["CRIT DMG"],
+      circletSubstats["CRIT Rate"]
+    );
+    console.log(
+      flowerCV + plumeCV + sandsCV + gobletCV + circletCV,
+      flowerCV,
+      plumeCV,
+      sandsCV,
+      gobletCV,
+      circletCV
+    );
     return {
       avatarId: build.avatarId,
       id: character.id,
@@ -178,15 +217,17 @@ async function decodeBuilds(
       ascension: build.ascension,
       constellation: build.constellation,
       fetterLevel: build.fetterLevel,
-      stats: decodeStr(build.fightProps),
+      stats,
+      critValue: flowerCV + plumeCV + sandsCV + gobletCV + circletCV,
       flower: {
         artifactId: build.flowerId,
         id: flowerSet!.flower?.id,
         name: flowerSet!.flower?.name,
         rarity: flowerSet!.max_rarity,
         mainStat: decodeStr(build.flowerMainStat),
-        subStats: decodeSubstatStr(build.flowerSubStats),
+        subStats: flowerSubstats,
         subStatsIds: build.flowerSubstatsId,
+        critValue: flowerCV,
       },
       plume: {
         artifactId: build.plumeId,
@@ -194,8 +235,9 @@ async function decodeBuilds(
         name: plumeSet!.plume?.name,
         rarity: plumeSet!.max_rarity,
         mainStat: decodeStr(build.plumeMainStat),
-        subStats: decodeSubstatStr(build.plumeSubStats),
+        subStats: plumeSubstats,
         subStatsIds: build.plumeSubstatsId,
+        critValue: plumeCV,
       },
       sands: {
         artifactId: build.sandsId,
@@ -203,8 +245,9 @@ async function decodeBuilds(
         name: sandsSet!.sands?.name,
         rarity: sandsSet!.max_rarity,
         mainStat: decodeStr(build.sandsMainStat),
-        subStats: decodeSubstatStr(build.sandsSubStats),
+        subStats: sandsSubstats,
         subStatsIds: build.sandsSubstatsId,
+        critValue: sandsCV,
       },
       goblet: {
         artifactId: build.gobletId,
@@ -212,8 +255,9 @@ async function decodeBuilds(
         name: gobletSet!.goblet?.name,
         rarity: gobletSet!.max_rarity,
         mainStat: decodeStr(build.gobletMainStat),
-        subStats: decodeSubstatStr(build.gobletSubStats),
+        subStats: gobletSubstats,
         subStatsIds: build.gobletSubstatsId,
+        critValue: gobletCV,
       },
       circlet: {
         artifactId: build.circletId,
@@ -221,13 +265,11 @@ async function decodeBuilds(
         name: circletSet!.circlet?.name,
         rarity: circletSet!.max_rarity,
         mainStat: decodeStr(build.circletMainStat),
-        subStats: decodeSubstatStr(build.circletSubStats),
+        subStats: circletSubstats,
         subStatsIds: build.circletSubstatsId,
+        critValue: circletCV,
       },
       sets,
-      builds: {
-        ...build,
-      },
       weapon: {
         weaponId: build.weaponId,
         id: weapon?.id,

@@ -8,6 +8,9 @@ function ProfileIndex() {
   const onSubmit = () => {
     setFavoritesProfile([...favoritesProfile, uuid]);
     // TODO: add api call /api/submit_uuid
+    fetch("/api/submit_uuid?uid="+uuid, {
+      method: "POST",
+    });
   };
 
   return (
@@ -25,7 +28,7 @@ function ProfileIndex() {
           value={uuid}
           onChange={(e) => setUuid(e.target.value)}
         />
-        <button>submit</button>
+        <button onClick={() => onSubmit()}>submit</button>
       </div>
     </div>
   );
