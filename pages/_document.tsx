@@ -140,6 +140,10 @@ export default class MyDocument extends Document {
                 data-pa-tag
                 async
               ></script>
+              <script
+                src="https://cdn.prplads.com/video-agent.js?publisherId=e21c9387886d075fe1e601fb1a0e329c:e6e0e3e754066d18442819d10fce94ff4112c38f647aad8b1cfdf47d35fdf1d795eae8a634db775e31b9ba712aaca63235ce010d72f4ff31d12663c0526d53f6"
+                async
+              ></script>
             </div>
           )}
         </body>
