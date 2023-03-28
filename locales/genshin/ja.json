@@ -43,7 +43,10 @@
     "banners_characters": "バナーキャラクター",
     "banners_characters_desc": "すべてのキャラクター バナーとそのレートを確認する",
     "banners_weapons": "バナー武器",
-    "banners_weapons_desc": "すべての武器のバナーとそのレートを発見する"
+    "banners_weapons_desc": "すべての武器のバナーとそのレートを発見する",
+    "leaderboards": "リーダーボード",
+    "profiles": "プロファイル",
+    "profiles_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com ウィキ データベース",
@@ -320,5 +323,25 @@
     "title": "Genius Invokation TCG のトップ デッキを発見: Genshin Impact Card Game のメタ ビルド",
     "description": "この記事では、TCG の最高のデッキ、Genius Invokation の包括的なリストを提供します。 ",
     "best_decks": "トップデッキ"
+  },
+  "profile": {
+    "title": "原神インパクトプロファイル",
+    "description": "ゲームプレイを最適化するために、最高の Genshin Impact プロファイルを入手してください。",
+    "submit": "送信",
+    "remove_from_favorites": "お気に入りから削除",
+    "uuid": "UUID: {uuid}",
+    "name": "名前",
+    "mainstat": "メインステータス",
+    "stat1": "ステータス1",
+    "stat2": "ステータス 2",
+    "stat3": "ステータス3",
+    "stat4": "ステータス4",
+    "critvalue": "クリティカル値",
+    "page": "ページ",
+    "goto": "ページに移動",
+    "show": "{pageSize} を表示",
+    "constellation": "星座",
+    "weapon": "武器",
+    "artifact": "アーティファクト"
   }
 }

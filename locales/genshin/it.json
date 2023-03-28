@@ -43,7 +43,10 @@
     "banners_characters": "Caratteri di banner",
     "banners_characters_desc": "Scopri tutti i banner dei personaggi e le loro tariffe",
     "banners_weapons": "Banner Armi",
-    "banners_weapons_desc": "Scopri tutti i banner delle armi e le loro tariffe"
+    "banners_weapons_desc": "Scopri tutti i banner delle armi e le loro tariffe",
+    "leaderboards": "Classifiche",
+    "profiles": "Profili",
+    "profiles_desc": "Profili per confrontare i tuoi progressi con altri giocatori"
   },
   "ascension_planner": {
     "title": "Database wiki di Genshin-Builds.com",
@@ -320,5 +323,25 @@
     "title": "Scopri i migliori mazzi in Genius Invokation TCG: Meta Builds per Genshin Impact Card Game",
     "description": "Questo articolo fornisce un elenco completo dei migliori mazzi del GCC, Genius Invokation. ",
     "best_decks": "I migliori mazzi"
+  },
+  "profile": {
+    "title": "Profili di impatto Genshin",
+    "description": "Ottieni i migliori profili Genshin Impact per ottimizzare il tuo gameplay. ",
+    "submit": "Invia",
+    "remove_from_favorites": "Rimuovi dai Preferiti",
+    "uuid": "UUID: {uuid}",
+    "name": "Nome",
+    "mainstat": "Statistica principale",
+    "stat1": "Stat 1",
+    "stat2": "Stat 2",
+    "stat3": "Stat 3",
+    "stat4": "Stat 4",
+    "critvalue": "Valore critico",
+    "page": "Pagina",
+    "goto": "Vai alla pagina",
+    "show": "Mostra {pageSize}",
+    "constellation": "Costellazione",
+    "weapon": "Arma",
+    "artifact": "Artefatto"
   }
 }

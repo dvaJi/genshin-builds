@@ -1,16 +1,58 @@
+import dynamic from "next/dynamic";
+import { GetServerSideProps } from "next";
+
+import BuildsTable from "@components/genshin/ProfileBuildsTable";
+import ArtifactsTable from "@components/genshin/ProfileArtifactsTable";
+
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
-import { GetServerSideProps } from "next";
-import BuildsTable from "@components/genshin/ProfileBuildsTable";
-import ArtifactsTable from "@components/genshin/ProfileArtifactsTable";
 import { getURL } from "@utils/helpers";
+import { Profile } from "interfaces/profile";
+import { MdSync } from "react-icons/md";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import clsx from "clsx";
+import useIntl from "@hooks/use-intl";
 
-function Profile({ profile }: any) {
+const ProfileFavorites = dynamic(
+  () => import("@components/genshin/ProfileFavorites"),
+  { ssr: false }
+);
+
+interface Props {
+  profile: Profile;
+}
+
+function Profile({ profile }: Props) {
+  const [isSyncing, setIsSyncing] = useState<boolean>(false);
+  const { t } = useIntl("profile");
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
+  const onSync = () => {
+    setIsSyncing(true);
+    fetch("/api/submit_uuid?uid=" + profile.uuid, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.statusCode !== 200) {
+          refreshData();
+        }
+      })
+      .finally(() => {
+        setIsSyncing(false);
+      });
+  };
   return (
     <div>
+      <ProfileFavorites />
       <div
-        className="rounded-xl bg-cover bg-center"
+        className="mt-4 rounded-xl bg-cover bg-center"
         style={{
           backgroundImage: `url(${getUrlLQ(
             `/profile/${profile.namecardId}_1.png`
@@ -35,7 +77,13 @@ function Profile({ profile }: any) {
               />
             </div>
             <div className="flex flex-col justify-center p-4">
-              <span className="text-xs">UUID: {profile.uuid}</span>
+              <span className="text-xs">
+                {t({
+                  id: "uuid",
+                  defaultMessage: "UUID: {uuid}",
+                  values: { uuid: profile.uuid },
+                })}
+              </span>
               <h2 className="text-4xl font-semibold text-white">
                 {profile.nickname}
               </h2>
@@ -55,6 +103,17 @@ function Profile({ profile }: any) {
             >
               AR{profile.level}
             </div>
+            <div
+              className="mx-1 cursor-pointer rounded-lg bg-gray-700/40 py-1 px-2 font-semibold text-slate-50 hover:bg-gray-700/90"
+              title="Sync Data"
+              onClick={onSync}
+            >
+              <MdSync
+                className={clsx("-mt-1 inline-block", {
+                  "animate-spin": isSyncing,
+                })}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -64,7 +123,7 @@ function Profile({ profile }: any) {
       <div>
         <ArtifactsTable data={profile.builds} />
       </div>
-      <div className="flex justify-center">
+      <div className="mt-4 flex justify-center">
         <a href="https://enka.network/" target="_blank" rel="noreferrer">
           <img
             src={getUrl(`/enka_logo.png`, 42, 167)}
@@ -94,21 +153,20 @@ export const getServerSideProps: GetServerSideProps = async ({
       redirect: {
         destination: "/profile",
         permanent: false,
-      }
+      },
     };
   }
 
   const res = await fetch(
-    `${getURL()}/api/get_build?uid=${uid}&lang=${localeToLang(
-      locale
-    )}`
+    `${getURL()}/api/get_build?uid=${uid}&lang=${localeToLang(locale)}`
   );
 
-  // TODO: handle when the profile is not processed yet, vs when the profile is not found (uuid not valid)
   if (!res.ok) {
-    console.log(res.body);
     return {
-      notFound: true,
+      redirect: {
+        destination: "/profile",
+        permanent: false,
+      },
     };
   }
 

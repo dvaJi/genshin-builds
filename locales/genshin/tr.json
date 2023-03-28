@@ -43,7 +43,10 @@
     "banners_characters": "Afiş Karakterleri",
     "banners_characters_desc": "Tüm karakter afişlerini ve oranlarını keşfedin",
     "banners_weapons": "Afişler Silahlar",
-    "banners_weapons_desc": "Tüm silah afişlerini ve oranlarını keşfedin"
+    "banners_weapons_desc": "Tüm silah afişlerini ve oranlarını keşfedin",
+    "leaderboards": "Skor tabloları",
+    "profiles": "Profiller",
+    "profiles_desc": "İlerlemenizi diğer oyuncularla karşılaştırmak için profiller"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki Veritabanı",
@@ -320,5 +323,25 @@
     "title": "Genius Invokation TCG'deki En İyi Desteleri Keşfedin: Genshin Impact Card Game için Meta Yapılar",
     "description": "Bu makale, TCG Genius Invokation'daki en iyi destelerin kapsamlı bir listesini sunar. ",
     "best_decks": "Üst Güverte"
+  },
+  "profile": {
+    "title": "Genshin Etki Profilleri",
+    "description": "Oyununuzu optimize etmek için en iyi Genshin Impact profillerini edinin. ",
+    "submit": "Göndermek",
+    "remove_from_favorites": "Favorilerden çıkar",
+    "uuid": "UUID: {uuid}",
+    "name": "İsim",
+    "mainstat": "Ana İstatistik",
+    "stat1": "durum 1",
+    "stat2": "Durum 2",
+    "stat3": "Durum 3",
+    "stat4": "Durum 4",
+    "critvalue": "Krit Değeri",
+    "page": "Sayfa",
+    "goto": "Sayfaya git",
+    "show": "{pageSize} göster",
+    "constellation": "takımyıldız",
+    "weapon": "silah",
+    "artifact": "eser"
   }
 }

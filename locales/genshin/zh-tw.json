@@ -43,7 +43,10 @@
     "banners_characters": "橫幅人物",
     "banners_characters_desc": "發現所有角色橫幅及其價格",
     "banners_weapons": "旗幟武器",
-    "banners_weapons_desc": "發現所有武器旗幟及其價格"
+    "banners_weapons_desc": "發現所有武器旗幟及其價格",
+    "leaderboards": "排行榜",
+    "profiles": "簡介",
+    "profiles_desc": "用於比較您與其他玩家進度的個人資料"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki 數據庫",
@@ -320,5 +323,25 @@
     "title": "發現 Genius Invokation TCG 中的頂級套牌：Genshin Impact 紙牌遊戲的元構建",
     "description": "本文提供了 TCG Genius Invokation 中最佳套牌的完整列表。",
     "best_decks": "頂層甲板"
+  },
+  "profile": {
+    "title": "Genshin 影響概況",
+    "description": "獲取最佳的 Genshin Impact 配置文件以優化您的遊戲玩法。",
+    "submit": "提交",
+    "remove_from_favorites": "從收藏夾中刪除",
+    "uuid": "UUID：{uuid}",
+    "name": "姓名",
+    "mainstat": "主要數據",
+    "stat1": "狀態 1",
+    "stat2": "狀態 2",
+    "stat3": "狀態 3",
+    "stat4": "狀態 4",
+    "critvalue": "暴擊值",
+    "page": "頁",
+    "goto": "轉到頁面",
+    "show": "顯示 {pageSize}",
+    "constellation": "星座",
+    "weapon": "武器",
+    "artifact": "人工製品"
   }
 }

@@ -43,7 +43,10 @@
     "banners_characters": "ตัวละครแบนเนอร์",
     "banners_characters_desc": "ค้นพบแบนเนอร์ตัวละครทั้งหมดและอัตราของพวกเขา",
     "banners_weapons": "อาวุธแบนเนอร์",
-    "banners_weapons_desc": "ค้นพบแบนเนอร์อาวุธทั้งหมดและอัตรา"
+    "banners_weapons_desc": "ค้นพบแบนเนอร์อาวุธทั้งหมดและอัตรา",
+    "leaderboards": "ลีดเดอร์บอร์ด",
+    "profiles": "โปรไฟล์",
+    "profiles_desc": "โปรไฟล์เพื่อเปรียบเทียบความก้าวหน้าของคุณกับผู้เล่นคนอื่นๆ"
   },
   "ascension_planner": {
     "title": "ฐานข้อมูล Wiki ของ Genshin-Builds.com",
@@ -320,5 +323,25 @@
     "title": "ค้นพบเด็คชั้นนำใน Genius Invokation TCG: Meta Builds สำหรับเกมการ์ด Genshin Impact",
     "description": "บทความนี้แสดงรายชื่อสำรับที่ดีที่สุดใน TCG, Genius Invokation ",
     "best_decks": "ชั้นดาดฟ้า"
+  },
+  "profile": {
+    "title": "โปรไฟล์ผลกระทบของ Genshin",
+    "description": "รับโปรไฟล์ Genshin Impact ที่ดีที่สุดเพื่อเพิ่มประสิทธิภาพการเล่นเกมของคุณ ",
+    "submit": "ส่ง",
+    "remove_from_favorites": "ลบออกจากรายการโปรด",
+    "uuid": "UUID: {uuid}",
+    "name": "ชื่อ",
+    "mainstat": "สถานะหลัก",
+    "stat1": "สเตตัส 1",
+    "stat2": "สถานะ 2",
+    "stat3": "สถานะ 3",
+    "stat4": "สถานะ 4",
+    "critvalue": "ค่าคริติคอล",
+    "page": "หน้าหนังสือ",
+    "goto": "ไปที่หน้า",
+    "show": "แสดง {pageSize}",
+    "constellation": "กลุ่มดาว",
+    "weapon": "อาวุธ",
+    "artifact": "สิ่งประดิษฐ์"
   }
 }

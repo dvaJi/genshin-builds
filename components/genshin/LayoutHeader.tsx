@@ -1,8 +1,7 @@
+import clsx from "clsx";
 import Link from "next/link";
 import { memo, useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { BsListCheck, BsCalculator, BsCardList } from "react-icons/bs";
-import clsx from "clsx";
 
 import GameSelector from "@components/GameSelector";
 import NavItem from "@components/NavItem";
@@ -30,26 +29,40 @@ const navRoutes: Route[] = [
         id: "cards_list",
         name: "Cards List",
         href: "/tcg",
-        icon: <BsCardList />,
       },
       {
         id: "best_decks",
         name: "Best Decks",
         href: "/tcg/best-decks",
-        icon: <BsListCheck />,
       },
+    ],
+  },
+  {
+    id: "leaderboards",
+    name: "Leaderboards",
+    children: [
+      {
+        id: "profiles",
+        name: "Profiles",
+        href: "/profile",
+      },
+      {
+        id: "leaderboard",
+        name: "Leaderboard",
+        href: "/leaderboard",
+      },
+      // { id: "teams", name: "Teams", href: "/leaderboards/teams" },
     ],
   },
   {
     id: "tools",
     name: "Tools",
     children: [
-      { id: "todo", name: "Todo", href: "/todo", icon: <BsListCheck /> },
+      { id: "todo", name: "Todo", href: "/todo" },
       {
         id: "calculator",
         name: "Calculator",
         href: "/calculator",
-        icon: <BsCalculator />,
       },
       {
         id: "achievements",

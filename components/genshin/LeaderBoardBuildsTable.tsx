@@ -1,3 +1,4 @@
+import Badge from "@components/ui/Badge";
 import useIntl from "@hooks/use-intl";
 import { getUrlLQ } from "@lib/imgUrl";
 import {
@@ -5,27 +6,29 @@ import {
   flexRender,
   getCoreRowModel,
   getExpandedRowModel,
-  getSortedRowModel,
+  PaginationState,
   Row,
-  SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
-import { ArtifactType, Build } from "interfaces/profile";
-import { Fragment, useMemo, useState } from "react";
+import { ArtifactType, Build, Profile } from "interfaces/profile";
+import Link from "next/link";
+import {
+  type Dispatch,
+  Fragment,
+  type SetStateAction,
+  useMemo,
+  memo,
+} from "react";
 import StatIcon from "./StatIcon";
 
 export interface Props {
-  data: Build[];
+  data: (Build & { player: Profile })[];
+  pagination: PaginationState;
+  setPagination: Dispatch<SetStateAction<PaginationState>>;
 }
 
-function ProfileBuildsTable({ data }: Props) {
-  const [sorting, setSorting] = useState<SortingState>([
-    {
-      id: "critValue",
-      desc: true,
-    },
-  ]);
+function LeaderBoardBuildsTable({ data, pagination, setPagination }: Props) {
   const { t } = useIntl("profile");
 
   const cvQuality = (cv: number) => {
@@ -46,8 +49,25 @@ function ProfileBuildsTable({ data }: Props) {
     }
   };
 
-  const columns = useMemo<ColumnDef<Build>[]>(
+  const columns = useMemo<ColumnDef<Build & { player: Profile }>[]>(
     () => [
+      {
+        header: t({
+          id: "owner",
+          defaultMessage: "Owner",
+        }),
+        cell: (info) => {
+          return (
+            <Link
+              href={`/profile/${info.row.original.player.uuid}`}
+              className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              <Badge>{info.row.original.player.region}</Badge>
+              {info.row.original.player.nickname}
+            </Link>
+          );
+        },
+      },
       {
         header: t({
           id: "name",
@@ -221,14 +241,15 @@ function ProfileBuildsTable({ data }: Props) {
   const table = useReactTable({
     data,
     columns,
+    pageCount: data.length,
     state: {
-      sorting,
+      pagination,
     },
-    onSortingChange: setSorting,
+    onPaginationChange: setPagination,
     getRowCanExpand: () => true,
     getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
+    manualPagination: true,
     debugTable: process.env.NODE_ENV === "development",
   });
 
@@ -302,6 +323,36 @@ function ProfileBuildsTable({ data }: Props) {
           })}
         </tbody>
       </table>
+      <div className="my-4 flex items-center justify-center gap-2 text-sm">
+        <button
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+          onClick={() => table.setPageIndex(0)}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {"<<"}
+        </button>
+        <button
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {"<"}
+        </button>
+        <button
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {">"}
+        </button>
+        <button
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          disabled={!table.getCanNextPage()}
+        >
+          {">>"}
+        </button>
+      </div>
     </div>
   );
 }
@@ -484,4 +535,4 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
   );
 };
 
-export default ProfileBuildsTable;
+export default memo(LeaderBoardBuildsTable);

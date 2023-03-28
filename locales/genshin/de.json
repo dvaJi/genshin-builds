@@ -43,7 +43,10 @@
     "banners_characters": "Banner-Zeichen",
     "banners_characters_desc": "Entdecken Sie alle Zeichenbanner und ihre Preise",
     "banners_weapons": "Banner Waffen",
-    "banners_weapons_desc": "Entdecken Sie alle Waffenbanner und ihre Preise"
+    "banners_weapons_desc": "Entdecken Sie alle Waffenbanner und ihre Preise",
+    "leaderboards": "Bestenlisten",
+    "profiles": "Profile",
+    "profiles_desc": "Profile, um Ihren Fortschritt mit anderen Spielern zu vergleichen"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki-Datenbank",
@@ -321,5 +324,25 @@
     "title": "Entdecken Sie die Top-Decks in Genius Invokation TCG: Meta Builds für das Kartenspiel Genshin Impact",
     "description": "Dieser Artikel enthält eine umfassende Liste der besten Decks im TCG Genius Invokation. ",
     "best_decks": "Top-Decks"
+  },
+  "profile": {
+    "title": "Genshin Impact-Profile",
+    "description": "Holen Sie sich die besten Genshin Impact-Profile, um Ihr Gameplay zu optimieren. ",
+    "submit": "Einreichen",
+    "remove_from_favorites": "Von Favoriten entfernen",
+    "uuid": "UUID: {uuid}",
+    "name": "Name",
+    "mainstat": "Hauptstat",
+    "stat1": "Status 1",
+    "stat2": "Status 2",
+    "stat3": "Statistik 3",
+    "stat4": "Status 4",
+    "critvalue": "Kritischer Wert",
+    "page": "Buchseite",
+    "goto": "Gehen Sie zur Seite",
+    "show": "{pageSize} anzeigen",
+    "constellation": "Konstellation",
+    "weapon": "Waffe",
+    "artifact": "Artefakt"
   }
 }

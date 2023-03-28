@@ -1,3 +1,4 @@
+import useIntl from "@hooks/use-intl";
 import { getUrlLQ } from "@lib/imgUrl";
 import {
   ColumnDef,
@@ -9,20 +10,21 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
+import { ArtifactType, Build } from "interfaces/profile";
 import { useMemo, useState } from "react";
 
 export interface Props {
-  data: any[];
+  data: Build[];
 }
 
 function ProfileArtifactsTable({ data }: Props) {
+  const { t } = useIntl("profile");
   const [sorting, setSorting] = useState<SortingState>([
     { id: "critValue", desc: true },
   ]);
 
   const newData = useMemo(() => {
-    console.log("data", data);
-    const sortedStats = (data: any) => {
+    const sortedStats = (data: ArtifactType) => {
       return Object.entries<{ value: number; count: number }>(data.subStats)
         .sort((a, b) => b[1].count - a[1].count)
         .map(([key, value]) => ({ key, value: value.value }));
@@ -50,7 +52,6 @@ function ProfileArtifactsTable({ data }: Props) {
       },
     ]);
   }, [data]);
-  console.log("newData", newData);
 
   const cvQuality = (cv: number) => {
     if (cv < 10) {
@@ -73,7 +74,7 @@ function ProfileArtifactsTable({ data }: Props) {
   const columns = useMemo<ColumnDef<any>[]>(
     () => [
       {
-        header: "Name",
+        header: t({ id: "name", defaultMessage: "Name" }),
         accessorKey: "name",
         cell: (info) => {
           return (
@@ -90,7 +91,10 @@ function ProfileArtifactsTable({ data }: Props) {
         },
       },
       {
-        header: "Main stat",
+        header: t({
+          id: "mainstat",
+          defaultMessage: "Main Stat",
+        }),
         cell: (info) => {
           const [label, value] = Object.entries<string>(
             info.row.original.mainStat
@@ -105,7 +109,10 @@ function ProfileArtifactsTable({ data }: Props) {
         },
       },
       {
-        header: "Stat 1",
+        header: t({
+          id: "stat1",
+          defaultMessage: "Stat 1",
+        }),
         cell: (info) => {
           const { key, value } = info.row.original.sortedStats[0];
           return (
@@ -118,7 +125,10 @@ function ProfileArtifactsTable({ data }: Props) {
         },
       },
       {
-        header: "Stat 2",
+        header: t({
+          id: "stat2",
+          defaultMessage: "Stat 2",
+        }),
         cell: (info) => {
           const { key, value } = info.row.original.sortedStats[1];
           return (
@@ -131,7 +141,10 @@ function ProfileArtifactsTable({ data }: Props) {
         },
       },
       {
-        header: "Stat 3",
+        header: t({
+          id: "stat3",
+          defaultMessage: "Stat 3",
+        }),
         cell: (info) => {
           const { key, value } = info.row.original.sortedStats[2];
           return (
@@ -144,7 +157,10 @@ function ProfileArtifactsTable({ data }: Props) {
         },
       },
       {
-        header: "Stat 4",
+        header: t({
+          id: "stat4",
+          defaultMessage: "Stat 4",
+        }),
         cell: (info) => {
           const { key, value } = info.row.original.sortedStats[3];
           return (
@@ -157,7 +173,10 @@ function ProfileArtifactsTable({ data }: Props) {
         },
       },
       {
-        header: "Crit Value",
+        header: t({
+          id: "critvalue",
+          defaultMessage: "Crit Value",
+        }),
         accessorKey: "critValue",
         cell: (info) => (
           <span className={cvQuality(info.getValue<number>())}>
@@ -166,7 +185,7 @@ function ProfileArtifactsTable({ data }: Props) {
         ),
       },
     ],
-    []
+    [t]
   );
 
   const table = useReactTable({
@@ -174,18 +193,13 @@ function ProfileArtifactsTable({ data }: Props) {
     columns,
     state: {
       sorting,
-      pagination: {
-        pageSize: 20,
-        pageIndex: 0,
-      },
     },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    debugTable: true,
+    debugTable: process.env.NODE_ENV === "development",
   });
-  // console.log(columns, data, table.getRowModel());
 
   return (
     <div className="card p-1">
@@ -214,8 +228,8 @@ function ProfileArtifactsTable({ data }: Props) {
                           header.getContext()
                         )}
                         {{
-                          asc: " 🔼",
-                          desc: " 🔽",
+                          asc: " ▴",
+                          desc: " ▾",
                         }[header.column.getIsSorted() as string] ?? null}
                       </div>
                     )}
@@ -226,69 +240,71 @@ function ProfileArtifactsTable({ data }: Props) {
           ))}
         </thead>
         <tbody className="text-sm text-slate-300">
-          {table
-            .getRowModel()
-            .rows.slice(0, 10)
-            .map((row) => {
-              return (
-                <tr
-                  key={row.id}
-                  className="h-8 cursor-pointer odd:bg-vulcan-300/10 hover:bg-vulcan-50/20"
-                  onClick={row.getToggleExpandedHandler()}
-                >
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <td key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
+          {table.getRowModel().rows.map((row) => {
+            return (
+              <tr
+                key={row.id}
+                className="h-8 cursor-pointer odd:bg-vulcan-300/10 hover:bg-vulcan-50/20"
+                onClick={row.getToggleExpandedHandler()}
+              >
+                {row.getVisibleCells().map((cell) => {
+                  return (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
-      <div className="flex items-center gap-2">
+      <div className="my-4 flex items-center justify-center gap-2 text-sm">
         <button
-          className="rounded border p-1"
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
         >
           {"<<"}
         </button>
         <button
-          className="rounded border p-1"
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
           {"<"}
         </button>
         <button
-          className="rounded border p-1"
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
           {">"}
         </button>
         <button
-          className="rounded border p-1"
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           disabled={!table.getCanNextPage()}
         >
           {">>"}
         </button>
         <span className="flex items-center gap-1">
-          <div>Page</div>
+          <div>
+            {t({
+              id: "page",
+              defaultMessage: "Page",
+            })}
+          </div>
           <strong>
             {table.getState().pagination.pageIndex + 1} of{" "}
             {table.getPageCount()}
           </strong>
         </span>
         <span className="flex items-center gap-1">
-          | Go to page:
+          | {t({ id: "goto", defaultMessage: "Go to page" })}:{" "}
           <input
             type="number"
             defaultValue={table.getState().pagination.pageIndex + 1}
@@ -301,13 +317,18 @@ function ProfileArtifactsTable({ data }: Props) {
         </span>
         <select
           value={table.getState().pagination.pageSize}
+          className="rounded border border-vulcan-600 p-1"
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
           }}
         >
           {[10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
-              Show {pageSize}
+              {t({
+                id: "show",
+                defaultMessage: "Show {pageSize}",
+                values: { pageSize: pageSize.toString() },
+              })}
             </option>
           ))}
         </select>

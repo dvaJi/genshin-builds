@@ -45,6 +45,7 @@
     "react-leaflet": "^4.2.1",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
+    "swr": "^2.1.1",
     "tof-builds": "^0.8.1",
     "zod": "^3.20.6"
   },

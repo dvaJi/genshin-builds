@@ -43,7 +43,10 @@
     "banners_characters": "Banners de Personajes",
     "banners_characters_desc": "Descubre todos los banners de personajes y sus tarifas",
     "banners_weapons": "Banners de Armas",
-    "banners_weapons_desc": "Descubre todos los banners de armas y sus tarifas"
+    "banners_weapons_desc": "Descubre todos los banners de armas y sus tarifas",
+    "leaderboards": "Tablas de clasificación",
+    "profiles": "Perfiles",
+    "profiles_desc": "Perfiles para comparar tu progreso con otros jugadores"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Base de datos Wiki",
@@ -321,5 +324,25 @@
     "title": "Descubre los mejores mazos en Invocación del Sabio TCG: Meta Builds para Genshin Impact Juego de Cartas",
     "description": "Este artículo proporciona una lista completa de los mejores mazos en TCG, Invocación del Sabio. ",
     "best_decks": "Mejores Mazos"
+  },
+  "profile": {
+    "title": "Perfiles de impacto de Genshin",
+    "description": "Obtenga los mejores perfiles de Genshin Impact para optimizar su juego. ",
+    "submit": "Entregar",
+    "remove_from_favorites": "Quitar de favoritos",
+    "uuid": "UUID: {uuid}",
+    "name": "Nombre",
+    "mainstat": "Estadística principal",
+    "stat1": "Estadística 1",
+    "stat2": "Estadística 2",
+    "stat3": "Estadística 3",
+    "stat4": "Estadística 4",
+    "critvalue": "Valor crítico",
+    "page": "Página",
+    "goto": "ir a la página",
+    "show": "Mostrar {pageSize}",
+    "constellation": "Constelación",
+    "weapon": "Arma",
+    "artifact": "Artefacto"
   }
 }

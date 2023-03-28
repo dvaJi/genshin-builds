@@ -43,7 +43,10 @@
     "banners_characters": "배너 캐릭터",
     "banners_characters_desc": "모든 캐릭터 배너 및 해당 요금 알아보기",
     "banners_weapons": "배너 무기",
-    "banners_weapons_desc": "모든 무기 배너와 그 비율을 알아보세요"
+    "banners_weapons_desc": "모든 무기 배너와 그 비율을 알아보세요",
+    "leaderboards": "순위표",
+    "profiles": "프로필",
+    "profiles_desc": "다른 플레이어와 진행 상황을 비교할 수 있는 프로필"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com 위키 데이터베이스",
@@ -320,5 +323,25 @@
     "title": "Genius Invokation TCG: Genshin Impact 카드 게임을 위한 메타 빌드에서 최고의 덱을 발견하십시오",
     "description": "이 기사는 TCG, Genius Invokation에서 최고의 데크의 포괄적인 목록을 제공합니다. ",
     "best_decks": "탑 덱"
+  },
+  "profile": {
+    "title": "원신 영향 프로필",
+    "description": "게임 플레이를 최적화하기 위해 최고의 Genshin Impact 프로필을 얻으십시오. ",
+    "submit": "제출하다",
+    "remove_from_favorites": "즐겨 찾기에서 삭제하기",
+    "uuid": "UUID: {uuid}",
+    "name": "이름",
+    "mainstat": "주요 통계",
+    "stat1": "통계 1",
+    "stat2": "통계 2",
+    "stat3": "통계 3",
+    "stat4": "통계 4",
+    "critvalue": "크리티컬 값",
+    "page": "페이지",
+    "goto": "페이지로 이동",
+    "show": "{pageSize} 표시",
+    "constellation": "별자리",
+    "weapon": "무기",
+    "artifact": "인공물"
   }
 }
