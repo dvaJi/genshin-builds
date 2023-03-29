@@ -19,7 +19,7 @@
     "db:push": "prisma db push --schema=./db/schema.prisma",
     "db:seed": "npx prisma db seed",
     "db:studio": "prisma studio --schema=./db/schema.prisma",
-    "now-build": "yarn generate --schema=./db/schema.prisma && next build"
+    "now-build": "pnpm db:generate --schema=./db/schema.prisma && next build"
   },
   "dependencies": {
     "@nanostores/persistent": "^0.7.0",
