@@ -4,7 +4,6 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { FaSpinner } from "react-icons/fa";
 
-import Ads from "@components/ui/Ads";
 import Button from "@components/ui/Button";
 import Metadata from "@components/Metadata";
 
@@ -12,6 +11,8 @@ import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { updateFavorites } from "@state/profiles-fav";
 import useIntl from "@hooks/use-intl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 const ProfileFavorites = dynamic(
   () => import("@components/genshin/ProfileFavorites"),

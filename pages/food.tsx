@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import GenshinData from "genshin-data";
+import dynamic from "next/dynamic";
 import clsx from "clsx";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import SearchInput from "@components/SearchInput";
 import FoodCard from "@components/genshin/FoodCard";
@@ -14,6 +14,8 @@ import useIntl from "@hooks/use-intl";
 import useDebounce from "@hooks/use-debounce";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 export type FoodItem = {
   id: string;
@@ -79,7 +81,7 @@ const FoodPage = ({ food }: Props) => {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "food", defaultMessage: "Food" })}
       </h2>
-      <div className="flex flex-wrap justify-between mb-4">
+      <div className="mb-4 flex flex-wrap justify-between">
         <SearchInput
           value={searchTerm}
           setValue={setSearchTerm}
@@ -91,7 +93,7 @@ const FoodPage = ({ food }: Props) => {
               <button
                 key={type}
                 className={clsx(
-                  "border px-3 py-2 rounded hover:border-gray-700 hover:bg-vulcan-800 mr-1",
+                  "mr-1 rounded border px-3 py-2 hover:border-gray-700 hover:bg-vulcan-800",
                   type === typeFilter
                     ? "border-gray-700 bg-vulcan-800"
                     : "border-gray-800"
@@ -104,7 +106,7 @@ const FoodPage = ({ food }: Props) => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
         {filteredFood.map((item) => (
           <FoodCard key={`${item.id}_${item.type}`} item={item} />
         ))}

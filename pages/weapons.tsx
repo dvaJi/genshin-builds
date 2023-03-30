@@ -6,7 +6,6 @@ import { InferGetStaticPropsType } from "next";
 import GenshinData from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import StarRarity from "@components/StarRarity";
 import Crement from "@components/Crement";
@@ -19,10 +18,16 @@ import useDebounce from "@hooks/use-debounce";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { trackClick } from "@lib/gtag";
+import dynamic from "next/dynamic";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
 
-const WeaponsPage = ({ weapons, common }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const WeaponsPage = ({
+  weapons,
+  common,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
   const [refinement, setRefinement] = useState(1);

@@ -1,8 +1,8 @@
+import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
 import GenshinData, { Ingredients } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import Card from "@components/ui/Card";
 
@@ -11,6 +11,8 @@ import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   ingredients: Ingredients[];

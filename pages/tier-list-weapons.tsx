@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import clsx from "clsx";
 import GenshinData, { Weapon } from "genshin-data";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import WeaponsTier from "@components/genshin/WeaponsTier";
 
@@ -15,6 +15,8 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { trackClick } from "@lib/gtag";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   tierlist: Record<string, TierlistWeapons>;
@@ -54,19 +56,19 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
         })}
       />
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-center lg:text-left my-6 text-2xl font-semibold text-gray-200">
+      <h2 className="my-6 text-center text-2xl font-semibold text-gray-200 lg:text-left">
         {t({
           id: "title",
           defaultMessage: "Genshin Impact Weapons Tier List (Best Weapons)",
         })}
       </h2>
       <div className="rounded">
-        <div className="text-center my-4">
+        <div className="my-4 text-center">
           {weaponTypes.map((type) => (
             <button
               key={type}
               className={clsx(
-                "border rounded hover:border-gray-700 hover:bg-vulcan-800 mr-1",
+                "mr-1 rounded border hover:border-gray-700 hover:bg-vulcan-800",
                 type.toLowerCase() === typeFilter
                   ? "border-gray-700 bg-vulcan-800"
                   : "border-gray-800"
@@ -81,48 +83,48 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
               }}
             >
               <img
-                className="w-16 h-16"
+                className="h-16 w-16"
                 alt={type}
                 src={getUrl(`/weapons_type/${type}.png`, 64, 64)}
               />
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-8 gap-4 w-full">
+        <div className="grid w-full grid-cols-8 gap-4">
           <div className="p-5"></div>
           <button
             className={clsx(
-              "col-span-2 p-5 bg-vulcan-800",
+              "col-span-2 bg-vulcan-800 p-5",
               !isMobile ? "pointer-events-none" : "",
               isMobile && selectedCol !== Roles.maindps ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.maindps)}
           >
-            <h3 className="text-lg text-white text-center font-semibold">
+            <h3 className="text-center text-lg font-semibold text-white">
               {t({ id: "main_dps", defaultMessage: "Main DPS" })}
             </h3>
           </button>
           <button
             className={clsx(
-              "col-span-2 p-5 bg-vulcan-800",
+              "col-span-2 bg-vulcan-800 p-5",
               !isMobile ? "pointer-events-none" : "",
               isMobile && selectedCol !== Roles.subdps ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.subdps)}
           >
-            <h3 className="text-lg text-white text-center font-semibold">
+            <h3 className="text-center text-lg font-semibold text-white">
               {t({ id: "sub_dps", defaultMessage: "Sub DPS" })}
             </h3>
           </button>
           <button
             className={clsx(
-              "col-span-2 p-5 bg-vulcan-800",
+              "col-span-2 bg-vulcan-800 p-5",
               !isMobile ? "pointer-events-none" : "",
               isMobile && selectedCol !== Roles.support ? "opacity-50" : ""
             )}
             onClick={() => changeTierTab(Roles.support)}
           >
-            <h3 className="text-lg text-white text-center font-semibold">
+            <h3 className="text-center text-lg font-semibold text-white">
               {t({ id: "support", defaultMessage: "Support" })}
             </h3>
           </button>

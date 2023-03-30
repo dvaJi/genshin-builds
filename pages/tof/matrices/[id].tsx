@@ -1,11 +1,11 @@
 import clsx from "clsx";
+import dynamic from "next/dynamic";
 import { MdMemory } from "react-icons/md";
 import { FaPrayingHands } from "react-icons/fa";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { GiNestedHearts, GiOvermind } from "react-icons/gi";
 import TOFData, { Languages, Matrix, languages } from "tof-builds";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 
 import { getDefaultLocale, getLocale } from "@lib/localData";
@@ -13,6 +13,8 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRarityColor } from "@utils/rarity";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 import { getTofUrl } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 interface CharacterPageProps {
   matrix: Matrix;
