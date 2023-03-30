@@ -67,7 +67,7 @@ const TcgPage = ({ cards }: Props) => {
               className="group relative m-2 w-20 cursor-pointer transition-all hover:scale-110"
             >
               <LazyLoadImage
-                src={getUrl(`/tcg/${card.id}.png`, 90, 90)}
+                src={getUrl(`/tcg/${card.id}.png`, 150, 90)}
                 placeholderSrc={getUrl(`/tcg/${card.id}.png`, 4, 4)}
                 alt={card.name}
                 title={card.name}

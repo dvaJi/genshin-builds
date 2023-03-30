@@ -50,7 +50,7 @@ const WeaponPage = ({
           >
             <img
               className="h-52 w-52"
-              src={getUrl(`/weapons/${weapon.id}.png`, 208, 208)}
+              src={getUrl(`/weapons/${weapon.id}.png`, 236, 236)}
               alt={weapon.name}
             />
           </div>
@@ -189,8 +189,8 @@ const WeaponPage = ({
                   className="rounded-full group-hover:shadow-xl"
                   src={getUrl(
                     `/characters/${character}/${character}_portrait.png`,
-                    100,
-                    100
+                    126,
+                    126
                   )}
                   alt={character}
                   width="100"
