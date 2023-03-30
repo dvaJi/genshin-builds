@@ -43,7 +43,10 @@
     "banners_characters": "Баннеры Персонажи",
     "banners_characters_desc": "Откройте для себя все знамёна персонажей и их рейты",
     "banners_weapons": "Баннеры Оружие",
-    "banners_weapons_desc": "Откройте для себя все оружейные знамена и их рейты"
+    "banners_weapons_desc": "Откройте для себя все оружейные знамена и их рейты",
+    "leaderboards": "Таблицы лидеров",
+    "profiles": "Профили",
+    "profiles_desc": "Профили для сравнения вашего прогресса с другими игроками"
   },
   "ascension_planner": {
     "title": "База данных Genshin-Builds.com Wiki",
@@ -320,5 +323,25 @@
     "title": "Откройте для себя лучшие колоды в Genius Invokation TCG: Meta Builds для карточной игры Genshin Impact",
     "description": "В этой статье представлен исчерпывающий список лучших колод в ККИ Genius Invokation. ",
     "best_decks": "Лучшие колоды"
+  },
+  "profile": {
+    "title": "Профили воздействия Genshin",
+    "description": "Получите лучшие профили Genshin Impact, чтобы оптимизировать игровой процесс. ",
+    "submit": "Представлять на рассмотрение",
+    "remove_from_favorites": "Удалить из Избранного",
+    "uuid": "УУИД: {uuid}",
+    "name": "Имя",
+    "mainstat": "Основная статистика",
+    "stat1": "Стат 1",
+    "stat2": "Стат 2",
+    "stat3": "Стат 3",
+    "stat4": "Стат 4",
+    "critvalue": "Критическое значение",
+    "page": "Страница",
+    "goto": "Перейти на страницу",
+    "show": "Показать {pageSize}",
+    "constellation": "Созвездие",
+    "weapon": "Оружие",
+    "artifact": "Артефакт"
   }
 }

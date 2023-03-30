@@ -43,7 +43,10 @@
     "banners_characters": "Banners Characters",
     "banners_characters_desc": "Discover all the character banners and their rates",
     "banners_weapons": "Banners Weapons",
-    "banners_weapons_desc": "Discover all the weapons banners and their rates"
+    "banners_weapons_desc": "Discover all the weapons banners and their rates",
+    "leaderboards": "Leaderboards",
+    "profiles": "Profiles",
+    "profiles_desc": "Profiles to compare your progress with other players"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki Database",
@@ -320,5 +323,25 @@
     "title": "Discover the Top Decks in Genius Invokation TCG: Meta Builds for Genshin Impact Card Game",
     "description": "This article provides a comprehensive list of the best decks in the TCG, Genius Invokation. It includes the meta builds for Genshin Impact's card game, making it the ultimate guide for players looking to improve their gameplay and climb the ranks. With this information, readers can stay up-to-date on the current meta and make informed decisions when building their own decks.",
     "best_decks": "Top Decks"
+  },
+  "profile": {
+    "title": "Genshin Impact Profiles",
+    "description": "Get the best Genshin Impact profiles to optimize your gameplay. Visualize and compare your player profile with others, calculate crit value, and find the best characters and artifacts.",
+    "submit": "Submit",
+    "remove_from_favorites": "Remove from Favorites",
+    "uuid": "UUID: {uuid}",
+    "name": "Name",
+    "mainstat": "Main Stat",
+    "stat1": "Stat 1",
+    "stat2": "Stat 2",
+    "stat3": "Stat 3",
+    "stat4": "Stat 4",
+    "critvalue": "Crit Value",
+    "page": "Page",
+    "goto": "Go to page",
+    "show": "Show {pageSize}",
+    "constellation": "Constellation",
+    "weapon": "Weapon",
+    "artifact": "Artifact"
   }
 }

@@ -1,8 +1,8 @@
+import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import GenshinData from "genshin-data";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import SearchInput from "@components/SearchInput";
@@ -15,6 +15,8 @@ import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { getAllMaterialsMap, Material } from "@utils/materials";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   materials: Material[];
@@ -73,7 +75,7 @@ const MaterialsPage = ({ materials }: Props) => {
                 name={material.name}
                 alt={material.name}
                 nameSeparateBlock
-                className="w-24 h-24"
+                className="h-24 w-24"
                 classNameBlock="w-24"
               />
             </div>

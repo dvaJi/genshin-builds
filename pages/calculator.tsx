@@ -1,8 +1,8 @@
 import GenshinData, { Character, Weapon } from "genshin-data";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 
 import Card from "@components/ui/Card";
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import WeaponCalculator from "@components/genshin/WeaponCalculator";
 import CharacterCalculator from "@components/genshin/CharacterCalculator";
@@ -12,6 +12,8 @@ import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   characters: Character[];

@@ -1,9 +1,9 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import TOFData, { Languages, Matrix, languages } from "tof-builds";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
 
@@ -11,6 +11,8 @@ import { getDefaultLocale, getLocale } from "@lib/localData";
 import { getRarityColor } from "@utils/rarity";
 import useIntl from "@hooks/use-intl";
 import { getTofUrlLQ } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   ssr: Matrix[];

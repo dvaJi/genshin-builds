@@ -1,7 +1,7 @@
+import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
 import GenshinData, { Character } from "genshin-data";
 
-import Ads from "@components/ui/Ads";
 import TeamCard from "@components/genshin/TeamCard";
 import Metadata from "@components/Metadata";
 
@@ -11,6 +11,8 @@ import { getLocale } from "@lib/localData";
 import { TeamData, Teams, CharacterTeam } from "interfaces/teams";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrlLQ } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type TeamsProps = {
   teamsByName: Record<

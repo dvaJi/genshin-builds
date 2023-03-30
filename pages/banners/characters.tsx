@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 
-import Ads from "@components/ui/Ads";
 import Card from "@components/ui/Card";
 import Badge from "@components/ui/Badge";
 import Metadata from "@components/Metadata";
@@ -13,6 +13,8 @@ import { getTimeAgo } from "@lib/timeago";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   historical: BannerHistorical[];

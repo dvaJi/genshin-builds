@@ -40,7 +40,7 @@ function Layout({ children, bgStyle }: Props) {
           content="Learn about every character in Genshin Impact including their skills, talents, builds, and tier list."
         />
       </Head>
-      <div className="h-20" />
+      <div className="h-[69px]" />
       <LayoutHeader />
       <DynamicBackground bgStyle={bgStyle} />
       <main

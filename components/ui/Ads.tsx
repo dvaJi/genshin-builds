@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 
-import { GAD_ID } from "@lib/constants";
+import { GAD_ID, CUSTOM_ADS_ID } from "@lib/constants";
 
 type AdsProps = {
   className: string;
@@ -19,7 +18,18 @@ const Ads = ({ className, adSlot }: AdsProps) => {
         console.error(err);
       }
     }
-  }, []);
+  }, [adSlot]);
+
+  if (CUSTOM_ADS_ID) {
+    const images = CUSTOM_ADS_ID.split(",");
+    const random = Math.floor(Math.random() * images.length);
+    const [imgUrl, url] = images[random].split("|");
+    return (
+      <a href={url + "?ref=GenshinBuilds"} target="_blank" className="text-center">
+        <img src={imgUrl} alt="Ad" className="mx-auto" />
+      </a>
+    );
+  }
 
   if (!GAD_ID || !adSlot) {
     return <div />;

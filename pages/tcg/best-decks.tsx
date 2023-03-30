@@ -1,4 +1,5 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { type GetStaticProps } from "next";
 import GenshinData, { type TCGCard } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -8,10 +9,11 @@ import Card from "@components/ui/Card";
 import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getUrl } from "@lib/imgUrl";
-import Ads from "@components/ui/Ads";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   decks: { characters: TCGCard[]; actions: ({ count: number } & TCGCard)[] }[];

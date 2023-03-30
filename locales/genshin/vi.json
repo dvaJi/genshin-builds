@@ -43,7 +43,10 @@
     "banners_characters": "biểu ngữ nhân vật",
     "banners_characters_desc": "Khám phá tất cả các biểu ngữ ký tự và tỷ lệ của chúng",
     "banners_weapons": "biểu ngữ vũ khí",
-    "banners_weapons_desc": "Khám phá tất cả các biểu ngữ vũ khí và tỷ lệ của chúng"
+    "banners_weapons_desc": "Khám phá tất cả các biểu ngữ vũ khí và tỷ lệ của chúng",
+    "leaderboards": "Bảng xếp hạng",
+    "profiles": "hồ sơ",
+    "profiles_desc": "Hồ sơ để so sánh tiến trình của bạn với những người chơi khác"
   },
   "ascension_planner": {
     "title": "Cơ sở dữ liệu Wiki Genshin-Builds.com",
@@ -320,5 +323,25 @@
     "title": "Khám phá những bộ bài hàng đầu trong Genius Invokation TCG: Meta Builds cho Genshin Impact Card Game",
     "description": "Bài viết này cung cấp danh sách đầy đủ các bộ bài tốt nhất trong TCG, Genius Invokation. ",
     "best_decks": "Bộ bài hàng đầu"
+  },
+  "profile": {
+    "title": "Hồ sơ Tác động Genshin",
+    "description": "Nhận hồ sơ Genshin Impact tốt nhất để tối ưu hóa lối chơi của bạn. ",
+    "submit": "Nộp",
+    "remove_from_favorites": "Loại bỏ khỏi mục ưa thích",
+    "uuid": "UUID: {uuid}",
+    "name": "Tên",
+    "mainstat": "Chỉ số chính",
+    "stat1": "Thống kê 1",
+    "stat2": "thống kê 2",
+    "stat3": "thống kê 3",
+    "stat4": "Thống kê 4",
+    "critvalue": "Giá trị chí mạng",
+    "page": "Trang",
+    "goto": "Đi tới trang",
+    "show": "Hiển thị {pageSize}",
+    "constellation": "chòm sao",
+    "weapon": "vũ khí",
+    "artifact": "hiện vật"
   }
 }

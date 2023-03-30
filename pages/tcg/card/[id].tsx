@@ -1,10 +1,10 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { TCGCard } from "genshin-data";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
-import Ads from "@components/ui/Ads";
 import Card from "@components/ui/Card";
 import Badge from "@components/ui/Badge";
 import Metadata from "@components/Metadata";
@@ -13,6 +13,8 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 interface Props {
   card: TCGCard;

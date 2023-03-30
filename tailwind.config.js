@@ -34,6 +34,9 @@ module.exports = {
       width: {
         "800px": "800px",
       },
+      fontSize: {
+        'xxs': '.625rem',
+      },
       backgroundColor: {
         vulcan: {
           50: "#868fac",

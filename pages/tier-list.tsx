@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import clsx from "clsx";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 
-import Ads from "@components/ui/Ads";
 import CharactersTier from "@components/genshin/CharactersTier";
 import Metadata from "@components/Metadata";
 
@@ -14,6 +14,8 @@ import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
 import { getUrlLQ } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   tierlist: Tierlist;

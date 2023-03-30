@@ -12,7 +12,7 @@ function DynamicBackground({ bgStyle }: Props) {
       {bgStyle?.image && (
         <div className="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex items-start justify-center overflow-hidden">
           <img
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover select-none"
             alt="Background image"
             src={bgStyle?.image}
           />
@@ -27,7 +27,7 @@ function DynamicBackground({ bgStyle }: Props) {
       {bgStyle?.stickyImage && (
         <div className="fixed z-0 flex w-full items-center justify-center">
           <img
-            className="z-0 -mt-24 min-w-[900px]"
+            className="z-0 -mt-24 min-w-[900px] select-none"
             loading="lazy"
             alt="Background image"
             src={bgStyle?.stickyImage}

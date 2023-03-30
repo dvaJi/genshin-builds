@@ -2,7 +2,6 @@ import { InferGetStaticPropsType } from "next";
 import GenshinData from "genshin-data";
 import dynamic from "next/dynamic";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 
 import useIntl from "@hooks/use-intl";
@@ -12,6 +11,8 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { getAllMaterialsMap } from "@utils/materials";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 const Todo = dynamic(() => import("@components/genshin/Todo"), {
   ssr: false,

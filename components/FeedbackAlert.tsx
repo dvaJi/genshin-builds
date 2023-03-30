@@ -25,7 +25,7 @@ const FeedbackAlert = () => {
           href={{ pathname: "/feedback", query: { prev: router.asPath } }}
           className="p-2"
         >
-          Help us improve our site! Please, fill this form to give us feedback!
+          {process.env.NEXT_PUBLIC_FEEDBACK_POLL_QUESTION_TEXT}
         </Link>
         <div className="absolute right-0 top-0 p-4">
           <button onClick={() => setShowAlert(false)}>X</button>

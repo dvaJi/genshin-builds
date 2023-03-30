@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import GenshinData, { Character } from "genshin-data";
 
 import Card from "@components/ui/Card";
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/genshin/CharacterPortrait";
 import ElementIcon from "@components/genshin/ElementIcon";
@@ -13,6 +13,8 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrlLQ } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type CharactersProps = {
   charactersByElement: Record<string, Character[]>;

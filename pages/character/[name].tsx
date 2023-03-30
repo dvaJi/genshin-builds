@@ -2,11 +2,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
+import dynamic from "next/dynamic";
 import clsx from "clsx";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
-import Ads from "@components/ui/Ads";
 import StarRarity from "@components/StarRarity";
 import Metadata from "@components/Metadata";
 import ElementIcon from "@components/genshin/ElementIcon";
@@ -31,6 +31,8 @@ import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import CharacterStats from "@components/genshin/CharacterStats";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 interface CharacterPageProps {
   character: Character;

@@ -43,7 +43,10 @@
     "banners_characters": "Karakter Spanduk",
     "banners_characters_desc": "Temukan semua spanduk karakter dan tarifnya",
     "banners_weapons": "Senjata Spanduk",
-    "banners_weapons_desc": "Temukan semua spanduk senjata dan tarifnya"
+    "banners_weapons_desc": "Temukan semua spanduk senjata dan tarifnya",
+    "leaderboards": "Papan peringkat",
+    "profiles": "Profil",
+    "profiles_desc": "Profil untuk membandingkan kemajuan Anda dengan pemain lain"
   },
   "ascension_planner": {
     "title": "Basis Data Wiki Genshin-Builds.com",
@@ -320,5 +323,25 @@
     "title": "Temukan Dek Teratas di Genius Invokasi TCG: Meta Builds untuk Genshin Impact Card Game",
     "description": "Artikel ini memberikan daftar lengkap deck terbaik di TCG, Genius Invokasi. ",
     "best_decks": "Dek Teratas"
+  },
+  "profile": {
+    "title": "Profil Genshin Impact",
+    "description": "Dapatkan profil Genshin Impact terbaik untuk mengoptimalkan gameplay Anda. ",
+    "submit": "Kirim",
+    "remove_from_favorites": "Hapus dari Favorit",
+    "uuid": "UUID: {uuid}",
+    "name": "Nama",
+    "mainstat": "Status Utama",
+    "stat1": "Status 1",
+    "stat2": "Stat 2",
+    "stat3": "Stat 3",
+    "stat4": "Stat 4",
+    "critvalue": "Nilai Kritis",
+    "page": "Halaman",
+    "goto": "Buka halaman",
+    "show": "Tampilkan {pageSize}",
+    "constellation": "Konstelasi",
+    "weapon": "Senjata",
+    "artifact": "Artefak"
   }
 }

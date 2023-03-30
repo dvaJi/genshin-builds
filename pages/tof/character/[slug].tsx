@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { GetStaticProps, GetStaticPaths } from "next";
+import dynamic from "next/dynamic";
 import TOFData, {
   Languages,
   Character,
@@ -8,7 +9,6 @@ import TOFData, {
   languages,
 } from "tof-builds";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import TypeIcon from "@components/tof/TypeIcon";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
@@ -19,6 +19,8 @@ import { getBuildsByCharacterId } from "@lib/tofdata";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 import { Build } from "interfaces/tof/build";
 import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type BuildFull = Build & {
   name: string;

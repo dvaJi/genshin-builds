@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import TOFData, { Languages, Character, languages } from "tof-builds";
 
-import Ads from "@components/ui/Ads";
 import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/tof/CharacterPortrait";
 
@@ -14,6 +14,8 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getDefaultLocale, getLocale } from "@lib/localData";
 import { getRarityColor, rarityToNumber } from "@utils/rarity";
 import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 type Props = {
   characters: Character[];
