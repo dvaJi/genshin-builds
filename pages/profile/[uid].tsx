@@ -1,13 +1,13 @@
 import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
 
+import { getBuild } from "@pages/api/get_build";
 import BuildsTable from "@components/genshin/ProfileBuildsTable";
 import ArtifactsTable from "@components/genshin/ProfileArtifactsTable";
 
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
-import { getURL } from "@utils/helpers";
 import { Profile } from "interfaces/profile";
 import { MdSync } from "react-icons/md";
 import { useState } from "react";
@@ -157,11 +157,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
-  const res = await fetch(
-    `${getURL()}/api/get_build?uid=${uid}&lang=${localeToLang(locale)}`
-  );
+  const res = await getBuild(localeToLang(locale), uid);
 
-  if (!res.ok) {
+  if (res.code !== 200) {
     return {
       redirect: {
         destination: "/profile",
@@ -171,7 +169,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const lngDict = await getLocale(locale, "genshin");
-  const profile = await res.json();
+  const profile = res.data;
 
   return {
     props: {
