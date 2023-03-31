@@ -156,10 +156,12 @@ export const getServerSideProps: GetServerSideProps = async ({
       },
     };
   }
-
+  console.log(getURL());
   const res = await fetch(
-    `${getURL()}/api/get_build?uid=${uid}&lang=${localeToLang(locale)}`
+    `/api/get_build?uid=${uid}&lang=${localeToLang(locale)}`
   );
+
+  console.log(res);
 
   if (!res.ok) {
     return {
