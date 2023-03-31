@@ -187,7 +187,7 @@ const WeaponsPage = ({
                 }}
               >
                 <LazyLoadImage
-                  src={getUrl(`/weapons/${weapon.id}.png`, 126, 126)}
+                  src={getUrl(`/weapons/${weapon.id}.png`, 140, 140)}
                   height={126}
                   width={126}
                   alt={weapon.name}

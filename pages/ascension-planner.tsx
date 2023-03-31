@@ -69,8 +69,8 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
                     <SimpleRarityBox
                       img={getUrl(
                         `/characters/${cId}/${cId}_portrait.png`,
-                        96,
-                        96
+                        124,
+                        124
                       )}
                       rarity={characters[cId].rarity}
                       name={characters[cId].name}
@@ -96,7 +96,7 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
                     {weapons[cId] ? (
                       <Link key={cId} href={`/weapon/${cId}`}>
                         <SimpleRarityBox
-                          img={getUrl(`/weapons/${cId}.png`, 96, 96)}
+                          img={getUrl(`/weapons/${cId}.png`, 124, 124)}
                           rarity={weapons[cId].rarity}
                           name={weapons[cId].name}
                           className="h-24 w-24"
