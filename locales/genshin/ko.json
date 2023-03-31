@@ -45,6 +45,8 @@
     "banners_weapons": "배너 무기",
     "banners_weapons_desc": "모든 무기 배너와 그 비율을 알아보세요",
     "leaderboards": "순위표",
+    "leaderboard": "순위표",
+    "leaderboard_desc": "다른 플레이어와 진행 상황을 비교할 수 있는 순위표",
     "profiles": "프로필",
     "profiles_desc": "다른 플레이어와 진행 상황을 비교할 수 있는 프로필"
   },

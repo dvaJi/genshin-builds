@@ -45,6 +45,8 @@
     "banners_weapons": "Banner Waffen",
     "banners_weapons_desc": "Entdecken Sie alle Waffenbanner und ihre Preise",
     "leaderboards": "Bestenlisten",
+    "leaderboard": "Bestenlisten",
+    "leaderboard_desc": "Bestenlisten, um Ihren Fortschritt mit anderen Spielern zu vergleichen",
     "profiles": "Profile",
     "profiles_desc": "Profile, um Ihren Fortschritt mit anderen Spielern zu vergleichen"
   },

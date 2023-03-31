@@ -45,6 +45,8 @@
     "banners_weapons": "Bandeiras Armas",
     "banners_weapons_desc": "Descubra todos os banners de armas e suas taxas",
     "leaderboards": "Tabelas de classificação",
+    "leaderboard": "Tabela de classificação",
+    "leaderboard_desc": "Tabelas de classificação para comparar seu progresso com outros jogadores",
     "profiles": "Perfis",
     "profiles_desc": "Perfis para comparar seu progresso com outros jogadores"
   },

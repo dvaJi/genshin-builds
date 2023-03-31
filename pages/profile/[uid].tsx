@@ -38,12 +38,7 @@ function Profile({ profile }: Props) {
     fetch("/api/submit_uuid?uid=" + profile.uuid, {
       method: "POST",
     })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.statusCode !== 200) {
-          refreshData();
-        }
-      })
+      .then(() => refreshData())
       .finally(() => {
         setIsSyncing(false);
       });
@@ -72,39 +67,41 @@ function Profile({ profile }: Props) {
                   142,
                   142
                 )}
-                className="rounded-xl"
+                className="min-w-[90px] rounded-xl"
                 alt="profile"
               />
             </div>
             <div className="flex flex-col justify-center p-4">
-              <span className="text-xs">
+              <span className="text-xxs md:text-xs">
                 {t({
                   id: "uuid",
                   defaultMessage: "UUID: {uuid}",
                   values: { uuid: profile.uuid },
                 })}
               </span>
-              <h2 className="text-4xl font-semibold text-white">
+              <h2 className="text-xl font-semibold text-white md:text-4xl">
                 {profile.nickname}
               </h2>
-              <p className="italic text-slate-300">{profile.signature}</p>
+              <p className="text-xs italic text-slate-300 md:text-sm">
+                {profile.signature}
+              </p>
             </div>
           </div>
-          <div className="m-4 flex items-baseline justify-end">
+          <div className="m-4 flex flex-wrap items-baseline justify-end">
             <div
-              className="mx-1 rounded-lg bg-gray-600 py-1 px-2 font-semibold text-slate-50"
+              className="mx-1 rounded-lg bg-gray-600 py-1 px-2 text-xs font-semibold text-slate-50 md:text-base"
               title="Region"
             >
               {profile.region}
             </div>
             <div
-              className="mx-1 rounded-lg bg-yellow-700 py-1 px-2 font-semibold text-slate-50"
+              className="mx-1 rounded-lg bg-yellow-700 py-1 px-2 text-xs font-semibold text-slate-50 md:text-base"
               title="Level"
             >
               AR{profile.level}
             </div>
             <div
-              className="mx-1 cursor-pointer rounded-lg bg-gray-700/40 py-1 px-2 font-semibold text-slate-50 hover:bg-gray-700/90"
+              className="mx-1 cursor-pointer rounded-lg bg-gray-700/40 py-1 px-2 text-xs font-semibold text-slate-50 hover:bg-gray-700/90 md:text-base"
               title="Sync Data"
               onClick={onSync}
             >

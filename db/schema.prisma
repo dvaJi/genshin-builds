@@ -38,39 +38,39 @@ model Build {
     critValue     Decimal
 
     // Plume
-    plumeId         Int
-    plumeMainStat   String @db.Text
-    plumeSubStats   String @db.Text
-    plumeSubstatsId String @db.Text
-    plumeCritValue  Decimal
+    plumeId         Int?
+    plumeMainStat   String? @db.Text
+    plumeSubStats   String? @db.Text
+    plumeSubstatsId String? @db.Text
+    plumeCritValue  Decimal?
 
     // Flower
-    flowerId         Int
-    flowerMainStat   String @db.Text
-    flowerSubStats   String @db.Text
-    flowerSubstatsId String @db.Text
-    flowerCritValue  Decimal
+    flowerId         Int?
+    flowerMainStat   String? @db.Text
+    flowerSubStats   String? @db.Text
+    flowerSubstatsId String? @db.Text
+    flowerCritValue  Decimal?
 
     // Sands
-    sandsId         Int
-    sandsMainStat   String @db.Text
-    sandsSubStats   String @db.Text
-    sandsSubstatsId String @db.Text
-    sandsCritValue  Decimal
+    sandsId         Int?
+    sandsMainStat   String? @db.Text
+    sandsSubStats   String? @db.Text
+    sandsSubstatsId String? @db.Text
+    sandsCritValue  Decimal?
 
     // Goblet
-    gobletId         Int
-    gobletMainStat   String @db.Text
-    gobletSubStats   String @db.Text
-    gobletSubstatsId String @db.Text
-    gobletCritValue  Decimal
+    gobletId         Int?
+    gobletMainStat   String? @db.Text
+    gobletSubStats   String? @db.Text
+    gobletSubstatsId String? @db.Text
+    gobletCritValue  Decimal?
 
     // Circlet
-    circletId         Int
-    circletMainStat   String @db.Text
-    circletSubStats   String @db.Text
-    circletSubstatsId String @db.Text
-    circletCritValue  Decimal
+    circletId         Int?
+    circletMainStat   String? @db.Text
+    circletSubStats   String? @db.Text
+    circletSubstatsId String? @db.Text
+    circletCritValue  Decimal?
 
     // Weapon
     weaponId           Int

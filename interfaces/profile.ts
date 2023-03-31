@@ -24,11 +24,11 @@ export interface Build {
   fetterLevel: number;
   stats: { [key: string]: number };
   critValue: number;
-  flower: Flower;
-  plume: Plume;
-  sands: BuildCirclet;
-  goblet: BuildCirclet;
-  circlet: BuildCirclet;
+  flower?: Flower;
+  plume?: Plume;
+  sands?: BuildCirclet;
+  goblet?: BuildCirclet;
+  circlet?: BuildCirclet;
   sets: Set[];
   weapon: Weapon;
 }

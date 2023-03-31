@@ -24,33 +24,36 @@ function ProfileArtifactsTable({ data }: Props) {
   ]);
 
   const newData = useMemo(() => {
-    const sortedStats = (data: ArtifactType) => {
+    const sortedStats = (data?: ArtifactType) => {
+      if (!data) return [];
       return Object.entries<{ value: number; count: number }>(data.subStats)
         .sort((a, b) => b[1].count - a[1].count)
         .map(([key, value]) => ({ key, value: value.value }));
     };
-    return data.flatMap((build) => [
-      {
-        ...build.flower,
-        sortedStats: sortedStats(build.flower),
-      },
-      {
-        ...build.plume,
-        sortedStats: sortedStats(build.plume),
-      },
-      {
-        ...build.sands,
-        sortedStats: sortedStats(build.sands),
-      },
-      {
-        ...build.goblet,
-        sortedStats: sortedStats(build.goblet),
-      },
-      {
-        ...build.circlet,
-        sortedStats: sortedStats(build.circlet),
-      },
-    ]);
+    return data
+      .flatMap((build) => [
+        {
+          ...build.flower,
+          sortedStats: sortedStats(build.flower),
+        },
+        {
+          ...build.plume,
+          sortedStats: sortedStats(build.plume),
+        },
+        {
+          ...build.sands,
+          sortedStats: sortedStats(build.sands),
+        },
+        {
+          ...build.goblet,
+          sortedStats: sortedStats(build.goblet),
+        },
+        {
+          ...build.circlet,
+          sortedStats: sortedStats(build.circlet),
+        },
+      ])
+      .filter(Boolean);
   }, [data]);
 
   const cvQuality = (cv: number) => {
@@ -202,7 +205,7 @@ function ProfileArtifactsTable({ data }: Props) {
   });
 
   return (
-    <div className="card p-1">
+    <div className="card overflow-x-auto p-1">
       <table className="relative w-full">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -212,7 +215,7 @@ function ProfileArtifactsTable({ data }: Props) {
                   <th
                     key={header.id}
                     colSpan={header.colSpan}
-                    className="text-left text-sm"
+                    className="min-w-[120px] text-left text-sm"
                   >
                     {header.isPlaceholder ? null : (
                       <div

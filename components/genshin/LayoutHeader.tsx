@@ -15,6 +15,7 @@ type Route = {
   href?: string;
   children?: Route[];
   icon?: JSX.Element;
+  isNew?: boolean
 };
 
 const navRoutes: Route[] = [
@@ -40,6 +41,7 @@ const navRoutes: Route[] = [
   {
     id: "leaderboards",
     name: "Leaderboards",
+    isNew: true,
     children: [
       {
         id: "profiles",

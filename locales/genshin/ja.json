@@ -45,6 +45,8 @@
     "banners_weapons": "バナー武器",
     "banners_weapons_desc": "すべての武器のバナーとそのレートを発見する",
     "leaderboards": "リーダーボード",
+    "leaderboard": "リーダーボード",
+    "leaderboard_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール",
     "profiles": "プロファイル",
     "profiles_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール"
   },

@@ -37,7 +37,7 @@ export default async function handler(
     });
 
     if (!player) {
-      console.log("Player not found, creating new one");
+      console.log(`Player [${data.uid}] not found, creating new one`);
       const insert: Prisma.PlayerCreateInput = {
         uuid: data.uid,
         nickname: data.playerInfo.nickname,

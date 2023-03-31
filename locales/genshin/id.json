@@ -45,6 +45,8 @@
     "banners_weapons": "Senjata Spanduk",
     "banners_weapons_desc": "Temukan semua spanduk senjata dan tarifnya",
     "leaderboards": "Papan peringkat",
+    "leaderboard": "Papan peringkat",
+    "leaderboard_desc": "Papan peringkat untuk membandingkan kemajuan Anda dengan pemain lain",
     "profiles": "Profil",
     "profiles_desc": "Profil untuk membandingkan kemajuan Anda dengan pemain lain"
   },

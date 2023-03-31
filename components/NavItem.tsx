@@ -9,6 +9,7 @@ type Route = {
   href?: string;
   children?: Route[];
   icon?: JSX.Element;
+  isNew?: boolean;
 };
 
 type Props = {
@@ -40,6 +41,12 @@ function NavItem({ route }: Props) {
           href={route.href!}
         >
           {t({ id: route.id, defaultMessage: route.name })}
+          {route.isNew && (
+            <span className="absolute right-2 top-4 flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
+            </span>
+          )}
         </Link>
       ) : (
         <>
@@ -50,6 +57,12 @@ function NavItem({ route }: Props) {
             )}
           >
             {route.name}
+            {route.isNew && (
+              <span className="absolute top-1 left-1 flex h-2 w-2 md:top-4">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
+              </span>
+            )}
           </span>
           <div
             className={clsx(

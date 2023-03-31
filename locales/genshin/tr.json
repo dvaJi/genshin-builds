@@ -45,6 +45,8 @@
     "banners_weapons": "Afişler Silahlar",
     "banners_weapons_desc": "Tüm silah afişlerini ve oranlarını keşfedin",
     "leaderboards": "Skor tabloları",
+    "leaderboard": "Skor tabloları",
+    "leaderboard_desc": "İlerlemenizi diğer oyuncularla karşılaştırmak için Skor tabloları",
     "profiles": "Profiller",
     "profiles_desc": "İlerlemenizi diğer oyuncularla karşılaştırmak için profiller"
   },

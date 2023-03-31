@@ -104,7 +104,7 @@ function ProfileBuildsTable({ data }: Props) {
           return (
             <div
               className={clsx(
-                "rounded py-1 px-1 text-left text-xs text-white",
+                "min-w-[25px] rounded py-1 px-1 text-left text-xs text-white",
                 customClass
               )}
             >{`C${value}`}</div>
@@ -233,7 +233,7 @@ function ProfileBuildsTable({ data }: Props) {
   });
 
   return (
-    <div className="card p-1">
+    <div className="card overflow-x-auto p-1">
       <table className="relative w-full">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -243,7 +243,7 @@ function ProfileBuildsTable({ data }: Props) {
                   <th
                     key={header.id}
                     colSpan={header.colSpan}
-                    className="text-left text-sm"
+                    className="min-w-[70px] text-left text-sm"
                   >
                     {header.isPlaceholder ? null : (
                       <div
@@ -340,7 +340,9 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
     circlet: data.circlet,
   };
 
-  const calcCv = (artifact: ArtifactType) => {
+  const calcCv = (artifact?: ArtifactType) => {
+    if (!artifact) return 0;
+
     const critDMG = artifact.subStats["CRIT DMG"]?.value || 0;
     const critRate = artifact.subStats["CRIT Rate"]?.value || 0;
     return critDMG + critRate * 2;
@@ -426,59 +428,61 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
           ))}
       </div>
       <div className="mb-4 flex items-center justify-center">
-        {Object.entries(artifacts).map(([key, value]) => (
-          <div
-            key={key}
-            className={clsx(
-              "group relative mx-2 flex overflow-hidden rounded-lg border shadow-2xl",
-              cvQuality(calcCv(value))[1]
-            )}
-          >
-            <div className="h-32 w-24">
-              <span
-                className={clsx(
-                  "absolute top-0 left-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
-                  cvQuality(calcCv(value))[0]
-                )}
-              >
-                CV {calcCv(value).toFixed(1)}
-              </span>
-              <div className="gradient-image overflow-hidden">
-                <img
-                  src={getUrlLQ(`/artifacts/${value.id}.png`, 200, 200)}
-                  className="absolute -top-5 -left-9 transform transition-all group-hover:scale-125"
-                  width={200}
-                  height={200}
-                  alt={value.name}
-                  title={value.name}
-                />
-              </div>
-              <span className="absolute bottom-0 left-0 m-1 rounded bg-gray-900/50 py-1 px-2 text-xs shadow-black text-shadow">
-                {Object.entries(value.mainStat)
-                  .map(([key, value]) => `${key} ${value}`)
-                  .join(" ")}
-              </span>
-            </div>
-            <div className="mr-2 mt-4">
-              {Object.entries(value.subStats).map(([key, values]) => (
-                <div
-                  key={key}
-                  className={clsx("flex items-center text-white", {
-                    "opacity-100": values.count >= 4,
-                    "opacity-90": values.count >= 3 && values.count < 4,
-                    "opacity-60": values.count >= 2 && values.count < 3,
-                    "opacity-40": values.count >= 1 && values.count < 2,
-                    "opacity-20": values.count < 1,
-                  })}
+        {Object.entries(artifacts)
+          .filter(([_, value]) => value !== undefined)
+          .map(([key, value]) => (
+            <div
+              key={key}
+              className={clsx(
+                "group relative mx-2 flex overflow-hidden rounded-lg border shadow-2xl",
+                cvQuality(calcCv(value))[1]
+              )}
+            >
+              <div className="h-32 w-24">
+                <span
+                  className={clsx(
+                    "absolute top-0 left-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
+                    cvQuality(calcCv(value))[0]
+                  )}
                 >
-                  <span className="mr-px text-xxs">{values.count}</span>
-                  <StatIcon type={key} width={16} height={16} />
-                  <span className="mx-2 text-slate-50">{values.value}</span>
+                  CV {calcCv(value).toFixed(1)}
+                </span>
+                <div className="gradient-image overflow-hidden">
+                  <img
+                    src={getUrlLQ(`/artifacts/${value?.id}.png`, 200, 200)}
+                    className="absolute -top-5 -left-9 transform transition-all group-hover:scale-125"
+                    width={200}
+                    height={200}
+                    alt={value?.name}
+                    title={value?.name}
+                  />
                 </div>
-              ))}
+                <span className="absolute bottom-0 left-0 m-1 rounded bg-gray-900/50 py-1 px-2 text-xs shadow-black text-shadow">
+                  {Object.entries(value?.mainStat ?? {})
+                    .map(([key, value]) => `${key} ${value}`)
+                    .join(" ")}
+                </span>
+              </div>
+              <div className="mr-2 mt-4">
+                {Object.entries(value?.subStats ?? {}).map(([key, values]) => (
+                  <div
+                    key={key}
+                    className={clsx("flex items-center text-white", {
+                      "opacity-100": values.count >= 4,
+                      "opacity-90": values.count >= 3 && values.count < 4,
+                      "opacity-60": values.count >= 2 && values.count < 3,
+                      "opacity-40": values.count >= 1 && values.count < 2,
+                      "opacity-20": values.count < 1,
+                    })}
+                  >
+                    <span className="mr-px text-xxs">{values.count}</span>
+                    <StatIcon type={key} width={16} height={16} />
+                    <span className="mx-2 text-slate-50">{values.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

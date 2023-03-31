@@ -45,6 +45,8 @@
     "banners_weapons": "旗幟武器",
     "banners_weapons_desc": "發現所有武器旗幟及其價格",
     "leaderboards": "排行榜",
+    "leaderboard": "排行榜",
+    "leaderboard_desc": "用於比較您與其他玩家進度的個人資料",
     "profiles": "簡介",
     "profiles_desc": "用於比較您與其他玩家進度的個人資料"
   },

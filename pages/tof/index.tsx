@@ -54,7 +54,6 @@ function Characters({ characters }: Props) {
           }
 
           if (resonanceFilter) {
-            console.log(c.resonance, resonanceFilter);
             roleFil = c.resonance === resonanceFilter;
           }
 

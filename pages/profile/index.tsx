@@ -34,7 +34,6 @@ function ProfileIndex() {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         if (json.uuid) {
           updateFavorites(json);
           router.push(`/profile/${uuid}`);

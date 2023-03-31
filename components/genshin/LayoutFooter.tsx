@@ -6,7 +6,7 @@ const LayoutFooter = () => {
   const router = useRouter();
   return (
     <footer
-      className="border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-20 py-14 text-gray-400 backdrop-blur"
+      className="border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-4 py-6 text-gray-400 backdrop-blur md:px-20 md:py-14"
       style={{ zIndex: 1 }}
     >
       <div className="container mx-auto">
@@ -18,6 +18,9 @@ const LayoutFooter = () => {
             </Link>
             <Link href="/contact" className="my-2">
               Contact
+            </Link>
+            <Link href="/changelog" className="my-2">
+              Changelog
             </Link>
           </div>
           <div className="flex flex-1 flex-col">
