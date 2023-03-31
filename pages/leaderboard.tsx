@@ -22,7 +22,7 @@ function LeaderBoardPage() {
   });
   const { localeGI } = useIntl("leaderboard");
   const { data, error } = useSWR<(Build & { player: Profile })[]>(
-    `/api/leaderboard?lang=${localeGI}&limit=${pagination.pageSize}`,
+    `/api/leaderboard?lang=${localeGI}&limit=${pagination.pageIndex}`,
     fetcher
   );
 
