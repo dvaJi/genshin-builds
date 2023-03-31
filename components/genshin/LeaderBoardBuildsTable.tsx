@@ -338,6 +338,7 @@ function LeaderBoardBuildsTable({ data, pagination, setPagination }: Props) {
         >
           {"<"}
         </button>
+        {table.getState().pagination.pageIndex + 1}
         <button
           className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
           onClick={() => table.nextPage()}

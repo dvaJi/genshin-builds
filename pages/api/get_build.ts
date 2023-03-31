@@ -13,19 +13,26 @@ export default async function handler(
     return res.status(400).json({ error: "Missing uid or lang" });
   }
 
-  const gi = new GenshinData({ language: lang as any });
   console.log("get uid", uid);
+  // const response = await getBuild(lang, uid as string);
+  // return res.status(response.code).json(response.data);
+}
 
+export async function getBuild(lang: any, uid: string) {
+  const gi = new GenshinData({ language: lang });
   const playerData = await prisma.player.findUnique({
     where: {
-      uuid: uid as string,
+      uuid: uid,
     },
   });
 
   if (!playerData) {
-    return res.status(404).json({
-      error: "Player not found",
-    });
+    return {
+      code: 404,
+      data: {
+        error: "Player not found",
+      },
+    };
   }
 
   const builds = await prisma.build.findMany({
@@ -40,17 +47,20 @@ export default async function handler(
   const weapons = await gi.weapons();
   const artifacts = await gi.artifacts();
 
-  return res.status(200).json({
-    uuid: playerData.uuid,
-    nickname: playerData.nickname,
-    profilePictureId: playerData.profilePictureId,
-    profileCostumeId: playerData.profileCostumeId,
-    namecardId: playerData.namecardId,
-    level: playerData.level,
-    signature: playerData.signature,
-    worldLevel: playerData.worldLevel,
-    finishAchievementNum: playerData.finishAchievementNum,
-    region: regionParse(playerData.uuid),
-    builds: await decodeBuilds(builds, characters, weapons, artifacts),
-  });
+  return {
+    code: 200,
+    data: {
+      uuid: playerData.uuid,
+      nickname: playerData.nickname,
+      profilePictureId: playerData.profilePictureId,
+      profileCostumeId: playerData.profileCostumeId,
+      namecardId: playerData.namecardId,
+      level: playerData.level,
+      signature: playerData.signature,
+      worldLevel: playerData.worldLevel,
+      finishAchievementNum: playerData.finishAchievementNum,
+      region: regionParse(playerData.uuid),
+      builds: await decodeBuilds(builds, characters, weapons, artifacts),
+    },
+  };
 }
