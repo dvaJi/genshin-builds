@@ -41,7 +41,6 @@ const navRoutes: Route[] = [
   {
     id: "leaderboards",
     name: "Leaderboards",
-    isNew: true,
     children: [
       {
         id: "profiles",
