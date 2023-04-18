@@ -182,7 +182,7 @@ export default async function handler(
   // Calculate materials for talents
   const calculateTalentMaterials = (levelMin: number, levelMax: number) => {
     for (const talent of character.talent_materials) {
-      if (levelMin <= talent.level && talent.level <= levelMax) {
+      if (levelMin < talent.level && talent.level <= levelMax) {
         moraNeeded += talent.cost;
 
         for (let index = 0; index < talent.items.length; index++) {
