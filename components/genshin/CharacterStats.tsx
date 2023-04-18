@@ -44,14 +44,14 @@ function CharacterStats({ ascensions }: Props) {
         </div>
         {selected.stats.map((stat) => (
           <Fragment key={stat.label}>
-            <div className="border-b border-vulcan-700 py-1 px-2">
+            <div className="border-b border-vulcan-700 px-2 py-1">
               {stat.label}
             </div>
             <div className="border-b border-vulcan-700 py-1">
-              {stat.values[0]}
+              {stat.values ? stat.values[0] : "-"}
             </div>
             <div className="border-b border-vulcan-700 py-1">
-              {stat.values[1]}
+              {stat.values ? stat.values[1] : "-"}
             </div>
           </Fragment>
         ))}
