@@ -5,7 +5,7 @@
     "home": "Startseite",
     "characters": "Charaktere",
     "Tools": "Werkzeuge",
-    "todo": "Todo",
+    "todo": "Aufgabenliste",
     "todo_desc": "Plane und verfolge Gegenstände und Mora, die du benötigst",
     "calculator": "Rechner",
     "calculator_desc": "Berechne wie viel Mora und Materialien du benötigst",
@@ -183,39 +183,39 @@
   },
   "food": {
     "title": "Genshin Impact Liste der Kochrezepte",
-    "description": "Entdecken Sie alle Kochrezepte und das beste Essen für Ihr Team.",
-    "food": "Nahrung",
+    "description": "Entdecke alle Kochrezepte und das beste Essen für dein Team.",
+    "food": "Gerichte",
     "all": "Alle",
     "normal": "Normal",
     "delicious": "Lecker",
     "suspicious": "Misstrauisch",
     "special": "Speziell",
-    "search": "Suche..."
+    "search": "Suchen..."
   },
   "ingredients": {
     "title": "Genshin Impact Zutatenliste für das Kochen",
-    "description": "Entdecken Sie alle Kochzutaten.",
+    "description": "Entdecke alle Kochzutaten.",
     "cooking_ingredient": "Zutat",
     "name": "Name"
   },
   "potions": {
-    "title": "Genshin Impact Tränkliste",
-    "description": "Entdecken Sie alle Alchemie-Rezepte und die besten Tränke und Öle für Ihr Team.",
+    "title": "Genshin Impact Trankliste",
+    "description": "Entdecke alle Alchemierezepte und die besten Tränke und Öle für dein Team.",
     "potions": "Tränke",
     "name": "Name",
     "rarity": "Seltenheit",
-    "effect": "Effect"
+    "effect": "Effekt"
   },
   "teams": {
-    "title": "Genshin Impact Beste Team-Comp | Anleitung zum Aufbau von Partys",
-    "description": "Dies ist eine Anleitung, um die beste Party in Genshin Impact zu machen. Erfahren Sie, wie Sie die beste Party machen! Wir stellen die beste Gruppenzusammensetzung für jede Aufgabe vor, darunter das Erkunden von Gebieten, das Töten von Feldbossen und mehr!",
-    "teams": "Team-Comp",
+    "title": "Genshin Impact Beste Teamzusammensetzung | Guide zum Aufbau von Partys",
+    "description": "Dies ist eine Anleitung, um die beste Party in Genshin Impact zu machen. Erfahren Sie, wie Sie die beste Party machen! Wir stellen die beste Teamzusammensetzung für jede Aufgabe vor, darunter das Erkunden von Gebieten, das Besiegen von Feldbossen und mehr!",
+    "teams": "Teams",
     "best_team_comp": "Beste Teamzusammensetzung",
     "character_team": "Bestes Team für {name}",
     "substitute_characters": "Substitute Characters",
-    "main dps": "Main DPS",
+    "main dps": "Haupt DPS",
     "sub dps": "Sub DPS",
-    "support": "Support"
+    "support": "Unterstützung"
   },
   "fishing": {
     "title": "Genshin Impact Angeln (Fische, Köder, Angelruten und Angelpunkte)",
@@ -229,7 +229,7 @@
     "sumeru": "Sumeru"
   },
   "calculator": {
-    "title": "Genshin Impact Taschenrechner",
+    "title": "Genshin Impact Rechner",
     "description": "Genshin Impact Rechner, um zu berechnen, wie viele Mora und Materialien für deinen Charakter- oder Waffenaufstieg benötigt werden",
     "calculator": "Taschenrechner",
     "character_level": "Charakterstufe",
@@ -238,27 +238,27 @@
     "talents_level": "Talente-Level",
     "normal_attack": "Normaler Angriff",
     "skill": "Fähigkeit",
-    "burst": "Platzen",
+    "burst": "Explosion",
     "calculate": "Berechnung",
     "choose_weapon": "Waffe wählen",
     "add_to_todo_list": "Zur Aufgabenliste hinzufügen",
     "added_to_todo_list": "Zur Aufgabenliste hinzugefügt",
-    "exp_wasted": "EXP verschwendet"
+    "exp_wasted": "EP verschwendet"
   },
   "todo": {
     "title": "Genshin Impact Aufgabenliste",
-    "description": "Todo-Liste zum Planen und Verfolgen von Artikeln und Mora, die Sie benötigen",
-    "todo": "Machen",
-    "no_todo_msg": "Nein Noch zu tun. Fügen Sie einige von der Rechnerseite hinzu.",
-    "go_to_calculator": "Gehen Sie zum Rechner",
+    "description": "Aufgabenliste zum planen und verfolgen von Gegenständen und Mora, die benötigt werden",
+    "todo": "Aufgabenliste",
+    "no_todo_msg": "Keine Aufgaben vorhanden. Füge einige von der Rechnerseite hinzu.",
+    "go_to_calculator": "Gehe zum Rechner",
     "farm_today": "Bauernhof heute",
     "summary": "Zusammenfassung",
-    "levels": "Ebenen",
+    "levels": "Stufen",
     "talents": "Talente",
     "normal_attack": "Normaler Angriff",
     "skill": "Fähigkeit",
-    "burst": "Platzen",
-    "delete": "Delete",
+    "burst": "Explosion",
+    "delete": "Entfernen",
     "remaining": "Verblieben",
     "total_remaining": "Gesamt verbleibend",
     "priority": "Priorität",
@@ -269,36 +269,36 @@
     "title": "Genshin Impact Erfolge",
     "description": "Erfolge, um neue Funktionen und Belohnungen freizuschalten",
     "achievements": "Erfolge",
-    "show_achieved": "Erreicht anzeigen",
-    "search": "Suche..."
+    "show_achieved": "Abgeschlossene anzeigen",
+    "search": "Suchen..."
   },
   "materials": {
     "title": "Genshin Impact Materialliste",
-    "description": "Entdecken Sie alle Materialien",
+    "description": "Entdecke alle Materialien",
     "materials": "Materialien",
-    "search": "Suche..."
+    "search": "Suchen..."
   },
   "guides": {
     "title": "Genshin Impact Leitfaden",
     "title_detail": "{title} - Genshin Impact Leitfaden",
-    "description": "Anleitungen, die Ihnen helfen, das Spiel zu lernen",
-    "guides": "Leitfaden",
-    "back_to_guides": "Zurück zu Führungen",
+    "description": "Leitfäden, die helfen das Spiel zu lernen",
+    "guides": "Leitfäden",
+    "back_to_guides": "Zurück zu den Leitfäden",
     "published_at": "Veröffentlicht um {date}",
     "youtube_tutorial": "YouTube-Tutorial",
     "interactive_map": "Interaktive Karte",
-    "related_guides": "Verwandte Anleitungen"
+    "related_guides": "Verwandte Leitfäden"
   },
   "banners_characters": {
-    "title": "Genshin Impact Charakter-Banner",
-    "description": "Entdecken Sie alle Zeichenbanner und ihre Preise",
+    "title": "Genshin Impact Charakterbanner",
+    "description": "Entdecke alle Charakterbanner und ihre Preise",
     "rerun_prediction": "Vorhersage erneut ausführen",
     "historical": "Historisch",
     "runs": "{runs} läuft"
   },
   "banners_weapons": {
     "title": "Genshin Impact Waffenbanner",
-    "description": "Entdecken Sie alle Waffenbanner und ihre Preise",
+    "description": "Entdecke alle Waffenbanner und ihre Preise",
     "rerun_prediction": "Vorhersage erneut ausführen",
     "historical": "Historisch",
     "runs": "{runs} läuft"
