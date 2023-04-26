@@ -305,26 +305,26 @@
   },
   "tcg_cards": {
     "title": "Genius Invokation TCG-Kartenspiel",
-    "description": "Genius Invokation TCG ist eine neue Kartenspielfunktion in Genshin Impact. ",
+    "description": "Genius Invokation TCG ist eine neue Kartenspielfunktion in Genshin Impact.",
     "cards": "Karten"
   },
   "tcg_card": {
     "title": "{name} - Genshin Impact TCG-Kartenliste",
-    "description": "{name} ist eine Karte für Genshin Impact Genius Invokation TCG. ",
+    "description": "{name} ist eine Karte für Genshin Impact Genius Invokation TCG.",
     "tcg_cards_title": "Genius Invokation TCG-Kartenspiel",
-    "back": "Der Rücken",
-    "hp": "PS",
+    "back": "Zurück",
+    "hp": "LP",
     "energy": "Energie",
     "weapon": "Waffe",
     "cost": "Kosten",
     "cost_type": "Kostenart",
-    "card_type": "Speicherkarten-Typ",
+    "card_type": "Karten-Typ",
     "source": "Quelle",
     "card_effects": "Karteneffekte"
   },
   "tcg_decks": {
-    "title": "Entdecken Sie die Top-Decks in Genius Invokation TCG: Meta Builds für das Kartenspiel Genshin Impact",
-    "description": "Dieser Artikel enthält eine umfassende Liste der besten Decks im TCG Genius Invokation. ",
+    "title": "Entdecke die Top-Decks in Genius Invokation TCG: Meta Builds für das Kartenspiel Genshin Impact",
+    "description": "Dieser Artikel enthält eine umfassende Liste der besten Decks im TCG Genius Invokation.",
     "best_decks": "Top-Decks"
   },
   "profile": {
