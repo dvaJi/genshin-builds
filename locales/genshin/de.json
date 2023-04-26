@@ -1,7 +1,7 @@
 {
   "layout": {
     "title": "Genshin-Builds.com Wiki-Datenbank",
-    "description": "Die besten Charaktere und ihre Builds nach Stärke, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte zu klären.",
+    "description": "Die besten Charaktere und ihre Builds nach Stärke, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte abzuschließen.",
     "home": "Startseite",
     "characters": "Charaktere",
     "Tools": "Werkzeuge",
@@ -20,7 +20,7 @@
     "best_decks_desc": "Liste der besten Decks zum spielen",
     "tierlist": "Rangliste",
     "tierlist_characters": "Charakterrangliste",
-    "tierlist_characters_desc": "Die besten Charaktere und ihre Builds nach Stärke, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte zu klären",
+    "tierlist_characters_desc": "Die besten Charaktere und ihre Builds nach Stärke, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte abzuschließen",
     "tierlist_weapons": "Waffenrangliste",
     "tierlist_weapons_desc": "Die besten Waffen nach Leistung, Lebensfähigkeit und Vielseitigkeit geordnet, um den Inhalt zu klären",
     "teams": "Teams",
@@ -52,7 +52,7 @@
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki-Datenbank",
-    "description": "Alle besten Charaktere und ihre Builds wurden nach Leistung, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte zu löschen.",
+    "description": "Die besten Charaktere und ihre Builds wurden nach Leistung, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte abzuschließen.",
     "Mon": "Montag",
     "Tue": "Dienstag",
     "Wed": "Mittwoch",
@@ -84,7 +84,7 @@
   },
   "character": {
     "title": "{name} Genshin Impact Build Guide",
-    "description": "Die besten Charaktere und ihre Builds, geordnet nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu klären.",
+    "description": "Die besten Charaktere und ihre Builds nach Stärke, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte abzuschließen.",
     "characters": "Charaktere",
     "character": "Charakter",
     "builds": "Builds",
@@ -167,7 +167,7 @@
   },
   "tierlist": {
     "title": "Genshin Impact Stufenliste (Beste Charaktere)",
-    "description": "Die besten Charaktere und ihre Builds nach Leistung, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu löschen.",
+    "description": "Die besten Charaktere und ihre Builds nach Leistung, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte abzuschließen.",
     "tierlist": "Rangliste",
     "main_dps": "Haupt-DPS",
     "sub_dps": "Sub-DPS",
@@ -175,7 +175,7 @@
   },
   "tierlist_weapons": {
     "title": "Genshin Impact Liste der Waffen Rangliste (Beste Waffen)",
-    "description": "Die besten Waffen nach Stärke, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu löschen.",
+    "description": "Die besten Waffen nach Stärke, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte abzuschließen.",
     "tierlist_weapons": "Beste Waffen",
     "main_dps": "Haupt-DPS",
     "sub_dps": "Sub-DPS",
