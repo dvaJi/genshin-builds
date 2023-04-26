@@ -157,29 +157,29 @@
     "title": "Genshin Impact Artefaktliste",
     "description": "Die besten Artefakt-Ausrüstungssätze, Standorte und Statistiken.",
     "artifacts": "Artefakte",
-    "2-4piece_artifact_sets": "2-4 Piece Artifact Sets",
+    "2-4piece_artifact_sets": "2-4 teilige Artifact Sets",
     "name": "Name",
-    "max_rarity": "Max Rarity",
-    "1piece_bonus": "1-Piece Bonus",
-    "1piece_artifact_sets": "1-Piece Artifact Sets",
-    "2piece_bonus": "2-Piece Bonus",
-    "4piece_bonus": "4-Piece Bonus"
+    "max_rarity": "Maximale Seltenheit",
+    "1piece_bonus": "1-Teiliger Bonus",
+    "1piece_artifact_sets": "1-Teiliger Artifact Sets",
+    "2piece_bonus": "2-Teiliger Bonus",
+    "4piece_bonus": "4-Teiliger Bonus"
   },
   "tierlist": {
     "title": "Genshin Impact Stufenliste (Beste Charaktere)",
-    "description": "Alle besten Charaktere und ihre Builds wurden nach Leistung, Lebensfähigkeit und Vielseitigkeit geordnet, um Inhalte zu löschen.",
-    "tierlist": "Tierlist",
-    "main_dps": "Main DPS",
-    "sub_dps": "Sub DPS",
-    "support": "Support"
+    "description": "Die besten Charaktere und ihre Builds nach Leistung, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu löschen.",
+    "tierlist": "Rangliste",
+    "main_dps": "Haupt-DPS",
+    "sub_dps": "Sub-DPS",
+    "support": "Unterstützung"
   },
   "tierlist_weapons": {
-    "title": "Genshin Impact Liste der Waffenstufen (Beste Waffen)",
-    "description": "Die besten Waffen sortiert nach Stärke, Lebensfähigkeit und Vielseitigkeit, um Inhalte zu löschen.",
+    "title": "Genshin Impact Liste der Waffen Rangliste (Beste Waffen)",
+    "description": "Die besten Waffen nach Stärke, Lebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu löschen.",
     "tierlist_weapons": "Beste Waffen",
-    "main_dps": "Main DPS",
-    "sub_dps": "Sub DPS",
-    "support": "Support"
+    "main_dps": "Haupt-DPS",
+    "sub_dps": "Sub-DPS",
+    "support": "Unterstützung"
   },
   "food": {
     "title": "Genshin Impact Liste der Kochrezepte",
