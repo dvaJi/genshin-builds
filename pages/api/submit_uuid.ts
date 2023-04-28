@@ -42,7 +42,7 @@ export default async function handler(
         uuid: data.uid,
         nickname: data.playerInfo.nickname,
         level: data.playerInfo.level,
-        signature: data.playerInfo.signature,
+        signature: data.playerInfo.signature ?? "",
         worldLevel: data.playerInfo.worldLevel,
         finishAchievementNum: data.playerInfo.finishAchievementNum,
         profilePictureId: data.playerInfo.profilePicture.avatarId,
