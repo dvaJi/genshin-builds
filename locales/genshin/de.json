@@ -6,7 +6,7 @@
     "characters": "Figuren",
     "Tools": "Werkzeuge",
     "todo": "Aufgabenliste",
-    "todo_desc": "Plane und verfolge Gegenstände und Mora, die du benötigst",
+    "todo_desc": "Plane und behalte Gegenstände und Mora im Blick, die du benötigst",
     "calculator": "Rechner",
     "calculator_desc": "Berechne wie viel Mora und Materialien du benötigst",
     "achievements": "Errungenschaften",
@@ -14,21 +14,21 @@
     "guides": "Leitfäden",
     "guides_desc": "Leitfäden, die helfen das Spiel zu lernen",
     "tcg": "TCG",
-    "cards_list": "Kartenliste",
+    "cards_list": "Liste der Karten",
     "cards_list_desc": "Liste aller Karten im Spiel",
     "best_decks": "Beste Decks",
     "best_decks_desc": "Liste der besten Decks zum spielen",
     "tierlist": "Rangliste",
-    "tierlist_characters": "Figurenrangliste",
+    "tierlist_characters": "Rangliste der Figuren",
     "tierlist_characters_desc": "Die besten Figuren und ihre Builds nach Stärke, Überlebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu bewältigen",
-    "tierlist_weapons": "Waffenrangliste",
+    "tierlist_weapons": "Rangliste der Waffen",
     "tierlist_weapons_desc": "Die besten Waffen nach Stärke, Überlebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu bewältigen",
     "teams": "Truppen",
     "wiki": "Wiki",
     "weapons": "Waffen",
     "weapons_desc": "Die besten Waffen, Orte und Attribute, einschließlich Bögen, Katalysatoren, Claymores, Schwerter und Stangenwaffen",
     "artifacts": "Artefakte",
-    "artifacts_desc": "Die besten Artefakt-Ausrüstungssets, Standorte und Attributte",
+    "artifacts_desc": "Die besten Artefakt-Ausrüstungssets, Standorte und Attribute",
     "materials": "Materialien",
     "materials_desc": "Entdecke alle Materialien von Teyvat",
     "cooking_ingredient": "Kochzutat",
@@ -71,7 +71,7 @@
     "Hidden Palace of Lianshan Formula": "Versteckter Palast von Lianshan"
   },
   "characters": {
-    "title": "Genshin Impact Figurenliste",
+    "title": "Genshin Impact Liste der Figuren",
     "description": "Erfahre mehr über jede Figuren in Genshin Impact, einschließlich ihrer Fähigkeiten, Talente, Builds und Rangliste.",
     "characters": "Figuren",
     "anemo": "Anemo",
@@ -113,8 +113,8 @@
     "goblet": "Kelch",
     "circlet": "Reif",
     "best_team_comp": "Beste Truppenzusammenstellung",
-    "main dps": "Haupt-DPS",
-    "sub dps": "Sub-DPS",
+    "main dps": "Haupt-Kämpfer",
+    "sub dps": "Zusatz-Kämpfer",
     "support": "Unterstützung",
     "lv.": "St.",
     "before_ascension": "Vor Aufstieg",
@@ -128,7 +128,7 @@
     "ascension_phase_num": "Aufstiegsphase {num}"
   },
   "weapons": {
-    "title": "Genshin Impact Waffenliste",
+    "title": "Genshin Impact Liste der Waffen",
     "description": "Die besten Waffen, Orte und Attribute, einschließlich Bögen, Katalysatoren, Claymores, Schwerter und Stangenwaffen.",
     "weapons": "Waffen",
     "search": "Suchen...",
@@ -154,7 +154,7 @@
     "ascension_materials": "Aufstiegsmaterialien"
   },
   "artifacts": {
-    "title": "Genshin Impact Artefaktliste",
+    "title": "Genshin Impact Liste der Artefakte",
     "description": "Die besten Artefakt-Ausrüstungssätze, Standorte und Attribute.",
     "artifacts": "Artefakte",
     "2-4piece_artifact_sets": "Artefaktsets mit 2-4 Teilen",
@@ -166,19 +166,19 @@
     "4piece_bonus": "Set-Bonus mit 4 Teilen"
   },
   "tierlist": {
-    "title": "Genshin Impact Stufenliste (Beste Figuren)",
+    "title": "Genshin Impact Rangliste (Beste Figuren)",
     "description": "Die besten Figuren und ihre Builds nach Stärke, Überlebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu bewältigen.",
     "tierlist": "Rangliste",
-    "main_dps": "Haupt-DPS",
-    "sub_dps": "Sub-DPS",
+    "main_dps": "Haupt-Kämpfer",
+    "sub_dps": "Zusatz-Kämpfer",
     "support": "Unterstützung"
   },
   "tierlist_weapons": {
-    "title": "Genshin Impact Liste der Waffen Rangliste (Beste Waffen)",
+    "title": "Genshin Impact Rangliste der Waffen (Beste Waffen)",
     "description": "Die besten Waffen nach Stärke, Überlebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu bewältigen.",
     "tierlist_weapons": "Waffenrangliste",
-    "main_dps": "Haupt-DPS",
-    "sub_dps": "Sub-DPS",
+    "main_dps": "Haupt-Kämpfer",
+    "sub_dps": "Zusatz-Kämpfer",
     "support": "Unterstützung"
   },
   "food": {
@@ -188,18 +188,18 @@
     "all": "Alle",
     "normal": "Normal",
     "delicious": "Lecker",
-    "suspicious": "Misstrauisch",
-    "special": "Speziell",
+    "suspicious": "Misslungen",
+    "special": "Besonders",
     "search": "Suchen..."
   },
   "ingredients": {
-    "title": "Genshin Impact Zutatenliste für das Kochen",
+    "title": "Genshin Impact Liste der Kochzutaten",
     "description": "Entdecke alle Kochzutaten.",
     "cooking_ingredient": "Kochzutat",
     "name": "Name"
   },
   "potions": {
-    "title": "Genshin Impact Trankliste",
+    "title": "Genshin Impact Liste der Tränke",
     "description": "Entdecke alle Alchemierezepte und die besten Tränke und Öle für deine Truppe.",
     "potions": "Tränke",
     "name": "Name",
@@ -212,8 +212,8 @@
     "teams": "Truppen",
     "best_team_comp": "Beste Truppenzusammenstellung",
     "character_team": "Beste Truppe für {name}",
-    "main dps": "Haupt-DPS",
-    "sub dps": "Sub-DPS",
+    "main dps": "Haupt-Kämpfer",
+    "sub dps": "Zusatz-Kämpfer",
     "support": "Unterstützung"
   },
   "fishing": {
@@ -238,7 +238,7 @@
     "normal_attack": "Standardangriff",
     "skill": "Elementarfähigkeit",
     "burst": "Spezialfähigkeit",
-    "calculate": "Berechnung",
+    "calculate": "Berechnen",
     "choose_weapon": "Waffe wählen",
     "add_to_todo_list": "Zur Aufgabenliste hinzufügen",
     "added_to_todo_list": "Zur Aufgabenliste hinzugefügt",
@@ -246,7 +246,7 @@
   },
   "todo": {
     "title": "Genshin Impact Aufgabenliste",
-    "description": "Aufgabenliste zum planen und verfolgen von Gegenständen und Mora, die benötigt werden",
+    "description": "Aufgabenliste zum planen und Gegenständen und Mora im Blick zu behalten, die benötigt werden",
     "todo": "Aufgabenliste",
     "no_todo_msg": "Keine Aufgaben vorhanden. Füge welche von der Rechnerseite hinzu.",
     "go_to_calculator": "Zum Rechner",
@@ -272,7 +272,7 @@
     "search": "Suchen..."
   },
   "materials": {
-    "title": "Genshin Impact Materialliste",
+    "title": "Genshin Impact Liste der Materialien",
     "description": "Entdecke alle Materialien",
     "materials": "Materialien",
     "search": "Suchen..."
@@ -290,15 +290,15 @@
   },
   "banners_characters": {
     "title": "Genshin Impact Figurenbanner",
-    "description": "Entdecke alle Figurenbanner und ihre Preise",
-    "rerun_prediction": "Vorhersage der Wiedererscheinung",
+    "description": "Entdecke alle Figurenbanner und ihre Wahrscheinlichkeit",
+    "rerun_prediction": "Wahrscheinliche Wiedererscheinung",
     "historical": "Verlauf",
     "runs": "{runs} Erscheinungen"
   },
   "banners_weapons": {
     "title": "Genshin Impact Waffenbanner",
     "description": "Entdecke alle Waffenbanner und ihre Wahrscheinlichkeit",
-    "rerun_prediction": "Vorhersage der Wiedererscheinung",
+    "rerun_prediction": "Wahrscheinliche Wiedererscheinung",
     "historical": "Verlauf",
     "runs": "{runs} Erscheinungen"
   },
@@ -308,7 +308,7 @@
     "cards": "Karten"
   },
   "tcg_card": {
-    "title": "{name} - Genshin Impact TCG Kartenliste",
+    "title": "{name} - Genshin Impact Liste der TCG Karten",
     "description": "{name} ist eine Karte für Genshin Impact Geniale Beschwörung TCG.",
     "tcg_cards_title": "Geniale Beschwörung TCG-Kartenspiel",
     "back": "Zurück",
@@ -322,9 +322,9 @@
     "card_effects": "Karteneffekte"
   },
   "tcg_decks": {
-    "title": "Entdecke die Top-Decks in Geniale Beschwörung TCG: Meta Builds für das Kartenspiel Genshin Impact",
+    "title": "Entdecke die besten Decks in Geniale Beschwörung TCG: Meta Builds für das Kartenspiel Genshin Impact",
     "description": "Dieser Artikel enthält eine umfassende Liste der besten Decks in TCG Geniale Beschwörung.",
-    "best_decks": "Top-Decks"
+    "best_decks": "Beste Decks"
   },
   "profile": {
     "title": "Genshin Impact Profil",
