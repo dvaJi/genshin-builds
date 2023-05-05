@@ -3,8 +3,9 @@ import { AppProps as NextAppProps } from "next/app";
 
 import LayoutGenshin from "@components/genshin/Layout";
 import TOFLayout from "@components/tof/Layout";
+import HSRLayout from "@components/hsr/Layout";
 
-import { isTOF } from "@utils/games";
+import { isHSR, isTOF } from "@utils/games";
 import { AppBackgroundStyle } from "@state/background-atom";
 
 const FeedbackAlert = dynamic(() => import("./FeedbackAlert"), {
@@ -26,6 +27,15 @@ const App = ({ Component, pageProps, router }: AppProps<Props>) => {
         <FeedbackAlert />
         <Component {...pageProps} />
       </TOFLayout>
+    );
+  }
+
+  if (isHSR(router.route)) {
+    return (
+      <HSRLayout bgStyle={pageProps?.bgStyle}>
+        <FeedbackAlert />
+        <Component {...pageProps} />
+      </HSRLayout>
     );
   }
 

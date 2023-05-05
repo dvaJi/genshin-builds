@@ -1,0 +1,27 @@
+.hsr-multiborder {
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  background-color: #f2f4f5;
+  height: 70%;
+  margin-top: 0.95rem;
+  position: absolute;
+  width: 0.2rem;
+}
+
+.hsr-multiborder:before {
+  bottom: 0;
+}
+.hsr-multiborder:after {
+  top: 0;
+}
+.hsr-multiborder:after,
+.hsr-multiborder:before {
+  background-color: #f2f4f5;
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  content: "";
+  display: inline-block;
+  height: 0.2rem;
+  position: absolute;
+  width: 1.6rem;
+}

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 
 import { GAD_ID, CUSTOM_ADS_ID } from "@lib/constants";
 
@@ -25,7 +25,11 @@ const Ads = ({ className, adSlot }: AdsProps) => {
     const random = Math.floor(Math.random() * images.length);
     const [imgUrl, url] = images[random].split("|");
     return (
-      <a href={url + "?ref=GenshinBuilds"} target="_blank" className="text-center">
+      <a
+        href={url + "?ref=GenshinBuilds"}
+        target="_blank"
+        className="text-center"
+      >
         <img src={imgUrl} alt="Ad" className="mx-auto" />
       </a>
     );
@@ -50,4 +54,4 @@ const Ads = ({ className, adSlot }: AdsProps) => {
   );
 };
 
-export default Ads;
+export default memo(Ads);
