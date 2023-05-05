@@ -23,11 +23,21 @@
     },
     {
       "id": "17670",
-      "fish": ["medaka", "aizen_medaka", "dawncatcher", "teacolored_shirakodai"]
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "dawncatcher",
+        "teacolored_shirakodai"
+      ]
     },
     {
       "id": "17671",
-      "fish": ["medaka", "aizen_medaka", "dawncatcher", "crystalfish"]
+      "fish": [
+        "medaka",
+        "aizen_medaka",
+        "dawncatcher",
+        "crystalfish"
+      ]
     },
     {
       "id": "17672",
@@ -96,11 +106,20 @@
     },
     {
       "id": "17678",
-      "fish": ["medaka", "betta", "brown_shirakodai"]
+      "fish": [
+        "medaka",
+        "betta",
+        "brown_shirakodai"
+      ]
     },
     {
       "id": "17679",
-      "fish": ["medaka", "dawncatcher", "crystalfish", "brown_shirakodai"]
+      "fish": [
+        "medaka",
+        "dawncatcher",
+        "crystalfish",
+        "brown_shirakodai"
+      ]
     },
     {
       "id": "17680",
@@ -136,7 +155,11 @@
     },
     {
       "id": "17683",
-      "fish": ["medaka", "crystalfish", "betta"]
+      "fish": [
+        "medaka",
+        "crystalfish",
+        "betta"
+      ]
     },
     {
       "id": "17684",
@@ -205,7 +228,9 @@
     },
     {
       "id": "17690",
-      "fish": ["raimei_angelfish"]
+      "fish": [
+        "raimei_angelfish"
+      ]
     },
     {
       "id": "17691",
@@ -229,7 +254,11 @@
     },
     {
       "id": "17693",
-      "fish": ["glaze_medaka", "lunged_stickleback", "purple_shirakodai"]
+      "fish": [
+        "glaze_medaka",
+        "lunged_stickleback",
+        "purple_shirakodai"
+      ]
     },
     {
       "id": "17694",
@@ -244,25 +273,50 @@
     },
     {
       "id": "18686",
-      "fish": ["medaka", "glaze_medaka", "dawncatcher", "crystalfish"]
+      "fish": [
+        "medaka",
+        "glaze_medaka",
+        "dawncatcher",
+        "crystalfish"
+      ]
     },
     {
       "id": "20055",
-      "fish": ["medaka", "lunged_stickleback", "akai_maou", "purple_shirakodai"]
+      "fish": [
+        "medaka",
+        "lunged_stickleback",
+        "akai_maou",
+        "purple_shirakodai"
+      ]
     }
   ],
   "enkanomiya": [
     {
       "id": "22148",
-      "fish": ["crystalfish", "lunged_stickleback", "divda_ray", "formalo_ray"]
+      "fish": [
+        "crystalfish",
+        "lunged_stickleback",
+        "divda_ray",
+        "formalo_ray"
+      ]
     },
     {
       "id": "22149",
-      "fish": ["dawncatcher", "purple_shirakodai", "divda_ray", "formalo_ray"]
+      "fish": [
+        "dawncatcher",
+        "purple_shirakodai",
+        "divda_ray",
+        "formalo_ray"
+      ]
     },
     {
       "id": "22150",
-      "fish": ["dawncatcher", "akai_maou", "divda_ray", "formalo_ray"]
+      "fish": [
+        "dawncatcher",
+        "akai_maou",
+        "divda_ray",
+        "formalo_ray"
+      ]
     }
   ],
   "the_chasm": [

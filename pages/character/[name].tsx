@@ -213,7 +213,7 @@ const CharacterPage = ({
             className="mb-4 flex items-center border-b border-vulcan-600 pb-4"
           >
             <div className="lg:mx-2">#{index + 1}</div>
-            <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div>
+            {/* <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div> */}
             {team.characters.map((character) => (
               <Link
                 key={character.id}

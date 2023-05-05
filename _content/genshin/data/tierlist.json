@@ -3,12 +3,6 @@
     "maindps": {
       "0": [
         {
-          "id": "hu_tao",
-          "w_id": "staff_of_homa",
-          "a_ids": ["crimson_witch_of_flames"],
-          "min_c": 1
-        },
-        {
           "id": "kamisato_ayaka",
           "w_id": "mistsplitter_reforged",
           "a_ids": ["blizzard_strayer"],
@@ -24,6 +18,12 @@
           "id": "alhaitham",
           "w_id": "light_of_foliar_incision",
           "a_ids": ["gilded_dreams"],
+          "min_c": 1
+        },
+        {
+          "id": "hu_tao",
+          "w_id": "staff_of_homa",
+          "a_ids": ["crimson_witch_of_flames"],
           "min_c": 1
         }
       ],
@@ -55,7 +55,7 @@
         {
           "id": "tartaglia",
           "w_id": "polar_star",
-          "a_ids": ["heart_of_depth"],
+          "a_ids": ["nymphs_dream"],
           "min_c": 0
         },
         {
@@ -135,6 +135,12 @@
           "min_c": 0
         },
         {
+          "id": "kaveh",
+          "w_id": "mailed_flower",
+          "a_ids": ["flower_of_paradise_lost"],
+          "min_c": 1
+        },
+        {
           "id": "ningguang",
           "w_id": "memory_of_dust",
           "a_ids": ["gladiators_finale", "archaic_petra"],
@@ -155,7 +161,7 @@
         {
           "id": "nilou",
           "w_id": "key_of_khajnisut",
-          "a_ids": ["tenacity_of_the_millelith", "gilded_dreams"],
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 2
         }
       ],
@@ -175,14 +181,20 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
+          "min_c": 0
+        },
+        {
+          "id": "baizhu",
+          "w_id": "lost_prayer_to_the_sacred_winds",
+          "a_ids": ["gilded_dreams"],
           "min_c": 0
         },
         {
           "id": "candace",
           "w_id": "staff_of_homa",
           "a_ids": ["heart_of_depth"],
-          "min_c": 0
+          "min_c": 2
         },
         {
           "id": "kaeya",
@@ -291,7 +303,7 @@
         {
           "id": "nilou",
           "w_id": "key_of_khajnisut",
-          "a_ids": ["tenacity_of_the_millelith", "gilded_dreams"],
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 2
         },
         {
@@ -352,7 +364,7 @@
         },
         {
           "id": "sucrose",
-          "w_id": "the_widsith",
+          "w_id": "a_thousand_floating_dreams",
           "a_ids": ["viridescent_venerer"],
           "min_c": 2
         }
@@ -397,7 +409,7 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 2
         },
         {
@@ -507,6 +519,12 @@
       ],
       "1": [
         {
+          "id": "baizhu",
+          "w_id": "jadefalls_splendor",
+          "a_ids": ["deepwood_memories"],
+          "min_c": 0
+        },
+        {
           "id": "yelan",
           "w_id": "aqua_simulacra",
           "a_ids": ["heart_of_depth", "tenacity_of_the_millelith"],
@@ -532,7 +550,7 @@
         },
         {
           "id": "sucrose",
-          "w_id": "the_widsith",
+          "w_id": "a_thousand_floating_dreams",
           "a_ids": ["viridescent_venerer"],
           "min_c": 6
         },
@@ -627,7 +645,7 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 0
         },
         {
@@ -771,7 +789,7 @@
         {
           "id": "tartaglia",
           "w_id": "polar_star",
-          "a_ids": ["heart_of_depth"],
+          "a_ids": ["nymphs_dream"],
           "min_c": 0
         },
         {
@@ -845,6 +863,12 @@
           "min_c": 0
         },
         {
+          "id": "kaveh",
+          "w_id": "mailed_flower",
+          "a_ids": ["flower_of_paradise_lost"],
+          "min_c": 0
+        },
+        {
           "id": "shikanoin_heizou",
           "w_id": "skyward_atlas",
           "a_ids": ["viridescent_venerer"],
@@ -867,13 +891,13 @@
         {
           "id": "nilou",
           "w_id": "key_of_khajnisut",
-          "a_ids": ["tenacity_of_the_millelith", "gilded_dreams"],
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 0
         },
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 0
         },
         {
@@ -983,7 +1007,7 @@
         {
           "id": "nilou",
           "w_id": "key_of_khajnisut",
-          "a_ids": ["tenacity_of_the_millelith", "gilded_dreams"],
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 0
         },
         {
@@ -1056,7 +1080,7 @@
         },
         {
           "id": "sucrose",
-          "w_id": "the_widsith",
+          "w_id": "a_thousand_floating_dreams",
           "a_ids": ["viridescent_venerer"],
           "min_c": 0
         },
@@ -1089,7 +1113,7 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 0
         },
         {
@@ -1205,6 +1229,12 @@
       ],
       "1": [
         {
+          "id": "baizhu",
+          "w_id": "jadefalls_splendor",
+          "a_ids": ["deepwood_memories"],
+          "min_c": 0
+        },
+        {
           "id": "yelan",
           "w_id": "aqua_simulacra",
           "a_ids": ["heart_of_depth", "tenacity_of_the_millelith"],
@@ -1262,7 +1292,7 @@
         },
         {
           "id": "sucrose",
-          "w_id": "the_widsith",
+          "w_id": "a_thousand_floating_dreams",
           "a_ids": ["viridescent_venerer"],
           "min_c": 0
         },
@@ -1313,7 +1343,7 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 0
         },
         {
@@ -1483,7 +1513,7 @@
         {
           "id": "tartaglia",
           "w_id": "polar_star",
-          "a_ids": ["heart_of_depth"],
+          "a_ids": ["nymphs_dream"],
           "min_c": 6
         },
         {
@@ -1545,13 +1575,7 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
-          "min_c": 6
-        },
-        {
-          "id": "noelle",
-          "w_id": "redhorn_stonethresher",
-          "a_ids": ["husk_of_opulent_dreams"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 6
         },
         {
@@ -1567,6 +1591,12 @@
           "min_c": 6
         },
         {
+          "id": "kaveh",
+          "w_id": "mailed_flower",
+          "a_ids": ["flower_of_paradise_lost"],
+          "min_c": 6
+        },
+        {
           "id": "mona",
           "w_id": "the_widsith",
           "a_ids": ["emblem_of_severed_fate"],
@@ -1577,19 +1607,25 @@
           "w_id": "memory_of_dust",
           "a_ids": ["gladiators_finale", "archaic_petra"],
           "min_c": 6
+        },
+        {
+          "id": "noelle",
+          "w_id": "redhorn_stonethresher",
+          "a_ids": ["husk_of_opulent_dreams"],
+          "min_c": 6
         }
       ],
       "4": [
         {
-          "id": "fischl",
-          "w_id": "thundering_pulse",
-          "a_ids": ["thundering_fury", "gladiators_finale"],
-          "min_c": 6
-        },
-        {
           "id": "razor",
           "w_id": "song_of_broken_pines",
           "a_ids": ["gladiators_finale"],
+          "min_c": 6
+        },
+        {
+          "id": "fischl",
+          "w_id": "thundering_pulse",
+          "a_ids": ["thundering_fury", "gladiators_finale"],
           "min_c": 6
         },
         {
@@ -1719,7 +1755,7 @@
         {
           "id": "nilou",
           "w_id": "key_of_khajnisut",
-          "a_ids": ["tenacity_of_the_millelith", "gilded_dreams"],
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 6
         },
         {
@@ -1768,7 +1804,7 @@
         },
         {
           "id": "sucrose",
-          "w_id": "the_widsith",
+          "w_id": "a_thousand_floating_dreams",
           "a_ids": ["viridescent_venerer"],
           "min_c": 6
         },
@@ -1781,7 +1817,7 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 6
         },
         {
@@ -1909,6 +1945,12 @@
       ],
       "1": [
         {
+          "id": "baizhu",
+          "w_id": "jadefalls_splendor",
+          "a_ids": ["deepwood_memories"],
+          "min_c": 6
+        },
+        {
           "id": "yelan",
           "w_id": "aqua_simulacra",
           "a_ids": ["heart_of_depth", "tenacity_of_the_millelith"],
@@ -1948,7 +1990,7 @@
         },
         {
           "id": "sucrose",
-          "w_id": "the_widsith",
+          "w_id": "a_thousand_floating_dreams",
           "a_ids": ["viridescent_venerer"],
           "min_c": 6
         },
@@ -2017,7 +2059,7 @@
         {
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["crimson_witch_of_flames"],
+          "a_ids": ["vourukashas_glow"],
           "min_c": 6
         },
         {
