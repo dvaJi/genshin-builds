@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "本海: スターレール Wiki データベース",
+    "description": "Honkai: Star Rail のすべてのプレイアブルキャラクターの完全なリスト。",
+    "footer": "HSRBuilds は、Honkai: Star Rail のデータベース、Tier リスト、ガイドです。",
+    "footer_advice": "本海: Star Rail は HoYverse または COGNOSPHERE PTE によって承認されていません。 ",
+    "privacy_policy": "プライバシーポリシー",
+    "contact": "コンタクト",
+    "characters": "キャラクター",
+    "relics": "遺物",
+    "lightcones": "ライトコーン",
+    "tierlist": "ティアリスト"
+  },
+  "characters": {
+    "title": "本懐：スターレール 全キャラクター一覧",
+    "description": "Honkai: Star Rail のすべてのプレイアブル キャラクターの完全なリスト。",
+    "characters": "キャラクター",
+    "characters_description": "キャラクターは本怪：スターレールで入手可能なユニットです。",
+    "type": "タイプ",
+    "element": "エレメント"
+  },
+  "character": {
+    "title": "Honkai: スターレール {name} ビルドガイド",
+    "description": "Honkai: Star Rail で {name} に最適なビルドとチームを見つけてください。",
+    "skills": "スキル",
+    "traces": "痕跡",
+    "eidolon": "エイドロン"
+  },
+  "lightcones": {
+    "title": "Honkai: スターレール ライトコーン リスト",
+    "description": "Honkai: Star Rail のすべてのライト コーンとそのステータスの完全なリスト。",
+    "lightcones": "ライトコーン",
+    "lightcones_desc": "ライトコーンはキャラクターが装備できるアイテムで、ベースHP、ベースATK、ベースDEFをブーストし、ライトコーンのパスと一致するキャラクターにパッシブアビリティを与えます。"
+  },
+  "relics": {
+    "title": "Honkai: スターレールレリックリスト",
+    "description": "Honkai: Star Rail のすべてのレリックとそのステータスの完全なリスト。",
+    "relics": "遺物",
+    "relics_desc": "レリックはキャラクターに装備できるアイテムです。",
+    "set": "設定"
+  }
+}

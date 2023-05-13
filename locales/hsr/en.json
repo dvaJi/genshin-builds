@@ -1,1 +1,42 @@
-{}
+{
+  "layout": {
+    "title": "Honkai: Star Rail Wiki Database",
+    "description": "A complete list of all playable characters in Honkai: Star Rail.",
+    "footer": "HSRBuilds is a Database, Tier List, and Guide for Honkai: Star Rail.",
+    "footer_advice": "Honkai: Star Rail is not endorsed by HoYoverse or COGNOSPHERE PTE. LTD., and does not reflect the views or opinions of anyone officially involved in producing or managing Honkai: Star Rail.",
+    "privacy_policy": "Privacy Policy",
+    "contact": "Contact",
+    "characters": "characters",
+    "relics": "Relics",
+    "lightcones": "Light Cones",
+    "tierlist": "Tierlist"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail All Characters List",
+    "description": "A complete list of all playable characters in Honkai: Star Rail..",
+    "characters": "Characters",
+    "characters_description": "Characters are obtainable units in Honkai: Star Rail.",
+    "type": "Type",
+    "element": "Element"
+  },
+  "character": {
+    "title": "Honkai: Star Rail {name} Build Guide",
+    "description": "Discover the best builds and teams for {name} in Honkai: Star Rail. Also included are their skills, upgrade costs, and more.",
+    "skills": "Skills",
+    "traces": "Traces",
+    "eidolon": "Eidolon"
+  },
+  "lightcones": {
+    "title": "Honkai: Star Rail Light Cones Lists",
+    "description": "A complete list of all Light Cones and their stats in Honkai: Star Rail.",
+    "lightcones": "Light Cones",
+    "lightcones_desc": "Light Cones are items equipable by characters to boost their Base HP, Base ATK, and Base DEF and grant a passive ability to characters whose path matches that of the Light Cone."
+  },
+  "relics": {
+    "title": "Honkai: Star Rail Relics List",
+    "description": "A complete list of all Relics and their stats in Honkai: Star Rail.",
+    "relics": "Relics",
+    "relics_desc": "Relics are items that can be equipped onto characters. Relics provide additional stats, including HP, Speed, Attack, and Defense to the equipped character. All Relics give extra boosts when paired with their counterparts, called a \"set\". Relics can be upgraded with EXP material to increase stats.",
+    "set": "Set"
+  }
+}

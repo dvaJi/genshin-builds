@@ -1,8 +1,11 @@
+import useIntl from "@hooks/use-intl";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
 
 const LayoutFooter = () => {
+  const { t } = useIntl("layout");
+
   const router = useRouter();
   return (
     <footer className="z-20 border-t border-gray-800 border-opacity-50 bg-hsr-surface1 px-20 py-14 text-gray-400">
@@ -11,10 +14,10 @@ const LayoutFooter = () => {
           <div className="flex flex-1 flex-col">
             <h4 className="mb-3 text-gray-200">HSR-Builds</h4>
             <Link href="/privacy-policy" className="my-2">
-              Privacy Policy
+              {t({ id: "privacy_policy", defaultMessage: "Privacy Policy" })}
             </Link>
             <Link href="/contact" className="my-2">
-              Contact
+              {t({ id: "contact", defaultMessage: "Contact" })}
             </Link>
           </div>
           <div className="flex flex-1 flex-col">
@@ -65,14 +68,18 @@ const LayoutFooter = () => {
           </div>
           <div className="flex-1">
             <p className="text-sm">
-              TOFBuilds is a Database, Tier List, and Guide for Tower of
-              Fantasy.
+              {t({
+                id: "footer",
+                defaultMessage:
+                  "HSRBuilds is a Database, Tier List, and Guide for Honkai: Star Rail.",
+              })}
             </p>
             <p className="mt-3 text-sm">
-              TOFBuilds is not endorsed by mHotta Studio or Perfect World, and
-              does not reflect the views or opinions of Hotta Studio or Perfect
-              World or anyone officially involved in producing or managing Tower
-              of Fantasy.
+              {t({
+                id: "footer_advice",
+                defaultMessage:
+                  "Honkai: Star Rail is not endorsed by HoYoverse or COGNOSPHERE PTE. LTD., and does not reflect the views or opinions of anyone officially involved in producing or managing Honkai: Star Rail.",
+              })}
             </p>
           </div>
         </div>

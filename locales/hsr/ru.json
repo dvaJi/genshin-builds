@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "Хонкай: База данных Star Rail Wiki",
+    "description": "Полный список всех игровых персонажей в Honkai: Star Rail.",
+    "footer": "HSRBuilds — это база данных, список уровней и руководство для Honkai: Star Rail.",
+    "footer_advice": "Хонкай: Star Rail не поддерживается HoYoverse или COGNOSPHERE PTE. ",
+    "privacy_policy": "политика конфиденциальности",
+    "contact": "Контакт",
+    "characters": "персонажи",
+    "relics": "Реликвии",
+    "lightcones": "Световые конусы",
+    "tierlist": "Список уровней"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail Список всех персонажей",
+    "description": "Полный список всех игровых персонажей в Honkai: Star Rail.",
+    "characters": "Персонажи",
+    "characters_description": "Персонажи — доступные юниты в игре Honkai: Star Rail.",
+    "type": "Тип",
+    "element": "Элемент"
+  },
+  "character": {
+    "title": "Хонкай: руководство по сборке Star Rail {name}",
+    "description": "Откройте для себя лучшие сборки и команды для {name} в Honkai: Star Rail. ",
+    "skills": "Навыки",
+    "traces": "Следы",
+    "eidolon": "Эйдолон"
+  },
+  "lightcones": {
+    "title": "Хонкай: списки световых конусов Star Rail",
+    "description": "Полный список всех световых конусов и их характеристик в игре Honkai: Star Rail.",
+    "lightcones": "Световые конусы",
+    "lightcones_desc": "Световые конусы — это предметы, которые персонажи экипируют для увеличения своих базовых HP, базовой атаки и базовой защиты, а также дают пассивную способность персонажам, чей путь совпадает с путем Светового конуса."
+  },
+  "relics": {
+    "title": "Хонкай: Список реликвий Star Rail",
+    "description": "Полный список всех реликвий и их характеристики в Honkai: Star Rail.",
+    "relics": "Реликвии",
+    "relics_desc": "Реликвии — это предметы, которыми можно экипировать персонажей. ",
+    "set": "Набор"
+  }
+}

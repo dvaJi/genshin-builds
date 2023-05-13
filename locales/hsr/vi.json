@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "Honkai: Cơ sở dữ liệu Wiki của Star Rail",
+    "description": "Danh sách đầy đủ tất cả các nhân vật có thể chơi được trong Honkai: Star Rail.",
+    "footer": "HSRBuilds là Cơ sở dữ liệu, Danh sách cấp độ và Hướng dẫn cho Honkai: Star Rail.",
+    "footer_advice": "Honkai: Star Rail không được HoYoverse hoặc COGNOSPHERE PTE xác nhận. ",
+    "privacy_policy": "Chính sách bảo mật",
+    "contact": "Liên hệ",
+    "characters": "nhân vật",
+    "relics": "xá lợi",
+    "lightcones": "Nón ánh sáng",
+    "tierlist": "danh sách cấp bậc"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail Danh sách tất cả nhân vật",
+    "description": "Danh sách đầy đủ tất cả các nhân vật có thể chơi được trong Honkai: Star Rail..",
+    "characters": "Nhân vật",
+    "characters_description": "Nhân vật là những đơn vị có thể đạt được trong Honkai: Star Rail.",
+    "type": "Kiểu",
+    "element": "Yếu tố"
+  },
+  "character": {
+    "title": "Honkai: Hướng dẫn xây dựng Star Rail {name}",
+    "description": "Khám phá cách xây dựng và đội tốt nhất cho {name} trong Honkai: Star Rail. ",
+    "skills": "Kỹ năng",
+    "traces": "dấu vết",
+    "eidolon": "Eidolon"
+  },
+  "lightcones": {
+    "title": "Honkai: Star Rail Light Nón Danh sách",
+    "description": "Danh sách đầy đủ tất cả các Nón ánh sáng và chỉ số của chúng trong Honkai: Star Rail.",
+    "lightcones": "Nón ánh sáng",
+    "lightcones_desc": "Nón Ánh sáng là vật phẩm mà các nhân vật có thể trang bị để tăng HP Cơ bản, ATK Cơ bản và Phòng thủ Cơ bản của họ, đồng thời cấp khả năng bị động cho những nhân vật có đường đi phù hợp với Đường đi của Nón Ánh sáng."
+  },
+  "relics": {
+    "title": "Honkai: Danh sách Di vật Đường sắt Ngôi sao",
+    "description": "Danh sách đầy đủ tất cả các Thánh tích và chỉ số của chúng trong Honkai: Star Rail.",
+    "relics": "xá lợi",
+    "relics_desc": "Di vật là vật phẩm có thể trang bị cho nhân vật. ",
+    "set": "Bộ"
+  }
+}

@@ -1,9 +1,6 @@
 .hsr-multiborder {
-  border-bottom-left-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
-  background-color: #f2f4f5;
-  height: 70%;
-  margin-top: 0.95rem;
+  height: 55%;
+  margin-top: 2.5rem;
   position: absolute;
   width: 0.2rem;
 }
@@ -16,7 +13,7 @@
 }
 .hsr-multiborder:after,
 .hsr-multiborder:before {
-  background-color: #f2f4f5;
+  background-color: rgb(161 161 170);
   border-bottom-right-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   content: "";
@@ -24,4 +21,28 @@
   height: 0.2rem;
   position: absolute;
   width: 1.6rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .hsr-multiborder {
+    margin-top: -2px;
+    height: 0.2rem;
+    margin-left: 15%;
+    position: relative;
+    width: 70%;
+  }
+
+  .hsr-multiborder:after,
+  .hsr-multiborder:before {
+    height: 1.5rem;
+    top: 0;
+    width: 0.2rem;
+  }
+
+  .hsr-multiborder:before {
+    left: 0;
+  }
+  .hsr-multiborder:after {
+    right: 0;
+  }
 }

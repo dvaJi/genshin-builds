@@ -1,13 +1,18 @@
+import clsx from "clsx";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
 import { useMemo, useState } from "react";
-import HSRData, { Character, type Languages } from "hsr-builds";
+import HSRData, { type Character } from "hsr-data";
 
-import { getHsrUrl, getHsrUrlLQ } from "@lib/imgUrl";
+import Metadata from "@components/Metadata";
+import CharacterBlock from "@components/hsr/CharacterBlock";
+
+import { getHsrUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import clsx from "clsx";
+import { localeToHSRLang } from "@utils/locale-to-lang";
+import useIntl from "@hooks/use-intl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
@@ -22,6 +27,7 @@ function HSRIndex({ characters }: Props) {
   const [pathTypeFilterSelected, setPathTypeFilterSelected] = useState<
     string[]
   >([]);
+  const { t } = useIntl("characters");
 
   const combatTypes = useMemo(() => {
     const types = characters.map((character) => character.combat_type);
@@ -58,15 +64,38 @@ function HSRIndex({ characters }: Props) {
 
   return (
     <div className="bg-hsr-surface1 p-4 shadow-2xl">
+      <Metadata
+        pageTitle={t({
+          id: "title",
+          defaultMessage: "Honkai: Star Rail All Characters List",
+        })}
+        pageDescription={t({
+          id: "description",
+          defaultMessage:
+            "A complete list of all playable characters in Honkai: Star Rail.",
+        })}
+      />
       <h2 className="text-3xl font-semibold uppercase text-slate-100">
-        Characters
+        {t({
+          id: "characters",
+          defaultMessage: "Characters",
+        })}
       </h2>
-      <p>Characters are obtainable units in Honkai: Star Rail.</p>
+      <p>
+        {t({
+          id: "characters_description",
+          defaultMessage:
+            "Characters are obtainable units in Honkai: Star Rail.",
+        })}
+      </p>
       <div className="mt-4">
-        <div className="mb-4 flex bg-hsr-surface2 p-4 pt-2">
+        <div className="mb-4 flex flex-col bg-hsr-surface2 p-4 pt-2 md:flex-row">
           <section>
             <small className="mb-1 w-full text-xs uppercase text-slate-300">
-              Type
+              {t({
+                id: "type",
+                defaultMessage: "Type",
+              })}
             </small>
             <div className="flex">
               {combatTypes.map((type) => (
@@ -115,7 +144,10 @@ function HSRIndex({ characters }: Props) {
           </section>
           <section>
             <small className="mb-1 w-full text-xs uppercase text-slate-300">
-              Element
+              {t({
+                id: "element",
+                defaultMessage: "Element",
+              })}
             </small>
             <div className="flex">
               {pathTypes.map((type) => (
@@ -166,103 +198,31 @@ function HSRIndex({ characters }: Props) {
       </div>
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="text-3xl font-semibold uppercase leading-loose">
-        <span className="text-yellow-400">SSR</span> Characters
+        <span className="text-yellow-400">SSR</span>{" "}
+        {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>
-      <menu className="grid grid-cols-5 gap-4">
+      <menu className="grid grid-cols-3 gap-4 md:grid-cols-5">
         {filteredCharacters
           .filter((c) => c.rarity === 5)
           .map((character) => (
             <li key={character.id}>
-              <Link
-                href={`/hsr/character/${character.id}`}
-                className="group flex flex-col items-center overflow-hidden bg-hsr-surface2 shadow-sm transition-all hover:bg-hsr-surface3"
-              >
-                <img
-                  src={getHsrUrl(
-                    `/characters/${character.id}/icon.png`,
-                    140,
-                    140
-                  )}
-                  alt={character.name}
-                  width={128}
-                  height={128}
-                  loading="lazy"
-                  className="aspect-auto rounded-full"
-                />
-                <span className="font-semibold group-hover:text-hsr-accent">
-                  {character.name}
-                </span>
-                <div className="mb-4 flex">
-                  <img
-                    src={getHsrUrl(`/${character.path.id}.webp`)}
-                    alt={character.path.name}
-                    width="60"
-                    height="54"
-                    style={{ width: 30 }}
-                    loading="lazy"
-                    className="w-[30px]"
-                  />
-                  <img
-                    src={getHsrUrl(`/${character.combat_type.id}.webp`)}
-                    alt={character.combat_type.name}
-                    width="60"
-                    height="54"
-                    style={{ width: 30 }}
-                    loading="lazy"
-                    className="w-[30px]"
-                  />
-                </div>
+              <Link href={`/hsr/character/${character.id}`}>
+                <CharacterBlock character={character} />
               </Link>
             </li>
           ))}
       </menu>
       <h2 className="text-3xl font-semibold uppercase leading-loose">
-        <span className="text-purple-400">SR</span> Characters
+        <span className="text-purple-400">SR</span>{" "}
+        {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>
-      <menu className="grid grid-cols-5 gap-4">
+      <menu className="grid grid-cols-3 gap-4 md:grid-cols-5">
         {filteredCharacters
           .filter((c) => c.rarity === 4)
           .map((character) => (
             <li key={character.id}>
-              <Link
-                href={`/hsr/character/${character.id}`}
-                className="group flex flex-col items-center overflow-hidden bg-hsr-surface2 shadow-sm transition-all hover:bg-hsr-surface3"
-              >
-                <img
-                  src={getHsrUrl(
-                    `/characters/${character.id}/icon.png`,
-                    140,
-                    140
-                  )}
-                  alt={character.name}
-                  width="128"
-                  height="128"
-                  loading="lazy"
-                  className="rounded-full"
-                />{" "}
-                <span className="font-semibold group-hover:text-hsr-accent">
-                  {character.name}
-                </span>{" "}
-                <div className="mb-4 flex">
-                  <img
-                    src={getHsrUrl(`/${character.path.id}.webp`)}
-                    alt={character.path.name}
-                    width="60"
-                    height="54"
-                    style={{ width: 30 }}
-                    loading="lazy"
-                    className="w-[30px]"
-                  />
-                  <img
-                    src={getHsrUrl(`/${character.combat_type.id}.webp`)}
-                    alt={character.combat_type.name}
-                    width="60"
-                    height="54"
-                    style={{ width: 30 }}
-                    loading="lazy"
-                    className="w-[30px]"
-                  />
-                </div>
+              <Link href={`/hsr/character/${character.id}`}>
+                <CharacterBlock character={character} />
               </Link>
             </li>
           ))}
@@ -272,11 +232,13 @@ function HSRIndex({ characters }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const lngDict = await getLocale(locale, "hsr");
+  const lngDict = await getLocale(localeToHSRLang(locale), "hsr");
   const hsrData = new HSRData({
-    language: locale as Languages,
+    language: localeToHSRLang(locale),
   });
-  const characters = await hsrData.characters();
+  const characters = await hsrData.characters({
+    select: ["id", "name", "rarity", "combat_type", "path"],
+  });
 
   return {
     props: {
