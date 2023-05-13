@@ -1,5 +1,5 @@
 import { google, ImageItem, photon, staticaly } from "@utils/cdn-providers";
-import { IMGS_CDN, TOF_IMGS_CDN } from "./constants";
+import { IMGS_CDN, TOF_IMGS_CDN, HSR_IMGS_CDN } from "./constants";
 
 export function getTofUrl(
   path: string,
@@ -39,6 +39,26 @@ export function getUrl(
   crop = false
 ) {
   return generateUrl(path, height, width, undefined, index, crop, IMGS_CDN);
+}
+
+export function getHsrUrl(
+  path: string,
+  height?: number,
+  width?: number,
+  index = 1,
+  crop = false
+) {
+  return generateUrl(path, height, width, undefined, index, crop, HSR_IMGS_CDN);
+}
+
+export function getHsrUrlLQ(
+  path: string,
+  height?: number,
+  width?: number,
+  index = 1,
+  crop = false
+) {
+  return generateUrl(path, height, width, 10, index, crop, HSR_IMGS_CDN);
 }
 
 function generateUrl(

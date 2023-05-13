@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "Honkai: ฐานข้อมูล Star Rail Wiki",
+    "description": "รายชื่อตัวละครที่สามารถเล่นได้ทั้งหมดใน Honkai: Star Rail",
+    "footer": "HSRBuilds เป็นฐานข้อมูล รายการระดับ และคำแนะนำสำหรับ Honkai: Star Rail",
+    "footer_advice": "Honkai: Star Rail ไม่ได้รับการรับรองโดย HoYoverse หรือ COGNOSPHERE PTE ",
+    "privacy_policy": "นโยบายความเป็นส่วนตัว",
+    "contact": "ติดต่อ",
+    "characters": "ตัวละคร",
+    "relics": "พระธาตุ",
+    "lightcones": "กรวยไฟ",
+    "tierlist": "รายการระดับ"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail รายชื่อตัวละครทั้งหมด",
+    "description": "รายชื่อตัวละครทั้งหมดที่สามารถเล่นได้ใน Honkai: Star Rail..",
+    "characters": "ตัวละคร",
+    "characters_description": "ตัวละครเป็นยูนิตที่สามารถรับได้ใน Honkai: Star Rail",
+    "type": "พิมพ์",
+    "element": "องค์ประกอบ"
+  },
+  "character": {
+    "title": "Honkai: คู่มือการสร้าง Star Rail {name}",
+    "description": "ค้นพบงานสร้างและทีมที่ดีที่สุดสำหรับ {name} ใน Honkai: Star Rail ",
+    "skills": "ทักษะ",
+    "traces": "ร่องรอย",
+    "eidolon": "ไอโดลอน"
+  },
+  "lightcones": {
+    "title": "Honkai: รายการ Star Rail Light Cones",
+    "description": "รายการทั้งหมดของ Light Cones และสถิติใน Honkai: Star Rail",
+    "lightcones": "กรวยไฟ",
+    "lightcones_desc": "Light Cones เป็นไอเท็มที่ตัวละครสวมใส่เพื่อเพิ่ม Base HP, Base ATK และ Base DEF และมอบความสามารถแบบพาสซีฟให้กับตัวละครที่มีเส้นทางตรงกับ Light Cone"
+  },
+  "relics": {
+    "title": "Honkai: รายการสมบัติของ Star Rail",
+    "description": "รายการทั้งหมดของ Relics และสถิติของพวกมันใน Honkai: Star Rail",
+    "relics": "พระธาตุ",
+    "relics_desc": "Relics คือไอเทมที่สามารถสวมใส่ให้กับตัวละครได้ ",
+    "set": "ชุด"
+  }
+}

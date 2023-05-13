@@ -7,8 +7,8 @@ export async function getLocale(lang: string, game: string) {
     const locale = await import(`../locales/${game}/${lang}.json`);
     return locale.default;
   } catch (err) {
-    console.error(err);
-    return {};
+    const locale = await import(`../locales/${game}/en.json`);
+    return locale.default;
   }
 }
 

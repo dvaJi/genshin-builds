@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "Honkai: banco de dados Star Rail Wiki",
+    "description": "Uma lista completa de todos os personagens jogáveis ​​em Honkai: Star Rail.",
+    "footer": "HSRBuilds é um banco de dados, lista de níveis e guia para Honkai: Star Rail.",
+    "footer_advice": "Honkai: Star Rail não é endossado por HoYoverse ou COGNOSPHERE PTE. ",
+    "privacy_policy": "política de Privacidade",
+    "contact": "Contato",
+    "characters": "personagens",
+    "relics": "relíquias",
+    "lightcones": "cones de luz",
+    "tierlist": "Lista de níveis"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail Lista de todos os personagens",
+    "description": "Uma lista completa de todos os personagens jogáveis ​​em Honkai: Star Rail..",
+    "characters": "Personagens",
+    "characters_description": "Os personagens são unidades obtidas em Honkai: Star Rail.",
+    "type": "Tipo",
+    "element": "Elemento"
+  },
+  "character": {
+    "title": "Honkai: Star Rail {name} Guia de construção",
+    "description": "Descubra as melhores construções e equipes para {name} em Honkai: Star Rail. ",
+    "skills": "Habilidades",
+    "traces": "Traços",
+    "eidolon": "Eidolon"
+  },
+  "lightcones": {
+    "title": "Honkai: listas de cones de luz Star Rail",
+    "description": "Uma lista completa de todos os Light Cones e suas estatísticas em Honkai: Star Rail.",
+    "lightcones": "cones de luz",
+    "lightcones_desc": "Light Cones são itens equipáveis ​​por personagens para aumentar sua Base HP, Base ATK e Base DEF e conceder uma habilidade passiva para personagens cujo caminho corresponde ao do Light Cone."
+  },
+  "relics": {
+    "title": "Honkai: Lista de Relíquias Star Rail",
+    "description": "Uma lista completa de todas as relíquias e suas estatísticas em Honkai: Star Rail.",
+    "relics": "relíquias",
+    "relics_desc": "Relíquias são itens que podem ser equipados nos personagens. ",
+    "set": "Definir"
+  }
+}

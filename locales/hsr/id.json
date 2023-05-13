@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "Honkai: Basis Data Wiki Star Rail",
+    "description": "Daftar lengkap semua karakter yang bisa dimainkan di Honkai: Star Rail.",
+    "footer": "HSRBuilds adalah Basis Data, Daftar Tingkatan, dan Panduan untuk Honkai: Star Rail.",
+    "footer_advice": "Honkai: Star Rail tidak didukung oleh HoYoverse atau COGNOSPHERE PTE. ",
+    "privacy_policy": "Kebijakan pribadi",
+    "contact": "Kontak",
+    "characters": "karakter",
+    "relics": "Peninggalan",
+    "lightcones": "Kerucut Cahaya",
+    "tierlist": "Daftar tingkatan"
+  },
+  "characters": {
+    "title": "Honkai: Daftar Semua Karakter Star Rail",
+    "description": "Daftar lengkap semua karakter yang bisa dimainkan di Honkai: Star Rail..",
+    "characters": "Karakter",
+    "characters_description": "Karakter adalah unit yang dapat diperoleh di Honkai: Star Rail.",
+    "type": "Jenis",
+    "element": "Elemen"
+  },
+  "character": {
+    "title": "Honkai: Panduan Pembuatan Star Rail {name}",
+    "description": "Temukan build dan tim terbaik untuk {name} di Honkai: Star Rail. ",
+    "skills": "Keterampilan",
+    "traces": "Jejak",
+    "eidolon": "Eidolon"
+  },
+  "lightcones": {
+    "title": "Honkai: Daftar Kerucut Cahaya Rel Bintang",
+    "description": "Daftar lengkap semua Kerucut Cahaya dan statistiknya di Honkai: Star Rail.",
+    "lightcones": "Kerucut Cahaya",
+    "lightcones_desc": "Kerucut Cahaya adalah item yang dapat digunakan oleh karakter untuk meningkatkan HP Dasar, ATK Dasar, dan DEF Dasar mereka dan memberikan kemampuan pasif kepada karakter yang jalurnya cocok dengan Kerucut Cahaya."
+  },
+  "relics": {
+    "title": "Honkai: Daftar Peninggalan Rel Bintang",
+    "description": "Daftar lengkap semua Relik dan statusnya di Honkai: Star Rail.",
+    "relics": "Peninggalan",
+    "relics_desc": "Relik adalah item yang dapat dipasang pada karakter. ",
+    "set": "Mengatur"
+  }
+}

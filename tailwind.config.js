@@ -15,6 +15,11 @@ module.exports = {
       },
       colors: {
         "accent-1": "#333",
+        "hsr-accent": "#439eac",
+        "hsr-bg": "#15141a",
+        "hsr-surface1": "#191820e6",
+        "hsr-surface2": "#22212ce6",
+        "hsr-surface3": "#292e38e6",
         tof: {
           50: "#f3f5f8",
           100: "#e1e8ec",

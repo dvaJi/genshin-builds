@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "Honkai: Star Rail Wiki-Datenbank",
+    "description": "Eine vollständige Liste aller spielbaren Charaktere in Honkai: Star Rail.",
+    "footer": "HSRBuilds ist eine Datenbank, eine Rangliste und ein Leitfaden für Honkai: Star Rail.",
+    "footer_advice": "Honkai: Star Rail wird nicht von HoYoverse oder COGNOSPHERE PTE unterstützt. ",
+    "privacy_policy": "Datenschutz-Bestimmungen",
+    "contact": "Kontakt",
+    "characters": "Figuren",
+    "relics": "Relikte",
+    "lightcones": "Lichtkegel",
+    "tierlist": "Tierliste"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail Liste aller Charaktere",
+    "description": "Eine vollständige Liste aller spielbaren Charaktere in Honkai: Star Rail.",
+    "characters": "Figuren",
+    "characters_description": "Charaktere sind erhältliche Einheiten in Honkai: Star Rail.",
+    "type": "Typ",
+    "element": "Element"
+  },
+  "character": {
+    "title": "Honkai: Star Rail {name} Bauanleitung",
+    "description": "Entdecken Sie die besten Builds und Teams für {name} in Honkai: Star Rail. ",
+    "skills": "Fähigkeiten",
+    "traces": "Spuren",
+    "eidolon": "Eidolon"
+  },
+  "lightcones": {
+    "title": "Honkai: Star Rail Light Cones-Listen",
+    "description": "Eine vollständige Liste aller Lichtkegel und ihrer Statistiken in Honkai: Star Rail.",
+    "lightcones": "Lichtkegel",
+    "lightcones_desc": "Lichtkegel sind Gegenstände, die Charaktere ausrüsten können, um ihre Basis-HP, Basis-ANG und Basis-DEF zu erhöhen und Charakteren, deren Weg mit dem des Lichtkegels übereinstimmt, eine passive Fähigkeit zu verleihen."
+  },
+  "relics": {
+    "title": "Honkai: Liste der Star Rail-Relikte",
+    "description": "Eine vollständige Liste aller Relikte und ihrer Statistiken in Honkai: Star Rail.",
+    "relics": "Relikte",
+    "relics_desc": "Relikte sind Gegenstände, mit denen Charaktere ausgerüstet werden können. ",
+    "set": "Satz"
+  }
+}

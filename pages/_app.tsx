@@ -7,6 +7,7 @@ import App from "@components/App";
 import * as gtag from "@lib/gtag";
 
 import "../styles/globals.css";
+import '../styles/hsr-globals.css';
 
 type AppProps<P = any> = { pageProps: P } & Omit<NextAppProps<P>, "pageProps">;
 

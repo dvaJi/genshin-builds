@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "혼카이: 스타 레일 위키 데이터베이스",
+    "description": "Honkai: Star Rail에서 플레이 가능한 모든 캐릭터의 전체 목록입니다.",
+    "footer": "HSRBuilds는 Honkai: Star Rail의 데이터베이스, 계층 목록 및 가이드입니다.",
+    "footer_advice": "Honkai: Star Rail은 HoYoverse 또는 COGNOSPHERE PTE에서 보증하지 않습니다. ",
+    "privacy_policy": "개인 정보 정책",
+    "contact": "연락하다",
+    "characters": "문자",
+    "relics": "유물",
+    "lightcones": "라이트 콘",
+    "tierlist": "티어리스트"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail 전체 캐릭터 목록",
+    "description": "Honkai: Star Rail에서 플레이 가능한 모든 캐릭터의 전체 목록..",
+    "characters": "캐릭터",
+    "characters_description": "캐릭터는 Honkai: Star Rail에서 얻을 수 있는 유닛입니다.",
+    "type": "유형",
+    "element": "요소"
+  },
+  "character": {
+    "title": "Honkai: Star Rail {name} 빌드 가이드",
+    "description": "Honkai: Star Rail에서 {name}을(를) 위한 최고의 빌드와 팀을 찾아보세요. ",
+    "skills": "기술",
+    "traces": "흔적",
+    "eidolon": "유령"
+  },
+  "lightcones": {
+    "title": "Honkai: 스타 레일 라이트 콘 목록",
+    "description": "Honkai: Star Rail의 모든 라이트 콘 및 해당 통계의 전체 목록입니다.",
+    "lightcones": "라이트 콘",
+    "lightcones_desc": "라이트 콘은 캐릭터가 장착할 수 있는 아이템으로 기본 HP, 기본 공격력 및 기본 DEF를 높이고 경로가 라이트 콘과 일치하는 캐릭터에게 패시브 능력을 부여합니다."
+  },
+  "relics": {
+    "title": "Honkai: 스타 레일 유물 목록",
+    "description": "Honkai: Star Rail의 모든 유물 및 통계에 대한 전체 목록입니다.",
+    "relics": "유물",
+    "relics_desc": "유물은 캐릭터에 장착할 수 있는 아이템입니다. ",
+    "set": "세트"
+  }
+}

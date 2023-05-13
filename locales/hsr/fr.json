@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "Honkai : base de données Star Rail Wiki",
+    "description": "Une liste complète de tous les personnages jouables dans Honkai: Star Rail.",
+    "footer": "HSRBuilds est une base de données, une liste de niveaux et un guide pour Honkai: Star Rail.",
+    "footer_advice": "Honkai : Star Rail n'est pas approuvé par HoYovere ou COGNOSPHERE PTE. ",
+    "privacy_policy": "politique de confidentialité",
+    "contact": "Contact",
+    "characters": "personnages",
+    "relics": "Reliques",
+    "lightcones": "Cônes de lumière",
+    "tierlist": "Liste de niveaux"
+  },
+  "characters": {
+    "title": "Honkai: Liste de tous les personnages de Star Rail",
+    "description": "Une liste complète de tous les personnages jouables dans Honkai: Star Rail..",
+    "characters": "Personnages",
+    "characters_description": "Les personnages sont des unités pouvant être obtenues dans Honkai: Star Rail.",
+    "type": "Taper",
+    "element": "Élément"
+  },
+  "character": {
+    "title": "Honkai : Guide de construction de Star Rail {name}",
+    "description": "Découvrez les meilleurs builds et équipes pour {name} dans Honkai : Star Rail. ",
+    "skills": "Compétences",
+    "traces": "Traces",
+    "eidolon": "Eidolon"
+  },
+  "lightcones": {
+    "title": "Honkai: Listes des cônes lumineux Star Rail",
+    "description": "Une liste complète de tous les cônes de lumière et de leurs statistiques dans Honkai : Star Rail.",
+    "lightcones": "Cônes de lumière",
+    "lightcones_desc": "Les cônes de lumière sont des objets pouvant être équipés par les personnages pour augmenter leurs HP de base, leur ATK de base et leur DEF de base et accorder une capacité passive aux personnages dont le chemin correspond à celui du cône de lumière."
+  },
+  "relics": {
+    "title": "Honkai: liste des reliques du Star Rail",
+    "description": "Une liste complète de toutes les reliques et de leurs statistiques dans Honkai: Star Rail.",
+    "relics": "Reliques",
+    "relics_desc": "Les reliques sont des objets qui peuvent être équipés sur des personnages. ",
+    "set": "Ensemble"
+  }
+}

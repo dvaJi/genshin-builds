@@ -1,0 +1,42 @@
+{
+  "layout": {
+    "title": "崩壞：星際鐵路維基數據庫",
+    "description": "《崩壞：星軌》中所有可玩角色的完整列表。",
+    "footer": "HSRBuilds 是 Honkai: Star Rail 的數據庫、等級列表和指南。",
+    "footer_advice": "Honkai：Star Rail 未獲得 HoYoverse 或 COGNOSPHERE PTE 的認可。 ",
+    "privacy_policy": "隱私政策",
+    "contact": "接觸",
+    "characters": "人物",
+    "relics": "文物",
+    "lightcones": "光錐",
+    "tierlist": "等級清單"
+  },
+  "characters": {
+    "title": "崩壞：星軌全角色一覽",
+    "description": "《崩壞：星軌》中所有可玩角色的完整列表..",
+    "characters": "人物",
+    "characters_description": "角色是《崩壞：星軌》中可獲得的單位。",
+    "type": "類型",
+    "element": "元素"
+  },
+  "character": {
+    "title": "崩壞：星際鐵路 {name} 建造指南",
+    "description": "在《崩壞：星際鐵路》中發現 {name} 的最佳構建和團隊。",
+    "skills": "技能",
+    "traces": "痕跡",
+    "eidolon": "夜靈"
+  },
+  "lightcones": {
+    "title": "崩壞：星軌光錐列表",
+    "description": "崩壞：星軌中所有光錐及其統計數據的完整列表。",
+    "lightcones": "光錐",
+    "lightcones_desc": "光錐是角色可以裝備的物品，可以提高他們的基礎生命值、基礎攻擊力和基礎防禦力，並賦予路徑與光錐匹配的角色被動能力。"
+  },
+  "relics": {
+    "title": "崩壞：星軌遺物一覽",
+    "description": "《崩壞：星軌》中所有遺跡及其統計數據的完整列表。",
+    "relics": "文物",
+    "relics_desc": "遺物是可以裝備到角色身上的物品。",
+    "set": "放"
+  }
+}

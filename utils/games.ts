@@ -4,7 +4,7 @@ export type GameProps = {
   path: string;
 };
 
-type GamesAvailable = "GENSHIN" | "TOF";
+type GamesAvailable = "GENSHIN" | "TOF" | "HSR";
 
 export const GAME: Record<GamesAvailable, GameProps> = {
   GENSHIN: {
@@ -16,6 +16,11 @@ export const GAME: Record<GamesAvailable, GameProps> = {
     name: "Tower of Fantasy",
     slug: "tof",
     path: "/tof",
+  },
+  HSR: {
+    name: "Honkai: Star Rail",
+    slug: "hsr",
+    path: "/hsr",
   },
 };
 
@@ -37,6 +42,10 @@ export function isTOF(route: string) {
 
 export function isGenshin(route: string) {
   return isGame(GAME.GENSHIN, route);
+}
+
+export function isHSR(route: string) {
+  return isGame(GAME.HSR, route);
 }
 
 export const tofLocales = ["en", "es", "de", "fr", "id", "ja", "pt", "th"];
