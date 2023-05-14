@@ -199,9 +199,10 @@ export async function decodeBuilds(
     let sandsSet: Artifact | null = null;
     let gobletSet: Artifact | null = null;
     let circletSet: Artifact | null = null;
-    artifactsDetail.default.forEach((value) => {
+
+    for (const value of artifactsDetail.default) {
       if (!value.ids) {
-        return;
+        continue;
       }
       if (
         build.flowerId &&
@@ -247,23 +248,24 @@ export async function decodeBuilds(
           (a) => a._id === Number("2" + value.set)
         ) as Artifact;
       }
-    });
+    }
 
     // remove duplicates and the ones that doesn't have 2 pieces or more
-    const sets = [
-      flowerSet!.id,
-      plumeSet!.id,
-      sandsSet!.id,
-      gobletSet!.id,
-      circletSet!.id,
-    ]
+    const sets = [flowerSet, plumeSet, sandsSet, gobletSet, circletSet]
       .filter((value, index, self) => {
+        // Remove nulls
+        if (!value) {
+          return false;
+        }
+
         return (
           self.indexOf(value) === index &&
           self.filter((v) => v === value).length >= 2
         );
       })
-      .map((id) => artifacts.find((a) => a.id === id) as Artifact);
+      .map(
+        (artifact) => artifacts.find((a) => a.id === artifact?.id) as Artifact
+      );
 
     const stats = decodeStr(build.fightProps);
     const flowerSubstats = decodeSubstatStr(build.flowerSubStats);
