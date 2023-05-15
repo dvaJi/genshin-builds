@@ -1,11 +1,24 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import { GAD_ID, PRADS_ID } from "@lib/constants";
-import { GA_TRACKING_ID, TOF_GA_TRACKING_ID } from "@lib/gtag";
+import {
+  GA_TRACKING_ID,
+  TOF_GA_TRACKING_ID,
+  HSR_GA_TRACKING_ID,
+} from "@lib/gtag";
 
 export default class MyDocument extends Document {
   render() {
+    let gaTrackingID = GA_TRACKING_ID;
     const isTOF = this.props.__NEXT_DATA__.page.startsWith("/tof");
+    const isHSR = this.props.__NEXT_DATA__.page.startsWith("/hsr");
+
+    if (isTOF) {
+      gaTrackingID = TOF_GA_TRACKING_ID;
+    } else if (isHSR) {
+      gaTrackingID = HSR_GA_TRACKING_ID;
+    }
+
     return (
       <Html>
         <Head>
@@ -16,7 +29,7 @@ export default class MyDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${isTOF ? TOF_GA_TRACKING_ID : GA_TRACKING_ID}', {
+            gtag('config', '${gaTrackingID}', {
               page_path: window.location.pathname,
             });
           `,
