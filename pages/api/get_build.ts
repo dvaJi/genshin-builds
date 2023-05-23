@@ -1,6 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import GenshinData from "genshin-data";
 import prisma from "@db/index";
+import GenshinData from "genshin-data";
+import { NextApiRequest, NextApiResponse } from "next";
+
 import { decodeBuilds, regionParse } from "@utils/leaderboard-enc";
 
 export default async function handler(
@@ -15,7 +16,7 @@ export default async function handler(
 
   console.log("get uid", uid);
   // const response = await getBuild(lang, uid as string);
-  // return res.status(response.code).json(response.data);
+  return res.status(200).json({ uid, lang });
 }
 
 export async function getBuild(lang: any, uid: string) {

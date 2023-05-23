@@ -110,6 +110,7 @@ export function encodeBuilds(data: CharactersAPI[]) {
       ascension: Number(encodedData.ascension),
       fetterLevel: Number(encodedData.fetterlevel),
       constellation: encodedData.constellations,
+      skillDepotId: avatar.skillDepotId,
       fightProps: encodedData.fightprops,
       skillLevel: encodedData.skilllevel,
       critValue: Object.values(equip).reduce(
@@ -187,9 +188,19 @@ export async function decodeBuilds(
       : {};
 
   return data.map((build) => {
-    const character = characters.find((c) => c._id === build.avatarId);
+    let character = characters.find((c) => c._id === build.avatarId);
+
+    // Handle traveler characters
+    const travelerIds = [10000007, 10000005];
+
+    if (travelerIds.includes(build.avatarId)) {
+      character = characters.find(
+        (c) => c.id === "traveler_" + getTravelerElement(build.skillDepotId)
+      );
+    }
 
     if (!character) {
+      console.log("Character not found", build);
       return null;
     }
 
@@ -284,7 +295,7 @@ export async function decodeBuilds(
             mainStat: decodeStr(build.flowerMainStat),
             subStats: flowerSubstats,
             subStatsIds: build.flowerSubstatsId,
-            critValue: Number(build.flowerCritValue),
+            critValue: Number(build.flowerCritValue) ?? 0,
           },
         }
       : {};
@@ -298,7 +309,7 @@ export async function decodeBuilds(
             mainStat: decodeStr(build.plumeMainStat),
             subStats: plumeSubstats,
             subStatsIds: build.plumeSubstatsId,
-            critValue: Number(build.plumeCritValue),
+            critValue: Number(build.plumeCritValue) ?? 0,
           },
         }
       : {};
@@ -312,7 +323,7 @@ export async function decodeBuilds(
             mainStat: decodeStr(build.sandsMainStat),
             subStats: sandsSubstats,
             subStatsIds: build.sandsSubstatsId,
-            critValue: Number(build.sandsCritValue),
+            critValue: Number(build.sandsCritValue) ?? 0,
           },
         }
       : {};
@@ -326,7 +337,7 @@ export async function decodeBuilds(
             mainStat: decodeStr(build.gobletMainStat),
             subStats: gobletSubstats,
             subStatsIds: build.gobletSubstatsId,
-            critValue: Number(build.gobletCritValue),
+            critValue: Number(build.gobletCritValue) ?? 0,
           },
         }
       : {};
@@ -340,7 +351,7 @@ export async function decodeBuilds(
             mainStat: decodeStr(build.circletMainStat),
             subStats: circletSubstats,
             subStatsIds: build.circletSubstatsId,
-            critValue: Number(build.circletCritValue),
+            critValue: Number(build.circletCritValue) ?? 0,
           },
         }
       : {};
@@ -365,7 +376,7 @@ export async function decodeBuilds(
       constellation: build.constellation,
       fetterLevel: build.fetterLevel,
       stats,
-      critValue: Number(build.critValue),
+      critValue: Number(build.critValue) ?? 0,
       ...flower,
       ...plume,
       ...sands,
@@ -387,6 +398,11 @@ export async function decodeBuilds(
   });
 }
 
+/**
+ * Parses a UUID and returns the corresponding region code.
+ * @param uuid The UUID to parse.
+ * @returns The region code as a string.
+ */
 export function regionParse(uuid: string) {
   const suffix = uuid[0];
   switch (suffix) {
@@ -408,4 +424,46 @@ export function regionParse(uuid: string) {
     default:
       return "Unknown";
   }
+}
+
+/**
+ * Returns the corresponding element for a given skill depot ID.
+ * @param skillDepotId The ID of the skill depot.
+ * @returns The corresponding element as a string.
+ */
+function getTravelerElement(skillDepotId: number) {
+  const pyro = [502, 702];
+  const hydro = [503, 703];
+  const anemo = [504, 704];
+  const cryo = [505, 705];
+  const geo = [506, 706];
+  const electro = [507, 707];
+  const dendro = [508, 708];
+
+  if (pyro.includes(skillDepotId)) {
+    return "pyro";
+  }
+  if (hydro.includes(skillDepotId)) {
+    return "hydro";
+  }
+  if (cryo.includes(skillDepotId)) {
+    return "cryo";
+  }
+  if (pyro.includes(skillDepotId)) {
+    return "pyro";
+  }
+  if (anemo.includes(skillDepotId)) {
+    return "anemo";
+  }
+  if (geo.includes(skillDepotId)) {
+    return "geo";
+  }
+  if (electro.includes(skillDepotId)) {
+    return "electro";
+  }
+  if (dendro.includes(skillDepotId)) {
+    return "dendro";
+  }
+
+  return "anemo";
 }

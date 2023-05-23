@@ -1,13 +1,14 @@
-import useSWR from "swr";
-import Link from "next/link";
-import dynamic from "next/dynamic";
 import { type PaginationState } from "@tanstack/react-table";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
+import useSWR from "swr";
 
 import useIntl from "@hooks/use-intl";
-import { Build, Profile } from "interfaces/profile";
-import { GetStaticProps } from "next";
 import { getLocale } from "@lib/localData";
+import { Build, Profile } from "interfaces/profile";
 
 const LeaderBoardBuildsTable = dynamic(
   () => import("@components/genshin/LeaderBoardBuildsTable"),
@@ -41,8 +42,16 @@ function LeaderBoardPage() {
     return await res.json();
   }
 
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  if (error) return <div>Failed to load, please try again later.</div>;
+  if (!data)
+    return (
+      <div className="my-8 flex items-center justify-center text-2xl text-gray-400">
+        <FaSpinner className="mr-2 animate-spin" />
+        <span>Loading...</span>
+      </div>
+    );
+
+  // CSS (using Tailwind);
   return (
     <div>
       <div className="py-4 text-center">
@@ -50,12 +59,11 @@ function LeaderBoardPage() {
           href="/profile"
           className="text-lg font-semibold hover:text-white"
         >
-          Submit your UUID here!
+          Submit your UID here!
         </Link>
       </div>
       <div className="text-center text-sm">
-        This section is still in development. If you have any suggestions or
-        feedback, please fill out the form!
+        This section is still in development.
       </div>
       <LeaderBoardBuildsTable
         data={data}

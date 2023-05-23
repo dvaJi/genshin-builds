@@ -33,6 +33,7 @@ model Build {
     ascension     Int
     fetterLevel   Int
     constellation Int
+    skillDepotId  Int
     fightProps    String  @db.Text
     skillLevel    String  @db.Text
     critValue     Decimal

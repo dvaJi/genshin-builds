@@ -12,7 +12,7 @@ import {
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import { ArtifactType, Build } from "interfaces/profile";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, memo, useMemo, useState } from "react";
 import StatIcon from "./StatIcon";
 
 export interface Props {
@@ -182,7 +182,7 @@ function ProfileBuildsTable({ data }: Props) {
               {(info.row.original.stats["CRIT Rate"] * 100).toFixed(1)} :{" "}
               {(info.row.original.stats["CRIT DMG"] * 100).toFixed(1)}
               <span className={clsx("ml-2", cvQuality(cv))}>
-                {cv.toFixed(0)}
+                {cv?.toFixed(0)}
               </span>
             </div>
           );
@@ -488,4 +488,4 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
   );
 };
 
-export default ProfileBuildsTable;
+export default memo(ProfileBuildsTable);

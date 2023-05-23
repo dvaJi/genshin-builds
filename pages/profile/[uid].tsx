@@ -1,19 +1,19 @@
-import dynamic from "next/dynamic";
+import clsx from "clsx";
 import { GetServerSideProps } from "next";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { MdSync } from "react-icons/md";
 
-import { getBuild } from "@pages/api/get_build";
-import BuildsTable from "@components/genshin/ProfileBuildsTable";
 import ArtifactsTable from "@components/genshin/ProfileArtifactsTable";
+import BuildsTable from "@components/genshin/ProfileBuildsTable";
+import { getBuild } from "@pages/api/get_build";
 
+import useIntl from "@hooks/use-intl";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Profile } from "interfaces/profile";
-import { MdSync } from "react-icons/md";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import clsx from "clsx";
-import useIntl from "@hooks/use-intl";
 
 const ProfileFavorites = dynamic(
   () => import("@components/genshin/ProfileFavorites"),
@@ -89,19 +89,19 @@ function Profile({ profile }: Props) {
           </div>
           <div className="m-4 flex flex-wrap items-baseline justify-end">
             <div
-              className="mx-1 rounded-lg bg-gray-600 py-1 px-2 text-xs font-semibold text-slate-50 md:text-base"
+              className="mx-1 rounded-lg bg-gray-600 px-2 py-1 text-xs font-semibold text-slate-50 md:text-base"
               title="Region"
             >
               {profile.region}
             </div>
             <div
-              className="mx-1 rounded-lg bg-yellow-700 py-1 px-2 text-xs font-semibold text-slate-50 md:text-base"
+              className="mx-1 rounded-lg bg-yellow-700 px-2 py-1 text-xs font-semibold text-slate-50 md:text-base"
               title="Level"
             >
               AR{profile.level}
             </div>
             <div
-              className="mx-1 cursor-pointer rounded-lg bg-gray-700/40 py-1 px-2 text-xs font-semibold text-slate-50 hover:bg-gray-700/90 md:text-base"
+              className="mx-1 cursor-pointer rounded-lg bg-gray-700/40 px-2 py-1 text-xs font-semibold text-slate-50 hover:bg-gray-700/90 md:text-base"
               title="Sync Data"
               onClick={onSync}
             >
