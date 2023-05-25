@@ -209,7 +209,7 @@ const CharacterPage = ({
       <Card className="mb-4 flex flex-wrap">
         {recommendedTeams.map((team, index) => (
           <div
-            key={team.name}
+            key={team.name + index}
             className="mb-4 flex items-center border-b border-vulcan-600 pb-4"
           >
             <div className="lg:mx-2">#{index + 1}</div>
@@ -431,7 +431,7 @@ export const getStaticProps: GetStaticProps = async ({
 
     if (artifactsIds.includes("18atk_set")) {
       artifacts["18atk_set"] = {
-        ...artifactsList.find((a) => a.id === "gladiators_finale")!,
+        ...artifactsList.find((a) => a.id === ATK18BONUS[0])!,
         name: lngDict?.character["18atk_set"]
           ? lngDict.character["18atk_set"]
           : "ATK +18% set",
@@ -443,7 +443,7 @@ export const getStaticProps: GetStaticProps = async ({
 
     if (artifactsIds.includes("20energyrecharge_set")) {
       artifacts["20energyrecharge_set"] = {
-        ...artifactsList.find((a) => a.id === "emblem_of_severed_fate")!,
+        ...artifactsList.find((a) => a.id === Energy20BONUS[0])!,
         name: lngDict?.character["20energyrecharge_set"]
           ? lngDict.character["20energyrecharge_set"]
           : "Energy Recharge +20% set",
@@ -455,7 +455,7 @@ export const getStaticProps: GetStaticProps = async ({
 
     if (artifactsIds.includes("15anemodmg_set")) {
       artifacts["15anemodmg_set"] = {
-        ...artifactsList.find((a) => a.id === "viridescent_venerer")!,
+        ...artifactsList.find((a) => a.id === Anemo15BONUS[0])!,
         name: lngDict?.character["15anemodmg_set"]
           ? lngDict.character["15anemodmg_set"]
           : "Anemo DMG Bonus +15% set",
@@ -467,7 +467,7 @@ export const getStaticProps: GetStaticProps = async ({
 
     if (artifactsIds.includes("25physicaldmg_set")) {
       artifacts["25physicaldmg_set"] = {
-        ...artifactsList.find((a) => a.id === "gladiators_finale")!,
+        ...artifactsList.find((a) => a.id === Physical25BONUS[0])!,
         name: lngDict?.character["25physicaldmg_set"]
           ? lngDict.character["25physicaldmg_set"]
           : "Physical DMG +25% set",
@@ -475,11 +475,11 @@ export const getStaticProps: GetStaticProps = async ({
       };
     }
 
-    const EM80BONUS = ["gilded_dreams", "instructor", "wanderers_troupe"];
+    const EM80BONUS = ["wanderers_troupe", "gilded_dreams", "instructor"];
 
     if (artifactsIds.includes("80elementalmastery_set")) {
       artifacts["80elementalmastery_set"] = {
-        ...artifactsList.find((a) => a.id === "wanderers_troupe")!,
+        ...artifactsList.find((a) => a.id === EM80BONUS[0])!,
         name: lngDict?.character["80elementalmastery_set"]
           ? lngDict.character["80elementalmastery_set"]
           : "Elemental Mastery +80 set",
@@ -491,11 +491,35 @@ export const getStaticProps: GetStaticProps = async ({
 
     if (artifactsIds.includes("15healingbonus_set")) {
       artifacts["15healingbonus_set"] = {
-        ...artifactsList.find((a) => a.id === "maiden_beloved")!,
+        ...artifactsList.find((a) => a.id === HEAL15BONUS[0])!,
         name: common["Healing Bonus"]
-          ? `${common["Healing Bonus"]} +15%`
+          ? `${common["Healing Bonus"]} +15% set`
           : "Healing Bonus +15% set",
         children: artifactsList.filter((a) => HEAL15BONUS.includes(a.id)),
+      };
+    }
+
+    const HP20BONUS = ["tenacity_of_the_millelith", "vourukashas_glow"];
+
+    if (artifactsIds.includes("20hp_set")) {
+      artifacts["20hp_set"] = {
+        ...artifactsList.find((a) => a.id === HP20BONUS[0])!,
+        name: common["HP"]
+          ? `${common["HP"]} +20% set`
+          : "HP +20% set",
+        children: artifactsList.filter((a) => HP20BONUS.includes(a.id)),
+      };
+    }
+
+    const HYDRO15BONUS = ["heart_of_depth", "nymphs_dream"];
+
+    if (artifactsIds.includes("15hydrodmg_set")) {
+      artifacts["15hydrodmg_set"] = {
+        ...artifactsList.find((a) => a.id === HYDRO15BONUS[0])!,
+        name: common["Hydro DMG"]
+          ? `${common["Hydro DMG"]} +15% set`
+          : "Hydro DMG +15% set",
+        children: artifactsList.filter((a) => HYDRO15BONUS.includes(a.id)),
       };
     }
 

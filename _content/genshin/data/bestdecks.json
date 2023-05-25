@@ -228,6 +228,70 @@
     ]
   },
   {
+    "c": ["arataki_itto", "mona", "stonehide_lawachurl"],
+    "a": [
+      "lucky_dogs_silver_circlet|1",
+      "gamblers_earrings|2",
+      "strategize|1",
+      "calxs_arts|2",
+      "starsigns|1",
+      "paimon|2",
+      "liben|2",
+      "chang_the_ninth|2",
+      "liu_su|2",
+      "elemental_resonance_woven_stone|2",
+      "elemental_resonance_enduring_rock|2",
+      "minty_meat_rolls|2",
+      "adeptus_temptation|2",
+      "parametric_transformer|2",
+      "favonius_cathedral|2",
+      "arataki_ichiban|1",
+      "wolfs_gravestone|2"
+    ]
+  },
+  {
+    "c": ["tighnari", "keqing", "fischl"],
+    "a": [
+      "gamblers_earrings|2",
+      "strategize|1",
+      "changing_shifts|2",
+      "calxs_arts|2",
+      "starsigns|2",
+      "leave_it_to_me|2",
+      "i_havent_lost_yet|2",
+      "tossup|2",
+      "paimon|2",
+      "katheryne|2",
+      "liben|2",
+      "chang_the_ninth|2",
+      "liu_su|1",
+      "elemental_resonance_woven_thunder|2",
+      "elemental_resonance_high_voltage|2",
+      "mondstadt_hash_brown|2"
+    ]
+  },
+  {
+    "c": ["kamisato_ayato", "bennett", "fatui_pyro_agent"],
+    "a": [
+      "gamblers_earrings|2",
+      "strategize|2",
+      "changing_shifts|2",
+      "the_bestest_travel_companion|2",
+      "calxs_arts|1",
+      "leave_it_to_me|1",
+      "i_havent_lost_yet|2",
+      "tossup|2",
+      "paimon|2",
+      "katheryne|2",
+      "liben|2",
+      "chang_the_ninth|2",
+      "liu_su|2",
+      "elemental_resonance_woven_flames|2",
+      "elemental_resonance_fervent_flames|2",
+      "adeptus_temptation|2"
+    ]
+  },
+  {
     "c": ["diluc", "kaeya", "sucrose"],
     "a": [
       "laurel_coronet|1",

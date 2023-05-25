@@ -9,6 +9,12 @@
           "min_c": 0
         },
         {
+          "id": "hu_tao",
+          "w_id": "staff_of_homa",
+          "a_ids": ["crimson_witch_of_flames"],
+          "min_c": 1
+        },
+        {
           "id": "raiden_shogun",
           "w_id": "engulfing_lightning",
           "a_ids": ["emblem_of_severed_fate"],
@@ -18,12 +24,6 @@
           "id": "alhaitham",
           "w_id": "light_of_foliar_incision",
           "a_ids": ["gilded_dreams"],
-          "min_c": 1
-        },
-        {
-          "id": "hu_tao",
-          "w_id": "staff_of_homa",
-          "a_ids": ["crimson_witch_of_flames"],
           "min_c": 1
         }
       ],
@@ -520,8 +520,8 @@
       "1": [
         {
           "id": "baizhu",
-          "w_id": "jadefalls_splendor",
-          "a_ids": ["deepwood_memories"],
+          "w_id": "lost_prayer_to_the_sacred_winds",
+          "a_ids": ["gilded_dreams"],
           "min_c": 0
         },
         {
@@ -907,6 +907,12 @@
           "min_c": 0
         },
         {
+          "id": "baizhu",
+          "w_id": "lost_prayer_to_the_sacred_winds",
+          "a_ids": ["gilded_dreams"],
+          "min_c": 0
+        },
+        {
           "id": "ningguang",
           "w_id": "memory_of_dust",
           "a_ids": ["gladiators_finale", "archaic_petra"],
@@ -1230,8 +1236,8 @@
       "1": [
         {
           "id": "baizhu",
-          "w_id": "jadefalls_splendor",
-          "a_ids": ["deepwood_memories"],
+          "w_id": "lost_prayer_to_the_sacred_winds",
+          "a_ids": ["gilded_dreams"],
           "min_c": 0
         },
         {
@@ -1629,6 +1635,12 @@
           "min_c": 6
         },
         {
+          "id": "baizhu",
+          "w_id": "lost_prayer_to_the_sacred_winds",
+          "a_ids": ["gilded_dreams"],
+          "min_c": 6
+        },
+        {
           "id": "candace",
           "w_id": "staff_of_homa",
           "a_ids": ["heart_of_depth"],
@@ -1919,12 +1931,6 @@
           "min_c": 6
         },
         {
-          "id": "venti",
-          "w_id": "elegy_for_the_end",
-          "a_ids": ["viridescent_venerer"],
-          "min_c": 6
-        },
-        {
           "id": "bennett",
           "w_id": "skyward_blade",
           "a_ids": ["noblesse_oblige"],
@@ -1937,6 +1943,12 @@
           "min_c": 6
         },
         {
+          "id": "baizhu",
+          "w_id": "lost_prayer_to_the_sacred_winds",
+          "a_ids": ["gilded_dreams"],
+          "min_c": 6
+        },
+        {
           "id": "sangonomiya_kokomi",
           "w_id": "everlasting_moonglow",
           "a_ids": ["oceanhued_clam"],
@@ -1945,9 +1957,9 @@
       ],
       "1": [
         {
-          "id": "baizhu",
-          "w_id": "jadefalls_splendor",
-          "a_ids": ["deepwood_memories"],
+          "id": "venti",
+          "w_id": "elegy_for_the_end",
+          "a_ids": ["viridescent_venerer"],
           "min_c": 6
         },
         {
