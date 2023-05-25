@@ -331,7 +331,7 @@
     "description": "Dapatkan profil Genshin Impact terbaik untuk mengoptimalkan gameplay Anda. ",
     "submit": "Kirim",
     "remove_from_favorites": "Hapus dari Favorit",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "Nama",
     "mainstat": "Status Utama",
     "stat1": "Status 1",
@@ -344,6 +344,10 @@
     "show": "Tampilkan {pageSize}",
     "constellation": "Konstelasi",
     "weapon": "Senjata",
-    "artifact": "Artefak"
+    "artifact": "Artefak",
+    "owner": "Pemilik"
+  },
+  "leaderboard": {
+
   }
 }

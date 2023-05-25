@@ -12,12 +12,182 @@ import {
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import { ArtifactType, Build } from "interfaces/profile";
-import { Fragment, memo, useMemo, useState } from "react";
+import { Fragment, memo, useState } from "react";
 import StatIcon from "./StatIcon";
 
 export interface Props {
   data: Build[];
 }
+
+const cvQuality = (cv: number) => {
+  if (cv < 180) {
+    return "text-slate-400";
+  } else if (cv >= 180 && cv < 200) {
+    return "text-blue-400";
+  } else if (cv >= 200 && cv < 220) {
+    return "text-purple-400";
+  } else if (cv >= 220 && cv < 240) {
+    return "text-yellow-500";
+  } else if (cv >= 240 && cv < 250) {
+    return "text-yellow-400";
+  } else if (cv >= 250 && cv < 300) {
+    return "text-cyan-400";
+  } else if (cv >= 300) {
+    return "text-red-500";
+  }
+};
+
+const columns: ColumnDef<Build>[] = [
+  {
+    header: "name",
+    accessorKey: "name",
+    cell: (info) => {
+      return (
+        <div className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+          <img
+            key={info.row.original.avatarId}
+            src={getUrlLQ(`/profile/${info.row.original.avatarId}.png`, 25, 25)}
+            alt="Avatar"
+          />
+          {info.getValue<string>()}
+        </div>
+      );
+    },
+  },
+  {
+    header: "constellation",
+    accessorKey: "constellation",
+    cell: (info) => {
+      const value = info.getValue();
+      let customClass = "w-[14%] bg-gray-600";
+      switch (value) {
+        case 1:
+          customClass = "w-[25%] bg-cyan-600";
+          break;
+        case 2:
+          customClass = "w-[40%] bg-cyan-600";
+          break;
+        case 3:
+          customClass = "w-[55%] bg-cyan-600";
+          break;
+        case 4:
+          customClass = "w-[70%] bg-cyan-600";
+          break;
+        case 5:
+          customClass = "w-[80%] bg-cyan-600";
+          break;
+        case 6:
+          customClass = "w-[90%] bg-yellow-600";
+          break;
+      }
+
+      return (
+        <div
+          className={clsx(
+            "min-w-[25px] rounded px-1 py-1 text-left text-xs text-white",
+            customClass
+          )}
+        >{`C${value}`}</div>
+      );
+    },
+  },
+  {
+    header: "weapon",
+    cell: (info) => {
+      return (
+        <div
+          className="relative w-7"
+          title={`${info.row.original.weapon.name} R${info.row.original.weapon.refinement}`}
+        >
+          <img
+            src={getUrlLQ(
+              `/weapons/${info.row.original.weapon.id}.png`,
+              25,
+              25
+            )}
+            width={25}
+            height={25}
+            alt={info.row.original.weapon.name}
+          />
+          <span className="absolute bottom-0 right-0 z-10 text-xxs shadow-black text-shadow">
+            R{info.row.original.weapon.refinement}
+          </span>
+        </div>
+      );
+    },
+  },
+  {
+    header: "artifact",
+    cell: (info) => {
+      if (info.row.original.sets.length === 0) {
+        return null;
+      }
+      const pieces = info.row.original.sets.length === 1 ? 4 : 2;
+
+      return (
+        <div className="flex">
+          {info.row.original.sets.map((set) => (
+            <div
+              key={set.id}
+              className="relative w-7"
+              title={`${set.name} ${pieces}PC`}
+            >
+              <img
+                src={getUrlLQ(`/artifacts/${set.id}.png`, 25, 25)}
+                width={25}
+                height={25}
+                alt={set.name}
+              />
+              <span className="absolute bottom-0 right-0 z-10 text-xxs text-green-200 shadow-black text-shadow">
+                {pieces}
+              </span>
+            </div>
+          ))}
+        </div>
+      );
+    },
+  },
+  {
+    header: "critvalue",
+    accessorKey: "critValue",
+    cell: (info) => {
+      const cv = info.getValue<number>();
+      return (
+        <div className="text-xs">
+          {(info.row.original.stats["CRIT Rate"] * 100).toFixed(1)} :{" "}
+          {(info.row.original.stats["CRIT DMG"] * 100).toFixed(1)}
+          <span className={clsx("ml-2", cvQuality(cv))}>{cv?.toFixed(0)}</span>
+        </div>
+      );
+    },
+  },
+  {
+    header: "Max HP",
+    accessorKey: "stats.Max HP",
+    cell: (info) => info.row.original.stats["Max HP"].toFixed(0),
+  },
+  {
+    header: "ATK",
+    accessorKey: "stats.ATK",
+    cell: (info) => info.row.original.stats["ATK"].toFixed(0),
+  },
+  {
+    header: "DEF",
+    accessorKey: "stats.DEF",
+    cell: (info) => info.row.original.stats["DEF"].toFixed(0),
+  },
+  {
+    header: "EM",
+    accessorKey: "stats.Elemental Mastery",
+    cell: (info) => info.row.original.stats["Elemental Mastery"].toFixed(0),
+  },
+  {
+    header: "ER%",
+    accessorKey: "stats.Energy Recharge",
+    cell: (info) =>
+      (info.row.original.stats["Energy Recharge"] * 100).toFixed(1) + "%",
+  },
+];
 
 function ProfileBuildsTable({ data }: Props) {
   const [sorting, setSorting] = useState<SortingState>([
@@ -27,196 +197,6 @@ function ProfileBuildsTable({ data }: Props) {
     },
   ]);
   const { t } = useIntl("profile");
-
-  const cvQuality = (cv: number) => {
-    if (cv < 180) {
-      return "text-slate-400";
-    } else if (cv >= 180 && cv < 200) {
-      return "text-blue-400";
-    } else if (cv >= 200 && cv < 220) {
-      return "text-purple-400";
-    } else if (cv >= 220 && cv < 240) {
-      return "text-yellow-500";
-    } else if (cv >= 240 && cv < 250) {
-      return "text-yellow-400";
-    } else if (cv >= 250 && cv < 300) {
-      return "text-cyan-400";
-    } else if (cv >= 300) {
-      return "text-red-500";
-    }
-  };
-
-  const columns = useMemo<ColumnDef<Build>[]>(
-    () => [
-      {
-        header: t({
-          id: "name",
-          defaultMessage: "Name",
-        }),
-        accessorKey: "name",
-        cell: (info) => {
-          return (
-            <div className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-              <img
-                key={info.row.original.avatarId}
-                src={getUrlLQ(
-                  `/profile/${info.row.original.avatarId}.png`,
-                  25,
-                  25
-                )}
-                alt="Avatar"
-              />
-              {info.getValue<string>()}
-            </div>
-          );
-        },
-      },
-      {
-        header: t({
-          id: "constellation",
-          defaultMessage: "Constellation",
-        }),
-        accessorKey: "constellation",
-        cell: (info) => {
-          const value = info.getValue();
-          let customClass = "w-[14%] bg-gray-600";
-          switch (value) {
-            case 1:
-              customClass = "w-[25%] bg-cyan-600";
-              break;
-            case 2:
-              customClass = "w-[40%] bg-cyan-600";
-              break;
-            case 3:
-              customClass = "w-[55%] bg-cyan-600";
-              break;
-            case 4:
-              customClass = "w-[70%] bg-cyan-600";
-              break;
-            case 5:
-              customClass = "w-[80%] bg-cyan-600";
-              break;
-            case 6:
-              customClass = "w-[90%] bg-yellow-600";
-              break;
-          }
-
-          return (
-            <div
-              className={clsx(
-                "min-w-[25px] rounded py-1 px-1 text-left text-xs text-white",
-                customClass
-              )}
-            >{`C${value}`}</div>
-          );
-        },
-      },
-      {
-        header: t({
-          id: "weapon",
-          defaultMessage: "Weapon",
-        }),
-        cell: (info) => {
-          return (
-            <div
-              className="relative w-7"
-              title={`${info.row.original.weapon.name} R${info.row.original.weapon.refinement}`}
-            >
-              <img
-                src={getUrlLQ(
-                  `/weapons/${info.row.original.weapon.id}.png`,
-                  25,
-                  25
-                )}
-                width={25}
-                height={25}
-                alt={info.row.original.weapon.name}
-              />
-              <span className="absolute bottom-0 right-0 z-10 text-xxs shadow-black text-shadow">
-                R{info.row.original.weapon.refinement}
-              </span>
-            </div>
-          );
-        },
-      },
-      {
-        header: t({
-          id: "artifact",
-          defaultMessage: "Artifact",
-        }),
-        cell: (info) => {
-          const pieces = info.row.original.sets.length === 1 ? 4 : 2;
-          return (
-            <div className="flex">
-              {info.row.original.sets.map((set) => (
-                <div
-                  key={set.id}
-                  className="relative w-7"
-                  title={`${set.name} ${pieces}PC`}
-                >
-                  <img
-                    src={getUrlLQ(`/artifacts/${set.id}.png`, 25, 25)}
-                    width={25}
-                    height={25}
-                    alt={set.name}
-                  />
-                  <span className="absolute bottom-0 right-0 z-10 text-xxs text-green-200 shadow-black text-shadow">
-                    {pieces}
-                  </span>
-                </div>
-              ))}
-            </div>
-          );
-        },
-      },
-      {
-        header: t({
-          id: "critvalue",
-          defaultMessage: "Crit Value",
-        }),
-        accessorKey: "critValue",
-        cell: (info) => {
-          const cv = info.getValue<number>();
-          return (
-            <div className="text-xs">
-              {(info.row.original.stats["CRIT Rate"] * 100).toFixed(1)} :{" "}
-              {(info.row.original.stats["CRIT DMG"] * 100).toFixed(1)}
-              <span className={clsx("ml-2", cvQuality(cv))}>
-                {cv?.toFixed(0)}
-              </span>
-            </div>
-          );
-        },
-      },
-      {
-        header: "Max HP",
-        accessorKey: "stats.Max HP",
-        cell: (info) => info.row.original.stats["Max HP"].toFixed(0),
-      },
-      {
-        header: "ATK",
-        accessorKey: "stats.ATK",
-        cell: (info) => info.row.original.stats["ATK"].toFixed(0),
-      },
-      {
-        header: "DEF",
-        accessorKey: "stats.DEF",
-        cell: (info) => info.row.original.stats["DEF"].toFixed(0),
-      },
-      {
-        header: "EM",
-        accessorKey: "stats.Elemental Mastery",
-        cell: (info) => info.row.original.stats["Elemental Mastery"].toFixed(0),
-      },
-      {
-        header: "ER%",
-        accessorKey: "stats.Energy Recharge",
-        cell: (info) =>
-          (info.row.original.stats["Energy Recharge"] * 100).toFixed(1) + "%",
-      },
-    ],
-    [t]
-  );
 
   const table = useReactTable({
     data,
@@ -254,10 +234,16 @@ function ProfileBuildsTable({ data }: Props) {
                           onClick: header.column.getToggleSortingHandler(),
                         }}
                       >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        {t({
+                          id: flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          ) as any,
+                          defaultMessage: flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          ) as any,
+                        })}
                         {{
                           asc: " ▴",
                           desc: " ▾",
@@ -369,7 +355,7 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="mt-1 mb-2 flex w-80 flex-col bg-vulcan-700 p-2">
+      <div className="mb-2 mt-1 flex w-80 flex-col bg-vulcan-700 p-2">
         <div className="flex justify-center">
           Level {data.level} / Ascension {data.ascension}
         </div>
@@ -441,7 +427,7 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
               <div className="h-32 w-24">
                 <span
                   className={clsx(
-                    "absolute top-0 left-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
+                    "absolute left-0 top-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
                     cvQuality(calcCv(value))[0]
                   )}
                 >
@@ -450,14 +436,14 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
                 <div className="gradient-image overflow-hidden">
                   <img
                     src={getUrlLQ(`/artifacts/${value?.id}.png`, 200, 200)}
-                    className="absolute -top-5 -left-9 transform transition-all group-hover:scale-125"
+                    className="absolute -left-9 -top-5 transform transition-all group-hover:scale-125"
                     width={200}
                     height={200}
                     alt={value?.name}
                     title={value?.name}
                   />
                 </div>
-                <span className="absolute bottom-0 left-0 m-1 rounded bg-gray-900/50 py-1 px-2 text-xs shadow-black text-shadow">
+                <span className="absolute bottom-0 left-0 m-1 rounded bg-gray-900/50 px-2 py-1 text-xs shadow-black text-shadow">
                   {Object.entries(value?.mainStat ?? {})
                     .map(([key, value]) => `${key} ${value}`)
                     .join(" ")}

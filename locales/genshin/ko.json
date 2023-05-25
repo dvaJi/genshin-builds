@@ -331,7 +331,7 @@
     "description": "게임 플레이를 최적화하기 위해 최고의 Genshin Impact 프로필을 얻으십시오. ",
     "submit": "제출하다",
     "remove_from_favorites": "즐겨 찾기에서 삭제하기",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "이름",
     "mainstat": "주요 통계",
     "stat1": "통계 1",
@@ -344,6 +344,10 @@
     "show": "{pageSize} 표시",
     "constellation": "별자리",
     "weapon": "무기",
-    "artifact": "인공물"
+    "artifact": "인공물",
+    "owner": "소유자"
+  },
+  "leaderboard": {
+
   }
 }

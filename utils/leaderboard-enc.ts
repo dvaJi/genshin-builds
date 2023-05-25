@@ -104,6 +104,39 @@ export function encodeBuilds(data: CharactersAPI[]) {
       ...equip,
     };
 
+    const calculateCritValue = (
+      equip: Record<string, any>,
+      encodedData: any
+    ) => {
+      const CONSTELLATION_EXPONENT = 2.2;
+      const WEAPON_REFINEMENT_EXPONENT = 2;
+      const SKILL_LEVEL_EXPONENT = 0.4;
+
+      const artifactCritValue = Object.values(equip).reduce(
+        (acc, item: any) => acc + (item.critValue || 0),
+        0
+      );
+      const constellationCritValue = Math.pow(
+        encodedData.constellations,
+        CONSTELLATION_EXPONENT
+      );
+      const weaponCritValue = Math.pow(
+        encodedData.weapon.refinement,
+        WEAPON_REFINEMENT_EXPONENT
+      );
+      const skillCritValue = Object.values(avatar.skillLevelMap).reduce(
+        (acc, curr) => acc + Math.pow(curr, SKILL_LEVEL_EXPONENT),
+        0
+      );
+
+      return (
+        artifactCritValue +
+        constellationCritValue +
+        weaponCritValue +
+        skillCritValue
+      );
+    };
+
     return {
       avatarId: encodedData.avatarId,
       level: Number(encodedData.level),
@@ -113,10 +146,7 @@ export function encodeBuilds(data: CharactersAPI[]) {
       skillDepotId: avatar.skillDepotId,
       fightProps: encodedData.fightprops,
       skillLevel: encodedData.skilllevel,
-      critValue: Object.values(equip).reduce(
-        (acc, item: any) => acc + (item.critValue || 0),
-        0
-      ),
+      critValue: calculateCritValue(equip, encodedData),
       plumeId: encodedData.plume?.itemId,
       plumeMainStat: encodedData.plume?.mainstat,
       plumeSubStats: encodedData.plume?.substats,
@@ -365,6 +395,8 @@ export async function decodeBuilds(
         }
       : {};
 
+    const skillLevel = decodeStr(build.skillLevel);
+
     return {
       _id: build.id,
       avatarId: build.avatarId,
@@ -375,6 +407,7 @@ export async function decodeBuilds(
       ascension: build.ascension,
       constellation: build.constellation,
       fetterLevel: build.fetterLevel,
+      skillLevel,
       stats,
       critValue: Number(build.critValue) ?? 0,
       ...flower,

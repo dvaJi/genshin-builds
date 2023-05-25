@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import useSWR from "swr";
 
+import ProfileFavorites from "@components/genshin/ProfileFavorites";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
 import { Build, Profile } from "interfaces/profile";
@@ -51,9 +52,9 @@ function LeaderBoardPage() {
       </div>
     );
 
-  // CSS (using Tailwind);
   return (
     <div>
+      <ProfileFavorites />
       <div className="py-4 text-center">
         <Link
           href="/profile"

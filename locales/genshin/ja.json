@@ -331,7 +331,7 @@
     "description": "ゲームプレイを最適化するために、最高の Genshin Impact プロファイルを入手してください。",
     "submit": "送信",
     "remove_from_favorites": "お気に入りから削除",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "名前",
     "mainstat": "メインステータス",
     "stat1": "ステータス1",
@@ -344,6 +344,10 @@
     "show": "{pageSize} を表示",
     "constellation": "星座",
     "weapon": "武器",
-    "artifact": "アーティファクト"
+    "artifact": "アーティファクト",
+    "owner": "所有者"
+  },
+  "leaderboard": {
+
   }
 }

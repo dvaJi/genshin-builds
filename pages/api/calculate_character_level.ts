@@ -105,7 +105,7 @@ export default async function handler(
         continue;
       }
 
-      moraNeeded += item.cost;
+      moraNeeded += item.cost ?? 0;
       // Mat one
       if (item.mat1) {
         if (!itemsMap[item.mat1.id]) {

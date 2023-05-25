@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { MdSync } from "react-icons/md";
+import { MdStar, MdSync } from "react-icons/md";
 
 import ArtifactsTable from "@components/genshin/ProfileArtifactsTable";
 import BuildsTable from "@components/genshin/ProfileBuildsTable";
@@ -12,6 +12,7 @@ import { getBuild } from "@pages/api/get_build";
 import useIntl from "@hooks/use-intl";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
+import { isProfileFav, updateFavorites } from "@state/profiles-fav";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Profile } from "interfaces/profile";
 
@@ -43,6 +44,15 @@ function Profile({ profile }: Props) {
         setIsSyncing(false);
       });
   };
+
+  const onFavorite = () => {
+    updateFavorites({
+      uuid: profile.uuid,
+      nameCardId: profile.namecardId,
+      nickname: profile.nickname,
+      profilePictureId: profile.profilePictureId,
+    });
+  };
   return (
     <div>
       <ProfileFavorites />
@@ -56,7 +66,7 @@ function Profile({ profile }: Props) {
       >
         <div className="flex w-full justify-between bg-vulcan-900/50 shadow-xl">
           <div className="flex">
-            <div>
+            <div className="flex items-center">
               <img
                 src={getUrl(
                   `/profile/${
@@ -67,11 +77,11 @@ function Profile({ profile }: Props) {
                   142,
                   142
                 )}
-                className="min-w-[90px] rounded-xl"
+                className="m-2 min-w-[90px] rounded-full border-2 border-vulcan-600 md:m-0 md:rounded-xl md:border-0"
                 alt="profile"
               />
             </div>
-            <div className="flex flex-col justify-center p-4">
+            <div className="flex flex-col justify-center p-2 md:p-4">
               <span className="text-xxs md:text-xs">
                 {t({
                   id: "uuid",
@@ -82,26 +92,26 @@ function Profile({ profile }: Props) {
               <h2 className="text-xl font-semibold text-white md:text-4xl">
                 {profile.nickname}
               </h2>
-              <p className="text-xs italic text-slate-300 md:text-sm">
+              <p className="text-xxs italic text-slate-300 md:text-sm">
                 {profile.signature}
               </p>
             </div>
           </div>
           <div className="m-4 flex flex-wrap items-baseline justify-end">
             <div
-              className="mx-1 rounded-lg bg-gray-600 px-2 py-1 text-xs font-semibold text-slate-50 md:text-base"
+              className="mx-px rounded-lg bg-gray-600 px-2 py-1 text-xs font-semibold text-slate-50 md:mx-1 md:text-base"
               title="Region"
             >
               {profile.region}
             </div>
             <div
-              className="mx-1 rounded-lg bg-yellow-700 px-2 py-1 text-xs font-semibold text-slate-50 md:text-base"
+              className="mx-px rounded-lg bg-yellow-700 px-2 py-1 text-xs font-semibold text-slate-50 md:mx-1 md:text-base"
               title="Level"
             >
               AR{profile.level}
             </div>
             <div
-              className="mx-1 cursor-pointer rounded-lg bg-gray-700/40 px-2 py-1 text-xs font-semibold text-slate-50 hover:bg-gray-700/90 md:text-base"
+              className="mx-px cursor-pointer rounded-lg bg-gray-700/40 px-2 py-1 text-xs font-semibold text-slate-50 hover:bg-gray-700/90 md:mx-1 md:text-base"
               title="Sync Data"
               onClick={onSync}
             >
@@ -110,6 +120,18 @@ function Profile({ profile }: Props) {
                   "animate-spin": isSyncing,
                 })}
               />
+            </div>
+            <div
+              className={clsx(
+                "mx-px cursor-pointer rounded-lg bg-gray-700/40 px-2 py-1 text-xs font-semibold text-slate-50 hover:bg-gray-700/90 md:mx-1 md:text-base",
+                {
+                  "bg-yellow-500": isProfileFav(profile.uuid),
+                }
+              )}
+              title="Favorite profile"
+              onClick={onFavorite}
+            >
+              <MdStar className="-mt-1 inline-block" />
             </div>
           </div>
         </div>

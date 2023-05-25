@@ -331,7 +331,7 @@
     "description": "Obtenha os melhores perfis de Genshin Impact para otimizar sua jogabilidade. ",
     "submit": "Enviar",
     "remove_from_favorites": "Remover dos favoritos",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "Nome",
     "mainstat": "Estatística principal",
     "stat1": "Estatística 1",
@@ -344,6 +344,10 @@
     "show": "Mostrar {pageSize}",
     "constellation": "constelação",
     "weapon": "Arma",
-    "artifact": "Artefato"
+    "artifact": "Artefato",
+    "owner": "Proprietário"
+  },
+  "leaderboard": {
+
   }
 }

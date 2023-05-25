@@ -331,7 +331,7 @@
     "description": "Oyununuzu optimize etmek için en iyi Genshin Impact profillerini edinin. ",
     "submit": "Göndermek",
     "remove_from_favorites": "Favorilerden çıkar",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "İsim",
     "mainstat": "Ana İstatistik",
     "stat1": "durum 1",
@@ -344,6 +344,10 @@
     "show": "{pageSize} göster",
     "constellation": "takımyıldız",
     "weapon": "silah",
-    "artifact": "eser"
+    "artifact": "eser",
+    "owner": "Sahibi"
+  },
+  "leaderboard": {
+
   }
 }

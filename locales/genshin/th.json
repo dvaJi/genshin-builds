@@ -331,7 +331,7 @@
     "description": "รับโปรไฟล์ Genshin Impact ที่ดีที่สุดเพื่อเพิ่มประสิทธิภาพการเล่นเกมของคุณ ",
     "submit": "ส่ง",
     "remove_from_favorites": "ลบออกจากรายการโปรด",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "ชื่อ",
     "mainstat": "สถานะหลัก",
     "stat1": "สเตตัส 1",
@@ -344,6 +344,10 @@
     "show": "แสดง {pageSize}",
     "constellation": "กลุ่มดาว",
     "weapon": "อาวุธ",
-    "artifact": "สิ่งประดิษฐ์"
+    "artifact": "สิ่งประดิษฐ์",
+    "owner": "เจ้าของ"
+  },
+  "leaderboard": {
+
   }
 }

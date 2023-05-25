@@ -33,6 +33,17 @@ const nextConfig = {
     defaultLocale: "en",
     localeDetection: !isDev,
   },
+  images: {
+    domains: [
+      "gi-builds.sfo3.digitaloceanspaces.com",
+      "i1.wp.com",
+      "i2.wp.com",
+      "i3.wp.com",
+      "tof-builds.sfo3.digitaloceanspaces.com",
+      "hsr-builds.sfo3.digitaloceanspaces.com",
+      "img-cdn1.ravens-scans.com",
+    ],
+  },
   experimental: {
     legacyBrowsers: false,
   },

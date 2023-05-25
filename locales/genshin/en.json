@@ -331,7 +331,7 @@
     "description": "Get the best Genshin Impact profiles to optimize your gameplay. Visualize and compare your player profile with others, calculate crit value, and find the best characters and artifacts.",
     "submit": "Submit",
     "remove_from_favorites": "Remove from Favorites",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "Name",
     "mainstat": "Main Stat",
     "stat1": "Stat 1",
@@ -344,6 +344,10 @@
     "show": "Show {pageSize}",
     "constellation": "Constellation",
     "weapon": "Weapon",
-    "artifact": "Artifact"
+    "artifact": "Artifact",
+    "owner": "Owner"
+  },
+  "leaderboard": {
+
   }
 }

@@ -331,7 +331,7 @@
     "description": "Hole die besten Genshin Impact-Profile, um dein Gameplay zu verbessern.",
     "submit": "Abschicken",
     "remove_from_favorites": "Von Favoriten entfernen",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "Name",
     "mainstat": "Hauptattribut",
     "stat1": "Attribut 1",
@@ -344,6 +344,10 @@
     "show": "{pageSize} anzeigen",
     "constellation": "Sternenbild",
     "weapon": "Waffe",
-    "artifact": "Artefakt"
+    "artifact": "Artefakt",
+    "owner": "Besitzer"
+  },
+  "leaderboard": {
+
   }
 }

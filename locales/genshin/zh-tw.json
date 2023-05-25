@@ -19,7 +19,7 @@
     "best_decks": "最佳套牌",
     "best_decks_desc": "最好玩的套牌列表",
     "tierlist": "等級清單",
-    "tierlist_characters": "Tierlist字符",
+    "tierlist_characters": "Tierlist 角色",
     "tierlist_characters_desc": "所有最好的角色和他們的構建按照力量、生存能力和多功能性的順序排列以清除內容",
     "tierlist_weapons": "Tierlist 武器",
     "tierlist_weapons_desc": "所有最好的武器按照威力、生存能力和多功能性的順序排列以清除內容",
@@ -331,7 +331,7 @@
     "description": "獲取最佳的 Genshin Impact 配置文件以優化您的遊戲玩法。",
     "submit": "提交",
     "remove_from_favorites": "從收藏夾中刪除",
-    "uuid": "UUID：{uuid}",
+    "uuid": "UID：{uuid}",
     "name": "姓名",
     "mainstat": "主要數據",
     "stat1": "狀態 1",
@@ -344,6 +344,10 @@
     "show": "顯示 {pageSize}",
     "constellation": "星座",
     "weapon": "武器",
-    "artifact": "人工製品"
+    "artifact": "人工製品",
+    "owner": "所有者"
+  },
+  "leaderboard": {
+
   }
 }

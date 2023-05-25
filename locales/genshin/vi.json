@@ -331,7 +331,7 @@
     "description": "Nhận hồ sơ Genshin Impact tốt nhất để tối ưu hóa lối chơi của bạn. ",
     "submit": "Nộp",
     "remove_from_favorites": "Loại bỏ khỏi mục ưa thích",
-    "uuid": "UUID: {uuid}",
+    "uuid": "UID: {uuid}",
     "name": "Tên",
     "mainstat": "Chỉ số chính",
     "stat1": "Thống kê 1",
@@ -344,6 +344,10 @@
     "show": "Hiển thị {pageSize}",
     "constellation": "chòm sao",
     "weapon": "vũ khí",
-    "artifact": "hiện vật"
+    "artifact": "hiện vật",
+    "owner": "Chủ sở hữu"
+  },
+  "leaderboard": {
+
   }
 }
