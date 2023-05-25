@@ -42,7 +42,7 @@ export function calculateTotalAscensionMaterials(
     .filter((asc) => asc.cost)
     .reduce<AscensionTotal>(
       (acc, cur) => {
-        acc.cost = acc.cost + cur.cost;
+        acc.cost = acc.cost + (cur.cost ?? 0);
         let mat1: any = {};
         let mat2: any = {};
         let mat3: any = {};

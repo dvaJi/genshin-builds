@@ -1,18 +1,18 @@
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { GetStaticProps, GetStaticPaths } from "next";
 import GenshinData, { TCGCard } from "genshin-data";
+import { GetStaticPaths, GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
-import Card from "@components/ui/Card";
-import Badge from "@components/ui/Badge";
 import Metadata from "@components/Metadata";
+import Badge from "@components/ui/Badge";
+import Card from "@components/ui/Card";
 
-import { localeToLang } from "@utils/locale-to-lang";
-import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
+import { getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
@@ -36,8 +36,8 @@ const TCGCardPage = ({ card, locale }: Props) => {
         jsonLD={generateJsonLd(locale, t, card)}
       />
 
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <Link className="mt-4 p-4" href="/tcg">
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+      <Link className="mt-4 p-4 hover:text-slate-200" href="/tcg">
         {t({ id: "back", defaultMessage: "Back" })}
       </Link>
       <div className="my-4 flex">
@@ -53,7 +53,11 @@ const TCGCardPage = ({ card, locale }: Props) => {
           <h2 className="text-4xl font-semibold text-gray-200">{card.name}</h2>
           <div className="my-2 flex flex-wrap">
             {["hp", "energy", "weapon", "cost", "cost_type", "card_type"]
-              .filter((key) => (card.attributes as any)[key])
+              .filter(
+                (key) =>
+                  (card.attributes as any)[key] &&
+                  !Array.isArray((card.attributes as any)[key])
+              )
               .map((key) => (
                 <Badge key={key} className="my-0.5">
                   <span className="text-white">
@@ -62,8 +66,15 @@ const TCGCardPage = ({ card, locale }: Props) => {
                   {(card.attributes as any)[key]}
                 </Badge>
               ))}
+            {typeof card.attributes.energy !== "number" &&
+              (card.attributes.energy as any[]).map((energy) => (
+                <Badge key={energy._id} className="my-0.5">
+                  <span className="text-white">{energy.type}:</span>{" "}
+                  {energy.count}
+                </Badge>
+              ))}
           </div>
-          <div className="mt-2 ml-1">
+          <div className="ml-1 mt-2">
             <p
               className="text-lg text-white"
               dangerouslySetInnerHTML={{ __html: card.title }}
@@ -78,9 +89,7 @@ const TCGCardPage = ({ card, locale }: Props) => {
               <span className="text-slate-200">
                 {t({ id: "source", defaultMessage: "Source" })}:
               </span>{" "}
-              <span className="text-slate-400">
-                {card.attributes.source.join(", ")}
-              </span>
+              <span className="text-slate-400">{card.attributes.source}</span>
             </div>
           )}
         </div>

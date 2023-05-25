@@ -1,36 +1,36 @@
+import clsx from "clsx";
+import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
+import { GetStaticPaths, GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
-import { GetStaticProps, GetStaticPaths } from "next";
-import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
-import dynamic from "next/dynamic";
-import clsx from "clsx";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
-import StarRarity from "@components/StarRarity";
 import Metadata from "@components/Metadata";
-import ElementIcon from "@components/genshin/ElementIcon";
-import CharacterSkill from "@components/genshin/CharacterSkill";
-import PassiveSkill from "@components/genshin/CharacterPassiveSkill";
-import ConstellationCard from "@components/genshin/CharacterConstellationCard";
+import StarRarity from "@components/StarRarity";
+import CharacterAscencionMaterials from "@components/genshin/CharacterAscencionMaterials";
 import CharacterBuildCard from "@components/genshin/CharacterBuildCard";
 import CharacterCommonBuildCard from "@components/genshin/CharacterCommonBuildCard";
-import CharacterAscencionMaterials from "@components/genshin/CharacterAscencionMaterials";
+import ConstellationCard from "@components/genshin/CharacterConstellationCard";
+import PassiveSkill from "@components/genshin/CharacterPassiveSkill";
+import CharacterSkill from "@components/genshin/CharacterSkill";
 import CharacterTalentMaterials from "@components/genshin/CharacterTalentMaterials";
+import ElementIcon from "@components/genshin/ElementIcon";
 import Card from "@components/ui/Card";
 
-import { localeToLang } from "@utils/locale-to-lang";
+import CharacterStats from "@components/genshin/CharacterStats";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import {
   getCharacterBuild,
   getCharacterMostUsedBuild,
   getCharacterOfficialBuild,
   getLocale,
 } from "@lib/localData";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { localeToLang } from "@utils/locale-to-lang";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
-import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import CharacterStats from "@components/genshin/CharacterStats";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
@@ -102,7 +102,7 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
         {t({ id: "skills", defaultMessage: "Skills" })}
       </h2>
@@ -247,7 +247,7 @@ const CharacterPage = ({
           </div>
         ))}
       </Card>
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
@@ -531,7 +531,9 @@ export const getStaticProps: GetStaticProps = async ({
       recommendedTeams: recommendedTeams ?? [],
       bgStyle: {
         image: getUrlLQ(
-          `/regions/${common[character.region] || "Mondstadt"}_d.jpg`,
+          `/regions/${
+            character.region ? common[character.region] : "Mondstadt"
+          }_d.jpg`,
           900,
           900
         ),
