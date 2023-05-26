@@ -1,10 +1,10 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { GAD_ID, PRADS_ID } from "@lib/constants";
+import { AD_ARTICLE_SLOT, GAD_ID, PRADS_ID } from "@lib/constants";
 import {
   GA_TRACKING_ID,
-  TOF_GA_TRACKING_ID,
   HSR_GA_TRACKING_ID,
+  TOF_GA_TRACKING_ID,
 } from "@lib/gtag";
 
 export default class MyDocument extends Document {
@@ -136,6 +136,19 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#1a1d27" />
         </Head>
         <body className="antialiased dark:text-slate-400">
+          {GAD_ID && AD_ARTICLE_SLOT ? (
+            <ins
+              className="adsbygoogle"
+              style={{ display: "block" }}
+              data-ad-client={GAD_ID}
+              data-adtest={
+                process.env.NODE_ENV === "development" ? "on" : "off"
+              }
+              data-ad-slot={AD_ARTICLE_SLOT}
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            />
+          ) : null}
           <Main />
           <NextScript />
           {GA_TRACKING_ID && (
