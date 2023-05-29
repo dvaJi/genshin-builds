@@ -108,9 +108,9 @@ export function encodeBuilds(data: CharactersAPI[]) {
       equip: Record<string, any>,
       encodedData: any
     ) => {
-      const CONSTELLATION_EXPONENT = 2.2;
-      const WEAPON_REFINEMENT_EXPONENT = 2;
-      const SKILL_LEVEL_EXPONENT = 0.4;
+      const CONSTELLATION_EXPONENT = 0.3;
+      const WEAPON_REFINEMENT_EXPONENT = 0.2;
+      const SKILL_LEVEL_EXPONENT = 0.1;
 
       const artifactCritValue = Object.values(equip).reduce(
         (acc, item: any) => acc + (item.critValue || 0),

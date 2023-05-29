@@ -10,6 +10,7 @@ export interface Profile {
   finishAchievementNum: number;
   region: string;
   builds: Build[];
+  updatedAt: string;
 }
 
 export interface Build {

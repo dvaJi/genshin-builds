@@ -61,6 +61,7 @@ export async function getBuild(lang: any, uid: string) {
       worldLevel: playerData.worldLevel,
       finishAchievementNum: playerData.finishAchievementNum,
       region: regionParse(playerData.uuid),
+      updatedAt: playerData.updatedAt.toString(),
       builds: await decodeBuilds(builds, characters, weapons, artifacts),
     },
   };

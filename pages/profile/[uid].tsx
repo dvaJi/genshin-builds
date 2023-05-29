@@ -12,6 +12,7 @@ import { getBuild } from "@pages/api/get_build";
 import useIntl from "@hooks/use-intl";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
+import { getTimeAgo } from "@lib/timeago";
 import { isProfileFav, updateFavorites } from "@state/profiles-fav";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Profile } from "interfaces/profile";
@@ -23,9 +24,10 @@ const ProfileFavorites = dynamic(
 
 interface Props {
   profile: Profile;
+  locale: string;
 }
 
-function Profile({ profile }: Props) {
+function Profile({ profile, locale }: Props) {
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
   const { t } = useIntl("profile");
   const router = useRouter();
@@ -53,6 +55,9 @@ function Profile({ profile }: Props) {
       profilePictureId: profile.profilePictureId,
     });
   };
+
+  const timeAgo = getTimeAgo(new Date(profile.updatedAt).getTime(), locale);
+
   return (
     <div>
       <ProfileFavorites />
@@ -88,6 +93,7 @@ function Profile({ profile }: Props) {
                   defaultMessage: "UUID: {uuid}",
                   values: { uuid: profile.uuid },
                 })}
+                <span className="inline-block ml-2">| {timeAgo}</span>
               </span>
               <h2 className="text-xl font-semibold text-white md:text-4xl">
                 {profile.nickname}
@@ -192,6 +198,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
+      locale,
       lngDict,
       profile,
       bgStyle: {
