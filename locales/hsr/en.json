@@ -6,7 +6,7 @@
     "footer_advice": "Honkai: Star Rail is not endorsed by HoYoverse or COGNOSPHERE PTE. LTD., and does not reflect the views or opinions of anyone officially involved in producing or managing Honkai: Star Rail.",
     "privacy_policy": "Privacy Policy",
     "contact": "Contact",
-    "characters": "characters",
+    "characters": "Characters",
     "relics": "Relics",
     "lightcones": "Light Cones",
     "tierlist": "Tierlist"
@@ -24,7 +24,16 @@
     "description": "Discover the best builds and teams for {name} in Honkai: Star Rail. Also included are their skills, upgrade costs, and more.",
     "skills": "Skills",
     "traces": "Traces",
-    "eidolon": "Eidolon"
+    "eidolon": "Eidolon",
+    "characters": "Characters",
+    "best_light_cone": "Best Light Cone",
+    "relics_and_ornament": "Relics and Ornament",
+    "best_stats": "{name} Best Stats",
+    "best_substats": "{name} Best Substats",
+    "best_relics": "{name} Best Relics",
+    "best_ornaments": "{name} Best Ornaments",
+    "best_lightcones": "{name} Best Light Cones",
+    "best_teams": "{name} Best Teams"
   },
   "lightcones": {
     "title": "Honkai: Star Rail Light Cones Lists",

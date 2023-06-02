@@ -12,7 +12,7 @@ const Logo = () => {
         TOFBuilds
       </span> */}
       <div>
-        <span className="text-hsr-accent">HSR</span>
+        <span className="text-hsr-accent">Star Rail </span>
         <span>Builds</span>
         {/* <span className="text-sm text-slate-400">.com</span> */}
       </div>

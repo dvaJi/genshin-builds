@@ -24,7 +24,16 @@
     "description": "Honkai: Star Rail에서 {name}을(를) 위한 최고의 빌드와 팀을 찾아보세요. ",
     "skills": "기술",
     "traces": "흔적",
-    "eidolon": "유령"
+    "eidolon": "유령",
+    "characters": "캐릭터",
+    "best_light_cone": "최고의 라이트 콘",
+    "relics_and_ornament": "유물 및 장식",
+    "best_stats": "{name} 최고의 스탯",
+    "best_substats": "{name} 최고의 서브스탯",
+    "best_relics": "{name} 최고의 유물",
+    "best_ornaments": "{name} 최고의 장식",
+    "best_lightcones": "{name} 최고의 라이트 콘",
+    "best_teams": "{name} 최고의 팀"
   },
   "lightcones": {
     "title": "Honkai: 스타 레일 라이트 콘 목록",

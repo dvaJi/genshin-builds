@@ -1,28 +1,50 @@
 import clsx from "clsx";
+import HSRData, {
+  renderDescription,
+  type Character,
+  type LightCone,
+  type Relic,
+} from "hsr-data";
+import { GetStaticPaths, GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import { GetStaticProps, GetStaticPaths } from "next";
-import HSRData, { type Character, renderDescription } from "hsr-data";
+import { BsPersonFill } from "react-icons/bs";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
-import Stars from "@components/hsr/Stars";
 import Metadata from "@components/Metadata";
-import CharacterTrace from "@components/hsr/CharacterTrace";
 import CharacterInfoStat from "@components/hsr/CharacterInfoStat";
+import CharacterTrace from "@components/hsr/CharacterTrace";
+import Stars from "@components/hsr/Stars";
 
-import { localeToHSRLang } from "@utils/locale-to-lang";
-import { getLocale } from "@lib/localData";
-import { getHsrUrl } from "@lib/imgUrl";
+import CharacterBestEquip from "@components/hsr/CharacterBestEquip";
+import CharacterBuild from "@components/hsr/CharacterBuild";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHsrUrl } from "@lib/imgUrl";
+import { getCommon, getLocale, getStarRailBuild } from "@lib/localData";
+import { getHsrId } from "@utils/helpers";
+import { localeToHSRLang } from "@utils/locale-to-lang";
+import { Build } from "interfaces/hsr/build";
+import Link from "next/link";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 interface CharacterPageProps {
   character: Character;
+  build: Build | null;
+  charactersMap: Record<string, Character>;
+  lightConesMap: Record<string, LightCone>;
+  relicsMap: Record<string, Relic>;
   locale: string;
 }
 
-const CharacterPage = ({ character, locale }: CharacterPageProps) => {
+const CharacterPage = ({
+  character,
+  build,
+  charactersMap,
+  lightConesMap,
+  relicsMap,
+  locale,
+}: CharacterPageProps) => {
   const { t } = useIntl("character");
 
   const lastAscend = character.ascends[character.ascends.length - 1];
@@ -99,6 +121,131 @@ const CharacterPage = ({ character, locale }: CharacterPageProps) => {
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
 
         <div className="">
+          {build?.builds.map((b) => (
+            <CharacterBuild
+              key={b.name}
+              characterName={character.name}
+              name={b.name}
+              data={b.data}
+              lightConesMap={lightConesMap}
+              relicsMap={relicsMap}
+            />
+          ))}
+          {build ? (
+            <>
+              <CharacterBestEquip
+                characterName={character.name}
+                relics={build.relics}
+                lightcones={build.lightcones}
+                lightConesMap={lightConesMap}
+                relicsMap={relicsMap}
+              />
+              <h2 className="text-xl text-slate-200">
+                {t({
+                  id: "best_teams",
+                  defaultMessage: "{name} Best Teams",
+                  values: { name: character.name },
+                })}
+              </h2>
+              {build.teams.map((team) => (
+                <div key={team.name} className="mt-4">
+                  <h3 className="text-lg text-slate-300">{team.name}</h3>
+                  <div className="flex flex-wrap gap-4">
+                    {team.data.characters.map((c) => (
+                      <div
+                        key={c.id}
+                        className="group relative mb-2 flex max-w-xl items-center rounded bg-hsr-surface2 p-2 hover:bg-hsr-surface3"
+                      >
+                        {c.isFlex ? (
+                          <div className="hmr-1 flex flex-shrink-0 items-center justify-center">
+                            <div className="mr-2 h-[56px] w-[48px] rounded border border-gray-200/5 bg-gray-200/5">
+                              <BsPersonFill className="h-full w-full opacity-10 group-hover:opacity-30" />
+                            </div>
+                            <div className="flex flex-col">
+                              <h3 className="flex items-center text-slate-50">
+                                <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
+                                  {c.role}
+                                </span>
+                              </h3>
+                              <span className="text-sm">{c.id}</span>
+                            </div>
+                          </div>
+                        ) : (
+                          <Link
+                            href={`/hsr/character/${c.id}`}
+                            className="flex items-center"
+                          >
+                            <div className="mr-2 flex flex-shrink-0 items-center justify-center">
+                              <div className="flex-shrink-0 justify-center rounded-full text-center">
+                                <img
+                                  src={getHsrUrl(
+                                    `/characters/${getHsrId(c.id)}/icon.png`
+                                  )}
+                                  alt={charactersMap[getHsrId(c.id)].name}
+                                  width={48}
+                                  height={56}
+                                  className={clsx("rounded border", {
+                                    "border-yellow-400":
+                                      charactersMap[getHsrId(c.id)].rarity ===
+                                      5,
+                                    "border-purple-400":
+                                      charactersMap[getHsrId(c.id)].rarity ===
+                                      4,
+                                  })}
+                                />
+                              </div>
+                            </div>
+                            <div className="flex flex-col">
+                              <h3 className="flex items-center text-slate-50">
+                                <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
+                                  {charactersMap[getHsrId(c.id)].name}
+                                </span>
+                                <img
+                                  src={getHsrUrl(
+                                    `/${
+                                      charactersMap[getHsrId(c.id)].combat_type
+                                        .id
+                                    }.webp`
+                                  )}
+                                  alt={
+                                    charactersMap[getHsrId(c.id)].combat_type
+                                      .name
+                                  }
+                                  width={24}
+                                  height={24}
+                                  loading="lazy"
+                                  className="ml-2 inline-block w-[24px] select-none"
+                                />
+                              </h3>
+                              <div className="flex items-center">
+                                <div className="flex items-center">
+                                  <img
+                                    src={getHsrUrl(
+                                      `/${
+                                        charactersMap[getHsrId(c.id)].path.id
+                                      }.webp`
+                                    )}
+                                    alt={
+                                      charactersMap[getHsrId(c.id)].path.name
+                                    }
+                                    width="20"
+                                    height="20"
+                                    loading="lazy"
+                                    className="mr-2 inline-block w-[16px] select-none"
+                                  />
+                                  <span className="text-sm">{c.role}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </>
+          ) : null}
           <div>
             <h2 className="text-xl text-slate-200">
               {t({
@@ -158,10 +305,12 @@ const CharacterPage = ({ character, locale }: CharacterPageProps) => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl text-slate-200">{t({
+            <h2 className="text-xl text-slate-200">
+              {t({
                 id: "traces",
                 defaultMessage: "Traces",
-              })}</h2>
+              })}
+            </h2>
             <div className="flex flex-col">
               {character.skillTreePoints
                 .sort((a, b) => a.type - b.type)
@@ -175,10 +324,12 @@ const CharacterPage = ({ character, locale }: CharacterPageProps) => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl text-slate-200">{t({
+            <h2 className="text-xl text-slate-200">
+              {t({
                 id: "eidolon",
                 defaultMessage: "Eidolon",
-              })}</h2>
+              })}
+            </h2>
             <div>
               {character.eidolons.map((eidolon) => (
                 <div key={eidolon.id} className="mb-2 flex items-center">
@@ -260,11 +411,98 @@ export const getStaticProps: GetStaticProps = async ({
       notFound: true,
     };
   }
+  const common = await getCommon(localeToHSRLang(locale), "hsr");
+  const _lightcones = await hsrData.lightcones({
+    select: ["id", "name", "rarity"],
+  });
+  const _relics = await hsrData.relics({
+    select: ["id", "name"],
+  });
+
+  const build = await getStarRailBuild(character.id);
+
+  let charactersMap: Record<string, Character> = {};
+  let lightConesMap: Record<string, LightCone> = {};
+  let relicsMap: Record<string, Relic> = {};
+
+  build?.teams.forEach((t) => {
+    t.data.characters.forEach((c) => {
+      const character = characters.find((ch) => ch.id === getHsrId(c.id));
+      if (character) {
+        charactersMap[character.id] = {
+          id: character.id,
+          name: character.name,
+          rarity: character.rarity,
+          path: character.path,
+          combat_type: character.combat_type,
+        } as any;
+      } else {
+        console.log(c)
+      }
+    });
+
+    t.data.alternatives.forEach((c) => {
+      const character = characters.find((ch) => ch.id === getHsrId(c));
+      if (character) {
+        charactersMap[character.id] = {
+          id: character.id,
+          name: character.name,
+          rarity: character.rarity,
+          path: character.path,
+          combat_type: character.combat_type,
+        } as any;
+      } else {
+        console.log({c})
+      }
+    });
+  });
+
+  build?.builds.forEach((b) => {
+    const lightCone = _lightcones.find((l) => l.id === b.data.bestLightCone);
+    if (lightCone) {
+      lightConesMap[lightCone.id] = lightCone;
+    }
+
+    b.data.relics.forEach((r) => {
+      const relic = _relics.find((re) => re.id === r);
+      if (relic) {
+        relicsMap[relic.id] = relic;
+      }
+    });
+  });
+
+  build?.lightcones.forEach((l) => {
+    const lightCone = _lightcones.find((lc) => lc.id === l);
+    if (lightCone) {
+      lightConesMap[lightCone.id] = lightCone;
+    }
+  });
+
+  build?.relics.set.forEach((r) => {
+    r.ids.forEach((id) => {
+      const relic = _relics.find((re) => re.id === id);
+      if (relic) {
+        relicsMap[relic.id] = relic;
+      }
+    });
+  });
+
+  build?.relics.ornament.forEach((r) => {
+    const relic = _relics.find((re) => re.id === r);
+    if (relic) {
+      relicsMap[relic.id] = relic;
+    }
+  });
 
   return {
     props: {
       character,
+      build,
+      charactersMap,
+      lightConesMap,
+      relicsMap,
       lngDict,
+      common,
       locale,
       // bgStyle: {
       //   image: getUrlLQ(

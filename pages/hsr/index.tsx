@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import HSRData, { type Character } from "hsr-data";
 
 import Metadata from "@components/Metadata";
@@ -99,7 +99,7 @@ function HSRIndex({ characters }: Props) {
             </small>
             <div className="flex">
               {combatTypes.map((type) => (
-                <>
+                <Fragment key={type.id}>
                   <input
                     type="checkbox"
                     name="type"
@@ -138,7 +138,7 @@ function HSRIndex({ characters }: Props) {
                       loading="lazy"
                     />
                   </label>
-                </>
+                </Fragment>
               ))}
             </div>
           </section>
@@ -151,7 +151,7 @@ function HSRIndex({ characters }: Props) {
             </small>
             <div className="flex">
               {pathTypes.map((type) => (
-                <>
+                <Fragment key={type.id}>
                   <input
                     type="checkbox"
                     name="type"
@@ -190,7 +190,7 @@ function HSRIndex({ characters }: Props) {
                       loading="lazy"
                     />
                   </label>
-                </>
+                </Fragment>
               ))}
             </div>
           </section>

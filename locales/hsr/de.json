@@ -24,7 +24,16 @@
     "description": "Entdecken Sie die besten Builds und Teams für {name} in Honkai: Star Rail. ",
     "skills": "Fähigkeiten",
     "traces": "Spuren",
-    "eidolon": "Eidolon"
+    "eidolon": "Eidolon",
+    "characters": "Charaktere",
+    "best_light_cone": "Beste Lichtkegel",
+    "relics_and_ornament": "Relikte und Verzierung",
+    "best_stats": "Beste Statistiken für {name}",
+    "best_substats": "Beste Substatistiken für {name}",
+    "best_relics": "Beste Relikte für {name}",
+    "best_ornaments": "Beste Verzierungen für {name}",
+    "best_lightcones": "Beste Lichtkegel für {name}",
+    "best_teams": "Beste Teams für {name}"
   },
   "lightcones": {
     "title": "Honkai: Star Rail Light Cones-Listen",

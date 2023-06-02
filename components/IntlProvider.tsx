@@ -1,6 +1,7 @@
 import { IntlContext } from "@hooks/intl-context";
 
 type IntlProviderProps = {
+  common?: Record<string, string>;
   messages?: Record<string, string>;
   locale?: string;
   children: React.ReactNode;

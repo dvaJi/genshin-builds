@@ -1,7 +1,8 @@
-import clsx from "clsx";
-import * as Dialog from "@radix-ui/react-dialog";
-import { SkillTreePoint } from "hsr-data/dist/types/characters";
 import { getHsrUrl } from "@lib/imgUrl";
+import * as Dialog from "@radix-ui/react-dialog";
+import clsx from "clsx";
+import { SkillTreePoint } from "hsr-data/dist/types/characters";
+import { Fragment } from "react";
 
 type Props = {
   trace: SkillTreePoint;
@@ -13,7 +14,7 @@ function CharacterTrace({ trace, characterId }: Props) {
     <Dialog.Root>
       <div className="flex flex-col items-center md:my-2 md:flex-row">
         {trace.embedBonusSkill && (
-          <>
+          <Fragment key={trace.embedBonusSkill.id}>
             <Dialog.Trigger asChild>
               <div className="max-w-[25rem] cursor-pointer rounded bg-hsr-surface3 p-2 pr-3 transition-colors hover:bg-slate-700">
                 <div className="flex w-full items-center">
@@ -85,10 +86,10 @@ function CharacterTrace({ trace, characterId }: Props) {
                 </Dialog.Close>
               </Dialog.Content>
             </Dialog.Portal>
-          </>
+          </Fragment>
         )}
         {trace.embedBuff && (
-          <>
+          <Fragment key={trace.embedBuff.id}>
             <Dialog.Trigger asChild>
               <div className="mx-1 flex max-w-[25rem] cursor-pointer items-center rounded bg-hsr-surface3 p-2 transition-colors hover:bg-slate-700 md:mx-0 md:pr-4">
                 <div className="flex w-full text-start">
@@ -109,11 +110,12 @@ function CharacterTrace({ trace, characterId }: Props) {
                       {trace.embedBuff.name}
                     </span>
                     {trace.embedBuff.statusList.map((sl) => (
-                      <>
-                        <span className="ml-2 font-bold text-yellow-500">
-                          +{sl.value * 100}
-                        </span>
-                      </>
+                      <span
+                        key={sl.value}
+                        className="ml-2 font-bold text-yellow-500"
+                      >
+                        +{sl.value * 100}
+                      </span>
                     ))}
                     {trace.embedBuff.levelReq > 0 ? (
                       <div className="text-sm">
@@ -163,7 +165,7 @@ function CharacterTrace({ trace, characterId }: Props) {
                 </Dialog.Close>
               </Dialog.Content>
             </Dialog.Portal>
-          </>
+          </Fragment>
         )}
         {trace.children?.length === 0 ? <div className="my-4" /> : null}
         {trace.children?.length === 1 ? (

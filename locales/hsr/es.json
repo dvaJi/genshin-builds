@@ -24,7 +24,16 @@
     "description": "Descubre las mejores construcciones y equipos para {name} en Honkai: Star Rail. ",
     "skills": "Habilidades",
     "traces": "huellas",
-    "eidolon": "Eidolón"
+    "eidolon": "Eidolón",
+    "characters": "Personajes",
+    "best_light_cone": "Mejor Light Cone",
+    "relics_and_ornament": "Reliquias y Adorno",
+    "best_stats": "Mejores estadísticas de {name}",
+    "best_substats": "Mejores subestadísticas de {name}",
+    "best_relics": "Mejores reliquias de {name}",
+    "best_ornaments": "Mejores adornos de {name}",
+    "best_lightcones": "Mejores Light Cones de {name}",
+    "best_teams": "Mejores equipos de {name}"
   },
   "lightcones": {
     "title": "Honkai: Listas de conos de luz Star Rail",

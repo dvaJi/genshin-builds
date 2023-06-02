@@ -38,13 +38,17 @@ const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
 };
 
 const useIntl = (namespace?: string): useIntlResponse => {
-  const { messages: dict = {}, locale } = useIntlContext();
+  const { messages: dict = {}, common, locale } = useIntlContext();
 
   const message = resolvePath(dict, namespace, locale);
 
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
     if (message && message[id]) {
       return values ? templateReplacement(message[id], values) : message[id];
+    }
+
+    if (common && common[id]) {
+      return values ? templateReplacement(common[id], values) : common[id];
     }
 
     if (process.env.NODE_ENV === "development") {

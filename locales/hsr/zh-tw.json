@@ -24,7 +24,16 @@
     "description": "在《崩壞：星際鐵路》中發現 {name} 的最佳構建和團隊。",
     "skills": "技能",
     "traces": "痕跡",
-    "eidolon": "夜靈"
+    "eidolon": "夜靈",
+    "characters": "角色",
+    "best_light_cone": "最佳光錐",
+    "relics_and_ornament": "遺物與裝飾",
+    "best_stats": "{name} 最佳屬性",
+    "best_substats": "{name} 最佳副屬性",
+    "best_relics": "{name} 最佳遺物",
+    "best_ornaments": "{name} 最佳裝飾",
+    "best_lightcones": "{name} 最佳光錐",
+    "best_teams": "{name} 最佳隊伍"
   },
   "lightcones": {
     "title": "崩壞：星軌光錐列表",

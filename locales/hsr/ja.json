@@ -24,7 +24,16 @@
     "description": "Honkai: Star Rail で {name} に最適なビルドとチームを見つけてください。",
     "skills": "スキル",
     "traces": "痕跡",
-    "eidolon": "エイドロン"
+    "eidolon": "エイドロン",
+    "characters": "キャラクター",
+    "best_light_cone": "ベストライトコーン",
+    "relics_and_ornament": "レリックとオーナメント",
+    "best_stats": "{name}のベストスタット",
+    "best_substats": "{name}のベストサブスタット",
+    "best_relics": "{name}のベストレリック",
+    "best_ornaments": "{name}のベストオーナメント",
+    "best_lightcones": "{name}のベストライトコーン",
+    "best_teams": "{name}のベストチーム"
   },
   "lightcones": {
     "title": "Honkai: スターレール ライトコーン リスト",

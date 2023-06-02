@@ -4,6 +4,7 @@ export type IntlMessage = Record<string, string>;
 
 export type IntlContextShape = {
   messages?: IntlMessage;
+  common?: IntlMessage;
   locale: string;
 };
 

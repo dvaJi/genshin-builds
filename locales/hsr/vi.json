@@ -24,7 +24,16 @@
     "description": "Khám phá cách xây dựng và đội tốt nhất cho {name} trong Honkai: Star Rail. ",
     "skills": "Kỹ năng",
     "traces": "dấu vết",
-    "eidolon": "Eidolon"
+    "eidolon": "Eidolon",
+    "characters": "Nhân vật",
+    "best_light_cone": "Light Cone Tốt Nhất",
+    "relics_and_ornament": "Di vật và Trang sức",
+    "best_stats": "Các chỉ số tốt nhất của {name}",
+    "best_substats": "Các chỉ số phụ tốt nhất của {name}",
+    "best_relics": "Các di vật tốt nhất của {name}",
+    "best_ornaments": "Các trang sức tốt nhất của {name}",
+    "best_lightcones": "Các Light Cone tốt nhất của {name}",
+    "best_teams": "Các đội tốt nhất của {name}"
   },
   "lightcones": {
     "title": "Honkai: Star Rail Light Nón Danh sách",

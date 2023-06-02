@@ -24,7 +24,16 @@
     "description": "Откройте для себя лучшие сборки и команды для {name} в Honkai: Star Rail. ",
     "skills": "Навыки",
     "traces": "Следы",
-    "eidolon": "Эйдолон"
+    "eidolon": "Эйдолон",
+    "characters": "Персонажи",
+    "best_light_cone": "Лучший световой конус",
+    "relics_and_ornament": "Реликвии и украшение",
+    "best_stats": "Лучшие показатели для {name}",
+    "best_substats": "Лучшие подпоказатели для {name}",
+    "best_relics": "Лучшие реликвии для {name}",
+    "best_ornaments": "Лучшие украшения для {name}",
+    "best_lightcones": "Лучшие световые конусы для {name}",
+    "best_teams": "Лучшие команды для {name}"
   },
   "lightcones": {
     "title": "Хонкай: списки световых конусов Star Rail",

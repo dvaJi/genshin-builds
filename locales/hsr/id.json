@@ -24,7 +24,16 @@
     "description": "Temukan build dan tim terbaik untuk {name} di Honkai: Star Rail. ",
     "skills": "Keterampilan",
     "traces": "Jejak",
-    "eidolon": "Eidolon"
+    "eidolon": "Eidolon",
+    "characters": "Karakter",
+    "best_light_cone": "Light Cone Terbaik",
+    "relics_and_ornament": "Relik dan Hiasan",
+    "best_stats": "Statistik Terbaik {name}",
+    "best_substats": "Substat Terbaik {name}",
+    "best_relics": "Relik Terbaik {name}",
+    "best_ornaments": "Hiasan Terbaik {name}",
+    "best_lightcones": "Light Cone Terbaik {name}",
+    "best_teams": "Tim Terbaik {name}"
   },
   "lightcones": {
     "title": "Honkai: Daftar Kerucut Cahaya Rel Bintang",

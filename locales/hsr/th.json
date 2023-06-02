@@ -24,7 +24,16 @@
     "description": "ค้นพบงานสร้างและทีมที่ดีที่สุดสำหรับ {name} ใน Honkai: Star Rail ",
     "skills": "ทักษะ",
     "traces": "ร่องรอย",
-    "eidolon": "ไอโดลอน"
+    "eidolon": "ไอโดลอน",
+    "characters": "ตัวละคร",
+    "best_light_cone": "ไฟฉายที่ดีที่สุด",
+    "relics_and_ornament": "วัตถุโบราณและตกแต่ง",
+    "best_stats": "สถิติที่ดีที่สุดของ{name}",
+    "best_substats": "สถิติย่อยที่ดีที่สุดของ{name}",
+    "best_relics": "วัตถุโบราณที่ดีที่สุดของ{name}",
+    "best_ornaments": "ตกแต่งที่ดีที่สุดของ{name}",
+    "best_lightcones": "ไฟฉายที่ดีที่สุดของ{name}",
+    "best_teams": "ทีมที่ดีที่สุดของ{name}"
   },
   "lightcones": {
     "title": "Honkai: รายการ Star Rail Light Cones",

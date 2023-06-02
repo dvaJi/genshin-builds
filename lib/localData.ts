@@ -1,3 +1,5 @@
+import { Build as HSRBuild } from "interfaces/hsr/build";
+
 export function getDefaultLocale(locale: string, locales: string[]) {
   return locales.includes(locale) ? locale : "en";
 }
@@ -9,6 +11,21 @@ export async function getLocale(lang: string, game: string) {
   } catch (err) {
     const locale = await import(`../locales/${game}/en.json`);
     return locale.default;
+  }
+}
+
+export async function getCommon(
+  lang: string,
+  game: string
+): Promise<Record<string, string>> {
+  try {
+    const { default: common } = await import(
+      `../_content/${game}/data/common.json`
+    );
+    return common[lang] || common["en"];
+  } catch (err) {
+    console.log("Common not found");
+    return {};
   }
 }
 
@@ -60,5 +77,32 @@ export async function getCharacterOfficialBuild(id?: string) {
   } catch (err) {
     console.error(err);
     return {};
+  }
+}
+
+export async function getStarRailBuild(
+  characterId: string
+): Promise<HSRBuild | null> {
+  try {
+    const { default: builds } = await import(
+      `../_content/hsr/data/builds.json`
+    );
+
+    let id = characterId;
+
+    if (characterId.startsWith("trailblazer_destruction")) {
+      id = "trailblazer_destruction";
+    } else if (characterId.startsWith("trailblazer_preservation")) {
+      id = "trailblazer_preservation";
+    }
+
+    if (id) {
+      return (builds as any)[id] || null;
+    }
+
+    return builds as any;
+  } catch (err) {
+    console.error(err);
+    return null;
   }
 }
