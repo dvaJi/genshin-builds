@@ -68,7 +68,10 @@
     "Cecilia Garden": "柏芝花園",
     "Violet Court": "紫羅蘭閣",
     "Court of Flowing Sand": "流沙閣",
-    "Hidden Palace of Lianshan Formula": "連山訣秘宮"
+    "Hidden Palace of Lianshan Formula": "連山訣秘宮",
+    "welcome_title": "歡迎來到Genshin-Builds！✨",
+    "welcome_desc": "在這裡，您可以發現角色建構、詳盡指南和一個綜合的資料庫。Genshin-Builds將幫助您計劃提升活動，並提供升級計算器來追蹤您的進度。利用便利的待辦清單輕鬆掌握進度。透過這個寶貴的資源，提升您在原神的遊戲體驗！",
+    "farmable_today": "今日可農"
   },
   "characters": {
     "title": "Genshin Impact 角色列表",

@@ -10,6 +10,7 @@ import SimpleRarityBox from "@components/SimpleRarityBox";
 import Button from "@components/ui/Button";
 import Card from "@components/ui/Card";
 
+import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
@@ -30,6 +31,7 @@ type Props = {
 };
 
 const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
+  const { t } = useIntl("ascension_planner");
   const [currentDay, setCurrentDay] = useState(
     days[Number(format(new Date(), "i")) - 1]
   );
@@ -37,14 +39,17 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
     <div>
       <Card>
         <h1 className="text-lg text-slate-100">
-          Welcome to Genshin-Builds! ✨
+          {t({
+            id: "welcome_title",
+            defaultMessage: "Welcome to Genshin-Builds! ✨",
+          })}
         </h1>
         <p>
-          Discover character builds, comprehensive guides, and a wiki database
-          all in one place. Genshin-Builds is here to assist you in planning
-          your farming activities with an ascension calculator. Keep track of
-          your progress effortlessly with a convenient todo list. Level up your
-          Genshin Impact experience with this invaluable resource!
+          {t({
+            id: "welcome_desc",
+            defaultMessage:
+              "Discover character builds, comprehensive guides, and a wiki database all in one place. Genshin-Builds is here to assist you in planning your farming activities with an ascension calculator. Keep track of your progress effortlessly with a convenient todo list. Level up your Genshin Impact experience with this invaluable resource!",
+          })}
         </p>
       </Card>
       <div>
@@ -68,7 +73,12 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
             </Button>
           ))}
         </div>
-        <h2 className="text-2xl font-semibold text-gray-200">Farmable Today</h2>
+        <h2 className="text-2xl font-semibold text-gray-200">
+          {t({
+            id: "farmable_today",
+            defaultMessage: "Farmable today",
+          })}
+        </h2>
         <Card className="flex flex-col">
           <table>
             {domains.characters.map((charactersDomain) => (

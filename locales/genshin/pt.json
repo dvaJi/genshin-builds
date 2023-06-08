@@ -68,7 +68,10 @@
     "Cecilia Garden": "Jardim Cecília",
     "Violet Court": "Corte Violeta",
     "Court of Flowing Sand": "Corte de Areia Fluente",
-    "Hidden Palace of Lianshan Formula": "Palácio Oculto da Fórmula Lianshan"
+    "Hidden Palace of Lianshan Formula": "Palácio Oculto da Fórmula Lianshan",
+    "welcome_title": "Bem-vindo ao Genshin-Builds! ✨",
+    "welcome_desc": "Descubra construções de personagens, guias completos e um banco de dados wiki, tudo em um só lugar. Genshin-Builds está aqui para ajudá-lo a planejar suas atividades de farm com uma calculadora de ascensão. Acompanhe seu progresso facilmente com uma lista de tarefas conveniente. Aumente sua experiência no Genshin Impact com este recurso inestimável!",
+    "farmable_today": "Disponível para Farmar Hoje"
   },
   "characters": {
     "title": "Lista de personagens do Genshin Impact",

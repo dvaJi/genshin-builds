@@ -68,7 +68,10 @@
     "Cecilia Garden": "세실리아 정원",
     "Violet Court": "바이올렛 코트",
     "Court of Flowing Sand": "흐르는 모래의 궁정",
-    "Hidden Palace of Lianshan Formula": "Lianshan Formula의 숨겨진 궁전"
+    "Hidden Palace of Lianshan Formula": "Lianshan Formula의 숨겨진 궁전",
+    "welcome_title": "Genshin-Builds에 오신 것을 환영합니다! ✨",
+    "welcome_desc": "캐릭터 빌드, 포괄적인 가이드 및 위키 데이터베이스를 한 곳에서 확인하세요. Genshin-Builds는 승급 계산기를 통해 농사 활동을 계획하는 데 도움을 드립니다. 편리한 할 일 목록으로 진행 상황을 손쉽게 추적하세요. 이 보물 같은 자원으로 Genshin Impact 경험을 더욱 향상시켜 보세요!",
+    "farmable_today": "오늘 수확 가능"
   },
   "characters": {
     "title": "Genshin 임팩트 캐릭터 목록",

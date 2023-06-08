@@ -68,7 +68,10 @@
     "Cecilia Garden": "セシリア ガーデン",
     "Violet Court": "バイオレットコート",
     "Court of Flowing Sand": "流れる砂のコート",
-    "Hidden Palace of Lianshan Formula": "蓮山フォーミュラの隠し宮殿"
+    "Hidden Palace of Lianshan Formula": "蓮山フォーミュラの隠し宮殿",
+    "welcome_title": "Genshin-Buildsへようこそ！✨",
+    "welcome_desc": "キャラクタービルド、包括的なガイド、ウィキデータベースを1つの場所で見つけましょう。Genshin-Buildsは、昇進計算機を使って農耕活動を計画するためのお手伝いをします。便利なTODOリストで進捗状況を簡単に追跡します。この貴重なリソースでGenshin Impactの体験をレベルアップしましょう！",
+    "farmable_today": "本日の農耕可能アイテム"
   },
   "characters": {
     "title": "原神インパクトキャラクター一覧",

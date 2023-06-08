@@ -68,7 +68,10 @@
     "Cecilia Garden": "Cecilia Bahçesi",
     "Violet Court": "Menekşe Mahkemesi",
     "Court of Flowing Sand": "Akan Kum Mahkemesi",
-    "Hidden Palace of Lianshan Formula": "Gizli Lianshan Sarayı Formülü"
+    "Hidden Palace of Lianshan Formula": "Gizli Lianshan Sarayı Formülü",
+    "welcome_title": "Genshin-Builds'e hoş geldiniz! ✨",
+    "welcome_desc": "Karakter yapısını, kapsamlı rehberleri ve bir wiki veritabanını tek bir yerde keşfedin. Genshin-Builds, yükseltme hesaplayıcısı ile çiftlik faaliyetlerinizi planlamanıza yardımcı olur. Pratik yapılacaklar listesiyle ilerlemenizi kolayca takip edin. Genshin Impact deneyiminizi bu değerli kaynakla geliştirin!",
+    "farmable_today": "Bugün Çiftlenebilir"
   },
   "characters": {
     "title": "Genshin Impact Karakter Listesi",
