@@ -436,7 +436,7 @@ export const getStaticProps: GetStaticProps = async ({
           path: character.path,
           combat_type: character.combat_type,
         } as any;
-      } else {
+      } else if (!c.isFlex) {
         console.log(c)
       }
     });

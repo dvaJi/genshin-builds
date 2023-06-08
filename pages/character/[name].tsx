@@ -2,7 +2,6 @@ import clsx from "clsx";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 import { GetStaticPaths, GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useState } from "react";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
@@ -17,10 +16,10 @@ import PassiveSkill from "@components/genshin/CharacterPassiveSkill";
 import CharacterSkill from "@components/genshin/CharacterSkill";
 import CharacterStats from "@components/genshin/CharacterStats";
 import CharacterTalentMaterials from "@components/genshin/CharacterTalentMaterials";
+import CharacterTeam from "@components/genshin/CharacterTeam";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Card from "@components/ui/Card";
 
-import CharacterTeam from "@components/genshin/CharacterTeam";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import {
