@@ -4,11 +4,12 @@ import { ReactNode } from "react";
 
 type Props = {
   className?: string;
+  contentsClassName?: string;
   children: ReactNode;
   contents: ReactNode;
 };
 
-function Tooltip({ className, children, contents }: Props) {
+function Tooltip({ className, contentsClassName, children, contents }: Props) {
   const [open, trigger, content, toggle] = usePopover<
     HTMLDivElement,
     HTMLDivElement
@@ -16,7 +17,7 @@ function Tooltip({ className, children, contents }: Props) {
 
   return (
     <div
-      className={clsx("cursor-pointer w-full", className)}
+      className={clsx("w-full cursor-pointer", className)}
       {...trigger}
       onMouseLeave={() => toggle(false)}
       onMouseEnter={() => toggle(true)}
@@ -24,9 +25,13 @@ function Tooltip({ className, children, contents }: Props) {
       {children}
       <div
         {...content}
-        className={clsx("bg-vulcan-600 rounded-md shadow-2xl z-1000 max-w-xs", {
-          hidden: !open,
-        })}
+        className={clsx(
+          "z-1000 max-w-xs rounded-md bg-vulcan-600 shadow-2xl",
+          {
+            hidden: !open,
+          },
+          contentsClassName
+        )}
         onClick={(e) => e.stopPropagation()}
       >
         {contents}

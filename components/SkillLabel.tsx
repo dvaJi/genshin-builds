@@ -1,5 +1,5 @@
-import Badge from "./ui/Badge";
 import useIntl from "@hooks/use-intl";
+import Badge from "./ui/Badge";
 
 interface CollapsibleProps {
   skill: string;
@@ -13,14 +13,14 @@ const SkillLabel = ({ skill }: CollapsibleProps) => {
     case "normal_attack":
       return (
         <>
-          <Badge>NA</Badge>
+          <Badge textSize="xxs">NA</Badge>
           {t({ id: "normal_attack", defaultMessage: "Normal Attack" })}
         </>
       );
     case "skill":
       return (
         <>
-          <Badge>E</Badge>
+          <Badge textSize="xxs">E</Badge>
           {t({ id: "skill", defaultMessage: "Skill" })}
         </>
       );
@@ -28,7 +28,7 @@ const SkillLabel = ({ skill }: CollapsibleProps) => {
     case "burst":
       return (
         <>
-          <Badge>Q</Badge>
+          <Badge textSize="xxs">Q</Badge>
           {t({ id: "burst", defaultMessage: "Burst" })}
         </>
       );

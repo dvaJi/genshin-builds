@@ -1,7 +1,7 @@
-import { memo } from "react";
-import { RiGobletFill } from "react-icons/ri";
-import { GiSandsOfTime, GiCrenelCrown } from "react-icons/gi";
 import useIntl from "@hooks/use-intl";
+import { memo } from "react";
+import { GiCrenelCrown, GiSandsOfTime } from "react-icons/gi";
+import { RiGobletFill } from "react-icons/ri";
 
 type Sets = {
   flower: string[];
@@ -20,31 +20,31 @@ const ArtifactRecommendedStats = ({ stats }: ArtifactRecommendedStatsProps) => {
   return (
     <div className="mb-4">
       <div className="flex items-center">
-        <div className="px-2 py-1 mr-2 bg-vulcan-900 rounded-md">
-          <GiSandsOfTime className="inline text-xl text-white mr-1" />
-          <span className="font-semibold">
+        <div className="mr-2 rounded-md bg-vulcan-900 px-2 py-1">
+          <GiSandsOfTime className="mr-1 inline text-xl text-white" />
+          <span className="text-xs text-slate-200">
             {t({ id: "sands", defaultMessage: "Sands" })}
           </span>
         </div>
-        <p>{stats.sands.join(" / ")}</p>
+        <p className="text-sm text-slate-300">{stats.sands.join(" / ")}</p>
       </div>
-      <div className="flex items-center mt-1 svelte-ti79zj">
-        <div className="px-2 py-1 mr-2 bg-vulcan-900 rounded-md">
-          <RiGobletFill className="inline text-xl text-white mr-1" />
-          <span className="font-semibold">
+      <div className="svelte-ti79zj mt-1 flex items-center">
+        <div className="mr-2 rounded-md bg-vulcan-900 px-2 py-1">
+          <RiGobletFill className="mr-1 inline text-xl text-white" />
+          <span className="text-xs text-slate-200">
             {t({ id: "goblet", defaultMessage: "Goblet" })}
           </span>
         </div>
-        <p>{stats.goblet.join(" / ")}</p>
+        <p className="text-sm text-slate-300">{stats.goblet.join(" / ")}</p>
       </div>
-      <div className="flex items-center mt-1 svelte-ti79zj">
-        <div className="px-2 py-1 mr-2 bg-vulcan-900 rounded-md">
-          <GiCrenelCrown className="inline text-xl text-white mr-1" />
-          <span className="font-semibold">
+      <div className="svelte-ti79zj mt-1 flex items-center">
+        <div className="mr-2 rounded-md bg-vulcan-900 px-2 py-1">
+          <GiCrenelCrown className="mr-1 inline text-xl text-white" />
+          <span className="text-xs text-slate-200">
             {t({ id: "circlet", defaultMessage: "Circlet" })}
           </span>
         </div>
-        <p>{stats.circlet.join(" / ")}</p>
+        <p className="text-sm text-slate-300">{stats.circlet.join(" / ")}</p>
       </div>
     </div>
   );

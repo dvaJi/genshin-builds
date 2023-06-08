@@ -83,13 +83,14 @@
     "dendro": "덴드로"
   },
   "character": {
-    "title": "{name} Genshin Impact 빌드 가이드",
-    "description": "모든 최고의 캐릭터와 그들의 빌드는 콘텐츠를 클리어하기 위한 힘, 생존력 및 다재다능성 순으로 순위가 매겨졌습니다.",
+    "title": "Genshin Impact {name} 최고의 빌드 가이드",
+    "description": "{name}을(를) 위한 최고의 빌드와 최상의 성과를 내는 팀으로 Genshin Impact 경험을 향상시키세요. 스킬, 업그레이드 비용 등에 대한 깊은 정보를 잠금 해제하세요. 지금 바로 탐색하여 이전보다 더 우수한 게임플레이를 최적화하세요.",
     "characters": "캐릭터",
-    "character": "성격",
-    "builds": "빌드",
-    "most_used": "가장 많이 사용",
-    "skills": "기술",
+    "character": "캐릭터",
+    "character_title": "Genshin Impact {name} 빌드",
+    "builds": "최고의 {name} 빌드",
+    "most_used": "가장 많이 사용되는",
+    "skills": "{name} 스킬",
     "weapons": "무기",
     "artifacts": "유물",
     "recommended_primary_stats": "권장 기본 통계",
@@ -112,7 +113,7 @@
     "sands": "모래 사장",
     "goblet": "고블릿",
     "circlet": "작은 원",
-    "best_team_comp": "최고의 팀 경쟁",
+    "best_team_comp": "최고의 {name} 팀",
     "main dps": "메인 DPS",
     "sub dps": "서브 DPS",
     "support": "지원하다",
@@ -347,7 +348,5 @@
     "artifact": "인공물",
     "owner": "소유자"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

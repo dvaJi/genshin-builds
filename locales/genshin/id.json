@@ -83,13 +83,14 @@
     "dendro": "Dendro"
   },
   "character": {
-    "title": "{name} Panduan Build Dampak Genshin",
-    "description": "Semua karakter terbaik dan build mereka diberi peringkat berdasarkan kekuatan, kelayakan, dan keserbagunaan untuk menghapus konten.",
+    "title": "{name} di Genshin Impact: Panduan Bangunan Terbaik",
+    "description": "Perbaiki pengalaman Genshin Impact Anda dengan bangunan terbaik dan tim yang berperforma tinggi untuk {name}. Buka informasi mendalam tentang keterampilan mereka, biaya peningkatan, dan banyak lagi. Jelajahi sekarang dan optimalkan permainan Anda seperti belum pernah sebelumnya.",
     "characters": "Karakter",
     "character": "Karakter",
-    "builds": "Bangun",
+    "character_title": "Bangunan {name} Genshin Impact",
+    "builds": "Bangunan Terbaik {name}",
     "most_used": "Paling Banyak Digunakan",
-    "skills": "Keterampilan",
+    "skills": "Keterampilan {name}",
     "weapons": "Senjata",
     "artifacts": "Artefak",
     "recommended_primary_stats": "Stat Utama yang Direkomendasikan",
@@ -112,7 +113,7 @@
     "sands": "Pasir",
     "goblet": "Gelas minum berkaki",
     "circlet": "Lingkaran",
-    "best_team_comp": "Komp Tim Terbaik",
+    "best_team_comp": "Tim Terbaik {name}",
     "main dps": "DPS Utama",
     "sub dps": "Sub DPS",
     "support": "Mendukung",
@@ -347,7 +348,5 @@
     "artifact": "Artefak",
     "owner": "Pemilik"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

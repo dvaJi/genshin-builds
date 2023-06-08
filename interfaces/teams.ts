@@ -1,6 +1,7 @@
 export type CharacterTeam = {
   id: string;
   c_min: number;
+  element: string;
   role: string;
   description: string;
   artifacts: string[];

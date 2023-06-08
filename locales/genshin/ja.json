@@ -83,13 +83,14 @@
     "dendro": "デンドロ"
   },
   "character": {
-    "title": "{name} 原神インパクト ビルドガイド",
-    "description": "すべての最高のキャラクターとそのビルドは、コンテンツをクリアするために、パワー、実行可能性、および多様性の順にランク付けされています.",
+    "title": "原神 {name} ザ・究極ビルドガイド",
+    "description": "{name} の究極ビルドと最高のパフォーマンスを発揮するチームで、原神の体験を向上させましょう。スキル、アップグレードコストなど、詳細な情報を解除します。今すぐ探索して、以前にも増してゲームプレイを最適化しましょう。",
     "characters": "キャラクター",
     "character": "キャラクター",
-    "builds": "ビルド",
-    "most_used": "最も使用",
-    "skills": "スキル",
+    "character_title": "原神 {name} ビルド",
+    "builds": "最高の {name} ビルド",
+    "most_used": "最も使用される",
+    "skills": "{name} のスキル",
     "weapons": "兵器",
     "artifacts": "アーティファクト",
     "recommended_primary_stats": "推奨プライマリ統計",
@@ -112,7 +113,7 @@
     "sands": "サンズ",
     "goblet": "ゴブレット",
     "circlet": "サークレット",
-    "best_team_comp": "ベストチームコンプ",
+    "best_team_comp": "最高の {name} チーム",
     "main dps": "メインDPS",
     "sub dps": "サブDPS",
     "support": "サポート",
@@ -347,7 +348,5 @@
     "artifact": "アーティファクト",
     "owner": "所有者"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

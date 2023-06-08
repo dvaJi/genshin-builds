@@ -1,13 +1,13 @@
-import { memo, useMemo, useState } from "react";
 import clsx from "clsx";
+import { memo, useMemo, useState } from "react";
 
 import { useToggle } from "@hooks/use-toggle";
 
 import Crement from "../Crement";
 import Card from "../ui/Card";
 
+import { getUrlLQ } from "@lib/imgUrl";
 import { Skill } from "genshin-data/dist/types/character";
-import { IMGS_CDN } from "@lib/constants";
 
 type Props = {
   characterId: string;
@@ -28,24 +28,24 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
     <div className="flex justify-center lg:block">
       <Card
         className={clsx(
-          "relative flex w-11/12 flex-col justify-start overflow-hidden  p-0 lg:w-full",
-          isOpen
-            ? "h-auto bg-opacity-90"
-            : "h-30 bg-opacity-50 backdrop-blur-sm lg:h-60"
+          "relative flex w-11/12 flex-col justify-start overflow-hidden p-0 lg:w-full",
+          isOpen ? "h-auto" : "h-30 lg:h-60"
         )}
       >
         <div className="relative flex h-60 flex-col">
           <div
             onClick={toggle}
-            className="absolute top-0 left-0 right-0 bottom-0 z-0 flex cursor-pointer items-start justify-center overflow-hidden"
+            className="absolute bottom-0 left-0 right-0 top-0 z-0 flex cursor-pointer items-start justify-center overflow-hidden"
           >
             <div className="absolute bottom-10 cursor-pointer">
               <img
-                className="h-16 select-none opacity-50"
-                src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
-                  "normal_attack_",
-                  ""
-                )}.png`}
+                className="select-none opacity-20"
+                src={getUrlLQ(
+                  `/characters/${characterId}/${skill.id.replace(
+                    "normal_attack_",
+                    ""
+                  )}.png`
+                )}
                 alt={skill.name}
               />
             </div>
@@ -53,20 +53,19 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
               <img
                 className="w-full select-none"
                 alt={skill.id}
-                src={`${IMGS_CDN}/characters/${characterId}/${skill.id.replace(
-                  "normal_attack_",
-                  ""
-                )}_an.gif`}
+                src={getUrlLQ(
+                  `/characters/${characterId}/${skill.id.replace(
+                    "normal_attack_",
+                    ""
+                  )}_an.gif`
+                )}
               />
             )}
             <div
               className={clsx(
-                "pointer-events-none absolute top-0 left-0 h-full w-full transition-opacity",
+                "pointer-events-none absolute left-0 top-0 h-full w-full transition-opacity",
                 isOpen ? "opacity-100" : "opacity-80"
               )}
-              // style={{
-              //   background: `linear-gradient(rgba(26,28,35,.8),rgb(35, 39, 52) 175px)`,
-              // }}
             ></div>
           </div>
           <div
@@ -79,12 +78,10 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
                 isOpen ? "" : "translate-y-5 scale-90 lg:translate-y-8"
               )}
             >
-              <div className="text-lg font-bold text-white shadow-black text-shadow">
-                {skill.name}
-              </div>
+              <div className="text-lg font-bold text-white">{skill.name}</div>
               <div
                 className={clsx(
-                  "text-xs shadow-black transition-opacity text-shadow",
+                  "text-xs transition-opacity",
                   isOpen ? "opacity-0" : "opacity-100"
                 )}
                 dangerouslySetInnerHTML={{ __html: skill.info }}

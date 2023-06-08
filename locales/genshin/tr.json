@@ -83,13 +83,14 @@
     "dendro": "Dendro"
   },
   "character": {
-    "title": "{name} Genshin Etki Oluşturma Kılavuzu",
-    "description": "En iyi karakterlerin tümü ve yapıları, içeriği temizlemek için güç, uygulanabilirlik ve çok yönlülük sırasına göre sıralandı.",
+    "title": "Genshin Impact {name} En İyi Oluşturma Rehberi",
+    "description": "{name} için en iyi oluşturmaları ve en iyi performans gösteren takımları kullanarak Genshin Impact deneyiminizi geliştirin. Becerileri, yükseltme maliyetleri ve daha fazlası hakkında detaylı bilgilere ulaşın. Şimdi keşfedin ve oyununuzu daha önce hiç olmadığı kadar optimize edin.",
     "characters": "Karakterler",
     "character": "Karakter",
-    "builds": "Yapılar",
-    "most_used": "En çok kullanılan",
-    "skills": "Yetenekler",
+    "character_title": "Genshin Impact {name} Oluşturma",
+    "builds": "En İyi {name} Oluşturmaları",
+    "most_used": "En Çok Kullanılan",
+    "skills": "{name} Becerileri",
     "weapons": "Silahlar",
     "artifacts": "eserler",
     "recommended_primary_stats": "Önerilen Birincil İstatistikler",
@@ -112,7 +113,7 @@
     "sands": "kumlar",
     "goblet": "Kadeh",
     "circlet": "Taç",
-    "best_team_comp": "En İyi Takım Yarışması",
+    "best_team_comp": "En İyi {name} Takımları",
     "main dps": "Ana DPS",
     "sub dps": "Alt DPS",
     "support": "Destek olmak",
@@ -347,7 +348,5 @@
     "artifact": "eser",
     "owner": "Sahibi"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

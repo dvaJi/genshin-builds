@@ -83,13 +83,14 @@
     "dendro": "Dendro"
   },
   "character": {
-    "title": "{name} Guida allo sviluppo di Genshin Impact",
-    "description": "Tutti i migliori personaggi e le loro build sono classificati in ordine di potenza, fattibilità e versatilità per cancellare i contenuti.",
-    "characters": "Caratteri",
-    "character": "Carattere",
-    "builds": "Costruisce",
-    "most_used": "Più usato",
-    "skills": "Competenze",
+    "title": "{name} in Genshin Impact: Guida definitiva alla costruzione",
+    "description": "Migliora la tua esperienza su Genshin Impact con le migliori costruzioni e le squadre più performanti per {name}. Sblocca informazioni dettagliate sulle loro abilità, costi di potenziamento e molto altro. Esplora ora e ottimizza il tuo gameplay come mai prima d'ora.",
+    "characters": "Personaggi",
+    "character": "Personaggio",
+    "character_title": "Costruzione {name} in Genshin Impact",
+    "builds": "Migliori costruzioni {name}",
+    "most_used": "Più utilizzati",
+    "skills": "Abilità {name}",
     "weapons": "Armi",
     "artifacts": "Artefatti",
     "recommended_primary_stats": "Statistiche primarie consigliate",
@@ -112,7 +113,7 @@
     "sands": "Sabbie",
     "goblet": "Calice",
     "circlet": "Cerchietto",
-    "best_team_comp": "Miglior squadra Comp",
+    "best_team_comp": "Migliori squadre {name}",
     "main dps": "DS principale",
     "sub dps": "Sub DPS",
     "support": "Supporto",
@@ -347,7 +348,5 @@
     "artifact": "Artefatto",
     "owner": "Proprietario"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

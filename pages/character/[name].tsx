@@ -15,11 +15,12 @@ import CharacterCommonBuildCard from "@components/genshin/CharacterCommonBuildCa
 import ConstellationCard from "@components/genshin/CharacterConstellationCard";
 import PassiveSkill from "@components/genshin/CharacterPassiveSkill";
 import CharacterSkill from "@components/genshin/CharacterSkill";
+import CharacterStats from "@components/genshin/CharacterStats";
 import CharacterTalentMaterials from "@components/genshin/CharacterTalentMaterials";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Card from "@components/ui/Card";
 
-import CharacterStats from "@components/genshin/CharacterStats";
+import CharacterTeam from "@components/genshin/CharacterTeam";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import {
@@ -67,17 +68,31 @@ const CharacterPage = ({
       <Metadata
         pageTitle={t({
           id: "title",
-          defaultMessage: "{name} Genshin Impact Build Guide",
+          defaultMessage: "{name} in Genshin Impact: The Ultimate Build Guide",
           values: { name: character.name },
         })}
-        pageDescription={character.description}
+        pageDescription={t({
+          id: "description",
+          defaultMessage:
+            "Enhance your Genshin Impact experience with the ultimate builds and top-performing teams for {name}. Unlock in-depth information on their skills, upgrade costs, and much more. Explore now and optimize your gameplay like never before.",
+          values: { name: character.name },
+        })}
         jsonLD={generateJsonLd(locale, t)}
       />
       <div className="relative z-20 mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
-          <div className="relative mr-2 flex-none lg:mr-5">
+          <div
+            className="relative mr-2 flex-none rounded-full border-2 border-gray-900/80 bg-cover shadow-lg lg:mr-5"
+            style={{
+              backgroundImage: `url('${getUrl(
+                `/bg_${character.rarity}star.png`,
+                32,
+                32
+              )})'`,
+            }}
+          >
             <img
-              className="h-40 w-40 rounded-full border border-gray-900 bg-vulcan-800 p-1"
+              className={clsx("h-40 w-40 rounded-full")}
               src={getUrl(`/characters/${character.id}/image.png`, 160, 160)}
               alt={character.name}
             />
@@ -85,7 +100,11 @@ const CharacterPage = ({
           <div className="flex flex-grow flex-col">
             <div className="mr-2 flex items-center">
               <h1 className="mr-2 text-3xl text-white shadow-black text-shadow">
-                {character.name} ({character.rarity}★)
+                {t({
+                  id: "character_title",
+                  defaultMessage: "Genshin Impact {name} Build",
+                  values: { name: character.name },
+                })}
               </h1>
               <ElementIcon
                 type={common[character.element]}
@@ -103,38 +122,20 @@ const CharacterPage = ({
         </div>
       </div>
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
-        {t({ id: "skills", defaultMessage: "Skills" })}
-      </h2>
-      <div
-        className={clsx(
-          "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
-          character.skills.length > 3
-            ? "lg:grid-cols-3 xl:grid-cols-4"
-            : "lg:grid-cols-3"
-        )}
-      >
-        {character.skills.map((skill) => (
-          <CharacterSkill
-            key={skill.id}
-            characterId={character.id}
-            skill={skill}
-          />
-        ))}
-      </div>
       {builds.length > 0 && (
         <div className="relative z-50 mx-4 mb-8 lg:mx-0">
           <h2 className="mb-3 text-3xl text-white">
             {t({
               id: "builds",
-              defaultMessage: "Builds",
+              defaultMessage: "Best {name} Builds",
+              values: { name: character.name },
             })}
           </h2>
           <div>
             {mubuild && (
               <button
                 className={clsx(
-                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 text-lg backdrop-blur",
+                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 backdrop-blur md:text-lg",
                   {
                     "bg-vulcan-700 text-white": buildSelected === -1,
                     "bg-vulcan-800": buildSelected !== -1,
@@ -151,7 +152,7 @@ const CharacterPage = ({
             {officialbuild && (
               <button
                 className={clsx(
-                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 text-lg backdrop-blur",
+                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 backdrop-blur md:text-lg",
                   {
                     "bg-vulcan-700 text-white": buildSelected === -2,
                     "bg-vulcan-800": buildSelected !== -2,
@@ -169,7 +170,7 @@ const CharacterPage = ({
               <button
                 key={build.id}
                 className={clsx(
-                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 text-lg backdrop-blur",
+                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 backdrop-blur md:text-lg",
                   {
                     "bg-vulcan-700 text-white": buildSelected === index,
                     "bg-vulcan-800": buildSelected !== index,
@@ -204,50 +205,41 @@ const CharacterPage = ({
         </div>
       )}
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
+        {t({
+          id: "best_team_comp",
+          defaultMessage: "Best {name} Teams",
+          values: { name: character.name },
+        })}
       </h2>
-      <Card className="mb-4 flex flex-wrap">
+      <Card className="mx-4 mb-4 flex flex-wrap justify-between p-0">
         {recommendedTeams.map((team, index) => (
-          <div
-            key={team.name + index}
-            className="mb-4 flex items-center border-b border-vulcan-600 pb-4"
-          >
-            <div className="lg:mx-2">#{index + 1}</div>
-            {/* <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div> */}
-            {team.characters.map((character) => (
-              <Link
-                key={character.id}
-                href={`/character/${character.id}`}
-                className="group relative text-center lg:mr-8"
-              >
-                <img
-                  className="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
-                  src={getUrl(
-                    `/characters/${character.id}/${character.id}_portrait.png`,
-                    100,
-                    100
-                  )}
-                  alt={character.name}
-                  width="100"
-                  height="100"
-                />
-                {character.c_min > 0 && (
-                  <div className="absolute bottom-5 right-2/3 rounded-full bg-vulcan-700 p-1 text-xs font-bold text-gray-300">
-                    {`C${character.c_min}`}
-                  </div>
-                )}
-                <span className="text-xs lg:text-sm">
-                  {t({
-                    id: character.role.toLowerCase(),
-                    defaultMessage: character.role,
-                  })}
-                </span>
-              </Link>
-            ))}
-          </div>
+          <CharacterTeam key={team.name + index} team={team} index={index} />
         ))}
       </Card>
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+      <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
+        {t({
+          id: "skills",
+          defaultMessage: "{name} Skills",
+          values: { name: character.name },
+        })}
+      </h2>
+      <div
+        className={clsx(
+          "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
+          character.skills.length > 3
+            ? "lg:grid-cols-3 xl:grid-cols-4"
+            : "lg:grid-cols-3"
+        )}
+      >
+        {character.skills.map((skill) => (
+          <CharacterSkill
+            key={skill.id}
+            characterId={character.id}
+            skill={skill}
+          />
+        ))}
+      </div>
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
@@ -360,7 +352,7 @@ export const getStaticProps: GetStaticProps = async ({
 
   const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons({
-    select: ["id", "name", "rarity", "stats", "bonus"],
+    select: ["id", "name", "rarity", "stats"],
   });
   const artifactsList = await genshinData.artifacts({
     select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
@@ -504,9 +496,7 @@ export const getStaticProps: GetStaticProps = async ({
     if (artifactsIds.includes("20hp_set")) {
       artifacts["20hp_set"] = {
         ...artifactsList.find((a) => a.id === HP20BONUS[0])!,
-        name: common["HP"]
-          ? `${common["HP"]} +20% set`
-          : "HP +20% set",
+        name: common["HP"] ? `${common["HP"]} +20% set` : "HP +20% set",
         children: artifactsList.filter((a) => HP20BONUS.includes(a.id)),
       };
     }
@@ -529,17 +519,16 @@ export const getStaticProps: GetStaticProps = async ({
       name: lngDict?.character["others"]
         ? lngDict.character["others"]
         : "Others",
-      max_rarity: 0,
-      min_rarity: 0,
+      max_rarity: 1,
+      min_rarity: 1,
       two_pc: lngDict?.character["others_desc"]
         ? lngDict.character["others_desc"]
         : "Others",
     };
   }
 
-  const recommendedTeams = require(`../../_content/genshin/data/teams.json`)[
-    character.id
-  ];
+  const recommendedTeams =
+    require(`../../_content/genshin/data/teams.json`)[character.id] || [];
 
   return {
     props: {
@@ -552,7 +541,7 @@ export const getStaticProps: GetStaticProps = async ({
       common,
       mubuild,
       officialbuild,
-      recommendedTeams: recommendedTeams ?? [],
+      recommendedTeams,
       bgStyle: {
         image: getUrlLQ(
           `/regions/${

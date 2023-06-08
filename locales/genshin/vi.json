@@ -83,13 +83,14 @@
     "dendro": "dendro"
   },
   "character": {
-    "title": "{name} Hướng dẫn xây dựng Genshin Impact",
-    "description": "Tất cả các nhân vật tốt nhất và bản dựng của họ được xếp hạng theo thứ tự sức mạnh, khả năng tồn tại và tính linh hoạt để làm rõ nội dung.",
+    "title": "{name} trong Genshin Impact: Hướng dẫn xây dựng tối ưu",
+    "description": "Nâng cao trải nghiệm Genshin Impact của bạn với các xây dựng tối ưu và đội hình có hiệu suất cao nhất cho {name}. Mở khóa thông tin chi tiết về kỹ năng, chi phí nâng cấp và nhiều hơn nữa. Khám phá ngay và tối ưu hóa cách chơi của bạn như chưa bao giờ có.",
     "characters": "Nhân vật",
     "character": "Nhân vật",
-    "builds": "bản dựng",
-    "most_used": "Được dùng nhiều nhất",
-    "skills": "Kỹ năng",
+    "character_title": "Xây dựng {name} trong Genshin Impact",
+    "builds": "Các xây dựng {name} tốt nhất",
+    "most_used": "Được sử dụng nhiều nhất",
+    "skills": "Kỹ năng {name}",
     "weapons": "vũ khí",
     "artifacts": "Thánh Di Vật",
     "recommended_primary_stats": "Số liệu thống kê chính được đề xuất",
@@ -112,7 +113,7 @@
     "sands": "Đồng hồ",
     "goblet": "Ly",
     "circlet": "Nón",
-    "best_team_comp": "Đội hình xuất sắc nhất",
+    "best_team_comp": "Đội hình {name} tốt nhất",
     "main dps": "DPS chính",
     "sub dps": "DPS phụ",
     "support": "Hỗ trợ",
@@ -347,7 +348,5 @@
     "artifact": "hiện vật",
     "owner": "Chủ sở hữu"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

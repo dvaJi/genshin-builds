@@ -9,18 +9,21 @@ interface ElementIconProps {
   className?: string;
 }
 
-const ElementIcon = ({
+function ElementIcon({
   type,
   width = 64,
   height = 64,
   className,
-}: ElementIconProps) => (
-  <LazyLoadImage
-    src={getUrl(`/elements/${type}.png`, height, width)}
-    alt={type}
-    className={className}
-    width={width}
-    height={height}
-  />
-);
+}: ElementIconProps) {
+  return (
+    <LazyLoadImage
+      src={getUrl(`/elements/${type}.png`, height, width)}
+      alt={type}
+      className={className}
+      width={width}
+      height={height}
+    />
+  );
+}
+
 export default memo(ElementIcon);

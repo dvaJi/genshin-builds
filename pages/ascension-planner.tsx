@@ -1,19 +1,19 @@
-import { useState } from "react";
-import Link from "next/link";
-import dynamic from "next/dynamic";
 import clsx from "clsx";
-import { GetStaticProps } from "next";
 import format from "date-fns/format";
 import GenshinData, { Character, Domains, Weapon } from "genshin-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useState } from "react";
 
-import Card from "@components/ui/Card";
-import Button from "@components/ui/Button";
 import SimpleRarityBox from "@components/SimpleRarityBox";
+import Button from "@components/ui/Button";
+import Card from "@components/ui/Card";
 
-import { trackClick } from "@lib/gtag";
-import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { trackClick } from "@lib/gtag";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
+import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -35,9 +35,21 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
   );
   return (
     <div>
+      <Card>
+        <h1 className="text-lg text-slate-100">
+          Welcome to Genshin-Builds! ✨
+        </h1>
+        <p>
+          Discover character builds, comprehensive guides, and a wiki database
+          all in one place. Genshin-Builds is here to assist you in planning
+          your farming activities with an ascension calculator. Keep track of
+          your progress effortlessly with a convenient todo list. Level up your
+          Genshin Impact experience with this invaluable resource!
+        </p>
+      </Card>
       <div>
         <ServerTimers />
-        <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+        <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
         <div className="mb-2 flex flex-wrap justify-center">
           {days.map((day) => (
             <Button
@@ -56,62 +68,74 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
             </Button>
           ))}
         </div>
-        {domains.characters.map((charactersDomain) => (
-          <Card key={charactersDomain.domainName}>
-            <h2 className="mb-6 text-2xl font-semibold text-gray-200">
-              {charactersDomain.domainName}
-            </h2>
-            <div className="flex flex-wrap justify-center">
-              {charactersDomain.rotation
-                .find((r) => r.day === currentDay)
-                ?.ids.map((cId) => (
-                  <Link key={cId} href={`/character/${cId}`}>
-                    <SimpleRarityBox
-                      img={getUrl(
-                        `/characters/${cId}/${cId}_portrait.png`,
-                        124,
-                        124
-                      )}
-                      rarity={characters[cId].rarity}
-                      name={characters[cId].name}
-                      className="h-24 w-24"
-                      nameSeparateBlock={true}
-                      classNameBlock="w-24"
-                    />
-                  </Link>
-                ))}
-            </div>
-          </Card>
-        ))}
-        {domains.weapons.map((weaponsDomain) => (
-          <Card key={weaponsDomain.domainName}>
-            <h2 className="mb-6 text-2xl font-semibold text-gray-200">
-              {weaponsDomain.domainName}
-            </h2>
-            <div className="flex flex-wrap justify-center">
-              {weaponsDomain.rotation
-                .find((r) => r.day === currentDay)
-                ?.ids.map((cId) => (
-                  <div key={cId}>
-                    {weapons[cId] ? (
-                      <Link key={cId} href={`/weapon/${cId}`}>
-                        <SimpleRarityBox
-                          img={getUrl(`/weapons/${cId}.png`, 124, 124)}
-                          rarity={weapons[cId].rarity}
-                          name={weapons[cId].name}
-                          className="h-24 w-24"
-                          nameSeparateBlock={true}
-                          classNameBlock="w-24"
-                        />
-                      </Link>
-                    ) : (
-                      `NOT FOUND ${cId}`
-                    )}
+        <h2 className="text-2xl font-semibold text-gray-200">Farmable Today</h2>
+        <Card className="flex flex-col">
+          <table>
+            {domains.characters.map((charactersDomain) => (
+              <tr key={charactersDomain.domainName}>
+                <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
+                  <h3 className="text-lg text-gray-200 ">
+                    {charactersDomain.domainName}
+                  </h3>
+                </td>
+                <td className="border-b border-gray-700 pt-2 align-middle">
+                  <div className="flex flex-wrap">
+                    {charactersDomain.rotation
+                      .find((r) => r.day === currentDay)
+                      ?.ids.map((cId) => (
+                        <Link key={cId} href={`/character/${cId}`}>
+                          <SimpleRarityBox
+                            img={getUrl(
+                              `/characters/${cId}/${cId}_portrait.png`,
+                              80,
+                              80
+                            )}
+                            rarity={characters[cId].rarity}
+                            alt={characters[cId].name}
+                            className="h-16 w-16"
+                          />
+                        </Link>
+                      ))}
                   </div>
-                ))}
-            </div>
-          </Card>
-        ))}
+                </td>
+              </tr>
+            ))}
+            {domains.weapons.map((weaponsDomain) => (
+              <tr
+                key={weaponsDomain.domainName}
+                className="border-b border-gray-700 pt-2 align-middle"
+              >
+                <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
+                  <h3 className="text-lg text-gray-200 ">
+                    {weaponsDomain.domainName}
+                  </h3>
+                </td>
+                <td className="border-b border-gray-700 pt-2 align-middle">
+                  <div className="flex flex-wrap">
+                    {weaponsDomain.rotation
+                      .find((r) => r.day === currentDay)
+                      ?.ids.map((cId) => (
+                        <div key={cId}>
+                          {weapons[cId] ? (
+                            <Link key={cId} href={`/weapon/${cId}`}>
+                              <SimpleRarityBox
+                                img={getUrl(`/weapons/${cId}.png`, 80, 80)}
+                                rarity={weapons[cId].rarity}
+                                alt={weapons[cId].name}
+                                className="h-16 w-16"
+                              />
+                            </Link>
+                          ) : (
+                            `NOT FOUND ${cId}`
+                          )}
+                        </div>
+                      ))}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </table>
+        </Card>
       </div>
     </div>
   );

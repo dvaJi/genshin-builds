@@ -1,6 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { AD_ARTICLE_SLOT, GAD_ID, PRADS_ID } from "@lib/constants";
+import { AD_ARTICLE_SLOT, GAD_ID } from "@lib/constants";
 import {
   GA_TRACKING_ID,
   HSR_GA_TRACKING_ID,
@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
     }
 
     return (
-      <Html>
+      <Html lang={this.props.__NEXT_DATA__.locale ?? "en"}>
         <Head>
           {GA_TRACKING_ID && (
             <script
@@ -42,12 +42,16 @@ export default class MyDocument extends Document {
               src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
             />
           )}
+          <link href="https://www.google-analytics.com" rel="preconnect" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
+          <link rel="preconnect" href="//i0.wp.com" />
+          <link rel="preconnect" href="//i1.wp.com" />
+          <link rel="preconnect" href="//i2.wp.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
             rel="stylesheet"
@@ -122,6 +126,10 @@ export default class MyDocument extends Document {
             href="/icons/favicon-16x16.png"
           />
           <link rel="manifest" href="/manifest.json" />
+          <meta
+            name="robots"
+            content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+          />
           <meta name="msapplication-TileColor" content="#1a1d27" />
           {process.env.NEXT_PUBLIC_CUSTOM_HEAD_ONE_NAME && (
             <meta
@@ -134,6 +142,11 @@ export default class MyDocument extends Document {
             content="/icons/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#1a1d27" />
+          <meta content="Genshin-Builds.Com" property="og:site_name" />
+          <meta content="website" property="og:type" />
+          <meta content="/icons/meta-image.jpg" property="og:image" />
+          <meta content="summary" name="twitter:card" />
+          <meta content="/icons/meta-image.jpg" name="twitter:image" />
         </Head>
         <body className="antialiased dark:text-slate-400">
           {GAD_ID && AD_ARTICLE_SLOT ? (
@@ -154,23 +167,8 @@ export default class MyDocument extends Document {
           {GA_TRACKING_ID && (
             <script
               async
-              src={`https://www.googletagmanager.com/gtag/js?id=${
-                isTOF ? TOF_GA_TRACKING_ID : GA_TRACKING_ID
-              }`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingID}`}
             />
-          )}
-          {PRADS_ID && (
-            <div>
-              <script
-                src={`https://cdn.prplads.com/agent.js?publisherId=${PRADS_ID}`}
-                data-pa-tag
-                async
-              ></script>
-              <script
-                src="https://cdn.prplads.com/video-agent.js?publisherId=e21c9387886d075fe1e601fb1a0e329c:e6e0e3e754066d18442819d10fce94ff4112c38f647aad8b1cfdf47d35fdf1d795eae8a634db775e31b9ba712aaca63235ce010d72f4ff31d12663c0526d53f6"
-                async
-              ></script>
-            </div>
           )}
         </body>
       </Html>

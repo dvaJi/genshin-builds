@@ -83,13 +83,14 @@
     "dendro": "Dendro"
   },
   "character": {
-    "title": "{name} Guide de construction Genshin Impact",
-    "description": "Tous les meilleurs personnages et leurs constructions sont classés par ordre de puissance, de viabilité et de polyvalence pour effacer le contenu.",
+    "title": "{name} dans Genshin Impact : Le Guide Ultime de Construction",
+    "description": "Optimisez votre expérience de jeu dans Genshin Impact avec les constructions ultimes et les équipes performantes pour {name}. Débloquez des informations approfondies sur leurs compétences, les coûts de montée en niveau, et bien plus encore. Explorez maintenant et optimisez votre gameplay comme jamais auparavant.",
     "characters": "Personnages",
     "character": "Personnage",
-    "builds": "Construit",
-    "most_used": "Plus utilisé",
-    "skills": "Compétences",
+    "character_title": "Construction {name} dans Genshin Impact",
+    "builds": "Meilleures constructions {name}",
+    "most_used": "Les plus utilisés",
+    "skills": "Compétences {name}",
     "weapons": "Armes",
     "artifacts": "Artefacts",
     "recommended_primary_stats": "Statistiques principales recommandées",
@@ -112,7 +113,7 @@
     "sands": "Sables",
     "goblet": "gobelet",
     "circlet": "Cercle",
-    "best_team_comp": "Meilleure composition d'équipe",
+    "best_team_comp": "Meilleures équipes {name}",
     "main dps": "DPS principal",
     "sub dps": "Sous DPS",
     "support": "Soutien",
@@ -348,7 +349,5 @@
     "artifact": "Artefact",
     "owner": "Propriétaire"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

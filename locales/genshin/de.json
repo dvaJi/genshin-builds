@@ -83,13 +83,14 @@
     "dendro": "Dendro"
   },
   "character": {
-    "title": "{name} Genshin Impact Build Leitfaden",
-    "description": "Die besten Figuren und ihre Builds nach Stärke, Überlebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu bewältigen.",
-    "characters": "Figuren",
-    "character": "Figur",
-    "builds": "Builds",
-    "most_used": "Meist verwendet",
-    "skills": "Fähigkeiten",
+    "title": "{name} in Genshin Impact: Der ultimative Build-Guide",
+    "description": "Verbessere dein Genshin Impact-Erlebnis mit den ultimativen Builds und leistungsstärksten Teams für {name}. Schalte detaillierte Informationen zu ihren Fähigkeiten, Upgrade-Kosten und vielem mehr frei. Erkunde jetzt und optimiere dein Gameplay wie nie zuvor.",
+    "characters": "Charaktere",
+    "character": "Charakter",
+    "character_title": "Genshin Impact {name} Build",
+    "builds": "Beste {name} Builds",
+    "most_used": "Am häufigsten verwendet",
+    "skills": "{name}-Fähigkeiten",
     "weapons": "Waffen",
     "artifacts": "Artefakte",
     "recommended_primary_stats": "Empfohlene Basisattribute",
@@ -112,7 +113,7 @@
     "sands": "Sand",
     "goblet": "Kelch",
     "circlet": "Reif",
-    "best_team_comp": "Beste Truppenzusammenstellung",
+    "best_team_comp": "Beste {name}-Teams",
     "main dps": "Haupt-Kämpfer",
     "sub dps": "Zusatz-Kämpfer",
     "support": "Unterstützung",
@@ -347,7 +348,5 @@
     "artifact": "Artefakt",
     "owner": "Besitzer"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

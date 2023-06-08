@@ -49,6 +49,7 @@ const SimpleRarityBox = ({
           loading="lazy"
           draggable="false"
         />
+
         {!nameSeparateBlock && name && (
           <span
             className="absolute bottom-0 inline-block rounded rounded-t-none bg-gray-900 bg-opacity-90 p-1 text-xs opacity-80 transition-all group-hover:text-white group-hover:opacity-100"

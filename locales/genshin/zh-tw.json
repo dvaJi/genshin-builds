@@ -83,13 +83,14 @@
     "dendro": "登卓"
   },
   "character": {
-    "title": "{name} Genshin Impact 構建指南",
-    "description": "所有最好的角色和他們的構建都按照力量、生存能力和多功能性的順序排列，以清除內容。",
-    "characters": "人物",
-    "character": "特點",
-    "builds": "構建",
-    "most_used": "最常被使用",
-    "skills": "技能",
+    "title": "《原神》{name}：終極構建指南",
+    "description": "以最佳構建和表現最佳的團隊，增強你在《原神》的體驗。解鎖有關其技能、升級成本等深入信息。立即探索，優化你的遊戲體驗。",
+    "characters": "角色",
+    "character": "角色",
+    "character_title": "《原神》{name} 構建",
+    "builds": "最佳 {name} 構建",
+    "most_used": "最常使用",
+    "skills": "{name} 技能",
     "weapons": "武器",
     "artifacts": "神器",
     "recommended_primary_stats": "推薦的主要統計數據",
@@ -112,7 +113,7 @@
     "sands": "金沙",
     "goblet": "高腳杯",
     "circlet": "圓環",
-    "best_team_comp": "最佳陣容",
+    "best_team_comp": "最佳 {name} 團隊",
     "main dps": "主要DPS",
     "sub dps": "亞DPS",
     "support": "支持",
@@ -347,7 +348,5 @@
     "artifact": "人工製品",
     "owner": "所有者"
   },
-  "leaderboard": {
-
-  }
+  "leaderboard": {}
 }

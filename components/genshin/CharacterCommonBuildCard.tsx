@@ -1,11 +1,11 @@
-import { memo, ReactNode } from "react";
 import { Artifact, Weapon } from "genshin-data";
+import { memo } from "react";
 
-import WeaponCard from "./WeaponCard";
 import ArtifactCard from "./ArtifactCard";
+import WeaponCard from "./WeaponCard";
 
-import { MostUsedBuild } from "interfaces/build";
 import useIntl from "@hooks/use-intl";
+import { MostUsedBuild } from "interfaces/build";
 
 type Props = {
   build: MostUsedBuild;
@@ -18,67 +18,41 @@ const CharacterCommonBuildCard = ({ build, weapons, artifacts }: Props) => {
   return (
     <div className="">
       {/* <p>{build.name}</p> */}
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex w-full flex-wrap content-start pr-2 lg:pr-4">
-          <div className="mb-2 text-xl font-semibold">
+      <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col flex-wrap content-start">
+          <h4 className="mb-2 text-lg font-semibold text-slate-300">
             {f({
               id: "weapons",
               defaultMessage: "Weapons",
             })}
-            :
-          </div>
-          <div>
-            {build.weapons
-              .map<ReactNode>((weapon) => (
-                <WeaponCard key={weapon} weapon={weapons[weapon]} />
-              ))
-              .reduce((prev, curr, i) => [
-                prev,
-                <div
-                  key={`weapon_divider_${i}`}
-                  className="build-option-divider"
-                >
-                  {f({
-                    id: "or",
-                    defaultMessage: "Or",
-                  })}
-                </div>,
-                curr,
-              ])}
+          </h4>
+          <div className="w-full">
+            {build.weapons.map((weapon, i) => (
+              <WeaponCard
+                key={weapon}
+                position={i + 1}
+                weapon={weapons[weapon]}
+              />
+            ))}
           </div>
         </div>
-        <div className="flex w-full flex-wrap content-start md:ml-2">
-          <div className="mb-2 w-full text-xl font-semibold">
+        <div className="flex flex-col flex-wrap content-start">
+          <h4 className="mb-2 text-lg font-semibold text-slate-300">
             {f({
               id: "artifacts",
               defaultMessage: "Artifacts",
             })}
-            :
-          </div>
-          <div className="mb-2 w-full">
-            {build.artifacts
-              .map<ReactNode>((set) => (
-                <div
-                  key={`${set[0]}-${set[1]}`}
-                  className="flex w-full flex-row"
-                >
-                  <ArtifactCard
-                    artifact={artifacts[set[0]]}
-                    artifact2={set.length === 2 ? artifacts[set[1]] : undefined}
-                  />
-                </div>
-              ))
-              .reduce((prev, curr, i) => [
-                prev,
-                <div key={`set_divider_${i}`} className="build-option-divider">
-                  {f({
-                    id: "or",
-                    defaultMessage: "Or",
-                  })}
-                </div>,
-                curr,
-              ])}
-          </div>
+          </h4>
+          {build.artifacts.map((set, i) => (
+            <ArtifactCard
+              key={`${set.join("")}`}
+              position={i + 1}
+              isChooseTwo={set.length > 2}
+              artifacts={set
+                .map((artifactId) => artifacts[artifactId])
+                .filter(Boolean)}
+            />
+          ))}
         </div>
       </div>
     </div>
