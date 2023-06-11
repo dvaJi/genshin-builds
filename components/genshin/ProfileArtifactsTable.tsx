@@ -68,6 +68,7 @@ const columns: ColumnDef<any>[] = [
   {
     header: "stat1",
     cell: (info) => {
+      if (!info.row.original.sortedStats[0]) return null;
       const { key, value } = info.row.original.sortedStats[0];
       return (
         <div className={clsx("rounded px-1 py-1 text-left text-xs text-white")}>
@@ -79,6 +80,7 @@ const columns: ColumnDef<any>[] = [
   {
     header: "stat2",
     cell: (info) => {
+      if (!info.row.original.sortedStats[1]) return null;
       const { key, value } = info.row.original.sortedStats[1];
       return (
         <div className={clsx("rounded px-1 py-1 text-left text-xs text-white")}>
@@ -90,6 +92,7 @@ const columns: ColumnDef<any>[] = [
   {
     header: "stat3",
     cell: (info) => {
+      if (!info.row.original.sortedStats[2]) return null;
       const { key, value } = info.row.original.sortedStats[2];
       return (
         <div className={clsx("rounded px-1 py-1 text-left text-xs text-white")}>
@@ -101,6 +104,7 @@ const columns: ColumnDef<any>[] = [
   {
     header: "stat4",
     cell: (info) => {
+      if (!info.row.original.sortedStats[3]) return null;
       const { key, value } = info.row.original.sortedStats[3];
       return (
         <div className={clsx("rounded px-1 py-1 text-left text-xs text-white")}>

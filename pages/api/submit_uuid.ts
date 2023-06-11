@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import prisma, { Prisma } from "@db/index";
-import { PlayerDataAPI } from "interfaces/enka";
 import { encodeBuilds } from "@utils/leaderboard-enc";
+import { PlayerDataAPI } from "interfaces/enka";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
@@ -25,7 +25,8 @@ export default async function handler(
 
   const data = (await response.json()) as PlayerDataAPI;
 
-  if (data.avatarInfoList.length <= 1) {
+  if (!data.avatarInfoList || data.avatarInfoList.length <= 1) {
+    console.log("Player Data", data);
     return res
       .status(400)
       .json({ statusCode: 400, message: "Player profile is not public" });
