@@ -229,7 +229,9 @@ if (buildsOld) {
     ],
   })}
   bgImage={getUrlLQ(
-    `/regions/${common[character.region] || "Mondstadt"}_d.jpg`,
+    character.region
+      ? `/regions/${common[character.region]}_d.jpg`
+      : `/regions/Mondstadt_d.jpg`,
     900,
     900
   )}
@@ -411,7 +413,7 @@ if (buildsOld) {
           <div class="flex justify-center lg:block">
             <div class="card relative flex w-11/12 flex-col justify-start overflow-hidden lg:w-full">
               <div class="flex flex-col">
-                <div class="pointer-events-none absolute top-4 left-0 right-0 bottom-0 z-0 flex h-96 items-start justify-center overflow-hidden">
+                <div class="pointer-events-none absolute bottom-0 left-0 right-0 top-4 z-0 flex h-96 items-start justify-center overflow-hidden">
                   <img
                     class="w-16 opacity-20"
                     alt={passive.id}
@@ -465,7 +467,7 @@ if (buildsOld) {
             <div class="flex justify-center lg:block">
               <div class="card relative flex w-11/12 flex-col justify-start overflow-hidden lg:w-full">
                 <div class="flex flex-col">
-                  <div class="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex h-96 items-start justify-center overflow-hidden">
+                  <div class="pointer-events-none absolute bottom-0 left-0 right-0 top-0 z-0 flex h-96 items-start justify-center overflow-hidden">
                     <img
                       class="w-24 opacity-20"
                       alt={constellation.id}
@@ -682,10 +684,10 @@ if (buildsOld) {
               i === 0 ? "rounded rounded-b-none" : "",
             ]}
           >
-            <div class="flex justify-center items-center text-sm lg:text-base">
+            <div class="flex items-center justify-center text-sm lg:text-base">
               LV.{talent.level - 1}→{talent.level}
             </div>
-            <div class="flex justify-center items-center">
+            <div class="flex items-center justify-center">
               <SimpleRarityBox
                 img={getUrl(`/materials/mora.png`, 64, 64)}
                 name={talent.cost.toString()}
@@ -694,7 +696,7 @@ if (buildsOld) {
               />
               <p class="hidden lg:block">Mora</p>
             </div>
-            <div class="lg:col-span-2 flex items-center">
+            <div class="flex items-center lg:col-span-2">
               <SimpleRarityBox
                 img={getUrl(
                   `/talent_lvl_up_materials/${talent.items[0].id}.png`,
@@ -707,7 +709,7 @@ if (buildsOld) {
               />
               <p class="hidden lg:block">{talent.items[0].name}</p>
             </div>
-            <div class="lg:col-span-2 flex items-center">
+            <div class="flex items-center lg:col-span-2">
               <SimpleRarityBox
                 img={getUrl(
                   `/common_materials/${talent.items[1].id}.png`,
@@ -720,7 +722,7 @@ if (buildsOld) {
               />
               <p class="hidden lg:block">{talent.items[1].name}</p>
             </div>
-            <div class="lg:col-span-2 flex items-center">
+            <div class="flex items-center lg:col-span-2">
               {talent.items.length > 2 && (
                 <>
                   <SimpleRarityBox
@@ -737,7 +739,7 @@ if (buildsOld) {
                 </>
               )}
             </div>
-            <div class="lg:col-span-2 flex items-center">
+            <div class="flex items-center lg:col-span-2">
               {talent.items.length > 3 && (
                 <>
                   <SimpleRarityBox
@@ -758,10 +760,10 @@ if (buildsOld) {
         ))
       }
       <div
-        class="grid grid-cols-6 lg:grid-cols-10 items-center px-4 py-5 rounded-b"
+        class="grid grid-cols-6 items-center rounded-b px-4 py-5 lg:grid-cols-10"
       >
         <div
-          class="flex justify-center items-center text-sm lg:text-base font-bold uppercase"
+          class="flex items-center justify-center text-sm font-bold uppercase lg:text-base"
         >
           {
             t({
@@ -770,7 +772,7 @@ if (buildsOld) {
             })
           }
         </div>
-        <div class="flex justify-center items-center">
+        <div class="flex items-center justify-center">
           <SimpleRarityBox
             img={getUrl(`/materials/mora.png`, 64, 64)}
             alt="Mora"

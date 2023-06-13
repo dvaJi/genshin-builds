@@ -59,11 +59,13 @@ function generateUrl(
     quality,
   };
 
+  // console.log("generateUrl", item, index)
+
   return getImage(item, index);
 }
 
 function getImage(item: ImageItem, index = 0) {
-  switch (import.meta.env.IMGS_CDN_PROVIDER) {
+  switch (import.meta.env.PUBLIC_IMGS_CDN_PROVIDER) {
     case "photon":
       return photon(item, index);
     case "google":
