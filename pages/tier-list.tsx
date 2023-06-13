@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { GetStaticProps } from "next";
-import dynamic from "next/dynamic";
 import clsx from "clsx";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 
 import CharactersTier from "@components/genshin/CharactersTier";
 import Metadata from "@components/Metadata";
 
-import { getLocale } from "@lib/localData";
 import useIntl from "@hooks/use-intl";
-import { localeToLang } from "@utils/locale-to-lang";
-import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
 import { getUrlLQ } from "@lib/imgUrl";
+import { getCommon, getData, getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
+import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
@@ -154,7 +154,7 @@ const TierList = ({
             </h3>
           </button>
         </div>
-        <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+        <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
         {["0", "1", "2", "3", "4"].map((key) => (
           <CharactersTier
             key={`tier_${key}`}
@@ -184,10 +184,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const artifacts = await genshinData.artifacts({
     select: ["id", "name"],
   });
-  const { default: tierlist = {} }: any = await import(
-    `../_content/genshin/data/tierlist.json`
-  );
-  const common = require(`../_content/genshin/data/common.json`)[locale];
+
+  const tierlist = await getData("genshin", "tierlist");
+  const common = await getCommon(locale, "genshin");
 
   const tiers = ["0", "1", "2", "3", "4"];
 

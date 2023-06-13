@@ -1,23 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import clsx from "clsx";
+import GenshinData from "genshin-data";
+import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { InferGetStaticPropsType } from "next";
-import GenshinData from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Metadata from "@components/Metadata";
-import StarRarity from "@components/StarRarity";
 import Crement from "@components/Crement";
+import Metadata from "@components/Metadata";
 import SearchInput from "@components/SearchInput";
+import StarRarity from "@components/StarRarity";
 
-import { localeToLang } from "@utils/locale-to-lang";
-import useIntl from "@hooks/use-intl";
-import { getLocale } from "@lib/localData";
 import useDebounce from "@hooks/use-debounce";
+import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { trackClick } from "@lib/gtag";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
+import { getCommon, getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
 import dynamic from "next/dynamic";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -169,7 +169,7 @@ const WeaponsPage = ({
           </div>
         </div>
       </div>
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="">
         {filteredWeapons.map((weapon) => (
           <Link
@@ -179,7 +179,7 @@ const WeaponsPage = ({
           >
             <div className="flex h-full flex-row">
               <div
-                className="relative flex flex-none items-center justify-center rounded rounded-tr-none rounded-br-none bg-cover"
+                className="relative flex flex-none items-center justify-center rounded rounded-br-none rounded-tr-none bg-cover"
                 style={{
                   backgroundImage: `url(${getUrl(
                     `/bg_${weapon.rarity}star.png`
@@ -251,7 +251,7 @@ export const getStaticProps = async ({ locale = "en" }) => {
     select: ["id", "rarity", "name", "stats", "refinements", "type"],
   });
 
-  const common = require(`../_content/genshin/data/common.json`)[locale];
+  const common = await getCommon(locale, "genshin");
 
   return {
     props: {

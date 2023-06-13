@@ -14,12 +14,24 @@ export async function getLocale(lang: string, game: string) {
   }
 }
 
+export async function getData(game: string, dataFile: string) {
+  try {
+    const data = require(
+      `../_content/${game}/data/${dataFile}.json`
+    );
+    return data;
+  } catch (err) {
+    console.log("Data not found", { game, dataFile });
+    return {};
+  }
+}
+
 export async function getCommon(
   lang: string,
   game: string
 ): Promise<Record<string, string>> {
   try {
-    const { default: common } = await import(
+    const common = require(
       `../_content/${game}/data/common.json`
     );
     return common[lang] || common["en"];

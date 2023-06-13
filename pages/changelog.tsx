@@ -1,12 +1,12 @@
+import GenshinData from "genshin-data";
+import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useState } from "react";
-import { GetStaticProps } from "next";
-import GenshinData from "genshin-data";
 
 import SimpleRarityBox from "@components/SimpleRarityBox";
 
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import { getLocale } from "@lib/localData";
+import { getCommon, getData, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getAllMaterialsMap } from "@utils/materials";
 
@@ -185,9 +185,8 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name", "max_rarity"],
   });
 
-  const { default: changelog = {} }: any = await import(
-    `../_content/genshin/data/changelog.json`
-  );
+  const changelog = await getData("genshin", "changelog");
+  const common = await getCommon(locale, "genshin");
   const materialsMap = await getAllMaterialsMap(genshinData);
 
   const charactersMap: any = {};
@@ -231,6 +230,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       materialsMap,
       foodMap,
       lngDict,
+      common,
       bgStyle: {
         image: getUrlLQ(`/regions/Sumeru_d.jpg`),
         gradient: {

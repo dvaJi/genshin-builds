@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { GetStaticProps } from "next";
-import dynamic from "next/dynamic";
 import clsx from "clsx";
 import GenshinData, { Weapon } from "genshin-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 
 import Metadata from "@components/Metadata";
 import WeaponsTier from "@components/genshin/WeaponsTier";
 
-import { getLocale } from "@lib/localData";
 import useIntl from "@hooks/use-intl";
-import { localeToLang } from "@utils/locale-to-lang";
-import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { useMobileDetect } from "@hooks/use-mobile-detect";
-import { getUrl, getUrlLQ } from "@lib/imgUrl";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
+import { getCommon, getData, getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
+import { Roles, TierNums, TierlistWeapons } from "interfaces/tierlist";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 
@@ -55,7 +55,7 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
             "All the best weapons ranked in order of power, viability, and versatility to clear content.",
         })}
       />
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-center text-2xl font-semibold text-gray-200 lg:text-left">
         {t({
           id: "title",
@@ -149,20 +149,20 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const weapons = await genshinData.weapons({
     select: ["id", "name", "rarity"],
   });
-  const { default: tierlist = {} }: any = await import(
-    `../_content/genshin/data/tierlist-weapons.json`
-  );
+  const tierlist = await getData("genshin", "tierlist-weapons");
+  const common = await getCommon(locale, "genshin");
 
-  const weaponsMap = weapons.reduce<Record<string, Weapon>>((map, val) => {
-    map[val.id] = val;
-    return map;
-  }, {});
+  const weaponsMap = weapons.reduce(
+    (map, { id, ...weapon }) => ({ ...map, [id]: weapon }),
+    {}
+  );
 
   return {
     props: {
       tierlist,
       weaponsMap,
       lngDict,
+      common,
       bgStyle: {
         image: getUrlLQ(`/regions/Sumeru_d.jpg`),
         gradient: {
