@@ -1,13 +1,13 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@db/index";
-import GenshinData from "genshin-data";
 import { decodeBuilds } from "@utils/leaderboard-enc";
+import GenshinData from "genshin-data";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { lastID, lang } = req.query;
+  const { lastID, lang, characters } = req.query;
 
   if (!lang) {
     return res.status(400).json({ error: "Missing lang" });
@@ -17,9 +17,23 @@ export default async function handler(
 
   const cursor = lastID ? { id: lastID as string } : undefined;
 
+  const charactersFilter = characters
+    ? {
+        avatarId: {
+          in: characters
+            .toString()
+            .split(",")
+            .map((x) => Number(x)),
+        },
+      }
+    : {};
+
   const builds = await prisma.build.findMany({
     orderBy: {
       critValue: "desc",
+    },
+    where: {
+      ...charactersFilter,
     },
     include: {
       player: true,
@@ -29,15 +43,15 @@ export default async function handler(
     cursor,
   });
 
-  const characters = await gi.characters();
-  const weapons = await gi.weapons();
-  const artifacts = await gi.artifacts();
+  const _characters = await gi.characters();
+  const _weapons = await gi.weapons();
+  const _artifacts = await gi.artifacts();
 
   const decodedBuilds = await decodeBuilds(
     builds,
-    characters,
-    weapons,
-    artifacts
+    _characters,
+    _weapons,
+    _artifacts
   );
 
   return res.status(200).json(decodedBuilds);

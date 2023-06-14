@@ -9,9 +9,10 @@ type Option = {
 type SelectProps = {
   options: Option[];
   placeholder?: string;
+  clearOnSelect?: boolean;
   onChange: (value: Option) => void;
   itemsListRender: (option: Option) => React.ReactNode;
-  selectedIconRender: (option: Option) => React.ReactNode;
+  selectedIconRender?: (option: Option) => React.ReactNode;
 };
 
 const Select = ({
@@ -35,14 +36,16 @@ const Select = ({
   const placeholder = props.placeholder || "Select";
 
   return (
-    <div className="select-none relative">
-      <div className="flex w-full relative items-center px-4 bg-vulcan-900 rounded-2xl h-12 focus-within:outline-none focus-within:border-vulcan-500 border-2 border-transparent ease-in duration-100">
-        {selected && selectedIconRender(selected)}
+    <div className="relative select-none">
+      <div className="relative flex h-12 w-full items-center rounded-2xl border-2 border-transparent bg-vulcan-900 px-4 duration-100 ease-in focus-within:border-vulcan-500 focus-within:outline-none">
+        {selected && selectedIconRender && selectedIconRender(selected)}
         <input
           ref={inputRef}
-          className="bg-transparent focus:outline-none border-0 h-full w-full"
+          className="h-full w-full border-0 bg-transparent focus:outline-none"
           placeholder={placeholder}
-          value={isFocused ? filter : selected?.name}
+          value={
+            props.clearOnSelect ? filter : isFocused ? filter : selected?.name
+          }
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 200)}
           onChange={(e) => setFilter(e.target.value)}
@@ -50,7 +53,7 @@ const Select = ({
       </div>
       <div
         className={clsx(
-          "options bg-vulcan-700 rounded-lg absolute pl-2 w-full min-h-full z-50 flex flex-col text-white shadow-lg border border-gray-900",
+          "options absolute z-50 flex min-h-full w-full flex-col rounded-lg border border-gray-900 bg-vulcan-700 pl-2 text-white shadow-lg",
           isFocused ? "" : "hidden"
         )}
       >
@@ -63,9 +66,13 @@ const Select = ({
                   setSelected(option);
                   onChange(option);
                   setFilter("");
+
+                  if (props.clearOnSelect) {
+                    setSelected(options[0]);
+                  }
                 }}
                 className={clsx(
-                  "p-3 rounded-md cursor-pointer flex mr-2 hover:bg-vulcan-600",
+                  "mr-2 flex cursor-pointer rounded-md p-3 hover:bg-vulcan-600",
                   {
                     "bg-vulcan-500": selected === option,
                   }
@@ -86,7 +93,7 @@ const Select = ({
             ))}
           </div>
         ) : (
-          <span className="p-3 rounded-xl cursor-pointer flex mr-2 my-2">
+          <span className="my-2 mr-2 flex cursor-pointer rounded-xl p-3">
             No results
           </span>
         )}
