@@ -147,6 +147,10 @@ export function encodeBuilds(data: CharactersAPI[]) {
       fightProps: encodedData.fightprops,
       skillLevel: encodedData.skilllevel,
       critValue: calculateCritValue(equip, encodedData),
+      critValueArtifactsOnly: Object.values(equip).reduce(
+        (acc, item: any) => acc + (item.critValue || 0),
+        0
+      ),
       plumeId: encodedData.plume?.itemId,
       plumeMainStat: encodedData.plume?.mainstat,
       plumeSubStats: encodedData.plume?.substats,
@@ -410,6 +414,7 @@ export async function decodeBuilds(
       skillLevel,
       stats,
       critValue: Number(build.critValue) ?? 0,
+      critValueArtifactsOnly: Number(build.critValueArtifactsOnly) ?? 0,
       ...flower,
       ...plume,
       ...sands,

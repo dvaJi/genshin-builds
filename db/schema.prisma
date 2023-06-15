@@ -27,50 +27,51 @@ model Player {
 }
 
 model Build {
-    id            String  @id @default(cuid())
-    avatarId      Int
-    level         Int
-    ascension     Int
-    fetterLevel   Int
-    constellation Int
-    skillDepotId  Int
-    fightProps    String  @db.Text
-    skillLevel    String  @db.Text
-    critValue     Decimal @default(0)
+    id                     String  @id @default(cuid())
+    avatarId               Int
+    level                  Int
+    ascension              Int
+    fetterLevel            Int
+    constellation          Int
+    skillDepotId           Int
+    fightProps             String  @db.Text
+    skillLevel             String  @db.Text
+    critValue              Decimal @default(0)
+    critValueArtifactsOnly Decimal @default(0)
 
     // Plume
     plumeId         Int?
-    plumeMainStat   String? @db.Text
-    plumeSubStats   String? @db.Text
-    plumeSubstatsId String? @db.Text
+    plumeMainStat   String?  @db.Text
+    plumeSubStats   String?  @db.Text
+    plumeSubstatsId String?  @db.Text
     plumeCritValue  Decimal?
 
     // Flower
     flowerId         Int?
-    flowerMainStat   String? @db.Text
-    flowerSubStats   String? @db.Text
-    flowerSubstatsId String? @db.Text
+    flowerMainStat   String?  @db.Text
+    flowerSubStats   String?  @db.Text
+    flowerSubstatsId String?  @db.Text
     flowerCritValue  Decimal?
 
     // Sands
     sandsId         Int?
-    sandsMainStat   String? @db.Text
-    sandsSubStats   String? @db.Text
-    sandsSubstatsId String? @db.Text
+    sandsMainStat   String?  @db.Text
+    sandsSubStats   String?  @db.Text
+    sandsSubstatsId String?  @db.Text
     sandsCritValue  Decimal?
 
     // Goblet
     gobletId         Int?
-    gobletMainStat   String? @db.Text
-    gobletSubStats   String? @db.Text
-    gobletSubstatsId String? @db.Text
+    gobletMainStat   String?  @db.Text
+    gobletSubStats   String?  @db.Text
+    gobletSubstatsId String?  @db.Text
     gobletCritValue  Decimal?
 
     // Circlet
     circletId         Int?
-    circletMainStat   String? @db.Text
-    circletSubStats   String? @db.Text
-    circletSubstatsId String? @db.Text
+    circletMainStat   String?  @db.Text
+    circletSubStats   String?  @db.Text
+    circletSubstatsId String?  @db.Text
     circletCritValue  Decimal?
 
     // Weapon
