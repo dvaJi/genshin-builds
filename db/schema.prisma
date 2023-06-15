@@ -36,7 +36,7 @@ model Build {
     skillDepotId  Int
     fightProps    String  @db.Text
     skillLevel    String  @db.Text
-    critValue     Decimal
+    critValue     Decimal @default(0)
 
     // Plume
     plumeId         Int?
