@@ -1,11 +1,11 @@
 ---
 title: "Privacy Policy"
-date: "2020-11-22T17:26:48.239Z"
+date: "2023-06-15"
 author:
   name: dvaJi
 ---
 
-Effective date: November 22, 2020
+Effective date: June 15, 2023
 
 Genshin-Builds ("us", "we", or "our") operates the https://genshin-builds.com/ website (hereinafter referred to as the "Service").
 
@@ -29,15 +29,15 @@ While using our Service, we may ask you to provide us with certain personally id
 
 #### Usage Data
 
-We may also collect information on how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
+We may also collect information on how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.
 
 #### Tracking & Cookies Data
 
 We use cookies and similar tracking technologies to track the activity on our Service and hold certain information.
 
-Cookies are files with small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Tracking technologies also used are beacons, tags, and scripts to collect and track information and to improve and analyze our Service.
+Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Tracking technologies also used are beacons, tags, and scripts to collect and track information and to improve and analyze our Service.
 
-You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service. You can learn more how to manage cookies in the [Browser Cookies Guide](https://privacypolicies.com/blog/how-to-delete-cookies/).
+You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service. You can learn more about how to manage cookies in the [Browser Cookies Guide](https://privacypolicies.com/blog/how-to-delete-cookies/).
 
 Examples of Cookies we use:
 
@@ -45,7 +45,21 @@ Examples of Cookies we use:
 - **Preference Cookies.** We use Preference Cookies to remember your preferences and various settings.
 - **Security Cookies.** We use Security Cookies for security purposes.
 
-## Use of Data
+For more information on the cookies we use, please refer to our [Cookie Policy](https://www.genshin-builds.com/cookie-policy/).
+
+### Third-Party Cookies and Data Tracking for Advertising Purposes
+
+We work with third-party advertising companies, such as Freestar, to display advertisements on our Service. These companies may use cookies and similar tracking technologies to collect information about your browsing activities over time and across different websites for the purpose of delivering targeted advertising.
+
+To learn more about how these companies collect and use your information for advertising purposes, and to understand your choices regarding such practices, please review their respective privacy policies:
+
+- [Freestar Privacy Policy](https://freestar.com/privacy-policy/)
+
+Please note that we do not have control over the cookies and tracking technologies used by these third-party advertising companies. Therefore, this Privacy Policy does not cover the use of cookies and tracking technologies by any third-party advertisers.
+
+You can opt out of receiving targeted advertising from participating companies through the [NAI Consumer Opt-Out](http://optout.networkadvertising.org/) page.
+
+### Use of Data
 
 Genshin-Builds uses the collected data for various purposes:
 
@@ -55,17 +69,13 @@ Genshin-Builds uses the collected data for various purposes:
 - To provide customer care and support
 - To provide analysis or valuable information so that we can improve the Service
 - To monitor the usage of the Service
-- To detect, prevent and address technical issues
+- To detect, prevent, and address technical issues
 
-## Transfer Of Data
+## Compliance with Applicable Privacy Regulations
 
-Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
+Genshin-Builds is committed to complying with all applicable privacy regulations, including but not limited to the General Data Protection Regulation (GDPR) for EU users and the California Consumer Privacy Act (CCPA) for California users.
 
-If you are located outside Spain and choose to provide information to us, please note that we transfer the data, including Personal Data, to Spain and process it there.
-
-Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
-
-Genshin-Builds will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.
+If you are a user located in the European Economic Area (EEA), we process your personal data based on the legal grounds provided by the GDPR. We ensure that adequate safeguards are in place when transferring your personal data outside the EEA.
 
 ## Disclosure Of Data
 
@@ -81,11 +91,11 @@ Genshin-Builds may disclose your Personal Data in the good faith belief that suc
 
 ## Security Of Data
 
-The security of your data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.
+The security of your data is important to us, but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.
 
 ## Service Providers
 
-We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.
+We may employ third-party companies and individuals to facilitate our Service ("Service Providers"), provide the Service on our behalf, perform Service-related services, or assist us in analyzing how our Service is used.
 
 These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
 
@@ -95,33 +105,31 @@ We may use third-party Service Providers to monitor and analyze the use of our S
 
 - **Google Analytics**
 
-  Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its own advertising network.
+  Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its advertising network.
 
-  You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js, analytics.js, and dc.js) from sharing information with Google Analytics about visits activity.
+  You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents Google Analytics JavaScript (ga.js, analytics.js, and dc.js) from sharing information with Google Analytics about visits activity.
 
   For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: [https://policies.google.com/privacy?hl=en](https://policies.google.com/privacy?hl=en)
 
 ### Advertising
 
-We use third party advertisements to support our site. Some of these advertisers may be served from our third party advertiser. You can view their [privacy policy](https://www.network-n.com/network-privacy-policy/) and [cookie policy](https://www.network-n.com/network-cookie-policy/) here. You can manage your cookies
+We use third-party advertising companies, including Freestar, to serve advertisements when you visit our Service.
 
-here
+- **Freestar**
 
-.
-
-We use Google Analytics and Comscore to analyse the use of our website. Google Analytics and Comscore gather information about website use by means of cookies. The information gathered relating to our website is used to create reports about the use of our website. Google's privacy policy is available at: [https://www.google.com/policies/privacy/](https://www.google.com/policies/privacy/). Comscore’s privacy policy is available at [https://www.comscore.com/About-comScore/Privacy-Policy](https://www.comscore.com/About-comScore/Privacy-Policy).
+  Freestar is an advertising technology company that serves advertisements on our Service. To learn more about Freestar's privacy practices and to understand your choices regarding targeted advertising, please review their privacy policy: [https://freestar.com/privacy-policy/](https://freestar.com/privacy-policy/)
 
 ## Links To Other Sites
 
-Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.
+Our Service may contain links to other sites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.
 
-We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.
+We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
 
 ## Children's Privacy
 
-Our Service does not address anyone under the age of 18 ("Children").
+Our Service does not address anyone under the age of 13 ("Children").
 
-We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.
+We do not knowingly collect personally identifiable information from anyone under the age of 13. If you are a parent or guardian and you are aware that your Children have provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.
 
 ## Changes To This Privacy Policy
 
