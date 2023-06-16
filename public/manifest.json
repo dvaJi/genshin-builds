@@ -3,7 +3,7 @@
   "short_name": "GenshinBuilds",
   "theme_color": "#1a1d27",
   "background_color": "#1a1d27",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
@@ -43,6 +43,44 @@
       "sizes": "192x192",
       "type": "image\/png",
       "density": "4.0"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Achievements",
+      "short_name": "Achievements",
+      "description": "Achievements to track your progress and unlock rewards",
+      "url": "/achievements",
+      "icons": [
+        {
+          "src": "/icons/manifest/achievements.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Calculator",
+      "short_name": "Calculator",
+      "description": "Calculator to calculate how many mora and items needed for your character or weapon",
+      "url": "/calculator",
+      "icons": [
+        {
+          "src": "/icons/manifest/calculator.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "To do",
+      "short_name": "To do list",
+      "description": "Plan and track items and Mora needed for your character or weapon",
+      "url": "/todo",
+      "icons": [
+        {
+          "src": "/icons/manifest/todos.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
   "splash_pages": null
