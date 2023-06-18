@@ -36,11 +36,7 @@
       ]
     },
     "subdps": {
-      "0": [
-        "freedomsworn",
-        "mistsplitter_reforged",
-        "primordial_jade_cutter"
-      ],
+      "0": ["freedomsworn", "mistsplitter_reforged", "primordial_jade_cutter"],
       "1": [
         "skyward_blade",
         "favonius_sword",
@@ -56,34 +52,15 @@
         "festering_desire",
         "key_of_khajnisut"
       ],
-      "3": [
-        "lions_roar",
-        "cinnabar_spindle",
-        "skyrider_sword"
-      ],
-      "4": [
-        "dark_iron_sword",
-        "cool_steel"
-      ]
+      "3": ["lions_roar", "cinnabar_spindle", "skyrider_sword"],
+      "4": ["dark_iron_sword", "cool_steel"]
     },
     "support": {
-      "0": [
-        "freedomsworn",
-        "favonius_sword",
-        "xiphos_moonlight"
-      ],
-      "1": [
-        "sapwood_blade",
-        "sacrificial_sword"
-      ],
-      "2": [
-        "key_of_khajnisut",
-        "primordial_jade_cutter"
-      ],
+      "0": ["freedomsworn", "favonius_sword", "xiphos_moonlight"],
+      "1": ["sapwood_blade", "sacrificial_sword"],
+      "2": ["key_of_khajnisut", "primordial_jade_cutter"],
       "3": [],
-      "4": [
-        "travelers_handy_sword"
-      ]
+      "4": ["travelers_handy_sword"]
     }
   },
   "claymore": {
@@ -141,9 +118,7 @@
         "rainslasher",
         "makhaira_aquamarine"
       ],
-      "3": [
-        "bloodtainted_greatsword"
-      ],
+      "3": ["bloodtainted_greatsword"],
       "4": []
     },
     "support": {
@@ -153,18 +128,9 @@
         "beacon_of_the_reed_sea",
         "favonius_greatsword"
       ],
-      "1": [
-        "forest_regalia",
-        "sacrificial_greatsword",
-        "makhaira_aquamarine"
-      ],
-      "2": [
-        "the_unforged",
-        "the_bell"
-      ],
-      "3": [
-        "ferrous_shadow"
-      ],
+      "1": ["forest_regalia", "sacrificial_greatsword", "makhaira_aquamarine"],
+      "2": ["the_unforged", "the_bell"],
+      "3": ["ferrous_shadow"],
       "4": []
     }
   },
@@ -182,11 +148,7 @@
         "skyward_spine",
         "deathmatch"
       ],
-      "2": [
-        "wavebreakers_fin",
-        "blackcliff_pole",
-        "lithic_spear"
-      ],
+      "2": ["wavebreakers_fin", "blackcliff_pole", "lithic_spear"],
       "3": [
         "dragons_bane",
         "crescent_pike",
@@ -194,18 +156,10 @@
         "prototype_starglitter",
         "dragonspine_spear"
       ],
-      "4": [
-        "halberd",
-        "white_tassel",
-        "black_tassel"
-      ]
+      "4": ["halberd", "white_tassel", "black_tassel"]
     },
     "subdps": {
-      "0": [
-        "engulfing_lightning",
-        "skyward_spine",
-        "the_catch"
-      ],
+      "0": ["engulfing_lightning", "skyward_spine", "the_catch"],
       "1": [
         "calamity_queller",
         "staff_of_homa",
@@ -221,21 +175,12 @@
         "dragons_bane",
         "deathmatch"
       ],
-      "3": [
-        "lithic_spear",
-        "prototype_starglitter"
-      ],
-      "4": [
-        "black_tassel"
-      ]
+      "3": ["lithic_spear", "prototype_starglitter"],
+      "4": ["black_tassel"]
     },
     "support": {
-      "0": [
-        "favonius_lance"
-      ],
-      "1": [
-        "moonpiercer"
-      ],
+      "0": ["favonius_lance"],
+      "1": ["moonpiercer"],
       "2": [
         "vortex_vanquisher",
         "missive_windspear",
@@ -248,36 +193,28 @@
   },
   "bow": {
     "maindps": {
-      "0": [
-        "aqua_simulacra",
-        "hunters_path",
-        "polar_star",
-        "thundering_pulse",
-        "skyward_harp",
-        "amos_bow",
-        "rust"
-      ],
-      "1": [
-        "mouuns_moon",
-        "hamayumi",
-        "blackcliff_warbow"
-      ],
+      "0": ["polar_star", "thundering_pulse", "skyward_harp"],
+      "1": ["hunters_path", "aqua_simulacra", "amos_bow", "rust"],
       "2": [
-        "mitternachts_waltz",
-        "compound_bow",
-        "the_viridescent_hunt"
+        "hamayumi",
+        "blackcliff_warbow",
+        "the_viridescent_hunt",
+        "mouuns_moon"
       ],
       "3": [
-        "kings_squire",
-        "predator",
-        "royal_bow",
+        "ibis_piercer",
         "prototype_crescent",
-        "sharpshooters_oath",
-        "slingshot"
+        "raven_bow",
+        "slingshot",
+        "kings_squire"
       ],
       "4": [
+        "mitternachts_waltz",
+        "predator",
+        "royal_bow",
+        "compound_bow",
         "messenger",
-        "raven_bow"
+        "sharpshooters_oath"
       ]
     },
     "subdps": {
@@ -289,38 +226,21 @@
       ],
       "1": [
         "mouuns_moon",
-        "favonius_warbow",
-        "alley_hunter",
         "the_stringless",
-        "sacrificial_bow",
-        "fading_twilight"
-      ],
-      "2": [
-        "end_of_the_line",
-        "windblume_ode"
-      ],
-      "3": [
-        "raven_bow"
-      ],
-      "4": [
-        "sharpshooters_oath"
-      ]
-    },
-    "support": {
-      "0": [
-        "elegy_for_the_end"
-      ],
-      "1": [
-        "favonius_warbow"
-      ],
-      "2": [
+        "favonius_warbow",
+        "fading_twilight",
         "sacrificial_bow"
       ],
-      "3": [
-        "aqua_simulacra",
-        "recurve_bow"
-      ],
-      "4": []
+      "2": ["alley_hunter"],
+      "3": ["windblume_ode", "kings_squire"],
+      "4": ["end_of_the_line", "raven_bow", "sharpshooters_oath"]
+    },
+    "support": {
+      "0": ["elegy_for_the_end", "favonius_warbow"],
+      "1": ["sacrificial_bow"],
+      "2": ["fading_twilight"],
+      "3": ["the_viridescent_hunt"],
+      "4": ["recurve_bow"]
     }
   },
   "catalyst": {
@@ -332,10 +252,7 @@
         "the_widsith",
         "tulaytullahs_remembrance"
       ],
-      "1": [
-        "dodoco_tales",
-        "solar_pearl"
-      ],
+      "1": ["dodoco_tales", "solar_pearl"],
       "2": [
         "everlasting_moonglow",
         "memory_of_dust",
@@ -344,11 +261,7 @@
         "blackcliff_agate",
         "wandering_evenstar"
       ],
-      "3": [
-        "eye_of_perception",
-        "royal_grimoire",
-        "frostbearer"
-      ],
+      "3": ["eye_of_perception", "royal_grimoire", "frostbearer"],
       "4": [
         "fruit_of_fulfillment",
         "twin_nephrite",
@@ -357,36 +270,19 @@
       ]
     },
     "subdps": {
-      "0": [
-        "kaguras_verity",
-        "skyward_atlas",
-        "the_widsith"
-      ],
-      "1": [
-        "oathsworn_eye",
-        "sacrificial_fragments",
-        "solar_pearl"
-      ],
+      "0": ["kaguras_verity", "skyward_atlas", "the_widsith"],
+      "1": ["oathsworn_eye", "sacrificial_fragments", "solar_pearl"],
       "2": [
         "hakushin_ring",
         "favonius_codex",
         "mappa_mare",
         "wandering_evenstar"
       ],
-      "3": [
-        "fruit_of_fulfillment",
-        "magic_guide",
-        "emerald_orb"
-      ],
-      "4": [
-        "otherworldly_story"
-      ]
+      "3": ["fruit_of_fulfillment", "magic_guide", "emerald_orb"],
+      "4": ["otherworldly_story"]
     },
     "support": {
-      "0": [
-        "thrilling_tales_of_dragon_slayers",
-        "a_thousand_floating_dreams"
-      ],
+      "0": ["thrilling_tales_of_dragon_slayers", "a_thousand_floating_dreams"],
       "1": [
         "everlasting_moonglow",
         "jadefalls_splendor",
@@ -394,16 +290,9 @@
         "prototype_amber",
         "wandering_evenstar"
       ],
-      "2": [
-        "hakushin_ring",
-        "sacrificial_fragments"
-      ],
-      "3": [
-        "memory_of_dust"
-      ],
-      "4": [
-        "otherworldly_story"
-      ]
+      "2": ["hakushin_ring", "sacrificial_fragments"],
+      "3": ["memory_of_dust"],
+      "4": ["otherworldly_story"]
     }
   }
 }

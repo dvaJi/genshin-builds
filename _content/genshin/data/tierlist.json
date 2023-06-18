@@ -339,6 +339,12 @@
           "min_c": 0
         },
         {
+          "id": "kirara",
+          "w_id": "key_of_khajnisut",
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
+          "min_c": 4
+        },
+        {
           "id": "beidou",
           "w_id": "skyward_pride",
           "a_ids": ["gladiators_finale", "thundering_fury"],
@@ -567,12 +573,6 @@
           "min_c": 2
         },
         {
-          "id": "mika",
-          "w_id": "favonius_lance",
-          "a_ids": ["noblesse_oblige"],
-          "min_c": 6
-        },
-        {
           "id": "yun_jin",
           "w_id": "vortex_vanquisher",
           "a_ids": ["retracing_bolide"],
@@ -611,10 +611,16 @@
           "min_c": 2
         },
         {
-          "id": "sayu",
-          "w_id": "katsuragikiri_nagamasa",
-          "a_ids": ["viridescent_venerer"],
-          "min_c": 1
+          "id": "kirara",
+          "w_id": "key_of_khajnisut",
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
+          "min_c": 6
+        },
+        {
+          "id": "mika",
+          "w_id": "favonius_lance",
+          "a_ids": ["noblesse_oblige"],
+          "min_c": 6
         },
         {
           "id": "layla",
@@ -630,6 +636,12 @@
         }
       ],
       "3": [
+        {
+          "id": "sayu",
+          "w_id": "katsuragikiri_nagamasa",
+          "a_ids": ["viridescent_venerer"],
+          "min_c": 1
+        },
         {
           "id": "qiqi",
           "w_id": "skyward_blade",
@@ -651,6 +663,12 @@
         {
           "id": "traveler_electro",
           "w_id": "skyward_blade",
+          "a_ids": ["emblem_of_severed_fate"],
+          "min_c": 6
+        },
+        {
+          "id": "thoma",
+          "w_id": "staff_of_homa",
           "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
         },
@@ -678,12 +696,6 @@
           "id": "rosaria",
           "w_id": "staff_of_homa",
           "a_ids": ["pale_flame", "bloodstained_chivalry"],
-          "min_c": 6
-        },
-        {
-          "id": "thoma",
-          "w_id": "staff_of_homa",
-          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
         },
         {
@@ -1031,6 +1043,12 @@
           "min_c": 0
         },
         {
+          "id": "ganyu",
+          "w_id": "hunters_path",
+          "a_ids": ["shimenawas_reminiscence"],
+          "min_c": 0
+        },
+        {
           "id": "mona",
           "w_id": "the_widsith",
           "a_ids": ["emblem_of_severed_fate"],
@@ -1043,15 +1061,15 @@
           "min_c": 0
         },
         {
-          "id": "fischl",
-          "w_id": "thundering_pulse",
-          "a_ids": ["thundering_fury", "gladiators_finale"],
+          "id": "kirara",
+          "w_id": "key_of_khajnisut",
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 0
         },
         {
-          "id": "ganyu",
-          "w_id": "hunters_path",
-          "a_ids": ["shimenawas_reminiscence"],
+          "id": "fischl",
+          "w_id": "thundering_pulse",
+          "a_ids": ["thundering_fury", "gladiators_finale"],
           "min_c": 0
         },
         {
@@ -1279,12 +1297,6 @@
           "min_c": 0
         },
         {
-          "id": "mika",
-          "w_id": "favonius_lance",
-          "a_ids": ["noblesse_oblige"],
-          "min_c": 0
-        },
-        {
           "id": "gorou",
           "w_id": "elegy_for_the_end",
           "a_ids": ["husk_of_opulent_dreams"],
@@ -1318,8 +1330,14 @@
       "3": [
         {
           "id": "qiqi",
-          "w_id": "sacrificial_fragments",
+          "w_id": "sacrificial_sword",
           "a_ids": ["noblesse_oblige"],
+          "min_c": 0
+        },
+        {
+          "id": "kirara",
+          "w_id": "key_of_khajnisut",
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 0
         },
         {
@@ -1356,6 +1374,12 @@
           "id": "faruzan",
           "w_id": "elegy_for_the_end",
           "a_ids": ["viridescent_venerer"],
+          "min_c": 0
+        },
+        {
+          "id": "mika",
+          "w_id": "favonius_lance",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 0
         },
         {
@@ -1751,6 +1775,12 @@
           "min_c": 6
         },
         {
+          "id": "kuki_shinobu",
+          "w_id": "freedomsworn",
+          "a_ids": ["gilded_dreams"],
+          "min_c": 6
+        },
+        {
           "id": "fischl",
           "w_id": "thundering_pulse",
           "a_ids": ["thundering_fury", "gladiators_finale"],
@@ -1801,9 +1831,9 @@
           "min_c": 6
         },
         {
-          "id": "kuki_shinobu",
-          "w_id": "freedomsworn",
-          "a_ids": ["gilded_dreams"],
+          "id": "kirara",
+          "w_id": "key_of_khajnisut",
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 6
         }
       ],
@@ -2007,12 +2037,6 @@
           "min_c": 6
         },
         {
-          "id": "mika",
-          "w_id": "favonius_lance",
-          "a_ids": ["noblesse_oblige"],
-          "min_c": 6
-        },
-        {
           "id": "gorou",
           "w_id": "elegy_for_the_end",
           "a_ids": ["husk_of_opulent_dreams"],
@@ -2049,13 +2073,25 @@
           "min_c": 6
         },
         {
-          "id": "sayu",
-          "w_id": "katsuragikiri_nagamasa",
-          "a_ids": ["viridescent_venerer"],
+          "id": "kirara",
+          "w_id": "key_of_khajnisut",
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
+          "min_c": 6
+        },
+        {
+          "id": "mika",
+          "w_id": "favonius_lance",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 6
         }
       ],
       "3": [
+        {
+          "id": "sayu",
+          "w_id": "katsuragikiri_nagamasa",
+          "a_ids": ["viridescent_venerer"],
+          "min_c": 6
+        },
         {
           "id": "qiqi",
           "w_id": "skyward_blade",
@@ -2072,6 +2108,12 @@
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
           "a_ids": ["vourukashas_glow"],
+          "min_c": 6
+        },
+        {
+          "id": "thoma",
+          "w_id": "staff_of_homa",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
         },
         {
@@ -2122,12 +2164,6 @@
           "id": "rosaria",
           "w_id": "staff_of_homa",
           "a_ids": ["pale_flame", "bloodstained_chivalry"],
-          "min_c": 6
-        },
-        {
-          "id": "thoma",
-          "w_id": "staff_of_homa",
-          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
         },
         {
