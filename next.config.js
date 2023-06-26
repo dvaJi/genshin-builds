@@ -50,7 +50,7 @@ const nextConfig = {
   rewrites: async () => [
     {
       source: "/ads.txt",
-      destination: "/api/ads",
+      destination: process.env.ADS_TXT_PUB || "/ads.txt",
     },
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
