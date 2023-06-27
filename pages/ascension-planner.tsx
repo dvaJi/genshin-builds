@@ -81,69 +81,71 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
         </h2>
         <Card className="flex flex-col">
           <table>
-            {domains.characters.map((charactersDomain) => (
-              <tr key={charactersDomain.domainName}>
-                <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
-                  <h3 className="text-lg text-gray-200 ">
-                    {charactersDomain.domainName}
-                  </h3>
-                </td>
-                <td className="border-b border-gray-700 pt-2 align-middle">
-                  <div className="flex flex-wrap">
-                    {charactersDomain.rotation
-                      .find((r) => r.day === currentDay)
-                      ?.ids.map((cId) => (
-                        <Link key={cId} href={`/character/${cId}`}>
-                          <SimpleRarityBox
-                            img={getUrl(
-                              `/characters/${cId}/${cId}_portrait.png`,
-                              80,
-                              80
+            <tbody>
+              {domains.characters.map((charactersDomain) => (
+                <tr key={charactersDomain.domainName}>
+                  <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
+                    <h3 className="text-lg text-gray-200 ">
+                      {charactersDomain.domainName}
+                    </h3>
+                  </td>
+                  <td className="border-b border-gray-700 pt-2 align-middle">
+                    <div className="flex flex-wrap">
+                      {charactersDomain.rotation
+                        .find((r) => r.day === currentDay)
+                        ?.ids.map((cId) => (
+                          <Link key={cId} href={`/character/${cId}`}>
+                            <SimpleRarityBox
+                              img={getUrl(
+                                `/characters/${cId}/${cId}_portrait.png`,
+                                80,
+                                80
+                              )}
+                              rarity={characters[cId].rarity}
+                              alt={characters[cId].name}
+                              className="h-16 w-16"
+                            />
+                          </Link>
+                        ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+              {domains.weapons.map((weaponsDomain) => (
+                <tr
+                  key={weaponsDomain.domainName}
+                  className="border-b border-gray-700 pt-2 align-middle"
+                >
+                  <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
+                    <h3 className="text-lg text-gray-200 ">
+                      {weaponsDomain.domainName}
+                    </h3>
+                  </td>
+                  <td className="border-b border-gray-700 pt-2 align-middle">
+                    <div className="flex flex-wrap">
+                      {weaponsDomain.rotation
+                        .find((r) => r.day === currentDay)
+                        ?.ids.map((cId) => (
+                          <div key={cId}>
+                            {weapons[cId] ? (
+                              <Link key={cId} href={`/weapon/${cId}`}>
+                                <SimpleRarityBox
+                                  img={getUrl(`/weapons/${cId}.png`, 80, 80)}
+                                  rarity={weapons[cId].rarity}
+                                  alt={weapons[cId].name}
+                                  className="h-16 w-16"
+                                />
+                              </Link>
+                            ) : (
+                              `NOT FOUND ${cId}`
                             )}
-                            rarity={characters[cId].rarity}
-                            alt={characters[cId].name}
-                            className="h-16 w-16"
-                          />
-                        </Link>
-                      ))}
-                  </div>
-                </td>
-              </tr>
-            ))}
-            {domains.weapons.map((weaponsDomain) => (
-              <tr
-                key={weaponsDomain.domainName}
-                className="border-b border-gray-700 pt-2 align-middle"
-              >
-                <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
-                  <h3 className="text-lg text-gray-200 ">
-                    {weaponsDomain.domainName}
-                  </h3>
-                </td>
-                <td className="border-b border-gray-700 pt-2 align-middle">
-                  <div className="flex flex-wrap">
-                    {weaponsDomain.rotation
-                      .find((r) => r.day === currentDay)
-                      ?.ids.map((cId) => (
-                        <div key={cId}>
-                          {weapons[cId] ? (
-                            <Link key={cId} href={`/weapon/${cId}`}>
-                              <SimpleRarityBox
-                                img={getUrl(`/weapons/${cId}.png`, 80, 80)}
-                                rarity={weapons[cId].rarity}
-                                alt={weapons[cId].name}
-                                className="h-16 w-16"
-                              />
-                            </Link>
-                          ) : (
-                            `NOT FOUND ${cId}`
-                          )}
-                        </div>
-                      ))}
-                  </div>
-                </td>
-              </tr>
-            ))}
+                          </div>
+                        ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </Card>
       </div>

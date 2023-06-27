@@ -49,6 +49,71 @@ export default class MyDocument extends Document {
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
+          <link
+            rel="preconnect"
+            href="https://a.pub.network/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://b.pub.network/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://c.pub.network/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://d.pub.network/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://c.amazon-adsystem.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://s.amazon-adsystem.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://secure.quantserve.com/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://rules.quantcount.com/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://pixel.quantserve.com/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://cmp.quantcast.com/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://btloader.com/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://api.btloader.com/"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://confiant-integrations.global.ssl.fastly.net"
+            crossOrigin="anonymous"
+          />
           <link rel="preconnect" href="//i0.wp.com" />
           <link rel="preconnect" href="//i1.wp.com" />
           <link rel="preconnect" href="//i2.wp.com" />

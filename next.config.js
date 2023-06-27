@@ -47,6 +47,12 @@ const nextConfig = {
   experimental: {
     legacyBrowsers: false,
   },
+  rewrites: async () => [
+    {
+      source: "/ads.txt",
+      destination: process.env.ADS_TXT_PUB || "/ads.txt",
+    },
+  ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
 };

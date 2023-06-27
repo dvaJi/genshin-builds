@@ -22,6 +22,7 @@
     "now-build": "pnpm db:generate --schema=./db/schema.prisma && next build"
   },
   "dependencies": {
+    "@freestar/pubfig-adslot-react-component": "^3.6.0",
     "@nanostores/persistent": "^0.9.0",
     "@nanostores/react": "^0.7.1",
     "@prisma/client": "^4.15.0",

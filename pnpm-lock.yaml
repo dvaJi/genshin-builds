@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@freestar/pubfig-adslot-react-component':
+    specifier: ^3.6.0
+    version: 3.6.0(prop-types@15.8.1)(react@18.2.0)
   '@nanostores/persistent':
     specifier: ^0.9.0
     version: 0.9.0(nanostores@0.9.2)
@@ -1402,6 +1405,18 @@ packages:
       '@floating-ui/dom': 1.2.9
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@freestar/pubfig-adslot-react-component@3.6.0(prop-types@15.8.1)(react@18.2.0):
+    resolution: {integrity: sha512-HEIzIUCS5dEF2myDEaECt85lSnWX242SCmVgjYuZPIUAyLcGjuGXK34Kh76h1yhg+oWH+V2qP6KMgQIQllKqCw==}
+    peerDependencies:
+      prop-types: '^15.7.2 '
+      react: '>=15.7.0'
+    dependencies:
+      lodash.isequal: 4.5.0
+      lodash.sortby: 4.7.0
+      prop-types: 15.8.1
+      react: 18.2.0
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -4421,6 +4436,10 @@ packages:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: false
 
+  /lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: false
+
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -5285,7 +5304,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /property-information@6.2.0:
     resolution: {integrity: sha512-kma4U7AFCTwpqq5twzC1YVIDXSqg6qQK6JN0smOw8fgRy1OkMi0CYSzFmsy6dnqSenamAtj0CyXMUJ1Mf6oROg==}
@@ -5324,7 +5342,6 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-lazy-load-image-component@1.6.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-8KFkDTgjh+0+PVbH+cx0AgxLGbdTsxWMnxXzU5HEUztqewk9ufQAu8cstjZhyvtMIPsdMcPZfA0WAa7HtjQbBQ==}
