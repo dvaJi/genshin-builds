@@ -30,8 +30,7 @@ import {
 import { localeToLang } from "@utils/locale-to-lang";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
-
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+import FrstAds from "@components/ui/FrstAds";
 
 interface CharacterPageProps {
   character: Character;
@@ -77,10 +76,7 @@ const Test = ({
         })}
         jsonLD={generateJsonLd(locale, t)}
       />
-      {process.env.NEXT_PUBLIC_FRST_PLACEMENTS &&
-        process.env.NEXT_PUBLIC_FRST_PLACEMENTS.split(",").map((name) => (
-          <FrstAds key={name} placementName={name} />
-        ))}
+      <FrstAds  placementName="genshinbuilds_billboard_atf" />
       <div className="relative z-20 mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
           <div
@@ -212,11 +208,13 @@ const Test = ({
           values: { name: character.name },
         })}
       </h2>
+      <FrstAds placementName="genshinbuilds_incontent_1" />
       <Card className="mx-4 mb-4 flex flex-wrap justify-between p-0">
         {recommendedTeams.map((team, index) => (
           <CharacterTeam key={team.name + index} team={team} index={index} />
         ))}
       </Card>
+      <FrstAds placementName="genshinbuilds_incontent_2" />
       <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
         {t({
           id: "skills",
@@ -240,6 +238,7 @@ const Test = ({
           />
         ))}
       </div>
+      <FrstAds placementName="genshinbuilds_incontent_3" />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
@@ -269,6 +268,7 @@ const Test = ({
             />
           ))}
       </div>
+      <FrstAds placementName="genshinbuilds_incontent_4" />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "stats",
@@ -289,6 +289,7 @@ const Test = ({
       <Card className="mx-4 mb-8 p-0 lg:mx-0">
         <CharacterAscencionMaterials ascension={character.ascension} />
       </Card>
+      <FrstAds placementName="genshinbuilds_incontent_5" />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "talent_materials",
