@@ -76,7 +76,6 @@ const Test = ({
         })}
         jsonLD={generateJsonLd(locale, t)}
       />
-      <FrstAds  placementName="genshinbuilds_billboard_atf" />
       <div className="relative z-20 mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
           <div
@@ -119,6 +118,7 @@ const Test = ({
           </div>
         </div>
       </div>
+      <FrstAds  placementName="genshinbuilds_billboard_atf" />
       {builds.length > 0 && (
         <div className="relative z-50 mx-4 mb-8 lg:mx-0">
           <h2 className="mb-3 text-3xl text-white">
@@ -201,6 +201,7 @@ const Test = ({
           </Card>
         </div>
       )}
+      <FrstAds placementName="genshinbuilds_incontent_1" />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "best_team_comp",
@@ -208,7 +209,6 @@ const Test = ({
           values: { name: character.name },
         })}
       </h2>
-      <FrstAds placementName="genshinbuilds_incontent_1" />
       <Card className="mx-4 mb-4 flex flex-wrap justify-between p-0">
         {recommendedTeams.map((team, index) => (
           <CharacterTeam key={team.name + index} team={team} index={index} />
