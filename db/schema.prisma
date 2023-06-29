@@ -41,6 +41,7 @@ model Build {
 
     // Plume
     plumeId         Int?
+    plumeSetId      Int?
     plumeMainStat   String?  @db.Text
     plumeSubStats   String?  @db.Text
     plumeSubstatsId String?  @db.Text
@@ -48,6 +49,7 @@ model Build {
 
     // Flower
     flowerId         Int?
+    flowerSetId      Int?
     flowerMainStat   String?  @db.Text
     flowerSubStats   String?  @db.Text
     flowerSubstatsId String?  @db.Text
@@ -55,6 +57,7 @@ model Build {
 
     // Sands
     sandsId         Int?
+    sandsSetId      Int?
     sandsMainStat   String?  @db.Text
     sandsSubStats   String?  @db.Text
     sandsSubstatsId String?  @db.Text
@@ -62,6 +65,7 @@ model Build {
 
     // Goblet
     gobletId         Int?
+    gobletSetId      Int?
     gobletMainStat   String?  @db.Text
     gobletSubStats   String?  @db.Text
     gobletSubstatsId String?  @db.Text
@@ -69,6 +73,7 @@ model Build {
 
     // Circlet
     circletId         Int?
+    circletSetId      Int?
     circletMainStat   String?  @db.Text
     circletSubStats   String?  @db.Text
     circletSubstatsId String?  @db.Text

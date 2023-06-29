@@ -4,7 +4,23 @@ import { Artifact, Character, Weapon } from "genshin-data";
 import { CharactersAPI } from "interfaces/enka";
 import { ENKA_NAMES, REAL_SUBSTAT_VALUES, STAT_NAMES } from "./substats";
 
-export function encodeBuilds(data: CharactersAPI[]) {
+export async function encodeBuilds(data: CharactersAPI[]) {
+  const artifactsDetail = await import(
+    "../_content/genshin/data/artifacts_detail.json"
+  );
+
+  const getSetId = (artifactId: number) => {
+    for (const value of artifactsDetail.default) {
+      if (!value.ids) {
+        continue;
+      }
+      if (value.ids.includes(artifactId.toString().slice(0, 4))) {
+        return Number("2" + value.set);
+      }
+    }
+    return 0;
+  };
+
   return data.map((avatar) => {
     const equip = avatar.equipList
       .map((item) => {
@@ -68,20 +84,16 @@ export function encodeBuilds(data: CharactersAPI[]) {
       })
       .reduce((acc, item: any) => {
         if (!item) return acc;
-        if (item.equipType === "EQUIP_BRACER") {
-          acc.flower = item;
-        }
-        if (item.equipType === "EQUIP_NECKLACE") {
-          acc.plume = item;
-        }
-        if (item.equipType === "EQUIP_SHOES") {
-          acc.sands = item;
-        }
-        if (item.equipType === "EQUIP_RING") {
-          acc.goblet = item;
-        }
-        if (item.equipType === "EQUIP_DRESS") {
-          acc.circlet = item;
+        if (
+          [
+            "EQUIP_BRACER",
+            "EQUIP_NECKLACE",
+            "EQUIP_SHOES",
+            "EQUIP_RING",
+            "EQUIP_DRESS",
+          ].includes(item.equipType)
+        ) {
+          acc.flower = { ...item, setId: getSetId(item.itemId) };
         }
         if (!item.equipType) {
           acc.weapon = item;
@@ -152,26 +164,31 @@ export function encodeBuilds(data: CharactersAPI[]) {
         0
       ),
       plumeId: encodedData.plume?.itemId,
+      plumeSetId: encodedData.plume?.setId,
       plumeMainStat: encodedData.plume?.mainstat,
       plumeSubStats: encodedData.plume?.substats,
       plumeSubstatsId: encodedData.plume?.substatsidlist,
       plumeCritValue: encodedData.plume?.critValue,
       flowerId: encodedData.flower?.itemId,
+      flowerSetId: encodedData.flower?.setId,
       flowerMainStat: encodedData.flower?.mainstat,
       flowerSubStats: encodedData.flower?.substats,
       flowerSubstatsId: encodedData.flower?.substatsidlist,
       flowerCritValue: encodedData.flower?.critValue,
       sandsId: encodedData.sands?.itemId,
+      sandsSetId: encodedData.sands?.setId,
       sandsMainStat: encodedData.sands?.mainstat,
       sandsSubStats: encodedData.sands?.substats,
       sandsSubstatsId: encodedData.sands?.substatsidlist,
       sandsCritValue: encodedData.sands?.critValue,
       gobletId: encodedData.goblet?.itemId,
+      gobletSetId: encodedData.goblet?.setId,
       gobletMainStat: encodedData.goblet?.mainstat,
       gobletSubStats: encodedData.goblet?.substats,
       gobletSubstatsId: encodedData.goblet?.substatsidlist,
       gobletCritValue: encodedData.goblet?.critValue,
       circletId: encodedData.circlet?.itemId,
+      circletSetId: encodedData.circlet?.setId,
       circletMainStat: encodedData.circlet?.mainstat,
       circletSubStats: encodedData.circlet?.substats,
       circletSubstatsId: encodedData.circlet?.substatsidlist,
@@ -193,9 +210,6 @@ export async function decodeBuilds(
   weapons: Weapon[],
   artifacts: Artifact[]
 ) {
-  const artifactsDetail = await import(
-    "../_content/genshin/data/artifacts_detail.json"
-  );
   const decodeStr = (str: string | null): Record<string, number> =>
     str
       ? str.split(",").reduce((acc, stat) => {
@@ -245,54 +259,24 @@ export async function decodeBuilds(
     let gobletSet: Artifact | null = null;
     let circletSet: Artifact | null = null;
 
-    for (const value of artifactsDetail.default) {
-      if (!value.ids) {
-        continue;
-      }
-      if (
-        build.flowerId &&
-        value.ids.includes(build.flowerId.toString().slice(0, 4))
-      ) {
-        flowerSet = artifacts.find(
-          (a) => a._id === Number("2" + value.set)
-        ) as Artifact;
-      }
+    if (build.flowerSetId) {
+      flowerSet = artifacts.find((a) => a._id === build.flowerSetId)!;
+    }
 
-      if (
-        build.plumeId &&
-        value.ids.includes(build.plumeId.toString().slice(0, 4))
-      ) {
-        plumeSet = artifacts.find(
-          (a) => a._id === Number("2" + value.set)
-        ) as Artifact;
-      }
+    if (build.plumeSetId) {
+      plumeSet = artifacts.find((a) => a._id === build.plumeSetId)!;
+    }
 
-      if (
-        build.sandsId &&
-        value.ids.includes(build.sandsId.toString().slice(0, 4))
-      ) {
-        sandsSet = artifacts.find(
-          (a) => a._id === Number("2" + value.set)
-        ) as Artifact;
-      }
+    if (build.sandsSetId) {
+      sandsSet = artifacts.find((a) => a._id === build.sandsSetId)!;
+    }
 
-      if (
-        build.gobletId &&
-        value.ids.includes(build.gobletId.toString().slice(0, 4))
-      ) {
-        gobletSet = artifacts.find(
-          (a) => a._id === Number("2" + value.set)
-        ) as Artifact;
-      }
+    if (build.gobletSetId) {
+      gobletSet = artifacts.find((a) => a._id === build.gobletSetId)!;
+    }
 
-      if (
-        build.circletId &&
-        value.ids.includes(build.circletId.toString().slice(0, 4))
-      ) {
-        circletSet = artifacts.find(
-          (a) => a._id === Number("2" + value.set)
-        ) as Artifact;
-      }
+    if (build.circletSetId) {
+      circletSet = artifacts.find((a) => a._id === build.circletSetId)!;
     }
 
     // remove duplicates and the ones that doesn't have 2 pieces or more

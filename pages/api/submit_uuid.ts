@@ -54,7 +54,7 @@ export default async function handler(
         data: insert,
       });
 
-      const encodedData = encodeBuilds(data.avatarInfoList);
+      const encodedData = await encodeBuilds(data.avatarInfoList);
       const insertBuilds: Prisma.BuildCreateManyInput[] = encodedData.map(
         (avatar) => ({
           ...avatar,
@@ -111,7 +111,7 @@ export default async function handler(
       });
 
       // Update builds
-      const encodedData = encodeBuilds(data.avatarInfoList);
+      const encodedData = await encodeBuilds(data.avatarInfoList);
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
       const updateBuilds: Prisma.BuildUpdateArgs[] = encodedData
         .filter((avatar) => avatarsIds.includes(avatar.avatarId))
