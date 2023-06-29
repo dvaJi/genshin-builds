@@ -21,6 +21,14 @@ function Root(props: AppProps<Props>) {
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       gtag.pageview(url);
+      if (
+        typeof window !== "undefined" &&
+        typeof window.freestar !== "undefined"
+      ) {
+        freestar.queue.push(function () {
+          freestar.trackPageview();
+        });
+      }
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
