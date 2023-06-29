@@ -20,6 +20,7 @@ import CharacterTeam from "@components/genshin/CharacterTeam";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Card from "@components/ui/Card";
 
+import FrstAds from "@components/ui/FrstAds";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import {
   getCharacterBuild,
@@ -30,7 +31,6 @@ import {
 import { localeToLang } from "@utils/locale-to-lang";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
-import FrstAds from "@components/ui/FrstAds";
 
 interface CharacterPageProps {
   character: Character;
@@ -118,7 +118,10 @@ const Test = ({
           </div>
         </div>
       </div>
-      <FrstAds  placementName="genshinbuilds_billboard_atf" />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       {builds.length > 0 && (
         <div className="relative z-50 mx-4 mb-8 lg:mx-0">
           <h2 className="mb-3 text-3xl text-white">
@@ -201,7 +204,10 @@ const Test = ({
           </Card>
         </div>
       )}
-      <FrstAds placementName="genshinbuilds_incontent_1" />
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "best_team_comp",
@@ -214,7 +220,10 @@ const Test = ({
           <CharacterTeam key={team.name + index} team={team} index={index} />
         ))}
       </Card>
-      <FrstAds placementName="genshinbuilds_incontent_2" />
+      <FrstAds
+        placementName="genshinbuilds_incontent_2"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
         {t({
           id: "skills",
@@ -238,7 +247,10 @@ const Test = ({
           />
         ))}
       </div>
-      <FrstAds placementName="genshinbuilds_incontent_3" />
+      <FrstAds
+        placementName="genshinbuilds_incontent_3"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
@@ -268,7 +280,10 @@ const Test = ({
             />
           ))}
       </div>
-      <FrstAds placementName="genshinbuilds_incontent_4" />
+      <FrstAds
+        placementName="genshinbuilds_incontent_4"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "stats",
@@ -289,7 +304,10 @@ const Test = ({
       <Card className="mx-4 mb-8 p-0 lg:mx-0">
         <CharacterAscencionMaterials ascension={character.ascension} />
       </Card>
-      <FrstAds placementName="genshinbuilds_incontent_5" />
+      <FrstAds
+        placementName="genshinbuilds_incontent_5"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "talent_materials",
@@ -341,7 +359,7 @@ export const getStaticProps: GetStaticProps = async ({
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
-  const character = characters.find((c) => c.id === 'kaedehara_kazuha');
+  const character = characters.find((c) => c.id === "kaedehara_kazuha");
 
   if (!character) {
     return {
