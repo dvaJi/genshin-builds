@@ -39,7 +39,7 @@ export async function encodeBuilds(data: CharactersAPI[]) {
           };
         }
         if (item.flat.itemType === "ITEM_RELIQUARY") {
-          const substatsParsed = item.reliquary.appendPropIdList.reduce(
+          const substatsParsed = item.reliquary?.appendPropIdList?.reduce(
             (acc, id) => {
               const { type } = REAL_SUBSTAT_VALUES[id];
               const realStatName = STAT_NAMES[type];
@@ -55,8 +55,8 @@ export async function encodeBuilds(data: CharactersAPI[]) {
 
           let critDmg = 0;
           let critRate = 0;
-          const encodeSubstats = item.flat.reliquarySubstats
-            .map((st: any) => {
+          const encodeSubstats = item?.flat?.reliquarySubstats
+            ?.map((st: any) => {
               if (st.appendPropId === "FIGHT_PROP_CRITICAL") {
                 critRate = st.statValue;
               } else if (st.appendPropId === "FIGHT_PROP_CRITICAL_HURT") {
@@ -66,7 +66,7 @@ export async function encodeBuilds(data: CharactersAPI[]) {
                 substatsParsed[STAT_NAMES[st.appendPropId]].count
               }`;
             })
-            .join(",");
+            ?.join(",");
 
           return {
             equipType: item.flat.equipType,
@@ -78,7 +78,7 @@ export async function encodeBuilds(data: CharactersAPI[]) {
             }`,
             substats: encodeSubstats,
             critValue: (critDmg || 0) + (critRate || 0) * 2,
-            substatsidlist: item.reliquary.appendPropIdList.join(","),
+            substatsidlist: item?.reliquary?.appendPropIdList?.join(","),
           };
         }
       })
@@ -156,7 +156,7 @@ export async function encodeBuilds(data: CharactersAPI[]) {
     return {
       avatarId: encodedData.avatarId,
       level: Number(encodedData.level),
-      ascension: Number(encodedData.ascension),
+      ascension: Number(encodedData.ascension || 0),
       fetterLevel: Number(encodedData.fetterlevel),
       constellation: encodedData.constellations,
       skillDepotId: avatar.skillDepotId,
