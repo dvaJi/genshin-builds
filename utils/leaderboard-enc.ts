@@ -84,16 +84,20 @@ export async function encodeBuilds(data: CharactersAPI[]) {
       })
       .reduce((acc, item: any) => {
         if (!item) return acc;
-        if (
-          [
-            "EQUIP_BRACER",
-            "EQUIP_NECKLACE",
-            "EQUIP_SHOES",
-            "EQUIP_RING",
-            "EQUIP_DRESS",
-          ].includes(item.equipType)
-        ) {
+        if (item.equipType === "EQUIP_BRACER") {
           acc.flower = { ...item, setId: getSetId(item.itemId) };
+        }
+        if (item.equipType === "EQUIP_NECKLACE") {
+          acc.plume = { ...item, setId: getSetId(item.itemId) };
+        }
+        if (item.equipType === "EQUIP_SHOES") {
+          acc.sands = { ...item, setId: getSetId(item.itemId) };
+        }
+        if (item.equipType === "EQUIP_RING") {
+          acc.goblet = { ...item, setId: getSetId(item.itemId) };
+        }
+        if (item.equipType === "EQUIP_DRESS") {
+          acc.circlet = { ...item, setId: getSetId(item.itemId) };
         }
         if (!item.equipType) {
           acc.weapon = item;
@@ -307,9 +311,9 @@ export async function decodeBuilds(
       ? {
           flower: {
             artifactId: build.flowerId,
-            id: flowerSet!.flower?.id,
-            name: flowerSet!.flower?.name,
-            rarity: flowerSet!.max_rarity,
+            id: flowerSet?.flower?.id ?? null,
+            name: flowerSet?.flower?.name ?? null,
+            rarity: flowerSet?.max_rarity ?? null,
             mainStat: decodeStr(build.flowerMainStat),
             subStats: flowerSubstats,
             subStatsIds: build.flowerSubstatsId,
@@ -321,9 +325,9 @@ export async function decodeBuilds(
       ? {
           plume: {
             artifactId: build.plumeId,
-            id: plumeSet!.plume?.id,
-            name: plumeSet!.plume?.name,
-            rarity: plumeSet!.max_rarity,
+            id: plumeSet?.plume?.id ?? null,
+            name: plumeSet?.plume?.name ?? null,
+            rarity: plumeSet?.max_rarity ?? null,
             mainStat: decodeStr(build.plumeMainStat),
             subStats: plumeSubstats,
             subStatsIds: build.plumeSubstatsId,
@@ -335,9 +339,9 @@ export async function decodeBuilds(
       ? {
           sands: {
             artifactId: build.sandsId,
-            id: sandsSet!.sands?.id,
-            name: sandsSet!.sands?.name,
-            rarity: sandsSet!.max_rarity,
+            id: sandsSet?.sands?.id ?? null,
+            name: sandsSet?.sands?.name ?? null,
+            rarity: sandsSet?.max_rarity ?? null,
             mainStat: decodeStr(build.sandsMainStat),
             subStats: sandsSubstats,
             subStatsIds: build.sandsSubstatsId,
@@ -349,9 +353,9 @@ export async function decodeBuilds(
       ? {
           goblet: {
             artifactId: build.gobletId,
-            id: gobletSet!.goblet?.id,
-            name: gobletSet!.goblet?.name,
-            rarity: gobletSet!.max_rarity,
+            id: gobletSet?.goblet?.id ?? null,
+            name: gobletSet?.goblet?.name ?? null,
+            rarity: gobletSet?.max_rarity ?? null,
             mainStat: decodeStr(build.gobletMainStat),
             subStats: gobletSubstats,
             subStatsIds: build.gobletSubstatsId,
@@ -363,9 +367,9 @@ export async function decodeBuilds(
       ? {
           circlet: {
             artifactId: build.circletId,
-            id: circletSet!.circlet?.id,
-            name: circletSet!.circlet?.name,
-            rarity: circletSet!.max_rarity,
+            id: circletSet?.circlet?.id ?? null,
+            name: circletSet?.circlet?.name ?? null,
+            rarity: circletSet?.max_rarity ?? null,
             mainStat: decodeStr(build.circletMainStat),
             subStats: circletSubstats,
             subStatsIds: build.circletSubstatsId,
