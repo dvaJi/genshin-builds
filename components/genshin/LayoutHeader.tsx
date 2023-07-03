@@ -153,7 +153,7 @@ const LayoutHeader = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <div className="fixed top-0 left-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
+    <div className="relative top-0 left-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
       <div className="mx-auto block w-full max-w-6xl items-center py-2 px-4 text-sm md:flex md:py-0 ">
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
           <Link href="/" className="h-full w-full">
