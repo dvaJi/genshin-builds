@@ -15,6 +15,7 @@ import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface Props {
   card: TCGCard;
@@ -35,7 +36,10 @@ const TCGCardPage = ({ card, locale }: Props) => {
         pageDescription={card.desc}
         jsonLD={generateJsonLd(locale, t, card)}
       />
-
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <Link className="mt-4 p-4 hover:text-slate-200" href="/tcg">
         {t({ id: "back", defaultMessage: "Back" })}
@@ -94,6 +98,10 @@ const TCGCardPage = ({ card, locale }: Props) => {
           )}
         </div>
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="text-3xl font-semibold text-gray-200">
         {t({ id: "card_effects", defaultMessage: "Card Effects" })}
       </h2>

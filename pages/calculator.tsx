@@ -2,18 +2,19 @@ import GenshinData, { Character, Weapon } from "genshin-data";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 
-import Card from "@components/ui/Card";
 import Metadata from "@components/Metadata";
-import WeaponCalculator from "@components/genshin/WeaponCalculator";
 import CharacterCalculator from "@components/genshin/CharacterCalculator";
+import WeaponCalculator from "@components/genshin/WeaponCalculator";
+import Card from "@components/ui/Card";
 
+import useIntl from "@hooks/use-intl";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToLang } from "@utils/locale-to-lang";
-import useIntl from "@hooks/use-intl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   characters: Character[];
@@ -36,13 +37,21 @@ const Calculator = ({ characters, weapons }: Props) => {
             "Genshin Impact Calculator to calculate how many mora and materials needed for your character or weapon ascension",
         })}
       />
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div>
         <h1 className="text-xl text-white">Character Calculator</h1>
       </div>
       <Card>
         <CharacterCalculator characters={characters} />
       </Card>
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       <div className="mt-6">
         <h1 className="text-xl text-white">Weapon Calculator</h1>
       </div>

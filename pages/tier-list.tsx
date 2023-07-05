@@ -16,6 +16,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   tierlist: Tierlist;
@@ -59,6 +60,10 @@ const TierList = ({
           defaultMessage:
             "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
         })}
+      />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
       />
       <h2 className="my-6 text-center text-2xl font-semibold text-gray-200 lg:text-left">
         {t({
@@ -155,6 +160,10 @@ const TierList = ({
           </button>
         </div>
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
         {["0", "1", "2", "3", "4"].map((key) => (
           <CharactersTier
             key={`tier_${key}`}
@@ -185,7 +194,10 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name"],
   });
 
-  const tierlist = await getData("genshin", "tierlist");
+  const tierlist = await getData<Record<string, Tierlist>>(
+    "genshin",
+    "tierlist"
+  );
   const common = await getCommon(locale, "genshin");
 
   const tiers = ["0", "1", "2", "3", "4"];

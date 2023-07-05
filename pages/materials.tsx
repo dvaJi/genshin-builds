@@ -17,6 +17,7 @@ import { getUrl } from "@lib/imgUrl";
 import { getAllMaterialsMap, Material } from "@utils/materials";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   materials: Material[];
@@ -57,6 +58,10 @@ const MaterialsPage = ({ materials }: Props) => {
         })}
       />
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "materials", defaultMessage: "Materials" })}
       </h2>

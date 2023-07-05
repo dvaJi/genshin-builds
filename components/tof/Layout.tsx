@@ -41,7 +41,6 @@ function Layout({ children, bgStyle }: Props) {
           content="Learn about every character in Tower of Fantasy including their skills, talents, builds, and tier list."
         />
       </Head>
-      <div className="h-20" />
       <LayoutHeader />
       <DynamicBackground bgStyle={bgStyle} />
       <main

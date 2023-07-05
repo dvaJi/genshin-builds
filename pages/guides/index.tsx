@@ -1,11 +1,15 @@
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 
 import Metadata from "@components/Metadata";
 
-import { getLocale } from "@lib/localData";
-import { getAllGuides, Guide } from "@lib/guides_api";
-import useIntl from "@hooks/use-intl";
 import GuideCard from "@components/GuideCard";
+
+import useIntl from "@hooks/use-intl";
+import { getAllGuides, Guide } from "@lib/guides_api";
+import { getLocale } from "@lib/localData";
+
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type TodoProps = {
   guides: Guide[];
@@ -26,10 +30,14 @@ const Guides = ({ guides }: TodoProps) => {
           defaultMessage: "Track your Genshin Impact achievement easily",
         })}
       />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "guides", defaultMessage: "Guides" })}
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4">
+      <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
         {guides.map((guide) => (
           <GuideCard key={guide.title} guide={guide} />
         ))}

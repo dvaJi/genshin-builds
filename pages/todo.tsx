@@ -13,6 +13,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { getAllMaterialsMap } from "@utils/materials";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 const Todo = dynamic(() => import("@components/genshin/Todo"), {
   ssr: false,
@@ -37,6 +38,10 @@ const TodoPage = ({
           defaultMessage:
             "Todo List for Genshin Impact to plan and track resources you need!",
         })}
+      />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "todo", defaultMessage: "Todo List" })}

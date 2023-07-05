@@ -1,7 +1,7 @@
-import Link from "next/link";
-import clsx from "clsx";
-import { useState } from "react";
 import useIntl from "@hooks/use-intl";
+import clsx from "clsx";
+import Link from "next/link";
+import { useState } from "react";
 
 type Route = {
   id: string;
@@ -14,9 +14,10 @@ type Route = {
 
 type Props = {
   route: Route;
+  onClick?: () => void;
 };
 
-function NavItem({ route }: Props) {
+function NavItem({ route, onClick }: Props) {
   const [isHovering, setIsHovering] = useState(false);
   const { t } = useIntl("layout");
 
@@ -34,10 +35,11 @@ function NavItem({ route }: Props) {
       className="group relative md:py-4"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
     >
       {!route.children ? (
         <Link
-          className="ml-4 mt-4 block font-semibold text-slate-300 hover:text-slate-50 md:mt-0 md:ml-0 md:py-2 md:px-3"
+          className="ml-4 mt-4 block font-semibold text-slate-300 hover:text-slate-50 md:ml-0 md:mt-0 md:px-3 md:py-2"
           href={route.href!}
         >
           {t({ id: route.id, defaultMessage: route.name })}
@@ -52,13 +54,13 @@ function NavItem({ route }: Props) {
         <>
           <span
             className={clsx(
-              "mt-6 ml-4 block cursor-default text-xs font-semibold uppercase text-slate-500 md:ml-0 md:mt-0 md:mr-1 md:inline-block md:py-2 md:px-3 md:text-sm md:normal-case",
+              "ml-4 mt-6 block cursor-default text-xs font-semibold uppercase text-slate-500 md:ml-0 md:mr-1 md:mt-0 md:inline-block md:px-3 md:py-2 md:text-sm md:normal-case",
               isHovering ? "md:text-white" : "md:text-slate-300"
             )}
           >
             {route.name}
             {route.isNew && (
-              <span className="absolute top-1 left-1 flex h-2 w-2 md:top-4">
+              <span className="absolute left-1 top-1 flex h-2 w-2 md:top-4">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
               </span>
@@ -66,7 +68,7 @@ function NavItem({ route }: Props) {
           </span>
           <div
             className={clsx(
-              "transform px-0 text-xs transition-all md:absolute md:z-10 md:mt-4 md:ml-0 md:px-0",
+              "transform px-0 text-xs transition-all md:absolute md:z-10 md:ml-0 md:mt-4 md:px-0",
               isHovering
                 ? "md:pointer-events-auto md:translate-y-0 md:opacity-100"
                 : "md:pointer-events-none md:-translate-y-1 md:opacity-0"

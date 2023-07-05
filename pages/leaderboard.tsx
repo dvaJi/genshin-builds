@@ -17,6 +17,8 @@ import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Build, Profile } from "interfaces/profile";
 
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+
 const LeaderBoardBuildsTable = dynamic(
   () => import("@components/genshin/LeaderBoardBuildsTable"),
   { ssr: false }
@@ -91,6 +93,10 @@ function LeaderBoardPage({ characters }: Props) {
   return (
     <div>
       <ProfileFavorites />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <div className="py-4 text-center">
         <Link
           href="/profile"

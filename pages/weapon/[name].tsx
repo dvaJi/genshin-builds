@@ -1,18 +1,21 @@
 import clsx from "clsx";
-import { useState } from "react";
-import { GetStaticProps, GetStaticPaths } from "next";
-import Link from "next/link";
 import GenshinData, { Weapon } from "genshin-data";
+import { GetStaticPaths, GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useState } from "react";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
-import Card from "@components/ui/Card";
 import Metadata from "@components/Metadata";
 import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
+import Card from "@components/ui/Card";
 
-import { localeToLang } from "@utils/locale-to-lang";
-import { getCharacterMostUsedBuild, getLocale } from "@lib/localData";
 import { getUrl } from "@lib/imgUrl";
+import { getCharacterMostUsedBuild, getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
+
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface WeaponPageProps {
   weapon: Weapon;
@@ -39,6 +42,10 @@ const WeaponPage = ({
         })}
         pageDescription={weapon.description}
         jsonLD={generateJsonLd(locale, t)}
+      />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
       />
       <div className="mb-4 flex items-start justify-between">
         <div className="relative flex flex-wrap items-center px-2 lg:flex-nowrap lg:px-0">
@@ -170,6 +177,10 @@ const WeaponPage = ({
           </Card>
         </div>
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       {recommendedCharacters.length > 0 && (
         <>
           <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">

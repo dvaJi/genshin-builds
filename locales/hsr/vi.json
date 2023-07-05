@@ -47,5 +47,11 @@
     "relics": "xá lợi",
     "relics_desc": "Di vật là vật phẩm có thể trang bị cho nhân vật. ",
     "set": "Bộ"
+  },
+  "tierlist": {
+    "title": "Honkai: Star Rail Bảng Xếp hạng Tier",
+    "description": "Khám phá bảng xếp hạng tier toàn diện xếp hạng tất cả các nhân vật 5 sao, 4 sao, DPS và hỗ trợ trong HSR, giúp bạn đưa ra quyết định thông thái về sự phối hợp đội của mình. Luôn dẫn đầu trong cuộc cạnh tranh và khai thác tiềm năng thực sự của đội của bạn với hướng dẫn chuyên gia được sắp xếp cẩn thận của chúng tôi. Khám phá Bảng Xếp hạng Tier và khám phá những chiến binh mạnh mẽ sẽ dẫn dắt bạn đến chiến thắng trong Honkai: Star Rail.",
+    "tierlist": "Bảng Xếp hạng Tier",
+    "tierlist_desc": "Khám phá Bảng Xếp hạng Tier cuối cùng của Honkai: Star Rail! Khám phá những nhân vật hoạt động tốt nhất trong HSR, bao gồm các nhân vật 5 sao, 4 sao, DPS và hỗ trợ, tất cả được xếp hạng bởi các chuyên gia trong hướng dẫn toàn diện này. Luôn dẫn đầu trong trò chơi và đưa ra những lựa chọn thông thái với tài nguyên vô giá này."
   }
 }

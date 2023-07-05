@@ -11,6 +11,7 @@ import { localeToHSRLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   relics: Relic[];
@@ -45,6 +46,10 @@ function HSRRelics({ relics }: Props) {
         })}
       </p>
       <div className="mt-4"></div>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <menu className="grid grid-cols-1 md:grid-cols-2">
         {relics.map((relic) => (

@@ -47,5 +47,11 @@
     "relics": "Relikte",
     "relics_desc": "Relikte sind Gegenstände, mit denen Charaktere ausgerüstet werden können. ",
     "set": "Satz"
+  },
+  "tierlist": {
+    "title": "Honkai: Star Rail Tierliste",
+    "description": "Entdecken Sie eine umfassende Tierliste, die alle 5-Sterne-, 4-Sterne-, DPS- und Support-Charaktere in HSR bewertet und Ihnen ermöglicht, fundierte Entscheidungen über die Zusammenstellung Ihres Teams zu treffen. Bleiben Sie der Konkurrenz einen Schritt voraus und entfesseln Sie das wahre Potenzial Ihrer Truppe mit unserem sorgfältig zusammengestellten Leitfaden. Erforschen Sie die Tierliste und entdecken Sie die Powerhouses, die Sie zum Sieg in Honkai: Star Rail führen werden.",
+    "tierlist": "Tierliste",
+    "tierlist_desc": "Entdecken Sie die ultimative Honkai: Star Rail Tierliste! Erfahren Sie mehr über die leistungsstärksten Charaktere in HSR, einschließlich 5-Sterne-, 4-Sterne-, DPS- und Support-Charaktere, die alle in diesem umfassenden Leitfaden sorgfältig bewertet wurden. Bleiben Sie einen Schritt voraus und treffen Sie informierte Entscheidungen mit dieser unschätzbaren Ressource."
   }
 }

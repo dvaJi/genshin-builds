@@ -2,15 +2,12 @@ import clsx from "clsx";
 import GenshinData, { Artifact, Character, Weapon } from "genshin-data";
 import { GetStaticPaths, GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import { useState } from "react";
 
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
 
 import Metadata from "@components/Metadata";
-import StarRarity from "@components/StarRarity";
 import CharacterAscencionMaterials from "@components/genshin/CharacterAscencionMaterials";
-import CharacterBuildCard from "@components/genshin/CharacterBuildCard";
-import CharacterCommonBuildCard from "@components/genshin/CharacterCommonBuildCard";
+import CharacterBuilds from "@components/genshin/CharacterBuilds";
 import ConstellationCard from "@components/genshin/CharacterConstellationCard";
 import PassiveSkill from "@components/genshin/CharacterPassiveSkill";
 import CharacterSkill from "@components/genshin/CharacterSkill";
@@ -28,11 +25,13 @@ import {
   getCharacterOfficialBuild,
   getLocale,
 } from "@lib/localData";
+import { getBonusSet } from "@utils/bonus_sets";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface CharacterPageProps {
   character: Character;
@@ -57,9 +56,6 @@ const CharacterPage = ({
   officialbuild,
   recommendedTeams,
 }: CharacterPageProps) => {
-  const [buildSelected, setBuildSelected] = useState(
-    builds.findIndex((b) => b.recommended) ?? 0
-  );
   const { t } = useIntl("character");
 
   return (
@@ -120,89 +116,25 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      {builds.length > 0 && (
-        <div className="relative z-50 mx-4 mb-8 lg:mx-0">
-          <h2 className="mb-3 text-3xl text-white">
-            {t({
-              id: "builds",
-              defaultMessage: "Best {name} Builds",
-              values: { name: character.name },
-            })}
-          </h2>
-          <div>
-            {mubuild && (
-              <button
-                className={clsx(
-                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 backdrop-blur md:text-lg",
-                  {
-                    "bg-vulcan-700 text-white": buildSelected === -1,
-                    "bg-vulcan-800": buildSelected !== -1,
-                  }
-                )}
-                onClick={() => setBuildSelected(-1)}
-              >
-                <div className="inline-block w-5">
-                  <StarRarity rarity={1} />
-                </div>
-                {t({ id: "most_used", defaultMessage: "Most Used" })}
-              </button>
-            )}
-            {officialbuild && (
-              <button
-                className={clsx(
-                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 backdrop-blur md:text-lg",
-                  {
-                    "bg-vulcan-700 text-white": buildSelected === -2,
-                    "bg-vulcan-800": buildSelected !== -2,
-                  }
-                )}
-                onClick={() => setBuildSelected(-2)}
-              >
-                <div className="inline-block w-5">
-                  <StarRarity rarity={1} />
-                </div>
-                {t({ id: "official_build", defaultMessage: "Official Build" })}
-              </button>
-            )}
-            {builds.map((build, index) => (
-              <button
-                key={build.id}
-                className={clsx(
-                  "my-1 mr-2 rounded bg-opacity-80 p-3 px-5 backdrop-blur md:text-lg",
-                  {
-                    "bg-vulcan-700 text-white": buildSelected === index,
-                    "bg-vulcan-800": buildSelected !== index,
-                  }
-                )}
-                onClick={() => setBuildSelected(index)}
-              >
-                {build.recommended && (
-                  <div className="inline-block w-5">
-                    <StarRarity rarity={1} />
-                  </div>
-                )}
-                {build.name}
-              </button>
-            ))}
-          </div>
-          <Card>
-            {buildSelected < 0 ? (
-              <CharacterCommonBuildCard
-                build={buildSelected === -1 ? mubuild : officialbuild!}
-                artifacts={artifacts}
-                weapons={weapons}
-              />
-            ) : (
-              <CharacterBuildCard
-                build={builds[buildSelected]}
-                artifacts={artifacts}
-                weapons={weapons}
-              />
-            )}
-          </Card>
-        </div>
-      )}
+      {builds.length > 0 ? (
+        <CharacterBuilds
+          characterName={character.name}
+          builds={builds}
+          artifacts={artifacts}
+          mubuild={mubuild}
+          weapons={weapons}
+          officialbuild={officialbuild}
+        />
+      ) : null}
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "best_team_comp",
@@ -215,6 +147,10 @@ const CharacterPage = ({
           <CharacterTeam key={team.name + index} team={team} index={index} />
         ))}
       </Card>
+      <FrstAds
+        placementName="genshinbuilds_incontent_2"
+        classList={["flex", "justify-center"]}
+      />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
         {t({
@@ -239,6 +175,10 @@ const CharacterPage = ({
           />
         ))}
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_3"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
@@ -268,13 +208,17 @@ const CharacterPage = ({
             />
           ))}
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_4"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "stats",
           defaultMessage: "Stats",
         })}
       </h2>
-      <Card className="mx-4 mb-8 p-0 lg:mx-0">
+      <Card className="mx-4 mb-8 lg:mx-0">
         {character.ascension[1].stats && (
           <CharacterStats ascensions={character.ascension} />
         )}
@@ -288,6 +232,10 @@ const CharacterPage = ({
       <Card className="mx-4 mb-8 p-0 lg:mx-0">
         <CharacterAscencionMaterials ascension={character.ascension} />
       </Card>
+      <FrstAds
+        placementName="genshinbuilds_incontent_5"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "talent_materials",
@@ -413,117 +361,13 @@ export const getStaticProps: GetStaticProps = async ({
       }
     });
 
-    const ATK18BONUS = [
-      "gladiators_finale",
-      "shimenawas_reminiscence",
-      "vermillion_hereafter",
-      "echoes_of_an_offering",
-    ];
-
-    if (artifactsIds.includes("18atk_set")) {
-      artifacts["18atk_set"] = {
-        ...artifactsList.find((a) => a.id === ATK18BONUS[0])!,
-        name: lngDict?.character["18atk_set"]
-          ? lngDict.character["18atk_set"]
-          : "ATK +18% set",
-        children: artifactsList.filter((a) => ATK18BONUS.includes(a.id)),
-      };
-    }
-
-    const Energy20BONUS = ["emblem_of_severed_fate", "the_exile", "scholar"];
-
-    if (artifactsIds.includes("20energyrecharge_set")) {
-      artifacts["20energyrecharge_set"] = {
-        ...artifactsList.find((a) => a.id === Energy20BONUS[0])!,
-        name: lngDict?.character["20energyrecharge_set"]
-          ? lngDict.character["20energyrecharge_set"]
-          : "Energy Recharge +20% set",
-        children: artifactsList.filter((a) => Energy20BONUS.includes(a.id)),
-      };
-    }
-
-    const Anemo15BONUS = ["viridescent_venerer", "desert_pavilion_chronicle"];
-
-    if (artifactsIds.includes("15anemodmg_set")) {
-      artifacts["15anemodmg_set"] = {
-        ...artifactsList.find((a) => a.id === Anemo15BONUS[0])!,
-        name: lngDict?.character["15anemodmg_set"]
-          ? lngDict.character["15anemodmg_set"]
-          : "Anemo DMG Bonus +15% set",
-        children: artifactsList.filter((a) => Anemo15BONUS.includes(a.id)),
-      };
-    }
-
-    const Physical25BONUS = ["bloodstained_chivalry", "pale_flame", "scholar"];
-
-    if (artifactsIds.includes("25physicaldmg_set")) {
-      artifacts["25physicaldmg_set"] = {
-        ...artifactsList.find((a) => a.id === Physical25BONUS[0])!,
-        name: lngDict?.character["25physicaldmg_set"]
-          ? lngDict.character["25physicaldmg_set"]
-          : "Physical DMG +25% set",
-        children: artifactsList.filter((a) => Physical25BONUS.includes(a.id)),
-      };
-    }
-
-    const EM80BONUS = ["wanderers_troupe", "gilded_dreams", "instructor"];
-
-    if (artifactsIds.includes("80elementalmastery_set")) {
-      artifacts["80elementalmastery_set"] = {
-        ...artifactsList.find((a) => a.id === EM80BONUS[0])!,
-        name: lngDict?.character["80elementalmastery_set"]
-          ? lngDict.character["80elementalmastery_set"]
-          : "Elemental Mastery +80 set",
-        children: artifactsList.filter((a) => EM80BONUS.includes(a.id)),
-      };
-    }
-
-    const HEAL15BONUS = ["maiden_beloved", "oceanhued_clam"];
-
-    if (artifactsIds.includes("15healingbonus_set")) {
-      artifacts["15healingbonus_set"] = {
-        ...artifactsList.find((a) => a.id === HEAL15BONUS[0])!,
-        name: common["Healing Bonus"]
-          ? `${common["Healing Bonus"]} +15% set`
-          : "Healing Bonus +15% set",
-        children: artifactsList.filter((a) => HEAL15BONUS.includes(a.id)),
-      };
-    }
-
-    const HP20BONUS = ["tenacity_of_the_millelith", "vourukashas_glow"];
-
-    if (artifactsIds.includes("20hp_set")) {
-      artifacts["20hp_set"] = {
-        ...artifactsList.find((a) => a.id === HP20BONUS[0])!,
-        name: common["HP"] ? `${common["HP"]} +20% set` : "HP +20% set",
-        children: artifactsList.filter((a) => HP20BONUS.includes(a.id)),
-      };
-    }
-
-    const HYDRO15BONUS = ["heart_of_depth", "nymphs_dream"];
-
-    if (artifactsIds.includes("15hydrodmg_set")) {
-      artifacts["15hydrodmg_set"] = {
-        ...artifactsList.find((a) => a.id === HYDRO15BONUS[0])!,
-        name: common["Hydro DMG"]
-          ? `${common["Hydro DMG"]} +15% set`
-          : "Hydro DMG +15% set",
-        children: artifactsList.filter((a) => HYDRO15BONUS.includes(a.id)),
-      };
-    }
-
-    artifacts["others"] = {
-      _id: -1,
-      id: "others",
-      name: lngDict?.character["others"]
-        ? lngDict.character["others"]
-        : "Others",
-      max_rarity: 1,
-      min_rarity: 1,
-      two_pc: lngDict?.character["others_desc"]
-        ? lngDict.character["others_desc"]
-        : "Others",
-    };
+    // Add custom sets by bonus
+    const bonusSets = getBonusSet(artifactsList, lngDict?.character, common);
+    Object.keys(bonusSets).forEach((key) => {
+      if (artifactsIds.includes(key)) {
+        artifacts[key] = bonusSets[key];
+      }
+    });
   }
 
   const recommendedTeams =
@@ -553,11 +397,6 @@ export const getStaticProps: GetStaticProps = async ({
           background:
             "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
         },
-        stickyImage: getUrlLQ(
-          `/characters/${character.id}/header_image.png`,
-          900,
-          900
-        ),
       },
     },
   };

@@ -1,7 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import clsx from "clsx";
 import GenshinData from "genshin-data";
 import { InferGetStaticPropsType } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -18,9 +18,9 @@ import { trackClick } from "@lib/gtag";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { getCommon, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
-import dynamic from "next/dynamic";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
 
@@ -37,7 +37,7 @@ const WeaponsPage = ({
 
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
-  const filterWeapons = () => {
+  useEffect(() => {
     setWeaponFilter(
       weapons
         .filter((w) => {
@@ -60,11 +60,7 @@ const WeaponsPage = ({
           return b.rarity - a.rarity || a.name.localeCompare(b.name);
         })
     );
-  };
-
-  useEffect(() => {
-    filterWeapons();
-  }, [debouncedSearchTerm, typeFilter, sortBy]);
+  }, [debouncedSearchTerm, typeFilter, sortBy, weapons, common]);
 
   const { t } = useIntl("weapons");
   return (
@@ -83,6 +79,10 @@ const WeaponsPage = ({
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "weapons", defaultMessage: "Weapons" })}
       </h2>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <div className="my-3 md:flex">
         <div className="flex-1">
           <div className="md:flex">

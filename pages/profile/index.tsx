@@ -1,18 +1,19 @@
-import { useState } from "react";
-import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 
-import Button from "@components/ui/Button";
 import Metadata from "@components/Metadata";
+import Button from "@components/ui/Button";
 
-import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { updateFavorites } from "@state/profiles-fav";
 import useIntl from "@hooks/use-intl";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getLocale } from "@lib/localData";
+import { updateFavorites } from "@state/profiles-fav";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 const ProfileFavorites = dynamic(
   () => import("@components/genshin/ProfileFavorites"),
@@ -59,7 +60,11 @@ function ProfileIndex() {
             "Get the best Genshin Impact profiles to optimize your gameplay. Visualize and compare your player profile with others, calculate crit value, and find the best characters and artifacts.",
         })}
       />
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <ProfileFavorites />
       <div className="card flex flex-col items-center justify-center">
         {isLoading ? (

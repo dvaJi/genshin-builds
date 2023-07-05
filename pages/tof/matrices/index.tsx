@@ -1,18 +1,19 @@
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { GetStaticProps } from "next";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 import TOFData, { Languages, Matrix, languages } from "tof-builds";
 
 import Metadata from "@components/Metadata";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
 
-import { getDefaultLocale, getLocale } from "@lib/localData";
-import { getRarityColor } from "@utils/rarity";
 import useIntl from "@hooks/use-intl";
 import { getTofUrlLQ } from "@lib/imgUrl";
+import { getDefaultLocale, getLocale } from "@lib/localData";
+import { getRarityColor } from "@utils/rarity";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   ssr: Matrix[];
@@ -44,7 +45,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
             {t({ id: "matrices", defaultMessage: "Matrices" })}
           </span>
         </h2>
-        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {ssr.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
               <MatrixPortrait matrix={matrix} />
@@ -52,7 +53,11 @@ function Matrices({ ssr, sr, r, n }: Props) {
           ))}
         </div>
       </div>
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="mb-8">
         <h2 className="mb-2 text-3xl">
           <span className={getRarityColor("SR")}>SR</span>{" "}
@@ -60,7 +65,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
             {t({ id: "matrices", defaultMessage: "Matrices" })}
           </span>
         </h2>
-        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {sr.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
               <MatrixPortrait matrix={matrix} />
@@ -75,7 +80,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
             {t({ id: "matrices", defaultMessage: "Matrices" })}
           </span>
         </h2>
-        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {r.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
               <MatrixPortrait matrix={matrix} />
@@ -90,7 +95,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
             {t({ id: "matrices", defaultMessage: "Matrices" })}
           </span>
         </h2>
-        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 py-4 px-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {n.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
               <MatrixPortrait matrix={matrix} />

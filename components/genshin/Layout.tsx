@@ -2,9 +2,9 @@ import clsx from "clsx";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import LayoutHeader from "@components/genshin/LayoutHeader";
-import LayoutFooter from "@components/genshin/LayoutFooter";
 import DynamicBackground from "@components/DynamicBackground";
+import LayoutFooter from "@components/genshin/LayoutFooter";
+import LayoutHeader from "@components/genshin/LayoutHeader";
 import { AppBackgroundStyle } from "@state/background-atom";
 
 type Props = {
@@ -44,7 +44,7 @@ function Layout({ children, bgStyle }: Props) {
       <DynamicBackground bgStyle={bgStyle} />
       <main
         className={clsx(
-          "z-10 mb-8 text-gray-400",
+          "z-10 mb-8 mt-4 text-gray-400",
           !["/builder/builds", "/todo"].includes(router.route)
             ? "container mx-auto lg:px-20"
             : ""

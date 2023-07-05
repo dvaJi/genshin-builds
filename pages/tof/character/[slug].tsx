@@ -1,26 +1,22 @@
 import clsx from "clsx";
-import Link from "next/link";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import TOFData, {
-  Languages,
-  Character,
-  Gift,
-  languages,
-} from "tof-builds";
+import Link from "next/link";
+import TOFData, { Character, Gift, Languages, languages } from "tof-builds";
 
 import Metadata from "@components/Metadata";
-import TypeIcon from "@components/tof/TypeIcon";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
+import TypeIcon from "@components/tof/TypeIcon";
 
-import { getDefaultLocale, getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getBuildsByCharacterId } from "@lib/tofdata";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
-import { Build } from "interfaces/tof/build";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
+import { getDefaultLocale, getLocale } from "@lib/localData";
+import { getBuildsByCharacterId } from "@lib/tofdata";
+import { Build } from "interfaces/tof/build";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type BuildFull = Build & {
   name: string;
@@ -53,7 +49,11 @@ const CharacterPage = ({
         pageDescription={character.description}
         jsonLD={generateJsonLd(locale, character, t)}
       />
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="flex w-full  flex-wrap items-center justify-between">
         <div className="flex items-center">
           <img
@@ -105,7 +105,7 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
-      <div className="rounded border border-vulcan-700 bg-vulcan-700/90 py-4 px-4 shadow-lg">
+      <div className="rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">
         {builds.length > 0 && (
           <div className="mb-10 block">
             <h2 className="text-2xl font-bold uppercase text-tof-50">
@@ -122,7 +122,7 @@ const CharacterPage = ({
                   className="relative flex"
                 >
                   <div className="absolute top-4 w-full text-center text-sm">
-                    <span className="rounded bg-vulcan-600 py-1 px-2">
+                    <span className="rounded bg-vulcan-600 px-2 py-1">
                       {t({
                         id: "pieces",
                         defaultMessage: "Pieces",
@@ -136,6 +136,10 @@ const CharacterPage = ({
             </div>
           </div>
         )}
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
         <div className="mb-10 block">
           <h2 className="text-2xl font-bold uppercase text-tof-50">
             {t({
@@ -183,6 +187,10 @@ const CharacterPage = ({
             </div>
           ))}
         </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_2"
+          classList={["flex", "justify-center"]}
+        />
         <div className="mb-10 block">
           <h2 className="text-2xl font-bold uppercase text-tof-50">
             {t({
@@ -222,6 +230,10 @@ const CharacterPage = ({
             ))}
           </div>
         </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_3"
+          classList={["flex", "justify-center"]}
+        />
         <div>
           <h2 className="text-2xl font-bold uppercase text-tof-50">
             {t({
@@ -232,19 +244,19 @@ const CharacterPage = ({
           <table className="w-full text-left text-sm text-gray-400">
             <thead className="bg-gray-700 text-xs uppercase text-gray-400">
               <tr>
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="px-6 py-3">
                   {t({
                     id: "level",
                     defaultMessage: "Level",
                   })}
                 </th>
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="px-6 py-3">
                   {t({
                     id: "materials",
                     defaultMessage: "Materials",
                   })}
                 </th>
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="px-6 py-3">
                   {t({
                     id: "cost",
                     defaultMessage: "Cost",

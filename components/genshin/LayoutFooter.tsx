@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
+import { AiOutlineTwitter } from "react-icons/ai";
 
 const LayoutFooter = () => {
   const router = useRouter();
@@ -12,16 +13,25 @@ const LayoutFooter = () => {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
-            <h4 className="mb-3 text-gray-200">GenshinBuilds</h4>
-            <Link href="/privacy-policy" className="my-2">
+            <h4 className="mb-2 text-gray-200 text-lg">GenshinBuilds</h4>
+            <Link href="/privacy-policy" className="my-1 hover:text-white">
               Privacy Policy
             </Link>
-            <Link href="/contact" className="my-2">
+            <Link href="/contact" className="my-1 hover:text-white">
               Contact
             </Link>
-            <Link href="/changelog" className="my-2">
+            <Link href="/changelog" className="my-1 hover:text-white">
               Changelog
             </Link>
+            <a
+              href="https://twitter.com/genshin_builds"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group my-1 text-lg"
+            >
+              <AiOutlineTwitter className="inline group-hover:text-blue-400" />{" "}
+              <span className="text-base">Twitter</span>
+            </a>
           </div>
           <div className="flex flex-1 flex-col">
             <Link href={router.asPath} locale="en" className="my-2">

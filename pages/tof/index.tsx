@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import Link from "next/link";
-import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import TOFData, { Languages, Character, languages } from "tof-builds";
+import TOFData, { Character, Languages, languages } from "tof-builds";
 
 import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/tof/CharacterPortrait";
@@ -11,11 +11,12 @@ import CharacterPortrait from "@components/tof/CharacterPortrait";
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
 import { getDefaultLocale, getLocale } from "@lib/localData";
 import { getRarityColor, rarityToNumber } from "@utils/rarity";
-import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   characters: Character[];
@@ -111,7 +112,11 @@ function Characters({ characters }: Props) {
       />
       <div className="flex justify-between py-3">
         <h2 className="text-2xl text-tof-100">Characters and Weapons</h2>
-        <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+        <FrstAds
+          placementName="genshinbuilds_billboard_atf"
+          classList={["flex", "justify-center"]}
+        />
+        <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
         <div>
           <input
             type="text"
@@ -123,7 +128,7 @@ function Characters({ characters }: Props) {
         </div>
       </div>
 
-      <div className="mb-4 flex flex-wrap justify-between rounded border border-vulcan-700 bg-vulcan-700/90 py-2 px-4">
+      <div className="mb-4 flex flex-wrap justify-between rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-2">
         <div className="">
           {rarityOptions.map((rarity) => (
             <button
@@ -194,7 +199,11 @@ function Characters({ characters }: Props) {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-1 rounded border border-vulcan-700 bg-vulcan-700/90 py-4 px-4 shadow-lg md:grid-cols-3 lg:grid-cols-4">
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
+      <div className="grid grid-cols-2 gap-1 rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg md:grid-cols-3 lg:grid-cols-4">
         {filteredCharacters.map((character) => (
           <Link key={character.id} href={`/tof/character/${character.id}`}>
             <CharacterPortrait character={character} key={character.id} />

@@ -47,5 +47,11 @@
     "relics": "Peninggalan",
     "relics_desc": "Relik adalah item yang dapat dipasang pada karakter. ",
     "set": "Mengatur"
+  },
+  "tierlist": {
+    "title": "Honkai: Star Rail Daftar Tier",
+    "description": "Temukan daftar tier komprehensif yang menilai semua karakter 5 Bintang, 4 Bintang, DPS, dan support di HSR, memungkinkan Anda membuat keputusan yang terinformasi tentang komposisi tim Anda. Tetap unggul dari kompetisi dan ungkapkan potensi sejati skuad Anda dengan panduan kami yang terkuras. Jelajahi Daftar Tier dan temukan kekuatan utama yang akan membawa Anda meraih kemenangan di Honkai: Star Rail.",
+    "tierlist": "Daftar Tier",
+    "tierlist_desc": "Jelajahi Daftar Tier Honkai: Star Rail yang Ultimat! Temukan karakter-karakter terbaik dalam HSR, termasuk karakter 5 Bintang, 4 Bintang, DPS, dan support, semuanya secara ahli diberi peringkat dalam panduan komprehensif ini. Tetap unggul dalam permainan dan membuat pilihan yang terinformasi dengan sumber daya yang tak ternilai ini."
   }
 }

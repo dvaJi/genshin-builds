@@ -14,6 +14,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   artifacts: Artifact[];
@@ -34,6 +35,10 @@ const ArtifactsPage = ({ artifacts }: Props) => {
           defaultMessage:
             "All the best artifact gear sets, locations, and stats.",
         })}
+      />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
       />
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">

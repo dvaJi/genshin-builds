@@ -1,20 +1,21 @@
 import clsx from "clsx";
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { GetStaticProps } from "next";
-import { Fragment, useMemo, useState } from "react";
 import HSRData, { type Character } from "hsr-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { Fragment, useMemo, useState } from "react";
 
 import Metadata from "@components/Metadata";
 import CharacterBlock from "@components/hsr/CharacterBlock";
 
+import useIntl from "@hooks/use-intl";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHsrUrlLQ } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { localeToHSRLang } from "@utils/locale-to-lang";
-import useIntl from "@hooks/use-intl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   characters: Character[];
@@ -74,6 +75,10 @@ function HSRIndex({ characters }: Props) {
           defaultMessage:
             "A complete list of all playable characters in Honkai: Star Rail.",
         })}
+      />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
       />
       <h2 className="text-3xl font-semibold uppercase text-slate-100">
         {t({
@@ -197,6 +202,10 @@ function HSRIndex({ characters }: Props) {
         </div>
       </div>
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="text-3xl font-semibold uppercase leading-loose">
         <span className="text-yellow-400">SSR</span>{" "}
         {t({ id: "characters", defaultMessage: "Characters" })}

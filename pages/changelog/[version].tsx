@@ -1,7 +1,8 @@
-import GenshinData from "genshin-data";
-import { GetStaticProps } from "next";
+import GenshinData, { TCGCard } from "genshin-data";
+import { GetStaticPaths, GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 import SimpleRarityBox from "@components/SimpleRarityBox";
 
@@ -9,53 +10,63 @@ import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { getCommon, getData, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { getAllMaterialsMap } from "@utils/materials";
+import { Changelog } from "interfaces/genshin/changelog";
+
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
-  changelog: any;
+  changelog: Changelog;
+  version: string;
+  versions: string[];
   charactersMap: any;
   artifactsMap: any;
   weaponsMap: any;
   materialsMap: any;
   foodMap: any;
+  tcgMap: Record<string, TCGCard>;
 };
 
-function Changelog({
+function ChangelogVersion({
   changelog,
+  version,
+  versions,
   charactersMap,
   artifactsMap,
   weaponsMap,
   materialsMap,
   foodMap,
-}: Props) {
-  const [selectedVersion, setSelectedVersion] = useState(
-    changelog[changelog.length - 1]
-  );
+}: // tcgMap,
+Props) {
+  const router = useRouter();
 
   return (
     <div>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <div>
         <h1 className="text-2xl text-white">Changelog</h1>
         <select
           className="bg-vulcan-600"
           onChange={(e) => {
-            setSelectedVersion(
-              changelog.find((cl: any) => cl.version === e.target.value)
-            );
+            e.preventDefault();
+            router.push(`/changelog/${e.target.value}`);
           }}
-          defaultValue={selectedVersion.version}
+          defaultValue={version}
         >
-          {changelog.map((cl: any) => (
-            <option key={cl.version} value={cl.version}>
-              {cl.version}
+          {versions.map((v) => (
+            <option key={v} value={v}>
+              {v}
             </option>
           ))}
         </select>
       </div>
-      {selectedVersion.items.avatar && (
+      {changelog.items.avatar && (
         <div>
           <h2 className="text-xl">Characters</h2>
           <div className="flex flex-wrap justify-center">
-            {selectedVersion.items.avatar.map((a: string) => (
+            {changelog.items.avatar.map((a: string) => (
               <Link key={a} href={`/character/${a}`} className="mx-1">
                 <SimpleRarityBox
                   img={getUrl(`/characters/${a}/image.png`, 120, 120)}
@@ -71,11 +82,11 @@ function Changelog({
           </div>
         </div>
       )}
-      {selectedVersion.items.artifact && (
+      {changelog.items.artifact && (
         <div>
           <h2 className="text-xl">Artifacts</h2>
           <div className="flex flex-wrap justify-center">
-            {selectedVersion.items.artifact.map((a: string) => (
+            {changelog.items.artifact.map((a: string) => (
               <Link key={a} href={`/artifacts`} className="mx-1">
                 <SimpleRarityBox
                   img={getUrl(`/artifacts/${a}.png`, 120, 120)}
@@ -91,11 +102,11 @@ function Changelog({
           </div>
         </div>
       )}
-      {selectedVersion.items.weapon && (
+      {changelog.items.weapon && (
         <div>
           <h2 className="text-xl">Weapons</h2>
           <div className="flex flex-wrap justify-center">
-            {selectedVersion.items.weapon.map((a: string) => (
+            {changelog.items.weapon.map((a: string) => (
               <Link key={a} href={`/weapon/${a}`} className="mx-1">
                 <SimpleRarityBox
                   img={getUrl(`/weapons/${a}.png`, 120, 120)}
@@ -111,11 +122,11 @@ function Changelog({
           </div>
         </div>
       )}
-      {selectedVersion.items.material && (
+      {changelog.items.material && (
         <div>
           <h2 className="text-xl">Materials</h2>
           <div className="flex flex-wrap justify-center">
-            {selectedVersion.items.material.map((a: string) => (
+            {changelog.items.material.map((a: string) => (
               <div key={a} className="mx-1">
                 {materialsMap[a] && (
                   <SimpleRarityBox
@@ -133,11 +144,11 @@ function Changelog({
           </div>
         </div>
       )}
-      {selectedVersion.items.food && (
+      {changelog.items.food && (
         <div>
           <h2 className="text-xl">Food</h2>
           <div className="flex flex-wrap justify-center">
-            {selectedVersion.items.food.map((a: string) => (
+            {changelog.items.food.map((a: string) => (
               <Link key={a} href={`/food`} className="mx-1">
                 <SimpleRarityBox
                   img={getUrl(`/food/${foodMap[a].id}.png`, 120, 120)}
@@ -153,6 +164,26 @@ function Changelog({
           </div>
         </div>
       )}
+      {/* {changelog.items.tcg && (
+        <div>
+          <h2 className="text-xl">TCG</h2>
+          <div className="flex flex-wrap justify-center">
+            {changelog.items.tcg.map((a: string) => (
+              <Link key={a} href={`/tcg/card/${a}`} className="mx-1">
+                <SimpleRarityBox
+                  img={getUrl(`/tcg/${tcgMap[a].id}.png`, 120, 120)}
+                  rarity={0}
+                  name={tcgMap[a].name}
+                  alt={tcgMap[a].name}
+                  nameSeparateBlock
+                  className="h-24 w-24"
+                  classNameBlock="w-24"
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      )} */}
       {/* <div>
         <h2 className="text-xl">NameCards</h2>
       </div>
@@ -169,7 +200,10 @@ function Changelog({
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  locale = "en",
+}) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
@@ -184,8 +218,11 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const artifacts = await genshinData.artifacts({
     select: ["id", "name", "max_rarity"],
   });
+  const tcgCards = await genshinData.tcgCards({
+    select: ["id", "name"],
+  });
 
-  const changelog = await getData("genshin", "changelog");
+  const changelog = await getData<Changelog[]>("genshin", "changelog");
   const common = await getCommon(locale, "genshin");
   const materialsMap = await getAllMaterialsMap(genshinData);
 
@@ -193,41 +230,52 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const weaponsMap: any = {};
   const artifactsMap: any = {};
   const foodMap: any = {};
+  const tcgMap: any = {};
 
-  for (const cl of changelog) {
-    const item = cl.items;
-    item.avatar?.forEach((a: string) => {
-      charactersMap[a] = characters.find((c) => c.id === a);
-    });
-    item.weapon?.forEach((w: string) => {
-      weaponsMap[w] = weapons.find((wp) => wp.id === w);
-    });
+  if (!params?.version) return { notFound: true };
 
-    item.artifact?.forEach((a: string) => {
-      artifactsMap[a] = artifacts.find((w) => w.id === a);
+  const cl = changelog.find((c) => c.version === params?.version?.toString());
+
+  if (!cl) return { notFound: true };
+
+  const item = cl.items;
+  item.avatar?.forEach((a: string) => {
+    charactersMap[a] = characters.find((c) => c.id === a);
+  });
+  item.weapon?.forEach((w: string) => {
+    weaponsMap[w] = weapons.find((wp) => wp.id === w);
+  });
+
+  item.artifact?.forEach((a: string) => {
+    artifactsMap[a] = artifacts.find((w) => w.id === a);
+  });
+  item.food?.forEach((f: string) => {
+    foodMap[f] = food.find((w) => w.id === f);
+    const special = food.find((w) => {
+      if (!w.results?.special) return false;
+      return w.results?.special?.id === f;
     });
-    item.food?.forEach((f: string) => {
-      foodMap[f] = food.find((w) => w.id === f);
-      const special = food.find((w) => {
-        if (!w.results?.special) return false;
-        return w.results?.special?.id === f;
-      });
-      if (special)
-        foodMap[f] = {
-          ...special.results.special,
-          id: `${special.id}_special`,
-          rarity: special.rarity,
-        };
-    });
-  }
+    if (special)
+      foodMap[f] = {
+        ...special.results.special,
+        id: `${special.id}_special`,
+        rarity: special.rarity,
+      };
+  });
+  item.tcg?.forEach((t: string) => {
+    tcgMap[t] = tcgCards.find((tc) => tc.id === t);
+  });
 
   return {
     props: {
-      changelog,
+      changelog: cl,
+      version: params?.version,
+      versions: changelog.map((c) => c.version),
       charactersMap,
       weaponsMap,
       artifactsMap,
       materialsMap,
+      tcgMap,
       foodMap,
       lngDict,
       common,
@@ -242,4 +290,21 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   };
 };
 
-export default Changelog;
+export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
+  const changelog = await getData<Changelog[]>("genshin", "changelog");
+
+  const paths: { params: { version: string }; locale: string }[] = [];
+
+  for (const locale of locales) {
+    changelog.forEach((c: any) => {
+      paths.push({ params: { version: c.version }, locale });
+    });
+  }
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export default ChangelogVersion;

@@ -1,18 +1,20 @@
-import dynamic from "next/dynamic";
-import { GetStaticProps } from "next";
 import GenshinData, { Character } from "genshin-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 
 import TeamCard from "@components/genshin/TeamCard";
 import Metadata from "@components/Metadata";
 
 import useIntl from "@hooks/use-intl";
-import { localeToLang } from "@utils/locale-to-lang";
-import { getLocale } from "@lib/localData";
-import { TeamData, Teams, CharacterTeam } from "interfaces/teams";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrlLQ } from "@lib/imgUrl";
+import { getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
+import { CharacterTeam, TeamData, Teams } from "interfaces/teams";
+import { Fragment } from "react";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type TeamsProps = {
   teamsByName: Record<
@@ -37,19 +39,27 @@ const TeamsPage = ({ teamsByName }: TeamsProps) => {
             "This is a guide to making the best party in Genshin Impact. Learn how to make the best party! We introduce the best party composition for each task including exploring areas, slaying field bosses, and more!",
         })}
       />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <div className="">
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+      <div className="grid gap-4 lg:grid-cols-2">
         {Object.entries(teamsByName).map(([mainName, teams]) => (
-          <div key={mainName}>
+          <Fragment key={mainName}>
             {teams.map((team) => (
               <TeamCard key={team.name} team={team} mainName={mainName} />
             ))}
-          </div>
+          </Fragment>
         ))}
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
     </div>
   );
 };

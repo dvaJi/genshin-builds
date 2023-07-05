@@ -14,15 +14,13 @@ export async function getLocale(lang: string, game: string) {
   }
 }
 
-export async function getData(game: string, dataFile: string) {
+export async function getData<T>(game: string, dataFile: string) {
   try {
-    const data = require(
-      `../_content/${game}/data/${dataFile}.json`
-    );
-    return data;
+    const data = require(`../_content/${game}/data/${dataFile}.json`);
+    return data as T;
   } catch (err) {
     console.log("Data not found", { game, dataFile });
-    return {};
+    return {} as T;
   }
 }
 
@@ -31,9 +29,7 @@ export async function getCommon(
   game: string
 ): Promise<Record<string, string>> {
   try {
-    const common = require(
-      `../_content/${game}/data/common.json`
-    );
+    const common = require(`../_content/${game}/data/common.json`);
     return common[lang] || common["en"];
   } catch (err) {
     console.log("Common not found");

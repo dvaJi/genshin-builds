@@ -18,6 +18,7 @@ import { getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 const ServerTimers = dynamic(() => import("@components/ServerTimers"), {
   ssr: false,
@@ -52,6 +53,10 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
           })}
         </p>
       </Card>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <div>
         <ServerTimers />
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
@@ -148,6 +153,10 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
             </tbody>
           </table>
         </Card>
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
       </div>
     </div>
   );

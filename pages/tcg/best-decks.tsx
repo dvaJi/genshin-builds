@@ -1,19 +1,20 @@
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { type GetStaticProps } from "next";
 import GenshinData, { type TCGCard } from "genshin-data";
+import { type GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import Card from "@components/ui/Card";
 
-import { getLocale } from "@lib/localData";
-import { localeToLang } from "@utils/locale-to-lang";
-import { getUrl } from "@lib/imgUrl";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
 import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getUrl } from "@lib/imgUrl";
+import { getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   decks: { characters: TCGCard[]; actions: ({ count: number } & TCGCard)[] }[];
@@ -35,7 +36,11 @@ function BestDecks({ decks }: Props) {
             "Genius Invokation TCG is a new card game feature in Genshin Impact. Guide includes what is the Genius Invocation TCG, character card game, how to get cards!",
         })}
       />
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "best_decks", defaultMessage: "Best Decks" })}
       </h2>
@@ -86,6 +91,12 @@ function BestDecks({ decks }: Props) {
                 ))}
               </div>
             </div>
+            {i % 2 === 0 ? (
+              <FrstAds
+                placementName="genshinbuilds_incontent_1"
+                classList={["flex", "justify-center"]}
+              />
+            ) : null}
           </Card>
         ))}
       </div>

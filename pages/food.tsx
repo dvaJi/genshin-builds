@@ -1,21 +1,22 @@
 /* eslint-disable react/jsx-key, react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import { GetStaticProps } from "next";
-import GenshinData from "genshin-data";
-import dynamic from "next/dynamic";
 import clsx from "clsx";
+import GenshinData from "genshin-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 import Metadata from "@components/Metadata";
 import SearchInput from "@components/SearchInput";
 import FoodCard from "@components/genshin/FoodCard";
 
-import { localeToLang } from "@utils/locale-to-lang";
-import useIntl from "@hooks/use-intl";
 import useDebounce from "@hooks/use-debounce";
-import { getLocale } from "@lib/localData";
+import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 export type FoodItem = {
   id: string;
@@ -77,7 +78,11 @@ const FoodPage = ({ food }: Props) => {
             "Discover all the cooking recipes and the best food to cook for your team.",
         })}
       />
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "food", defaultMessage: "Food" })}
       </h2>
@@ -111,6 +116,10 @@ const FoodPage = ({ food }: Props) => {
           <FoodCard key={`${item.id}_${item.type}`} item={item} />
         ))}
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
     </div>
   );
 };

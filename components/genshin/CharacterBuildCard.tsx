@@ -19,7 +19,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
   const { t: f } = useIntl("character");
   return (
     <div className="flex flex-wrap gap-4">
-      <div className="flex flex-col flex-wrap content-start max-w-sm">
+      <div className="flex max-w-sm flex-col flex-wrap content-start">
         <h4 className="mb-2 text-lg font-semibold text-slate-300">
           {f({
             id: "weapons",
@@ -29,7 +29,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
         <div className="w-full">
           {build.weapons.map((weapon, i) => (
             <WeaponCard
-              key={weapon.id}
+              key={weapon.id + weapon.r}
               position={i + 1}
               weapon={weapons[weapon.id]}
               refinement={weapon.r}
@@ -37,7 +37,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col flex-wrap content-start max-w-sm">
+      <div className="flex max-w-sm flex-col flex-wrap content-start">
         <h4 className="mb-2 text-lg font-semibold text-slate-300">
           {f({
             id: "artifacts",
@@ -55,7 +55,7 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
           />
         ))}
       </div>
-      <div className="flex flex-col flex-wrap content-start max-w-sm">
+      <div className="flex max-w-sm flex-col flex-wrap content-start">
         <h4 className="mb-2 text-lg font-semibold text-slate-300">
           {f({
             id: "recommended_primary_stats",
@@ -71,16 +71,16 @@ const CharacterBuildCard = ({ build, weapons, artifacts }: Props) => {
         </h4>
         <div className="mt-2 flex flex-wrap gap-2">
           {build.stats_priority.map((s, i) => (
-            <div key={s} className="flex rounded bg-vulcan-600 text-xs">
-              <span className="rounded-l bg-vulcan-900 p-1 text-slate-400">
-                {i + 1}
+            <div key={s} className="flex rounded bg-vulcan-700 border border-vulcan-500/30">
+              <span className="rounded-l p-1 text-slate-300 text-xxs">{i + 1}</span>
+              <span className="bg-vulcan-900 p-1 text-xs text-slate-200">
+                {s}
               </span>
-              <span className="p-1 text-xs text-slate-300">{s}</span>
             </div>
           ))}
         </div>
       </div>
-      <div className="flex flex-col flex-wrap content-start max-w-sm">
+      <div className="flex max-w-sm flex-col flex-wrap content-start">
         <h4 className="mb-2 text-lg font-semibold text-slate-300">
           {f({
             id: "talents_priority",

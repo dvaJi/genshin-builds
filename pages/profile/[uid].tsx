@@ -17,6 +17,8 @@ import { isProfileFav, updateFavorites } from "@state/profiles-fav";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Profile } from "interfaces/profile";
 
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+
 const ProfileFavorites = dynamic(
   () => import("@components/genshin/ProfileFavorites"),
   { ssr: false }
@@ -60,6 +62,10 @@ function Profile({ profile, locale }: Props) {
 
   return (
     <div>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <ProfileFavorites />
       <div
         className="mt-4 rounded-xl bg-cover bg-center"
@@ -93,7 +99,7 @@ function Profile({ profile, locale }: Props) {
                   defaultMessage: "UUID: {uuid}",
                   values: { uuid: profile.uuid },
                 })}
-                <span className="inline-block ml-2">| {timeAgo}</span>
+                <span className="ml-2 inline-block">| {timeAgo}</span>
               </span>
               <h2 className="text-xl font-semibold text-white md:text-4xl">
                 {profile.nickname}
@@ -145,6 +151,10 @@ function Profile({ profile, locale }: Props) {
       <div>
         <BuildsTable data={profile.builds} />
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       <div>
         <ArtifactsTable data={profile.builds} />
       </div>

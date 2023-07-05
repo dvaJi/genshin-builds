@@ -32,7 +32,7 @@ function CharacterBuild({
           defaultMessage: name,
         })}
       </h2>
-      <div className="mb-4 flex flex-col md:flex-row gap-4">
+      <div className="mb-4 flex flex-col gap-4 md:flex-row">
         <div className="flex gap-4">
           <div>
             <h3 className="text-slate-300">
@@ -93,7 +93,7 @@ function CharacterBuild({
               })}
             </h3>
             <div className="flex flex-col text-sm">
-              {Object.entries(data.mainStat).map(([stat, value]) => (
+              {Object.entries(data.mainStat ?? {}).map(([stat, value]) => (
                 <div
                   key={stat}
                   className="my-1 rounded-sm bg-hsr-surface2 px-2 py-1"
@@ -119,8 +119,8 @@ function CharacterBuild({
             </h3>
             <div className="flex flex-col text-sm">
               {data.subStat
-                .sort((a, b) => b.stars - a.stars)
-                .map((s) => (
+                ?.sort((a, b) => b.stars - a.stars)
+                ?.map((s) => (
                   <div
                     key={s.value}
                     className="my-1 flex items-center rounded-sm bg-hsr-surface2 px-2 py-1"

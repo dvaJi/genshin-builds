@@ -17,6 +17,7 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, TierNums, TierlistWeapons } from "interfaces/tierlist";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   tierlist: Record<string, TierlistWeapons>;
@@ -56,6 +57,10 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
         })}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="my-6 text-center text-2xl font-semibold text-gray-200 lg:text-left">
         {t({
           id: "title",
@@ -129,6 +134,10 @@ const TierListWeapons = ({ tierlist, weaponsMap }: Props) => {
             </h3>
           </button>
         </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
         {["0", "1", "2", "3", "4"].map((key) => (
           <WeaponsTier
             key={`${typeFilter}_${key}`}

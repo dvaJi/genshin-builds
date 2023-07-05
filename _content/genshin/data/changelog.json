@@ -183,12 +183,151 @@
         "sangonomiya_kokomi",
         "kujou_sara",
         "wellspring_of_warlust",
-        "tamanooyas_casket",
+        "tamakushi_casket",
         "sin_of_pride",
         "ornate_kabuto",
         "generals_ancient_helm"
       ]
     },
     "version": "3.5"
+  },
+  {
+    "items": {
+      "avatar": ["kaveh", "baizhu"],
+      "weapon": ["jadefalls_splendor"],
+      "material": [
+        "trishiraite",
+        "mourning_flower",
+        "worldspan_fern",
+        "primordial_greenbloom",
+        "everamber",
+        "evergloom_ring",
+        "a_flower_yet_to_bloom",
+        "treasured_flower",
+        "wanderers_blooming_flower"
+      ],
+      "food": [
+        "the_endeavor",
+        "heatquelling_soup",
+        "fatteh",
+        "jade_fruit_soup"
+      ],
+      "artifact": ["nymphs_dream", "vourukashas_glow"],
+      "tcg": [
+        "kamisato_ayato",
+        "arataki_itto",
+        "tighnari",
+        "kyouka_fuushi",
+        "arataki_ichiban",
+        "keen_sight",
+        "favonius_sword",
+        "grand_narukami_shrine"
+      ]
+    },
+    "version": "3.6"
+  },
+  {
+    "items": {
+      "avatar": ["kirara"],
+      "weapon": ["ibis_piercer"],
+      "material": [
+        "trishiraite",
+        "mourning_flower",
+        "worldspan_fern",
+        "primordial_greenbloom",
+        "everamber",
+        "evergloom_ring",
+        "a_flower_yet_to_bloom",
+        "treasured_flower",
+        "wanderers_blooming_flower"
+      ],
+      "food": ["energizing_bento"],
+      "tcg": [
+        "shenhe",
+        "tartaglia",
+        "amber",
+        "hu_tao",
+        "raiden_shogun",
+        "yae_miko",
+        "venti",
+        "xiao",
+        "zhongli",
+        "nahida",
+        "fatui_cryo_cicin_mage",
+        "abyss_lector_fathomless_flames",
+        "electro_hypostasis",
+        "mystical_abandon",
+        "abyssal_mayhem_hydrospout",
+        "bunny_triggered",
+        "sanguine_rouge",
+        "wishes_unnumbered",
+        "the_shrines_sacred_shade",
+        "embrace_of_winds",
+        "conqueror_of_evil_guardian_yaksha",
+        "dominance_of_earth",
+        "the_seed_of_stored_knowledge",
+        "cicins_cold_glare",
+        "embers_rekindled",
+        "absorbing_prism",
+        "a_thousand_floating_dreams",
+        "amos_bow",
+        "elegy_for_the_end",
+        "skyward_pride",
+        "the_bell",
+        "vortex_vanquisher",
+        "engulfing_lightning",
+        "skyward_blade",
+        "emblem_of_severed_fate",
+        "tenacity_of_the_millelith",
+        "thundering_poise",
+        "vermillion_hereafter",
+        "capricious_visage",
+        "shimenawas_reminiscence",
+        "tenshukaku",
+        "sangonomiya_shrine",
+        "sumeru_city",
+        "vanarana",
+        "chinju_forest",
+        "hanachirusato",
+        "kid_kujirai",
+        "xudong",
+        "dunyarzad",
+        "rana",
+        "red_feather_fan",
+        "treasureseeking_seelie",
+        "wind_and_freedom",
+        "stone_and_contracts",
+        "thunder_and_eternity",
+        "nature_and_wisdom",
+        "fatui_conspiracy",
+        "plunging_strike",
+        "heavy_strike",
+        "the_legend_of_vennessa",
+        "friendship_eternal",
+        "teyvat_fried_egg",
+        "sashimi_platter",
+        "tandoori_roast_chicken",
+        "butter_crab"
+      ]
+    },
+    "version": "3.7"
+  },
+  {
+    "items": {
+      "tcg": [
+        "candace",
+        "yanfei",
+        "kaedehara_kazuha",
+        "the_overflow",
+        "right_of_final_interpretation",
+        "poetics_of_fuubutsu",
+        "fruit_of_fulfillment",
+        "master_zhang",
+        "ancient_courtyard",
+        "covenant_of_rock",
+        "rhythm_of_the_great_dream"
+      ]
+    },
+    "version": "3.8"
   }
 ]

@@ -1,19 +1,20 @@
-import { useCallback, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
-import { GetStaticProps } from "next";
 import { useStore } from "@nanostores/react";
 import GenshinData, { AchievementCategory } from "genshin-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import { useCallback, useMemo, useState } from "react";
 
 import Metadata from "@components/Metadata";
 
 import useIntl from "@hooks/use-intl";
-import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getLocale } from "@lib/localData";
 
-import { localeToLang } from "@utils/locale-to-lang";
 import { achievementsCompleted } from "@state/achievements";
+import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 const AchievementsSearch = dynamic(
   () => import("@components/genshin/AchievementsSearch"),
@@ -90,7 +91,11 @@ const AchivementsPage = ({ categories }: TodoProps) => {
           defaultMessage: "Track your Genshin Impact achievement easily",
         })}
       />
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="flex-row lg:flex">
         <AchievementsCategories
           achievementsDone={achievementsDone}
@@ -109,6 +114,10 @@ const AchivementsPage = ({ categories }: TodoProps) => {
             achievementsDone={achievementsDone[category.id]}
             selectAchievement={selectAchievement}
             showCompleted={showAchieved}
+          />
+          <FrstAds
+            placementName="genshinbuilds_incontent_1"
+            classList={["flex", "justify-center"]}
           />
         </div>
       </div>

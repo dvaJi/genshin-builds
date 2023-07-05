@@ -1,16 +1,18 @@
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { ReactNode } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { ReactNode } from "react";
 import { FiChevronLeft } from "react-icons/fi";
 
-import Card from "@components/ui/Card";
-import Metadata from "@components/Metadata";
 import GuideCard from "@components/GuideCard";
+import Metadata from "@components/Metadata";
+import Card from "@components/ui/Card";
 
-import { getLocale } from "@lib/localData";
-import { getAllGuides, getGuideBySlug, Guide } from "@lib/guides_api";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
+import { getAllGuides, getGuideBySlug, Guide } from "@lib/guides_api";
+import { getLocale } from "@lib/localData";
+
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 const YoutubeEmbed = dynamic(() => import("@components/YoutubeEmbed"), {
   ssr: false,
@@ -49,6 +51,10 @@ const GuideDetail = ({ guide }: GuideProps) => {
         <FiChevronLeft className="mr-2 text-xl" />
         {t({ id: "back_to_guides", defaultMessage: "Back to Guides" })}
       </Link>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <div className="mx-6 lg:mx-0">
         <h2 className="my-4 text-2xl font-semibold text-gray-200">
           {guide.title}
@@ -115,6 +121,10 @@ const GuideDetail = ({ guide }: GuideProps) => {
           </Card>
         </div>
       )}
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
       {guide.relatedGuides && (
         <div className="mx-6 mt-8 lg:mx-0">
           <h2 className="my-6 text-2xl font-semibold text-gray-200">

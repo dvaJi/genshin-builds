@@ -1,20 +1,21 @@
 import clsx from "clsx";
+import { GetStaticPaths, GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import { MdMemory } from "react-icons/md";
 import { FaPrayingHands } from "react-icons/fa";
-import { GetStaticProps, GetStaticPaths } from "next";
 import { GiNestedHearts, GiOvermind } from "react-icons/gi";
+import { MdMemory } from "react-icons/md";
 import TOFData, { Languages, Matrix, languages } from "tof-builds";
 
 import Metadata from "@components/Metadata";
 
-import { getDefaultLocale, getLocale } from "@lib/localData";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getRarityColor } from "@utils/rarity";
 import useIntl, { IntlFormatProps } from "@hooks/use-intl";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getTofUrl } from "@lib/imgUrl";
+import { getDefaultLocale, getLocale } from "@lib/localData";
+import { getRarityColor } from "@utils/rarity";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface CharacterPageProps {
   matrix: Matrix;
@@ -66,8 +67,12 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
           />
         </div>
       </div>
-      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
-      <div className="rounded border border-vulcan-700 bg-vulcan-700/90 py-4 px-4 shadow-lg">
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+      <div className="rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">
         {matrix.bonus.map((bonus) => (
           <div key={bonus.value} className="flex flex-col">
             {bonus.count === 2 && (

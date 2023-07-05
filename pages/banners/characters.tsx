@@ -15,6 +15,7 @@ import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   historical: BannerHistorical[];
@@ -42,6 +43,10 @@ const BannersCharacters = ({ historical, rerunPrediction, locale }: Props) => {
           id: "description",
           defaultMessage: "Discover all the character banners and their rates",
         })}
+      />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
       />
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <div className="mt-4 grid gap-6 md:grid-cols-2">

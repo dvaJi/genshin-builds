@@ -13,6 +13,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   ingredients: Ingredients[];
@@ -34,6 +35,10 @@ const IngredientsPage = ({ ingredients }: Props) => {
         })}
       />
       <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "cooking_ingredient", defaultMessage: "Cooking Ingredient" })}
       </h2>
@@ -64,6 +69,10 @@ const IngredientsPage = ({ ingredients }: Props) => {
             ))}
           </tbody>
         </table>
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
       </Card>
     </div>
   );

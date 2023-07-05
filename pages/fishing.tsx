@@ -1,16 +1,19 @@
-import { useState } from "react";
-import { GetStaticProps } from "next";
-import GenshinData, { Fish } from "genshin-data";
 import clsx from "clsx";
+import GenshinData, { Fish } from "genshin-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 
 import Metadata from "@components/Metadata";
 import FishingPointCard from "@components/genshin/FishingPointCard";
 
-import { FishingPoint } from "interfaces/fishing";
 import useIntl from "@hooks/use-intl";
-import { localeToLang } from "@utils/locale-to-lang";
-import { getLocale } from "@lib/localData";
 import { getUrl } from "@lib/imgUrl";
+import { getLocale } from "@lib/localData";
+import { localeToLang } from "@utils/locale-to-lang";
+import { FishingPoint } from "interfaces/fishing";
+
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   fish: Record<string, Fish>;
@@ -63,6 +66,10 @@ const FishingPage = ({ fish, fishingPoints }: Props) => {
             "This is an article about the list of fishing spots (points/spots) and the fish that appear in Genshin. The fishing points for Mondstadt, Liyue, Dragon Spine, and Inazuma are also summarized.",
         })}
       />
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "fishing", defaultMessage: "Fishing" })}
       </h2>
@@ -72,14 +79,14 @@ const FishingPage = ({ fish, fishingPoints }: Props) => {
             key={f.id}
             onClick={() => toggleFish(f.id)}
             className={clsx(
-              "border rounded hover:border-gray-700 hover:bg-vulcan-800 mr-1 hover:opacity-90",
+              "mr-1 rounded border hover:border-gray-700 hover:bg-vulcan-800 hover:opacity-90",
               fishFilter.includes(f.id)
                 ? "border-gray-700 bg-vulcan-800 opacity-100"
                 : "border-gray-800 opacity-70"
             )}
           >
             <img
-              className="w-12 h-12 mr-3"
+              className="mr-3 h-12 w-12"
               src={getUrl(`/fish/${f.id}.png`, 48, 48)}
               alt={f.name}
               title={f.name}

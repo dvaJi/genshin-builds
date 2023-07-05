@@ -27,10 +27,8 @@ function CharacterTeam({ team, index }: Props) {
         }
       )}
     >
-      <div className="text-xxs">
-        <span className="rounded bg-vulcan-500 p-1 text-slate-300">
-          #{index + 1}
-        </span>
+      <div className="rounded bg-vulcan-500 p-1 text-xxs text-slate-300">
+        #{index + 1}
       </div>
       {/* <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div> */}
       <div className="flex">
@@ -57,13 +55,12 @@ function CharacterTeam({ team, index }: Props) {
                   {`C${character.c_min}`}
                 </div>
               )}
-              <div className="absolute bottom-2 right-0 rounded-full bg-vulcan-700 p-1">
-                <ElementIcon
-                  type={capitalize(character.element)}
-                  height={20}
-                  width={20}
-                />
-              </div>
+              <ElementIcon
+                type={capitalize(character.element)}
+                height={20}
+                width={20}
+                className="absolute bottom-2 right-2 rounded-full bg-vulcan-700"
+              />
             </div>
             <div className="h-8 text-xs lg:text-sm">
               {t({
@@ -75,10 +72,7 @@ function CharacterTeam({ team, index }: Props) {
               <div className="flex">
                 <div className="flex flex-col items-center justify-center">
                   {character.weapons.map((weapon, i) => (
-                    <div
-                      key={weapon}
-                      className="flex items-center last:mb-0"
-                    >
+                    <div key={weapon} className="flex items-center last:mb-0">
                       <div className="rounded bg-vulcan-600 px-[1px] text-xxs">
                         #{i + 1}
                       </div>

@@ -47,5 +47,11 @@
     "relics": "reliquias",
     "relics_desc": "Las reliquias son objetos que se pueden equipar a los personajes. ",
     "set": "Colocar"
+  },
+  "tierlist": {
+    "title": "Honkai: Star Rail Lista de Niveles",
+    "description": "Descubre una lista de niveles exhaustiva que clasifica a todos los personajes de 5 estrellas, 4 estrellas, DPS y soporte en HSR, lo que te permite tomar decisiones informadas sobre la composición de tu equipo. Mantente un paso adelante de la competencia y libera el verdadero potencial de tu escuadrón con nuestra guía experta. Explora la Lista de Niveles y descubre los personajes más poderosos que te llevarán a la victoria en Honkai: Star Rail.",
+    "tierlist": "Lista de Niveles",
+    "tierlist_desc": "¡Explora la Lista de Niveles definitiva de Honkai: Star Rail! Descubre los personajes de alto rendimiento en HSR, incluyendo a los personajes de 5 estrellas, 4 estrellas, DPS y soporte, todos ellos clasificados de manera experta en esta guía exhaustiva. Mantente un paso adelante en el juego y toma decisiones informadas con este recurso invaluable."
   }
 }

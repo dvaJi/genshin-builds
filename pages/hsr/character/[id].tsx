@@ -27,6 +27,7 @@ import { Build } from "interfaces/hsr/build";
 import Link from "next/link";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface CharacterPageProps {
   character: Character;
@@ -118,6 +119,10 @@ const CharacterPage = ({
         </div>
       </div>
       <div className="relative bg-hsr-surface1 p-4 shadow-2xl">
+        <FrstAds
+          placementName="genshinbuilds_billboard_atf"
+          classList={["flex", "justify-center"]}
+        />
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
 
         <div className="">
@@ -246,6 +251,10 @@ const CharacterPage = ({
               ))}
             </>
           ) : null}
+          <FrstAds
+            placementName="genshinbuilds_incontent_1"
+            classList={["flex", "justify-center"]}
+          />
           <div>
             <h2 className="text-xl text-slate-200">
               {t({
@@ -304,6 +313,10 @@ const CharacterPage = ({
                 ))}
             </div>
           </div>
+          <FrstAds
+            placementName="genshinbuilds_incontent_2"
+            classList={["flex", "justify-center"]}
+          />
           <div>
             <h2 className="text-xl text-slate-200">
               {t({
@@ -323,6 +336,10 @@ const CharacterPage = ({
                 ))}
             </div>
           </div>
+          <FrstAds
+            placementName="genshinbuilds_incontent_3"
+            classList={["flex", "justify-center"]}
+          />
           <div>
             <h2 className="text-xl text-slate-200">
               {t({
@@ -437,7 +454,7 @@ export const getStaticProps: GetStaticProps = async ({
           combat_type: character.combat_type,
         } as any;
       } else if (!c.isFlex) {
-        console.log(c)
+        console.log(c);
       }
     });
 
@@ -452,7 +469,7 @@ export const getStaticProps: GetStaticProps = async ({
           combat_type: character.combat_type,
         } as any;
       } else {
-        console.log({c})
+        console.log({ c });
       }
     });
   });
