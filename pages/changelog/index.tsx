@@ -92,6 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       weaponsMap,
       artifactsMap,
       materialsMap,
+      tcgMap,
       foodMap,
       lngDict,
       common,

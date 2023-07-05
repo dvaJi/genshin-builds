@@ -35,7 +35,8 @@ function ChangelogVersion({
   weaponsMap,
   materialsMap,
   foodMap,
-}: // tcgMap,
+  tcgMap,
+}:
 Props) {
   const router = useRouter();
 
@@ -164,7 +165,7 @@ Props) {
           </div>
         </div>
       )}
-      {/* {changelog.items.tcg && (
+      {changelog.items.tcg && (
         <div>
           <h2 className="text-xl">TCG</h2>
           <div className="flex flex-wrap justify-center">
@@ -183,7 +184,7 @@ Props) {
             ))}
           </div>
         </div>
-      )} */}
+      )}
       {/* <div>
         <h2 className="text-xl">NameCards</h2>
       </div>
