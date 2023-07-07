@@ -213,7 +213,7 @@ export default class MyDocument extends Document {
           <meta content="summary" name="twitter:card" />
           <meta content="/icons/meta-image.jpg" name="twitter:image" />
         </Head>
-        <body className="antialiased dark:text-slate-400">
+        <body className="antialiased dark:text-slate-400 overflow-x-hidden">
           {GAD_ID && AD_ARTICLE_SLOT ? (
             <ins
               className="adsbygoogle"
