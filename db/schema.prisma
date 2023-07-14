@@ -91,3 +91,103 @@ model Build {
 
     @@index([playerId])
 }
+
+model HSRPlayer {
+    id                   String     @id @default(cuid())
+    createdAt            DateTime   @default(now())
+    updatedAt            DateTime   @updatedAt
+    uuid                 String     @unique
+    nickname             String
+    level                Int
+    worldLevel           Int
+    profilePictureId     Int
+    profileCostumeId     Int?
+    signature            String
+    namecardId           Int?
+    finishAchievementNum Int
+    avatars              Int
+    lightCones           Int
+    passAreaProgress     Int
+    friends              Int
+    Build                HSRBuild[]
+}
+
+model HSRBuild {
+    id                     String  @id @default(cuid())
+    avatarId               Int
+    level                  Int
+    promotion              Int
+    rank                   Int
+    skillLevel             String  @db.Text
+    critValue              Decimal @default(0)
+    critValueArtifactsOnly Decimal @default(0)
+
+    attributes String? @db.Text
+    additions  String? @db.Text
+    properties String? @db.Text
+
+    // LightCone
+    lightConeId        Int?
+    lightConeLevel     Int?
+    lightConePromotion Int?
+    lightConeRank      Int?
+
+    // Head Relic
+    headRelicId     Int?
+    headRelicSetId  Int?
+    headRelicLevel  Int?
+    headRelicRarity Int?
+    headMainStat    String?  @db.Text
+    headSubStats    String?  @db.Text
+    headCritValue   Decimal?
+
+    // Hands Relic
+    handsRelicId     Int?
+    handsRelicSetId  Int?
+    handsRelicLevel  Int?
+    handsRelicRarity Int?
+    handsMainStat    String?  @db.Text
+    handsSubStats    String?  @db.Text
+    handsCritValue   Decimal?
+
+    // Body Relic
+    bodyRelicId     Int?
+    bodyRelicSetId  Int?
+    bodyRelicLevel  Int?
+    bodyRelicRarity Int?
+    bodyMainStat    String?  @db.Text
+    bodySubStats    String?  @db.Text
+    bodyCritValue   Decimal?
+
+    // Feet Relic
+    feetRelicId     Int?
+    feetRelicSetId  Int?
+    feetRelicLevel  Int?
+    feetRelicRarity Int?
+    feetMainStat    String?  @db.Text
+    feetSubStats    String?  @db.Text
+    feetCritValue   Decimal?
+
+    // Planar Sphere Relic
+    planarSphereRelicId     Int?
+    planarSphereRelicSetId  Int?
+    planarSphereRelicLevel  Int?
+    planarSphereRelicRarity Int?
+    planarSphereMainStat    String?  @db.Text
+    planarSphereSubStats    String?  @db.Text
+    planarSphereCritValue   Decimal?
+
+    // Link Rope Relic
+    linkRopeRelicId     Int?
+    linkRopeRelicSetId  Int?
+    linkRopeRelicLevel  Int?
+    linkRopeRelicRarity Int?
+    linkRopeMainStat    String?  @db.Text
+    linkRopeSubStats    String?  @db.Text
+    linkRopeCritValue   Decimal?
+
+    player   HSRPlayer @relation(fields: [playerId], references: [id])
+    playerId String
+
+    @@index([playerId])
+}

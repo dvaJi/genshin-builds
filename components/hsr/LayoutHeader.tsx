@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { memo, useState } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
-import Logo from "@components/hsr/Logo";
-import NavItem from "@components/NavItem";
 import GameSelector from "@components/GameSelector";
+import NavItem from "@components/NavItem";
+import Logo from "@components/hsr/Logo";
 
 import { GAME } from "@utils/games";
 import { NavRoutes } from "interfaces/nav-routes";
@@ -14,6 +14,7 @@ const navRoutes: NavRoutes[] = [
   { id: "characters", name: "Characters", href: "/hsr" },
   { id: "relics", name: "Relics", href: "/hsr/relics" },
   { id: "lightcones", name: "Light Cones", href: "/hsr/lightcones" },
+  { id: "showcase", name: "Showcase", href: "/hsr/showcase" },
 ];
 
 const LayoutHeader = () => {
