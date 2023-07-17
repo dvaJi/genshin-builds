@@ -7,9 +7,10 @@
     "privacy_policy": "política de privacidad",
     "contact": "Contacto",
     "characters": "Personajes",
-    "relics": "reliquias",
+    "relics": "Reliquias",
     "lightcones": "Conos de luz",
-    "tierlist": "lista de niveles"
+    "tierlist": "Tierlist",
+    "showcase": "Vitrina"
   },
   "characters": {
     "title": "Honkai: Star Rail Lista de todos los personajes",
@@ -53,5 +54,14 @@
     "description": "Descubre una lista de niveles exhaustiva que clasifica a todos los personajes de 5 estrellas, 4 estrellas, DPS y soporte en HSR, lo que te permite tomar decisiones informadas sobre la composición de tu equipo. Mantente un paso adelante de la competencia y libera el verdadero potencial de tu escuadrón con nuestra guía experta. Explora la Lista de Niveles y descubre los personajes más poderosos que te llevarán a la victoria en Honkai: Star Rail.",
     "tierlist": "Lista de Niveles",
     "tierlist_desc": "¡Explora la Lista de Niveles definitiva de Honkai: Star Rail! Descubre los personajes de alto rendimiento en HSR, incluyendo a los personajes de 5 estrellas, 4 estrellas, DPS y soporte, todos ellos clasificados de manera experta en esta guía exhaustiva. Mantente un paso adelante en el juego y toma decisiones informadas con este recurso invaluable."
+  },
+  "showcase": {
+    "title": "Vitrina de Personajes de Honkai: Star Rail",
+    "description": "Muestra tus personajes de Honkai: Star Rail con nuestra herramienta de vitrina de personajes. Simplemente selecciona tu personaje, elige tu construcción y comparte tu creación con el mundo.",
+    "character_showcase": "Vitrina de Personajes",
+    "enter_uid": "Ingresa tu UID para ver tu vitrina",
+    "enter_uid_input": "Ingresa tu UID",
+    "submit": "Enviar",
+    "loading": "Cargando..."
   }
 }

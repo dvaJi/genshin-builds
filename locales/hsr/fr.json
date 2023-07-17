@@ -9,7 +9,8 @@
     "characters": "personnages",
     "relics": "Reliques",
     "lightcones": "Cônes de lumière",
-    "tierlist": "Liste de niveaux"
+    "tierlist": "Liste de niveaux",
+    "showcase": "Vitrine"
   },
   "characters": {
     "title": "Honkai: Liste de tous les personnages de Star Rail",
@@ -53,5 +54,14 @@
     "description": "Découvrez un classement des tiers complet qui classe tous les personnages 5 étoiles, 4 étoiles, DPS et supports dans HSR, vous permettant de prendre des décisions éclairées sur la composition de votre équipe. Restez en avance sur la concurrence et libérez le véritable potentiel de votre équipe grâce à notre guide expertement conçu. Explorez la Liste des Tiers et découvrez les puissances qui vous mèneront à la victoire dans Honkai: Star Rail.",
     "tierlist": "Liste des Tiers",
     "tierlist_desc": "Explorez la Liste des Tiers ultime de Honkai: Star Rail ! Découvrez les personnages les plus performants dans HSR, y compris les personnages 5 étoiles, 4 étoiles, DPS et supports, tous classés de manière experte dans ce guide complet. Restez en avance dans le jeu et faites des choix éclairés avec cette ressource inestimable."
+  },
+  "showcase": {
+    "title": "Présentation des personnages de Honkai: Star Rail",
+    "description": "Mettez en valeur vos personnages de Honkai: Star Rail avec notre outil de présentation des personnages. Il vous suffit de sélectionner votre personnage, de choisir votre configuration et de partager votre création avec le monde.",
+    "character_showcase": "Vitrine des Personnages",
+    "enter_uid": "Entrez votre UID pour afficher votre vitrine",
+    "enter_uid_input": "Entrez votre UID",
+    "submit": "Envoyer",
+    "loading": "Chargement en cours..."
   }
 }

@@ -9,7 +9,8 @@
     "characters": "Figuren",
     "relics": "Relikte",
     "lightcones": "Lichtkegel",
-    "tierlist": "Tierliste"
+    "tierlist": "Tierliste",
+    "showcase": "Ausstellung"
   },
   "characters": {
     "title": "Honkai: Star Rail Liste aller Charaktere",
@@ -53,5 +54,14 @@
     "description": "Entdecken Sie eine umfassende Tierliste, die alle 5-Sterne-, 4-Sterne-, DPS- und Support-Charaktere in HSR bewertet und Ihnen ermöglicht, fundierte Entscheidungen über die Zusammenstellung Ihres Teams zu treffen. Bleiben Sie der Konkurrenz einen Schritt voraus und entfesseln Sie das wahre Potenzial Ihrer Truppe mit unserem sorgfältig zusammengestellten Leitfaden. Erforschen Sie die Tierliste und entdecken Sie die Powerhouses, die Sie zum Sieg in Honkai: Star Rail führen werden.",
     "tierlist": "Tierliste",
     "tierlist_desc": "Entdecken Sie die ultimative Honkai: Star Rail Tierliste! Erfahren Sie mehr über die leistungsstärksten Charaktere in HSR, einschließlich 5-Sterne-, 4-Sterne-, DPS- und Support-Charaktere, die alle in diesem umfassenden Leitfaden sorgfältig bewertet wurden. Bleiben Sie einen Schritt voraus und treffen Sie informierte Entscheidungen mit dieser unschätzbaren Ressource."
+  },
+  "showcase": {
+    "title": "Honkai: Star Rail Charakter-Ausstellung",
+    "description": "Präsentieren Sie Ihre Honkai: Star Rail Charaktere mit unserem Charakter-Ausstellungstool. Wählen Sie einfach Ihren Charakter aus, treffen Sie Ihre Wahl und teilen Sie Ihre Kreation mit der Welt.",
+    "character_showcase": "Charakter-Ausstellung",
+    "enter_uid": "Geben Sie Ihre UID ein, um Ihre Ausstellung zu sehen",
+    "enter_uid_input": "UID eingeben",
+    "submit": "Senden",
+    "loading": "Wird geladen..."
   }
 }

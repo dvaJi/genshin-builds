@@ -9,7 +9,8 @@
     "characters": "문자",
     "relics": "유물",
     "lightcones": "라이트 콘",
-    "tierlist": "티어리스트"
+    "tierlist": "티어리스트",
+    "showcase": "쇼케이스"
   },
   "characters": {
     "title": "Honkai: Star Rail 전체 캐릭터 목록",
@@ -53,5 +54,14 @@
     "description": "HSR에서 5성, 4성, DPS 및 서포트 캐릭터를 포괄적으로 순위 지정하는 티어 리스트를 확인하여 팀 구성에 대한 체계적인 결정을 내릴 수 있습니다. 우수한 가이드로 경쟁을 앞지르고 스쿼드의 진정한 잠재력을 발휘하세요. 티어 리스트를 살펴보고 Honkai: Star Rail에서 승리로 이끌어 줄 강력한 캐릭터를 발견하세요.",
     "tierlist": "티어 리스트",
     "tierlist_desc": "홍카이: 스타 레일 티어 리스트를 살펴보세요! HSR에서 가장 우수한 캐릭터인 5성, 4성, DPS 및 서포트 캐릭터를 이 포괄적인 가이드에서 전문가들이 숙련하게 순위 지정합니다. 이 가치 있는 자료로 게임에서 앞서 나가며 통찰력 있는 선택을 하세요."
+  },
+  "showcase": {
+    "title": "Honkai: Star Rail 캐릭터 쇼케이스",
+    "description": "캐릭터 쇼케이스 도구로 Honkai: Star Rail 캐릭터를 자랑하세요. 캐릭터를 선택하고 빌드를 선택한 후 창작물을 전 세계와 공유하세요.",
+    "character_showcase": "캐릭터 쇼케이스",
+    "enter_uid": "쇼케이스를 보려면 UID를 입력하세요",
+    "enter_uid_input": "UID 입력",
+    "submit": "제출",
+    "loading": "로딩 중..."
   }
 }
