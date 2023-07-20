@@ -10,6 +10,10 @@ type Props = {
 function FrstAds({ placementName, slotId, targeting, classList }: Props) {
   const publisher = process.env.NEXT_PUBLIC_FRST_PUBLISHER_NAME || "";
 
+  if (!publisher) {
+    return null;
+  }
+
   return (
     <FreestarAdSlot
       publisher={publisher}
