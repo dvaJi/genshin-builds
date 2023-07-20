@@ -14,10 +14,11 @@ type Route = {
 
 type Props = {
   route: Route;
+  position: number;
   onClick?: () => void;
 };
 
-function NavItem({ route, onClick }: Props) {
+function NavItem({ route, position, onClick }: Props) {
   const [isHovering, setIsHovering] = useState(false);
   const { t } = useIntl("layout");
 
@@ -71,10 +72,15 @@ function NavItem({ route, onClick }: Props) {
               "transform px-0 text-xs transition-all md:absolute md:z-10 md:ml-0 md:mt-4 md:px-0",
               isHovering
                 ? "md:pointer-events-auto md:translate-y-0 md:opacity-100"
-                : "md:pointer-events-none md:-translate-y-1 md:opacity-0"
+                : "md:pointer-events-none md:-translate-y-1 md:opacity-0",
+              {
+                "md:right-0": position > 0.7,
+                "-md:left-10": position > 0.5 && position <= 0.7,
+                "-md:left-0": position <= 0.5,
+              }
             )}
           >
-            <div className="mt-2 max-h-[calc(100vh-80px)] min-w-[140px] overflow-y-auto overflow-x-hidden md:mt-0 md:w-[650px] md:max-w-[calc(100vw-250px)] md:rounded-sm md:border md:border-vulcan-800 md:bg-vulcan-800 md:shadow-xl">
+            <div className="mt-2 max-h-[calc(100vh-80px)] min-w-[140px] overflow-y-auto overflow-x-hidden md:mt-0 md:w-[650px] md:max-w-[calc(100vw-600px)] md:rounded-sm md:border md:border-vulcan-800 md:bg-vulcan-800 md:shadow-xl xl:max-w-[calc(100vw-250px)]">
               <div className="px-4 pb-2 pt-2">
                 <div className="grid gap-0 md:grid-cols-2">
                   {route.children.map((child) => (

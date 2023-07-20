@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { memo, useState } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 import GameSelector from "@components/GameSelector";
 import NavItem from "@components/NavItem";
@@ -15,7 +15,7 @@ type Route = {
   href?: string;
   children?: Route[];
   icon?: JSX.Element;
-  isNew?: boolean
+  isNew?: boolean;
 };
 
 const navRoutes: Route[] = [
@@ -153,8 +153,8 @@ const LayoutHeader = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <div className="relative top-0 left-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
-      <div className="mx-auto block w-full max-w-6xl items-center py-2 px-4 text-sm md:flex md:py-0 ">
+    <div className="relative left-0 top-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
+      <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
           <Link href="/" className="h-full w-full">
             <Logo />
@@ -175,9 +175,9 @@ const LayoutHeader = () => {
           )}
         >
           <ul className="flex flex-col md:flex-row">
-            {navRoutes.map((route) => (
+            {navRoutes.map((route, i) => (
               <div key={route.id} onClick={() => setIsMobileNavOpen(false)}>
-                <NavItem route={route} />
+                <NavItem route={route} position={(i + 1) / navRoutes.length} />
               </div>
             ))}
           </ul>
