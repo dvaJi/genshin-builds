@@ -206,6 +206,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const lngDict = await getLocale(locale, "genshin");
   const profile = res.data;
 
+  console.log(profile)
   return {
     props: {
       locale,

@@ -55,6 +55,7 @@ const columns: ColumnDef<any>[] = [
   {
     header: "mainstat",
     cell: (info) => {
+      if (!info.row.original.mainStat) return null;
       const [label, value] = Object.entries<string>(
         info.row.original.mainStat
       )[0];
@@ -116,11 +117,14 @@ const columns: ColumnDef<any>[] = [
   {
     header: "critvalue",
     accessorKey: "critValue",
-    cell: (info) => (
-      <span className={cvQuality(info.getValue<number>())}>
-        {info.getValue<number>().toFixed(1)}
-      </span>
-    ),
+    cell: (info) => {
+      if (!info.getValue<number>()) return null;
+      return (
+        <span className={cvQuality(info.getValue<number>())}>
+          {info.getValue<number>().toFixed(1)}
+        </span>
+      )
+    },
   },
 ];
 
@@ -161,7 +165,7 @@ function ProfileArtifactsTable({ data }: Props) {
           sortedStats: sortedStats(build.circlet),
         },
       ])
-      .filter(Boolean);
+      .filter((artifact) => artifact.id !== undefined);
   }, [data]);
 
   const table = useReactTable({
