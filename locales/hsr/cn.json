@@ -1,0 +1,67 @@
+{
+  "layout": {
+    "title": "Honkai: Star Rail Wiki Database",
+    "description": "Honkai: Star Rail中所有可玩角色的完整列表。",
+    "footer": "HSRBuilds是《Honkai: Star Rail》的数据库、排行榜和指南。",
+    "footer_advice": "《Honkai: Star Rail》不受HoYoverse或COGNOSPHERE PTE. LTD.的认可，不代表任何官方参与《Honkai: Star Rail》的人的观点或意见。",
+    "privacy_policy": "隐私政策",
+    "contact": "联系我们",
+    "characters": "角色",
+    "relics": "圣遗物",
+    "lightcones": "光锥",
+    "tierlist": "排行榜",
+    "showcase": "角色展示"
+  },
+  "characters": {
+    "title": "Honkai: Star Rail所有角色列表",
+    "description": "Honkai: Star Rail中所有可玩角色的完整列表。",
+    "characters": "角色",
+    "characters_description": "角色是Honkai: Star Rail中可以获得的单位。",
+    "type": "类型",
+    "element": "元素"
+  },
+  "character": {
+    "title": "Honkai: Star Rail {name}建造指南",
+    "description": "探索Honkai: Star Rail中{name}的最佳建造和团队。还包括他们的技能、升级成本等。",
+    "skills": "技能",
+    "traces": "痕迹",
+    "eidolon": "灵肉",
+    "characters": "角色",
+    "best_light_cone": "最佳光锥",
+    "relics_and_ornament": "圣遗物和饰品",
+    "best_stats": "{name}最佳属性",
+    "best_substats": "{name}最佳副属性",
+    "best_relics": "{name}最佳圣遗物",
+    "best_ornaments": "{name}最佳饰品",
+    "best_lightcones": "{name}最佳光锥",
+    "best_teams": "{name}最佳团队"
+  },
+  "lightcones": {
+    "title": "Honkai: Star Rail光锥列表",
+    "description": "Honkai: Star Rail中所有光锥及其属性的完整列表。",
+    "lightcones": "光锥",
+    "lightcones_desc": "光锥是角色可装备的物品，用于提升他们的基础HP、基础ATK和基础DEF，并为与光锥相符的角色赋予被动能力。"
+  },
+  "relics": {
+    "title": "Honkai: Star Rail圣遗物列表",
+    "description": "Honkai: Star Rail中所有圣遗物及其属性的完整列表。",
+    "relics": "圣遗物",
+    "relics_desc": "圣遗物是可装备到角色身上的物品。圣遗物提供额外的属性，包括HP、速度、攻击和防御，以提升装备的角色。所有圣遗物在与它们的对应物品（称为\"套装\"）配对时都会提供额外的加成。圣遗物可以用经验材料进行升级以提高属性。",
+    "set": "套装"
+  },
+  "tierlist": {
+    "title": "Honkai: Star Rail排行榜",
+    "description": "发现Honkai: Star Rail中所有5星、4星、DPS和支援角色的综合排行榜，让您可以明智地选择团队组合。通过我们精心策划的指南，保持领先并释放您的团队真正的潜力。探索排行榜，发现将带领您在Honkai: Star Rail中获得胜利的强大角色。",
+    "tierlist": "排行榜",
+    "tierlist_desc": "探索终极的Honkai: Star Rail排行榜！在这份全面的指南中，发现HSR中表现最佳的角色，包括5星、4星、DPS和支援角色。通过这个宝贵的资源，保持领先，并做出明智的选择。"
+  },
+  "showcase": {
+    "title": "Honkai: Star Rail角色展示",
+    "description": "使用我们的角色展示工具展示您在Honkai: Star Rail中的角色。只需选择您的角色，选择您的建造，并与世界分享。",
+    "character_showcase": "角色展示",
+    "enter_uid": "输入UID查看您的展示",
+    "enter_uid_input": "输入UID",
+    "submit": "提交",
+    "loading": "加载中..."
+  }
+}

@@ -6,6 +6,8 @@ export const localeToLang = (locale: string | undefined) => {
       return "spanish";
     case "ja":
       return "japanese";
+    case "cn":
+      return "chinese-simplified";
     case "zh-tw":
       return "chinese-traditional";
     case "de":
@@ -42,6 +44,8 @@ export const localeToHSRLang = (locale: string | undefined) => {
       return "es";
     case "ja":
       return "jp";
+    case "cn":
+      return "cn";
     case "zh-tw":
       return "cht";
     case "cn":

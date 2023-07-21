@@ -18,6 +18,7 @@ const nextConfig = {
       "en",
       "es",
       "ja",
+      "cn",
       "zh-tw",
       "de",
       "fr",

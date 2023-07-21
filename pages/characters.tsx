@@ -163,7 +163,7 @@ const CharactersPage = ({ characters, elements, common }: CharactersProps) => {
                 )}
               />
               <ElementIcon
-                type={character.element}
+                type={common[character.element]}
                 height={24}
                 width={24}
                 className="absolute right-2 top-2 rounded-full bg-vulcan-700 lg:right-2 lg:top-5"
