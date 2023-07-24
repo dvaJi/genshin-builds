@@ -26,7 +26,7 @@ export default async function handler(
   const data = (await response.json()) as PlayerDataAPI;
 
   if (!data.avatarInfoList || data.avatarInfoList.length <= 1) {
-    console.log("Player Data", data);
+    console.log("Player profile is not public", data);
     return res
       .status(400)
       .json({ statusCode: 400, message: "Player profile is not public" });
@@ -74,6 +74,7 @@ export default async function handler(
       // Check if we got the cached player data
       if (data.ttl < 60) {
         console.log("Player data is cached, returning cached data", {
+          uid: data.uid,
           ttl: data.ttl,
         });
         return res.status(200).json({

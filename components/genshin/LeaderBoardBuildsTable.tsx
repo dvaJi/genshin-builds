@@ -206,7 +206,7 @@ const columns: ColumnDef<Build & { player: Profile }>[] = [
 
 function LeaderBoardBuildsTable({ data, pagination, setPagination }: Props) {
   const { t } = useIntl("profile");
-  console.log("re-rendering LeaderBoardBuildsTable");
+  // console.log("re-rendering LeaderBoardBuildsTable");
 
   const table = useReactTable({
     data,

@@ -35,7 +35,7 @@ export default async function handler(
   const data = (await response.json()) as PlayerDataAPI;
 
   if (!data.player.is_display) {
-    console.log("Player Data", data);
+    console.log("Player profile is not public", data);
     return res
       .status(400)
       .json({ statusCode: 400, message: "Player profile is not public" });

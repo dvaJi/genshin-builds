@@ -34,7 +34,10 @@ const SkillLabel = ({ skill }: CollapsibleProps) => {
       );
 
     default:
-      console.log(skill);
+      console.log(
+        'Error in SkillLabel: skill prop is not "normal attack", "skill" or "burst"',
+        skill
+      );
       return null;
   }
 };
