@@ -11,13 +11,16 @@ import { AppBackgroundStyle } from "@state/background-atom";
 type Props = {
   children: React.ReactNode;
   bgStyle?: AppBackgroundStyle;
+  fontClass?: string;
 };
 
-function Layout({ children, bgStyle }: Props) {
+function Layout({ children, bgStyle, fontClass }: Props) {
   const router = useRouter();
 
   return (
-    <div className="flex h-full min-h-screen flex-col bg-hsr-bg">
+    <div
+      className={clsx("flex h-full min-h-screen flex-col bg-hsr-bg", fontClass)}
+    >
       <Head>
         <title>Tower of Fantasy Builds | Tower of Fantasy Wiki Database</title>
         <meta

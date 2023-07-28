@@ -1,5 +1,4 @@
 const plugin = require("tailwindcss/plugin");
-const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -11,7 +10,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Noto Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-noto-sans)"],
+        mono: ["var(--font-roboto-mono)"],
       },
       colors: {
         "accent-1": "#333",
@@ -40,7 +40,7 @@ module.exports = {
         "800px": "800px",
       },
       fontSize: {
-        'xxs': '.625rem',
+        xxs: ".625rem",
       },
       backgroundColor: {
         vulcan: {

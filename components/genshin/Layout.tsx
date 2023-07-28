@@ -10,13 +10,16 @@ import { AppBackgroundStyle } from "@state/background-atom";
 type Props = {
   children: React.ReactNode;
   bgStyle?: AppBackgroundStyle;
+  fontClass?: string;
 };
 
-function Layout({ children, bgStyle }: Props) {
+function Layout({ children, bgStyle, fontClass }: Props) {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen flex-col bg-vulcan-900">
+    <div
+      className={clsx("flex min-h-screen flex-col bg-vulcan-900", fontClass)}
+    >
       <Head>
         <title>Genshin Builds | Genshin Impact Wiki Database</title>
         <meta

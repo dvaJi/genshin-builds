@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 import { AD_ARTICLE_SLOT, GAD_ID } from "@lib/constants";
 import {
@@ -23,7 +24,8 @@ export default class MyDocument extends Document {
       <Html lang={this.props.__NEXT_DATA__.locale ?? "en"}>
         <Head>
           {GA_TRACKING_ID && (
-            <script
+            <Script
+              id="gtag-init"
               dangerouslySetInnerHTML={{
                 __html: `
             window.dataLayer = window.dataLayer || [];
@@ -37,7 +39,7 @@ export default class MyDocument extends Document {
             />
           )}
           {GAD_ID && (
-            <script
+            <Script
               async
               src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
             />
@@ -117,10 +119,6 @@ export default class MyDocument extends Document {
           <link rel="preconnect" href="//i0.wp.com" />
           <link rel="preconnect" href="//i1.wp.com" />
           <link rel="preconnect" href="//i2.wp.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
-            rel="stylesheet"
-          />
           <link
             rel="apple-touch-icon"
             sizes="57x57"
@@ -213,7 +211,7 @@ export default class MyDocument extends Document {
           <meta content="summary" name="twitter:card" />
           <meta content="/icons/meta-image.jpg" name="twitter:image" />
         </Head>
-        <body className="antialiased dark:text-slate-400 overflow-x-hidden">
+        <body className="overflow-x-hidden antialiased dark:text-slate-400">
           {GAD_ID && AD_ARTICLE_SLOT ? (
             <ins
               className="adsbygoogle"
@@ -230,7 +228,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           {GA_TRACKING_ID && (
-            <script
+            <Script
               async
               src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingID}`}
             />

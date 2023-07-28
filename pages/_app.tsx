@@ -1,4 +1,5 @@
 import { AppProps as NextAppProps } from "next/app";
+import { Noto_Sans } from "next/font/google";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -8,6 +9,13 @@ import * as gtag from "@lib/gtag";
 
 import "../styles/globals.css";
 import "../styles/hsr-globals.css";
+
+const notoSans = Noto_Sans({
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-noto-sans",
+  subsets: ["latin", "latin-ext", "vietnamese"],
+});
 
 type AppProps<P = any> = { pageProps: P } & Omit<NextAppProps<P>, "pageProps">;
 
@@ -42,7 +50,13 @@ function Root(props: AppProps<Props>) {
       messages={props.pageProps.lngDict}
       locale={router.locale}
     >
-      <App {...props} />
+      <App
+        {...props}
+        pageProps={{
+          ...props.pageProps,
+          fontClass: `${notoSans.variable} font-sans`,
+        }}
+      />
     </IntlProvider>
   );
 }

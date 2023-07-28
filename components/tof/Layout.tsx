@@ -2,22 +2,28 @@ import clsx from "clsx";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import LayoutHeader from "@components/tof/LayoutHeader";
-import LayoutFooter from "@components/tof/LayoutFooter";
 import DynamicBackground from "@components/DynamicBackground";
+import LayoutFooter from "@components/tof/LayoutFooter";
+import LayoutHeader from "@components/tof/LayoutHeader";
 
 import { AppBackgroundStyle } from "@state/background-atom";
 
 type Props = {
   children: React.ReactNode;
   bgStyle?: AppBackgroundStyle;
+  fontClass?: string;
 };
 
-function Layout({ children, bgStyle }: Props) {
+function Layout({ children, bgStyle, fontClass }: Props) {
   const router = useRouter();
 
   return (
-    <div className="flex h-full min-h-screen flex-col bg-vulcan-900">
+    <div
+      className={clsx(
+        "flex h-full min-h-screen flex-col bg-vulcan-900",
+        fontClass
+      )}
+    >
       <Head>
         <title>Tower of Fantasy Builds | Tower of Fantasy Wiki Database</title>
         <meta

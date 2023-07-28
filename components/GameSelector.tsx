@@ -1,8 +1,9 @@
-import { useState } from "react";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import clsx from "clsx";
+import { useCallback, useState } from "react";
 
+import { useClickOutside } from "@hooks/use-clickoutside";
 import { GAME, GameProps } from "utils/games";
 
 type Props = {
@@ -12,16 +13,20 @@ type Props = {
 
 function GameSelector({ currentGame, className }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  // Selector for each GAME and a Link to the game
+  const close = useCallback(() => setIsOpen(false), []);
+  const contentRef = useClickOutside<HTMLDivElement>(
+    isOpen ? close : undefined,
+    []
+  );
 
   return (
-    <div className={clsx("relative", className)}>
+    <div className={clsx("relative", className)} ref={contentRef}>
       <button
         type="button"
         aria-haspopup="true"
         aria-expanded="true"
         className={clsx(
-          "mt-4 flex h-10 w-full lg:w-44 items-center rounded px-2 backdrop-blur-sm md:w-10",
+          "mt-4 flex h-10 w-full items-center rounded px-2 backdrop-blur-sm md:w-10 lg:w-44",
           isOpen ? "bg-tof-700/50" : "bg-tof-700/10"
         )}
         onClick={() => setIsOpen((o) => !o)}
@@ -42,7 +47,7 @@ function GameSelector({ currentGame, className }: Props) {
         role="menu"
         aria-hidden={!isOpen}
         className={clsx(
-          "absolute top-13 w-full rounded-b bg-tof-700/90 shadow-md backdrop-blur-xl",
+          "top-13 absolute w-full rounded-b bg-tof-700/90 shadow-md backdrop-blur-xl",
           isOpen ? "block" : "hidden"
         )}
       >
@@ -52,7 +57,7 @@ function GameSelector({ currentGame, className }: Props) {
               type="button"
               tabIndex={0}
               role="menuitem"
-              className="flex h-full w-full items-center py-2 px-2 text-left text-sm hover:bg-tof-600"
+              className="flex h-full w-full items-center px-2 py-2 text-left text-sm hover:bg-tof-600"
             >
               <Image
                 className="mr-3 h-6 w-6 rounded"
