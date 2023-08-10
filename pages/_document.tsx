@@ -1,5 +1,4 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
-import Script from "next/script";
 
 import { AD_ARTICLE_SLOT, GAD_ID } from "@lib/constants";
 import {
@@ -24,7 +23,7 @@ export default class MyDocument extends Document {
       <Html lang={this.props.__NEXT_DATA__.locale ?? "en"}>
         <Head>
           {GA_TRACKING_ID && (
-            <Script
+            <script
               id="gtag-init"
               dangerouslySetInnerHTML={{
                 __html: `
@@ -39,7 +38,7 @@ export default class MyDocument extends Document {
             />
           )}
           {GAD_ID && (
-            <Script
+            <script
               async
               src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
             />
@@ -228,7 +227,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           {GA_TRACKING_ID && (
-            <Script
+            <script
               async
               src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingID}`}
             />
