@@ -36,8 +36,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "hunters_path",
-          "a_ids": ["shimenawas_reminiscence"],
+          "w_id": "elegy_for_the_end",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 1
         },
         {
@@ -328,8 +328,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "hunters_path",
-          "a_ids": ["shimenawas_reminiscence"],
+          "w_id": "elegy_for_the_end",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 0
         },
         {
@@ -782,8 +782,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "hunters_path",
-          "a_ids": ["shimenawas_reminiscence"],
+          "w_id": "elegy_for_the_end",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 0
         },
         {
@@ -1044,8 +1044,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "hunters_path",
-          "a_ids": ["shimenawas_reminiscence"],
+          "w_id": "elegy_for_the_end",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 0
         },
         {
@@ -1330,8 +1330,8 @@
       "3": [
         {
           "id": "qiqi",
-          "w_id": "sacrificial_sword",
-          "a_ids": ["noblesse_oblige"],
+          "w_id": "skyward_blade",
+          "a_ids": ["maiden_beloved"],
           "min_c": 0
         },
         {
@@ -1566,8 +1566,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "hunters_path",
-          "a_ids": ["shimenawas_reminiscence"],
+          "w_id": "elegy_for_the_end",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 6
         },
         {
@@ -1802,8 +1802,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "hunters_path",
-          "a_ids": ["shimenawas_reminiscence"],
+          "w_id": "elegy_for_the_end",
+          "a_ids": ["noblesse_oblige"],
           "min_c": 6
         },
         {

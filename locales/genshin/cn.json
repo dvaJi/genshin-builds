@@ -291,34 +291,52 @@
     "youtube_tutorial": "YouTube教程",
     "share_on": "分享至"
   },
-  "tcg": {
-    "title": "原神TCG（纸牌游戏）",
-    "description": "游戏中所有卡片的列表",
-    "tcg": "TCG（纸牌游戏）",
-    "cards_list": "卡片列表",
-    "search": "搜索..."
+  "tcg_cards": {
+    "title": "天命召唤 TCG 卡牌游戏",
+    "description": "天命召唤 TCG 是《原神》中的全新卡牌游戏特色。本指南包括天命召唤 TCG 是什么、角色卡牌游戏、如何获取卡牌等内容！",
+    "cards": "卡牌"
   },
-  "banners": {
-    "title": "原神活动",
-    "description": "发现所有活动角色和武器的列表及其概率",
-    "banners": "活动",
-    "characters": "活动角色",
-    "weapons": "活动武器",
-    "search": "搜索...",
-    "drop_table": "掉落表"
+  "tcg_card": {
+      "title": "{name} - 原神 TCG 卡牌列表",
+      "description": "{name} 是《原神》天命召唤 TCG 中的一张卡牌。了解如何获取、技能、效果，以及更多关于{name}卡牌的信息。",
+      "tcg_cards_title": "天命召唤 TCG 卡牌游戏",
+      "back": "返回",
+      "hp": "生命值",
+      "energy": "能量",
+      "weapon": "武器",
+      "cost": "消耗",
+      "cost_type": "消耗类型",
+      "card_type": "卡牌类型",
+      "source": "来源",
+      "card_effects": "卡牌效果"
   },
-  "leaderboards": {
-    "title": "原神排行榜",
-    "description": "排行榜，与其他玩家比较您的进度",
-    "leaderboard": "排行榜",
-    "rank": "排名",
-    "player": "玩家",
-    "search": "搜索..."
+  "tcg_decks": {
+      "title": "探索天命召唤 TCG 顶级卡组：原神卡牌游戏的元卡组构建",
+      "description": "本文提供了天命召唤 TCG 中最佳卡组的综合列表。包括原神卡牌游戏的元卡组构建，使其成为希望提升游戏水平并攀登排行榜的玩家的终极指南。通过这些信息，读者可以随时了解当前的元环境，并在构建自己的卡组时做出明智的决策。",
+      "best_decks": "顶级卡组"
   },
-  "profiles": {
-    "title": "原神档案",
-    "description": "档案，与其他玩家比较您的进度",
-    "profiles": "档案",
-    "search": "搜索..."
+  "profile": {
+    "title": "原神玩家资料",
+    "description": "获取最佳的原神玩家资料，优化您的游戏体验。可视化并与其他玩家比较您的玩家资料，计算暴击值，找到最佳角色和神器。",
+    "submit": "提交",
+    "remove_from_favorites": "从收藏中移除",
+    "uuid": "UID: {uuid}",
+    "name": "名字",
+    "mainstat": "主属性",
+    "stat1": "属性 1",
+    "stat2": "属性 2",
+    "stat3": "属性 3",
+    "stat4": "属性 4",
+    "critvalue": "暴击值",
+    "page": "页面",
+    "goto": "跳转到页面",
+    "show": "显示 {pageSize}",
+    "constellation": "命座",
+    "weapon": "武器",
+    "artifact": "神器",
+    "owner": "拥有者"
+  },
+  "leaderboard": {
+
   }
 }

@@ -329,5 +329,26 @@
       ]
     },
     "version": "3.8"
+  },
+  {
+    "items": {
+      "avatar": ["lynette", "lyney", "freminet", "traveler_hydro"],
+      "weapon": ["wolffang", "finale_of_the_deep", "fleuve_cendre_ferryman", "talking_stick", "tidal_shadow", "ballad_of_the_fjords", "rightful_reward", "sacrificial_jade", "flowing_purity", "scion_of_the_blazing_sun", "song_of_stillness", "the_first_great_magic"],
+      "artifact": ["marechaussee_hunter", "golden_troupe"],
+      "tcg": [
+        "qiqi",
+        "lisa",
+        "albedo",
+        "rite_of_resurrection",
+        "pulsating_witch",
+        "descent_of_divinity",
+        "kings_squire",
+        "golden_house",
+        "setaria",
+        "joyous_celebration",
+        "where_is_the_unseen_razor"
+      ]
+    },
+    "version": "4.0"
   }
 ]

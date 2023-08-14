@@ -10,6 +10,7 @@ const SkillLabel = ({ skill }: CollapsibleProps) => {
 
   switch (skill) {
     case "normal attack":
+    case "na":
     case "normal_attack":
       return (
         <>
