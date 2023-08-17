@@ -36,9 +36,15 @@
         },
         {
           "id": "ganyu",
-          "w_id": "elegy_for_the_end",
-          "a_ids": ["noblesse_oblige"],
+          "w_id": "hunters_path",
+          "a_ids": ["shimenawas_reminiscence"],
           "min_c": 1
+        },
+        {
+          "id": "lyney",
+          "w_id": "the_first_great_magic",
+          "a_ids": ["marechaussee_hunter"],
+          "min_c": 2
         },
         {
           "id": "arataki_itto",
@@ -120,7 +126,7 @@
           "id": "shikanoin_heizou",
           "w_id": "skyward_atlas",
           "a_ids": ["viridescent_venerer"],
-          "min_c": 3
+          "min_c": 2
         },
         {
           "id": "klee",
@@ -328,8 +334,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "elegy_for_the_end",
-          "a_ids": ["noblesse_oblige"],
+          "w_id": "hunters_path",
+          "a_ids": ["shimenawas_reminiscence"],
           "min_c": 0
         },
         {
@@ -393,6 +399,12 @@
           "w_id": "freedomsworn",
           "a_ids": ["deepwood_memories"],
           "min_c": 5
+        },
+        {
+          "id": "lynette",
+          "w_id": "freedomsworn",
+          "a_ids": ["viridescent_venerer"],
+          "min_c": 4
         },
         {
           "id": "layla",
@@ -465,10 +477,10 @@
       ],
       "5": [
         {
-          "id": "traveler_anemo",
-          "w_id": "freedomsworn",
-          "a_ids": ["viridescent_venerer"],
-          "min_c": 6
+          "id": "traveler_geo",
+          "w_id": "skyward_blade",
+          "a_ids": ["emblem_of_severed_fate"],
+          "min_c": 4
         },
         {
           "id": "amber",
@@ -477,10 +489,16 @@
           "min_c": 2
         },
         {
-          "id": "traveler_geo",
-          "w_id": "skyward_blade",
-          "a_ids": ["emblem_of_severed_fate"],
-          "min_c": 4
+          "id": "traveler_anemo",
+          "w_id": "freedomsworn",
+          "a_ids": ["viridescent_venerer"],
+          "min_c": 6
+        },
+        {
+          "id": "traveler_hydro",
+          "w_id": "best_dps",
+          "a_ids": [],
+          "min_c": 6
         }
       ]
     },
@@ -782,8 +800,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "elegy_for_the_end",
-          "a_ids": ["noblesse_oblige"],
+          "w_id": "hunters_path",
+          "a_ids": ["shimenawas_reminiscence"],
           "min_c": 0
         },
         {
@@ -802,6 +820,12 @@
           "id": "tartaglia",
           "w_id": "polar_star",
           "a_ids": ["nymphs_dream"],
+          "min_c": 0
+        },
+        {
+          "id": "lyney",
+          "w_id": "the_first_great_magic",
+          "a_ids": ["marechaussee_hunter"],
           "min_c": 0
         },
         {
@@ -1044,8 +1068,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "elegy_for_the_end",
-          "a_ids": ["noblesse_oblige"],
+          "w_id": "hunters_path",
+          "a_ids": ["shimenawas_reminiscence"],
           "min_c": 0
         },
         {
@@ -1129,6 +1153,12 @@
           "min_c": 0
         },
         {
+          "id": "lynette",
+          "w_id": "freedomsworn",
+          "a_ids": ["viridescent_venerer"],
+          "min_c": 0
+        },
+        {
           "id": "layla",
           "w_id": "primordial_jade_cutter",
           "a_ids": ["blizzard_strayer"],
@@ -1199,15 +1229,21 @@
           "min_c": 0
         },
         {
+          "id": "traveler_geo",
+          "w_id": "skyward_blade",
+          "a_ids": ["emblem_of_severed_fate"],
+          "min_c": 0
+        },
+        {
           "id": "traveler_anemo",
           "w_id": "freedomsworn",
           "a_ids": ["viridescent_venerer"],
           "min_c": 0
         },
         {
-          "id": "traveler_geo",
-          "w_id": "skyward_blade",
-          "a_ids": ["emblem_of_severed_fate"],
+          "id": "traveler_hydro",
+          "w_id": "best_dps",
+          "a_ids": [],
           "min_c": 0
         }
       ]
@@ -1527,19 +1563,25 @@
           "min_c": 6
         },
         {
+          "id": "lyney",
+          "w_id": "the_first_great_magic",
+          "a_ids": ["marechaussee_hunter"],
+          "min_c": 6
+        },
+        {
           "id": "arataki_itto",
           "w_id": "redhorn_stonethresher",
           "a_ids": ["husk_of_opulent_dreams"],
           "min_c": 6
-        }
-      ],
-      "2": [
+        },
         {
           "id": "wanderer",
           "w_id": "tulaytullahs_remembrance",
           "a_ids": ["desert_pavilion_chronicle"],
           "min_c": 6
-        },
+        }
+      ],
+      "2": [
         {
           "id": "tartaglia",
           "w_id": "polar_star",
@@ -1566,8 +1608,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "elegy_for_the_end",
-          "a_ids": ["noblesse_oblige"],
+          "w_id": "hunters_path",
+          "a_ids": ["shimenawas_reminiscence"],
           "min_c": 6
         },
         {
@@ -1802,8 +1844,8 @@
         },
         {
           "id": "ganyu",
-          "w_id": "elegy_for_the_end",
-          "a_ids": ["noblesse_oblige"],
+          "w_id": "hunters_path",
+          "a_ids": ["shimenawas_reminiscence"],
           "min_c": 6
         },
         {
@@ -1885,6 +1927,12 @@
           "w_id": "freedomsworn",
           "a_ids": ["deepwood_memories"],
           "min_c": 6
+        },
+        {
+          "id": "lynette",
+          "w_id": "freedomsworn",
+          "a_ids": ["viridescent_venerer"],
+          "min_c": 6
         }
       ],
       "4": [
@@ -1936,6 +1984,12 @@
           "id": "traveler_anemo",
           "w_id": "freedomsworn",
           "a_ids": ["viridescent_venerer"],
+          "min_c": 6
+        },
+        {
+          "id": "traveler_hydro",
+          "w_id": "best_dps",
+          "a_ids": [],
           "min_c": 6
         }
       ]
