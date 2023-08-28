@@ -23,18 +23,21 @@ import {
   getCharacterBuild,
   getCharacterMostUsedBuild,
   getCharacterOfficialBuild,
+  getCommon,
+  getData,
   getLocale,
 } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { TeamData } from "interfaces/teams";
+import { Beta } from "interfaces/genshin/beta";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface CharacterPageProps {
-  character: Character;
+  character: Character & { beta?: boolean };
   builds: Build[];
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact & { children?: Artifact[] }>;
@@ -116,6 +119,13 @@ const CharacterPage = ({
           </div>
         </div>
       </div>
+      {character.beta ? (
+        <div className="flex items-center justify-center">
+          <div className="rounded border border-red-400/50 bg-red-600/50 p-1 text-center text-white">
+            Current content is a subject to change!
+          </div>
+        </div>
+      ) : null}
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
@@ -287,7 +297,13 @@ export const getStaticProps: GetStaticProps = async ({
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters();
-  const character = characters.find((c) => c.id === params?.name);
+  const beta = await getData<Beta>("genshin", "beta");
+  const _character = characters.find((c) => c.id === params?.name);
+  const _betaCharacter = beta[locale].characters.find(
+    (c: any) => c.id === params?.name
+  );
+
+  const character = _character || _betaCharacter;
 
   if (!character) {
     return {
@@ -295,7 +311,7 @@ export const getStaticProps: GetStaticProps = async ({
     };
   }
 
-  const common = require(`../../_content/genshin/data/common.json`)[locale];
+  const common = await getCommon(locale, "genshin");
 
   const buildsOld: Build[] = await getCharacterBuild(character.id);
   const weaponsList = await genshinData.weapons({
@@ -405,11 +421,16 @@ export const getStaticProps: GetStaticProps = async ({
 export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const genshinData = new GenshinData();
   const characters = await genshinData.characters({ select: ["id"] });
+  const beta = await getData<Beta>("genshin", "beta");
 
   const paths: { params: { name: string }; locale: string }[] = [];
 
   for (const locale of locales) {
     characters.forEach((character) => {
+      paths.push({ params: { name: character.id }, locale });
+    });
+
+    beta["en"].characters.forEach((character: any) => {
       paths.push({ params: { name: character.id }, locale });
     });
   }

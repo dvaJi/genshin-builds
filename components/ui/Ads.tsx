@@ -1,13 +1,13 @@
 import { memo, useEffect } from "react";
 
-import { GAD_ID, CUSTOM_ADS_ID } from "@lib/constants";
+import { AD_ARTICLE_SLOT, CUSTOM_ADS_ID, GAD_ID } from "@lib/constants";
 
 type AdsProps = {
   className: string;
   adSlot: string;
 };
 
-const Ads = ({ className, adSlot }: AdsProps) => {
+const Ads = ({ className, adSlot = AD_ARTICLE_SLOT }: AdsProps) => {
   useEffect(() => {
     if (GAD_ID && adSlot && typeof window !== "undefined") {
       try {

@@ -42,7 +42,7 @@ function ItemPopover({
   return (
     <div className="cursor-pointer" {...trigger}>
       <SimpleRarityBox
-        img={getUrl(`/${materialInfo?.type}/${id}.png`, 45, 45)}
+        img={getUrl(`/materials/${id}.png`, 45, 45)}
         rarity={materialInfo?.rarity}
         name={numFormat.format(data)}
         alt={materialInfo?.name}

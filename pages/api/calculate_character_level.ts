@@ -112,7 +112,7 @@ export default async function handler(
           itemsMap[item.mat1.id] = {
             id: item.mat1.id,
             name: item.mat1.name,
-            img: "/jewels_materials/" + item.mat1.id + ".png",
+            img: "/materials/" + item.mat1.id + ".png",
             amount: item.mat1.amount,
             rarity: item.mat1.rarity,
           };
@@ -128,7 +128,7 @@ export default async function handler(
           itemsMap[item.mat2.id] = {
             id: item.mat2.id,
             name: item.mat2.name,
-            img: "/elemental_stone_materials/" + item.mat2.id + ".png",
+            img: "/materials/" + item.mat2.id + ".png",
             amount: item.mat2.amount,
             rarity: item.mat2.rarity,
           };
@@ -144,7 +144,7 @@ export default async function handler(
           itemsMap[item.mat3.id] = {
             id: item.mat3.id,
             name: item.mat3.name,
-            img: "/local_materials/" + item.mat3.id + ".png",
+            img: "/materials/" + item.mat3.id + ".png",
             amount: item.mat3.amount,
             rarity: item.mat3.rarity,
           };
@@ -160,7 +160,7 @@ export default async function handler(
           itemsMap[item.mat4.id] = {
             id: item.mat4.id,
             name: item.mat4.name,
-            img: "/common_materials/" + item.mat4.id + ".png",
+            img: "/materials/" + item.mat4.id + ".png",
             amount: item.mat4.amount,
             rarity: item.mat4.rarity,
           };

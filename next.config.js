@@ -9,10 +9,25 @@ const withPWA = require("next-pwa")({
   disable: isDev,
 });
 
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    // If you use remark-gfm, you'll need to use next.config.mjs
+    // as the package is ESM only
+    // https://github.com/remarkjs/remark-gfm#install
+    remarkPlugins: [],
+    rehypePlugins: [],
+    // If you use `MDXProvider`, uncomment the following line.
+    // providerImportSource: "@mdx-js/react",
+  },
+})
+
 /**
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  reactStrictMode: true,
   i18n: {
     locales: [
       "en",
@@ -58,4 +73,4 @@ const nextConfig = {
   typescript: { ignoreBuildErrors: !!process.env.CI },
 };
 
-module.exports = withPWA(withBundleAnalyzer(nextConfig));
+module.exports = withPWA(withBundleAnalyzer(withMDX(nextConfig)));

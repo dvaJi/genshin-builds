@@ -131,7 +131,7 @@ Props) {
               <div key={a} className="mx-1">
                 {materialsMap[a] && (
                   <SimpleRarityBox
-                    img={getUrl(`/${materialsMap[a].type}/${a}.png`, 120, 120)}
+                    img={getUrl(`/materials/${a}.png`, 120, 120)}
                     rarity={materialsMap[a].rarity}
                     name={materialsMap[a].name}
                     alt={materialsMap[a].name}

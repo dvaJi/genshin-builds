@@ -12,14 +12,15 @@ import ElementIcon from "@components/genshin/ElementIcon";
 import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import { getCommon, getLocale } from "@lib/localData";
+import { getCommon, getData, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
+import { Beta } from "interfaces/genshin/beta";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type CharactersProps = {
-  characters: Character[];
+  characters: (Character & { beta?: boolean })[];
   elements: string[];
   common: Record<string, string>;
 };
@@ -36,12 +37,21 @@ const CharactersPage = ({ characters, elements, common }: CharactersProps) => {
   useEffect(() => {
     setCharactersFiltered(
       characters
-        .filter(
-          (c) =>
-            elementsFilter.length === 0 || elementsFilter.includes(c.element)
-        )
-        .filter((c) => rarityFilter.includes(c.rarity))
-        .filter((c) => c.name.toLowerCase().includes(nameFilter.toLowerCase()))
+        .filter((c) => {
+          if (
+            elementsFilter.length > 0 &&
+            !elementsFilter.includes(c.element)
+          ) {
+            return false;
+          }
+          if (!rarityFilter.includes(c.rarity)) {
+            return false;
+          }
+          if (!c.name.toLowerCase().includes(nameFilter.toLowerCase())) {
+            return false;
+          }
+          return true;
+        })
         .map((c) => c.id)
     );
   }, [characters, elementsFilter, nameFilter, rarityFilter]);
@@ -128,50 +138,69 @@ const CharactersPage = ({ characters, elements, common }: CharactersProps) => {
         </div>
       </div>
       <div className="card grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-9">
-        {characters.map((character) => (
-          <Link
-            key={character.id}
-            href={`/character/${character.id}`}
-            className={clsx(
-              "flex flex-col items-center justify-center text-center",
-              {
-                hidden: !charactersFiltered.includes(character.id),
-              }
-            )}
-          >
-            <div
-              className="group relative overflow-hidden rounded-full border-4 border-vulcan-600/70 bg-cover transition hover:border-vulcan-500"
-              style={{
-                backgroundImage: `url(${getUrlLQ(
-                  `/bg_${character.rarity}star.png`,
-                  4,
-                  4
-                )})`,
-              }}
+        {characters
+          .sort((a, b) => {
+            // Beta characters first
+            if (a.beta && !b.beta) return -1;
+            if (!a.beta && b.beta) return 1;
+
+            // Name Asc
+            return a.name.localeCompare(b.name);
+          })
+          .map((character) => (
+            <Link
+              key={character.id}
+              href={`/character/${character.id}`}
+              className={clsx(
+                "flex flex-col items-center justify-center text-center",
+                {
+                  hidden: !charactersFiltered.includes(character.id),
+                }
+              )}
             >
-              <LazyLoadImage
-                className="z-20 scale-110 rounded-full transition group-hover:scale-125"
-                alt={character.id}
-                src={getUrl(`/characters/${character.id}/image.png`, 140, 140)}
-                width={100}
-                height={100}
-                placeholder={<div className="h-full w-full" />}
-                placeholderSrc={getUrlLQ(
-                  `/characters/${character.id}/image.png`,
-                  4,
-                  4
+              <div
+                className="group relative overflow-hidden rounded-full border-4 border-vulcan-600/70 bg-cover transition hover:border-vulcan-500"
+                style={{
+                  backgroundImage: `url(${getUrlLQ(
+                    `/bg_${character.rarity}star.png`,
+                    4,
+                    4
+                  )})`,
+                }}
+              >
+                <LazyLoadImage
+                  className="z-20 scale-110 rounded-full transition group-hover:scale-125"
+                  alt={character.id}
+                  src={getUrl(
+                    `/characters/${character.id}/image.png`,
+                    140,
+                    140
+                  )}
+                  width={100}
+                  height={100}
+                  placeholder={<div className="h-full w-full" />}
+                  placeholderSrc={getUrlLQ(
+                    `/characters/${character.id}/image.png`,
+                    4,
+                    4
+                  )}
+                />
+                <ElementIcon
+                  type={common[character.element]}
+                  height={24}
+                  width={24}
+                  className="absolute right-2 top-2 rounded-full bg-vulcan-700 lg:right-2 lg:top-5"
+                />
+                {/* Badge */}
+                {character.beta && (
+                  <div className="absolute bottom-2 left-8 z-50 flex items-center justify-center rounded bg-vulcan-700/80 p-1 shadow">
+                    <span className="text-xxs text-white">Beta</span>
+                  </div>
                 )}
-              />
-              <ElementIcon
-                type={common[character.element]}
-                height={24}
-                width={24}
-                className="absolute right-2 top-2 rounded-full bg-vulcan-700 lg:right-2 lg:top-5"
-              />
-            </div>
-            <span className="text-white">{character.name}</span>
-          </Link>
-        ))}
+              </div>
+              <span className="text-white">{character.name}</span>
+            </Link>
+          ))}
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_1"
@@ -195,10 +224,21 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   }, [] as string[]);
 
   const common = await getCommon(locale, "genshin");
+  const beta = await getData<Beta>("genshin", "beta");
+
+  const allCharacters = [
+    ...beta[locale].characters.map((c: any) => {
+      // only include this columns: ["id", "name", "element", "rarity"]
+      const { id, name, element, rarity } = c;
+      console.log(c);
+      return { id, name, element, rarity, beta: true };
+    }),
+    ...characters,
+  ];
 
   return {
     props: {
-      characters,
+      characters: allCharacters,
       elements,
       lngDict,
       common,

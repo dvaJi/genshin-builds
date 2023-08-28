@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { memo, useMemo } from "react";
 import { AscensionMaterial } from "genshin-data/dist/types/character";
+import { memo, useMemo } from "react";
 
 import SimpleRarityBox from "../SimpleRarityBox";
 
+import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalTalentMaterials } from "@utils/totals";
-import useIntl from "@hooks/use-intl";
 
 type TalentMaterial = {
   level: number;
@@ -52,11 +52,7 @@ const CharacterTalentMaterials = ({ talents }: Props) => {
           </div>
           <div className="flex items-center lg:col-span-2">
             <SimpleRarityBox
-              img={getUrl(
-                `/talent_lvl_up_materials/${talent.items[0].id}.png`,
-                64,
-                64
-              )}
+              img={getUrl(`/materials/${talent.items[0].id}.png`, 64, 64)}
               name={talent.items[0].amount.toString()}
               rarity={talent.items[0].rarity || 1}
               className="h-16 w-16"
@@ -65,11 +61,7 @@ const CharacterTalentMaterials = ({ talents }: Props) => {
           </div>
           <div className="flex items-center lg:col-span-2">
             <SimpleRarityBox
-              img={getUrl(
-                `/common_materials/${talent.items[1].id}.png`,
-                64,
-                64
-              )}
+              img={getUrl(`/materials/${talent.items[1].id}.png`, 64, 64)}
               name={talent.items[1].amount.toString()}
               rarity={talent.items[1].rarity || 1}
               className="h-16 w-16"
@@ -80,11 +72,7 @@ const CharacterTalentMaterials = ({ talents }: Props) => {
             {talent.items.length > 2 && (
               <>
                 <SimpleRarityBox
-                  img={getUrl(
-                    `/talent_lvl_up_materials/${talent.items[2].id}.png`,
-                    64,
-                    64
-                  )}
+                  img={getUrl(`/materials/${talent.items[2].id}.png`, 64, 64)}
                   name={talent.items[2].amount.toString()}
                   rarity={talent.items[2].rarity || 1}
                   className="h-16 w-16"
@@ -97,11 +85,7 @@ const CharacterTalentMaterials = ({ talents }: Props) => {
             {talent.items.length > 3 && (
               <>
                 <SimpleRarityBox
-                  img={getUrl(
-                    `/talent_lvl_up_materials/${talent.items[3].id}.png`,
-                    64,
-                    64
-                  )}
+                  img={getUrl(`/materials/${talent.items[3].id}.png`, 64, 64)}
                   name={talent.items[3].amount.toString()}
                   rarity={talent.items[3].rarity || 1}
                   className="h-16 w-16"
@@ -127,7 +111,7 @@ const CharacterTalentMaterials = ({ talents }: Props) => {
         {talentsTotal.items.map((item) => (
           <div key={item.id} className="flex items-center">
             <SimpleRarityBox
-              img={getUrl(`/${item.type}/${item.id}.png`, 64, 64)}
+              img={getUrl(`/materials/${item.id}.png`, 64, 64)}
               name={item.amount.toString()}
               rarity={item.rarity || 1}
               className="h-16 w-16"

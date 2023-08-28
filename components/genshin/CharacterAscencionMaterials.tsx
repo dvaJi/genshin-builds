@@ -48,7 +48,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
             {ascen?.mat1 && (
               <>
                 <SimpleRarityBox
-                  img={getUrl(`/jewels_materials/${ascen.mat1.id}.png`, 64, 64)}
+                  img={getUrl(`/materials/${ascen.mat1.id}.png`, 64, 64)}
                   name={ascen.mat1.amount.toString()}
                   rarity={ascen.mat1.rarity}
                   className="h-16 w-16"
@@ -62,7 +62,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
               <>
                 <SimpleRarityBox
                   img={getUrl(
-                    `/elemental_stone_materials/${ascen.mat2.id}.png`,
+                    `/materials/${ascen.mat2.id}.png`,
                     64,
                     64
                   )}
@@ -78,7 +78,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
             {ascen.mat3 && (
               <>
                 <SimpleRarityBox
-                  img={getUrl(`/local_materials/${ascen.mat3.id}.png`, 64, 64)}
+                  img={getUrl(`/materials/${ascen.mat3.id}.png`, 64, 64)}
                   name={ascen.mat3.amount.toString()}
                   rarity={ascen.mat3.rarity || 1}
                   className="h-16 w-16"
@@ -91,7 +91,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
             {ascen.mat4 && (
               <>
                 <SimpleRarityBox
-                  img={getUrl(`/common_materials/${ascen.mat4.id}.png`, 64, 64)}
+                  img={getUrl(`/materials/${ascen.mat4.id}.png`, 64, 64)}
                   name={ascen.mat4.amount.toString()}
                   rarity={ascen.mat4.rarity || 1}
                   className="h-16 w-16"
@@ -117,7 +117,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
         {ascensionTotal.items.map((item) => (
           <div key={item.id} className="flex items-center">
             <SimpleRarityBox
-              img={getUrl(`/${item.type}/${item.id}.png`, 64, 64)}
+              img={getUrl(`/materials/${item.id}.png`, 64, 64)}
               name={item.amount.toString()}
               rarity={item.rarity}
               className="h-16 w-16"

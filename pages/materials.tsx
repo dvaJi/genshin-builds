@@ -75,7 +75,7 @@ const MaterialsPage = ({ materials }: Props) => {
           {filteredMaterials.map((material) => (
             <div key={material.id}>
               <SimpleRarityBox
-                img={getUrl(`/${material.type}/${material.id}.png`, 120, 120)}
+                img={getUrl(`/materials/${material.id}.png`, 120, 120)}
                 rarity={material.rarity}
                 name={material.name}
                 alt={material.name}

@@ -93,7 +93,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
         {talentsTotal.items.map((item) => (
           <div key={item.id} className="flex items-center">
             <SimpleRarityBox
-              img={getUrl(`/${item.type}/${item.id}.png`, 64, 64)}
+              img={getUrl(`/materials/${item.id}.png`, 64, 64)}
               name={item.amount.toString()}
               rarity={item.rarity || 1}
               className="w-16 h-16"
