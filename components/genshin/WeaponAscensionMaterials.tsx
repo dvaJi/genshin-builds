@@ -1,32 +1,16 @@
 import clsx from "clsx";
-import { useCallback, memo, useMemo } from "react";
 import { WeaponAscension } from "genshin-data/dist/types/weapon";
+import { memo, useMemo } from "react";
 
-import SimpleRarityBox from "../SimpleRarityBox";
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
+import SimpleRarityBox from "../SimpleRarityBox";
 
 type Props = {
   ascension: WeaponAscension[];
 };
 
 const WeaponAscensionMaterials = ({ ascension }: Props) => {
-  const getFolder = useCallback((index: number) => {
-    if (index === 0) {
-      return "weapon_primary_materials";
-    }
-
-    if (index === 1) {
-      return "weapon_secondary_materials";
-    }
-
-    if (index === 2) {
-      return "common_materials";
-    }
-
-    return "weapon_primary_materials";
-  }, []);
-
   const talentsTotal = useMemo(
     () => calculateTotalWeaponAscensionMaterials(ascension),
     [ascension]
@@ -40,54 +24,54 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
           <div
             key={ascen.ascension}
             className={clsx(
-              "grid grid-cols-6 lg:grid-cols-10 items-center px-4",
+              "grid grid-cols-6 items-center px-4 lg:grid-cols-10",
               {
                 "bg-vulcan-700": i % 2 === 0,
                 "rounded rounded-b-none": i === 0,
               }
             )}
           >
-            <div className="flex justify-center items-center text-sm lg:text-base">
+            <div className="flex items-center justify-center text-sm lg:text-base">
               Ascension {ascen.ascension}
             </div>
-            <div className="flex justify-center items-center text-sm lg:text-base">
+            <div className="flex items-center justify-center text-sm lg:text-base">
               [{ascension[i].level}/{ascen.level}]
             </div>
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <SimpleRarityBox
                 img={getUrl(`/materials/mora.png`, 64, 64)}
                 name={ascen.cost?.toString()}
                 rarity={1}
-                className="w-16 h-16"
+                className="h-16 w-16"
               />
               <p className="hidden lg:block">Mora</p>
             </div>
-            {ascen.materials.map((mat, i) => (
+            {ascen.materials.map((mat) => (
               <div
                 key={mat.id + mat.amount}
-                className="lg:col-span-2 flex items-center"
+                className="flex items-center lg:col-span-2"
               >
                 <SimpleRarityBox
-                  img={getUrl(`/${getFolder(i)}/${mat.id}.png`, 64, 64)}
+                  img={getUrl(`/materials/${mat.id}.png`, 64, 64)}
                   name={mat.amount.toString()}
                   rarity={mat.rarity}
-                  className="w-16 h-16"
+                  className="h-16 w-16"
                 />
                 <p className="hidden lg:block">{mat.name}</p>
               </div>
             ))}
           </div>
         ))}
-      <div className="grid grid-cols-6 lg:grid-cols-12 items-center px-4 py-5 rounded-b bg-vulcan-700">
-        <div className="flex justify-center items-center text-sm lg:text-base font-bold">
+      <div className="grid grid-cols-6 items-center rounded-b bg-vulcan-700 px-4 py-5 lg:grid-cols-12">
+        <div className="flex items-center justify-center text-sm font-bold lg:text-base">
           TOTAL
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <SimpleRarityBox
             img={getUrl(`/materials/mora.png`, 64, 64)}
             name={talentsTotal.cost.toString()}
             rarity={1}
-            className="w-16 h-16"
+            className="h-16 w-16"
           />
         </div>
         {talentsTotal.items.map((item) => (
@@ -96,7 +80,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
               img={getUrl(`/materials/${item.id}.png`, 64, 64)}
               name={item.amount.toString()}
               rarity={item.rarity || 1}
-              className="w-16 h-16"
+              className="h-16 w-16"
             />
           </div>
         ))}

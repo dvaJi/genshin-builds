@@ -12,13 +12,14 @@ import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMateria
 import Card from "@components/ui/Card";
 
 import { getUrl } from "@lib/imgUrl";
-import { getCharacterMostUsedBuild, getLocale } from "@lib/localData";
+import { getCharacterMostUsedBuild, getData, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
+import { Beta } from "interfaces/genshin/beta";
 
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface WeaponPageProps {
-  weapon: Weapon;
+  weapon: Weapon & { beta?: boolean };
   recommendedCharacters: string[];
   locale: string;
 }
@@ -47,6 +48,13 @@ const WeaponPage = ({
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
+      {weapon.beta ? (
+        <div className="flex items-center justify-center">
+          <div className="rounded border border-red-400/50 bg-red-600/50 p-1 text-center text-white">
+            Current content is a subject to change!
+          </div>
+        </div>
+      ) : null}
       <div className="mb-4 flex items-start justify-between">
         <div className="relative flex flex-wrap items-center px-2 lg:flex-nowrap lg:px-0">
           <div
@@ -115,12 +123,12 @@ const WeaponPage = ({
               <div>
                 <div className="text-xl">
                   {weapon.stats.primary}:{" "}
-                  {weapon.stats.levels[weaponStatIndex].primary}
+                  {weapon.stats.levels[weaponStatIndex]?.primary}
                 </div>
                 {weapon.stats.secondary && (
                   <div className="text-xl">
                     {weapon.stats.secondary}:{" "}
-                    {weapon.stats.levels[weaponStatIndex].secondary}
+                    {weapon.stats.levels[weaponStatIndex]?.secondary}
                   </div>
                 )}
               </div>
@@ -128,11 +136,11 @@ const WeaponPage = ({
                 <div>
                   <div className="text-xl">
                     {t({ id: "level", defaultMessage: "Level" })}:{" "}
-                    {weapon.stats.levels[weaponStatIndex].level}
+                    {weapon.stats.levels[weaponStatIndex]?.level}
                   </div>
                   <div className="text-xl">
                     {t({ id: "ascension", defaultMessage: "Ascension" })}:{" "}
-                    {weapon.stats.levels[weaponStatIndex].ascension}
+                    {weapon.stats.levels[weaponStatIndex]?.ascension}
                   </div>
                 </div>
               </div>
@@ -263,7 +271,13 @@ export const getStaticProps: GetStaticProps = async ({
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons();
-  const weapon = weapons.find((c) => c.id === params?.name);
+  const _weapon = weapons.find((c) => c.id === params?.name);
+  const beta = await getData<Beta>("genshin", "beta");
+  const _betaWeapon = beta[locale].weapons.find(
+    (c: any) => c.id === params?.name
+  );
+
+  const weapon = _weapon || _betaWeapon;
 
   if (!weapon) {
     return {
@@ -294,11 +308,15 @@ export const getStaticProps: GetStaticProps = async ({
 export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const genshinData = new GenshinData();
   const weapons = await genshinData.weapons({ select: ["id"] });
+  const beta = await getData<Beta>("genshin", "beta");
 
   const paths: { params: { name: string }; locale: string }[] = [];
 
   for (const locale of locales) {
     weapons.forEach((weapon) => {
+      paths.push({ params: { name: weapon.id }, locale });
+    });
+    beta["en"].weapons.forEach((weapon: any) => {
       paths.push({ params: { name: weapon.id }, locale });
     });
   }

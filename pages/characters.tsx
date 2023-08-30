@@ -230,7 +230,6 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     ...beta[locale].characters.map((c: any) => {
       // only include this columns: ["id", "name", "element", "rarity"]
       const { id, name, element, rarity } = c;
-      console.log(c);
       return { id, name, element, rarity, beta: true };
     }),
     ...characters,

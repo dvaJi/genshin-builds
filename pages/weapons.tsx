@@ -15,8 +15,9 @@ import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import { getCommon, getLocale } from "@lib/localData";
+import { getCommon, getData, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
+import { Beta } from "interfaces/genshin/beta";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -30,34 +31,28 @@ const WeaponsPage = ({
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
-  const [sortBy] = useState<"rarity" | "asc">("rarity");
 
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
   useEffect(() => {
     setWeaponFilter(
-      weapons
-        .filter((w) => {
-          let nameFilter = true;
-          let typeFil = true;
-          if (debouncedSearchTerm) {
-            nameFilter =
-              w.name.toUpperCase().indexOf(debouncedSearchTerm.toUpperCase()) >
-              -1;
-          }
+      weapons.filter((w) => {
+        let nameFilter = true;
+        let typeFil = true;
+        if (debouncedSearchTerm) {
+          nameFilter =
+            w.name.toUpperCase().indexOf(debouncedSearchTerm.toUpperCase()) >
+            -1;
+        }
 
-          if (typeFilter) {
-            typeFil = common[w.type] === typeFilter;
-          }
+        if (typeFilter) {
+          typeFil = common[w.type] === typeFilter;
+        }
 
-          return nameFilter && typeFil;
-        })
-        .sort((a, b) => {
-          if (sortBy === "asc") return a.name.localeCompare(b.name);
-          return b.rarity - a.rarity || a.name.localeCompare(b.name);
-        })
+        return nameFilter && typeFil;
+      })
     );
-  }, [debouncedSearchTerm, typeFilter, sortBy, weapons, common]);
+  }, [debouncedSearchTerm, typeFilter, weapons, common]);
 
   const { t } = useIntl("weapons");
   return (
@@ -139,6 +134,12 @@ const WeaponsPage = ({
             href={`/weapon/${weapon.id}`}
             className="h-26 relative m-2 inline-block w-24 scale-100 rounded-lg bg-vulcan-500 transition-all hover:scale-105 hover:bg-vulcan-400 hover:shadow-lg md:w-32 lg:h-auto lg:w-32 xl:w-32"
           >
+            {/* Badge */}
+            {(weapon as any).beta && (
+              <div className="absolute top-1 left-1 z-50 flex items-center justify-center rounded bg-vulcan-700/80 p-1 shadow">
+                <span className="text-xxs text-white">Beta</span>
+              </div>
+            )}
             <div
               className="flex flex-row justify-center rounded-t-lg rounded-br-3xl bg-cover"
               style={{
@@ -180,12 +181,21 @@ export const getStaticProps = async ({ locale = "en" }) => {
   });
 
   const common = await getCommon(locale, "genshin");
+  const beta = await getData<Beta>("genshin", "beta");
+
+  const allWeapons = [
+    ...beta[locale].weapons.map((c: any) => {
+      const { id, name, type, rarity } = c;
+      return { id, name, type, rarity, beta: true };
+    }),
+    ...weapons.sort((a, b) => {
+      return b.rarity - a.rarity || a.name.localeCompare(b.name);
+    }),
+  ];
 
   return {
     props: {
-      weapons: weapons.sort((a, b) => {
-        return b.rarity - a.rarity || a.name.localeCompare(b.name);
-      }),
+      weapons: allWeapons,
       lngDict,
       common,
       bgStyle: {
