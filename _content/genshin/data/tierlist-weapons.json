@@ -8,6 +8,7 @@
         "haran_geppaku_futsu"
       ],
       "1": [
+        "finale_of_the_deep",
         "summit_shaper",
         "skyward_blade",
         "aquila_favonia",
@@ -38,6 +39,8 @@
     "subdps": {
       "0": ["freedomsworn", "mistsplitter_reforged", "primordial_jade_cutter"],
       "1": [
+        "wolffang",
+        "fleuve_cendre_ferryman",
         "skyward_blade",
         "favonius_sword",
         "sacrificial_sword",
@@ -57,7 +60,7 @@
     },
     "support": {
       "0": ["freedomsworn", "favonius_sword", "xiphos_moonlight"],
-      "1": ["sapwood_blade", "sacrificial_sword"],
+      "1": ["fleuve_cendre_ferryman", "sapwood_blade", "sacrificial_sword"],
       "2": ["key_of_khajnisut", "primordial_jade_cutter"],
       "3": [],
       "4": ["travelers_handy_sword"]
@@ -87,6 +90,8 @@
         "skyrider_greatsword"
       ],
       "3": [
+        "tidal_shadow",
+        "talking_stick",
         "the_bell",
         "rainslasher",
         "royal_greatsword",
@@ -118,7 +123,7 @@
         "rainslasher",
         "makhaira_aquamarine"
       ],
-      "3": ["bloodtainted_greatsword"],
+      "3": ["tidal_shadow", "bloodtainted_greatsword"],
       "4": []
     },
     "support": {
@@ -148,7 +153,12 @@
         "skyward_spine",
         "deathmatch"
       ],
-      "2": ["wavebreakers_fin", "blackcliff_pole", "lithic_spear"],
+      "2": [
+        "ballad_of_the_fjords",
+        "wavebreakers_fin",
+        "blackcliff_pole",
+        "lithic_spear"
+      ],
       "3": [
         "dragons_bane",
         "crescent_pike",
@@ -169,6 +179,7 @@
         "wavebreakers_fin"
       ],
       "2": [
+        "ballad_of_the_fjords",
         "moonpiercer",
         "kitain_cross_spear",
         "missive_windspear",
@@ -182,6 +193,7 @@
       "0": ["favonius_lance"],
       "1": ["moonpiercer"],
       "2": [
+        "rightful_reward",
         "vortex_vanquisher",
         "missive_windspear",
         "staff_of_homa",
@@ -193,9 +205,15 @@
   },
   "bow": {
     "maindps": {
-      "0": ["polar_star", "thundering_pulse", "skyward_harp"],
+      "0": [
+        "the_first_great_magic",
+        "polar_star",
+        "thundering_pulse",
+        "skyward_harp"
+      ],
       "1": ["hunters_path", "aqua_simulacra", "amos_bow", "rust"],
       "2": [
+        "scion_of_the_blazing_sun",
         "hamayumi",
         "blackcliff_warbow",
         "the_viridescent_hunt",
@@ -232,7 +250,7 @@
         "sacrificial_bow"
       ],
       "2": ["alley_hunter"],
-      "3": ["windblume_ode", "kings_squire"],
+      "3": ["song_of_stillness", "windblume_ode", "kings_squire"],
       "4": ["end_of_the_line", "raven_bow", "sharpshooters_oath"]
     },
     "support": {
@@ -254,6 +272,7 @@
       ],
       "1": ["dodoco_tales", "solar_pearl"],
       "2": [
+        "flowing_purity",
         "everlasting_moonglow",
         "memory_of_dust",
         "wine_and_song",
@@ -278,7 +297,13 @@
         "mappa_mare",
         "wandering_evenstar"
       ],
-      "3": ["fruit_of_fulfillment", "magic_guide", "emerald_orb"],
+      "3": [
+        "flowing_purity",
+        "sacrificial_jade",
+        "fruit_of_fulfillment",
+        "magic_guide",
+        "emerald_orb"
+      ],
       "4": ["otherworldly_story"]
     },
     "support": {
