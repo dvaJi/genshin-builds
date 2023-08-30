@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Crement from "@components/Crement";
 import Metadata from "@components/Metadata";
 import SearchInput from "@components/SearchInput";
 import StarRarity from "@components/StarRarity";
@@ -30,8 +29,6 @@ const WeaponsPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
-  const [refinement, setRefinement] = useState(1);
-  const [weaponStatIndex, setWeaponStatIndex] = useState(0);
   const [typeFilter, setTypeFilter] = useState("");
   const [sortBy] = useState<"rarity" | "asc">("rarity");
 
@@ -133,110 +130,41 @@ const WeaponsPage = ({
             </button>
           </div> */}
         </div>
-        <div className="flex justify-center">
-          <div>
-            <Crement
-              title={t({ id: "stats", defaultMessage: "Stats" })}
-              currentValue={weaponStatIndex}
-              setValue={setWeaponStatIndex}
-              values={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}
-            />
-          </div>
-          <div className="mr-2 flex flex-col items-center">
-            <h3 className="font-semibold">
-              {t({ id: "level", defaultMessage: "Level" })}
-            </h3>
-            <div className="mx-2 text-lg font-bold text-white">
-              {weapons[0].stats.levels[weaponStatIndex].level}
-            </div>
-          </div>
-          <div className="mr-2 flex flex-col items-center">
-            <h3 className="font-semibold">
-              {t({ id: "ascension", defaultMessage: "Ascension" })}
-            </h3>
-            <div className="mx-2 text-lg font-bold text-white">
-              {weapons[0].stats.levels[weaponStatIndex].ascension}
-            </div>
-          </div>
-
-          <div>
-            <Crement
-              title={t({ id: "refinement", defaultMessage: "Refinement" })}
-              currentValue={refinement}
-              values={[1, 2, 3, 4, 5]}
-              setValue={setRefinement}
-            />
-          </div>
-        </div>
       </div>
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <div className="">
+      <div className="flex flex-wrap justify-center">
         {filteredWeapons.map((weapon) => (
           <Link
             key={weapon.id}
             href={`/weapon/${weapon.id}`}
-            className="mb-2 flex flex-col rounded border border-vulcan-700 bg-vulcan-800 hover:border-vulcan-500 hover:bg-vulcan-700"
+            className="h-26 relative m-2 inline-block w-24 scale-100 rounded-lg bg-vulcan-500 transition-all hover:scale-105 hover:bg-vulcan-400 hover:shadow-lg md:w-32 lg:h-auto lg:w-32 xl:w-32"
           >
-            <div className="flex h-full flex-row">
-              <div
-                className="relative flex flex-none items-center justify-center rounded rounded-br-none rounded-tr-none bg-cover"
-                style={{
-                  backgroundImage: `url(${getUrl(
-                    `/bg_${weapon.rarity}star.png`
-                  )})`,
-                }}
-              >
-                <LazyLoadImage
+            <div
+              className="flex flex-row justify-center rounded-t-lg rounded-br-3xl bg-cover"
+              style={{
+                backgroundImage: `url(${getUrl(
+                  `/bg_${weapon.rarity}star.png`
+                )})`,
+              }}
+            >
+              <span>
+                <img
                   src={getUrl(`/weapons/${weapon.id}.png`, 140, 140)}
-                  height={126}
-                  width={126}
                   alt={weapon.name}
+                  className="h-24 rounded-t-lg rounded-br-3xl md:h-32 lg:h-32 xl:h-32"
                 />
-                <div className="absolute bottom-0 flex w-full items-center justify-center bg-gray-900 bg-opacity-50 px-2 py-0.5">
-                  <StarRarity
-                    starClassname="w-4"
-                    rarity={weapon.rarity}
-                    starsSize={42}
-                  />
-                </div>
-              </div>
-              <div className="ml-1 p-3">
-                <div className="flex">
-                  <h3 className="font-bold text-white">{weapon.name}</h3>
-                </div>
-                <div>
-                  <h3 className="text-sm text-gray-300">
-                    <span className="font-semibold">
-                      {t({ id: "type", defaultMessage: "Type" })}:
-                    </span>{" "}
-                    {weapon.type} |{" "}
-                    {weapon.stats.secondary && (
-                      <>
-                        <span className="font-semibold">
-                          {t({
-                            id: "secondary",
-                            defaultMessage: "Secondary",
-                          })}
-                          :
-                        </span>{" "}
-                        {weapon.stats.secondary}{" "}
-                        {weapon.stats.levels[weaponStatIndex]?.secondary} |{" "}
-                      </>
-                    )}
-                    <span className="font-semibold">
-                      {weapon.stats.primary}:
-                    </span>{" "}
-                    {weapon.stats.levels[weaponStatIndex]?.primary}
-                  </h3>
-                </div>
-                <p
-                  className="weapon-bonus"
-                  dangerouslySetInnerHTML={{
-                    __html: weapon.refinements[refinement - 1]?.desc,
-                  }}
+              </span>
+              <div className="absolute top-20 md:top-28 lg:top-28 xl:top-28">
+                <StarRarity
+                  starClassname="w-5"
+                  rarity={weapon.rarity}
+                  starsSize={46}
                 />
               </div>
             </div>
+            <h3 className="flex h-9 items-center justify-center overflow-hidden rounded-b-lg text-center text-xs leading-none text-slate-200 lg:text-sm">
+              {weapon.name}
+            </h3>
           </Link>
         ))}
       </div>
@@ -248,14 +176,16 @@ export const getStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const weapons = await genshinData.weapons({
-    select: ["id", "rarity", "name", "stats", "refinements", "type"],
+    select: ["id", "rarity", "name", "type"],
   });
 
   const common = await getCommon(locale, "genshin");
 
   return {
     props: {
-      weapons,
+      weapons: weapons.sort((a, b) => {
+        return b.rarity - a.rarity || a.name.localeCompare(b.name);
+      }),
       lngDict,
       common,
       bgStyle: {
