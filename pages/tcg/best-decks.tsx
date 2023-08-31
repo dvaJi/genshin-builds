@@ -10,7 +10,7 @@ import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
-import { getLocale } from "@lib/localData";
+import { getData, getLocale } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -107,16 +107,18 @@ function BestDecks({ decks }: Props) {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const bestDecks = require(`../../_content/genshin/data/bestdecks.json`) as {
-    c: string[];
-    a: string[];
-  }[];
+  const bestDecks = await getData<
+    {
+      c: string[];
+      a: string[];
+    }[]
+  >("genshin", "bestdecks");
 
   const cCharacters = await genshinData.tcgCharacters({
-    select: ["id", "name", "attributes"],
+    select: ["id", "name"],
   });
   const cActions = await genshinData.tcgActions({
-    select: ["id", "name", "attributes"],
+    select: ["id", "name"],
   });
 
   const decks = bestDecks.map((deck) => {
