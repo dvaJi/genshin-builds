@@ -10,7 +10,8 @@
     "relics": "圣遗物",
     "lightcones": "光锥",
     "tierlist": "排行榜",
-    "showcase": "角色展示"
+    "showcase": "角色展示",
+    "messages": "消息"
   },
   "characters": {
     "title": "Honkai: Star Rail所有角色列表",
@@ -63,5 +64,19 @@
     "enter_uid_input": "输入UID",
     "submit": "提交",
     "loading": "加载中..."
+  },
+  "messages": {
+    "title": "崩坏3rd：星轨消息",
+    "description": "崩坏3rd：星轨中的所有消息完整列表。",
+    "messages": "消息",
+    "messages_desc": "消息是星轨冒险者从其他角色和NPC收到的文字通信。"
+  },
+  "message": {
+    "title": "崩坏3rd：星轨 {name} 消息",
+    "description": "发现来自 {name} - {signature} 的所有消息",
+    "messages": "消息",
+    "related_messages": "相关消息",
+    "section": "章节 {sectionNumber}",
+    "message": "消息 {messageNumber}"
   }
 }

@@ -10,7 +10,8 @@
     "relics": "xá lợi",
     "lightcones": "Nón ánh sáng",
     "tierlist": "danh sách cấp bậc",
-    "showcase": "Trưng bày"
+    "showcase": "Trưng bày",
+    "messages": "Thông điệp"
   },
   "characters": {
     "title": "Honkai: Star Rail Danh sách tất cả nhân vật",
@@ -63,5 +64,19 @@
     "enter_uid_input": "Nhập UID",
     "submit": "Gửi",
     "loading": "Đang tải..."
+  },
+  "messages": {
+    "title": "Thông điệp Honkai: Star Rail",
+    "description": "Danh sách đầy đủ tất cả thông điệp trong Honkai: Star Rail.",
+    "messages": "Thông điệp",
+    "messages_desc": "Thông điệp là các giao tiếp văn bản mà Người mở đường nhận được từ các Nhân vật và NPC khác."
+  },
+  "message": {
+    "title": "Thông điệp Honkai: Star Rail của {name}",
+    "description": "Khám phá tất cả thông điệp từ {name} - {signature}",
+    "messages": "Thông điệp",
+    "related_messages": "Thông điệp Liên quan",
+    "section": "Phần {sectionNumber}",
+    "message": "Thông điệp {messageNumber}"
   }
 }

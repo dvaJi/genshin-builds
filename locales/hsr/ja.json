@@ -10,7 +10,8 @@
     "relics": "遺物",
     "lightcones": "ライトコーン",
     "tierlist": "ティアリスト",
-    "showcase": "ショーケース"
+    "showcase": "ショーケース",
+    "messages": "メッセージ"
   },
   "characters": {
     "title": "本懐：スターレール 全キャラクター一覧",
@@ -63,5 +64,19 @@
     "enter_uid_input": "UIDを入力",
     "submit": "送信",
     "loading": "読み込み中..."
+  },
+  "messages": {
+    "title": "崩壊3rd：スターレールのメッセージ",
+    "description": "崩壊3rd：スターレールの全メッセージのリスト。",
+    "messages": "メッセージ",
+    "messages_desc": "メッセージは、主人公が他のキャラクターやNPCから受け取るテキスト通信です。"
+  },
+  "message": {
+    "title": "崩壊3rd：スターレール {name} のメッセージ",
+    "description": "{name} からの全メッセージ - {signature} を発見",
+    "messages": "メッセージ",
+    "related_messages": "関連メッセージ",
+    "section": "セクション {sectionNumber}",
+    "message": "メッセージ {messageNumber}"
   }
 }

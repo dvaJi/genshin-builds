@@ -10,7 +10,8 @@
     "relics": "relíquias",
     "lightcones": "cones de luz",
     "tierlist": "Lista de níveis",
-    "showcase": "Mostrar"
+    "showcase": "Mostrar",
+    "messages": "Mensagens"
   },
   "characters": {
     "title": "Honkai: Star Rail Lista de todos os personagens",
@@ -63,5 +64,19 @@
     "enter_uid_input": "Insira seu UID",
     "submit": "Enviar",
     "loading": "Carregando..."
+  },
+  "messages": {
+    "title": "Mensagens de Honkai: Star Rail",
+    "description": "Uma lista completa de todas as mensagens em Honkai: Star Rail.",
+    "messages": "Mensagens",
+    "messages_desc": "Mensagens são comunicações de texto que o Trailblazer recebe de outros personagens e NPCs."
+  },
+  "message": {
+    "title": "Mensagens de Honkai: Star Rail de {name}",
+    "description": "Descubra todas as mensagens de {name} - {signature}",
+    "messages": "Mensagens",
+    "related_messages": "Mensagens Relacionadas",
+    "section": "Seção {sectionNumber}",
+    "message": "Mensagem {messageNumber}"
   }
 }

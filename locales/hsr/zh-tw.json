@@ -10,7 +10,8 @@
     "relics": "文物",
     "lightcones": "光錐",
     "tierlist": "等級清單",
-    "showcase": "展示"
+    "showcase": "展示",
+    "messages": "訊息"
   },
   "characters": {
     "title": "崩壞：星軌全角色一覽",
@@ -63,5 +64,19 @@
     "enter_uid_input": "输入UID",
     "submit": "提交",
     "loading": "加载中..."
+  },
+  "messages": {
+    "title": "崩壞3rd：星軌訊息",
+    "description": "崩壞3rd：星軌中的所有訊息完整列表。",
+    "messages": "訊息",
+    "messages_desc": "訊息是星軌冒險者從其他角色和NPC收到的文字通訊。"
+  },
+  "message": {
+    "title": "崩壞3rd：星軌 {name} 訊息",
+    "description": "發現來自 {name} - {signature} 的所有訊息",
+    "messages": "訊息",
+    "related_messages": "相關訊息",
+    "section": "章節 {sectionNumber}",
+    "message": "訊息 {messageNumber}"
   }
 }

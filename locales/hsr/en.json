@@ -10,7 +10,8 @@
     "relics": "Relics",
     "lightcones": "Light Cones",
     "tierlist": "Tierlist",
-    "showcase": "Showcase"
+    "showcase": "Showcase",
+    "messages": "Messages"
   },
   "characters": {
     "title": "Honkai: Star Rail All Characters List",
@@ -52,7 +53,7 @@
   "tierlist": {
     "title": "Honkai: Star Rail Tier List",
     "description": "Discover a comprehensive tier list ranks all the 5-Star, 4-Star, DPS, and support characters in HSR, allowing you to make informed decisions about your team composition. Stay ahead of the competition and unleash the true potential of your squad with our expertly curated guide. Explore the Tier List and uncover the powerhouses that will lead you to victory in Honkai: Star Rail.",
-    "tierlist":"Tierlist",
+    "tierlist": "Tierlist",
     "tierlist_desc": "Explore the Ultimate Honkai: Star Rail Tier List! Discover the top-performing characters in HSR, including 5-Star, 4-Star, DPS, and support characters, all expertly ranked in this comprehensive guide. Stay ahead of the game and make informed choices with this invaluable resource."
   },
   "showcase": {
@@ -63,5 +64,19 @@
     "enter_uid_input": "Enter UID",
     "submit": "Submit",
     "loading": "Loading..."
+  },
+  "messages": {
+    "title": "Honkai: Star Rail Messages",
+    "description": "A complete list of all messages in Honkai: Star Rail.",
+    "messages": "Messages",
+    "messages_desc": "Messages are text communications that the Trailblazer receives from other Characters and NPCs."
+  },
+  "message": {
+    "title": "Honkai: Star Rail {name} Messages",
+    "description": "Discover all messages from {name} - {signature}",
+    "messages": "Messages",
+    "related_messages": "Related Messages",
+    "section": "Section {sectionNumber}",
+    "message": "Message {messageNumber}"
   }
 }

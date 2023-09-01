@@ -15,6 +15,7 @@ const navRoutes: NavRoutes[] = [
   { id: "relics", name: "Relics", href: "/hsr/relics" },
   { id: "lightcones", name: "Light Cones", href: "/hsr/lightcones" },
   { id: "showcase", name: "Showcase", href: "/hsr/showcase" },
+  { id: "messages", name: "Messages", href: "/hsr/message" },
 ];
 
 const LayoutHeader = () => {

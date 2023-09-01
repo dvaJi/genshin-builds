@@ -10,7 +10,8 @@
     "relics": "Relikte",
     "lightcones": "Lichtkegel",
     "tierlist": "Tierliste",
-    "showcase": "Ausstellung"
+    "showcase": "Ausstellung",
+    "messages": "Nachrichten"
   },
   "characters": {
     "title": "Honkai: Star Rail Liste aller Charaktere",
@@ -63,5 +64,19 @@
     "enter_uid_input": "UID eingeben",
     "submit": "Senden",
     "loading": "Wird geladen..."
+  },
+  "messages": {
+    "title": "Honkai: Star Rail Nachrichten",
+    "description": "Eine vollständige Liste aller Nachrichten in Honkai: Star Rail.",
+    "messages": "Nachrichten",
+    "messages_desc": "Nachrichten sind Textkommunikationen, die der Trailblazer von anderen Charakteren und NPCs erhält."
+  },
+  "message": {
+    "title": "Honkai: Star Rail Nachrichten von {name}",
+    "description": "Entdecke alle Nachrichten von {name} - {signature}",
+    "messages": "Nachrichten",
+    "related_messages": "Verwandte Nachrichten",
+    "section": "Abschnitt {sectionNumber}",
+    "message": "Nachricht {messageNumber}"
   }
 }

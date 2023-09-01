@@ -10,7 +10,8 @@
     "relics": "พระธาตุ",
     "lightcones": "กรวยไฟ",
     "tierlist": "รายการระดับ",
-    "showcase": "แสดงความสำคัญ"
+    "showcase": "แสดงความสำคัญ",
+    "messages": "ข้อความ"
   },
   "characters": {
     "title": "Honkai: Star Rail รายชื่อตัวละครทั้งหมด",
@@ -63,5 +64,19 @@
     "enter_uid_input": "ป้อน UID",
     "submit": "ส่ง",
     "loading": "กำลังโหลด..."
+  },
+  "messages": {
+    "title": "ข้อความ Honkai: Star Rail",
+    "description": "รายการข้อความทั้งหมดใน Honkai: Star Rail",
+    "messages": "ข้อความ",
+    "messages_desc": "ข้อความเป็นการสื่อสารทางข้อความที่ผู้ผจญภัยได้รับจากตัวละครและตัวละครที่ไม่ใช่ผู้เล่น"
+  },
+  "message": {
+    "title": "ข้อความ Honkai: Star Rail ของ {name}",
+    "description": "ค้นพบข้อความทั้งหมดจาก {name} - {signature}",
+    "messages": "ข้อความ",
+    "related_messages": "ข้อความที่เกี่ยวข้อง",
+    "section": "ส่วนที่ {sectionNumber}",
+    "message": "ข้อความที่ {messageNumber}"
   }
 }

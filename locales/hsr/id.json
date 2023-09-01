@@ -10,7 +10,8 @@
     "relics": "Peninggalan",
     "lightcones": "Kerucut Cahaya",
     "tierlist": "Daftar tingkatan",
-    "showcase": "Tampilan"
+    "showcase": "Tampilan",
+    "messages": "Pesan"
   },
   "characters": {
     "title": "Honkai: Daftar Semua Karakter Star Rail",
@@ -63,5 +64,19 @@
     "enter_uid_input": "Masukkan UID",
     "submit": "Kirim",
     "loading": "Memuat..."
+  },
+  "messages": {
+    "title": "Pesan Honkai: Star Rail",
+    "description": "Daftar lengkap semua pesan di Honkai: Star Rail.",
+    "messages": "Pesan",
+    "messages_desc": "Pesan adalah komunikasi teks yang diterima Trailblazer dari Karakter dan NPC lainnya."
+  },
+  "message": {
+    "title": "Pesan Honkai: Star Rail {name}",
+    "description": "Temukan semua pesan dari {name} - {signature}",
+    "messages": "Pesan",
+    "related_messages": "Pesan Terkait",
+    "section": "Bagian {sectionNumber}",
+    "message": "Pesan {messageNumber}"
   }
 }

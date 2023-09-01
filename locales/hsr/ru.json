@@ -10,7 +10,8 @@
     "relics": "Реликвии",
     "lightcones": "Световые конусы",
     "tierlist": "Список уровней",
-    "showcase": "Витрина"
+    "showcase": "Витрина",
+    "messages": "Сообщения"
   },
   "characters": {
     "title": "Honkai: Star Rail Список всех персонажей",
@@ -63,5 +64,19 @@
     "enter_uid_input": "Введите UID",
     "submit": "Отправить",
     "loading": "Загрузка..."
+  },
+  "messages": {
+    "title": "Сообщения Honkai: Star Rail",
+    "description": "Полный список всех сообщений в Honkai: Star Rail.",
+    "messages": "Сообщения",
+    "messages_desc": "Сообщения - это текстовые коммуникации, которые Трейлблейзер получает от других персонажей и NPC."
+  },
+  "message": {
+    "title": "Сообщения Honkai: Star Rail от {name}",
+    "description": "Откройте все сообщения от {name} - {signature}",
+    "messages": "Сообщения",
+    "related_messages": "Связанные сообщения",
+    "section": "Раздел {sectionNumber}",
+    "message": "Сообщение {messageNumber}"
   }
 }

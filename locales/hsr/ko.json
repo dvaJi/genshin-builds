@@ -10,7 +10,8 @@
     "relics": "유물",
     "lightcones": "라이트 콘",
     "tierlist": "티어리스트",
-    "showcase": "쇼케이스"
+    "showcase": "쇼케이스",
+    "messages": "메시지"
   },
   "characters": {
     "title": "Honkai: Star Rail 전체 캐릭터 목록",
@@ -63,5 +64,19 @@
     "enter_uid_input": "UID 입력",
     "submit": "제출",
     "loading": "로딩 중..."
+  },
+  "messages": {
+    "title": "혼케이: 스타 레일 메시지",
+    "description": "혼케이: 스타 레일의 모든 메시지 목록.",
+    "messages": "메시지",
+    "messages_desc": "메시지는 탐험자가 다른 캐릭터 및 NPC로부터 받는 텍스트 통신입니다."
+  },
+  "message": {
+    "title": "혼케이: 스타 레일 {name} 메시지",
+    "description": "{name}의 모든 메시지 - {signature} 확인",
+    "messages": "메시지",
+    "related_messages": "관련 메시지",
+    "section": "섹션 {sectionNumber}",
+    "message": "메시지 {messageNumber}"
   }
 }
