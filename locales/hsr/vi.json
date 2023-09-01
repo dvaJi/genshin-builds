@@ -11,7 +11,8 @@
     "lightcones": "Nón ánh sáng",
     "tierlist": "danh sách cấp bậc",
     "showcase": "Trưng bày",
-    "messages": "Thông điệp"
+    "messages": "Thông điệp",
+    "items": "Vật phẩm"
   },
   "characters": {
     "title": "Honkai: Star Rail Danh sách tất cả nhân vật",
@@ -78,5 +79,19 @@
     "related_messages": "Thông điệp Liên quan",
     "section": "Phần {sectionNumber}",
     "message": "Thông điệp {messageNumber}"
+  },
+  "items": {
+    "title": "Danh sách tất cả các vật phẩm trong Honkai: Star Rail",
+    "description": "Danh sách đầy đủ tất cả các vật phẩm trong Honkai: Star Rail.",
+    "items": "Vật phẩm",
+    "items_desc": "Vật phẩm là những đối tượng có thể thu thập từ Honkai: Star Rail. Đa số vật phẩm có thể được truy cập thông qua kho hàng."
+  },
+  "item": {
+    "title": "Vật phẩm {itemName} trong Honkai: Star Rail",
+    "description": "Thông tin về vật phẩm {itemName} loại {itemType}.",
+    "story": "Câu chuyện",
+    "source": "Nguồn",
+    "world_level_required": "Yêu cầu Cấp độ Thế giới",
+    "cost": "Chi phí"
   }
 }

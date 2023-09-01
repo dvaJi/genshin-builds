@@ -11,7 +11,8 @@
     "lightcones": "Kerucut Cahaya",
     "tierlist": "Daftar tingkatan",
     "showcase": "Tampilan",
-    "messages": "Pesan"
+    "messages": "Pesan",
+    "items": "Item"
   },
   "characters": {
     "title": "Honkai: Daftar Semua Karakter Star Rail",
@@ -78,5 +79,19 @@
     "related_messages": "Pesan Terkait",
     "section": "Bagian {sectionNumber}",
     "message": "Pesan {messageNumber}"
+  },
+  "items": {
+    "title": "Daftar Semua Item di Honkai: Star Rail",
+    "description": "Daftar lengkap semua item di Honkai: Star Rail.",
+    "items": "Item",
+    "items_desc": "Item adalah objek yang dapat dikoleksi dari Honkai: Star Rail. Sebagian besar item dapat diakses melalui Inventori."
+  },
+  "item": {
+    "title": "Item {itemName} di Honkai: Star Rail",
+    "description": "Informasi tentang item {itemName} tipe {itemType}.",
+    "story": "Kisah",
+    "source": "Sumber",
+    "world_level_required": "Tingkat Dunia yang Diperlukan",
+    "cost": "Biaya"
   }
 }

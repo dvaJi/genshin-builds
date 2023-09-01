@@ -11,7 +11,8 @@
     "lightcones": "光锥",
     "tierlist": "排行榜",
     "showcase": "角色展示",
-    "messages": "消息"
+    "messages": "消息",
+    "items": "物品"
   },
   "characters": {
     "title": "Honkai: Star Rail所有角色列表",
@@ -78,5 +79,19 @@
     "related_messages": "相关消息",
     "section": "章节 {sectionNumber}",
     "message": "消息 {messageNumber}"
+  },
+  "items": {
+    "title": "崩坏3rd：星轨所有物品列表",
+    "description": "崩坏3rd：星轨中的所有物品完整列表。",
+    "items": "物品",
+    "items_desc": "物品是崩坏3rd：星轨中的可收集对象。大部分物品可以通过库存访问。"
+  },
+  "item": {
+    "title": "崩坏3rd：星轨 {itemName} 物品",
+    "description": "{itemName} {itemType} 物品的相关信息。",
+    "story": "故事",
+    "source": "来源",
+    "world_level_required": "所需世界等级",
+    "cost": "花费"
   }
 }

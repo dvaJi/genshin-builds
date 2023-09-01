@@ -11,7 +11,8 @@
     "lightcones": "Lichtkegel",
     "tierlist": "Tierliste",
     "showcase": "Ausstellung",
-    "messages": "Nachrichten"
+    "messages": "Nachrichten",
+    "items": "Gegenstände"
   },
   "characters": {
     "title": "Honkai: Star Rail Liste aller Charaktere",
@@ -78,5 +79,19 @@
     "related_messages": "Verwandte Nachrichten",
     "section": "Abschnitt {sectionNumber}",
     "message": "Nachricht {messageNumber}"
+  },
+  "items": {
+    "title": "Honkai: Star Rail Liste aller Gegenstände",
+    "description": "Eine vollständige Liste aller Gegenstände in Honkai: Star Rail.",
+    "items": "Gegenstände",
+    "items_desc": "Gegenstände sind sammelbare Objekte aus Honkai: Star Rail. Die Mehrheit der Gegenstände kann über das Inventar aufgerufen werden."
+  },
+  "item": {
+    "title": "Honkai: Star Rail {itemName} Gegenstand",
+    "description": "Informationen über den {itemName} {itemType} Gegenstand.",
+    "story": "Geschichte",
+    "source": "Quelle",
+    "world_level_required": "Benötigte Weltstufe",
+    "cost": "Kosten"
   }
 }

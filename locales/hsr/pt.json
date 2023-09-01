@@ -11,7 +11,8 @@
     "lightcones": "cones de luz",
     "tierlist": "Lista de níveis",
     "showcase": "Mostrar",
-    "messages": "Mensagens"
+    "messages": "Mensagens",
+    "items": "Itens"
   },
   "characters": {
     "title": "Honkai: Star Rail Lista de todos os personagens",
@@ -78,5 +79,19 @@
     "related_messages": "Mensagens Relacionadas",
     "section": "Seção {sectionNumber}",
     "message": "Mensagem {messageNumber}"
+  },
+  "items": {
+    "title": "Lista de Todos os Itens em Honkai: Star Rail",
+    "description": "Uma lista completa de todos os itens em Honkai: Star Rail.",
+    "items": "Itens",
+    "items_desc": "Itens são objetos colecionáveis de Honkai: Star Rail. A maioria dos itens pode ser acessada através do Inventário."
+  },
+  "item": {
+    "title": "Item {itemName} em Honkai: Star Rail",
+    "description": "Informações sobre o item {itemName} do tipo {itemType}.",
+    "story": "História",
+    "source": "Fonte",
+    "world_level_required": "Nível de Mundo Requerido",
+    "cost": "Custo"
   }
 }

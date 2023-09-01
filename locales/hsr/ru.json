@@ -11,7 +11,8 @@
     "lightcones": "Световые конусы",
     "tierlist": "Список уровней",
     "showcase": "Витрина",
-    "messages": "Сообщения"
+    "messages": "Сообщения",
+    "items": "Предметы"
   },
   "characters": {
     "title": "Honkai: Star Rail Список всех персонажей",
@@ -78,5 +79,19 @@
     "related_messages": "Связанные сообщения",
     "section": "Раздел {sectionNumber}",
     "message": "Сообщение {messageNumber}"
+  },
+  "items": {
+    "title": "Список всех предметов в Honkai: Star Rail",
+    "description": "Полный список всех предметов в Honkai: Star Rail.",
+    "items": "Предметы",
+    "items_desc": "Предметы - это собираемые объекты из Honkai: Star Rail. Большинство предметов можно найти в инвентаре."
+  },
+  "item": {
+    "title": "Предмет {itemName} в Honkai: Star Rail",
+    "description": "Информация о предмете {itemName} типа {itemType}.",
+    "story": "История",
+    "source": "Источник",
+    "world_level_required": "Требуется уровень мира",
+    "cost": "Стоимость"
   }
 }

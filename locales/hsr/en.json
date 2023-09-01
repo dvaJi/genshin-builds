@@ -11,7 +11,8 @@
     "lightcones": "Light Cones",
     "tierlist": "Tierlist",
     "showcase": "Showcase",
-    "messages": "Messages"
+    "messages": "Messages",
+    "items": "Items"
   },
   "characters": {
     "title": "Honkai: Star Rail All Characters List",
@@ -78,5 +79,19 @@
     "related_messages": "Related Messages",
     "section": "Section {sectionNumber}",
     "message": "Message {messageNumber}"
+  },
+  "items": {
+    "title": "Honkai: Star Rail All Items List",
+    "description": "A complete list of all items in Honkai: Star Rail.",
+    "items": "Items",
+    "items_desc": "Items are collectible objects from Honkai: Star Rail. Majority of the items can be accessed through the Inventory."
+  },
+  "item": {
+    "title": "Honkai: Star Rail {itemName} Item",
+    "description": "Information about the {itemName} {itemType} item.",
+    "story": "Story",
+    "source": "Source",
+    "world_level_required": "World Level Required",
+    "cost": "Cost"
   }
 }

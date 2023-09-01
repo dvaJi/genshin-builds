@@ -11,7 +11,8 @@
     "lightcones": "光錐",
     "tierlist": "等級清單",
     "showcase": "展示",
-    "messages": "訊息"
+    "messages": "訊息",
+    "items": "物品"
   },
   "characters": {
     "title": "崩壞：星軌全角色一覽",
@@ -78,5 +79,19 @@
     "related_messages": "相關訊息",
     "section": "章節 {sectionNumber}",
     "message": "訊息 {messageNumber}"
+  },
+  "items": {
+    "title": "崩壞3rd：星軌所有物品列表",
+    "description": "崩壞3rd：星軌中的所有物品完整列表。",
+    "items": "物品",
+    "items_desc": "物品是崩壞3rd：星軌中的可收集對象。大部分物品可以通過庫存訪問。"
+  },
+  "item": {
+    "title": "崩壞3rd：星軌 {itemName} 物品",
+    "description": "{itemName} {itemType} 物品的相關資訊。",
+    "story": "故事",
+    "source": "來源",
+    "world_level_required": "所需世界等級",
+    "cost": "花費"
   }
 }
