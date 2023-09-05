@@ -251,7 +251,12 @@ export const getStaticProps: GetStaticProps = async ({
     artifactsMap[a] = artifacts.find((w) => w.id === a);
   });
   item.food?.forEach((f: string) => {
-    foodMap[f] = food.find((w) => w.id === f);
+    const foodFound = food.find((w) => w.id === f);
+    foodMap[f] = {
+      id: foodFound?.id,
+      name: foodFound?.name,
+      rarity: foodFound?.rarity,
+    };
     const special = food.find((w) => {
       if (!w.results?.special) return false;
       return w.results?.special?.id === f;

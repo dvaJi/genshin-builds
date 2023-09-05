@@ -1,14 +1,15 @@
-import dynamic from "next/dynamic";
-import { GetStaticProps } from "next";
 import HSRData, { type Relic } from "hsr-data";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import { Tooltip } from "react-tooltip";
 
 import Metadata from "@components/Metadata";
 
-import { getLocale } from "@lib/localData";
+import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHsrUrl, getHsrUrlLQ } from "@lib/imgUrl";
+import { getLocale } from "@lib/localData";
 import { localeToHSRLang } from "@utils/locale-to-lang";
-import useIntl from "@hooks/use-intl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -76,7 +77,13 @@ function HSRRelics({ relics }: Props) {
                 </div>
                 <div className="flex">
                   {relic.pieces.map((piece) => (
-                    <div key={piece.id} className="mx-1 flex">
+                    <div
+                      key={piece.id}
+                      className="mx-1 flex"
+                      data-tooltip-id="item_tooltip"
+                      data-tooltip-content={piece.name}
+                      data-tooltip-place="bottom"
+                    >
                       <img
                         src={getHsrUrl(`/pieces/${piece.id}.png`, 48, 48)}
                         width={36}
@@ -100,6 +107,7 @@ function HSRRelics({ relics }: Props) {
           </div>
         ))}
       </menu>
+      <Tooltip id="item_tooltip" />
     </div>
   );
 }
@@ -115,7 +123,15 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   return {
     props: {
-      relics,
+      relics: relics.map((r) => ({
+        id: r.id,
+        name: r.name,
+        effects: r.effects,
+        pieces: r.pieces.map((p) => ({
+          id: p.id,
+          name: p.name,
+        })),
+      })),
       lngDict,
       bgStyle: {
         image: getHsrUrlLQ(`/bg/normal-bg.webp`),
