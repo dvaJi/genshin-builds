@@ -169,6 +169,12 @@
           "w_id": "key_of_khajnisut",
           "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 2
+        },
+        {
+          "id": "freminet",
+          "w_id": "song_of_broken_pines",
+          "a_ids": ["pale_flame"],
+          "min_c": 6
         }
       ],
       "4": [
@@ -185,24 +191,6 @@
           "min_c": 6
         },
         {
-          "id": "dehya",
-          "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["vourukashas_glow"],
-          "min_c": 0
-        },
-        {
-          "id": "baizhu",
-          "w_id": "lost_prayer_to_the_sacred_winds",
-          "a_ids": ["gilded_dreams"],
-          "min_c": 0
-        },
-        {
-          "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
-          "min_c": 2
-        },
-        {
           "id": "kaeya",
           "w_id": "mistsplitter_reforged",
           "a_ids": ["blizzard_strayer"],
@@ -210,6 +198,12 @@
         }
       ],
       "5": [
+        {
+          "id": "dehya",
+          "w_id": "beacon_of_the_reed_sea",
+          "a_ids": ["vourukashas_glow"],
+          "min_c": 0
+        },
         {
           "id": "rosaria",
           "w_id": "staff_of_homa",
@@ -470,8 +464,8 @@
         },
         {
           "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
+          "w_id": "the_catch",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
         }
       ],
@@ -544,8 +538,8 @@
       "1": [
         {
           "id": "baizhu",
-          "w_id": "lost_prayer_to_the_sacred_winds",
-          "a_ids": ["gilded_dreams"],
+          "w_id": "jadefalls_splendor",
+          "a_ids": ["deepwood_memories"],
           "min_c": 0
         },
         {
@@ -692,8 +686,8 @@
         },
         {
           "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
+          "w_id": "the_catch",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 2
         },
         {
@@ -925,15 +919,15 @@
       ],
       "4": [
         {
-          "id": "nilou",
-          "w_id": "key_of_khajnisut",
-          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
+          "id": "freminet",
+          "w_id": "song_of_broken_pines",
+          "a_ids": ["pale_flame"],
           "min_c": 0
         },
         {
-          "id": "dehya",
-          "w_id": "beacon_of_the_reed_sea",
-          "a_ids": ["vourukashas_glow"],
+          "id": "nilou",
+          "w_id": "key_of_khajnisut",
+          "a_ids": ["tenacity_of_the_millelith", "vourukashas_glow"],
           "min_c": 0
         },
         {
@@ -943,21 +937,9 @@
           "min_c": 0
         },
         {
-          "id": "baizhu",
-          "w_id": "lost_prayer_to_the_sacred_winds",
-          "a_ids": ["gilded_dreams"],
-          "min_c": 0
-        },
-        {
           "id": "ningguang",
           "w_id": "memory_of_dust",
           "a_ids": ["gladiators_finale", "archaic_petra"],
-          "min_c": 0
-        },
-        {
-          "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
           "min_c": 0
         },
         {
@@ -980,6 +962,12 @@
         }
       ],
       "5": [
+        {
+          "id": "dehya",
+          "w_id": "beacon_of_the_reed_sea",
+          "a_ids": ["vourukashas_glow"],
+          "min_c": 0
+        },
         {
           "id": "barbara",
           "w_id": "sacrificial_fragments",
@@ -1218,8 +1206,8 @@
         },
         {
           "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
+          "w_id": "the_catch",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 0
         },
         {
@@ -1290,8 +1278,8 @@
       "1": [
         {
           "id": "baizhu",
-          "w_id": "lost_prayer_to_the_sacred_winds",
-          "a_ids": ["gilded_dreams"],
+          "w_id": "jadefalls_splendor",
+          "a_ids": ["deepwood_memories"],
           "min_c": 0
         },
         {
@@ -1426,8 +1414,8 @@
         },
         {
           "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
+          "w_id": "the_catch",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 0
         },
         {
@@ -1685,6 +1673,12 @@
           "w_id": "redhorn_stonethresher",
           "a_ids": ["husk_of_opulent_dreams"],
           "min_c": 6
+        },
+        {
+          "id": "freminet",
+          "w_id": "song_of_broken_pines",
+          "a_ids": ["pale_flame"],
+          "min_c": 6
         }
       ],
       "4": [
@@ -1698,18 +1692,6 @@
           "id": "fischl",
           "w_id": "thundering_pulse",
           "a_ids": ["thundering_fury", "gladiators_finale"],
-          "min_c": 6
-        },
-        {
-          "id": "baizhu",
-          "w_id": "lost_prayer_to_the_sacred_winds",
-          "a_ids": ["gilded_dreams"],
-          "min_c": 6
-        },
-        {
-          "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
           "min_c": 6
         },
         {
@@ -1962,8 +1944,8 @@
         },
         {
           "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
+          "w_id": "the_catch",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
         }
       ],
@@ -2028,8 +2010,8 @@
         },
         {
           "id": "baizhu",
-          "w_id": "lost_prayer_to_the_sacred_winds",
-          "a_ids": ["gilded_dreams"],
+          "w_id": "jadefalls_splendor",
+          "a_ids": ["deepwood_memories"],
           "min_c": 6
         },
         {
@@ -2172,8 +2154,8 @@
         },
         {
           "id": "candace",
-          "w_id": "staff_of_homa",
-          "a_ids": ["heart_of_depth"],
+          "w_id": "the_catch",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
         },
         {

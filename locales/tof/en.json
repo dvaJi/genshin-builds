@@ -1,6 +1,6 @@
 {
   "layout": {
-    "title": "ToF-Builds.com Wiki Database",
+    "title": "ToF-Builds.com ToF Wiki Database",
     "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
     "tierlist": "Tierlist",
     "database": "Database",
@@ -16,7 +16,7 @@
     "search": "Search..."
   },
   "character": {
-    "title": "{name} ToF Build Guide",
+    "title": "{name} Tower of Fantasy Build Guide",
     "characters": "Characters",
     "simulacrum": "Simulacrum",
     "recommended_matrices": "Recommended Matrices",
@@ -42,12 +42,12 @@
     "discharge": "Discharge"
   },
   "matrices": {
-    "title": "ToF Matrices List",
+    "title": "Tower of Fantasy Matrices List",
     "description": "All Matrices ranked in order of power, viability, and versatility to clear content.",
     "matrices": "Matrices"
   },
   "matrix": {
-    "title": "ToF-Builds.com Wiki Database",
+    "title": "{name} ToF Impact Matrix Build Guide",
     "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
     "matrix": "Matrix",
     "2pcbonus": "2-piece Set Bonus",
