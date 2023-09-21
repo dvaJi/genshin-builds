@@ -60,9 +60,6 @@ const nextConfig = {
       "img-cdn1.ravens-scans.com",
     ],
   },
-  experimental: {
-    legacyBrowsers: false,
-  },
   rewrites: async () => [
     {
       source: "/ads.txt",

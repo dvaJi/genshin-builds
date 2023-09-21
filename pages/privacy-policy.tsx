@@ -1,30 +1,25 @@
-import { getLocale } from "@lib/localData";
-import { GetStaticProps } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 import Card from "@components/ui/Card";
-import { MDContent } from "../interfaces/md-content";
-import markdownToHtml from "../lib/markdownToHtml";
-import { getContentBySlug } from "../lib/mdApi";
+import { getLocale } from "@lib/localData";
+import markdownToHtml from "@lib/markdownToHtml";
+import { getContentBySlug } from "@lib/mdApi";
 
-interface MdPage {
-  data: MDContent;
-}
-
-const PrivacyPolicy = ({ data }: MdPage) => {
-  const router = useRouter();
+const PrivacyPolicy = ({
+  data,
+  source,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Card>
       <Head>
         <title>{data.title} | GenshinBuilds</title>
         <meta property="og:image" content={data.ogImage?.url} />
       </Head>
-      {router.isFallback ? (
-        <div>Loading...</div>
-      ) : (
-        <div dangerouslySetInnerHTML={{ __html: data.content }}></div>
-      )}
+      <article className="prose prose-invert max-w-none">
+        <MDXRemote {...source} />
+      </article>
     </Card>
   );
 };
@@ -40,14 +35,14 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     "ogImage",
     "coverImage",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  const source = await markdownToHtml<any>(post.content || "");
 
   return {
     props: {
       data: {
         ...post,
-        content,
       },
+      source,
       lngDict,
     },
   };

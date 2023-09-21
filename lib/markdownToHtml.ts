@@ -1,7 +1,13 @@
-import { remark } from "remark";
-import html from "remark-html";
+import { serialize } from "next-mdx-remote/serialize";
+import remarkGfm from "remark-gfm";
 
-export default async function markdownToHtml(markdown: any): Promise<string> {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
+export default async function markdownToHtml<T>(markdown: any) {
+  const mdxSource = await serialize<Record<string, unknown>, T>(markdown, {
+    parseFrontmatter: true,
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+    },
+  });
+
+  return mdxSource;
 }
