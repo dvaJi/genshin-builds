@@ -14,7 +14,6 @@ import ItemPopoverSummary from "@components/genshin/ItemPopoverSummary";
 import Select from "@components/Select";
 
 import useIntl from "@hooks/use-intl";
-import { IMGS_CDN } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { Todo, todos as todosAtom } from "@state/todo";
 import { trackClick } from "@lib/gtag";
@@ -266,7 +265,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
                         <div
                           className="h-24 w-24 overflow-hidden rounded-md bg-cover shadow-md"
                           style={{
-                            backgroundImage: `url(${IMGS_CDN}/bg_${todo[0].r}star.png)`,
+                            backgroundImage: getUrl(`/bg_${todo[0].r}star.png`),
                           }}
                         >
                           <img

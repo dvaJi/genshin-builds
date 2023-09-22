@@ -58,6 +58,7 @@ const nextConfig = {
       "tof-builds.sfo3.digitaloceanspaces.com",
       "hsr-builds.sfo3.digitaloceanspaces.com",
       "img-cdn1.ravens-scans.com",
+      "genshinbuilds.aipurrjects.com",
     ],
   },
   rewrites: async () => [

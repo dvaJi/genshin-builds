@@ -1,6 +1,4 @@
 export const IMGS_CDN = process.env.NEXT_PUBLIC_IMGS_CDN || "";
-export const TOF_IMGS_CDN = process.env.NEXT_PUBLIC_IMGS_TOF_CDN || "";
-export const HSR_IMGS_CDN = process.env.NEXT_PUBLIC_IMGS_HSR_CDN || "";
 export const AD_ARTICLE_SLOT = process.env.NEXT_PUBLIC_AD_ARTICLE_SLOT || "";
 export const GAD_ID = process.env.NEXT_PUBLIC_GAD_ID || "";
 export const CUSTOM_ADS_ID = process.env.NEXT_PUBLIC_CUSTOM_ADS_ID || "";
