@@ -46,7 +46,6 @@ const components = {
 export default function PostPage({
   source,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(source);
   const fm = source.frontmatter;
   return (
     <div>
