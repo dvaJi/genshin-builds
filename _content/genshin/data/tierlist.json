@@ -24,6 +24,12 @@
           "id": "alhaitham",
           "w_id": "light_of_foliar_incision",
           "a_ids": ["gilded_dreams"],
+          "min_c": 0
+        },
+        {
+          "id": "neuvillette",
+          "w_id": "tome_of_the_eternal_flow",
+          "a_ids": ["marechaussee_hunter"],
           "min_c": 1
         }
       ],
@@ -217,21 +223,9 @@
           "min_c": 2
         },
         {
-          "id": "barbara",
-          "w_id": "sacrificial_fragments",
-          "a_ids": ["gilded_dreams"],
-          "min_c": 2
-        },
-        {
           "id": "beidou",
           "w_id": "skyward_pride",
           "a_ids": ["gladiators_finale", "thundering_fury"],
-          "min_c": 4
-        },
-        {
-          "id": "yun_jin",
-          "w_id": "vortex_vanquisher",
-          "a_ids": ["retracing_bolide"],
           "min_c": 4
         },
         {
@@ -543,12 +537,6 @@
           "min_c": 0
         },
         {
-          "id": "yelan",
-          "w_id": "aqua_simulacra",
-          "a_ids": ["heart_of_depth", "tenacity_of_the_millelith"],
-          "min_c": 0
-        },
-        {
           "id": "mona",
           "w_id": "the_widsith",
           "a_ids": ["emblem_of_severed_fate"],
@@ -586,8 +574,8 @@
         },
         {
           "id": "yun_jin",
-          "w_id": "vortex_vanquisher",
-          "a_ids": ["retracing_bolide"],
+          "w_id": "favonius_lance",
+          "a_ids": ["husk_of_opulent_dreams"],
           "min_c": 6
         },
         {
@@ -662,8 +650,8 @@
         },
         {
           "id": "barbara",
-          "w_id": "sacrificial_fragments",
-          "a_ids": ["gilded_dreams"],
+          "w_id": "thrilling_tales_of_dragon_slayers",
+          "a_ids": ["maiden_beloved"],
           "min_c": 2
         },
         {
@@ -723,12 +711,6 @@
           "min_c": 4
         },
         {
-          "id": "albedo",
-          "w_id": "cinnabar_spindle",
-          "a_ids": ["husk_of_opulent_dreams"],
-          "min_c": 0
-        },
-        {
           "id": "klee",
           "w_id": "lost_prayer_to_the_sacred_winds",
           "a_ids": ["crimson_witch_of_flames"],
@@ -741,18 +723,6 @@
           "w_id": "redhorn_stonethresher",
           "a_ids": ["husk_of_opulent_dreams"],
           "min_c": 1
-        },
-        {
-          "id": "traveler_geo",
-          "w_id": "skyward_blade",
-          "a_ids": ["emblem_of_severed_fate"],
-          "min_c": 6
-        },
-        {
-          "id": "ningguang",
-          "w_id": "memory_of_dust",
-          "a_ids": ["gladiators_finale", "archaic_petra"],
-          "min_c": 4
         },
         {
           "id": "yanfei",
@@ -782,6 +752,12 @@
           "id": "alhaitham",
           "w_id": "light_of_foliar_incision",
           "a_ids": ["gilded_dreams"],
+          "min_c": 0
+        },
+        {
+          "id": "neuvillette",
+          "w_id": "tome_of_the_eternal_flow",
+          "a_ids": ["marechaussee_hunter"],
           "min_c": 0
         }
       ],
@@ -966,12 +942,6 @@
           "id": "dehya",
           "w_id": "beacon_of_the_reed_sea",
           "a_ids": ["vourukashas_glow"],
-          "min_c": 0
-        },
-        {
-          "id": "barbara",
-          "w_id": "sacrificial_fragments",
-          "a_ids": ["gilded_dreams"],
           "min_c": 0
         },
         {
@@ -1283,12 +1253,6 @@
           "min_c": 0
         },
         {
-          "id": "yelan",
-          "w_id": "aqua_simulacra",
-          "a_ids": ["heart_of_depth", "tenacity_of_the_millelith"],
-          "min_c": 0
-        },
-        {
           "id": "mona",
           "w_id": "the_widsith",
           "a_ids": ["emblem_of_severed_fate"],
@@ -1328,8 +1292,8 @@
         },
         {
           "id": "yun_jin",
-          "w_id": "vortex_vanquisher",
-          "a_ids": ["retracing_bolide"],
+          "w_id": "favonius_lance",
+          "a_ids": ["husk_of_opulent_dreams"],
           "min_c": 0
         },
         {
@@ -1378,8 +1342,8 @@
         },
         {
           "id": "barbara",
-          "w_id": "sacrificial_fragments",
-          "a_ids": ["gilded_dreams"],
+          "w_id": "thrilling_tales_of_dragon_slayers",
+          "a_ids": ["maiden_beloved"],
           "min_c": 0
         },
         {
@@ -1426,12 +1390,6 @@
         }
       ],
       "4": [
-        {
-          "id": "albedo",
-          "w_id": "cinnabar_spindle",
-          "a_ids": ["husk_of_opulent_dreams"],
-          "min_c": 0
-        },
         {
           "id": "lisa",
           "w_id": "the_widsith",
@@ -1481,12 +1439,6 @@
           "w_id": "freedomsworn",
           "a_ids": ["viridescent_venerer"],
           "min_c": 0
-        },
-        {
-          "id": "ningguang",
-          "w_id": "memory_of_dust",
-          "a_ids": ["gladiators_finale", "archaic_petra"],
-          "min_c": 0
         }
       ]
     }
@@ -1528,6 +1480,12 @@
           "id": "kamisato_ayaka",
           "w_id": "mistsplitter_reforged",
           "a_ids": ["blizzard_strayer"],
+          "min_c": 6
+        },
+        {
+          "id": "neuvillette",
+          "w_id": "tome_of_the_eternal_flow",
+          "a_ids": ["marechaussee_hunter"],
           "min_c": 6
         }
       ],
@@ -1703,12 +1661,6 @@
       ],
       "5": [
         {
-          "id": "yun_jin",
-          "w_id": "vortex_vanquisher",
-          "a_ids": ["retracing_bolide"],
-          "min_c": 6
-        },
-        {
           "id": "beidou",
           "w_id": "skyward_pride",
           "a_ids": ["gladiators_finale", "thundering_fury"],
@@ -1724,18 +1676,6 @@
           "id": "xinyan",
           "w_id": "redhorn_stonethresher",
           "a_ids": ["pale_flame", "bloodstained_chivalry"],
-          "min_c": 6
-        },
-        {
-          "id": "thoma",
-          "w_id": "staff_of_homa",
-          "a_ids": ["emblem_of_severed_fate"],
-          "min_c": 6
-        },
-        {
-          "id": "barbara",
-          "w_id": "sacrificial_fragments",
-          "a_ids": ["gilded_dreams"],
           "min_c": 6
         }
       ]
@@ -2029,12 +1969,6 @@
           "min_c": 6
         },
         {
-          "id": "yelan",
-          "w_id": "aqua_simulacra",
-          "a_ids": ["heart_of_depth", "tenacity_of_the_millelith"],
-          "min_c": 6
-        },
-        {
           "id": "mona",
           "w_id": "the_widsith",
           "a_ids": ["emblem_of_severed_fate"],
@@ -2056,8 +1990,8 @@
         },
         {
           "id": "yun_jin",
-          "w_id": "vortex_vanquisher",
-          "a_ids": ["retracing_bolide"],
+          "w_id": "favonius_lance",
+          "a_ids": ["husk_of_opulent_dreams"],
           "min_c": 6
         },
         {
@@ -2136,8 +2070,8 @@
         },
         {
           "id": "barbara",
-          "w_id": "sacrificial_fragments",
-          "a_ids": ["gilded_dreams"],
+          "w_id": "thrilling_tales_of_dragon_slayers",
+          "a_ids": ["maiden_beloved"],
           "min_c": 6
         },
         {
@@ -2213,12 +2147,6 @@
           "w_id": "the_widsith",
           "a_ids": ["emblem_of_severed_fate"],
           "min_c": 6
-        },
-        {
-          "id": "albedo",
-          "w_id": "cinnabar_spindle",
-          "a_ids": ["husk_of_opulent_dreams"],
-          "min_c": 6
         }
       ],
       "5": [
@@ -2226,18 +2154,6 @@
           "id": "noelle",
           "w_id": "redhorn_stonethresher",
           "a_ids": ["husk_of_opulent_dreams"],
-          "min_c": 6
-        },
-        {
-          "id": "traveler_geo",
-          "w_id": "skyward_blade",
-          "a_ids": ["emblem_of_severed_fate"],
-          "min_c": 6
-        },
-        {
-          "id": "ningguang",
-          "w_id": "memory_of_dust",
-          "a_ids": ["gladiators_finale", "archaic_petra"],
           "min_c": 6
         },
         {
