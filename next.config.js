@@ -9,7 +9,7 @@ const withPWA = require("next-pwa")({
   disable: isDev,
 });
 
-const withMDX = require('@next/mdx')({
+const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
     // If you use remark-gfm, you'll need to use next.config.mjs
@@ -20,13 +20,13 @@ const withMDX = require('@next/mdx')({
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },
-})
+});
 
 /**
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
   i18n: {
     locales: [
@@ -69,6 +69,9 @@ const nextConfig = {
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
+  experimental: {
+    swcPlugins: [["next-superjson-plugin", {}]],
+  },
 };
 
 module.exports = withPWA(withBundleAnalyzer(withMDX(nextConfig)));

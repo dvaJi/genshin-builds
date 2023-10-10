@@ -191,3 +191,88 @@ model HSRBuild {
 
     @@index([playerId])
 }
+
+model Account {
+    id                       String   @id @default(cuid())
+    createdAt                DateTime @default(now())
+    updatedAt                DateTime @updatedAt
+    userId                   String
+    type                     String
+    provider                 String
+    providerAccountId        String
+    refresh_token            String?  @db.VarChar(500)
+    access_token             String?  @db.VarChar(500)
+    refresh_token_expires_in Int?
+    expires_at               Int?
+    token_type               String?
+    scope                    String?
+    id_token                 String?  @db.Text
+    session_state            String?
+    oauth_token_secret       String?
+    oauth_token              String?
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([provider, providerAccountId])
+    @@index([userId])
+}
+
+model Session {
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    expires      DateTime
+    user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId       String?
+
+    @@index([userId])
+}
+
+model User {
+    id            String    @id @default(cuid())
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @updatedAt
+    name          String?
+    email         String?   @unique
+    password      String?
+    emailVerified DateTime?
+    image         String?
+    role          String?   @default("user")
+    link          String?
+    accounts      Account[]
+    sessions      Session[]
+}
+
+model VerificationToken {
+    identifier String
+    token      String   @unique
+    expires    DateTime
+
+    @@unique([identifier, token])
+}
+
+model Invite {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    userId    String   @unique
+    token     String   @unique
+    expires   DateTime
+}
+
+model BlogPost {
+    id           String   @id @default(cuid())
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    slug         String   @unique
+    language     String
+    game         String
+    title        String
+    description  String
+    image        String
+    authorName   String
+    authorAvatar String
+    authorLink   String
+    tags         String
+    content      String   @db.Text
+    published    Boolean  @default(false)
+}

@@ -1,6 +1,7 @@
 import { AppProps as NextAppProps } from "next/app";
 import dynamic from "next/dynamic";
 
+import AdminLayout from "@components/admin/Layout";
 import LayoutGenshin from "@components/genshin/Layout";
 import HSRLayout from "@components/hsr/Layout";
 import TOFLayout from "@components/tof/Layout";
@@ -37,6 +38,18 @@ const App = ({ Component, pageProps, router }: AppProps<Props>) => {
         <FeedbackAlert />
         <Component {...pageProps} />
       </HSRLayout>
+    );
+  }
+
+  // Admin
+  if (router.route.startsWith("/admin")) {
+    return (
+      <AdminLayout
+        bgStyle={pageProps?.bgStyle}
+        fontClass={pageProps?.fontClass}
+      >
+        <Component {...pageProps} />
+      </AdminLayout>
     );
   }
 

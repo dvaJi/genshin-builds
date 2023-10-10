@@ -2,6 +2,7 @@ export type GameProps = {
   name: string;
   slug: string;
   path: string;
+  adminPath: string;
 };
 
 type GamesAvailable = "GENSHIN" | "TOF" | "HSR";
@@ -11,16 +12,19 @@ export const GAME: Record<GamesAvailable, GameProps> = {
     name: "Genshin Impact",
     slug: "genshin",
     path: "/",
+    adminPath: "/admin/genshin",
   },
   TOF: {
     name: "Tower of Fantasy",
     slug: "tof",
     path: "/tof",
+    adminPath: "/admin/tof",
   },
   HSR: {
     name: "Honkai: Star Rail",
     slug: "hsr",
     path: "/hsr",
+    adminPath: "/admin/hsr",
   },
 };
 

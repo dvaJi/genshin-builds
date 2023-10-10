@@ -1,3 +1,65 @@
+export const languages = [
+  {
+    code: "en",
+    name: "English",
+  },
+  {
+    code: "es",
+    name: "Spanish",
+  },
+  {
+    code: "ja",
+    name: "Japanese",
+  },
+  {
+    code: "cn",
+    name: "Chinese Simplified",
+  },
+  {
+    code: "zh-tw",
+    name: "Chinese Traditional",
+  },
+  {
+    code: "de",
+    name: "German",
+  },
+  {
+    code: "fr",
+    name: "French",
+  },
+  {
+    code: "id",
+    name: "Indonesian",
+  },
+  {
+    code: "it",
+    name: "Italian",
+  },
+  {
+    code: "ko",
+    name: "Korean",
+  },
+  {
+    code: "pt",
+    name: "Portuguese",
+  },
+  {
+    code: "ru",
+    name: "Russian",
+  },
+  {
+    code: "th",
+    name: "Thai",
+  },
+  {
+    code: "tr",
+    name: "Turkish",
+  },
+  {
+    code: "vi",
+    name: "Vietnamese",
+  },
+];
 export const localeToLang = (locale: string | undefined) => {
   switch (locale) {
     case "en":
