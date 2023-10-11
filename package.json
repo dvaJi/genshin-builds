@@ -46,7 +46,7 @@
     "framer-motion": "^10.16.4",
     "genshin-data": "^0.35.0",
     "gray-matter": "^4.0.3",
-    "hsr-data": "^0.3.0",
+    "hsr-data": "^0.4.0",
     "leaflet": "^1.9.4",
     "lexical": "^0.12.2",
     "nanostores": "^0.9.3",
