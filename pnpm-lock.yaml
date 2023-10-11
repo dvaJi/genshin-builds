@@ -57,8 +57,8 @@ dependencies:
     specifier: ^4.0.3
     version: 4.0.3
   hsr-data:
-    specifier: ^0.3.0
-    version: 0.3.0
+    specifier: ^0.4.0
+    version: 0.4.0
   leaflet:
     specifier: ^1.9.4
     version: 1.9.4
@@ -4115,8 +4115,8 @@ packages:
     resolution: {integrity: sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==}
     dev: false
 
-  /hsr-data@0.3.0:
-    resolution: {integrity: sha512-nsorq+n6ylRfy3ZN+QbuLr2SFj08BVvqzGSJ/g3hzFwg7JAAQqjbA3ZPi4v/CdhbSphwlNLLSY8a+dfm9a7Y6w==}
+  /hsr-data@0.4.0:
+    resolution: {integrity: sha512-+9pHKd6CTyYFSVPK8fCYjIS/9euBPiBvPf6CCVwSlwlrqCfaKlSwzAKI6ufQvZ50+SS+mpycootES9L6haIa4Q==}
     engines: {node: '>=13'}
     dev: false
 
