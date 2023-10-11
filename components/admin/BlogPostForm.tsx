@@ -2,8 +2,8 @@ import { BlogPost } from "@prisma/client";
 import { useEffect, useState, type FormEvent } from "react";
 import slugify from "slugify";
 
+import Button from "@components/admin/Button";
 import { languages } from "@utils/locale-to-lang";
-import Button from "./ui/Button";
 
 type Props = {
   onSubmit: (event: any) => void;
@@ -27,15 +27,15 @@ function BlogPostForm({
     initialData?.description || ""
   );
   const [image, setImage] = useState<string>(initialData?.image || "");
-  const [authorName, setAuthorName] = useState<string>(
-    initialData?.authorName || "GenshinBuilds"
-  );
-  const [authorAvatar, setAuthorAvatar] = useState<string>(
-    initialData?.authorAvatar || "gb.png"
-  );
-  const [authorLink, setAuthorLink] = useState<string>(
-    initialData?.authorLink || "https://twitter.com/genshin_builds"
-  );
+  // const [authorName, setAuthorName] = useState<string>(
+  //   initialData?.authorName || "GenshinBuilds"
+  // );
+  // const [authorAvatar, setAuthorAvatar] = useState<string>(
+  //   initialData?.authorAvatar || "gb.png"
+  // );
+  // const [authorLink, setAuthorLink] = useState<string>(
+  //   initialData?.authorLink || "https://twitter.com/genshin_builds"
+  // );
   const [tags, setTags] = useState<string>(initialData?.tags || "");
   const [isPublished, setIsPublished] = useState<boolean>(
     initialData?.published || false
@@ -64,7 +64,7 @@ function BlogPostForm({
   return (
     <form
       onSubmit={handleOnSubmit}
-      className="grid grid-cols-1 gap-6 rounded bg-zinc-800 p-3"
+      className="grid grid-cols-1 gap-6 border-r border-zinc-800 bg-zinc-900 p-3"
     >
       <label className="block">
         <span className="text-zinc-400">Title</span>
@@ -80,7 +80,9 @@ function BlogPostForm({
       </label>
       <label className="block">
         <span className="text-zinc-400">Slug (url)</span>
-        <button onClick={() => setSlug(crypto.randomUUID())}>generate</button>
+        <button className="ml-2" onClick={() => setSlug(crypto.randomUUID())}>
+          generate random
+        </button>
         <input
           type="text"
           name="slug"
@@ -130,7 +132,7 @@ function BlogPostForm({
           required
         />
       </label>
-      <label className="block">
+      {/* <label className="block">
         <span className="text-zinc-400">authorName</span>
         <input
           type="text"
@@ -162,7 +164,7 @@ function BlogPostForm({
           value={authorLink}
           required
         />
-      </label>
+      </label> */}
       <label className="block">
         <span className="text-zinc-400">tags</span>
         <input

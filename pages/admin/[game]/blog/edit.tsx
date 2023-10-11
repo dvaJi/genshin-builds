@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import remarkGfm from "remark-gfm";
 
-import BlogPostForm from "@components/BlogPostForm";
+import BlogPostForm from "@components/admin/BlogPostForm";
 import PostRender from "@components/genshin/PostRender";
 import { getLocale } from "@lib/localData";
 import { getPostById } from "@pages/api/blog";

@@ -5,16 +5,18 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import remarkGfm from "remark-gfm";
 
-import BlogPostForm from "@components/BlogPostForm";
+import BlogPostForm from "@components/admin/BlogPostForm";
 import PostRender from "@components/genshin/PostRender";
 import { getLocale } from "@lib/localData";
+import { Session } from "@lib/session";
 import { authOptions } from "@pages/api/auth/[...nextauth]";
 
 type Props = {
   game: string;
+  session: Session;
 };
 
-function CreatePost({ game }: Props) {
+function CreatePost({ game, session }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [compiled, setCompiled] = useState<{ compiledSource: string }>({
@@ -47,6 +49,10 @@ function CreatePost({ game }: Props) {
         body: JSON.stringify(
           Object.assign(data, {
             game,
+            authorName: session.user?.name || "GenshinBuilds",
+            authorAvatar: session.user?.image || "gb.png",
+            authorLink:
+              session.user?.link || "https://twitter.com/genshin_builds",
           })
         ),
       });
@@ -77,7 +83,7 @@ function CreatePost({ game }: Props) {
         />
       </div>
       <div className="relative mx-auto max-w-screen-md">
-        <section className="prose prose-invert card mt-0 max-w-none">
+        <section className="prose prose-invert mt-0 max-w-none">
           {/* <img
             alt={fm.title}
             src={getImg("gi", `/blog/${fm.image}`)}
@@ -116,6 +122,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   return {
     props: {
       game: params?.game,
+      session,
       lngDict,
     },
   };

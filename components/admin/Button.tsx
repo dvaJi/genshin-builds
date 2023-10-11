@@ -18,7 +18,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className,
           "flex items-center justify-center rounded-md border px-3 py-2 font-medium transition-all",
           {
-            "border-white bg-white text-zinc-500 hover:border-zinc-200 hover:bg-zinc-200":
+            "border-white bg-white text-zinc-700 hover:border-zinc-200 hover:bg-zinc-200":
               state === "default",
             "bg-zinc-900": state === "secondary",
             "bg-blue-600": state === "success",

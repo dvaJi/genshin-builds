@@ -24,6 +24,7 @@ export const authOptions: NextAuthOptions = {
           ...session.user,
           id: user.id as string,
           role: (user as any)?.role as string,
+          link: (user as any)?.link || "",
         },
       };
 
