@@ -10,6 +10,7 @@ type SessionUser = DefaultSessionUser & {
   id: string;
   role: string;
   link: string;
+  globalName: string;
 };
 
 export type Session = DefaultSession & {

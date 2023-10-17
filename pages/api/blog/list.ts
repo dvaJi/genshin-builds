@@ -51,10 +51,12 @@ export async function getPosts(
 
     const data = await prisma.blogPost.findMany({
       select: {
+        id: true,
         content: false,
         slug: true,
         title: true,
         game: true,
+        tags: true,
         language: true,
         createdAt: true,
         updatedAt: true,

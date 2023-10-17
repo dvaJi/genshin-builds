@@ -12,6 +12,7 @@ import { useMemo, useState } from "react";
 import useSWR from "swr";
 
 import Button from "@components/admin/Button";
+import Badge from "@components/ui/Badge";
 import { getLocale } from "@lib/localData";
 import { authOptions } from "@pages/api/auth/[...nextauth]";
 import { languages } from "@utils/locale-to-lang";
@@ -42,7 +43,16 @@ const BlogAdmin = ({ game }: Props) => {
   const columns = useMemo(
     () => [
       columnHelper.accessor("title", {
-        cell: (info) => info.getValue(),
+        cell: (info) => (
+          <div>
+            {!info.row.getValue("published") ? (
+              <Badge className="opacity-80" textSize="xxs">
+                Draft
+              </Badge>
+            ) : null}
+            {info.getValue()}
+          </div>
+        ),
       }),
       columnHelper.accessor("language", {
         cell: (info) =>
@@ -59,10 +69,18 @@ const BlogAdmin = ({ game }: Props) => {
         id: "actions",
         cell: (info) => (
           <div className="flex gap-2 text-sm">
+            {/* {!info.row.getValue("published") ? (
+              <Button state="success">Publish</Button>
+            ) : null} */}
             <Link href={`/admin/${game}/blog/edit?id=${info.getValue()}`}>
-              <Button>Edit</Button>
+              <Button state="secondary">Edit</Button>
             </Link>
-            <Button onClick={() => onDelete(info.getValue())}>Delete</Button>
+            <Button
+              state="error_ghost"
+              onClick={() => onDelete(info.getValue())}
+            >
+              Delete
+            </Button>
           </div>
         ),
       }),
@@ -88,7 +106,7 @@ const BlogAdmin = ({ game }: Props) => {
 
   return (
     <div className="w-full">
-      <div className="flex w-full flex-col border-b border-zinc-800 bg-zinc-900 px-4 py-4 text-white">
+      <div className="flex w-full flex-col border-b border-zinc-800 bg-zinc-900 px-8 py-4 text-white">
         <div className="flex justify-between">
           <select
             className="rounded-md border border-zinc-700 bg-zinc-900 text-sm"
@@ -107,7 +125,7 @@ const BlogAdmin = ({ game }: Props) => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col p-4">
+      <div className="m-8 flex flex-col rounded">
         {error && <div style={{ color: "red" }}>{error}</div>}
         {isLoading && <div>Loading...</div>}
         <Table data={data?.data || []} columns={columns} />
@@ -150,12 +168,15 @@ function Table({ data, columns }: any) {
   });
 
   return (
-    <table className="table">
+    <table className="table border-separate border-spacing-0 border-0">
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id} className="border-b border-zinc-800">
+          <tr key={headerGroup.id} className="">
             {headerGroup.headers.map((header) => (
-              <th key={header.id} className="py-2">
+              <th
+                key={header.id}
+                className="border-y border-zinc-700 bg-zinc-800 px-2 py-2 text-left text-xs font-normal capitalize text-zinc-400 first:rounded-l-lg first:border-l last:rounded-r-lg last:border-r"
+              >
                 {header.isPlaceholder
                   ? null
                   : flexRender(
@@ -169,9 +190,9 @@ function Table({ data, columns }: any) {
       </thead>
       <tbody>
         {table.getRowModel().rows.map((row) => (
-          <tr key={row.id} className="border-b border-zinc-800">
+          <tr key={row.id} className="">
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className="p-2">
+              <td key={cell.id} className="border-b border-zinc-700/80 p-2">
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
@@ -205,6 +226,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       currentPage: page,
       game: params?.game,
+      session,
       locale,
       lngDict,
     },

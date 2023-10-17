@@ -25,6 +25,7 @@ export const authOptions: NextAuthOptions = {
           id: user.id as string,
           role: (user as any)?.role as string,
           link: (user as any)?.link || "",
+          globalName: (user as any)?.globalName || "",
         },
       };
 
@@ -39,7 +40,23 @@ export const authOptions: NextAuthOptions = {
       });
 
       if (!user) {
+        console.log("User not found", params.profile);
         return false;
+      }
+
+      // Update the user information
+      try {
+        await prisma.user.update({
+          where: {
+            name: user.userId,
+          },
+          data: {
+            globalName: (params.profile as DiscordProfile).global_name,
+            image: (params.profile as DiscordProfile).image_url,
+          },
+        });
+      } catch (e) {
+        console.log("Error updating user", e);
       }
 
       return true;

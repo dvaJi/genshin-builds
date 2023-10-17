@@ -18,7 +18,7 @@ const BlogPostCard = ({ post }: Props) => {
     <Link href={`/genshin/blog/${post.slug}`} className="group p-2">
       <div className="relative overflow-hidden">
         <LazyLoadImage
-          src={getImg("gi", `/blog/${post.image}`, {
+          src={getImg("genshin", `/blog/${post.image}`, {
             width: 450,
             height: 260,
           })}

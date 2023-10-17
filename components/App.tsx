@@ -6,6 +6,7 @@ import LayoutGenshin from "@components/genshin/Layout";
 import HSRLayout from "@components/hsr/Layout";
 import TOFLayout from "@components/tof/Layout";
 
+import { Session } from "@lib/session";
 import { AppBackgroundStyle } from "@state/background-atom";
 import { isHSR, isTOF } from "@utils/games";
 
@@ -19,6 +20,7 @@ type Props = {
   lngDict?: Record<string, string>;
   bgStyle?: AppBackgroundStyle;
   fontClass?: string;
+  session?: Session;
 };
 
 const App = ({ Component, pageProps, router }: AppProps<Props>) => {
@@ -47,6 +49,7 @@ const App = ({ Component, pageProps, router }: AppProps<Props>) => {
       <AdminLayout
         bgStyle={pageProps?.bgStyle}
         fontClass={pageProps?.fontClass}
+        session={pageProps?.session}
       >
         <Component {...pageProps} />
       </AdminLayout>

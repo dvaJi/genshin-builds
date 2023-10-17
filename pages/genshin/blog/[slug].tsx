@@ -45,10 +45,7 @@ export default function PostPage({ posts, content }: Props) {
             className="px-sm-0 my-1 flex flex-wrap items-center gap-2 px-2"
           >
             <img
-              src={getImg("gi", `/blog/author/${posts.authorAvatar}`, {
-                height: 40,
-                width: 40,
-              })}
+              src={posts.authorAvatar}
               alt={posts.authorName}
               className="rounded-full border-2 border-vulcan-900/80 p-px"
               width="40"
@@ -72,7 +69,7 @@ export default function PostPage({ posts, content }: Props) {
       <section className="prose prose-invert card mt-0 max-w-none">
         <img
           alt={posts.title}
-          src={getImg("gi", `/blog/${posts.image}`)}
+          src={getImg("genshin", `/blog/${posts.image}`)}
           className="mx-auto rounded-lg text-center"
         />
         <ArchiveRender {...content} />
@@ -103,7 +100,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     },
   });
 
-  const image = getImg("gi", `/blog/${posts.image}`, {
+  const image = getImg("genshin", `/blog/${posts.image}`, {
     quality: 50,
   });
 

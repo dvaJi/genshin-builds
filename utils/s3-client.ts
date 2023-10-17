@@ -1,11 +1,12 @@
 import {
-  GetObjectCommand,
-  ListObjectsCommand,
+  DeleteObjectCommand,
   PutObjectCommand,
   S3Client,
+  type PutObjectCommandInput,
 } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-const bucketName = "genshinbuilds-archives";
+export const bucketName = "genshinbuilds-images";
 const s3Client = new S3Client({
   region: process.env.BUCKET_REGION,
   endpoint: process.env.BUCKET_ENDPOINT,
@@ -15,62 +16,22 @@ const s3Client = new S3Client({
   },
 });
 
-async function list(game: string, locale?: string) {
-  const data = await s3Client.send(
-    new ListObjectsCommand({ Bucket: bucketName, Prefix: `${game}/` })
-  );
-
-  const filtered = (data.Contents ?? [])
-    .map((item) => {
-      if (!item.Key || item.Key === `${game}/`) {
-        return null;
-      }
-      const [_game, slug, langWExt] = item.Key?.split("/") || [];
-      return {
-        game: _game,
-        slug,
-        lang: langWExt?.split(".")[0],
-        key: item.Key,
-      };
-    })
-    .filter((item) => item !== null && locale && item.lang === locale);
-
-  return filtered.sort((a, b) => {
-    if (!a || !b) {
-      return 0;
-    }
-    return new Date(b.key).getTime() - new Date(a.key).getTime();
-  });
-}
-
-async function get(key: string): Promise<string> {
-  const data = await s3Client.send(
-    new GetObjectCommand({ Bucket: bucketName, Key: key })
-  );
-
-  if (!data.Body) {
-    throw new Error("No body");
-  }
-
-  return data.Body?.transformToString();
-}
-
-async function put(key: string, content: string) {
-  const data = await s3Client.send(
-    new PutObjectCommand({
-      Bucket: bucketName,
-      Key: key,
-      Body: content,
-    })
-  );
-
-  return data;
-}
-
-const s3Utils = {
-  list,
-  get,
-  put,
+export const getUploadUrl = async (params: PutObjectCommandInput) => {
+  const command = new PutObjectCommand(params);
+  return getSignedUrl(s3Client, command, { expiresIn: 60 });
 };
 
-export default s3Utils;
+export const deleteObject = async (key: string) => {
+  try {
+    await s3Client.send(
+      new DeleteObjectCommand({
+        Bucket: bucketName,
+        Key: key,
+      })
+    );
+  } catch (err) {
+    console.log("Error deleting object", err);
+  }
+};
+
+export default s3Client;

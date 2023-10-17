@@ -1,4 +1,3 @@
-import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { AppProps as NextAppProps } from "next/app";
 import { Noto_Sans } from "next/font/google";
@@ -8,6 +7,7 @@ import { useEffect } from "react";
 import App from "@components/App";
 import IntlProvider from "@components/IntlProvider";
 import * as gtag from "@lib/gtag";
+import { Session } from "@lib/session";
 
 import "../styles/globals.css";
 import "../styles/hsr-globals.css";

@@ -11,8 +11,13 @@ type Props = {
 
 const ArchivesAdmin = ({ game }: Props) => {
   return (
-    <div className="flex gap-4">
-      <Link href={`/admin/${game}/blog`}>Archives</Link>
+    <div className="m-8 flex items-start justify-start gap-4">
+      <Link
+        href={`/admin/${game}/blog`}
+        className="rounded border border-zinc-600 bg-zinc-800 px-12 py-6 transition-colors hover:border-zinc-400"
+      >
+        Blog
+      </Link>
     </div>
   );
 };
@@ -37,6 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   return {
     props: {
       game: params?.game,
+      session,
       lngDict,
     },
   };

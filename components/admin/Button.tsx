@@ -20,10 +20,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           {
             "border-white bg-white text-zinc-700 hover:border-zinc-200 hover:bg-zinc-200":
               state === "default",
-            "bg-zinc-900": state === "secondary",
-            "bg-blue-600": state === "success",
-            "bg-yellow-600": state === "warning",
-            "bg-red-600": state === "error",
+            "border-zinc-500 bg-zinc-900 hover:border-zinc-200":
+              state === "secondary",
+            "border-blue-600 bg-blue-600 hover:bg-transparent hover:text-blue-600":
+              state === "success",
+            "border-yellow-600 bg-yellow-600 hover:bg-transparent hover:text-yellow-600":
+              state === "warning",
+            "border-red-600 bg-red-600 hover:bg-transparent hover:text-red-600":
+              state === "error",
+            "border-red-600 bg-transparent text-red-600 hover:bg-red-600 hover:text-zinc-200":
+              state === "error_ghost",
             "bg-white ": state === "abort",
           },
           { "pointer-events-none": disabled, "opacity-50": disabled }

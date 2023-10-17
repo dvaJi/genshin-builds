@@ -7,7 +7,8 @@ datasource db {
 }
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
 }
 
 model Player {
@@ -231,7 +232,8 @@ model User {
     id            String    @id @default(cuid())
     createdAt     DateTime  @default(now())
     updatedAt     DateTime  @updatedAt
-    name          String?
+    name          String?   @unique
+    globalName    String?
     email         String?   @unique
     password      String?
     emailVerified DateTime?
@@ -275,4 +277,18 @@ model BlogPost {
     tags         String
     content      String   @db.Text
     published    Boolean  @default(false)
+}
+
+model BlogImages {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    url       String   @unique
+    key       String   @unique
+    filename  String
+    game      String
+    type      String
+    size      Int?
+    width     Int?
+    height    Int?
 }

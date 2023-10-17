@@ -9,16 +9,18 @@ import remarkGfm from "remark-gfm";
 import BlogPostForm from "@components/admin/BlogPostForm";
 import PostRender from "@components/genshin/PostRender";
 import { getLocale } from "@lib/localData";
-import { getPostById } from "@pages/api/blog";
+import { Session } from "@lib/session";
 import { authOptions } from "@pages/api/auth/[...nextauth]";
+import { getPostById } from "@pages/api/blog";
 
 type Props = {
   game: string;
   post: BlogPost;
   originalCompiled: string;
+  session: Session;
 };
 
-function BlogEdit({ game, post, originalCompiled }: Props) {
+function BlogEdit({ game, post, originalCompiled, session }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [compiled, setCompiled] = useState<{ compiledSource: string }>({
@@ -52,6 +54,10 @@ function BlogEdit({ game, post, originalCompiled }: Props) {
           Object.assign(data, {
             id: post.id,
             game,
+            authorName: session.user?.globalName || "GenshinBuilds",
+            authorAvatar: session.user?.image || "gb.png",
+            authorLink:
+              session.user?.link || "https://twitter.com/genshin_builds",
           })
         ),
       });
@@ -76,6 +82,7 @@ function BlogEdit({ game, post, originalCompiled }: Props) {
       <div className="mr-6 w-[600px]">
         {error && <div style={{ color: "red" }}>{error}</div>}
         <BlogPostForm
+          game={game}
           isLoading={isLoading}
           onSubmit={onSubmit}
           onContentChange={onContentChange}
@@ -83,7 +90,7 @@ function BlogEdit({ game, post, originalCompiled }: Props) {
         />
       </div>
       <div className="relative mx-auto max-w-screen-md">
-        <section className="prose prose-invert card mt-0 max-w-none">
+        <section className="prose prose-invert mt-4 max-w-none">
           {/* <img
             alt={fm.title}
             src={getImg("gi", `/blog/${fm.image}`)}
@@ -142,6 +149,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       post,
       game: params?.game,
       originalCompiled: compiled.compiledSource,
+      session,
       lngDict,
     },
   };

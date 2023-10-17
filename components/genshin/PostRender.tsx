@@ -35,13 +35,44 @@ const Table = (props: any) => {
   );
 };
 
-const components = {
-  a: CustomLink,
-  table: Table,
-  Ads,
-  FrstAds,
-  CustomMap,
-};
+export const componentsList = [
+  {
+    name: "a",
+    component: CustomLink,
+    custom: false,
+  },
+  {
+    name: "table",
+    component: Table,
+    custom: false,
+  },
+  {
+    name: "Ads",
+    component: Ads,
+    custom: true,
+    example: `<Ads placementName="genshinbuilds_billboard_atf" />`,
+  },
+  {
+    name: "FrstAds",
+    component: FrstAds,
+    custom: true,
+    example: `<FrstAds placementName="genshinbuilds_billboard_atf" />`,
+  },
+  {
+    name: "CustomMap",
+    component: CustomMap,
+    custom: true,
+    example: `<CustomMap data={{imageOverlay: "/imgs/map/anemoculus_map.jpg", markIcon: "/images/anemoculus_icon.png", marks: []}} />`,
+  },
+];
+
+const components = componentsList.reduce(
+  (acc, cur) => {
+    acc[cur.name] = cur.component;
+    return acc;
+  },
+  {} as Record<string, any>
+);
 
 type Props = {
   compiledSource?: any;

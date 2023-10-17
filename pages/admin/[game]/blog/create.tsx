@@ -49,8 +49,10 @@ function CreatePost({ game, session }: Props) {
         body: JSON.stringify(
           Object.assign(data, {
             game,
-            authorName: session.user?.name || "GenshinBuilds",
-            authorAvatar: session.user?.image || "gb.png",
+            authorName: session.user?.globalName || "GenshinBuilds",
+            authorAvatar:
+              session.user?.image ||
+              "https://genshin-builds.com/icons/android-icon-72x72.png",
             authorLink:
               session.user?.link || "https://twitter.com/genshin_builds",
           })
@@ -77,13 +79,14 @@ function CreatePost({ game, session }: Props) {
       <div className="mr-6 w-[600px]">
         {error && <div style={{ color: "red" }}>{error}</div>}
         <BlogPostForm
+          game={game}
           isLoading={isLoading}
           onSubmit={onSubmit}
           onContentChange={onContentChange}
         />
       </div>
       <div className="relative mx-auto max-w-screen-md">
-        <section className="prose prose-invert mt-0 max-w-none">
+        <section className="prose prose-invert mt-4 max-w-none">
           {/* <img
             alt={fm.title}
             src={getImg("gi", `/blog/${fm.image}`)}
