@@ -19,9 +19,9 @@ type Route = {
 };
 
 const navRoutes: Route[] = [
-  { id: "home", name: "Home", href: "/" },
   { id: "characters", name: "Characters", href: "/characters" },
   { id: "teams", name: "Teams", href: "/teams" },
+  { id: "blog", name: "Blog", href: "/genshin/blog" },
   {
     id: "tcg",
     name: "TCG",

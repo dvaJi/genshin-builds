@@ -12,7 +12,8 @@
     "tierlist": "排行榜",
     "showcase": "角色展示",
     "messages": "消息",
-    "items": "物品"
+    "items": "物品",
+    "blog": "博客"
   },
   "characters": {
     "title": "Honkai: Star Rail所有角色列表",
@@ -93,5 +94,13 @@
     "source": "来源",
     "world_level_required": "所需世界等级",
     "cost": "花费"
+  },
+  "blog": {
+    "title": "崩坏3rd：星轨博客",
+    "description": "崩坏3rd：星轨博客是您可以找到有关游戏的最新消息和更新的地方。我们还发布指南、提示和技巧，以帮助您入门崩坏3rd：星轨。",
+    "blog": "博客",
+    "blog_desc": "崩坏3rd：星轨博客是您可以找到有关游戏的最新消息和更新的地方。我们还发布指南、提示和技巧，以帮助您入门崩坏3rd：星轨。",
+    "page_title": "{title} | 崩坏3rd：星轨博客",
+    "back": "返回博客"
   }
 }

@@ -1,3 +1,4 @@
+import { SessionProvider } from "next-auth/react";
 import { AppProps as NextAppProps } from "next/app";
 import dynamic from "next/dynamic";
 
@@ -24,7 +25,7 @@ type Props = {
 };
 
 const App = ({ Component, pageProps, router }: AppProps<Props>) => {
-  // Render the correct layout based on the game
+  // Tower of Fantasy
   if (isTOF(router.route)) {
     return (
       <TOFLayout bgStyle={pageProps?.bgStyle} fontClass={pageProps?.fontClass}>
@@ -34,6 +35,7 @@ const App = ({ Component, pageProps, router }: AppProps<Props>) => {
     );
   }
 
+  // Honkai Star Rail
   if (isHSR(router.route)) {
     return (
       <HSRLayout bgStyle={pageProps?.bgStyle} fontClass={pageProps?.fontClass}>
@@ -46,13 +48,15 @@ const App = ({ Component, pageProps, router }: AppProps<Props>) => {
   // Admin
   if (router.route.startsWith("/admin")) {
     return (
-      <AdminLayout
-        bgStyle={pageProps?.bgStyle}
-        fontClass={pageProps?.fontClass}
-        session={pageProps?.session}
-      >
-        <Component {...pageProps} />
-      </AdminLayout>
+      <SessionProvider session={pageProps?.session}>
+        <AdminLayout
+          bgStyle={pageProps?.bgStyle}
+          fontClass={pageProps?.fontClass}
+          session={pageProps?.session}
+        >
+          <Component {...pageProps} />
+        </AdminLayout>
+      </SessionProvider>
     );
   }
 

@@ -12,7 +12,8 @@
     "tierlist": "Lista de níveis",
     "showcase": "Mostrar",
     "messages": "Mensagens",
-    "items": "Itens"
+    "items": "Itens",
+    "blog": "Blog"
   },
   "characters": {
     "title": "Honkai: Star Rail Lista de todos os personagens",
@@ -93,5 +94,13 @@
     "source": "Fonte",
     "world_level_required": "Nível de Mundo Requerido",
     "cost": "Custo"
+  },
+  "blog": {
+    "title": "Blog Honkai: Star Rail",
+    "description": "O Blog Honkai: Star Rail é um lugar onde você pode encontrar as últimas notícias e atualizações sobre o jogo. Também publicamos guias, dicas e truques para ajudá-lo a começar com o Honkai: Star Rail.",
+    "blog": "Blog",
+    "blog_desc": "O Blog Honkai: Star Rail é um lugar onde você pode encontrar as últimas notícias e atualizações sobre o jogo. Também publicamos guias, dicas e truques para ajudá-lo a começar com o Honkai: Star Rail.",
+    "page_title": "{title} | Blog Honkai: Star Rail",
+    "back": "Voltar ao Blog"
   }
 }

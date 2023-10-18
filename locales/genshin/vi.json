@@ -48,7 +48,8 @@
     "leaderboard": "Bảng xếp hạng",
     "leaderboard_desc": "Bảng xếp hạng để so sánh tiến trình của bạn với những người chơi khác",
     "profiles": "hồ sơ",
-    "profiles_desc": "Hồ sơ để so sánh tiến trình của bạn với những người chơi khác"
+    "profiles_desc": "Hồ sơ để so sánh tiến trình của bạn với những người chơi khác",
+    "blog": "Blog"
   },
   "ascension_planner": {
     "title": "Cơ sở dữ liệu Wiki Genshin-Builds.com",
@@ -351,5 +352,13 @@
     "artifact": "hiện vật",
     "owner": "Chủ sở hữu"
   },
-  "leaderboard": {}
+  "leaderboard": {},
+  "blog": {
+    "title": "Tin tức, Hướng dẫn và Mẹo Genshin Impact | Khám phá Blog Genshin Impact",
+    "description": "Cập nhật tin tức, hướng dẫn và mẹo của Genshin Impact. Khám phá Blog Genshin Impact để cập nhật thông tin mới nhất và những thông tin quý báu để nâng cao trải nghiệm chơi game của bạn.",
+    "blog": "Blog",
+    "blog_desc": "Blog Genshin Impact là nơi bạn có thể tìm thấy tin tức và cập nhật mới nhất về trò chơi. Chúng tôi cũng đăng tải hướng dẫn, mẹo và thủ thuật để giúp bạn bắt đầu với Genshin Impact.",
+    "page_title": "{title} | Blog Genshin Impact",
+    "back": "Quay lại Blog"
+  }
 }

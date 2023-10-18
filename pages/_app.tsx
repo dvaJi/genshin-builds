@@ -1,4 +1,3 @@
-import { SessionProvider } from "next-auth/react";
 import { AppProps as NextAppProps } from "next/app";
 import { Noto_Sans } from "next/font/google";
 import { useRouter } from "next/router";
@@ -53,15 +52,13 @@ function Root(props: AppProps<Props>) {
       messages={props.pageProps.lngDict}
       locale={router.locale}
     >
-      <SessionProvider session={props?.pageProps?.session}>
-        <App
-          {...props}
-          pageProps={{
-            ...props.pageProps,
-            fontClass: `${notoSans.variable} font-sans`,
-          }}
-        />
-      </SessionProvider>
+      <App
+        {...props}
+        pageProps={{
+          ...props.pageProps,
+          fontClass: `${notoSans.variable} font-sans`,
+        }}
+      />
     </IntlProvider>
   );
 }

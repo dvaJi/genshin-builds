@@ -14,7 +14,7 @@ export default async function handler(
     return res.status(401).json({ error: "Unauthorized" });
   }
 
-  const { lang, game } = req.query;
+  const { lang, game, showDrafts } = req.query;
 
   if (!game) {
     return res.status(400).json({ error: "Missing game or lang" });
@@ -23,6 +23,7 @@ export default async function handler(
   const options = {
     page: parseInt(req.query.page as string) || 1,
     limit: parseInt(req.query.limit as string) || 10,
+    showDrafts: showDrafts === "true",
   };
 
   const data = await getPosts(game as string, lang as string, options);
@@ -32,7 +33,8 @@ export default async function handler(
 export type PaginationOptions = {
   page: number;
   limit: number;
-  fmOnly?: boolean;
+  sort?: "asc" | "desc";
+  showDrafts?: boolean;
 };
 
 type PaginationResult = {
@@ -47,16 +49,19 @@ export async function getPosts(
   options?: PaginationOptions
 ): Promise<PaginationResult> {
   try {
-    const { page = 1, limit = 10 } = options || {};
+    const { page = 1, limit = 12, sort, showDrafts } = options || {};
 
     const data = await prisma.blogPost.findMany({
       select: {
-        id: true,
         content: false,
+        description: true,
+        id: true,
         slug: true,
         title: true,
         game: true,
         tags: true,
+        published: true,
+        image: true,
         language: true,
         createdAt: true,
         updatedAt: true,
@@ -64,9 +69,10 @@ export async function getPosts(
       where: {
         game,
         language,
+        ...(showDrafts ? {} : { published: true }),
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: sort || "desc",
       },
       skip: (page - 1) * limit,
       take: limit,

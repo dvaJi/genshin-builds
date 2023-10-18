@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({
   if (!params?.page || !Number(params?.page) || Number(params?.page) <= 1) {
     return {
       redirect: {
-        destination: `/en/genshin/blog`,
+        destination: `/${locale}/genshin/blog`,
         permanent: false,
       },
     };
@@ -37,7 +37,6 @@ export const getStaticProps: GetStaticProps = async ({
   const { data, total } = await getPosts("genshin", locale as string, {
     limit: 1,
     page: Number(params?.page),
-    fmOnly: true,
   });
 
   const lngDict = await getLocale(locale, "genshin");

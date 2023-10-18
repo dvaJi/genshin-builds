@@ -178,7 +178,10 @@ function BlogPostForm({
         </div>
         <div className="absolute bottom-0 left-1/2 z-10">
           <button
-            onClick={() => setExpanded(!expanded)}
+            onClick={(e) => {
+              e.preventDefault();
+              setExpanded(!expanded)
+            }}
             className="absolute bottom-0 left-1/2 z-20 flex -translate-x-1/2 transform items-center gap-1 rounded-xl border border-zinc-600 bg-zinc-900 py-1 pl-3 pr-2 text-sm font-medium text-white transition-all hover:border-white hover:bg-white hover:text-zinc-900"
           >
             {expanded ? "Collapse" : "Expand"}

@@ -12,7 +12,8 @@
     "tierlist": "ティアリスト",
     "showcase": "ショーケース",
     "messages": "メッセージ",
-    "items": "アイテム"
+    "items": "アイテム",
+    "blog": "ブログ"
   },
   "characters": {
     "title": "本懐：スターレール 全キャラクター一覧",
@@ -93,5 +94,13 @@
     "source": "出典",
     "world_level_required": "必要ワールドレベル",
     "cost": "コスト"
+  },
+  "blog": {
+    "title": "Honkai: Star Rail ブログ",
+    "description": "Honkai: Star Rail ブログは、ゲームに関する最新のニュースやアップデートを見つける場所です。ガイド、ヒント、トリックも掲載しており、Honkai: Star Railを始めるのに役立ちます。",
+    "blog": "ブログ",
+    "blog_desc": "Honkai: Star Rail ブログは、ゲームに関する最新のニュースやアップデートを見つける場所です。ガイド、ヒント、トリックも掲載しており、Honkai: Star Railを始めるのに役立ちます。",
+    "page_title": "{title} | Honkai: Star Rail ブログ",
+    "back": "ブログに戻る"
   }
 }

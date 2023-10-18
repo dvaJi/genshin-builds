@@ -8,7 +8,8 @@
     "teams": "tim",
     "characters": "Karakter",
     "matrices": "Matriks",
-    "guides": "Panduan"
+    "guides": "Panduan",
+    "blog": "Blog"
   },
   "characters": {
     "title": "Basis Data Wiki ToF-Builds.com",
@@ -54,5 +55,13 @@
     "3pcbonus": "Bonus Set 3 potong",
     "4pcbonus": "Bonus Set 4 potong",
     "sets": "Set"
+  },
+  "blog": {
+    "title": "Blog Tower of Fantasy",
+    "description": "Blog Tower of Fantasy adalah tempat di mana Anda dapat menemukan berita dan pembaruan terbaru tentang permainan ini. Kami juga memposting panduan, tips, dan trik untuk membantu Anda memulai dengan Tower of Fantasy.",
+    "blog": "Blog",
+    "blog_desc": "Blog Tower of Fantasy adalah tempat di mana Anda dapat menemukan berita dan pembaruan terbaru tentang permainan ini. Kami juga memposting panduan, tips, dan trik untuk membantu Anda memulai dengan Tower of Fantasy.",
+    "page_title": "{title} | Blog Tower of Fantasy",
+    "back": "Kembali ke Blog"
   }
 }

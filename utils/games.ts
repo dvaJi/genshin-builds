@@ -14,17 +14,17 @@ export const GAME: Record<GamesAvailable, GameProps> = {
     path: "/",
     adminPath: "/admin/genshin",
   },
-  TOF: {
-    name: "Tower of Fantasy",
-    slug: "tof",
-    path: "/tof",
-    adminPath: "/admin/tof",
-  },
   HSR: {
     name: "Honkai: Star Rail",
     slug: "hsr",
     path: "/hsr",
     adminPath: "/admin/hsr",
+  },
+  TOF: {
+    name: "Tower of Fantasy",
+    slug: "tof",
+    path: "/tof",
+    adminPath: "/admin/tof",
   },
 };
 

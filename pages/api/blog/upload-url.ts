@@ -31,7 +31,7 @@ export default async function handler(
     return res.status(401).json({ error: "Unauthorized" });
   }
 
-  const finalPath = `/${request.data.game}/blog/${request.data.Key}`;
+  const finalPath = `${request.data.game}/blog/${request.data.Key}`;
 
   const post = await getUploadUrl({
     Bucket: bucketName,

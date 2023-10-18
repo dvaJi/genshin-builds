@@ -6,9 +6,10 @@
     "database": "Base de datos",
     "calculator": "Calculadora",
     "teams": "Equipos",
-    "characters": "Caracteres",
+    "characters": "Personajes",
     "matrices": "Matrices",
-    "guides": "Guías"
+    "guides": "Guías",
+    "blog": "Blog"
   },
   "characters": {
     "title": "Base de datos Wiki de ToF-Builds.com",
@@ -17,7 +18,7 @@
   },
   "character": {
     "title": "Guía de compilación de {name} ToF",
-    "characters": "Caracteres",
+    "characters": "Personajes",
     "simulacrum": "Simulacro",
     "recommended_matrices": "Matrices recomendadas",
     "pieces": "Piezas",
@@ -54,5 +55,13 @@
     "3pcbonus": "Bono de conjunto de 3 piezas",
     "4pcbonus": "Bono de conjunto de 4 piezas",
     "sets": "Conjuntos"
+  },
+  "blog": {
+    "title": "Blog de Tower of Fantasy",
+    "description": "El Blog de Tower of Fantasy es un lugar donde puedes encontrar las últimas noticias y actualizaciones sobre el juego. También publicamos guías, consejos y trucos para ayudarte a comenzar con Tower of Fantasy.",
+    "blog": "Blog",
+    "blog_desc": "El Blog de Tower of Fantasy es un lugar donde puedes encontrar las últimas noticias y actualizaciones sobre el juego. También publicamos guías, consejos y trucos para ayudarte a comenzar con Tower of Fantasy.",
+    "page_title": "{title} | Blog de Tower of Fantasy",
+    "back": "Volver al Blog"
   }
 }

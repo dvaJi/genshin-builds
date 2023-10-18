@@ -36,7 +36,7 @@ const BlogAdmin = ({ game }: Props) => {
   const { data, error, isLoading } = useSWR<{ data: BlogPost[] }>(
     `/api/blog/list?game=${game}${
       language === "all" ? "" : "&lang=" + language
-    }&limit=${pagination.pageSize}&page=${pagination.pageIndex}`,
+    }&limit=${pagination.pageSize}&page=${pagination.pageIndex}&sort=desc&showDrafts=true`,
     fetcher
   );
 
@@ -45,7 +45,7 @@ const BlogAdmin = ({ game }: Props) => {
       columnHelper.accessor("title", {
         cell: (info) => (
           <div>
-            {!info.row.getValue("published") ? (
+            {!info.row.original.published ? (
               <Badge className="opacity-80" textSize="xxs">
                 Draft
               </Badge>

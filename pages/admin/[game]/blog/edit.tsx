@@ -40,6 +40,7 @@ function BlogEdit({ game, post, originalCompiled, session }: Props) {
   };
 
   async function onSubmit(data: any) {
+    console.log('onSubmit', data);
     setIsLoading(true);
     setError(null);
 

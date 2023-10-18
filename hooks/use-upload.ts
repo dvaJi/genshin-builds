@@ -35,6 +35,15 @@ export const useUpload = (game: string) => {
     setFormatImage(acceptedFiles[0]);
   }, []);
 
+  const reset = useCallback(() => {
+    setFormatImage(null);
+    setImage(null);
+    setIsFetching(false);
+    setIsSuccess(false);
+    setProgressStatus(0);
+    setError(null);
+  }, []);
+
   const { getRootProps, getInputProps, fileRejections, isDragActive } =
     useDropzone({ ...DROPZONE_OPTIONS, onDrop });
 
@@ -102,6 +111,7 @@ export const useUpload = (game: string) => {
   }, [formatImage, game]);
 
   return {
+    reset,
     isFetching,
     isDragActive,
     isSuccess,

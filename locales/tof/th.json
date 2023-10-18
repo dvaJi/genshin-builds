@@ -8,7 +8,8 @@
     "teams": "ทีม",
     "characters": "ตัวละคร",
     "matrices": "เมทริกซ์",
-    "guides": "ไกด์"
+    "guides": "ไกด์",
+    "blog": "บล็อก"
   },
   "characters": {
     "title": "ToF-Builds.com Wiki Database",
@@ -54,5 +55,13 @@
     "3pcbonus": "โบนัสเซ็ต 3 ชิ้น",
     "4pcbonus": "โบนัสเซ็ต 4 ชิ้น",
     "sets": "ชุด"
+  },
+  "blog": {
+    "title": "บล็อก Tower of Fantasy",
+    "description": "บล็อก Tower of Fantasy เป็นสถานที่ที่คุณสามารถหาข่าวสารและการอัปเดตล่าสุดเกี่ยวกับเกมได้ พวกเรายังโพสต์คำแนะนำ คำแนะนำ และเคล็ดลับเพื่อช่วยคุณเริ่มต้นกับ Tower of Fantasy",
+    "blog": "บล็อก",
+    "blog_desc": "บล็อก Tower of Fantasy เป็นสถานที่ที่คุณสามารถหาข่าวสารและการอัปเดตล่าสุดเกี่ยวกับเกมได้ พวกเรายังโพสต์คำแนะนำ คำแนะนำ และเคล็ดลับเพื่อช่วยคุณเริ่มต้นกับ Tower of Fantasy",
+    "page_title": "{title} | บล็อก Tower of Fantasy",
+    "back": "กลับไปยังบล็อก"
   }
 }

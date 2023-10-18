@@ -9,6 +9,7 @@ import remarkGfm from "remark-gfm";
 import Metadata from "@components/Metadata";
 import ArchiveRender from "@components/genshin/PostRender";
 import useFormattedDate from "@hooks/use-formatted-date";
+import useIntl from "@hooks/use-intl";
 import { getImg } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
 import { getPostBySlug } from "@pages/api/blog";
@@ -21,15 +22,49 @@ type Props = {
 };
 
 export default function PostPage({ posts, content }: Props) {
+  const { t } = useIntl("blog");
   const dateFmtd = useFormattedDate(posts.updatedAt, {
     dateStyle: "full",
   });
 
   return (
     <article className="relative mx-auto max-w-screen-md">
+      <Metadata
+        pageTitle={t({
+          id: "page_title",
+          defaultMessage: "{title} | Genshin Impact Blog",
+        })}
+        pageDescription={posts.description}
+        jsonLD={`{
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "headline": "${posts.title}",
+          "datePublished": "${posts.createdAt.toISOString()}",
+          "dateModified": "${posts.updatedAt.toISOString()}",
+          "author": {
+            "@type": "Person",
+            "name": "${posts.authorName}"
+          },
+          "image": "${getImg("hsr", `/blog/${posts.image}`)}",
+          "publisher": {
+            "@type": "Organization",
+            "name": "GenshinBuilds",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://genshin-builds.com/icons/android-icon-72x72.png"
+            }
+          },
+          "description": "${posts.description}"
+        }`}
+        customOg={{
+          title: posts.title,
+          description: posts.description,
+          image: `/genshin/blog/${posts.image}`,
+        }}
+      />
       <div>
         <Link href="/genshin/blog" className="text-sm hover:text-white">
-          Back to Blog
+          {t({ id: "back", defaultMessage: "Back to Blog" })}
         </Link>
       </div>
       <header className="mx-2 lg:mx-0">

@@ -8,7 +8,8 @@
     "teams": "Mannschaften",
     "characters": "Figuren",
     "matrices": "Matrizen",
-    "guides": "Führer"
+    "guides": "Führer",
+    "blog": "Blog"
   },
   "characters": {
     "title": "ToF-Builds.com Wiki-Datenbank",
@@ -54,5 +55,13 @@
     "3pcbonus": "3-teiliger Set-Bonus",
     "4pcbonus": "4-teiliger Set-Bonus",
     "sets": "Sets"
+  },
+  "blog": {
+    "title": "Tower of Fantasy Blog",
+    "description": "Der Tower of Fantasy Blog ist der Ort, an dem Sie die neuesten Nachrichten und Updates zum Spiel finden können. Wir veröffentlichen auch Anleitungen, Tipps und Tricks, um Ihnen den Einstieg in Tower of Fantasy zu erleichtern.",
+    "blog": "Blog",
+    "blog_desc": "Der Tower of Fantasy Blog ist der Ort, an dem Sie die neuesten Nachrichten und Updates zum Spiel finden können. Wir veröffentlichen auch Anleitungen, Tipps und Tricks, um Ihnen den Einstieg in Tower of Fantasy zu erleichtern.",
+    "page_title": "{title} | Tower of Fantasy Blog",
+    "back": "Zurück zum Blog"
   }
 }
