@@ -257,27 +257,15 @@ export const getStaticProps: GetStaticProps = async ({
         },
       },
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const hsrData = new HSRData();
-  const items = await hsrData.items({
-    select: ["id"],
-  });
-
-  const paths: { params: { id: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    items.forEach((item) => {
-      paths.push({ params: { id: item.id }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
-  };
+    paths: [],
+    fallback: 'blocking',
+  }
 };
 
 export default HSRItemPage;

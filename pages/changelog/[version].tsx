@@ -36,8 +36,7 @@ function ChangelogVersion({
   materialsMap,
   foodMap,
   tcgMap,
-}:
-Props) {
+}: Props) {
   const router = useRouter();
 
   return (
@@ -206,6 +205,12 @@ export const getStaticProps: GetStaticProps = async ({
   locale = "en",
 }) => {
   const lngDict = await getLocale(locale, "genshin");
+  if (!params?.version) return { notFound: true };
+
+  const changelog = await getData<Changelog[]>("genshin", "changelog");
+  const cl = changelog.find((c) => c.version === params?.version?.toString());
+
+  if (!cl) return { notFound: true };
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
     select: ["id", "name", "rarity"],
@@ -223,7 +228,6 @@ export const getStaticProps: GetStaticProps = async ({
     select: ["id", "name"],
   });
 
-  const changelog = await getData<Changelog[]>("genshin", "changelog");
   const common = await getCommon(locale, "genshin");
   const materialsMap = await getAllMaterialsMap(genshinData);
 
@@ -232,12 +236,6 @@ export const getStaticProps: GetStaticProps = async ({
   const artifactsMap: any = {};
   const foodMap: any = {};
   const tcgMap: any = {};
-
-  if (!params?.version) return { notFound: true };
-
-  const cl = changelog.find((c) => c.version === params?.version?.toString());
-
-  if (!cl) return { notFound: true };
 
   const item = cl.items;
   item.avatar?.forEach((a: string) => {
@@ -293,23 +291,14 @@ export const getStaticProps: GetStaticProps = async ({
         },
       },
     },
+    revalidate: 60 * 60 * 48,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const changelog = await getData<Changelog[]>("genshin", "changelog");
-
-  const paths: { params: { version: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    changelog.forEach((c: any) => {
-      paths.push({ params: { version: c.version }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
+    paths: [],
+    fallback: "blocking",
   };
 };
 
