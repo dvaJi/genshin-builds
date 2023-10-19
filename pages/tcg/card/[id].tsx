@@ -194,6 +194,12 @@ export const getStaticProps: GetStaticProps = async ({
   const cards = await genshinData.tcgCards();
   const card = cards.find((c) => c.id === params?.id);
 
+  if (!card) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       lngDict,
@@ -207,24 +213,14 @@ export const getStaticProps: GetStaticProps = async ({
         },
       },
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const genshinData = new GenshinData();
-  const cards = await genshinData.tcgCards();
-
-  const paths: { params: { id: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    cards.forEach((card) => {
-      paths.push({ params: { id: card.id }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
+    paths: [],
+    fallback: "blocking",
   };
 };
 

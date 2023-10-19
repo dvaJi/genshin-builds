@@ -58,7 +58,7 @@ const MessagePage = ({ messageGroup, locale }: Props) => {
                 values: { sectionNumber: `${i + 1}` },
               })}
             </h2>
-            <menu className="flex mt-4 flex-col gap-4">
+            <menu className="mt-4 flex flex-col gap-4">
               <Messages
                 startingMessageId={section.startingMessageId}
                 messages={section.messages}
@@ -161,26 +161,14 @@ export const getStaticProps: GetStaticProps = async ({
         },
       },
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const hsrData = new HSRData();
-  const messages = await hsrData.messages({
-    select: ["id"],
-  });
-
-  const paths: { params: { id: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    messages.forEach((message) => {
-      paths.push({ params: { id: message.id.toString() }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
+    paths: [],
+    fallback: "blocking",
   };
 };
 
