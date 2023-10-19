@@ -538,25 +538,15 @@ export const getStaticProps: GetStaticProps = async ({
       //   ),
       // },
     },
+    revalidate: 60 * 60 * 48,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const hsrData = new HSRData();
-  const characters = await hsrData.characters({ select: ["id"] });
-
-  const paths: { params: { id: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    characters.forEach((character) => {
-      paths.push({ params: { id: character.id }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
-  };
+    paths: [],
+    fallback: 'blocking',
+  }
 };
 
 export default CharacterPage;
