@@ -406,6 +406,13 @@ export const getStaticProps: GetStaticProps = async ({
     language: defaultLocale as Languages,
   });
   const character = await tofData.characterbyId(params?.slug as string);
+
+  if (!character) {
+    return {
+      notFound: true,
+    };
+  }
+
   const favoritesGift = await tofData.getFavoriteGiftByCharacterId(
     `${params?.slug}`
   );
@@ -432,25 +439,15 @@ export const getStaticProps: GetStaticProps = async ({
         },
       },
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const tofData = new TOFData({ language: "en" });
-  const characters = await tofData.characters();
-
-  const paths: { params: { slug: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    characters.forEach((character) => {
-      paths.push({ params: { slug: character.id }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
-  };
+    paths: [],
+    fallback: 'blocking',
+  }
 };
 
 export default CharacterPage;

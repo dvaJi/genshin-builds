@@ -187,6 +187,12 @@ export const getStaticProps: GetStaticProps = async ({
   });
   const matrix = await tofData.matrixbyId(params?.id as string);
 
+  if (!matrix) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       matrix: {
@@ -196,25 +202,15 @@ export const getStaticProps: GetStaticProps = async ({
       lngDict,
       locale: defaultLocale,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const tofData = new TOFData({ language: "en" });
-  const matrices = await tofData.matrices();
-
-  const paths: { params: { id: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    matrices.forEach((matrices) => {
-      paths.push({ params: { id: matrices.id }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
-  };
+    paths: [],
+    fallback: 'blocking',
+  }
 };
 
 export default CharacterPage;

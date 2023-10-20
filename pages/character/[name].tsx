@@ -30,8 +30,8 @@ import {
 import { getBonusSet } from "@utils/bonus_sets";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Build, MostUsedBuild } from "interfaces/build";
-import { TeamData } from "interfaces/teams";
 import { Beta } from "interfaces/genshin/beta";
+import { TeamData } from "interfaces/teams";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -415,29 +415,14 @@ export const getStaticProps: GetStaticProps = async ({
         },
       },
     },
+    revalidate: 60 * 60 * 48,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const genshinData = new GenshinData();
-  const characters = await genshinData.characters({ select: ["id"] });
-  const beta = await getData<Beta>("genshin", "beta");
-
-  const paths: { params: { name: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    characters.forEach((character) => {
-      paths.push({ params: { name: character.id }, locale });
-    });
-
-    beta["en"].characters.forEach((character: any) => {
-      paths.push({ params: { name: character.id }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
+    paths: [],
+    fallback: "blocking",
   };
 };
 

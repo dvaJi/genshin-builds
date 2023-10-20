@@ -302,29 +302,15 @@ export const getStaticProps: GetStaticProps = async ({
       locale,
       recommendedCharacters,
     },
+    revalidate: 60 * 60 * 48,
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const genshinData = new GenshinData();
-  const weapons = await genshinData.weapons({ select: ["id"] });
-  const beta = await getData<Beta>("genshin", "beta");
-
-  const paths: { params: { name: string }; locale: string }[] = [];
-
-  for (const locale of locales) {
-    weapons.forEach((weapon) => {
-      paths.push({ params: { name: weapon.id }, locale });
-    });
-    beta["en"].weapons.forEach((weapon: any) => {
-      paths.push({ params: { name: weapon.id }, locale });
-    });
-  }
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
-    fallback: false,
-  };
+    paths: [],
+    fallback: 'blocking',
+  }
 };
 
 export default WeaponPage;
