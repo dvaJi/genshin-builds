@@ -46,8 +46,13 @@ export default async function handler(
         signature: data.playerInfo.signature ?? "",
         worldLevel: data.playerInfo.worldLevel,
         finishAchievementNum: data.playerInfo.finishAchievementNum,
-        profilePictureId: data.playerInfo.profilePicture.avatarId,
-        profileCostumeId: data.playerInfo.profilePicture.costumeId ?? 0,
+        profilePictureId:
+          data.playerInfo.profilePicture.id ||
+          data.playerInfo.profilePicture.avatarId,
+        profileCostumeId:
+          (data.playerInfo.profilePicture.id ||
+            data.playerInfo.profilePicture.costumeId) ??
+          0,
         namecardId: data.playerInfo.nameCardId,
       };
       player = await prisma.player.create({
@@ -91,8 +96,13 @@ export default async function handler(
         signature: data.playerInfo.signature,
         worldLevel: data.playerInfo.worldLevel,
         finishAchievementNum: data.playerInfo.finishAchievementNum,
-        profilePictureId: data.playerInfo.profilePicture.avatarId,
-        profileCostumeId: data.playerInfo.profilePicture.costumeId ?? 0,
+        profilePictureId:
+          data.playerInfo.profilePicture.id ||
+          data.playerInfo.profilePicture.avatarId,
+        profileCostumeId:
+          (data.playerInfo.profilePicture.id ||
+            data.playerInfo.profilePicture.costumeId) ??
+          0,
         namecardId: data.playerInfo.nameCardId,
       };
 
