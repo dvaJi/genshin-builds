@@ -3,12 +3,13 @@ import {
   flexRender,
   getCoreRowModel,
   getExpandedRowModel,
+  PaginationState,
   Row,
   useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, type Dispatch, type SetStateAction } from "react";
 
 import Badge from "@components/ui/Badge";
 import useIntl from "@hooks/use-intl";
@@ -18,6 +19,8 @@ import StatIcon from "./StatIcon";
 
 export interface Props {
   data: (Build & { player: Profile })[];
+  pagination: PaginationState;
+  setPagination: Dispatch<SetStateAction<PaginationState>>;
 }
 
 const cvQuality = (cv: number) => {
@@ -201,7 +204,7 @@ const columns: ColumnDef<Build & { player: Profile }>[] = [
   },
 ];
 
-function LeaderBoardBuildsTable({ data }: Props) {
+function LeaderBoardBuildsTable({ data, pagination, setPagination }: Props) {
   const { t } = useIntl("profile");
   // console.log("re-rendering LeaderBoardBuildsTable");
 
@@ -209,9 +212,14 @@ function LeaderBoardBuildsTable({ data }: Props) {
     data,
     columns,
     pageCount: data.length,
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
     getRowCanExpand: () => true,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
+    manualPagination: true,
     debugTable: process.env.NODE_ENV === "development",
   });
 
@@ -290,6 +298,25 @@ function LeaderBoardBuildsTable({ data }: Props) {
           })}
         </tbody>
       </table>
+      <div className="my-4 flex items-center justify-center gap-2 text-sm text-slate-300">
+        <button
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {"<"}
+        </button>
+        <span className="mx-2 text-lg">
+          {table.getState().pagination.pageIndex + 1}
+        </span>
+        <button
+          className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {">"}
+        </button>
+      </div>
     </div>
   );
 }

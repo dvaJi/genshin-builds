@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import GenshinData, { AchievementCategory } from "genshin-data";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
 
@@ -36,10 +36,6 @@ const AchievementsCategories = dynamic(
     ssr: false,
   }
 );
-
-export const config = {
-	runtime: 'experimental-edge',
-};
 
 type TodoProps = {
   categories: AchievementCategory[];
@@ -129,9 +125,7 @@ const AchivementsPage = ({ categories }: TodoProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  locale = "en",
-}) => {
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });

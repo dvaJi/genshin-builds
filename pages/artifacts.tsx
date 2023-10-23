@@ -1,24 +1,20 @@
-import GenshinData, { Artifact } from "genshin-data";
-import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
+import { GetStaticProps } from "next";
+import GenshinData, { Artifact } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Metadata from "@components/Metadata";
 import Badge from "@components/ui/Badge";
+import Metadata from "@components/Metadata";
 import Card from "@components/ui/Card";
 
+import { localeToLang } from "@utils/locale-to-lang";
 import useIntl from "@hooks/use-intl";
+import { getLocale } from "@lib/localData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import { getLocale } from "@lib/localData";
-import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
-export const config = {
-  runtime: "experimental-edge",
-};
 
 type Props = {
   artifacts: Artifact[];
@@ -44,7 +40,7 @@ const ArtifactsPage = ({ artifacts }: Props) => {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+      <Ads className="my-0 mx-auto" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "artifacts", defaultMessage: "Artifacts" })}
       </h2>
@@ -53,7 +49,7 @@ const ArtifactsPage = ({ artifacts }: Props) => {
           {artifacts.map((artifact) => (
             <div
               key={artifact._id}
-              className="m-2 rounded-lg border border-vulcan-600 bg-vulcan-700 px-4 py-2"
+              className="m-2 rounded-lg border border-vulcan-600 bg-vulcan-700 py-2 px-4"
             >
               <div className="flex">
                 <div>
@@ -207,9 +203,7 @@ const ArtifactsPage = ({ artifacts }: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  locale = "en",
-}) => {
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const artifacts = await genshinData.artifacts();

@@ -1,13 +1,13 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import AscensionPlanner, {
-  getServerSideProps as plannerProps,
+  getStaticProps as plannerProps,
 } from "./ascension-planner";
 
 const IndexPage = (props: any) => {
   return <AscensionPlanner {...props} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   return plannerProps(ctx);
 };
 

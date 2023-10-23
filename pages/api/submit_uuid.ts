@@ -1,28 +1,16 @@
-import {
-  CreateBuild,
-  CreatePlayer,
-  UpdateBuild,
-  UpdatePlayer,
-  builds,
-  players,
-} from "@db/schema";
-import { createId } from "@paralleldrive/cuid2";
-import { eq } from "drizzle-orm";
-import { NextRequest } from "next/server";
-
-import { db } from "@db/index";
+import prisma, { Prisma } from "@db/index";
 import { encodeBuilds } from "@utils/leaderboard-enc";
 import { PlayerDataAPI } from "interfaces/enka";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export const config = {
-  runtime: "edge",
-};
-
-export default async function handler(req: NextRequest) {
-  const uid = req.nextUrl.searchParams.get("uid");
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const { uid } = req.query;
 
   if (!uid) {
-    return new Response("Missing uid", { status: 400 });
+    return res.status(400).json({ error: "Missing uid" });
   }
 
   const response = await fetch(`https://enka.network/api/uid/${uid}/`, {
@@ -32,66 +20,55 @@ export default async function handler(req: NextRequest) {
   });
 
   if (!response.ok) {
-    return new Response("Invalid uid", { status: 400 });
+    return res.status(400).json({ statusCode: 400, message: "Invalid uid" });
   }
 
   const data = (await response.json()) as PlayerDataAPI;
 
   if (!data.avatarInfoList || data.avatarInfoList.length <= 1) {
     console.log("Player profile is not public", data);
-    return new Response("Player profile is not public", { status: 400 });
+    return res
+      .status(400)
+      .json({ statusCode: 400, message: "Player profile is not public" });
   }
 
   try {
-    let player = await db.query.players.findFirst({
-      where: (player, { eq }) => eq(player.uuid, data.uid),
+    let player = await prisma.player.findUnique({
+      where: { uuid: data.uid },
     });
 
     if (!player) {
       console.log(`Player [${data.uid}] not found, creating new one`);
-      const insert: CreatePlayer = {
-        id: createId(),
+      const insert: Prisma.PlayerCreateInput = {
         uuid: data.uid,
         nickname: data.playerInfo.nickname,
         level: data.playerInfo.level,
         signature: data.playerInfo.signature ?? "",
         worldLevel: data.playerInfo.worldLevel,
         finishAchievementNum: data.playerInfo.finishAchievementNum,
-        profilePictureId:
-          data.playerInfo.profilePicture.id ||
-          data.playerInfo.profilePicture.avatarId,
-        profileCostumeId:
-          (data.playerInfo.profilePicture.id ||
-            data.playerInfo.profilePicture.costumeId) ??
-          0,
+        profilePictureId: data.playerInfo.profilePicture.avatarId,
+        profileCostumeId: data.playerInfo.profilePicture.costumeId ?? 0,
         namecardId: data.playerInfo.nameCardId,
-        updatedAt: new Date(),
-        createdAt: new Date(),
       };
-      const insertPlayer = await db.insert(players).values(insert);
-
-      if (!insertPlayer || insertPlayer.rowsAffected !== 1) {
-        console.log("error insertPlayer", insertPlayer);
-        return new Response("error insertPlayer", { status: 500 });
-      }
-
-      let player = { ...insert };
+      player = await prisma.player.create({
+        data: insert,
+      });
 
       const encodedData = await encodeBuilds(data.avatarInfoList);
-      const insertBuilds = encodedData.map((avatar) => ({
-        ...avatar,
-        id: createId(),
-        playerId: player!.id,
-      }));
+      const insertBuilds: Prisma.BuildCreateManyInput[] = encodedData.map(
+        (avatar) => ({
+          ...avatar,
+          playerId: player!.id,
+        })
+      );
 
-      const insertAvatars = await db.insert(builds).values(insertBuilds);
-
-      if (
-        !insertAvatars ||
-        insertAvatars.rowsAffected !== insertBuilds.length
-      ) {
-        console.log("error insertAvatars", insertAvatars);
-        return new Response("error insertAvatars", { status: 500 });
+      const insertAvatars = await prisma.build.createMany({
+        data: insertBuilds,
+      });
+      if (!insertAvatars) {
+        return res
+          .status(500)
+          .json({ statusCode: 500, message: "error insertAvatars" });
       }
     } else {
       // Check if we got the cached player data
@@ -100,123 +77,100 @@ export default async function handler(req: NextRequest) {
           uid: data.uid,
           ttl: data.ttl,
         });
-        return new Response(
-          JSON.stringify({
-            uuid: data.uid,
-            nickname: player.nickname,
-            profilePictureId: player.profilePictureId,
-            nameCardId: player.namecardId,
-          }),
-          {
-            status: 200,
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        return res.status(200).json({
+          uuid: data.uid,
+          nickname: data.playerInfo.nickname,
+          profilePictureId: data.playerInfo.profilePicture.avatarId,
+          nameCardId: data.playerInfo.nameCardId,
+        });
       }
-
       // Update player data
-      const update: UpdatePlayer = {
-        uuid: data.uid,
+      const update: Prisma.PlayerUpdateInput = {
         nickname: data.playerInfo.nickname,
         level: data.playerInfo.level,
         signature: data.playerInfo.signature,
         worldLevel: data.playerInfo.worldLevel,
         finishAchievementNum: data.playerInfo.finishAchievementNum,
-        profilePictureId:
-          data.playerInfo.profilePicture.id ||
-          data.playerInfo.profilePicture.avatarId,
-        profileCostumeId:
-          (data.playerInfo.profilePicture.id ||
-            data.playerInfo.profilePicture.costumeId) ??
-          0,
+        profilePictureId: data.playerInfo.profilePicture.avatarId,
+        profileCostumeId: data.playerInfo.profilePicture.costumeId ?? 0,
         namecardId: data.playerInfo.nameCardId,
-        updatedAt: new Date(),
       };
 
-      console.log("Updating player data", { uid: data.uid, update });
-      const updatedPlayer = await db
-        .update(players)
-        .set(update)
-        .where(eq(players.uuid, data.uid));
+      const updatedPlayer = await prisma.player.update({
+        where: { uuid: data.uid },
+        data: update,
+      });
 
-      if (!updatedPlayer || updatedPlayer.rowsAffected !== 1) {
-        console.log("error updatedPlayer", updatedPlayer);
-        return new Response("error updatedPlayer", { status: 500 });
+      if (!updatedPlayer) {
+        return res
+          .status(500)
+          .json({ statusCode: 500, message: "error updatedPlayer" });
       }
 
-      console.log("Get current builds", { uid: data.uid });
-      const currentBuilds = await db.query.builds.findMany({
-        where: (build, { eq }) => eq(build.playerId, player!.id),
+      const currentBuilds = await prisma.build.findMany({
+        where: { playerId: player!.id },
       });
 
       // Update builds
       const encodedData = await encodeBuilds(data.avatarInfoList);
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
-      const updateBuilds: { where: string; data: UpdateBuild }[] = encodedData
+      const updateBuilds: Prisma.BuildUpdateArgs[] = encodedData
         .filter((avatar) => avatarsIds.includes(avatar.avatarId))
         .map((avatar) => ({
-          where: currentBuilds.find((id) => id.avatarId === avatar.avatarId)
-            ?.id as string,
+          where: {
+            id: currentBuilds.find((id) => id.avatarId === avatar.avatarId)?.id,
+          },
           data: avatar,
         }));
 
-      console.log("Updating builds", { uid: data.uid, updateBuilds });
-
       for await (const updateBuild of updateBuilds) {
-        const updatedBuild = await db
-          .update(builds)
-          .set(updateBuild.data)
-          .where(eq(builds.id, updateBuild.where));
-
-        if (!updatedBuild || updatedBuild.rowsAffected !== 1) {
-          console.log("error updatedBuild", updatedBuild);
-          return new Response("error updatedBuild", { status: 500 });
+        const updatedBuild = await prisma.build.update({
+          data: updateBuild.data,
+          where: updateBuild.where,
+        });
+        if (!updatedBuild) {
+          return res
+            .status(500)
+            .json({ statusCode: 500, message: "error updatedBuild" });
         }
       }
 
       // insert new builds
+      const insertBuilds: Prisma.BuildCreateManyInput[] = encodedData
+        .filter((avatar) => {
+          const currentBuild = currentBuilds.find(
+            (build) => build.avatarId === avatar.avatarId
+          );
 
-      const insertBuilds: CreateBuild[] = encodedData
-        .filter((avatar) => !avatarsIds.includes(avatar.avatarId))
+          return !currentBuild;
+        })
         .map((avatar) => ({
           ...avatar,
-          id: createId(),
           playerId: player!.id,
         }));
 
-      if (insertBuilds.length > 0) {
-        console.log("Inserting new builds", { uid: data.uid });
-        const newBuild = await db.insert(builds).values(insertBuilds);
+      const newBuilds = await prisma.build.createMany({
+        data: insertBuilds,
+      });
 
-        if (!newBuild || newBuild.rowsAffected !== 1) {
-          console.log("error newBuild", newBuild);
-          return new Response("error newBuild", { status: 500 });
-        }
+      if (!newBuilds) {
+        return res
+          .status(500)
+          .json({ statusCode: 500, message: "error newBuilds" });
       }
     }
 
-    console.log("Returning player data", { uid: data.uid });
-
-    return new Response(
-      JSON.stringify({
-        uuid: data.uid,
-        nickname: data.playerInfo.nickname,
-        profilePictureId: data.playerInfo.profilePicture.avatarId,
-        nameCardId: data.playerInfo.nameCardId,
-      }),
-      {
-        status: 200,
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    );
+    return res.status(200).json({
+      uuid: data.uid,
+      nickname: data.playerInfo.nickname,
+      profilePictureId: data.playerInfo.profilePicture.avatarId,
+      nameCardId: data.playerInfo.nameCardId,
+    });
   } catch (error) {
-    console.log(error);
-    return new Response("Internal Server Error, please try again later", {
-      status: 500,
+    console.error("[api] user", error);
+    return res.status(500).json({
+      statusCode: 500,
+      message: "Internal Server Error, please try again later",
     });
   }
 }

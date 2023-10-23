@@ -1,3 +1,6 @@
+import { getLocale } from "@lib/localData";
+import { GetStaticProps } from "next";
+
 function ErrorNotFound() {
   return (
     <div className="my-24">
@@ -5,5 +8,12 @@ function ErrorNotFound() {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+  const lngDict = await getLocale(locale, "genshin");
+  return {
+    props: { lngDict },
+  };
+};
 
 export default ErrorNotFound;

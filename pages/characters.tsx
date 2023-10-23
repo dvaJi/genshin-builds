@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import GenshinData, { Character } from "genshin-data";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -18,10 +18,6 @@ import { Beta } from "interfaces/genshin/beta";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
-export const config = {
-  runtime: "experimental-edge",
-};
 
 type CharactersProps = {
   characters: (Character & { beta?: boolean })[];
@@ -214,9 +210,7 @@ const CharactersPage = ({ characters, elements, common }: CharactersProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  locale = "en",
-}) => {
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({

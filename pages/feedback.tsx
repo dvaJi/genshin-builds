@@ -1,3 +1,7 @@
+import { GetStaticProps } from "next";
+
+import { getLocale } from "@lib/localData";
+import { getUrlLQ } from "@lib/imgUrl";
 import Card from "@components/ui/Card";
 
 const WeaponsPage = () => {
@@ -15,6 +19,23 @@ const WeaponsPage = () => {
       </Card>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+  const lngDict = await getLocale(locale, "genshin");
+
+  return {
+    props: {
+      lngDict,
+      bgStyle: {
+        image: getUrlLQ(`/regions/Sumeru_n.jpg`),
+        gradient: {
+          background:
+            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
+        },
+      },
+    },
+  };
 };
 
 export default WeaponsPage;

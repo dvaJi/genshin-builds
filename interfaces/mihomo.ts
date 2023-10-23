@@ -38,58 +38,11 @@ export interface Addition {
   step?:   number;
 }
 
-export enum Field {
-  AllDmg = "all_dmg",
-  Atk = "atk",
-  BreakDmg = "break_dmg",
-  CritDmg = "crit_dmg",
-  CritRate = "crit_rate",
-  Def = "def",
-  EffectHit = "effect_hit",
-  EffectRes = "effect_res",
-  FireDmg = "fire_dmg",
-  HP = "hp",
-  HealRate = "heal_rate",
-  LightningDmg = "lightning_dmg",
-  QuantumDmg = "quantum_dmg",
-  SPRate = "sp_rate",
-  Spd = "spd",
-}
+export type Field = "atk" | "effect_hit" | "quantum_dmg" | "hp" | "def" | "effect_res" | "crit_dmg" | "break_dmg" | "sp_rate" | "spd" | "crit_rate" | "wind_dmg" | "fire_dmg" | "ice_dmg";
 
-export enum Icon {
-  IconPropertyIconAttackPNG = "icon/property/IconAttack.png",
-  IconPropertyIconBreakUpPNG = "icon/property/IconBreakUp.png",
-  IconPropertyIconCriticalChancePNG = "icon/property/IconCriticalChance.png",
-  IconPropertyIconCriticalDamagePNG = "icon/property/IconCriticalDamage.png",
-  IconPropertyIconDefencePNG = "icon/property/IconDefence.png",
-  IconPropertyIconEnergyRecoveryPNG = "icon/property/IconEnergyRecovery.png",
-  IconPropertyIconFireAddedRatioPNG = "icon/property/IconFireAddedRatio.png",
-  IconPropertyIconHealRatioPNG = "icon/property/IconHealRatio.png",
-  IconPropertyIconMaxHPPNG = "icon/property/IconMaxHP.png",
-  IconPropertyIconQuantumAddedRatioPNG = "icon/property/IconQuantumAddedRatio.png",
-  IconPropertyIconSpeedPNG = "icon/property/IconSpeed.png",
-  IconPropertyIconStatusProbabilityPNG = "icon/property/IconStatusProbability.png",
-  IconPropertyIconStatusResistancePNG = "icon/property/IconStatusResistance.png",
-  IconPropertyIconThunderAddedRatioPNG = "icon/property/IconThunderAddedRatio.png",
-}
+export type Icon = "icon/property/IconAttack.png" | "icon/property/IconStatusProbability.png" | "icon/property/IconQuantumAddedRatio.png" | "icon/property/IconMaxHP.png" | "icon/property/IconDefence.png" | "icon/property/IconStatusResistance.png" | "icon/property/IconCriticalDamage.png" | "icon/property/IconBreakUp.png" | "icon/property/IconEnergyRecovery.png" | "icon/property/IconSpeed.png" | "icon/property/IconCriticalChance.png" | "icon/property/IconWindAddedRatio.png" | "icon/property/IconFireAddedRatio.png" | "icon/property/IconIceAddedRatio.png";
 
-export enum Name {
-  Atk = "ATK",
-  BreakEffect = "Break Effect",
-  CRITRate = "CRIT Rate",
-  CritDmg = "CRIT DMG",
-  DMGBoost = "DMG Boost",
-  Def = "DEF",
-  EffectHitRate = "Effect Hit Rate",
-  EffectRES = "Effect RES",
-  EnergyRegenerationRate = "Energy Regeneration Rate",
-  FireDMGBoost = "Fire DMG Boost",
-  HP = "HP",
-  LightningDMGBoost = "Lightning DMG Boost",
-  OutgoingHealingBoost = "Outgoing Healing Boost",
-  QuantumDMGBoost = "Quantum DMG Boost",
-  Spd = "SPD",
-}
+export type Name = "ATK" | "Effect Hit Rate" | "Quantum DMG Boost" | "HP" | "DEF" | "Effect RES" | "CRIT DMG" | "Break Effect" | "Energy Regeneration Rate" | "SPD" | "CRIT Rate" | "Wind DMG Boost" | "Fire DMG Boost" | "Ice DMG Boost";
 
 export interface Avatar {
   id:     string;
@@ -98,12 +51,7 @@ export interface Avatar {
   icon:   string;
 }
 
-export enum Color {
-  F84F36 = "#F84F36",
-  Ffffff = "#FFFFFF",
-  The1C29Ba = "#1C29BA",
-  The8872F1 = "#8872F1",
-}
+export type Color = "#1C29BA" | "#00FF9C" | "#47C7FD";
 
 export interface LightCone {
   id:         string;
@@ -142,12 +90,9 @@ export interface Relic {
 }
 
 export interface SkillTree {
-  id:        string;
-  level:     number;
-  anchor:    string;
-  max_level: number;
-  icon:      string;
-  parent:    null | string;
+  id:    string;
+  level: number;
+  icon:  string;
 }
 
 export interface Skill {
@@ -178,8 +123,6 @@ export interface Player {
 }
 
 export interface SpaceInfo {
-  memory_data:        MemoryData;
-  universe_level:     number;
   challenge_data:     ChallengeData;
   pass_area_progress: number;
   light_cone_count:   number;
@@ -191,10 +134,4 @@ export interface ChallengeData {
   maze_group_id:        number;
   maze_group_index:     number;
   pre_maze_group_index: number;
-}
-
-export interface MemoryData {
-  level:       number;
-  chaos_id:    number;
-  chaos_level: number;
 }
