@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import format from "date-fns/format";
 import GenshinData, { Character, Domains, Weapon } from "genshin-data";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
@@ -23,6 +23,10 @@ const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 const ServerTimers = dynamic(() => import("@components/ServerTimers"), {
   ssr: false,
 });
+
+export const config = {
+  runtime: "experimental-edge",
+};
 
 type Props = {
   characters: Record<string, Character>;
@@ -162,7 +166,9 @@ const AscensionPlanner = ({ characters, weapons, domains, days }: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  locale = "en",
+}) => {
   const lngDict = await getLocale(locale, "genshin");
 
   const genshinData = new GenshinData({ language: localeToLang(locale) });

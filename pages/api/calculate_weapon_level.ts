@@ -1,6 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import GenshinData from "genshin-data";
-import { CalculationParam, CalculationItemResult } from "interfaces/calculator";
+import { CalculationItemResult, CalculationParam } from "interfaces/calculator";
+import { NextRequest } from "next/server";
+
+export const config = {
+  runtime: "edge",
+};
 
 const lvlexp = [
   [
@@ -42,12 +46,9 @@ const lvlexp = [
   ],
 ];
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<CalculationItemResult[] | null>
-) {
-  console.log(req.body);
-  const { weaponId, lang, params } = req.body as {
+export default async function handler(req: NextRequest) {
+  const body = await req.json();
+  const { weaponId, lang, params } = body as {
     weaponId: string;
     lang: string;
     params: CalculationParam;
@@ -55,8 +56,7 @@ export default async function handler(
   const gi = new GenshinData({ language: lang as any });
   const weapon = (await gi.weapons()).find((c) => c.id === weaponId);
   if (!weapon) {
-    res.status(404).json(null);
-    return;
+    return new Response("Weapon not found", { status: 404 });
   }
 
   const weaponexpMaterial = (await gi.weaponExpMaterials()).sort(
@@ -172,5 +172,10 @@ export default async function handler(
     });
   }
 
-  res.status(200).json(items);
+  return new Response(JSON.stringify(items), {
+    status: 200,
+    headers: {
+      "content-type": "application/json",
+    },
+  });
 }

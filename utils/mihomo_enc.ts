@@ -1,4 +1,4 @@
-import { HSRBuild, HSRPlayer } from "@prisma/client";
+import { HSRBuild, HSRPlayer } from "@db/schema";
 import { Character, LightCone, Relic } from "hsr-data";
 
 import {

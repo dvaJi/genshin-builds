@@ -15,6 +15,8 @@ import { FishingPoint } from "interfaces/fishing";
 
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
+// export const dynamicParams = false;
+
 type Props = {
   fish: Record<string, Fish>;
   // baits: Record<string, Bait>;

@@ -1,10 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import GenshinData from "genshin-data";
-import {
-  CalculationParam,
-  CalculationCharacterResult,
-  CalculationItemResult,
-} from "interfaces/calculator";
+import { CalculationItemResult, CalculationParam } from "interfaces/calculator";
+import { NextRequest } from "next/server";
+
+export const config = {
+  runtime: "edge",
+};
 
 const lvlExpList = [
   0, 1000, 2325, 4025, 6175, 8800, 11950, 15675, 20025, 25025, 30725, 37175,
@@ -20,12 +20,10 @@ const lvlExpList = [
   8362650,
 ];
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<CalculationCharacterResult | null>
-) {
-  console.log(req.body);
-  const { characterId, lang, params } = req.body as {
+export default async function handler(req: NextRequest) {
+  const body = await req.json();
+  // console.log(req.body);
+  const { characterId, lang, params } = body as {
     characterId: string;
     lang: string;
     params: CalculationParam;
@@ -34,8 +32,7 @@ export default async function handler(
   const character = (await gi.characters()).find((c) => c.id === characterId);
 
   if (!character) {
-    res.status(404).json(null);
-    return;
+    return new Response("Character not found", { status: 404 });
   }
 
   const charExpMaterial = (await gi.characterExpMaterials()).sort(
@@ -252,5 +249,10 @@ export default async function handler(
 
   const expWasted = current;
 
-  res.status(200).json({ expWasted, items });
+  return new Response(JSON.stringify({ expWasted, items }), {
+    status: 200,
+    headers: {
+      "content-type": "application/json",
+    },
+  });
 }

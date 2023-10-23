@@ -1,30 +1,35 @@
-import prisma from "@db/index";
 import HSRData from "hsr-data";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest } from "next/server";
 
 import { decodeBuilds, regionParse } from "@utils/mihomo_enc";
+import { db } from "@db/index";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { uid, lang } = req.query;
+export const config = {
+  runtime: "edge",
+};
+
+export default async function handler(req: NextRequest) {
+  const uid = req.nextUrl.searchParams.get("uid");
+  const lang = req.nextUrl.searchParams.get("lang");
 
   if (!uid || !lang) {
-    return res.status(400).json({ error: "Missing uid or lang" });
+    return new Response("Missing uid or lang", { status: 400 });
   }
 
   console.log("get uid", uid);
   // const response = await getBuild(lang, uid as string);
-  return res.status(200).json({ uid, lang });
+  return new Response(JSON.stringify({ uid, lang }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
 
 export async function getBuild(lang: any, uid: string) {
   const hsr = new HSRData({ language: lang });
-  const playerData = await prisma.hSRPlayer.findUnique({
-    where: {
-      uuid: uid,
-    },
+  const playerData = await db.query.hsrPlayers.findFirst({
+    where: (player, { eq }) => eq(player.uuid, uid),
   });
 
   if (!playerData) {
@@ -36,12 +41,8 @@ export async function getBuild(lang: any, uid: string) {
     };
   }
 
-  const builds = await prisma.hSRBuild.findMany({
-    where: {
-      player: {
-        id: playerData.id,
-      },
-    },
+  const builds = await db.query.hsrBuilds.findMany({
+    where: (build, { eq }) => eq(build.playerId, playerData.id),
   });
 
   const characters = await hsr.characters();
@@ -65,7 +66,7 @@ export async function getBuild(lang: any, uid: string) {
       passAreaProgress: playerData.passAreaProgress,
       friends: playerData.friends,
       region: regionParse(playerData.uuid),
-      updatedAt: playerData.updatedAt.toString(),
+      updatedAt: playerData.updatedAt?.toString(),
       builds: await decodeBuilds(builds, characters, lightCones, relics),
     },
   };

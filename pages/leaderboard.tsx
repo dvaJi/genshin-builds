@@ -3,12 +3,11 @@ import GenshinData, { Character } from "genshin-data";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import useSWR from "swr";
 
 import Select from "@components/Select";
-import ProfileFavorites from "@components/genshin/ProfileFavorites";
 import Button from "@components/ui/Button";
 
 import useIntl from "@hooks/use-intl";
@@ -18,6 +17,10 @@ import { localeToLang } from "@utils/locale-to-lang";
 import { Build, Profile } from "interfaces/profile";
 
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const ProfileFavorites = dynamic(
+  () => import("@components/genshin/ProfileFavorites"),
+  { ssr: false }
+);
 
 const LeaderBoardBuildsTable = dynamic(
   () => import("@components/genshin/LeaderBoardBuildsTable"),
@@ -32,6 +35,11 @@ type Filters = {
   characters: string[];
 };
 
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  return await res.json();
+}
+
 function LeaderBoardPage({ characters }: Props) {
   const lastIdRef = useRef<string | null>(null);
   const filters = useRef<Filters>({ characters: [] });
@@ -44,24 +52,11 @@ function LeaderBoardPage({ characters }: Props) {
   const { data, error } = useSWR<(Build & { player: Profile })[]>(
     `/api/leaderboard?lang=${localeGI}&limit=${
       pagination.pageIndex
-    }&characters=${filters.current.characters.join(",")}`,
+    }&characters=${filters.current.characters.join(",")}&page=${
+      pagination.pageIndex
+    }`,
     fetcher
   );
-
-  useEffect(() => {
-    if (data && data.length > 0) {
-      lastIdRef.current = data[data.length - 1]._id;
-    }
-  }, [data]);
-
-  async function fetcher(url: string) {
-    const query =
-      lastIdRef.current && pagination.pageIndex !== 0
-        ? `&lastID=${lastIdRef.current}`
-        : "";
-    const res = await fetch(url + query);
-    return await res.json();
-  }
 
   const updateCharactersFilter = (optionId: string) => {
     /// Check if the option is already selected
@@ -175,11 +170,36 @@ function LeaderBoardPage({ characters }: Props) {
           <span>Loading...</span>
         </div>
       ) : (
-        <LeaderBoardBuildsTable
-          data={data}
-          pagination={pagination}
-          setPagination={setPagination}
-        />
+        <>
+          <LeaderBoardBuildsTable data={data} />
+          <div className="my-4 flex items-center justify-center gap-2 text-sm text-slate-300">
+            <button
+              className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+              onClick={() =>
+                setPagination((prev) => ({
+                  ...prev,
+                  pageIndex: pagination.pageIndex - 1,
+                }))
+              }
+              disabled={pagination.pageIndex === 0}
+            >
+              {"<"}
+            </button>
+            <span className="mx-2 text-lg">{pagination.pageIndex + 1}</span>
+            <button
+              className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+              onClick={() =>
+                setPagination((prev) => ({
+                  ...prev,
+                  pageIndex: pagination.pageIndex + 1,
+                }))
+              }
+              disabled={data.length < pagination.pageSize}
+            >
+              {">"}
+            </button>
+          </div>
+        </>
       )}
     </div>
   );

@@ -1,5 +1,5 @@
 import GenshinData, { Character, Weapon } from "genshin-data";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 
 import Metadata from "@components/Metadata";
@@ -15,6 +15,10 @@ import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+
+export const config = {
+  runtime: "experimental-edge",
+};
 
 type Props = {
   characters: Character[];
@@ -62,7 +66,9 @@ const Calculator = ({ characters, weapons }: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  locale = "en",
+}) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const characters = await genshinData.characters({
