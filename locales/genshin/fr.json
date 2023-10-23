@@ -48,7 +48,8 @@
     "leaderboard": "Classement",
     "leaderboard_desc": "Classements pour comparer votre progression avec d'autres joueurs",
     "profiles": "Profils",
-    "profiles_desc": "Des profils pour comparer votre progression avec d'autres joueurs"
+    "profiles_desc": "Des profils pour comparer votre progression avec d'autres joueurs",
+    "blog": "Blog"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Base de données Wiki",
@@ -352,5 +353,13 @@
     "artifact": "Artefact",
     "owner": "Propriétaire"
   },
-  "leaderboard": {}
+  "leaderboard": {},
+  "blog": {
+    "title": "Actualités, Guides et Conseils de Genshin Impact | Explorez le Blog de Genshin Impact",
+    "description": "Restez informé des actualités, guides et conseils de Genshin Impact. Explorez le Blog de Genshin Impact pour les dernières mises à jour et des informations précieuses pour améliorer votre expérience de jeu.",
+    "blog": "Blog",
+    "blog_desc": "Le Blog de Genshin Impact est un endroit où vous pouvez trouver les dernières actualités et mises à jour sur le jeu. Nous publions également des guides, des conseils et des astuces pour vous aider à commencer avec Genshin Impact.",
+    "page_title": "{title} | Blog de Genshin Impact",
+    "back": "Retour au Blog"
+  }
 }

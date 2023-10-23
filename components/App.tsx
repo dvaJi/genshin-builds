@@ -1,10 +1,13 @@
+import { SessionProvider } from "next-auth/react";
 import { AppProps as NextAppProps } from "next/app";
 import dynamic from "next/dynamic";
 
+import AdminLayout from "@components/admin/Layout";
 import LayoutGenshin from "@components/genshin/Layout";
 import HSRLayout from "@components/hsr/Layout";
 import TOFLayout from "@components/tof/Layout";
 
+import { Session } from "@lib/session";
 import { AppBackgroundStyle } from "@state/background-atom";
 import { isHSR, isTOF } from "@utils/games";
 
@@ -18,10 +21,11 @@ type Props = {
   lngDict?: Record<string, string>;
   bgStyle?: AppBackgroundStyle;
   fontClass?: string;
+  session?: Session;
 };
 
 const App = ({ Component, pageProps, router }: AppProps<Props>) => {
-  // Render the correct layout based on the game
+  // Tower of Fantasy
   if (isTOF(router.route)) {
     return (
       <TOFLayout bgStyle={pageProps?.bgStyle} fontClass={pageProps?.fontClass}>
@@ -31,12 +35,28 @@ const App = ({ Component, pageProps, router }: AppProps<Props>) => {
     );
   }
 
+  // Honkai Star Rail
   if (isHSR(router.route)) {
     return (
       <HSRLayout bgStyle={pageProps?.bgStyle} fontClass={pageProps?.fontClass}>
         <FeedbackAlert />
         <Component {...pageProps} />
       </HSRLayout>
+    );
+  }
+
+  // Admin
+  if (router.route.startsWith("/admin")) {
+    return (
+      <SessionProvider session={pageProps?.session}>
+        <AdminLayout
+          bgStyle={pageProps?.bgStyle}
+          fontClass={pageProps?.fontClass}
+          session={pageProps?.session}
+        >
+          <Component {...pageProps} />
+        </AdminLayout>
+      </SessionProvider>
     );
   }
 

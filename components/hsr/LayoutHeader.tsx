@@ -14,6 +14,7 @@ const navRoutes: NavRoutes[] = [
   { id: "characters", name: "Characters", href: "/hsr" },
   { id: "relics", name: "Relics", href: "/hsr/relics" },
   { id: "lightcones", name: "Light Cones", href: "/hsr/lightcones" },
+  { id: "blog", name: "Blog", href: "/hsr/blog" },
   { id: "showcase", name: "Showcase", href: "/hsr/showcase" },
   { id: "items", name: "Items", href: "/hsr/item" },
   { id: "messages", name: "Messages", href: "/hsr/message" },

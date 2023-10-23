@@ -13,6 +13,7 @@ import { NavRoutes } from "interfaces/nav-routes";
 const navRoutes: NavRoutes[] = [
   { id: "characters", name: "Characters", href: "/tof" },
   { id: "matrices", name: "Matrices", href: "/tof/matrices" },
+  { id: "blog", name: "Blog", href: "/tof/blog" },
 ];
 
 const LayoutHeader = () => {

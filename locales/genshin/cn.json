@@ -48,7 +48,8 @@
     "leaderboard": "排行榜",
     "leaderboard_desc": "排行榜，与其他玩家比较您的进度",
     "profiles": "档案",
-    "profiles_desc": "档案，与其他玩家比较您的进度"
+    "profiles_desc": "档案，与其他玩家比较您的进度",
+    "blog": "博客"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki Database",
@@ -289,7 +290,22 @@
     "back_to_guides": "返回指南",
     "published_at": "发布于 {date}",
     "youtube_tutorial": "YouTube教程",
-    "share_on": "分享至"
+    "interactive_map": "Interactive Map",
+    "related_guides": "Related Guides"
+  },
+  "banners_characters": {
+    "title": "原神角色祈愿",
+    "description": "探索所有角色祈愿及其概率",
+    "rerun_prediction": "预测重演",
+    "historical": "历史记录",
+    "runs": "{runs} 次祈愿"
+  },
+  "banners_weapons": {
+    "title": "原神武器祈愿",
+    "description": "探索所有武器祈愿及其概率",
+    "rerun_prediction": "预测重演",
+    "historical": "历史记录",
+    "runs": "{runs} 次祈愿"
   },
   "tcg_cards": {
     "title": "天命召唤 TCG 卡牌游戏",
@@ -297,23 +313,23 @@
     "cards": "卡牌"
   },
   "tcg_card": {
-      "title": "{name} - 原神 TCG 卡牌列表",
-      "description": "{name} 是《原神》天命召唤 TCG 中的一张卡牌。了解如何获取、技能、效果，以及更多关于{name}卡牌的信息。",
-      "tcg_cards_title": "天命召唤 TCG 卡牌游戏",
-      "back": "返回",
-      "hp": "生命值",
-      "energy": "能量",
-      "weapon": "武器",
-      "cost": "消耗",
-      "cost_type": "消耗类型",
-      "card_type": "卡牌类型",
-      "source": "来源",
-      "card_effects": "卡牌效果"
+    "title": "{name} - 原神 TCG 卡牌列表",
+    "description": "{name} 是《原神》天命召唤 TCG 中的一张卡牌。了解如何获取、技能、效果，以及更多关于{name}卡牌的信息。",
+    "tcg_cards_title": "天命召唤 TCG 卡牌游戏",
+    "back": "返回",
+    "hp": "生命值",
+    "energy": "能量",
+    "weapon": "武器",
+    "cost": "消耗",
+    "cost_type": "消耗类型",
+    "card_type": "卡牌类型",
+    "source": "来源",
+    "card_effects": "卡牌效果"
   },
   "tcg_decks": {
-      "title": "探索天命召唤 TCG 顶级卡组：原神卡牌游戏的元卡组构建",
-      "description": "本文提供了天命召唤 TCG 中最佳卡组的综合列表。包括原神卡牌游戏的元卡组构建，使其成为希望提升游戏水平并攀登排行榜的玩家的终极指南。通过这些信息，读者可以随时了解当前的元环境，并在构建自己的卡组时做出明智的决策。",
-      "best_decks": "顶级卡组"
+    "title": "探索天命召唤 TCG 顶级卡组：原神卡牌游戏的元卡组构建",
+    "description": "本文提供了天命召唤 TCG 中最佳卡组的综合列表。包括原神卡牌游戏的元卡组构建，使其成为希望提升游戏水平并攀登排行榜的玩家的终极指南。通过这些信息，读者可以随时了解当前的元环境，并在构建自己的卡组时做出明智的决策。",
+    "best_decks": "顶级卡组"
   },
   "profile": {
     "title": "原神玩家资料",
@@ -336,7 +352,13 @@
     "artifact": "神器",
     "owner": "拥有者"
   },
-  "leaderboard": {
-
+  "leaderboard": {},
+  "blog": {
+    "title": "原神资讯、指南和技巧 | 探索原神博客",
+    "description": "了解原神资讯、指南和技巧。探索原神博客以获取最新更新和有价值的见解，提升您的游戏体验。",
+    "blog": "博客",
+    "blog_desc": "原神博客是您可以找到有关游戏的最新资讯和更新的地方。我们还发布指南、技巧和窍门，帮助您入门原神。",
+    "page_title": "{title} | 原神博客",
+    "back": "返回博客"
   }
 }

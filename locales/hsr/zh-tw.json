@@ -12,7 +12,8 @@
     "tierlist": "等級清單",
     "showcase": "展示",
     "messages": "訊息",
-    "items": "物品"
+    "items": "物品",
+    "blog": "部落格"
   },
   "characters": {
     "title": "崩壞：星軌全角色一覽",
@@ -93,5 +94,13 @@
     "source": "來源",
     "world_level_required": "所需世界等級",
     "cost": "花費"
+  },
+  "blog": {
+    "title": "崩壞3rd：星軌部落格",
+    "description": "崩壞3rd：星軌部落格是你可以找到有關遊戲的最新消息和更新的地方。我們也會發布指南、提示和技巧，以幫助你入門崩壞3rd：星軌。",
+    "blog": "部落格",
+    "blog_desc": "崩壞3rd：星軌部落格是你可以找到有關遊戲的最新消息和更新的地方。我們也會發布指南、提示和技巧，以幫助你入門崩壞3rd：星軌。",
+    "page_title": "{title} | 崩壞3rd：星軌部落格",
+    "back": "返回部落格"
   }
 }

@@ -48,7 +48,8 @@
     "leaderboard": "排行榜",
     "leaderboard_desc": "用於比較您與其他玩家進度的個人資料",
     "profiles": "簡介",
-    "profiles_desc": "用於比較您與其他玩家進度的個人資料"
+    "profiles_desc": "用於比較您與其他玩家進度的個人資料",
+    "blog": "部落格"
   },
   "ascension_planner": {
     "title": "Genshin-Builds.com Wiki 數據庫",
@@ -351,5 +352,13 @@
     "artifact": "人工製品",
     "owner": "所有者"
   },
-  "leaderboard": {}
+  "leaderboard": {},
+  "blog": {
+    "title": "原神資訊、指南和技巧 | 探索原神部落格",
+    "description": "了解原神資訊、指南和技巧。探索原神部落格以獲得最新更新和有價值的見解，提升您的遊戲體驗。",
+    "blog": "部落格",
+    "blog_desc": "原神部落格是您可以找到有關遊戲的最新資訊和更新的地方。我們還發布指南、技巧和竅門，幫助您入門原神。",
+    "page_title": "{title} | 原神部落格",
+    "back": "返回部落格"
+  }
 }

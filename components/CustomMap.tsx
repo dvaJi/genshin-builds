@@ -1,7 +1,7 @@
 import { useMobileDetect } from "@hooks/use-mobile-detect";
-import { MapContainer, Marker, ImageOverlay } from "react-leaflet";
-import { CRS, divIcon } from "leaflet";
 import { GiCustomMap } from "@lib/guides_api";
+import { CRS, divIcon } from "leaflet";
+import { ImageOverlay, MapContainer, Marker } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 

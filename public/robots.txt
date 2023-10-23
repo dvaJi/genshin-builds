@@ -2,6 +2,10 @@
 User-agent: *
 Allow: /
 
+# *
+User-agent: *
+Disallow: /admin
+
 # Host
 Host: https://genshin-builds.com
 

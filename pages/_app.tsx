@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import App from "@components/App";
 import IntlProvider from "@components/IntlProvider";
 import * as gtag from "@lib/gtag";
+import { Session } from "@lib/session";
 
 import "../styles/globals.css";
 import "../styles/hsr-globals.css";
@@ -22,6 +23,7 @@ type AppProps<P = any> = { pageProps: P } & Omit<NextAppProps<P>, "pageProps">;
 type Props = {
   lngDict?: Record<string, string>;
   common?: Record<string, string>;
+  session?: Session;
 };
 
 function Root(props: AppProps<Props>) {
