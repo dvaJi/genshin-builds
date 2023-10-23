@@ -17,7 +17,7 @@ export interface PlayerAPI {
   towerLevelIndex: number;
   showAvatarInfoList: ShowcaseAPI[];
   showNameCardIdList: number[];
-  profilePicture: ProfilePictureAPI;
+  profilePicture: ProfilePictureAPI & ProfilePictureAPINew;
 }
 
 export interface ShowcaseAPI {
@@ -29,6 +29,10 @@ export interface ShowcaseAPI {
 export interface ProfilePictureAPI {
   avatarId: number;
   costumeId?: number;
+}
+
+export interface ProfilePictureAPINew {
+  id: number;
 }
 
 export interface CharactersAPI {
