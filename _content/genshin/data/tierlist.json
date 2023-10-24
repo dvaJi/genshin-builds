@@ -3,9 +3,15 @@
     "maindps": {
       "0": [
         {
-          "id": "kamisato_ayaka",
-          "w_id": "mistsplitter_reforged",
-          "a_ids": ["blizzard_strayer"],
+          "id": "neuvillette",
+          "w_id": "tome_of_the_eternal_flow",
+          "a_ids": ["marechaussee_hunter"],
+          "min_c": 1
+        },
+        {
+          "id": "alhaitham",
+          "w_id": "light_of_foliar_incision",
+          "a_ids": ["gilded_dreams"],
           "min_c": 0
         },
         {
@@ -15,30 +21,30 @@
           "min_c": 1
         },
         {
+          "id": "kamisato_ayaka",
+          "w_id": "mistsplitter_reforged",
+          "a_ids": ["blizzard_strayer"],
+          "min_c": 0
+        },
+        {
           "id": "raiden_shogun",
           "w_id": "engulfing_lightning",
           "a_ids": ["emblem_of_severed_fate"],
           "min_c": 2
-        },
-        {
-          "id": "alhaitham",
-          "w_id": "light_of_foliar_incision",
-          "a_ids": ["gilded_dreams"],
-          "min_c": 0
-        },
-        {
-          "id": "neuvillette",
-          "w_id": "tome_of_the_eternal_flow",
-          "a_ids": ["marechaussee_hunter"],
-          "min_c": 1
         }
       ],
       "1": [
         {
+          "id": "lyney",
+          "w_id": "the_first_great_magic",
+          "a_ids": ["marechaussee_hunter"],
+          "min_c": 0
+        },
+        {
           "id": "kamisato_ayato",
           "w_id": "haran_geppaku_futsu",
           "a_ids": ["heart_of_depth"],
-          "min_c": 2
+          "min_c": 0
         },
         {
           "id": "ganyu",
@@ -47,10 +53,16 @@
           "min_c": 1
         },
         {
-          "id": "lyney",
-          "w_id": "the_first_great_magic",
+          "id": "tartaglia",
+          "w_id": "polar_star",
+          "a_ids": ["nymphs_dream"],
+          "min_c": 0
+        },
+        {
+          "id": "wriothesley",
+          "w_id": "cashflow_supervision",
           "a_ids": ["marechaussee_hunter"],
-          "min_c": 2
+          "min_c": 0
         },
         {
           "id": "arataki_itto",
@@ -65,12 +77,6 @@
           "min_c": 2
         },
         {
-          "id": "tartaglia",
-          "w_id": "polar_star",
-          "a_ids": ["nymphs_dream"],
-          "min_c": 0
-        },
-        {
           "id": "nahida",
           "w_id": "a_thousand_floating_dreams",
           "a_ids": ["deepwood_memories"],
@@ -79,16 +85,16 @@
       ],
       "2": [
         {
-          "id": "cyno",
-          "w_id": "staff_of_the_scarlet_sands",
-          "a_ids": ["gilded_dreams"],
-          "min_c": 2
-        },
-        {
           "id": "wanderer",
           "w_id": "tulaytullahs_remembrance",
           "a_ids": ["desert_pavilion_chronicle"],
           "min_c": 0
+        },
+        {
+          "id": "cyno",
+          "w_id": "staff_of_the_scarlet_sands",
+          "a_ids": ["gilded_dreams"],
+          "min_c": 2
         },
         {
           "id": "yoimiya",
@@ -386,7 +392,7 @@
           "id": "traveler_dendro",
           "w_id": "freedomsworn",
           "a_ids": ["deepwood_memories"],
-          "min_c": 5
+          "min_c": 6
         },
         {
           "id": "lynette",
@@ -737,15 +743,9 @@
     "maindps": {
       "0": [
         {
-          "id": "kamisato_ayaka",
-          "w_id": "mistsplitter_reforged",
-          "a_ids": ["blizzard_strayer"],
-          "min_c": 0
-        },
-        {
-          "id": "hu_tao",
-          "w_id": "staff_of_homa",
-          "a_ids": ["crimson_witch_of_flames"],
+          "id": "neuvillette",
+          "w_id": "tome_of_the_eternal_flow",
+          "a_ids": ["marechaussee_hunter"],
           "min_c": 0
         },
         {
@@ -755,13 +755,25 @@
           "min_c": 0
         },
         {
-          "id": "neuvillette",
-          "w_id": "tome_of_the_eternal_flow",
-          "a_ids": ["marechaussee_hunter"],
+          "id": "hu_tao",
+          "w_id": "staff_of_homa",
+          "a_ids": ["crimson_witch_of_flames"],
+          "min_c": 0
+        },
+        {
+          "id": "kamisato_ayaka",
+          "w_id": "mistsplitter_reforged",
+          "a_ids": ["blizzard_strayer"],
           "min_c": 0
         }
       ],
       "1": [
+        {
+          "id": "lyney",
+          "w_id": "the_first_great_magic",
+          "a_ids": ["marechaussee_hunter"],
+          "min_c": 0
+        },
         {
           "id": "kamisato_ayato",
           "w_id": "haran_geppaku_futsu",
@@ -772,6 +784,12 @@
           "id": "ganyu",
           "w_id": "hunters_path",
           "a_ids": ["shimenawas_reminiscence"],
+          "min_c": 0
+        },
+        {
+          "id": "tartaglia",
+          "w_id": "polar_star",
+          "a_ids": ["nymphs_dream"],
           "min_c": 0
         },
         {
@@ -787,18 +805,6 @@
           "min_c": 0
         },
         {
-          "id": "tartaglia",
-          "w_id": "polar_star",
-          "a_ids": ["nymphs_dream"],
-          "min_c": 0
-        },
-        {
-          "id": "lyney",
-          "w_id": "the_first_great_magic",
-          "a_ids": ["marechaussee_hunter"],
-          "min_c": 0
-        },
-        {
           "id": "nahida",
           "w_id": "a_thousand_floating_dreams",
           "a_ids": ["deepwood_memories"],
@@ -807,15 +813,21 @@
       ],
       "2": [
         {
-          "id": "raiden_shogun",
-          "w_id": "engulfing_lightning",
-          "a_ids": ["emblem_of_severed_fate"],
-          "min_c": 0
-        },
-        {
           "id": "wanderer",
           "w_id": "tulaytullahs_remembrance",
           "a_ids": ["desert_pavilion_chronicle"],
+          "min_c": 0
+        },
+        {
+          "id": "wriothesley",
+          "w_id": "cashflow_supervision",
+          "a_ids": ["marechaussee_hunter"],
+          "min_c": 0
+        },
+        {
+          "id": "raiden_shogun",
+          "w_id": "engulfing_lightning",
+          "a_ids": ["emblem_of_severed_fate"],
           "min_c": 0
         },
         {
@@ -1447,15 +1459,15 @@
     "maindps": {
       "0": [
         {
-          "id": "nahida",
-          "w_id": "a_thousand_floating_dreams",
-          "a_ids": ["deepwood_memories"],
+          "id": "neuvillette",
+          "w_id": "tome_of_the_eternal_flow",
+          "a_ids": ["marechaussee_hunter"],
           "min_c": 6
         },
         {
-          "id": "hu_tao",
-          "w_id": "staff_of_homa",
-          "a_ids": ["crimson_witch_of_flames"],
+          "id": "nahida",
+          "w_id": "a_thousand_floating_dreams",
+          "a_ids": ["deepwood_memories"],
           "min_c": 6
         },
         {
@@ -1465,9 +1477,27 @@
           "min_c": 6
         },
         {
+          "id": "hu_tao",
+          "w_id": "staff_of_homa",
+          "a_ids": ["crimson_witch_of_flames"],
+          "min_c": 6
+        },
+        {
           "id": "raiden_shogun",
           "w_id": "engulfing_lightning",
           "a_ids": ["emblem_of_severed_fate"],
+          "min_c": 6
+        },
+        {
+          "id": "lyney",
+          "w_id": "the_first_great_magic",
+          "a_ids": ["marechaussee_hunter"],
+          "min_c": 6
+        },
+        {
+          "id": "wanderer",
+          "w_id": "tulaytullahs_remembrance",
+          "a_ids": ["desert_pavilion_chronicle"],
           "min_c": 6
         },
         {
@@ -1481,25 +1511,19 @@
           "w_id": "mistsplitter_reforged",
           "a_ids": ["blizzard_strayer"],
           "min_c": 6
-        },
-        {
-          "id": "neuvillette",
-          "w_id": "tome_of_the_eternal_flow",
-          "a_ids": ["marechaussee_hunter"],
-          "min_c": 6
         }
       ],
       "1": [
         {
-          "id": "xiao",
-          "w_id": "staff_of_homa",
-          "a_ids": ["viridescent_venerer", "gladiators_finale"],
-          "min_c": 6
-        },
-        {
           "id": "kamisato_ayato",
           "w_id": "haran_geppaku_futsu",
           "a_ids": ["heart_of_depth"],
+          "min_c": 6
+        },
+        {
+          "id": "xiao",
+          "w_id": "staff_of_homa",
+          "a_ids": ["viridescent_venerer", "gladiators_finale"],
           "min_c": 6
         },
         {
@@ -1509,21 +1533,15 @@
           "min_c": 6
         },
         {
-          "id": "lyney",
-          "w_id": "the_first_great_magic",
-          "a_ids": ["marechaussee_hunter"],
-          "min_c": 6
-        },
-        {
           "id": "arataki_itto",
           "w_id": "redhorn_stonethresher",
           "a_ids": ["husk_of_opulent_dreams"],
           "min_c": 6
         },
         {
-          "id": "wanderer",
-          "w_id": "tulaytullahs_remembrance",
-          "a_ids": ["desert_pavilion_chronicle"],
+          "id": "wriothesley",
+          "w_id": "cashflow_supervision",
+          "a_ids": ["marechaussee_hunter"],
           "min_c": 6
         }
       ],
