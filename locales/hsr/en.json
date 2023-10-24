@@ -13,7 +13,8 @@
     "showcase": "Showcase",
     "messages": "Messages",
     "items": "Items",
-    "blog": "Blog"
+    "blog": "Blog",
+    "achievements": "Achievements"
   },
   "characters": {
     "title": "Honkai: Star Rail All Characters List",
@@ -102,5 +103,12 @@
     "blog_desc": "The Honkai: Star Rail Blog is a place where you can find the latest news and updates about the game. We also post guides, tips, and tricks to help you get started with Honkai: Star Rail.",
     "page_title": "{title} | Honkai: Star Rail Blog",
     "back": "Back to Blog"
+  },
+  "achievements": {
+    "title": "Honkai: Star Rail Achievements",
+    "description": "A complete list of all achievements in Honkai: Star Rail.",
+    "achievements": "Achievements",
+    "achievements_desc": "List of all achievements in Honkai Star Rail and how to complete them so you can score some Stellar Jades easily.",
+    "search": "Search..."
   }
 }

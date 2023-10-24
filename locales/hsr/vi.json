@@ -13,7 +13,8 @@
     "showcase": "Trưng bày",
     "messages": "Thông điệp",
     "items": "Vật phẩm",
-    "blog": "Blog"
+    "blog": "Blog",
+    "achievements": "Thành tựu"
   },
   "characters": {
     "title": "Honkai: Star Rail Danh sách tất cả nhân vật",
@@ -102,5 +103,12 @@
     "blog_desc": "Blog Honkai: Star Rail là nơi bạn có thể tìm thấy tin tức và cập nhật mới nhất về trò chơi. Chúng tôi cũng đăng tải hướng dẫn, mẹo và thủ thuật để giúp bạn bắt đầu với Honkai: Star Rail.",
     "page_title": "{title} | Blog Honkai: Star Rail",
     "back": "Quay lại Blog"
+  },
+  "achievements": {
+    "title": "Thành tựu Honkai: Star Rail",
+    "description": "Danh sách đầy đủ tất cả thành tựu trong Honkai: Star Rail.",
+    "achievements": "Thành tựu",
+    "achievements_desc": "Danh sách tất cả thành tựu trong Honkai Star Rail và cách hoàn thành chúng để dễ dàng kiếm được một số Ngọc lục bảo.",
+    "search": "Tìm kiếm..."
   }
 }

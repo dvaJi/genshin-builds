@@ -13,7 +13,8 @@
     "showcase": "Tampilan",
     "messages": "Pesan",
     "items": "Item",
-    "blog": "Blog"
+    "blog": "Blog",
+    "achievements": "Prestasi"
   },
   "characters": {
     "title": "Honkai: Daftar Semua Karakter Star Rail",
@@ -102,5 +103,12 @@
     "blog_desc": "Blog Honkai: Star Rail adalah tempat di mana Anda dapat menemukan berita dan pembaruan terbaru tentang permainan ini. Kami juga memposting panduan, tips, dan trik untuk membantu Anda memulai dengan Honkai: Star Rail.",
     "page_title": "{title} | Blog Honkai: Star Rail",
     "back": "Kembali ke Blog"
+  },
+  "achievements": {
+    "title": "Prestasi Honkai: Star Rail",
+    "description": "Daftar lengkap semua prestasi di Honkai: Star Rail.",
+    "achievements": "Prestasi",
+    "achievements_desc": "Daftar semua prestasi di Honkai Star Rail dan bagaimana cara menyelesaikannya agar Anda dapat dengan mudah mendapatkan beberapa Jade Bintang.",
+    "search": "Cari..."
   }
 }

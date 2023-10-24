@@ -18,6 +18,7 @@ const navRoutes: NavRoutes[] = [
   { id: "showcase", name: "Showcase", href: "/hsr/showcase" },
   { id: "items", name: "Items", href: "/hsr/item" },
   { id: "messages", name: "Messages", href: "/hsr/message" },
+  { id: "achievements", name: "Achievements", href: "/hsr/achievements" },
 ];
 
 const LayoutHeader = () => {

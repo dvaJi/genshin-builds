@@ -13,7 +13,8 @@
     "showcase": "Витрина",
     "messages": "Сообщения",
     "items": "Предметы",
-    "blog": "Блог"
+    "blog": "Блог",
+    "achievements": "Достижения"
   },
   "characters": {
     "title": "Honkai: Star Rail Список всех персонажей",
@@ -102,5 +103,12 @@
     "blog_desc": "Блог Honkai: Star Rail - это место, где вы найдете последние новости и обновления об игре. Мы также публикуем руководства, советы и хитрости, чтобы помочь вам начать играть в Honkai: Star Rail.",
     "page_title": "{title} | Блог Honkai: Star Rail",
     "back": "Вернуться в блог"
+  },
+  "achievements": {
+    "title": "Достижения в Honkai: Star Rail",
+    "description": "Полный список всех достижений в Honkai: Star Rail.",
+    "achievements": "Достижения",
+    "achievements_desc": "Список всех достижений в Honkai Star Rail и как их завершить, чтобы легко заработать несколько Стелларных нефритов.",
+    "search": "Поиск..."
   }
 }

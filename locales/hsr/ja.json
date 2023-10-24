@@ -13,7 +13,8 @@
     "showcase": "ショーケース",
     "messages": "メッセージ",
     "items": "アイテム",
-    "blog": "ブログ"
+    "blog": "ブログ",
+    "achievements": "実績"
   },
   "characters": {
     "title": "本懐：スターレール 全キャラクター一覧",
@@ -102,5 +103,12 @@
     "blog_desc": "Honkai: Star Rail ブログは、ゲームに関する最新のニュースやアップデートを見つける場所です。ガイド、ヒント、トリックも掲載しており、Honkai: Star Railを始めるのに役立ちます。",
     "page_title": "{title} | Honkai: Star Rail ブログ",
     "back": "ブログに戻る"
+  },
+  "achievements": {
+    "title": "崩壊3rd：星軌の実績",
+    "description": "崩壊3rd：星軌のすべての実績の完全なリスト。",
+    "achievements": "実績",
+    "achievements_desc": "崩壊星軌のすべての実績と、簡単にステラジェイドを獲得する方法のリスト。",
+    "search": "検索..."
   }
 }

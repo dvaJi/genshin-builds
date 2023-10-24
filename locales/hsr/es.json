@@ -13,7 +13,8 @@
     "showcase": "Vitrina",
     "messages": "Mensajes",
     "items": "Objetos",
-    "blog": "Blog"
+    "blog": "Blog",
+    "achievements": "Logros"
   },
   "characters": {
     "title": "Honkai: Star Rail Lista de todos los personajes",
@@ -102,5 +103,12 @@
     "blog_desc": "El Blog de Honkai: Star Rail es un lugar donde puedes encontrar las últimas noticias y actualizaciones sobre el juego. También publicamos guías, consejos y trucos para ayudarte a comenzar con Honkai: Star Rail.",
     "page_title": "{title} | Blog de Honkai: Star Rail",
     "back": "Volver al Blog"
+  },
+  "achievements": {
+    "title": "Logros de Honkai: Star Rail",
+    "description": "Una lista completa de todos los logros en Honkai: Star Rail.",
+    "achievements": "Logros",
+    "achievements_desc": "Lista de todos los logros en Honkai Star Rail y cómo completarlos para ganar algunas Jade Estelar fácilmente.",
+    "search": "Buscar..."
   }
 }

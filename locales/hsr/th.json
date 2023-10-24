@@ -13,7 +13,8 @@
     "showcase": "แสดงความสำคัญ",
     "messages": "ข้อความ",
     "items": "วัตถุ",
-    "blog": "บล็อก"
+    "blog": "บล็อก",
+    "achievements": "รางวัล"
   },
   "characters": {
     "title": "Honkai: Star Rail รายชื่อตัวละครทั้งหมด",
@@ -102,5 +103,12 @@
     "blog_desc": "บล็อก Honkai: Star Rail เป็นสถานที่ที่คุณสามารถหาข่าวสารและการอัปเดตล่าสุดเกี่ยวกับเกมได้ พวกเรายังโพสต์คำแนะนำ คำแนะนำ และเคล็ดลับเพื่อช่วยคุณเริ่มต้นกับ Honkai: Star Rail",
     "page_title": "{title} | บล็อก Honkai: Star Rail",
     "back": "กลับไปยังบล็อก"
+  },
+  "achievements": {
+    "title": "รางวัลใน Honkai: Star Rail",
+    "description": "รายการเต็มรางวัลทั้งหมดใน Honkai: Star Rail",
+    "achievements": "รางวัล",
+    "achievements_desc": "รายการรางวัลทั้งหมดใน Honkai Star Rail และวิธีการสำเร็จให้คุณสามารถได้รับ Jade ดาวงามได้อย่างง่ายดาย",
+    "search": "ค้นหา..."
   }
 }

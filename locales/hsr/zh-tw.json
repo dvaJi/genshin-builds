@@ -13,7 +13,8 @@
     "showcase": "展示",
     "messages": "訊息",
     "items": "物品",
-    "blog": "部落格"
+    "blog": "部落格",
+    "achievements": "成就"
   },
   "characters": {
     "title": "崩壞：星軌全角色一覽",
@@ -102,5 +103,12 @@
     "blog_desc": "崩壞3rd：星軌部落格是你可以找到有關遊戲的最新消息和更新的地方。我們也會發布指南、提示和技巧，以幫助你入門崩壞3rd：星軌。",
     "page_title": "{title} | 崩壞3rd：星軌部落格",
     "back": "返回部落格"
+  },
+  "achievements": {
+    "title": "崩坏3rd：星轨成就",
+    "description": "崩坏3rd：星轨的所有成就完整列表。",
+    "achievements": "成就",
+    "achievements_desc": "崩坏星轨的所有成就列表以及如何完成它们以轻松获得一些星辰玉。",
+    "search": "搜索..."
   }
 }
