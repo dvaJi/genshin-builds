@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 
 import { useClickOutside } from "@hooks/use-clickoutside";
+import { getImg } from "@lib/imgUrl";
 import { GAME, GameProps } from "utils/games";
 
 type Props = {
@@ -31,9 +31,12 @@ function GameSelector({ currentGame, className }: Props) {
         )}
         onClick={() => setIsOpen((o) => !o)}
       >
-        <Image
+        <img
           className="mr-3 h-6 w-6 rounded"
-          src={`/imgs/games/${currentGame.slug}.webp`}
+          src={getImg("genshin", `/games/${currentGame.slug}.webp`, {
+            height: 32,
+            width: 32,
+          })}
           alt={currentGame.name}
           width={32}
           height={32}
@@ -59,9 +62,12 @@ function GameSelector({ currentGame, className }: Props) {
               role="menuitem"
               className="flex h-full w-full items-center px-2 py-2 text-left text-sm hover:bg-tof-600"
             >
-              <Image
+              <img
                 className="mr-3 h-6 w-6 rounded"
-                src={`/imgs/games/${game.slug}.webp`}
+                src={getImg("genshin", `/games/${game.slug}.webp`, {
+                  height: 32,
+                  width: 32,
+                })}
                 alt={game.name}
                 width={32}
                 height={32}

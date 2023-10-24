@@ -1,16 +1,15 @@
-import Image from "next/image";
+import { getImg } from "@lib/imgUrl";
 import { memo } from "react";
 
 const Logo = () => {
   return (
     <>
-      <Image
-        src="/logo.png"
+      <img
+        src={getImg("genshin", "/logo.png")}
         className="fill-current text-white md:w-48"
         alt="GenshinBuilds logo"
         width={90}
         height={38}
-        priority
       />
       <span className="hidden text-lg font-normal text-gray-100">
         GenshinBuilds
