@@ -73,6 +73,10 @@ export default function PostPage({ posts, content }: Props) {
           <Balancer>{posts.title}</Balancer>
         </h1>
         <p className="text-lg text-slate-200">{posts.description}</p>
+        <FrstAds
+          placementName="genshinbuilds_billboard_atf"
+          classList={["flex", "justify-center"]}
+        />
         <div className="flex items-center justify-between">
           <a
             href={posts.authorLink}
@@ -91,10 +95,6 @@ export default function PostPage({ posts, content }: Props) {
               {posts.authorName}
             </span>
           </a>
-          <FrstAds
-            placementName="genshinbuilds_billboard_atf"
-            classList={["flex", "justify-center"]}
-          />
           <div className="mt-1 pr-2 text-sm italic">
             <span data-time={posts.updatedAt}>{dateFmtd}</span>
           </div>
