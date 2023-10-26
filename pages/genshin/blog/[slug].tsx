@@ -33,6 +33,7 @@ export default function PostPage({ posts, content }: Props) {
         pageTitle={t({
           id: "page_title",
           defaultMessage: "{title} | Genshin Impact Blog",
+          values: { title: posts.title },
         })}
         pageDescription={posts.description}
         jsonLD={`{

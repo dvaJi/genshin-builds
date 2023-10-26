@@ -34,6 +34,7 @@ export default function PostPage({ posts, content }: Props) {
         pageTitle={t({
           id: "page_title",
           defaultMessage: "{title} | Tower of Fantasy Blog",
+          values: { title: posts.title },
         })}
         pageDescription={posts.description}
         jsonLD={`{

@@ -15,7 +15,7 @@ interface MetadataProps {
   };
 }
 
-const DOMAIN = process.env.VERCEL_URL
+const DOMAIN = process.env.NEXT_PUBLIC_GA_ID
   ? `https://genshin-builds.com`
   : "http://localhost:3000";
 
