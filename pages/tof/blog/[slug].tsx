@@ -155,7 +155,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         image,
         gradient: {
           background:
-            "linear-gradient(rgba(26,20,26,.6),rgb(21, 20, 26) 900px)",
+            "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
         },
       },
     },
