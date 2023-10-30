@@ -12,7 +12,7 @@ import { useMobileDetect } from "@hooks/use-mobile-detect";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import { getCommon, getData, getLocale } from "@lib/localData";
+import { getCommon, getLocale, getRemoteData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, TierNums, TierlistWeapons } from "interfaces/tierlist";
 
@@ -158,7 +158,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const weapons = await genshinData.weapons({
     select: ["id", "name", "rarity"],
   });
-  const tierlist = await getData("genshin", "tierlist-weapons");
+  const tierlist = await getRemoteData("genshin", "tierlist-weapons");
   const common = await getCommon(locale, "genshin");
 
   const weaponsMap = weapons.reduce(

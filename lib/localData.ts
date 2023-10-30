@@ -14,6 +14,17 @@ export async function getLocale(lang: string, game: string) {
   }
 }
 
+export async function getRemoteData<T>(game: string, dataFile: string) {
+  try {
+    const res = await fetch(`${process.env.SITEDATA_URL}/${game}-${dataFile}.json`);
+    const data = await res.json();
+    return data as T;
+  } catch (err) {
+    console.log("Data not found", { game, dataFile });
+    return {} as T;
+  }
+}
+
 export async function getData<T>(game: string, dataFile: string) {
   try {
     const data = require(`../_content/${game}/data/${dataFile}.json`);

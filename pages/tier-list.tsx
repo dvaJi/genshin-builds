@@ -11,7 +11,7 @@ import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
 import { getUrlLQ } from "@lib/imgUrl";
-import { getCommon, getData, getLocale } from "@lib/localData";
+import { getCommon, getLocale, getRemoteData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
 
@@ -194,9 +194,9 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name"],
   });
 
-  const tierlist = await getData<Record<string, Tierlist>>(
+  const tierlist = await getRemoteData<Record<string, Tierlist>>(
     "genshin",
-    "tierlist"
+    "tierlist-characters"
   );
   const common = await getCommon(locale, "genshin");
 
