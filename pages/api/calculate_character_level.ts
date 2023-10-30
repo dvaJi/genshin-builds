@@ -1,9 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import GenshinData from "genshin-data";
+import type { NextApiRequest, NextApiResponse } from "next";
+
 import {
-  CalculationParam,
   CalculationCharacterResult,
   CalculationItemResult,
+  CalculationParam,
 } from "interfaces/calculator";
 
 const lvlExpList = [
@@ -98,9 +99,8 @@ export default async function handler(
   if (params.currentLevel.asclLvl < params.intendedLevel.asclLvl) {
     for (const [index, item] of character.ascension.entries()) {
       if (
-        index === 0 ||
-        index <= params.currentLevel.asclLvl ||
-        index > params.intendedLevel.asclLvl
+        index - 1 <= params.currentLevel.asclLvl ||
+        index - 1 > params.intendedLevel.asclLvl
       ) {
         continue;
       }
