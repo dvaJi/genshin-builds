@@ -9,7 +9,7 @@ import FishingPointCard from "@components/genshin/FishingPointCard";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
-import { getLocale } from "@lib/localData";
+import { getLocale, getRemoteData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { FishingPoint } from "interfaces/fishing";
 
@@ -122,7 +122,7 @@ const FishingPage = ({ fish, fishingPoints }: Props) => {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   // const common = require(`../_content/genshin/data/common.json`)[locale];
-  const fishingPoints = require(`../_content/genshin/data/fishing_points.json`);
+  const fishingPoints = await getRemoteData("genshin", "fishing");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
   const fish = await genshinData.fish();
   // const baits = await genshinData.baits();
@@ -149,6 +149,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       // common,
       fishingPoints,
     },
+    revalidate: 60 * 60 * 48,
   };
 };
 
