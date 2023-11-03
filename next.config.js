@@ -72,6 +72,7 @@ const nextConfig = {
   experimental: {
     swcPlugins: [["next-superjson-plugin", {}]],
   },
+  transpilePackages: ["react-md-editor"],
 };
 
 module.exports = withPWA(withBundleAnalyzer(withMDX(nextConfig)));

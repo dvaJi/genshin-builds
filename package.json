@@ -41,6 +41,7 @@
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.10",
     "@tanstack/react-table": "^8.10.7",
+    "@uiw/react-md-editor": "^3.25.2",
     "@vercel/og": "^0.5.20",
     "axios": "^1.5.1",
     "clsx": "^2.0.0",

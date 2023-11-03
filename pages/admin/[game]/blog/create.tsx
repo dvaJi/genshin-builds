@@ -30,9 +30,13 @@ function CreatePost({ game, session }: Props) {
         development: process.env.NEXT_PUBLIC_VERCEL_ENV !== "production",
         remarkPlugins: [remarkGfm],
       },
-    }).then((result) => {
-      setCompiled(result);
-    });
+    })
+      .then((result) => {
+        setCompiled(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   async function onSubmit(data: any) {

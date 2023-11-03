@@ -21,6 +21,7 @@ const ComponentGallery = dynamic(
     ssr: false,
   }
 );
+const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
 type Props = {
   game: string;
@@ -37,7 +38,9 @@ function BlogPostForm({
   onContentChange,
   initialData,
 }: Props) {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(
+    !initialData ? true : false
+  );
   const [title, setTitle] = useState<string>(initialData?.title || "");
   const [slug, setSlug] = useState<string>(initialData?.slug || "");
   const [language, setLanguage] = useState<string>(
@@ -205,17 +208,18 @@ function BlogPostForm({
       </div>
       <label className="block">
         <span className="text-zinc-400">Content</span>
-        {/* <MdxEditor /> */}
-        <textarea
-          name="content"
-          rows={30}
-          className="mt-1 block w-full rounded-md border-zinc-700 bg-zinc-900 shadow-sm focus:border-zinc-200 focus:ring focus:ring-zinc-200 focus:ring-opacity-0"
-          onChange={(e) => {
-            setContent(e.target.value);
-            onContentChange(e.target.value);
-          }}
+        <MDEditor
+          className="border-zinc-700 bg-zinc-900"
+          preview="edit"
+          visibleDragbar={true}
+          height={300}
+          minHeight={300}
+          maxHeight={1500}
           value={content}
-          required
+          onChange={(e) => {
+            setContent(e!);
+            onContentChange(e!);
+          }}
         />
       </label>
       <div className="flex w-full gap-2">
