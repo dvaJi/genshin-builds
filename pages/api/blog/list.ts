@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 
-import prisma, { BlogPost } from "@db/index";
+import prisma, { type BlogPost } from "@db/index";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(
@@ -88,7 +88,11 @@ export async function getPosts(
     const pages = Math.ceil(total / limit);
 
     return {
-      data: <BlogPost[]>data,
+      data: <BlogPost[]>data.map((post) => ({
+        ...post,
+        createdAt: post.createdAt.toISOString() as any,
+        updatedAt: post.updatedAt.toISOString() as any,
+      })),
       total,
       pages,
     };

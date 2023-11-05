@@ -41,8 +41,8 @@ export default function PostPage({ posts, content }: Props) {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
           "headline": "${posts.title}",
-          "datePublished": "${posts.createdAt.toISOString()}",
-          "dateModified": "${posts.updatedAt.toISOString()}",
+          "datePublished": "${posts.createdAt}",
+          "dateModified": "${posts.updatedAt}",
           "author": {
             "@type": "Person",
             "name": "${posts.authorName}"

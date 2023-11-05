@@ -69,9 +69,6 @@ const nextConfig = {
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
-  experimental: {
-    swcPlugins: [["next-superjson-plugin", {}]],
-  },
   transpilePackages: ["react-md-editor"],
 };
 

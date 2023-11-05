@@ -113,9 +113,19 @@ export async function getPostById(id: string) {
 }
 
 export async function getPostBySlug(slug: string) {
-  return prisma.blogPost.findUnique({
+  const post = await prisma.blogPost.findUnique({
     where: {
       slug,
     },
   });
+
+  if (!post) {
+    return null;
+  }
+
+  // transform date to string
+  (post as any).createdAt = post.createdAt?.toISOString() || "";
+  (post as any).updatedAt = post.updatedAt?.toISOString() || "";
+
+  return post;
 }

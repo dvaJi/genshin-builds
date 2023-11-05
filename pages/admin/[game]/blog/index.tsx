@@ -36,7 +36,9 @@ const BlogAdmin = ({ game }: Props) => {
   const { data, error, isLoading } = useSWR<{ data: BlogPost[] }>(
     `/api/blog/list?game=${game}${
       language === "all" ? "" : "&lang=" + language
-    }&limit=${pagination.pageSize}&page=${pagination.pageIndex}&sort=desc&showDrafts=true`,
+    }&limit=${pagination.pageSize}&page=${
+      pagination.pageIndex
+    }&sort=desc&showDrafts=true`,
     fetcher
   );
 
@@ -81,6 +83,9 @@ const BlogAdmin = ({ game }: Props) => {
             >
               Delete
             </Button>
+            <Link href={`/${game}/blog/${info.row.original.slug}`}>
+              <Button>View</Button>
+            </Link>
           </div>
         ),
       }),
