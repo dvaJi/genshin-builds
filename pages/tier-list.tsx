@@ -254,6 +254,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
         },
       },
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 

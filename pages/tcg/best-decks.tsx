@@ -10,7 +10,7 @@ import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
-import { getData, getLocale } from "@lib/localData";
+import { getData, getLocale, getRemoteData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -107,12 +107,12 @@ function BestDecks({ decks }: Props) {
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const lngDict = await getLocale(locale, "genshin");
   const genshinData = new GenshinData({ language: localeToLang(locale) });
-  const bestDecks = await getData<
+  const bestDecks = await getRemoteData<
     {
       c: string[];
       a: string[];
     }[]
-  >("genshin", "bestdecks");
+  >("genshin", "tcg-bestdecks");
 
   const cCharacters = await genshinData.tcgCharacters({
     select: ["id", "name"],
@@ -135,6 +135,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
 
   return {
     props: { lngDict, decks },
+    revalidate: 60 * 60 * 24,
   };
 };
 
