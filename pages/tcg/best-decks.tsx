@@ -10,7 +10,7 @@ import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
-import { getData, getLocale, getRemoteData } from "@lib/localData";
+import { getLocale, getRemoteData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });

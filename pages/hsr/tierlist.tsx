@@ -8,7 +8,7 @@ import CharacterBlock from "@components/hsr/CharacterBlock";
 import Metadata from "@components/Metadata";
 import useIntl from "@hooks/use-intl";
 import { getHsrUrlLQ } from "@lib/imgUrl";
-import { getData, getLocale } from "@lib/localData";
+import { getLocale, getRemoteData } from "@lib/localData";
 import { localeToHSRLang } from "@utils/locale-to-lang";
 import { Tierlist } from "interfaces/hsr/tierlist";
 
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
     select: ["id", "name", "rarity", "combat_type", "path"],
   });
 
-  const tierlists = await getData("hsr", "tierlist");
+  const tierlists = await getRemoteData("hsr", "tierlist");
 
   const charactersMap = characters.reduce((acc, character) => {
     acc[character.id] = character;
@@ -116,6 +116,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
         },
       },
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
