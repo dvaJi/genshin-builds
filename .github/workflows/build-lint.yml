@@ -43,10 +43,10 @@ jobs:
         run: pnpm install
 
       - name: Setup Prisma
-        run: pnpm db:generate --schema=./db/schema.prisma
+        run: pnpm db:generate
 
       - name: Build Next.js app
         run: pnpm build
 
       - name: Lint code
-        run: pnpm run lint
+        run: pnpm lint

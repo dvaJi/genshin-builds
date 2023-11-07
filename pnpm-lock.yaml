@@ -84,8 +84,8 @@ dependencies:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
   genshin-data:
-    specifier: ^0.35.0
-    version: 0.35.0
+    specifier: ^0.36.0
+    version: 0.36.0
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -5475,8 +5475,8 @@ packages:
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  /genshin-data@0.35.0:
-    resolution: {integrity: sha512-TqdSB7z08nof8hz4k1npTd013jWMdKwvcVOyXAGIXIgPZOiC8njRHbLVHjiso3hOvQL8JQ2fIcvpFFTo1rei6g==}
+  /genshin-data@0.36.0:
+    resolution: {integrity: sha512-fTmqa0lETOf8pkC3YfTRwm+wE/R9JY9BH8FE01Jx//fdGdDyjMc+Hp8kdOMfqRNdaMnZzh2eLbMZQQu307wuPw==}
     engines: {node: '>=13'}
     dev: false
 

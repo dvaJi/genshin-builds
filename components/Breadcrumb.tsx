@@ -19,7 +19,7 @@ function Breadcrumb({
   capitalizeLinks,
 }: Props) {
   const paths = usePathname();
-  const pathNames = paths.split("/").filter((path) => path);
+  const pathNames = paths?.split("/").filter((path) => path) ?? [];
 
   return (
     <ul className={containerClasses}>
