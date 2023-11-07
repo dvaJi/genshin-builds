@@ -70,6 +70,7 @@ function BlogPostForm({
     const formData = new FormData(event.currentTarget);
     onSubmit(
       Object.assign(Object.fromEntries(formData), {
+        content,
         published: isPublished,
       })
     );
