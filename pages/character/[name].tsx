@@ -97,7 +97,7 @@ const CharacterPage = ({
           </div>
           <div className="flex flex-grow flex-col">
             <div className="mr-2 flex items-center">
-              <h1 className="mr-2 text-3xl text-white shadow-black text-shadow">
+              <h1 className="mr-2 text-3xl text-white">
                 {t({
                   id: "character_title",
                   defaultMessage: "Genshin Impact {name} Build",
@@ -110,10 +110,10 @@ const CharacterPage = ({
                 height={30}
               />
             </div>
-            <div className="hidden text-gray-200 shadow-black text-shadow md:block">
+            <div className="hidden text-gray-200 md:block">
               {character.description}
             </div>
-            <div className="hidden text-gray-200 shadow-black text-shadow md:block">
+            <div className="hidden text-gray-200 md:block">
               {character.affiliation}
             </div>
           </div>
@@ -162,7 +162,7 @@ const CharacterPage = ({
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white shadow-black text-shadow lg:ml-0">
+      <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "skills",
           defaultMessage: "{name} Skills",
@@ -347,11 +347,16 @@ export const getStaticProps: GetStaticProps = async ({
           common[s] ? common[s] : s
         ),
         stats: {
-          circlet: build.stats.circlet.map((s) => (common[s] ? common[s] : s)),
-          flower: build.stats.flower.map((s) => (common[s] ? common[s] : s)),
-          goblet: build.stats.goblet.map((s) => (common[s] ? common[s] : s)),
-          plume: build.stats.plume.map((s) => (common[s] ? common[s] : s)),
-          sands: build.stats.sands.map((s) => (common[s] ? common[s] : s)),
+          circlet:
+            build.stats?.circlet?.map((s) => (common[s] ? common[s] : s)) || [],
+          flower:
+            build.stats?.flower?.map((s) => (common[s] ? common[s] : s)) || [],
+          goblet:
+            build.stats?.goblet?.map((s) => (common[s] ? common[s] : s)) || [],
+          plume:
+            build.stats?.plume?.map((s) => (common[s] ? common[s] : s)) || [],
+          sands:
+            build.stats?.sands?.map((s) => (common[s] ? common[s] : s)) || [],
         },
       };
       builds.push(newBuild);
