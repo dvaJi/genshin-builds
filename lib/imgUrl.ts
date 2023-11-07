@@ -49,7 +49,7 @@ export function getUrlLQ(
   index = 1,
   crop = false
 ) {
-  return generateUrl(path, height, width, 10, index, crop, "/gi");
+  return generateUrl(path, height, width, 10, index, crop, "/genshin");
 }
 
 export function getUrl(
@@ -59,7 +59,7 @@ export function getUrl(
   index = 1,
   crop = false
 ) {
-  return generateUrl(path, height, width, undefined, index, crop, "/gi");
+  return generateUrl(path, height, width, undefined, index, crop, "/genshin");
 }
 
 export function getHsrUrl(
@@ -89,7 +89,7 @@ function generateUrl(
   quality?: number,
   index = 1,
   crop = false,
-  folder = "/gi"
+  folder = "/genshin"
 ) {
   const href = IMGS_CDN + folder + path;
   const item: ImageItem = {

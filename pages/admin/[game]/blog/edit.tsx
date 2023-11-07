@@ -94,7 +94,7 @@ function BlogEdit({ game, post, originalCompiled, session }: Props) {
         <section className="prose prose-invert mt-4 max-w-none">
           {/* <img
             alt={fm.title}
-            src={getImg("gi", `/blog/${fm.image}`)}
+            src={getImg("genshin", `/blog/${fm.image}`)}
             className="mx-auto rounded-lg text-center"
           /> */}
           <PostRender
