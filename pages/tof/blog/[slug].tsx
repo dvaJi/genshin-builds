@@ -70,7 +70,6 @@ export default function PostPage({ posts, content }: Props) {
         </Link>
       </div>
       <header className="mx-2 lg:mx-0">
-        <Metadata pageTitle={posts.title} pageDescription={posts.description} />
         <h1 className="my-6 text-4xl font-semibold text-gray-100">
           <Balancer>{posts.title}</Balancer>
         </h1>
