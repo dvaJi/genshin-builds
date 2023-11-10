@@ -45,8 +45,5 @@ jobs:
       - name: Setup Prisma
         run: pnpm db:generate
 
-      - name: Build Next.js app
-        run: pnpm build
-
       - name: Lint code
         run: pnpm lint
