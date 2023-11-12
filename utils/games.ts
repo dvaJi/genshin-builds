@@ -5,7 +5,7 @@ export type GameProps = {
   adminPath: string;
 };
 
-type GamesAvailable = "GENSHIN" | "TOF" | "HSR";
+type GamesAvailable = "GENSHIN" | "TOF" | "HSR" | "ZENLESS";
 
 export const GAME: Record<GamesAvailable, GameProps> = {
   GENSHIN: {
@@ -19,6 +19,12 @@ export const GAME: Record<GamesAvailable, GameProps> = {
     slug: "hsr",
     path: "/hsr",
     adminPath: "/admin/hsr",
+  },
+  ZENLESS: {
+    name: "Zenless Zone Zero",
+    slug: "zenless",
+    path: "/zenless",
+    adminPath: "/admin/zenless",
   },
   TOF: {
     name: "Tower of Fantasy",

@@ -181,10 +181,12 @@ const LayoutHeader = () => {
               </div>
             ))}
           </ul>
-          <GameSelector
-            currentGame={GAME.GENSHIN}
-            className="z-40 text-slate-200"
-          />
+          <div className="mt-4">
+            <GameSelector
+              currentGame={GAME.GENSHIN}
+              className="z-40 text-slate-200"
+            />
+          </div>
         </div>
       </div>
     </div>

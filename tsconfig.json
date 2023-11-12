@@ -16,7 +16,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES2015",
+    "target": "ES5",
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
@@ -30,8 +30,20 @@
       "@utils/*": ["utils/*"],
       "@db/*": ["db/*"]
     },
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "interfaces/global.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    "interfaces/global.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ]
 }

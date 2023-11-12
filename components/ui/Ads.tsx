@@ -1,3 +1,5 @@
+'use client';
+
 import { memo, useEffect } from "react";
 
 import { AD_ARTICLE_SLOT, CUSTOM_ADS_ID, GAD_ID } from "@lib/constants";

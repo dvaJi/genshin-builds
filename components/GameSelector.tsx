@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import Link from "next/link";
 import { useCallback, useState } from "react";
@@ -9,9 +11,10 @@ import { GAME, GameProps } from "utils/games";
 type Props = {
   currentGame: GameProps;
   className?: string;
+  buttonClassName?: string;
 };
 
-function GameSelector({ currentGame, className }: Props) {
+function GameSelector({ currentGame, className, buttonClassName }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const close = useCallback(() => setIsOpen(false), []);
   const contentRef = useClickOutside<HTMLDivElement>(
@@ -25,9 +28,11 @@ function GameSelector({ currentGame, className }: Props) {
         type="button"
         aria-haspopup="true"
         aria-expanded="true"
+        data-is-open={isOpen}
         className={clsx(
-          "mt-4 flex h-10 w-full items-center rounded px-2 backdrop-blur-sm md:w-10 lg:w-44",
-          isOpen ? "bg-tof-700/50" : "bg-tof-700/10"
+          "flex h-8 w-full items-center rounded px-2 backdrop-blur-sm md:w-10 lg:w-44 xl:w-48",
+          isOpen ? "bg-tof-700/50" : "bg-tof-700/10",
+          buttonClassName
         )}
         onClick={() => setIsOpen((o) => !o)}
       >

@@ -1,3 +1,5 @@
+'use client';
+
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 import { GiCustomMap } from "@lib/guides_api";
 import { CRS, divIcon } from "leaflet";

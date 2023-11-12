@@ -4,6 +4,7 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
   darkMode: "class",
   content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
@@ -94,14 +95,15 @@ module.exports = {
           to: { opacity: 1, transform: "translate(-50%, -50%) scale(1)" },
         },
         slideLeftAndFade: {
-          from: { opacity: 0, transform: 'translateX(2px)' },
-          to: { opacity: 1, transform: 'translateX(0)' },
+          from: { opacity: 0, transform: "translateX(2px)" },
+          to: { opacity: 1, transform: "translateX(0)" },
         },
       },
       animation: {
-        overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-        contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-        slideLeftAndFade: 'slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        overlayShow: "overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        contentShow: "contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideLeftAndFade:
+          "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },
