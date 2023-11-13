@@ -1,6 +1,7 @@
-import BlogPostCard from "@components/zenless/BlogPostCard";
-import { getPosts } from "@pages/api/blog/list";
 import Link from "next/link";
+
+import { getPosts } from "@lib/blog";
+import BlogPostCard from "@components/zenless/BlogPostCard";
 
 export default async function Page() {
   const { data } = await getPosts("zenless", "en", {

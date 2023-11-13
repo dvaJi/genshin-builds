@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
+import { getPosts } from "@lib/blog";
 import BlogPostCard from "@components/zenless/BlogPostCard";
 import Pagination from "@components/zenless/Pagination";
-import { getPosts } from "@pages/api/blog/list";
 
 const POSTS_PER_PAGE = 10;
 

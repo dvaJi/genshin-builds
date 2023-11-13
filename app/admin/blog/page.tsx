@@ -1,44 +1,51 @@
+"use client";
+
 import { BlogPost } from "@prisma/client";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { GetServerSideProps } from "next";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { useMemo, useState } from "react";
 import useSWR from "swr";
 
 import Button from "@components/admin/Button";
 import Badge from "@components/ui/Badge";
-import { getLocale } from "@lib/localData";
-import { authOptions } from "@pages/api/auth/[...nextauth]";
+import { GAME } from "@utils/games";
 import { languages } from "@utils/locale-to-lang";
-
-type Props = {
-  currentPage: number;
-  game: string;
-  locale: string;
-};
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const columnHelper = createColumnHelper<BlogPost>();
 
-const BlogAdmin = ({ game }: Props) => {
+const BlogAdmin = () => {
+  const { status } = useSession();
+  const [game, setGame] = useState<string>("all");
   const [language, setLanguage] = useState<string>("all");
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 20,
   });
+  const params = new URLSearchParams(
+    JSON.parse(
+      JSON.stringify({
+        limit: pagination.pageSize.toString(),
+        page: pagination.pageIndex.toString(),
+        sort: "desc",
+        showDrafts: "true",
+        language: language === "all" ? undefined : language,
+        game: game === "all" ? undefined : game,
+      })
+    )
+  );
   const { data, error, isLoading } = useSWR<{ data: BlogPost[] }>(
-    `/api/blog/list?game=${game}${
-      language === "all" ? "" : "&lang=" + language
-    }&limit=${pagination.pageSize}&page=${
-      pagination.pageIndex
-    }&sort=desc&showDrafts=true`,
+    `/api/blog/list?${params.toString()}`,
     fetcher
   );
 
@@ -55,6 +62,9 @@ const BlogAdmin = ({ game }: Props) => {
             {info.getValue()}
           </div>
         ),
+      }),
+      columnHelper.accessor("game", {
+        cell: (info) => info.getValue(),
       }),
       columnHelper.accessor("language", {
         cell: (info) =>
@@ -74,7 +84,7 @@ const BlogAdmin = ({ game }: Props) => {
             {/* {!info.row.getValue("published") ? (
               <Button state="success">Publish</Button>
             ) : null} */}
-            <Link href={`/admin/${game}/blog/edit?id=${info.getValue()}`}>
+            <Link href={`/admin/blog/edit/${info.getValue()}`}>
               <Button state="secondary">Edit</Button>
             </Link>
             <Button
@@ -83,14 +93,16 @@ const BlogAdmin = ({ game }: Props) => {
             >
               Delete
             </Button>
-            <Link href={`/${game}/blog/${info.row.original.slug}`}>
+            <Link
+              href={`/${info.row.original.game}/blog/${info.row.original.slug}`}
+            >
               <Button>View</Button>
             </Link>
           </div>
         ),
       }),
     ],
-    [game]
+    []
   );
 
   const onDelete = (id: string) => {
@@ -109,31 +121,88 @@ const BlogAdmin = ({ game }: Props) => {
     }
   };
 
+  if (status === "unauthenticated") {
+    return notFound();
+  }
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-full">
       <div className="flex w-full flex-col border-b border-zinc-800 bg-zinc-900 px-8 py-4 text-white">
         <div className="flex justify-between">
-          <select
-            className="rounded-md border border-zinc-700 bg-zinc-900 text-sm"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-          >
-            <option value="all">All</option>
-            {languages.map((lang) => (
-              <option key={lang.code} value={lang.code}>
-                {lang.name}
-              </option>
-            ))}
-          </select>
-          <Link href={`/admin/${game}/blog/create`}>
+          <div className="flex gap-4">
+            <select
+              className="rounded-md border border-zinc-700 bg-zinc-900 text-sm"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="all">All</option>
+              {languages.map((lang) => (
+                <option key={lang.code} value={lang.code}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+            <select
+              className="rounded-md border border-zinc-700 bg-zinc-900 text-sm"
+              value={game}
+              onChange={(e) => setGame(e.target.value)}
+            >
+              <option value="all">All</option>
+              {Object.entries(GAME).map(([key, game]) => (
+                <option key={key} value={key}>
+                  {game.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* <Link href={`/admin/blog/create`}>
             <Button>Create Post</Button>
-          </Link>
+          </Link> */}
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <Button>Create Post</Button>
+            </DropdownMenu.Trigger>
+
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content
+                className="data-[side=top]:animate-slideDownAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade min-w-[220px] rounded-md border border-zinc-700 bg-zinc-900 p-[5px] will-change-[opacity,transform] data-[side=right]:animate-slideLeftAndFade"
+                sideOffset={5}
+                align="center"
+              >
+                {Object.values(GAME).map((game) => (
+                  <DropdownMenu.Item
+                    key={game.slug}
+                    className="group relative flex h-7 select-none items-center rounded px-[5px] pl-[25px] text-[13px] leading-none text-zinc-200 outline-none data-[highlighted]:bg-white data-[highlighted]:text-black"
+                    onSelect={() => {
+                      window.location.href = `/admin/blog/create?game=${game.slug}`;
+                    }}
+                  >
+                    {game.name}{" "}
+                    <Image
+                      className="ml-auto block rounded"
+                      src={`/imgs/games/${game.slug}.webp`}
+                      alt={game.name}
+                      width={20}
+                      height={20}
+                    />
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
         </div>
       </div>
       <div className="m-8 flex flex-col rounded">
         {error && <div style={{ color: "red" }}>{error}</div>}
-        {isLoading && <div>Loading...</div>}
         <Table data={data?.data || []} columns={columns} />
+        {isLoading && (
+          <div className="w-full text-center text-xl my-4">Loading...</div>
+        )}
       </div>
       <div className="my-4 flex justify-center gap-4">
         <Button
@@ -207,35 +276,5 @@ function Table({ data, columns }: any) {
     </table>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-  query,
-  locale = "en",
-  ...ctx
-}) => {
-  const session = await getServerSession(ctx.req, ctx.res, authOptions);
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/admin",
-        permanent: false,
-      },
-    };
-  }
-
-  const page = query?.page ? parseInt(query.page as string) : 1;
-  const lngDict = await getLocale(locale, params?.game as string);
-
-  return {
-    props: {
-      currentPage: page,
-      game: params?.game,
-      session,
-      locale,
-      lngDict,
-    },
-  };
-};
 
 export default BlogAdmin;

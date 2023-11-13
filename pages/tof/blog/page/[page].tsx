@@ -2,8 +2,8 @@ import { BlogPost } from "@prisma/client";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { languages } from "tof-builds";
 
+import { getPosts } from "@lib/blog";
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { getPosts } from "@pages/api/blog/list";
 import BlogPosts from "../index";
 
 type Props = {

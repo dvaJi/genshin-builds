@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { BlogPosting, WithContext } from "schema-dts";
 
+import { getPostBySlug } from "@lib/blog";
 import PostRender from "@components/zenless/PostRender";
 import { getImg } from "@lib/imgUrl";
-import { getPostBySlug } from "@pages/api/blog";
 
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
   ssr: false,

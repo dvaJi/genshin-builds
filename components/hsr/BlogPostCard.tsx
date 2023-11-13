@@ -12,7 +12,7 @@ interface Props {
 }
 
 const BlogPostCard = ({ post }: Props) => {
-  const { locale } = useIntl("guides");
+  const { locale } = useIntl("blog");
   const timeAgo = getTimeAgo(new Date(post.updatedAt).getTime(), locale);
 
   return (

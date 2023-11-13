@@ -12,7 +12,7 @@ import useFormattedDate from "@hooks/use-formatted-date";
 import useIntl from "@hooks/use-intl";
 import { getImg } from "@lib/imgUrl";
 import { getLocale } from "@lib/localData";
-import { getPostBySlug } from "@pages/api/blog";
+import { getPostBySlug } from "@lib/blog";
 
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 

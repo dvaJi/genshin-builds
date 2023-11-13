@@ -2,12 +2,12 @@ import { BlogPost } from "@prisma/client";
 import { GetStaticProps } from "next";
 import { languages } from "tof-builds";
 
+import { getPosts } from "@lib/blog";
 import Metadata from "@components/Metadata";
 import BlogPostCard from "@components/tof/BlogPostCard";
 import Pagination from "@components/tof/Pagination";
 import useIntl from "@hooks/use-intl";
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { getPosts } from "@pages/api/blog/list";
 
 type Props = {
   posts: BlogPost[];

@@ -2,5 +2,9 @@ export function getUniqueListBy<T extends Record<string, any>>(
   arr: T[],
   key: string
 ) {
-  return [...new Map(arr.map((item) => [item[key], item])).values()];
+  const seen = new Set();
+  return arr.filter((item) => {
+    const k = item[key];
+    return seen.has(k) ? false : seen.add(k);
+  });
 }

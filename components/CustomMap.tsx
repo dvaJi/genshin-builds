@@ -1,11 +1,16 @@
 'use client';
 
 import { useMobileDetect } from "@hooks/use-mobile-detect";
-import { GiCustomMap } from "@lib/guides_api";
 import { CRS, divIcon } from "leaflet";
 import { ImageOverlay, MapContainer, Marker } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
+
+export interface GiCustomMap {
+  imageOverlay: string;
+  markIcon: string;
+  marks: number[][];
+}
 
 type Props = {
   data: GiCustomMap;

@@ -2,9 +2,9 @@ import { BlogPost } from "@prisma/client";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
 import { useEffect, useState, type FormEvent } from "react";
-import slugify from "slugify";
 
 import Button from "@components/admin/Button";
+import { slugify2 } from "@utils/hash";
 import { languages } from "@utils/locale-to-lang";
 
 const FileUploader = dynamic(() => import("@components/admin/FileUploader"), {
@@ -24,7 +24,6 @@ const ComponentGallery = dynamic(
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
 type Props = {
-  game: string;
   onSubmit: (event: any) => void;
   onContentChange: (content: string) => void;
   isLoading: boolean;
@@ -32,14 +31,13 @@ type Props = {
 };
 
 function BlogPostForm({
-  game,
   onSubmit,
   isLoading,
   onContentChange,
   initialData,
 }: Props) {
   const [expanded, setExpanded] = useState<boolean>(
-    !initialData ? true : false
+    !initialData?.id ? true : false
   );
   const [title, setTitle] = useState<string>(initialData?.title || "");
   const [slug, setSlug] = useState<string>(initialData?.slug || "");
@@ -57,12 +55,7 @@ function BlogPostForm({
   const [content, setContent] = useState<string>(initialData?.content || "");
 
   useEffect(() => {
-    setSlug(
-      slugify(title, {
-        locale: language,
-        lower: true,
-      }).replaceAll(":", "")
-    );
+    setSlug(slugify2(title, "-"));
   }, [title, language]);
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -224,9 +217,9 @@ function BlogPostForm({
         />
       </label>
       <div className="flex w-full gap-2">
-        <ImageGallery game={game} />
-        <FileUploader game={game} />
-        <ComponentGallery game={game} />
+        <ImageGallery game={initialData?.game ?? "genshin"} />
+        <FileUploader game={initialData?.game ?? "genshin"} />
+        <ComponentGallery game={initialData?.game ?? "genshin"} />
       </div>
       {/* <div className="flex w-full gap-2">
         <Button

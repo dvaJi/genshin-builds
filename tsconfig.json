@@ -19,6 +19,7 @@
     "target": "ES2015",
     "baseUrl": ".",
     "paths": {
+      "@app/*": ["app/*"],
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@intefaces/*": ["intefaces/*"],

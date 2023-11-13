@@ -6,7 +6,7 @@ import BlogPostCard from "@components/genshin/BlogPostCard";
 import Pagination from "@components/genshin/Pagination";
 import useIntl from "@hooks/use-intl";
 import { getLocale } from "@lib/localData";
-import { getPosts } from "@pages/api/blog/list";
+import { getPosts } from "@lib/blog";
 
 type Props = {
   posts: BlogPost[];

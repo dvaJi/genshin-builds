@@ -49,8 +49,8 @@ function ImageGallery({ game }: Props) {
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 bg-black/50" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] border border-zinc-700 bg-zinc-900 p-[25px] text-zinc-100 shadow-black focus:outline-none">
+        <Dialog.Overlay className="fixed inset-0 z-1000 bg-black/50 data-[state=open]:animate-overlayShow" />
+        <Dialog.Content className="fixed left-[50%] top-[50%] z-1000 max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] border border-zinc-700 bg-zinc-900 p-[25px] text-zinc-100 shadow-black focus:outline-none data-[state=open]:animate-contentShow">
           {/* <Dialog.Title className="m-0 text-sm font-medium text-zinc-300">
             Upload File
           </Dialog.Title> */}

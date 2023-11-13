@@ -7,13 +7,13 @@ import Balancer from "react-wrap-balancer";
 import remarkGfm from "remark-gfm";
 import { languages } from "tof-builds";
 
+import { getPostBySlug } from "@lib/blog";
 import Metadata from "@components/Metadata";
 import ArchiveRender from "@components/tof/PostRender";
 import useFormattedDate from "@hooks/use-formatted-date";
 import useIntl from "@hooks/use-intl";
 import { getImg } from "@lib/imgUrl";
 import { getDefaultLocale, getLocale } from "@lib/localData";
-import { getPostBySlug } from "@pages/api/blog";
 
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 

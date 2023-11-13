@@ -1,4 +1,4 @@
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.IS_DEV_ENV === "true";
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -85,10 +85,10 @@ const nextConfig = {
   ],
   redirects: async () => [
     {
-      source: '/weapon/splendor_of_still_waters',
-      destination: '/weapon/splendor_of_tranquil_waters',
+      source: "/weapon/splendor_of_still_waters",
+      destination: "/weapon/splendor_of_tranquil_waters",
       permanent: true,
-    }
+    },
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },

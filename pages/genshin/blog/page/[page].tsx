@@ -1,8 +1,8 @@
 import { BlogPost } from "@prisma/client";
 import { GetStaticPaths, GetStaticProps } from "next";
 
+import { getPosts } from "@lib/blog";
 import { getLocale } from "@lib/localData";
-import { getPosts } from "@pages/api/blog/list";
 import BlogPosts from "../index";
 
 type Props = {

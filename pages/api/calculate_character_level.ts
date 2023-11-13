@@ -97,7 +97,8 @@ export default async function handler(
 
   // Calculate Ascension materials
   if (params.currentLevel.asclLvl < params.intendedLevel.asclLvl) {
-    for (const [index, item] of character.ascension.entries()) {
+    for (let index = 1; index < character.ascension.length; index++) {
+      const item = character.ascension[index];
       if (
         index - 1 <= params.currentLevel.asclLvl ||
         index - 1 > params.intendedLevel.asclLvl

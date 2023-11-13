@@ -1,34 +1,38 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import prisma from "@db/index";
+import { authOptions } from "@lib/auth";
 import { bucketName, getUploadUrl } from "@utils/s3-client";
-import { authOptions } from "../auth/[...nextauth]";
 
 const schema = z.object({
   game: z.string(),
   Key: z.string(),
 });
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
-
-  const request = schema.safeParse(req.body);
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+  const request = schema.safeParse(body);
 
   if (!request.success) {
-    return res.status(400).json({ message: "Invalid request body" });
+    return NextResponse.json(
+      { error: "Invalid request body" },
+      {
+        status: 400,
+      }
+    );
   }
 
-  const session = await getServerSession(req, res, authOptions);
+  const session = await getServerSession(authOptions);
 
   if (!session) {
-    return res.status(401).json({ error: "Unauthorized" });
+    return NextResponse.json(
+      { error: "Unauthorized" },
+      {
+        status: 401,
+      }
+    );
   }
 
   const finalPath = `${request.data.game}/blog/${request.data.Key}`;
@@ -49,7 +53,7 @@ export default async function handler(
     },
   });
 
-  return res.status(200).json({
+  return NextResponse.json({
     uploadUrl: post,
     imageUrl: `/blog/${request.data.Key}`,
   });

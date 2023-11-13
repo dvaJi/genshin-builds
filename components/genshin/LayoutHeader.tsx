@@ -69,12 +69,7 @@ const navRoutes: Route[] = [
         id: "achievements",
         name: "Achievements",
         href: "/achievements",
-      },
-      {
-        id: "guides",
-        name: "Guides",
-        href: "/guides",
-      },
+      }
     ],
   },
   {
