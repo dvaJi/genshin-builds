@@ -83,6 +83,13 @@ const nextConfig = {
       destination: process.env.ADS_TXT_PUB || "/ads.txt",
     },
   ],
+  redirects: async () => [
+    {
+      source: '/weapon/splendor_of_still_waters',
+      destination: '/weapon/splendor_of_tranquil_waters',
+      permanent: true,
+    }
+  ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
   transpilePackages: ["react-md-editor"],
