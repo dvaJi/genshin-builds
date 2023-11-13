@@ -1,3 +1,5 @@
+"use client";
+
 import FreestarAdSlot from "@freestar/pubfig-adslot-react-component";
 
 type Props = {

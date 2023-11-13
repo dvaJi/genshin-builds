@@ -9,14 +9,20 @@ export async function getLocale(lang: string, game: string) {
     const locale = await import(`../locales/${game}/${lang}.json`);
     return locale.default;
   } catch (err) {
-    const locale = await import(`../locales/${game}/en.json`);
-    return locale.default;
+    try {
+      const locale = await import(`../locales/${game}/en.json`);
+      return locale.default;
+    } catch (err) {
+      return {};
+    }
   }
 }
 
 export async function getRemoteData<T>(game: string, dataFile: string) {
   try {
-    const res = await fetch(`${process.env.SITEDATA_URL}/${game}-${dataFile}.json`);
+    const res = await fetch(
+      `${process.env.SITEDATA_URL}/${game}-${dataFile}.json`
+    );
     const data = await res.json();
     return data as T;
   } catch (err) {
