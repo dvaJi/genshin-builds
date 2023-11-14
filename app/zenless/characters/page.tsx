@@ -1,8 +1,13 @@
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getImg } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Character = {
   id: string;
@@ -24,6 +29,11 @@ export default async function CharactersPage() {
     <div>
       <h1 className="text-6xl font-semibold">Characters</h1>
       <p>A complete list of all playable characters in Zenless Zone Zero.</p>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="mt-4 flex flex-wrap gap-4">
         {data.map((character) => (
           <Link

@@ -1,7 +1,12 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
-import { getPosts } from "@lib/blog";
 import BlogPostCard from "@components/zenless/BlogPostCard";
+import { getPosts } from "@lib/blog";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 export default async function Page() {
   const { data } = await getPosts("zenless", "en", {
@@ -16,6 +21,12 @@ export default async function Page() {
         Discover character builds, comprehensive guides, and a wiki database all
         in one place.
       </p>
+
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
 
       <div className="mt-6">
         <h2 className="text-3xl font-semibold">News</h2>

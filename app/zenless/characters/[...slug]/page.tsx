@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getImg } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
+
+const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Character = {
   id: string;
@@ -99,6 +104,11 @@ export default async function CharactersPage({
           alt={character.faction}
         />
       </div>
+      <FrstAds
+        placementName="genshinbuilds_billboard_atf"
+        classList={["flex", "justify-center"]}
+      />
+      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div
         className="mt-8 flex w-96 flex-wrap items-center justify-center rounded border-4 border-zinc-950 p-6 font-semibold text-white ring-4 ring-white"
         style={{

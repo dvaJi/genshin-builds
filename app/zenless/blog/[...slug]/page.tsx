@@ -5,10 +5,12 @@ import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { BlogPosting, WithContext } from "schema-dts";
 
-import { getPostBySlug } from "@lib/blog";
 import PostRender from "@components/zenless/PostRender";
+import { getPostBySlug } from "@lib/blog";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getImg } from "@lib/imgUrl";
 
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
   ssr: false,
 });
@@ -114,6 +116,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
             placementName="genshinbuilds_billboard_atf"
             classList={["flex", "justify-center"]}
           />
+          <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
           <div className="flex items-center justify-between">
             <a
               href={post.authorLink}
