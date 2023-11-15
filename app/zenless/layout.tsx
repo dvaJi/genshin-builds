@@ -7,6 +7,7 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import GoogleAnalytics from "@components/GoogleAnalytics";
 
 import GameSelector from "@components/GameSelector";
+import { GA_TRACKING_ID } from "@lib/gtag";
 import { GAME } from "@utils/games";
 import "../../styles/globals.css";
 
@@ -49,10 +50,6 @@ export const metadata: Metadata = {
     title: "ZenlessBuilds",
     card: "summary_large_image",
   },
-  verification: {
-    google: "eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw",
-    yandex: "6f09696ea137394c",
-  },
 };
 
 export default function ZenlessLayout({
@@ -63,7 +60,7 @@ export default function ZenlessLayout({
   return (
     <html>
       <body>
-        <GoogleAnalytics gtagId="" />
+        <GoogleAnalytics gtagId={GA_TRACKING_ID} />
         <section
           className={clsx(
             "flex min-h-screen flex-col bg-zinc-950 text-gray-200",
@@ -100,7 +97,7 @@ export default function ZenlessLayout({
               <div>
                 <GameSelector
                   currentGame={GAME.ZENLESS}
-                  className="z-40 text-zinc-200 border border-zinc-800 rounded"
+                  className="z-40 rounded border border-zinc-800 text-zinc-200"
                   buttonClassName="bg-transparent hover:ring-2 ring-white data-[is-open=true]:ring-2"
                 />
               </div>

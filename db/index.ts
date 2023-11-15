@@ -1,12 +1,12 @@
-import { connect } from "@planetscale/database";
+import { Client } from '@planetscale/database'
 import { PrismaPlanetScale } from "@prisma/adapter-planetscale";
 import { PrismaClient } from "@prisma/client";
 
 export * from "@prisma/client";
 
 let prisma: PrismaClient;
-const connection = connect({ url: process.env.DATABASE_URL, fetch });
-const adapter = new PrismaPlanetScale(connection);
+const client = new Client({ url: process.env.DATABASE_URL, fetch })
+const adapter = new PrismaPlanetScale(client);
 
 if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient({
