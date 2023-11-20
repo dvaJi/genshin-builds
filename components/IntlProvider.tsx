@@ -1,3 +1,5 @@
+'use client';
+
 import { IntlContext } from "@hooks/intl-context";
 
 type IntlProviderProps = {

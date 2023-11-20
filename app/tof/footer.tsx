@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { memo } from "react";
+"use client";
 
-const LayoutFooter = () => {
-  const router = useRouter();
+import { setLanguage } from "@app/actions";
+import Link from "next/link";
+
+export default function Footer() {
   return (
     <footer className="z-20 border-t border-gray-700 border-opacity-50 bg-vulcan-800 px-20 py-14 text-gray-400">
       <div className="container mx-auto">
@@ -18,39 +18,39 @@ const LayoutFooter = () => {
             </Link>
           </div>
           <div className="flex flex-1 flex-col">
-            <Link href={router.asPath} locale="en" className="my-2">
+            <button onClick={() => setLanguage("en")} className="my-2">
               English
-            </Link>
-            <Link href={router.asPath} locale="es" className="my-2">
+            </button>
+            <button onClick={() => setLanguage("es")} className="my-2">
               Español
-            </Link>
-            <Link href={router.asPath} locale="ja" className="my-2">
+            </button>
+            <button onClick={() => setLanguage("ja")} className="my-2">
               日本語
-            </Link>
-            <Link href={router.asPath} locale="de" className="my-2">
+            </button>
+            <button onClick={() => setLanguage("de")} className="my-2">
               Deutsch
-            </Link>
+            </button>
           </div>
           <div className="flex flex-1 flex-col">
-            <Link href={router.asPath} locale="fr" className="my-2">
+            <button onClick={() => setLanguage("fr")} className="my-2">
               Français
-            </Link>
-            <Link href={router.asPath} locale="id" className="my-2">
+            </button>
+            <button onClick={() => setLanguage("id")} className="my-2">
               Indonesia
-            </Link>
-            <Link href={router.asPath} locale="pt" className="my-2">
+            </button>
+            <button onClick={() => setLanguage("pt")} className="my-2">
               Português
-            </Link>
-            <Link href={router.asPath} locale="th" className="my-2">
+            </button>
+            <button onClick={() => setLanguage("th")} className="my-2">
               ภาษาไทย
-            </Link>
+            </button>
           </div>
           <div className="flex-1">
             <p className="text-sm">
               TOFBuilds is a Database, Tier List, and Guide for Tower of
               Fantasy.
             </p>
-            <p className="mt-3 text-sm">
+            <p className="mt-3 text-xs">
               TOFBuilds is not endorsed by mHotta Studio or Perfect World, and
               does not reflect the views or opinions of Hotta Studio or Perfect
               World or anyone officially involved in producing or managing Tower
@@ -61,6 +61,4 @@ const LayoutFooter = () => {
       </div>
     </footer>
   );
-};
-
-export default memo(LayoutFooter);
+}

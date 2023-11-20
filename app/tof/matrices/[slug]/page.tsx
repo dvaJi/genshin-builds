@@ -1,40 +1,90 @@
 import clsx from "clsx";
-import { GetStaticPaths, GetStaticProps } from "next";
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
 import { FaPrayingHands } from "react-icons/fa";
 import { GiNestedHearts, GiOvermind } from "react-icons/gi";
 import { MdMemory } from "react-icons/md";
-import TOFData, { Languages, Matrix, languages } from "tof-builds";
+import TOFData, { languages, type Languages } from "tof-builds";
 
-import Metadata from "@components/Metadata";
-
-import useIntl, { IntlFormatProps } from "@hooks/use-intl";
+import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getTofUrl } from "@lib/imgUrl";
-import { getDefaultLocale, getLocale } from "@lib/localData";
+import { getDefaultLocale } from "@lib/localData";
 import { getRarityColor } from "@utils/rarity";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
-interface CharacterPageProps {
-  matrix: Matrix;
-  locale: string;
+interface Props {
+  params: {
+    slug: string;
+  };
 }
 
-const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
-  const { t } = useIntl("matrix");
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata | undefined> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t, locale } = await useTranslations("tof", "matrix");
+  const tofLanguage = getDefaultLocale<Languages>(
+    locale,
+    languages as unknown as string[]
+  );
+  const tofData = new TOFData({
+    language: tofLanguage,
+  });
+  const matrix = await tofData.matrixbyId(params.slug);
+
+  if (!matrix) {
+    return;
+  }
+
+  const title = t({
+    id: "title",
+    defaultMessage: "{name} ToF Impact Matrix Build Guide",
+    values: { name: matrix.name },
+  });
+  // Remove html tags
+  const description = matrix.bonus
+    .map((bonus) => bonus.value.replace(/(<([^>]+)>)/gi, ""))
+    .join(", ");
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      locale,
+      type: "article",
+      url: `https://genshin-builds.com/tof/character/${params.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+export default async function MatrixPage({ params }: Props) {
+  const { t, locale } = await useTranslations("tof", "matrix");
+  const defaultLocale = getDefaultLocale(
+    locale,
+    languages as unknown as string[]
+  );
+  const tofData = new TOFData({
+    language: defaultLocale as Languages,
+  });
+  const matrix = await tofData.matrixbyId(params.slug);
+
+  if (!matrix) {
+    return notFound();
+  }
+
   return (
     <div>
-      <Metadata
-        pageTitle={t({
-          id: "title",
-          defaultMessage: "{name} ToF Impact Matrix Build Guide",
-          values: { name: matrix.name },
-        })}
-        pageDescription={matrix.bonus.join(", ")}
-        jsonLD={generateJsonLd(locale, matrix, t)}
-      />
       <div className="flex items-center justify-between">
         <div className="z-10 flex items-center">
           <img
@@ -90,7 +140,7 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
                 {t({ id: "4pcbonus", defaultMessage: "4-piece Set Bonus" })}
               </div>
             )}
-            <span>{bonus.value}</span>
+            <span dangerouslySetInnerHTML={{ __html: bonus.value }} />
           </div>
         ))}
         <div className="mt-4">
@@ -129,88 +179,4 @@ const CharacterPage = ({ matrix, locale }: CharacterPageProps) => {
       </div>
     </div>
   );
-};
-
-const generateJsonLd = (
-  locale: string,
-  matrix: Matrix,
-  t: (props: IntlFormatProps) => string
-) => {
-  return `{
-    "@context": "http://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https://genshin-builds.com/${locale}/tof/",
-          "name": "TOF-Builds.com"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@id": "https://genshin-builds.com/${locale}/tof/matrices",
-          "name": "${t({
-            id: "matrices",
-            defaultMessage: "Matrices",
-          })}"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https://genshin-builds.com/${locale}/tof/matrices/${
-    matrix.id
-  }",
-          "name": "${matrix.name}"
-        }
-      }
-    ]
-  }`;
-};
-
-export const getStaticProps: GetStaticProps = async ({
-  params,
-  locale = "en",
-}) => {
-  const defaultLocale = getDefaultLocale(
-    locale,
-    languages as unknown as string[]
-  );
-  const lngDict = await getLocale(defaultLocale, "tof");
-  const tofData = new TOFData({
-    language: defaultLocale as Languages,
-  });
-  const matrix = await tofData.matrixbyId(params?.id as string);
-
-  if (!matrix) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      matrix: {
-        ...matrix,
-        suitName: matrix?.suitName || "",
-      },
-      lngDict,
-      locale: defaultLocale,
-    },
-    revalidate: 60 * 60 * 24,
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  }
-};
-
-export default CharacterPage;
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import { BlogPost } from "@prisma/client";
 import Link from "next/link";
 import { memo } from "react";

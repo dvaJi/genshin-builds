@@ -1,28 +1,24 @@
+"use client";
+
 import clsx from "clsx";
-import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import TOFData, { Character, Languages, languages } from "tof-builds";
+import { Character } from "tof-builds";
 
-import Metadata from "@components/Metadata";
 import CharacterPortrait from "@components/tof/CharacterPortrait";
-
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
-import { getDefaultLocale, getLocale } from "@lib/localData";
+import { getTofUrl } from "@lib/imgUrl";
 import { getRarityColor, rarityToNumber } from "@utils/rarity";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   characters: Character[];
 };
 
-function Characters({ characters }: Props) {
+export default function CharactersList({ characters }: Props) {
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
   const [searchTerm, setSearchTerm] = useState("");
   const [rarityFilter, setRarityFilter] = useState("");
@@ -99,35 +95,6 @@ function Characters({ characters }: Props) {
 
   return (
     <div>
-      <Metadata
-        pageTitle={t({
-          id: "title",
-          defaultMessage: "ToF Impact Build Guide",
-        })}
-        pageDescription={t({
-          id: "description",
-          defaultMessage:
-            "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
-        })}
-      />
-      <div className="flex justify-between py-3">
-        <h2 className="text-2xl text-tof-100">Characters and Weapons</h2>
-        <FrstAds
-          placementName="genshinbuilds_billboard_atf"
-          classList={["flex", "justify-center"]}
-        />
-        <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-        <div>
-          <input
-            type="text"
-            className="rounded bg-vulcan-700 px-2 py-1 text-white"
-            placeholder={t({ id: "search", defaultMessage: "Search..." })}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-      </div>
-
       <div className="mb-4 flex flex-wrap justify-between rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-2">
         <div className="">
           {rarityOptions.map((rarity) => (
@@ -198,6 +165,13 @@ function Characters({ characters }: Props) {
             </button>
           ))}
         </div>
+        <input
+          type="text"
+          className="rounded bg-vulcan-700 px-2 py-1 text-white border-opacity-50"
+          placeholder={t({ id: "search", defaultMessage: "Search..." })}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_1"
@@ -213,41 +187,3 @@ function Characters({ characters }: Props) {
     </div>
   );
 }
-
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const defaultLocale = getDefaultLocale(
-    locale,
-    languages as unknown as string[]
-  );
-  const lngDict = await getLocale(defaultLocale, "tof");
-  const tofData = new TOFData({
-    language: defaultLocale as Languages,
-  });
-  const characters = await tofData.characters({
-    select: [
-      "id",
-      "name",
-      "rarity",
-      "element",
-      "resonance",
-      "weapon_id",
-      "weapon",
-    ],
-  });
-
-  return {
-    props: {
-      characters: characters.sort((a, b) => a.name.localeCompare(b.name)),
-      lngDict,
-      bgStyle: {
-        image: getTofUrlLQ(`/bg/fulilingqu_bg_OS1.png`),
-        gradient: {
-          background:
-            "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
-        },
-      },
-    },
-  };
-};
-
-export default Characters;

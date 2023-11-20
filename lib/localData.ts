@@ -1,7 +1,7 @@
 import { Build as HSRBuild } from "interfaces/hsr/build";
 
-export function getDefaultLocale(locale: string, locales: string[]) {
-  return locales.includes(locale) ? locale : "en";
+export function getDefaultLocale<T>(locale: string, locales: string[]): T {
+  return locales.includes(locale) ? (locale as T) : ("en" as T);
 }
 
 export async function getLocale(lang: string, game: string) {

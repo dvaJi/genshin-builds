@@ -1,6 +1,7 @@
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import remarkGfm from "remark-gfm";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -80,19 +81,20 @@ type Props = {
   scope?: any;
 };
 
-function PostRender(props: Props) {
+export default function PostRender(props: Props) {
   if (props.compiledSource) {
     return (
       <MDXRemote
-        compiledSource={props.compiledSource}
-        frontmatter={props.frontmatter}
-        scope={props.scope}
+        source={props.compiledSource}
         components={components}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        }}
       />
     );
   }
 
   return <div></div>;
 }
-
-export default PostRender;

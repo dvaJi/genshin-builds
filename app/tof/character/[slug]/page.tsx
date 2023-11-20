@@ -1,54 +1,97 @@
 import clsx from "clsx";
-import { GetStaticPaths, GetStaticProps } from "next";
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import TOFData, { Character, Gift, Languages, languages } from "tof-builds";
+import { notFound } from "next/navigation";
+import TOFData, { languages, type Languages } from "tof-builds";
 
-import Metadata from "@components/Metadata";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
 import TypeIcon from "@components/tof/TypeIcon";
 
-import useIntl, { IntlFormatProps } from "@hooks/use-intl";
+import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getTofUrl, getTofUrlLQ } from "@lib/imgUrl";
-import { getDefaultLocale, getLocale } from "@lib/localData";
+import { getTofUrl } from "@lib/imgUrl";
+import { getDefaultLocale } from "@lib/localData";
 import { getBuildsByCharacterId } from "@lib/tofdata";
-import { Build } from "interfaces/tof/build";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
-type BuildFull = Build & {
-  name: string;
-  hash: string;
-};
-
-interface CharacterPageProps {
-  character: Character;
-  gifts: Gift[];
-  builds: BuildFull[];
-  locale: string;
+interface Props {
+  params: {
+    slug: string;
+  };
 }
 
-const CharacterPage = ({
-  character,
-  gifts,
-  builds,
-  locale,
-}: CharacterPageProps) => {
-  const { t } = useIntl("character");
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata | undefined> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t, locale } = await useTranslations("tof", "characters");
+  const tofLanguage = getDefaultLocale<Languages>(
+    locale,
+    languages as unknown as string[]
+  );
+  const tofData = new TOFData({
+    language: tofLanguage,
+  });
+  const characters = await tofData.characters();
+  const character = characters.find((c) => c.id === params.slug);
+
+  if (!character) {
+    return;
+  }
+
+  const title = t({
+    id: "title",
+    defaultMessage: "{name} ToF Impact Build Guide",
+    values: { name: character.name },
+  });
+  const description = character.description;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      locale,
+      type: "article",
+      url: `https://genshin-builds.com/tof/character/${params.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+export default async function CharacterPage({ params }: Props) {
+  const { t, locale } = await useTranslations("tof", "character");
+  const tofLanguage = getDefaultLocale<Languages>(
+    locale,
+    languages as unknown as string[]
+  );
+  const tofData = new TOFData({
+    language: tofLanguage,
+  });
+  const characters = await tofData.characters();
+  const character = characters.find((c) => c.id === params.slug);
+
+  if (!character) {
+    return notFound();
+  }
+
+  // const favoritesGift = await tofData.getFavoriteGiftByCharacterId(
+  //   character.id
+  // );
+  const gifts = await tofData.getGiftsByCharacterId(character.id);
+  // const matrices = await tofData.matrices();
+  const builds = getBuildsByCharacterId(character.id);
 
   return (
     <div>
-      <Metadata
-        pageTitle={t({
-          id: "title",
-          defaultMessage: "{name} ToF Impact Build Guide",
-          values: { name: character.name },
-        })}
-        pageDescription={character.description}
-        jsonLD={generateJsonLd(locale, character, t)}
-      />
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
@@ -349,105 +392,4 @@ const CharacterPage = ({
       </div>
     </div>
   );
-};
-
-const generateJsonLd = (
-  locale: string,
-  character: Character,
-  t: (props: IntlFormatProps) => string
-) => {
-  return `{
-    "@context": "http://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https://genshin-builds.com/${locale}/tof/",
-          "name": "TOF-Builds.com"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@id": "https://genshin-builds.com/${locale}/tof/characters",
-          "name": "${t({
-            id: "characters",
-            defaultMessage: "Characters",
-          })}"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https://genshin-builds.com/${locale}/tof/character/${
-    character.id
-  }",
-          "name": "${character.name}"
-        }
-      }
-    ]
-  }`;
-};
-
-export const getStaticProps: GetStaticProps = async ({
-  params,
-  locale = "en",
-}) => {
-  const defaultLocale = getDefaultLocale(
-    locale,
-    languages as unknown as string[]
-  );
-  const lngDict = await getLocale(defaultLocale, "tof");
-  const tofData = new TOFData({
-    language: defaultLocale as Languages,
-  });
-  const character = await tofData.characterbyId(params?.slug as string);
-
-  if (!character) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const favoritesGift = await tofData.getFavoriteGiftByCharacterId(
-    `${params?.slug}`
-  );
-  const gifts = await tofData.getGiftsByCharacterId(`${params?.slug}`);
-  const matrices = await tofData.matrices();
-  const builds = getBuildsByCharacterId(`${params?.slug}`);
-
-  return {
-    props: {
-      character,
-      lngDict,
-      gifts: [...favoritesGift, ...gifts],
-      builds: builds.map((b) => ({
-        ...b,
-        name: matrices.find((m) => m.id === b.id)?.name,
-        hash: matrices.find((m) => m.id === b.id)?.hash,
-      })),
-      locale: defaultLocale,
-      bgStyle: {
-        image: getTofUrlLQ(`/bg_characters/${character?.id}.png`),
-        gradient: {
-          background:
-            "linear-gradient(rgba(26,28,35,.5),rgb(26, 29, 39) 620px)",
-        },
-      },
-    },
-    revalidate: 60 * 60 * 24,
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  }
-};
-
-export default CharacterPage;
+}

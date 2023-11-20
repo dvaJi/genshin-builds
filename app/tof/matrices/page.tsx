@@ -1,43 +1,71 @@
-import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { GetStaticProps } from "next";
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import TOFData, { Languages, Matrix, languages } from "tof-builds";
+import TOFData, { languages, type Languages } from "tof-builds";
 
-import Metadata from "@components/Metadata";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
-
-import useIntl from "@hooks/use-intl";
-import { getTofUrlLQ } from "@lib/imgUrl";
-import { getDefaultLocale, getLocale } from "@lib/localData";
+import useTranslations from "@hooks/use-translations";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getDefaultLocale } from "@lib/localData";
 import { getRarityColor } from "@utils/rarity";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
-type Props = {
-  ssr: Matrix[];
-  sr: Matrix[];
-  r: Matrix[];
-  n: Matrix[];
-};
+export async function generateMetadata(): Promise<Metadata | undefined> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t, locale } = await useTranslations("tof", "matrices");
+  const title = t({
+    id: "title",
+    defaultMessage: "ToF Impact Matrices List",
+  });
+  const description = t({
+    id: "description",
+    defaultMessage:
+      "All Matrices ranked in order of power, viability, and versatility to clear content.",
+  });
 
-function Matrices({ ssr, sr, r, n }: Props) {
-  const { t } = useIntl("matrices");
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      locale,
+      type: "website",
+      url: `https://genshin-builds.com/tof/matrices`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+export default async function MatricesPage() {
+  const { t, locale } = await useTranslations("tof", "matrices");
+
+  const tofLanguage = getDefaultLocale<Languages>(
+    locale,
+    languages as unknown as string[]
+  );
+  const tofData = new TOFData({
+    language: tofLanguage,
+  });
+  const matrices = (
+    await tofData.matrices({
+      select: ["id", "name", "suitName", "rarity", "hash"],
+    })
+  ).map((matrix) => ({ ...matrix, suitName: matrix.suitName ?? "" }));
+
+  const ssr = matrices.filter((m) => m.rarity === "SSR");
+  const sr = matrices.filter((m) => m.rarity === "SR");
+  const r = matrices.filter((m) => m.rarity === "R");
+  const n = matrices.filter((m) => m.rarity === "N");
 
   return (
-    <div>
-      <Metadata
-        pageTitle={t({
-          id: "title",
-          defaultMessage: "ToF Impact Matrices List",
-        })}
-        pageDescription={t({
-          id: "description",
-          defaultMessage:
-            "All Matrices ranked in order of power, viability, and versatility to clear content.",
-        })}
-      />
+    <div className="mt-6">
       <div className="mb-8">
         <h2 className="mb-2 text-3xl">
           <span className={getRarityColor("SSR")}>SSR</span>{" "}
@@ -45,7 +73,7 @@ function Matrices({ ssr, sr, r, n }: Props) {
             {t({ id: "matrices", defaultMessage: "Matrices" })}
           </span>
         </h2>
-        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-7">
           {ssr.map((matrix) => (
             <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
               <MatrixPortrait matrix={matrix} />
@@ -106,43 +134,3 @@ function Matrices({ ssr, sr, r, n }: Props) {
     </div>
   );
 }
-
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
-  const defaultLocale = getDefaultLocale(
-    locale,
-    languages as unknown as string[]
-  );
-  const lngDict = await getLocale(defaultLocale, "tof");
-  const tofData = new TOFData({
-    language: defaultLocale as Languages,
-  });
-  const matrices = (
-    await tofData.matrices({
-      select: ["id", "name", "suitName", "rarity", "hash"],
-    })
-  ).map((matrix) => ({ ...matrix, suitName: matrix.suitName ?? "" }));
-
-  const ssr = matrices.filter((m) => m.rarity === "SSR");
-  const sr = matrices.filter((m) => m.rarity === "SR");
-  const r = matrices.filter((m) => m.rarity === "R");
-  const n = matrices.filter((m) => m.rarity === "N");
-
-  return {
-    props: {
-      ssr,
-      sr,
-      r,
-      n,
-      lngDict,
-      bgStyle: {
-        image: getTofUrlLQ(`/bg/fulilingqu_bg_OS1.png`),
-        gradient: {
-          background:
-            "linear-gradient(rgba(26,28,35,.8),rgb(26, 29, 39) 620px)",
-        },
-      },
-    },
-  };
-};
-
-export default Matrices;

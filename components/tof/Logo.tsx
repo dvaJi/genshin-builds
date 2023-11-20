@@ -1,8 +1,6 @@
-import { memo } from "react";
-
 const Logo = () => {
   return (
-    <div className="mr-6 flex items-center font-bold text-white w-max text-xl">
+    <div className="mr-6 flex w-max items-center text-xl font-bold text-white">
       {/* <img
         src="/logo.png"
         className="ml-5 lg:ml-0 lg:mr-5 fill-current text-white"
@@ -20,4 +18,4 @@ const Logo = () => {
   );
 };
 
-export default memo(Logo);
+export default Logo;
