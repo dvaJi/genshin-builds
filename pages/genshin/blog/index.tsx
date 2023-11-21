@@ -60,6 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       currentPage: 1,
       lngDict,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 

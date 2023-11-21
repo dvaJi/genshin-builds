@@ -48,6 +48,7 @@ export const getStaticProps: GetStaticProps = async ({
       currentPage: params?.page,
       lngDict,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
