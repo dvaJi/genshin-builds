@@ -1,3 +1,5 @@
+'use client';
+
 import { LightCone, Relic } from "hsr-data";
 import { memo } from "react";
 

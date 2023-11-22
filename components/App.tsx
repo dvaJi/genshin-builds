@@ -2,11 +2,9 @@ import { AppProps as NextAppProps } from "next/app";
 import dynamic from "next/dynamic";
 
 import LayoutGenshin from "@components/genshin/Layout";
-import HSRLayout from "@components/hsr/Layout";
 
 import { Session } from "@lib/session";
 import { AppBackgroundStyle } from "@state/background-atom";
-import { isHSR } from "@utils/games";
 
 const FeedbackAlert = dynamic(() => import("./FeedbackAlert"), {
   ssr: false,
@@ -21,17 +19,7 @@ type Props = {
   session?: Session;
 };
 
-const App = ({ Component, pageProps, router }: AppProps<Props>) => {
-  // Honkai Star Rail
-  if (isHSR(router.route)) {
-    return (
-      <HSRLayout bgStyle={pageProps?.bgStyle} fontClass={pageProps?.fontClass}>
-        <FeedbackAlert />
-        <Component {...pageProps} />
-      </HSRLayout>
-    );
-  }
-
+const App = ({ Component, pageProps }: AppProps<Props>) => {
   // Render Genshin Layout by default
   return (
     <LayoutGenshin

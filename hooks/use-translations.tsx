@@ -1,5 +1,6 @@
 import { cache } from "react";
 
+import { localeToHSRLang } from "@utils/locale-to-lang";
 import { templateReplacement } from "@utils/template-replacement";
 import { cookies } from "next/headers";
 
@@ -37,11 +38,23 @@ const getLocale = cache(() => {
   return lang?.value || "en";
 });
 
+const getLanguage = cache((game: string) => {
+  const cookieStore = cookies();
+  const lang = cookieStore.get("x-gb-lang");
+
+  if (game === "hsr") {
+    return localeToHSRLang(lang?.value || "en");
+  }
+
+  return lang?.value || "en";
+});
+
 async function getTranslations(game: string, namespace: string) {
   const locale = getLocale();
-  const config = await getConfig(locale, game);
+  const language = getLanguage(game);
+  const config = await getConfig(language, game);
 
-  const message = resolvePath(config.messages, namespace, locale);
+  const message = resolvePath(config.messages, namespace, language);
   const common = config.common;
 
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
@@ -55,7 +68,7 @@ async function getTranslations(game: string, namespace: string) {
 
     if (process.env.NODE_ENV === "development") {
       console.warn(
-        `[useIntl] Missing translation for "${id}" in "${locale}" locale, ${namespace}.`
+        `[useIntl] Missing translation for "${id}" in "${language}" language, ${namespace}.`
       );
     }
 
@@ -69,7 +82,7 @@ async function getTranslations(game: string, namespace: string) {
   //   namespace,
   //   messages: config.messages,
   // });
-  return { t: formatFn, messages: config.messages, locale };
+  return { t: formatFn, messages: config.messages, locale, language };
 }
 
 // Make sure `now` is consistent across the request in case none was configured

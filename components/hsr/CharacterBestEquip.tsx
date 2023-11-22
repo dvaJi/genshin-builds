@@ -1,3 +1,5 @@
+'use client';
+
 import useIntl from "@hooks/use-intl";
 import { getHsrUrl } from "@lib/imgUrl";
 import { LightCone, Relic } from "hsr-data";
