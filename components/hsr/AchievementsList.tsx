@@ -1,7 +1,7 @@
 import type { Achievement } from "hsr-data";
 import { memo } from "react";
 
-import type { Category } from "@app/hsr/achievements/list";
+import type { Category } from "@app/[lang]/hsr/achievements/list";
 import { getHsrUrl } from "@lib/imgUrl";
 
 type Props = {

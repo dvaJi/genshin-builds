@@ -1,17 +1,11 @@
 "use server";
 
-import { PlayerDataAPI } from "interfaces/mihomo";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 import { z } from "zod";
 
 import prisma, { Prisma } from "@db/index";
 import { encodeBuilds } from "@utils/mihomo_enc";
-
-export async function setLanguage(lang: string) {
-  const cookieStore = cookies();
-  cookieStore.set("x-gb-lang", lang);
-}
+import { PlayerDataAPI } from "interfaces/mihomo";
 
 export async function submitHSRUID(prevState: any, formData: FormData) {
   console.log("submitHSRUID", { prevState, formData });

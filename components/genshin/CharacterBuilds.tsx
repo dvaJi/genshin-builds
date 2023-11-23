@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from "clsx";
 import type { Artifact, Weapon } from "genshin-data";
 import { useState } from "react";

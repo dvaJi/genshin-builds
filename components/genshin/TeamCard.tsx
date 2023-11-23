@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";

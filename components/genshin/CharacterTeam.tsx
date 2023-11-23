@@ -1,13 +1,16 @@
+"use client";
+
+import clsx from "clsx";
 import Link from "next/link";
+import { memo, useState } from "react";
 import { BiCollapseVertical, BiExpandVertical } from "react-icons/bi";
+
+import ElementIcon from "./ElementIcon";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 import { capitalize } from "@utils/capitalize";
-import clsx from "clsx";
 import { TeamData } from "interfaces/teams";
-import { memo, useState } from "react";
-import ElementIcon from "./ElementIcon";
 
 type Props = {
   team: TeamData;

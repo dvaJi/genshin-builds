@@ -1,3 +1,5 @@
+'use client';
+
 import useIntl from "@hooks/use-intl";
 import { Ascension } from "genshin-data/dist/types/character";
 import { Fragment, useState } from "react";

@@ -19,4 +19,40 @@ export const i18n = {
   ],
 } as const;
 
+export const localesAvailables = {
+  genshin: [
+    "en",
+    "es",
+    "ja",
+    "cn",
+    "zh-tw",
+    "de",
+    "fr",
+    "id",
+    "it",
+    "ko",
+    "pt",
+    "ru",
+    "th",
+    "tr",
+    "vi",
+  ],
+  hsr: [
+    "cn",
+    "de",
+    "en",
+    "es",
+    "fr",
+    "id",
+    "ja",
+    "ko",
+    "pt",
+    "ru",
+    "th",
+    "vi",
+    "zh-tw",
+  ],
+  tof: ["de", "en", "es", "fr", "id", "ja", "pt", "th"],
+};
+
 export type Locale = (typeof i18n)["locales"][number];

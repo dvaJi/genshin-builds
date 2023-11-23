@@ -10,6 +10,8 @@ interface PageSEOProps {
   [key: string]: any;
 }
 
+const baseDomain = "https://genshin-builds.com";
+
 export function genPageMetadata({
   title,
   description,
@@ -24,7 +26,11 @@ export function genPageMetadata({
       "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",
     socialBanner: "https://genshin-builds.com/icons/meta-image.jpg",
   };
-  const domain = `https://genshin-builds.com${path}`;
+  const domain = `${baseDomain}${path}`;
+
+  const redirectedPathName = (locale: string) => {
+    return `${baseDomain}/${locale}${path}`;
+  };
 
   return {
     metadataBase: new URL(domain),
@@ -46,13 +52,16 @@ export function genPageMetadata({
     },
     alternates: {
       canonical: domain,
-      languages: i18n.locales.reduce(
-        (acc, locale) => {
-          acc[locale] = `?lang=${locale}`;
-          return acc;
-        },
-        {} as Record<string, string>
-      ),
+      languages: {
+        ...i18n.locales.reduce(
+          (acc, locale) => {
+            acc[locale] = redirectedPathName(locale);
+            return acc;
+          },
+          {} as Record<string, string>
+        ),
+        "x-default": redirectedPathName("en"),
+      },
     },
     ...rest,
   };

@@ -1,3 +1,5 @@
+'use client';
+
 import type { Passive } from "genshin-data/dist/types/character";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";

@@ -1,3 +1,5 @@
+"use client";
+
 import { getUrl } from "@lib/imgUrl";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";

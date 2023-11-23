@@ -10,10 +10,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["var(--font-noto-sans)"],
-        mono: ["var(--font-roboto-mono)"],
-      },
       colors: {
         "accent-1": "#333",
         "hsr-accent": "#439eac",

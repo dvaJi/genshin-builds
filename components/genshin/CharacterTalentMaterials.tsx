@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from "clsx";
 import { AscensionMaterial } from "genshin-data/dist/types/character";
 import { memo, useMemo } from "react";

@@ -15,27 +15,27 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
-  i18n: {
-    locales: [
-      "en",
-      "es",
-      "ja",
-      "cn",
-      "zh-tw",
-      "de",
-      "fr",
-      "id",
-      "it",
-      "ko",
-      "pt",
-      "ru",
-      "th",
-      "tr",
-      "vi",
-    ],
-    defaultLocale: "en",
-    localeDetection: !isDev,
-  },
+  // i18n: {
+  //   locales: [
+  //     "en",
+  //     "es",
+  //     "ja",
+  //     "cn",
+  //     "zh-tw",
+  //     "de",
+  //     "fr",
+  //     "id",
+  //     "it",
+  //     "ko",
+  //     "pt",
+  //     "ru",
+  //     "th",
+  //     "tr",
+  //     "vi",
+  //   ],
+  //   defaultLocale: "en",
+  //   localeDetection: !isDev,
+  // },
   images: {
     remotePatterns: [
       {
