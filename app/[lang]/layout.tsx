@@ -1,8 +1,8 @@
-import { i18n } from "../../i18n-config";
+// import { i18n } from "../../i18n-config";
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
+// export async function generateStaticParams() {
+//   return i18n.locales.map((locale) => ({ lang: locale }));
+// }
 
 export default function Root({
   children,
@@ -11,7 +11,7 @@ export default function Root({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  console.log('root')
+  console.log("root", params);
   return (
     <html lang={params.lang}>
       <body>{children}</body>
