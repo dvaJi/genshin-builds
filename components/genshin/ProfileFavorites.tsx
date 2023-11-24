@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+"use client";
+
 import { useStore } from "@nanostores/react";
+import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 
-import { profilesFavAtom } from "@state/profiles-fav";
 import useIntl from "@hooks/use-intl";
+import { profilesFavAtom } from "@state/profiles-fav";
 
 function ProfileFavorites() {
   const profilesFav = useStore(profilesFavAtom);
-  const router = useRouter();
   const { t } = useIntl("profile");
   return (
     <>
@@ -16,8 +16,7 @@ function ProfileFavorites() {
         <Link
           key={profile.uuid}
           href={`/profile/${profile.uuid}`}
-          className="mr-1 rounded-b-lg bg-vulcan-600 bg-cover py-2 px-4 text-sm hover:bg-vulcan-400 hover:text-slate-100 data-[active=true]:bg-vulcan-500 data-[active=true]:text-white"
-          data-active={router.query.uid === profile.uuid}
+          className="mr-1 rounded bg-vulcan-600 bg-cover px-4 py-2 text-sm hover:bg-vulcan-400 hover:text-slate-100"
         >
           <span>{profile.nickname}</span>
           <span

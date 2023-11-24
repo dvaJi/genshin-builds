@@ -1,3 +1,5 @@
+"use client";
+
 import useIntl from "@hooks/use-intl";
 import { getUrlLQ } from "@lib/imgUrl";
 import {

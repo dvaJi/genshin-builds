@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { memo, useMemo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";

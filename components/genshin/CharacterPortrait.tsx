@@ -1,3 +1,5 @@
+"use client";
+
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -46,7 +48,7 @@ const CharacterPortrait = ({
             height={80}
           />
           {showElement && character.element && (
-            <div className="absolute top-0 right-5 rounded-full bg-vulcan-900 px-1 pt-1">
+            <div className="absolute right-5 top-0 rounded-full bg-vulcan-900 px-1 pt-1">
               <ElementIcon width={20} height={20} type={character.element} />
             </div>
           )}
@@ -57,7 +59,7 @@ const CharacterPortrait = ({
           )}
           {weapon && (
             <div
-              className="absolute bottom-0 left-2/3 rounded bg-cover opacity-0 transition-all delay-100 translate-x-0 group-hover:translate-x-2 group-hover:opacity-100"
+              className="absolute bottom-0 left-2/3 translate-x-0 rounded bg-cover opacity-0 transition-all delay-100 group-hover:translate-x-2 group-hover:opacity-100"
               style={{
                 backgroundImage: `url(${getUrl(
                   `/bg_${weapon.rarity}star.png`
@@ -78,7 +80,7 @@ const CharacterPortrait = ({
               {artifacts.map((artifact, i) => (
                 <div
                   key={artifact.id}
-                  className="absolute right-2/3 scale-0 rounded bg-cover transition-all delay-100 translate-x-0 group-hover:-translate-x-2 group-hover:scale-105"
+                  className="absolute right-2/3 translate-x-0 scale-0 rounded bg-cover transition-all delay-100 group-hover:-translate-x-2 group-hover:scale-105"
                   style={{
                     bottom: i * 32,
                   }}

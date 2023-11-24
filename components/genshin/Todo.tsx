@@ -1,23 +1,25 @@
-import { useMemo, useCallback, useState } from "react";
+"use client";
+
+import clsx from "clsx";
 import format from "date-fns/format";
 import Link from "next/link";
-import clsx from "clsx";
+import { useCallback, useMemo, useState } from "react";
 import {
   CgArrowLongRight,
-  CgChevronRight,
   CgChevronLeft,
+  CgChevronRight,
 } from "react-icons/cg";
 
-import Button from "@components/ui/Button";
+import Select from "@components/Select";
 import ItemPopover from "@components/genshin/ItemPopover";
 import ItemPopoverSummary from "@components/genshin/ItemPopoverSummary";
-import Select from "@components/Select";
+import Button from "@components/ui/Button";
 
 import useIntl from "@hooks/use-intl";
-import { getUrl } from "@lib/imgUrl";
-import { Todo, todos as todosAtom } from "@state/todo";
 import { trackClick } from "@lib/gtag";
+import { getUrl } from "@lib/imgUrl";
 import { useStore } from "@nanostores/react";
+import { Todo, todos as todosAtom } from "@state/todo";
 
 type Props = {
   planning: Record<string, any>;

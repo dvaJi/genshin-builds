@@ -7,10 +7,7 @@ import LanguageSelector from "@components/ui/LanguageSelector";
 
 export default function GenshinFooter() {
   return (
-    <footer
-      className="border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-4 py-6 text-gray-400 backdrop-blur md:px-20 md:py-14"
-      style={{ zIndex: 1 }}
-    >
+    <footer className="relative z-10 border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-4 py-6 text-gray-400 backdrop-blur md:px-20 md:py-14">
       <div className="container mx-auto">
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex flex-1 flex-col">
