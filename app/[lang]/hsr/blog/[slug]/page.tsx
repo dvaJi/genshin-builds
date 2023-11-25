@@ -17,7 +17,7 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
   ssr: false,
 });
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 type Props = {
   params: {
