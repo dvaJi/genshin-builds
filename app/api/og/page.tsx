@@ -1,20 +1,19 @@
-import { IMGS_CDN } from "@lib/constants";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 
+import { IMGS_CDN } from "@lib/constants";
+
 export const runtime = "edge";
 
-const cheltenham = fetch(
-  new URL("@styles/cheltenham-italic-700.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
-
-export default async function handler(req: NextRequest) {
-  const cheltenhamData = await cheltenham;
-
+export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
+  const font = fetch(
+    new URL("@styles/cheltenham-italic-700.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
   const image = searchParams.get("image");
   const title = searchParams.get("title");
   const description = searchParams.get("description");
+  const fontData = await font;
 
   return new ImageResponse(
     (
@@ -93,7 +92,7 @@ export default async function handler(req: NextRequest) {
       fonts: [
         {
           name: "NYT Cheltenham",
-          data: cheltenhamData,
+          data: fontData,
         },
       ],
     }
