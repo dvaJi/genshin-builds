@@ -1,4 +1,6 @@
-import { BlogPost } from "@prisma/client";
+"use client";
+
+import type { BlogPost } from "@prisma/client";
 import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";

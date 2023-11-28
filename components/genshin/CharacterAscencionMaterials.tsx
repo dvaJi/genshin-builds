@@ -1,3 +1,5 @@
+'use client';
+
 import { memo, useMemo } from "react";
 import { Ascension } from "genshin-data/dist/types/character";
 import clsx from "clsx";

@@ -1,3 +1,5 @@
+"use client";
+
 import { getUrl } from "@lib/imgUrl";
 import clsx from "clsx";
 import { memo } from "react";

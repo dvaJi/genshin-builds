@@ -1,7 +1,11 @@
-import { useClickOutside } from "@hooks/use-clickoutside";
+"use client";
+
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { memo, useCallback, useState } from "react";
+
+import { useClickOutside } from "@hooks/use-clickoutside";
+import useIntl from "@hooks/use-intl";
 
 const languages = [
   { id: "en", name: "English" },
@@ -22,20 +26,25 @@ const languages = [
 ];
 
 function LanguageSelector() {
-  const router = useRouter();
+  const { locale } = useIntl();
+  const pathName = usePathname();
+  const redirectedPathName = (locale: string) => {
+    if (!pathName) return "/";
+    const segments = pathName.split("/");
+    segments[1] = locale;
+    return segments.join("/");
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const close = useCallback(() => setIsOpen(false), []);
   const contentRef = useClickOutside(isOpen ? close : undefined, []);
-
-  const { locale } = router;
 
   const current = languages.find((lang) => lang.id === locale) || languages[0];
 
   return (
     <>
       <button
-        className="inline-flex items-center rounded-lg border border-vulcan-700 bg-vulcan-700/30 px-5 py-2.5 text-center text-white hover:bg-vulcan-600/50 hover:border-vulcan-600 focus:outline-none focus:ring-4 focus:ring-slate-600"
+        className="inline-flex items-center rounded-lg border border-vulcan-700 bg-vulcan-700/30 px-5 py-2.5 text-center text-white hover:border-vulcan-600 hover:bg-vulcan-600/50 focus:outline-none focus:ring-4 focus:ring-slate-600"
         onClick={() => setIsOpen(!isOpen)}
         ref={contentRef as any}
       >
@@ -50,8 +59,7 @@ function LanguageSelector() {
           {languages.map((option) => (
             <li key={option.id} className="">
               <Link
-                href={router.asPath}
-                locale={option.id}
+                href={redirectedPathName(option.id)}
                 className="block px-4 py-2 hover:bg-gray-600 hover:text-white"
               >
                 {option.name}

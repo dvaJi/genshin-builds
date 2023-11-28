@@ -1,12 +1,10 @@
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import remarkGfm from "remark-gfm";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-const CustomMap = dynamic(() => import("@components/CustomMap"), {
-  ssr: false,
-});
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -58,12 +56,6 @@ export const componentsList = [
     custom: true,
     example: `<FrstAds placementName="genshinbuilds_billboard_atf" />`,
   },
-  {
-    name: "CustomMap",
-    component: CustomMap,
-    custom: true,
-    example: `<CustomMap data={{imageOverlay: "/imgs/map/anemoculus_map.jpg", markIcon: "/images/anemoculus_icon.png", marks: []}} />`,
-  },
 ];
 
 const components = componentsList.reduce(
@@ -84,10 +76,13 @@ function PostRender(props: Props) {
   if (props.compiledSource) {
     return (
       <MDXRemote
-        compiledSource={props.compiledSource}
-        frontmatter={props.frontmatter}
-        scope={props.scope}
+        source={props.compiledSource}
         components={components}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        }}
       />
     );
   }

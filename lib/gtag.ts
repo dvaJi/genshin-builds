@@ -4,7 +4,7 @@ export const HSR_GA_TRACKING_ID = process.env.NEXT_PUBLIC_HSR_GA_ID;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
-  console.log(url);
+  // console.log(url);
   if (typeof window !== "undefined" && (window as any).gtag) {
     let gaTrackingID = GA_TRACKING_ID;
     const isTOF = url.startsWith("/tof");
@@ -16,7 +16,7 @@ export const pageview = (url: string) => {
       gaTrackingID = HSR_GA_TRACKING_ID;
     }
 
-    (window as any).gtag("config", gaTrackingID, {
+    window.gtag("config", gaTrackingID, {
       page_path: url,
     });
   }
@@ -31,7 +31,7 @@ interface EventProps {
 }
 export const event = ({ action, category, label, value }: EventProps) => {
   if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("event", action, {
+    window.gtag("event", action, {
       event_category: category,
       event_label: label,
       value,

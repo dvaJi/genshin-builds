@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { memo } from "react";
+import type { Artifact, Character, Weapon } from "genshin-data";
 import Link from "next/link";
-import { Artifact, Character, Weapon } from "genshin-data";
+import { memo } from "react";
 
-import CharacterPortrait from "./CharacterPortrait";
+import useIntl from "@hooks/use-intl";
 import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
+import CharacterPortrait from "./CharacterPortrait";
 
 interface CharactersTierProps {
   tierlist: Tierlist;
@@ -12,7 +13,6 @@ interface CharactersTierProps {
   characters: Record<string, Pick<Character, "id" | "name" | "element">>;
   weaponsMap: Record<string, Pick<Weapon, "id" | "name" | "rarity">>;
   artifactsMap: Record<string, Pick<Artifact, "id" | "name">>;
-  common: Record<string, string>;
   selectedCol: Roles | null;
 }
 
@@ -22,9 +22,9 @@ const CharactersTier = ({
   characters,
   weaponsMap,
   artifactsMap,
-  common,
   selectedCol,
 }: CharactersTierProps) => {
+  const { t } = useIntl("tierlist");
   let tierText = "SS";
 
   switch (tier) {
@@ -64,20 +64,23 @@ const CharactersTier = ({
       </div>
       <div
         className={clsx(blockStyle, {
-          "hidden lg:block": selectedCol !== Roles.maindps,
+          "hidden lg:flex": selectedCol !== Roles.maindps,
         })}
       >
-        {tierlist.maindps[tier].map((t) => (
-          <div key={t.id} className="inline-block">
-            <Link href={`/character/${t.id}`}>
+        {tierlist.maindps[tier].map((tier) => (
+          <div key={tier.id} className="inline-block">
+            <Link href={`/character/${tier.id}`}>
               <CharacterPortrait
                 character={{
-                  ...characters[t.id],
-                  constellationNum: t.min_c,
-                  element: common[characters[t.id].element],
+                  ...characters[tier.id],
+                  constellationNum: tier.min_c,
+                  element: t({
+                    id: characters[tier.id].element,
+                    defaultMessage: characters[tier.id].element,
+                  }),
                 }}
-                weapon={weaponsMap[t.w_id]}
-                artifacts={t.a_ids.map((a) => artifactsMap[a])}
+                weapon={weaponsMap[tier.w_id]}
+                artifacts={tier.a_ids.map((a) => artifactsMap[a])}
               />
             </Link>
           </div>
@@ -85,20 +88,23 @@ const CharactersTier = ({
       </div>
       <div
         className={clsx(blockStyle, {
-          "hidden lg:block": selectedCol !== Roles.subdps,
+          "hidden lg:flex": selectedCol !== Roles.subdps,
         })}
       >
-        {tierlist.subdps[tier].map((t) => (
-          <div key={t.id} className="inline-block">
-            <Link href={`/character/${t.id}`}>
+        {tierlist.subdps[tier].map((tier) => (
+          <div key={tier.id} className="inline-block">
+            <Link href={`/character/${tier.id}`}>
               <CharacterPortrait
                 character={{
-                  ...characters[t.id],
-                  constellationNum: t.min_c,
-                  element: common[characters[t.id].element],
+                  ...characters[tier.id],
+                  constellationNum: tier.min_c,
+                  element: t({
+                    id: characters[tier.id].element,
+                    defaultMessage: characters[tier.id].element,
+                  }),
                 }}
-                weapon={weaponsMap[t.w_id]}
-                artifacts={t.a_ids.map((a) => artifactsMap[a])}
+                weapon={weaponsMap[tier.w_id]}
+                artifacts={tier.a_ids.map((a) => artifactsMap[a])}
               />
             </Link>
           </div>
@@ -106,20 +112,23 @@ const CharactersTier = ({
       </div>
       <div
         className={clsx(blockStyle, {
-          "hidden lg:block": selectedCol !== Roles.support,
+          "hidden lg:flex": selectedCol !== Roles.support,
         })}
       >
-        {tierlist.support[tier].map((t) => (
-          <div key={t.id} className="relative inline-block">
-            <Link href={`/character/${t.id}`}>
+        {tierlist.support[tier].map((tier) => (
+          <div key={tier.id} className="relative inline-block">
+            <Link href={`/character/${tier.id}`}>
               <CharacterPortrait
                 character={{
-                  ...characters[t.id],
-                  constellationNum: t.min_c,
-                  element: common[characters[t.id].element],
+                  ...characters[tier.id],
+                  constellationNum: tier.min_c,
+                  element: t({
+                    id: characters[tier.id].element,
+                    defaultMessage: characters[tier.id].element,
+                  }),
                 }}
-                weapon={weaponsMap[t.w_id]}
-                artifacts={t.a_ids.map((a) => artifactsMap[a])}
+                weapon={weaponsMap[tier.w_id]}
+                artifacts={tier.a_ids.map((a) => artifactsMap[a])}
               />
             </Link>
           </div>

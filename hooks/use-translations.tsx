@@ -1,7 +1,10 @@
 import { cache } from "react";
 
+import { getDefaultLocale } from "@lib/localData";
+import { localeToHSRLang, localeToLang } from "@utils/locale-to-lang";
 import { templateReplacement } from "@utils/template-replacement";
-import { cookies } from "next/headers";
+import { languages as tofLanguages } from "hsr-data";
+import { localesAvailables } from "i18n-config";
 
 export interface IntlFormatProps {
   id: string;
@@ -31,17 +34,51 @@ const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
   return message as any;
 };
 
-const getLocale = cache(() => {
-  const cookieStore = cookies();
-  const lang = cookieStore.get("x-gb-lang");
-  return lang?.value || "en";
+const getLanguage = cache((locale: string, game: string) => {
+  if (game === "hsr") {
+    return localesAvailables.hsr.includes(locale) ? locale : "en";
+  }
+
+  if (game === "tof") {
+    return localesAvailables.tof.includes(locale) ? locale : "en";
+  }
+
+  if (game === "genshin") {
+    return localesAvailables.genshin.includes(locale) ? locale : "en";
+  }
+
+  return locale || "en";
 });
 
-async function getTranslations(game: string, namespace: string) {
-  const locale = getLocale();
-  const config = await getConfig(locale, game);
+const getLangData = cache((locale: string, game: string) => {
+  if (game === "hsr") {
+    return localeToHSRLang(locale || "en");
+  }
 
-  const message = resolvePath(config.messages, namespace, locale);
+  if (game === "tof") {
+    return getDefaultLocale<string>(
+      locale,
+      tofLanguages as unknown as string[]
+    );
+  }
+
+  if (game === "genshin") {
+    return localeToLang(locale || "en");
+  }
+
+  return locale || "en";
+});
+
+async function getTranslations(
+  locale: string,
+  game: string,
+  namespace: string
+) {
+  const language = getLanguage(locale, game);
+  const langData = getLangData(locale, game);
+  const config = await getConfig(language, game);
+
+  const message = resolvePath(config.messages, namespace, language);
   const common = config.common;
 
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
@@ -55,7 +92,7 @@ async function getTranslations(game: string, namespace: string) {
 
     if (process.env.NODE_ENV === "development") {
       console.warn(
-        `[useIntl] Missing translation for "${id}" in "${locale}" locale, ${namespace}.`
+        `[useIntl] Missing translation for "${id}" in "${language}" language, ${namespace}.`
       );
     }
 
@@ -64,12 +101,15 @@ async function getTranslations(game: string, namespace: string) {
       : defaultMessage;
   };
 
-  // return createTranslator({
-  //   ...config,
-  //   namespace,
-  //   messages: config.messages,
-  // });
-  return { t: formatFn, messages: config.messages, locale };
+  return {
+    t: formatFn,
+    messages: config.messages,
+    locale,
+    language,
+    langData,
+    common,
+    dict: message,
+  };
 }
 
 // Make sure `now` is consistent across the request in case none was configured
@@ -112,28 +152,7 @@ async function requestConfig({
 
 const getConfig = cache(async (locale: string, game: string) => {
   const runtimeConfig = await receiveRuntimeConfig(locale, game, requestConfig);
-  const opts = { ...runtimeConfig, locale };
-  // return initializeConfig(opts);
-  return opts;
+  return { ...runtimeConfig, locale };
 });
-
-// function initializeConfig({getMessageFallback, messages, onError, ...rest}: any) {
-//   const finalOnError = onError || defaultOnError;
-//   const finalGetMessageFallback =
-//     getMessageFallback || defaultGetMessageFallback;
-
-//   if (process.env.NODE_ENV !== 'production') {
-//     if (messages) {
-//       validateMessages(messages, finalOnError);
-//     }
-//   }
-
-//   return {
-//     ...rest,
-//     messages,
-//     onError: finalOnError,
-//     getMessageFallback: finalGetMessageFallback
-//   };
-// }
 
 export default cache(getTranslations);

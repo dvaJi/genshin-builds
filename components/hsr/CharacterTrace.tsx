@@ -1,8 +1,11 @@
-import { getHsrUrl } from "@lib/imgUrl";
+"use client";
+
 import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
 import { SkillTreePoint } from "hsr-data/dist/types/characters";
 import { Fragment } from "react";
+
+import { getHsrUrl } from "@lib/imgUrl";
 
 type Props = {
   trace: SkillTreePoint;
@@ -49,8 +52,8 @@ function CharacterTrace({ trace, characterId }: Props) {
               </div>
             </Dialog.Trigger>
             <Dialog.Portal>
-              <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-50 bg-black/10 backdrop-blur-sm" />
-              <Dialog.Content className="data-[state=open]:animate-contentShow fixed left-1/2 top-1/2 z-1000 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-zinc-800 p-6 text-slate-200 shadow-2xl focus:outline-none">
+              <Dialog.Overlay className="fixed inset-0 z-50 bg-black/10 backdrop-blur-sm data-[state=open]:animate-overlayShow" />
+              <Dialog.Content className="fixed left-1/2 top-1/2 z-1000 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-zinc-800 p-6 text-slate-200 shadow-2xl focus:outline-none data-[state=open]:animate-contentShow">
                 <Dialog.Title className="text-mauve12 m-0 font-semibold">
                   {trace.embedBonusSkill.name}
                 </Dialog.Title>
@@ -132,8 +135,8 @@ function CharacterTrace({ trace, characterId }: Props) {
               </div>
             </Dialog.Trigger>
             <Dialog.Portal>
-              <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-50 bg-black/10 backdrop-blur-sm" />
-              <Dialog.Content className="data-[state=open]:animate-contentShow fixed left-1/2 top-1/2 z-1000 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-zinc-800 p-6 text-slate-200 shadow-2xl focus:outline-none">
+              <Dialog.Overlay className="fixed inset-0 z-50 bg-black/10 backdrop-blur-sm data-[state=open]:animate-overlayShow" />
+              <Dialog.Content className="fixed left-1/2 top-1/2 z-1000 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-zinc-800 p-6 text-slate-200 shadow-2xl focus:outline-none data-[state=open]:animate-contentShow">
                 <Dialog.Title className="text-mauve12 m-0 font-semibold">
                   {trace.embedBuff.name}
                 </Dialog.Title>

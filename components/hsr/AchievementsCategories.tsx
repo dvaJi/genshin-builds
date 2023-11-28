@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { memo } from "react";
 
+import type { Category } from "@app/[lang]/hsr/achievements/list";
 import { getHsrUrl } from "@lib/imgUrl";
-import type { Category } from "@pages/hsr/achievements";
 
 type Props = {
   categories: Category[];

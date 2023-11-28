@@ -5,11 +5,11 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import SimpleRarityBox from "../SimpleRarityBox";
 import StarRarity from "../StarRarity";
 
-import { FoodItem } from "@pages/food";
+// import { FoodItem } from "@pages/food";
 import { getUrl } from "@lib/imgUrl";
 
 interface FoodCardProps {
-  item: FoodItem;
+  item: any;
 }
 
 const FoodCard = ({ item }: FoodCardProps) => {

@@ -1,8 +1,8 @@
+"use client";
+
 import type { Passive } from "genshin-data/dist/types/character";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
-import Card from "../ui/Card";
 
 import useIntl from "@hooks/use-intl";
 import { getUrlLQ } from "@lib/imgUrl";
@@ -15,7 +15,7 @@ type Props = {
 const PassiveSkill = ({ passive, characterId }: Props) => {
   const { t } = useIntl("character");
   return (
-    <Card className="relative flex flex-col items-center justify-start overflow-hidden lg:w-full">
+    <div className="card relative flex flex-col items-center justify-start overflow-hidden lg:w-full">
       <LazyLoadImage
         className="absolute top-5 w-16 opacity-10"
         alt={passive.id}
@@ -37,7 +37,7 @@ const PassiveSkill = ({ passive, characterId }: Props) => {
         className="skill-description px-5 text-sm"
         dangerouslySetInnerHTML={{ __html: passive.description }}
       />
-    </Card>
+    </div>
   );
 };
 

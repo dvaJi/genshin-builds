@@ -1,3 +1,5 @@
+"use client";
+
 import useIntl from "@hooks/use-intl";
 import clsx from "clsx";
 import Link from "next/link";

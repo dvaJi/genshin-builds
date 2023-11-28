@@ -1,3 +1,5 @@
+"use client";
+
 import useIntl from "@hooks/use-intl";
 import { getUrlLQ } from "@lib/imgUrl";
 import {
@@ -123,7 +125,7 @@ const columns: ColumnDef<any>[] = [
         <span className={cvQuality(info.getValue<number>())}>
           {info.getValue<number>().toFixed(1)}
         </span>
-      )
+      );
     },
   },
 ];

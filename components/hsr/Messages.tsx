@@ -1,3 +1,5 @@
+"use client";
+
 import { Message } from "hsr-data/dist/types/messages";
 import { useState } from "react";
 import MessageBlock from "./MessageBlock";
@@ -22,7 +24,7 @@ function Messages({
               className={
                 selectedMessage === messageId
                   ? "cursor-pointer rounded-sm bg-hsr-accent p-2 text-white"
-                  : "cursor-pointer p-2 bg-hsr-surface2"
+                  : "cursor-pointer bg-hsr-surface2 p-2"
               }
               onClick={() => setSelectedMessage(messageId)}
             >

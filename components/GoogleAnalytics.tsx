@@ -1,19 +1,37 @@
 "use client";
 
+import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
+import { useEffect } from "react";
+
+import * as gtag from "@lib/gtag";
 
 type Props = {
   gtagId?: string;
 };
 
 export default function GoogleAnalytics({ gtagId }: Props) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (gtagId) {
+      const url = `${pathname}?${searchParams}`;
+      gtag.pageview(url);
+      if (
+        typeof window !== "undefined" &&
+        typeof window.freestar !== "undefined"
+      ) {
+        freestar.queue.push(function () {
+          freestar.trackPageview();
+        });
+      }
+    }
+  }, [gtagId, pathname, searchParams]);
 
   if (!gtagId) {
     return null;
   }
-
-  //You can show in the console the GA_TRACKING_ID to confirm
-  console.log(gtagId);
 
   return (
     <>

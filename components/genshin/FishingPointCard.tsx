@@ -1,5 +1,5 @@
+import type { Fish } from "genshin-data";
 import { memo } from "react";
-import { Fish } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import FishMiniCard from "./FishMiniCard";
@@ -7,8 +7,7 @@ import FishMiniCard from "./FishMiniCard";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
-import { FishingPoint } from "interfaces/fishing";
-import Card from "../ui/Card";
+import type { FishingPoint } from "interfaces/fishing";
 
 interface FishingPointCardProps {
   city: string;
@@ -27,24 +26,24 @@ const FishingPointCard = ({
 
   return (
     <div>
-      <h2 className="text-3xl mb-2 ml-4 lg:ml-0">
+      <h2 className="mb-2 ml-4 text-3xl lg:ml-0">
         {t({ id: city, defaultMessage: city })}
       </h2>
       {fishingPoints.map((point) => (
-        <Card
+        <div
           key={city + point.id}
-          className="p-0 flex flex-col lg:flex-row items-center w-full"
+          className="card flex w-full flex-col items-center p-0 lg:flex-row"
         >
-          <div className="flex-grow lg:flex-grow-0 overflow-hidden w-80 pt-5 lg:pt-0">
+          <div className="w-80 flex-grow overflow-hidden pt-5 lg:flex-grow-0 lg:pt-0">
             <LazyLoadImage
-              className="w-80 rounded-lg lg:rounded-r-none transition-transform transform hover:scale-110"
+              className="w-80 transform rounded-lg transition-transform hover:scale-110 lg:rounded-r-none"
               src={getUrl(`/fishing_points/${point.id}.jpg`, 320, 320)}
               alt={point.id}
               width={320}
               height={320}
             />
           </div>
-          <div className="flex-grow  text-center h-full p-5">
+          <div className="h-full  flex-grow p-5 text-center">
             {point.fish.map((f) => (
               <FishMiniCard
                 key={point.id + f}
@@ -53,7 +52,7 @@ const FishingPointCard = ({
               />
             ))}
           </div>
-        </Card>
+        </div>
       ))}
     </div>
   );

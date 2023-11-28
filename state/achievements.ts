@@ -4,7 +4,7 @@ export type AchievementsCompleted = {
   [id: string]: number[];
 };
 
-export const achievementsCompleted = persistentAtom<AchievementsCompleted>(
+export const $achievementsCompleted = persistentAtom<AchievementsCompleted>(
   "achievements",
   {},
   {
