@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import clsx from "clsx";
 import { memo, useMemo, useState } from "react";
@@ -6,10 +6,9 @@ import { memo, useMemo, useState } from "react";
 import { useToggle } from "@hooks/use-toggle";
 
 import Crement from "../Crement";
-import Card from "../ui/Card";
 
 import { getUrlLQ } from "@lib/imgUrl";
-import { Skill } from "genshin-data/dist/types/character";
+import type { Skill } from "genshin-data/dist/types/character";
 
 type Props = {
   characterId: string;
@@ -28,9 +27,9 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
   }, [skill]);
   return (
     <div className="flex justify-center lg:block">
-      <Card
+      <div
         className={clsx(
-          "relative flex w-11/12 flex-col justify-start overflow-hidden p-0 lg:w-full",
+          "card relative flex w-11/12 flex-col justify-start overflow-hidden p-0 lg:w-full",
           isOpen ? "h-auto" : "h-30 lg:h-60"
         )}
       >
@@ -134,7 +133,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             </div>
           ))}
         </div>
-      </Card>
+      </div>
     </div>
   );
 };

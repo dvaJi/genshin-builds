@@ -1,4 +1,4 @@
-import { Artifact, Weapon } from "genshin-data";
+import type { Artifact, Weapon } from "genshin-data";
 import { memo } from "react";
 
 import ArtifactCard from "./ArtifactCard";

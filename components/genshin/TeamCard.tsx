@@ -4,12 +4,11 @@ import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Card from "../ui/Card";
+import ElementIcon from "./ElementIcon";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { TeamData } from "interfaces/teams";
-import ElementIcon from "./ElementIcon";
 
 interface TeamCardProps {
   mainName: string;
@@ -19,7 +18,7 @@ interface TeamCardProps {
 const TeamCard = ({ team, mainName }: TeamCardProps) => {
   const { t } = useIntl("teams");
   return (
-    <Card className="mx-2 md:mx-0">
+    <div className="card mx-2 md:mx-0">
       <h3 className="text-lg font-semibold text-white lg:text-2xl">
         {t({
           id: "character_team",
@@ -37,9 +36,11 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
               <Link href={`/character/${block.id}`} className="flex flex-col">
                 <div className="group relative overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500">
                   <LazyLoadImage
-                    className="z-20 rounded-full transition group-hover:scale-110"
+                    className="z-20 rounded-full object-cover transition group-hover:scale-110"
                     alt={block.id}
                     src={getUrl(`/characters/${block.id}/image.png`, 180, 180)}
+                    width={165}
+                    height={165}
                     placeholder={<div className="h-full w-full" />}
                     placeholderSrc={getUrlLQ(
                       `/characters/${block.id}/image.png`,
@@ -51,7 +52,7 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
                     type={block.element}
                     height={20}
                     width={20}
-                    className="absolute right-2 top-2 rounded-full bg-vulcan-700 lg:right-5 lg:top-5"
+                    className="absolute right-3 top-3 rounded-full bg-vulcan-700 lg:right-5 lg:top-5"
                   />
                 </div>
                 <span className="text-white">{block.name}</span>
@@ -60,7 +61,7 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
           </div>
         ))}
       </div>
-    </Card>
+    </div>
   );
 };
 

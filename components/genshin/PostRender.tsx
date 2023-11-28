@@ -5,9 +5,6 @@ import remarkGfm from "remark-gfm";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-const CustomMap = dynamic(() => import("@components/CustomMap"), {
-  ssr: false,
-});
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -58,13 +55,7 @@ export const componentsList = [
     component: FrstAds,
     custom: true,
     example: `<FrstAds placementName="genshinbuilds_billboard_atf" />`,
-  },
-  {
-    name: "CustomMap",
-    component: CustomMap,
-    custom: true,
-    example: `<CustomMap data={{imageOverlay: "/imgs/map/anemoculus_map.jpg", markIcon: "/images/anemoculus_icon.png", marks: []}} />`,
-  },
+  }
 ];
 
 const components = componentsList.reduce(

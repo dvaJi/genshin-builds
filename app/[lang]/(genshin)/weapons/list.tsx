@@ -1,6 +1,10 @@
 "use client";
 
+import clsx from "clsx";
+import type { Weapon } from "genshin-data";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import SearchInput from "@components/SearchInput";
 import StarRarity from "@components/StarRarity";
@@ -8,10 +12,6 @@ import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
-import clsx from "clsx";
-import { Weapon } from "genshin-data";
-import Link from "next/link";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 type Props = {
   weapons: (Weapon & { beta?: boolean })[];

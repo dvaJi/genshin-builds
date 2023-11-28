@@ -1,12 +1,11 @@
-'use client';
+"use client";
 
-import { Constellation } from "genshin-data/dist/types/character";
+import type { Constellation } from "genshin-data/dist/types/character";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
-import Card from "../ui/Card";
 
 type Props = {
   characterId: string;
@@ -16,7 +15,7 @@ type Props = {
 const ConstellationCard = ({ constellation, characterId }: Props) => {
   const { t } = useIntl("character");
   return (
-    <Card className="relative flex flex-col items-center justify-start overflow-hidden lg:w-full">
+    <div className="card relative flex flex-col items-center justify-start overflow-hidden lg:w-full">
       <LazyLoadImage
         className="absolute top-5 w-16 opacity-10"
         alt={constellation.id}
@@ -43,7 +42,7 @@ const ConstellationCard = ({ constellation, characterId }: Props) => {
         className="skill-description z-10 px-5 text-sm"
         dangerouslySetInnerHTML={{ __html: constellation.description }}
       />
-    </Card>
+    </div>
   );
 };
 

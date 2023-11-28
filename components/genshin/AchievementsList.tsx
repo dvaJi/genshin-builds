@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { getUrl } from "@lib/imgUrl";
-import { Achievement } from "genshin-data";
+import type { Achievement } from "genshin-data";
 import { AiOutlineCheck } from "react-icons/ai";
 import useIntl from "@hooks/use-intl";
 import { trackClick } from "@lib/gtag";

@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
 import clsx from "clsx";
 import type { Artifact, Weapon } from "genshin-data";
 import { useState } from "react";
 
 import StarRarity from "@components/StarRarity";
-import Card from "@components/ui/Card";
 import CharacterBuildCard from "./CharacterBuildCard";
 import CharacterCommonBuildCard from "./CharacterCommonBuildCard";
 
 import useIntl from "@hooks/use-intl";
-import { Build, MostUsedBuild } from "interfaces/build";
+import type { Build, MostUsedBuild } from "interfaces/build";
 
 type Props = {
   characterName: string;
@@ -54,7 +53,7 @@ function CharacterBuilds({
         })}
       </h2>
 
-      <Card className="mb-6">
+      <div className="card mb-6">
         <div className="mb-2">
           {mubuild && (
             <button
@@ -106,7 +105,7 @@ function CharacterBuilds({
             weapons={weapons}
           />
         )}
-      </Card>
+      </div>
     </>
   );
 }

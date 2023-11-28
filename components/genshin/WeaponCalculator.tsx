@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Weapon } from "genshin-data";
+import type { Weapon } from "genshin-data";
 import { useCallback, useMemo, useState } from "react";
 import { GiCheckMark } from "react-icons/gi";
 

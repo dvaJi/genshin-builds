@@ -1,9 +1,10 @@
 "use client";
 
-import useIntl from "@hooks/use-intl";
 import clsx from "clsx";
 import type { Weapon } from "genshin-data";
 import { useState } from "react";
+
+import useIntl from "@hooks/use-intl";
 
 type Props = {
   weapon: Weapon;

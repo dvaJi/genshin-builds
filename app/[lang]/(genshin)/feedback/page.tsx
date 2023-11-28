@@ -1,11 +1,9 @@
 "use client";
 
-import Card from "@components/ui/Card";
-
 export default function Feedback() {
   return (
     <div>
-      <Card>
+      <div className="card">
         {process.env.NEXT_PUBLIC_FEEDBACK_POLL_QUESTION_URL && (
           <iframe
             src={process.env.NEXT_PUBLIC_FEEDBACK_POLL_QUESTION_URL}
@@ -13,7 +11,7 @@ export default function Feedback() {
             height="1000px"
           />
         )}
-      </Card>
+      </div>
     </div>
   );
 }

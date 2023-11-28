@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Fish } from "genshin-data";
+import type { Fish } from "genshin-data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { getUrl } from "@lib/imgUrl";

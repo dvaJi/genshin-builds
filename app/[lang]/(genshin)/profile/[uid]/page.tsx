@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import DynamicBackground from "@components/DynamicBackground";
 import ProfileArtifactsTable from "@components/genshin/ProfileArtifactsTable";
 import ProfileBuildsTable from "@components/genshin/ProfileBuildsTable";
+import { FavoriteGenshinProfile } from "./favorite";
+import { SyncGenshinProfile } from "./sync";
+
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getBuild, getPlayer } from "@lib/genshinShowcase";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { Profile } from "interfaces/profile";
-import { notFound } from "next/navigation";
-import { FavoriteGenshinProfile } from "./favorite";
-import { SyncGenshinProfile } from "./sync";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });

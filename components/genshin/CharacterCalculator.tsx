@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Character } from "genshin-data";
+import type { Character } from "genshin-data";
 import { useCallback, useMemo, useState } from "react";
 import { GiCheckMark } from "react-icons/gi";
 

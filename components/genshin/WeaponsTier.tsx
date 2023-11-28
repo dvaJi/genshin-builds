@@ -1,4 +1,4 @@
-import { Weapon } from "genshin-data";
+import type { Weapon } from "genshin-data";
 import Link from "next/link";
 
 import { getUrl } from "@lib/imgUrl";

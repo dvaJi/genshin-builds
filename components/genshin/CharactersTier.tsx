@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Artifact, Character, Weapon } from "genshin-data";
+import type { Artifact, Character, Weapon } from "genshin-data";
 import Link from "next/link";
 import { memo } from "react";
 
