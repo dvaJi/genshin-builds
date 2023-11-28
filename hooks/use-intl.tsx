@@ -23,12 +23,8 @@ const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
     const next = (message as any)[part];
 
     if (part == null || next == null) {
-      const errorMsg = `Could not resolve \`${namespace}\` in messages. ${locale}`;
-      if (process.env.NODE_ENV === "development") {
-        // throw new Error(errorMsg);
-      } else {
-        console.error(errorMsg);
-      }
+      const errorMsg = `[useIntl] Could not resolve \`${namespace}\` in messages. ${locale}`;
+      console.error(errorMsg);
     }
 
     message = next;

@@ -27,7 +27,6 @@ export default function Root({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  console.log("root", params);
   return (
     <html lang={params.lang}>
       {preconnects.map((url) => (

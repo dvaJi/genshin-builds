@@ -26,7 +26,7 @@ const languages = [
 ];
 
 function LanguageSelector() {
-  const { locale } = useIntl();
+  const { locale } = useIntl("layout");
   const pathName = usePathname();
   const redirectedPathName = (locale: string) => {
     if (!pathName) return "/";
