@@ -1,3 +1,5 @@
+"use client";
+
 import { BlogPost } from "@prisma/client";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
