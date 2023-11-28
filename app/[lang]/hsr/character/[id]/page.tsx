@@ -38,14 +38,14 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, language, locale } = await useTranslations(
+  const { t, langData, locale } = await useTranslations(
     params.lang,
     "hsr",
     "characters"
   );
 
   const hsrData = new HSRData({
-    language: language as any,
+    language: langData as any,
   });
   const characters = await hsrData.characters({
     select: ["id", "name", "rarity", "combat_type", "path"],
@@ -78,13 +78,13 @@ export async function generateMetadata({
 }
 
 export default async function CharacterPage({ params }: Props) {
-  const { t, language } = await useTranslations(
+  const { t, langData } = await useTranslations(
     params.lang,
     "hsr",
     "character"
   );
   const hsrData = new HSRData({
-    language: language as any,
+    language: langData as any,
   });
   const characters = await hsrData.characters();
   const character = characters.find((c) => c.id === params.id);

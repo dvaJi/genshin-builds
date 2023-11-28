@@ -38,14 +38,14 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: Props) {
-  const { t, language } = await useTranslations(
+  const { t, langData } = await useTranslations(
     params.lang,
     "hsr",
     "characters"
   );
 
   const hsrData = new HSRData({
-    language: language as any,
+    language: langData as any,
   });
   const characters = await hsrData.characters({
     select: ["id", "name", "rarity", "combat_type", "path"],

@@ -42,10 +42,10 @@ export async function generateMetadata({
 }
 
 export default async function HSRTierlistPage({ params }: Props) {
-  const { t, language } = await useTranslations(params.lang, "hsr", "tierlist");
+  const { t, langData } = await useTranslations(params.lang, "hsr", "tierlist");
 
   const hsrData = new HSRData({
-    language: language as any,
+    language: langData as any,
   });
   const characters = await hsrData.characters({
     select: ["id", "name", "rarity", "combat_type", "path"],

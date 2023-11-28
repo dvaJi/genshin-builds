@@ -41,14 +41,14 @@ export async function generateMetadata({
 }
 
 export default async function HSRAchievementsPage({ params }: Props) {
-  const { t, language } = await useTranslations(
+  const { t, langData } = await useTranslations(
     params.lang,
     "hsr",
     "achievements"
   );
 
   const hsrData = new HSRData({
-    language: language as any,
+    language: langData as any,
   });
   const achievements = await hsrData.achievements();
 

@@ -38,10 +38,10 @@ export async function generateMetadata({
 }
 
 export default async function HSRItemPage({ params }: Props) {
-  const { t, language } = await useTranslations(params.lang, "hsr", "items");
+  const { t, langData } = await useTranslations(params.lang, "hsr", "items");
 
   const hsrData = new HSRData({
-    language: language as any,
+    language: langData as any,
   });
   const items = await hsrData.items({
     select: ["id", "name"],
