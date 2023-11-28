@@ -60,9 +60,9 @@ export async function generateMetadata({
 }
 
 export default async function MatrixPage({ params }: Props) {
-  const { t, language } = await useTranslations(params.lang, "tof", "matrix");
+  const { t, langData } = await useTranslations(params.lang, "tof", "matrix");
   const tofData = new TOFData({
-    language: language as Languages,
+    language: langData as Languages,
   });
   const matrix = await tofData.matrixbyId(params.slug);
 

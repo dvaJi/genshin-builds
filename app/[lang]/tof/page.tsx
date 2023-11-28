@@ -37,14 +37,14 @@ export async function generateMetadata({
 }
 
 export default async function TOFPage({ params }: Props) {
-  const { t, language } = await useTranslations(
+  const { t, langData } = await useTranslations(
     params.lang,
     "tof",
     "characters"
   );
 
   const tofData = new TOFData({
-    language: language as Languages,
+    language: langData as Languages,
   });
   const characters = await tofData.characters({
     select: [
