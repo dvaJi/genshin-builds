@@ -1,6 +1,5 @@
 "use client";
 
-import format from "date-fns/format";
 import { useState } from "react";
 
 import SimpleRarityBox from "@components/SimpleRarityBox";
@@ -26,9 +25,7 @@ export default function FarmableToday({
   weapons,
 }: Props) {
   const { t } = useIntl("ascension_planner");
-  const [currentDay, setCurrentDay] = useState(
-    days[Number(format(new Date(), "i")) - 1]
-  );
+  const [currentDay, setCurrentDay] = useState(days[new Date().getDay()]);
 
   return (
     <>

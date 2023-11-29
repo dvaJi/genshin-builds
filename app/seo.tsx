@@ -51,7 +51,7 @@ export function genPageMetadata({
       images: image ? [image] : [siteMetadata.socialBanner],
     },
     alternates: {
-      canonical: domain,
+      canonical: redirectedPathName("en"),
       languages: {
         ...i18n.locales.reduce(
           (acc, locale) => {

@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import format from "date-fns/format";
 import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
 import {
@@ -29,9 +28,7 @@ type Props = {
 
 const TodoList = ({ materialsMap, planning, days }: Props) => {
   const todos = useStore(todosAtom);
-  const [currentDay, setCurrentDay] = useState(
-    days[Number(format(new Date(), "i")) - 1]
-  );
+  const [currentDay, setCurrentDay] = useState(days[new Date().getDay()]);
   const { t } = useIntl("todo");
 
   const { summary, originalSummary } = useMemo(() => {

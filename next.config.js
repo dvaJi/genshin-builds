@@ -13,29 +13,8 @@ const withPWA = require("next-pwa")({
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  pageExtensions: ["ts", "tsx", "js", "jsx"],
   reactStrictMode: true,
-  // i18n: {
-  //   locales: [
-  //     "en",
-  //     "es",
-  //     "ja",
-  //     "cn",
-  //     "zh-tw",
-  //     "de",
-  //     "fr",
-  //     "id",
-  //     "it",
-  //     "ko",
-  //     "pt",
-  //     "ru",
-  //     "th",
-  //     "tr",
-  //     "vi",
-  //   ],
-  //   defaultLocale: "en",
-  //   localeDetection: !isDev,
-  // },
   images: {
     remotePatterns: [
       {

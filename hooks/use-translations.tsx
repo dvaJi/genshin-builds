@@ -3,8 +3,8 @@ import { cache } from "react";
 import { getDefaultLocale } from "@lib/localData";
 import { localeToHSRLang, localeToLang } from "@utils/locale-to-lang";
 import { templateReplacement } from "@utils/template-replacement";
-import { languages as tofLanguages } from "hsr-data";
 import { localesAvailables } from "i18n-config";
+import { languages as tofLanguages } from "tof-builds";
 
 export interface IntlFormatProps {
   id: string;

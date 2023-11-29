@@ -6,10 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "generate-all": "npm run generate-sitemap && npm run generate-common-dict",
-    "generate-sitemap": "node ./scripts/sitemap.mjs",
-    "generate-common-dict": "node ./scripts/generate-common-dict.js",
     "analize": "cross-env ANALYZE=true npm run build",
     "start": "next start",
     "type-check": "tsc",
@@ -22,8 +18,8 @@
     "now-build": "pnpm db:generate --schema=./db/schema.prisma && next build"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.458.0",
-    "@aws-sdk/s3-request-presigner": "^3.458.0",
+    "@aws-sdk/client-s3": "^3.460.0",
+    "@aws-sdk/s3-request-presigner": "^3.460.0",
     "@formatjs/intl-localematcher": "^0.5.2",
     "@freestar/pubfig-adslot-react-component": "^3.6.0",
     "@mdx-js/loader": "^3.0.0",
@@ -49,7 +45,6 @@
     "dotenv": "^16.3.1",
     "framer-motion": "^10.16.5",
     "genshin-data": "^0.36.0",
-    "gray-matter": "^4.0.3",
     "hsr-data": "^0.5.0",
     "leaflet": "^1.9.4",
     "nanostores": "^0.9.5",
@@ -58,7 +53,6 @@
     "next-auth": "^4.24.5",
     "next-mdx-remote": "^4.4.1",
     "next-pwa": "^5.6.0",
-    "next-sitemap": "^4.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
@@ -74,7 +68,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@builder.io/partytown": "^0.8.1",
     "@next/bundle-analyzer": "^14.0.3",
     "@next/env": "^14.0.3",
     "@types/leaflet": "^1.9.8",
@@ -87,7 +80,6 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.54.0",
     "eslint-config-next": "^14.0.3",
-    "globby": "^13.2.2",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
     "prettier-plugin-organize-imports": "^3.2.4",
