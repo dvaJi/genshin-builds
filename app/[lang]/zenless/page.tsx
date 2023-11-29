@@ -38,7 +38,7 @@ export default async function Page({ params }: Props) {
         <h2 className="text-3xl font-semibold">News</h2>
         <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {data.map((post) => (
-            <BlogPostCard key={post.title} post={post} />
+            <BlogPostCard key={post.title} post={post} locale={params.lang} />
           ))}
         </div>
         <div className="mt-4">

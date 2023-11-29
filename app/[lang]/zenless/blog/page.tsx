@@ -35,7 +35,7 @@ export default async function BlogPage({
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
         {data.map((post) => (
-          <BlogPostCard key={post.title} post={post} />
+          <BlogPostCard key={post.title} post={post} locale={params.lang} />
         ))}
       </div>
       <Pagination

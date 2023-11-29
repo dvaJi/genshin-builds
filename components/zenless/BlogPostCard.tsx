@@ -4,15 +4,14 @@ import { memo } from "react";
 
 // import useIntl from "@hooks/use-intl";
 import { getImg } from "@lib/imgUrl";
-import useIntl from "@hooks/use-intl";
 // import { getTimeAgo } from "@lib/timeago";
 
 interface Props {
   post: BlogPost;
+  locale: string;
 }
 
-const BlogPostCard = ({ post }: Props) => {
-  const { locale } = useIntl("blog");
+const BlogPostCard = ({ post, locale }: Props) => {
   // const timeAgo = getTimeAgo(new Date(post.updatedAt).getTime(), locale);
   return (
     <Link
