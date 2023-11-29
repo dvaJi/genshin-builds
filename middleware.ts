@@ -27,6 +27,7 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   const href = request.nextUrl.href;
   const pathname = href.replace(request.nextUrl.origin, "");
+  console.log(pathname)
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // // If you have one
@@ -60,6 +61,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
+  // Matcher ignoring `/_next/`, `/api/` and `/admin/` subpaths
   matcher: ["/((?!api|_next/static|admin|_next/image|favicon.ico).*)"],
 };
