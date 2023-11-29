@@ -27,7 +27,7 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   const href = request.nextUrl.href;
   const pathname = href.replace(request.nextUrl.origin, "");
-  console.log(pathname)
+  console.log(pathname);
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // // If you have one
@@ -62,5 +62,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   // Matcher ignoring `/_next/`, `/api/` and `/admin/` subpaths
-  matcher: ["/((?!api|_next/static|admin|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/((?!en/|es/|ja/|cn/|zh-tw/|de/|fr/|id/|it/|ko/|pt/|ru/|th/|tr/|vi/|api|_next/static|admin|_next/image|favicon.ico|sw.js|workbox-[a-zA-Z0-9]+.js).*)",
+  ],
 };
