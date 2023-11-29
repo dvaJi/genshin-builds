@@ -30,11 +30,6 @@ export default async function sitemap() {
 }
 
 async function getGenshinSpecificRoutes() {
-  const giData = new GenshinData();
-  const characters = await giData.characters();
-  const weapons = await giData.weapons();
-  const tcg = await giData.tcgCards();
-
   const routes: Route[] = [];
 
   [
@@ -73,6 +68,9 @@ async function getGenshinSpecificRoutes() {
     });
   });
 
+  const giData = new GenshinData();
+  const characters = await giData.characters({ select: ["id"] });
+
   characters.forEach((character) => {
     i18n.locales.forEach((locale) => {
       routes.push({
@@ -82,6 +80,7 @@ async function getGenshinSpecificRoutes() {
     });
   });
 
+  const weapons = await giData.weapons({ select: ["id"] });
   weapons.forEach((weapon) => {
     i18n.locales.forEach((locale) => {
       routes.push({
@@ -91,6 +90,7 @@ async function getGenshinSpecificRoutes() {
     });
   });
 
+  const tcg = await giData.tcgCards({ select: ["id"] });
   tcg.forEach((card) => {
     i18n.locales.forEach((locale) => {
       routes.push({
@@ -115,11 +115,6 @@ async function getGenshinSpecificRoutes() {
 }
 
 async function getHSRSpecificRoutes() {
-  const hsrData = new HSRData();
-  const characters = await hsrData.characters();
-  const items = await hsrData.items();
-  const messages = await hsrData.messages();
-
   const routes: Route[] = [];
 
   [
@@ -142,6 +137,9 @@ async function getHSRSpecificRoutes() {
     });
   });
 
+  const hsrData = new HSRData();
+  const characters = await hsrData.characters({ select: ["id"] });
+
   characters.forEach((character) => {
     i18n.locales.forEach((locale) => {
       routes.push({
@@ -150,6 +148,8 @@ async function getHSRSpecificRoutes() {
       });
     });
   });
+
+  const items = await hsrData.items({ select: ["id"] });
 
   items.forEach((item) => {
     i18n.locales.forEach((locale) => {
@@ -160,6 +160,7 @@ async function getHSRSpecificRoutes() {
     });
   });
 
+  const messages = await hsrData.messages({ select: ["id"] });
   messages.forEach((message) => {
     i18n.locales.forEach((locale) => {
       routes.push({
@@ -184,10 +185,6 @@ async function getHSRSpecificRoutes() {
 }
 
 async function getTOFSpecificRoutes() {
-  const tofData = new TOFData();
-  const characters = await tofData.characters();
-  const matrices = await tofData.matrices();
-
   const routes: Route[] = [];
 
   ["", "/blog", "/blog/page/2", "/matrices"].forEach((route) => {
@@ -199,6 +196,9 @@ async function getTOFSpecificRoutes() {
     });
   });
 
+  const tofData = new TOFData();
+  const characters = await tofData.characters({ select: ["id"] });
+
   characters.forEach((character) => {
     i18n.locales.forEach((locale) => {
       routes.push({
@@ -208,6 +208,7 @@ async function getTOFSpecificRoutes() {
     });
   });
 
+  const matrices = await tofData.matrices({ select: ["id"] });
   matrices.forEach((matrix) => {
     i18n.locales.forEach((locale) => {
       routes.push({
