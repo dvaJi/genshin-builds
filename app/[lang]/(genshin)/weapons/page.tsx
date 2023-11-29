@@ -1,13 +1,15 @@
-import GenshinData, { type Weapon } from "genshin-data";
+import type { Weapon } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import WeaponsList from "./list";
+
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/genshinApi";
 import { getData } from "@lib/localData";
 import { Beta } from "interfaces/genshin/beta";
-import WeaponsList from "./list";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -50,8 +52,9 @@ export default async function GenshinCharacters({ params }: Props) {
     "weapons"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const weapons = await genshinData.weapons({
+  const weapons = await getGenshinData<Weapon[]>({
+    resource: "weapons",
+    language: langData,
     select: ["id", "rarity", "name", "type"],
   });
 

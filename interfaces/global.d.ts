@@ -9,6 +9,15 @@ declare global {
     gtag(command: "event", eventAction: string, event: GtagEvent): void;
     gtag(...args: any[]): void;
   }
+
+  namespace NodeJS {
+    interface ProcessEnv {
+      NODE_ENV: 'development' | 'production';
+      PORT?: string;
+      PWD: string;
+      GENSHIN_API_URL: string;
+    }
+  }
 }
 
 interface GtagEvent {

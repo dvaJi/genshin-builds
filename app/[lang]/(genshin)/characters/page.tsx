@@ -1,4 +1,4 @@
-import GenshinData, { type Character } from "genshin-data";
+import type { Character } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -7,6 +7,7 @@ import GenshinCharactersList from "./list";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/genshinApi";
 import { getData } from "@lib/localData";
 import type { Beta } from "interfaces/genshin/beta";
 
@@ -51,8 +52,9 @@ export default async function GenshinCharacters({ params }: Props) {
     "characters"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = await genshinData.characters({
+  const characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["id", "name", "element", "rarity"],
   });
   const elements = characters.reduce((acc, character) => {

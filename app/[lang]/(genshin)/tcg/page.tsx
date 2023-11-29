@@ -1,10 +1,11 @@
-import GenshinData from "genshin-data";
+import type { TCGCard } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/genshinApi";
 import { getUrl } from "@lib/imgUrl";
 import Link from "next/link";
 
@@ -49,8 +50,9 @@ export default async function GenshinTCG({ params }: Props) {
     "tcg_cards"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const cards = await genshinData.tcgCards({
+  const cards = await getGenshinData<TCGCard[]>({
+    resource: "tcgCards",
+    language: langData,
     select: ["id", "name", "attributes"],
   });
 

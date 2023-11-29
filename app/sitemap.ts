@@ -1,6 +1,6 @@
 import { getPosts } from "@lib/blog";
+import { getGenshinData as giData } from "@lib/genshinApi";
 import { getRemoteData } from "@lib/localData";
-import GenshinData from "genshin-data";
 import HSRData from "hsr-data";
 import { i18n } from "i18n-config";
 import TOFData from "tof-builds";
@@ -68,10 +68,9 @@ async function getGenshinSpecificRoutes() {
     });
   });
 
-  const giData = new GenshinData();
-  const characters = await giData.characters({ select: ["id"] });
+  const characters = await getGenshinData("characters");
 
-  characters.forEach((character) => {
+  characters.forEach((character: any) => {
     i18n.locales.forEach((locale) => {
       routes.push({
         url: `${baseDomain}/${locale}/character/${character.id}`,
@@ -80,8 +79,8 @@ async function getGenshinSpecificRoutes() {
     });
   });
 
-  const weapons = await giData.weapons({ select: ["id"] });
-  weapons.forEach((weapon) => {
+  const weapons = await getGenshinData("weapons");
+  weapons.forEach((weapon: any) => {
     i18n.locales.forEach((locale) => {
       routes.push({
         url: `${baseDomain}/${locale}/weapon/${weapon.id}`,
@@ -90,8 +89,8 @@ async function getGenshinSpecificRoutes() {
     });
   });
 
-  const tcg = await giData.tcgCards({ select: ["id"] });
-  tcg.forEach((card) => {
+  const tcg = await getGenshinData("tcgCards");
+  tcg.forEach((card: any) => {
     i18n.locales.forEach((locale) => {
       routes.push({
         url: `${baseDomain}/${locale}/tcg/card/${card.id}`,
@@ -112,6 +111,10 @@ async function getGenshinSpecificRoutes() {
   });
 
   return routes;
+}
+
+async function getGenshinData(resource: string) {
+  return giData<any>({ resource, select: ["id"] });
 }
 
 async function getHSRSpecificRoutes() {
