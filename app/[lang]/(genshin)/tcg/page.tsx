@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getGenshinData } from "@lib/genshinApi";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import Link from "next/link";
 

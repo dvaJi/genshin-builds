@@ -1,5 +1,5 @@
 import { HSRBuild, HSRPlayer } from "@prisma/client";
-import { Character, LightCone, Relic } from "hsr-data";
+import type { Character, LightCone, Relic } from "hsr-data";
 
 import {
   Addition,
@@ -17,28 +17,31 @@ export async function encodeBuilds(
     }, "");
 
   const encRelics = (relics: RelicAPI[]) =>
-    relics.reduce((acc, relic) => {
-      const gearName = relicIdToType(relic.id);
-      acc[gearName] = {
-        [`${gearName}RelicId`]: Number(relic.id),
-        [`${gearName}RelicSetId`]: Number(relic.set_id),
-        [`${gearName}RelicLevel`]: Number(relic.level),
-        [`${gearName}RelicRarity`]: Number(relic.rarity),
-        [`${gearName}MainStat`]: `${relic.main_affix.field}${
-          relic.main_affix.percent ? "_percent" : ""
-        }|${relic.main_affix.value}`,
-        [`${gearName}SubStats`]: relic.sub_affix
-          .map(
-            (stat) =>
-              `${stat.field}${stat.percent ? "_percent" : ""}|${stat.value}/${
-                stat.count ?? 0
-              }_${stat.step ?? 0}`
-          )
-          .join(","),
-        [`${gearName}CritValue`]: 0,
-      };
-      return acc;
-    }, {} as Record<string, any>);
+    relics.reduce(
+      (acc, relic) => {
+        const gearName = relicIdToType(relic.id);
+        acc[gearName] = {
+          [`${gearName}RelicId`]: Number(relic.id),
+          [`${gearName}RelicSetId`]: Number(relic.set_id),
+          [`${gearName}RelicLevel`]: Number(relic.level),
+          [`${gearName}RelicRarity`]: Number(relic.rarity),
+          [`${gearName}MainStat`]: `${relic.main_affix.field}${
+            relic.main_affix.percent ? "_percent" : ""
+          }|${relic.main_affix.value}`,
+          [`${gearName}SubStats`]: relic.sub_affix
+            .map(
+              (stat) =>
+                `${stat.field}${stat.percent ? "_percent" : ""}|${stat.value}/${
+                  stat.count ?? 0
+                }_${stat.step ?? 0}`
+            )
+            .join(","),
+          [`${gearName}CritValue`]: 0,
+        };
+        return acc;
+      },
+      {} as Record<string, any>
+    );
 
   const encStats = (attrs: Addition[]) => {
     return attrs
@@ -214,7 +217,7 @@ export async function decodeBuilds(
       combat_type: character.combat_type,
       path: character.path,
       faction: character.faction,
-      
+
       attributes: decodeStr(build.attributes),
       additions: decodeStr(build.additions),
       properties: decodeStr(build.properties),

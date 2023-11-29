@@ -1,11 +1,13 @@
-import HSRData, { Achievement } from "hsr-data";
+import type { Achievement } from "hsr-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import List from "./list";
+
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import List from "./list";
+import { getHSRData } from "@lib/dataApi";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -47,10 +49,10 @@ export default async function HSRAchievementsPage({ params }: Props) {
     "achievements"
   );
 
-  const hsrData = new HSRData({
-    language: langData as any,
+  const achievements = await getHSRData<Achievement[]>({
+    resource: "achievements",
+    language: langData,
   });
-  const achievements = await hsrData.achievements();
 
   const rewardValue = {
     Low: 5,

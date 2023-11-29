@@ -1,7 +1,8 @@
-import HSRData from "hsr-data";
+import type { Character, LightCone, Relic } from "hsr-data";
 
 import prisma from "@db/index";
 import { decodeBuilds, regionParse } from "@utils/mihomo_enc";
+import { getHSRData } from "./dataApi";
 
 export async function getPlayer(uid: string) {
   return prisma.hSRPlayer.findUnique({
@@ -12,7 +13,6 @@ export async function getPlayer(uid: string) {
 }
 
 export async function getBuild(lang: any, uid: string) {
-  const hsr = new HSRData({ language: lang });
   const playerData = await prisma.hSRPlayer.findUnique({
     where: {
       uuid: uid,
@@ -36,9 +36,18 @@ export async function getBuild(lang: any, uid: string) {
     },
   });
 
-  const characters = await hsr.characters();
-  const lightCones = await hsr.lightcones();
-  const relics = await hsr.relics();
+  const characters = await getHSRData<Character[]>({
+    resource: "characters",
+    language: lang,
+  });
+  const lightCones = await getHSRData<LightCone[]>({
+    resource: "lightCones",
+    language: lang,
+  });
+  const relics = await getHSRData<Relic[]>({
+    resource: "relics",
+    language: lang,
+  });
 
   return {
     code: 200,

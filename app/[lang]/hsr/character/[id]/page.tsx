@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import HSRData, {
+import {
   renderDescription,
   type Character,
   type LightCone,
@@ -20,6 +20,7 @@ import Stars from "@components/hsr/Stars";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
 import { getStarRailBuild } from "@lib/localData";
 import { getHsrId } from "@utils/helpers";
@@ -44,13 +45,12 @@ export async function generateMetadata({
     "characters"
   );
 
-  const hsrData = new HSRData({
-    language: langData as any,
-  });
-  const characters = await hsrData.characters({
+  const character = await getHSRData<Character>({
+    resource: "characters",
+    language: langData,
     select: ["id", "name", "rarity", "combat_type", "path"],
+    filter: { id: params.id },
   });
-  const character = characters.find((c) => c.id === params.id);
 
   if (!character) {
     return;
@@ -83,20 +83,25 @@ export default async function CharacterPage({ params }: Props) {
     "hsr",
     "character"
   );
-  const hsrData = new HSRData({
-    language: langData as any,
+  const characters = await getHSRData<Character[]>({
+    resource: "characters",
+    language: langData,
+    select: ["id", "name", "rarity", "combat_type", "path"],
   });
-  const characters = await hsrData.characters();
   const character = characters.find((c) => c.id === params.id);
 
   if (!character) {
     return notFound();
   }
 
-  const _lightcones = await hsrData.lightcones({
+  const _lightcones = await getHSRData<LightCone[]>({
+    resource: "lightcones",
+    language: langData,
     select: ["id", "name", "rarity"],
   });
-  const _relics = await hsrData.relics({
+  const _relics = await getHSRData<Relic[]>({
+    resource: "relics",
+    language: langData,
     select: ["id", "name"],
   });
 

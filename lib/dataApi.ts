@@ -14,3 +14,12 @@ export async function getGenshinData<T>(options: Options) {
 
   return res.json() as Promise<T>;
 }
+
+export async function getHSRData<T>(options: Options) {
+  const res = await fetch(process.env.HSR_API_URL, {
+    method: "POST",
+    body: JSON.stringify(options),
+  });
+
+  return res.json() as Promise<T>;
+}

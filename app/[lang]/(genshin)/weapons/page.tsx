@@ -7,7 +7,7 @@ import WeaponsList from "./list";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getGenshinData } from "@lib/genshinApi";
+import { getGenshinData } from "@lib/dataApi";
 import { getData } from "@lib/localData";
 import { Beta } from "interfaces/genshin/beta";
 

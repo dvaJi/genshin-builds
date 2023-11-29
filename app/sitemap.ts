@@ -1,7 +1,6 @@
 import { getPosts } from "@lib/blog";
-import { getGenshinData as giData } from "@lib/genshinApi";
+import { getGenshinData as giData, getHSRData as hsrData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
-import HSRData from "hsr-data";
 import { i18n } from "i18n-config";
 import TOFData from "tof-builds";
 
@@ -140,8 +139,7 @@ async function getHSRSpecificRoutes() {
     });
   });
 
-  const hsrData = new HSRData();
-  const characters = await hsrData.characters({ select: ["id"] });
+  const characters = await getHSRData("characters");
 
   characters.forEach((character) => {
     i18n.locales.forEach((locale) => {
@@ -152,7 +150,7 @@ async function getHSRSpecificRoutes() {
     });
   });
 
-  const items = await hsrData.items({ select: ["id"] });
+  const items = await getHSRData("items");
 
   items.forEach((item) => {
     i18n.locales.forEach((locale) => {
@@ -163,7 +161,7 @@ async function getHSRSpecificRoutes() {
     });
   });
 
-  const messages = await hsrData.messages({ select: ["id"] });
+  const messages = await getHSRData("messages");
   messages.forEach((message) => {
     i18n.locales.forEach((locale) => {
       routes.push({
@@ -185,6 +183,10 @@ async function getHSRSpecificRoutes() {
   });
 
   return routes;
+}
+
+async function getHSRData(resource: string) {
+  return hsrData<any[]>({ resource, select: ["id"] });
 }
 
 async function getTOFSpecificRoutes() {

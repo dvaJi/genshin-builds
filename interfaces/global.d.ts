@@ -16,6 +16,7 @@ declare global {
       PORT?: string;
       PWD: string;
       GENSHIN_API_URL: string;
+      HSR_API_URL: string;
     }
   }
 }

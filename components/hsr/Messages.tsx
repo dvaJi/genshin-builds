@@ -1,6 +1,6 @@
 "use client";
 
-import { Message } from "hsr-data/dist/types/messages";
+import type { Message } from "hsr-data/dist/types/messages";
 import { useState } from "react";
 import MessageBlock from "./MessageBlock";
 

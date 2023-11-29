@@ -1,4 +1,4 @@
-import HSRData, { LightCone } from "hsr-data";
+import type { LightCone } from "hsr-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 import Stars from "@components/hsr/Stars";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -45,10 +46,9 @@ export default async function Page({ params }: Props) {
     "lightcones"
   );
 
-  const hsrData = new HSRData({
-    language: langData as any,
-  });
-  const equipment = await hsrData.lightcones({
+  const equipment = await getHSRData<LightCone[]>({
+    resource: "lightcones",
+    language: langData,
     select: [
       "id",
       "name",

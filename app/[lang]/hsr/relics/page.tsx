@@ -1,4 +1,4 @@
-import HSRData from "hsr-data";
+import type { Relic } from "hsr-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 // import { Tooltip } from "react-tooltip";
@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -41,10 +42,9 @@ export async function generateMetadata({
 export default async function Page({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "hsr", "relics");
 
-  const hsrData = new HSRData({
-    language: langData as any,
-  });
-  const relics = await hsrData.relics({
+  const relics = await getHSRData<Relic[]>({
+    resource: "relics",
+    language: langData,
     select: ["id", "name", "effects", "pieces"],
   });
 

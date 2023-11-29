@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import HSRData, { Character } from "hsr-data";
+import type { Character } from "hsr-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import { genPageMetadata } from "@app/seo";
 import CharacterBlock from "@components/hsr/CharacterBlock";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHSRData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { Tierlist } from "interfaces/hsr/tierlist";
 
@@ -44,10 +45,9 @@ export async function generateMetadata({
 export default async function HSRTierlistPage({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "hsr", "tierlist");
 
-  const hsrData = new HSRData({
-    language: langData as any,
-  });
-  const characters = await hsrData.characters({
+  const characters = await getHSRData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["id", "name", "rarity", "combat_type", "path"],
   });
 

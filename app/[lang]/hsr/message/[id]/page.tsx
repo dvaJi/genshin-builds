@@ -1,4 +1,4 @@
-import HSRData from "hsr-data";
+import type { Messages as IMessages } from "hsr-data/dist/types/messages";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import Messages from "@components/hsr/Messages";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHSRData } from "@lib/dataApi";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -30,11 +31,13 @@ export async function generateMetadata({
     "message"
   );
 
-  const hsrData = new HSRData({
-    language: langData as any,
+  const messageGroup = await getHSRData<IMessages>({
+    resource: "messages",
+    language: langData,
+    filter: {
+      id: params.id,
+    },
   });
-  const messages = await hsrData.messages();
-  const messageGroup = messages.find((c) => c.id === Number(params?.id));
 
   if (!messageGroup) {
     return;
@@ -64,11 +67,14 @@ export async function generateMetadata({
 
 export default async function CharacterPage({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "hsr", "message");
-  const hsrData = new HSRData({
-    language: langData as any,
+
+  const messageGroup = await getHSRData<IMessages>({
+    resource: "messages",
+    language: langData,
+    filter: {
+      id: params.id,
+    },
   });
-  const messages = await hsrData.messages();
-  const messageGroup = messages.find((c) => c.id === Number(params?.id));
 
   if (!messageGroup) {
     return notFound();

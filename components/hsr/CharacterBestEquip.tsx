@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import useIntl from "@hooks/use-intl";
 import { getHsrUrl } from "@lib/imgUrl";
-import { LightCone, Relic } from "hsr-data";
+import type { LightCone, Relic } from "hsr-data";
 import { Relics } from "interfaces/hsr/build";
 import { memo } from "react";
 

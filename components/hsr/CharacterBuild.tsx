@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { LightCone, Relic } from "hsr-data";
+import type { LightCone, Relic } from "hsr-data";
 import { memo } from "react";
 
 import Stars from "./Stars";

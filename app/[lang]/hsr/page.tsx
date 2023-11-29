@@ -1,11 +1,13 @@
-import HSRData from "hsr-data";
+import type { Character } from "hsr-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import CharactersList from "./characters";
+
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import CharactersList from "./characters";
+import { getHSRData } from "@lib/dataApi";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -44,10 +46,9 @@ export default async function Page({ params }: Props) {
     "characters"
   );
 
-  const hsrData = new HSRData({
-    language: langData as any,
-  });
-  const characters = await hsrData.characters({
+  const characters = await getHSRData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["id", "name", "rarity", "combat_type", "path"],
   });
 
