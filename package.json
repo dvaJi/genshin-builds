@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate --schema=./db/schema.prisma && next build",
     "lint": "next lint",
     "analize": "cross-env ANALYZE=true npm run build",
     "start": "next start",
@@ -14,8 +14,7 @@
     "db:reset": "prisma migrate reset --schema=./db/schema.prisma --skip-seed",
     "db:push": "prisma db push --schema=./db/schema.prisma",
     "db:seed": "npx prisma db seed",
-    "db:studio": "prisma studio --schema=./db/schema.prisma",
-    "now-build": "pnpm db:generate --schema=./db/schema.prisma && next build"
+    "db:studio": "prisma studio --schema=./db/schema.prisma"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.460.0",
