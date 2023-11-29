@@ -1,3 +1,5 @@
+"use client";
+
 import type { TCGCard } from "genshin-data";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -29,7 +31,7 @@ export default function ChangelogVersion({
   materialsMap,
   foodMap,
   tcgMap,
-  locale
+  locale,
 }: Props) {
   const router = useRouter();
 
