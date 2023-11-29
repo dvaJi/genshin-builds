@@ -9,6 +9,7 @@ import GameSelector from "@components/GameSelector";
 import NavItem from "@components/NavItem";
 import Logo from "@components/genshin/Logo";
 
+import useIntl from "@hooks/use-intl";
 import { GAME } from "@utils/games";
 
 type Route = {
@@ -147,13 +148,14 @@ const navRoutes: Route[] = [
 ];
 
 const GenshinLayoutHeader = () => {
+  const { locale } = useIntl("layout");
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
     <div className="relative left-0 top-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
       <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
-          <Link href="/" className="h-full w-full">
+          <Link href={`/${locale}`} className="h-full w-full">
             <Logo />
           </Link>
           <button

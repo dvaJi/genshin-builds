@@ -18,7 +18,7 @@ const BlogPostCard = ({ post }: Props) => {
   const timeAgo = getTimeAgo(new Date(post.updatedAt).getTime(), locale);
   return (
     <Link
-      href={`/genshin/blog/${post.slug}`}
+      href={`/${locale}/genshin/blog/${post.slug}`}
       className="group mx-auto max-w-md overflow-hidden p-2"
     >
       <div className="relative aspect-video w-full overflow-hidden object-cover">

@@ -108,7 +108,7 @@ export default async function HSRTierlistPage({ params }: Props) {
               {tierCharacters.map((characterId: string) => (
                 <Link
                   key={characterId}
-                  href={`/hsr/character/${characterId}`}
+                  href={`/${params.lang}/hsr/character/${characterId}`}
                   className="mx-2"
                 >
                   <CharacterBlock

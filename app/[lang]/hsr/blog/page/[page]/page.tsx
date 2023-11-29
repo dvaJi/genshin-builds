@@ -83,7 +83,9 @@ export default async function HSRBlogPage({ params }: Props) {
         currentPage={currentPage}
         itemsPerPage={POSTS_PER_PAGE}
         renderPageLink={(page) =>
-          page === 1 ? "/hsr/blog" : `/hsr/blog/page/${page}`
+          page === 1
+            ? `/${params.lang}/hsr/blog`
+            : `/${params.lang}/hsr/blog/page/${page}`
         }
       />
     </div>

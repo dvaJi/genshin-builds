@@ -155,7 +155,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
             {recommendedCharacters.map((character) => (
               <Link
                 key={character}
-                href={`/character/${character}`}
+                href={`/${params.lang}/character/${character}`}
                 className="group mr-10 rounded-full border-4 border-transparent transition hover:border-vulcan-500"
               >
                 <img

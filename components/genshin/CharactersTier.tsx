@@ -24,7 +24,7 @@ const CharactersTier = ({
   artifactsMap,
   selectedCol,
 }: CharactersTierProps) => {
-  const { t } = useIntl("tierlist");
+  const { t, locale } = useIntl("tierlist");
   let tierText = "SS";
 
   switch (tier) {
@@ -69,7 +69,7 @@ const CharactersTier = ({
       >
         {tierlist.maindps[tier].map((tier) => (
           <div key={tier.id} className="inline-block">
-            <Link href={`/character/${tier.id}`}>
+            <Link href={`/${locale}/character/${tier.id}`}>
               <CharacterPortrait
                 character={{
                   ...characters[tier.id],
@@ -93,7 +93,7 @@ const CharactersTier = ({
       >
         {tierlist.subdps[tier].map((tier) => (
           <div key={tier.id} className="inline-block">
-            <Link href={`/character/${tier.id}`}>
+            <Link href={`/${locale}/character/${tier.id}`}>
               <CharacterPortrait
                 character={{
                   ...characters[tier.id],
@@ -117,7 +117,7 @@ const CharactersTier = ({
       >
         {tierlist.support[tier].map((tier) => (
           <div key={tier.id} className="relative inline-block">
-            <Link href={`/character/${tier.id}`}>
+            <Link href={`/${locale}/character/${tier.id}`}>
               <CharacterPortrait
                 character={{
                   ...characters[tier.id],

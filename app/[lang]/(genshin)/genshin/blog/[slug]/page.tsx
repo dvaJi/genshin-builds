@@ -107,7 +107,7 @@ export default async function GenshinPost({ params }: Props) {
       ></script>
       <article className="relative mx-auto max-w-screen-md">
         <div>
-          <Link href="/genshin/blog" className="text-sm hover:text-white">
+          <Link href={`/${params.lang}/genshin/blog`} className="text-sm hover:text-white">
             {t({ id: "back", defaultMessage: "Back to Blog" })}
           </Link>
         </div>

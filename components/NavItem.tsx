@@ -22,7 +22,7 @@ type Props = {
 
 function NavItem({ route, position, onClick }: Props) {
   const [isHovering, setIsHovering] = useState(false);
-  const { t } = useIntl("layout");
+  const { t, locale } = useIntl("layout");
 
   const handleMouseEnter = () => {
     setIsHovering(true);
@@ -43,7 +43,7 @@ function NavItem({ route, position, onClick }: Props) {
       {!route.children ? (
         <Link
           className="ml-4 mt-4 block font-semibold text-slate-300 hover:text-slate-50 md:ml-0 md:mt-0 md:px-3 md:py-2"
-          href={route.href!}
+          href={`/${locale}${route.href}`}
         >
           {t({ id: route.id, defaultMessage: route.name })}
           {route.isNew && (
@@ -89,7 +89,7 @@ function NavItem({ route, position, onClick }: Props) {
                     <Link
                       key={child.id}
                       className="mb-2 flex items-center rounded-sm border border-transparent text-sm text-slate-200 opacity-80 transition-all hover:opacity-100 md:mb-0 md:ml-0 md:items-start md:p-4 md:transition-none"
-                      href={child.href!}
+                      href={`/${locale}${child.href}`}
                     >
                       <div className="mr-1 scale-75 transform rounded bg-vulcan-600 p-2 text-white md:mr-4 md:scale-100">
                         {child.icon}

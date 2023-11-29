@@ -1,13 +1,14 @@
 "use client";
 
-import ElementIcon from "@components/genshin/ElementIcon";
-import useIntl from "@hooks/use-intl";
-import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import clsx from "clsx";
 import { Character } from "genshin-data";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import ElementIcon from "@components/genshin/ElementIcon";
+import useIntl from "@hooks/use-intl";
+import { getUrl, getUrlLQ } from "@lib/imgUrl";
 
 type Props = {
   characters: (Character & { beta?: boolean })[];
@@ -15,7 +16,7 @@ type Props = {
 };
 
 export default function GenshinCharactersList({ characters, elements }: Props) {
-  const { t } = useIntl("characters");
+  const { t, locale } = useIntl("characters");
   const [elementsFilter, setElementsFilter] = useState<string[]>([]);
   const [nameFilter, setNameFilter] = useState<string>("");
   const [rarityFilter, setRarityFilter] = useState<number[]>([5, 4]);
@@ -124,7 +125,7 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
           .map((character) => (
             <Link
               key={character.id}
-              href={`/character/${character.id}`}
+              href={`/${locale}/character/${character.id}`}
               className={clsx(
                 "flex flex-col items-center justify-center text-center",
                 {
@@ -160,7 +161,10 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
                   )}
                 />
                 <ElementIcon
-                  type={t({ id: character.element, defaultMessage: character.element })}
+                  type={t({
+                    id: character.element,
+                    defaultMessage: character.element,
+                  })}
                   height={24}
                   width={24}
                   className="absolute right-2 top-2 rounded-full bg-vulcan-700 lg:right-2 lg:top-5"

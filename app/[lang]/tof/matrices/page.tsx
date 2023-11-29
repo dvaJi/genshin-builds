@@ -66,7 +66,10 @@ export default async function TOFMatricesPage({ params }: Props) {
         </h2>
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-7">
           {ssr.map((matrix) => (
-            <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
+            <Link
+              key={matrix.id}
+              href={`/${params.lang}/tof/matrices/${matrix.id}`}
+            >
               <MatrixPortrait matrix={matrix} />
             </Link>
           ))}
@@ -86,7 +89,10 @@ export default async function TOFMatricesPage({ params }: Props) {
         </h2>
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {sr.map((matrix) => (
-            <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
+            <Link
+              key={matrix.id}
+              href={`/${params.lang}/tof/matrices/${matrix.id}`}
+            >
               <MatrixPortrait matrix={matrix} />
             </Link>
           ))}
@@ -101,7 +107,10 @@ export default async function TOFMatricesPage({ params }: Props) {
         </h2>
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {r.map((matrix) => (
-            <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
+            <Link
+              key={matrix.id}
+              href={`/${params.lang}/tof/matrices/${matrix.id}`}
+            >
               <MatrixPortrait matrix={matrix} />
             </Link>
           ))}
@@ -116,7 +125,10 @@ export default async function TOFMatricesPage({ params }: Props) {
         </h2>
         <div className="grid grid-cols-2 gap-1 rounded border border-tof-700 bg-tof-900 px-4 py-4 shadow-lg md:grid-cols-4 lg:grid-cols-5">
           {n.map((matrix) => (
-            <Link key={matrix.id} href={`/tof/matrices/${matrix.id}`}>
+            <Link
+              key={matrix.id}
+              href={`/${params.lang}/tof/matrices/${matrix.id}`}
+            >
               <MatrixPortrait matrix={matrix} />
             </Link>
           ))}

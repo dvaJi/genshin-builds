@@ -6,6 +6,7 @@ import SimpleRarityBox from "../SimpleRarityBox";
 import StarRarity from "../StarRarity";
 
 // import { FoodItem } from "@pages/food";
+import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 interface FoodCardProps {
@@ -13,11 +14,12 @@ interface FoodCardProps {
 }
 
 const FoodCard = ({ item }: FoodCardProps) => {
+  const { locale } = useIntl("food");
   return (
     <div className="mb-2 flex flex-col rounded border border-vulcan-700 bg-vulcan-800">
       <div className="flex h-full flex-row">
         <div
-          className="relative flex flex-none items-center justify-center rounded rounded-tr-none rounded-br-none bg-cover"
+          className="relative flex flex-none items-center justify-center rounded rounded-br-none rounded-tr-none bg-cover"
           style={{
             backgroundImage: `url(${getUrl(`/bg_${item.rarity}star.png`)})`,
           }}
@@ -48,7 +50,7 @@ const FoodCard = ({ item }: FoodCardProps) => {
           />
           {item.character && (
             <div className="bottom-0 right-0 float-right">
-              <Link href={`/character/${item.character.id}`}>
+              <Link href={`/${locale}/character/${item.character.id}`}>
                 <div className="group overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500 hover:shadow-xl">
                   <SimpleRarityBox
                     img={getUrl(

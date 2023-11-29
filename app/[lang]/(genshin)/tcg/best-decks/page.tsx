@@ -1,13 +1,13 @@
 import GenshinData, { type TCGCard } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
-import Link from "next/link";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -95,7 +95,7 @@ export default async function GenshinBestDecks({ params }: Props) {
                 {deck.characters.map((card) => (
                   <Link
                     key={card.id}
-                    href={`/tcg/card/${card.id}`}
+                    href={`/${params.lang}/tcg/card/${card.id}`}
                     className="group relative cursor-pointer transition-all"
                   >
                     <img
@@ -114,7 +114,7 @@ export default async function GenshinBestDecks({ params }: Props) {
                 {deck.actions.map((card) => (
                   <Link
                     key={card.id}
-                    href={`/tcg/card/${card.id}`}
+                    href={`/${params.lang}/tcg/card/${card.id}`}
                     className="group relative m-2 w-20 cursor-pointer transition-all"
                   >
                     <img

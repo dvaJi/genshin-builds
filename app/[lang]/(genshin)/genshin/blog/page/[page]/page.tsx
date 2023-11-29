@@ -70,7 +70,9 @@ export default async function HSRBlogPage({ params }: Props) {
         currentPage={currentPage}
         itemsPerPage={POSTS_PER_PAGE}
         renderPageLink={(page) =>
-          page === 1 ? "/genshin/blog" : `/genshin/blog/page/${page}`
+          page === 1
+            ? `/${params.lang}/genshin/blog`
+            : `/${params.lang}/genshin/blog/page/${page}`
         }
       />
     </div>

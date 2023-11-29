@@ -108,7 +108,7 @@ export default async function Page({ params }: Props) {
       <article className="relative mx-auto max-w-screen-md">
         <div>
           <Link
-            href="/hsr/blog"
+            href={`/${params.lang}/hsr/blog`}
             className="rounded-3xl border-2 border-transparent px-3 py-1 text-sm font-semibold transition-colors hover:border-zinc-950"
           >
             {t({ id: "back", defaultMessage: "Back to Blog" })}

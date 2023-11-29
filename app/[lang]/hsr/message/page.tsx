@@ -74,7 +74,7 @@ export default async function Page({ params }: Props) {
         {messages.map((message) => (
           <Link
             key={message.id}
-            href={`/hsr/message/${message.id}`}
+            href={`/${params.lang}/hsr/message/${message.id}`}
             className=" flex bg-hsr-surface2 p-3 transition-colors hover:bg-hsr-surface3"
           >
             <img

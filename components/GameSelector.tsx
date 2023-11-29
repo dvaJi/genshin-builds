@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 
 import { useClickOutside } from "@hooks/use-clickoutside";
+import useIntl from "@hooks/use-intl";
 import { getImg } from "@lib/imgUrl";
 import { GAME, GameProps } from "utils/games";
 
@@ -15,6 +16,7 @@ type Props = {
 };
 
 function GameSelector({ currentGame, className, buttonClassName }: Props) {
+  const { locale } = useIntl("layout");
   const [isOpen, setIsOpen] = useState(false);
   const close = useCallback(() => setIsOpen(false), []);
   const contentRef = useClickOutside<HTMLDivElement>(
@@ -60,7 +62,7 @@ function GameSelector({ currentGame, className, buttonClassName }: Props) {
         )}
       >
         {Object.values(GAME).map((game) => (
-          <Link key={game.name} href={game.path}>
+          <Link key={game.name} href={`/${locale}${game.path}`}>
             <button
               type="button"
               tabIndex={0}

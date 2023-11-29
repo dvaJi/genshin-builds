@@ -4,6 +4,7 @@ import { memo } from "react";
 
 // import useIntl from "@hooks/use-intl";
 import { getImg } from "@lib/imgUrl";
+import useIntl from "@hooks/use-intl";
 // import { getTimeAgo } from "@lib/timeago";
 
 interface Props {
@@ -11,11 +12,11 @@ interface Props {
 }
 
 const BlogPostCard = ({ post }: Props) => {
-  // const { locale } = useIntl("blog");
+  const { locale } = useIntl("blog");
   // const timeAgo = getTimeAgo(new Date(post.updatedAt).getTime(), locale);
   return (
     <Link
-      href={`/zenless/blog/${post.slug}`}
+      href={`/${locale}/zenless/blog/${post.slug}`}
       className="group mx-auto max-w-md overflow-hidden p-2"
     >
       <div className="relative aspect-video w-full overflow-hidden rounded-bl-[3.5rem] rounded-tr-[3.5rem] object-cover">

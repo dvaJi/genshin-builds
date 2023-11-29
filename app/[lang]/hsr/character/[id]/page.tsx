@@ -295,7 +295,7 @@ export default async function CharacterPage({ params }: Props) {
                           </div>
                         ) : (
                           <Link
-                            href={`/hsr/character/${c.id}`}
+                            href={`/${params.lang}/hsr/character/${c.id}`}
                             className="flex items-center"
                           >
                             <div className="mr-2 flex flex-shrink-0 items-center justify-center">

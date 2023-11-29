@@ -4,21 +4,29 @@ import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
 
 import LanguageSelector from "@components/ui/LanguageSelector";
+import useIntl from "@hooks/use-intl";
 
 export default function GenshinFooter() {
+  const { locale } = useIntl("layout");
   return (
     <footer className="relative z-10 border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-4 py-6 text-gray-400 backdrop-blur md:px-20 md:py-14">
       <div className="container mx-auto">
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-2 text-lg text-gray-200">GenshinBuilds</h4>
-            <Link href="/privacy-policy" className="my-1 hover:text-white">
+            <Link
+              href={`/${locale}/privacy-policy`}
+              className="my-1 hover:text-white"
+            >
               Privacy Policy
             </Link>
-            <Link href="/contact" className="my-1 hover:text-white">
+            <Link href={`/${locale}/contact`} className="my-1 hover:text-white">
               Contact
             </Link>
-            <Link href="/changelog" className="my-1 hover:text-white">
+            <Link
+              href={`/${locale}/changelog`}
+              className="my-1 hover:text-white"
+            >
               Changelog
             </Link>
             <a

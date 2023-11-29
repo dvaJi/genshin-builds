@@ -24,7 +24,7 @@ export default function CharactersList({ characters }: Props) {
   const [rarityFilter, setRarityFilter] = useState("");
   const [elementFilter, setElementFilter] = useState("");
   const [resonanceFilter, setResonanceFilter] = useState("");
-  const { t } = useIntl("characters");
+  const { t, locale } = useIntl("characters");
 
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
@@ -167,7 +167,7 @@ export default function CharactersList({ characters }: Props) {
         </div>
         <input
           type="text"
-          className="rounded bg-vulcan-700 px-2 py-1 text-white border-opacity-50"
+          className="rounded border-opacity-50 bg-vulcan-700 px-2 py-1 text-white"
           placeholder={t({ id: "search", defaultMessage: "Search..." })}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -179,7 +179,10 @@ export default function CharactersList({ characters }: Props) {
       />
       <div className="grid grid-cols-2 gap-1 rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg md:grid-cols-3 lg:grid-cols-4">
         {filteredCharacters.map((character) => (
-          <Link key={character.id} href={`/tof/character/${character.id}`}>
+          <Link
+            key={character.id}
+            href={`/${locale}/tof/character/${character.id}`}
+          >
             <CharacterPortrait character={character} key={character.id} />
           </Link>
         ))}

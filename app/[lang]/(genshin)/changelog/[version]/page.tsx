@@ -136,6 +136,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
         materialsMap={materialsMap}
         tcgMap={tcgMap}
         weaponsMap={weaponsMap}
+        locale={params.lang}
       />
       <FrstAds
         placementName="genshinbuilds_incontent_1"

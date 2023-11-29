@@ -41,7 +41,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function TOFBlogPage() {
+export default async function TOFBlogPage({ params }: Props) {
   const { data, total } = await getPosts("tof", "en", {
     limit: POSTS_PER_PAGE,
     page: 1,
@@ -63,7 +63,7 @@ export default async function TOFBlogPage() {
         totalItems={total}
         currentPage={1}
         itemsPerPage={POSTS_PER_PAGE}
-        renderPageLink={(page) => `/tof/blog/page/${page}`}
+        renderPageLink={(page) => `/${params.lang}/tof/blog/page/${page}`}
       />
     </div>
   );

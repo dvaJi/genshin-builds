@@ -8,7 +8,13 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
-export default async function Page() {
+type Props = {
+  params: {
+    lang: string;
+  };
+};
+
+export default async function Page({ params }: Props) {
   const { data } = await getPosts("zenless", "en", {
     limit: 3,
     page: 1,
@@ -37,7 +43,7 @@ export default async function Page() {
         </div>
         <div className="mt-4">
           <Link
-            href="/zenless/blog"
+            href={`/${params.lang}/zenless/blog`}
             className="rounded-2xl border-2 border-black px-4 py-2 font-semibold ring-black transition-all hover:bg-white hover:ring-4"
           >
             See more

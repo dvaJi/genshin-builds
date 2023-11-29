@@ -29,7 +29,7 @@ type Props = {
 const TodoList = ({ materialsMap, planning, days }: Props) => {
   const todos = useStore(todosAtom);
   const [currentDay, setCurrentDay] = useState(days[new Date().getDay()]);
-  const { t } = useIntl("todo");
+  const { t, locale } = useIntl("todo");
 
   const { summary, originalSummary } = useMemo(() => {
     const summary: Record<string, number> = {};
@@ -394,7 +394,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           </p>
           <p>
             <Link
-              href="/calculator"
+              href={`/${locale}/calculator`}
               className="text-slate-300 hover:text-white"
             >
               {t({

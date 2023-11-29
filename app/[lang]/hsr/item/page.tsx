@@ -74,7 +74,7 @@ export default async function HSRItemPage({ params }: Props) {
         {items.map((item) => (
           <Link
             key={item.id}
-            href={`/hsr/item/${item.id}`}
+            href={`/${params.lang}/hsr/item/${item.id}`}
             className="group/link grid justify-center justify-items-center bg-hsr-surface2 text-center hover:bg-hsr-accent/20"
           >
             <img

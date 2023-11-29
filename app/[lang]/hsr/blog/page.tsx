@@ -78,7 +78,7 @@ export default async function HSRBlogPage({ params }: Props) {
         totalItems={total}
         currentPage={1}
         itemsPerPage={POSTS_PER_PAGE}
-        renderPageLink={(page) => `/hsr/blog/page/${page}`}
+        renderPageLink={(page) => `/${params.lang}/hsr/blog/page/${page}`}
       />
     </div>
   );

@@ -20,7 +20,7 @@ type Props = {
 const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
 
 export default function WeaponsList({ weapons }: Props) {
-  const { t } = useIntl("weapons");
+  const { t, locale } = useIntl("weapons");
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
@@ -104,7 +104,7 @@ export default function WeaponsList({ weapons }: Props) {
         {filteredWeapons.map((weapon) => (
           <Link
             key={weapon.id}
-            href={`/weapon/${weapon.id}`}
+            href={`/${locale}/weapon/${weapon.id}`}
             className="h-26 relative m-2 inline-block w-24 scale-100 rounded-lg bg-vulcan-500 transition-all hover:scale-105 hover:bg-vulcan-400 hover:shadow-lg md:w-32 lg:h-auto lg:w-32 xl:w-32"
           >
             {/* Badge */}

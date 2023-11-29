@@ -24,7 +24,7 @@ export default function CharactersList({ characters }: Props) {
   const [pathTypeFilterSelected, setPathTypeFilterSelected] = useState<
     string[]
   >([]);
-  const { t } = useIntl("characters");
+  const { t, locale } = useIntl("characters");
 
   const combatTypes = useMemo(() => {
     const types = characters.map((character) => character.combat_type);
@@ -183,7 +183,7 @@ export default function CharactersList({ characters }: Props) {
           .filter((c) => c.rarity === 5)
           .map((character) => (
             <li key={character.id}>
-              <Link href={`/hsr/character/${character.id}`}>
+              <Link href={`/${locale}/hsr/character/${character.id}`}>
                 <CharacterBlock character={character} />
               </Link>
             </li>
@@ -198,7 +198,7 @@ export default function CharactersList({ characters }: Props) {
           .filter((c) => c.rarity === 4)
           .map((character) => (
             <li key={character.id}>
-              <Link href={`/hsr/character/${character.id}`}>
+              <Link href={`/${locale}/hsr/character/${character.id}`}>
                 <CharacterBlock character={character} />
               </Link>
             </li>

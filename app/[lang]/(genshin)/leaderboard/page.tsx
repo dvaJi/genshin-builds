@@ -1,12 +1,12 @@
 import GenshinData from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import Link from "next/link";
 import LeaderboardWrapper from "./wrapper";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -69,7 +69,7 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
       />
       <div className="py-4 text-center">
         <Link
-          href="/profile"
+          href={`/${params.lang}/profile`}
           className="text-lg font-semibold hover:text-white"
         >
           Submit your UID here!

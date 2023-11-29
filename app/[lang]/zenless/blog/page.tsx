@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   description: "Latest news and updates from ZenlessBuilds.",
 };
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params,
+}: {
+  params: { lang: string };
+}) {
   const { data, total } = await getPosts("zenless", "en", {
     limit: POSTS_PER_PAGE,
     page: 1,
@@ -38,7 +42,7 @@ export default async function BlogPage() {
         totalItems={total}
         currentPage={1}
         itemsPerPage={POSTS_PER_PAGE}
-        renderPageLink={(page) => `/zenless/blog/page/${page}`}
+        renderPageLink={(page) => `/${params.lang}/zenless/blog/page/${page}`}
       />
     </div>
   );

@@ -91,7 +91,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                 key={h.name}
                 className="mb-1 flex w-full border-b border-gray-700 pb-2 last:border-b-0"
               >
-                <Link href={`/character/${h.id}`}>
+                <Link href={`/${params.lang}/character/${h.id}`}>
                   <CharacterPortrait character={{ id: h.id, name: "" }} />
                 </Link>
                 <div className="flex w-full flex-col items-center justify-center">
@@ -153,7 +153,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                 </div>
                 <div className="flex min-w-min justify-center">
                   {h.main.map((m) => (
-                    <Link key={m + h.time} href={`/character/${m}`}>
+                    <Link key={m + h.time} href={`/${params.lang}/character/${m}`}>
                       <SimpleRarityBox
                         img={getUrl(
                           `/characters/${m}/${m}_portrait.png`,
@@ -172,7 +172,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                 </div>
                 <div className="ml-10 flex min-w-max justify-center md:ml-0">
                   {h.secondary.map((m) => (
-                    <Link key={m + h.time} href={`/character/${m}`}>
+                    <Link key={m + h.time} href={`/${params.lang}/character/${m}`}>
                       <SimpleRarityBox
                         img={getUrl(
                           `/characters/${m}/${m}_portrait.png`,

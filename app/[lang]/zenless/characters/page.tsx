@@ -23,7 +23,13 @@ export const metadata: Metadata = {
     "A complete list of all playable characters in Zenless Zone Zero.",
 };
 
-export default async function CharactersPage() {
+type Props = {
+  params: {
+    lang: string;
+  };
+};
+
+export default async function CharactersPage({ params }: Props) {
   const data = await getRemoteData<Character[]>("zenless", "characters");
   return (
     <div>
@@ -38,7 +44,7 @@ export default async function CharactersPage() {
         {data.map((character) => (
           <Link
             key={character.id}
-            href={`/zenless/characters/${character.id}`}
+            href={`/${params.lang}/zenless/characters/${character.id}`}
             className="group relative items-center justify-center rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
           >
             <div className="aspect-square h-40 rounded-t bg-black group-hover:bg-[#fbfe00]">

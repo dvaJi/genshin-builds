@@ -41,7 +41,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function GenshinBlogPage() {
+export default async function GenshinBlogPage({ params }: Props) {
   const { data, total } = await getPosts("genshin", "en", {
     limit: POSTS_PER_PAGE,
     page: 1,
@@ -63,7 +63,7 @@ export default async function GenshinBlogPage() {
         totalItems={total}
         currentPage={1}
         itemsPerPage={POSTS_PER_PAGE}
-        renderPageLink={(page) => `/genshin/blog/page/${page}`}
+        renderPageLink={(page) => `/${params.lang}/genshin/blog/page/${page}`}
       />
     </div>
   );

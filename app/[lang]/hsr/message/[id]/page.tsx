@@ -117,7 +117,7 @@ export default async function CharacterPage({ params }: Props) {
           <menu className="flex flex-col">
             {messageGroup.relatedMessages.map((message, i) => (
               <Link
-                href={`/hsr/message/${message}`}
+                href={`/${params.lang}/hsr/message/${message}`}
                 key={message}
                 className={
                   message === messageGroup.id

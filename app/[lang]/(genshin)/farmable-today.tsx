@@ -1,5 +1,8 @@
 "use client";
 
+import clsx from "clsx";
+import type { Character, Domains, Weapon } from "genshin-data";
+import Link from "next/link";
 import { useState } from "react";
 
 import SimpleRarityBox from "@components/SimpleRarityBox";
@@ -7,9 +10,6 @@ import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
-import clsx from "clsx";
-import type { Character, Domains, Weapon } from "genshin-data";
-import Link from "next/link";
 
 type Props = {
   days: string[];
@@ -24,7 +24,7 @@ export default function FarmableToday({
   characters,
   weapons,
 }: Props) {
-  const { t } = useIntl("ascension_planner");
+  const { t, locale } = useIntl("ascension_planner");
   const [currentDay, setCurrentDay] = useState(days[new Date().getDay()]);
 
   return (
@@ -68,7 +68,7 @@ export default function FarmableToday({
                     {charactersDomain.rotation
                       .find((r) => r.day === currentDay)
                       ?.ids.map((cId) => (
-                        <Link key={cId} href={`/character/${cId}`}>
+                        <Link key={cId} href={`/${locale}/character/${cId}`}>
                           <SimpleRarityBox
                             img={getUrl(
                               `/characters/${cId}/${cId}_portrait.png`,
@@ -102,7 +102,7 @@ export default function FarmableToday({
                       ?.ids.map((cId) => (
                         <div key={cId}>
                           {weapons[cId] ? (
-                            <Link key={cId} href={`/weapon/${cId}`}>
+                            <Link key={cId} href={`/${locale}/weapon/${cId}`}>
                               <SimpleRarityBox
                                 img={getUrl(`/weapons/${cId}.png`, 80, 80)}
                                 rarity={weapons[cId].rarity}

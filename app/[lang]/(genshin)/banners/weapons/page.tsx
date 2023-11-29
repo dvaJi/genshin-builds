@@ -90,7 +90,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
                 key={h.name}
                 className="mb-1 flex w-full border-b border-gray-700 pb-2 last:border-b-0"
               >
-                <Link href={`/weapon/${h.id}`}>
+                <Link href={`/${params.lang}/weapon/${h.id}`}>
                   <SimpleRarityBox
                     key={h.name}
                     img={getUrl(`/weapons/${h.id}.png`, 96, 96)}
@@ -159,7 +159,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
                 </div>
                 <div className="col-span flex min-w-min justify-center">
                   {h.main.map((m) => (
-                    <Link key={m + h.time} href={`/weapon/${m}`}>
+                    <Link key={m + h.time} href={`/${params.lang}/weapon/${m}`}>
                       <SimpleRarityBox
                         img={getUrl(`/weapons/${m}.png`, 96, 96)}
                         rarity={5}
@@ -174,7 +174,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
                 </div>
                 <div className="col-span-2 ml-10 flex min-w-max justify-center md:ml-0">
                   {h.secondary.map((m) => (
-                    <Link key={m + h.time} href={`/weapon/${m}`}>
+                    <Link key={m + h.time} href={`/${params.lang}/weapon/${m}`}>
                       <SimpleRarityBox
                         key={m + h.time}
                         img={getUrl(`/weapons/${m}.png`, 96, 96)}

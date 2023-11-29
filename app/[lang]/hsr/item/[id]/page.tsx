@@ -164,8 +164,8 @@ export default async function CharacterPage({ params }: Props) {
                     <div className="mt-2 flex gap-4">
                       {r.materialCost.map((m) => (
                         <Link
-                          href={`/hsr/item/${m.id}`}
                           key={m.id}
+                          href={`/${params.lang}/hsr/item/${m.id}`}
                           className="relative flex h-16 w-16 flex-row justify-center"
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}
@@ -195,8 +195,8 @@ export default async function CharacterPage({ params }: Props) {
                     <div className="mt-2 flex gap-4">
                       {r.specialMaterialCost.map((m) => (
                         <Link
-                          href={`/hsr/item/${m.id}`}
                           key={m.id}
+                          href={`/${params.lang}/hsr/item/${m.id}`}
                           className="relative flex h-16 w-16 flex-row justify-center"
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}

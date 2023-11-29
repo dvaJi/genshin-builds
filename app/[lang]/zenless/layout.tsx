@@ -53,11 +53,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ZenlessLayout({
-  children, // will be a page or nested layout
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+  params: { lang: string };
+};
+
+export default function ZenlessLayout({ children, params }: Props) {
   return (
     <html>
       <body>
@@ -72,24 +73,24 @@ export default function ZenlessLayout({
             <div className="container mx-auto flex justify-between py-2">
               <div>
                 <h1 className="text-xl">
-                  <Link href="/zenless">ZenlessBuilds</Link>
+                  <Link href={`/${params.lang}/zenless`}>ZenlessBuilds</Link>
                 </h1>
               </div>
               <div className="flex gap-4">
                 <Link
-                  href="/zenless/"
+                  href={`/${params.lang}/zenless`}
                   className="rounded-3xl px-2 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
                 >
                   Home
                 </Link>
                 <Link
-                  href="/zenless/characters"
+                  href={`/${params.lang}/zenless/characters`}
                   className="rounded-3xl px-2 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
                 >
                   Characters
                 </Link>
                 <Link
-                  href="/zenless/blog"
+                  href={`/${params.lang}/zenless/blog`}
                   className="rounded-3xl px-2 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
                 >
                   Blog

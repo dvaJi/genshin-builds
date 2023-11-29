@@ -15,13 +15,18 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
   ssr: false,
 });
 
+type Props = {
+  params: {
+    lang: string;
+    slug: string[];
+  };
+};
+
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
-}: {
-  params: { slug: string[] };
-}): Promise<Metadata | undefined> {
+}: Props): Promise<Metadata | undefined> {
   const slug = decodeURI(params.slug.join("/"));
   const post = await getPostBySlug(slug);
   if (!post) {
@@ -55,7 +60,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { slug: string[] } }) {
+export default async function Page({ params }: Props) {
   const slug = decodeURI(params.slug.join("/"));
 
   // Filter out drafts in production
@@ -100,7 +105,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       <article className="relative mx-auto max-w-screen-md">
         <div>
           <Link
-            href="/zenless/blog"
+            href={`/${params.lang}/zenless/blog`}
             className="rounded-3xl border-2 border-transparent px-3 py-1 text-sm font-semibold transition-colors hover:border-zinc-950"
           >
             {/* {t({ id: "back", defaultMessage: "Back to Blog" })} */}

@@ -18,7 +18,7 @@ const BlogPostCard = ({ post }: Props) => {
   const timeAgo = getTimeAgo(new Date(post.updatedAt).getTime(), locale);
 
   return (
-    <Link href={`/hsr/blog/${post.slug}`} className="group p-2">
+    <Link href={`/${locale}/hsr/blog/${post.slug}`} className="group p-2">
       <div className="mx-auto max-w-md overflow-hidden rounded-sm bg-hsr-surface2 shadow ring-hsr-accent/70 group-hover:ring-1">
         <LazyLoadImage
           src={getImg("hsr", `/blog/${post.image}`, {

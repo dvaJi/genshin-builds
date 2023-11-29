@@ -1,8 +1,9 @@
+import clsx from "clsx";
 import type { Weapon } from "genshin-data";
 import Link from "next/link";
 
+import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
-import clsx from "clsx";
 import { Roles, TierlistWeapons, TierNums } from "interfaces/tierlist";
 import SimpleRarityBox from "../SimpleRarityBox";
 
@@ -19,6 +20,7 @@ const WeaponsTier = ({
   weaponsMap,
   selectedCol,
 }: WeaponsTierProps) => {
+  const { locale } = useIntl("tierlist_weapons");
   let tierText = "SS";
 
   switch (tier) {
@@ -62,7 +64,7 @@ const WeaponsTier = ({
       >
         {tierlist.maindps[tier].map((t) => (
           <div key={t} className="inline-block">
-            <Link key={t} href={`/weapon/${t}`}>
+            <Link key={t} href={`/${locale}/weapon/${t}`}>
               <SimpleRarityBox
                 img={getUrl(`/weapons/${t}.png`, 96, 96)}
                 rarity={weaponsMap[t]?.rarity}
@@ -82,7 +84,7 @@ const WeaponsTier = ({
       >
         {tierlist.subdps[tier].map((t) => (
           <div key={t} className="inline-block">
-            <Link key={t} href={`/weapon/${t}`}>
+            <Link key={t} href={`/${locale}/weapon/${t}`}>
               <SimpleRarityBox
                 img={getUrl(`/weapons/${t}.png`, 96, 96)}
                 rarity={weaponsMap[t].rarity}
@@ -102,7 +104,7 @@ const WeaponsTier = ({
       >
         {tierlist.support[tier].map((t) => (
           <div key={t} className="relative inline-block">
-            <Link key={t} href={`/weapon/${t}`}>
+            <Link key={t} href={`/${locale}/weapon/${t}`}>
               <SimpleRarityBox
                 img={getUrl(`/weapons/${t}.png`, 96, 96)}
                 rarity={weaponsMap[t].rarity}

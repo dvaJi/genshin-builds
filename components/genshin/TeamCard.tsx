@@ -16,7 +16,7 @@ interface TeamCardProps {
 }
 
 const TeamCard = ({ team, mainName }: TeamCardProps) => {
-  const { t } = useIntl("teams");
+  const { t, locale } = useIntl("teams");
   return (
     <div className="card mx-2 md:mx-0">
       <h3 className="text-lg font-semibold text-white lg:text-2xl">
@@ -33,7 +33,10 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
               {t({ id: block.role.toLowerCase(), defaultMessage: block.role })}
             </div>
             <div className="flex justify-center text-center">
-              <Link href={`/character/${block.id}`} className="flex flex-col">
+              <Link
+                href={`/${locale}/character/${block.id}`}
+                className="flex flex-col"
+              >
                 <div className="group relative overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500">
                   <LazyLoadImage
                     className="z-20 rounded-full object-cover transition group-hover:scale-110"

@@ -68,7 +68,9 @@ export default async function TOFBlogPage({ params }: Props) {
         currentPage={currentPage}
         itemsPerPage={POSTS_PER_PAGE}
         renderPageLink={(page) =>
-          page === 1 ? "/tof/blog" : `/tof/blog/page/${page}`
+          page === 1
+            ? `/${params.lang}/tof/blog`
+            : `/${params.lang}/tof/blog/page/${page}`
         }
       />
     </div>

@@ -152,7 +152,7 @@ export default async function CharacterPage({ params }: Props) {
               {builds.map((build) => (
                 <Link
                   key={build.id}
-                  href={`/tof/matrices/${build.id}`}
+                  href={`/${params.lang}/tof/matrices/${build.id}`}
                   className="relative flex"
                 >
                   <div className="absolute top-4 w-full text-center text-sm">

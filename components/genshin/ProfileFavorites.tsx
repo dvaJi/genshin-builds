@@ -9,13 +9,13 @@ import { profilesFavAtom } from "@state/profiles-fav";
 
 function ProfileFavorites() {
   const profilesFav = useStore(profilesFavAtom);
-  const { t } = useIntl("profile");
+  const { t, locale } = useIntl("profile");
   return (
     <>
       {profilesFav.map((profile) => (
         <Link
           key={profile.uuid}
-          href={`/profile/${profile.uuid}`}
+          href={`/${locale}/profile/${profile.uuid}`}
           className="mr-1 rounded bg-vulcan-600 bg-cover px-4 py-2 text-sm hover:bg-vulcan-400 hover:text-slate-100"
         >
           <span>{profile.nickname}</span>

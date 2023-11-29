@@ -3,6 +3,7 @@ import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 interface WeaponCardProps {
@@ -12,12 +13,13 @@ interface WeaponCardProps {
 }
 
 const WeaponCard = ({ position, weapon, refinement }: WeaponCardProps) => {
+  const { locale } = useIntl("weapons");
   return (
     <Link
-      href={`/weapon/${weapon.id}`}
-      className="mb-2 w-full flex rounded border border-vulcan-700 bg-vulcan-900 px-4 transition hover:border-vulcan-600 hover:bg-vulcan-800"
+      href={`/${locale}/weapon/${weapon.id}`}
+      className="mb-2 flex w-full rounded border border-vulcan-700 bg-vulcan-900 px-4 transition hover:border-vulcan-600 hover:bg-vulcan-800"
     >
-      <div className="flex items-center mr-2">
+      <div className="mr-2 flex items-center">
         <span className="mr-2 rounded bg-vulcan-600 p-1 text-xs text-slate-300">
           {position}
         </span>
@@ -40,7 +42,8 @@ const WeaponCard = ({ position, weapon, refinement }: WeaponCardProps) => {
           {weapon.name}{" "}
           {refinement !== undefined && refinement > 0 && (
             <span className="rounded bg-vulcan-600 p-1 text-xxs">
-              R{refinement}{refinement < 5 ? "+" : ""}
+              R{refinement}
+              {refinement < 5 ? "+" : ""}
             </span>
           )}
         </div>

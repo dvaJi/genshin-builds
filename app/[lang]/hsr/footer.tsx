@@ -6,7 +6,7 @@ import useIntl from "@hooks/use-intl";
 import { usePathname } from "next/navigation";
 
 export default function HSRFooter() {
-  const { t } = useIntl("layout");
+  const { t, locale } = useIntl("layout");
   const pathName = usePathname();
   const redirectedPathName = (locale: string) => {
     return () => {
@@ -23,10 +23,10 @@ export default function HSRFooter() {
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-3 text-gray-200">Star Rail Builds</h4>
-            <Link href="/privacy-policy" className="my-2">
+            <Link href={`/${locale}/privacy-policy`} className="my-2">
               {t({ id: "privacy_policy", defaultMessage: "Privacy Policy" })}
             </Link>
-            <Link href="/contact" className="my-2">
+            <Link href={`/${locale}/contact`} className="my-2">
               {t({ id: "contact", defaultMessage: "Contact" })}
             </Link>
           </div>

@@ -1,13 +1,13 @@
 import type { TCGCard } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import Link from "next/link";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -90,7 +90,7 @@ export default async function GenshinTCG({ params }: Props) {
         {cards.map((card) => (
           <Link
             key={card.id}
-            href={`/tcg/card/${card.id}`}
+            href={`/${params.lang}/tcg/card/${card.id}`}
             className="group relative m-2 w-20 cursor-pointer transition-all hover:scale-110"
           >
             <img

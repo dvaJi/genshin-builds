@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default async function BlogPage({
   params,
 }: {
-  params: { page: string };
+  params: { page: string; lang: string };
 }) {
   const currentPage = Number(params.page) || 1;
   const { data, total } = await getPosts("zenless", "en", {
@@ -51,7 +51,9 @@ export default async function BlogPage({
         currentPage={currentPage}
         itemsPerPage={POSTS_PER_PAGE}
         renderPageLink={(page) =>
-          page === 1 ? "/zenless/blog" : `/zenless/blog/page/${page}`
+          page === 1
+            ? `/${params.lang}/zenless/blog`
+            : `/${params.lang}/zenless/blog/page/${page}`
         }
       />
     </div>

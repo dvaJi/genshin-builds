@@ -19,7 +19,7 @@ type Props = {
 
 function CharacterTeam({ team, index }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useIntl("character");
+  const { t, locale } = useIntl("character");
 
   return (
     <div
@@ -38,7 +38,7 @@ function CharacterTeam({ team, index }: Props) {
         {team.characters.map((character) => (
           <Link
             key={character.id}
-            href={`/character/${character.id}`}
+            href={`/${locale}/character/${character.id}`}
             className="group flex flex-col items-center text-center lg:mr-8"
           >
             <div className="relative">

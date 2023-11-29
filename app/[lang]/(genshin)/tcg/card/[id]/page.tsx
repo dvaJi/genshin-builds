@@ -70,7 +70,10 @@ export default async function GenshinCard({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <Link className="mt-4 p-4 hover:text-slate-200" href="/tcg">
+      <Link
+        href={`/${params.lang}/tcg`}
+        className="mt-4 p-4 hover:text-slate-200"
+      >
         {t({ id: "back", defaultMessage: "Back" })}
       </Link>
       <div className="my-4 flex">
