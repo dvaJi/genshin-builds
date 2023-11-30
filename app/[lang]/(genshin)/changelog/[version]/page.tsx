@@ -1,23 +1,37 @@
 import GenshinData from "genshin-data";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import ChangelogVersion from "../view";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
+import { i18n } from "i18n-config";
 import { Changelog } from "interfaces/genshin/changelog";
 import { notFound } from "next/navigation";
-import ChangelogVersion from "../view";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
 
 type Props = {
   params: { lang: string; version: string };
 };
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const langs = i18n.locales;
+  const changelogs = await getData<Changelog[]>("genshin", "changelog");
+
+  return langs
+    .map((lang) => changelogs.map((c) => ({ lang, version: c.version })))
+    .flat(Infinity);
+}
 
 export async function generateMetadata({
   params,

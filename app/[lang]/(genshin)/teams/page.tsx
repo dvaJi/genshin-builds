@@ -1,16 +1,28 @@
 import GenshinData, { type Character } from "genshin-data";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
+import { Fragment } from "react";
 
 import { genPageMetadata } from "@app/seo";
 import TeamCard from "@components/genshin/TeamCard";
+
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { i18n } from "i18n-config";
 import { TeamData, Teams } from "interfaces/teams";
-import { Fragment } from "react";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const langs = i18n.locales;
+
+  return langs.map((lang) => ({ lang }));
+}
 
 type Props = {
   params: { lang: string };

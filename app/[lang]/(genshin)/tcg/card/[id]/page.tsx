@@ -1,6 +1,6 @@
 import GenshinData from "genshin-data";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
@@ -8,10 +8,34 @@ import Badge from "@components/ui/Badge";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
+import { localeToLang } from "@utils/locale-to-lang";
+import { i18n } from "i18n-config";
 import { notFound } from "next/navigation";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const routes: { lang: string; id: string }[] = [];
+
+  for await (const lang of i18n.locales) {
+    const genshinData = new GenshinData({ language: localeToLang(lang) });
+    const cards = await genshinData.tcgCards({ select: ["id"] });
+
+    cards.forEach((card) => {
+      routes.push({
+        lang,
+        id: card.id,
+      });
+    });
+  }
+
+  return routes;
+}
 
 type Props = {
   params: { lang: string; id: string };

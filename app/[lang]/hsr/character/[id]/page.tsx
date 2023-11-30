@@ -1,12 +1,13 @@
 import clsx from "clsx";
-import {
+import HSRData, {
+  languages,
   renderDescription,
   type Character,
   type LightCone,
   type Relic,
 } from "hsr-data";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsPersonFill } from "react-icons/bs";
@@ -20,13 +21,38 @@ import Stars from "@components/hsr/Stars";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
 import { getStarRailBuild } from "@lib/localData";
 import { getHsrId } from "@utils/helpers";
+import { i18n } from "i18n-config";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const langs = i18n.locales;
+
+  const routes: { lang: string; id: string }[] = [];
+
+  for await (const lang of langs) {
+    const language = languages.find((l) => l === lang) ?? "en";
+    const hsrData = new HSRData({ language });
+    const characters = await hsrData.characters({ select: ["id"] });
+
+    characters.forEach((character) => {
+      routes.push({
+        lang,
+        id: character.id,
+      });
+    });
+  }
+
+  return routes;
+}
 
 interface Props {
   params: {
@@ -45,12 +71,11 @@ export async function generateMetadata({
     "characters"
   );
 
-  const character = await getHSRData<Character>({
-    resource: "characters",
-    language: langData,
-    select: ["id", "name", "rarity", "combat_type", "path"],
-    filter: { id: params.id },
+  const hsrData = new HSRData({ language: langData as any });
+  const characters = await hsrData.characters({
+    select: ["id", "name"],
   });
+  const character = characters.find((i) => i.id === params.id);
 
   if (!character) {
     return;
@@ -83,25 +108,19 @@ export default async function CharacterPage({ params }: Props) {
     "hsr",
     "character"
   );
-  const characters = await getHSRData<Character[]>({
-    resource: "characters",
-    language: langData,
-    select: ["id", "name", "rarity", "combat_type", "path"],
-  });
-  const character = characters.find((c) => c.id === params.id);
+
+  const hsrData = new HSRData({ language: langData as any });
+  const characters = await hsrData.characters();
+  const character = characters.find((i) => i.id === params.id);
 
   if (!character) {
     return notFound();
   }
 
-  const _lightcones = await getHSRData<LightCone[]>({
-    resource: "lightcones",
-    language: langData,
+  const _lightcones = await hsrData.lightcones({
     select: ["id", "name", "rarity"],
   });
-  const _relics = await getHSRData<Relic[]>({
-    resource: "relics",
-    language: langData,
+  const _relics = await hsrData.relics({
     select: ["id", "name"],
   });
 

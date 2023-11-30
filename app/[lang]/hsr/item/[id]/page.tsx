@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import type { Items } from "hsr-data/dist/types/items";
+import HSRData, { languages } from "hsr-data";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -10,11 +10,33 @@ import Stars from "@components/hsr/Stars";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
+import { i18n } from "i18n-config";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const routes: { lang: string; id: string }[] = [];
+
+  for await (const lang of i18n.locales) {
+    const language = languages.find((l) => l === lang) ?? "en";
+    const hsrData = new HSRData({ language });
+    const items = await hsrData.items({ select: ["id"] });
+
+    items.forEach((item) => {
+      routes.push({
+        lang,
+        id: item.id,
+      });
+    });
+  }
+  return routes;
+}
 
 interface Props {
   params: {
@@ -33,13 +55,9 @@ export async function generateMetadata({
     "item"
   );
 
-  const item = await getHSRData<Items>({
-    resource: "items",
-    language: langData,
-    filter: {
-      id: params.id,
-    },
-  });
+  const hsrData = new HSRData({ language: langData as any });
+  const items = await hsrData.items({ select: ["id", "name", "type"] });
+  const item = items.find((i) => i.id === params.id);
 
   if (!item) {
     return;
@@ -70,13 +88,9 @@ export async function generateMetadata({
 export default async function CharacterPage({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "hsr", "item");
 
-  const item = await getHSRData<Items>({
-    resource: "items",
-    language: langData,
-    filter: {
-      id: params.id,
-    },
-  });
+  const hsrData = new HSRData({ language: langData as any });
+  const items = await hsrData.items();
+  const item = items.find((i) => i.id === params.id);
 
   if (!item) {
     return notFound();

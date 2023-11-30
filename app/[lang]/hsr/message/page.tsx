@@ -1,6 +1,6 @@
 import type { Messages } from "hsr-data/dist/types/messages";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
@@ -8,9 +8,20 @@ import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
+import { i18n } from "i18n-config";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const langs = i18n.locales;
+
+  return langs.map((lang) => ({ lang }));
+}
 
 type Props = {
   params: { lang: string };

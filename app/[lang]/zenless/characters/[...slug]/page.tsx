@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getImg } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
+import { i18n } from "i18n-config";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
 
 type Character = {
   id: string;
@@ -16,6 +19,25 @@ type Character = {
   attack: string;
   faction: string;
 };
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const routes: { lang: string; slug: string[] }[] = [];
+
+  for await (const lang of i18n.locales) {
+    const data = await getRemoteData<Character[]>("zenless", "characters");
+
+    routes.push(
+      ...data.map((c) => ({
+        lang,
+        slug: [c.id],
+      }))
+    );
+  }
+
+  return routes;
+}
 
 export async function generateMetadata({
   params,

@@ -1,13 +1,16 @@
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getImg } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
+import { i18n } from "i18n-config";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
 
 type Character = {
   id: string;
@@ -16,6 +19,14 @@ type Character = {
   attack: string;
   faction: string;
 };
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const langs = i18n.locales;
+
+  return langs.map((lang) => ({ lang }));
+}
 
 export const metadata: Metadata = {
   title: "Characters",

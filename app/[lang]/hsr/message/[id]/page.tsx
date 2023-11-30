@@ -1,6 +1,5 @@
-import type { Messages as IMessages } from "hsr-data/dist/types/messages";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -9,10 +8,36 @@ import Messages from "@components/hsr/Messages";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getHSRData } from "@lib/dataApi";
+import HSRData, { languages } from "hsr-data";
+import { i18n } from "i18n-config";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const langs = i18n.locales;
+
+  const routes: { lang: string; id: string }[] = [];
+
+  for await (const lang of langs) {
+    const language = languages.find((l) => l === lang) ?? "en";
+    const hsrData = new HSRData({ language });
+    const messageGroup = await hsrData.messages({ select: ["id"] });
+
+    messageGroup.forEach((message) => {
+      routes.push({
+        lang,
+        id: message.id.toString(),
+      });
+    });
+  }
+
+  return routes;
+}
 
 interface Props {
   params: {
@@ -31,13 +56,9 @@ export async function generateMetadata({
     "message"
   );
 
-  const messageGroup = await getHSRData<IMessages>({
-    resource: "messages",
-    language: langData,
-    filter: {
-      id: params.id,
-    },
-  });
+  const hsrData = new HSRData({ language: langData as any });
+  const messages = await hsrData.messages({ select: ["id", "contacts"] });
+  const messageGroup = messages.find((i) => i.id.toString() === params.id);
 
   if (!messageGroup) {
     return;
@@ -68,13 +89,9 @@ export async function generateMetadata({
 export default async function CharacterPage({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "hsr", "message");
 
-  const messageGroup = await getHSRData<IMessages>({
-    resource: "messages",
-    language: langData,
-    filter: {
-      id: params.id,
-    },
-  });
+  const hsrData = new HSRData({ language: langData as any });
+  const messages = await hsrData.messages();
+  const messageGroup = messages.find((i) => i.id.toString() === params.id);
 
   if (!messageGroup) {
     return notFound();

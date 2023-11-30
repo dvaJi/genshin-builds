@@ -1,3 +1,13 @@
+import { i18n } from "i18n-config";
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const langs = i18n.locales;
+
+  return langs.map((lang) => ({ lang }));
+}
+
 export default async function Contact() {
   return (
     <div>
