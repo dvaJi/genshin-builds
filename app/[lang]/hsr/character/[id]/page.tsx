@@ -142,7 +142,7 @@ export default async function CharacterPage({ params }: Props) {
           combat_type: character.combat_type,
         } as any;
       } else if (!c.isFlex) {
-        console.log({ c });
+        // console.log({ c });
       }
     });
 
@@ -157,7 +157,7 @@ export default async function CharacterPage({ params }: Props) {
           combat_type: character.combat_type,
         } as any;
       } else {
-        console.log({ c });
+        // console.log({ c });
       }
     });
   });
