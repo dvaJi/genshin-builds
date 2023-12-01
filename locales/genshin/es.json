@@ -361,5 +361,9 @@
     "blog_desc": "El Blog de Genshin Impact es un lugar donde puedes encontrar las últimas noticias y actualizaciones sobre el juego. También publicamos guías, consejos y trucos para ayudarte a comenzar con Genshin Impact.",
     "page_title": "{title} | Blog de Genshin Impact",
     "back": "Volver al Blog"
+  },
+  "changelog": {
+    "title": "Registro de Cambios de Genshin Impact - v{version}",
+    "description": "Descubre todos los cambios en el juego en la versión v{version}"
   }
 }

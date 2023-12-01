@@ -360,5 +360,9 @@
     "blog_desc": "Blog Genshin Impact là nơi bạn có thể tìm thấy tin tức và cập nhật mới nhất về trò chơi. Chúng tôi cũng đăng tải hướng dẫn, mẹo và thủ thuật để giúp bạn bắt đầu với Genshin Impact.",
     "page_title": "{title} | Blog Genshin Impact",
     "back": "Quay lại Blog"
+  },
+  "changelog": {
+    "title": "Lịch Sử Thay Đổi Genshin Impact - v{version}",
+    "description": "Khám phá tất cả các thay đổi trong trò chơi trong phiên bản v{version}"
   }
 }

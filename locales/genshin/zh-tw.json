@@ -360,5 +360,9 @@
     "blog_desc": "原神部落格是您可以找到有關遊戲的最新資訊和更新的地方。我們還發布指南、技巧和竅門，幫助您入門原神。",
     "page_title": "{title} | 原神部落格",
     "back": "返回部落格"
+  },
+  "changelog": {
+    "title": "原神更新日誌 - v{version}",
+    "description": "發現版本 v{version} 中遊戲的所有變更"
   }
 }

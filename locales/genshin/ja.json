@@ -360,5 +360,9 @@
     "blog_desc": "原神ブログは、ゲームに関する最新情報とアップデートを見つける場所です。ゲームを始めるのに役立つガイド、ヒント、トリックも投稿しています。",
     "page_title": "{title} | 原神ブログ",
     "back": "ブログに戻る"
+  },
+  "changelog": {
+    "title": "Genshin Impact 変更履歴 - v{version}",
+    "description": "バージョン v{version} でのゲーム内のすべての変更を発見"
   }
 }
