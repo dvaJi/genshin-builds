@@ -4,6 +4,10 @@
 //   return i18n.locales.map((locale) => ({ lang: locale }));
 // }
 
+export const viewport = {
+  colorScheme: 'dark',
+}
+
 const preconnects = [
   "https://a.pub.network/",
   "https://b.pub.network/",
