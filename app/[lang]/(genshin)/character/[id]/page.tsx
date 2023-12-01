@@ -112,7 +112,9 @@ export default async function GenshinCharacterPage({ params }: Props) {
     return notFound();
   }
 
-  const buildsOld: Build[] = await getCharacterBuild(character.id);
+  const buildsOld: Build[] =
+    require(`../../../../../_content/genshin/data/builds.json`)[character.id] ||
+    [];
   const weaponsList = await genshinData.weapons({
     select: ["id", "name", "rarity", "stats"],
   });
