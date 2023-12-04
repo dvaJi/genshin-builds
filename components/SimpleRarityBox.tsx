@@ -20,7 +20,7 @@ const SimpleRarityBox = ({
   name,
   alt,
   img,
-  rarity,
+  rarity = 0,
   className,
   nameSeparateBlock = false,
   classNameBlock,
@@ -37,10 +37,7 @@ const SimpleRarityBox = ({
           className
         )}
         style={{
-          backgroundImage:
-            rarity > 0
-              ? `url('${getUrl(`/bg_${rarity}star.png`, 32, 32)})'`
-              : "",
+          backgroundImage: `url('${getUrl(`/${rarity}-Star.webp`, 72, 72)})'`,
         }}
       >
         <LazyLoadImage

@@ -9,6 +9,7 @@ import WeaponCalculator from "@components/genshin/WeaponCalculator";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { i18n } from "i18n-config";
+import { ResinCalculatorForm } from "./resin-calculator-form";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -102,6 +103,10 @@ export default async function GenshinCalculator({ params }: Props) {
       <div className="card">
         <WeaponCalculator weapons={weapons} />
       </div>
+      <div className="mt-6">
+        <h1 className="text-xl text-white">Resin Calculator</h1>
+      </div>
+        <ResinCalculatorForm />
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}

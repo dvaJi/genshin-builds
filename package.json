@@ -40,7 +40,7 @@
     "@vercel/og": "^0.5.20",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
-    "date-fns": "^2.30.0",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "framer-motion": "^10.16.5",
     "genshin-data": "^0.36.0",

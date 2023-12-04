@@ -9,12 +9,14 @@ import { encodeBuilds as encodeMihomoBuilds } from "@utils/mihomo_enc";
 import { PlayerDataAPI as EnkaPlayerDataAPI } from "interfaces/enka";
 import { PlayerDataAPI as MiHomoPlayerDataAPI } from "interfaces/mihomo";
 
+const submitHSRUIDSchema = z.object({
+  uid: z.string().min(1),
+});
+
 export async function submitHSRUID(prevState: any, formData: FormData) {
   console.log("submitHSRUID", { prevState, formData });
-  const schema = z.object({
-    uid: z.string().min(1),
-  });
-  const parse = schema.safeParse({
+
+  const parse = submitHSRUIDSchema.safeParse({
     uid: formData.get("uid"),
   });
 
@@ -198,12 +200,12 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   }
 }
 
+const submitGenshinUIDSchema = z.object({
+  uid: z.string().min(1),
+});
 export async function submitGenshinUID(prevState: any, formData: FormData) {
   console.log("submitGenshinUID", { prevState, formData });
-  const schema = z.object({
-    uid: z.string().min(1),
-  });
-  const parse = schema.safeParse({
+  const parse = submitGenshinUIDSchema.safeParse({
     uid: formData.get("uid") || prevState?.uid,
   });
 
@@ -393,4 +395,91 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       message: "Error, please try again later",
     };
   }
+}
+
+const calculateResinSchema = z.object({
+  currentResin: z.number().min(0),
+  desiredResin: z.number().min(0),
+  type: z.enum(["maxResin", "desiredResin"]),
+});
+export async function calculateResin(prevState: any, formData: FormData) {
+  console.log("calculateResin", {
+    prevState,
+    formData: JSON.stringify(Object.fromEntries(formData)),
+  });
+  const parse = calculateResinSchema.safeParse({
+    currentResin: Number(formData.get("currentResin")),
+    desiredResin: Number(formData.get("desiredResin")),
+    type: formData.get("type"),
+  });
+
+  if (!parse.success) {
+    return { message: parse.error.message };
+  }
+
+  const originalResin = {
+    id: "original_resin",
+    image: "/resin.webp",
+    label: "Original Resin",
+    value: 8,
+  };
+  const condensedResin = {
+    id: "condensed_resin",
+    image: "/condensed_resin.png",
+    label: "Condensed Resin",
+    value: 40,
+  };
+  const maxResin = 160;
+
+  // 8 minute per resin * 60 seconds * 1000 millisec
+  let minutePerResin = originalResin.value * 60 * 1000;
+
+  const missingResin = maxResin - parse.data.currentResin;
+  const desiredResin = parse.data.desiredResin;
+
+  function calculateCondensedResin(nResin: number) {
+    if (condensedResin.value % nResin == 0) {
+      return {
+        resin: 0,
+        condensedResin: Math.floor(nResin / condensedResin.value),
+      };
+    } else {
+      return {
+        resin: nResin % condensedResin.value,
+        condensedResin: Math.floor(nResin / condensedResin.value),
+      };
+    }
+  }
+
+  const resinTypeOutput = parse.data.type;
+
+  const output = {
+    ...(resinTypeOutput === "maxResin"
+      ? {
+          resin: missingResin,
+          condensed: calculateCondensedResin(missingResin),
+        }
+      : {
+          resin: desiredResin,
+          condensed: calculateCondensedResin(desiredResin),
+        }),
+    millisecondsToWait:
+      resinTypeOutput === "maxResin"
+        ? missingResin * minutePerResin
+        : desiredResin * minutePerResin,
+  };
+
+  return {
+    type: resinTypeOutput,
+    result: {
+      originalResin,
+      condensedResin,
+      resin: output.resin,
+      condensed: {
+        resin: output.condensed.resin,
+        condensedResin: output.condensed.condensedResin,
+      },
+      millisecondsToWait: output.millisecondsToWait,
+    },
+  };
 }

@@ -23,7 +23,6 @@ import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import {
-  getCharacterBuild,
   getCharacterMostUsedBuild,
   getCharacterOfficialBuild,
   getData,
