@@ -1,10 +1,12 @@
+"use client";
+
 import { useMobileDetect } from "@hooks/use-mobile-detect";
 
 interface Props {
-  mapIds: string[];
+  ids: string[];
 }
 
-const GIMapEmbed = ({ mapIds }: Props) => {
+const GIMapEmbed = ({ ids }: Props) => {
   const { isMobile, isLargeDesktop, innerWidth } = useMobileDetect();
   let sizes = {
     width: isMobile ? innerWidth - 30 : 560,
@@ -19,12 +21,11 @@ const GIMapEmbed = ({ mapIds }: Props) => {
   }
   return (
     <iframe
-      src={`https://genshin-impact-map.appsample.com/location?no_heading=1&names=${mapIds.join(
+      src={`https://genshin-impact-map.appsample.com/location?no_heading=1&names=${ids.join(
         ","
       )}`}
       height={sizes.height}
       width={sizes.width}
-      frameBorder="0"
     />
   );
 };

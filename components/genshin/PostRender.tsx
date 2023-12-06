@@ -55,7 +55,15 @@ export const componentsList = [
     component: FrstAds,
     custom: true,
     example: `<FrstAds placementName="genshinbuilds_billboard_atf" />`,
-  }
+  },
+  {
+    name: "GenshinMapEmbed",
+    component: dynamic(() => import("@components/genshin/GIMapEmbed"), {
+      ssr: false,
+    }),
+    custom: true,
+    example: `\n<GIMapEmbed ids={["anemoculus", "geoculus"]} />\nMore information here: https://genshin-impact-map.appsample.com/help/embed\n`,
+  },
 ];
 
 const components = componentsList.reduce(
