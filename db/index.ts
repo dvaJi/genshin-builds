@@ -1,16 +1,10 @@
-import { createRequire } from "node:module";
+import { Client } from "@planetscale/database";
 import { PrismaPlanetScale } from "@prisma/adapter-planetscale";
 import { PrismaClient } from "@prisma/client";
-
-const require = createRequire(import.meta.url);
-const { Client } = require("@planetscale/database");
-
-const client = new Client({ url:  process.env.DATABASE_URL  })
-const adapter = new PrismaPlanetScale(client);
-
-// Workaround for v5.6.0: https://github.com/prisma/prisma/discussions/21347?sort=new#discussioncomment-7576783
-
 export * from "@prisma/client";
+
+const client = new Client({ url: process.env.DATABASE_URL });
+const adapter = new PrismaPlanetScale(client);
 
 let prisma: PrismaClient;
 
