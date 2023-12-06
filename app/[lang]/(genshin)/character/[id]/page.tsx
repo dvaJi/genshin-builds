@@ -7,6 +7,7 @@ import GenshinData, {
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
+import { BreadcrumbList, WithContext } from "schema-dts";
 
 import { genPageMetadata } from "@app/seo";
 import CharacterAscencionMaterials from "@components/genshin/CharacterAscencionMaterials";
@@ -195,8 +196,43 @@ export default async function GenshinCharacterPage({ params }: Props) {
     require(`../../../../../_content/genshin/data/teams.json`)[character.id] ||
     [];
 
+  const jsonLd: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Genshin Impact",
+        item: `https://genshin-builds.com/${params.lang}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: t({
+          id: "characters",
+          defaultMessage: "Characters",
+        }),
+        item: `https://genshin-builds.com/${params.lang}/characters`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: character.name,
+        item: `https://genshin-builds.com/${params.lang}/character/${character.id}`,
+      },
+    ],
+  };
+
   return (
     <div className="relative">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      ></script>
       <div className="relative z-20 mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
           <div

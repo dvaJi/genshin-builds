@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BreadcrumbList, WithContext } from "schema-dts";
 
 import { genPageMetadata } from "@app/seo";
 import WeaponStats from "./stats";
@@ -115,8 +116,43 @@ export default async function GenshinWeaponPage({ params }: Props) {
     .filter((build: any) => build.weapons.includes(weapon.id))
     .map((build: any) => build.character);
 
+  const jsonLd: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Genshin Impact",
+        item: `https://genshin-builds.com/${params.lang}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: t({
+          id: "weapons",
+          defaultMessage: "weapons",
+        }),
+        item: `https://genshin-builds.com/${params.lang}/weapons`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: weapon.name,
+        item: `https://genshin-builds.com/${params.lang}/weapon/${weapon.id}`,
+      },
+    ],
+  };
+
   return (
     <div className="relative">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      ></script>
       {weapon.beta ? (
         <div className="flex items-center justify-center">
           <div className="rounded border border-red-400/50 bg-red-600/50 p-1 text-center text-white">
