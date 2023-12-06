@@ -2,7 +2,6 @@ import clsx from "clsx";
 import type { Artifact } from "genshin-data";
 import dynamic from "next/dynamic";
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
@@ -28,7 +27,7 @@ const ArtifactCard = ({
       <div className="flex px-4">
         <div className="mr-3 flex items-center">
           {isChooseTwo ? (
-            <span className="rounded bg-vulcan-600 p-1 text-xxs text-slate-300">
+            <span className="whitespace-nowrap rounded bg-vulcan-600 p-1 text-xxs text-slate-300">
               {isChooseTwo
                 ? t({ id: "choose_2", defaultMessage: "Choose 2" })
                 : ""}
@@ -54,7 +53,7 @@ const ArtifactCard = ({
                           "border-b": i + 1 < artifact.children!.length,
                         })}
                       >
-                        <LazyLoadImage
+                        <img
                           src={getUrl(`/artifacts/${ca.id}.png`, 76, 76)}
                           height={32}
                           width={32}
@@ -77,14 +76,12 @@ const ArtifactCard = ({
             >
               <div className="flex max-w-xs flex-row">
                 <div
-                  className="flex flex-shrink-0 items-center justify-center bg-cover p-1"
-                  style={{
-                    backgroundImage: `url(${getUrl(
-                      `/bg_${artifact.max_rarity}star.png`
-                    )})`,
-                  }}
+                  className={clsx(
+                    "flex flex-shrink-0 items-center justify-center bg-cover p-1",
+                    `genshin-bg-rarity-${artifact.max_rarity}`
+                  )}
                 >
-                  <LazyLoadImage
+                  <img
                     src={getUrl(`/artifacts/${artifact.id}.png`, 76, 76)}
                     height={44}
                     width={44}

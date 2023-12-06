@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -59,13 +60,10 @@ const CharacterPortrait = ({
           )}
           {weapon && (
             <div
-              className="absolute bottom-0 left-2/3 translate-x-0 rounded bg-cover opacity-0 transition-all delay-100 group-hover:translate-x-2 group-hover:opacity-100"
-              style={{
-                backgroundImage: `url(${getUrl(
-                  `/bg_${weapon.rarity}star.png`
-                )})`,
-                height: 32,
-              }}
+              className={clsx(
+                "absolute bottom-0 left-2/3 translate-x-0 rounded bg-cover opacity-0 transition-all delay-100 group-hover:translate-x-2 group-hover:opacity-100",
+                `genshin-bg-rarity-${weapon.rarity}`
+              )}
             >
               <LazyLoadImage
                 src={getUrl(`/weapons/${weapon.id}.png`, 32, 32)}

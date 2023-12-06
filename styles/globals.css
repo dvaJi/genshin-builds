@@ -127,6 +127,35 @@
   height: 100%;
 }
 
+.genshin-bg-rarity-0,
+.genshin-bg-rarity-1,
+.genshin-bg-rarity-2,
+.genshin-bg-rarity-3,
+.genshin-bg-rarity-4,
+.genshin-bg-rarity-5 {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.genshin-bg-rarity-0 {
+  background-image: url("https://genshinbuilds.aipurrjects.com/genshin/0-Star.webp");
+}
+.genshin-bg-rarity-1 {
+  background-image: url("https://genshinbuilds.aipurrjects.com/genshin/1-Star.webp");
+}
+.genshin-bg-rarity-2 {
+  background-image: url("https://genshinbuilds.aipurrjects.com/genshin/2-Star.webp");
+}
+.genshin-bg-rarity-3 {
+  background-image: url("https://genshinbuilds.aipurrjects.com/genshin/3-Star.webp");
+}
+.genshin-bg-rarity-4 {
+  background-image: url("https://genshinbuilds.aipurrjects.com/genshin/4-Star.webp");
+}
+.genshin-bg-rarity-5 {
+  background-image: url("https://genshinbuilds.aipurrjects.com/genshin/5-Star.webp");
+}
+
 /* TOF */
 .TOF-bg-SSR {
   @apply bg-yellow-400;

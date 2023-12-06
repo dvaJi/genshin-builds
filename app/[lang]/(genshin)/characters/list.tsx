@@ -104,7 +104,7 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
             type="text"
             placeholder={t({
               id: "search",
-              defaultMessage: "Search",
+              defaultMessage: "Search for a character...",
             })}
             className="my-4 w-full max-w-[400px] rounded-full bg-gray-700 px-4 py-2 text-xl font-semibold text-gray-200 ring-2 ring-gray-500/10 focus:outline-none focus:ring-gray-400"
             value={nameFilter}
@@ -134,14 +134,10 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
               )}
             >
               <div
-                className="group relative overflow-hidden rounded-full border-4 border-vulcan-600/70 bg-cover transition hover:border-vulcan-500"
-                style={{
-                  backgroundImage: `url(${getUrlLQ(
-                    `/bg_${character.rarity}star.png`,
-                    4,
-                    4
-                  )})`,
-                }}
+                className={clsx(
+                  "group relative overflow-hidden rounded-full border-4 border-vulcan-600/70 transition hover:border-vulcan-500",
+                  `genshin-bg-rarity-${character.rarity}`
+                )}
               >
                 <LazyLoadImage
                   className="z-20 scale-110 rounded-full transition group-hover:scale-125"

@@ -5,6 +5,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
+import clsx from "clsx";
 
 interface WeaponCardProps {
   position: number;
@@ -25,10 +26,10 @@ const WeaponCard = ({ position, weapon, refinement }: WeaponCardProps) => {
         </span>
       </div>
       <div
-        className="relative my-1 flex flex-none items-center justify-center rounded bg-cover"
-        style={{
-          backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
-        }}
+        className={clsx(
+          "relative my-1 flex flex-none items-center justify-center rounded bg-cover",
+          `genshin-bg-rarity-${weapon.rarity}`
+        )}
       >
         <LazyLoadImage
           src={getUrl(`/weapons/${weapon.id}.png`, 84, 84)}

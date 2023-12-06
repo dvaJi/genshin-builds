@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { memo, useEffect } from "react";
 
@@ -44,8 +44,7 @@ const Ads = ({ className, adSlot = AD_ARTICLE_SLOT }: AdsProps) => {
   return (
     <div className={className}>
       <ins
-        className="adsbygoogle"
-        style={{ display: "block" }}
+        className="adsbygoogle block"
         data-ad-client={GAD_ID}
         data-adtest={process.env.NODE_ENV === "development" ? "on" : "off"}
         data-ad-slot={adSlot}

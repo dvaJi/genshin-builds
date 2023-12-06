@@ -1,6 +1,6 @@
 {
   "layout": {
-    "title": "Genshin-Builds.com Wiki Database",
+    "title": "Genshin Impact Wiki Database",
     "description": "所有最强角色及其建造排名，按实力、可行性和适用性排列，用于解锁内容。",
     "home": "首页",
     "characters": "角色",
@@ -52,7 +52,7 @@
     "blog": "博客"
   },
   "ascension_planner": {
-    "title": "Genshin-Builds.com Wiki Database",
+    "title": "Genshin Impact Wiki Database",
     "description": "所有最强角色及其建造排名，按实力、可行性和适用性排列，用于解锁内容。",
     "Mon": "星期一",
     "Tue": "星期二",

@@ -114,12 +114,10 @@ export default function WeaponsList({ weapons }: Props) {
               </div>
             )}
             <div
-              className="flex flex-row justify-center rounded-t-lg rounded-br-3xl bg-cover"
-              style={{
-                backgroundImage: `url(${getUrl(
-                  `/bg_${weapon.rarity}star.png`
-                )})`,
-              }}
+              className={clsx(
+                "flex flex-row justify-center rounded-t-lg rounded-br-3xl bg-cover",
+                `genshin-bg-rarity-${weapon.rarity}`
+              )}
             >
               <span>
                 <img

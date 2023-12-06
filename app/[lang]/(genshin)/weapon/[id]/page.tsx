@@ -14,6 +14,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { getCharacterMostUsedBuild, getData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
+import clsx from "clsx";
 import { i18n } from "i18n-config";
 import { Beta } from "interfaces/genshin/beta";
 
@@ -112,9 +113,9 @@ export default async function GenshinWeaponPage({ params }: Props) {
   }
 
   const builds = await getCharacterMostUsedBuild();
-  const recommendedCharacters = Object.values(builds)
-    .filter((build: any) => build.weapons.includes(weapon.id))
-    .map((build: any) => build.character);
+  const recommendedCharacters = Object.entries(builds)
+    .filter(([_, build]: any) => build.weapons.includes(weapon.id))
+    .map(([character]) => character);
 
   const jsonLd: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",
@@ -168,10 +169,10 @@ export default async function GenshinWeaponPage({ params }: Props) {
       <div className="mb-4 flex items-start justify-between">
         <div className="relative flex flex-wrap items-center px-2 lg:flex-nowrap lg:px-0">
           <div
-            className="relative mr-2 flex-none rounded-lg border border-gray-900 bg-cover lg:mr-5"
-            style={{
-              backgroundImage: `url(${getUrl(`/bg_${weapon.rarity}star.png`)})`,
-            }}
+            className={clsx(
+              "relative mr-2 flex-none rounded-lg border border-gray-900 lg:mr-5",
+              `genshin-bg-rarity-${weapon.rarity}`
+            )}
           >
             <img
               className="h-52 w-52"

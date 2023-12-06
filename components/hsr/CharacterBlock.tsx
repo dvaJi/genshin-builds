@@ -26,7 +26,6 @@ function CharacterBlock({ character }: Props) {
           alt={character.path.name}
           width="60"
           height="54"
-          style={{ width: 30 }}
           loading="lazy"
           className="w-[30px]"
         />
@@ -35,7 +34,6 @@ function CharacterBlock({ character }: Props) {
           alt={character.combat_type.name}
           width="60"
           height="54"
-          style={{ width: 30 }}
           loading="lazy"
           className="w-[30px]"
         />

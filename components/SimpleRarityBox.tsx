@@ -1,6 +1,5 @@
 "use client";
 
-import { getUrl } from "@lib/imgUrl";
 import clsx from "clsx";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -32,13 +31,11 @@ const SimpleRarityBox = ({
     <>
       <div
         className={clsx(
-          `group relative m-1 block overflow-hidden rounded bg-cover text-center`,
+          `group relative m-1 block overflow-hidden rounded text-center`,
           imgAdditionalStyle,
+          `genshin-bg-rarity-${rarity}`,
           className
         )}
-        style={{
-          backgroundImage: `url('${getUrl(`/${rarity}-Star.webp`, 72, 72)})'`,
-        }}
       >
         <LazyLoadImage
           className="group-hover:opacity-70"
@@ -50,10 +47,7 @@ const SimpleRarityBox = ({
         />
 
         {!nameSeparateBlock && name && (
-          <span
-            className="absolute bottom-0 inline-block rounded rounded-t-none bg-gray-900 bg-opacity-90 p-1 text-xs opacity-80 transition-all group-hover:text-white group-hover:opacity-100"
-            style={{ width: "calc(100% + 2px)", left: -2 }}
-          >
+          <span className="w-[calc(100% + 2px)] absolute bottom-0 left-[-2] inline-block rounded rounded-t-none bg-gray-900 bg-opacity-90 p-1 text-xs opacity-80 transition-all group-hover:text-white group-hover:opacity-100">
             {name}
           </span>
         )}

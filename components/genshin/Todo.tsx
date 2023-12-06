@@ -262,10 +262,10 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
                     <div className="mb-2 flex min-h-[104px] items-center justify-between">
                       <div className="ml-2 flex justify-center">
                         <div
-                          className="h-24 w-24 overflow-hidden rounded-md bg-cover shadow-md"
-                          style={{
-                            backgroundImage: getUrl(`/bg_${todo[0].r}star.png`),
-                          }}
+                          className={clsx(
+                            "h-24 w-24 overflow-hidden rounded-md bg-cover shadow-md",
+                            `genshin-bg-rarity-${todo[0].r}`
+                          )}
                         >
                           <img
                             draggable="false"

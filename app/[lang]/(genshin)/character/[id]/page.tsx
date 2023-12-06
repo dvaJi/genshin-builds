@@ -236,17 +236,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
       <div className="relative z-20 mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
           <div
-            className="relative mr-2 flex-none rounded-full border-2 border-gray-900/80 bg-cover shadow-lg lg:mr-5"
-            style={{
-              backgroundImage: `url('${getUrl(
-                `/bg_${character.rarity}star.png`,
-                32,
-                32
-              )})'`,
-            }}
+            className={clsx(
+              "relative mr-2 flex-none rounded-xl border-2 border-gray-900/80",
+              `genshin-bg-rarity-${character.rarity}`
+            )}
           >
             <img
-              className={clsx("h-40 w-40 rounded-full")}
+              className="h-40 w-40"
               src={getUrl(`/characters/${character.id}/image.png`, 160, 160)}
               alt={character.name}
             />

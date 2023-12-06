@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -19,10 +20,10 @@ const FoodCard = ({ item }: FoodCardProps) => {
     <div className="mb-2 flex flex-col rounded border border-vulcan-700 bg-vulcan-800">
       <div className="flex h-full flex-row">
         <div
-          className="relative flex flex-none items-center justify-center rounded rounded-br-none rounded-tr-none bg-cover"
-          style={{
-            backgroundImage: `url(${getUrl(`/bg_${item.rarity}star.png`)})`,
-          }}
+          className={clsx(
+            "relative flex flex-none items-center justify-center rounded rounded-br-none rounded-tr-none bg-cover",
+            `genshin-bg-rarity-${item.rarity}`
+          )}
         >
           <LazyLoadImage
             src={getUrl(`/food/${item.id}_${item.type}.png`, 100, 100)}

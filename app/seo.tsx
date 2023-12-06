@@ -21,7 +21,7 @@ export function genPageMetadata({
   ...rest
 }: PageSEOProps): Metadata {
   const siteMetadata = {
-    title: "Genshin-Builds.com Wiki Database",
+    title: "Genshin Impact Wiki Database",
     description:
       "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",
     socialBanner: "https://genshin-builds.com/icons/meta-image.jpg",
