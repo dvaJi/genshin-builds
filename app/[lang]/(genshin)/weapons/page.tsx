@@ -18,7 +18,6 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
-export const runtime = "edge";
 
 export async function generateStaticParams() {
   const langs = i18n.locales;
