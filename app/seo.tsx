@@ -52,11 +52,17 @@ export function genPageMetadata({
       images: image ? [image] : [siteMetadata.socialBanner],
     },
     alternates: {
-      canonical: redirectedPathName("en"),
+      canonical: redirectedPathName(locale ?? "en"),
       languages: {
         ...i18n.locales.reduce(
           (acc, locale) => {
-            acc[locale] = redirectedPathName(locale);
+            let hreflang: string = locale;
+
+            if (locale === "cn") {
+              hreflang = "zh-CN";
+            }
+
+            acc[hreflang] = redirectedPathName(locale);
             return acc;
           },
           {} as Record<string, string>
