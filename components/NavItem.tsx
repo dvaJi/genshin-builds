@@ -88,20 +88,15 @@ function NavItem({ route, position, onClick }: Props) {
                   {route.children.map((child) => (
                     <Link
                       key={child.id}
-                      className="mb-2 flex items-center rounded-sm border border-transparent text-sm text-slate-200 opacity-80 transition-all hover:opacity-100 md:mb-0 md:ml-0 md:items-start md:p-4 md:transition-none"
+                      className="mb-2 rounded-sm text-sm text-slate-200 transition-colors hover:bg-vulcan-900 md:p-4"
                       href={`/${locale}${child.href}`}
                     >
-                      <div className="mr-1 scale-75 transform rounded bg-vulcan-600 p-2 text-white md:mr-4 md:scale-100">
-                        {child.icon}
+                      <div className="md:font-semibold capitalize">
+                        {t({ id: child.id, defaultMessage: child.name })}
                       </div>
-                      <div>
-                        <p className="mb-0 leading-4 md:font-semibold">
-                          {t({ id: child.id, defaultMessage: child.name })}
-                        </p>
-                        <p className="mt-0.5 hidden text-xs text-slate-500 md:block">
-                          {t({ id: `${child.id}_desc`, defaultMessage: "" })}
-                        </p>
-                      </div>
+                      <p className="hidden text-xs text-slate-400 md:block">
+                        {t({ id: `${child.id}_desc`, defaultMessage: "" })}
+                      </p>
                     </Link>
                   ))}
                 </div>
