@@ -363,7 +363,10 @@
     "back": "Retour au Blog"
   },
   "changelog": {
-    "title": "Journal des Modifications de Genshin Impact - v{version}",
-    "description": "Découvrez toutes les modifications dans le jeu dans la version v{version}"
+    "title": "Mise à jour Genshin Impact {version} : Dernières Fonctionnalités, Changements et Améliorations",
+    "description": "Découvrez toutes les nouvelles aventures dans Genshin Impact {version} ! Notre guide complet couvre les dernières fonctionnalités, les mises à jour de personnages et les améliorations de gameplay. Restez en avance à Teyvat grâce au journal des changements détaillé de la dernière version.",
+    "changelog": "Explorez les Nouvelles Fonctionnalités Passionnantes de Genshin Impact Version {version}",
+    "changelog_description": "Un regard détaillé sur les améliorations et ajouts que la Version {version} apporte à votre expérience Genshin Impact, y compris de nouveaux personnages, quêtes et mécaniques de jeu.",
+    "version_selecter": "Version sélectionnée :"
   }
 }

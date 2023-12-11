@@ -362,7 +362,10 @@
     "back": "Back to Blog"
   },
   "changelog": {
-    "title": "Genshin Impact Changelog - v{version}",
-    "description": "Discover all the changes in the game in v{version}"
+    "title": "Genshin Impact {version} Update: Latest Features, Changes, and Improvements",
+    "description": "Discover all the new adventures in Genshin Impact {version}! Our comprehensive guide covers the latest features, character updates, and gameplay enhancements. Stay ahead in Teyvat with the newest version's detailed changelog.",
+    "changelog": "Explore the Exciting New Features in Genshin Impact Version {version}",
+    "changelog_description": "A detailed look into the enhancements and additions that Version {version} brings to your Genshin Impact experience, including new characters, quests, and gameplay mechanics.",
+    "version_selecter": "Version selected:"
   }
 }

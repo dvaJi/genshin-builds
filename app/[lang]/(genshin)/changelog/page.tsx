@@ -7,7 +7,7 @@ import ChangelogVersion from "./view";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getData } from "@lib/localData";
+import { getRemoteData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
 import { i18n } from "i18n-config";
 import { Changelog } from "interfaces/genshin/changelog";
@@ -38,19 +38,23 @@ export async function generateMetadata({
   const { t, locale } = await useTranslations(
     params.lang,
     "genshin",
-    "banners_weapons"
+    "changelog"
   );
-  const changelog = await getData<Changelog[]>("genshin", "changelog");
+  const changelog = (
+    await getRemoteData<Changelog[]>("genshin", "changelog")
+  ).filter((c) => !c.beta);
   const currentVersion = changelog[changelog.length - 1];
 
   const title = t({
     id: "title",
-    defaultMessage: "Genshin Impact Changelog - {version}",
+    defaultMessage:
+      "Genshin Impact {version} Update: Latest Features, Changes, and Improvements",
     values: { version: currentVersion.version },
   });
   const description = t({
     id: "description",
-    defaultMessage: "Discover all the changes in the game in {version}",
+    defaultMessage:
+      "Discover all the new adventures in Genshin Impact {version}! Our comprehensive guide covers the latest features, character updates, and gameplay enhancements. Stay ahead in Teyvat with the newest version's detailed changelog.",
     values: { version: currentVersion.version },
   });
 
@@ -66,7 +70,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
   const { langData } = await useTranslations(
     params.lang,
     "genshin",
-    "banners_weapons"
+    "changelog"
   );
 
   const genshinData = new GenshinData({ language: langData as any });
@@ -86,7 +90,9 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     select: ["id", "name"],
   });
 
-  const changelog = await getData<Changelog[]>("genshin", "changelog");
+  const changelog = (
+    await getRemoteData<Changelog[]>("genshin", "changelog")
+  ).filter((c) => !c.beta);
 
   const materialsMap = await getAllMaterialsMap(genshinData);
 
@@ -144,10 +150,6 @@ export default async function GenshinBannerWeapons({ params }: Props) {
         tcgMap={tcgMap}
         weaponsMap={weaponsMap}
         locale={params.lang}
-      />
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
       />
     </div>
   );

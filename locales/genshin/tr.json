@@ -362,7 +362,10 @@
     "back": "Bloğa Geri Dön"
   },
   "changelog": {
-    "title": "Genshin Impact Güncelleme Notları - v{versiyon}",
-    "description": "v{versiyon} sürümünde oyundaki tüm değişiklikleri keşfedin"
+    "title": "Genshin Impact {version} Güncellemesi: En Son Özellikler, Değişiklikler ve İyileştirmeler",
+    "description": "Genshin Impact {version} ile yeni maceraları keşfedin! Kapsamlı rehberimiz en son özellikleri, karakter güncellemelerini ve oyun deneyimini geliştirmelerini kapsar. En yeni sürümün ayrıntılı güncelleme kaydı ile Teyvat'ta önde olun.",
+    "changelog": "Genshin Impact {version} Sürümünde Yeni Özellikleri Keşfedin",
+    "changelog_description": "Sürüm {version}'ün Genshin Impact deneyiminize getirdiği geliştirmeleri ve eklemeleri ayrıntılı bir şekilde inceleyin, yeni karakterler, görevler ve oyun mekaniği dahil.",
+    "version_selecter": "Seçilen Sürüm:"
   }
 }

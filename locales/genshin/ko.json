@@ -362,7 +362,10 @@
     "back": "블로그로 돌아가기"
   },
   "changelog": {
-    "title": "Genshin Impact 변경 내역 - v{version}",
-    "description": "버전 v{version}에서 게임의 모든 변경 사항을 발견하세요."
+    "title": "Genshin Impact {version} 업데이트: 최신 기능, 변경 사항 및 개선 사항",
+    "description": "Genshin Impact {version}에서의 새로운 모험을 모두 발견하세요! 저희 포괄적인 가이드는 최신 기능, 캐릭터 업데이트 및 게임 향상 사항을 다룹니다. 최신 버전의 상세 변경 내역으로 Teyvat에서 앞서 나아가세요.",
+    "changelog": "Genshin Impact 버전 {version}의 흥미로운 새로운 기능 탐색하기",
+    "changelog_description": "버전 {version}이 Genshin Impact 경험에 가져오는 개선 사항 및 추가 사항에 대한 상세한 살펴보기, 새로운 캐릭터, 퀘스트 및 게임 플레이 메커닉을 포함합니다.",
+    "version_selecter": "선택한 버전:"
   }
 }

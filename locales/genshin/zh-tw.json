@@ -362,7 +362,10 @@
     "back": "返回部落格"
   },
   "changelog": {
-    "title": "原神更新日誌 - v{version}",
-    "description": "發現版本 v{version} 中遊戲的所有變更"
+    "title": "原神 {version} 更新：最新功能、變更和改進",
+    "description": "發現原神 {version} 中的所有新冒險！我們全面的指南涵蓋了最新的功能、角色更新和遊戲改進。通過最新版本的詳細變更記錄，始終走在提瓦特的前沿。",
+    "changelog": "探索原神 {version} 版本的令人興奮新功能",
+    "changelog_description": "詳細了解版本 {version} 帶給您的原神體驗的改進和新增內容，包括新角色、任務和遊戲機制。",
+    "version_selecter": "已選取版本："
   }
 }

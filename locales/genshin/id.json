@@ -362,7 +362,10 @@
     "back": "Kembali ke Blog"
   },
   "changelog": {
-    "title": "Catatan Perubahan Genshin Impact - v{version}",
-    "description": "Temukan semua perubahan dalam permainan pada versi v{version}"
+    "title": "Pembaruan Genshin Impact {version}: Fitur Terbaru, Perubahan, dan Peningkatan",
+    "description": "Temukan semua petualangan baru dalam Genshin Impact {version}! Panduan komprehensif kami mencakup fitur terbaru, pembaruan karakter, dan peningkatan gameplay. Tetap unggul di Teyvat dengan catatan perubahan detail versi terbaru.",
+    "changelog": "Jelajahi Fitur Baru yang Menarik dalam Genshin Impact Versi {version}",
+    "changelog_description": "Tinjauan mendalam tentang peningkatan dan penambahan yang Versi {version} hadirkan ke pengalaman Genshin Impact Anda, termasuk karakter baru, misi, dan mekanika gameplay.",
+    "version_selecter": "Versi yang Dipilih:"
   }
 }

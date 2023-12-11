@@ -1,17 +1,17 @@
 import GenshinData from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
+import { notFound, redirect } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import ChangelogVersion from "../view";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getData } from "@lib/localData";
+import { getRemoteData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
 import { i18n } from "i18n-config";
 import { Changelog } from "interfaces/genshin/changelog";
-import { notFound } from "next/navigation";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -22,11 +22,11 @@ type Props = {
   params: { lang: string; version: string };
 };
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const langs = i18n.locales;
-  const changelogs = await getData<Changelog[]>("genshin", "changelog");
+  const changelogs = await getRemoteData<Changelog[]>("genshin", "changelog");
 
   return langs
     .map((lang) => changelogs.map((c) => ({ lang, version: c.version })))
@@ -42,19 +42,21 @@ export async function generateMetadata({
     "genshin",
     "changelog"
   );
-  const changelog = await getData<Changelog[]>("genshin", "changelog");
+  const changelog = await getRemoteData<Changelog[]>("genshin", "changelog");
   const currentVersion = changelog.find((c) => c.version === params.version);
 
   if (!currentVersion) return undefined;
 
   const title = t({
     id: "title",
-    defaultMessage: "Genshin Impact Changelog - {version}",
+    defaultMessage:
+      "Genshin Impact {version} Update: Latest Features, Changes, and Improvements",
     values: { version: currentVersion.version },
   });
   const description = t({
     id: "description",
-    defaultMessage: "Discover all the changes in the game in {version}",
+    defaultMessage:
+      "Discover all the new adventures in Genshin Impact {version}! Our comprehensive guide covers the latest features, character updates, and gameplay enhancements. Stay ahead in Teyvat with the newest version's detailed changelog.",
     values: { version: currentVersion.version },
   });
 
@@ -72,12 +74,15 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     "genshin",
     "changelog"
   );
-  const changelog = await getData<Changelog[]>("genshin", "changelog");
+  const changelog = await getRemoteData<Changelog[]>("genshin", "changelog");
 
   const cl = changelog.find((c) => c.version === params.version);
 
   if (!cl) {
     return notFound();
+  }
+  if (cl.current) {
+    return redirect(`/${params.lang}/changelog`);
   }
 
   const genshinData = new GenshinData({ language: langData as any });

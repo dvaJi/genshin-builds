@@ -362,7 +362,10 @@
     "back": "Voltar ao Blog"
   },
   "changelog": {
-    "title": "Registro de Mudanças do Genshin Impact - v{version}",
-    "description": "Descubra todas as mudanças no jogo na versão v{version}"
+    "title": "Atualização Genshin Impact {version}: Novos Recursos, Mudanças e Melhorias",
+    "description": "Descubra todas as novas aventuras em Genshin Impact {version}! Nosso guia abrangente aborda os recursos mais recentes, atualizações de personagens e melhorias na jogabilidade. Fique à frente em Teyvat com o registro detalhado da versão mais recente.",
+    "changelog": "Explore as Novas Funcionalidades Empolgantes na Versão {version} de Genshin Impact",
+    "changelog_description": "Um olhar detalhado sobre as melhorias e adições que a Versão {version} traz para sua experiência em Genshin Impact, incluindo novos personagens, missões e mecânicas de jogabilidade.",
+    "version_selecter": "Versão selecionada:"
   }
 }
