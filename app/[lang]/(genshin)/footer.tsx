@@ -38,6 +38,7 @@ export default function GenshinFooter() {
               <AiOutlineTwitter className="inline group-hover:text-blue-400" />{" "}
               <span className="text-base">Twitter</span>
             </a>
+            <button id="pmLink">Privacy Manager</button>
           </div>
 
           <div className="flex flex-1 flex-col">

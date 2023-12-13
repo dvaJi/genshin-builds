@@ -169,3 +169,16 @@
 .TOF-bg-N {
   @apply bg-green-400;
 }
+
+#pmLink {
+  visibility: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+#pmLink:hover {
+  visibility: visible;
+  color: grey;
+}
