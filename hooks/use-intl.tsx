@@ -1,20 +1,22 @@
-import useIntlContext from "./use-intl-context";
-import { templateReplacement } from "@utils/template-replacement";
 import { localeToLang } from "@utils/locale-to-lang";
+import { templateReplacement } from "@utils/template-replacement";
 import { IntlMessage } from "./intl-context";
+import useIntlContext from "./use-intl-context";
 
 export interface IntlFormatProps {
   id: string;
-  defaultMessage: string;
+  defaultMessage?: string;
   values?: Record<string, string>;
 }
 
 export interface useIntlResponse {
-  t: (props: IntlFormatProps) => string;
-  tfn: (props: IntlFormatProps) => string;
+  t: (input: InputType, values?: Record<string, string>) => string;
+  tfn: (input: InputType, values?: Record<string, string>) => string;
   locale: string;
   localeGI: string;
 }
+
+type InputType = IntlFormatProps | string;
 
 const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
   let message: unknown = dict;
@@ -38,6 +40,14 @@ const useIntl = (namespace?: string): useIntlResponse => {
 
   const message = resolvePath(dict, namespace, locale);
 
+  const format = (input: InputType, values?: Record<string, string>) => {
+    if (typeof input === "string") {
+      return formatFn({ id: input, values });
+    }
+
+    return formatFn(input);
+  };
+
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
     if (message && message[id]) {
       return values ? templateReplacement(message[id], values) : message[id];
@@ -56,11 +66,11 @@ const useIntl = (namespace?: string): useIntlResponse => {
     }
 
     return values
-      ? templateReplacement(defaultMessage, values)
-      : defaultMessage;
+      ? templateReplacement(defaultMessage ?? id, values)
+      : defaultMessage ?? id;
   };
 
-  return { t: formatFn, tfn: formatFn, locale, localeGI: localeToLang(locale) };
+  return { t: format, tfn: format, locale, localeGI: localeToLang(locale) };
 };
 
 export default useIntl;

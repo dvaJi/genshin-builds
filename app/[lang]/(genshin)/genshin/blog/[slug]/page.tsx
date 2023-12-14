@@ -35,7 +35,7 @@ export async function generateMetadata({
   }
 
   const { title, description, image } = post;
-  const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
+  const ogImage = `https://genshin-builds.com/api/og?image=genshin/blog/${image}&title=${title}&description=${description}`;
 
   return genPageMetadata({
     title,

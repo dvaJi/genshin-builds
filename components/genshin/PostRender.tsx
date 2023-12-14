@@ -62,7 +62,7 @@ export const componentsList = [
       ssr: false,
     }),
     custom: true,
-    example: `\n<GIMapEmbed ids={["anemoculus", "geoculus"]} />\nMore information here: https://genshin-impact-map.appsample.com/help/embed\n`,
+    example: `\n<GenshinMapEmbed ids={["anemoculus", "geoculus"]} />\nMore information here: https://genshin-impact-map.appsample.com/help/embed\n`,
   },
 ];
 

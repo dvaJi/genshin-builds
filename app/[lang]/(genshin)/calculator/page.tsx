@@ -3,20 +3,23 @@ import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import { CharacterCalculator } from "./character-calculator";
+import { FateCountCalculatorForm } from "./fate-count-calculator";
+import { FatePriceCalculatorForm } from "./fate-price-calculator";
+import { FriendshipExpCalculatorForm } from "./friendship-exp-calculator";
+import { LevelUpTable } from "./levelup-table";
+import { ResinCalculatorForm } from "./resin-calculator-form";
+import { ResinTable } from "./resin-table";
+import { WeaponCalculator } from "./weapon-calculator";
 
-import CharacterCalculator from "@components/genshin/CharacterCalculator";
-import WeaponCalculator from "@components/genshin/WeaponCalculator";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { i18n } from "i18n-config";
-import { ResinCalculatorForm } from "./resin-calculator-form";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
   ssr: false,
 });
-
-export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   const langs = i18n.locales;
@@ -74,13 +77,23 @@ export default async function GenshinCalculator({ params }: Props) {
     })
   ).filter((w) => w.rarity > 2);
 
+  const dict = {
+    quantity: t("quantity"),
+    time: t("time"),
+    original_resin: t("original_resin"),
+    adventurers_experience: t("adventurers_experience"),
+    heros_wit: t("heros_wit"),
+    items: t("items"),
+    level: t("level"),
+    mora: t("mora"),
+    wanderes_advice: t("wanderers_advice"),
+    wasted: t("wasted"),
+  };
+
   return (
     <div className="w-full">
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({
-          id: "calculator",
-          defaultMessage: "Leaderboard - Top Builds from the Community",
-        })}
+        {t("calculator")}
       </h2>
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <FrstAds
@@ -88,7 +101,10 @@ export default async function GenshinCalculator({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <div>
-        <h1 className="text-xl text-white">Character Calculator</h1>
+        <h3 className="text-xl text-white">
+          {t("character_ascension_calculator")}
+        </h3>
+        <p>{t("character_ascension_calculator_desc")}</p>
       </div>
       <div className="card">
         <CharacterCalculator characters={characters} />
@@ -98,17 +114,60 @@ export default async function GenshinCalculator({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <div className="mt-6">
-        <h1 className="text-xl text-white">Weapon Calculator</h1>
+        <h3 className="text-xl text-white">
+          {t("weapon_ascension_calculator")}
+        </h3>
+        <p>{t("weapon_ascension_calculator_desc")}</p>
       </div>
       <div className="card">
         <WeaponCalculator weapons={weapons} />
       </div>
-      <div className="mt-6">
-        <h1 className="text-xl text-white">Resin Calculator</h1>
-      </div>
-        <ResinCalculatorForm />
       <FrstAds
         placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
+      <div className="mt-6">
+        <h3 className="text-xl text-white">{t("resin_calculator")}</h3>
+        <p>{t("resin_calculator_desc")}</p>
+      </div>
+      <ResinCalculatorForm />
+      <div className="mt-6">
+        <h3 className="text-xl text-white">{t("friendship_exp_calculator")}</h3>
+        <p>{t("friendship_exp_calculator_desc")}</p>
+      </div>
+      <FriendshipExpCalculatorForm />
+      <div className="mt-6">
+        <h3 className="text-xl text-white">{t("fate_price_calculator")}</h3>
+        <p>{t("fate_price_calculator_desc")}</p>
+      </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_2"
+        classList={["flex", "justify-center"]}
+      />
+      <FatePriceCalculatorForm />
+      <div className="mt-6">
+        <h3 className="text-xl text-white">{t("fate_count_calculator")}</h3>
+        <p>{t("fate_count_calculator_desc")}</p>
+      </div>
+      <FateCountCalculatorForm />
+      <div className="flex justify-between gap-4">
+        <LevelUpTable
+          adventurers_experience={dict.adventurers_experience}
+          heros_wit={dict.heros_wit}
+          items={dict.items}
+          level={dict.level}
+          mora={dict.mora}
+          wanderes_advice={dict.wanderes_advice}
+          wasted={dict.wasted}
+        />
+        <ResinTable
+          quantity={dict.quantity}
+          time={dict.time}
+          originalResin={dict.original_resin}
+        />
+      </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_3"
         classList={["flex", "justify-center"]}
       />
     </div>

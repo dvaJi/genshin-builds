@@ -8,10 +8,11 @@ import { languages as tofLanguages } from "tof-builds";
 
 export interface IntlFormatProps {
   id: string;
-  defaultMessage: string;
+  defaultMessage?: string;
   values?: Record<string, string>;
 }
 export type IntlMessage = Record<string, string>;
+type InputType = IntlFormatProps | string;
 
 const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
   let message: unknown = dict;
@@ -77,6 +78,14 @@ async function getTranslations(
   const message = resolvePath(config.messages, namespace, language);
   const common = config.common;
 
+  const format = (input: InputType, values?: Record<string, string>) => {
+    if (typeof input === "string") {
+      return formatFn({ id: input, values });
+    }
+
+    return formatFn(input);
+  };
+
   const formatFn = ({ id, defaultMessage, values }: IntlFormatProps) => {
     if (message && message[id]) {
       return values ? templateReplacement(message[id], values) : message[id];
@@ -93,12 +102,12 @@ async function getTranslations(
     }
 
     return values
-      ? templateReplacement(defaultMessage, values)
-      : defaultMessage;
+      ? templateReplacement(defaultMessage ?? id, values)
+      : defaultMessage ?? id;
   };
 
   return {
-    t: formatFn,
+    t: format,
     messages: config.messages,
     locale,
     language,

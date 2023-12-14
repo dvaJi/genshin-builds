@@ -5,10 +5,10 @@ import type { Character } from "genshin-data";
 import { useCallback, useMemo, useState } from "react";
 import { GiCheckMark } from "react-icons/gi";
 
-import Select from "../Select";
-import SkillLabel from "../SkillLabel";
-import Button from "../ui/Button";
-import Input from "../ui/Input";
+import Select from "@components/Select";
+import SkillLabel from "@components/SkillLabel";
+import Button from "@components/ui/Button";
+import Input from "@components/ui/Input";
 
 import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
@@ -22,7 +22,7 @@ type Props = {
   characters: Character[];
 };
 
-const CharacterCalculator = ({ characters }: Props) => {
+export function CharacterCalculator({ characters }: Props) {
   const [character, setCharacter] = useState<Character>(characters[0]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[13]);
@@ -416,6 +416,4 @@ const CharacterCalculator = ({ characters }: Props) => {
       </div>
     </div>
   );
-};
-
-export default CharacterCalculator;
+}

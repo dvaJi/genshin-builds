@@ -25,7 +25,7 @@ const GIMapEmbed = ({ ids }: Props) => {
         ","
       )}`}
       height={sizes.height}
-      width={sizes.width}
+      className="w-full"
     />
   );
 };

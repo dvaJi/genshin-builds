@@ -21,7 +21,7 @@ const BlogPostCard = ({ post }: Props) => {
       href={`/${locale}/genshin/blog/${post.slug}`}
       className="group mx-auto max-w-md overflow-hidden p-2"
     >
-      <div className="relative aspect-video w-full overflow-hidden object-cover">
+      <div className="relative aspect-video w-full overflow-hidden bg-vulcan-900 object-cover">
         <LazyLoadImage
           src={getImg("genshin", `/blog/${post.image}`, {
             width: 450,

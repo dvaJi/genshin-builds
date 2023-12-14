@@ -5,8 +5,8 @@ import type { Weapon } from "genshin-data";
 import { useCallback, useMemo, useState } from "react";
 import { GiCheckMark } from "react-icons/gi";
 
-import Select from "../Select";
-import Button from "../ui/Button";
+import Select from "@components/Select";
+import Button from "@components/ui/Button";
 
 import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
@@ -20,7 +20,7 @@ type Props = {
   weapons: Weapon[];
 };
 
-const WeaponCalculator = ({ weapons }: Props) => {
+export function WeaponCalculator({ weapons }: Props) {
   const [weapon, setWeapon] = useState<Weapon>(weapons[10]);
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[13]);
@@ -260,6 +260,4 @@ const WeaponCalculator = ({ weapons }: Props) => {
       </div>
     </div>
   );
-};
-
-export default WeaponCalculator;
+}

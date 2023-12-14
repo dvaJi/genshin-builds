@@ -1,15 +1,17 @@
 "use client";
 
-import { calculateResin } from "@app/actions";
-import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
-import { getUrl } from "@lib/imgUrl";
 import dayjs from "dayjs";
 import rTime from "dayjs/plugin/relativeTime";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
+
+import { calculateResin } from "@app/actions";
+import Button from "@components/ui/Button";
+import useIntl from "@hooks/use-intl";
+import { getUrl } from "@lib/imgUrl";
+
 dayjs.extend(rTime);
 
 const CurrentTime = dynamic(() => import("@components/CurrentTime"), {
@@ -42,6 +44,7 @@ function SubmitButton() {
 }
 
 export function ResinCalculatorForm() {
+  const { t } = useIntl("calculator");
   const [type, setType] = useState("maxResin");
   const [state, formAction] = useFormState(calculateResin, initialState);
 
@@ -57,29 +60,31 @@ export function ResinCalculatorForm() {
             {state.message}
           </div>
         )}
-        <div className="flex items-start justify-start">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row md:gap-8">
           <div className="relative flex min-w-[300px] flex-col">
             <input type="hidden" name="type" value={type} />
-            <p className="text-center text-white">Current Resin</p>
+            <p className="text-center text-white">{t("current_resin")}</p>
             <input
               type="number"
               defaultValue={0}
               min={0}
               max={160}
-              placeholder="Current Resin"
+              placeholder={t("current_resin")}
               className="mb-4 w-full max-w-xl rounded border border-vulcan-600 bg-vulcan-900 p-2"
               id="currentResin"
               name="currentResin"
               onChange={() => setType("maxResin")}
               required
             />
-            <p className="text-center text-white">or Desired Resin</p>
+            <p className="text-center text-white">
+              {t("or")} {t("desired_resin")}
+            </p>
             <input
               type="number"
               defaultValue={0}
               min={0}
               max={160}
-              placeholder="Desired Resin"
+              placeholder={t("desired_resin")}
               className="mb-4 w-full max-w-xl rounded border border-vulcan-600 bg-vulcan-900 p-2"
               id="desiredResin"
               name="desiredResin"
@@ -87,7 +92,7 @@ export function ResinCalculatorForm() {
               required
             />
             <p className="text-center text-white">
-              Current Time:{" "}
+              {t("current_time")}:{" "}
               <CurrentTime
                 format={{
                   weekday: "long",
@@ -96,13 +101,10 @@ export function ResinCalculatorForm() {
                   second: "2-digit",
                 }}
               />
-              {/* {currentTime
-                .locale($t("calculator.resin.timeFormat"))
-                .format("dddd HH:mm:ss")} */}
             </p>
           </div>
           {state.result ? (
-            <div className="bg-background block min-w-[300px] rounded-xl p-4 pt-0 xl:inline-block">
+            <div className="block min-w-[300px] rounded-xl bg-vulcan-900 p-4 pt-0 xl:inline-block">
               <table className="w-full">
                 <tr>
                   <td className="border-b border-gray-700 py-1 text-right">
@@ -127,7 +129,7 @@ export function ResinCalculatorForm() {
                   <>
                     <tr>
                       <td colSpan={2} className="pt-2 text-center text-white">
-                        or
+                        {t("or")}
                       </td>
                     </tr>
                     <tr>
@@ -175,15 +177,14 @@ export function ResinCalculatorForm() {
                 ) : null}
                 <tr>
                   <td className="text-red-400" colSpan={2}>
-                    Will be replenished at:{" "}
-                    {dayjs()
-                      .add(state.result.millisecondsToWait, "milliseconds")
-                      .format("dddd HH:mm:ss")}{" "}
-                    (
-                    {dayjs()
-                      .add(state.result.millisecondsToWait, "milliseconds")
-                      .fromNow()}
-                    )
+                    {t("replenished_at", {
+                      timeToWait: dayjs()
+                        .add(state.result.millisecondsToWait, "milliseconds")
+                        .format("dddd HH:mm:ss"),
+                      relativeTimeToWait: dayjs()
+                        .add(state.result.millisecondsToWait, "milliseconds")
+                        .fromNow(),
+                    })}
                   </td>
                 </tr>
               </table>
