@@ -54,7 +54,7 @@ export async function generateMetadata({
 }
 
 export default async function GenshinTierlistWeapons({ params }: Props) {
-  const { t, langData } = await useTranslations(
+  const { t, langData, locale } = await useTranslations(
     params.lang,
     "genshin",
     "leaderboard"
@@ -89,7 +89,7 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
       <div className="text-center text-sm">
         This section is still in development.
       </div>
-      <LeaderboardWrapper characters={characters} />
+      <LeaderboardWrapper characters={characters} locale={locale} />
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}

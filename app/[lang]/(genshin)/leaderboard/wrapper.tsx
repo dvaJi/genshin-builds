@@ -1,9 +1,9 @@
 "use client";
 
-import { PaginationState } from "@tanstack/react-table";
 import type { Character } from "genshin-data";
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import useSWR from "swr";
 
@@ -20,42 +20,31 @@ const LeaderBoardBuildsTable = dynamic(
 
 type Props = {
   characters: Character[];
+  locale: string;
 };
 
 type Filters = {
   characters: string[];
 };
 
-export default function LeaderboardWrapper({ characters }: Props) {
-  const lastIdRef = useRef<string | null>(null);
-  const filters = useRef<Filters>({ characters: [] });
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  return await res.json();
+}
+
+export default function LeaderboardWrapper({ characters, locale }: Props) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const lastId = searchParams.get("lastId") || "";
+  const [filters, setFilters] = useState<Filters>({ characters: [] });
   const [characterFilter, setCharacterFilter] = useState<string[]>([]);
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 20,
-  });
   const { localeGI } = useIntl("leaderboard");
   const { data, error } = useSWR<(Build & { player: Profile })[]>(
-    `/api/genshin/leaderboard?lang=${localeGI}&limit=${
-      pagination.pageIndex
-    }&characters=${filters.current.characters.join(",")}`,
+    `/api/genshin/leaderboard?lang=${localeGI}&characters=${filters.characters.join(
+      ","
+    )}&lastID=${lastId}`,
     fetcher
   );
-
-  useEffect(() => {
-    if (data && data.length > 0) {
-      lastIdRef.current = data[data.length - 1]._id;
-    }
-  }, [data]);
-
-  async function fetcher(url: string) {
-    const query =
-      lastIdRef.current && pagination.pageIndex !== 0
-        ? `&lastID=${lastIdRef.current}`
-        : "";
-    const res = await fetch(url + query);
-    return await res.json();
-  }
 
   const updateCharactersFilter = (optionId: string) => {
     /// Check if the option is already selected
@@ -70,16 +59,24 @@ export default function LeaderboardWrapper({ characters }: Props) {
     }
   };
 
+  function nextPage() {
+    if (data && data.length > 0) {
+      router.push(`/${locale}/leaderboard?lastId=${data[data.length - 1]._id}`);
+    }
+  }
+
+  function previousPage() {
+    router.back();
+  }
+
   function handleApplyFilters() {
-    filters.current.characters = characterFilter.map((id) => {
-      const ch = characters.find((c) => c.id === id);
-      return ch?._id.toString() ?? "";
+    setFilters({
+      characters: characterFilter.map((id) => {
+        const ch = characters.find((c) => c.id === id);
+        return ch?._id.toString() ?? "";
+      }),
     });
-    lastIdRef.current = null;
-    setPagination((prevPagination) => ({
-      ...prevPagination,
-      pageIndex: 0, // reset page index to force re-render
-    }));
+    router.push(`/${locale}/leaderboard?lastId=`);
   }
 
   if (error) return <div>Failed to load, please try again later.</div>;
@@ -144,7 +141,12 @@ export default function LeaderboardWrapper({ characters }: Props) {
           </div>
         </div>
         <div className="mt-4">
-          <Button onClick={handleApplyFilters}>Apply Filters</Button>
+          <Button
+            disabled={filters.characters.length === 0}
+            onClick={handleApplyFilters}
+          >
+            Apply Filters
+          </Button>
         </div>
       </div>
       {!data ? (
@@ -153,11 +155,26 @@ export default function LeaderboardWrapper({ characters }: Props) {
           <span>Loading...</span>
         </div>
       ) : (
-        <LeaderBoardBuildsTable
-          data={data}
-          pagination={pagination}
-          setPagination={setPagination}
-        />
+        <>
+          <LeaderBoardBuildsTable data={data} />
+          <div className="my-4 flex items-center justify-center gap-2 text-sm text-slate-300">
+            <button
+              className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+              onClick={previousPage}
+              disabled={lastId === ""}
+            >
+              Previous
+            </button>
+            {/* <span className="mx-2 text-lg">{pagination.pageIndex + 1}</span> */}
+            <button
+              className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
+              onClick={nextPage}
+              disabled={data.length < 20}
+            >
+              Next
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
