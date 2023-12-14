@@ -20,14 +20,15 @@ type Props = {
 const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
 
 export default function WeaponsList({ weapons }: Props) {
-  const { t, locale } = useIntl("weapons");
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
+  const { t, locale } = useIntl("weapons");
 
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
   useEffect(() => {
+    console.log("searchTerm", debouncedSearchTerm, typeFilter, weapons);
     setWeaponFilter(
       weapons.filter((w) => {
         let nameFilter = true;
@@ -46,7 +47,8 @@ export default function WeaponsList({ weapons }: Props) {
       })
     );
     trackClick(`weapon_search`);
-  }, [debouncedSearchTerm, t, typeFilter, weapons]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearchTerm, typeFilter, weapons]);
 
   return (
     <>
