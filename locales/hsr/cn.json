@@ -109,5 +109,9 @@
     "achievements": "成就",
     "achievements_desc": "崩坏：星穹铁道中所有成就的列表，以及如何轻松完成它们，以便您能够轻松获得一些星辰玉。",
     "search": "搜索..."
+  },
+  "profile": {
+    "title": "崩坏：星穹铁道 {playerUID} 玩家档案",
+    "description": "崩坏：星穹铁道 {playerUID} 玩家档案"
   }
 }

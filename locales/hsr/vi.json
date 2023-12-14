@@ -110,5 +110,9 @@
     "achievements": "Thành tựu",
     "achievements_desc": "Danh sách tất cả thành tựu trong Honkai Star Rail và cách hoàn thành chúng để dễ dàng kiếm được một số Ngọc lục bảo.",
     "search": "Tìm kiếm..."
+  },
+  "profile": {
+    "title": "Hồ Sơ Người Chơi Honkai: Star Rail {playerUID}",
+    "description": "Hồ Sơ Người Chơi Honkai: Star Rail {playerUID}"
   }
 }

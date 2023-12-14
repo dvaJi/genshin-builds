@@ -110,5 +110,9 @@
     "achievements": "รางวัล",
     "achievements_desc": "รายการรางวัลทั้งหมดใน Honkai Star Rail และวิธีการสำเร็จให้คุณสามารถได้รับ Jade ดาวงามได้อย่างง่ายดาย",
     "search": "ค้นหา..."
+  },
+  "profile": {
+    "title": "โปรไฟล์ผู้เล่น Honkai: Star Rail {playerUID}",
+    "description": "โปรไฟล์ผู้เล่น Honkai: Star Rail {playerUID}"
   }
 }

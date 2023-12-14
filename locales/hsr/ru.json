@@ -110,5 +110,9 @@
     "achievements": "Достижения",
     "achievements_desc": "Список всех достижений в Honkai Star Rail и как их завершить, чтобы легко заработать несколько Стелларных нефритов.",
     "search": "Поиск..."
+  },
+  "profile": {
+    "title": "Профиль игрока Honkai: Star Rail {playerUID}",
+    "description": "Профиль игрока Honkai: Star Rail {playerUID}"
   }
 }

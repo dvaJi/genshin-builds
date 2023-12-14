@@ -110,5 +110,9 @@
     "achievements": "Achievements",
     "achievements_desc": "List of all achievements in Honkai Star Rail and how to complete them so you can score some Stellar Jades easily.",
     "search": "Search..."
+  },
+  "profile": {
+    "title": "Honkai: Star Rail {playerUID} Player Profile",
+    "description": "Honkai: Star Rail {playerUID} Player Profile"
   }
 }

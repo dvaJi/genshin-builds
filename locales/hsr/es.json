@@ -110,5 +110,9 @@
     "achievements": "Logros",
     "achievements_desc": "Lista de todos los logros en Honkai Star Rail y cómo completarlos para ganar algunas Jade Estelar fácilmente.",
     "search": "Buscar..."
+  },
+  "profile": {
+    "title": "Perfil de Jugador de Honkai: Star Rail {playerUID}",
+    "description": "Perfil de Jugador de Honkai: Star Rail {playerUID}"
   }
 }

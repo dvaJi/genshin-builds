@@ -110,5 +110,9 @@
     "achievements": "Succès",
     "achievements_desc": "Liste de tous les succès dans Honkai Star Rail et comment les accomplir pour obtenir facilement quelques Jade Stellaire.",
     "search": "Rechercher..."
+  },
+  "profile": {
+    "title": "Profil de joueur Honkai: Star Rail {playerUID}",
+    "description": "Profil de joueur Honkai: Star Rail {playerUID}"
   }
 }

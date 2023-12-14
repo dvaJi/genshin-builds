@@ -110,5 +110,9 @@
     "achievements": "実績",
     "achievements_desc": "崩壊星軌のすべての実績と、簡単にステラジェイドを獲得する方法のリスト。",
     "search": "検索..."
+  },
+  "profile": {
+    "title": "崩壊：星穹鉄道 {playerUID} プレイヤープロフィール",
+    "description": "崩壊：星穹鉄道 {playerUID} プレイヤープロフィール"
   }
 }

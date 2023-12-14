@@ -110,5 +110,9 @@
     "achievements": "Prestasi",
     "achievements_desc": "Daftar semua prestasi di Honkai Star Rail dan bagaimana cara menyelesaikannya agar Anda dapat dengan mudah mendapatkan beberapa Jade Bintang.",
     "search": "Cari..."
+  },
+  "profile": {
+    "title": "Profil Pemain Honkai: Star Rail {playerUID}",
+    "description": "Profil Pemain Honkai: Star Rail {playerUID}"
   }
 }

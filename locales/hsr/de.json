@@ -110,5 +110,9 @@
     "achievements": "Erfolge",
     "achievements_desc": "Liste aller Erfolge in Honkai Star Rail und wie man sie abschließt, um einige Sternenjade leicht zu verdienen.",
     "search": "Suchen..."
+  },
+  "profile": {
+    "title": "Honkai: Star Rail {playerUID} Spielerprofil",
+    "description": "Honkai: Star Rail {playerUID} Spielerprofil"
   }
 }

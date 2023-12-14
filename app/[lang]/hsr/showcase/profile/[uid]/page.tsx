@@ -39,7 +39,7 @@ export async function generateMetadata({
   });
   const description = t({
     id: "description",
-    defaultMessage: "Information about {playerUID} player profile",
+    defaultMessage: "Honkai: Star Rail {playerUID} Player Profile",
     values: {
       playerUID: player.uuid,
     },
