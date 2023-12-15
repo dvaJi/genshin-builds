@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
@@ -54,8 +54,12 @@ export async function generateMetadata({
 }
 
 export default async function HSRProfilePage({ params }: Props) {
-  const { language } = await useTranslations(params.lang, "hsr", "item");
-  const res = await getBuild(language, params?.uid);
+  const { langData } = await useTranslations(params.lang, "hsr", "item");
+  const res = await getBuild(langData, params?.uid);
+
+  if (res.code === 404) {
+    return redirect(`/${params.lang}/hsr/showcase`);
+  }
 
   if (res.code !== 200) {
     return notFound();
@@ -64,7 +68,7 @@ export default async function HSRProfilePage({ params }: Props) {
   const propertiesCommonMap = await getData<
     Record<string, Record<string, string>>
   >("hsr", "properties_common");
-  const propertiesCommon = propertiesCommonMap[language];
+  const propertiesCommon = propertiesCommonMap[langData];
 
   const profile = res.data;
 

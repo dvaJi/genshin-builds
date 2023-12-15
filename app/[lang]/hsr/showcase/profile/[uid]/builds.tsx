@@ -66,7 +66,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
             </div>
           </button>
         ))}
-        <Tooltip id="characters_tooltip" />
+        <Tooltip id="characters_tooltip" className="z-40" />
       </div>
       <div
         className="relative mx-auto flex min-h-[500px] max-w-[1100px] select-none overflow-hidden rounded-lg bg-zinc-900 bg-cover shadow-xl"
@@ -153,6 +153,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
             </div>
             <Tooltip
               id="talents_tooltip"
+              className="z-40"
               render={({ content, activeAnchor }) => (
                 <div className="z-40 w-44 text-xs">
                   <div className="pb-0.5 text-hsr-accent">
@@ -167,7 +168,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
             <div className="w-[270px] flex-shrink-0">
               {/* LIGHTCONE */}
               <div className="flex gap-2">
-                <div className="flex flex-shrink-0 flex-col items-center rounded border border-white/40 bg-gray-500">
+                <div className="flex flex-shrink-0 flex-col items-center">
                   <img
                     src={getHsrUrl(
                       `/lightcones/${buildSelected.lightCone.id}.png`,
@@ -192,12 +193,12 @@ export default function Builds({ profile, propertiesCommon }: Props) {
         </div> */}
               </div>
               {/* CHARACTER STATS */}
-              <div className="mt-2 flex flex-col shadow-lg">
+              <div className="mt-2 flex flex-col rounded border border-black/20 bg-black/40 shadow-lg backdrop-blur">
                 {Object.entries(buildSelected.attributes).map(
                   ([key, value]: any) => (
                     <div
                       key={key + value}
-                      className="flex items-center justify-between border border-transparent border-b-black/20 bg-black/40 px-1 first:rounded-t"
+                      className="flex items-center justify-between border-b border-black/10 px-1"
                     >
                       <div className="flex flex-grow items-center gap-2">
                         <div>
@@ -210,7 +211,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                             />
                           </div>
                         </div>
-                        <div className="text-sm font-bold">
+                        <div className="text-sm font-bold text-slate-200">
                           {propertiesCommon[key]}
                         </div>
                       </div>
@@ -240,7 +241,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                   .map(([key, value]: any) => (
                     <div
                       key={key + value}
-                      className="not:last:border-b-black/20 flex items-center justify-between border border-transparent bg-black/40 px-1 last:rounded-b"
+                      className="flex items-center justify-between border-b border-b-black/20 px-1 last:rounded-b-none"
                     >
                       <div className="flex flex-grow items-center gap-2">
                         <div>
@@ -253,7 +254,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                             />
                           </div>
                         </div>
-                        <div className="text-sm font-bold">
+                        <div className="text-sm font-bold text-slate-200">
                           {propertiesCommon[key]}
                         </div>
                       </div>
@@ -366,7 +367,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                   </div>
                 </div>
               ))}
-              <Tooltip id="relic_tooltip" />
+              <Tooltip id="relic_tooltip" className="z-40" />
               <div className="flex flex-col gap-1">
                 {/* SETS */}
                 {Object.values(buildSelected.sets).map((set: any) => (
@@ -390,6 +391,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                 ))}
                 <Tooltip
                   id="relics_tooltip"
+                  className="z-40"
                   render={({ content, activeAnchor }) => (
                     <div className="z-40 w-44 text-xs">
                       <div className="pb-1 font-semibold text-hsr-accent">
