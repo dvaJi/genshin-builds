@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import GenshinData, { type Weapon } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
@@ -12,11 +13,11 @@ import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMateria
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
-import { getCharacterMostUsedBuild, getData } from "@lib/localData";
+import { getData, getRemoteData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
-import clsx from "clsx";
 import { i18n } from "i18n-config";
-import { Beta } from "interfaces/genshin/beta";
+import type { MostUsedBuild } from "interfaces/build";
+import type { Beta } from "interfaces/genshin/beta";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -112,7 +113,10 @@ export default async function GenshinWeaponPage({ params }: Props) {
     return notFound();
   }
 
-  const builds = await getCharacterMostUsedBuild();
+  const builds = await getRemoteData<Record<string, MostUsedBuild>>(
+    "genshin",
+    "mostused-builds"
+  );
   const recommendedCharacters = Object.entries(builds)
     .filter(([_, build]: any) => build.weapons.includes(weapon.id))
     .map(([character]) => character);

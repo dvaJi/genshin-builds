@@ -24,9 +24,9 @@ import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import {
-  getCharacterMostUsedBuild,
   getCharacterOfficialBuild,
   getData,
+  getRemoteData,
 } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
 import { Build, MostUsedBuild } from "interfaces/build";
@@ -125,7 +125,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact & { children?: Artifact[] }> = {};
   let builds: Build[] = [];
-  const mubuild: MostUsedBuild = await getCharacterMostUsedBuild(character.id);
+  const mubuild: MostUsedBuild = (
+    await getRemoteData<Record<string, MostUsedBuild>>(
+      "genshin",
+      "mostused-builds"
+    )
+  )[character.id];
+
   const officialbuild: MostUsedBuild = await getCharacterOfficialBuild(
     character.id
   );
