@@ -1,15 +1,17 @@
 type Options = {
   resource: string;
   language?: string;
+  asMap?: boolean;
   filter?: {
     id: string;
   };
   revalidate?: number;
 };
 export async function getGenshinData<T>(options: Options) {
+  const asMap = options.asMap ? "map" : "list";
   const baseUrl = `${process.env.NEXT_PUBLIC_IMGS_CDN}/genshin/gamedata/${
     options.language ?? "english"
-  }/${options.resource}/${options.filter ? options.filter.id : "list"}.json`;
+  }/${options.resource}/${options.filter ? options.filter.id : asMap}.json`;
   // console.log(baseUrl)
   const res = await fetch(baseUrl, {
     method: "GET",

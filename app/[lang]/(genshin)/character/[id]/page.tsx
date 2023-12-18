@@ -1,9 +1,5 @@
 import clsx from "clsx";
-import GenshinData, {
-  Character,
-  type Artifact,
-  type Weapon,
-} from "genshin-data";
+import type { Artifact, Character, Weapon } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -22,6 +18,7 @@ import ElementIcon from "@components/genshin/ElementIcon";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import {
   getCharacterOfficialBuild,
@@ -53,10 +50,14 @@ export async function generateMetadata({
     "character"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = await genshinData.characters();
   const beta = await getData<Beta>("genshin", "beta");
-  const _character = characters.find((c) => c.id === params.id);
+  const _character = await getGenshinData<Character>({
+    resource: "characters",
+    language: langData as any,
+    filter: {
+      id: params.id,
+    },
+  });
   const _betaCharacter = beta[locale].characters.find(
     (c: any) => c.id === params.id
   );
@@ -94,10 +95,14 @@ export default async function GenshinCharacterPage({ params }: Props) {
     "genshin",
     "character"
   );
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = await genshinData.characters();
   const beta = await getData<Beta>("genshin", "beta");
-  const _character = characters.find((c) => c.id === params.id);
+  const _character = await getGenshinData<Character>({
+    resource: "characters",
+    language: langData as any,
+    filter: {
+      id: params.id,
+    },
+  });
   const _betaCharacter = beta[locale].characters.find(
     (c: any) => c.id === params.id
   );
@@ -115,11 +120,14 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const buildsOld: Build[] =
     require(`../../../../../_content/genshin/data/builds.json`)[character.id] ||
     [];
-  const weaponsList = await genshinData.weapons({
-    select: ["id", "name", "rarity", "stats"],
+  const weaponsList = await getGenshinData<Weapon[]>({
+    resource: "weapons",
+    language: langData as any,
   });
-  const artifactsList = await genshinData.artifacts({
-    select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
+
+  const artifactsList = await getGenshinData<Artifact[]>({
+    resource: "artifacts",
+    language: langData as any,
   });
 
   let weapons: Record<string, Weapon> = {};

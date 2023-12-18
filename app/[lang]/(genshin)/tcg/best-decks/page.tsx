@@ -1,4 +1,4 @@
-import GenshinData, { type TCGCard } from "genshin-data";
+import type { TCGCard } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -6,6 +6,7 @@ import Link from "next/link";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
 import { i18n } from "i18n-config";
@@ -16,6 +17,7 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const langs = i18n.locales;
@@ -61,7 +63,6 @@ export default async function GenshinBestDecks({ params }: Props) {
     "tcg_decks"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
   const bestDecks = await getRemoteData<
     {
       c: string[];
@@ -69,24 +70,24 @@ export default async function GenshinBestDecks({ params }: Props) {
     }[]
   >("genshin", "tcg-bestdecks");
 
-  const cCharacters = await genshinData.tcgCharacters({
-    select: ["id", "name"],
+  const cCharacters = await getGenshinData<Record<string, TCGCard>>({
+    resource: "tcgCharacters",
+    language: langData,
+    asMap: true,
   });
-  const cActions = await genshinData.tcgActions({
-    select: ["id", "name"],
+  const cActions = await getGenshinData<Record<string, TCGCard>>({
+    resource: "tcgActions",
+    language: langData,
+    asMap: true,
   });
 
-  const decks = bestDecks.map((deck) => {
-    return {
-      characters: deck.c.map(
-        (c: string) => cCharacters.find((cc) => cc.id === c) as TCGCard
-      ),
-      actions: deck.a.map((a: string) => ({
-        ...(cActions.find((aa) => aa.id === a.split("|")[0]) as TCGCard),
-        count: a.split("|")[1],
-      })),
-    };
-  });
+  const decks = bestDecks.map((deck) => ({
+    characters: deck.c.map((c: string) => cCharacters[c]),
+    actions: deck.a.map((a: string) => ({
+      ...cActions[a.split("|")[0]],
+      count: a.split("|")[1],
+    })),
+  }));
 
   return (
     <div>

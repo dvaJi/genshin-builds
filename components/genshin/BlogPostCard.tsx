@@ -27,6 +27,11 @@ const BlogPostCard = ({ post }: Props) => {
             width: 450,
             height: 260,
           })}
+          placeholderSrc={getImg("genshin", `/blog/${post.image}`, {
+            width: 4,
+            height: 4,
+            quality: 10,
+          })}
           alt={post.title}
           className="aspect-video w-full rounded object-cover shadow-2xl transition-all group-hover:scale-105 group-hover:brightness-110"
         />

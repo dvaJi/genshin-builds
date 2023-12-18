@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import GenshinData, { type Weapon } from "genshin-data";
+import type { Weapon } from "genshin-data";
+import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -7,17 +8,16 @@ import { notFound } from "next/navigation";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
 import { genPageMetadata } from "@app/seo";
+import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
 import WeaponStats from "./stats";
 
-import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData, getRemoteData } from "@lib/localData";
-import { localeToLang } from "@utils/locale-to-lang";
 import { i18n } from "i18n-config";
 import type { MostUsedBuild } from "interfaces/build";
-import type { Beta } from "interfaces/genshin/beta";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -29,10 +29,11 @@ export const dynamic = "force-static";
 export async function generateStaticParams() {
   const routes: { lang: string; id: string }[] = [];
 
-  for await (const lang of i18n.locales) {
-    const genshinData = new GenshinData({ language: localeToLang(lang) });
-    const weapons = await genshinData.weapons({ select: ["id"] });
+  const weapons = await getGenshinData<Weapon[]>({
+    resource: "weapons",
+  });
 
+  for await (const lang of i18n.locales) {
     weapons.forEach((weapon) => {
       routes.push({
         lang,
@@ -61,15 +62,15 @@ export async function generateMetadata({
     "weapon"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const weapons = await genshinData.weapons();
+  const _weapon = await getGenshinData<Weapon>({
+    resource: "weapons",
+    language: langData,
+    filter: { id: params.id },
+  });
   const beta = await getData<Beta>("genshin", "beta");
-  const _weapon = weapons.find((c) => c.id === params.id);
-  const _betaCharacter = beta[locale].weapons.find(
-    (c: any) => c.id === params.id
-  );
+  const _betaWeapon = beta[locale].weapons.find((c: any) => c.id === params.id);
 
-  const weapon = _weapon || _betaCharacter;
+  const weapon = _weapon || _betaWeapon;
 
   if (!weapon) {
     return;
@@ -97,9 +98,11 @@ export default async function GenshinWeaponPage({ params }: Props) {
     "genshin",
     "weapon"
   );
-  const genshinData = new GenshinData({ language: langData as any });
-  const weapons = await genshinData.weapons();
-  const _weapon = weapons.find((c) => c.id === params.id);
+  const _weapon = await getGenshinData<Weapon>({
+    resource: "weapons",
+    language: langData,
+    filter: { id: params.id },
+  });
   const beta = await getData<Beta>("genshin", "beta");
   const _betaWeapon = beta[locale].weapons.find((c: any) => c.id === params.id);
 

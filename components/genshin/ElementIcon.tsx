@@ -20,6 +20,7 @@ function ElementIcon({
   return (
     <LazyLoadImage
       src={getUrl(`/elements/${type}.png`, height, width)}
+      placeholderSrc={getUrl(`/elements/${type}.png`, 4, 4)}
       alt={type}
       className={className}
       width={width}

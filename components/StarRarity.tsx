@@ -40,6 +40,7 @@ const StarRarity = ({
         >
           <LazyLoadImage
             src={getUrl(`/1_star.png`)}
+            placeholderSrc={getUrl(`/1_star.png`, 4, 4)}
             alt="1_star.png"
             width={starsSize}
             height={starsSize}

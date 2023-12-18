@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import clsx from "clsx";
 import { WeaponAscension } from "genshin-data/dist/types/weapon";
@@ -42,6 +42,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
             <div className="flex items-center justify-center">
               <SimpleRarityBox
                 img={getUrl(`/materials/mora.png`, 64, 64)}
+                placeholderSrc={getUrl(`/materials/mora.png`, 4, 4)}
                 name={ascen.cost?.toString()}
                 rarity={1}
                 className="h-16 w-16"
@@ -55,6 +56,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
               >
                 <SimpleRarityBox
                   img={getUrl(`/materials/${mat.id}.png`, 64, 64)}
+                  placeholderSrc={getUrl(`/materials/${mat.id}.png`, 4, 4)}
                   name={mat.amount.toString()}
                   rarity={mat.rarity}
                   className="h-16 w-16"
@@ -71,6 +73,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
         <div className="flex items-center justify-center">
           <SimpleRarityBox
             img={getUrl(`/materials/mora.png`, 64, 64)}
+            placeholderSrc={getUrl(`/materials/mora.png`, 4, 4)}
             name={talentsTotal.cost.toString()}
             rarity={1}
             className="h-16 w-16"
@@ -80,6 +83,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
           <div key={item.id} className="flex items-center">
             <SimpleRarityBox
               img={getUrl(`/materials/${item.id}.png`, 64, 64)}
+              placeholderSrc={getUrl(`/materials/${item.id}.png`, 4, 4)}
               name={item.amount.toString()}
               rarity={item.rarity || 1}
               className="h-16 w-16"

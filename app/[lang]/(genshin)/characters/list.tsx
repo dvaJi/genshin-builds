@@ -152,8 +152,8 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
                   placeholder={<div className="h-full w-full" />}
                   placeholderSrc={getUrlLQ(
                     `/characters/${character.id}/image.png`,
-                    4,
-                    4
+                    6,
+                    6
                   )}
                 />
                 <ElementIcon

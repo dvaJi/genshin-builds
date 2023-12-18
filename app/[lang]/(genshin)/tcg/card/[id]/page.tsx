@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { TCGCard } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import { genPageMetadata } from "@app/seo";
 import Badge from "@components/ui/Badge";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { localeToLang } from "@utils/locale-to-lang";
 import { i18n } from "i18n-config";
@@ -23,8 +24,10 @@ export async function generateStaticParams() {
   const routes: { lang: string; id: string }[] = [];
 
   for await (const lang of i18n.locales) {
-    const genshinData = new GenshinData({ language: localeToLang(lang) });
-    const cards = await genshinData.tcgCards({ select: ["id"] });
+    const cards = await getGenshinData<TCGCard[]>({
+      resource: "tcgCards",
+      language: localeToLang(lang),
+    });
 
     cards.forEach((card) => {
       routes.push({
@@ -50,9 +53,11 @@ export async function generateMetadata({
     "genshin",
     "tcg_card"
   );
-  const genshinData = new GenshinData({ language: langData as any });
-  const cards = await genshinData.tcgCards();
-  const card = cards.find((c) => c.id === params?.id);
+  const card = await getGenshinData<TCGCard>({
+    resource: "tcgCards",
+    language: langData,
+    filter: { id: params.id },
+  });
 
   if (!card) return undefined;
 
@@ -79,9 +84,11 @@ export default async function GenshinCard({ params }: Props) {
     "tcg_card"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const cards = await genshinData.tcgCards();
-  const card = cards.find((c) => c.id === params?.id);
+  const card = await getGenshinData<TCGCard>({
+    resource: "tcgCards",
+    language: langData,
+    filter: { id: params.id },
+  });
 
   if (!card) {
     return notFound();
