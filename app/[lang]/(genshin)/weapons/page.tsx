@@ -66,7 +66,6 @@ export default async function GenshinCharacters({ params }: Props) {
   const weapons = await getGenshinData<Weapon[]>({
     resource: "weapons",
     language: langData,
-    select: ["id", "rarity", "name", "type"],
   });
 
   const beta = await getData<Beta>("genshin", "beta");

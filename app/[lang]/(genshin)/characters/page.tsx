@@ -66,8 +66,8 @@ export default async function GenshinCharacters({ params }: Props) {
   const characters = await getGenshinData<Character[]>({
     resource: "characters",
     language: langData,
-    select: ["id", "name", "element", "rarity"],
   });
+
   const elements = characters.reduce((acc, character) => {
     if (!acc.includes(character.element)) {
       acc.push(character.element);
