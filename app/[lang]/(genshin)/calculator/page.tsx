@@ -21,6 +21,7 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
   ssr: false,
 });
 
+export const dynamic = "force-static";
 export async function generateStaticParams() {
   const langs = i18n.locales;
 
