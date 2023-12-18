@@ -81,8 +81,8 @@ dependencies:
     specifier: ^16.3.1
     version: 16.3.1
   genshin-data:
-    specifier: ^0.36.0
-    version: 0.36.0
+    specifier: ^0.37.0
+    version: 0.37.0
   hsr-data:
     specifier: ^0.5.0
     version: 0.5.0
@@ -5409,8 +5409,8 @@ packages:
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  /genshin-data@0.36.0:
-    resolution: {integrity: sha512-fTmqa0lETOf8pkC3YfTRwm+wE/R9JY9BH8FE01Jx//fdGdDyjMc+Hp8kdOMfqRNdaMnZzh2eLbMZQQu307wuPw==}
+  /genshin-data@0.37.0:
+    resolution: {integrity: sha512-rDU25PhF5+St3ywV9NDVOsr+Fq2l1JGhNUk84CY3e5q0wkz7iuwIbrpPIdDRD9Ee09hMvKcjsvAQ2GNIO1rZwQ==}
     engines: {node: '>=13'}
     dev: false
 
