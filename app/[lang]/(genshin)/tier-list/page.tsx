@@ -13,7 +13,7 @@ import GenshinTierlistView from "./list";
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
-export const revalidate = 24 * 60 * 60;
+export const revalidate = 86400;
 
 type Props = {
   params: { lang: string };

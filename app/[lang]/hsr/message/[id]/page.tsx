@@ -8,8 +8,7 @@ import Messages from "@components/hsr/Messages";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import HSRData, { languages } from "hsr-data";
-import { i18n } from "i18n-config";
+import HSRData from "hsr-data";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -17,26 +16,11 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  const routes: { lang: string; id: string }[] = [];
-
-  for await (const lang of langs) {
-    const language = languages.find((l) => l === lang) ?? "en";
-    const hsrData = new HSRData({ language });
-    const messageGroup = await hsrData.messages({ select: ["id"] });
-
-    messageGroup.forEach((message) => {
-      routes.push({
-        lang,
-        id: message.id.toString(),
-      });
-    });
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {

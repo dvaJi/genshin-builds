@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import HSRData, { languages } from "hsr-data";
+import HSRData from "hsr-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -11,7 +11,6 @@ import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHsrUrl } from "@lib/imgUrl";
-import { i18n } from "i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -19,23 +18,11 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; id: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const language = languages.find((l) => l === lang) ?? "en";
-    const hsrData = new HSRData({ language });
-    const items = await hsrData.items({ select: ["id"] });
-
-    items.forEach((item) => {
-      routes.push({
-        lang,
-        id: item.id,
-      });
-    });
-  }
-  return routes;
+  return [];
 }
 
 interface Props {

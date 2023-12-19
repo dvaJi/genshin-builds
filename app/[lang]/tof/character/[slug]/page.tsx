@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import TOFData, { type Languages } from "tof-builds";
@@ -14,8 +14,16 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getTofUrl } from "@lib/imgUrl";
 import { getBuildsByCharacterId } from "@lib/tofdata";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+
+export const dynamic = "force-static";
+export const dynamicParams = true;
+export const revalidate = 86400;
+
+export async function generateStaticParams() {
+  return [];
+}
 
 interface Props {
   params: {

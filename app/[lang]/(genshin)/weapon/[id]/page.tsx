@@ -16,7 +16,6 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData, getRemoteData } from "@lib/localData";
-import { i18n } from "i18n-config";
 import type { MostUsedBuild } from "interfaces/build";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -25,24 +24,11 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; id: string }[] = [];
-
-  const weapons = await getGenshinData<Weapon[]>({
-    resource: "weapons",
-  });
-
-  for await (const lang of i18n.locales) {
-    weapons.forEach((weapon) => {
-      routes.push({
-        lang,
-        id: weapon.id,
-      });
-    });
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {

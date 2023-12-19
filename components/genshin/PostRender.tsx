@@ -64,6 +64,14 @@ export const componentsList = [
     custom: true,
     example: `\n<GenshinMapEmbed ids={["anemoculus", "geoculus"]} />\nMore information here: https://genshin-impact-map.appsample.com/help/embed\n`,
   },
+  {
+    name: "YoutubeEmbed",
+    component: dynamic(() => import("@components/YoutubeEmbed"), {
+      ssr: false,
+    }),
+    custom: true,
+    example: `\n<YoutubeEmbed id="dQw4w9WgXcQ" />\n`,
+  },
 ];
 
 const components = componentsList.reduce(

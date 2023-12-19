@@ -56,6 +56,14 @@ export const componentsList = [
     custom: true,
     example: `<FrstAds placementName="genshinbuilds_billboard_atf" />`,
   },
+  {
+    name: "YoutubeEmbed",
+    component: dynamic(() => import("@components/YoutubeEmbed"), {
+      ssr: false,
+    }),
+    custom: true,
+    example: `\n<YoutubeEmbed id="dQw4w9WgXcQ" />\n`,
+  },
 ];
 
 const components = componentsList.reduce(
