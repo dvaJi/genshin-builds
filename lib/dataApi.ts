@@ -1,3 +1,5 @@
+import GenshinData, { Languages } from "genshin-data";
+
 type Options = {
   resource: string;
   language?: string;
@@ -8,19 +10,39 @@ type Options = {
   revalidate?: number;
 };
 export async function getGenshinData<T>(options: Options) {
-  const asMap = options.asMap ? "map" : "list";
-  const baseUrl = `${process.env.NEXT_PUBLIC_IMGS_CDN}/genshin/gamedata/${
-    options.language ?? "english"
-  }/${options.resource}/${options.filter ? options.filter.id : asMap}.json`;
-  // console.log(baseUrl)
-  const res = await fetch(baseUrl, {
-    method: "GET",
-    next: {
-      revalidate: options.revalidate ? options.revalidate : 60 * 60 * 24,
-    },
+  const giData = new GenshinData({
+    language: (options.language as Languages) ?? "english",
   });
+  // const asMap = options.asMap ? "map" : "list";
+  const data = await (giData as any)[options.resource]();
 
-  return res.json() as Promise<T>;
+  if (options.filter) {
+    return data[options.filter.id] as T;
+  }
+
+  if (options.asMap) {
+    return data.reduce((acc: any, curr: any) => {
+      acc[curr.id] = curr;
+      return acc;
+    }, {}) as T;
+  }
+
+  return data as T;
+
+  // const baseUrl = `${process.env.NEXT_PUBLIC_IMGS_CDN}/genshin/gamedata/${
+  //   options.language ?? "english"
+  // }/${options.resource}/${options.filter ? options.filter.id : asMap}.json`;
+  // console.log(`[${baseUrl}]: START`);
+  // const res = await fetch(baseUrl, {
+  //   method: "GET",
+  //   next: {
+  //     revalidate: options.revalidate ? options.revalidate : 60 * 60 * 24,
+  //   },
+  // });
+
+  // console.log(`[${baseUrl}]: END`);
+
+  // return res.json() as Promise<T>;
 }
 
 type HsrOptions = {
