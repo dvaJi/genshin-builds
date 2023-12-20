@@ -1,4 +1,4 @@
-import type { Potion } from "genshin-data";
+import type { Potion } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 

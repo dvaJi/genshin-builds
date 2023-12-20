@@ -1,4 +1,4 @@
-import type { Artifact, Weapon } from "genshin-data";
+import type { Artifact, Weapon } from "@interfaces/genshin";
 import { ReactNode, memo } from "react";
 
 import SkillLabel from "../SkillLabel";

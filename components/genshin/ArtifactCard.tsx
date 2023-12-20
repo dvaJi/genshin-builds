@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { Artifact } from "genshin-data";
+import type { Artifact } from "@interfaces/genshin";
 import dynamic from "next/dynamic";
 import { memo } from "react";
 

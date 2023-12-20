@@ -8,7 +8,7 @@ import type {
   TalentLvlUpMaterial,
   WeaponPrimaryMaterial,
   WeaponSecondaryMaterial,
-} from "genshin-data";
+} from "@interfaces/genshin";
 
 export type Material = {
   id: string;

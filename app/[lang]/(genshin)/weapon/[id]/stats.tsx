@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import type { Weapon } from "genshin-data";
+import type { Weapon } from "@interfaces/genshin";
 import { useState } from "react";
 
 import useIntl from "@hooks/use-intl";

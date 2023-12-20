@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import type { Character } from "genshin-data";
+import type { Character } from "@interfaces/genshin";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";

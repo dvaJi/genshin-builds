@@ -1,4 +1,4 @@
-import type { Character, Material, TCGCard, Weapon } from "genshin-data";
+import type { Character, Material, TCGCard, Weapon } from "@interfaces/genshin";
 
 export type BetaResource = {
   characters: (Character & { beta?: boolean })[];

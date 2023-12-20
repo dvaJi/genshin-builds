@@ -22,7 +22,7 @@
       "@app/*": ["app/*"],
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
-      "@intefaces/*": ["intefaces/*"],
+      "@interfaces/*": ["interfaces/*"],
       "@lib/*": ["lib/*"],
       "@locales/*": ["locales/*"],
       "@pages/*": ["pages/*"],

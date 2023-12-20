@@ -1,7 +1,7 @@
 "use client";
 
 import { useStore } from "@nanostores/react";
-import type { AchievementCategory } from "genshin-data";
+import type { AchievementCategory } from "@interfaces/genshin";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
 

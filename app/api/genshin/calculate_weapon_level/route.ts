@@ -1,4 +1,4 @@
-import type { ExpMaterial, Weapon } from "genshin-data";
+import type { ExpMaterial, Weapon } from "@interfaces/genshin";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 

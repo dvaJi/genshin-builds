@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import type { WeaponAscension } from "genshin-data/dist/types/weapon";
+import type { WeaponAscension } from "@interfaces/genshin/dist/types/weapon";
 import { memo, useMemo } from "react";
 
 import { getUrl } from "@lib/imgUrl";

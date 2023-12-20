@@ -1,4 +1,4 @@
-import type { Fish } from "genshin-data";
+import type { Fish } from "@interfaces/genshin";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 

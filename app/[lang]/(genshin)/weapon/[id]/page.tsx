@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { Weapon } from "genshin-data";
+import type { Weapon } from "@interfaces/genshin";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";

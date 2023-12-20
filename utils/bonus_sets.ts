@@ -1,4 +1,4 @@
-import type { Artifact } from "genshin-data";
+import type { Artifact } from "@interfaces/genshin";
 
 export type BonusSet = Record<string, Artifact>;
 

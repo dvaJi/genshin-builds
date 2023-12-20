@@ -1,4 +1,4 @@
-import type { Artifact, Character, Weapon } from "genshin-data";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 

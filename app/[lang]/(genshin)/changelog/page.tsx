@@ -1,4 +1,4 @@
-import type { Artifact, Character, Food, TCGCard, Weapon } from "genshin-data";
+import type { Artifact, Character, Food, TCGCard, Weapon } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 

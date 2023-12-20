@@ -1,6 +1,6 @@
 "use client";
 
-import type { Constellation } from "genshin-data/dist/types/character";
+import type { Constellation } from "@interfaces/genshin/dist/types/character";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 

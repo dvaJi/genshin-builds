@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { Weapon } from "genshin-data";
+import type { Weapon } from "@interfaces/genshin";
 import Link from "next/link";
 
 import useIntl from "@hooks/use-intl";

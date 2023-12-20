@@ -1,4 +1,4 @@
-import type { TCGCard } from "genshin-data";
+import type { TCGCard } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";

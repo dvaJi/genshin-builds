@@ -1,4 +1,4 @@
-import type { Food } from "genshin-data";
+import type { Food } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 

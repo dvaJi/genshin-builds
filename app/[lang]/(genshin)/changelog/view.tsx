@@ -1,6 +1,6 @@
 "use client";
 
-import type { TCGCard } from "genshin-data";
+import type { TCGCard } from "@interfaces/genshin";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

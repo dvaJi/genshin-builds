@@ -1,4 +1,4 @@
-import type { Weapon } from "genshin-data";
+import type { Weapon } from "@interfaces/genshin";
 import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";

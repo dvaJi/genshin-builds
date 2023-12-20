@@ -1,4 +1,4 @@
-import type { Character, ExpMaterial } from "genshin-data";
+import type { Character, ExpMaterial } from "@interfaces/genshin";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 

@@ -1,4 +1,4 @@
-import type { Domains } from "genshin-data";
+import type { Domains } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 

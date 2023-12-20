@@ -1,6 +1,6 @@
 import prisma from "@db/index";
 import { decodeBuilds, regionParse } from "@utils/leaderboard-enc";
-import { Artifact, Character, Weapon } from "genshin-data";
+import { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { getGenshinData } from "./dataApi";
 
 export async function getPlayer(uid: string) {

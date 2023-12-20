@@ -1,4 +1,4 @@
-import type { Character, Weapon } from "genshin-data";
+import type { Character, Weapon } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 

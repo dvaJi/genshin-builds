@@ -1,5 +1,5 @@
 import { Build, Player } from "@prisma/client";
-import type { Artifact, Character, Weapon } from "genshin-data";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 
 import { CharactersAPI } from "interfaces/enka";
 import { ENKA_NAMES, REAL_SUBSTAT_VALUES, STAT_NAMES } from "./substats";

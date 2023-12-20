@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { Character } from "genshin-data";
+import type { Character } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";

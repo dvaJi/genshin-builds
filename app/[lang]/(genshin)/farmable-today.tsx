@@ -1,13 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import type { Character, Domains, Weapon } from "genshin-data";
 import Link from "next/link";
 import { useState } from "react";
 
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
+import type { Character, Domains, Weapon } from "@interfaces/genshin";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
 

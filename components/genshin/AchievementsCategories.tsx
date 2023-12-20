@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { getUrl } from "@lib/imgUrl";
-import type { AchievementCategory } from "genshin-data";
+import type { AchievementCategory } from "@interfaces/genshin";
 import { useMemo } from "react";
 import { AchievementsCompleted } from "@state/achievements";
 import { trackClick } from "@lib/gtag";

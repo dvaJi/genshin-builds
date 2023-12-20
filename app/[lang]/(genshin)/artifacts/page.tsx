@@ -1,4 +1,4 @@
-import type { Artifact } from "genshin-data";
+import type { Artifact } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Image from "next/image";

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { Artifact, Character, Weapon } from "genshin-data";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";

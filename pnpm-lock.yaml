@@ -80,9 +80,6 @@ dependencies:
   dotenv:
     specifier: ^16.3.1
     version: 16.3.1
-  genshin-data:
-    specifier: ^0.37.1
-    version: 0.37.1
   hsr-data:
     specifier: ^0.5.1
     version: 0.5.1
@@ -5411,11 +5408,6 @@ packages:
 
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
-
-  /genshin-data@0.37.1:
-    resolution: {integrity: sha512-H00afcYqTWI8J9b+/y7fkIiRIb/OjCUlTa4z+TpMgZv7ZB2m5Rvne4a746eXWjp1rh9Hba/bsI34NQ9RRifi4w==}
-    engines: {node: '>=13'}
-    dev: false
 
   /gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}

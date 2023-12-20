@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import type { Artifact, Weapon } from "genshin-data";
+import type { Artifact, Weapon } from "@interfaces/genshin";
 import { useState } from "react";
 
 import StarRarity from "@components/StarRarity";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { Character } from "genshin-data";
+import type { Character } from "@interfaces/genshin";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
