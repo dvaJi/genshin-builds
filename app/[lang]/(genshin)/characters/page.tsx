@@ -66,6 +66,7 @@ export default async function GenshinCharacters({ params }: Props) {
   const characters = await getGenshinData<Character[]>({
     resource: "characters",
     language: langData,
+    select: ["id", "rarity", "name", "element"],
   });
 
   const elements = characters.reduce((acc, character) => {

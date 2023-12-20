@@ -74,11 +74,13 @@ export default async function GenshinBestDecks({ params }: Props) {
     resource: "tcgCharacters",
     language: langData,
     asMap: true,
+    select: ["id", "name"],
   });
   const cActions = await getGenshinData<Record<string, TCGCard>>({
     resource: "tcgActions",
     language: langData,
     asMap: true,
+    select: ["id", "name"],
   });
 
   const decks = bestDecks.map((deck) => ({

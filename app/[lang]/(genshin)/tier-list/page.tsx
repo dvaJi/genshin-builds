@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Character } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { Tierlist } from "interfaces/tierlist";
 import GenshinTierlistView from "./list";
@@ -53,14 +54,19 @@ export default async function GenshinTierlist({ params }: Props) {
     "tierlist"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = await genshinData.characters({
+  const characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["id", "name", "element"],
   });
-  const weapons = await genshinData.weapons({
+  const weapons = await getGenshinData<Character[]>({
+    resource: "weapons",
+    language: langData,
     select: ["id", "name", "rarity"],
   });
-  const artifacts = await genshinData.artifacts({
+  const artifacts = await getGenshinData<Character[]>({
+    resource: "artifacts",
+    language: langData,
     select: ["id", "name"],
   });
 

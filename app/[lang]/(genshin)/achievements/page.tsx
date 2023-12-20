@@ -1,4 +1,3 @@
-import GenshinData from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -7,6 +6,7 @@ import AchievementsWrapper from "./wrapper";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { i18n } from "i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -61,8 +61,10 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
     "achievements"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const categories = await genshinData.achievements();
+  const categories = await getGenshinData<any[]>({
+    resource: "achievements",
+    language: langData,
+  });
 
   return (
     <div className="w-full">

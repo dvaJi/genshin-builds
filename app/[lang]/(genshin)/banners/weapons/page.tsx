@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import GenshinData from "genshin-data";
+import type { Weapon } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import Badge from "@components/ui/Badge";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
 import { getTimeAgo } from "@lib/timeago";
@@ -55,13 +56,15 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     "banners_weapons"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
   const { historical, rerunPrediction } = await getRemoteData<{
     historical: BannerHistorical[];
     rerunPrediction: BannerReRunPrediction[];
   }>("genshin", "banners-weapons");
-  const weapons = await genshinData.weapons({
+  const weapons = await getGenshinData<Weapon[]>({
+    resource: "weapons",
     select: ["id", "name"],
+    language: langData,
+    asMap: true,
   });
 
   const weaponsMap = weapons.reduce(

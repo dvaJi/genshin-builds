@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Artifact, Character, Food, TCGCard, Weapon } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -7,6 +7,7 @@ import ChangelogVersion from "./view";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
 import { i18n } from "i18n-config";
@@ -73,20 +74,29 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     "changelog"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = await genshinData.characters({
+  const characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["id", "name", "rarity"],
   });
-  const weapons = await genshinData.weapons({
+  const weapons = await getGenshinData<Weapon[]>({
+    resource: "weapons",
+    language: langData,
     select: ["id", "name", "rarity"],
   });
-  const food = await genshinData.food({
+  const food = await getGenshinData<Food[]>({
+    resource: "food",
+    language: langData,
     select: ["id", "name", "rarity", "results"],
   });
-  const artifacts = await genshinData.artifacts({
+  const artifacts = await getGenshinData<Artifact[]>({
+    resource: "artifacts",
+    language: langData,
     select: ["id", "name", "max_rarity"],
   });
-  const tcgCards = await genshinData.tcgCards({
+  const tcgCards = await getGenshinData<TCGCard[]>({
+    resource: "tcgCards",
+    language: langData,
     select: ["id", "name"],
   });
 
@@ -94,7 +104,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     await getRemoteData<Changelog[]>("genshin", "changelog")
   ).filter((c) => !c.beta);
 
-  const materialsMap = await getAllMaterialsMap(genshinData);
+  const materialsMap = await getAllMaterialsMap(langData);
 
   const charactersMap: any = {};
   const weaponsMap: any = {};

@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Character, Weapon } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -14,6 +14,7 @@ import { WeaponCalculator } from "./weapon-calculator";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { i18n } from "i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -68,12 +69,15 @@ export default async function GenshinCalculator({ params }: Props) {
     "calculator"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = await genshinData.characters({
+  const characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["_id", "id", "name"],
   });
   const weapons = (
-    await genshinData.weapons({
+    await getGenshinData<Weapon[]>({
+      resource: "weapons",
+      language: langData,
       select: ["id", "name", "rarity"],
     })
   ).filter((w) => w.rarity > 2);

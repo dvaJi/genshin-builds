@@ -1,6 +1,6 @@
 "use client";
 
-import { Artifact, Character, Weapon } from "genshin-data";
+import type { Artifact, Character, Weapon } from "genshin-data";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 

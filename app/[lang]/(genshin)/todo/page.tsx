@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Domains } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getAllMaterialsMap } from "@utils/materials";
 import { i18n } from "i18n-config";
 
@@ -58,9 +59,11 @@ export async function generateMetadata({
 export default async function GenshinTodo({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "genshin", "todo");
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const materialsMap = await getAllMaterialsMap(genshinData);
-  const domains = await genshinData.domains();
+  const materialsMap = await getAllMaterialsMap(langData);
+  const domains = await getGenshinData<Domains>({
+    resource: "domains",
+    language: langData,
+  });
   const planning = [...domains.characters, ...domains.weapons].reduce<
     Record<string, string[]>
   >((acc, cur) => {

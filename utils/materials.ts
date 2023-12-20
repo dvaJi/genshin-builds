@@ -1,4 +1,14 @@
-import GenshinData from "genshin-data";
+import { getGenshinData } from "@lib/dataApi";
+import type {
+  CommonMaterial,
+  ElementalStoneMaterial,
+  ExpMaterial,
+  JewelMaterial,
+  LocalMaterial,
+  TalentLvlUpMaterial,
+  WeaponPrimaryMaterial,
+  WeaponSecondaryMaterial,
+} from "genshin-data";
 
 export type Material = {
   id: string;
@@ -18,35 +28,55 @@ export const allTypes = [
   "weapon_secondary_materials",
 ];
 
-export async function getAllMaterialsMap(
-  genshinData: GenshinData
-): Promise<Record<string, Material>> {
-  const characterExpMaterials = await genshinData.characterExpMaterials({
+export async function getAllMaterialsMap(language: string): Promise<Record<string, Material>> {
+  const characterExpMaterials = await getGenshinData<ExpMaterial[]>({
+    resource: "characterExpMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
-  const commonMaterials = await genshinData.commonMaterials({
+  const commonMaterials = await getGenshinData<CommonMaterial[]>({
+    resource: "commonMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
-  const elementalStoneMaterials = await genshinData.elementalStoneMaterials({
+  const elementalStoneMaterials = await getGenshinData<
+    ElementalStoneMaterial[]
+  >({
+    resource: "elementalStoneMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
-  const jewelsMaterials = await genshinData.jewelsMaterials({
+  const jewelsMaterials = await getGenshinData<JewelMaterial[]>({
+    resource: "jewelsMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
-  const localMaterials = await genshinData.localMaterials({
+  const localMaterials = await getGenshinData<LocalMaterial[]>({
+    resource: "localMaterials",
     select: ["id", "name"],
+    language,
   });
-  const talentLvlUpMaterials = await genshinData.talentLvlUpMaterials({
+  const talentLvlUpMaterials = await getGenshinData<TalentLvlUpMaterial[]>({
+    resource: "talentLvlUpMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
-  const weaponExpMaterials = await genshinData.weaponExpMaterials({
+  const weaponExpMaterials = await getGenshinData<ExpMaterial[]>({
+    resource: "weaponExpMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
-  const weaponPrimaryMaterials = await genshinData.weaponPrimaryMaterials({
+  const weaponPrimaryMaterials = await getGenshinData<WeaponPrimaryMaterial[]>({
+    resource: "weaponPrimaryMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
-  const weaponSecondaryMaterials = await genshinData.weaponSecondaryMaterials({
+  const weaponSecondaryMaterials = await getGenshinData<
+    WeaponSecondaryMaterial[]
+  >({
+    resource: "weaponSecondaryMaterials",
     select: ["id", "name", "rarity"],
+    language,
   });
 
   const materialsMap: any = {};

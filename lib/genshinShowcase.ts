@@ -1,7 +1,7 @@
-import GenshinData from "genshin-data";
-
 import prisma from "@db/index";
 import { decodeBuilds, regionParse } from "@utils/leaderboard-enc";
+import { Artifact, Character, Weapon } from "genshin-data";
+import { getGenshinData } from "./dataApi";
 
 export async function getPlayer(uid: string) {
   return prisma.player.findUnique({
@@ -12,7 +12,6 @@ export async function getPlayer(uid: string) {
 }
 
 export async function getBuild(lang: any, uid: string) {
-  const gi = new GenshinData({ language: lang });
   const playerData = await prisma.player.findUnique({
     where: {
       uuid: uid,
@@ -36,9 +35,31 @@ export async function getBuild(lang: any, uid: string) {
     },
   });
 
-  const characters = await gi.characters();
-  const weapons = await gi.weapons();
-  const artifacts = await gi.artifacts();
+  const characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: lang,
+    select: ["_id", "id", "name", "rarity"],
+  });
+  const weapons = await getGenshinData<Weapon[]>({
+    resource: "weapons",
+    language: lang,
+    select: ["_id", "id", "name", "rarity"],
+  });
+  const artifacts = await getGenshinData<Artifact[]>({
+    resource: "artifacts",
+    language: lang,
+    select: [
+      "_id",
+      "id",
+      "name",
+      "max_rarity",
+      "flower",
+      "plume",
+      "sands",
+      "goblet",
+      "circlet",
+    ],
+  });
 
   return {
     code: 200,

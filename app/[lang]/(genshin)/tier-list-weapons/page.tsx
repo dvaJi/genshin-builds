@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Weapon } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -7,6 +7,7 @@ import GenshinTierlistWeaponsView from "./list";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { TierlistWeapons } from "interfaces/tierlist";
 
@@ -53,17 +54,14 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
     "tierlist_weapons"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const weapons = await genshinData.weapons({
-    select: ["id", "name", "rarity"],
+  const weaponsMap = await getGenshinData<Record<string, Weapon>>({
+    resource: "weapons",
+    language: langData,
+    asMap: true,
   });
   const tierlist = await getRemoteData<Record<string, TierlistWeapons>>(
     "genshin",
     "tierlist-weapons"
-  );
-  const weaponsMap = weapons.reduce(
-    (map, { id, ...weapon }) => ({ ...map, [id]: weapon }),
-    {}
   );
 
   return (

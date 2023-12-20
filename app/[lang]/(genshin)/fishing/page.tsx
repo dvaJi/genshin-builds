@@ -1,4 +1,4 @@
-import GenshinData, { Fish } from "genshin-data";
+import type { Fish } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { i18n } from "i18n-config";
 import { FishingPoint } from "interfaces/fishing";
@@ -66,12 +67,11 @@ export default async function GenshinFishing({ params }: Props) {
     "genshin",
     "fishing"
   );
-  const genshinData = new GenshinData({ language: langData as any });
-  const fish = await genshinData.fish();
-  const allFish = fish.reduce<Record<string, Fish>>((obj, val) => {
-    obj[val.id] = val;
-    return obj;
-  }, {});
+  const allFish = await getGenshinData<Record<string, Fish>>({
+    resource: "fish",
+    language: langData,
+    asMap: true,
+  });
 
   return (
     <div>

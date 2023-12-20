@@ -5,7 +5,7 @@ import { useState } from "react";
 import FishingPointCard from "@components/genshin/FishingPointCard";
 import { getUrl } from "@lib/imgUrl";
 import clsx from "clsx";
-import { Fish } from "genshin-data";
+import type { Fish } from "genshin-data";
 import { FishingPoint } from "interfaces/fishing";
 
 type Props = {

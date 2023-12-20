@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Artifact } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import Badge from "@components/ui/Badge";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { i18n } from "i18n-config";
 
@@ -63,8 +64,10 @@ export default async function GenshinCharacters({ params }: Props) {
     "artifacts"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const artifacts = await genshinData.artifacts();
+  const artifacts = await getGenshinData<Artifact[]>({
+    resource: "artifacts",
+    language: langData,
+  });
 
   return (
     <div>

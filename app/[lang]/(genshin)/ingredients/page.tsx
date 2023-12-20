@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Ingredients } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { i18n } from "i18n-config";
 
@@ -59,8 +60,9 @@ export default async function GenshinIngredients({ params }: Props) {
     "ingredients"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const ingredients = await genshinData.ingredients({
+  const ingredients = await getGenshinData<Ingredients[]>({
+    resource: "ingredients",
+    language: langData,
     select: ["id", "name"],
   });
 

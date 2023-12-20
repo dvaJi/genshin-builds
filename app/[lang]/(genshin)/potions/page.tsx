@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Potion } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -7,6 +7,7 @@ import { genPageMetadata } from "@app/seo";
 import StarRarity from "@components/StarRarity";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { i18n } from "i18n-config";
 
@@ -61,8 +62,9 @@ export default async function GenshinIngredients({ params }: Props) {
     "potions"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const potions = await genshinData.potions({
+  const potions = await getGenshinData<Potion[]>({
+    resource: "potions",
+    language: langData,
     select: ["id", "name", "rarity", "effect"],
   });
 

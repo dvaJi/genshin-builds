@@ -64,6 +64,7 @@ export default async function GenshinTCG({ params }: Props) {
   const cards = await getGenshinData<TCGCard[]>({
     resource: "tcgCards",
     language: langData,
+    select: ["name", "id"],
   });
 
   // // Gather all types from card.attributes.card_type without duplicates

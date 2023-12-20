@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import GenshinData from "genshin-data";
+import type { Character } from "genshin-data";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import Badge from "@components/ui/Badge";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
 import { getTimeAgo } from "@lib/timeago";
@@ -56,12 +57,13 @@ export default async function GenshinBannerCharacters({ params }: Props) {
     "banners_characters"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
   const { historical, rerunPrediction } = await getRemoteData<{
     historical: BannerHistorical[];
     rerunPrediction: BannerReRunPrediction[];
   }>("genshin", "banners-characters");
-  const characters = await genshinData.characters({
+  const characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["id", "name"],
   });
 
@@ -153,7 +155,10 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                 </div>
                 <div className="flex min-w-min justify-center">
                   {h.main.map((m) => (
-                    <Link key={m + h.time} href={`/${params.lang}/character/${m}`}>
+                    <Link
+                      key={m + h.time}
+                      href={`/${params.lang}/character/${m}`}
+                    >
                       <SimpleRarityBox
                         img={getUrl(
                           `/characters/${m}/${m}_portrait.png`,
@@ -172,7 +177,10 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                 </div>
                 <div className="ml-10 flex min-w-max justify-center md:ml-0">
                   {h.secondary.map((m) => (
-                    <Link key={m + h.time} href={`/${params.lang}/character/${m}`}>
+                    <Link
+                      key={m + h.time}
+                      href={`/${params.lang}/character/${m}`}
+                    >
                       <SimpleRarityBox
                         img={getUrl(
                           `/characters/${m}/${m}_portrait.png`,

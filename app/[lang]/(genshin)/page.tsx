@@ -1,10 +1,11 @@
+import type { Character, Domains, Weapon } from "genshin-data";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import GenshinData, { type Character, type Weapon } from "genshin-data";
-import dynamic from "next/dynamic";
+import { getGenshinData } from "@lib/dataApi";
 import FarmableToday from "./farmable-today";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -51,27 +52,22 @@ export default async function IndexPage({ params }: Props) {
     "ascension_planner"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const domains = await genshinData.domains();
-  const characters = await genshinData.characters({
-    select: ["id", "name", "rarity"],
+  const domains = await getGenshinData<Domains>({
+    resource: "domains",
+    language: langData,
   });
-  const weapons = await genshinData.weapons({
+
+  const charactersMap = await getGenshinData<Record<string, Character>>({
+    resource: "characters",
     select: ["id", "name", "rarity"],
+    asMap: true,
+  });
+  const weaponsMap = await getGenshinData<Record<string, Weapon>>({
+    resource: "weapons",
+    select: ["id", "name", "rarity"],
+    asMap: true,
   });
   const days = domains.characters[0].rotation.map((r) => r.day);
-  const charactersMap = characters.reduce<Record<string, Character>>(
-    (map, value) => {
-      map[value.id] = { ...value, rarity: value.rarity || 5 };
-      return map;
-    },
-    {}
-  );
-
-  const weaponsMap = weapons.reduce<Record<string, Weapon>>((map, value) => {
-    map[value.id] = value;
-    return map;
-  }, {});
 
   return (
     <div>

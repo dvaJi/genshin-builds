@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Character } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import { genPageMetadata } from "@app/seo";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { i18n } from "i18n-config";
 import LeaderboardWrapper from "./wrapper";
 
@@ -60,8 +61,9 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
     "leaderboard"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = await genshinData.characters({
+  const characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: langData,
     select: ["_id", "id", "name"],
   });
 

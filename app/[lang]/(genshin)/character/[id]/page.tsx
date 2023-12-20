@@ -57,6 +57,7 @@ export async function generateMetadata({
     filter: {
       id: params.id,
     },
+    select: ["name"],
   });
   const _betaCharacter = beta[locale].characters.find(
     (c: any) => c.id === params.id
@@ -123,11 +124,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const weaponsList = await getGenshinData<Weapon[]>({
     resource: "weapons",
     language: langData as any,
+    select: ["id", "name", "rarity", "stats"],
   });
 
   const artifactsList = await getGenshinData<Artifact[]>({
     resource: "artifacts",
     language: langData as any,
+    select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
   });
 
   let weapons: Record<string, Weapon> = {};

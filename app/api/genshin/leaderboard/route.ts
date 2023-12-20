@@ -1,8 +1,9 @@
-import GenshinData from "genshin-data";
+import type { Artifact, Character, Weapon } from "genshin-data";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import prisma from "@db/index";
+import { getGenshinData } from "@lib/dataApi";
 import { decodeBuilds } from "@utils/leaderboard-enc";
 
 const schema = z.object({
@@ -31,7 +32,6 @@ export async function GET(req: NextRequest) {
   }
 
   const { lastID, characters } = request.data;
-  const gi = new GenshinData({ language: request.data.lang as any });
   const cursor = lastID ? { id: lastID as string } : undefined;
 
   const charactersFilter = characters
@@ -60,9 +60,31 @@ export async function GET(req: NextRequest) {
     cursor,
   });
 
-  const _characters = await gi.characters();
-  const _weapons = await gi.weapons();
-  const _artifacts = await gi.artifacts();
+  const _characters = await getGenshinData<Character[]>({
+    resource: "characters",
+    language: request.data.lang,
+    select: ["_id", "id", "name", "rarity"],
+  });
+  const _weapons = await getGenshinData<Weapon[]>({
+    resource: "weapons",
+    language: request.data.lang,
+    select: ["_id", "id", "name", "rarity"],
+  });
+  const _artifacts = await getGenshinData<Artifact[]>({
+    resource: "artifacts",
+    language: request.data.lang,
+    select: [
+      "_id",
+      "id",
+      "name",
+      "max_rarity",
+      "flower",
+      "plume",
+      "sands",
+      "goblet",
+      "circlet",
+    ],
+  });
 
   const decodedBuilds = await decodeBuilds(
     builds,

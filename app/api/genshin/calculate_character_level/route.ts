@@ -1,7 +1,8 @@
+import type { Character, ExpMaterial } from "genshin-data";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import GenshinData from "genshin-data";
+import { getGenshinData } from "@lib/dataApi";
 import { CalculationItemResult } from "interfaces/calculator";
 
 const lvlExpList = [
@@ -58,10 +59,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const gi = new GenshinData({ language: request.data.lang as any });
-  const character = (await gi.characters()).find(
-    (c) => c.id === request.data.characterId
-  );
+  const character = await getGenshinData<Character>({
+    resource: "characters",
+    language: request.data.lang,
+    filter: {
+      id: request.data.characterId,
+    },
+  });
 
   if (!character) {
     return NextResponse.json(
@@ -72,9 +76,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const charExpMaterial = (await gi.characterExpMaterials()).sort(
-    (a, b) => b.rarity - a.rarity
-  );
+  const charExpMaterial = (
+    await getGenshinData<ExpMaterial[]>({
+      resource: "characterExpMaterials",
+      language: request.data.lang,
+    })
+  ).sort((a, b) => b.rarity - a.rarity);
 
   let current = 0;
   let moraNeeded = 0;

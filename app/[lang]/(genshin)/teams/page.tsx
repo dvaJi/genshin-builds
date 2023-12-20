@@ -1,4 +1,4 @@
-import GenshinData, { type Character } from "genshin-data";
+import type { Character } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import { Fragment } from "react";
@@ -8,6 +8,7 @@ import TeamCard from "@components/genshin/TeamCard";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { i18n } from "i18n-config";
 import { TeamData, Teams } from "interfaces/teams";
 
@@ -62,15 +63,12 @@ export default async function GenshinCharacters({ params }: Props) {
     `../../../../_content/genshin/data/teams.json`
   ) as Teams;
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const characters = (
-    await genshinData.characters({
-      select: ["id", "name", "element"],
-    })
-  ).reduce<Record<string, Character>>((map, val) => {
-    map[val.id] = val;
-    return map;
-  }, {});
+  const characters = await getGenshinData<Record<string, Character>>({
+    resource: "characters",
+    language: langData,
+    select: ["id", "name", "element"],
+    asMap: true,
+  });
 
   const teamsByName: Record<string, TeamData[]> = Object.entries(teams).reduce(
     (map, [id, characterTeams]) => {

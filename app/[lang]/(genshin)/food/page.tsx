@@ -1,4 +1,4 @@
-import GenshinData from "genshin-data";
+import type { Food } from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -7,6 +7,7 @@ import GenshinMaterialsList from "./list";
 
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
 import { i18n } from "i18n-config";
 import { FoodItem } from "interfaces/genshin/food";
 
@@ -53,8 +54,9 @@ export async function generateMetadata({
 export default async function GenshinFood({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "genshin", "food");
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const dishesList = await genshinData.food({
+  const dishesList = await getGenshinData<Food[]>({
+    resource: "food",
+    language: langData,
     select: ["id", "name", "rarity", "results"],
   });
 

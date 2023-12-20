@@ -1,7 +1,8 @@
+import type { ExpMaterial, Weapon } from "genshin-data";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import GenshinData from "genshin-data";
+import { getGenshinData } from "@lib/dataApi";
 import { CalculationItemResult } from "interfaces/calculator";
 
 const lvlexp = [
@@ -74,10 +75,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const gi = new GenshinData({ language: request.data.lang as any });
-  const weapon = (await gi.weapons()).find(
-    (c) => c.id === request.data.weaponId
-  );
+  const weapon = await getGenshinData<Weapon>({
+    resource: "weapons",
+    language: request.data.lang,
+    filter: {
+      id: request.data.weaponId,
+    },
+  });
 
   if (!weapon) {
     return NextResponse.json(
@@ -88,9 +92,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const weaponexpMaterial = (await gi.weaponExpMaterials()).sort(
-    (a, b) => b.rarity - a.rarity
-  );
+  const weaponexpMaterial = (
+    await getGenshinData<ExpMaterial[]>({
+      resource: "weaponExpMaterials",
+      language: request.data.lang,
+    })
+  ).sort((a, b) => b.rarity - a.rarity);
 
   let current = 0;
   let moraNeeded = 0;

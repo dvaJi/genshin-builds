@@ -1,5 +1,8 @@
-import { Ascension, TalentMaterial } from "genshin-data/dist/types/character";
-import { WeaponAscension } from "genshin-data/dist/types/weapon";
+import type {
+  Ascension,
+  TalentMaterial,
+} from "genshin-data/dist/types/character";
+import type { WeaponAscension } from "genshin-data/dist/types/weapon";
 
 export type AscensionTotal = {
   items: MaterialTotal[];
@@ -87,13 +90,7 @@ export function calculateTotalAscensionMaterials(
             index: 3,
           };
         }
-        acc.items = [
-          mat1,
-          mat2,
-          mat3,
-          mat4,
-          ...acc.items,
-        ]
+        acc.items = [mat1, mat2, mat3, mat4, ...acc.items]
           .filter((item) => item.id)
           .reduce<MaterialTotal[]>((acc2, cur2) => {
             const existing = acc2.find((item) => item.id === cur2.id);

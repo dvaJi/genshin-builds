@@ -113,7 +113,7 @@ async function getGenshinSpecificRoutes() {
 }
 
 async function getGenshinData(resource: string) {
-  return giData<any>({ resource });
+  return giData<any>({ resource, select: ["id"] });
 }
 
 async function getHSRSpecificRoutes() {

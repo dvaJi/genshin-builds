@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { memo, useMemo } from "react";
-import { Ascension } from "genshin-data/dist/types/character";
 import clsx from "clsx";
+import type { Ascension } from "genshin-data/dist/types/character";
+import { memo, useMemo } from "react";
 
 import SimpleRarityBox from "../SimpleRarityBox";
 
+import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalAscensionMaterials } from "@utils/totals";
-import useIntl from "@hooks/use-intl";
 
 type Props = {
   ascension: Ascension[];
@@ -63,11 +63,7 @@ const CharacterAscencionMaterials = ({ ascension }: Props) => {
             {ascen.mat2 && (
               <>
                 <SimpleRarityBox
-                  img={getUrl(
-                    `/materials/${ascen.mat2.id}.png`,
-                    64,
-                    64
-                  )}
+                  img={getUrl(`/materials/${ascen.mat2.id}.png`, 64, 64)}
                   name={ascen.mat2.amount.toString()}
                   rarity={ascen.mat2.rarity || 1}
                   className="h-16 w-16"

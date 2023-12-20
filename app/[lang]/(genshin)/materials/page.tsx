@@ -1,4 +1,3 @@
-import GenshinData from "genshin-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -60,8 +59,7 @@ export default async function GenshinIngredients({ params }: Props) {
     "materials"
   );
 
-  const genshinData = new GenshinData({ language: langData as any });
-  const materialsMap = await getAllMaterialsMap(genshinData);
+  const materialsMap = await getAllMaterialsMap(langData);
   const materials = Object.keys(materialsMap).map((key) => ({
     ...materialsMap[key],
     id: key,
