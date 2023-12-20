@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import HSRData from "hsr-data";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -9,7 +8,9 @@ import Stars from "@components/hsr/Stars";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
+import { Items } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -42,9 +43,12 @@ export async function generateMetadata({
     "item"
   );
 
-  const hsrData = new HSRData({ language: langData as any });
-  const items = await hsrData.items({ select: ["id", "name", "type"] });
-  const item = items.find((i) => i.id === params.id);
+  const item = await getHSRData<Items>({
+    resource: "items",
+    language: langData,
+    select: ["id", "name", "type"],
+    filter: { id: params.id },
+  });
 
   if (!item) {
     return;
@@ -75,9 +79,12 @@ export async function generateMetadata({
 export default async function CharacterPage({ params }: Props) {
   const { t, langData } = await useTranslations(params.lang, "hsr", "item");
 
-  const hsrData = new HSRData({ language: langData as any });
-  const items = await hsrData.items();
-  const item = items.find((i) => i.id === params.id);
+  const item = await getHSRData<Items>({
+    resource: "items",
+    language: langData,
+    select: ["id", "name", "type"],
+    filter: { id: params.id },
+  });
 
   if (!item) {
     return notFound();

@@ -1,10 +1,10 @@
-import type { Messages } from "hsr-data/dist/types/messages";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
+import type { Messages } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";

@@ -7,8 +7,8 @@ import { useToggle } from "@hooks/use-toggle";
 
 import Crement from "../Crement";
 
+import type { Skill } from "@interfaces/genshin";
 import { getUrlLQ } from "@lib/imgUrl";
-import type { Skill } from "@interfaces/genshin/dist/types/character";
 
 type Props = {
   characterId: string;

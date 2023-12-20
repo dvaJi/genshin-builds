@@ -1,10 +1,10 @@
 "use client";
 
-import type { Passive } from "@interfaces/genshin/dist/types/character";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import useIntl from "@hooks/use-intl";
+import type { Passive } from "@interfaces/genshin";
 import { getUrlLQ } from "@lib/imgUrl";
 
 type Props = {

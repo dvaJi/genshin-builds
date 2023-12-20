@@ -1,4 +1,4 @@
-import type { Achievement } from "hsr-data";
+import type { Achievement } from "@interfaces/hsr";
 import { memo } from "react";
 
 import type { Category } from "@app/[lang]/hsr/achievements/list";

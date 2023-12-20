@@ -1,7 +1,7 @@
 "use client";
 
 import useIntl from "@hooks/use-intl";
-import type { Ascension } from "@interfaces/genshin/dist/types/character";
+import type { Ascension } from "@interfaces/genshin";
 import { Fragment, useState } from "react";
 
 type Props = {

@@ -1,7 +1,7 @@
 import { memo } from "react";
 
+import type { Message } from "@interfaces/hsr";
 import { getHsrUrl } from "@lib/imgUrl";
-import type { Message } from "hsr-data/dist/types/messages";
 
 function MessageBlock({ message }: { message: Message }) {
   return (

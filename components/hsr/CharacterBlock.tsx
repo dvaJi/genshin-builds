@@ -1,5 +1,5 @@
 import { getHsrUrl } from "@lib/imgUrl";
-import type { Character } from "hsr-data";
+import type { Character } from "@interfaces/hsr";
 import { memo } from "react";
 
 type Props = {

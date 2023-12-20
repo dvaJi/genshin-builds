@@ -1,4 +1,4 @@
-import type { Achievement } from "hsr-data";
+import type { Achievement } from "@interfaces/hsr";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 

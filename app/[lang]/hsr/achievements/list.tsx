@@ -3,7 +3,7 @@
 import useIntl from "@hooks/use-intl";
 import { useStore } from "@nanostores/react";
 import { $achievements } from "@state/hsr-achievements";
-import type { Achievement } from "hsr-data";
+import type { Achievement } from "@interfaces/hsr";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
 

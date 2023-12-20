@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { Character } from "hsr-data";
+import type { Character } from "@interfaces/hsr";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";

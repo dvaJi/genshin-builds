@@ -1,12 +1,12 @@
 "use client";
 
 import clsx from "clsx";
-import type { AscensionMaterial } from "@interfaces/genshin/dist/types/character";
 import { memo, useMemo } from "react";
 
 import SimpleRarityBox from "../SimpleRarityBox";
 
 import useIntl from "@hooks/use-intl";
+import type { AscensionMaterial } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalTalentMaterials } from "@utils/totals";
 

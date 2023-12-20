@@ -1,8 +1,8 @@
 "use client";
 
+import type { SkillTreePoint } from "@interfaces/hsr";
 import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import type { SkillTreePoint } from "hsr-data/dist/types/characters";
 import { Fragment } from "react";
 
 import { getHsrUrl } from "@lib/imgUrl";

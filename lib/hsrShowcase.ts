@@ -1,7 +1,7 @@
-import HSRData from "hsr-data";
-
 import prisma from "@db/index";
+import { Character, LightCone, Relic } from "@interfaces/hsr";
 import { decodeBuilds, regionParse } from "@utils/mihomo_enc";
+import { getHSRData } from "./dataApi";
 
 export async function getPlayer(uid: string) {
   return prisma.hSRPlayer.findUnique({
@@ -35,13 +35,31 @@ export async function getBuild(lang: any, uid: string) {
     },
   });
 
-  const hsrData = new HSRData({
+  const characters = await getHSRData<Character[]>({
+    resource: "characters",
     language: lang,
+    select: [
+      "_id",
+      "id",
+      "name",
+      "rarity",
+      "combat_type",
+      "path",
+      "faction",
+      "eidolons",
+      "skills",
+    ],
   });
-
-  const characters = await hsrData.characters();
-  const lightCones = await hsrData.lightcones();
-  const relics = await hsrData.relics();
+  const lightCones = await getHSRData<LightCone[]>({
+    resource: "lightcones",
+    language: lang,
+    select: ["_id", "id", "name", "rarity"],
+  });
+  const relics = await getHSRData<Relic[]>({
+    resource: "relics",
+    language: lang,
+    select: ["_id", "pieces"],
+  });
 
   return {
     code: 200,

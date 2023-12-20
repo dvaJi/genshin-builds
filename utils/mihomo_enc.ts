@@ -1,5 +1,5 @@
 import { HSRBuild, HSRPlayer } from "@prisma/client";
-import type { Character, LightCone, Relic } from "hsr-data";
+import type { Character, LightCone, Relic } from "@interfaces/hsr";
 
 import {
   Addition,

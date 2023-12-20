@@ -1,4 +1,4 @@
-import type { LightCone } from "hsr-data";
+import type { LightCone } from "@interfaces/hsr";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 

@@ -1,8 +1,8 @@
 import type {
   Ascension,
   TalentMaterial,
-} from "@interfaces/genshin/dist/types/character";
-import type { WeaponAscension } from "@interfaces/genshin/dist/types/weapon";
+  WeaponAscension,
+} from "@interfaces/genshin";
 
 export type AscensionTotal = {
   items: MaterialTotal[];

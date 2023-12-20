@@ -1,9 +1,9 @@
 "use client";
 
 import clsx from "clsx";
-import type { WeaponAscension } from "@interfaces/genshin/dist/types/weapon";
 import { memo, useMemo } from "react";
 
+import type { WeaponAscension } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
 import SimpleRarityBox from "../SimpleRarityBox";

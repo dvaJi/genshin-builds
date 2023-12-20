@@ -2,7 +2,7 @@
 
 import useIntl from "@hooks/use-intl";
 import { getHsrUrl } from "@lib/imgUrl";
-import type { LightCone, Relic } from "hsr-data";
+import type { LightCone, Relic } from "@interfaces/hsr";
 import { Relics } from "interfaces/hsr/build";
 import { memo } from "react";
 

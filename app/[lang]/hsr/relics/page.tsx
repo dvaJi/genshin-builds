@@ -1,4 +1,4 @@
-import type { Relic } from "hsr-data";
+import type { Relic } from "@interfaces/hsr";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 // import { Tooltip } from "react-tooltip";

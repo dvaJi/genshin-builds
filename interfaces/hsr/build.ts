@@ -57,11 +57,11 @@ export interface Team {
 }
 
 export interface TeamData {
-  characters: Character[];
+  characters: BuildCharacter[];
   alternatives: string[];
 }
 
-export interface Character {
+export interface BuildCharacter {
   id: string;
   role: string;
   isFlex: boolean;

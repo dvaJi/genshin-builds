@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import { renderDescription } from "hsr-data";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { AiFillLock } from "react-icons/ai";
@@ -9,6 +8,7 @@ import { Tooltip } from "react-tooltip";
 
 import Stars from "@components/hsr/Stars";
 import { getHsrUrl, getHsrUrlLQ, getUrl } from "@lib/imgUrl";
+import { renderDescription } from "@utils/template-replacement";
 
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
