@@ -80,7 +80,7 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
           />
         </div>
         {talentsTotal.items.map((item) => (
-          <div key={item.id} className="flex items-center">
+          <div key={item.id + item.amount} className="flex items-center">
             <SimpleRarityBox
               img={getUrl(`/materials/${item.id}.png`, 64, 64)}
               placeholderSrc={getUrl(`/materials/${item.id}.png`, 4, 4)}

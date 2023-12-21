@@ -13,6 +13,7 @@ export function getBonusSet(
     "shimenawas_reminiscence",
     "vermillion_hereafter",
     "echoes_of_an_offering",
+    "nighttime_whispers_in_the_echoing_woods",
   ];
 
   bonusSet["18atk_set"] = {
@@ -65,7 +66,7 @@ export function getBonusSet(
     children: artifacts.filter((a) => EM80BONUS.includes(a.id)),
   };
 
-  const HEAL15BONUS = ["maiden_beloved", "oceanhued_clam"];
+  const HEAL15BONUS = ["maiden_beloved", "oceanhued_clam", "song_of_days_past"];
 
   bonusSet["15healingbonus_set"] = {
     ...artifacts.find((a) => a.id === HEAL15BONUS[0])!,

@@ -9,7 +9,7 @@ type APIOptions = {
   revalidate?: number;
 };
 
-export async function getGenshinData<T>(options: APIOptions) {
+export async function getGenshinData<T>(options: APIOptions): Promise<T> {
   const res = await fetch(process.env.GENSHIN_API_URL, {
     method: "POST",
     body: JSON.stringify(options),
@@ -17,6 +17,8 @@ export async function getGenshinData<T>(options: APIOptions) {
       revalidate: options.revalidate ? options.revalidate : 60 * 60 * 24,
     },
   });
+
+  if (options.filter && res.status === 404) return null as T;
 
   if (options.asMap) {
     const data = await res.json();
