@@ -99,21 +99,24 @@ export default async function CharacterPage({ params }: Props) {
     return notFound();
   }
 
-  const characters = await getHSRData<Character[]>({
+  const characters = await getHSRData<Record<string, Character>>({
     resource: "characters",
     language: langData,
     select: ["id", "name", "rarity", "path", "combat_type"],
+    asMap: true,
   });
 
-  const _lightcones = await getHSRData<LightCone[]>({
+  const _lightcones = await getHSRData<Record<string, LightCone>>({
     resource: "lightcones",
     language: langData,
     select: ["id", "name", "rarity"],
+    asMap: true,
   });
-  const _relics = await getHSRData<Relic[]>({
+  const _relics = await getHSRData<Record<string, Relic>>({
     resource: "relics",
     language: langData,
     select: ["id", "name"],
+    asMap: true,
   });
 
   const build = await getStarRailBuild(character.id);
@@ -124,7 +127,7 @@ export default async function CharacterPage({ params }: Props) {
 
   build?.teams.forEach((t) => {
     t.data.characters.forEach((c) => {
-      const character = characters.find((ch) => ch.id === getHsrId(c.id));
+      const character = characters[getHsrId(c.id)];
       if (character) {
         charactersMap[character.id] = {
           id: character.id,
@@ -139,7 +142,7 @@ export default async function CharacterPage({ params }: Props) {
     });
 
     t.data.alternatives.forEach((c) => {
-      const character = characters.find((ch) => ch.id === getHsrId(c));
+      const character = characters[getHsrId(c)];
       if (character) {
         charactersMap[character.id] = {
           id: character.id,
@@ -155,13 +158,13 @@ export default async function CharacterPage({ params }: Props) {
   });
 
   build?.builds.forEach((b) => {
-    const lightCone = _lightcones.find((l) => l.id === b.data.bestLightCone);
+    const lightCone = _lightcones[b.data.bestLightCone];
     if (lightCone) {
       lightConesMap[lightCone.id] = lightCone;
     }
 
     b.data.relics.forEach((r) => {
-      const relic = _relics.find((re) => re.id === r);
+      const relic = _relics[r];
       if (relic) {
         relicsMap[relic.id] = relic;
       }
@@ -169,7 +172,7 @@ export default async function CharacterPage({ params }: Props) {
   });
 
   build?.lightcones.forEach((l) => {
-    const lightCone = _lightcones.find((lc) => lc.id === l);
+    const lightCone = _lightcones[l];
     if (lightCone) {
       lightConesMap[lightCone.id] = lightCone;
     }
@@ -177,7 +180,7 @@ export default async function CharacterPage({ params }: Props) {
 
   build?.relics.set.forEach((r) => {
     r.ids.forEach((id) => {
-      const relic = _relics.find((re) => re.id === id);
+      const relic = _relics[id];
       if (relic) {
         relicsMap[relic.id] = relic;
       }
@@ -185,7 +188,7 @@ export default async function CharacterPage({ params }: Props) {
   });
 
   build?.relics.ornament.forEach((r) => {
-    const relic = _relics.find((re) => re.id === r);
+    const relic = _relics[r];
     if (relic) {
       relicsMap[relic.id] = relic;
     }

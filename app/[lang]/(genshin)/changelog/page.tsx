@@ -1,4 +1,3 @@
-import type { Artifact, Character, Food, TCGCard, Weapon } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
@@ -11,7 +10,15 @@ import { getGenshinData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
 import { i18n } from "i18n-config";
-import { Changelog } from "interfaces/genshin/changelog";
+
+import type {
+  Artifact,
+  Changelog,
+  Character,
+  Food,
+  TCGCard,
+  Weapon,
+} from "@interfaces/genshin";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -74,30 +81,34 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     "changelog"
   );
 
-  const characters = await getGenshinData<Character[]>({
+  const characters = await getGenshinData<Record<string, Character>>({
     resource: "characters",
     language: langData,
     select: ["id", "name", "rarity"],
+    asMap: true,
   });
-  const weapons = await getGenshinData<Weapon[]>({
+  const weapons = await getGenshinData<Record<string, Weapon>>({
     resource: "weapons",
     language: langData,
     select: ["id", "name", "rarity"],
+    asMap: true,
   });
   const food = await getGenshinData<Food[]>({
     resource: "food",
     language: langData,
     select: ["id", "name", "rarity", "results"],
   });
-  const artifacts = await getGenshinData<Artifact[]>({
+  const artifacts = await getGenshinData<Record<string, Artifact>>({
     resource: "artifacts",
     language: langData,
     select: ["id", "name", "max_rarity"],
+    asMap: true,
   });
-  const tcgCards = await getGenshinData<TCGCard[]>({
+  const tcgCards = await getGenshinData<Record<string, TCGCard>>({
     resource: "tcgCards",
     language: langData,
     select: ["id", "name"],
+    asMap: true,
   });
 
   const changelog = (
@@ -116,14 +127,14 @@ export default async function GenshinBannerWeapons({ params }: Props) {
 
   const item = cl.items;
   item.avatar?.forEach((a: string) => {
-    charactersMap[a] = characters.find((c) => c.id === a);
+    charactersMap[a] = characters[a];
   });
   item.weapon?.forEach((w: string) => {
-    weaponsMap[w] = weapons.find((wp) => wp.id === w);
+    weaponsMap[w] = weapons[w];
   });
 
   item.artifact?.forEach((a: string) => {
-    artifactsMap[a] = artifacts.find((w) => w.id === a);
+    artifactsMap[a] = artifacts[a];
   });
   item.food?.forEach((f: string) => {
     foodMap[f] = food.find((w) => w.id === f);
@@ -139,7 +150,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
       };
   });
   item.tcg?.forEach((t: string) => {
-    tcgMap[t] = tcgCards.find((tc) => tc.id === t);
+    tcgMap[t] = tcgCards[t];
   });
 
   return (

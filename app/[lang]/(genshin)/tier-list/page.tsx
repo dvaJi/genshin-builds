@@ -1,4 +1,4 @@
-import type { Character } from "@interfaces/genshin";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -54,20 +54,23 @@ export default async function GenshinTierlist({ params }: Props) {
     "tierlist"
   );
 
-  const characters = await getGenshinData<Character[]>({
+  const characters = await getGenshinData<Record<string, Character[]>>({
     resource: "characters",
     language: langData,
     select: ["id", "name", "element"],
+    asMap: true,
   });
-  const weapons = await getGenshinData<Character[]>({
+  const weapons = await getGenshinData<Record<string, Weapon[]>>({
     resource: "weapons",
     language: langData,
     select: ["id", "name", "rarity"],
+    asMap: true,
   });
-  const artifacts = await getGenshinData<Character[]>({
+  const artifacts = await getGenshinData<Record<string, Artifact[]>>({
     resource: "artifacts",
     language: langData,
     select: ["id", "name"],
+    asMap: true,
   });
 
   const tierlist = await getRemoteData<Record<string, Tierlist>>(
@@ -104,10 +107,10 @@ export default async function GenshinTierlist({ params }: Props) {
   ];
 
   for (const tl of mergedTierlist) {
-    charactersMap[tl.id] = characters.find((c) => c.id === tl.id);
-    weaponsMap[tl.w_id] = weapons.find((w) => w.id === tl.w_id);
-    tl.a_ids.forEach((a_id: string) => {
-      artifactsMap[a_id] = artifacts.find((a) => a.id === a_id);
+    charactersMap[tl.id] = characters[tl.id];
+    weaponsMap[tl.w_id] = weapons[tl.w_id];
+    tl.a_ids?.forEach((a_id: string) => {
+      artifactsMap[a_id] = artifacts[a_id];
     });
   }
 

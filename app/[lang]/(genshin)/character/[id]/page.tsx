@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+import clsx from "clsx";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -121,16 +121,18 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const buildsOld: Build[] =
     require(`../../../../../_content/genshin/data/builds.json`)[character.id] ||
     [];
-  const weaponsList = await getGenshinData<Weapon[]>({
+  const weaponsList = await getGenshinData<Record<string, Weapon>>({
     resource: "weapons",
     language: langData as any,
     select: ["id", "name", "rarity", "stats"],
+    asMap: true,
   });
 
-  const artifactsList = await getGenshinData<Artifact[]>({
+  const artifactsList = await getGenshinData<Record<string, Artifact>>({
     resource: "artifacts",
     language: langData as any,
     select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
+    asMap: true,
   });
 
   let weapons: Record<string, Weapon> = {};
@@ -180,23 +182,25 @@ export default async function GenshinCharacterPage({ params }: Props) {
       builds.push(newBuild);
     });
 
-    weaponsList.forEach((weapon) => {
+    const weaponIds = Object.keys(weaponsList);
+    weaponIds.forEach((weaponId) => {
       if (
-        weaponsIds.includes(weapon.id) ||
-        mubuild?.weapons?.includes(weapon.id) ||
-        officialbuild?.weapons?.includes(weapon.id)
+        weaponsIds.includes(weaponId) ||
+        mubuild?.weapons?.includes(weaponId) ||
+        officialbuild?.weapons?.includes(weaponId)
       ) {
-        weapons[weapon.id] = weapon;
+        weapons[weaponId] = weaponsList[weaponId];
       }
     });
 
-    artifactsList.forEach((artifact) => {
+    const artifactIds = Object.keys(artifactsList);
+    artifactIds.forEach((artifactId) => {
       if (
-        artifactsIds.includes(artifact.id) ||
-        mubuild?.artifacts?.find((a) => a.includes(artifact.id)) ||
-        officialbuild?.artifacts?.find((a) => a.includes(artifact.id))
+        artifactsIds.includes(artifactId) ||
+        mubuild?.artifacts?.find((a) => a.includes(artifactId)) ||
+        officialbuild?.artifacts?.find((a) => a.includes(artifactId))
       ) {
-        artifacts[artifact.id] = artifact;
+        artifacts[artifactId] = artifactsList[artifactId];
       }
     });
 

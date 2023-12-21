@@ -10,7 +10,15 @@ type APIOptions = {
 };
 
 export async function getGenshinData<T>(options: APIOptions): Promise<T> {
-  const res = await fetch(process.env.GENSHIN_API_URL, {
+  return getData<T>(process.env.GENSHIN_API_URL, options);
+}
+
+export async function getHSRData<T>(options: APIOptions) {
+  return getData<T>(process.env.HSR_API_URL, options);
+}
+
+async function getData<T>(url: string, options: APIOptions) {
+  const res = await fetch(url, {
     method: "POST",
     body: JSON.stringify(options),
     next: {
@@ -27,18 +35,6 @@ export async function getGenshinData<T>(options: APIOptions): Promise<T> {
       return acc;
     }, {} as any) as T;
   }
-
-  return res.json() as Promise<T>;
-}
-
-export async function getHSRData<T>(options: APIOptions) {
-  const res = await fetch(process.env.HSR_API_URL, {
-    method: "POST",
-    body: JSON.stringify(options),
-    next: {
-      revalidate: options.revalidate ? options.revalidate : 60 * 60 * 24,
-    },
-  });
 
   return res.json() as Promise<T>;
 }
