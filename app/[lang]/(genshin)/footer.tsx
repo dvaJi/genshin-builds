@@ -14,6 +14,9 @@ export default function GenshinFooter() {
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-2 text-lg text-gray-200">GenshinBuilds</h4>
+            <button id="pmLink" className="my-1 hover:text-white">
+              Privacy Manager
+            </button>
             <Link
               href={`/${locale}/privacy-policy`}
               className="my-1 hover:text-white"
@@ -38,7 +41,6 @@ export default function GenshinFooter() {
               <AiOutlineTwitter className="inline group-hover:text-blue-400" />{" "}
               <span className="text-base">Twitter</span>
             </a>
-            <button id="pmLink">Privacy Manager</button>
           </div>
 
           <div className="flex flex-1 flex-col">
