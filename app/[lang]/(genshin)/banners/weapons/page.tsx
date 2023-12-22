@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import type { Weapon } from "@interfaces/genshin";
+import clsx from "clsx";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -64,7 +64,6 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     resource: "weapons",
     select: ["id", "name"],
     language: langData,
-    asMap: true,
   });
 
   const weaponsMap = weapons.reduce(
