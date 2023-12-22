@@ -134,9 +134,6 @@ dependencies:
   swr:
     specifier: ^2.2.4
     version: 2.2.4(react@18.2.0)
-  tof-builds:
-    specifier: 0.10.0
-    version: 0.10.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -9109,11 +9106,6 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
-
-  /tof-builds@0.10.0:
-    resolution: {integrity: sha512-ggrYv+us7eNp+3wi0xWla55MlP6CXQspD5M1LwTLrwiSdQgyeU/tbwgxZF/3N6hYLYirQsjZ1p/rh/E+47m+Pw==}
-    engines: {node: '>=13'}
-    dev: false
 
   /totalist@1.1.0:
     resolution: {integrity: sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==}

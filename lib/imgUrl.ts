@@ -1,7 +1,7 @@
 import { google, ImageItem, photon, staticaly } from "@utils/cdn-providers";
 import { IMGS_CDN } from "./constants";
 
-type GameFolder = "genshin" | "tof" | "hsr" | "zenless";
+type GameFolder = "genshin" | "hsr" | "zenless";
 
 type ImgOptions = {
   height?: number;
@@ -21,26 +21,6 @@ export const getImg = (game: GameFolder, path: string, options?: ImgOptions) =>
     options?.crop,
     "/" + game
   );
-
-export function getTofUrl(
-  path: string,
-  height?: number,
-  width?: number,
-  index = 1,
-  crop = false
-) {
-  return generateUrl(path, height, width, undefined, index, crop, "/tof");
-}
-
-export function getTofUrlLQ(
-  path: string,
-  height?: number,
-  width?: number,
-  index = 1,
-  crop = false
-) {
-  return generateUrl(path, height, width, 10, index, crop, "/tof");
-}
 
 export function getUrlLQ(
   path: string,

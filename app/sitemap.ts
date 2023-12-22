@@ -2,7 +2,6 @@ import { getPosts } from "@lib/blog";
 import { getGenshinData as giData, getHSRData as hsrData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { i18n } from "i18n-config";
-import TOFData from "tof-builds";
 
 type Route = {
   url: string;
@@ -18,9 +17,6 @@ export default async function sitemap() {
 
   const hsrRoutes = await getHSRSpecificRoutes();
   routes.push(...hsrRoutes);
-
-  const tofRoutes = await getTOFSpecificRoutes();
-  routes.push(...tofRoutes);
 
   const zenlessRoutes = await getZenlessSpecificRoutes();
   routes.push(...zenlessRoutes);
@@ -187,54 +183,6 @@ async function getHSRSpecificRoutes() {
 
 async function getHSRData(resource: string) {
   return hsrData<any[]>({ resource, select: ["id"] });
-}
-
-async function getTOFSpecificRoutes() {
-  const routes: Route[] = [];
-
-  ["", "/blog", "/blog/page/2", "/matrices"].forEach((route) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/tof${route}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
-    });
-  });
-
-  const tofData = new TOFData();
-  const characters = await tofData.characters({ select: ["id"] });
-
-  characters.forEach((character) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/tof/character/${character.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
-    });
-  });
-
-  const matrices = await tofData.matrices({ select: ["id"] });
-  matrices.forEach((matrix) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/tof/matrices/${matrix.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
-    });
-  });
-
-  const posts = await getPosts("tof");
-
-  posts.data.forEach((post) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/tof/blog/${post.slug}`,
-        lastModified: `${post.updatedAt}`,
-      });
-    });
-  });
-
-  return routes;
 }
 
 async function getZenlessSpecificRoutes() {

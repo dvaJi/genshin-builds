@@ -1,10 +1,8 @@
 import { cache } from "react";
 
-import { getDefaultLocale } from "@lib/localData";
 import { localeToHSRLang, localeToLang } from "@utils/locale-to-lang";
 import { templateReplacement } from "@utils/template-replacement";
 import { localesAvailables } from "i18n-config";
-import { languages as tofLanguages } from "tof-builds";
 
 export interface IntlFormatProps {
   id: string;
@@ -36,10 +34,6 @@ const getLanguage = cache((locale: string, game: string) => {
     return localesAvailables.hsr.includes(locale) ? locale : "en";
   }
 
-  if (game === "tof") {
-    return localesAvailables.tof.includes(locale) ? locale : "en";
-  }
-
   if (game === "genshin") {
     return localesAvailables.genshin.includes(locale) ? locale : "en";
   }
@@ -50,13 +44,6 @@ const getLanguage = cache((locale: string, game: string) => {
 const getLangData = cache((locale: string, game: string) => {
   if (game === "hsr") {
     return localeToHSRLang(locale || "en");
-  }
-
-  if (game === "tof") {
-    return getDefaultLocale<string>(
-      locale,
-      tofLanguages as unknown as string[]
-    );
   }
 
   if (game === "genshin") {

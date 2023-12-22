@@ -60,7 +60,6 @@
     "remark-gfm": "^3.0.0",
     "schema-dts": "^1.1.2",
     "swr": "^2.2.4",
-    "tof-builds": "0.10.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

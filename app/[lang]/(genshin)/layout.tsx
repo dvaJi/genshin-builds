@@ -5,7 +5,7 @@ import Header from "./header";
 
 import useHook from "@hooks/use-hook";
 import useTranslations from "@hooks/use-translations";
-import { TOF_GA_TRACKING_ID } from "@lib/gtag";
+import { GA_TRACKING_ID } from "@lib/gtag";
 
 import "../../../styles/globals.css";
 
@@ -22,7 +22,7 @@ export default function GenshinLayout({ children, params }: Props) {
 
   return (
     <IntlProvider locale={params.lang} messages={messages} common={common}>
-      <GoogleAnalytics gtagId={TOF_GA_TRACKING_ID} />
+      <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div className="flex min-h-screen flex-col bg-vulcan-900">
         <Header />
 

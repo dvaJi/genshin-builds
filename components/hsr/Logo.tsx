@@ -6,10 +6,10 @@ const Logo = () => {
       {/* <img
         src="/logo.png"
         className="ml-5 lg:ml-0 lg:mr-5 fill-current text-white"
-        alt="TOFBuilds logo"
+        alt="Star Rail Builds logo"
       />
       <span className="text-gray-100 text-lg font-normal hidden">
-        TOFBuilds
+        Star Rail Builds
       </span> */}
       <div>
         <span className="text-hsr-accent">Star Rail </span>

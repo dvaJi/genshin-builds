@@ -33,7 +33,7 @@ function GameSelector({ currentGame, className, buttonClassName }: Props) {
         data-is-open={isOpen}
         className={clsx(
           "flex h-8 w-full items-center rounded px-2 backdrop-blur-sm md:w-10 lg:w-44 xl:w-48",
-          isOpen ? "bg-tof-700/50" : "bg-tof-700/10",
+          isOpen ? "bg-zinc-700/50" : "bg-zinc-700/30",
           buttonClassName
         )}
         onClick={() => setIsOpen((o) => !o)}
@@ -57,7 +57,7 @@ function GameSelector({ currentGame, className, buttonClassName }: Props) {
         role="menu"
         aria-hidden={!isOpen}
         className={clsx(
-          "top-13 absolute w-full rounded-b bg-tof-700/90 shadow-md backdrop-blur-xl",
+          "top-13 absolute w-full rounded-b bg-zinc-700/90 shadow-md backdrop-blur-xl",
           isOpen ? "block" : "hidden"
         )}
       >
@@ -67,7 +67,7 @@ function GameSelector({ currentGame, className, buttonClassName }: Props) {
               type="button"
               tabIndex={0}
               role="menuitem"
-              className="flex h-full w-full items-center px-2 py-2 text-left text-sm hover:bg-tof-600"
+              className="flex h-full w-full items-center px-2 py-2 text-left text-sm hover:bg-zinc-500"
             >
               <img
                 className="mr-3 h-6 w-6 rounded"

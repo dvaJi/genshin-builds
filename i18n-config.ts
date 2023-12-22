@@ -52,7 +52,6 @@ export const localesAvailables = {
     "vi",
     "zh-tw",
   ],
-  tof: ["de", "en", "es", "fr", "id", "ja", "pt", "th"],
 };
 
 export type Locale = (typeof i18n)["locales"][number];

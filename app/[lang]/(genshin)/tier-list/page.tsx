@@ -8,7 +8,7 @@ import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
-import { Tierlist } from "interfaces/tierlist";
+import { CharacterTier, Tierlist } from "interfaces/tierlist";
 import GenshinTierlistView from "./list";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -78,32 +78,27 @@ export default async function GenshinTierlist({ params }: Props) {
     "tierlist-characters"
   );
 
-  const tiers = ["0", "1", "2", "3", "4"];
+  const _tiers = ["0", "1", "2", "3", "4"];
 
-  const mergeTiers = (col: any) => {
-    let data: any[] = [];
-    tiers.forEach((k) => {
-      data = [...data, ...col[k]];
-    });
-
-    return data;
+  const mergeTiers = (col: any, tiers: string[]) => {
+    return tiers.reduce<CharacterTier[]>((data, k) => [...data, ...col[k]], []);
   };
 
   const charactersMap: any = {};
   const weaponsMap: any = {};
   const artifactsMap: any = {};
   const mergedTierlist = [
-    ...mergeTiers(tierlist.tierlist.maindps),
-    ...mergeTiers(tierlist.tierlist.subdps),
-    ...mergeTiers(tierlist.tierlist.support),
+    ...mergeTiers(tierlist.tierlist.maindps, _tiers),
+    ...mergeTiers(tierlist.tierlist.subdps, _tiers),
+    ...mergeTiers(tierlist.tierlist.support, _tiers),
 
-    ...mergeTiers(tierlist["tierlist_c0"].maindps),
-    ...mergeTiers(tierlist["tierlist_c0"].subdps),
-    ...mergeTiers(tierlist["tierlist_c0"].support),
+    ...mergeTiers(tierlist["tierlist_c0"].maindps, _tiers),
+    ...mergeTiers(tierlist["tierlist_c0"].subdps, _tiers),
+    ...mergeTiers(tierlist["tierlist_c0"].support, _tiers),
 
-    ...mergeTiers(tierlist["tierlist_c6"].maindps),
-    ...mergeTiers(tierlist["tierlist_c6"].subdps),
-    ...mergeTiers(tierlist["tierlist_c6"].support),
+    ...mergeTiers(tierlist["tierlist_c6"].maindps, _tiers),
+    ...mergeTiers(tierlist["tierlist_c6"].subdps, _tiers),
+    ...mergeTiers(tierlist["tierlist_c6"].support, _tiers),
   ];
 
   for (const tl of mergedTierlist) {
@@ -135,16 +130,6 @@ export default async function GenshinTierlist({ params }: Props) {
         tierlistCZero={tierlist.tierlist_c0}
         tierlistCSix={tierlist.tierlist_c6}
       />
-      <span className="text-xs">
-        Source:{" "}
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://genshin-impact.fandom.com/wiki/Fishing#Fishing_Points"
-        >
-          GenshinWiki
-        </a>
-      </span>
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}

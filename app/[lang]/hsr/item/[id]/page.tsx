@@ -131,10 +131,12 @@ export default async function CharacterPage({ params }: Props) {
             defaultMessage: "Story",
           })}
         </h3>
-        <div
-          className="mb-4"
-          dangerouslySetInnerHTML={{ __html: item.story }}
-        />
+        {item.story ? (
+          <div
+            className="mb-4"
+            dangerouslySetInnerHTML={{ __html: item.story }}
+          />
+        ) : null}
         <h3 className="text-xl text-slate-200">
           {t({
             id: "source",
@@ -142,7 +144,7 @@ export default async function CharacterPage({ params }: Props) {
           })}
         </h3>
         <div>
-          {item.source.map((s) => (
+          {item.source?.map((s) => (
             <div
               key={s.description}
               className="mb-2 bg-hsr-surface2 p-2 last:mb-0"

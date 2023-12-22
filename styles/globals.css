@@ -156,20 +156,6 @@
   background-image: url("https://genshinbuilds.aipurrjects.com/genshin/5-Star.webp");
 }
 
-/* TOF */
-.TOF-bg-SSR {
-  @apply bg-yellow-400;
-}
-.TOF-bg-SR {
-  @apply bg-purple-400;
-}
-.TOF-bg-R {
-  @apply bg-blue-400;
-}
-.TOF-bg-N {
-  @apply bg-green-400;
-}
-
 #pmLink {
   visibility: hidden;
   text-decoration: none;

@@ -30,9 +30,6 @@ const nextConfig = {
         hostname: "gi-builds.sfo3.digitaloceanspaces.com",
       },
       {
-        hostname: "tof-builds.sfo3.digitaloceanspaces.com",
-      },
-      {
         hostname: "hsr-builds.sfo3.digitaloceanspaces.com",
       },
       {

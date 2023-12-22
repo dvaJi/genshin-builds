@@ -5,7 +5,7 @@ export type GameProps = {
   adminPath: string;
 };
 
-type GamesAvailable = "GENSHIN" | "TOF" | "HSR" | "ZENLESS";
+type GamesAvailable = "GENSHIN" | "HSR" | "ZENLESS";
 
 export const GAME: Record<GamesAvailable, GameProps> = {
   GENSHIN: {
@@ -26,12 +26,6 @@ export const GAME: Record<GamesAvailable, GameProps> = {
     path: "/zenless",
     adminPath: "/admin/zenless",
   },
-  TOF: {
-    name: "Tower of Fantasy",
-    slug: "tof",
-    path: "/tof",
-    adminPath: "/admin/tof",
-  },
 };
 
 function isGame(game: GameProps, route: string) {
@@ -46,10 +40,6 @@ function isGame(game: GameProps, route: string) {
   return false;
 }
 
-export function isTOF(route: string) {
-  return isGame(GAME.TOF, route);
-}
-
 export function isGenshin(route: string) {
   return isGame(GAME.GENSHIN, route);
 }
@@ -58,7 +48,6 @@ export function isHSR(route: string) {
   return isGame(GAME.HSR, route);
 }
 
-export const tofLocales = ["en", "es", "de", "fr", "id", "ja", "pt", "th"];
 export const genshinLocales = [
   "en",
   "es",

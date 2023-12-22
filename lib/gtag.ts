@@ -1,5 +1,4 @@
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
-export const TOF_GA_TRACKING_ID = process.env.NEXT_PUBLIC_TOF_GA_ID;
 export const HSR_GA_TRACKING_ID = process.env.NEXT_PUBLIC_HSR_GA_ID;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
@@ -7,12 +6,9 @@ export const pageview = (url: string) => {
   // console.log(url);
   if (typeof window !== "undefined" && (window as any).gtag) {
     let gaTrackingID = GA_TRACKING_ID;
-    const isTOF = url.startsWith("/tof");
     const isHSR = url.startsWith("/hsr");
 
-    if (isTOF) {
-      gaTrackingID = TOF_GA_TRACKING_ID;
-    } else if (isHSR) {
+    if (isHSR) {
       gaTrackingID = HSR_GA_TRACKING_ID;
     }
 

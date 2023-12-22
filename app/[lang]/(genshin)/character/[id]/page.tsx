@@ -57,7 +57,6 @@ export async function generateMetadata({
     filter: {
       id: params.id,
     },
-    select: ["name"],
   });
   const _betaCharacter = beta[locale].characters.find(
     (c: any) => c.id === params.id
