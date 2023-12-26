@@ -55,7 +55,7 @@ const FoodCard = ({ item }: FoodCardProps) => {
                 <div className="group overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500 hover:shadow-xl">
                   <SimpleRarityBox
                     img={getUrl(
-                      `/characters/${item.character.id}/${item.character.id}_portrait.png`,
+                      `/characters/${item.character.id}/image.png`,
                       48,
                       48
                     )}

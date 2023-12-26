@@ -99,11 +99,7 @@ export default function LeaderboardWrapper({ characters, locale }: Props) {
               <>
                 <img
                   className="mr-3 h-6 w-6"
-                  src={getUrl(
-                    `/characters/${option.id}/${option.id}_portrait.png`,
-                    32,
-                    32
-                  )}
+                  src={getUrl(`/characters/${option.id}/image.png`, 32, 32)}
                   alt={option.name}
                 />
                 <span className="flex-1 text-base">{option.name}</span>
@@ -124,11 +120,7 @@ export default function LeaderboardWrapper({ characters, locale }: Props) {
                 >
                   <img
                     className="h-6 w-6 rounded-full"
-                    src={getUrl(
-                      `/characters/${ch?.id}/${ch?.id}_portrait.png`,
-                      32,
-                      32
-                    )}
+                    src={getUrl(`/characters/${ch?.id}/image.png`, 32, 32)}
                     alt={ch?.name}
                   />
                   <span className="text-sm">{ch?.name}</span>

@@ -39,11 +39,7 @@ const CharacterPortrait = ({
         <div className="group relative text-center">
           <LazyLoadImage
             className="inline-block rounded-full border-4 border-transparent shadow-lg transition group-hover:scale-110 group-hover:border-vulcan-500 group-hover:shadow-xl"
-            src={getUrl(
-              `/characters/${character.id}/${character.id}_portrait.png`,
-              100,
-              100
-            )}
+            src={getUrl(`/characters/${character.id}/image.png`, 100, 100)}
             alt={character.name}
             width={80}
             height={80}

@@ -1,7 +1,7 @@
 "use client";
 
-import clsx from "clsx";
 import type { Character } from "@interfaces/genshin";
+import clsx from "clsx";
 import { useCallback, useMemo, useState } from "react";
 import { GiCheckMark } from "react-icons/gi";
 
@@ -132,11 +132,7 @@ export function CharacterCalculator({ characters }: Props) {
             selectedIconRender={(selected) => (
               <img
                 className="mr-2 h-6 w-6"
-                src={getUrl(
-                  `/characters/${selected.id}/${selected.id}_portrait.png`,
-                  32,
-                  32
-                )}
+                src={getUrl(`/characters/${selected.id}/image.png`, 32, 32)}
                 alt={selected.name}
               />
             )}
@@ -144,11 +140,7 @@ export function CharacterCalculator({ characters }: Props) {
               <>
                 <img
                   className="mr-3 h-6 w-6"
-                  src={getUrl(
-                    `/characters/${option.id}/${option.id}_portrait.png`,
-                    32,
-                    32
-                  )}
+                  src={getUrl(`/characters/${option.id}/image.png`, 32, 32)}
                   alt={option.name}
                 />
                 <span className="flex-1 text-base">{option.name}</span>

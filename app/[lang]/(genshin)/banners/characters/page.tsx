@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import type { Character } from "@interfaces/genshin";
+import clsx from "clsx";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -160,11 +160,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                       href={`/${params.lang}/character/${m}`}
                     >
                       <SimpleRarityBox
-                        img={getUrl(
-                          `/characters/${m}/${m}_portrait.png`,
-                          96,
-                          96
-                        )}
+                        img={getUrl(`/characters/${m}/image.png`, 96, 96)}
                         rarity={5}
                         name={""}
                         alt={charactersMap[m]}
@@ -182,11 +178,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                       href={`/${params.lang}/character/${m}`}
                     >
                       <SimpleRarityBox
-                        img={getUrl(
-                          `/characters/${m}/${m}_portrait.png`,
-                          96,
-                          96
-                        )}
+                        img={getUrl(`/characters/${m}/image.png`, 96, 96)}
                         rarity={4}
                         name={""}
                         alt={charactersMap[m]}

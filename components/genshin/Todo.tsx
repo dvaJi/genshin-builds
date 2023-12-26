@@ -273,7 +273,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
                             width="96"
                             src={getUrl(
                               todo[1] === "character"
-                                ? `/characters/${todo[0].id}/${todo[0].id}_portrait.png`
+                                ? `/characters/${todo[0].id}/image.png`
                                 : `/weapons/${todo[0].id}.png`,
                               96,
                               96

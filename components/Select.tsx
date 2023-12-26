@@ -82,7 +82,7 @@ const Select = ({
                 {/* <img
                   className="w-6 h-6 mr-3"
                   src={getUrl(
-                    `/characters/${option.id}/${option.id}_portrait.png`,
+                    `/characters/${option.id}/image.png`,
                     32,
                     32
                   )}

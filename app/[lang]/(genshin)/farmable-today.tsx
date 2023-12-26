@@ -70,11 +70,7 @@ export default function FarmableToday({
                       ?.ids.map((cId) => (
                         <Link key={cId} href={`/${locale}/character/${cId}`}>
                           <SimpleRarityBox
-                            img={getUrl(
-                              `/characters/${cId}/${cId}_portrait.png`,
-                              80,
-                              80
-                            )}
+                            img={getUrl(`/characters/${cId}/image.png`, 80, 80)}
                             rarity={characters[cId].rarity}
                             alt={characters[cId].name}
                             className="h-16 w-16"

@@ -44,11 +44,7 @@ function CharacterTeam({ team, index }: Props) {
             <div className="relative">
               <img
                 className="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
-                src={getUrl(
-                  `/characters/${character.id}/${character.id}_portrait.png`,
-                  100,
-                  100
-                )}
+                src={getUrl(`/characters/${character.id}/image.png`, 100, 100)}
                 alt={character.name}
                 width={100}
                 height={100}

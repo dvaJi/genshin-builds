@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import type { Weapon } from "@interfaces/genshin";
+import clsx from "clsx";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
@@ -215,11 +215,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
               >
                 <img
                   className="rounded-full group-hover:shadow-xl"
-                  src={getUrl(
-                    `/characters/${character}/${character}_portrait.png`,
-                    126,
-                    126
-                  )}
+                  src={getUrl(`/characters/${character}/image.png`, 126, 126)}
                   alt={character}
                   width="100"
                   height="100"
