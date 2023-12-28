@@ -52,7 +52,6 @@ export async function generateMetadata({
     resource: "weapons",
     language: langData,
     filter: { id: params.id },
-    select: ["name", "description"],
   });
   const beta = await getData<Beta>("genshin", "beta");
   const _betaWeapon = beta[locale].weapons.find((c: any) => c.id === params.id);

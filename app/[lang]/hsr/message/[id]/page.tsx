@@ -45,7 +45,6 @@ export async function generateMetadata({
     resource: "messages",
     language: langData,
     filter: { id: params.id },
-    select: ["id", "contacts"],
   });
 
   if (!messageGroup) {

@@ -41,7 +41,6 @@ export async function generateMetadata({
     resource: "tcgCards",
     language: langData,
     filter: { id: params.id },
-    select: ["name", "desc"],
   });
 
   if (!card) return undefined;
