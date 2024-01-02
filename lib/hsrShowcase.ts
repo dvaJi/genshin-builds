@@ -58,7 +58,7 @@ export async function getBuild(lang: any, uid: string) {
   const relics = await getHSRData<Relic[]>({
     resource: "relics",
     language: lang,
-    select: ["_id", "pieces"],
+    select: ["_id", "id", "name", "pieces", "effects"],
   });
 
   return {
