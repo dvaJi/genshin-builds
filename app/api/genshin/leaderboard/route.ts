@@ -9,7 +9,7 @@ import { decodeBuilds } from "@utils/leaderboard-enc";
 const schema = z.object({
   lang: z.string(),
   characters: z.string().optional(),
-  lastID: z.string().optional(),
+  page: z.number().min(1),
 });
 
 export async function GET(req: NextRequest) {
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
   const params = {
     lang: searchParams.get("lang"),
     characters: searchParams.get("characters"),
-    lastID: searchParams.get("lastID"),
+    page: Number(searchParams.get("page")),
   };
 
   const request = schema.safeParse(params);
@@ -31,8 +31,8 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const { lastID, characters } = request.data;
-  const cursor = lastID ? { id: lastID as string } : undefined;
+  const { page, characters } = request.data;
+  const skip = (page - 1) * 20;
 
   const charactersFilter = characters
     ? {
@@ -56,8 +56,7 @@ export async function GET(req: NextRequest) {
       player: true,
     },
     take: 20,
-    skip: lastID ? 1 : 0,
-    cursor,
+    skip,
   });
 
   const _characters = await getGenshinData<Character[]>({

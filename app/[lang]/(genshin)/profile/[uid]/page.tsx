@@ -104,7 +104,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
           )})`,
         }}
       >
-        <div className="flex w-full justify-between bg-vulcan-900/50 shadow-xl">
+        <div className="flex w-full justify-between rounded-xl bg-vulcan-900/50 shadow-xl">
           <div className="flex">
             <div className="flex items-center">
               <img
