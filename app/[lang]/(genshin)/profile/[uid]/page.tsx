@@ -166,16 +166,6 @@ export default async function GenshinPlayerProfile({ params }: Props) {
       <div>
         <ProfileArtifactsTable data={profile.builds} />
       </div>
-      <div className="mt-4 flex justify-center">
-        <a href="https://enka.network/" target="_blank" rel="noreferrer">
-          <img
-            src={getUrl(`/enka_logo.png`, 42, 167)}
-            width="167"
-            height="42"
-            alt="Enka Network"
-          />
-        </a>
-      </div>
     </>
   );
 }

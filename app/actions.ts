@@ -214,14 +214,14 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     return { message: parse.error.message };
   }
 
-  const response = await fetch(
-    `https://enka.network/api/uid/${parse.data.uid}/`,
-    {
-      headers: {
-        Agent: "GenshinBuilds/1.0.0",
-      },
-    }
-  );
+  const response = await fetch(process.env.GENSHIN_MHY_API!, {
+    body: JSON.stringify({
+      uid: parse.data.uid,
+    }),
+    headers: {
+      Agent: "GenshinBuilds/1.0.0",
+    },
+  });
 
   if (response.status === 404) {
     console.log("Player not found", { uid: parse.data.uid });
@@ -232,6 +232,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     console.log("Invalid uid", {
       uid: parse.data.uid,
       response: response.status,
+      message: await response.text(),
     });
     return { message: "Invalid uid" };
   }
