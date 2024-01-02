@@ -241,8 +241,10 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
   const data = (await response.json()) as EnkaPlayerDataAPI;
 
   if (!data.avatarInfoList || data.avatarInfoList.length <= 1) {
-    console.log("Player profile is not public", data);
-    return { message: "Player profile is not public" };
+    console.log("Player profile has no public showcase", data);
+    return {
+      message: `Oops! It seems you missed a step or didn't follow the instructions "How To Get Your Character Build Showcase" correctly. Please ensure you have completed all the required steps as outlined in the instructions to proceed.`,
+    };
   }
 
   try {

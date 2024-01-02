@@ -62,8 +62,30 @@ export default async function GenshinProfileIndex() {
       />
       <ProfileFavorites />
       <div className="card flex flex-col items-center justify-center">
+        <h2 className="mb-6 text-2xl text-zinc-300">Submit Your UID</h2>
         <SubmitGenshinUidForm />
+        <div className="my-4">
+          <h3 className="text-xl text-zinc-300">
+            How To Get Your Character Build Showcase:
+          </h3>
+          <ol>
+            <li>1. Open Genshin Impact.</li>
+            <li>2. Access the Menu.</li>
+            <li>3. Click on the edit icon located near your username.</li>
+            <li>
+              4. Choose &quot;Copy UID&quot; (You may skip this step if you
+              remember your UID).
+            </li>
+            <li>5. Select &quot;Edit Profile&quot;.</li>
+            <li>6. Enable the &quot;Show Character Details&quot; option.</li>
+            <li>
+              7. In the &quot;Character Showcase&quot; column, select the
+              characters you&apos;d like to showcase.
+            </li>
+          </ol>
+        </div>
       </div>
+
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}
