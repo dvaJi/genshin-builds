@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import { useFormState, useFormStatus } from "react-dom";
 import { MdSync } from "react-icons/md";
 
@@ -35,14 +35,14 @@ type Props = {
   lang: string;
 };
 
-export function SyncGenshinProfile({ uid, lang }: Props) {
+export function SyncGenshinProfile({ uid }: Props) {
   const [state, formAction] = useFormState(submitGenshinUID, {
     ...initialState,
     uid,
   });
 
   if (state?.message === "Success") {
-    revalidatePath(`/${lang}/profile/${uid}`);
+    // revalidatePath(`/${lang}/profile/${uid}`);
   }
 
   return (

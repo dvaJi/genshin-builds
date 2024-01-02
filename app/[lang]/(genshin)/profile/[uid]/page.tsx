@@ -22,6 +22,9 @@ const ProfileFavorites = dynamic(
   () => import("@components/genshin/ProfileFavorites"),
   { ssr: false }
 );
+const TimeAgo = dynamic(() => import("@components/TimeAgo"), {
+  ssr: false,
+});
 
 type Props = {
   params: { lang: string; uid: string };
@@ -61,7 +64,7 @@ export async function generateMetadata({
 }
 
 export default async function GenshinPlayerProfile({ params }: Props) {
-  const { t, langData } = await useTranslations(
+  const { t, langData, locale } = await useTranslations(
     params.lang,
     "genshin",
     "profile"
@@ -128,7 +131,9 @@ export default async function GenshinPlayerProfile({ params }: Props) {
                   defaultMessage: "UUID: {uuid}",
                   values: { uuid: params.uid },
                 })}
-                {/* <span className="ml-2 inline-block">| {timeAgo}</span> */}
+                <span className="ml-2 inline-block">
+                  | <TimeAgo date={profile.updatedAt} locale={locale} />
+                </span>
               </span>
               <h2 className="text-xl font-semibold text-white md:text-4xl">
                 {profile.nickname}
