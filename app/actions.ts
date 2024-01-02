@@ -215,6 +215,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
   }
 
   const response = await fetch(process.env.GENSHIN_MHY_API!, {
+    method: "POST",
     body: JSON.stringify({
       uid: parse.data.uid,
     }),
