@@ -211,7 +211,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
   });
 
   if (!parse.success) {
-    return { message: "Missing uid" };
+    return { message: parse.error.message };
   }
 
   const response = await fetch(
