@@ -35,12 +35,12 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   );
 
   if (response.status === 404) {
-    console.log("Player not found", { uid: parse.data.uid });
+    console.error("Player not found", { uid: parse.data.uid });
     return { message: "Player not found" };
   }
 
   if (!response.ok) {
-    console.log("Invalid uid", {
+    console.error("Invalid uid", {
       uid: parse.data.uid,
       response: response.status,
     });
@@ -50,7 +50,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   const data = (await response.json()) as MiHomoPlayerDataAPI;
 
   if (!data.player.is_display) {
-    console.log("Player profile is not public", data);
+    console.error("Player profile is not public", data);
     return { message: "Player profile is not public" };
   }
 
@@ -92,6 +92,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         data: insertBuilds,
       });
       if (!insertAvatars) {
+        console.error("error insertAvatars", insertAvatars);
         return { message: "error insertAvatars" };
       }
     } else {
@@ -128,6 +129,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       });
 
       if (!updatedPlayer) {
+        console.error("error updatedPlayer", updatedPlayer);
         return { message: "error updatedPlayer" };
       }
 
@@ -155,6 +157,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
           where: updateBuild.where,
         });
         if (!updatedBuild) {
+          console.error("error updatedBuild", updatedBuild);
           return { message: "error updatedBuild" };
         }
       }
@@ -181,6 +184,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       });
 
       if (!newBuilds) {
+        console.error("error newBuilds", newBuilds);
         return { message: "error newBuilds" };
       }
 
@@ -205,10 +209,10 @@ const submitGenshinUIDSchema = z.object({
   uid: z.string().min(1),
 });
 export async function submitGenshinUID(prevState: any, formData: FormData) {
-  console.log("submitGenshinUID", { prevState, formData });
   const parse = submitGenshinUIDSchema.safeParse({
     uid: formData.get("uid") || prevState?.uid,
   });
+  console.log("submitGenshinUID", { prevState, parse });
 
   if (!parse.success) {
     return { message: parse.error.message };
@@ -241,7 +245,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
   const data = (await response.json()) as EnkaPlayerDataAPI;
 
   if (!data.avatarInfoList || data.avatarInfoList.length <= 1) {
-    console.log("Player profile has no public showcase", data);
+    console.error("Player profile has no public showcase", data);
     return {
       message: `Oops! It seems you missed a step or didn't follow the instructions "How To Get Your Character Build Showcase" correctly. Please ensure you have completed all the required steps as outlined in the instructions to proceed.`,
     };
@@ -286,7 +290,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         data: insertBuilds,
       });
       if (!insertAvatars) {
-        console.log("error insertAvatars", insertAvatars);
+        console.error("error insertAvatars", insertAvatars);
         return {
           message: "error insertAvatars",
         };
@@ -326,7 +330,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       });
 
       if (!updatedPlayer) {
-        console.log("error updatedPlayer", updatedPlayer);
+        console.error("error updatedPlayer", updatedPlayer);
         return {
           message: "error updatedPlayer",
         };
@@ -354,7 +358,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           where: updateBuild.where,
         });
         if (!updatedBuild) {
-          console.log("error updatedBuild", updatedBuild);
+          console.error("error updatedBuild", updatedBuild);
           return {
             message: "error updatedBuild",
           };
@@ -380,7 +384,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       });
 
       if (!newBuilds) {
-        console.log("error newBuilds", newBuilds);
+        console.error("error newBuilds", newBuilds);
         return {
           message: "error newBuilds",
         };
