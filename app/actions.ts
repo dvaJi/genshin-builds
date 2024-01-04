@@ -31,6 +31,9 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       headers: {
         Agent: "GenshinBuilds/1.0.0",
       },
+      next: {
+        revalidate: 0,
+      },
     }
   );
 
@@ -225,6 +228,9 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     }),
     headers: {
       Agent: "GenshinBuilds/1.0.0",
+    },
+    next: {
+      revalidate: 0,
     },
   });
 
