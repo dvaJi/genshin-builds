@@ -1,24 +1,8 @@
 export interface Tierlist {
   overall: Overall;
-  dps: Dps;
+  single: Overall;
+  aoe: Overall;
   support: Overall;
-}
-
-export interface Dps {
-  "SS ": A;
-  "S ": A;
-  "A ": A;
-  "B ": A;
-  "C ": C;
-}
-
-export interface A {
-  single_target: string[];
-  aoe: string[];
-}
-
-export interface C {
-  single_target: string[];
 }
 
 export interface Overall {
