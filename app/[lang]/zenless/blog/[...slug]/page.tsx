@@ -34,7 +34,7 @@ export async function generateMetadata({
   }
 
   const { title, createdAt: publishedTime, description, image } = post;
-  const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
+  const ogImage = `https://genshin-builds.com/api/og?image=/zenless/blog/${image}&title=${title}&description=${description}`;
 
   return {
     title,
