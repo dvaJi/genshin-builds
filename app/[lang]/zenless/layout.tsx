@@ -76,7 +76,7 @@ export default function ZenlessLayout({ children, params }: Props) {
           poppins.className
         )}
       >
-        <header className="mx-4 bg-zinc-950 lg:mx-0">
+        <header className="z-50 mx-4 bg-zinc-950 lg:mx-0">
           <div className="container mx-auto flex justify-between py-2">
             <div>
               <h1 className="text-xl">

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 import BlogPostCard from "@components/zenless/BlogPostCard";
 import Pagination from "@components/zenless/Pagination";
-import { getPosts } from "@lib/blog";
+import { getPostContents } from "@lib/blog";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -21,7 +21,7 @@ export default async function BlogPage({
 }: {
   params: { lang: string };
 }) {
-  const { data, total } = await getPosts("zenless", "en", {
+  const { data, total } = await getPostContents("zenless", params.lang, {
     limit: POSTS_PER_PAGE,
     page: 1,
   });

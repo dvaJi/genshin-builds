@@ -29,7 +29,8 @@
       "@state/*": ["state/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
-      "@db/*": ["db/*"]
+      "@db/*": ["db/*"],
+      "@i18n-config": ["i18n-config.ts"],
     },
     "incremental": true,
     "plugins": [

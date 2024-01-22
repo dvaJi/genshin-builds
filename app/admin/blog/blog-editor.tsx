@@ -1,6 +1,6 @@
 "use client";
 
-import type { BlogPost } from "@prisma/client";
+import type { BlogContent, BlogPost } from "@prisma/client";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -12,11 +12,17 @@ import { Session } from "@lib/session";
 
 type Props = {
   post: BlogPost;
+  postContent: BlogContent;
   content: unknown;
   session: Session;
 };
 
-export default function BlogEditor({ post, session, content }: Props) {
+export default function BlogEditor({
+  post,
+  postContent,
+  session,
+  content,
+}: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [compiled, setCompiled] = useState<any>(content);
@@ -52,7 +58,7 @@ export default function BlogEditor({ post, session, content }: Props) {
     setIsLoading(true);
     setError(null);
 
-    const method = post.id ? "PATCH" : "POST";
+    const method = postContent.id ? "PATCH" : "POST";
 
     try {
       const response = await fetch("/api/blog", {
@@ -63,7 +69,8 @@ export default function BlogEditor({ post, session, content }: Props) {
         },
         body: JSON.stringify(
           Object.assign(data, {
-            id: post.id,
+            id: postContent.id,
+            postId: post.id,
             game: post.game,
             authorName: session.user?.globalName || "GenshinBuilds",
             authorAvatar: session.user?.image || "gb.png",
@@ -77,7 +84,6 @@ export default function BlogEditor({ post, session, content }: Props) {
         throw new Error("Failed to submit the data. Please try again.");
       }
 
-      // Redirect to the blog page
       router.push(`/admin/blog`);
     } catch (error: any) {
       // Handle error if necessary
@@ -96,7 +102,8 @@ export default function BlogEditor({ post, session, content }: Props) {
           isLoading={isLoading}
           onSubmit={onSubmit}
           onContentChange={onContentChange}
-          initialData={post}
+          initialData={postContent}
+          post={post}
         />
       </div>
       <div className="relative mx-auto max-w-screen-md">

@@ -1,12 +1,11 @@
 "use client";
 
-import { BlogPost } from "@prisma/client";
+import { BlogPost, type BlogContent } from "@prisma/client";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 
 import Button from "@components/admin/Button";
-import { slugify2 } from "@utils/hash";
 import { languages } from "@utils/locale-to-lang";
 
 const FileUploader = dynamic(() => import("@components/admin/FileUploader"), {
@@ -29,36 +28,30 @@ type Props = {
   onSubmit: (event: any) => void;
   onContentChange: (content: string) => void;
   isLoading: boolean;
-  initialData?: BlogPost;
+  post?: BlogPost;
+  initialData?: BlogContent;
 };
 
 function BlogPostForm({
   onSubmit,
   isLoading,
   onContentChange,
+  post,
   initialData,
 }: Props) {
   const [expanded, setExpanded] = useState<boolean>(
     !initialData?.id ? true : false
   );
   const [title, setTitle] = useState<string>(initialData?.title || "");
-  const [slug, setSlug] = useState<string>(initialData?.slug || "");
-  const [language, setLanguage] = useState<string>(
-    initialData?.language || "en"
-  );
   const [description, setDescription] = useState<string>(
     initialData?.description || ""
   );
   const [image, setImage] = useState<string>(initialData?.image || "");
-  const [tags, setTags] = useState<string>(initialData?.tags || "");
+  const [tags, setTags] = useState<string>(post?.tags || "");
   const [isPublished, setIsPublished] = useState<boolean>(
     initialData?.published || false
   );
   const [content, setContent] = useState<string>(initialData?.content || "");
-
-  useEffect(() => {
-    setSlug(slugify2(title, "-"));
-  }, [title, language]);
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -88,27 +81,9 @@ function BlogPostForm({
             <input
               type="text"
               name="title"
-              placeholder="title"
+              placeholder={post?.slug || "title"}
               onChange={(e) => setTitle(e.target.value)}
               value={title}
-              className="mt-1 block w-full rounded-md border-zinc-700 bg-zinc-900 shadow-sm focus:border-zinc-200 focus:ring focus:ring-zinc-200 focus:ring-opacity-0"
-              required
-            />
-          </label>
-          <label className="block">
-            <span className="text-zinc-400">Slug (url)</span>
-            <button
-              className="ml-2"
-              onClick={() => setSlug(crypto.randomUUID())}
-            >
-              generate random
-            </button>
-            <input
-              type="text"
-              name="slug"
-              placeholder="slug"
-              value={slug}
-              onChange={(e) => setSlug(e.target.value)}
               className="mt-1 block w-full rounded-md border-zinc-700 bg-zinc-900 shadow-sm focus:border-zinc-200 focus:ring focus:ring-zinc-200 focus:ring-opacity-0"
               required
             />
@@ -118,8 +93,8 @@ function BlogPostForm({
             <select
               name="language"
               className="mt-1 block w-full rounded-md border-zinc-700 bg-zinc-900 shadow-sm focus:border-zinc-200 focus:ring focus:ring-zinc-200 focus:ring-opacity-0"
-              onChange={(e) => setLanguage(e.target.value)}
               required
+              defaultValue={initialData?.language || "en"}
             >
               {languages.map((lang) => (
                 <option key={lang.code} value={lang.code}>
@@ -145,11 +120,11 @@ function BlogPostForm({
             <input
               type="text"
               name="image"
-              placeholder="image"
+              placeholder={post?.image || "image"}
               className="mt-1 block w-full rounded-md border-zinc-700 bg-zinc-900 shadow-sm focus:border-zinc-200 focus:ring focus:ring-zinc-200 focus:ring-opacity-0"
               onChange={(e) => setImage(e.target.value)}
               value={image}
-              required
+              required={post?.image ? false : true}
             />
           </label>
           <label className="block">
@@ -219,9 +194,9 @@ function BlogPostForm({
         />
       </label>
       <div className="flex w-full gap-2">
-        <ImageGallery game={initialData?.game ?? "genshin"} />
-        <FileUploader game={initialData?.game ?? "genshin"} />
-        <ComponentGallery game={initialData?.game ?? "genshin"} />
+        <ImageGallery game={post?.game ?? "genshin"} />
+        <FileUploader game={post?.game ?? "genshin"} />
+        <ComponentGallery game={post?.game ?? "genshin"} />
       </div>
       {/* <div className="flex w-full gap-2">
         <Button

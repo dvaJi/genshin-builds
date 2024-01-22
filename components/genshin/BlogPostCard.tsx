@@ -1,6 +1,5 @@
 "use client";
 
-import { BlogPost } from "@prisma/client";
 import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -8,9 +7,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import useIntl from "@hooks/use-intl";
 import { getImg } from "@lib/imgUrl";
 import { getTimeAgo } from "@lib/timeago";
+import type { BlogContent, BlogPost } from "@prisma/client";
 
 interface Props {
-  post: BlogPost;
+  post: BlogContent & { post: BlogPost };
 }
 
 const BlogPostCard = ({ post }: Props) => {
@@ -18,20 +18,24 @@ const BlogPostCard = ({ post }: Props) => {
   const timeAgo = getTimeAgo(new Date(post.updatedAt).getTime(), locale);
   return (
     <Link
-      href={`/${locale}/genshin/blog/${post.slug}`}
+      href={`/${locale}/genshin/blog/${post.post.slug}`}
       className="group mx-auto max-w-md overflow-hidden p-2"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-vulcan-900 object-cover">
         <LazyLoadImage
-          src={getImg("genshin", `/blog/${post.image}`, {
+          src={getImg("genshin", `/blog/${post.image ?? post.post.image}`, {
             width: 450,
             height: 260,
           })}
-          placeholderSrc={getImg("genshin", `/blog/${post.image}`, {
-            width: 4,
-            height: 4,
-            quality: 10,
-          })}
+          placeholderSrc={getImg(
+            "genshin",
+            `/blog/${post.image ?? post.post.image}`,
+            {
+              width: 4,
+              height: 4,
+              quality: 10,
+            }
+          )}
           alt={post.title}
           className="aspect-video w-full rounded object-cover shadow-2xl transition-all group-hover:scale-105 group-hover:brightness-110"
         />
@@ -46,7 +50,7 @@ const BlogPostCard = ({ post }: Props) => {
             {/* <span className="mr-2 rounded bg-vulcan-600 p-1 px-1.5 text-xs">
               {guide.type}
             </span> */}
-            {post.tags.split(",").map((tag: string) => (
+            {post.post.tags.split(",").map((tag: string) => (
               <span
                 key={tag}
                 className="mr-2 rounded bg-vulcan-700 p-1 px-1.5 text-xs text-slate-500"

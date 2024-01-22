@@ -5,9 +5,10 @@ import { z } from "zod";
 import prisma from "@db/index";
 import { authOptions } from "@lib/auth";
 import { getPostById } from "@lib/blog";
+import { slugify2 } from "@utils/hash";
 
 const schemaPost = z.object({
-  slug: z.string(),
+  postId: z.string().optional(),
   game: z.string(),
   authorAvatar: z.string(),
   authorLink: z.string(),
@@ -23,15 +24,10 @@ const schemaPost = z.object({
 
 const schemaPatch = z.object({
   id: z.string(),
-  game: z.string(),
-  authorAvatar: z.string(),
-  authorLink: z.string(),
-  authorName: z.string(),
   content: z.string(),
   description: z.string(),
   image: z.string(),
   language: z.string(),
-  tags: z.string(),
   title: z.string(),
   published: z.boolean(),
 });
@@ -87,11 +83,42 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  await prisma.blogPost.create({
+  let post = null;
+
+  if (request.data.postId) {
+    post = await prisma.blogPost.findUnique({
+      where: {
+        id: request.data.postId,
+      },
+    });
+  } else {
+    post = await prisma.blogPost.create({
+      data: {
+        game: request.data.game,
+        image: request.data.image,
+        slug: slugify2(request.data.title),
+        tags: request.data.tags,
+        authorAvatar: request.data.authorAvatar,
+        authorLink: request.data.authorLink,
+        authorName: request.data.authorName,
+        published: request.data.published,
+      },
+    });
+    console.log('Post Created', post);
+  }
+
+  const contentCreated = await prisma.blogContent.create({
     data: {
-      ...request.data,
+      title: request.data.title,
+      description: request.data.description,
+      language: request.data.language,
+      content: request.data.content,
+      image: request.data.image,
+      published: request.data.published,
+      postId: post!.id,
     },
   });
+  console.log(contentCreated);
 
   return NextResponse.json({});
 }
@@ -120,12 +147,17 @@ export async function PATCH(req: NextRequest) {
     );
   }
 
-  await prisma.blogPost.update({
+  await prisma.blogContent.update({
     where: {
       id: request.data.id,
     },
     data: {
-      ...request.data,
+      title: request.data.title,
+      description: request.data.description,
+      content: request.data.content,
+      image: request.data.image,
+      language: request.data.language,
+      published: request.data.published,
     },
   });
 
@@ -155,7 +187,7 @@ export async function DELETE(req: NextRequest) {
     );
   }
 
-  await prisma.blogPost.delete({
+  await prisma.blogContent.delete({
     where: {
       id,
     },

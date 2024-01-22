@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
@@ -8,7 +9,7 @@ import { BlogPosting, WithContext } from "schema-dts";
 import { genPageMetadata } from "@app/seo";
 import PostRender from "@components/genshin/PostRender";
 import useTranslations from "@hooks/use-translations";
-import { getPostBySlug } from "@lib/blog";
+import { getPostContentBySlug } from "@lib/blog";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getImg } from "@lib/imgUrl";
 
@@ -29,13 +30,13 @@ type Props = {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostContentBySlug(params.slug, params.lang);
   if (!post) {
     return;
   }
 
   const { title, description, image } = post;
-  const ogImage = `https://genshin-builds.com/api/og?image=/genshin/blog/${image}&title=${title}&description=${description}`;
+  const ogImage = `https://genshin-builds.com/api/og?image=/genshin/blog/${image ?? post.post.image}&title=${title}&description=${description}`;
 
   return genPageMetadata({
     title,
@@ -48,7 +49,7 @@ export async function generateMetadata({
 
 export default async function GenshinPost({ params }: Props) {
   const { t } = await useTranslations(params.lang, "genshin", "blog");
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostContentBySlug(params.slug, params.lang);
 
   if (!post) {
     return notFound();
@@ -64,9 +65,9 @@ export default async function GenshinPost({ params }: Props) {
     url: `https://genshin-builds.com/genshin/blog/${params.slug}`,
     author: {
       "@type": "Person",
-      name: post.authorName,
+      name: post.post.authorName,
     },
-    image: getImg("genshin", `/blog/${post.image}`),
+    image: getImg("genshin", `/blog/${post.image ?? post.post.image}`),
     publisher: {
       "@type": "Organization",
       name: "genshinBuilds",
@@ -77,17 +78,18 @@ export default async function GenshinPost({ params }: Props) {
     },
   };
 
-  const bgImage = getImg("genshin", `/blog/${post.image}`, {
+  const bgImage = getImg("genshin", `/blog/${post.image ?? post.post.image}`, {
     quality: 50,
   });
 
   return (
     <>
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 top-0 z-0 flex items-start justify-center overflow-hidden">
-        <img
+        <Image
           className="h-full w-full select-none object-cover"
           alt="Background image"
           src={bgImage}
+          fill={true}
         />
       </div>
       <div
@@ -107,7 +109,10 @@ export default async function GenshinPost({ params }: Props) {
       ></script>
       <article className="relative mx-auto max-w-screen-md">
         <div>
-          <Link href={`/${params.lang}/genshin/blog`} className="text-sm hover:text-white">
+          <Link
+            href={`/${params.lang}/genshin/blog`}
+            className="text-sm hover:text-white"
+          >
             {t({ id: "back", defaultMessage: "Back to Blog" })}
           </Link>
         </div>
@@ -123,20 +128,22 @@ export default async function GenshinPost({ params }: Props) {
           <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
           <div className="flex items-center justify-between">
             <a
-              href={post.authorLink}
-              title={post.authorName}
+              href={post.post.authorLink}
+              title={post.post.authorName}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-sm-0 my-1 flex flex-wrap items-center gap-2 px-2"
             >
-              <img
-                src={post.authorAvatar}
-                alt={post.authorName}
+              <Image
+                src={post.post.authorAvatar}
+                alt={post.post.authorName}
                 className="rounded-full border-2 border-vulcan-900/80 p-px"
-                width="40"
-                height="40"
+                width={40}
+                height={40}
               />
 
               <span className="font-semibold text-slate-300">
-                {post.authorName}
+                {post.post.authorName}
               </span>
             </a>
             <div className="mt-1 pr-2 text-sm italic">
@@ -146,10 +153,12 @@ export default async function GenshinPost({ params }: Props) {
         </header>
 
         <section className="prose prose-invert card mt-0 max-w-none">
-          <img
+          <Image
             alt={post.title}
-            src={getImg("genshin", `/blog/${post.image}`)}
+            src={getImg("genshin", `/blog/${post.image ?? post.post.image}`)}
             className="mx-auto rounded-lg text-center"
+            width={640}
+            height={360}
           />
           <PostRender compiledSource={post.content} />
         </section>

@@ -5,7 +5,7 @@ import { genPageMetadata } from "@app/seo";
 import BlogPostCard from "@components/hsr/BlogPostCard";
 import Pagination from "@components/hsr/Pagination";
 import useTranslations from "@hooks/use-translations";
-import { getPosts } from "@lib/blog";
+import { getPostContents } from "@lib/blog";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -43,7 +43,7 @@ export async function generateMetadata({
 
 export default async function HSRBlogPage({ params }: Props) {
   const { t } = await useTranslations(params.lang, "hsr", "blog");
-  const { data, total } = await getPosts("hsr", "en", {
+  const { data, total } = await getPostContents("hsr", params.lang, {
     limit: POSTS_PER_PAGE,
     page: 1,
   });

@@ -1,4 +1,4 @@
-import prisma, { BlogImages, type BlogPost } from "@db/index";
+import prisma, { BlogImages, type BlogContent, type BlogPost } from "@db/index";
 import { deleteObject } from "@utils/s3-client";
 
 export type PaginationOptions = {
@@ -8,8 +8,8 @@ export type PaginationOptions = {
   showDrafts?: boolean;
 };
 
-type PaginationResult = {
-  data: BlogPost[];
+type PaginationResult<T> = {
+  data: T[];
   total: number;
   pages: number;
 };
@@ -18,28 +18,39 @@ export async function getPosts(
   game?: string | null,
   language?: string | null,
   options?: PaginationOptions
-): Promise<PaginationResult> {
+): Promise<PaginationResult<BlogPost>> {
   try {
     const { page = 1, limit = 12, sort, showDrafts } = options || {};
 
     const data = await prisma.blogPost.findMany({
       select: {
-        content: false,
-        description: true,
         id: true,
         slug: true,
-        title: true,
         game: true,
         tags: true,
         published: true,
         image: true,
-        language: true,
         createdAt: true,
         updatedAt: true,
+        contents: {
+          select: {
+            id: true,
+            published: true,
+            title: true,
+            language: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
       },
       where: {
         game: game === null ? undefined : game,
-        language: language === null ? undefined : language,
+        // contents: {
+        //   every: {
+        //     language: language === null ? undefined : language,
+        //   }
+        // },
+        // language: language === null ? undefined : language,
         ...(showDrafts ? {} : { published: true }),
       },
       orderBy: {
@@ -52,18 +63,21 @@ export async function getPosts(
     const total = await prisma.blogPost.count({
       where: {
         game: game === null ? undefined : game,
-        language: language === null ? undefined : language,
+        // language: language === null ? undefined : language,
       },
     });
 
     const pages = Math.ceil(total / limit);
 
     return {
-      data: <BlogPost[]>data.map((post) => ({
-        ...post,
-        createdAt: post.createdAt.toISOString() as any,
-        updatedAt: post.updatedAt.toISOString() as any,
-      })),
+      data: data.map(
+        (post) =>
+          ({
+            ...post,
+            createdAt: post.createdAt.toISOString() as any,
+            updatedAt: post.updatedAt.toISOString() as any,
+          }) as any
+      ),
       total,
       pages,
     };
@@ -75,6 +89,90 @@ export async function getPosts(
       pages: 0,
     };
   }
+}
+
+export async function getPostContents(
+  game?: string | null,
+  language?: string | null,
+  options?: PaginationOptions
+): Promise<PaginationResult<BlogContent & { post: BlogPost }>> {
+  try {
+    const { page = 1, limit = 12, sort } = options || {};
+
+    const data = await prisma.blogContent.findMany({
+      select: {
+        id: true,
+        description: true,
+        title: true,
+        content: false,
+        post: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+      where: {
+        language: language === null ? undefined : language,
+        published: true,
+        post: {
+          game: game === null ? undefined : game,
+        },
+      },
+      orderBy: {
+        createdAt: sort || "desc",
+      },
+      skip: (page - 1) * limit,
+      take: limit,
+    });
+
+    const total = await prisma.blogPost.count({
+      where: {
+        game: game === null ? undefined : game,
+        // language: language === null ? undefined : language,
+      },
+    });
+
+    const pages = Math.ceil(total / limit);
+
+    return {
+      data: data.map(
+        (post) =>
+          ({
+            ...post,
+            createdAt: post.createdAt.toISOString() as any,
+            updatedAt: post.updatedAt.toISOString() as any,
+          }) as any
+      ),
+      total,
+      pages,
+    };
+  } catch (err) {
+    console.log("Error getting posts", err);
+    return {
+      data: [],
+      total: 0,
+      pages: 0,
+    };
+  }
+}
+
+export async function getPostContentById(id: string) {
+  const post = await prisma.blogContent.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      post: true,
+    },
+  });
+
+  if (!post) {
+    return null;
+  }
+
+  // transform date to string
+  (post as any).createdAt = post.createdAt?.toISOString() || "";
+  (post as any).updatedAt = post.updatedAt?.toISOString() || "";
+
+  return post;
 }
 
 export async function getPostById(id: string) {
@@ -101,6 +199,41 @@ export async function getPostBySlug(slug: string) {
       slug,
     },
   });
+
+  if (!post) {
+    return null;
+  }
+
+  // transform date to string
+  (post as any).createdAt = post.createdAt?.toISOString() || "";
+  (post as any).updatedAt = post.updatedAt?.toISOString() || "";
+
+  return post;
+}
+
+export async function getPostContentBySlug(slug: string, language: string) {
+  let query ={
+    where: {
+      post: {
+        slug,
+      },
+      language,
+    },
+    include: {
+      post: true,
+    },
+  };
+  let post = await prisma.blogContent.findFirst(query);
+
+  if (!post && language !== "en") {
+    post = await prisma.blogContent.findFirst({
+      ...query,
+      where: {
+        ...query.where,
+        language: "en",
+      },
+    });
+  }
 
   if (!post) {
     return null;
@@ -146,7 +279,7 @@ export async function getImages(
     const pages = Math.ceil(total / limit);
 
     return {
-      data: <BlogImages[]>data,
+      data,
       total,
       pages,
     };

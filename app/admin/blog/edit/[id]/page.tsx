@@ -3,9 +3,9 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { redirect } from "next/navigation";
 import remarkGfm from "remark-gfm";
 
-import { getPostById } from "@lib/blog";
 import { componentsList } from "@components/genshin/PostRender";
 import { authOptions } from "@lib/auth";
+import { getPostContentById } from "@lib/blog";
 import { Session } from "@lib/session";
 import BlogEditor from "../../blog-editor";
 
@@ -16,7 +16,7 @@ export default async function BlogEdit({ params }: { params: { id: string } }) {
     return redirect("/admin");
   }
 
-  const post = await getPostById(params.id);
+  const post = await getPostContentById(params.id);
   if (!post) {
     return redirect(`/admin/blog`);
   }
@@ -40,7 +40,8 @@ export default async function BlogEdit({ params }: { params: { id: string } }) {
 
   return (
     <BlogEditor
-      post={post}
+      post={post.post}
+      postContent={post}
       session={session as Session}
       content={content.content}
     />

@@ -1,9 +1,9 @@
 "use client";
 
 import { memo, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 import { AD_ARTICLE_SLOT, CUSTOM_ADS_ID, GAD_ID } from "@lib/constants";
-import { usePathname } from "next/navigation";
 
 type CustomAds = {
   i: string; // image url

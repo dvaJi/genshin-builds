@@ -5,7 +5,7 @@ import { genPageMetadata } from "@app/seo";
 import BlogPostCard from "@components/genshin/BlogPostCard";
 import Pagination from "@components/genshin/Pagination";
 import useTranslations from "@hooks/use-translations";
-import { getPosts } from "@lib/blog";
+import { getPostContents } from "@lib/blog";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -42,13 +42,13 @@ export async function generateMetadata({
 }
 
 export default async function GenshinBlogPage({ params }: Props) {
-  const { data, total } = await getPosts("genshin", "en", {
+  const { data, total } = await getPostContents("genshin", params.lang, {
     limit: POSTS_PER_PAGE,
     page: 1,
   });
 
   return (
-    <div className="bg-genshin-surface1 p-4 shadow-2xl">
+    <div className="bg-genshin-surface1 p-4">
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}

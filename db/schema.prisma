@@ -262,21 +262,35 @@ model Invite {
 }
 
 model BlogPost {
-    id           String   @id @default(cuid())
-    createdAt    DateTime @default(now())
-    updatedAt    DateTime @updatedAt
-    slug         String   @unique
-    language     String
+    id           String        @id @default(cuid())
+    createdAt    DateTime      @default(now())
+    updatedAt    DateTime      @updatedAt
+    slug         String        @unique
     game         String
-    title        String
-    description  String
     image        String
     authorName   String
     authorAvatar String
     authorLink   String
     tags         String
-    content      String   @db.Text
-    published    Boolean  @default(false)
+    published    Boolean       @default(false)
+    contents  BlogContent[]
+}
+
+model BlogContent {
+    id          String   @id @default(cuid())
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    title       String
+    description String   @db.VarChar(500)
+    language    String
+    image       String?
+    content     String   @db.Text
+    published   Boolean  @default(false)
+
+    postId String
+    post   BlogPost @relation(fields: [postId], references: [id])
+
+    @@index([postId])
 }
 
 model BlogImages {

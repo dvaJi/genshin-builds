@@ -38,6 +38,9 @@ const nextConfig = {
       {
         hostname: "genshinbuilds.aipurrjects.com",
       },
+      {
+        hostname: "cdn.discordapp.com",
+      },
     ],
   },
   rewrites: async () => [
