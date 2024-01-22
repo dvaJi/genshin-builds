@@ -3,6 +3,14 @@
 import { memo, useEffect } from "react";
 
 import { AD_ARTICLE_SLOT, CUSTOM_ADS_ID, GAD_ID } from "@lib/constants";
+import { usePathname } from "next/navigation";
+
+type CustomAds = {
+  i: string; // image url
+  u: string; // url
+  l?: string[]; // langs
+  g?: string; // game
+};
 
 type AdsProps = {
   className: string;
@@ -10,6 +18,7 @@ type AdsProps = {
 };
 
 const Ads = ({ className, adSlot = AD_ARTICLE_SLOT }: AdsProps) => {
+  const pathname = usePathname();
   useEffect(() => {
     if (GAD_ID && adSlot && typeof window !== "undefined") {
       try {
@@ -23,16 +32,45 @@ const Ads = ({ className, adSlot = AD_ARTICLE_SLOT }: AdsProps) => {
   }, [adSlot]);
 
   if (CUSTOM_ADS_ID) {
-    const images = CUSTOM_ADS_ID.split(",");
-    const random = Math.floor(Math.random() * images.length);
-    const [imgUrl, url] = images[random].split("|");
+    const showAd = Math.random() < 0.5;
+
+    if (!showAd) {
+      return <div />;
+    }
+
+    const images = JSON.parse(CUSTOM_ADS_ID) as CustomAds[];
+
+    const [_, lang, _game] = pathname.split("/");
+
+    let game = "genshin";
+
+    if (_game === 'hsr') {
+      game = 'hsr';
+    } else if (_game === 'zenless') {
+      game = 'zenless';
+    }
+
+    const ads = images.filter((ad) => {
+      return (
+        (!ad.l || ad.l.includes(lang)) && (!ad.g || ad.g === game) && ad.i && ad.u
+      );
+    });
+
+    if (ads.length === 0) {
+      return <div />;
+    }
+
+    // Select random ad
+    const ad = ads[Math.floor(Math.random() * ads.length)];
+    
     return (
       <a
-        href={url + "?ref=GenshinBuilds"}
+        href={ad.u + "?ref=GenshinBuilds"}
         target="_blank"
+        rel="noopener noreferrer"
         className="text-center"
       >
-        <img src={imgUrl} alt="Ad" className="mx-auto" />
+        <img src={ad.i} alt="Ad" className="mx-auto" />
       </a>
     );
   }
