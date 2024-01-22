@@ -20,6 +20,7 @@ export async function getPosts(
   options?: PaginationOptions
 ): Promise<PaginationResult<BlogPost>> {
   try {
+    console.log("getPosts", game, language);
     const { page = 1, limit = 12, sort, showDrafts } = options || {};
 
     const data = await prisma.blogPost.findMany({

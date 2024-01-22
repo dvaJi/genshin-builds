@@ -2,7 +2,7 @@ import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import BlogPostCard from "@components/zenless/BlogPostCard";
-import { getPosts } from "@lib/blog";
+import { getPostContents } from "@lib/blog";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { i18n } from "i18n-config";
 
@@ -26,7 +26,7 @@ type Props = {
 };
 
 export default async function Page({ params }: Props) {
-  const { data } = await getPosts("zenless", "en", {
+  const { data } = await getPostContents("zenless", params.lang, {
     limit: 3,
     page: 1,
   });
