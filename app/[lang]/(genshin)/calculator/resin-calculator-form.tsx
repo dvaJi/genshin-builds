@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 
-import { calculateResin } from "@app/actions";
+import { calculateResin } from "./actions";
 import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";

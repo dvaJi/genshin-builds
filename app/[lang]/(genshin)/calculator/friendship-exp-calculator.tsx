@@ -1,11 +1,12 @@
 "use client";
 
-import { calculateFriendshipExp } from "@app/actions";
-import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import { useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
+
+import { calculateFriendshipExp } from "./actions";
+import Button from "@components/ui/Button";
+import useIntl from "@hooks/use-intl";
 
 const initialState = {
   message: "",

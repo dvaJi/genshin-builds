@@ -5,7 +5,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 import { MdCheck, MdClose } from "react-icons/md";
 
-import { calculateFatePrice } from "@app/actions";
+import { calculateFatePrice } from "./actions";
 import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
