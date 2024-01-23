@@ -166,7 +166,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
+        classList={["flex", "justify-center", "z-10"]}
       />
       <div>
         <ProfileArtifactsTable data={profile.builds} />
