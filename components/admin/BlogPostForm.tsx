@@ -207,6 +207,7 @@ function BlogPostForm({
             setTitle={setTitle}
             setDescription={setDescription}
             setContent={setContent}
+            setIsPublished={setIsPublished}
           />
         ) : null}
       </div>

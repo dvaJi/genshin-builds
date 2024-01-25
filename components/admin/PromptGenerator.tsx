@@ -14,6 +14,7 @@ type Props = {
   setTitle: (title: string) => void;
   setDescription: (description: string) => void;
   setContent: (content: string) => void;
+  setIsPublished: (isPublished: boolean) => void;
 };
 
 function ComponentPromptTL({
@@ -22,6 +23,7 @@ function ComponentPromptTL({
   setContent,
   setDescription,
   setTitle,
+  setIsPublished,
 }: Props) {
   const [open, setOpen] = useState<boolean>(false);
   const [chatResponse, setChatResponse] = useState<string>("");
@@ -59,6 +61,7 @@ function ComponentPromptTL({
     setTitle(data.title);
     setDescription(data.description);
     setContent(data.content);
+    setIsPublished(true);
   };
 
   return (
