@@ -5,7 +5,7 @@ export type GameProps = {
   adminPath: string;
 };
 
-type GamesAvailable = "GENSHIN" | "HSR" | "ZENLESS";
+export type GamesAvailable = "GENSHIN" | "HSR" | "ZENLESS";
 
 export const GAME: Record<GamesAvailable, GameProps> = {
   GENSHIN: {

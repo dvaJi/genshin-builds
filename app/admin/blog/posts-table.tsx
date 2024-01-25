@@ -1,8 +1,5 @@
 "use client";
 
-import Button from "@components/admin/Button";
-import Badge from "@components/ui/Badge";
-import { i18n } from "@i18n-config";
 import type { BlogContent, BlogPost } from "@prisma/client";
 import {
   createColumnHelper,
@@ -14,6 +11,9 @@ import {
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import Link from "next/link";
+
+import Button from "@components/admin/Button";
+import Badge from "@components/ui/Badge";
 import { Fragment, useMemo } from "react";
 import EditPost from "./edit-post";
 
@@ -109,6 +109,24 @@ function Table({ data, columns }: any) {
     getExpandedRowModel: getExpandedRowModel(),
   });
 
+  const langs = [
+    "en",
+    "de",
+    "pt",
+    "fr",
+    "es",
+    "vi",
+    "th",
+    "ko",
+    "it",
+    "ja",
+    "tr",
+    "id",
+    "cn",
+    "zh-tw",
+    "ru",
+  ];
+
   return (
     <table className="table border-separate border-spacing-0 border-0">
       <thead>
@@ -146,7 +164,7 @@ function Table({ data, columns }: any) {
                 <div className={clsx("m-2")}>
                   Missing TL:
                   <div className="inline text-xs">
-                    {i18n.locales
+                    {langs
                       .filter(
                         (lang) =>
                           !row.original.contents.find(

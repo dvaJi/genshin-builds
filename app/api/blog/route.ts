@@ -45,6 +45,7 @@ export async function GET(req: NextRequest) {
   }
 
   const id = req.nextUrl.searchParams.get("id");
+  const language = req.nextUrl.searchParams.get("language");
 
   if (!id) {
     return NextResponse.json(
@@ -55,7 +56,34 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const post = await getPostById(id as string);
+  const queryOptions: {
+    where: {
+      id: string;
+    };
+    include?: {
+      contents: {
+        where: {
+          language: string;
+        };
+      };
+    };
+  } = {
+    where: {
+      id,
+    },
+  };
+
+  if (language) {
+    queryOptions.include = {
+      contents: {
+        where: {
+          language: language,
+        },
+      },
+    };
+  }
+
+  const post = await prisma.blogPost.findUnique(queryOptions);
   return NextResponse.json(post);
 }
 
@@ -104,7 +132,7 @@ export async function POST(req: NextRequest) {
         published: request.data.published,
       },
     });
-    console.log('Post Created', post);
+    console.log("Post Created", post);
   }
 
   const contentCreated = await prisma.blogContent.create({

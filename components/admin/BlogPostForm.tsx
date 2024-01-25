@@ -22,6 +22,9 @@ const ComponentGallery = dynamic(
     ssr: false,
   }
 );
+const PromptTL = dynamic(() => import("@components/admin/PromptGenerator"), {
+  ssr: false,
+});
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
 type Props = {
@@ -197,6 +200,15 @@ function BlogPostForm({
         <ImageGallery game={post?.game ?? "genshin"} />
         <FileUploader game={post?.game ?? "genshin"} />
         <ComponentGallery game={post?.game ?? "genshin"} />
+        {post?.id ? (
+          <PromptTL
+            postId={post?.id}
+            language={initialData?.language || "en"}
+            setTitle={setTitle}
+            setDescription={setDescription}
+            setContent={setContent}
+          />
+        ) : null}
       </div>
       {/* <div className="flex w-full gap-2">
         <Button
