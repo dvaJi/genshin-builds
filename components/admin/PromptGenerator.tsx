@@ -42,7 +42,11 @@ function ComponentPromptTL({
       .replaceAll("{title}", postContent.title)
       .replaceAll("{description}", postContent.description)
       .replace("{content}", postContent.content);
-    console.log(final);
+
+    if (window) {
+      navigator.clipboard.writeText(final);
+      window.alert("Prompt copied to clipboard!");
+    }
   };
 
   const parseChatResponse = () => {
