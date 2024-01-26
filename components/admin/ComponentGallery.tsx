@@ -2,14 +2,21 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { AiOutlineClose, AiOutlineCopy } from "react-icons/ai";
 import { PiBrowsersBold } from "react-icons/pi";
 
-import { componentsList } from "@components/genshin/PostRender";
 import Button from "./Button";
+
+type Comps = {
+  publicName: string;
+  componentName: string;
+  importPath: string;
+  example: string;
+};
 
 type Props = {
   game: string;
+  components: Comps[];
 };
 
-function ComponentGallery({}: Props) {
+function ComponentGallery({ components }: Props) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -21,47 +28,42 @@ function ComponentGallery({}: Props) {
         <Dialog.Overlay className="fixed inset-0 z-1000 bg-black/50 data-[state=open]:animate-overlayShow" />
         <Dialog.Content className="fixed left-[50%] top-[50%] z-1000 max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] border border-zinc-700 bg-zinc-900 p-[25px] text-zinc-100 shadow-black focus:outline-none data-[state=open]:animate-contentShow">
           <div className="relative mb-5 mt-[10px] text-[15px] leading-normal">
-            {componentsList
-              .filter((c) => c.custom)
-              .map((component) => (
-                <div
-                  key={component.name}
-                  className="mb-2 flex items-center justify-between"
-                >
-                  <div className="flex items-center">
-                    {/* <img
+            {components.map((component) => (
+              <div
+                key={component.publicName}
+                className="mb-2 flex items-center justify-between"
+              >
+                <div className="flex items-center">
+                  {/* <img
                     src={getImg("genshin", `/icons/${component.name}.png`)}
                     alt={component.name}
                     className="rounded-full border-2 border-vulcan-900/80 p-px"
                     width="40"
                     height="40"
                   /> */}
-                    <div className="ml-2">
-                      <div className="text-sm font-medium text-zinc-300">
-                        {component.name}
-                      </div>
-                      <div className="text-xs text-slate-200">
-                        {component.custom ? "Custom" : "Default"}
-                      </div>
+                  <div className="ml-2">
+                    <div className="text-sm font-medium text-zinc-300">
+                      {component.publicName}
                     </div>
                   </div>
-                  <div className="flex items-center">
-                    <Dialog.Close asChild>
-                      <Button
-                        state="secondary"
-                        className="mr-2 text-xs"
-                        onClick={() => {
-                          navigator.clipboard.writeText(
-                            "\n" + component.example + "\n\n"
-                          );
-                        }}
-                      >
-                        <AiOutlineCopy className="mr-1 h-3 w-3" /> Copy
-                      </Button>
-                    </Dialog.Close>
-                  </div>
                 </div>
-              ))}
+                <div className="flex items-center">
+                  <Dialog.Close asChild>
+                    <Button
+                      state="secondary"
+                      className="mr-2 text-xs"
+                      onClick={() => {
+                        navigator.clipboard.writeText(
+                          "\n" + component.example + "\n\n"
+                        );
+                      }}
+                    >
+                      <AiOutlineCopy className="mr-1 h-3 w-3" /> Copy
+                    </Button>
+                  </Dialog.Close>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* <div className="mt-[25px] flex justify-end">

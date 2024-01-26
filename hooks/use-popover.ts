@@ -1,11 +1,13 @@
+"use client";
+
 import {
+  AriaAttributes,
+  CSSProperties,
+  Ref,
+  useCallback,
+  useLayoutEffect,
   useRef,
   useState,
-  CSSProperties,
-  useLayoutEffect,
-  useCallback,
-  AriaAttributes,
-  Ref,
 } from "react";
 import { useClickOutside, useEscapeHandler } from "./use-clickoutside";
 

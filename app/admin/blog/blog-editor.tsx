@@ -7,7 +7,10 @@ import { useState } from "react";
 import remarkGfm from "remark-gfm";
 
 import BlogPostForm from "@components/admin/BlogPostForm";
-import { componentsList } from "@components/genshin/PostRender";
+import { componentsList as genshinComps } from "@components/genshin/PostRender";
+import { componentsList as hsrComps } from "@components/hsr/PostRender";
+import { componentsList as zenlessComps } from "@components/zenless/PostRender";
+import { useDynamicComponents } from "@hooks/use-dynamic-components";
 import { Session } from "@lib/session";
 
 type Props = {
@@ -26,18 +29,22 @@ export default function BlogEditor({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [compiled, setCompiled] = useState<any>(content);
+  let comps: any = genshinComps;
+
+  if (post.game === "hsr") {
+    comps = hsrComps;
+  } else if (post.game === "zenless") {
+    comps = zenlessComps;
+  }
+
+  const components = useDynamicComponents("[ALL]", comps);
+
   const router = useRouter();
 
   const onContentChange = (content: string) => {
     compileMDX({
       source: content,
-      components: componentsList.reduce(
-        (acc, cur) => {
-          acc[cur.name] = cur.component;
-          return acc;
-        },
-        {} as Record<string, any>
-      ),
+      components: components,
       options: {
         mdxOptions: {
           development: process.env.NEXT_PUBLIC_VERCEL_ENV !== "production",
@@ -104,6 +111,7 @@ export default function BlogEditor({
           onContentChange={onContentChange}
           initialData={postContent}
           post={post}
+          components={comps}
         />
       </div>
       <div className="relative mx-auto max-w-screen-md">

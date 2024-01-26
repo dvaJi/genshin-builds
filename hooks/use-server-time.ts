@@ -1,5 +1,7 @@
-import { endEU, endAsia, endNA } from "@utils/server-time";
-import { useState, useEffect } from "react";
+"use client";
+
+import { endAsia, endEU, endNA } from "@utils/server-time";
+import { useEffect, useState } from "react";
 
 type ServerTime = {
   EURemaining: string;

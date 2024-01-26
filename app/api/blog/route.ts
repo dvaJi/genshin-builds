@@ -4,7 +4,6 @@ import { z } from "zod";
 
 import prisma from "@db/index";
 import { authOptions } from "@lib/auth";
-import { getPostById } from "@lib/blog";
 import { slugify2 } from "@utils/hash";
 
 const schemaPost = z.object({

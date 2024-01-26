@@ -33,6 +33,7 @@ type Props = {
   isLoading: boolean;
   post?: BlogPost;
   initialData?: BlogContent;
+  components: any[];
 };
 
 function BlogPostForm({
@@ -41,6 +42,7 @@ function BlogPostForm({
   onContentChange,
   post,
   initialData,
+  components,
 }: Props) {
   const [expanded, setExpanded] = useState<boolean>(
     !initialData?.id ? true : false
@@ -199,7 +201,10 @@ function BlogPostForm({
       <div className="flex w-full gap-2">
         <ImageGallery game={post?.game ?? "genshin"} />
         <FileUploader game={post?.game ?? "genshin"} />
-        <ComponentGallery game={post?.game ?? "genshin"} />
+        <ComponentGallery
+          game={post?.game ?? "genshin"}
+          components={components}
+        />
         {post?.id ? (
           <PromptTL
             postId={post?.id}

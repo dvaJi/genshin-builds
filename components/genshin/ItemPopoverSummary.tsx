@@ -1,13 +1,15 @@
-import { useMemo, useState } from "react";
+"use client";
+
 import clsx from "clsx";
+import { useMemo, useState } from "react";
 
 import useIntl from "@hooks/use-intl";
 import { usePopover } from "@hooks/use-popover";
 import { getUrl } from "@lib/imgUrl";
 
+import SimpleRarityBox from "../SimpleRarityBox";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
-import SimpleRarityBox from "../SimpleRarityBox";
 
 type PopoverProps = {
   id: string;
@@ -35,7 +37,7 @@ function ItemPopoverSummary({
   const [open, trigger, content] = usePopover<HTMLDivElement, HTMLDivElement>(
     false
   );
-  const { t } = useIntl('todo');
+  const { t } = useIntl("todo");
   const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
 
   const remaining = useMemo(() => {

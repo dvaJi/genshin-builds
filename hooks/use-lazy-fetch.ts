@@ -1,4 +1,6 @@
-import { useState, useRef, useCallback } from "react";
+"use client";
+
+import { useCallback, useRef, useState } from "react";
 
 type UseLazyQuery<T> = {
   data: T | null;

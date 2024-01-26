@@ -1,3 +1,5 @@
+"use client";
+
 import { localeToLang } from "@utils/locale-to-lang";
 import { templateReplacement } from "@utils/template-replacement";
 import { IntlMessage } from "./intl-context";

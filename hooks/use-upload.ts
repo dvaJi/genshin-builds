@@ -1,3 +1,5 @@
+"use client";
+
 import { uploadFile } from "@lib/upload-file";
 import axios from "axios";
 import {

@@ -1,21 +1,25 @@
+"use client";
+
 import {
-  useState,
-  useCallback,
-  useRef,
-  useEffect,
   MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from "react";
 
 const ESC_KEY = 27;
 
-const onEscapeKeyPress = (fn: () => void) => ({ keyCode }: KeyboardEvent) =>
-  keyCode === ESC_KEY ? fn() : null;
+const onEscapeKeyPress =
+  (fn: () => void) =>
+  ({ keyCode }: KeyboardEvent) =>
+    keyCode === ESC_KEY ? fn() : null;
 
 const useDropdown = (): [
   MutableRefObject<any>,
   boolean,
   () => void,
-  () => void
+  () => void,
 ] => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<any>(null);

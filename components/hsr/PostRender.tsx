@@ -1,10 +1,8 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import remarkGfm from "remark-gfm";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+import { useDynamicComponents } from "@hooks/use-dynamic-components";
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -35,44 +33,30 @@ const Table = (props: any) => {
 
 export const componentsList = [
   {
-    name: "a",
-    component: CustomLink,
-    custom: false,
-  },
-  {
-    name: "table",
-    component: Table,
-    custom: false,
-  },
-  {
-    name: "Ads",
-    component: Ads,
-    custom: true,
+    publicName: "Ads",
+    componentName: "Ads",
+    importPath: () => import("../ui/Ads"),
     example: `<Ads placementName="genshinbuilds_billboard_atf" />`,
   },
   {
-    name: "FrstAds",
-    component: FrstAds,
-    custom: true,
+    publicName: "FrstAds",
+    componentName: "FrstAds",
+    importPath: () => import("../ui/FrstAds"),
     example: `<FrstAds placementName="genshinbuilds_billboard_atf" />`,
   },
   {
-    name: "YoutubeEmbed",
-    component: dynamic(() => import("@components/YoutubeEmbed"), {
-      ssr: false,
-    }),
-    custom: true,
+    publicName: "Youtube Embed",
+    componentName: "YoutubeEmbed",
+    importPath: () => import("../YoutubeEmbed"),
     example: `\n<YoutubeEmbed id="dQw4w9WgXcQ" />\n`,
   },
-];
-
-const components = componentsList.reduce(
-  (acc, cur) => {
-    acc[cur.name] = cur.component;
-    return acc;
+  {
+    publicName: "X (Tweet) Embed",
+    componentName: "XEmbed",
+    importPath: () => import("../XEmbed"),
+    example: `\n<XEmbed url="https://twitter.com/PlayStation/status/1438205340000000000" />\n`,
   },
-  {} as Record<string, any>
-);
+];
 
 type Props = {
   compiledSource?: any;
@@ -81,11 +65,13 @@ type Props = {
 };
 
 function PostRender(props: Props) {
+  const components = useDynamicComponents(props.compiledSource, componentsList);
+
   if (props.compiledSource) {
     return (
       <MDXRemote
         source={props.compiledSource}
-        components={components}
+        components={{ ...components, a: CustomLink, table: Table }}
         options={{
           mdxOptions: {
             remarkPlugins: [remarkGfm],
