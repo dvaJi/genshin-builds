@@ -96,7 +96,7 @@ export default async function GenshinPost({ params }: Props) {
         className="pointer-events-none absolute left-0 top-0 h-full w-full"
         style={{
           background:
-            "linear-gradient(rgba(26,20,26,.6),rgb(21, 20, 26) 900px)",
+            "linear-gradient(rgba(26,20,26,.6),rgb(26, 29, 39) 900px)",
         }}
       />
 
