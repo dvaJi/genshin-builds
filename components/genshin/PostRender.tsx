@@ -35,13 +35,13 @@ export const componentsList = [
   {
     publicName: "Ads",
     componentName: "Ads",
-    importPath: import("../ui/Ads"),
+    importPath: () => import("../ui/Ads"),
     example: `<Ads placementName="genshinbuilds_billboard_atf" />`,
   },
   {
     publicName: "FrstAds",
     componentName: "FrstAds",
-    importPath: import("../ui/FrstAds"),
+    importPath: () => import("../ui/FrstAds"),
     example: `<FrstAds placementName="genshinbuilds_billboard_atf" />`,
   },
   {
