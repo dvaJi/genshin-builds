@@ -1,4 +1,3 @@
-import type { BlogContent, BlogPost } from "@prisma/client";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AiOutlineClose } from "react-icons/ai";
 import { PiSparkleBold } from "react-icons/pi";
@@ -9,17 +8,23 @@ import { useState } from "react";
 import Button from "./Button";
 
 type Props = {
-  postId: string;
   language: string;
+  title: string;
+  description: string;
+  content: string;
+  game: string;
   setTitle: (title: string) => void;
   setDescription: (description: string) => void;
   setContent: (content: string) => void;
   setIsPublished: (isPublished: boolean) => void;
 };
 
-function ComponentPromptTL({
-  postId,
+export default function PromptImproveGenerator({
+  title,
+  description,
+  game,
   language,
+  content,
   setContent,
   setDescription,
   setTitle,
@@ -28,22 +33,14 @@ function ComponentPromptTL({
   const [open, setOpen] = useState<boolean>(false);
   const [chatResponse, setChatResponse] = useState<string>("");
   const copyPrompt = async () => {
-    const template = process.env.NEXT_PUBLIC_BLOG_CONTENT_TL_PROMPT || "";
-
-    const post: BlogPost & { contents: BlogContent[] } = await fetch(
-      `/api/blog?id=${postId}&language=en`
-    ).then((res) => res.json());
-    const postContent = post.contents[0];
-
-    const gameKey = post.game.toUpperCase() as GamesAvailable;
+    const template = process.env.NEXT_PUBLIC_BLOG_CONTENT_IMPROVE_PROMPT || ``;
 
     const final = template
-      .replaceAll("{source_language}", "english")
-      .replaceAll("{target_language}", localeToLang(language))
-      .replaceAll("{game}", GAME[gameKey].name)
-      .replaceAll("{title}", postContent.title)
-      .replaceAll("{description}", postContent.description)
-      .replace("{content}", postContent.content);
+      .replaceAll("{language}", localeToLang(language))
+      .replaceAll("{game}", GAME[game.toUpperCase() as GamesAvailable].name)
+      .replaceAll("{title}", title)
+      .replaceAll("{description}", description)
+      .replace("{content}", content);
 
     if (window) {
       navigator.clipboard.writeText(final);
@@ -68,7 +65,7 @@ function ComponentPromptTL({
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <Button state="secondary" className="w-full">
-          <PiSparkleBold className="mr-1 h-5 w-5" /> Prompt TL
+          <PiSparkleBold className="mr-1 h-5 w-5" /> AI
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -107,5 +104,3 @@ function ComponentPromptTL({
     </Dialog.Root>
   );
 }
-
-export default ComponentPromptTL;

@@ -25,6 +25,12 @@ const ComponentGallery = dynamic(
 const PromptTL = dynamic(() => import("@components/admin/PromptGenerator"), {
   ssr: false,
 });
+const PromptImproveGenerator = dynamic(
+  () => import("@components/admin/PromptImproveGenerator"),
+  {
+    ssr: false,
+  }
+);
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
 type Props = {
@@ -122,14 +128,20 @@ function BlogPostForm({
           </label>
           <label className="block">
             <span className="text-zinc-400">image</span>
-            <input
-              type="text"
-              name="image"
-              placeholder={post?.image || "image"}
-              className="mt-1 block w-full rounded-md border-zinc-700 bg-zinc-900 shadow-sm focus:border-zinc-200 focus:ring focus:ring-zinc-200 focus:ring-opacity-0"
-              onChange={(e) => setImage(e.target.value)}
-              value={image}
-              required={post?.image ? false : true}
+            <ImageGallery
+              game={post?.game ?? "genshin"}
+              onSelect={(filename) => setImage(filename.replace("/blog/", ""))}
+              render={
+                <input
+                  type="text"
+                  name="image"
+                  placeholder={post?.image || "image"}
+                  className="mt-1 block w-full rounded-md border-zinc-700 bg-zinc-900 shadow-sm focus:border-zinc-200 focus:ring focus:ring-zinc-200 focus:ring-opacity-0"
+                  onChange={(e) => setImage(e.target.value)}
+                  value={image}
+                  required={post?.image ? false : true}
+                />
+              }
             />
           </label>
           <label className="block">
@@ -214,7 +226,19 @@ function BlogPostForm({
             setContent={setContent}
             setIsPublished={setIsPublished}
           />
-        ) : null}
+        ) : (
+          <PromptImproveGenerator
+            title={title}
+            description={description}
+            content={content}
+            game={post?.game ?? "genshin"}
+            language={initialData?.language || "en"}
+            setTitle={setTitle}
+            setDescription={setDescription}
+            setContent={setContent}
+            setIsPublished={setIsPublished}
+          />
+        )}
       </div>
       {/* <div className="flex w-full gap-2">
         <Button

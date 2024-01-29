@@ -18,6 +18,7 @@ declare global {
       GENSHIN_API_URL: string;
       HSR_API_URL: string;
       NEXT_PUBLIC_BLOG_CONTENT_TL_PROMPT: string;
+      NEXT_PUBLIC_BLOG_CONTENT_IMPROVE_PROMPT: string;
     }
   }
 }

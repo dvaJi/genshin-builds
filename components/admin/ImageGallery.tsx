@@ -12,15 +12,18 @@ import Button from "./Button";
 
 type Props = {
   game: string;
+  render?: JSX.Element;
+  onSelect?: (filename: string) => void;
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-function ImageGallery({ game }: Props) {
+function ImageGallery({ game, render, onSelect }: Props) {
+  const [open, setOpen] = useState(false);
   const { mutate } = useSWRConfig();
   const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 20,
+    pageIndex: 1,
+    pageSize: 10,
   });
   const { data, isLoading } = useSWR<{ data: BlogImages[] }>(
     `/api/blog/images?game=${game}&limit=${pagination.pageSize}&page=${pagination.pageIndex}`,
@@ -42,11 +45,15 @@ function ImageGallery({ game }: Props) {
   }
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <Button state="secondary" className="w-full">
-          <BiImages className="mr-1 h-5 w-5" /> Gallery
-        </Button>
+        {render ? (
+          render
+        ) : (
+          <Button state="secondary" className="w-full">
+            <BiImages className="mr-1 h-5 w-5" /> Gallery
+          </Button>
+        )}
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-1000 bg-black/50 data-[state=open]:animate-overlayShow" />
@@ -80,12 +87,23 @@ function ImageGallery({ game }: Props) {
                   </div>
                 </div>
                 <div className="flex gap-2">
+                  {onSelect ? (
+                    <Button
+                      onClick={() => {
+                        onSelect(image.url);
+                        setOpen(false);
+                      }}
+                    >
+                      Select
+                    </Button>
+                  ) : null}
                   <Button
                     state="secondary"
                     onClick={() => {
                       navigator.clipboard.writeText(
                         getImg(game as any, image.url)
                       );
+                      setOpen(false);
                     }}
                   >
                     Copy{"  "}
@@ -107,7 +125,7 @@ function ImageGallery({ game }: Props) {
           <div className="my-4 flex justify-center gap-4">
             <Button
               state="secondary"
-              disabled={pagination.pageIndex === 0}
+              disabled={pagination.pageIndex === 1}
               onClick={() =>
                 setPagination({
                   pageIndex: pagination.pageIndex - 1,
