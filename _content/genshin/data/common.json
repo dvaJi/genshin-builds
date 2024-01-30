@@ -32,6 +32,7 @@
     "HP": "HP",
     "DEF": "DEF",
     "HP%": "HP%",
+    "Max HP": "Max HP",
     "ATK%": "ATK%",
     "DEF%": "DEF%",
     "Elemental Mastery": "Elemental Mastery",
@@ -75,7 +76,8 @@
     "stardust": "Stardust",
     "primogem": "Primogem",
     "genesis_crystal": "Genesis Crystal",
-    "welkinMoon": "Blessing of the Welkin Moon"
+    "welkinMoon": "Blessing of the Welkin Moon",
+    "Genshin Impact": "Genshin Impact"
   },
   "es": {
     "Catalizador": "Catalyst",
@@ -115,6 +117,7 @@
     "HP": "Vida",
     "DEF": "DEF",
     "HP%": "Vida%",
+    "Max HP": "Vida Máx.",
     "ATK%": "ATQ%",
     "DEF%": "DEF%",
     "Elemental Mastery": "Maestría Elemental",
@@ -158,7 +161,8 @@
     "stardust": "Polvo estelar",
     "primogem": "Protogema",
     "genesis_crystal": "Cristal génesis",
-    "welkinMoon": "Bendición Lunar"
+    "welkinMoon": "Bendición Lunar",
+    "Genshin Impact": "Genshin Impact"
   },
   "ja": {
     "法器": "Catalyst",
@@ -209,6 +213,7 @@
     "HP": "HP",
     "DEF": "防御力",
     "HP%": "HP%",
+    "Max HP": "HP上限",
     "ATK%": "攻撃力%",
     "DEF%": "防御力%",
     "Elemental Mastery": "元素熟知",
@@ -252,9 +257,10 @@
     "stardust": "スターダスト",
     "primogem": "原石",
     "genesis_crystal": "創世結晶",
-    "welkinMoon": "空月の祝福"
+    "welkinMoon": "空月の祝福",
+    "Genshin Impact": "原神"
   },
-  "cn": {
+  "ch": {
     "法器": "Catalyst",
     "Catalyst": "法器",
     "水": "Hydro",
@@ -303,6 +309,7 @@
     "HP": "生命值",
     "DEF": "防御力",
     "HP%": "生命值%",
+    "Max HP": "生命值上限",
     "ATK%": "攻击力%",
     "DEF%": "防御力%",
     "Elemental Mastery": "元素精通",
@@ -346,7 +353,8 @@
     "stardust": "星尘",
     "primogem": "原石",
     "genesis_crystal": "创世结晶",
-    "welkinMoon": "空月祝福"
+    "welkinMoon": "空月祝福",
+    "Genshin Impact": "原神"
   },
   "zh-tw": {
     "法器": "Catalyst",
@@ -397,6 +405,7 @@
     "HP": "生命值",
     "DEF": "防禦力",
     "HP%": "生命值%",
+    "Max HP": "生命值上限",
     "ATK%": "攻擊力%",
     "DEF%": "防禦力%",
     "Elemental Mastery": "元素精通",
@@ -440,7 +449,8 @@
     "stardust": "星塵",
     "primogem": "原石",
     "genesis_crystal": "創世結晶",
-    "welkinMoon": "空月祝福"
+    "welkinMoon": "空月祝福",
+    "Genshin Impact": "原神"
   },
   "de": {
     "Katalysator": "Catalyst",
@@ -482,6 +492,7 @@
     "HP": "LP",
     "DEF": "VTD",
     "HP%": "LP%",
+    "Max HP": "Max. LP",
     "ATK%": "ANG%",
     "DEF%": "VTD%",
     "Elemental Mastery": "Elementarkunde",
@@ -525,7 +536,8 @@
     "stardust": "Sternenstaub",
     "primogem": "Urgestein",
     "genesis_crystal": "Schöpfungskristall",
-    "welkinMoon": "Mondsegen"
+    "welkinMoon": "Mondsegen",
+    "Genshin Impact": "Genshin Impact"
   },
   "fr": {
     "Catalyseur": "Catalyst",
@@ -568,6 +580,7 @@
     "HP": "PV",
     "DEF": "DÉF",
     "HP%": "PV%",
+    "Max HP": "PV max",
     "ATK%": "ATQ%",
     "DEF%": "DÉF%",
     "Elemental Mastery": "Maîtrise élémentaire",
@@ -611,7 +624,8 @@
     "stardust": "Astrion",
     "primogem": "Primo-gemme",
     "genesis_crystal": "Cristal primaire",
-    "welkinMoon": "Faveur de l'astre de la nuit"
+    "welkinMoon": "Faveur de l'astre de la nuit",
+    "Genshin Impact": "Genshin Impact"
   },
   "id": {
     "Catalyst": "Catalyst",
@@ -646,6 +660,7 @@
     "HP": "HP",
     "DEF": "DEF",
     "HP%": "HP%",
+    "Max HP": "Max HP",
     "ATK%": "ATK%",
     "DEF%": "DEF%",
     "Elemental Mastery": "Elemental Mastery",
@@ -689,7 +704,8 @@
     "stardust": "Stardust",
     "primogem": "Primogem",
     "genesis_crystal": "Genesis Crystal",
-    "welkinMoon": "Blessing of the Welkin Moon"
+    "welkinMoon": "Blessing of the Welkin Moon",
+    "Genshin Impact": "Genshin Impact"
   },
   "it": {
     "Catalizzatore": "Catalyst",
@@ -728,6 +744,7 @@
     "HP": "PS",
     "DEF": "DIF",
     "HP%": "PS%",
+    "Max HP": "PS max",
     "ATK%": "ATT%",
     "DEF%": "DIF%",
     "Elemental Mastery": "Maestria elementale",
@@ -771,7 +788,8 @@
     "stardust": "Polvere stellare",
     "primogem": "Primogemma",
     "genesis_crystal": "Cristallo della genesi",
-    "welkinMoon": "Benedizione lunare del firmamento"
+    "welkinMoon": "Benedizione lunare del firmamento",
+    "Genshin Impact": "Genshin Impact"
   },
   "ko": {
     "법구": "Catalyst",
@@ -822,6 +840,7 @@
     "HP": "HP",
     "DEF": "방어력",
     "HP%": "HP%",
+    "Max HP": "HP 최대치",
     "ATK%": "공격력%",
     "DEF%": "방어력%",
     "Elemental Mastery": "원소 마스터리",
@@ -865,7 +884,8 @@
     "stardust": "스타더스트",
     "primogem": "원석",
     "genesis_crystal": "창세의 결정",
-    "welkinMoon": "공월 축복"
+    "welkinMoon": "공월 축복",
+    "Genshin Impact": "원신"
   },
   "pt": {
     "Catalisador": "Catalyst",
@@ -905,6 +925,7 @@
     "HP": "Vida",
     "DEF": "DEF",
     "HP%": "Vida%",
+    "Max HP": "Vida Máxima",
     "ATK%": "ATQ%",
     "DEF%": "DEF%",
     "Elemental Mastery": "Proficiência Elemental",
@@ -948,7 +969,8 @@
     "stardust": "Poeira Estrelar",
     "primogem": "Gema Essencial",
     "genesis_crystal": "Cristal Gênesis",
-    "welkinMoon": "Bênção da Lua Nova"
+    "welkinMoon": "Bênção da Lua Nova",
+    "Genshin Impact": "Genshin Impact"
   },
   "ru": {
     "Катализатор оружие": "Catalyst",
@@ -999,6 +1021,7 @@
     "HP": "HP",
     "DEF": "Защита",
     "HP%": "HP%",
+    "Max HP": "Макс. HP",
     "ATK%": "Сила атаки%",
     "DEF%": "Защита%",
     "Elemental Mastery": "Мастерство стихий",
@@ -1042,7 +1065,8 @@
     "stardust": "Звёздная пыль",
     "primogem": "Камень Истока",
     "genesis_crystal": "Кристалл Сотворения",
-    "welkinMoon": "Благословение полой луны"
+    "welkinMoon": "Благословение полой луны",
+    "Genshin Impact": "Genshin Impact"
   },
   "th": {
     "สื่อเวท": "Catalyst",
@@ -1089,6 +1113,7 @@
     "HP": "พลังชีวิต",
     "DEF": "พลังป้องกัน",
     "HP%": "พลังชีวิต%",
+    "Max HP": "พลังชีวิต (HP)",
     "ATK%": "พลังโจมตี%",
     "DEF%": "พลังป้องกัน%",
     "Elemental Mastery": "ความชำนาญธาตุ",
@@ -1132,7 +1157,8 @@
     "stardust": "Stardust",
     "primogem": "Primogem",
     "genesis_crystal": "Genesis Crystal",
-    "welkinMoon": "พรแห่งดวงจันทร์"
+    "welkinMoon": "พรแห่งดวงจันทร์",
+    "Genshin Impact": "Genshin Impact"
   },
   "tr": {
     "Katalizör": "Catalyst",
@@ -1179,6 +1205,7 @@
     "HP": "Can",
     "DEF": "Savunma",
     "HP%": "Can%",
+    "Max HP": "Maks. Can",
     "ATK%": "Saldırı%",
     "DEF%": "Savunma%",
     "Elemental Mastery": "Element Ustalığı",
@@ -1222,7 +1249,8 @@
     "stardust": "Yıldız Tozu",
     "primogem": "Köken Taşı",
     "genesis_crystal": "Başlangıç Kristali",
-    "welkinMoon": "Yeni Ayın Lütfu"
+    "welkinMoon": "Yeni Ayın Lütfu",
+    "Genshin Impact": "Genshin Impact"
   },
   "vi": {
     "Pháp Khí": "Catalyst",
@@ -1269,6 +1297,7 @@
     "HP": "HP",
     "DEF": "Phòng Ngự",
     "HP%": "HP%",
+    "Max HP": "Giới Hạn HP",
     "ATK%": "Tấn Công%",
     "DEF%": "Phòng Ngự%",
     "Elemental Mastery": "Tinh Thông Nguyên Tố",
@@ -1312,6 +1341,7 @@
     "stardust": "Tinh Trần",
     "primogem": "Nguyên Thạch",
     "genesis_crystal": "Đá Sáng Thế",
-    "welkinMoon": "Không Nguyệt Chúc Phúc"
+    "welkinMoon": "Không Nguyệt Chúc Phúc",
+    "Genshin Impact": "Genshin Impact"
   }
 }
