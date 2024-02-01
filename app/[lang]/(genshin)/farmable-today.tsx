@@ -25,7 +25,9 @@ export default function FarmableToday({
   weapons,
 }: Props) {
   const { t, locale } = useIntl("ascension_planner");
-  const [currentDay, setCurrentDay] = useState(days[new Date().getDay()]);
+  const currentDayIndex = new Date().getDay();
+  const adjustedDayIndex = currentDayIndex === 0 ? 6 : currentDayIndex - 1;
+  const [currentDay, setCurrentDay] = useState(days[adjustedDayIndex]);
 
   return (
     <>
