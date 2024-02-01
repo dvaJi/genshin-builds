@@ -1,5 +1,6 @@
 "use server";
 
+import { i18n } from "@i18n-config";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { z } from "zod";
 
@@ -23,8 +24,18 @@ export async function invalidateAction(prevState: any, formData: FormData) {
     revalidateTag(parse.data.value);
     return { message: "success" };
   } else if (parse.data.type === "path") {
-    revalidatePath(parse.data.value);
-    return { message: "success" };
+    // Check if path is specific to a language
+    const lang = parse.data.value.split("/")[1];
+
+    if (i18n.locales.includes(lang as any)) {
+      revalidatePath(parse.data.value);
+      return { message: "success" };
+    }
+
+    // If not, invalidate all languages
+    for (const lang of i18n.locales) {
+      revalidatePath(`/${lang}${parse.data.value}`);
+    }
   }
 
   return { error: "unknown type" };
