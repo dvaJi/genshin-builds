@@ -36,6 +36,8 @@ export async function invalidateAction(prevState: any, formData: FormData) {
     for (const lang of i18n.locales) {
       revalidatePath(`/${lang}${parse.data.value}`);
     }
+
+    return { message: "success" };
   }
 
   return { error: "unknown type" };
