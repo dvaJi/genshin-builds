@@ -7,6 +7,7 @@ interface PageSEOProps {
   locale?: string;
   description?: string;
   image?: string;
+  noOpenGraph?: boolean;
   [key: string]: any;
 }
 
@@ -18,6 +19,7 @@ export function genPageMetadata({
   path,
   image,
   locale,
+  noOpenGraph,
   ...rest
 }: PageSEOProps): Metadata {
   const siteMetadata = {
@@ -32,19 +34,23 @@ export function genPageMetadata({
     return `${baseDomain}/${locale}${path}`;
   };
 
+  const openGraph = noOpenGraph
+    ? {}
+    : {
+        title: `${title} | ${siteMetadata.title}`,
+        description: description || siteMetadata.description,
+        url: "./",
+        siteName: siteMetadata.title,
+        images: image ? [image] : [siteMetadata.socialBanner],
+        locale: locale || "en_US",
+        type: "website",
+      };
+
   return {
     metadataBase: new URL(domain),
     title,
     description,
-    openGraph: {
-      title: `${title} | ${siteMetadata.title}`,
-      description: description || siteMetadata.description,
-      url: "./",
-      siteName: siteMetadata.title,
-      images: image ? [image] : [siteMetadata.socialBanner],
-      locale: locale || "en_US",
-      type: "website",
-    },
+    openGraph,
     twitter: {
       title: `${title} | ${siteMetadata.title}`,
       description: description || siteMetadata.description,

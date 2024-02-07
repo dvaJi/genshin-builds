@@ -39,6 +39,11 @@ const navRoutes: Route[] = [
         name: "Best Decks",
         href: "/tcg/best-decks",
       },
+      {
+        id: "deck_builder",
+        name: "Deck Builder",
+        href: "/tcg/deck-builder",
+      },
     ],
   },
   {

@@ -1,14 +1,13 @@
 import type { TCGCard } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
-import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getUrl } from "@lib/imgUrl";
 import { i18n } from "i18n-config";
+import CardsTable from "./table";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -64,28 +63,12 @@ export default async function GenshinTCG({ params }: Props) {
   const cards = await getGenshinData<TCGCard[]>({
     resource: "tcgCards",
     language: langData,
-    select: ["name", "id"],
+    select: ["name", "id", "attributes"],
   });
 
-  // // Gather all types from card.attributes.card_type without duplicates
-  // const types = cards
-  //   .map((card) => card?.attributes?.card_type)
-  //   .filter((value, index, self) => value && self.indexOf(value) === index);
-
-  // // Gather all energies from card.attributes.energy without duplicates
-  // const energies = cards
-  //   .map((card) => card?.attributes?.energy)
-  //   .filter((value, index, self) => value && self.indexOf(value) === index);
-
-  // // Gather all costs from card.attributes.cost without duplicates
-  // const costs = cards
-  //   .map((card) => card?.attributes?.cost)
-  //   .filter((value, index, self) => value && self.indexOf(value) === index);
-
-  // // Gather all factions from card.attributes.faction without duplicates, faction is an array of strings
-  // const factions = cards
-  //   .flatMap((card) => card?.attributes?.faction)
-  //   .filter((value, index, self) => value && self.indexOf(value) === index);
+  const types = cards
+    .map((card) => card?.attributes?.card_type)
+    .filter((value, index, self) => value && self.indexOf(value) === index);
 
   return (
     <div>
@@ -95,29 +78,9 @@ export default async function GenshinTCG({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "cards", defaultMessage: "Cards" })}
+        {t({ id: "cards", defaultMessage: "Genius Invokation TCG Card List" })}
       </h2>
-      <div className="card flex flex-wrap content-center justify-center">
-        {cards.map((card) => (
-          <Link
-            key={card.id}
-            href={`/${params.lang}/tcg/card/${card.id}`}
-            className="group relative m-2 w-20 cursor-pointer transition-all hover:scale-110"
-          >
-            <img
-              src={getUrl(`/tcg/${card.id}.png`, 150, 90)}
-              alt={card.name}
-              title={card.name}
-              width={80}
-              height={134}
-              className="rounded-lg border-2 border-transparent transition-all group-hover:border-white group-hover:brightness-125"
-            />
-            <div className="mt-1 text-center text-xs transition-all group-hover:text-white">
-              {card.name}
-            </div>
-          </Link>
-        ))}
-      </div>
+      <CardsTable lang={params.lang} cards={cards} types={types} />
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}
