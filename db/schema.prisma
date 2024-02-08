@@ -24,8 +24,8 @@ model Player {
     signature            String
     worldLevel           Int
     finishAchievementNum Int
-    towerFloorIndex      Int
-    towerLevelIndex      Int
+    towerFloorIndex      Int?     @default(0)
+    towerLevelIndex      Int?     @default(0)
     Build                Build[]
 }
 
