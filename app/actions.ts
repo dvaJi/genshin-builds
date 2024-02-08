@@ -75,7 +75,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         friends: data.player.friend_count,
         avatars: data.player.space_info.avatar_count,
         lightCones: data.player.space_info.light_cone_count,
-        passAreaProgress: data.player.space_info.pass_area_progress,
+        passAreaProgress: data.player.space_info.universe_level,
         finishAchievementNum: data.player.space_info.achievement_count,
       };
       player = await prisma.hSRPlayer.create({
@@ -121,7 +121,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         friends: data.player.friend_count,
         avatars: data.player.space_info.avatar_count,
         lightCones: data.player.space_info.light_cone_count,
-        passAreaProgress: data.player.space_info.pass_area_progress,
+        passAreaProgress: data.player.space_info.universe_level,
         finishAchievementNum: data.player.space_info.achievement_count,
       };
 
