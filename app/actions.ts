@@ -270,6 +270,8 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         signature: data.playerInfo.signature ?? "",
         worldLevel: data.playerInfo.worldLevel,
         finishAchievementNum: data.playerInfo.finishAchievementNum,
+        towerFloorIndex: data.playerInfo.towerFloorIndex,
+        towerLevelIndex: data.playerInfo.towerLevelIndex,
         profilePictureId:
           data.playerInfo.profilePicture.id ||
           data.playerInfo.profilePicture.avatarId,
@@ -319,6 +321,8 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         signature: data.playerInfo.signature,
         worldLevel: data.playerInfo.worldLevel,
         finishAchievementNum: data.playerInfo.finishAchievementNum,
+        towerFloorIndex: data.playerInfo.towerFloorIndex,
+        towerLevelIndex: data.playerInfo.towerLevelIndex,
         profilePictureId:
           data.playerInfo.profilePicture.id ||
           data.playerInfo.profilePicture.avatarId,

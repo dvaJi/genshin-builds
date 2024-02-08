@@ -24,6 +24,8 @@ model Player {
     signature            String
     worldLevel           Int
     finishAchievementNum Int
+    towerFloorIndex      Int
+    towerLevelIndex      Int
     Build                Build[]
 }
 
@@ -89,6 +91,9 @@ model Build {
 
     player   Player @relation(fields: [playerId], references: [id])
     playerId String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 
     @@index([playerId])
 }
@@ -273,7 +278,7 @@ model BlogPost {
     authorLink   String
     tags         String
     published    Boolean       @default(false)
-    contents  BlogContent[]
+    contents     BlogContent[]
 }
 
 model BlogContent {
