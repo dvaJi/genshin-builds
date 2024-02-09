@@ -8,6 +8,11 @@ export async function generateStaticParams() {
   return langs.map((lang) => ({ lang }));
 }
 
+export const metadata = {
+  title: "Contact",
+  description: "Contact us",
+};
+
 export default async function Contact() {
   return (
     <div>
