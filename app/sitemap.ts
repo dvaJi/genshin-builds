@@ -1,7 +1,6 @@
 import { getPosts } from "@lib/blog";
 import { getGenshinData as giData, getHSRData as hsrData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
-import { i18n } from "i18n-config";
 
 type Route = {
   url: string;
@@ -55,53 +54,43 @@ async function getGenshinSpecificRoutes() {
     "/todo",
     "/weapons",
   ].forEach((route) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}${route}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}${route}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const characters = await getGenshinData("characters");
 
   characters.forEach((character: any) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/character/${character.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/character/${character.id}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const weapons = await getGenshinData("weapons");
   weapons.forEach((weapon: any) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/weapon/${weapon.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/weapon/${weapon.id}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const tcg = await getGenshinData("tcgCards");
   tcg.forEach((card: any) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/tcg/card/${card.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/tcg/card/${card.id}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const posts = await getPosts("genshin");
 
   posts.data.forEach((post) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/genshin/blog/${post.slug}`,
-        lastModified: `${post.updatedAt}`,
-      });
+    routes.push({
+      url: `${baseDomain}/genshin/blog/${post.slug}`,
+      lastModified: `${post.updatedAt}`,
     });
   });
 
@@ -127,54 +116,44 @@ async function getHSRSpecificRoutes() {
     "/showcase",
     "/tierlist",
   ].forEach((route) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/hsr${route}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/hsr${route}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const characters = await getHSRData("characters");
 
   characters.forEach((character) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/hsr/character/${character.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/hsr/character/${character.id}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const items = await getHSRData("items");
 
   items.forEach((item) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/hsr/item/${item.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/hsr/item/${item.id}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const messages = await getHSRData("messages");
   messages.forEach((message) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/hsr/message/${message.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/hsr/message/${message.id}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const posts = await getPosts("hsr");
 
   posts.data.forEach((post) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/hsr/blog/${post.slug}`,
-        lastModified: `${post.updatedAt}`,
-      });
+    routes.push({
+      url: `${baseDomain}/hsr/blog/${post.slug}`,
+      lastModified: `${post.updatedAt}`,
     });
   });
 
@@ -191,31 +170,25 @@ async function getZenlessSpecificRoutes() {
   const routes: Route[] = [];
 
   ["", "/blog", "/blog/page/2", "/characters"].forEach((route) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/zenless${route}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/zenless${route}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   characters.forEach((character) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/zenless/characters/${character.id}`,
-        lastModified: new Date().toISOString().split("T")[0],
-      });
+    routes.push({
+      url: `${baseDomain}/zenless/characters/${character.id}`,
+      lastModified: new Date().toISOString().split("T")[0],
     });
   });
 
   const posts = await getPosts("zenless");
 
   posts.data.forEach((post) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${baseDomain}/${locale}/zenless/blog/${post.slug}`,
-        lastModified: `${post.updatedAt}`,
-      });
+    routes.push({
+      url: `${baseDomain}/zenless/blog/${post.slug}`,
+      lastModified: `${post.updatedAt}`,
     });
   });
 
