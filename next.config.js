@@ -55,6 +55,16 @@ const nextConfig = {
       destination: "/weapon/splendor_of_tranquil_waters",
       permanent: true,
     },
+    {
+      source: "/ru/weapons",
+      destination: "/dmca",
+      permanent: false,
+    },
+    {
+      source: "/en/weapons",
+      destination: "/dmca",
+      permanent: false,
+    },
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
