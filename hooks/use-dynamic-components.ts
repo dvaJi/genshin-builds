@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { useMemo } from "react";
 
 function getUsedComponents(mdxContent: string) {
   if (!mdxContent) return [];
@@ -23,35 +22,31 @@ function getUsedComponents(mdxContent: string) {
 // Function to dynamically import components based on usage
 export function useDynamicComponents(
   mdxContent: string,
-  componentsList: any[],
+  componentsList: any[]
 ) {
   const usedComponents = getUsedComponents(mdxContent);
 
-  const components = useMemo(() => {
-    const dynamicComponents: Record<string, any> = {};
+  const dynamicComponents: Record<string, any> = {};
 
-    if (mdxContent === "[ALL]") {
-      componentsList.forEach((component) => {
-        const importComponent = () => component.importPath();
-        dynamicComponents[component.componentName] = dynamic(importComponent, {
-          ssr: false,
-        });
+  if (mdxContent === "[ALL]") {
+    componentsList.forEach((component) => {
+      const importComponent = () => component.importPath();
+      dynamicComponents[component.componentName] = dynamic(importComponent, {
+        ssr: false,
       });
-      return dynamicComponents;
-    }
-
-    usedComponents.forEach((name) => {
-      const component = componentsList.find(
-        (comp) => comp.componentName === name
-      );
-      if (component) {
-        const importComponent = () => component.importPath();
-        dynamicComponents[name] = dynamic(importComponent, { ssr: false });
-      }
     });
-
     return dynamicComponents;
-  }, [componentsList, mdxContent, usedComponents]);
+  }
 
-  return components;
+  usedComponents.forEach((name) => {
+    const component = componentsList.find(
+      (comp) => comp.componentName === name
+    );
+    if (component) {
+      const importComponent = () => component.importPath();
+      dynamicComponents[name] = dynamic(importComponent, { ssr: false });
+    }
+  });
+
+  return dynamicComponents;
 }
