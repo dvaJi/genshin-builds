@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "連山訣秘宮",
     "welcome_title": "歡迎來到Genshin-Builds！✨",
     "welcome_desc": "在這裡，您可以發現角色建構、詳盡指南和一個綜合的資料庫。Genshin-Builds將幫助您計劃提升活動，並提供升級計算器來追蹤您的進度。利用便利的待辦清單輕鬆掌握進度。透過這個寶貴的資源，提升您在原神的遊戲體驗！",
-    "farmable_today": "今日可農"
+    "farmable_today": "今日可農",
+    "banners": "橫幅",
+    "banners_desc": "查看《原神》最新的橫幅及其持續時間。",
+    "latest_posts": "最新文章",
+    "latest_posts_desc": "隨時了解《原神》的最新消息、指南和技巧。",
+    "view_all_posts": "查看所有文章",
+    "server_timers": "伺服器計時器",
+    "server_timers_desc": "每日重置基於您伺服器的時區，在凌晨 4 點（04:00）發生。每週重置也發生在每週一的凌晨 4 點（04:00）。"
   },
   "characters": {
     "title": "Genshin Impact 角色列表",
