@@ -62,6 +62,12 @@ export const componentsList = [
     importPath: () => import("../XEmbed"),
     example: `\n<XEmbed url="https://twitter.com/PlayStation/status/1438205340000000000" />\n`,
   },
+  {
+    publicName: "Countdown To Date",
+    componentName: "CountdownToDate",
+    importPath: () => import("../CountdownToDate"),
+    example: `\n<CountdownToDate targetDate="2024-02-28T21:18:04.180Z" customEndText="The end has already finished!" countdownRefreshInterval={1000} />\n`,
+  },
 ];
 
 type Props = {
