@@ -128,6 +128,10 @@ export default async function IndexPage({ params }: Props) {
             <Banners lang={params.lang} />
           </Suspense>
         </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
         <div className="m-2">
           <h2 className="text-2xl font-semibold text-gray-200">
             {t({
@@ -153,6 +157,10 @@ export default async function IndexPage({ params }: Props) {
           >
             <LatestPosts lang={params.lang} />
           </Suspense>
+          <FrstAds
+            placementName="genshinbuilds_incontent_2"
+            classList={["flex", "justify-center"]}
+          />
           <div className="mx-2 text-right text-sm hover:text-white">
             <Link href={`/${params.lang}/genshin/blog`}>
               {t({
@@ -179,6 +187,10 @@ export default async function IndexPage({ params }: Props) {
           <ServerTimers />
         </div>
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
+        <FrstAds
+          placementName="genshinbuilds_incontent_3"
+          classList={["flex", "justify-center"]}
+        />
         <FarmableToday
           days={days}
           characters={charactersMap}
@@ -186,7 +198,7 @@ export default async function IndexPage({ params }: Props) {
           domains={domains}
         />
         <FrstAds
-          placementName="genshinbuilds_incontent_1"
+          placementName="genshinbuilds_incontent_4"
           classList={["flex", "justify-center"]}
         />
       </div>
