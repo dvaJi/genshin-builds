@@ -14,10 +14,19 @@ export async function getLocale(lang: string, game: string) {
   }
 }
 
-export async function getRemoteData<T>(game: string, dataFile: string) {
+export async function getRemoteData<T>(
+  game: string,
+  dataFile: string,
+  revalidate = 60 * 60 * 24
+) {
   try {
     const res = await fetch(
-      `${process.env.SITEDATA_URL}/${game}-${dataFile}.json`
+      `${process.env.SITEDATA_URL}/${game}-${dataFile}.json`,
+      {
+        next: {
+          revalidate,
+        },
+      }
     );
     const data = await res.json();
     return data as T;

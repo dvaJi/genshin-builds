@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "蓮山フォーミュラの隠し宮殿",
     "welcome_title": "Genshin-Buildsへようこそ！✨",
     "welcome_desc": "キャラクタービルド、包括的なガイド、ウィキデータベースを1つの場所で見つけましょう。Genshin-Buildsは、昇進計算機を使って農耕活動を計画するためのお手伝いをします。便利なTODOリストで進捗状況を簡単に追跡します。この貴重なリソースでGenshin Impactの体験をレベルアップしましょう！",
-    "farmable_today": "本日の農耕可能アイテム"
+    "farmable_today": "本日の農耕可能アイテム",
+    "banners": "バナー",
+    "banners_desc": "Genshin Impact の最新バナーとその期間をチェックしてください。",
+    "latest_posts": "最新記事",
+    "latest_posts_desc": "Genshin Impact の最新ニュース、ガイド、ヒントを常にチェックしましょう。",
+    "view_all_posts": "すべての記事を表示",
+    "server_timers": "サーバータイマー",
+    "server_timers_desc": "日々のリセットは、サーバーのタイムゾーンを基に、04:00 (4 AM) に発生します。週次のリセットは毎週月曜日も同様に、04:00 (4 AM) に発生します。"
   },
   "characters": {
     "title": "原神インパクトキャラクター一覧",

@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "Palazzo Nascosto di Lianshan Formula",
     "welcome_title": "Benvenuto su Genshin-Builds! ✨",
     "welcome_desc": "Scopri le costruzioni dei personaggi, le guide complete e un database wiki, tutto in un unico posto. Genshin-Builds è qui per aiutarti a pianificare le tue attività di farming con una calcolatrice di ascensione. Tieni traccia dei tuoi progressi in modo semplice con un comodo elenco di cose da fare. Potenzia la tua esperienza di Genshin Impact con questa risorsa inestimabile!",
-    "farmable_today": "Farmabili Oggi"
+    "farmable_today": "Farmabili Oggi",
+    "banners": "Banner",
+    "banners_desc": "Scopri gli ultimi banner e la loro durata in Genshin Impact.",
+    "latest_posts": "Ultimi Articoli",
+    "latest_posts_desc": "Resta aggiornato con le ultime notizie, guide e suggerimenti per Genshin Impact.",
+    "view_all_posts": "Visualizza Tutti gli Articoli",
+    "server_timers": "Timer del Server",
+    "server_timers_desc": "Il reset giornaliero avviene alle 04:00 (4 AM), in base al fuso orario del tuo server. Il reset settimanale avviene ogni lunedì, anche alle 04:00 (4 AM)."
   },
   "characters": {
     "title": "Elenco dei personaggi di Genshin Impact",

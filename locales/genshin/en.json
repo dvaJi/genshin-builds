@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "Hidden Palace of Lianshan Formula",
     "welcome_title": "Welcome to Genshin-Builds! ✨",
     "welcome_desc": "Discover character builds, comprehensive guides, and a wiki database all in one place. Genshin-Builds is here to assist you in planning your farming activities with an ascension calculator. Keep track of your progress effortlessly with a convenient todo list. Level up your Genshin Impact experience with this invaluable resource!",
-    "farmable_today": "Farmable Today"
+    "farmable_today": "Farmable Today",
+    "banners": "Banners",
+    "banners_desc": "Check out the latest banners and their duration in Genshin Impact.",
+    "latest_posts": "Latest Posts",
+    "latest_posts_desc": "Stay up-to-date with the latest news, guides, and tips for Genshin Impact.",
+    "view_all_posts": "View All Posts",
+    "server_timers": "Server Timers",
+    "server_timers_desc": "The daily reset occurs at 04:00 (4 AM), based on your server's time zone. The weekly reset occurs each Monday, also at 04:00 (4 AM)."
   },
   "characters": {
     "title": "Genshin Impact Characters List",

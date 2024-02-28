@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "莲山寺",
     "welcome_title": "欢迎来到原神建造！ ✨",
     "welcome_desc": "在这个有用的资源中，您可以发现角色建造、综合指南和百科数据库。原神建造致力于帮助您计划培育活动，提供一种飞升计算器，轻松跟踪您的进度。通过这个宝贵的资源，提升您的原神体验！",
-    "farmable_today": "今天可种植"
+    "farmable_today": "今天可种植",
+    "banners": "横幅",
+    "banners_desc": "查看《原神》最新的横幅及其持续时间。",
+    "latest_posts": "最新文章",
+    "latest_posts_desc": "随时了解《原神》的最新新闻、指南和技巧。",
+    "view_all_posts": "查看所有文章",
+    "server_timers": "服务器计时器",
+    "server_timers_desc": "每日重置基于您服务器的时区，在凌晨 4 点（04:00）发生。每周重置也发生在每周一的凌晨 4 点（04:00）。"
   },
   "characters": {
     "title": "原神角色列表",

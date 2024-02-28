@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "Lianshan Formula의 숨겨진 궁전",
     "welcome_title": "Genshin-Builds에 오신 것을 환영합니다! ✨",
     "welcome_desc": "캐릭터 빌드, 포괄적인 가이드 및 위키 데이터베이스를 한 곳에서 확인하세요. Genshin-Builds는 승급 계산기를 통해 농사 활동을 계획하는 데 도움을 드립니다. 편리한 할 일 목록으로 진행 상황을 손쉽게 추적하세요. 이 보물 같은 자원으로 Genshin Impact 경험을 더욱 향상시켜 보세요!",
-    "farmable_today": "오늘 수확 가능"
+    "farmable_today": "오늘 수확 가능",
+    "banners": "배너",
+    "banners_desc": "Genshin Impact의 최신 배너 및 지속 기간을 확인하세요.",
+    "latest_posts": "최신 게시물",
+    "latest_posts_desc": "Genshin Impact의 최신 뉴스, 가이드 및 팁을 항상 확인하세요.",
+    "view_all_posts": "모든 게시물 보기",
+    "server_timers": "서버 타이머",
+    "server_timers_desc": "매일 리셋은 서버의 시간대를 기준으로 04:00 (4 AM)에 발생합니다. 주간 리셋은 매주 월요일에도 마찬가지로 04:00 (4 AM)에 발생합니다."
   },
   "characters": {
     "title": "Genshin 임팩트 캐릭터 목록",

@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "Formula Istana Tersembunyi Lianshan",
     "welcome_title": "Selamat datang di Genshin-Builds! ✨",
     "welcome_desc": "Temukan konstruksi karakter, panduan komprehensif, dan basis data wiki dalam satu tempat. Genshin-Builds hadir untuk membantu Anda merencanakan aktivitas farming Anda dengan kalkulator peningkatan. Lacak kemajuan Anda dengan mudah dengan daftar tugas yang nyaman. Tingkatkan pengalaman Genshin Impact Anda dengan sumber daya yang tak ternilai ini!",
-    "farmable_today": "Farm Hari Ini"
+    "farmable_today": "Farm Hari Ini",
+    "banners": "Banner",
+    "banners_desc": "Lihat banner terbaru dan durasinya di Genshin Impact.",
+    "latest_posts": "Pos Terbaru",
+    "latest_posts_desc": "Tetap terkini dengan berita, panduan, dan tips terbaru untuk Genshin Impact.",
+    "view_all_posts": "Lihat Semua Pos",
+    "server_timers": "Pengatur Waktu Server",
+    "server_timers_desc": "Reset harian terjadi pada pukul 04:00 (4 AM), berdasarkan zona waktu server Anda. Reset mingguan terjadi setiap hari Senin, juga pada pukul 04:00 (4 AM)."
   },
   "characters": {
     "title": "Daftar Karakter Genshin Impact",

@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "Gizli Lianshan Sarayı Formülü",
     "welcome_title": "Genshin-Builds'e hoş geldiniz! ✨",
     "welcome_desc": "Karakter yapısını, kapsamlı rehberleri ve bir wiki veritabanını tek bir yerde keşfedin. Genshin-Builds, yükseltme hesaplayıcısı ile çiftlik faaliyetlerinizi planlamanıza yardımcı olur. Pratik yapılacaklar listesiyle ilerlemenizi kolayca takip edin. Genshin Impact deneyiminizi bu değerli kaynakla geliştirin!",
-    "farmable_today": "Bugün Çiftlenebilir"
+    "farmable_today": "Bugün Çiftlenebilir",
+    "banners": "Pankartlar",
+    "banners_desc": "Genshin Impact'teki en son pankartları ve sürelerini kontrol edin.",
+    "latest_posts": "En Son Gönderiler",
+    "latest_posts_desc": "Genshin Impact için en son haberleri, rehberleri ve ipuçlarını takip edin.",
+    "view_all_posts": "Tüm Gönderileri Gör",
+    "server_timers": "Sunucu Zamanlayıcıları",
+    "server_timers_desc": "Günlük sıfırlama, sunucunuzun saat dilimine göre 04:00'te (4 AM) gerçekleşir. Haftalık sıfırlama her Pazartesi günü, aynı şekilde saat 04:00'te (4 AM) gerçekleşir."
   },
   "characters": {
     "title": "Genshin Impact Karakter Listesi",

@@ -74,7 +74,14 @@
     "Hidden Palace of Lianshan Formula": "Ẩn cung công thức Lianshan",
     "welcome_title": "Chào mừng đến với Genshin-Builds! ✨",
     "welcome_desc": "Khám phá cấu trúc nhân vật, các hướng dẫn toàn diện và cơ sở dữ liệu wiki, tất cả trong một nơi. Genshin-Builds ở đây để giúp bạn lập kế hoạch cho hoạt động trang trại của mình với bộ máy tính tăng cường. Theo dõi tiến trình một cách dễ dàng với danh sách công việc tiện lợi. Nâng cao trải nghiệm Genshin Impact của bạn với nguồn tài nguyên vô giá này!",
-    "farmable_today": "Có thể trang trại được Hôm nay"
+    "farmable_today": "Có thể trang trại được Hôm nay",
+    "banners": "Biểu Ngữ",
+    "banners_desc": "Kiểm tra các biểu ngữ mới nhất và thời gian của chúng trong Genshin Impact.",
+    "latest_posts": "Bài Viết Mới Nhất",
+    "latest_posts_desc": "Luôn cập nhật với tin tức, hướng dẫn và mẹo mới nhất cho Genshin Impact.",
+    "view_all_posts": "Xem Tất Cả Bài Viết",
+    "server_timers": "Bộ Hẹn Giờ Máy Chủ",
+    "server_timers_desc": "Sự đặt lại hàng ngày diễn ra vào lúc 04:00 (4 AM), dựa trên múi giờ của máy chủ của bạn. Sự đặt lại hàng tuần diễn ra vào mỗi thứ Hai, cũng vào lúc 04:00 (4 AM)."
   },
   "characters": {
     "title": "Genshin Impact Danh sách nhân vật",
