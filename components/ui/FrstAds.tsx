@@ -9,7 +9,7 @@ type Props = {
   classList?: string[];
 };
 
-function FrstAds({ placementName, slotId, targeting, classList }: Props) {
+function FrstAds({ placementName, slotId, targeting, classList = [] }: Props) {
   const publisher = process.env.NEXT_PUBLIC_FRST_PUBLISHER_NAME || "";
 
   if (!publisher) {
@@ -23,7 +23,7 @@ function FrstAds({ placementName, slotId, targeting, classList }: Props) {
       slotId={slotId}
       targeting={targeting}
       channel={process.env.NODE_ENV === "development" ? "dev" : "prod"}
-      classList={classList}
+      classList={[...classList, "min-h-[250px]"]}
       //   onNewAdSlotsHook={(placementName) =>
       //     console.log("creating ad", placementName)
       //   }
