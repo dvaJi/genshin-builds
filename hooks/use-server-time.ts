@@ -52,7 +52,6 @@ const calcRemaining = (endDate: Date) => {
 };
 
 const calcRemainingToEndOfWeek = (serverEndTime: Date) => {
-  console.log(serverEndTime);
   const serverTime = new Date(serverEndTime);
   const serverTimeUTC = new Date(
     serverTime.getUTCFullYear(),
