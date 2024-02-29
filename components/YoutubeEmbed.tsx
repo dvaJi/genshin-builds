@@ -15,8 +15,8 @@ const YoutubeEmbed = ({ id }: Props) => {
 
   if (isLargeDesktop) {
     sizes = {
-      width: 1000,
-      height: 600,
+      width: 730,
+      height: 400,
     };
   }
   return (
