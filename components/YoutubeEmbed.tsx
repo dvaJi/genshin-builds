@@ -9,7 +9,7 @@ interface Props {
 const YoutubeEmbed = ({ id }: Props) => {
   const { isMobile, isLargeDesktop, innerWidth } = useMobileDetect();
   let sizes = {
-    width: isMobile ? innerWidth - 30 : 560,
+    width: isMobile ? innerWidth - 40 : 560,
     height: isMobile ? innerWidth / 2 : 315,
   };
 
