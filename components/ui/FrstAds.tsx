@@ -23,7 +23,7 @@ function FrstAds({ placementName, slotId, targeting, classList = [] }: Props) {
       slotId={slotId}
       targeting={targeting}
       channel={process.env.NODE_ENV === "development" ? "dev" : "prod"}
-      classList={[...classList, "min-h-[250px]"]}
+      classList={[...classList, "min-h-[50px]"]}
       //   onNewAdSlotsHook={(placementName) =>
       //     console.log("creating ad", placementName)
       //   }
