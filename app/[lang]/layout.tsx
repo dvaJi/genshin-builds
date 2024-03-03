@@ -10,7 +10,6 @@ export default function Root({
   return (
     <html lang={params.lang}>
       <PreloadResources />
-      <script data-cfasync="false" src="/adb.js" async />
       <body>{children}</body>
     </html>
   );
