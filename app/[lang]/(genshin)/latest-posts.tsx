@@ -1,20 +1,13 @@
-import BlogPostCard from "@components/genshin/BlogPostCard";
-import { getPostContents } from "@lib/blog";
+import NewsPostCard from "@components/genshin/NewsPostCard";
+import { getNews } from "@lib/news";
 
-type Props = {
-  lang: string;
-};
-
-export async function LatestPosts({ lang }: Props) {
-  const { data } = await getPostContents("genshin", lang, {
-    limit: 3,
-    page: 1,
-  });
+export async function LatestPosts() {
+  const data = await getNews("genshin-impact");
 
   return (
     <div className="grid gap-2 md:grid-cols-3 lg:grid-cols-3 lg:gap-4">
       {data.map((post) => (
-        <BlogPostCard key={post.title} post={post} type="simple" />
+        <NewsPostCard key={post.slug} post={post} type="simple" />
       ))}
     </div>
   );

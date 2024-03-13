@@ -1,9 +1,9 @@
 import importDynamic from "next/dynamic";
 import Link from "next/link";
 
-import BlogPostCard from "@components/zenless/BlogPostCard";
-import { getPostContents } from "@lib/blog";
+import NewsPostCard from "@components/zenless/NewsPostCard";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getNews } from "@lib/news";
 import { i18n } from "i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -26,10 +26,7 @@ type Props = {
 };
 
 export default async function Page({ params }: Props) {
-  const { data } = await getPostContents("zenless", params.lang, {
-    limit: 3,
-    page: 1,
-  });
+  const data = await getNews("zenless");
 
   return (
     <div>
@@ -49,7 +46,7 @@ export default async function Page({ params }: Props) {
         <h2 className="text-3xl font-semibold">News</h2>
         <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {data.map((post) => (
-            <BlogPostCard key={post.title} post={post} locale={params.lang} />
+            <NewsPostCard key={post.title} post={post} />
           ))}
         </div>
         <div className="mt-4">

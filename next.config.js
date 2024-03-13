@@ -65,6 +65,51 @@ const nextConfig = {
       destination: "/dmca",
       permanent: false,
     },
+    {
+      source: '/:lang/genshin/blog',
+      destination: 'https://earlygg.com/guides/genshin-impact',
+      permanent: true,
+    },
+    {
+      source: '/:lang/genshin/blog/page/:page',
+      destination: 'https://earlygg.com/guides/genshin-impact',
+      permanent: true,
+    },
+    {
+      source: '/:lang/genshin/blog/:slug',
+      destination: 'https://earlygg.com/guides/genshin-impact',
+      permanent: true,
+    },
+    {
+      source: '/:lang/hsr/blog',
+      destination: 'https://earlygg.com/guides/star-rail',
+      permanent: true,
+    },
+    {
+      source: '/:lang/hsr/blog/page/:page',
+      destination: 'https://earlygg.com/guides/star-rail',
+      permanent: true,
+    },
+    {
+      source: '/:lang/hsr/blog/:slug',
+      destination: 'https://earlygg.com/guides/star-rail',
+      permanent: true,
+    },
+    {
+      source: '/:lang/zenless/blog',
+      destination: 'https://earlygg.com/guides/zenless',
+      permanent: true,
+    },
+    {
+      source: '/:lang/zenless/blog/page/:page',
+      destination: 'https://earlygg.com/guides/zenless',
+      permanent: true,
+    },
+    {
+      source: '/:lang/zenless/blog/:slug',
+      destination: 'https://earlygg.com/guides/zenless',
+      permanent: true,
+    },
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },

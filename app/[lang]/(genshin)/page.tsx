@@ -155,7 +155,7 @@ export default async function IndexPage({ params }: Props) {
               </div>
             }
           >
-            <LatestPosts lang={params.lang} />
+            <LatestPosts />
           </Suspense>
           <FrstAds
             placementName="genshinbuilds_incontent_2"
