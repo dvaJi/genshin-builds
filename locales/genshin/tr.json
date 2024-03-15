@@ -445,14 +445,6 @@
     "owner": "Sahibi"
   },
   "leaderboard": {},
-  "blog": {
-    "title": "Genshin Impact Haberleri, Rehberleri ve İpuçları | Genshin Impact Blog'u Keşfedin",
-    "description": "Genshin Impact haberleri, rehberleri ve ipuçları ile güncel kalın. Genshin Impact Blog'u, oyun deneyiminizi geliştirmek için en son güncellemeleri ve değerli bilgileri bulabileceğiniz bir yerdir.",
-    "blog": "Blog",
-    "blog_desc": "Genshin Impact Blog'u, oyunla ilgili en son haberleri ve güncellemeleri bulabileceğiniz bir yerdir. Ayrıca Genshin Impact'e başlamanıza yardımcı olmak için rehberler, ipuçları ve püf noktaları da yayınlıyoruz.",
-    "page_title": "{title} | Genshin Impact Blog",
-    "back": "Bloğa Geri Dön"
-  },
   "changelog": {
     "title": "Genshin Impact {version} Güncellemesi: En Son Özellikler, Değişiklikler ve İyileştirmeler",
     "description": "Genshin Impact {version} ile yeni maceraları keşfedin! Kapsamlı rehberimiz en son özellikleri, karakter güncellemelerini ve oyun deneyimini geliştirmelerini kapsar. En yeni sürümün ayrıntılı güncelleme kaydı ile Teyvat'ta önde olun.",

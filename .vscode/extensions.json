@@ -2,8 +2,6 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "unifiedjs.vscode-mdx",
-    "prisma.prisma-insider"
+    "bradlc.vscode-tailwindcss"
   ]
 }

@@ -28,65 +28,15 @@ export interface Character {
 }
 
 export interface Addition {
-  field:   Field;
-  name:    Name;
-  icon:    Icon;
+  field:   string;
+  name:    string;
+  icon:    string;
   value:   number;
   display: string;
   percent: boolean;
   type?:   string;
   count?:  number;
   step?:   number;
-}
-
-export enum Field {
-  AllDmg = "all_dmg",
-  Atk = "atk",
-  BreakDmg = "break_dmg",
-  CritDmg = "crit_dmg",
-  CritRate = "crit_rate",
-  Def = "def",
-  EffectHit = "effect_hit",
-  EffectRes = "effect_res",
-  HP = "hp",
-  IceDmg = "ice_dmg",
-  LightningDmg = "lightning_dmg",
-  SPRate = "sp_rate",
-  Spd = "spd",
-  WindDmg = "wind_dmg",
-}
-
-export enum Icon {
-  IconPropertyIconAttackPNG = "icon/property/IconAttack.png",
-  IconPropertyIconBreakUpPNG = "icon/property/IconBreakUp.png",
-  IconPropertyIconCriticalChancePNG = "icon/property/IconCriticalChance.png",
-  IconPropertyIconCriticalDamagePNG = "icon/property/IconCriticalDamage.png",
-  IconPropertyIconDefencePNG = "icon/property/IconDefence.png",
-  IconPropertyIconEnergyRecoveryPNG = "icon/property/IconEnergyRecovery.png",
-  IconPropertyIconIceAddedRatioPNG = "icon/property/IconIceAddedRatio.png",
-  IconPropertyIconMaxHPPNG = "icon/property/IconMaxHP.png",
-  IconPropertyIconSpeedPNG = "icon/property/IconSpeed.png",
-  IconPropertyIconStatusProbabilityPNG = "icon/property/IconStatusProbability.png",
-  IconPropertyIconStatusResistancePNG = "icon/property/IconStatusResistance.png",
-  IconPropertyIconThunderAddedRatioPNG = "icon/property/IconThunderAddedRatio.png",
-  IconPropertyIconWindAddedRatioPNG = "icon/property/IconWindAddedRatio.png",
-}
-
-export enum Name {
-  Atk = "ATK",
-  BreakEffect = "Break Effect",
-  CRITRate = "CRIT Rate",
-  CritDmg = "CRIT DMG",
-  DMGBoost = "DMG Boost",
-  Def = "DEF",
-  EffectHitRate = "Effect Hit Rate",
-  EffectRES = "Effect RES",
-  EnergyRegenerationRate = "Energy Regeneration Rate",
-  HP = "HP",
-  IceDMGBoost = "Ice DMG Boost",
-  LightningDMGBoost = "Lightning DMG Boost",
-  Spd = "SPD",
-  WindDMGBoost = "Wind DMG Boost",
 }
 
 export interface Avatar {
@@ -98,7 +48,6 @@ export interface Avatar {
 
 export enum Color {
   The00Ff9C = "#00FF9C",
-  The1C29Ba = "#1C29BA",
   The47C7Fd = "#47C7FD",
   The8872F1 = "#8872F1",
 }

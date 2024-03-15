@@ -1,14 +1,14 @@
 "use client";
 
 import clsx from "clsx";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 import SimpleRarityBox from "../SimpleRarityBox";
 
 import useIntl from "@hooks/use-intl";
 import type { AscensionMaterial } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
-import { calculateTotalTalentMaterials } from "@utils/totals";
+import type { TalentTotal } from "@utils/totals";
 
 type TalentMaterial = {
   level: number;
@@ -18,14 +18,11 @@ type TalentMaterial = {
 
 type Props = {
   talents: TalentMaterial[];
+  talentsTotal: TalentTotal;
 };
 
-const CharacterTalentMaterials = ({ talents }: Props) => {
+const CharacterTalentMaterials = ({ talents, talentsTotal }: Props) => {
   const { t } = useIntl("character");
-  const talentsTotal = useMemo(
-    () => calculateTotalTalentMaterials(talents),
-    [talents]
-  );
 
   return (
     <>

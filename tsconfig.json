@@ -30,7 +30,7 @@
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@db/*": ["db/*"],
-      "@i18n-config": ["i18n-config.ts"],
+      "@i18n-config": ["i18n-config.ts"]
     },
     "incremental": true,
     "plugins": [
@@ -41,11 +41,5 @@
     "strictNullChecks": true
   },
   "exclude": ["node_modules"],
-  "include": [
-    "next-env.d.ts",
-    "interfaces/global.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }

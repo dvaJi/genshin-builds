@@ -1,6 +1,6 @@
 import { getContentBySlug } from "@lib/mdApi";
 import { i18n } from "i18n-config";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { compileMDX } from "next-mdx-remote/rsc";
 
 export const dynamic = "force-static";
 
@@ -16,11 +16,11 @@ export async function generateStaticParams() {
 }
 
 export default async function PrivacyPolicy() {
-  const post = getContentBySlug("privacy-policy");
+  const post = await compileMDX({ source: getContentBySlug("privacy-policy") });
   return (
     <div className="card">
       <article className="prose prose-invert max-w-none">
-        <MDXRemote source={post} />
+        {post.content}
       </article>
     </div>
   );

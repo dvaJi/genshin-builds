@@ -14,6 +14,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getBuild, getPlayer } from "@lib/genshinShowcase";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { Profile } from "interfaces/profile";
+import { submitGenshinUID } from "@app/actions";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -70,10 +71,19 @@ export default async function GenshinPlayerProfile({ params }: Props) {
     "profile"
   );
 
+  if (!params.uid || !/^(18|[1-35-9])\d{8}$/.test(params.uid.toString())) {
+    return notFound();
+  }
+
   const player = await getPlayer(params.uid);
 
   if (!player) {
-    return notFound();
+    const formdata = new FormData();
+    formdata.append("uid", params.uid);
+    const submitRes = await submitGenshinUID({}, formdata);
+    if (submitRes.message !== "Success") {
+      return notFound();
+    }
   }
 
   const res = await getBuild(langData, params.uid);

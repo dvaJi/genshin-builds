@@ -1,4 +1,3 @@
-import { getPosts } from "@lib/blog";
 import { getGenshinData as giData, getHSRData as hsrData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 
@@ -85,15 +84,6 @@ async function getGenshinSpecificRoutes() {
     });
   });
 
-  const posts = await getPosts("genshin");
-
-  posts.data.forEach((post) => {
-    routes.push({
-      url: `${baseDomain}/genshin/blog/${post.slug}`,
-      lastModified: `${post.updatedAt}`,
-    });
-  });
-
   return routes;
 }
 
@@ -148,15 +138,6 @@ async function getHSRSpecificRoutes() {
     });
   });
 
-  const posts = await getPosts("hsr");
-
-  posts.data.forEach((post) => {
-    routes.push({
-      url: `${baseDomain}/hsr/blog/${post.slug}`,
-      lastModified: `${post.updatedAt}`,
-    });
-  });
-
   return routes;
 }
 
@@ -180,15 +161,6 @@ async function getZenlessSpecificRoutes() {
     routes.push({
       url: `${baseDomain}/zenless/characters/${character.id}`,
       lastModified: new Date().toISOString().split("T")[0],
-    });
-  });
-
-  const posts = await getPosts("zenless");
-
-  posts.data.forEach((post) => {
-    routes.push({
-      url: `${baseDomain}/zenless/blog/${post.slug}`,
-      lastModified: `${post.updatedAt}`,
     });
   });
 

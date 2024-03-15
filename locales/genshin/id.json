@@ -445,14 +445,6 @@
     "owner": "Pemilik"
   },
   "leaderboard": {},
-  "blog": {
-    "title": "Berita, Panduan, dan Tips Genshin Impact | Jelajahi Blog Genshin Impact",
-    "description": "Tetap terinformasi dengan berita, panduan, dan tips Genshin Impact. Jelajahi Blog Genshin Impact untuk pembaruan terbaru dan wawasan berharga untuk meningkatkan pengalaman bermain Anda.",
-    "blog": "Blog",
-    "blog_desc": "Blog Genshin Impact adalah tempat di mana Anda dapat menemukan berita dan pembaruan terbaru tentang permainan ini. Kami juga memposting panduan, tips, dan trik untuk membantu Anda memulai dengan Genshin Impact.",
-    "page_title": "{title} | Blog Genshin Impact",
-    "back": "Kembali ke Blog"
-  },
   "changelog": {
     "title": "Pembaruan Genshin Impact {version}: Fitur Terbaru, Perubahan, dan Peningkatan",
     "description": "Temukan semua petualangan baru dalam Genshin Impact {version}! Panduan komprehensif kami mencakup fitur terbaru, pembaruan karakter, dan peningkatan gameplay. Tetap unggul di Teyvat dengan catatan perubahan detail versi terbaru.",

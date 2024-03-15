@@ -16,6 +16,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData, getRemoteData } from "@lib/localData";
+import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
 import type { MostUsedBuild } from "interfaces/build";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -109,6 +110,10 @@ export default async function GenshinWeaponPage({ params }: Props) {
   const recommendedCharacters = Object.entries(builds)
     .filter(([_, build]: any) => build.weapons.includes(weapon.id))
     .map(([character]) => character);
+
+  const ascensionTotal = calculateTotalWeaponAscensionMaterials(
+    weapon.ascensions
+  );
 
   const jsonLd: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",
@@ -231,7 +236,10 @@ export default async function GenshinWeaponPage({ params }: Props) {
         })}
       </h2>
       <div className="card mx-4 p-0 lg:mx-0">
-        <WeaponAscensionMaterials ascension={weapon.ascensions} />
+        <WeaponAscensionMaterials
+          ascension={weapon.ascensions}
+          ascensionTotal={ascensionTotal}
+        />
       </div>
     </div>
   );

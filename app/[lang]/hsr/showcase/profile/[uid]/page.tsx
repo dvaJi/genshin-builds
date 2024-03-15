@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
+import { submitHSRUID } from "@app/actions";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -55,14 +56,26 @@ export async function generateMetadata({
 
 export default async function HSRProfilePage({ params }: Props) {
   const { langData } = await useTranslations(params.lang, "hsr", "item");
-  const res = await getBuild(langData, params?.uid);
 
-  if (res.code === 404) {
+  if (!params.uid || !/^(18|[1-35-9])\d{8}$/.test(params.uid.toString())) {
     return redirect(`/${params.lang}/hsr/showcase`);
   }
 
+  const player = await getPlayer(params.uid);
+
+  if (!player) {
+    const formdata = new FormData();
+    formdata.append("uid", params.uid);
+    const submitRes = await submitHSRUID({}, formdata);
+    if (submitRes.message !== "Success") {
+      return redirect(`/${params.lang}/hsr/showcase`);
+    }
+  }
+
+  const res = await getBuild(langData, params?.uid);
+
   if (res.code !== 200) {
-    return notFound();
+    return redirect(`/${params.lang}/hsr/showcase`);
   }
 
   const propertiesCommonMap = await getData<

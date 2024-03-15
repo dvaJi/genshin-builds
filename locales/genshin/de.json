@@ -445,14 +445,6 @@
     "owner": "Besitzer"
   },
   "leaderboard": {},
-  "blog": {
-    "title": "Genshin Impact News, Anleitungen und Tipps | Entdecken Sie den Genshin Impact Blog",
-    "description": "Bleiben Sie auf dem Laufenden mit Genshin Impact News, Anleitungen und Tipps. Entdecken Sie den Genshin Impact Blog für die neuesten Updates und wertvolle Einblicke, um Ihr Spielerlebnis zu verbessern.",
-    "blog": "Blog",
-    "blog_desc": "Der Genshin Impact Blog ist ein Ort, an dem Sie die neuesten Nachrichten und Updates zum Spiel finden können. Wir veröffentlichen auch Anleitungen, Tipps und Tricks, um Ihnen den Einstieg in Genshin Impact zu erleichtern.",
-    "page_title": "{title} | Genshin Impact Blog",
-    "back": "Zurück zum Blog"
-  },
   "changelog": {
     "title": "Genshin Impact {version} Update: Neueste Funktionen, Änderungen und Verbesserungen",
     "description": "Entdecken Sie alle neuen Abenteuer in Genshin Impact {version}! Unser umfassender Leitfaden behandelt die neuesten Funktionen, Charakter-Updates und Gameplay-Verbesserungen. Bleiben Sie mit dem detaillierten Änderungsprotokoll der neuesten Version in Teyvat auf dem Laufenden.",

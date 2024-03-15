@@ -1,22 +1,18 @@
-import prisma from "@db/index";
-import { decodeBuilds, regionParse } from "@utils/leaderboard-enc";
 import { Artifact, Character, Weapon } from "@interfaces/genshin";
+import { decodeBuilds, regionParse } from "@utils/leaderboard-enc";
+import { eq } from "drizzle-orm";
 import { getGenshinData } from "./dataApi";
+import { db } from "./db";
+import { builds, players } from "./db/schema";
 
 export async function getPlayer(uid: string) {
-  return prisma.player.findUnique({
-    where: {
-      uuid: uid,
-    },
+  return db.query.players.findFirst({
+    where: eq(players.uuid, uid),
   });
 }
 
 export async function getBuild(lang: any, uid: string) {
-  const playerData = await prisma.player.findUnique({
-    where: {
-      uuid: uid,
-    },
-  });
+  const playerData = await getPlayer(uid);
 
   if (!playerData) {
     return {
@@ -27,12 +23,8 @@ export async function getBuild(lang: any, uid: string) {
     };
   }
 
-  const builds = await prisma.build.findMany({
-    where: {
-      player: {
-        id: playerData.id,
-      },
-    },
+  const buildsData = await db.query.builds.findMany({
+    where: eq(builds.playerId, playerData.id),
   });
 
   const characters = await getGenshinData<Character[]>({
@@ -75,7 +67,7 @@ export async function getBuild(lang: any, uid: string) {
       finishAchievementNum: playerData.finishAchievementNum,
       region: regionParse(playerData.uuid),
       updatedAt: playerData.updatedAt.toString(),
-      builds: await decodeBuilds(builds, characters, weapons, artifacts),
+      builds: await decodeBuilds(buildsData, characters, weapons, artifacts),
     },
   };
 }

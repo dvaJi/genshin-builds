@@ -1,9 +1,11 @@
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+import { desc, inArray } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import prisma from "@db/index";
 import { getGenshinData } from "@lib/dataApi";
+import { db } from "@lib/db";
+import { builds } from "@lib/db/schema";
 import { decodeBuilds } from "@utils/leaderboard-enc";
 
 const schema = z.object({
@@ -35,28 +37,23 @@ export async function GET(req: NextRequest) {
   const skip = (page - 1) * 20;
 
   const charactersFilter = characters
-    ? {
-        avatarId: {
-          in: characters
-            .toString()
-            .split(",")
-            .map((x) => Number(x)),
-        },
-      }
-    : {};
+    ? inArray(
+        builds.avatarId,
+        characters
+          .toString()
+          .split(",")
+          .map((x) => Number(x))
+      )
+    : undefined;
 
-  const builds = await prisma.build.findMany({
-    orderBy: {
-      critValue: "desc",
-    },
-    where: {
-      ...charactersFilter,
-    },
-    include: {
+  const buildsData = await db.query.builds.findMany({
+    where: charactersFilter,
+    orderBy: [desc(builds.critValue)],
+    with: {
       player: true,
     },
-    take: 20,
-    skip,
+    limit: 20,
+    offset: skip,
   });
 
   const _characters = await getGenshinData<Character[]>({
@@ -86,7 +83,7 @@ export async function GET(req: NextRequest) {
   });
 
   const decodedBuilds = await decodeBuilds(
-    builds,
+    buildsData,
     _characters,
     _weapons,
     _artifacts

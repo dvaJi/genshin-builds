@@ -1,5 +1,5 @@
-import { HSRBuild, HSRPlayer } from "@prisma/client";
 import type { Character, LightCone, Relic } from "@interfaces/hsr";
+import type { SelectHSRBuilds, SelectHSRPlayer } from "@lib/db/schema";
 
 import {
   Addition,
@@ -10,7 +10,7 @@ import {
 
 export async function encodeBuilds(
   data: CharactersAPI[]
-): Promise<Omit<HSRBuild[], "playerId">> {
+): Promise<Omit<SelectHSRBuilds[], "playerId">> {
   const encSkills = (skills: Skill[]) =>
     skills.reduce((acc, skill) => {
       return `${acc}${skill.id}|${skill.level},`;
@@ -80,8 +80,8 @@ export async function encodeBuilds(
 }
 
 export async function decodeBuilds(
-  data: (HSRBuild & {
-    player?: HSRPlayer;
+  data: (SelectHSRBuilds & {
+    player?: SelectHSRPlayer;
   })[],
   characters: Character[],
   lightCones: LightCone[],

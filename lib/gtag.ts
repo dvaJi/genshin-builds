@@ -38,3 +38,23 @@ export const event = ({ action, category, label, value }: EventProps) => {
 export const trackClick = (label: string) => {
   event({ action: "click", category: "button", label });
 };
+
+declare global {
+  interface Window {
+    gtag(command: "config", trackingId: string, config: GtagConfig): void;
+    gtag(command: "event", eventAction: string, event: GtagEvent): void;
+    gtag(...args: any[]): void;
+  }
+}
+
+interface GtagEvent {
+  event_category: string;
+  event_label?: string;
+  value?: number;
+}
+
+interface GtagConfig {
+  page_title?: string;
+  page_path?: string;
+  send_page_view?: boolean;
+}

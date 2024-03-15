@@ -1,23 +1,19 @@
 "use client";
 
 import clsx from "clsx";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 import type { WeaponAscension } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
-import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
+import type { AscensionTotal } from "@utils/totals";
 import SimpleRarityBox from "../SimpleRarityBox";
 
 type Props = {
   ascension: WeaponAscension[];
+  ascensionTotal: AscensionTotal;
 };
 
-const WeaponAscensionMaterials = ({ ascension }: Props) => {
-  const talentsTotal = useMemo(
-    () => calculateTotalWeaponAscensionMaterials(ascension),
-    [ascension]
-  );
-
+const WeaponAscensionMaterials = ({ ascension, ascensionTotal }: Props) => {
   return (
     <>
       {ascension
@@ -74,12 +70,12 @@ const WeaponAscensionMaterials = ({ ascension }: Props) => {
           <SimpleRarityBox
             img={getUrl(`/materials/mora.png`, 64, 64)}
             placeholderSrc={getUrl(`/materials/mora.png`, 4, 4)}
-            name={talentsTotal.cost.toString()}
+            name={ascensionTotal.cost.toString()}
             rarity={1}
             className="h-16 w-16"
           />
         </div>
-        {talentsTotal.items.map((item) => (
+        {ascensionTotal.items.map((item) => (
           <div key={item.id + item.amount} className="flex items-center">
             <SimpleRarityBox
               img={getUrl(`/materials/${item.id}.png`, 64, 64)}

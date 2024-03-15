@@ -96,14 +96,6 @@
     "world_level_required": "Nivel de Mundo Requerido",
     "cost": "Costo"
   },
-  "blog": {
-    "title": "Blog de Honkai: Star Rail",
-    "description": "El Blog de Honkai: Star Rail es un lugar donde puedes encontrar las últimas noticias y actualizaciones sobre el juego. También publicamos guías, consejos y trucos para ayudarte a comenzar con Honkai: Star Rail.",
-    "blog": "Blog",
-    "blog_desc": "El Blog de Honkai: Star Rail es un lugar donde puedes encontrar las últimas noticias y actualizaciones sobre el juego. También publicamos guías, consejos y trucos para ayudarte a comenzar con Honkai: Star Rail.",
-    "page_title": "{title} | Blog de Honkai: Star Rail",
-    "back": "Volver al Blog"
-  },
   "achievements": {
     "title": "Logros de Honkai: Star Rail",
     "description": "Una lista completa de todos los logros en Honkai: Star Rail.",

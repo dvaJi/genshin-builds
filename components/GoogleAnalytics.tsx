@@ -6,6 +6,11 @@ import { useEffect } from "react";
 
 import * as gtag from "@lib/gtag";
 
+declare global {
+  interface Window {
+    freestar: any;
+  }
+}
 type Props = {
   gtagId?: string;
 };
@@ -22,8 +27,8 @@ export default function GoogleAnalytics({ gtagId }: Props) {
         typeof window !== "undefined" &&
         typeof window.freestar !== "undefined"
       ) {
-        freestar.queue.push(function () {
-          freestar.trackPageview();
+        window.freestar.queue.push(function () {
+          window.freestar.trackPageview();
         });
       }
     }

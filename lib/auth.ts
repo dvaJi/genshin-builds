@@ -1,14 +1,16 @@
-import type { Session } from "@lib/session";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { eq } from "drizzle-orm";
 import type { NextAuthOptions } from "next-auth";
 import DiscordProvider, {
   type DiscordProfile,
 } from "next-auth/providers/discord";
 
-import prisma from "@db/index";
+import type { Session } from "@lib/session";
+import { db } from "./db";
+import { DrizzleAdapter } from "./db/adapter";
+import { users } from "./db/schema";
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: DrizzleAdapter(db),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     DiscordProvider({
@@ -33,10 +35,9 @@ export const authOptions: NextAuthOptions = {
     },
     async signIn(params) {
       // Check in the database if the user is allowed to sign in
-      const user = await prisma.invite.findUnique({
-        where: {
-          userId: (params.profile as DiscordProfile).username,
-        },
+      const user = await db.query.invites.findFirst({
+        where: (invite, { eq }) =>
+          eq(invite.id, (params.profile as DiscordProfile).username),
       });
 
       if (!user) {
@@ -46,15 +47,13 @@ export const authOptions: NextAuthOptions = {
 
       // Update the user information
       try {
-        await prisma.user.update({
-          where: {
-            name: user.userId,
-          },
-          data: {
+        await db
+          .update(users)
+          .set({
             globalName: (params.profile as DiscordProfile).global_name,
             image: (params.profile as DiscordProfile).image_url,
-          },
-        });
+          })
+          .where(eq(users.name, user.userId));
       } catch (e) {
         console.log("Error updating user", e);
       }

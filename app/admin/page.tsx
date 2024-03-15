@@ -19,12 +19,6 @@ export default async function Admin() {
   return (
     <div className="m-8 flex items-start justify-start gap-4">
       <Link
-        href={`/admin/blog`}
-        className="rounded border border-zinc-600 bg-zinc-800 px-12 py-6 transition-colors hover:border-zinc-400"
-      >
-        Blog
-      </Link>
-      <Link
         href={`/admin/invalidator`}
         className="rounded border border-zinc-600 bg-zinc-800 px-12 py-6 transition-colors hover:border-zinc-400"
       >

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { authOptions } from "@lib/auth";
 import { InvalidateForm } from "./form";
 
-export default async function BlogAdmin() {
+export default async function InvalidatorPage() {
   const session = await getServerSession(authOptions);
 
   if (!session) {

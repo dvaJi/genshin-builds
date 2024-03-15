@@ -1,3 +1,5 @@
+import { GENSHIN_API_URL, HSR_API_URL } from "./constants";
+
 type APIOptions = {
   resource: string;
   language?: string;
@@ -10,11 +12,11 @@ type APIOptions = {
 };
 
 export async function getGenshinData<T>(options: APIOptions): Promise<T> {
-  return getData<T>(process.env.GENSHIN_API_URL, options, ["genshin-data"]);
+  return getData<T>(GENSHIN_API_URL, options, ["genshin-data"]);
 }
 
 export async function getHSRData<T>(options: APIOptions) {
-  return getData<T>(process.env.HSR_API_URL, options, ["hsr-data"]);
+  return getData<T>(HSR_API_URL, options, ["hsr-data"]);
 }
 
 async function getData<T>(url: string, options: APIOptions, tags: string[]) {

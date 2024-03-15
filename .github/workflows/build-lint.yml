@@ -42,8 +42,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Setup Prisma
-        run: pnpm db:generate
-
       - name: Lint code
         run: pnpm lint

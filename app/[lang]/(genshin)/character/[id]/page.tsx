@@ -26,6 +26,10 @@ import {
   getRemoteData,
 } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
+import {
+  calculateTotalAscensionMaterials,
+  calculateTotalTalentMaterials,
+} from "@utils/totals";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { Beta } from "interfaces/genshin/beta";
 import { TeamData } from "interfaces/teams";
@@ -211,6 +215,11 @@ export default async function GenshinCharacterPage({ params }: Props) {
       }
     });
   }
+
+  const talentsTotal = calculateTotalTalentMaterials(
+    character.talent_materials
+  );
+  const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
 
   const recommendedTeams: TeamData[] =
     require(`../../../../../_content/genshin/data/teams.json`)[character.id] ||
@@ -412,7 +421,10 @@ export default async function GenshinCharacterPage({ params }: Props) {
         })}
       </h2>
       <div className="card mx-4 mb-8 p-0 lg:mx-0">
-        <CharacterAscencionMaterials ascension={character.ascension} />
+        <CharacterAscencionMaterials
+          ascension={character.ascension}
+          ascensionTotal={ascensionTotal}
+        />
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_5"
@@ -425,7 +437,10 @@ export default async function GenshinCharacterPage({ params }: Props) {
         })}
       </h2>
       <div className="card mx-4 p-0 lg:mx-0">
-        <CharacterTalentMaterials talents={character.talent_materials} />
+        <CharacterTalentMaterials
+          talents={character.talent_materials}
+          talentsTotal={talentsTotal}
+        />
       </div>
     </div>
   );

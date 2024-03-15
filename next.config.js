@@ -113,7 +113,6 @@ const nextConfig = {
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
-  transpilePackages: ["react-md-editor"],
 };
 
 module.exports = withPWA(withBundleAnalyzer(nextConfig));

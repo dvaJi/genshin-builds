@@ -1,6 +1,5 @@
-import { Build, Player } from "@prisma/client";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
-
+import type { SelectBuilds, SelectPlayer } from "@lib/db/schema";
 import { CharactersAPI } from "interfaces/enka";
 import { ENKA_NAMES, REAL_SUBSTAT_VALUES, STAT_NAMES } from "./substats";
 
@@ -82,28 +81,38 @@ export async function encodeBuilds(data: CharactersAPI[]) {
           };
         }
       })
-      .reduce((acc, item: any) => {
-        if (!item) return acc;
-        if (item.equipType === "EQUIP_BRACER") {
-          acc.flower = { ...item, setId: getSetId(item.itemId) };
+      .reduce(
+        (acc, item: any) => {
+          if (!item) return acc;
+          if (item.equipType === "EQUIP_BRACER") {
+            acc.flower = { ...item, setId: getSetId(item.itemId) };
+          }
+          if (item.equipType === "EQUIP_NECKLACE") {
+            acc.plume = { ...item, setId: getSetId(item.itemId) };
+          }
+          if (item.equipType === "EQUIP_SHOES") {
+            acc.sands = { ...item, setId: getSetId(item.itemId) };
+          }
+          if (item.equipType === "EQUIP_RING") {
+            acc.goblet = { ...item, setId: getSetId(item.itemId) };
+          }
+          if (item.equipType === "EQUIP_DRESS") {
+            acc.circlet = { ...item, setId: getSetId(item.itemId) };
+          }
+          if (!item.equipType) {
+            acc.weapon = item;
+          }
+          return acc;
+        },
+        {} as {
+          flower: any;
+          plume: any;
+          sands: any;
+          goblet: any;
+          circlet: any;
+          weapon: any;
         }
-        if (item.equipType === "EQUIP_NECKLACE") {
-          acc.plume = { ...item, setId: getSetId(item.itemId) };
-        }
-        if (item.equipType === "EQUIP_SHOES") {
-          acc.sands = { ...item, setId: getSetId(item.itemId) };
-        }
-        if (item.equipType === "EQUIP_RING") {
-          acc.goblet = { ...item, setId: getSetId(item.itemId) };
-        }
-        if (item.equipType === "EQUIP_DRESS") {
-          acc.circlet = { ...item, setId: getSetId(item.itemId) };
-        }
-        if (!item.equipType) {
-          acc.weapon = item;
-        }
-        return acc;
-      }, {} as { flower: any; plume: any; sands: any; goblet: any; circlet: any; weapon: any });
+      );
     const encodedData = {
       avatarId: avatar.avatarId,
       exp: avatar.propMap[1001]?.val ?? 0, // propMap.1001
@@ -207,8 +216,8 @@ export async function encodeBuilds(data: CharactersAPI[]) {
 }
 
 export async function decodeBuilds(
-  data: (Build & {
-    player?: Player;
+  data: (SelectBuilds & {
+    player?: SelectPlayer | null;
   })[],
   characters: Character[],
   weapons: Weapon[],

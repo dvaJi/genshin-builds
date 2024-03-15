@@ -1,22 +1,19 @@
-import prisma from "@db/index";
+import { eq } from "drizzle-orm";
+
 import { Character, LightCone, Relic } from "@interfaces/hsr";
 import { decodeBuilds, regionParse } from "@utils/mihomo_enc";
 import { getHSRData } from "./dataApi";
+import { db } from "./db";
+import { hsrBuilds, hsrPlayers } from "./db/schema";
 
 export async function getPlayer(uid: string) {
-  return prisma.hSRPlayer.findUnique({
-    where: {
-      uuid: uid,
-    },
+  return db.query.hsrPlayers.findFirst({
+    where: eq(hsrPlayers.uuid, uid),
   });
 }
 
 export async function getBuild(lang: any, uid: string) {
-  const playerData = await prisma.hSRPlayer.findUnique({
-    where: {
-      uuid: uid,
-    },
-  });
+  const playerData = await getPlayer(uid);
 
   if (!playerData) {
     return {
@@ -27,12 +24,8 @@ export async function getBuild(lang: any, uid: string) {
     };
   }
 
-  const builds = await prisma.hSRBuild.findMany({
-    where: {
-      player: {
-        id: playerData.id,
-      },
-    },
+  const builds = await db.query.hsrBuilds.findMany({
+    where: eq(hsrBuilds.playerId, playerData.id),
   });
 
   const characters = await getHSRData<Character[]>({

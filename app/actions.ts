@@ -1,13 +1,25 @@
 "use server";
 
+import { createId } from "@paralleldrive/cuid2";
+import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
-import prisma, { Prisma } from "@db/index";
+import { db } from "@lib/db";
+import {
+  builds,
+  hsrBuilds,
+  hsrPlayers,
+  players,
+  type InsertBuilds,
+  type InsertHSRBuilds,
+  type InsertHSRPlayer,
+  type InsertPlayer,
+} from "@lib/db/schema";
 import { encodeBuilds as encodeEnkaBuilds } from "@utils/leaderboard-enc";
 import { encodeBuilds as encodeMihomoBuilds } from "@utils/mihomo_enc";
-import { PlayerDataAPI as EnkaPlayerDataAPI } from "interfaces/enka";
-import { PlayerDataAPI as MiHomoPlayerDataAPI } from "interfaces/mihomo";
+import type { PlayerDataAPI as EnkaPlayerDataAPI } from "interfaces/enka";
+import type { PlayerDataAPI as MiHomoPlayerDataAPI } from "interfaces/mihomo";
 
 const submitHSRUIDSchema = z.object({
   uid: z.string().min(1),
@@ -28,7 +40,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
     `https://api.mihomo.me/sr_info_parsed/${parse.data.uid}?lang=en`,
     {
       headers: {
-        Agent: "GenshinBuilds/1.0.0",
+        "User-Agent": "Mar-7th/mihomo.py",
       },
       next: {
         revalidate: 0,
@@ -42,10 +54,15 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   }
 
   if (!response.ok) {
-    console.error("Invalid uid", {
+    console.error("Error in request", {
       uid: parse.data.uid,
       response: response.status,
     });
+    if (response.status === 429) {
+      return {
+        message: "Rate limit exceeded, please try again later",
+      };
+    }
     return { message: "Invalid uid" };
   }
 
@@ -57,13 +74,14 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   }
 
   try {
-    let player = await prisma.hSRPlayer.findUnique({
-      where: { uuid: data.player.uid },
+    let player = await db.query.hsrPlayers.findFirst({
+      where: eq(hsrPlayers.uuid, data.player.uid),
     });
 
     if (!player) {
       console.log(`Player [${data.player.uid}] not found, creating new one`);
-      const insert: Prisma.HSRPlayerCreateInput = {
+      const insert: InsertHSRPlayer = {
+        id: createId(),
         uuid: data.player.uid,
         nickname: data.player.nickname,
         level: data.player.level,
@@ -78,22 +96,30 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         passAreaProgress: data.player.space_info.universe_level,
         finishAchievementNum: data.player.space_info.achievement_count,
       };
-      player = await prisma.hSRPlayer.create({
-        data: insert,
-      });
+      const result = await db.insert(hsrPlayers).values(insert).execute();
+      if (result.rowsAffected === 1) {
+        player = await db.query.hsrPlayers.findFirst({
+          where: eq(hsrPlayers.uuid, data.player.uid),
+        });
+      } else {
+        console.error("error insertPlayer", result);
+        return { message: "error insertPlayer" };
+      }
 
       const encodedData = await encodeMihomoBuilds(data.characters);
-      const insertBuilds: Prisma.HSRBuildCreateManyInput[] = encodedData.map(
-        (avatar) => ({
-          ...avatar,
-          playerId: player!.id,
-        })
-      );
 
-      const insertAvatars = await prisma.hSRBuild.createMany({
-        data: insertBuilds,
-      });
-      if (!insertAvatars) {
+      const insertBuilds = encodedData.map((avatar) => ({
+        ...avatar,
+        id: createId(),
+        playerId: player!.id,
+      }));
+
+      const insertAvatars = await db
+        .insert(hsrBuilds)
+        .values(insertBuilds)
+        .execute();
+
+      if (insertAvatars.rowsAffected !== insertBuilds.length) {
         console.error("error insertAvatars", insertAvatars);
         return { message: "error insertAvatars" };
       }
@@ -110,55 +136,56 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       //   });
       // }
       // Update player data
-      const update: Prisma.HSRPlayerUpdateInput = {
-        nickname: data.player.nickname,
-        level: data.player.level,
-        signature: data.player.signature ?? "",
-        worldLevel: data.player.world_level,
-        profilePictureId: Number(data.player.avatar.id),
-        profileCostumeId: Number(data.player.avatar.id) ?? 0,
-        // namecardId: data.player.namecard.id,
-        friends: data.player.friend_count,
-        avatars: data.player.space_info.avatar_count,
-        lightCones: data.player.space_info.light_cone_count,
-        passAreaProgress: data.player.space_info.universe_level,
-        finishAchievementNum: data.player.space_info.achievement_count,
-      };
 
-      const updatedPlayer = await prisma.hSRPlayer.update({
-        where: { uuid: data.player.uid },
-        data: update,
-      });
+      const updatedPlayer = await db
+        .update(hsrPlayers)
+        .set({
+          nickname: data.player.nickname,
+          level: data.player.level,
+          signature: data.player.signature ?? "",
+          worldLevel: data.player.world_level,
+          profilePictureId: Number(data.player.avatar.id),
+          profileCostumeId: Number(data.player.avatar.id) ?? 0,
+          // namecardId: data.player.namecard.id,
+          friends: data.player.friend_count,
+          avatars: data.player.space_info.avatar_count,
+          lightCones: data.player.space_info.light_cone_count,
+          passAreaProgress: data.player.space_info.universe_level,
+          finishAchievementNum: data.player.space_info.achievement_count,
+        })
+        .where(eq(hsrPlayers.uuid, data.player.uid))
+        .execute();
 
-      if (!updatedPlayer) {
+      if (updatedPlayer.rowsAffected !== 1) {
         console.error("error updatedPlayer", updatedPlayer);
         return { message: "error updatedPlayer" };
       }
 
       console.log("Player data updated", { uuid: data.player.uid });
 
-      const currentBuilds = await prisma.hSRBuild.findMany({
-        where: { playerId: player!.id },
+      const currentBuilds = await db.query.hsrBuilds.findMany({
+        where: eq(hsrBuilds.playerId, player!.id),
       });
 
       // Update builds
       const encodedData = await encodeMihomoBuilds(data.characters);
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
-      const updateBuilds: Prisma.HSRBuildUpdateArgs[] = encodedData
-        .filter((avatar) => avatarsIds.includes(avatar.avatarId))
-        .map((avatar) => ({
-          where: {
-            id: currentBuilds.find((id) => id.avatarId === avatar.avatarId)?.id,
-          },
-          data: avatar,
-        }));
 
-      for await (const updateBuild of updateBuilds) {
-        const updatedBuild = await prisma.hSRBuild.update({
-          data: updateBuild.data,
-          where: updateBuild.where,
-        });
-        if (!updatedBuild) {
+      for await (const avatar of encodedData.filter((avatar) =>
+        avatarsIds.includes(avatar.avatarId)
+      )) {
+        const updatedBuild = await db
+          .update(hsrBuilds)
+          .set(avatar)
+          .where(
+            eq(
+              hsrBuilds.id,
+              currentBuilds.find((id) => id.avatarId === avatar.avatarId)?.id!
+            )
+          )
+          .execute();
+
+        if (updatedBuild.rowsAffected !== 1) {
           console.error("error updatedBuild", updatedBuild);
           return { message: "error updatedBuild" };
         }
@@ -167,7 +194,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       console.log("Builds updated", { uuid: data.player.uid });
 
       // insert new builds
-      const insertBuilds: Prisma.HSRBuildCreateManyInput[] = encodedData
+      const insertBuilds: InsertHSRBuilds[] = encodedData
         .filter((avatar) => {
           const currentBuild = currentBuilds.find(
             (build) => build.avatarId === avatar.avatarId
@@ -180,12 +207,12 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
           playerId: player!.id,
         }));
 
-      const newBuilds = await prisma.hSRBuild.createMany({
-        data: insertBuilds,
-        skipDuplicates: true,
-      });
+      const newBuilds = await db
+        .insert(hsrBuilds)
+        .values(insertBuilds)
+        .execute();
 
-      if (!newBuilds) {
+      if (newBuilds.rowsAffected !== insertBuilds.length) {
         console.error("error newBuilds", newBuilds);
         return { message: "error newBuilds" };
       }
@@ -194,7 +221,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
     }
 
     console.log("Success!", { uuid: data.player.uid });
-    revalidatePath(`/hsr/showcase/profile/${player.id}`);
+    revalidatePath(`/hsr/showcase/profile/${data.player.uid}`);
     return {
       message: "Success",
       uid: data.player.uid,
@@ -257,13 +284,14 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
   }
 
   try {
-    let player = await prisma.player.findUnique({
-      where: { uuid: data.uid },
+    let player = await db.query.players.findFirst({
+      where: eq(players.uuid, data.uid),
     });
 
     if (!player) {
       console.log(`Player [${data.uid}] not found, creating new one`);
-      const insert: Prisma.PlayerCreateInput = {
+      const insert: InsertPlayer = {
+        id: createId(),
         uuid: data.uid,
         nickname: data.playerInfo.nickname,
         level: data.playerInfo.level,
@@ -281,26 +309,31 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           0,
         namecardId: data.playerInfo.nameCardId,
       };
-      player = await prisma.player.create({
-        data: insert,
-      });
+      const result = await db.insert(players).values(insert).execute();
+      if (result.rowsAffected === 1) {
+        player = await db.query.players.findFirst({
+          where: eq(players.uuid, data.uid),
+        });
+      } else {
+        console.error("error insertPlayer", result);
+        return { message: "error insertPlayer" };
+      }
 
       const encodedData = await encodeEnkaBuilds(data.avatarInfoList);
-      const insertBuilds: Prisma.BuildCreateManyInput[] = encodedData.map(
-        (avatar) => ({
-          ...avatar,
-          playerId: player!.id,
-        })
-      );
+      const insertBuilds: InsertBuilds[] = encodedData.map((avatar) => ({
+        ...avatar,
+        id: createId(),
+        playerId: player!.id,
+      }));
 
-      const insertAvatars = await prisma.build.createMany({
-        data: insertBuilds,
-      });
-      if (!insertAvatars) {
+      const insertAvatars = await db
+        .insert(builds)
+        .values(insertBuilds)
+        .execute();
+
+      if (insertAvatars.rowsAffected !== insertBuilds.length) {
         console.error("error insertAvatars", insertAvatars);
-        return {
-          message: "error insertAvatars",
-        };
+        return { message: "error insertAvatars" };
       }
     } else {
       // Check if we got the cached player data
@@ -315,44 +348,42 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         };
       }
       // Update player data
-      const update: Prisma.PlayerUpdateInput = {
-        nickname: data.playerInfo.nickname,
-        level: data.playerInfo.level,
-        signature: data.playerInfo.signature,
-        worldLevel: data.playerInfo.worldLevel,
-        finishAchievementNum: data.playerInfo.finishAchievementNum,
-        towerFloorIndex: data.playerInfo.towerFloorIndex,
-        towerLevelIndex: data.playerInfo.towerLevelIndex,
-        profilePictureId:
-          data.playerInfo.profilePicture.id ||
-          data.playerInfo.profilePicture.avatarId,
-        profileCostumeId:
-          (data.playerInfo.profilePicture.id ||
-            data.playerInfo.profilePicture.costumeId) ??
-          0,
-        namecardId: data.playerInfo.nameCardId,
-      };
+      const updatedPlayer = await db
+        .update(players)
+        .set({
+          nickname: data.playerInfo.nickname,
+          level: data.playerInfo.level,
+          signature: data.playerInfo.signature,
+          worldLevel: data.playerInfo.worldLevel,
+          finishAchievementNum: data.playerInfo.finishAchievementNum,
+          towerFloorIndex: data.playerInfo.towerFloorIndex,
+          towerLevelIndex: data.playerInfo.towerLevelIndex,
+          profilePictureId:
+            data.playerInfo.profilePicture.id ||
+            data.playerInfo.profilePicture.avatarId,
+          profileCostumeId:
+            (data.playerInfo.profilePicture.id ||
+              data.playerInfo.profilePicture.costumeId) ??
+            0,
+          namecardId: data.playerInfo.nameCardId,
+        })
+        .where(eq(players.uuid, data.uid));
 
-      const updatedPlayer = await prisma.player.update({
-        where: { uuid: data.uid },
-        data: update,
-      });
-
-      if (!updatedPlayer) {
+      if (updatedPlayer.rowsAffected !== 1) {
         console.error("error updatedPlayer", updatedPlayer);
         return {
           message: "error updatedPlayer",
         };
       }
 
-      const currentBuilds = await prisma.build.findMany({
-        where: { playerId: player!.id },
+      const currentBuilds = await db.query.builds.findMany({
+        where: eq(builds.playerId, player!.id),
       });
 
       // Update builds
       const encodedData = await encodeEnkaBuilds(data.avatarInfoList);
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
-      const updateBuilds: Prisma.BuildUpdateArgs[] = encodedData
+      const updateBuilds = encodedData
         .filter((avatar) => avatarsIds.includes(avatar.avatarId))
         .map((avatar) => ({
           where: {
@@ -362,11 +393,13 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         }));
 
       for await (const updateBuild of updateBuilds) {
-        const updatedBuild = await prisma.build.update({
-          data: updateBuild.data,
-          where: updateBuild.where,
-        });
-        if (!updatedBuild) {
+        const updatedBuild = await db
+          .update(builds)
+          .set(updateBuild.data)
+          .where(eq(builds.id, updateBuild.where.id!))
+          .execute();
+
+        if (updatedBuild.rowsAffected !== 1) {
           console.error("error updatedBuild", updatedBuild);
           return {
             message: "error updatedBuild",
@@ -375,7 +408,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       }
 
       // insert new builds
-      const insertBuilds: Prisma.BuildCreateManyInput[] = encodedData
+      const insertBuilds: InsertBuilds[] = encodedData
         .filter((avatar) => {
           const currentBuild = currentBuilds.find(
             (build) => build.avatarId === avatar.avatarId
@@ -385,23 +418,20 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         })
         .map((avatar) => ({
           ...avatar,
+          id: createId(),
           playerId: player!.id,
         }));
 
-      const newBuilds = await prisma.build.createMany({
-        data: insertBuilds,
-      });
+      const newBuilds = await db.insert(builds).values(insertBuilds).execute();
 
-      if (!newBuilds) {
+      if (newBuilds.rowsAffected !== insertBuilds.length) {
         console.error("error newBuilds", newBuilds);
-        return {
-          message: "error newBuilds",
-        };
+        return { message: "error newBuilds" };
       }
     }
 
     console.log("Success!", { uuid: data.uid });
-    revalidatePath(`/profile/${player.id}`);
+    revalidatePath(`/profile/${data.uid}`);
 
     return {
       message: "Success",

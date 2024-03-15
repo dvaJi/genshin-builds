@@ -445,14 +445,6 @@
     "owner": "Owner"
   },
   "leaderboard": {},
-  "blog": {
-    "title": "Genshin Impact News, Guides, and Tips | Explore the Genshin Impact Blog",
-    "description": "Stay up-to-date with Genshin Impact news, guides, and tips. Explore the Genshin Impact Blog for the latest updates and valuable insights to enhance your gaming experience.",
-    "blog": "Blog",
-    "blog_desc": "The Genshin Impact Blog is a place where you can find the latest news and updates about the game. We also post guides, tips, and tricks to help you get started with Genshin Impact.",
-    "page_title": "{title} | Genshin Impact Blog",
-    "back": "Back to Blog"
-  },
   "changelog": {
     "title": "Genshin Impact {version} Update: Latest Features, Changes, and Improvements",
     "description": "Discover all the new adventures in Genshin Impact {version}! Our comprehensive guide covers the latest features, character updates, and gameplay enhancements. Stay ahead in Teyvat with the newest version's detailed changelog.",

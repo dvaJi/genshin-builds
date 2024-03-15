@@ -96,14 +96,6 @@
     "world_level_required": "Yêu cầu Cấp độ Thế giới",
     "cost": "Chi phí"
   },
-  "blog": {
-    "title": "Blog Honkai: Star Rail",
-    "description": "Blog Honkai: Star Rail là nơi bạn có thể tìm thấy tin tức và cập nhật mới nhất về trò chơi. Chúng tôi cũng đăng tải hướng dẫn, mẹo và thủ thuật để giúp bạn bắt đầu với Honkai: Star Rail.",
-    "blog": "Blog",
-    "blog_desc": "Blog Honkai: Star Rail là nơi bạn có thể tìm thấy tin tức và cập nhật mới nhất về trò chơi. Chúng tôi cũng đăng tải hướng dẫn, mẹo và thủ thuật để giúp bạn bắt đầu với Honkai: Star Rail.",
-    "page_title": "{title} | Blog Honkai: Star Rail",
-    "back": "Quay lại Blog"
-  },
   "achievements": {
     "title": "Thành tựu Honkai: Star Rail",
     "description": "Danh sách đầy đủ tất cả thành tựu trong Honkai: Star Rail.",

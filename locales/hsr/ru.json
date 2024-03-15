@@ -96,14 +96,6 @@
     "world_level_required": "Требуется уровень мира",
     "cost": "Стоимость"
   },
-  "blog": {
-    "title": "Блог Honkai: Star Rail",
-    "description": "Блог Honkai: Star Rail - это место, где вы найдете последние новости и обновления об игре. Мы также публикуем руководства, советы и хитрости, чтобы помочь вам начать играть в Honkai: Star Rail.",
-    "blog": "Блог",
-    "blog_desc": "Блог Honkai: Star Rail - это место, где вы найдете последние новости и обновления об игре. Мы также публикуем руководства, советы и хитрости, чтобы помочь вам начать играть в Honkai: Star Rail.",
-    "page_title": "{title} | Блог Honkai: Star Rail",
-    "back": "Вернуться в блог"
-  },
   "achievements": {
     "title": "Достижения в Honkai: Star Rail",
     "description": "Полный список всех достижений в Honkai: Star Rail.",

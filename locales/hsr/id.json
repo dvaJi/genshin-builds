@@ -96,14 +96,6 @@
     "world_level_required": "Tingkat Dunia yang Diperlukan",
     "cost": "Biaya"
   },
-  "blog": {
-    "title": "Blog Honkai: Star Rail",
-    "description": "Blog Honkai: Star Rail adalah tempat di mana Anda dapat menemukan berita dan pembaruan terbaru tentang permainan ini. Kami juga memposting panduan, tips, dan trik untuk membantu Anda memulai dengan Honkai: Star Rail.",
-    "blog": "Blog",
-    "blog_desc": "Blog Honkai: Star Rail adalah tempat di mana Anda dapat menemukan berita dan pembaruan terbaru tentang permainan ini. Kami juga memposting panduan, tips, dan trik untuk membantu Anda memulai dengan Honkai: Star Rail.",
-    "page_title": "{title} | Blog Honkai: Star Rail",
-    "back": "Kembali ke Blog"
-  },
   "achievements": {
     "title": "Prestasi Honkai: Star Rail",
     "description": "Daftar lengkap semua prestasi di Honkai: Star Rail.",

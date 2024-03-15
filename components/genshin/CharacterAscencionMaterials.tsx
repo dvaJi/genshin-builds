@@ -2,24 +2,21 @@
 
 import type { Ascension } from "@interfaces/genshin";
 import clsx from "clsx";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 import SimpleRarityBox from "../SimpleRarityBox";
 
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
-import { calculateTotalAscensionMaterials } from "@utils/totals";
+import type { AscensionTotal } from "@utils/totals";
 
 type Props = {
   ascension: Ascension[];
+  ascensionTotal: AscensionTotal;
 };
 
-const CharacterAscencionMaterials = ({ ascension }: Props) => {
+const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
   const { t } = useIntl("character");
-  const ascensionTotal = useMemo(
-    () => calculateTotalAscensionMaterials(ascension),
-    [ascension]
-  );
 
   return (
     <>
