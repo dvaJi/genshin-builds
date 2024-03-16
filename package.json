@@ -45,7 +45,6 @@
     "react-lazy-load-image-component": "^1.6.0",
     "react-tooltip": "^5.26.3",
     "react-wrap-balancer": "^1.1.0",
-    "remark-gfm": "^3.0.0",
     "schema-dts": "^1.1.2",
     "sonner": "^1.4.3",
     "swr": "^2.2.5",
