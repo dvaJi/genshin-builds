@@ -4,7 +4,6 @@ import Link from "next/link";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import useIntl from "@hooks/use-intl";
 import type { News } from "@lib/news";
 import { getTimeAgo } from "@lib/timeago";
 
@@ -14,8 +13,7 @@ interface Props {
 }
 
 const NewsPostCard = ({ post, type = "detailed" }: Props) => {
-  const { locale } = useIntl("blog");
-  const timeAgo = getTimeAgo(new Date(post.date).getTime(), locale);
+  const timeAgo = getTimeAgo(new Date(post.date).getTime(), 'en');
   return (
     <Link
       href={post.url}
