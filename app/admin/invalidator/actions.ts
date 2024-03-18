@@ -10,7 +10,7 @@ const invalidateSchema = z.object({
 });
 
 export async function invalidateAction(_prevState: any, formData: FormData) {
-  console.log("invalidate", { formData });
+  console.log("invalidate", JSON.stringify(Object.fromEntries(formData)));
   const parse = invalidateSchema.safeParse({
     type: formData.get("type"),
     value: formData.get("value"),
