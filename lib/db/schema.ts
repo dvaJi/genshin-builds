@@ -1,6 +1,7 @@
 import type { AdapterAccount } from "@auth/core/adapters";
 import { relations, sql } from "drizzle-orm";
 import {
+  index,
   integer,
   primaryKey,
   real,
@@ -90,6 +91,11 @@ export const builds = sqliteTable("Build", {
   updatedAt: integer("updatedAt")
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
+}, (table) => {
+  return {
+    nameIdx: index("build_critvalue_idx").on(table.critValue),
+    playerIdX: index("build_playerid_idx").on(table.playerId),
+  };
 });
 
 export const buildsRelations = relations(builds, ({ one }) => ({
@@ -190,6 +196,11 @@ export const hsrBuilds = sqliteTable("HSRBuild", {
   linkRopeSubStats: text("linkRopeSubStats"),
   linkRopeCritValue: real("linkRopeCritValue"),
   playerId: text("playerId").references(() => hsrPlayers.id),
+}, (table) => {
+  return {
+    nameIdx: index("hsrbuild_critvalue_idx").on(table.critValue),
+    playerIdX: index("hsrbuild_playerid_idx").on(table.playerId),
+  };
 });
 export type SelectHSRBuilds = typeof hsrBuilds.$inferSelect;
 export type InsertHSRBuilds = typeof hsrBuilds.$inferInsert;

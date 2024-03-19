@@ -8,6 +8,13 @@
       "when": 1710418974106,
       "tag": "0000_smooth_vargas",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1710853670904,
+      "tag": "0001_open_synch",
+      "breakpoints": true
     }
   ]
 }
