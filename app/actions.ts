@@ -226,7 +226,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       uid: data.player.uid,
     };
   } catch (error) {
-    console.error("[api] user", { formData }, error);
+    console.error("[api] user", parse, error);
     return {
       message: "Error, please try again later",
     };
