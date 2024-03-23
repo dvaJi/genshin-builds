@@ -26,11 +26,10 @@ const submitHSRUIDSchema = z.object({
 });
 
 export async function submitHSRUID(prevState: any, formData: FormData) {
-  console.log("submitHSRUID", { prevState, formData });
-
   const parse = submitHSRUIDSchema.safeParse({
     uid: formData.get("uid"),
   });
+  console.log("submitHSRUID", { prevState, parse });
 
   if (!parse.success) {
     return { message: "Missing uid" };
