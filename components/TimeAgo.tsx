@@ -4,7 +4,7 @@ import { getTimeAgo } from "@lib/timeago";
 
 type Props = {
   date: string;
-  locale: string;
+  locale?: string;
 };
 
 export default function TimeAgo({ date, locale }: Props) {

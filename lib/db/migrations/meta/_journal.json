@@ -1,19 +1,19 @@
 {
   "version": "5",
-  "dialect": "sqlite",
+  "dialect": "pg",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1710418974106,
-      "tag": "0000_smooth_vargas",
+      "when": 1711981388841,
+      "tag": "0000_jazzy_omega_sentinel",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "5",
-      "when": 1710853670904,
-      "tag": "0001_open_synch",
+      "when": 1712009569777,
+      "tag": "0001_previous_gorgon",
       "breakpoints": true
     }
   ]

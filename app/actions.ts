@@ -1,7 +1,7 @@
 "use server";
 
 import { createId } from "@paralleldrive/cuid2";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
@@ -12,7 +12,6 @@ import {
   hsrPlayers,
   players,
   type InsertBuilds,
-  type InsertHSRBuilds,
   type InsertHSRPlayer,
   type InsertPlayer,
 } from "@lib/db/schema";
@@ -95,15 +94,17 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         passAreaProgress: data.player.space_info.universe_level,
         finishAchievementNum: data.player.space_info.achievement_count,
       };
-      const result = await db.insert(hsrPlayers).values(insert).execute();
-      if (result.rowsAffected === 1) {
-        player = await db.query.hsrPlayers.findFirst({
-          where: eq(hsrPlayers.uuid, data.player.uid),
-        });
-      } else {
-        console.error("error insertPlayer", result);
-        return { message: "error insertPlayer" };
+      const insertedPlayer = await db
+        .insert(hsrPlayers)
+        .values(insert)
+        .returning();
+      if (!insertedPlayer) {
+        console.error("error insertPlayer");
+        // Print error to the user
+        return { message: "Error creating player profile" };
       }
+
+      player = insertedPlayer[0];
 
       const encodedData = await encodeMihomoBuilds(data.characters);
 
@@ -113,14 +114,18 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         playerId: player!.id,
       }));
 
-      const insertAvatars = await db
-        .insert(hsrBuilds)
-        .values(insertBuilds)
-        .execute();
+      if (insertBuilds.length > 0) {
+        const insertAvatars = await db
+          .insert(hsrBuilds)
+          .values(insertBuilds)
+          .returning({
+            insertedId: hsrBuilds.id,
+          });
 
-      if (insertAvatars.rowsAffected !== insertBuilds.length) {
-        console.error("error insertAvatars", insertAvatars);
-        return { message: "error insertAvatars" };
+        if (insertAvatars.length !== insertBuilds.length) {
+          console.error("error insertAvatars", insertAvatars);
+          return { message: "error insertAvatars" };
+        }
       }
     } else {
       // TODO: Check if we got the cached player data
@@ -153,9 +158,11 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
           finishAchievementNum: data.player.space_info.achievement_count,
         })
         .where(eq(hsrPlayers.uuid, data.player.uid))
-        .execute();
+        .returning({
+          updatedId: hsrPlayers.id,
+        });
 
-      if (updatedPlayer.rowsAffected !== 1) {
+      if (updatedPlayer.length !== 1) {
         console.error("error updatedPlayer", updatedPlayer);
         return { message: "error updatedPlayer" };
       }
@@ -182,9 +189,12 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
               currentBuilds.find((id) => id.avatarId === avatar.avatarId)?.id!
             )
           )
-          .execute();
+          .returning({
+            updatedId: hsrBuilds.id,
+          });
 
-        if (updatedBuild.rowsAffected !== 1) {
+        console.log("updatedBuild", updatedBuild);
+        if (updatedBuild.length !== 1) {
           console.error("error updatedBuild", updatedBuild);
           return { message: "error updatedBuild" };
         }
@@ -193,7 +203,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       console.log("Builds updated", { uuid: data.player.uid });
 
       // insert new builds
-      const insertBuilds: InsertHSRBuilds[] = encodedData
+      const insertBuilds = encodedData
         .filter((avatar) => {
           const currentBuild = currentBuilds.find(
             (build) => build.avatarId === avatar.avatarId
@@ -203,20 +213,26 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         })
         .map((avatar) => ({
           ...avatar,
+          id: createId(),
           playerId: player!.id,
         }));
 
-      const newBuilds = await db
-        .insert(hsrBuilds)
-        .values(insertBuilds)
-        .execute();
+      if (insertBuilds.length > 0) {
+        const newBuilds = await db
+          .insert(hsrBuilds)
+          .values(insertBuilds)
+          .returning({
+            insertedId: hsrBuilds.id,
+          });
 
-      if (newBuilds.rowsAffected !== insertBuilds.length) {
-        console.error("error newBuilds", newBuilds);
-        return { message: "error newBuilds" };
+        console.log("newBuilds", newBuilds);
+        if (newBuilds.length !== insertBuilds.length) {
+          console.error("error newBuilds", newBuilds);
+          return { message: "error newBuilds" };
+        }
+
+        console.log("New builds inserted", { uuid: data.player.uid });
       }
-
-      console.log("New builds inserted", { uuid: data.player.uid });
     }
 
     console.log("Success!", { uuid: data.player.uid });
@@ -226,6 +242,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       uid: data.player.uid,
     };
   } catch (error) {
+    console.log(error);
     console.error("[api] user", parse, error);
     return {
       message: "Error, please try again later",
@@ -289,6 +306,16 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
 
     if (!player) {
       console.log(`Player [${data.uid}] not found, creating new one`);
+      const uniqueCharacters = () => {
+        const characters = new Set();
+        data.avatarInfoList.forEach((avatar) => {
+          characters.add(avatar.avatarId);
+        });
+        data.playerInfo.showAvatarInfoList.forEach((avatar) => {
+          characters.add(avatar.avatarId);
+        });
+        return characters.size;
+      };
       const insert: InsertPlayer = {
         id: createId(),
         uuid: data.uid,
@@ -307,9 +334,14 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
             data.playerInfo.profilePicture.costumeId) ??
           0,
         namecardId: data.playerInfo.nameCardId,
+        showAvatarInfoList: data.playerInfo.showAvatarInfoList,
+        showNameCardIdList: data.playerInfo.showNameCardIdList,
+        charactersCount: uniqueCharacters(),
       };
-      const result = await db.insert(players).values(insert).execute();
-      if (result.rowsAffected === 1) {
+      const result = await db.insert(players).values(insert).returning({
+        insertedId: hsrBuilds.id,
+      });
+      if (result.length === 1) {
         player = await db.query.players.findFirst({
           where: eq(players.uuid, data.uid),
         });
@@ -325,14 +357,18 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         playerId: player!.id,
       }));
 
-      const insertAvatars = await db
-        .insert(builds)
-        .values(insertBuilds)
-        .execute();
+      if (insertBuilds.length > 0) {
+        const insertAvatars = await db
+          .insert(builds)
+          .values(insertBuilds)
+          .returning({
+            insertedId: hsrBuilds.id,
+          });
 
-      if (insertAvatars.rowsAffected !== insertBuilds.length) {
-        console.error("error insertAvatars", insertAvatars);
-        return { message: "error insertAvatars" };
+        if (insertAvatars.length !== insertBuilds.length) {
+          console.error("error insertAvatars", insertAvatars);
+          return { message: "error insertAvatars" };
+        }
       }
     } else {
       // Check if we got the cached player data
@@ -344,34 +380,6 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         return {
           message: "Success",
           uid: data.uid,
-        };
-      }
-      // Update player data
-      const updatedPlayer = await db
-        .update(players)
-        .set({
-          nickname: data.playerInfo.nickname,
-          level: data.playerInfo.level,
-          signature: data.playerInfo.signature,
-          worldLevel: data.playerInfo.worldLevel,
-          finishAchievementNum: data.playerInfo.finishAchievementNum,
-          towerFloorIndex: data.playerInfo.towerFloorIndex,
-          towerLevelIndex: data.playerInfo.towerLevelIndex,
-          profilePictureId:
-            data.playerInfo.profilePicture.id ||
-            data.playerInfo.profilePicture.avatarId,
-          profileCostumeId:
-            (data.playerInfo.profilePicture.id ||
-              data.playerInfo.profilePicture.costumeId) ??
-            0,
-          namecardId: data.playerInfo.nameCardId,
-        })
-        .where(eq(players.uuid, data.uid));
-
-      if (updatedPlayer.rowsAffected !== 1) {
-        console.error("error updatedPlayer", updatedPlayer);
-        return {
-          message: "error updatedPlayer",
         };
       }
 
@@ -396,9 +404,11 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           .update(builds)
           .set(updateBuild.data)
           .where(eq(builds.id, updateBuild.where.id!))
-          .execute();
+          .returning({
+            updatedId: hsrBuilds.id,
+          });
 
-        if (updatedBuild.rowsAffected !== 1) {
+        if (updatedBuild.length !== 1) {
           console.error("error updatedBuild", updatedBuild);
           return {
             message: "error updatedBuild",
@@ -421,11 +431,74 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           playerId: player!.id,
         }));
 
-      const newBuilds = await db.insert(builds).values(insertBuilds).execute();
+      if (insertBuilds.length > 0) {
+        const newBuilds = await db
+          .insert(builds)
+          .values(insertBuilds)
+          .returning({
+            insertedId: hsrBuilds.id,
+          });
 
-      if (newBuilds.rowsAffected !== insertBuilds.length) {
-        console.error("error newBuilds", newBuilds);
-        return { message: "error newBuilds" };
+        if (newBuilds.length !== insertBuilds.length) {
+          console.error("error newBuilds", newBuilds);
+          return { message: "error newBuilds" };
+        }
+      }
+
+      // Get current characters count
+      const currentAvatarsIds = await db
+        .select({ avatarId: builds.avatarId })
+        .from(builds)
+        .where(eq(builds.playerId, player!.id))
+        .groupBy(sql`${builds.avatarId}`);
+      const uniqueCharacters = () => {
+        const characters = new Set();
+        currentAvatarsIds.forEach((avatar) => {
+          characters.add(avatar.avatarId);
+        });
+        data.avatarInfoList.forEach((avatar) => {
+          characters.add(avatar.avatarId);
+        });
+        data.playerInfo.showAvatarInfoList.forEach((avatar) => {
+          characters.add(avatar.avatarId);
+        });
+        return characters.size;
+      };
+
+      // Update player data
+      const updatedPlayer = await db
+        .update(players)
+        .set({
+          nickname: data.playerInfo.nickname,
+          level: data.playerInfo.level,
+          signature: data.playerInfo.signature,
+          worldLevel: data.playerInfo.worldLevel,
+          finishAchievementNum: data.playerInfo.finishAchievementNum,
+          towerFloorIndex: data.playerInfo.towerFloorIndex,
+          towerLevelIndex: data.playerInfo.towerLevelIndex,
+          profilePictureId:
+            data.playerInfo.profilePicture.id ||
+            data.playerInfo.profilePicture.avatarId,
+          profileCostumeId:
+            (data.playerInfo.profilePicture.id ||
+              data.playerInfo.profilePicture.costumeId) ??
+            0,
+          namecardId: data.playerInfo.nameCardId,
+          showAvatarInfoList: data.playerInfo.showAvatarInfoList,
+          showNameCardIdList: data.playerInfo.showNameCardIdList,
+          updatedAt: new Date(),
+          charactersCount: uniqueCharacters(),
+        })
+        .where(eq(players.uuid, data.uid))
+        .returning({
+          updatedId: hsrBuilds.id,
+        });
+
+      if (updatedPlayer.length !== 1) {
+        console.error("error updatedPlayer", updatedPlayer);
+        return {
+          message: "error updatedPlayer",
+        };
       }
     }
 

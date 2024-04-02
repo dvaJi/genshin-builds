@@ -49,6 +49,8 @@
     "leaderboards": "Tablas de clasificación",
     "leaderboard": "Tabla de clasificación",
     "leaderboard_desc": "Tablas de clasificación para comparar tu progreso con otros jugadores",
+    "leaderboard_profiles": "Tabla de clasificación de perfiles",
+    "leaderboard_profiles_desc": "Perfiles para comparar tu progreso con otros jugadores",
     "profiles": "Perfiles",
     "profiles_desc": "Perfiles para comparar tu progreso con otros jugadores",
     "blog": "Blog"

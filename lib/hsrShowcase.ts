@@ -72,7 +72,7 @@ export async function getBuild(lang: any, uid: string) {
       friends: playerData.friends,
       region: regionParse(playerData.uuid),
       updatedAt: playerData.updatedAt.toString(),
-      builds: await decodeBuilds(builds, characters, lightCones, relics),
+      builds: (await decodeBuilds(builds, characters, lightCones, relics)).filter(Boolean),
     },
   };
 }

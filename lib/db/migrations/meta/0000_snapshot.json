@@ -1,98 +1,89 @@
 {
-  "version": "5",
-  "dialect": "sqlite",
-  "id": "00f0e241-09dc-4d48-8528-e01cb2b9fb2c",
+  "id": "2dbcea5d-c64c-4a60-b0c3-6c37c481a711",
   "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "5",
+  "dialect": "pg",
   "tables": {
     "account": {
       "name": "account",
+      "schema": "genshinbuilds",
       "columns": {
-        "userId": {
-          "name": "userId",
+        "user_id": {
+          "name": "user_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "type": {
           "name": "type",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "provider": {
           "name": "provider",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "providerAccountId": {
           "name": "providerAccountId",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "refresh_token": {
           "name": "refresh_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "access_token": {
           "name": "access_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "expires_at": {
           "name": "expires_at",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "token_type": {
           "name": "token_type",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "scope": {
           "name": "scope",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "id_token": {
           "name": "id_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "session_state": {
           "name": "session_state",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "account_userId_user_id_fk": {
-          "name": "account_userId_user_id_fk",
+        "account_user_id_user_id_fk": {
+          "name": "account_user_id_user_id_fk",
           "tableFrom": "account",
           "tableTo": "user",
+          "schemaTo": "genshinbuilds",
           "columnsFrom": [
-            "userId"
+            "user_id"
           ],
           "columnsTo": [
             "id"
@@ -103,374 +94,342 @@
       },
       "compositePrimaryKeys": {
         "account_provider_providerAccountId_pk": {
+          "name": "account_provider_providerAccountId_pk",
           "columns": [
             "provider",
             "providerAccountId"
-          ],
-          "name": "account_provider_providerAccountId_pk"
+          ]
         }
       },
       "uniqueConstraints": {}
     },
-    "Build": {
-      "name": "Build",
+    "builds": {
+      "name": "builds",
+      "schema": "genshinbuilds",
       "columns": {
         "id": {
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "avatarId": {
-          "name": "avatarId",
+        "avatar_id": {
+          "name": "avatar_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "level": {
           "name": "level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "ascension": {
           "name": "ascension",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "fetterLevel": {
           "name": "fetterLevel",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "constellation": {
           "name": "constellation",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "skillDepotId": {
-          "name": "skillDepotId",
+        "skill_depot_id": {
+          "name": "skill_depot_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "fightProps": {
-          "name": "fightProps",
+        "fight_props": {
+          "name": "fight_props",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "skillLevel": {
-          "name": "skillLevel",
+        "skill_level": {
+          "name": "skill_level",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "critValue": {
-          "name": "critValue",
+        "crit_value": {
+          "name": "crit_value",
           "type": "real",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
           "default": 0
         },
-        "critValueArtifactsOnly": {
-          "name": "critValueArtifactsOnly",
+        "crit_value_artifacts_only": {
+          "name": "crit_value_artifacts_only",
           "type": "real",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
           "default": 0
         },
-        "plumeId": {
-          "name": "plumeId",
+        "plume_id": {
+          "name": "plume_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "plumeSetId": {
-          "name": "plumeSetId",
+        "plume_set_id": {
+          "name": "plume_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "plumeMainStat": {
-          "name": "plumeMainStat",
+        "plume_main_stat": {
+          "name": "plume_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "plumeSubStats": {
-          "name": "plumeSubStats",
+        "plume_sub_stats": {
+          "name": "plume_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "plumeSubstatsId": {
-          "name": "plumeSubstatsId",
+        "plume_substats_id": {
+          "name": "plume_substats_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "plumeCritValue": {
-          "name": "plumeCritValue",
+        "plume_crit_value": {
+          "name": "plume_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "flowerId": {
-          "name": "flowerId",
+        "flower_id": {
+          "name": "flower_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "flowerSetId": {
-          "name": "flowerSetId",
+        "flower_set_id": {
+          "name": "flower_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "flowerMainStat": {
-          "name": "flowerMainStat",
+        "flower_main_stat": {
+          "name": "flower_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "flowerSubStats": {
-          "name": "flowerSubStats",
+        "flower_sub_stats": {
+          "name": "flower_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "flowerSubstatsId": {
-          "name": "flowerSubstatsId",
+        "flower_substats_id": {
+          "name": "flower_substats_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "flowerCritValue": {
-          "name": "flowerCritValue",
+        "flower_crit_value": {
+          "name": "flower_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "sandsId": {
-          "name": "sandsId",
+        "sands_id": {
+          "name": "sands_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "sandsSetId": {
-          "name": "sandsSetId",
+        "sands_set_id": {
+          "name": "sands_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "sandsMainStat": {
-          "name": "sandsMainStat",
+        "sands_main_stat": {
+          "name": "sands_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "sandsSubStats": {
-          "name": "sandsSubStats",
+        "sands_sub_stats": {
+          "name": "sands_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "sandsSubstatsId": {
-          "name": "sandsSubstatsId",
+        "sands_substats_id": {
+          "name": "sands_substats_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "sandsCritValue": {
-          "name": "sandsCritValue",
+        "sands_crit_value": {
+          "name": "sands_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "gobletId": {
-          "name": "gobletId",
+        "goblet_id": {
+          "name": "goblet_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "gobletSetId": {
-          "name": "gobletSetId",
+        "goblet_set_id": {
+          "name": "goblet_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "gobletMainStat": {
-          "name": "gobletMainStat",
+        "goblet_main_stat": {
+          "name": "goblet_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "gobletSubStats": {
-          "name": "gobletSubStats",
+        "goblet_sub_stats": {
+          "name": "goblet_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "gobletSubstatsId": {
-          "name": "gobletSubstatsId",
+        "goblet_substats_id": {
+          "name": "goblet_substats_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "gobletCritValue": {
-          "name": "gobletCritValue",
+        "goblet_crit_value": {
+          "name": "goblet_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "circletId": {
-          "name": "circletId",
+        "circlet_id": {
+          "name": "circlet_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "circletSetId": {
-          "name": "circletSetId",
+        "circlet_set_id": {
+          "name": "circlet_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "circletMainStat": {
-          "name": "circletMainStat",
+        "circlet_main_stat": {
+          "name": "circlet_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "circletSubStats": {
-          "name": "circletSubStats",
+        "circlet_sub_stats": {
+          "name": "circlet_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "circletSubstatsId": {
-          "name": "circletSubstatsId",
+        "circlet_substats_id": {
+          "name": "circlet_substats_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "circletCritValue": {
-          "name": "circletCritValue",
+        "circlet_crit_value": {
+          "name": "circlet_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "weaponId": {
-          "name": "weaponId",
+        "weapon_id": {
+          "name": "weapon_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "weaponLevel": {
-          "name": "weaponLevel",
+        "weapon_level": {
+          "name": "weapon_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "weaponPromoteLevel": {
-          "name": "weaponPromoteLevel",
+        "weapon_promote_level": {
+          "name": "weapon_promote_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "weaponRefinement": {
-          "name": "weaponRefinement",
+        "weapon_refinement": {
+          "name": "weapon_refinement",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "weaponStat": {
-          "name": "weaponStat",
+        "weapon_stat": {
+          "name": "weapon_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "playerId": {
-          "name": "playerId",
+        "player_id": {
+          "name": "player_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "integer",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         },
-        "updatedAt": {
-          "name": "updatedAt",
-          "type": "integer",
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "build_critvalue_idx": {
+          "name": "build_critvalue_idx",
+          "columns": [
+            "crit_value"
+          ],
+          "isUnique": false
+        },
+        "build_playerid_idx": {
+          "name": "build_playerid_idx",
+          "columns": [
+            "player_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
-        "Build_playerId_Player_id_fk": {
-          "name": "Build_playerId_Player_id_fk",
-          "tableFrom": "Build",
-          "tableTo": "Player",
+        "builds_player_id_players_id_fk": {
+          "name": "builds_player_id_players_id_fk",
+          "tableFrom": "builds",
+          "tableTo": "players",
+          "schemaTo": "genshinbuilds",
           "columnsFrom": [
-            "playerId"
+            "player_id"
           ],
           "columnsTo": [
             "id"
@@ -482,426 +441,399 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "HSRBuild": {
-      "name": "HSRBuild",
+    "hsr_builds": {
+      "name": "hsr_builds",
+      "schema": "genshinbuilds",
       "columns": {
         "id": {
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "avatarId": {
-          "name": "avatarId",
+        "avatar_id": {
+          "name": "avatar_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "level": {
           "name": "level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "promotion": {
           "name": "promotion",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "rank": {
           "name": "rank",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "skillLevel": {
-          "name": "skillLevel",
+        "skill_level": {
+          "name": "skill_level",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "critValue": {
-          "name": "critValue",
+        "crit_value": {
+          "name": "crit_value",
           "type": "real",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
           "default": 0
         },
-        "critValueArtifactsOnly": {
-          "name": "critValueArtifactsOnly",
+        "crit_value_artifacts_only": {
+          "name": "crit_value_artifacts_only",
           "type": "real",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
           "default": 0
         },
         "attributes": {
           "name": "attributes",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "additions": {
           "name": "additions",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "properties": {
           "name": "properties",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "lightConeId": {
-          "name": "lightConeId",
+        "light_cone_id": {
+          "name": "light_cone_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "lightConeLevel": {
-          "name": "lightConeLevel",
+        "light_cone_level": {
+          "name": "light_cone_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "lightConePromotion": {
-          "name": "lightConePromotion",
+        "light_cone_promotion": {
+          "name": "light_cone_promotion",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "lightConeRank": {
-          "name": "lightConeRank",
+        "light_cone_rank": {
+          "name": "light_cone_rank",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "headRelicId": {
-          "name": "headRelicId",
+        "head_relic_id": {
+          "name": "head_relic_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "headRelicSetId": {
-          "name": "headRelicSetId",
+        "head_relic_set_id": {
+          "name": "head_relic_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "headRelicLevel": {
-          "name": "headRelicLevel",
+        "head_relic_level": {
+          "name": "head_relic_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "headRelicRarity": {
-          "name": "headRelicRarity",
+        "head_relic_rarity": {
+          "name": "head_relic_rarity",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "headMainStat": {
-          "name": "headMainStat",
+        "head_main_stat": {
+          "name": "head_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "headSubStats": {
-          "name": "headSubStats",
+        "head_sub_stats": {
+          "name": "head_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "headCritValue": {
-          "name": "headCritValue",
+        "head_crit_value": {
+          "name": "head_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "handsRelicId": {
-          "name": "handsRelicId",
+        "hands_relic_id": {
+          "name": "hands_relic_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "handsRelicSetId": {
-          "name": "handsRelicSetId",
+        "hands_relic_set_id": {
+          "name": "hands_relic_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "handsRelicLevel": {
-          "name": "handsRelicLevel",
+        "hands_relic_level": {
+          "name": "hands_relic_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "handsRelicRarity": {
-          "name": "handsRelicRarity",
+        "hands_relic_rarity": {
+          "name": "hands_relic_rarity",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "handsMainStat": {
-          "name": "handsMainStat",
+        "hands_main_stat": {
+          "name": "hands_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "handsSubStats": {
-          "name": "handsSubStats",
+        "hands_sub_stats": {
+          "name": "hands_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "handsCritValue": {
-          "name": "handsCritValue",
+        "hands_crit_value": {
+          "name": "hands_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "bodyRelicId": {
-          "name": "bodyRelicId",
+        "body_relic_id": {
+          "name": "body_relic_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "bodyRelicSetId": {
-          "name": "bodyRelicSetId",
+        "body_relic_set_id": {
+          "name": "body_relic_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "bodyRelicLevel": {
-          "name": "bodyRelicLevel",
+        "body_relic_level": {
+          "name": "body_relic_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "bodyRelicRarity": {
-          "name": "bodyRelicRarity",
+        "body_relic_rarity": {
+          "name": "body_relic_rarity",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "bodyMainStat": {
-          "name": "bodyMainStat",
+        "body_main_stat": {
+          "name": "body_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "bodySubStats": {
-          "name": "bodySubStats",
+        "body_sub_stats": {
+          "name": "body_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "bodyCritValue": {
-          "name": "bodyCritValue",
+        "body_crit_value": {
+          "name": "body_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "feetRelicId": {
-          "name": "feetRelicId",
+        "feet_relic_id": {
+          "name": "feet_relic_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "feetRelicSetId": {
-          "name": "feetRelicSetId",
+        "feet_relic_set_id": {
+          "name": "feet_relic_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "feetRelicLevel": {
-          "name": "feetRelicLevel",
+        "feet_relic_level": {
+          "name": "feet_relic_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "feetRelicRarity": {
-          "name": "feetRelicRarity",
+        "feet_relic_rarity": {
+          "name": "feet_relic_rarity",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "feetMainStat": {
-          "name": "feetMainStat",
+        "feet_main_stat": {
+          "name": "feet_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "feetSubStats": {
-          "name": "feetSubStats",
+        "feet_sub_stats": {
+          "name": "feet_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "feetCritValue": {
-          "name": "feetCritValue",
+        "feet_crit_value": {
+          "name": "feet_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "planarSphereRelicId": {
-          "name": "planarSphereRelicId",
+        "planar_sphere_relic_id": {
+          "name": "planar_sphere_relic_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "planarSphereRelicSetId": {
-          "name": "planarSphereRelicSetId",
+        "planar_sphere_relic_set_id": {
+          "name": "planar_sphere_relic_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "planarSphereRelicLevel": {
-          "name": "planarSphereRelicLevel",
+        "planar_sphere_relic_level": {
+          "name": "planar_sphere_relic_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "planarSphereRelicRarity": {
-          "name": "planarSphereRelicRarity",
+        "planar_sphere_relic_rarity": {
+          "name": "planar_sphere_relic_rarity",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "planarSphereMainStat": {
-          "name": "planarSphereMainStat",
+        "planarSphere_main_stat": {
+          "name": "planarSphere_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "planarSphereSubStats": {
-          "name": "planarSphereSubStats",
+        "planarSphere_sub_stats": {
+          "name": "planarSphere_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "planarSphereCritValue": {
-          "name": "planarSphereCritValue",
+        "planarSphere_crit_value": {
+          "name": "planarSphere_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "linkRopeRelicId": {
-          "name": "linkRopeRelicId",
+        "link_rope_relic_id": {
+          "name": "link_rope_relic_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "linkRopeRelicSetId": {
-          "name": "linkRopeRelicSetId",
+        "link_rope_relic_set_id": {
+          "name": "link_rope_relic_set_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "linkRopeRelicLevel": {
-          "name": "linkRopeRelicLevel",
+        "link_rope_relic_level": {
+          "name": "link_rope_relic_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "linkRopeRelicRarity": {
-          "name": "linkRopeRelicRarity",
+        "link_rope_relic_rarity": {
+          "name": "link_rope_relic_rarity",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "linkRopeMainStat": {
-          "name": "linkRopeMainStat",
+        "link_rope_main_stat": {
+          "name": "link_rope_main_stat",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "linkRopeSubStats": {
-          "name": "linkRopeSubStats",
+        "link_rope_sub_stats": {
+          "name": "link_rope_sub_stats",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "linkRopeCritValue": {
-          "name": "linkRopeCritValue",
+        "link_rope_crit_value": {
+          "name": "link_rope_crit_value",
           "type": "real",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "playerId": {
-          "name": "playerId",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "player_id": {
+          "name": "player_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "hsrbuild_critvalue_idx": {
+          "name": "hsrbuild_critvalue_idx",
+          "columns": [
+            "crit_value"
+          ],
+          "isUnique": false
+        },
+        "hsrbuild_playerid_idx": {
+          "name": "hsrbuild_playerid_idx",
+          "columns": [
+            "player_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
-        "HSRBuild_playerId_HSRPlayer_id_fk": {
-          "name": "HSRBuild_playerId_HSRPlayer_id_fk",
-          "tableFrom": "HSRBuild",
-          "tableTo": "HSRPlayer",
+        "hsr_builds_player_id_hsr_players_id_fk": {
+          "name": "hsr_builds_player_id_hsr_players_id_fk",
+          "tableFrom": "hsr_builds",
+          "tableTo": "hsr_players",
+          "schemaTo": "genshinbuilds",
           "columnsFrom": [
-            "playerId"
+            "player_id"
           ],
           "columnsTo": [
             "id"
@@ -913,298 +845,269 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "HSRPlayer": {
-      "name": "HSRPlayer",
+    "hsr_players": {
+      "name": "hsr_players",
+      "schema": "genshinbuilds",
       "columns": {
         "id": {
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "integer",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         },
-        "updatedAt": {
-          "name": "updatedAt",
-          "type": "integer",
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         },
         "uuid": {
           "name": "uuid",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "nickname": {
           "name": "nickname",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "level": {
           "name": "level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "worldLevel": {
-          "name": "worldLevel",
+        "world_level": {
+          "name": "world_level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "profilePictureId": {
-          "name": "profilePictureId",
+        "profile_picture_id": {
+          "name": "profile_picture_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "profileCostumeId": {
-          "name": "profileCostumeId",
+        "profile_costume_id": {
+          "name": "profile_costume_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "signature": {
           "name": "signature",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "namecardId": {
-          "name": "namecardId",
+        "namecard_id": {
+          "name": "namecard_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
-        "finishAchievementNum": {
-          "name": "finishAchievementNum",
+        "finish_achievement_num": {
+          "name": "finish_achievement_num",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "avatars": {
           "name": "avatars",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "lightCones": {
-          "name": "lightCones",
+        "light_cones": {
+          "name": "light_cones",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "passAreaProgress": {
-          "name": "passAreaProgress",
+        "pass_area_progress": {
+          "name": "pass_area_progress",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "friends": {
           "name": "friends",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         }
       },
-      "indexes": {
-        "HSRPlayer_uuid_unique": {
-          "name": "HSRPlayer_uuid_unique",
-          "columns": [
-            "uuid"
-          ],
-          "isUnique": true
-        }
-      },
+      "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "hsr_players_uuid_unique": {
+          "name": "hsr_players_uuid_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "uuid"
+          ]
+        }
+      }
     },
     "invite": {
       "name": "invite",
+      "schema": "genshinbuilds",
       "columns": {
         "id": {
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "integer",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "default": "now()"
         },
-        "updatedAt": {
-          "name": "updatedAt",
-          "type": "integer",
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "default": "now()"
         },
-        "userId": {
-          "name": "userId",
+        "user_id": {
+          "name": "user_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "token": {
           "name": "token",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "expires": {
           "name": "expires",
-          "type": "integer",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "default": "now()"
         }
       },
-      "indexes": {
-        "invite_userId_unique": {
-          "name": "invite_userId_unique",
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "invite_user_id_unique": {
+          "name": "invite_user_id_unique",
+          "nullsNotDistinct": false,
           "columns": [
-            "userId"
-          ],
-          "isUnique": true
+            "user_id"
+          ]
         },
         "invite_token_unique": {
           "name": "invite_token_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "token"
-          ],
-          "isUnique": true
+          ]
         }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      }
     },
-    "Player": {
-      "name": "Player",
+    "players": {
+      "name": "players",
+      "schema": "genshinbuilds",
       "columns": {
         "id": {
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "integer",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         },
-        "updatedAt": {
-          "name": "updatedAt",
-          "type": "integer",
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         },
         "uuid": {
           "name": "uuid",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "nickname": {
           "name": "nickname",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "profilePictureId": {
-          "name": "profilePictureId",
+        "profile_picture_id": {
+          "name": "profile_picture_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "profileCostumeId": {
-          "name": "profileCostumeId",
+        "profile_costume_id": {
+          "name": "profile_costume_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "namecardId": {
-          "name": "namecardId",
+        "namecard_id": {
+          "name": "namecard_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "level": {
           "name": "level",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "signature": {
           "name": "signature",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "worldLevel": {
           "name": "worldLevel",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
-        "finishAchievementNum": {
-          "name": "finishAchievementNum",
+        "finish_achievement_num": {
+          "name": "finish_achievement_num",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "towerFloorIndex": {
           "name": "towerFloorIndex",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
           "default": 0
         },
         "towerLevelIndex": {
@@ -1212,46 +1115,44 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
           "default": 0
         }
       },
-      "indexes": {
-        "Player_uuid_unique": {
-          "name": "Player_uuid_unique",
-          "columns": [
-            "uuid"
-          ],
-          "isUnique": true
-        }
-      },
+      "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "players_uuid_unique": {
+          "name": "players_uuid_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "uuid"
+          ]
+        }
+      }
     },
     "session": {
       "name": "session",
+      "schema": "genshinbuilds",
       "columns": {
         "sessionToken": {
           "name": "sessionToken",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "userId": {
           "name": "userId",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "expires": {
           "name": "expires",
-          "type": "integer",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -1260,6 +1161,7 @@
           "name": "session_userId_user_id_fk",
           "tableFrom": "session",
           "tableTo": "user",
+          "schemaTo": "genshinbuilds",
           "columnsFrom": [
             "userId"
           ],
@@ -1275,55 +1177,50 @@
     },
     "user": {
       "name": "user",
+      "schema": "genshinbuilds",
       "columns": {
         "id": {
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "name": {
           "name": "name",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "email": {
           "name": "email",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "emailVerified": {
           "name": "emailVerified",
-          "type": "integer",
+          "type": "timestamp",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": true,
+          "default": "now()"
         },
         "image": {
           "name": "image",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "globalName": {
           "name": "globalName",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "role": {
           "name": "role",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
           "default": "'user'"
         }
       },
@@ -1334,47 +1231,49 @@
     },
     "verificationToken": {
       "name": "verificationToken",
+      "schema": "genshinbuilds",
       "columns": {
         "identifier": {
           "name": "identifier",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "token": {
           "name": "token",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "expires": {
           "name": "expires",
-          "type": "integer",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "default": "now()"
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
         "verificationToken_identifier_token_pk": {
+          "name": "verificationToken_identifier_token_pk",
           "columns": [
             "identifier",
             "token"
-          ],
-          "name": "verificationToken_identifier_token_pk"
+          ]
         }
       },
       "uniqueConstraints": {}
     }
   },
   "enums": {},
+  "schemas": {
+    "genshinbuilds": "genshinbuilds"
+  },
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
+    "tables": {}
   }
 }

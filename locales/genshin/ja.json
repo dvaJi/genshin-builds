@@ -49,6 +49,8 @@
     "leaderboards": "リーダーボード",
     "leaderboard": "リーダーボード",
     "leaderboard_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール",
+    "leaderboard_profiles": "リーダーボードプロファイル",
+    "leaderboard_profiles_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール",
     "profiles": "プロファイル",
     "profiles_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール",
     "blog": "ブログ"

@@ -60,6 +60,11 @@ const navRoutes: Route[] = [
         name: "Leaderboard",
         href: "/leaderboard",
       },
+      {
+        id: "leaderboard_profiles",
+        name: "Leaderboard Profiles",
+        href: "/leaderboard/profiles",
+      }
       // { id: "teams", name: "Teams", href: "/leaderboards/teams" },
     ],
   },
