@@ -151,9 +151,8 @@ const columns: ColumnDef<Build>[] = [
   },
   {
     header: "critvalue",
-    accessorKey: "critValue",
     cell: (info) => {
-      const cv = info.getValue<number>();
+      const cv = info.row.original.critValue ?? 0;
       return (
         <div className="text-xs">
           {(info.row.original.stats["CRIT Rate"] * 100).toFixed(1)} :{" "}

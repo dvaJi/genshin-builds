@@ -118,12 +118,12 @@ const columns: ColumnDef<any>[] = [
   },
   {
     header: "critvalue",
-    accessorKey: "critValue",
     cell: (info) => {
-      if (!info.getValue<number>()) return null;
+      const cv = info.row.original.critValue ?? 0;
+      if (!cv) return null;
       return (
-        <span className={cvQuality(info.getValue<number>())}>
-          {info.getValue<number>().toFixed(1)}
+        <span className={cvQuality(cv)}>
+          {cv.toFixed(1)}
         </span>
       );
     },
