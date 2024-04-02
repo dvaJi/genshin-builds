@@ -447,6 +447,7 @@
     "owner": "Owner"
   },
   "leaderboard": {},
+  "leaderboard_profiles": {},
   "changelog": {
     "title": "Genshin Impact {version} Update: Latest Features, Changes, and Improvements",
     "description": "Discover all the new adventures in Genshin Impact {version}! Our comprehensive guide covers the latest features, character updates, and gameplay enhancements. Stay ahead in Teyvat with the newest version's detailed changelog.",

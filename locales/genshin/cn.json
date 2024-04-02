@@ -447,6 +447,7 @@
     "owner": "拥有者"
   },
   "leaderboard": {},
+  "leaderboard_profiles": {},
   "changelog": {
     "title": "原神 {version} 更新：最新功能、变更和改进",
     "description": "发现原神 {version} 中的所有新冒险！我们全面的指南涵盖了最新的功能、角色更新和游戏改进。通过最新版本的详细变更记录，始终走在提瓦特的前沿。",
