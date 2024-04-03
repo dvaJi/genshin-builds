@@ -16,6 +16,7 @@ import CharacterTalentMaterials from "@components/genshin/CharacterTalentMateria
 import CharacterTeam from "@components/genshin/CharacterTeam";
 import ElementIcon from "@components/genshin/ElementIcon";
 
+import FrstAds from "@components/ui/FrstAds";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -35,7 +36,6 @@ import { Beta } from "interfaces/genshin/beta";
 import { TeamData } from "interfaces/teams";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 interface Props {
   params: {
