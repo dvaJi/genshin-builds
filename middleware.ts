@@ -62,6 +62,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   // Matcher ignoring `/_next/`, `/api/` and `/admin/` subpaths
   matcher: [
-    "/((?!en|es|ja|cn|zh-tw|de|fr|id|it|ko|pt|ru|th|tr|vi|api|icons|imgs|_next/static|_next/data|admin|_next/image|manifest.json|favicon.ico|robots.txt|sitemap.xml|icon.png|logo.png|ads.txt|sw.js|adb.js|workbox-[a-zA-Z0-9]+.js|SourceSansPro-SemiBold/SourceSansPro-SemiBold.woff).*)",
+    "/((?!en|es|ja|cn|zh-tw|de|fr|id|it|ko|pt|ru|th|tr|vi|api|icons|imgs|_next/static|_next/data|admin|_next/image|manifest.json|favicon.ico|robots.txt|sitemap.xml|icon.png|logo.png|ads.txt|sw.js|_axiom/web-vitals|adb.js|workbox-[a-zA-Z0-9]+.js|SourceSansPro-SemiBold/SourceSansPro-SemiBold.woff).*)",
   ],
 };
