@@ -1,5 +1,7 @@
 const isDev = process.env.IS_DEV_ENV === "true";
 
+const { withAxiom } = require("next-axiom");
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
@@ -66,48 +68,48 @@ const nextConfig = {
       permanent: false,
     },
     {
-      source: '/:lang/genshin/blog',
-      destination: 'https://earlygg.com/guides/genshin-impact',
+      source: "/:lang/genshin/blog",
+      destination: "https://earlygg.com/guides/genshin-impact",
       permanent: true,
     },
     {
-      source: '/:lang/genshin/blog/page/:page',
-      destination: 'https://earlygg.com/guides/genshin-impact',
+      source: "/:lang/genshin/blog/page/:page",
+      destination: "https://earlygg.com/guides/genshin-impact",
       permanent: true,
     },
     {
-      source: '/:lang/genshin/blog/:slug',
-      destination: 'https://earlygg.com/guides/genshin-impact',
+      source: "/:lang/genshin/blog/:slug",
+      destination: "https://earlygg.com/guides/genshin-impact",
       permanent: true,
     },
     {
-      source: '/:lang/hsr/blog',
-      destination: 'https://earlygg.com/guides/star-rail',
+      source: "/:lang/hsr/blog",
+      destination: "https://earlygg.com/guides/star-rail",
       permanent: true,
     },
     {
-      source: '/:lang/hsr/blog/page/:page',
-      destination: 'https://earlygg.com/guides/star-rail',
+      source: "/:lang/hsr/blog/page/:page",
+      destination: "https://earlygg.com/guides/star-rail",
       permanent: true,
     },
     {
-      source: '/:lang/hsr/blog/:slug',
-      destination: 'https://earlygg.com/guides/star-rail',
+      source: "/:lang/hsr/blog/:slug",
+      destination: "https://earlygg.com/guides/star-rail",
       permanent: true,
     },
     {
-      source: '/:lang/zenless/blog',
-      destination: 'https://earlygg.com/guides/zenless',
+      source: "/:lang/zenless/blog",
+      destination: "https://earlygg.com/guides/zenless",
       permanent: true,
     },
     {
-      source: '/:lang/zenless/blog/page/:page',
-      destination: 'https://earlygg.com/guides/zenless',
+      source: "/:lang/zenless/blog/page/:page",
+      destination: "https://earlygg.com/guides/zenless",
       permanent: true,
     },
     {
-      source: '/:lang/zenless/blog/:slug',
-      destination: 'https://earlygg.com/guides/zenless',
+      source: "/:lang/zenless/blog/:slug",
+      destination: "https://earlygg.com/guides/zenless",
       permanent: true,
     },
   ],
@@ -115,4 +117,4 @@ const nextConfig = {
   typescript: { ignoreBuildErrors: !!process.env.CI },
 };
 
-module.exports = withPWA(withBundleAnalyzer(nextConfig));
+module.exports = withAxiom(withPWA(withBundleAnalyzer(nextConfig)));

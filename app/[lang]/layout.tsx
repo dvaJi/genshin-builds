@@ -1,3 +1,5 @@
+import { AxiomWebVitals } from "next-axiom";
+
 import { PreloadResources } from "@app/preload-resources";
 
 export default function Root({
@@ -10,6 +12,7 @@ export default function Root({
   return (
     <html lang={params.lang}>
       <PreloadResources />
+      <AxiomWebVitals />
       <body>{children}</body>
     </html>
   );
