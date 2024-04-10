@@ -6,11 +6,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-const withPWA = require("next-pwa")({
-  dynamicStartUrl: false,
-  disable: isDev,
-});
-
 /**
  * @type {import('next').NextConfig}
  **/
@@ -117,4 +112,4 @@ const nextConfig = {
   typescript: { ignoreBuildErrors: !!process.env.CI },
 };
 
-module.exports = withAxiom(withPWA(withBundleAnalyzer(nextConfig)));
+module.exports = withAxiom(withBundleAnalyzer(nextConfig));
