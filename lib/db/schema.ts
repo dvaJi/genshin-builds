@@ -18,10 +18,13 @@ type ShowAvatarInfo = {
   avatarId: number;
   level: number;
   customeId?: number;
-}
+};
 
 export const players = mySchema.table("players", {
-  id: text("id").primaryKey().notNull().$defaultFn(() => createId()),
+  id: text("id")
+    .primaryKey()
+    .notNull()
+    .$defaultFn(() => createId()),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
   uuid: text("uuid").unique().notNull(),
@@ -35,8 +38,12 @@ export const players = mySchema.table("players", {
   finishAchievementNum: integer("finish_achievement_num").notNull(),
   towerFloorIndex: integer("towerFloorIndex").default(0),
   towerLevelIndex: integer("towerLevelIndex").default(0),
-  showAvatarInfoList: json("show_avatar_info_list").notNull().default([] as ShowAvatarInfo[]),
-  showNameCardIdList: json("show_name_card_id_list").notNull().default([] as number[]),
+  showAvatarInfoList: json("show_avatar_info_list")
+    .notNull()
+    .default([] as ShowAvatarInfo[]),
+  showNameCardIdList: json("show_name_card_id_list")
+    .notNull()
+    .default([] as number[]),
   charactersCount: integer("characters_count").notNull().default(0),
 });
 
@@ -47,62 +54,71 @@ export const playersRelations = relations(players, ({ many }) => ({
 export type SelectPlayer = typeof players.$inferSelect;
 export type InsertPlayer = typeof players.$inferInsert;
 
-export const builds = mySchema.table("builds", {
-  id: text("id").primaryKey().notNull().$defaultFn(() => createId()),
-  avatarId: integer("avatar_id").notNull(),
-  level: integer("level").notNull(),
-  ascension: integer("ascension").notNull(),
-  fetterLevel: integer("fetterLevel").notNull(),
-  constellation: integer("constellation").notNull(),
-  skillDepotId: integer("skill_depot_id").notNull(),
-  fightProps: text("fight_props").notNull(),
-  skillLevel: text("skill_level").notNull(),
-  critValue: real("crit_value").default(0).notNull(),
-  critValueArtifactsOnly: real("crit_value_artifacts_only").default(0).notNull(),
-  plumeId: integer("plume_id"),
-  plumeSetId: integer("plume_set_id"),
-  plumeMainStat: text("plume_main_stat"),
-  plumeSubStats: text("plume_sub_stats"),
-  plumeSubstatsId: text("plume_substats_id"),
-  plumeCritValue: real("plume_crit_value"),
-  flowerId: integer("flower_id"),
-  flowerSetId: integer("flower_set_id"),
-  flowerMainStat: text("flower_main_stat"),
-  flowerSubStats: text("flower_sub_stats"),
-  flowerSubstatsId: text("flower_substats_id"),
-  flowerCritValue: real("flower_crit_value"),
-  sandsId: integer("sands_id"),
-  sandsSetId: integer("sands_set_id"),
-  sandsMainStat: text("sands_main_stat"),
-  sandsSubStats: text("sands_sub_stats"),
-  sandsSubstatsId: text("sands_substats_id"),
-  sandsCritValue: real("sands_crit_value"),
-  gobletId: integer("goblet_id"),
-  gobletSetId: integer("goblet_set_id"),
-  gobletMainStat: text("goblet_main_stat"),
-  gobletSubStats: text("goblet_sub_stats"),
-  gobletSubstatsId: text("goblet_substats_id"),
-  gobletCritValue: real("goblet_crit_value"),
-  circletId: integer("circlet_id"),
-  circletSetId: integer("circlet_set_id"),
-  circletMainStat: text("circlet_main_stat"),
-  circletSubStats: text("circlet_sub_stats"),
-  circletSubstatsId: text("circlet_substats_id"),
-  circletCritValue: real("circlet_crit_value"),
-  weaponId: integer("weapon_id").notNull(),
-  weaponLevel: integer("weapon_level").notNull(),
-  weaponPromoteLevel: integer("weapon_promote_level").notNull(),
-  weaponRefinement: integer("weapon_refinement").notNull(),
-  weaponStat: text("weapon_stat").notNull(),
-  playerId: text("player_id").references(() => players.id),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().defaultNow(),
-}, (table) => {
-  return {
-    nameIdx: index("build_critvalue_idx").on(table.critValue),
-    playerIdX: index("build_playerid_idx").on(table.playerId),
-  };
-});
+export const builds = mySchema.table(
+  "builds",
+  {
+    id: text("id")
+      .primaryKey()
+      .notNull()
+      .$defaultFn(() => createId()),
+    avatarId: integer("avatar_id").notNull(),
+    level: integer("level").notNull(),
+    ascension: integer("ascension").notNull(),
+    fetterLevel: integer("fetterLevel").notNull(),
+    constellation: integer("constellation").notNull(),
+    skillDepotId: integer("skill_depot_id").notNull(),
+    fightProps: text("fight_props").notNull(),
+    skillLevel: text("skill_level").notNull(),
+    critValue: real("crit_value").default(0).notNull(),
+    critValueArtifactsOnly: real("crit_value_artifacts_only")
+      .default(0)
+      .notNull(),
+    plumeId: integer("plume_id"),
+    plumeSetId: integer("plume_set_id"),
+    plumeMainStat: text("plume_main_stat"),
+    plumeSubStats: text("plume_sub_stats"),
+    plumeSubstatsId: text("plume_substats_id"),
+    plumeCritValue: real("plume_crit_value"),
+    flowerId: integer("flower_id"),
+    flowerSetId: integer("flower_set_id"),
+    flowerMainStat: text("flower_main_stat"),
+    flowerSubStats: text("flower_sub_stats"),
+    flowerSubstatsId: text("flower_substats_id"),
+    flowerCritValue: real("flower_crit_value"),
+    sandsId: integer("sands_id"),
+    sandsSetId: integer("sands_set_id"),
+    sandsMainStat: text("sands_main_stat"),
+    sandsSubStats: text("sands_sub_stats"),
+    sandsSubstatsId: text("sands_substats_id"),
+    sandsCritValue: real("sands_crit_value"),
+    gobletId: integer("goblet_id"),
+    gobletSetId: integer("goblet_set_id"),
+    gobletMainStat: text("goblet_main_stat"),
+    gobletSubStats: text("goblet_sub_stats"),
+    gobletSubstatsId: text("goblet_substats_id"),
+    gobletCritValue: real("goblet_crit_value"),
+    circletId: integer("circlet_id"),
+    circletSetId: integer("circlet_set_id"),
+    circletMainStat: text("circlet_main_stat"),
+    circletSubStats: text("circlet_sub_stats"),
+    circletSubstatsId: text("circlet_substats_id"),
+    circletCritValue: real("circlet_crit_value"),
+    weaponId: integer("weapon_id").notNull(),
+    weaponLevel: integer("weapon_level").notNull(),
+    weaponPromoteLevel: integer("weapon_promote_level").notNull(),
+    weaponRefinement: integer("weapon_refinement").notNull(),
+    weaponStat: text("weapon_stat").notNull(),
+    playerId: text("player_id").references(() => players.id),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (table) => {
+    return {
+      nameIdx: index("build_critvalue_idx").on(table.critValue),
+      playerIdX: index("build_playerid_idx").on(table.playerId),
+    };
+  }
+);
 
 export const buildsRelations = relations(builds, ({ one }) => ({
   player: one(players, {
@@ -115,7 +131,10 @@ export type SelectBuilds = typeof builds.$inferSelect;
 export type InsertBuilds = typeof builds.$inferInsert;
 
 export const hsrPlayers = mySchema.table("hsr_players", {
-  id: text("id").primaryKey().notNull().$defaultFn(() => createId()),
+  id: text("id")
+    .primaryKey()
+    .notNull()
+    .$defaultFn(() => createId()),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
   uuid: text("uuid").unique().notNull(),
@@ -139,73 +158,82 @@ export const hsrPlayersRelations = relations(hsrPlayers, ({ many }) => ({
   builds: many(hsrBuilds),
 }));
 
-export const hsrBuilds = mySchema.table("hsr_builds", {
-  id: text("id").primaryKey().notNull().$defaultFn(() => createId()),
-  avatarId: integer("avatar_id").notNull(),
-  level: integer("level").notNull(),
-  promotion: integer("promotion").notNull(),
-  rank: integer("rank").notNull(),
-  skillLevel: text("skill_level").notNull(),
-  critValue: real("crit_value").default(0).notNull(),
-  critValueArtifactsOnly: real("crit_value_artifacts_only").default(0).notNull(),
-  attributes: text("attributes"),
-  additions: text("additions"),
-  properties: text("properties"),
-  lightConeId: integer("light_cone_id"),
-  lightConeLevel: integer("light_cone_level"),
-  lightConePromotion: integer("light_cone_promotion"),
-  lightConeRank: integer("light_cone_rank"),
-  headRelicId: integer("head_relic_id"),
-  headRelicSetId: integer("head_relic_set_id"),
-  headRelicLevel: integer("head_relic_level"),
-  headRelicRarity: integer("head_relic_rarity"),
-  headMainStat: text("head_main_stat"),
-  headSubStats: text("head_sub_stats"),
-  headCritValue: real("head_crit_value"),
-  handsRelicId: integer("hands_relic_id"),
-  handsRelicSetId: integer("hands_relic_set_id"),
-  handsRelicLevel: integer("hands_relic_level"),
-  handsRelicRarity: integer("hands_relic_rarity"),
-  handsMainStat: text("hands_main_stat"),
-  handsSubStats: text("hands_sub_stats"),
-  handsCritValue: real("hands_crit_value"),
-  bodyRelicId: integer("body_relic_id"),
-  bodyRelicSetId: integer("body_relic_set_id"),
-  bodyRelicLevel: integer("body_relic_level"),
-  bodyRelicRarity: integer("body_relic_rarity"),
-  bodyMainStat: text("body_main_stat"),
-  bodySubStats: text("body_sub_stats"),
-  bodyCritValue: real("body_crit_value"),
-  feetRelicId: integer("feet_relic_id"),
-  feetRelicSetId: integer("feet_relic_set_id"),
-  feetRelicLevel: integer("feet_relic_level"),
-  feetRelicRarity: integer("feet_relic_rarity"),
-  feetMainStat: text("feet_main_stat"),
-  feetSubStats: text("feet_sub_stats"),
-  feetCritValue: real("feet_crit_value"),
-  planarSphereRelicId: integer("planar_sphere_relic_id"),
-  planarSphereRelicSetId: integer("planar_sphere_relic_set_id"),
-  planarSphereRelicLevel: integer("planar_sphere_relic_level"),
-  planarSphereRelicRarity: integer("planar_sphere_relic_rarity"),
-  planarSphereMainStat: text("planarSphere_main_stat"),
-  planarSphereSubStats: text("planarSphere_sub_stats"),
-  planarSphereCritValue: real("planarSphere_crit_value"),
-  linkRopeRelicId: integer("link_rope_relic_id"),
-  linkRopeRelicSetId: integer("link_rope_relic_set_id"),
-  linkRopeRelicLevel: integer("link_rope_relic_level"),
-  linkRopeRelicRarity: integer("link_rope_relic_rarity"),
-  linkRopeMainStat: text("link_rope_main_stat"),
-  linkRopeSubStats: text("link_rope_sub_stats"),
-  linkRopeCritValue: real("link_rope_crit_value"),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().defaultNow(),
-  playerId: text("player_id").references(() => hsrPlayers.id),
-}, (table) => {
-  return {
-    nameIdx: index("hsrbuild_critvalue_idx").on(table.critValue),
-    playerIdX: index("hsrbuild_playerid_idx").on(table.playerId),
-  };
-});
+export const hsrBuilds = mySchema.table(
+  "hsr_builds",
+  {
+    id: text("id")
+      .primaryKey()
+      .notNull()
+      .$defaultFn(() => createId()),
+    avatarId: integer("avatar_id").notNull(),
+    level: integer("level").notNull(),
+    promotion: integer("promotion").notNull(),
+    rank: integer("rank").notNull(),
+    skillLevel: text("skill_level").notNull(),
+    critValue: real("crit_value").default(0).notNull(),
+    critValueArtifactsOnly: real("crit_value_artifacts_only")
+      .default(0)
+      .notNull(),
+    attributes: text("attributes"),
+    additions: text("additions"),
+    properties: text("properties"),
+    lightConeId: integer("light_cone_id"),
+    lightConeLevel: integer("light_cone_level"),
+    lightConePromotion: integer("light_cone_promotion"),
+    lightConeRank: integer("light_cone_rank"),
+    headRelicId: integer("head_relic_id"),
+    headRelicSetId: integer("head_relic_set_id"),
+    headRelicLevel: integer("head_relic_level"),
+    headRelicRarity: integer("head_relic_rarity"),
+    headMainStat: text("head_main_stat"),
+    headSubStats: text("head_sub_stats"),
+    headCritValue: real("head_crit_value"),
+    handsRelicId: integer("hands_relic_id"),
+    handsRelicSetId: integer("hands_relic_set_id"),
+    handsRelicLevel: integer("hands_relic_level"),
+    handsRelicRarity: integer("hands_relic_rarity"),
+    handsMainStat: text("hands_main_stat"),
+    handsSubStats: text("hands_sub_stats"),
+    handsCritValue: real("hands_crit_value"),
+    bodyRelicId: integer("body_relic_id"),
+    bodyRelicSetId: integer("body_relic_set_id"),
+    bodyRelicLevel: integer("body_relic_level"),
+    bodyRelicRarity: integer("body_relic_rarity"),
+    bodyMainStat: text("body_main_stat"),
+    bodySubStats: text("body_sub_stats"),
+    bodyCritValue: real("body_crit_value"),
+    feetRelicId: integer("feet_relic_id"),
+    feetRelicSetId: integer("feet_relic_set_id"),
+    feetRelicLevel: integer("feet_relic_level"),
+    feetRelicRarity: integer("feet_relic_rarity"),
+    feetMainStat: text("feet_main_stat"),
+    feetSubStats: text("feet_sub_stats"),
+    feetCritValue: real("feet_crit_value"),
+    planarSphereRelicId: integer("planar_sphere_relic_id"),
+    planarSphereRelicSetId: integer("planar_sphere_relic_set_id"),
+    planarSphereRelicLevel: integer("planar_sphere_relic_level"),
+    planarSphereRelicRarity: integer("planar_sphere_relic_rarity"),
+    planarSphereMainStat: text("planarSphere_main_stat"),
+    planarSphereSubStats: text("planarSphere_sub_stats"),
+    planarSphereCritValue: real("planarSphere_crit_value"),
+    linkRopeRelicId: integer("link_rope_relic_id"),
+    linkRopeRelicSetId: integer("link_rope_relic_set_id"),
+    linkRopeRelicLevel: integer("link_rope_relic_level"),
+    linkRopeRelicRarity: integer("link_rope_relic_rarity"),
+    linkRopeMainStat: text("link_rope_main_stat"),
+    linkRopeSubStats: text("link_rope_sub_stats"),
+    linkRopeCritValue: real("link_rope_crit_value"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+    playerId: text("player_id").references(() => hsrPlayers.id),
+  },
+  (table) => {
+    return {
+      nameIdx: index("hsrbuild_critvalue_idx").on(table.critValue),
+      playerIdX: index("hsrbuild_playerid_idx").on(table.playerId),
+    };
+  }
+);
 export type SelectHSRBuilds = typeof hsrBuilds.$inferSelect;
 export type InsertHSRBuilds = typeof hsrBuilds.$inferInsert;
 
@@ -220,16 +248,14 @@ export const users = mySchema.table("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name"),
   email: text("email").notNull(),
-  emailVerified: timestamp("emailVerified").notNull().defaultNow(),
+  emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
-  globalName: text("globalName"),
-  role: text("role").default("user"),
 });
 
 export const accounts = mySchema.table(
   "account",
   {
-    userId: text("user_id")
+    userId: text("userId")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     type: text("type").$type<AdapterAccount["type"]>().notNull(),
@@ -255,7 +281,7 @@ export const sessions = mySchema.table("session", {
   userId: text("userId")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  expires: timestamp("expires").notNull().defaultNow(),
+  expires: timestamp("expires", { mode: "date" }).notNull(),
 });
 
 export const verificationTokens = mySchema.table(

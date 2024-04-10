@@ -72,15 +72,15 @@ export default async function GenshinCharacters({ params }: Props) {
 
   const teamsByName: Record<string, TeamData[]> = Object.entries(teams).reduce(
     (map, [id, characterTeams]) => {
-      if (!characters[id]?.name || !characterTeams[0]) return map;
+      if (!characters[id]?.name || !characterTeams.teams[0]) return map;
 
       if (!map[characters[id].name]) {
         map[characters[id].name] = [];
       }
 
       map[characters[id].name].push({
-        name: characterTeams[0].name,
-        characters: characterTeams[0].characters.map((c) => ({
+        name: characterTeams.teams[0].name,
+        characters: characterTeams.teams[0].characters.map((c) => ({
           id: c.id,
           name: characters[c.id]?.name || "",
           role: c.role,

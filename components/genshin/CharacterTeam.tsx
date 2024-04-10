@@ -38,7 +38,7 @@ function CharacterTeam({ team, index }: Props) {
         {team.characters.map((character) => (
           <Link
             key={character.id}
-            href={`/${locale}/character/${character.id}`}
+            href={`/${locale}/teams/${character.id}`}
             className="group flex flex-col items-center text-center lg:mr-8"
           >
             <div className="relative">

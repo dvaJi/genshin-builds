@@ -34,7 +34,7 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
             </div>
             <div className="flex justify-center text-center">
               <Link
-                href={`/${locale}/character/${block.id}`}
+                href={`/${locale}/teams/${block.id}`}
                 className="flex flex-col"
               >
                 <div className="group relative overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500">

@@ -14,11 +14,13 @@ import Stars from "@components/hsr/Stars";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
+import { i18n } from "@i18n-config";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
 import { getStarRailBuild } from "@lib/localData";
 import { getHsrId } from "@utils/helpers";
+import { localeToHSRLang } from "@utils/locale-to-lang";
 import { renderDescription } from "@utils/template-replacement";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -27,11 +29,27 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
-export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  return [];
+  const routes: { lang: string; id: string }[] = [];
+
+  for await (const lang of i18n.locales) {
+    const _characters = await getHSRData<Character[]>({
+      resource: "characters",
+      language: localeToHSRLang(lang),
+      select: ["id"],
+    });
+
+    routes.push(
+      ..._characters.map((c) => ({
+        lang,
+        id: c.id,
+      }))
+    );
+  }
+
+  return routes;
 }
 
 interface Props {

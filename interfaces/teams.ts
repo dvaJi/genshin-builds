@@ -22,4 +22,4 @@ export type TeamData = {
   characters: CharacterTeam[];
 };
 
-export type Teams = Record<string, TeamData[]>;
+export type Teams = Record<string, { teams: TeamData[]; overview: string }>;

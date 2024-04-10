@@ -1,7 +1,7 @@
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import clsx from "clsx";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
@@ -18,6 +18,7 @@ import ElementIcon from "@components/genshin/ElementIcon";
 
 import FrstAds from "@components/ui/FrstAds";
 import useTranslations from "@hooks/use-translations";
+import { i18n } from "@i18n-config";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
@@ -27,6 +28,7 @@ import {
   getRemoteData,
 } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
+import { localeToLang } from "@utils/locale-to-lang";
 import {
   calculateTotalAscensionMaterials,
   calculateTotalTalentMaterials,
@@ -35,13 +37,37 @@ import { Build, MostUsedBuild } from "interfaces/build";
 import { Beta } from "interfaces/genshin/beta";
 import { TeamData } from "interfaces/teams";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
+const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 
 interface Props {
   params: {
     id: string;
     lang: string;
   };
+}
+
+export const dynamic = "force-static";
+export const revalidate = 43200;
+
+export async function generateStaticParams() {
+  const routes: { lang: string; id: string }[] = [];
+
+  for await (const lang of i18n.locales) {
+    const _characters = await getGenshinData<Character[]>({
+      resource: "characters",
+      language: localeToLang(lang),
+      select: ["id"],
+    });
+
+    routes.push(
+      ..._characters.map((c) => ({
+        lang,
+        id: c.id,
+      }))
+    );
+  }
+
+  return routes;
 }
 
 export async function generateMetadata({
@@ -222,8 +248,8 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
 
   const recommendedTeams: TeamData[] =
-    require(`../../../../../_content/genshin/data/teams.json`)[character.id] ||
-    [];
+    require(`../../../../../_content/genshin/data/teams.json`)[character.id]
+      ?.teams || [];
 
   const jsonLd: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",

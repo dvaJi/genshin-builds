@@ -50,7 +50,8 @@ export const authOptions: NextAuthOptions = {
         await db
           .update(users)
           .set({
-            globalName: (params.profile as DiscordProfile).global_name,
+            // globalName: (params.profile as DiscordProfile).global_name,
+            // name: (params.profile as DiscordProfile).global_name,
             image: (params.profile as DiscordProfile).image_url,
           })
           .where(eq(users.name, user.userId));

@@ -1,151 +1,150 @@
 // Most of the code is taken from: https://github.com/nextauthjs/next-auth/pull/7165
 import { createId } from "@paralleldrive/cuid2";
 import { and, eq } from "drizzle-orm";
-import type { Adapter, VerificationToken } from "next-auth/adapters";
-import { db } from "./index";
+import type { Adapter } from "next-auth/adapters";
+import type { db } from "./index";
 import { accounts, sessions, users, verificationTokens } from "./schema";
 
-export function DrizzleAdapter(database: typeof db): Adapter {
+export function DrizzleAdapter(client: typeof db): Adapter {
   return {
-    createUser: (data) => {
-      return database
+    async createUser(data) {
+      return await client
         .insert(users)
         .values({ ...data, id: createId() })
         .returning()
-        .get();
+        .then((res) => res[0] ?? null);
     },
-    getUser: async (id) => {
-      const select =
-        (await database.select().from(users).where(eq(users.id, id)).get()) ??
-        null;
-      return select;
+    async getUser(data) {
+      return await client
+        .select()
+        .from(users)
+        .where(eq(users.id, data))
+        .then((res) => res[0] ?? null);
     },
-    getUserByEmail: async (email) => {
-      const select =
-        (await database
-          .select()
-          .from(users)
-          .where(eq(users.email, email))
-          .get()) ?? null;
+    async getUserByEmail(data) {
+      return await client
+        .select()
+        .from(users)
+        .where(eq(users.email, data))
+        .then((res) => res[0] ?? null);
+    },
+    async createSession(data) {
+      return await client
+        .insert(sessions)
+        .values(data)
+        .returning()
+        .then((res) => res[0]);
+    },
+    async getSessionAndUser(data) {
+      return await client
+        .select({
+          session: sessions,
+          user: users,
+        })
+        .from(sessions)
+        .where(eq(sessions.sessionToken, data))
+        .innerJoin(users, eq(users.id, sessions.userId))
+        .then((res) => res[0] ?? null);
+    },
+    async updateUser(data) {
+      if (!data.id) {
+        throw new Error("No user id.");
+      }
 
-      return select;
-    },
-    createSession: (session) => {
-      return database.insert(sessions).values(session).returning().get();
-    },
-    getSessionAndUser: async (sessionToken) => {
-      const select =
-        (await database
-          .select({
-            session: sessions,
-            user: users,
-          })
-          .from(sessions)
-          .where(eq(sessions.sessionToken, sessionToken))
-          .innerJoin(users, eq(users.id, sessions.userId))
-          .get()) ?? null;
-      return select;
-    },
-    updateUser: (user) => {
-      return database
+      return await client
         .update(users)
-        .set(user)
-        .where(eq(users.id, user.id))
+        .set(data)
+        .where(eq(users.id, data.id))
         .returning()
-        .get();
+        .then((res) => res[0]);
     },
-    updateSession: (session) => {
-      return database
+    async updateSession(data) {
+      return await client
         .update(sessions)
-        .set(session)
-        .where(eq(sessions.sessionToken, session.sessionToken))
+        .set(data)
+        .where(eq(sessions.sessionToken, data.sessionToken))
         .returning()
-        .get();
+        .then((res) => res[0]);
     },
-    linkAccount: async (rawAccount) => {
-      await database.insert(accounts).values(rawAccount).returning().get();
-
-      // const account = {
-      // 	...updatedAccount,
-      // 	access_token: updatedAccount.access_token ?? undefined,
-      // 	token_type: updatedAccount.token_type ?? undefined,
-      // 	id_token: updatedAccount.id_token ?? undefined,
-      // 	refresh_token: updatedAccount.refresh_token ?? undefined,
-      // 	scope: updatedAccount.scope ?? undefined,
-      // 	expires_at: updatedAccount.expires_at ?? undefined,
-      // 	session_state: updatedAccount.session_state ?? undefined,
-      // };
-
-      return;
+    async linkAccount(rawAccount) {
+      await client.insert(accounts).values(rawAccount);
     },
-    getUserByAccount: async (account) => {
-      const select =
-        (await database
-          .select({
-            id: users.id,
-            email: users.email,
-            emailVerified: users.emailVerified,
-            image: users.image,
-            name: users.name,
-          })
-          .from(users)
-          .innerJoin(
-            accounts,
+    async getUserByAccount(account) {
+      const dbAccount =
+        (await client
+          .select()
+          .from(accounts)
+          .where(
             and(
               eq(accounts.providerAccountId, account.providerAccountId),
               eq(accounts.provider, account.provider)
             )
           )
-          .get()) ?? null;
-      return select;
+          .leftJoin(users, eq(accounts.userId, users.id))
+          .then((res) => res[0])) ?? null;
+
+      return dbAccount?.user ?? null;
     },
-    deleteSession: (sessionToken) => {
-      return (
-        database
-          .delete(sessions)
-          .where(eq(sessions.sessionToken, sessionToken))
-          .returning()
-          .get() ?? null
-      );
-    },
-    createVerificationToken: (verificationToken) => {
-      return database
-        .insert(verificationTokens)
-        .values(verificationToken)
+    async deleteSession(sessionToken) {
+      const session = await client
+        .delete(sessions)
+        .where(eq(sessions.sessionToken, sessionToken))
         .returning()
-        .get();
+        .then((res) => res[0] ?? null);
+
+      return session;
     },
-    useVerificationToken: async (verificationToken) => {
+    async createVerificationToken(token) {
+      return await client
+        .insert(verificationTokens)
+        .values(token)
+        .returning()
+        .then((res) => res[0]);
+    },
+    async useVerificationToken(token) {
       try {
-        return (database
+        return await client
           .delete(verificationTokens)
           .where(
             and(
-              eq(verificationTokens.identifier, verificationToken.identifier),
-              eq(verificationTokens.token, verificationToken.token)
+              eq(verificationTokens.identifier, token.identifier),
+              eq(verificationTokens.token, token.token)
             )
           )
           .returning()
-          .get() ?? null) as Promise<VerificationToken | null>;
-      } catch {
+          .then((res) => res[0] ?? null);
+      } catch (err) {
         throw new Error("No verification token found.");
       }
     },
-    deleteUser: (id) => {
-      return database.delete(users).where(eq(users.id, id)).returning().get();
+    async deleteUser(id) {
+      await client
+        .delete(users)
+        .where(eq(users.id, id))
+        .returning()
+        .then((res) => res[0] ?? null);
     },
-    unlinkAccount: (account) => {
-      database
+    async unlinkAccount(account) {
+      await client
         .delete(accounts)
         .where(
           and(
             eq(accounts.providerAccountId, account.providerAccountId),
             eq(accounts.provider, account.provider)
           )
-        )
-        .run();
+        );
 
-      return undefined;
+      // return { provider, type, providerAccountId, userId };
     },
   };
+}
+
+type NonNullableProps<T> = {
+  [P in keyof T]: null extends T[P] ? never : P;
+}[keyof T];
+
+export function stripUndefined<T>(obj: T): Pick<T, NonNullableProps<T>> {
+  const result = {} as T;
+  for (const key in obj) if (obj[key] !== undefined) result[key] = obj[key];
+  return result;
 }
