@@ -7,7 +7,11 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin"],
+        disallow: [
+          "/admin",
+          // Disallow query parameters in tcg/deck-builder?code=
+          "*/tcg/deck-builder?code=*",
+        ],
       },
     ],
   },
