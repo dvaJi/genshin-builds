@@ -106,10 +106,6 @@ export default async function GenshinCharacterTeams({ params }: Props) {
     "teams"
   );
 
-  const teams = require(
-    `../../../../../_content/genshin/data/teams.json`
-  ) as Teams;
-
   const characters = await getGenshinData<Record<string, Character>>({
     resource: "characters",
     language: langData,
@@ -120,6 +116,16 @@ export default async function GenshinCharacterTeams({ params }: Props) {
 
   if (!character) {
     return redirect(`/${params.lang}/teams`);
+  }
+
+  const teams = require(
+    `../../../../../_content/genshin/data/teams.json`
+  ) as Teams;
+  const characterTeams = teams[params.character];
+
+  // No teams for this character, redirect to the character page instead.
+  if (!characterTeams) {
+    return redirect(`/${params.lang}/character/${params.character}`);
   }
 
   const weaponsMap = await getGenshinData<Record<string, Weapon>>({
@@ -135,8 +141,6 @@ export default async function GenshinCharacterTeams({ params }: Props) {
     select: ["id", "name", "two_pc", "four_pc"],
     asMap: true,
   });
-
-  const characterTeams = teams[params.character];
 
   return (
     <div className="relative mx-auto max-w-screen-md">
