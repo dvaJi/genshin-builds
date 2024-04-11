@@ -8,6 +8,7 @@ import { genPageMetadata } from "@app/seo";
 
 import ElementIcon from "@components/genshin/ElementIcon";
 import Button from "@components/ui/Button";
+import FrstAds from "@components/ui/FrstAds";
 import useTranslations from "@hooks/use-translations";
 import type { Artifact, Beta, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -21,9 +22,6 @@ import { TeamData, Teams } from "interfaces/teams";
 import { Fragment } from "react";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 type Props = {
   params: { lang: string; character: string };
