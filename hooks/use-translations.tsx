@@ -29,7 +29,7 @@ const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
   return message as any;
 };
 
-const getLanguage = cache((locale: string, game: string) => {
+const getLanguage = (locale: string, game: string) => {
   if (game === "hsr") {
     return localesAvailables.hsr.includes(locale) ? locale : "en";
   }
@@ -39,9 +39,9 @@ const getLanguage = cache((locale: string, game: string) => {
   }
 
   return locale || "en";
-});
+};
 
-const getLangData = cache((locale: string, game: string) => {
+const getLangData = (locale: string, game: string) => {
   if (game === "hsr") {
     return localeToHSRLang(locale || "en");
   }
@@ -51,7 +51,7 @@ const getLangData = cache((locale: string, game: string) => {
   }
 
   return locale || "en";
-});
+};
 
 async function getTranslations(
   locale: string,
@@ -60,10 +60,10 @@ async function getTranslations(
 ) {
   const language = getLanguage(locale, game);
   const langData = getLangData(locale, game);
-  const config = await getConfig(language, game);
+  const allMessages = await getMessages(language, game);
 
-  const message = resolvePath(config.messages, namespace, language);
-  const common = config.common;
+  const message = resolvePath(allMessages.messages, namespace, language);
+  const common = allMessages.common;
 
   const format = (input: InputType, values?: Record<string, string>) => {
     if (typeof input === "string") {
@@ -95,7 +95,7 @@ async function getTranslations(
 
   return {
     t: format,
-    messages: config.messages,
+    messages: allMessages.messages,
     locale,
     language,
     langData,
@@ -104,47 +104,12 @@ async function getTranslations(
   };
 }
 
-// Make sure `now` is consistent across the request in case none was configured
-const getDefaultNow = cache(() => new Date());
-
-// This is automatically inherited by `NextIntlClientProvider` if
-// the component is rendered from a Server Component
-const getDefaultTimeZone = cache(
-  () => Intl.DateTimeFormat().resolvedOptions().timeZone
-);
-
-const receiveRuntimeConfig = cache(
-  async (locale: string, game: string, getConfig: typeof requestConfig) => {
-    let result = getConfig?.({ locale, game });
-    if (result instanceof Promise) {
-      result = await result;
-    }
-    return {
-      ...result,
-      // now: result?.now || getDefaultNow(),
-      // timeZone: result?.timeZone || getDefaultTimeZone(),
-      now: getDefaultNow(),
-      timeZone: getDefaultTimeZone(),
-    };
-  }
-);
-
-async function requestConfig({
-  locale,
-  game,
-}: {
-  locale: string;
-  game: string;
-}) {
+const getMessages = cache(async (locale: string, game: string) => {
   return {
     messages: (await import(`../locales/${game}/${locale}.json`)).default,
-    common: (await import(`../_content/${game}/data/common.json`))[locale],
-  } as any;
-}
-
-const getConfig = cache(async (locale: string, game: string) => {
-  const runtimeConfig = await receiveRuntimeConfig(locale, game, requestConfig);
-  return { ...runtimeConfig, locale };
+    common:
+      (await import(`../_content/${game}/data/common.json`))[locale] || {},
+  };
 });
 
 export default cache(getTranslations);

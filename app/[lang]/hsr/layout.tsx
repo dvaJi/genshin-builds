@@ -6,7 +6,6 @@ import IntlProvider from "@components/IntlProvider";
 import Footer from "./footer";
 import Header from "./header";
 
-import useHook from "@hooks/use-hook";
 import useTranslations from "@hooks/use-translations";
 import { HSR_GA_TRACKING_ID } from "@lib/gtag";
 
@@ -25,11 +24,8 @@ type Props = {
   params: { lang: string };
 };
 
-export default function HSRLayout({ children, params }: Props) {
-  const { messages } = useHook(
-    "useTranslations",
-    useTranslations(params.lang, "hsr", "layout")
-  );
+export default async function HSRLayout({ children, params }: Props) {
+  const { messages } = await useTranslations(params.lang, "hsr", "layout");
 
   return (
     <IntlProvider locale={params.lang} messages={messages}>

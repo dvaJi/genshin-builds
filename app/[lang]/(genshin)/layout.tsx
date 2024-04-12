@@ -3,7 +3,6 @@ import IntlProvider from "@components/IntlProvider";
 import Footer from "./footer";
 import Header from "./header";
 
-import useHook from "@hooks/use-hook";
 import useTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
@@ -14,11 +13,13 @@ type Props = {
   params: { lang: string };
 };
 
-export default function GenshinLayout({ children, params }: Props) {
-  const { messages, common } = useHook(
-    "useTranslations",
-    useTranslations(params.lang, "genshin", "layout")
+export default async function GenshinLayout({ children, params }: Props) {
+  const { messages, common } = await useTranslations(
+    params.lang,
+    "genshin",
+    "layout"
   );
+  console.log("ITS CALLED!");
 
   return (
     <IntlProvider locale={params.lang} messages={messages} common={common}>
