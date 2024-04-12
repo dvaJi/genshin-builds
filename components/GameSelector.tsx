@@ -3,11 +3,12 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { useCallback, useState } from "react";
+import { GAME, GameProps } from "utils/games";
 
 import { useClickOutside } from "@hooks/use-clickoutside";
 import useIntl from "@hooks/use-intl";
-import { getImg } from "@lib/imgUrl";
-import { GAME, GameProps } from "utils/games";
+
+import Image from "./genshin/Image";
 
 type Props = {
   currentGame: GameProps;
@@ -21,7 +22,7 @@ function GameSelector({ currentGame, className, buttonClassName }: Props) {
   const close = useCallback(() => setIsOpen(false), []);
   const contentRef = useClickOutside<HTMLDivElement>(
     isOpen ? close : undefined,
-    []
+    [],
   );
 
   return (
@@ -34,16 +35,13 @@ function GameSelector({ currentGame, className, buttonClassName }: Props) {
         className={clsx(
           "flex h-8 w-full items-center rounded px-2 backdrop-blur-sm md:w-10 lg:w-44 xl:w-48",
           isOpen ? "bg-zinc-700/50" : "bg-zinc-700/30",
-          buttonClassName
+          buttonClassName,
         )}
         onClick={() => setIsOpen((o) => !o)}
       >
-        <img
+        <Image
           className="mr-3 h-6 w-6 rounded"
-          src={getImg("genshin", `/games/${currentGame.slug}.webp`, {
-            height: 32,
-            width: 32,
-          })}
+          src={`/games/${currentGame.slug}.webp`}
           alt={currentGame.name}
           width={32}
           height={32}
@@ -58,23 +56,24 @@ function GameSelector({ currentGame, className, buttonClassName }: Props) {
         aria-hidden={!isOpen}
         className={clsx(
           "top-13 absolute w-full rounded-b bg-zinc-700/90 shadow-md backdrop-blur-xl",
-          isOpen ? "block" : "hidden"
+          isOpen ? "block" : "hidden",
         )}
       >
         {Object.values(GAME).map((game) => (
-          <Link key={game.name} href={`/${locale}${game.path}`}>
+          <Link
+            key={game.name}
+            href={`/${locale}${game.path}`}
+            prefetch={false}
+          >
             <button
               type="button"
               tabIndex={0}
               role="menuitem"
               className="flex h-full w-full items-center px-2 py-2 text-left text-sm hover:bg-zinc-500"
             >
-              <img
+              <Image
                 className="mr-3 h-6 w-6 rounded"
-                src={getImg("genshin", `/games/${game.slug}.webp`, {
-                  height: 32,
-                  width: 32,
-                })}
+                src={`/games/${game.slug}.webp`}
                 alt={game.name}
                 width={32}
                 height={32}

@@ -1,9 +1,10 @@
 "use client";
 
-import useIntl from "@hooks/use-intl";
 import clsx from "clsx";
 import Link from "next/link";
 import { useState } from "react";
+
+import useIntl from "@hooks/use-intl";
 
 type Route = {
   id: string;
@@ -44,6 +45,7 @@ function NavItem({ route, position, onClick }: Props) {
         <Link
           className="ml-4 mt-4 block font-semibold text-slate-300 hover:text-slate-50 md:ml-0 md:mt-0 md:px-3 md:py-2"
           href={`/${locale}${route.href}`}
+          prefetch={false}
         >
           {t({ id: route.id, defaultMessage: route.name })}
           {route.isNew && (
@@ -58,7 +60,7 @@ function NavItem({ route, position, onClick }: Props) {
           <span
             className={clsx(
               "ml-4 mt-6 block cursor-default text-xs font-semibold uppercase text-slate-500 md:ml-0 md:mr-1 md:mt-0 md:inline-block md:px-3 md:py-2 md:text-sm md:normal-case",
-              isHovering ? "md:text-white" : "md:text-slate-300"
+              isHovering ? "md:text-white" : "md:text-slate-300",
             )}
           >
             {route.name}
@@ -79,7 +81,7 @@ function NavItem({ route, position, onClick }: Props) {
                 "md:right-0": position > 0.7,
                 "-md:left-10": position > 0.5 && position <= 0.7,
                 "-md:left-0": position <= 0.5,
-              }
+              },
             )}
           >
             <div className="mt-2 max-h-[calc(100vh-80px)] min-w-[140px] overflow-y-auto overflow-x-hidden md:mt-0 md:w-[650px] md:max-w-[calc(100vw-600px)] md:rounded-sm md:border md:border-vulcan-800 md:bg-vulcan-800 md:shadow-xl xl:max-w-[calc(100vw-250px)]">
@@ -90,8 +92,9 @@ function NavItem({ route, position, onClick }: Props) {
                       key={child.id}
                       className="mb-2 rounded-sm text-sm text-slate-200 transition-colors hover:bg-vulcan-900 md:p-4"
                       href={`/${locale}${child.href}`}
+                      prefetch={false}
                     >
-                      <div className="md:font-semibold capitalize">
+                      <div className="capitalize md:font-semibold">
                         {t({ id: child.id, defaultMessage: child.name })}
                       </div>
                       <p className="hidden text-xs text-slate-400 md:block">
