@@ -40,6 +40,7 @@ function CharacterTeam({ team, index }: Props) {
             key={character.id}
             href={`/${locale}/teams/${character.id}`}
             className="group flex flex-col items-center text-center lg:mr-8"
+            prefetch={false}
           >
             <div className="relative">
               <img
