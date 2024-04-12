@@ -19,7 +19,6 @@ export default async function GenshinLayout({ children, params }: Props) {
     "genshin",
     "layout"
   );
-  console.log("ITS CALLED!");
 
   return (
     <IntlProvider locale={params.lang} messages={messages} common={common}>
