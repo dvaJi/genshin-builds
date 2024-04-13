@@ -1,14 +1,13 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import useIntl from "@hooks/use-intl";
+import { getUrl } from "@lib/imgUrl";
 
 import SimpleRarityBox from "../SimpleRarityBox";
 import StarRarity from "../StarRarity";
-
-// import { FoodItem } from "@pages/food";
-import useIntl from "@hooks/use-intl";
-import { getUrl } from "@lib/imgUrl";
+import Image from "./Image";
 
 interface FoodCardProps {
   item: any;
@@ -22,11 +21,11 @@ const FoodCard = ({ item }: FoodCardProps) => {
         <div
           className={clsx(
             "relative flex flex-none items-center justify-center rounded rounded-br-none rounded-tr-none bg-cover",
-            `genshin-bg-rarity-${item.rarity}`
+            `genshin-bg-rarity-${item.rarity}`,
           )}
         >
-          <LazyLoadImage
-            src={getUrl(`/food/${item.id}_${item.type}.png`, 100, 100)}
+          <Image
+            src={`/food/${item.id}_${item.type}.png`}
             height={100}
             width={100}
             alt={item.name}
@@ -57,7 +56,7 @@ const FoodCard = ({ item }: FoodCardProps) => {
                     img={getUrl(
                       `/characters/${item.character.id}/image.png`,
                       48,
-                      48
+                      48,
                     )}
                     alt={item.character.name}
                     rarity={0}

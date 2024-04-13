@@ -1,5 +1,7 @@
-import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import clsx from "clsx";
+import { Build, MostUsedBuild } from "interfaces/build";
+import { Beta } from "interfaces/genshin/beta";
+import { TeamData } from "interfaces/teams";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -15,10 +17,11 @@ import CharacterStats from "@components/genshin/CharacterStats";
 import CharacterTalentMaterials from "@components/genshin/CharacterTalentMaterials";
 import CharacterTeam from "@components/genshin/CharacterTeam";
 import ElementIcon from "@components/genshin/ElementIcon";
-
+import Image from "@components/genshin/Image";
 import FrstAds from "@components/ui/FrstAds";
 import useTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
@@ -33,9 +36,6 @@ import {
   calculateTotalAscensionMaterials,
   calculateTotalTalentMaterials,
 } from "@utils/totals";
-import { Build, MostUsedBuild } from "interfaces/build";
-import { Beta } from "interfaces/genshin/beta";
-import { TeamData } from "interfaces/teams";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 
@@ -63,7 +63,7 @@ export async function generateStaticParams() {
       ..._characters.map((c) => ({
         lang,
         id: c.id,
-      }))
+      })),
     );
   }
 
@@ -77,7 +77,7 @@ export async function generateMetadata({
   const { t, langData, locale } = await useTranslations(
     params.lang,
     "genshin",
-    "character"
+    "character",
   );
 
   const beta = await getData<Beta>("genshin", "beta");
@@ -89,7 +89,7 @@ export async function generateMetadata({
     },
   });
   const _betaCharacter = beta[locale].characters.find(
-    (c: any) => c.id === params.id
+    (c: any) => c.id === params.id,
   );
 
   const character = _character || _betaCharacter;
@@ -123,7 +123,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const { t, langData, locale, common, dict } = await useTranslations(
     params.lang,
     "genshin",
-    "character"
+    "character",
   );
   const beta = await getData<Beta>("genshin", "beta");
   const _character = await getGenshinData<Character>({
@@ -134,7 +134,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     },
   });
   const _betaCharacter = beta[locale].characters.find(
-    (c: any) => c.id === params.id
+    (c: any) => c.id === params.id,
   );
 
   const character:
@@ -170,12 +170,12 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const mubuild: MostUsedBuild = (
     await getRemoteData<Record<string, MostUsedBuild>>(
       "genshin",
-      "mostused-builds"
+      "mostused-builds",
     )
   )[character.id];
 
   const officialbuild: MostUsedBuild = await getCharacterOfficialBuild(
-    character.id
+    character.id,
   );
 
   if (buildsOld) {
@@ -188,12 +188,12 @@ export default async function GenshinCharacterPage({ params }: Props) {
           arr.push(...set);
 
           return arr;
-        }, [])
+        }, []),
       );
       const newBuild = {
         ...build,
         stats_priority: build.stats_priority.map((s) =>
-          common[s] ? common[s] : s
+          common[s] ? common[s] : s,
         ),
         stats: {
           circlet:
@@ -243,7 +243,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   }
 
   const talentsTotal = calculateTotalTalentMaterials(
-    character.talent_materials
+    character.talent_materials,
   );
   const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
 
@@ -293,13 +293,15 @@ export default async function GenshinCharacterPage({ params }: Props) {
           <div
             className={clsx(
               "relative mr-2 flex-none rounded-xl border-2 border-gray-900/80",
-              `genshin-bg-rarity-${character.rarity}`
+              `genshin-bg-rarity-${character.rarity}`,
             )}
           >
-            <img
+            <Image
               className="h-40 w-40"
-              src={getUrl(`/characters/${character.id}/image.png`, 160, 160)}
+              src={`/characters/${character.id}/image.png`}
               alt={character.name}
+              width={160}
+              height={160}
             />
           </div>
           <div className="flex flex-grow flex-col">
@@ -381,7 +383,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
           character.skills.length > 3
             ? "lg:grid-cols-3 xl:grid-cols-4"
-            : "lg:grid-cols-3"
+            : "lg:grid-cols-3",
         )}
       >
         {character.skills.map((skill) => (

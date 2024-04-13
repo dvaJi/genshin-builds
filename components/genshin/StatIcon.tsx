@@ -1,6 +1,6 @@
-import { getUrl } from "@lib/imgUrl";
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import Image from "./Image";
 
 interface Props {
   type: string;
@@ -21,12 +21,8 @@ const StatIcon = ({ type, width = 64, height = 64, className }: Props) => {
   }
 
   return (
-    <LazyLoadImage
-      src={getUrl(
-        `/stats/${iconName}.png`,
-        Math.round(height * 1.05),
-        Math.round(width * 1.05)
-      )}
+    <Image
+      src={`/stats/${iconName}.png`}
       alt={type}
       className={className}
       width={width}

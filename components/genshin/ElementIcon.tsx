@@ -1,8 +1,8 @@
 "use client";
 
-import { getUrl } from "@lib/imgUrl";
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import Image from "./Image";
 
 interface ElementIconProps {
   type: string;
@@ -18,8 +18,8 @@ function ElementIcon({
   className,
 }: ElementIconProps) {
   return (
-    <LazyLoadImage
-      src={getUrl(`/elements/${type}.png`, height, width)}
+    <Image
+      src={`/elements/${type}.png`}
       alt={type}
       className={className}
       width={width}

@@ -1,9 +1,11 @@
 import clsx from "clsx";
-import { getUrl } from "@lib/imgUrl";
-import type { AchievementCategory } from "@interfaces/genshin";
 import { useMemo } from "react";
-import { AchievementsCompleted } from "@state/achievements";
+
+import type { AchievementCategory } from "@interfaces/genshin";
 import { trackClick } from "@lib/gtag";
+import { AchievementsCompleted } from "@state/achievements";
+
+import Image from "./Image";
 
 type Props = {
   categorySelected: AchievementCategory;
@@ -20,19 +22,19 @@ const AchievementsCategories = ({
 }: Props) => {
   const numFormat = useMemo(
     () => Intl.NumberFormat(undefined, { notation: "compact" }),
-    []
+    [],
   );
   return (
-    <div className="h-[300px] overflow-y-auto pl-2 md:pl-0 lg:h-[91vh] w-full lg:w-[260px] lg:sticky flex-shrink-0 text-white lg:overflow-y-scroll custom-scroll flex flex-col pb-4 pr-2 gap-2">
+    <div className="custom-scroll flex h-[300px] w-full flex-shrink-0 flex-col gap-2 overflow-y-auto pb-4 pl-2 pr-2 text-white md:pl-0 lg:sticky lg:h-[91vh] lg:w-[260px] lg:overflow-y-scroll">
       {categories
         .sort((a, b) => a.order - b.order)
         .map((cat) => (
           <div
             className={clsx(
-              "rounded-xl p-2 cursor-pointer flex flex-col border-2 border-white hover:border-vulcan-500 focus:border-vulcan-500 hover:bg-vulcan-600 transition-all",
+              "flex cursor-pointer flex-col rounded-xl border-2 border-white p-2 transition-all hover:border-vulcan-500 hover:bg-vulcan-600 focus:border-vulcan-500",
               cat.id === categorySelected.id
-                ? "bg-vulcan-600 border-opacity-30"
-                : "bg-vulcan-700 border-opacity-0"
+                ? "border-opacity-30 bg-vulcan-600"
+                : "border-opacity-0 bg-vulcan-700",
             )}
             key={cat.id}
             onClick={() => {
@@ -47,16 +49,18 @@ const AchievementsCategories = ({
                 {cat.achievements.length} (
                 {numFormat.format(
                   ((achievementsDone[cat.id]?.length ?? 0) * 100) /
-                    cat.achievements.length
+                    cat.achievements.length,
                 )}
                 %)
               </p>{" "}
               <p className="text-gray-400">
                 {cat.achievements.reduce((acc, val) => acc + val.reward, 0)}
               </p>{" "}
-              <img
-                src={getUrl("/primogem.png", 24, 24)}
-                className="w-6 h-6 ml-1"
+              <Image
+                src="/primogem.png"
+                className="ml-1 h-6 w-6"
+                width={24}
+                height={24}
                 alt="primogem"
               />
             </div>

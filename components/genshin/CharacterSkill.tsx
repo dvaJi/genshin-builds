@@ -4,11 +4,10 @@ import clsx from "clsx";
 import { memo, useMemo, useState } from "react";
 
 import { useToggle } from "@hooks/use-toggle";
+import type { Skill } from "@interfaces/genshin";
 
 import Crement from "../Crement";
-
-import type { Skill } from "@interfaces/genshin";
-import { getUrlLQ } from "@lib/imgUrl";
+import Image from "./Image";
 
 type Props = {
   characterId: string;
@@ -30,7 +29,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
       <div
         className={clsx(
           "card relative flex w-11/12 flex-col justify-start overflow-hidden p-0 lg:w-full",
-          isOpen ? "h-auto" : "h-30 lg:h-60"
+          isOpen ? "h-auto" : "h-30 lg:h-60",
         )}
       >
         <div className="relative flex h-60 flex-col">
@@ -39,33 +38,33 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             className="absolute bottom-0 left-0 right-0 top-0 z-0 flex cursor-pointer items-start justify-center overflow-hidden"
           >
             <div className="absolute bottom-10 cursor-pointer">
-              <img
+              <Image
                 className="select-none opacity-20"
-                src={getUrlLQ(
-                  `/characters/${characterId}/${skill.id.replace(
-                    "normal_attack_",
-                    ""
-                  )}.png`
-                )}
+                src={`/characters/${characterId}/${skill.id.replace(
+                  "normal_attack_",
+                  "",
+                )}.png`}
                 alt={skill.name}
+                width={128}
+                height={128}
               />
             </div>
             {isOpen && (
-              <img
-                className="w-full select-none"
+              <Image
+                className="w-full select-none object-cover"
                 alt={skill.id}
-                src={getUrlLQ(
-                  `/characters/${characterId}/${skill.id.replace(
-                    "normal_attack_",
-                    ""
-                  )}_an.gif`
-                )}
+                src={`/characters/${characterId}/${skill.id.replace(
+                  "normal_attack_",
+                  "",
+                )}_an.gif`}
+                width={510}
+                height={300}
               />
             )}
             <div
               className={clsx(
                 "pointer-events-none absolute left-0 top-0 h-full w-full transition-opacity",
-                isOpen ? "opacity-100" : "opacity-80"
+                isOpen ? "opacity-100" : "opacity-80",
               )}
             ></div>
           </div>
@@ -76,14 +75,14 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             <div
               className={clsx(
                 "flex flex-grow -translate-y-0 scale-110 transform flex-col transition-transform duration-200",
-                isOpen ? "" : "translate-y-5 scale-90 lg:translate-y-8"
+                isOpen ? "" : "translate-y-5 scale-90 lg:translate-y-8",
               )}
             >
               <div className="text-lg font-bold text-white">{skill.name}</div>
               <div
                 className={clsx(
                   "text-xs transition-opacity",
-                  isOpen ? "opacity-0" : "opacity-100"
+                  isOpen ? "opacity-0" : "opacity-100",
                 )}
                 dangerouslySetInnerHTML={{ __html: skill.info }}
               />
@@ -96,7 +95,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             isOpen ? "opacity-100" : "opacity-10",
             {
               hidden: !isOpen,
-            }
+            },
           )}
           dangerouslySetInnerHTML={{ __html: skill.description }}
         />
@@ -106,7 +105,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
             isOpen ? "opacity-100" : "opacity-10",
             {
               hidden: !isOpen || !showCrement,
-            }
+            },
           )}
         >
           <Crement

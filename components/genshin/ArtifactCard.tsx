@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import type { Artifact } from "@interfaces/genshin";
 import dynamic from "next/dynamic";
 import { memo } from "react";
 
 import useIntl from "@hooks/use-intl";
-import { getUrl } from "@lib/imgUrl";
+import type { Artifact } from "@interfaces/genshin";
+
+import Image from "./Image";
 
 const Tooltip = dynamic(() => import("../Tooltip"), {
   ssr: false,
@@ -53,8 +54,8 @@ const ArtifactCard = ({
                           "border-b": i + 1 < artifact.children!.length,
                         })}
                       >
-                        <img
-                          src={getUrl(`/artifacts/${ca.id}.png`, 76, 76)}
+                        <Image
+                          src={`/artifacts/${ca.id}.png`}
                           height={32}
                           width={32}
                           className="ml-1 mr-2 inline-block h-8"
@@ -78,11 +79,11 @@ const ArtifactCard = ({
                 <div
                   className={clsx(
                     "flex flex-shrink-0 items-center justify-center bg-cover p-1",
-                    `genshin-bg-rarity-${artifact.max_rarity}`
+                    `genshin-bg-rarity-${artifact.max_rarity}`,
                   )}
                 >
-                  <img
-                    src={getUrl(`/artifacts/${artifact.id}.png`, 76, 76)}
+                  <Image
+                    src={`/artifacts/${artifact.id}.png`}
                     height={44}
                     width={44}
                     className="aspect-square"

@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import type { Fish } from "@interfaces/genshin";
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import { getUrl } from "@lib/imgUrl";
+import type { Fish } from "@interfaces/genshin";
+
+import Image from "./Image";
 
 interface FishMiniCardProps {
   fish: Fish;
@@ -19,19 +19,19 @@ const FishMiniCard = ({ fish, isSelected }: FishMiniCardProps) => (
         {
           "opacity-100": isSelected(fish.id),
           "opacity-30": !isSelected(fish.id),
-        }
+        },
       )}
     >
-      <LazyLoadImage
+      <Image
         className="absolute bottom-1 right-1 w-7 rounded-full bg-vulcan-800"
-        src={getUrl(`/baits/${fish.bait.id}.png`, 28, 28)}
+        src={`/baits/${fish.bait.id}.png`}
         alt={fish.bait.name}
         title={fish.bait.name}
         width={28}
         height={28}
       />
-      <LazyLoadImage
-        src={getUrl(`/fish/${fish.id}.png`, 96, 96)}
+      <Image
+        src={`/fish/${fish.id}.png`}
         alt={fish.name}
         title={fish.name}
         width={96}

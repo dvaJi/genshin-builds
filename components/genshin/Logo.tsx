@@ -1,11 +1,12 @@
-import { getImg } from "@lib/imgUrl";
 import { memo } from "react";
+
+import Image from "./Image";
 
 const Logo = () => {
   return (
     <>
-      <img
-        src={getImg("genshin", "/logo.png")}
+      <Image
+        src={"/logo.png"}
         className="fill-current text-white md:w-48"
         alt="GenshinBuilds logo"
         width={90}

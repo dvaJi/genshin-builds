@@ -1,16 +1,16 @@
 "use client";
 
 import clsx from "clsx";
+import { TeamData } from "interfaces/teams";
 import Link from "next/link";
 import { memo, useState } from "react";
 import { BiCollapseVertical, BiExpandVertical } from "react-icons/bi";
 
-import ElementIcon from "./ElementIcon";
-
 import useIntl from "@hooks/use-intl";
-import { getUrl } from "@lib/imgUrl";
 import { capitalize } from "@utils/capitalize";
-import { TeamData } from "interfaces/teams";
+
+import ElementIcon from "./ElementIcon";
+import Image from "./Image";
 
 type Props = {
   team: TeamData;
@@ -27,7 +27,7 @@ function CharacterTeam({ team, index }: Props) {
         "mx-2 mb-4 flex items-center rounded border-b border-r border-vulcan-600 border-r-transparent px-2 py-1 pb-4",
         {
           "border-r-vulcan-600 bg-vulcan-900": isOpen,
-        }
+        },
       )}
     >
       <div className="rounded bg-vulcan-500 p-1 text-xxs text-slate-300">
@@ -43,10 +43,10 @@ function CharacterTeam({ team, index }: Props) {
             prefetch={false}
           >
             <div className="relative">
-              <img
+              <Image
                 className="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
-                src={getUrl(`/characters/${character.id}/image.png`, 100, 100)}
-                alt={character.name}
+                src={`/characters/${character.id}/image.png`}
+                alt={character.name || character.id}
                 width={100}
                 height={100}
               />
@@ -76,8 +76,8 @@ function CharacterTeam({ team, index }: Props) {
                       <div className="rounded bg-vulcan-600 px-[1px] text-xxs">
                         #{i + 1}
                       </div>
-                      <img
-                        src={getUrl(`/weapons/${weapon}.png`)}
+                      <Image
+                        src={`/weapons/${weapon}.png`}
                         alt={weapon}
                         width={36}
                         height={36}
@@ -88,8 +88,8 @@ function CharacterTeam({ team, index }: Props) {
                 <div className="flex flex-col items-center justify-center">
                   {character.artifacts.map((artifact) => (
                     <div key={artifact}>
-                      <img
-                        src={getUrl(`/artifacts/${artifact}.png`)}
+                      <Image
+                        src={`/artifacts/${artifact}.png`}
                         alt={artifact}
                         width={36}
                         height={36}

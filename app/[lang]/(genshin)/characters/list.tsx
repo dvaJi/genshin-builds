@@ -126,6 +126,7 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
             <Link
               key={character.id}
               href={`/${locale}/character/${character.id}`}
+              prefetch={false}
               className={clsx(
                 "flex flex-col items-center justify-center text-center",
                 {

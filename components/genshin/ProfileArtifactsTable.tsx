@@ -1,19 +1,21 @@
 "use client";
 
+import clsx from "clsx";
+import { ArtifactType, Build } from "interfaces/profile";
+import { useMemo, useState } from "react";
+
 import useIntl from "@hooks/use-intl";
-import { getUrlLQ } from "@lib/imgUrl";
 import {
   ColumnDef,
+  SortingState,
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import clsx from "clsx";
-import { ArtifactType, Build } from "interfaces/profile";
-import { useMemo, useState } from "react";
+
+import Image from "./Image";
 
 export interface Props {
   data: Build[];
@@ -43,11 +45,13 @@ const columns: ColumnDef<any>[] = [
     cell: (info) => {
       return (
         <div className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-          <img
+          <Image
             key={info.row.original.id}
             className=""
-            src={getUrlLQ(`/artifacts/${info.row.original.id}.png`, 25, 25)}
+            src={`/artifacts/${info.row.original.id}.png`}
             alt={info.getValue<string>()}
+            width={25}
+            height={25}
           />
           {info.getValue<string>()}
         </div>
@@ -59,7 +63,7 @@ const columns: ColumnDef<any>[] = [
     cell: (info) => {
       if (!info.row.original.mainStat) return null;
       const [label, value] = Object.entries<string>(
-        info.row.original.mainStat
+        info.row.original.mainStat,
       )[0];
       return (
         <div className={clsx("rounded px-1 py-1 text-left text-xs text-white")}>
@@ -121,11 +125,7 @@ const columns: ColumnDef<any>[] = [
     cell: (info) => {
       const cv = info.row.original.critValue ?? 0;
       if (!cv) return null;
-      return (
-        <span className={cvQuality(cv)}>
-          {cv.toFixed(1)}
-        </span>
-      );
+      return <span className={cvQuality(cv)}>{cv.toFixed(1)}</span>;
     },
   },
 ];
@@ -208,11 +208,11 @@ function ProfileArtifactsTable({ data }: Props) {
                         {t({
                           id: flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           ) as any,
                           defaultMessage: flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           ) as any,
                         })}
                         {{
@@ -240,7 +240,7 @@ function ProfileArtifactsTable({ data }: Props) {
                     <td key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </td>
                   );

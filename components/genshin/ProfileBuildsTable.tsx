@@ -1,20 +1,22 @@
 "use client";
 
+import clsx from "clsx";
+import { ArtifactType, Build } from "interfaces/profile";
+import { Fragment, memo, useState } from "react";
+
 import useIntl from "@hooks/use-intl";
-import { getUrlLQ } from "@lib/imgUrl";
 import {
   ColumnDef,
+  Row,
+  SortingState,
   flexRender,
   getCoreRowModel,
   getExpandedRowModel,
   getSortedRowModel,
-  Row,
-  SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import clsx from "clsx";
-import { ArtifactType, Build } from "interfaces/profile";
-import { Fragment, memo, useState } from "react";
+
+import Image from "./Image";
 import StatIcon from "./StatIcon";
 
 export interface Props {
@@ -46,10 +48,12 @@ const columns: ColumnDef<Build>[] = [
     cell: (info) => {
       return (
         <div className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-          <img
+          <Image
             key={info.row.original.avatarId}
-            src={getUrlLQ(`/profile/${info.row.original.avatarId}.png`, 25, 25)}
+            src={`/profile/${info.row.original.avatarId}.png`}
             alt="Avatar"
+            width={25}
+            height={25}
           />
           {info.getValue<string>()}
         </div>
@@ -87,7 +91,7 @@ const columns: ColumnDef<Build>[] = [
         <div
           className={clsx(
             "min-w-[25px] rounded px-1 py-1 text-left text-xs text-white",
-            customClass
+            customClass,
           )}
         >{`C${value}`}</div>
       );
@@ -101,12 +105,8 @@ const columns: ColumnDef<Build>[] = [
           className="relative w-7"
           title={`${info.row.original.weapon.name} R${info.row.original.weapon.refinement}`}
         >
-          <img
-            src={getUrlLQ(
-              `/weapons/${info.row.original.weapon.id}.png`,
-              25,
-              25
-            )}
+          <Image
+            src={`/weapons/${info.row.original.weapon.id}.png`}
             width={25}
             height={25}
             alt={info.row.original.weapon.name}
@@ -134,8 +134,8 @@ const columns: ColumnDef<Build>[] = [
               className="relative w-7"
               title={`${set.name} ${pieces}PC`}
             >
-              <img
-                src={getUrlLQ(`/artifacts/${set.id}.png`, 25, 25)}
+              <Image
+                src={`/artifacts/${set.id}.png`}
                 width={25}
                 height={25}
                 alt={set.name}
@@ -238,11 +238,11 @@ function ProfileBuildsTable({ data }: Props) {
                         {t({
                           id: flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           ) as any,
                           defaultMessage: flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           ) as any,
                         })}
                         {{
@@ -271,7 +271,7 @@ function ProfileBuildsTable({ data }: Props) {
                       <td key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext()
+                          cell.getContext(),
                         )}
                       </td>
                     );
@@ -362,8 +362,8 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
         </div>
         <div className="flex justify-between border-b border-vulcan-600">
           <div className="flex">
-            <img
-              src={getUrlLQ(`/weapons/${data.weapon.id}.png`, 25, 25)}
+            <Image
+              src={`/weapons/${data.weapon.id}.png`}
               width={25}
               height={25}
               alt={data.weapon.name}
@@ -385,8 +385,8 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
             title={`${set.name} ${pieces}PC`}
           >
             <div className="flex">
-              <img
-                src={getUrlLQ(`/artifacts/${set.id}.png`, 36, 36)}
+              <Image
+                src={`/artifacts/${set.id}.png`}
                 width={25}
                 height={25}
                 alt={set.name}
@@ -422,25 +422,25 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
               key={key}
               className={clsx(
                 "group relative mx-2 flex overflow-hidden rounded-lg border shadow-2xl",
-                cvQuality(calcCv(value))[1]
+                cvQuality(calcCv(value))[1],
               )}
             >
               <div className="h-32 w-24">
                 <span
                   className={clsx(
                     "absolute left-0 top-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
-                    cvQuality(calcCv(value))[0]
+                    cvQuality(calcCv(value))[0],
                   )}
                 >
                   CV {calcCv(value).toFixed(1)}
                 </span>
                 <div className="gradient-image overflow-hidden">
-                  <img
-                    src={getUrlLQ(`/artifacts/${value?.id}.png`, 200, 200)}
+                  <Image
+                    src={`/artifacts/${value?.id}.png`}
                     className="absolute -left-9 -top-5 transform transition-all group-hover:scale-125"
                     width={200}
                     height={200}
-                    alt={value?.name}
+                    alt={value?.name ?? ""}
                     title={value?.name}
                   />
                 </div>

@@ -1,14 +1,13 @@
 "use client";
 
+import { TeamData } from "interfaces/teams";
 import Link from "next/link";
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-
-import ElementIcon from "./ElementIcon";
 
 import useIntl from "@hooks/use-intl";
-import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import { TeamData } from "interfaces/teams";
+
+import ElementIcon from "./ElementIcon";
+import Image from "./Image";
 
 interface TeamCardProps {
   mainName: string;
@@ -36,20 +35,15 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
               <Link
                 href={`/${locale}/teams/${block.id}`}
                 className="flex flex-col"
+                prefetch={false}
               >
                 <div className="group relative overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500">
-                  <LazyLoadImage
+                  <Image
                     className="z-20 rounded-full object-cover transition group-hover:scale-110"
                     alt={block.id}
-                    src={getUrl(`/characters/${block.id}/image.png`, 180, 180)}
+                    src={`/characters/${block.id}/image.png`}
                     width={165}
                     height={165}
-                    placeholder={<div className="h-full w-full" />}
-                    placeholderSrc={getUrlLQ(
-                      `/characters/${block.id}/image.png`,
-                      4,
-                      4
-                    )}
                   />
                   <ElementIcon
                     type={block.element}

@@ -1,5 +1,6 @@
 import type { TCGCard } from "@interfaces/genshin";
-import { getUrl } from "@lib/imgUrl";
+
+import Image from "./Image";
 
 type Props = {
   card: TCGCard;
@@ -28,8 +29,8 @@ function TCGCard({ card }: Props) {
     <>
       {card.attributes.hp ? (
         <div className="absolute left-0 top-0 z-10 -mx-1 -my-2">
-          <img
-            src={getUrl(`/tcg/hp.png`, 24, 29)}
+          <Image
+            src={`/tcg/hp.png`}
             alt="HP"
             className="w-6"
             width="24"
@@ -49,8 +50,8 @@ function TCGCard({ card }: Props) {
           className="absolute -right-2 z-10"
           style={{ top: `${i * 20 + 5}px` }}
         >
-          <img
-            src={getUrl(`/tcg/${energy.id}.png`, 20, 20)}
+          <Image
+            src={`/tcg/${energy.id}.png`}
             alt={energy.type}
             className="-mb-1 w-5"
             width="20"
@@ -63,12 +64,12 @@ function TCGCard({ card }: Props) {
           </div>
         </div>
       ))}
-      <img
-        src={getUrl(`/tcg/${card.id}.png`, 150, 90)}
+      <Image
+        src={`/tcg/${card.id}.png`}
         alt={card.name}
         title={card.name}
-        width={80}
-        height={134}
+        width={90}
+        height={150}
         className="rounded-lg transition-all group-hover:brightness-125"
       />
       <div className="absolute bottom-0 w-full rounded-b-lg bg-vulcan-900 bg-opacity-70 p-1 text-center text-xxs text-slate-200">

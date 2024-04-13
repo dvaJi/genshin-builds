@@ -2,11 +2,9 @@
 
 import clsx from "clsx";
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import ElementIcon from "./ElementIcon";
-
-import { getUrl } from "@lib/imgUrl";
+import Image from "./Image";
 
 interface CharacterPortraitProps {
   character: {
@@ -37,9 +35,9 @@ const CharacterPortrait = ({
     <div className="group w-32 transform cursor-pointer text-gray-400 transition-all duration-200 ease-linear hover:text-white">
       <div>
         <div className="group relative text-center">
-          <LazyLoadImage
+          <Image
             className="inline-block rounded-full border-4 border-transparent shadow-lg transition group-hover:scale-110 group-hover:border-vulcan-500 group-hover:shadow-xl"
-            src={getUrl(`/characters/${character.id}/image.png`, 100, 100)}
+            src={`/characters/${character.id}/image.png`}
             alt={character.name}
             width={80}
             height={80}
@@ -58,11 +56,11 @@ const CharacterPortrait = ({
             <div
               className={clsx(
                 "absolute bottom-0 left-2/3 translate-x-0 rounded bg-cover opacity-0 transition-all delay-100 group-hover:translate-x-2 group-hover:opacity-100",
-                `genshin-bg-rarity-${weapon.rarity}`
+                `genshin-bg-rarity-${weapon.rarity}`,
               )}
             >
-              <LazyLoadImage
-                src={getUrl(`/weapons/${weapon.id}.png`, 32, 32)}
+              <Image
+                src={`/weapons/${weapon.id}.png`}
                 height={32}
                 width={32}
                 alt={weapon.name}
@@ -79,8 +77,8 @@ const CharacterPortrait = ({
                     bottom: i * 32,
                   }}
                 >
-                  <LazyLoadImage
-                    src={getUrl(`/artifacts/${artifact.id}.png`, 32, 32)}
+                  <Image
+                    src={`/artifacts/${artifact.id}.png`}
                     height={32}
                     width={32}
                     alt={artifact.name}

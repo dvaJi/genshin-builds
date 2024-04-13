@@ -13,12 +13,12 @@ import Select from "@components/Select";
 import ItemPopover from "@components/genshin/ItemPopover";
 import ItemPopoverSummary from "@components/genshin/ItemPopoverSummary";
 import Button from "@components/ui/Button";
-
 import useIntl from "@hooks/use-intl";
 import { trackClick } from "@lib/gtag";
-import { getUrl } from "@lib/imgUrl";
 import { useStore } from "@nanostores/react";
 import { Todo, todos as todosAtom } from "@state/todo";
+
+import Image from "./Image";
 
 type Props = {
   planning: Record<string, any>;
@@ -79,7 +79,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           if (
             id !== "crown_of_insight" &&
             ["talent_lvl_up_materials", "weapon_primary_materials"].includes(
-              mat?.type
+              mat?.type,
             ) &&
             !isWeeklyBoss
           ) {
@@ -99,7 +99,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
       trackClick("todo_remove_todo");
       todosAtom.set(todos.filter((todo) => todo[0].id !== id));
     },
-    [todos]
+    [todos],
   );
 
   const moveTodo = useCallback(
@@ -113,7 +113,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         todosAtom.set(newTodos);
       }
     },
-    [todos]
+    [todos],
   );
 
   const updateTodoResourcesById = useCallback(
@@ -126,7 +126,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           "updateTodoResourcesById",
           id,
           newData,
-          todo[4][newData.id]
+          todo[4][newData.id],
         );
 
         const newTodos = [...todos].map((oldtodo) => {
@@ -139,7 +139,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         todosAtom.set(newTodos);
       }
     },
-    [todos]
+    [todos],
   );
 
   const updateAllTodoResourcesById = useCallback(
@@ -155,7 +155,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         console.log(
           "updateAllTodoResourcesById",
           newData.id,
-          todo[4][newData.id]
+          todo[4][newData.id],
         );
         modifiedTodos.push(todo);
       });
@@ -170,7 +170,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
 
       todosAtom.set(newTodos);
     },
-    [todos]
+    [todos],
   );
 
   return (
@@ -264,20 +264,18 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
                         <div
                           className={clsx(
                             "h-24 w-24 overflow-hidden rounded-md bg-cover shadow-md",
-                            `genshin-bg-rarity-${todo[0].r}`
+                            `genshin-bg-rarity-${todo[0].r}`,
                           )}
                         >
-                          <img
+                          <Image
                             draggable="false"
                             height="96"
                             width="96"
-                            src={getUrl(
+                            src={
                               todo[1] === "character"
                                 ? `/characters/${todo[0].id}/image.png`
-                                : `/weapons/${todo[0].id}.png`,
-                              96,
-                              96
-                            )}
+                                : `/weapons/${todo[0].id}.png`
+                            }
                             alt={todo[0].name}
                             className="h-auto w-full"
                           />
@@ -302,13 +300,15 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
                                 </div>
                                 <div className="inline-flex items-center justify-center">
                                   <p>{todo[2][2]}</p>
-                                  <img
-                                    src={getUrl(`/ascension.png`, 16, 16)}
+                                  <Image
+                                    src={`/ascension.png`}
                                     className={clsx("ml-1 h-3 w-3", {
                                       "opacity-100": todo[2][3],
                                       "opacity-0": !todo[2][3],
                                     })}
                                     alt="ascension"
+                                    width={16}
+                                    height={16}
                                   />
                                 </div>
                               </div>

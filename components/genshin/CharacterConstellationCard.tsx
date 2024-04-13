@@ -1,11 +1,11 @@
 "use client";
 
 import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import useIntl from "@hooks/use-intl";
 import type { Constellation } from "@interfaces/genshin";
-import { getUrl } from "@lib/imgUrl";
+
+import Image from "./Image";
 
 type Props = {
   characterId: string;
@@ -16,17 +16,15 @@ const ConstellationCard = ({ constellation, characterId }: Props) => {
   const { t } = useIntl("character");
   return (
     <div className="card relative flex flex-col items-center justify-start overflow-hidden lg:w-full">
-      <LazyLoadImage
+      <Image
         className="absolute top-5 w-16 opacity-10"
         alt={constellation.id}
-        src={getUrl(
-          `/characters/${characterId}/${constellation.id.replace(
-            "normal_attack_",
-            ""
-          )}_w.png`,
-          76,
-          76
-        )}
+        src={`/characters/${characterId}/${constellation.id.replace(
+          "normal_attack_",
+          "",
+        )}_w.png`}
+        width={64}
+        height={64}
       />
       <div className="flex flex-col items-center pb-2 text-center">
         <h4 className="text-lg font-bold text-white">{constellation.name}</h4>
