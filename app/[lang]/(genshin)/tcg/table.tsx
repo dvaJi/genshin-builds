@@ -62,7 +62,7 @@ function CardsTable({ lang, cards, types }: Props) {
           placeholder={t("search")}
           className="w-full rounded-md border-vulcan-600 bg-vulcan-800 p-2"
         />
-        <Link href={`/${lang}/tcg/deck-builder`}>
+        <Link href={`/${lang}/tcg/deck-builder`} prefetch={false}>
           <Button className="flex w-40 items-center justify-center">
             <FaPenToSquare className="mr-2 inline" />
             {t("create_deck")}
@@ -75,6 +75,7 @@ function CardsTable({ lang, cards, types }: Props) {
             key={card.id + i}
             href={`/${lang}/tcg/card/${card.id}`}
             className="group relative m-2 w-20 cursor-pointer rounded-lg border-2 border-transparent transition-all hover:scale-110  hover:border-white"
+            prefetch={false}
           >
             <TCGCardComponent card={card} />
           </Link>

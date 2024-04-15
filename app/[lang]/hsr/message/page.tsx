@@ -1,3 +1,4 @@
+import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -8,7 +9,6 @@ import type { Messages } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
-import { i18n } from "i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -87,6 +87,7 @@ export default async function Page({ params }: Props) {
             key={message.id}
             href={`/${params.lang}/hsr/message/${message.id}`}
             className=" flex bg-hsr-surface2 p-3 transition-colors hover:bg-hsr-surface3"
+            prefetch={false}
           >
             <img
               className="mr-4 h-14 w-14 rounded-full border-2 border-slate-600 bg-slate-800 object-contain"

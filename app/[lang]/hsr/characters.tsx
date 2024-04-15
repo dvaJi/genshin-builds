@@ -10,6 +10,7 @@ import useIntl from "@hooks/use-intl";
 import type { Character } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHsrUrlLQ } from "@lib/imgUrl";
+
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
@@ -183,7 +184,10 @@ export default function CharactersList({ characters }: Props) {
           .filter((c) => c.rarity === 5)
           .map((character) => (
             <li key={character.id}>
-              <Link href={`/${locale}/hsr/character/${character.id}`}>
+              <Link
+                href={`/${locale}/hsr/character/${character.id}`}
+                prefetch={false}
+              >
                 <CharacterBlock character={character} />
               </Link>
             </li>
@@ -198,7 +202,10 @@ export default function CharactersList({ characters }: Props) {
           .filter((c) => c.rarity === 4)
           .map((character) => (
             <li key={character.id}>
-              <Link href={`/${locale}/hsr/character/${character.id}`}>
+              <Link
+                href={`/${locale}/hsr/character/${character.id}`}
+                prefetch={false}
+              >
                 <CharacterBlock character={character} />
               </Link>
             </li>

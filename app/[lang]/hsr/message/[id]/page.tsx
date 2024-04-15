@@ -3,9 +3,8 @@ import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import Messages from "@components/hsr/Messages";
-
 import { genPageMetadata } from "@app/seo";
+import Messages from "@components/hsr/Messages";
 import useTranslations from "@hooks/use-translations";
 import { Messages as IMessages } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -125,6 +124,7 @@ export default async function CharacterPage({ params }: Props) {
               <Link
                 href={`/${params.lang}/hsr/message/${message}`}
                 key={message}
+                prefetch={false}
                 className={
                   message === messageGroup.id
                     ? "m-1 bg-hsr-accent p-2 text-white"
