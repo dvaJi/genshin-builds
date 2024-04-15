@@ -61,6 +61,7 @@ function LanguageSelector() {
               <Link
                 href={redirectedPathName(option.id)}
                 className="block px-4 py-2 hover:bg-gray-600 hover:text-white"
+                prefetch={false}
               >
                 {option.name}
               </Link>

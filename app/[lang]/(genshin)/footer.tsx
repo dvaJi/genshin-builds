@@ -20,15 +20,21 @@ export default function GenshinFooter() {
             <Link
               href={`/${locale}/privacy-policy`}
               className="my-1 hover:text-white"
+              prefetch={false}
             >
               Privacy Policy
             </Link>
-            <Link href={`/${locale}/contact`} className="my-1 hover:text-white">
+            <Link
+              href={`/${locale}/contact`}
+              className="my-1 hover:text-white"
+              prefetch={false}
+            >
               Contact
             </Link>
             <Link
               href={`/${locale}/changelog`}
               className="my-1 hover:text-white"
+              prefetch={false}
             >
               Changelog
             </Link>
