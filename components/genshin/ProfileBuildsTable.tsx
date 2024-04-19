@@ -91,7 +91,7 @@ const columns: ColumnDef<Build>[] = [
         <div
           className={clsx(
             "min-w-[25px] rounded px-1 py-1 text-left text-xs text-white",
-            customClass,
+            customClass
           )}
         >{`C${value}`}</div>
       );
@@ -103,7 +103,7 @@ const columns: ColumnDef<Build>[] = [
       return (
         <div
           className="relative w-7"
-          title={`${info.row.original.weapon.name} R${info.row.original.weapon.refinement}`}
+          title={`${info.row.original.weapon.name} R${info.row.original.weapon.refinement + 1}`}
         >
           <Image
             src={`/weapons/${info.row.original.weapon.id}.png`}
@@ -112,7 +112,7 @@ const columns: ColumnDef<Build>[] = [
             alt={info.row.original.weapon.name}
           />
           <span className="absolute bottom-0 right-0 z-10 text-xxs shadow-black text-shadow">
-            R{info.row.original.weapon.refinement}
+            R{info.row.original.weapon.refinement + 1}
           </span>
         </div>
       );
@@ -238,11 +238,11 @@ function ProfileBuildsTable({ data }: Props) {
                         {t({
                           id: flexRender(
                             header.column.columnDef.header,
-                            header.getContext(),
+                            header.getContext()
                           ) as any,
                           defaultMessage: flexRender(
                             header.column.columnDef.header,
-                            header.getContext(),
+                            header.getContext()
                           ) as any,
                         })}
                         {{
@@ -271,7 +271,7 @@ function ProfileBuildsTable({ data }: Props) {
                       <td key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext(),
+                          cell.getContext()
                         )}
                       </td>
                     );
@@ -422,14 +422,14 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
               key={key}
               className={clsx(
                 "group relative mx-2 flex overflow-hidden rounded-lg border shadow-2xl",
-                cvQuality(calcCv(value))[1],
+                cvQuality(calcCv(value))[1]
               )}
             >
               <div className="h-32 w-24">
                 <span
                   className={clsx(
                     "absolute left-0 top-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
-                    cvQuality(calcCv(value))[0],
+                    cvQuality(calcCv(value))[0]
                   )}
                 >
                   CV {calcCv(value).toFixed(1)}
