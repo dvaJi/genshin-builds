@@ -4,6 +4,7 @@
     "description": "すべての最高のキャラクターとそのビルドは、コンテンツをクリアするために、パワー、実行可能性、および多様性の順にランク付けされています.",
     "home": "家",
     "characters": "キャラクター",
+    "builds": "ビルド",
     "tools": "ツール",
     "todo": "トド",
     "todo_desc": "必要なアイテムとモラルの計画と追跡",
@@ -470,5 +471,20 @@
     "changelog": "Genshin Impact バージョン {version} の新機能を探索する",
     "changelog_description": "バージョン {version} がGenshin Impact体験にもたらす変更と追加の詳細な概要。新しいキャラクター、クエスト、ゲームプレイのメカニクスを含む。",
     "version_selecter": "選択したバージョン:"
+  },
+  "builds": {
+    "title": "原神キャラクタービルド",
+    "description": "原神で最高のキャラクタービルドを発見しましょう。各キャラクターに最適なビルドでゲームプレイを最適化し、最高の武器、聖遺物、チーム構成を含みます。",
+    "search_placeholder": "キャラクターを検索...",
+    "clear_search": "検索をクリア",
+    "show_build_details": "ビルドの詳細を表示",
+    "hide_build_details": "ビルドの詳細を隠す",
+    "sands": "時の砂",
+    "goblet": "空の杯",
+    "circlet": "理の冠",
+    "best_weapons": "最高の武器",
+    "best_artifacts": "最高の聖遺物",
+    "main_stats": "主要ステータス",
+    "substats": "副次ステータス"
   }
 }

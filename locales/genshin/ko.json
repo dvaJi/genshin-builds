@@ -4,6 +4,7 @@
     "description": "모든 최고의 캐릭터와 그들의 빌드는 콘텐츠를 클리어하기 위한 힘, 생존력 및 다재다능성 순으로 순위가 매겨졌습니다.",
     "home": "집",
     "characters": "캐릭터",
+    "builds": "빌드",
     "tools": "도구",
     "todo": "할 것",
     "todo_desc": "필요한 항목과 모라 계획 및 추적",
@@ -470,5 +471,20 @@
     "changelog": "Genshin Impact 버전 {version}의 흥미로운 새로운 기능 탐색하기",
     "changelog_description": "버전 {version}이 Genshin Impact 경험에 가져오는 개선 사항 및 추가 사항에 대한 상세한 살펴보기, 새로운 캐릭터, 퀘스트 및 게임 플레이 메커닉을 포함합니다.",
     "version_selecter": "선택한 버전:"
+  },
+  "builds": {
+    "title": "원신 캐릭터 빌드",
+    "description": "원신에서 최고의 캐릭터 빌드를 발견하세요. 각 캐릭터에 최적의 빌드를 구성하여 게임 플레이를 최적화하고, 최고의 무기, 유물 및 팀 구성을 포함합니다.",
+    "search_placeholder": "캐릭터 검색...",
+    "clear_search": "검색 지우기",
+    "show_build_details": "빌드 상세 보기",
+    "hide_build_details": "빌드 상세 숨기기",
+    "sands": "모래",
+    "goblet": "잔",
+    "circlet": "원",
+    "best_weapons": "최고의 무기",
+    "best_artifacts": "최고의 유물",
+    "main_stats": "주요 스탯",
+    "substats": "부 스탯"
   }
 }

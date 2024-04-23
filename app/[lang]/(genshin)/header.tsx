@@ -22,6 +22,7 @@ type Route = {
 
 const navRoutes: Route[] = [
   { id: "characters", name: "Characters", href: "/characters" },
+  { id: "builds", name: "Builds", href: "/builds", isNew: true },
   { id: "teams", name: "Teams", href: "/teams" },
   { id: "blog", name: "Blog", href: "/genshin/blog" },
   {
@@ -179,7 +180,7 @@ const GenshinLayoutHeader = () => {
         <div
           className={clsx(
             "absolute left-0 z-10 mt-2 block max-h-[80vh] w-screen overflow-auto bg-vulcan-800 pb-4 pt-2 md:relative md:ml-10 md:mt-0 md:flex md:flex-grow md:justify-between md:overflow-visible md:bg-transparent md:py-0",
-            { hidden: !isMobileNavOpen },
+            { hidden: !isMobileNavOpen }
           )}
         >
           <ul className="flex flex-col md:flex-row">

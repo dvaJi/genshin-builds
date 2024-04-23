@@ -4,6 +4,7 @@
     "description": "所有最好的角色和他們的構建都按照力量、生存能力和多功能性的順序排列，以清除內容。",
     "home": "家",
     "characters": "人物",
+    "builds": "配置",
     "tools": "工具",
     "todo": "去做",
     "todo_desc": "計劃和跟踪您需要的項目和莫拉",
@@ -470,5 +471,20 @@
     "changelog": "探索原神 {version} 版本的令人興奮新功能",
     "changelog_description": "詳細了解版本 {version} 帶給您的原神體驗的改進和新增內容，包括新角色、任務和遊戲機制。",
     "version_selecter": "已選取版本："
+  },
+  "builds": {
+    "title": "原神角色配置",
+    "description": "探索原神中最佳的角色配置。利用每個角色的頂級配置優化你的遊戲體驗，包括最佳武器、神器和隊伍組成。",
+    "search_placeholder": "搜索角色...",
+    "clear_search": "清除搜索",
+    "show_build_details": "顯示配置詳情",
+    "hide_build_details": "隱藏配置詳情",
+    "sands": "沙漏",
+    "goblet": "聖杯",
+    "circlet": "頭飾",
+    "best_weapons": "最佳武器",
+    "best_artifacts": "最佳神器",
+    "main_stats": "主要屬性",
+    "substats": "副屬性"
   }
 }

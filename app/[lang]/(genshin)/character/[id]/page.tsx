@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Build, MostUsedBuild } from "interfaces/build";
 import { Beta } from "interfaces/genshin/beta";
-import { TeamData } from "interfaces/teams";
+import { TeamData, type Teams } from "interfaces/teams";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -63,7 +63,7 @@ export async function generateStaticParams() {
       ..._characters.map((c) => ({
         lang,
         id: c.id,
-      })),
+      }))
     );
   }
 
@@ -77,7 +77,7 @@ export async function generateMetadata({
   const { t, langData, locale } = await useTranslations(
     params.lang,
     "genshin",
-    "character",
+    "character"
   );
 
   const beta = await getData<Beta>("genshin", "beta");
@@ -89,7 +89,7 @@ export async function generateMetadata({
     },
   });
   const _betaCharacter = beta[locale].characters.find(
-    (c: any) => c.id === params.id,
+    (c: any) => c.id === params.id
   );
 
   const character = _character || _betaCharacter;
@@ -123,7 +123,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const { t, langData, locale, common, dict } = await useTranslations(
     params.lang,
     "genshin",
-    "character",
+    "character"
   );
   const beta = await getData<Beta>("genshin", "beta");
   const _character = await getGenshinData<Character>({
@@ -134,7 +134,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     },
   });
   const _betaCharacter = beta[locale].characters.find(
-    (c: any) => c.id === params.id,
+    (c: any) => c.id === params.id
   );
 
   const character:
@@ -147,14 +147,17 @@ export default async function GenshinCharacterPage({ params }: Props) {
     return notFound();
   }
 
-  const buildsOld: Build[] =
-    require(`../../../../../_content/genshin/data/builds.json`)[character.id] ||
-    [];
+  const _buildsOld = await getRemoteData<Record<string, Build[]>>(
+    "genshin",
+    "builds"
+  );
+  const buildsOld = _buildsOld[character.id] || [];
   const weaponsList = await getGenshinData<Record<string, Weapon>>({
     resource: "weapons",
     language: langData as any,
     select: ["id", "name", "rarity", "stats"],
     asMap: true,
+    revalidate: 0
   });
 
   const artifactsList = await getGenshinData<Record<string, Artifact>>({
@@ -162,6 +165,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     language: langData as any,
     select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
     asMap: true,
+    revalidate: 0
   });
 
   let weapons: Record<string, Weapon> = {};
@@ -170,12 +174,12 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const mubuild: MostUsedBuild = (
     await getRemoteData<Record<string, MostUsedBuild>>(
       "genshin",
-      "mostused-builds",
+      "mostused-builds"
     )
   )[character.id];
 
   const officialbuild: MostUsedBuild = await getCharacterOfficialBuild(
-    character.id,
+    character.id
   );
 
   if (buildsOld) {
@@ -188,12 +192,12 @@ export default async function GenshinCharacterPage({ params }: Props) {
           arr.push(...set);
 
           return arr;
-        }, []),
+        }, [])
       );
       const newBuild = {
         ...build,
         stats_priority: build.stats_priority.map((s) =>
-          common[s] ? common[s] : s,
+          common[s] ? common[s] : s
         ),
         stats: {
           circlet:
@@ -243,13 +247,12 @@ export default async function GenshinCharacterPage({ params }: Props) {
   }
 
   const talentsTotal = calculateTotalTalentMaterials(
-    character.talent_materials,
+    character.talent_materials
   );
   const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
 
-  const recommendedTeams: TeamData[] =
-    require(`../../../../../_content/genshin/data/teams.json`)[character.id]
-      ?.teams || [];
+  const teams = await getRemoteData<Teams>("genshin", "teams");
+  const recommendedTeams: TeamData[] = teams[character.id]?.teams || [];
 
   const jsonLd: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",
@@ -293,7 +296,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           <div
             className={clsx(
               "relative mr-2 flex-none rounded-xl border-2 border-gray-900/80",
-              `genshin-bg-rarity-${character.rarity}`,
+              `genshin-bg-rarity-${character.rarity}`
             )}
           >
             <Image
@@ -383,7 +386,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
           character.skills.length > 3
             ? "lg:grid-cols-3 xl:grid-cols-4"
-            : "lg:grid-cols-3",
+            : "lg:grid-cols-3"
         )}
       >
         {character.skills.map((skill) => (

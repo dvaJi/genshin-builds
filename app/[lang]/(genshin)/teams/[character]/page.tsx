@@ -14,7 +14,7 @@ import type { Artifact, Beta, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import { getData } from "@lib/localData";
+import { getData, getRemoteData } from "@lib/localData";
 import { capitalize } from "@utils/capitalize";
 import { localeToLang } from "@utils/locale-to-lang";
 import { i18n } from "i18n-config";
@@ -118,9 +118,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
     return redirect(`/${params.lang}/teams`);
   }
 
-  const teams = require(
-    `../../../../../_content/genshin/data/teams.json`
-  ) as Teams;
+  const teams = await getRemoteData<Teams>("genshin", "teams");
   const characterTeams = teams[params.character];
 
   // No teams for this character, redirect to the character page instead.

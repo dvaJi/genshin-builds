@@ -4,6 +4,7 @@
     "description": "En iyi karakterlerin tümü ve yapıları, içeriği temizlemek için güç, uygulanabilirlik ve çok yönlülük sırasına göre sıralandı.",
     "home": "Ev",
     "characters": "Karakterler",
+    "builds": "Yapılar",
     "tools": "Araçlar",
     "todo": "Yapmak",
     "todo_desc": "İhtiyacınız olan öğeleri ve daha fazlasını planlayın ve izleyin",
@@ -470,5 +471,20 @@
     "changelog": "Genshin Impact {version} Sürümünde Yeni Özellikleri Keşfedin",
     "changelog_description": "Sürüm {version}'ün Genshin Impact deneyiminize getirdiği geliştirmeleri ve eklemeleri ayrıntılı bir şekilde inceleyin, yeni karakterler, görevler ve oyun mekaniği dahil.",
     "version_selecter": "Seçilen Sürüm:"
+  },
+  "builds": {
+    "title": "Genshin Impact Karakter Yapıları",
+    "description": "Genshin Impact'ta en iyi karakter yapılarını keşfedin. Her karakter için en iyi yapıları, en iyi silahları, eserleri ve takım kompozisyonlarını içeren oyununuzu optimize edin.",
+    "search_placeholder": "Bir karakter ara...",
+    "clear_search": "Aramayı temizle",
+    "show_build_details": "Yapı detaylarını göster",
+    "hide_build_details": "Yapı detaylarını gizle",
+    "sands": "Kumlar",
+    "goblet": "Kupa",
+    "circlet": "Taç",
+    "best_weapons": "En İyi Silahlar",
+    "best_artifacts": "En İyi Eserler",
+    "main_stats": "Ana İstatistikler",
+    "substats": "Alt İstatistikler"
   }
 }

@@ -4,6 +4,7 @@
     "description": "Tutti i migliori personaggi e le loro build sono classificati in ordine di potenza, fattibilità e versatilità per cancellare i contenuti.",
     "home": "Casa",
     "characters": "Caratteri",
+    "builds": "Configurazioni",
     "tools": "Utensili",
     "todo": "Da fare",
     "todo_desc": "Pianifica e monitora gli oggetti e il mora di cui hai bisogno",
@@ -470,5 +471,20 @@
     "changelog": "Esplora le Nuove Elettrizzanti Funzionalità in Genshin Impact Versione {version}",
     "changelog_description": "Una panoramica dettagliata delle migliorie e degli aggiornamenti che la Versione {version} porta alla tua esperienza di Genshin Impact, inclusi nuovi personaggi, missioni e meccaniche di gioco.",
     "version_selecter": "Versione selezionata:"
+  },
+  "builds": {
+    "title": "Configurazioni dei personaggi di Genshin Impact",
+    "description": "Scopri le migliori configurazioni per i personaggi di Genshin Impact. Ottimizza il tuo gioco con le migliori configurazioni per ogni personaggio, incluse le migliori armi, artefatti e composizioni di squadra.",
+    "search_placeholder": "Cerca un personaggio...",
+    "clear_search": "Cancella ricerca",
+    "show_build_details": "Mostra dettagli configurazione",
+    "hide_build_details": "Nascondi dettagli configurazione",
+    "sands": "Sabbie",
+    "goblet": "Calice",
+    "circlet": "Corona",
+    "best_weapons": "Migliori Armi",
+    "best_artifacts": "Migliori Artefatti",
+    "main_stats": "Statistiche Principali",
+    "substats": "Statistiche Secondarie"
   }
 }

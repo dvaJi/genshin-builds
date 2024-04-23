@@ -4,6 +4,7 @@
     "description": "所有最强角色及其建造排名，按实力、可行性和适用性排列，用于解锁内容。",
     "home": "首页",
     "characters": "角色",
+    "builds": "配置",
     "tools": "工具",
     "todo": "待办",
     "todo_desc": "计划和跟踪所需物品和莫拉",
@@ -470,5 +471,20 @@
     "changelog": "探索原神 {version} 版本的令人兴奋的新功能",
     "changelog_description": "详细了解版本 {version} 带给您的原神体验的改进和新增内容，包括新角色、任务和游戏机制。",
     "version_selecter": "已选择版本："
+  },
+  "builds": {
+    "title": "原神角色配置",
+    "description": "探索原神中最佳的角色配置。优化您的游戏体验，为每个角色配备最佳武器、圣遗物和团队组合。",
+    "search_placeholder": "搜索角色...",
+    "clear_search": "清除搜索",
+    "show_build_details": "显示配置详情",
+    "hide_build_details": "隐藏配置详情",
+    "sands": "沙漏",
+    "goblet": "圣杯",
+    "circlet": "头饰",
+    "best_weapons": "最佳武器",
+    "best_artifacts": "最佳圣遗物",
+    "main_stats": "主要属性",
+    "substats": "副属性"
   }
 }

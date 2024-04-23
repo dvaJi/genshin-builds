@@ -4,6 +4,7 @@
     "description": "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
     "home": "Home",
     "characters": "Characters",
+    "builds": "Builds",
     "Tools": "Tools",
     "todo": "Todo",
     "todo_desc": "Plan and track items and mora you need",
@@ -470,5 +471,20 @@
     "changelog": "Explore the Exciting New Features in Genshin Impact Version {version}",
     "changelog_description": "A detailed look into the enhancements and additions that Version {version} brings to your Genshin Impact experience, including new characters, quests, and gameplay mechanics.",
     "version_selecter": "Version selected:"
+  },
+  "builds": {
+    "title": "Genshin Impact Character Builds",
+    "description": "Discover the best character builds in Genshin Impact. Optimize your gameplay with the top builds for each character, including the best weapons, artifacts, and team compositions.",
+    "search_placeholder": "Search for a character...",
+    "clear_search": "Clear search",
+    "show_build_details": "Show build details",
+    "hide_build_details": "Hide build details",
+    "sands": "Sands",
+    "goblet": "Goblet",
+    "circlet": "Circlet",
+    "best_weapons": "Best Weapons",
+    "best_artifacts": "Best Artifacts",
+    "main_stats": "Main Stats",
+    "substats": "Sub Stats"
   }
 }

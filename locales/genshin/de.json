@@ -4,6 +4,7 @@
     "description": "Die besten Figuren und ihre Builds nach Stärke, Überlebensfähigkeit und Vielseitigkeit sortiert, um Inhalte zu bewältigen.",
     "home": "Startseite",
     "characters": "Figuren",
+    "builds": "Builds",
     "tools": "Werkzeuge",
     "todo": "Aufgabenliste",
     "todo_desc": "Plane und behalte Gegenstände und Mora im Blick, die du benötigst",
@@ -470,5 +471,20 @@
     "changelog": "Entdecken Sie die aufregenden neuen Funktionen in Genshin Impact Version {version}",
     "changelog_description": "Ein ausführlicher Blick auf die Verbesserungen und Ergänzungen, die Version {version} in Ihre Genshin Impact-Erfahrung bringt, einschließlich neuer Charaktere, Quests und Gameplay-Mechaniken.",
     "version_selecter": "Ausgewählte Version:"
+  },
+  "builds": {
+    "title": "Genshin Impact Charakter Builds",
+    "description": "Entdecke die besten Charakter Builds in Genshin Impact. Optimiere dein Spiel mit den Top Builds für jeden Charakter, einschließlich der besten Waffen, Artefakte und Teamzusammenstellungen.",
+    "search_placeholder": "Suche nach einem Charakter...",
+    "clear_search": "Suche löschen",
+    "show_build_details": "Build-Details anzeigen",
+    "hide_build_details": "Build-Details verbergen",
+    "sands": "Sand",
+    "goblet": "Kelch",
+    "circlet": "Reif",
+    "best_weapons": "Beste Waffen",
+    "best_artifacts": "Beste Artefakte",
+    "main_stats": "Hauptwerte",
+    "substats": "Nebenwerte"
   }
 }

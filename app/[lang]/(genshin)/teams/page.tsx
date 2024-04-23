@@ -1,16 +1,16 @@
-import type { Character } from "@interfaces/genshin";
+import { i18n } from "i18n-config";
+import { TeamData, Teams } from "interfaces/teams";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import { Fragment } from "react";
 
 import { genPageMetadata } from "@app/seo";
 import TeamCard from "@components/genshin/TeamCard";
-
 import useTranslations from "@hooks/use-translations";
+import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { i18n } from "i18n-config";
-import { TeamData, Teams } from "interfaces/teams";
+import { getRemoteData } from "@lib/localData";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -59,9 +59,7 @@ export default async function GenshinCharacters({ params }: Props) {
     "teams"
   );
 
-  const teams = require(
-    `../../../../_content/genshin/data/teams.json`
-  ) as Teams;
+  const teams = await getRemoteData<Teams>("genshin", "teams");
 
   const characters = await getGenshinData<Record<string, Character>>({
     resource: "characters",

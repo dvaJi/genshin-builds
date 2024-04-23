@@ -15,6 +15,7 @@ interface WeaponCardProps {
 
 const WeaponCard = ({ position, weapon, refinement }: WeaponCardProps) => {
   const { locale } = useIntl("weapons");
+  if (!weapon) return null;
   return (
     <Link
       href={`/${locale}/weapon/${weapon.id}`}

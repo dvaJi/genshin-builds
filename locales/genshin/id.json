@@ -4,6 +4,7 @@
     "description": "Semua karakter terbaik dan build mereka diberi peringkat berdasarkan kekuatan, kelayakan, dan keserbagunaan untuk menghapus konten.",
     "home": "Rumah",
     "characters": "Karakter",
+    "builds": "Builds",
     "tools": "Peralatan",
     "todo": "Melakukan",
     "todo_desc": "Rencanakan dan lacak item dan mora yang Anda butuhkan",
@@ -470,5 +471,20 @@
     "changelog": "Jelajahi Fitur Baru yang Menarik dalam Genshin Impact Versi {version}",
     "changelog_description": "Tinjauan mendalam tentang peningkatan dan penambahan yang Versi {version} hadirkan ke pengalaman Genshin Impact Anda, termasuk karakter baru, misi, dan mekanika gameplay.",
     "version_selecter": "Versi yang Dipilih:"
+  },
+  "builds": {
+    "title": "Build Karakter Genshin Impact",
+    "description": "Temukan build karakter terbaik di Genshin Impact. Optimalkan permainanmu dengan build terbaik untuk setiap karakter, termasuk senjata terbaik, artefak, dan komposisi tim.",
+    "search_placeholder": "Cari karakter...",
+    "clear_search": "Hapus pencarian",
+    "show_build_details": "Tampilkan detail build",
+    "hide_build_details": "Sembunyikan detail build",
+    "sands": "Pasir",
+    "goblet": "Piala",
+    "circlet": "Mahkota",
+    "best_weapons": "Senjata Terbaik",
+    "best_artifacts": "Artefak Terbaik",
+    "main_stats": "Statistik Utama",
+    "substats": "Statistik Tambahan"
   }
 }

@@ -4,6 +4,7 @@
     "description": "Tất cả các nhân vật tốt nhất và bản dựng của họ được xếp hạng theo thứ tự sức mạnh, khả năng tồn tại và tính linh hoạt để làm rõ nội dung.",
     "home": "Trang Chủ",
     "characters": "Nhân vật",
+    "builds": "Cấu hình",
     "tools": "Công cụ",
     "todo": "Làm",
     "todo_desc": "Lập kế hoạch và theo dõi các mục và mora bạn cần",
@@ -470,5 +471,20 @@
     "changelog": "Khám phá các Tính Năng Mới Thú Vị trong Genshin Impact Phiên Bản {version}",
     "changelog_description": "Một cái nhìn chi tiết vào các cải tiến và bổ sung mà Phiên Bản {version} mang lại cho trải nghiệm Genshin Impact của bạn, bao gồm những nhân vật mới, nhiệm vụ và cơ chế gameplay.",
     "version_selecter": "Phiên Bản Được Chọn:"
+  },
+  "builds": {
+    "title": "Cấu hình nhân vật Genshin Impact",
+    "description": "Khám phá các cấu hình nhân vật tốt nhất trong Genshin Impact. Tối ưu hóa trò chơi của bạn với các cấu hình hàng đầu cho mỗi nhân vật, bao gồm vũ khí tốt nhất, bảo vật và đội hình.",
+    "search_placeholder": "Tìm kiếm nhân vật...",
+    "clear_search": "Xóa tìm kiếm",
+    "show_build_details": "Hiển thị chi tiết cấu hình",
+    "hide_build_details": "Ẩn chi tiết cấu hình",
+    "sands": "Cát",
+    "goblet": "Cốc",
+    "circlet": "Vòng đầu",
+    "best_weapons": "Vũ khí tốt nhất",
+    "best_artifacts": "Bảo vật tốt nhất",
+    "main_stats": "Chỉ số chính",
+    "substats": "Chỉ số phụ"
   }
 }

@@ -50,8 +50,8 @@ function NavItem({ route, position, onClick }: Props) {
           {t({ id: route.id, defaultMessage: route.name })}
           {route.isNew && (
             <span className="absolute right-2 top-4 flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-vulcan-100 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-vulcan-50"></span>
             </span>
           )}
         </Link>

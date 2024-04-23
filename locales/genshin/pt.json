@@ -4,6 +4,7 @@
     "description": "Todos os melhores personagens e suas construções classificadas em ordem de poder, viabilidade e versatilidade para limpar o conteúdo.",
     "home": "Lar",
     "characters": "Personagens",
+    "builds": "Construções",
     "tools": "Ferramentas",
     "todo": "Pendência",
     "todo_desc": "Planeje e rastreie itens e mora que você precisa",
@@ -470,5 +471,20 @@
     "changelog": "Explore as Novas Funcionalidades Empolgantes na Versão {version} de Genshin Impact",
     "changelog_description": "Um olhar detalhado sobre as melhorias e adições que a Versão {version} traz para sua experiência em Genshin Impact, incluindo novos personagens, missões e mecânicas de jogabilidade.",
     "version_selecter": "Versão selecionada:"
+  },
+  "builds": {
+    "title": "Construções de Personagens do Genshin Impact",
+    "description": "Descubra as melhores construções de personagens no Genshin Impact. Otimize seu jogo com as melhores construções para cada personagem, incluindo as melhores armas, artefatos e composições de equipe.",
+    "search_placeholder": "Pesquisar por um personagem...",
+    "clear_search": "Limpar pesquisa",
+    "show_build_details": "Mostrar detalhes da construção",
+    "hide_build_details": "Esconder detalhes da construção",
+    "sands": "Areias",
+    "goblet": "Cálice",
+    "circlet": "Diadema",
+    "best_weapons": "Melhores Armas",
+    "best_artifacts": "Melhores Artefatos",
+    "main_stats": "Estatísticas Principais",
+    "substats": "Estatísticas Secundárias"
   }
 }
