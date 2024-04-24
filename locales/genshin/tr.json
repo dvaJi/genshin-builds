@@ -142,7 +142,10 @@
     "official_build": "Resmi Yapı",
     "stats": "İstatistikler",
     "total": "Toplam",
-    "ascension_phase_num": "Yükseliş Aşaması {num}"
+    "ascension_phase_num": "Yükseliş Aşaması {num}",
+    "most_used_title": "Topluluktan En Çok Kullanılan Yapı",
+    "most_used_disclaimer": "Bu yapı, topluluk tarafından en çok kullanılan eserler ve silahlar üzerine kuruludur. Bu verilere katkıda bulunmak isterseniz, buraya tıklayarak UID'nizi göndererek yapabilirsiniz.",
+    "build_title": "{name} Yapısı"
   },
   "weapons": {
     "title": "Genshin Etki Silahları Listesi",

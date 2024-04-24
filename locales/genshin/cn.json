@@ -142,7 +142,10 @@
     "official_build": "官方建造",
     "stats": "属性",
     "total": "总计",
-    "ascension_phase_num": "飞升阶段 {num}"
+    "ascension_phase_num": "飞升阶段 {num}",
+    "most_used_title": "社区最常用的配置",
+    "most_used_disclaimer": "此配置基于社区中最常用的圣遗物和武器。如果你想为这些数据做出贡献，请点击这里提交你的UID。",
+    "build_title": "{name}配置"
   },
   "weapons": {
     "title": "原神武器列表",

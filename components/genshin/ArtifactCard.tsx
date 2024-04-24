@@ -1,8 +1,6 @@
 import clsx from "clsx";
 import dynamic from "next/dynamic";
-import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
 import type { Artifact } from "@interfaces/genshin";
 
 import Image from "./Image";
@@ -15,23 +13,24 @@ interface ArtifactCardProps {
   position: number;
   artifacts: (Artifact & { children?: Artifact[] })[];
   isChooseTwo?: boolean;
+  messages: {
+    choose_2: string;
+  };
 }
 
 const ArtifactCard = ({
   position,
   artifacts,
   isChooseTwo,
+  messages,
 }: ArtifactCardProps) => {
-  const { t } = useIntl("character");
   return (
     <div className="mb-2 mr-1 rounded-md border border-vulcan-700 bg-vulcan-900">
       <div className="flex px-4">
         <div className="mr-3 flex items-center">
           {isChooseTwo ? (
             <span className="whitespace-nowrap rounded bg-vulcan-600 p-1 text-xxs text-slate-300">
-              {isChooseTwo
-                ? t({ id: "choose_2", defaultMessage: "Choose 2" })
-                : ""}
+              {isChooseTwo ? messages.choose_2 : ""}
             </span>
           ) : (
             <span className="rounded bg-vulcan-600 p-1 text-xs text-slate-300">
@@ -79,7 +78,7 @@ const ArtifactCard = ({
                 <div
                   className={clsx(
                     "flex flex-shrink-0 items-center justify-center bg-cover p-1",
-                    `genshin-bg-rarity-${artifact.max_rarity}`,
+                    `genshin-bg-rarity-${artifact.max_rarity}`
                   )}
                 >
                   <Image
@@ -107,4 +106,4 @@ const ArtifactCard = ({
   );
 };
 
-export default memo(ArtifactCard);
+export default ArtifactCard;

@@ -142,7 +142,10 @@
     "official_build": "공식 빌드",
     "stats": "통계",
     "total": "총",
-    "ascension_phase_num": "승천 단계 {num}"
+    "ascension_phase_num": "승천 단계 {num}",
+    "most_used_title": "커뮤니티에서 가장 많이 사용된 빌드",
+    "most_used_disclaimer": "이 빌드는 커뮤니티에서 가장 많이 사용된 유물과 무기를 기반으로 합니다. 이 데이터에 기여하고 싶다면 여기를 클릭하여 UID를 제출하세요.",
+    "build_title": "{name} 빌드"
   },
   "weapons": {
     "title": "원신 임팩트 무기 목록",

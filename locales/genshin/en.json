@@ -99,7 +99,7 @@
     "dendro": "Dendro"
   },
   "character": {
-    "title": "{name} in Genshin Impact: The Ultimate Build Guide",
+    "title": "Genshin Impact {name} Rating and Best Builds",
     "description": "Enhance your Genshin Impact experience with the ultimate builds and top-performing teams for {name}. Unlock in-depth information on their skills, upgrade costs, and much more. Explore now and optimize your gameplay like never before.",
     "characters": "Characters",
     "character": "Character",
@@ -142,7 +142,10 @@
     "official_build": "Official Build",
     "stats": "Stats",
     "total": "Total",
-    "ascension_phase_num": "Ascension Phase {num}"
+    "ascension_phase_num": "Ascension Phase {num}",
+    "most_used_title": "Most Used Build from the Community",
+    "most_used_disclaimer": "This build is based on the most used artifacts and weapons by the community. If you want to contribute to this data, you can do so by submitting your UID by clicking here.",
+    "build_title": "{name} Build"
   },
   "weapons": {
     "title": "Genshin Impact Weapons List",

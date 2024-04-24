@@ -142,7 +142,10 @@
     "official_build": "Bản dựng chính thức",
     "stats": "số liệu thống kê",
     "total": "Tổng cộng",
-    "ascension_phase_num": "Giai đoạn thăng thiên {num}"
+    "ascension_phase_num": "Giai đoạn thăng thiên {num}",
+    "most_used_title": "Cấu hình Được Sử dụng Nhiều Nhất từ Cộng đồng",
+    "most_used_disclaimer": "Cấu hình này dựa trên các bảo vật và vũ khí được cộng đồng sử dụng nhiều nhất. Nếu bạn muốn đóng góp vào dữ liệu này, bạn có thể làm như vậy bằng cách gửi UID của bạn bằng cách nhấp vào đây.",
+    "build_title": "Cấu hình {name}"
   },
   "weapons": {
     "title": "Danh sách vũ khí Genshin Impact",

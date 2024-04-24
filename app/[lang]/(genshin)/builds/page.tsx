@@ -44,11 +44,7 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "character"
-  );
+  const { t, locale } = await useTranslations(params.lang, "genshin", "builds");
 
   const title = t("title");
   const description = t("description");

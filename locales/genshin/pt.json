@@ -142,7 +142,10 @@
     "official_build": "Versão Oficial",
     "stats": "Estatísticas",
     "total": "Total",
-    "ascension_phase_num": "Fase de Ascensão {num}"
+    "ascension_phase_num": "Fase de Ascensão {num}",
+    "most_used_title": "Build Mais Usado pela Comunidade",
+    "most_used_disclaimer": "Este build é baseado nos artefatos e armas mais usados pela comunidade. Se você quiser contribuir para esses dados, pode fazer isso enviando seu UID clicando aqui.",
+    "build_title": "Build de {name}"
   },
   "weapons": {
     "title": "Lista de Armas de Impacto Genshin",

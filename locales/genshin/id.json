@@ -142,7 +142,10 @@
     "official_build": "Bangun Resmi",
     "stats": "Statistik",
     "total": "Total",
-    "ascension_phase_num": "Fase Kenaikan {num}"
+    "ascension_phase_num": "Fase Kenaikan {num}",
+    "most_used_title": "Build Paling Banyak Digunakan oleh Komunitas",
+    "most_used_disclaimer": "Build ini berdasarkan artefak dan senjata yang paling banyak digunakan oleh komunitas. Jika Anda ingin berkontribusi pada data ini, Anda dapat melakukannya dengan mengirimkan UID Anda dengan mengklik di sini.",
+    "build_title": "Build {name}"
   },
   "weapons": {
     "title": "Daftar Senjata Genshin Impact",

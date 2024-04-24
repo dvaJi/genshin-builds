@@ -9,7 +9,8 @@ import { BreadcrumbList, WithContext } from "schema-dts";
 
 import { genPageMetadata } from "@app/seo";
 import CharacterAscencionMaterials from "@components/genshin/CharacterAscencionMaterials";
-import CharacterBuilds from "@components/genshin/CharacterBuilds";
+import CharacterBuildCard from "@components/genshin/CharacterBuildCard";
+import CharacterCommonBuildCard from "@components/genshin/CharacterCommonBuildCard";
 import CharacterConstellationCard from "@components/genshin/CharacterConstellationCard";
 import CharacterPassiveSkill from "@components/genshin/CharacterPassiveSkill";
 import CharacterSkill from "@components/genshin/CharacterSkill";
@@ -25,11 +26,7 @@ import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import {
-  getCharacterOfficialBuild,
-  getData,
-  getRemoteData,
-} from "@lib/localData";
+import { getData, getRemoteData } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
 import { localeToLang } from "@utils/locale-to-lang";
 import {
@@ -157,7 +154,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     language: langData as any,
     select: ["id", "name", "rarity", "stats"],
     asMap: true,
-    revalidate: 0
+    revalidate: 0,
   });
 
   const artifactsList = await getGenshinData<Record<string, Artifact>>({
@@ -165,7 +162,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     language: langData as any,
     select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
     asMap: true,
-    revalidate: 0
+    revalidate: 0,
   });
 
   let weapons: Record<string, Weapon> = {};
@@ -177,10 +174,6 @@ export default async function GenshinCharacterPage({ params }: Props) {
       "mostused-builds"
     )
   )[character.id];
-
-  const officialbuild: MostUsedBuild = await getCharacterOfficialBuild(
-    character.id
-  );
 
   if (buildsOld) {
     const weaponsIds: string[] = [];
@@ -219,8 +212,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     weaponIds.forEach((weaponId) => {
       if (
         weaponsIds.includes(weaponId) ||
-        mubuild?.weapons?.includes(weaponId) ||
-        officialbuild?.weapons?.includes(weaponId)
+        mubuild?.weapons?.includes(weaponId)
       ) {
         weapons[weaponId] = weaponsList[weaponId];
       }
@@ -230,8 +222,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     artifactIds.forEach((artifactId) => {
       if (
         artifactsIds.includes(artifactId) ||
-        mubuild?.artifacts?.find((a) => a.includes(artifactId)) ||
-        officialbuild?.artifacts?.find((a) => a.includes(artifactId))
+        mubuild?.artifacts?.find((a) => a.includes(artifactId))
       ) {
         artifacts[artifactId] = artifactsList[artifactId];
       }
@@ -343,16 +334,54 @@ export default async function GenshinCharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      {builds.length > 0 ? (
-        <CharacterBuilds
-          characterName={character.name}
-          builds={builds}
-          artifacts={artifacts}
-          mubuild={mubuild}
-          weapons={weapons}
-          officialbuild={officialbuild}
-        />
+      {builds?.length > 0 || mubuild ? (
+        <h2 className="mb-3 text-3xl text-white">
+          {t("builds", { name: character.name })}
+        </h2>
       ) : null}
+      {builds?.length > 0
+        ? builds.map((build) => (
+            <CharacterBuildCard
+              key={build.id}
+              build={build}
+              artifacts={artifacts}
+              weapons={weapons}
+              locale={locale}
+              messages={{
+                title: t("build_title", {
+                  name: build.role,
+                }),
+                weapons: t("weapons"),
+                artifacts: t("artifacts"),
+                choose_2: t("choose_2"),
+                recommended_primary_stats: t("recommended_primary_stats"),
+                substats_priority: t("substats_priority"),
+                talents_priority: t("talents_priority"),
+                burst: t("burst"),
+                skill: t("skill"),
+                normal_attack: t("normal_attack"),
+                sands: t("sands"),
+                goblet: t("goblet"),
+                circlet: t("circlet"),
+              }}
+            />
+          ))
+        : null}
+      {mubuild && (
+        <CharacterCommonBuildCard
+          build={mubuild}
+          artifacts={artifacts}
+          weapons={weapons}
+          locale={locale}
+          messages={{
+            title: t("most_used_title"),
+            disclaimer: t("most_used_disclaimer"),
+            artifacts: t("artifacts"),
+            weapons: t("weapons"),
+            choose_2: t("choose_2"),
+          }}
+        />
+      )}
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}
@@ -364,7 +393,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           values: { name: character.name },
         })}
       </h2>
-      <div className="card mx-4 mb-4 flex flex-wrap justify-between p-0">
+      <div className="card mx-4 mb-4 flex flex-wrap justify-between p-0 md:mx-0">
         {recommendedTeams.map((team, index) => (
           <CharacterTeam key={team.name + index} team={team} index={index} />
         ))}

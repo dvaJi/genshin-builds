@@ -142,7 +142,10 @@
     "official_build": "官方構建",
     "stats": "統計數據",
     "total": "全部的",
-    "ascension_phase_num": "提升階段 {num}"
+    "ascension_phase_num": "提升階段 {num}",
+    "most_used_title": "社群最常使用的配置",
+    "most_used_disclaimer": "此配置基於社群中最常使用的神器和武器。如果你想對這些數據作出貢獻，請點擊這裡提交你的UID。",
+    "build_title": "{name}配置"
   },
   "weapons": {
     "title": "Genshin Impact 武器列表",

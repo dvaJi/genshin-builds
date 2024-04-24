@@ -1,13 +1,15 @@
-import useIntl from "@hooks/use-intl";
 import Badge from "./ui/Badge";
 
 interface CollapsibleProps {
   skill: string;
+  messages: {
+    normal_attack: string;
+    skill: string;
+    burst: string;
+  };
 }
 
-const SkillLabel = ({ skill }: CollapsibleProps) => {
-  const { t } = useIntl("character");
-
+const SkillLabel = ({ skill, messages }: CollapsibleProps) => {
   switch (skill) {
     case "normal attack":
     case "na":
@@ -15,14 +17,14 @@ const SkillLabel = ({ skill }: CollapsibleProps) => {
       return (
         <>
           <Badge textSize="xxs">NA</Badge>
-          {t({ id: "normal_attack", defaultMessage: "Normal Attack" })}
+          {messages.normal_attack}
         </>
       );
     case "skill":
       return (
         <>
           <Badge textSize="xxs">E</Badge>
-          {t({ id: "skill", defaultMessage: "Skill" })}
+          {messages.skill}
         </>
       );
 
@@ -30,7 +32,7 @@ const SkillLabel = ({ skill }: CollapsibleProps) => {
       return (
         <>
           <Badge textSize="xxs">Q</Badge>
-          {t({ id: "burst", defaultMessage: "Burst" })}
+          {messages.burst}
         </>
       );
 

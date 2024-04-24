@@ -1,7 +1,7 @@
 "use client";
 
-import type { Character } from "@interfaces/genshin";
 import clsx from "clsx";
+import { CalculationCharacterResult } from "interfaces/calculator";
 import { useCallback, useMemo, useState } from "react";
 import { GiCheckMark } from "react-icons/gi";
 
@@ -9,14 +9,13 @@ import Select from "@components/Select";
 import SkillLabel from "@components/SkillLabel";
 import Button from "@components/ui/Button";
 import Input from "@components/ui/Input";
-
 import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
+import type { Character } from "@interfaces/genshin";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
 import { todos } from "@state/todo";
 import { levels } from "@utils/totals";
-import { CalculationCharacterResult } from "interfaces/calculator";
 
 type Props = {
   characters: Character[];
@@ -34,6 +33,7 @@ export function CharacterCalculator({ characters }: Props) {
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(10);
   const [addedToTodo, setAddedToTodo] = useState(false);
   const { t, localeGI } = useIntl("calculator");
+  const { t: tCharacter } = useIntl("character");
   const [calculate, { called, loading, data, reset }] =
     useLazyFetch<CalculationCharacterResult>(
       "genshin/calculate_character_level"
@@ -225,13 +225,43 @@ export function CharacterCalculator({ characters }: Props) {
         </span>
         <div className="grid grid-cols-3 gap-2">
           <div className="my-2 text-center">
-            <SkillLabel skill="normal_attack" />
+            <SkillLabel
+              skill="normal_attack"
+              messages={{
+                normal_attack: tCharacter({
+                  id: "normal_attack",
+                  defaultMessage: "Normal Attack",
+                }),
+                skill: tCharacter({ id: "skill", defaultMessage: "Skill" }),
+                burst: tCharacter({ id: "burst", defaultMessage: "Burst" }),
+              }}
+            />
           </div>
           <div className="my-2 text-center">
-            <SkillLabel skill="skill" />
+            <SkillLabel
+              skill="skill"
+              messages={{
+                normal_attack: tCharacter({
+                  id: "normal_attack",
+                  defaultMessage: "Normal Attack",
+                }),
+                skill: tCharacter({ id: "skill", defaultMessage: "Skill" }),
+                burst: tCharacter({ id: "burst", defaultMessage: "Burst" }),
+              }}
+            />
           </div>
           <div className="my-2 text-center">
-            <SkillLabel skill="burst" />
+            <SkillLabel
+              skill="burst"
+              messages={{
+                normal_attack: tCharacter({
+                  id: "normal_attack",
+                  defaultMessage: "Normal Attack",
+                }),
+                skill: tCharacter({ id: "skill", defaultMessage: "Skill" }),
+                burst: tCharacter({ id: "burst", defaultMessage: "Burst" }),
+              }}
+            />
           </div>
         </div>
         <div>{t({ id: "current_level", defaultMessage: "Current Level" })}</div>
