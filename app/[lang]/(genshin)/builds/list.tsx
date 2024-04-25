@@ -44,10 +44,12 @@ function List({ builds, locale, messages }: Props) {
         <Fragment key={build?.character.id}>
           <BuildCard messages={messages as any} build={build} locale={locale} />
           {(i + 1) % 5 === 0 && i / 4 < 5 ? (
-            <FrstAds
-              placementName={`genshinbuilds_incontent_${Math.floor(i / 4) + 1}`}
-              classList={["flex", "justify-center"]}
-            />
+            <div className="col-span-4">
+              <FrstAds
+                placementName={`genshinbuilds_incontent_${Math.floor(i / 4) + 1}`}
+                classList={["flex", "justify-center"]}
+              />
+            </div>
           ) : null}
         </Fragment>
       ))}
