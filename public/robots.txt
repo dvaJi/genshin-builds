@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: */tcg/deck-builder?code=*
 
 # Host
 Host: https://genshin-builds.com
