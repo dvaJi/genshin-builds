@@ -51,7 +51,7 @@
     "schema-dts": "^1.1.2",
     "sonner": "^1.4.41",
     "swr": "^2.2.5",
-    "zod": "^3.23.7"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.3",
@@ -65,7 +65,7 @@
     "@types/react-lazy-load-image-component": "^1.6.4",
     "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
-    "drizzle-kit": "^0.20.18",
+    "drizzle-kit": "^0.21.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.3",
     "postcss": "^8.4.38",
