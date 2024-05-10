@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
+import Image from "next/image";
 import Link from "next/link";
 import { memo } from "react";
 
 import type { News } from "@lib/news";
-import Image from "next/image";
 
 interface Props {
   post: News;
@@ -33,7 +33,10 @@ const NewsPostCard = ({ post }: Props) => {
         <h3 className="my-1 text-xl font-semibold text-zinc-950 transition-all group-hover:underline">
           {post.title}
         </h3>
-        <p className="mb-1 text-sm text-zinc-400">{post.excerpt}</p>
+        <p
+          className="mb-1 text-sm text-zinc-400"
+          dangerouslySetInnerHTML={{ __html: post.excerpt }}
+        />
       </div>
     </Link>
   );

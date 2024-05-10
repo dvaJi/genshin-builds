@@ -26,10 +26,10 @@ type Props = {
 };
 
 export default async function Page({ params }: Props) {
-  const data = await getNews("zenless");
+  const data = await getNews("zenless-zone-zero");
 
   return (
-    <div>
+    <div className="relative">
       <h1 className="text-6xl font-semibold">Welcome to ZenlessBuilds</h1>
       <p>
         Discover character builds, comprehensive guides, and a wiki database all

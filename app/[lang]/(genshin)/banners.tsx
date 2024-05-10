@@ -20,7 +20,7 @@ type Props = {
 };
 
 export async function Banners({ lang }: Props) {
-  const timeline = await getRemoteData<Timeline[][]>("genshin", "timeline", 0);
+  const timeline = await getRemoteData<Timeline[][]>("genshin", "timeline");
 
   const now = new Date();
   const banners = timeline.flat().filter((t) => {

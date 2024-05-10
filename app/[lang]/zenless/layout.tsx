@@ -5,15 +5,14 @@ import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
-
-import GameSelector from "@components/GameSelector";
-import { GA_TRACKING_ID } from "@lib/gtag";
-import { GAME } from "@utils/games";
-
 import IntlProvider from "@components/IntlProvider";
 import useHook from "@hooks/use-hook";
 import useTranslations from "@hooks/use-translations";
+import { GA_TRACKING_ID } from "@lib/gtag";
+
 import "../../../styles/globals.css";
+import "./globals.css";
+import ZenlessHeader from "./header";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -25,17 +24,17 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://genshin-builds.com/zenless"),
   title: {
-    default: "ZenlessBuilds",
-    template: "%s | ZenlessBuilds",
+    default: "Zenless Zone Zero Builds",
+    template: "%s | Zenless Zone Zero Builds",
   },
   description:
-    "ZenlessBuilds is a Database, Tier List, and Guide for Zenless Zone Zero on PC, mobile and consoles.",
+    "Zenless Zone Zero Builds is a Database, Tier List, and Guide for Zenless Zone Zero on PC, mobile and consoles.",
   openGraph: {
-    title: "ZenlessBuilds",
+    title: "Zenless Zone Zero Builds",
     description:
-      "ZenlessBuilds is a Database, Tier List, and Guide for Zenless Zone Zero on PC, mobile and consoles.",
+      "Zenless Zone Zero Builds is a Database, Tier List, and Guide for Zenless Zone Zero on PC, mobile and consoles.",
     url: "https://genshin-builds.com",
-    siteName: "ZenlessBuilds",
+    siteName: "Zenless Zone Zero Builds",
     locale: "en_US",
     type: "website",
   },
@@ -72,52 +71,18 @@ export default function ZenlessLayout({ children, params }: Props) {
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <section
         className={clsx(
-          "flex min-h-screen flex-col bg-zinc-950 text-gray-200",
+          "flex min-h-screen flex-col bg-zinc-100 text-gray-200",
           poppins.className
         )}
       >
-        <header className="z-50 mx-4 bg-zinc-950 lg:mx-0">
-          <div className="container mx-auto flex justify-between py-2">
-            <div>
-              <h1 className="text-xl">
-                <Link href={`/${params.lang}/zenless`}>ZenlessBuilds</Link>
-              </h1>
-            </div>
-            <div className="flex gap-4">
-              <Link
-                href={`/${params.lang}/zenless`}
-                className="rounded-3xl px-2 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
-              >
-                Home
-              </Link>
-              <Link
-                href={`/${params.lang}/zenless/characters`}
-                className="rounded-3xl px-2 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
-              >
-                Characters
-              </Link>
-              <Link
-                href={`/${params.lang}/zenless/blog`}
-                className="rounded-3xl px-2 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
-              >
-                Blog
-              </Link>
-            </div>
-            <div>
-              <GameSelector
-                currentGame={GAME.ZENLESS}
-                className="z-40 rounded border border-zinc-800 text-zinc-200"
-                buttonClassName="bg-transparent hover:ring-2 ring-white data-[is-open=true]:ring-2"
-              />
-            </div>
-          </div>
-        </header>
+        <ZenlessHeader locale={params.lang} />
 
-        <div className="min-h-[600px] bg-zinc-100 py-4 text-zinc-950 lg:px-20">
-          <div className="container mx-auto">{children}</div>
+        <div className="news-detail py-4 text-zinc-950  lg:min-h-[600px] lg:px-20 xl:min-h-[750px]">
+          <div className="container mx-auto ">{children}</div>
+          <div className="section__foot" />
         </div>
 
-        <footer className="mx-4 bg-zinc-950 md:mx-2 lg:mx-0">
+        <footer className="bg-zinc-950 px-4 pb-4 md:px-2 lg:px-0">
           <div className="mb-4 bg-zinc-900 py-2">
             <div className="container mx-auto flex">
               <h4 className="text-lg text-gray-200">ZenlessBuilds</h4>
@@ -139,7 +104,7 @@ export default function ZenlessLayout({ children, params }: Props) {
                   Contact
                 </Link>
                 <a
-                  href="https://twitter.com/genshin_builds"
+                  href="https://twitter.com/earlyggcom"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-3xl px-3 py-1 text-lg font-semibold transition-colors hover:bg-white hover:text-black"
