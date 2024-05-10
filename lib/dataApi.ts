@@ -55,6 +55,7 @@ async function getData<T>(
       ) {
         continue; // if it's a "Bad Gateway" error and we haven't reached the max retries, retry
       } else {
+        console.error("Error fetching data", error);
         throw error; // if it's a different error or we've reached the max retries, throw the error
       }
     }

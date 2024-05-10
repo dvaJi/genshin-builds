@@ -19,7 +19,6 @@ import CharacterTalentMaterials from "@components/genshin/CharacterTalentMateria
 import CharacterTeam from "@components/genshin/CharacterTeam";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Image from "@components/genshin/Image";
-import FrstAds from "@components/ui/FrstAds";
 import useTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
@@ -35,6 +34,9 @@ import {
 } from "@utils/totals";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
 
 interface Props {
   params: {
