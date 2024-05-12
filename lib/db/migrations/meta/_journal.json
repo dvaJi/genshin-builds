@@ -15,6 +15,13 @@
       "when": 1712009569777,
       "tag": "0001_previous_gorgon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1715497460386,
+      "tag": "0002_parallel_fixer",
+      "breakpoints": true
     }
   ]
 }

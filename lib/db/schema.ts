@@ -34,7 +34,7 @@ export const players = mySchema.table("players", {
   namecardId: integer("namecard_id").notNull(),
   level: integer("level").notNull(),
   signature: text("signature").notNull(),
-  worldLevel: integer("worldLevel").notNull(),
+  worldLevel: integer("worldLevel"),
   finishAchievementNum: integer("finish_achievement_num").notNull(),
   towerFloorIndex: integer("towerFloorIndex").default(0),
   towerLevelIndex: integer("towerLevelIndex").default(0),

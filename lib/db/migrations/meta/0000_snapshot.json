@@ -1,10 +1,8 @@
 {
-  "id": "2dbcea5d-c64c-4a60-b0c3-6c37c481a711",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "6",
+  "dialect": "postgresql",
   "tables": {
-    "account": {
+    "genshinbuilds.account": {
       "name": "account",
       "schema": "genshinbuilds",
       "columns": {
@@ -80,16 +78,16 @@
         "account_user_id_user_id_fk": {
           "name": "account_user_id_user_id_fk",
           "tableFrom": "account",
-          "tableTo": "user",
-          "schemaTo": "genshinbuilds",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
+          "schemaTo": "genshinbuilds",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -103,7 +101,7 @@
       },
       "uniqueConstraints": {}
     },
-    "builds": {
+    "genshinbuilds.builds": {
       "name": "builds",
       "schema": "genshinbuilds",
       "columns": {
@@ -426,22 +424,22 @@
         "builds_player_id_players_id_fk": {
           "name": "builds_player_id_players_id_fk",
           "tableFrom": "builds",
-          "tableTo": "players",
-          "schemaTo": "genshinbuilds",
           "columnsFrom": [
             "player_id"
           ],
+          "tableTo": "players",
+          "schemaTo": "genshinbuilds",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "hsr_builds": {
+    "genshinbuilds.hsr_builds": {
       "name": "hsr_builds",
       "schema": "genshinbuilds",
       "columns": {
@@ -830,22 +828,22 @@
         "hsr_builds_player_id_hsr_players_id_fk": {
           "name": "hsr_builds_player_id_hsr_players_id_fk",
           "tableFrom": "hsr_builds",
-          "tableTo": "hsr_players",
-          "schemaTo": "genshinbuilds",
           "columnsFrom": [
             "player_id"
           ],
+          "tableTo": "hsr_players",
+          "schemaTo": "genshinbuilds",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "hsr_players": {
+    "genshinbuilds.hsr_players": {
       "name": "hsr_players",
       "schema": "genshinbuilds",
       "columns": {
@@ -954,14 +952,14 @@
       "uniqueConstraints": {
         "hsr_players_uuid_unique": {
           "name": "hsr_players_uuid_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "uuid"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "invite": {
+    "genshinbuilds.invite": {
       "name": "invite",
       "schema": "genshinbuilds",
       "columns": {
@@ -1011,21 +1009,21 @@
       "uniqueConstraints": {
         "invite_user_id_unique": {
           "name": "invite_user_id_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "user_id"
-          ]
+          ],
+          "nullsNotDistinct": false
         },
         "invite_token_unique": {
           "name": "invite_token_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "token"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "players": {
+    "genshinbuilds.players": {
       "name": "players",
       "schema": "genshinbuilds",
       "columns": {
@@ -1124,14 +1122,14 @@
       "uniqueConstraints": {
         "players_uuid_unique": {
           "name": "players_uuid_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "uuid"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "session": {
+    "genshinbuilds.session": {
       "name": "session",
       "schema": "genshinbuilds",
       "columns": {
@@ -1160,22 +1158,22 @@
         "session_userId_user_id_fk": {
           "name": "session_userId_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
-          "schemaTo": "genshinbuilds",
           "columnsFrom": [
             "userId"
           ],
+          "tableTo": "user",
+          "schemaTo": "genshinbuilds",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "genshinbuilds.user": {
       "name": "user",
       "schema": "genshinbuilds",
       "columns": {
@@ -1229,7 +1227,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "verificationToken": {
+    "genshinbuilds.verificationToken": {
       "name": "verificationToken",
       "schema": "genshinbuilds",
       "columns": {
@@ -1272,8 +1270,10 @@
     "genshinbuilds": "genshinbuilds"
   },
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "2dbcea5d-c64c-4a60-b0c3-6c37c481a711",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

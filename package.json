@@ -10,13 +10,14 @@
     "analize": "cross-env ANALYZE=true npm run build",
     "start": "next start",
     "type-check": "tsc",
-    "db:generate": "drizzle-kit generate:pg",
-    "db:push": "drizzle-kit push:pg",
-    "db:gui": "drizzle-kit studio"
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:gui": "drizzle-kit studio",
+    "db:up": "drizzle-kit up"
   },
   "dependencies": {
-    "@auth/core": "^0.30.0",
-    "@auth/drizzle-adapter": "^1.0.1",
+    "@auth/core": "^0.31.0",
+    "@auth/drizzle-adapter": "^1.1.0",
     "@formatjs/intl-localematcher": "^0.5.4",
     "@freestar/pubfig-adslot-react-component": "^3.6.1",
     "@nanostores/persistent": "^0.10.1",
@@ -65,7 +66,7 @@
     "@types/react-lazy-load-image-component": "^1.6.4",
     "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
-    "drizzle-kit": "^0.21.0",
+    "drizzle-kit": "^0.21.1",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.3",
     "postcss": "^8.4.38",
