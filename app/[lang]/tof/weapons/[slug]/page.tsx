@@ -69,7 +69,7 @@ export async function generateMetadata({
 }
 
 export default async function CharacterPage({ params }: Props) {
-  const weapons = await getRemoteData<Weapons[]>("tof", "weapons", 0);
+  const weapons = await getRemoteData<Weapons[]>("tof", "weapons");
   const weapon = weapons.find((c) => slugify2(c.name) === params.slug);
 
   if (!weapon) {

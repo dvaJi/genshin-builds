@@ -70,7 +70,7 @@ export async function generateMetadata({
 }
 
 export default async function CharacterPage({ params }: Props) {
-  const characters = await getRemoteData<Characters[]>("tof", "characters", 0);
+  const characters = await getRemoteData<Characters[]>("tof", "characters");
   const character = characters.find((c) => slugify2(c.name) === params.slug);
 
   if (!character) {

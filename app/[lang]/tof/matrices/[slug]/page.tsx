@@ -67,7 +67,7 @@ export async function generateMetadata({
 }
 
 export default async function MatrixPage({ params }: Props) {
-  const data = await getRemoteData<Matrices[]>("tof", "matrices", 0);
+  const data = await getRemoteData<Matrices[]>("tof", "matrices");
 
   const matrix = data.find((m) => slugify2(m.name) === params.slug);
 
