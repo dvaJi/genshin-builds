@@ -1,0 +1,17 @@
+/* TOF */
+.TOF-bg-5,
+.TOF-bg-SSR {
+  @apply bg-yellow-400;
+}
+.TOF-bg-4,
+.TOF-bg-SR {
+  @apply bg-purple-400;
+}
+.TOF-bg-3,
+.TOF-bg-R {
+  @apply bg-blue-400;
+}
+.TOF-bg-2,
+.TOF-bg-N {
+  @apply bg-green-400;
+}

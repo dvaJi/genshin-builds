@@ -1,7 +1,8 @@
-import { google, ImageItem, photon, staticaly } from "@utils/cdn-providers";
+import { ImageItem, google, photon, staticaly } from "@utils/cdn-providers";
+
 import { IMGS_CDN } from "./constants";
 
-type GameFolder = "genshin" | "hsr" | "zenless";
+type GameFolder = "genshin" | "tof" | "hsr" | "zenless";
 
 type ImgOptions = {
   height?: number;
