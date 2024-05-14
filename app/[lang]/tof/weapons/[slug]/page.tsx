@@ -146,7 +146,7 @@ export default async function CharacterPage({ params }: Props) {
                 label={stat.name}
                 value={Math.floor(
                   (weaponLevel * stat.upgradeProp + stat.value) *
-                    advancementCoefficients[weaponStars][stat.id]
+                    (advancementCoefficients?.[weaponStars]?.[stat.id] ?? 1)
                 ).toString()}
               />
             ))}

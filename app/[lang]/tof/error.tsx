@@ -24,6 +24,7 @@ export default function Error({ error, reset }: Props) {
         width={250}
         height={400}
         alt="Nicole"
+        unoptimized
       />
       <div className="relative z-20 text-center">
         <h2 className="mb-6 text-3xl">Something went wrong! {":("}</h2>
