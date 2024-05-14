@@ -1,4 +1,6 @@
-export function getRarityColor(rarity: string) {
+export function getRarityColor(_rarity: number | string) {
+  const rarity =
+    typeof _rarity === "number" ? rarityToString(_rarity) : _rarity;
   switch (rarity) {
     case "SSR":
       return "text-yellow-200";
@@ -10,6 +12,21 @@ export function getRarityColor(rarity: string) {
       return "text-green-400";
     default:
       return "text-white";
+  }
+}
+
+export function rarityToString(rarity: number) {
+  switch (rarity) {
+    case 5:
+      return "SSR";
+    case 4:
+      return "SR";
+    case 3:
+      return "R";
+    case 2:
+      return "N";
+    default:
+      return "Unknown";
   }
 }
 

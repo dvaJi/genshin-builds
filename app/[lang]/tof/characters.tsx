@@ -184,6 +184,7 @@ export default function CharactersList({ characters }: Props) {
           <Link
             key={character.id}
             href={`/${locale}/tof/character/${slugify2(character.name)}`}
+            prefetch={false}
           >
             <CharacterPortrait character={character} key={character.id} />
           </Link>

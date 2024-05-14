@@ -107,6 +107,11 @@ const nextConfig = {
       destination: "https://earlygg.com/guides/zenless",
       permanent: true,
     },
+    {
+      source: "/:lang/tof/blog",
+      destination: "https://earlygg.com/guides/tower-of-fantasy",
+      permanent: true,
+    },
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },

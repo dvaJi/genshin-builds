@@ -12,6 +12,7 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const langs = i18n.locales;

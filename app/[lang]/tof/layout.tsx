@@ -1,18 +1,15 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import Link from "next/link";
 
-import GameSelector from "@components/GameSelector";
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
-import Logo from "@components/tof/Logo";
 import { GA_TRACKING_ID } from "@lib/gtag";
-import { GAME } from "@utils/games";
 
 import "../../../styles/globals.css";
 import Footer from "./footer";
 import "./globals.css";
+import TOFHeader from "./header";
 
 const openSans = Open_Sans({
   weight: ["400", "600", "700"],
@@ -44,12 +41,6 @@ export const metadata: Metadata = {
   },
 };
 
-const navRoutes: any[] = [
-  { id: "characters", name: "Characters", href: "/tof" },
-  { id: "matrices", name: "Matrices", href: "/tof/matrices" },
-  { id: "blog", name: "Blog", href: "/tof/blog" },
-];
-
 type Props = {
   children: React.ReactNode;
   params: { lang: string };
@@ -65,7 +56,8 @@ export default function TofLayout({ children, params }: Props) {
           openSans.className
         )}
       >
-        <div className="relative left-0 top-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
+        <TOFHeader locale={params.lang} />
+        {/* <div className="relative left-0 top-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
           <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
             <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
               <Link href={`/${params.lang}/tof`} className="h-full w-full">
@@ -97,7 +89,7 @@ export default function TofLayout({ children, params }: Props) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* TODO: need to think a way to add this back in */}
         {/* <DynamicBackground bgStyle={bgStyle} /> */}
 

@@ -1,14 +1,20 @@
 export interface Matrices {
-    id:      string;
-    rarity:  number;
-    name:    string;
-    version: string;
-    assets:  Assets;
-    banners: Banner[];
+    id:           string;
+    rarity:       number;
+    name:         string;
+    version:      string;
+    assets:       Assets;
+    banners:      Banner[];
+    description:  string;
+    meta:         Meta;
+    sets:         Set[];
+    simulacrumId: null | string;
 }
 
 export interface Assets {
-    iconLarge: string;
+    icon:             string;
+    iconLarge:        string;
+    characterArtwork: string;
 }
 
 export interface Banner {
@@ -16,4 +22,13 @@ export interface Banner {
     isFinalBanner: boolean;
     endDate:       Date;
     startDate:     Date;
+}
+
+export interface Meta {
+    recommendedWeapons: string[];
+}
+
+export interface Set {
+    description: string;
+    need:        number;
 }
