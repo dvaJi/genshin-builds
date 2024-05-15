@@ -7,7 +7,7 @@ import Footer from "./footer";
 import Header from "./header";
 
 import useTranslations from "@hooks/use-translations";
-import { HSR_GA_TRACKING_ID } from "@lib/gtag";
+import { GA_TRACKING_ID } from "@lib/gtag";
 
 import "../../../styles/globals.css";
 import "../../../styles/hsr-globals.css";
@@ -29,7 +29,7 @@ export default async function HSRLayout({ children, params }: Props) {
 
   return (
     <IntlProvider locale={params.lang} messages={messages}>
-      <GoogleAnalytics gtagId={HSR_GA_TRACKING_ID} />
+      <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div
         className={clsx(
           "flex h-full min-h-screen flex-col bg-hsr-bg",

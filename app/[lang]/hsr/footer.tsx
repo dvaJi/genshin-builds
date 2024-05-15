@@ -88,7 +88,7 @@ export default function HSRFooter() {
               {t({
                 id: "footer_advice",
                 defaultMessage:
-                  "Honkai: Star Rail is not endorsed by HoYoverse or COGNOSPHERE PTE. LTD., and does not reflect the views or opinions of anyone officially involved in producing or managing Honkai: Star Rail.",
+                  "Star Rail Builds is not endorsed by HoYoverse or COGNOSPHERE PTE. LTD., and does not reflect the views or opinions of anyone officially involved in producing or managing Honkai: Star Rail.",
               })}
             </p>
           </div>
