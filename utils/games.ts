@@ -5,7 +5,7 @@ export type GameProps = {
   adminPath: string;
 };
 
-export type GamesAvailable = "GENSHIN" | "TOF" | "HSR" | "ZENLESS";
+export type GamesAvailable = "GENSHIN" | "TOF" | "HSR" | "ZENLESS" | "WUTHERING";
 
 export const GAME: Record<GamesAvailable, GameProps> = {
   GENSHIN: {
@@ -32,6 +32,12 @@ export const GAME: Record<GamesAvailable, GameProps> = {
     path: "/zenless",
     adminPath: "/admin/zenless",
   },
+  WUTHERING: {
+    name: "Wuthering Waves",
+    slug: "wuthering",
+    path: "/wuthering-waves",
+    adminPath: "/admin/wuthering-waves",
+  }
 };
 
 function isGame(game: GameProps, route: string) {

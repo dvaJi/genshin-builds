@@ -1,0 +1,41 @@
+.rarity-5 {
+  background-image: url(https://rerollcdn.com/STARRAIL/Rarity/5_sm.png) !important;
+  background-size: contain !important;
+  background-position: 50% !important;
+  order: -1;
+}
+.rarity-4 {
+  background-image: url(https://rerollcdn.com/STARRAIL/Rarity/4_sm.png) !important;
+  background-size: contain !important;
+  background-position: 50% !important;
+  order: -1;
+}
+
+.basic {
+  color: #fff;
+  font-weight: 600
+}
+
+.electro {
+  color: #de67e9
+}
+
+.aero {
+  color: #2dc69e
+}
+
+.fusion {
+  color: #e34b4b
+}
+
+.glacio {
+  color: #52cdef
+}
+
+.spectro {
+  color: #d9c42a
+}
+
+.havoc {
+  color: #c85286
+}
