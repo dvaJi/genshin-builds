@@ -1,4 +1,4 @@
-import type { TCGCard } from "@interfaces/genshin";
+import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Image from "next/image";
@@ -7,12 +7,12 @@ import Link from "next/link";
 import { genPageMetadata } from "@app/seo";
 import CopyToClipboard from "@components/CopyToClipboard";
 import useTranslations from "@hooks/use-translations";
+import type { TCGCard } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
 import { encodeDeckCode } from "@utils/gcg-share-code";
-import { i18n } from "i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -136,6 +136,7 @@ export default async function GenshinBestDecks({ params }: Props) {
                 <Link
                   href={`/${params.lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
                   className="mb-4 cursor-pointer text-xl font-semibold text-zinc-200 transition-all hover:text-white"
+                  prefetch={false}
                 >
                   {deck.characters.map((card) => card.name).join(" / ")}
                 </Link>
@@ -151,6 +152,7 @@ export default async function GenshinBestDecks({ params }: Props) {
                 <div className="absolute right-0 top-0 z-20 h-full w-full bg-vulcan-800/50 opacity-0 backdrop-blur transition-all group-hover/card:opacity-100">
                   <Link
                     href={`/${params.lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
+                    prefetch={false}
                   >
                     <div className="flex h-full items-center justify-center text-lg font-semibold text-zinc-300 transition-all hover:text-white">
                       View Deck

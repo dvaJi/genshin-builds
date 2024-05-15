@@ -42,6 +42,7 @@ export async function Banners({ lang }: Props) {
           href={`/${lang}/banners/${banner.name.endsWith("Weapon Banner") ? "weapons" : "characters"}`}
           key={banner.name}
           className="group mx-auto max-w-xs overflow-hidden"
+          prefetch={false}
         >
           <div className="relative aspect-video w-full overflow-hidden rounded bg-vulcan-900 object-cover">
             <img

@@ -13,11 +13,12 @@ interface Props {
 }
 
 const NewsPostCard = ({ post, type = "detailed" }: Props) => {
-  const timeAgo = getTimeAgo(new Date(post.date).getTime(), 'en');
+  const timeAgo = getTimeAgo(new Date(post.date).getTime(), "en");
   return (
     <Link
       href={post.url}
       className="group mx-auto max-w-md overflow-hidden p-2"
+      prefetch={false}
     >
       <div className="relative aspect-video w-full overflow-hidden rounded bg-vulcan-900 object-cover">
         <LazyLoadImage

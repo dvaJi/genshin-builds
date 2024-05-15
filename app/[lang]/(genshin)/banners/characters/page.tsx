@@ -1,5 +1,5 @@
-import type { Character } from "@interfaces/genshin";
 import clsx from "clsx";
+import { BannerHistorical, BannerReRunPrediction } from "interfaces/banner";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -8,14 +8,13 @@ import { genPageMetadata } from "@app/seo";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import CharacterPortrait from "@components/genshin/CharacterPortrait";
 import Badge from "@components/ui/Badge";
-
 import useTranslations from "@hooks/use-translations";
+import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getRemoteData } from "@lib/localData";
 import { getTimeAgo } from "@lib/timeago";
-import { BannerHistorical, BannerReRunPrediction } from "interfaces/banner";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -93,7 +92,10 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                 key={h.name}
                 className="mb-1 flex w-full border-b border-gray-700 pb-2 last:border-b-0"
               >
-                <Link href={`/${params.lang}/character/${h.id}`}>
+                <Link
+                  href={`/${params.lang}/character/${h.id}`}
+                  prefetch={false}
+                >
                   <CharacterPortrait character={{ id: h.id, name: "" }} />
                 </Link>
                 <div className="flex w-full flex-col items-center justify-center">
@@ -158,6 +160,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                     <Link
                       key={m + h.time}
                       href={`/${params.lang}/character/${m}`}
+                      prefetch={false}
                     >
                       <SimpleRarityBox
                         img={getUrl(`/characters/${m}/image.png`, 96, 96)}
@@ -176,6 +179,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                     <Link
                       key={m + h.time}
                       href={`/${params.lang}/character/${m}`}
+                      prefetch={false}
                     >
                       <SimpleRarityBox
                         img={getUrl(`/characters/${m}/image.png`, 96, 96)}

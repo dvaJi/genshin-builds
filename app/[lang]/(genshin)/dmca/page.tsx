@@ -1,5 +1,6 @@
-import Button from "@components/ui/Button";
 import Link from "next/link";
+
+import Button from "@components/ui/Button";
 
 export default function DMCANotice() {
   return (
@@ -17,7 +18,7 @@ export default function DMCANotice() {
         supporting our community. Stay tuned!.
       </p>
       <p className="text-center">
-        <Link href="/">
+        <Link href="/" prefetch={false}>
           <Button>Go to home page.</Button>
         </Link>
       </p>

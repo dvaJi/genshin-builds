@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import useIntl from "@hooks/use-intl";
-import { usePathname } from "next/navigation";
 
 export default function HSRFooter() {
   const { t, locale } = useIntl("layout");
@@ -23,10 +23,14 @@ export default function HSRFooter() {
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-3 text-gray-200">Star Rail Builds</h4>
-            <Link href={`/${locale}/privacy-policy`} className="my-2">
+            <Link
+              href={`/${locale}/privacy-policy`}
+              className="my-2"
+              prefetch={false}
+            >
               {t({ id: "privacy_policy", defaultMessage: "Privacy Policy" })}
             </Link>
-            <Link href={`/${locale}/contact`} className="my-2">
+            <Link href={`/${locale}/contact`} className="my-2" prefetch={false}>
               {t({ id: "contact", defaultMessage: "Contact" })}
             </Link>
           </div>

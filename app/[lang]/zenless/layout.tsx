@@ -87,12 +87,14 @@ export default function ZenlessLayout({ children, params }: Props) {
                 <Link
                   href="/privacy-policy"
                   className="rounded-3xl px-3 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
+                  prefetch={false}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/contact"
                   className="rounded-3xl px-3 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
+                  prefetch={false}
                 >
                   Contact
                 </Link>

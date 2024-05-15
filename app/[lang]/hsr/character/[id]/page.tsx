@@ -1,4 +1,3 @@
-import type { Character, LightCone, Relic } from "@interfaces/hsr";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
@@ -6,15 +5,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsPersonFill } from "react-icons/bs";
 
+import { genPageMetadata } from "@app/seo";
 import CharacterBestEquip from "@components/hsr/CharacterBestEquip";
 import CharacterBuild from "@components/hsr/CharacterBuild";
 import CharacterInfoStat from "@components/hsr/CharacterInfoStat";
 import CharacterTrace from "@components/hsr/CharacterTrace";
 import Stars from "@components/hsr/Stars";
-
-import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
+import type { Character, LightCone, Relic } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
@@ -329,6 +328,7 @@ export default async function CharacterPage({ params }: Props) {
                           <Link
                             href={`/${params.lang}/hsr/character/${c.id}`}
                             className="flex items-center"
+                            prefetch={false}
                           >
                             <div className="mr-2 flex flex-shrink-0 items-center justify-center">
                               <div className="flex-shrink-0 justify-center rounded-full text-center">

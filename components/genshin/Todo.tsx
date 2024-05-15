@@ -79,7 +79,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           if (
             id !== "crown_of_insight" &&
             ["talent_lvl_up_materials", "weapon_primary_materials"].includes(
-              mat?.type,
+              mat?.type
             ) &&
             !isWeeklyBoss
           ) {
@@ -99,7 +99,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
       trackClick("todo_remove_todo");
       todosAtom.set(todos.filter((todo) => todo[0].id !== id));
     },
-    [todos],
+    [todos]
   );
 
   const moveTodo = useCallback(
@@ -113,7 +113,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         todosAtom.set(newTodos);
       }
     },
-    [todos],
+    [todos]
   );
 
   const updateTodoResourcesById = useCallback(
@@ -126,7 +126,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           "updateTodoResourcesById",
           id,
           newData,
-          todo[4][newData.id],
+          todo[4][newData.id]
         );
 
         const newTodos = [...todos].map((oldtodo) => {
@@ -139,7 +139,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         todosAtom.set(newTodos);
       }
     },
-    [todos],
+    [todos]
   );
 
   const updateAllTodoResourcesById = useCallback(
@@ -155,7 +155,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         console.log(
           "updateAllTodoResourcesById",
           newData.id,
-          todo[4][newData.id],
+          todo[4][newData.id]
         );
         modifiedTodos.push(todo);
       });
@@ -170,7 +170,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
 
       todosAtom.set(newTodos);
     },
-    [todos],
+    [todos]
   );
 
   return (
@@ -264,7 +264,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
                         <div
                           className={clsx(
                             "h-24 w-24 overflow-hidden rounded-md bg-cover shadow-md",
-                            `genshin-bg-rarity-${todo[0].r}`,
+                            `genshin-bg-rarity-${todo[0].r}`
                           )}
                         >
                           <Image
@@ -396,6 +396,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
             <Link
               href={`/${locale}/calculator`}
               className="text-slate-300 hover:text-white"
+              prefetch={false}
             >
               {t({
                 id: "go_to_calculator",

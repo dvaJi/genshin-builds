@@ -11,10 +11,10 @@ export default function HSRFooter() {
             <h4 className="mb-3 text-gray-200">
               <Logo />
             </h4>
-            <Link href={`/en/privacy-policy`} className="my-2">
+            <Link href={`/en/privacy-policy`} className="my-2" prefetch={false}>
               Privacy Policy
             </Link>
-            <Link href={`/en/contact`} className="my-2">
+            <Link href={`/en/contact`} className="my-2" prefetch={false}>
               Contact
             </Link>
           </div>

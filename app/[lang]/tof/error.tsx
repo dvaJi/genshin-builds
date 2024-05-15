@@ -34,6 +34,7 @@ export default function Error({ error, reset }: Props) {
           <Link
             href="/contact"
             className="text-slate-300 underline hover:text-slate-200"
+            prefetch={false}
           >
             contact our support team
           </Link>{" "}

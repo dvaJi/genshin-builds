@@ -63,6 +63,7 @@ const Pagination = ({
             className={`${
               pageNumber === currentPage ? "text-white" : "text-slate-400"
             } mx-1 rounded-full px-4 py-2 text-sm font-semibold no-underline hover:bg-vulcan-700`}
+            prefetch={false}
           >
             {pageNumber}
           </Link>

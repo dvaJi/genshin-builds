@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import type { Character } from "@interfaces/hsr";
+import { i18n } from "i18n-config";
+import { Tierlist } from "interfaces/hsr/tierlist";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -7,11 +8,10 @@ import Link from "next/link";
 import { genPageMetadata } from "@app/seo";
 import CharacterBlock from "@components/hsr/CharacterBlock";
 import useTranslations from "@hooks/use-translations";
+import type { Character } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
-import { i18n } from "i18n-config";
-import { Tierlist } from "interfaces/hsr/tierlist";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -122,6 +122,7 @@ export default async function HSRTierlistPage({ params }: Props) {
                   key={characterId}
                   href={`/${params.lang}/hsr/character/${characterId}`}
                   className="mx-2"
+                  prefetch={false}
                 >
                   <CharacterBlock
                     key={characterId}

@@ -105,7 +105,10 @@ export default async function GenshinTCG({ params }: Props) {
           .map((card) => cardsMapById[card].name)
           .join(" / ")}
       </h2>
-      <Link href={`/${params.lang}/tcg/deck-builder?code=${params.code}`}>
+      <Link
+        href={`/${params.lang}/tcg/deck-builder?code=${params.code}`}
+        prefetch={false}
+      >
         <Button>Edit</Button>
       </Link>
       <div className="card flex flex-wrap content-center justify-center">
@@ -115,6 +118,7 @@ export default async function GenshinTCG({ params }: Props) {
               key={card}
               href={`/${params.lang}/tcg/card/${card}`}
               className="group relative cursor-pointer transition-all"
+              prefetch={false}
             >
               <Image
                 src={getUrl(`/tcg/${card}.png`, 170, 310)}
@@ -136,6 +140,7 @@ export default async function GenshinTCG({ params }: Props) {
               key={card}
               href={`/${params.lang}/tcg/card/${card}`}
               className="group relative m-2 w-20 cursor-pointer transition-all hover:scale-110"
+              prefetch={false}
             >
               <Image
                 src={getUrl(`/tcg/${card}.png`, 150, 90)}

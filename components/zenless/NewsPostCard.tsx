@@ -15,6 +15,7 @@ const NewsPostCard = ({ post }: Props) => {
     <Link
       href={post.url}
       className="group mx-auto max-w-md overflow-hidden p-2"
+      prefetch={false}
     >
       <div className="relative aspect-video w-full overflow-hidden rounded-bl-[3.5rem] rounded-tr-[3.5rem] object-cover">
         <Image

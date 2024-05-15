@@ -27,7 +27,11 @@ export default function TOFHeader({ locale }: Props) {
     <div className="relative left-0 top-0 z-50 w-full border-b border-black bg-hsr-surface1 shadow-md backdrop-blur md:border-b-0">
       <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
-          <Link href={`/${locale}/tof`} className="h-full w-full">
+          <Link
+            href={`/${locale}/tof`}
+            className="h-full w-full"
+            prefetch={false}
+          >
             <Logo />
           </Link>
           <button

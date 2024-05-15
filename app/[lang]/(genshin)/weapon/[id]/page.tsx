@@ -1,5 +1,5 @@
-import type { Weapon } from "@interfaces/genshin";
 import clsx from "clsx";
+import type { MostUsedBuild } from "interfaces/build";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
@@ -9,17 +9,17 @@ import { BreadcrumbList, WithContext } from "schema-dts";
 
 import { genPageMetadata } from "@app/seo";
 import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
-import WeaponStats from "./stats";
-
 import useTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
+import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData, getRemoteData } from "@lib/localData";
 import { localeToLang } from "@utils/locale-to-lang";
 import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
-import type { MostUsedBuild } from "interfaces/build";
+
+import WeaponStats from "./stats";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -234,6 +234,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
                 key={character}
                 href={`/${params.lang}/character/${character}`}
                 className="group mr-10 rounded-full border-4 border-transparent transition hover:border-vulcan-500"
+                prefetch={false}
               >
                 <img
                   className="rounded-full group-hover:shadow-xl"

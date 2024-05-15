@@ -60,6 +60,7 @@ const Pagination = ({
           style={{
             clipPath: "polygon(100% 0, 100% 10%, 70% 100%, 0 100%, 0 0)",
           }}
+          prefetch={false}
         >
           <FaArrowLeft />
         </Link>
@@ -83,6 +84,7 @@ const Pagination = ({
               style={{
                 clipPath: "polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%)",
               }}
+              prefetch={false}
             >
               {pageNumber}
             </Link>
@@ -94,6 +96,7 @@ const Pagination = ({
           style={{
             clipPath: "polygon(100% 0%, 100% 100%, 0% 100%, 0 90%, 30% 0)",
           }}
+          prefetch={false}
         >
           <FaArrowRight />
         </Link>

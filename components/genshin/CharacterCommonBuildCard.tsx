@@ -67,7 +67,11 @@ const CharacterCommonBuildCard = ({
           ))}
         </div>
       </div>
-      <Link href={`/${locale}/profile`} className="hover:text-slate-100">
+      <Link
+        href={`/${locale}/profile`}
+        className="hover:text-slate-100"
+        prefetch={false}
+      >
         <i>{messages.disclaimer}</i>
       </Link>
     </div>

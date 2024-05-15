@@ -1,15 +1,15 @@
-import type { TCGCard } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Badge from "@components/ui/Badge";
 import useTranslations from "@hooks/use-translations";
+import type { TCGCard } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import { notFound } from "next/navigation";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -88,6 +88,7 @@ export default async function GenshinCard({ params }: Props) {
       <Link
         href={`/${params.lang}/tcg`}
         className="mt-4 p-4 hover:text-slate-200"
+        prefetch={false}
       >
         {t({ id: "back", defaultMessage: "Back" })}
       </Link>

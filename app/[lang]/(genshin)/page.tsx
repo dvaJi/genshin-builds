@@ -1,4 +1,3 @@
-import type { Character, Domains, Weapon } from "@interfaces/genshin";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -6,8 +5,10 @@ import { Suspense } from "react";
 
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
+import type { Character, Domains, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
+
 import { Banners } from "./banners";
 import FarmableToday from "./farmable-today";
 import { LatestPosts } from "./latest-posts";
@@ -162,7 +163,7 @@ export default async function IndexPage({ params }: Props) {
             classList={["flex", "justify-center"]}
           />
           <div className="mx-2 text-right text-sm hover:text-white">
-            <Link href={`/${params.lang}/genshin/blog`}>
+            <Link href={`/${params.lang}/genshin/blog`} prefetch={false}>
               {t({
                 id: "view_all_posts",
                 defaultMessage: "View all posts",

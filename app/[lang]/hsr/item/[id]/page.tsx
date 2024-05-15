@@ -4,9 +4,8 @@ import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import Stars from "@components/hsr/Stars";
-
 import { genPageMetadata } from "@app/seo";
+import Stars from "@components/hsr/Stars";
 import useTranslations from "@hooks/use-translations";
 import { Items } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -180,6 +179,7 @@ export default async function CharacterPage({ params }: Props) {
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}
                           data-data-tooltip-place="bottom"
+                          prefetch={false}
                         >
                           <img
                             loading="eager"
@@ -211,6 +211,7 @@ export default async function CharacterPage({ params }: Props) {
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}
                           data-data-tooltip-place="bottom"
+                          prefetch={false}
                         >
                           <img
                             loading="eager"

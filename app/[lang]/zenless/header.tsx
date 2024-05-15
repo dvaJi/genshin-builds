@@ -30,7 +30,9 @@ export default function ZenlessHeader({ locale }: Props) {
       <div className="container mx-auto flex justify-between py-2">
         <div className="flex w-full items-center justify-between pr-4 md:inline-block md:w-auto md:pr-0">
           <h1 className="text-xl md:py-5">
-            <Link href={`/${locale}/zenless`}>ZenlessBuilds</Link>
+            <Link href={`/${locale}/zenless`} prefetch={false}>
+              ZenlessBuilds
+            </Link>
           </h1>
           <button
             className="z-50 md:hidden"

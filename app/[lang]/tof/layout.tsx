@@ -57,39 +57,6 @@ export default function TofLayout({ children, params }: Props) {
         )}
       >
         <TOFHeader locale={params.lang} />
-        {/* <div className="relative left-0 top-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-800/70 shadow-md backdrop-blur md:border-b-0">
-          <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
-            <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
-              <Link href={`/${params.lang}/tof`} className="h-full w-full">
-                <Logo />
-              </Link>
-            </div>
-            <div
-              className={clsx(
-                "absolute left-0 z-10 mt-2 block max-h-[80vh] w-screen overflow-auto bg-vulcan-800 pb-4 pt-2 md:relative md:ml-10 md:mt-0 md:flex md:flex-grow md:justify-between md:overflow-visible md:bg-transparent md:py-0"
-              )}
-            >
-              <ul className="flex flex-col md:flex-row">
-                {navRoutes.map((route) => (
-                  <li key={route.id} className="group relative md:py-4">
-                    <Link
-                      className="ml-4 mt-4 block font-semibold text-slate-300 hover:text-slate-50 md:ml-0 md:mt-0 md:px-3 md:py-2"
-                      href={`/${params.lang}${route.href}`}
-                    >
-                      {route.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-4">
-                <GameSelector
-                  currentGame={GAME.TOF}
-                  className="z-40 text-slate-200"
-                />
-              </div>
-            </div>
-          </div>
-        </div> */}
         {/* TODO: need to think a way to add this back in */}
         {/* <DynamicBackground bgStyle={bgStyle} /> */}
 

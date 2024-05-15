@@ -1,10 +1,10 @@
+import { i18n } from "i18n-config";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import NewsPostCard from "@components/zenless/NewsPostCard";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getNews } from "@lib/news";
-import { i18n } from "i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -54,6 +54,7 @@ export default async function Page({ params }: Props) {
           <Link
             href={`/${params.lang}/zenless/blog`}
             className="rounded-2xl border-2 border-black px-4 py-2 font-semibold ring-black transition-all hover:bg-white hover:ring-4"
+            prefetch={false}
           >
             See more
           </Link>

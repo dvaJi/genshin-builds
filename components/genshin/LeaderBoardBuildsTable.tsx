@@ -47,6 +47,7 @@ const columns: ColumnDef<Build & { player: Profile }>[] = [
         <Link
           href={`/profile/${info.row.original.player.uuid}`}
           className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap"
+          prefetch={false}
         >
           <Badge>{info.row.original.player.region}</Badge>
           {info.row.original.player.nickname}

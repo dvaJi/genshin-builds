@@ -1,8 +1,9 @@
-import { useLocalStorage } from "@hooks/use-local-storage";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
+
+import { useLocalStorage } from "@hooks/use-local-storage";
 
 const LS_KEY = `feedback-alert_${process.env.NEXT_PUBLIC_FEEDBACK_POLL_QUESTION_URL}`;
 
@@ -16,7 +17,7 @@ const FeedbackAlert = () => {
   return (
     <div
       className={clsx(
-        "absolute top-16 left-0 z-40 flex h-10 w-full items-center justify-center bg-slate-600 bg-opacity-80 px-4 text-xs backdrop-blur md:h-12 lg:text-sm",
+        "absolute left-0 top-16 z-40 flex h-10 w-full items-center justify-center bg-slate-600 bg-opacity-80 px-4 text-xs backdrop-blur md:h-12 lg:text-sm",
         { hidden: !showAlert }
       )}
     >
@@ -24,6 +25,7 @@ const FeedbackAlert = () => {
         <Link
           href={{ pathname: "/feedback", query: { prev: router.asPath } }}
           className="p-2"
+          prefetch={false}
         >
           {process.env.NEXT_PUBLIC_FEEDBACK_POLL_QUESTION_TEXT}
         </Link>

@@ -7,6 +7,7 @@ import Button from "@components/ui/Button";
 import useTranslations from "@hooks/use-translations";
 import { db } from "@lib/db";
 import { players } from "@lib/db/schema";
+
 import { ProfileTable } from "./datatable";
 
 type Props = {
@@ -74,13 +75,16 @@ export default async function ProfilesAchievementsPage({
           take up to 5 minutes to update. Use in-game account UID for profile
           lookup.
         </p>
-        <Link href={`/${params.lang}/profile`}>
+        <Link href={`/${params.lang}/profile`} prefetch={false}>
           <Button className="mt-4">Add your profile</Button>
         </Link>
       </div>
       <ProfileTable data={playersData} />
       <div className="my-4 flex items-center justify-center gap-2 text-sm text-slate-300">
-        <Link href={`/leaderboard/profiles?page=${Number(page ?? "1") - 1}`}>
+        <Link
+          href={`/leaderboard/profiles?page=${Number(page ?? "1") - 1}`}
+          prefetch={false}
+        >
           <button
             className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
             disabled={(page ?? "1") === "1"}
@@ -89,7 +93,10 @@ export default async function ProfilesAchievementsPage({
           </button>
         </Link>
         {/* <span className="mx-2 text-lg">{pagination.pageIndex + 1}</span> */}
-        <Link href={`/leaderboard/profiles?page=${Number(page ?? "1") + 1}`}>
+        <Link
+          href={`/leaderboard/profiles?page=${Number(page ?? "1") + 1}`}
+          prefetch={false}
+        >
           <button
             className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
             disabled={playersData.length < 20}

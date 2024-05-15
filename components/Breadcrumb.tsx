@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -26,7 +26,9 @@ function Breadcrumb({
   return (
     <ul className={containerClasses}>
       <li className={listClasses}>
-        <Link href={"/"}>{homeElement}</Link>
+        <Link href={"/"} prefetch={false}>
+          {homeElement}
+        </Link>
       </li>
       {pathNames.length > 0 && separator}
       {pathNames.map((link, index) => {
@@ -39,7 +41,9 @@ function Breadcrumb({
         return (
           <Fragment key={index}>
             <li className={itemClasses}>
-              <Link href={href}>{itemLink}</Link>
+              <Link prefetch={false} href={href}>
+                {itemLink}
+              </Link>
             </li>
             {pathNames.length !== index + 1 && separator}
           </Fragment>

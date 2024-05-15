@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+import { Roles, TierNums, Tierlist } from "interfaces/tierlist";
 import Link from "next/link";
 import { memo } from "react";
 
 import useIntl from "@hooks/use-intl";
-import { Roles, Tierlist, TierNums } from "interfaces/tierlist";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+
 import CharacterPortrait from "./CharacterPortrait";
 
 interface CharactersTierProps {
@@ -69,7 +70,7 @@ const CharactersTier = ({
       >
         {tierlist.maindps[tier].map((tier) => (
           <div key={tier.id} className="inline-block">
-            <Link href={`/${locale}/character/${tier.id}`}>
+            <Link href={`/${locale}/character/${tier.id}`} prefetch={false}>
               <CharacterPortrait
                 character={{
                   ...characters[tier.id],
@@ -93,7 +94,7 @@ const CharactersTier = ({
       >
         {tierlist.subdps[tier].map((tier) => (
           <div key={tier.id} className="inline-block">
-            <Link href={`/${locale}/character/${tier.id}`}>
+            <Link href={`/${locale}/character/${tier.id}`} prefetch={false}>
               <CharacterPortrait
                 character={{
                   ...characters[tier.id],
@@ -117,7 +118,7 @@ const CharactersTier = ({
       >
         {tierlist.support[tier].map((tier) => (
           <div key={tier.id} className="relative inline-block">
-            <Link href={`/${locale}/character/${tier.id}`}>
+            <Link href={`/${locale}/character/${tier.id}`} prefetch={false}>
               <CharacterPortrait
                 character={{
                   ...characters[tier.id],

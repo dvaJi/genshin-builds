@@ -1,14 +1,14 @@
-import type { Character } from "@interfaces/genshin";
+import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
-
 import useTranslations from "@hooks/use-translations";
+import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { i18n } from "i18n-config";
+
 import LeaderboardWrapper from "./wrapper";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -84,6 +84,7 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
         <Link
           href={`/${params.lang}/profile`}
           className="text-lg font-semibold hover:text-white"
+          prefetch={false}
         >
           Submit your UID here!
         </Link>

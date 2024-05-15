@@ -25,10 +25,14 @@ type Props = {
 export default function WWHeader({ locale }: Props) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   return (
-    <div className="bg-ww-950 border-ww-900 relative left-0 top-0 z-50 w-full border-b shadow-md backdrop-blur md:border-b-0">
+    <div className="relative left-0 top-0 z-50 w-full border-b border-ww-900 bg-ww-950 shadow-md backdrop-blur md:border-b-0">
       <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
-          <Link href={`/${locale}/wuthering-waves`} className="h-full w-full">
+          <Link
+            href={`/${locale}/wuthering-waves`}
+            className="h-full w-full"
+            prefetch={false}
+          >
             <Logo />
           </Link>
           <button
@@ -42,7 +46,7 @@ export default function WWHeader({ locale }: Props) {
         </div>
         <div
           className={clsx(
-            "bg-ww-950 absolute left-0 z-10 mt-2 block max-h-[80vh] w-screen overflow-auto pb-4 pt-2 md:relative md:ml-10 md:mt-0 md:flex md:flex-grow md:justify-between md:overflow-visible md:bg-transparent md:py-0",
+            "absolute left-0 z-10 mt-2 block max-h-[80vh] w-screen overflow-auto bg-ww-950 pb-4 pt-2 md:relative md:ml-10 md:mt-0 md:flex md:flex-grow md:justify-between md:overflow-visible md:bg-transparent md:py-0",
             { hidden: !isMobileNavOpen }
           )}
         >
@@ -54,7 +58,10 @@ export default function WWHeader({ locale }: Props) {
             ))}
           </ul>
           <div className="mt-4">
-            <GameSelector currentGame={GAME.WUTHERING} className="text-ww-100 z-40" />
+            <GameSelector
+              currentGame={GAME.WUTHERING}
+              className="z-40 text-ww-100"
+            />
           </div>
         </div>
       </div>

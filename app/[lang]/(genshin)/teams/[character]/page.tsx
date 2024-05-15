@@ -1,11 +1,13 @@
 import clsx from "clsx";
+import { i18n } from "i18n-config";
+import { TeamData, Teams } from "interfaces/teams";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Fragment } from "react";
 
 import { genPageMetadata } from "@app/seo";
-
 import ElementIcon from "@components/genshin/ElementIcon";
 import Button from "@components/ui/Button";
 import FrstAds from "@components/ui/FrstAds";
@@ -17,9 +19,6 @@ import { getUrl } from "@lib/imgUrl";
 import { getData, getRemoteData } from "@lib/localData";
 import { capitalize } from "@utils/capitalize";
 import { localeToLang } from "@utils/locale-to-lang";
-import { i18n } from "i18n-config";
-import { TeamData, Teams } from "interfaces/teams";
-import { Fragment } from "react";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 
@@ -176,7 +175,10 @@ export default async function GenshinCharacterTeams({ params }: Props) {
           </div>
           <p className="text-slate-300">{characterTeams.overview}</p>
           <div className="mt-4 flex justify-end">
-            <Link href={`/${locale}/character/${params.character}`}>
+            <Link
+              href={`/${locale}/character/${params.character}`}
+              prefetch={false}
+            >
               <Button>
                 {t("view_character_page", {
                   name: character.name,
@@ -228,6 +230,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                       className="group relative rounded-full border-4 border-vulcan-800 transition hover:border-vulcan-500"
                       href={`/${locale}/teams/${char.id}`}
                       title={`${characters[char.id].name} best team guide`}
+                      prefetch={false}
                     >
                       <div
                         className={clsx(
@@ -386,6 +389,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                               key={weapon}
                               href={`/${locale}/weapon/${weapon}`}
                               className="text-center hover:text-white"
+                              prefetch={false}
                             >
                               <h6 className="text-sm">
                                 {weaponsMap[weapon].name}

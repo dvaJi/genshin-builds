@@ -7,10 +7,10 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-3 text-gray-200">TOFBuilds</h4>
-            <Link href="/privacy-policy" className="my-2">
+            <Link href="/privacy-policy" className="my-2" prefetch={false}>
               Privacy Policy
             </Link>
-            <Link href="/contact" className="my-2">
+            <Link href="/contact" className="my-2" prefetch={false}>
               Contact
             </Link>
           </div>

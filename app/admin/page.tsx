@@ -21,6 +21,7 @@ export default async function Admin() {
       <Link
         href={`/admin/invalidator`}
         className="rounded border border-zinc-600 bg-zinc-800 px-12 py-6 transition-colors hover:border-zinc-400"
+        prefetch={false}
       >
         Invalidate
       </Link>

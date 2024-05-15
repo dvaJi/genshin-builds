@@ -1,10 +1,11 @@
 "use client";
 
-import { invalidateAction } from "@app/admin/invalidator/actions";
-import Button from "@components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
+
+import { invalidateAction } from "@app/admin/invalidator/actions";
+import Button from "@components/ui/Button";
 
 type Props = {
   error: Error & { digest?: string };
@@ -35,6 +36,7 @@ export default function Error({ error, reset }: Props) {
           <Link
             href="/contact"
             className="text-slate-300 underline hover:text-slate-50"
+            prefetch={false}
           >
             contact our support team
           </Link>{" "}

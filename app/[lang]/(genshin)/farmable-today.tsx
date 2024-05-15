@@ -78,7 +78,11 @@ export default function FarmableToday({
                       {charactersDomain.rotation
                         .find((r) => r.day === currentDay)
                         ?.ids.map((cId) => (
-                          <Link key={cId} href={`/${locale}/character/${cId}`}>
+                          <Link
+                            key={cId}
+                            href={`/${locale}/character/${cId}`}
+                            prefetch={false}
+                          >
                             <SimpleRarityBox
                               img={getUrl(
                                 `/characters/${cId}/image.png`,
@@ -112,7 +116,11 @@ export default function FarmableToday({
                         ?.ids.map((cId) => (
                           <div key={cId}>
                             {weapons[cId] ? (
-                              <Link key={cId} href={`/${locale}/weapon/${cId}`}>
+                              <Link
+                                key={cId}
+                                href={`/${locale}/weapon/${cId}`}
+                                prefetch={false}
+                              >
                                 <SimpleRarityBox
                                   img={getUrl(`/weapons/${cId}.png`, 80, 80)}
                                   rarity={weapons[cId].rarity}

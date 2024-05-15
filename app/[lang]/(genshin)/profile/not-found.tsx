@@ -20,7 +20,7 @@ export default function NotFound() {
             This profile currently does not exist. If you want to create it,
             please submit your UID.
             <br />
-            <Link href="/profile/">
+            <Link href="/profile/" prefetch={false}>
               <Button className="mt-6">Submit UID</Button>
             </Link>
           </p>

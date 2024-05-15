@@ -1,14 +1,5 @@
 "use client";
 
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getExpandedRowModel,
-  getSortedRowModel,
-  useReactTable,
-  type SortingState,
-} from "@tanstack/react-table";
 import clsx from "clsx";
 import Link from "next/link";
 import { useState } from "react";
@@ -18,6 +9,15 @@ import Badge from "@components/ui/Badge";
 import useIntl from "@hooks/use-intl";
 import type { SelectPlayer } from "@lib/db/schema";
 import { getUrlLQ } from "@lib/imgUrl";
+import {
+  ColumnDef,
+  type SortingState,
+  flexRender,
+  getCoreRowModel,
+  getExpandedRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { regionParse } from "@utils/leaderboard-enc";
 
 const columns: ColumnDef<SelectPlayer>[] = [
@@ -28,6 +28,7 @@ const columns: ColumnDef<SelectPlayer>[] = [
         <Link
           href={`/profile/${info.row.original.uuid}`}
           className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap hover:text-white"
+          prefetch={false}
         >
           <Badge className="w-10 text-center">
             {regionParse(info.row.original.uuid)}

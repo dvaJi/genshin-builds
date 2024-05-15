@@ -1,10 +1,10 @@
 "use client";
 
-import { useStore } from "@nanostores/react";
 import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 
 import useIntl from "@hooks/use-intl";
+import { useStore } from "@nanostores/react";
 import { profilesFavAtom } from "@state/profiles-fav";
 
 function ProfileFavorites() {
@@ -17,6 +17,7 @@ function ProfileFavorites() {
           key={profile.uuid}
           href={`/${locale}/profile/${profile.uuid}`}
           className="mr-1 rounded bg-vulcan-600 bg-cover px-4 py-2 text-sm hover:bg-vulcan-400 hover:text-slate-100"
+          prefetch={false}
         >
           <span>{profile.nickname}</span>
           <span

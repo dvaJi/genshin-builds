@@ -52,6 +52,7 @@ export default async function BangboosPage({ params }: Props) {
             key={bangboo.name}
             href={`/${params.lang}/zenless/bangboos/${bangboo.id}`}
             className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
+            prefetch={false}
           >
             <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
               <Image
