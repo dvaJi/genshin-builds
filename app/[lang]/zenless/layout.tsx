@@ -6,8 +6,6 @@ import { AiOutlineTwitter } from "react-icons/ai";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
-import useHook from "@hooks/use-hook";
-import useTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
 import "../../../styles/globals.css";
@@ -61,13 +59,8 @@ type Props = {
 };
 
 export default function ZenlessLayout({ children, params }: Props) {
-  const { messages } = useHook(
-    "useTranslations",
-    useTranslations("en", "zenless", "layout")
-  );
-
   return (
-    <IntlProvider locale={params.lang} messages={messages}>
+    <IntlProvider locale={params.lang} messages={{}}>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <section
         className={clsx(
