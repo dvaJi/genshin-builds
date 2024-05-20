@@ -67,6 +67,7 @@ export interface Character {
   id: string;
   name: string;
   title?: string;
+  release: number;
   description: string;
   weapon_type: string;
   element: string;

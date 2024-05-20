@@ -26,7 +26,7 @@ export default async function GenshinLayout({ children, params }: Props) {
       <div className="flex min-h-screen flex-col bg-vulcan-900">
         <Header />
 
-        <main className="z-10 mb-8 mt-4 text-gray-400">
+        <main className="z-10 mb-8 mt-4 text-gray-300">
           <div className="container mx-auto">{children}</div>
         </main>
 

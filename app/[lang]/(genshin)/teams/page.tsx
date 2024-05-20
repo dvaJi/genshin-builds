@@ -102,10 +102,15 @@ export default async function GenshinCharacters({ params }: Props) {
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
       <div className="grid gap-4 lg:grid-cols-2">
-        {Object.entries(teamsByName).map(([mainName, teams]) => (
+        {Object.entries(teamsByName).map(([mainName, teams], i) => (
           <Fragment key={mainName}>
             {teams.map((team) => (
-              <TeamCard key={team.name} team={team} mainName={mainName} />
+              <TeamCard
+                key={team.name}
+                team={team}
+                mainName={mainName}
+                asyncLoad={i > 4}
+              />
             ))}
           </Fragment>
         ))}

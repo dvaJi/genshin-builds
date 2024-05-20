@@ -39,8 +39,11 @@ export default function HSRHeader() {
             <Logo />
           </Link>
           <button
+            role="button"
             className="z-50 md:hidden"
             onClick={() => setIsMobileNavOpen((a) => !a)}
+            title="Toggle Navigation"
+            aria-label="Toggle Navigation"
           >
             <div className="h-4 w-6 text-xl text-white">
               {isMobileNavOpen ? <AiOutlineClose /> : <AiOutlineMenu />}

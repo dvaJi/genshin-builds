@@ -12,9 +12,10 @@ import Image from "./Image";
 interface TeamCardProps {
   mainName: string;
   team: TeamData;
+  asyncLoad?: boolean;
 }
 
-const TeamCard = ({ team, mainName }: TeamCardProps) => {
+const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
   const { t, locale } = useIntl("teams");
   return (
     <div className="card mx-2 md:mx-0">
@@ -44,12 +45,14 @@ const TeamCard = ({ team, mainName }: TeamCardProps) => {
                     src={`/characters/${block.id}/image.png`}
                     width={165}
                     height={165}
+                    loading={asyncLoad ? "lazy" : "eager"}
                   />
                   <ElementIcon
                     type={block.element}
                     height={20}
                     width={20}
                     className="absolute right-3 top-3 rounded-full bg-vulcan-700 lg:right-5 lg:top-5"
+                    asyncLoad={asyncLoad}
                   />
                 </div>
                 <span className="text-white">{block.name}</span>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
+import Image from "@components/genshin/Image";
 import Badge from "@components/ui/Badge";
 import useTranslations from "@hooks/use-translations";
 import type { TCGCard } from "@interfaces/genshin";
@@ -93,8 +94,8 @@ export default async function GenshinCard({ params }: Props) {
         {t({ id: "back", defaultMessage: "Back" })}
       </Link>
       <div className="my-4 flex">
-        <img
-          src={getUrl(`/tcg/${card.id}.png`, 160, 160)}
+        <Image
+          src={`/tcg/${card.id}.png`}
           alt={card.name}
           title={card.name}
           width={160}
@@ -168,15 +169,17 @@ export default async function GenshinCard({ params }: Props) {
                 <p dangerouslySetInnerHTML={{ __html: skill.desc }} />
               </div>
               {skill?.points?.length > 0 && (
-                <div className="flex h-full flex-col content-center items-center justify-center">
+                <div className="flex h-full flex-col content-center items-center justify-center flex-shrink-0">
                   {skill.points.map((point) => (
                     <div key={point.id} className="flex whitespace-nowrap">
                       <span className="text-lg">{point.count}</span>
-                      <img
+                      <Image
                         alt={point.id}
-                        src={getUrl(`/tcg/${point.id}.png`, 90, 90)}
+                        src={`/tcg/${point.id}.png`}
                         className="mx-1 h-8 align-middle"
                         title={point.type}
+                        width={32}
+                        height={32}
                       />
                     </div>
                   ))}

@@ -1,21 +1,26 @@
 "use client";
 
 import clsx from "clsx";
-import type { Character } from "@interfaces/genshin";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import ElementIcon from "@components/genshin/ElementIcon";
 import useIntl from "@hooks/use-intl";
+import type { Character } from "@interfaces/genshin";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
 
 type Props = {
   characters: (Character & { beta?: boolean })[];
   elements: string[];
+  latestRelease: number;
 };
 
-export default function GenshinCharactersList({ characters, elements }: Props) {
+export default function GenshinCharactersList({
+  characters,
+  elements,
+  latestRelease,
+}: Props) {
   const { t, locale } = useIntl("characters");
   const [elementsFilter, setElementsFilter] = useState<string[]>([]);
   const [nameFilter, setNameFilter] = useState<string>("");
@@ -119,8 +124,8 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
             if (a.beta && !b.beta) return -1;
             if (!a.beta && b.beta) return 1;
 
-            // Name Asc
-            return a.name.localeCompare(b.name);
+            // Release Asc
+            return b.release - a.release;
           })
           .map((character) => (
             <Link
@@ -167,11 +172,16 @@ export default function GenshinCharactersList({ characters, elements }: Props) {
                   className="absolute right-2 top-2 rounded-full bg-vulcan-700 lg:right-2 lg:top-5"
                 />
                 {/* Badge */}
-                {character.beta && (
+                {character.beta ? (
                   <div className="absolute bottom-2 left-8 z-50 flex items-center justify-center rounded bg-vulcan-700/80 p-1 shadow">
                     <span className="text-xxs text-white">Beta</span>
                   </div>
-                )}
+                ) : null}
+                {latestRelease === character.release ? (
+                  <div className="absolute bottom-2 left-8 z-50 flex items-center justify-center rounded bg-yellow-600 p-1 text-yellow-200 shadow">
+                    <span className="text-xxs uppercase text-white">New</span>
+                  </div>
+                ) : null}
               </div>
               <span className="text-white">{character.name}</span>
             </Link>

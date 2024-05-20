@@ -9,6 +9,7 @@ interface ElementIconProps {
   width?: number;
   height?: number;
   className?: string;
+  asyncLoad?: boolean;
 }
 
 function ElementIcon({
@@ -16,6 +17,7 @@ function ElementIcon({
   width = 64,
   height = 64,
   className,
+  asyncLoad = true,
 }: ElementIconProps) {
   return (
     <Image
@@ -24,6 +26,7 @@ function ElementIcon({
       className={className}
       width={width}
       height={height}
+      loading={asyncLoad ? "lazy" : "eager"}
     />
   );
 }

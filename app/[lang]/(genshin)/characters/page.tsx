@@ -1,16 +1,16 @@
-import type { Character } from "@interfaces/genshin";
+import { i18n } from "i18n-config";
+import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
-import GenshinCharactersList from "./list";
-
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
+import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getData } from "@lib/localData";
-import { i18n } from "i18n-config";
-import type { Beta } from "interfaces/genshin/beta";
+
+import GenshinCharactersList from "./list";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -66,7 +66,7 @@ export default async function GenshinCharacters({ params }: Props) {
   const characters = await getGenshinData<Character[]>({
     resource: "characters",
     language: langData,
-    select: ["id", "rarity", "name", "element"],
+    select: ["id", "rarity", "name", "element", "release"],
   });
 
   const elements = characters.reduce((acc, character) => {
@@ -82,10 +82,12 @@ export default async function GenshinCharacters({ params }: Props) {
     ...beta[locale].characters.map((c: any) => {
       // only include this columns: ["id", "name", "element", "rarity"]
       const { id, name, element, rarity } = c;
-      return { id, name, element, rarity, beta: true };
+      return { id, name, element, rarity, beta: true, release: 0 };
     }),
     ...characters,
-  ] as (Character & { beta?: boolean })[];
+  ].sort((a, b) => b.release - a.release) as (Character & { beta?: boolean })[];
+
+  const latestRelease = allCharacters[0].release;
 
   return (
     <div>
@@ -97,7 +99,11 @@ export default async function GenshinCharacters({ params }: Props) {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>
-      <GenshinCharactersList characters={allCharacters} elements={elements} />
+      <GenshinCharactersList
+        characters={allCharacters}
+        elements={elements}
+        latestRelease={latestRelease}
+      />
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}
