@@ -1,6 +1,13 @@
 export interface Characters {
     name:          string;
     id:            string;
+    materials:     string[];
+    teams:         string[];
+    primary_echo:  string[];
+    echoes:        string[];
+    substats:      string[];
+    sets:          string[];
+    weapons:       string[];
     rarity:        number;
     element:       string[];
     type:          string[];
@@ -9,14 +16,13 @@ export interface Characters {
     def:           number;
     total_stats:   Stat[];
     passive_stats: Stat[];
-    skills:        Skill[];
+    skills:        Chain[];
+    passives:      Chain[];
+    swap:          Chain[];
+    chain:         Chain[];
 }
 
-export interface Stat {
-    stat: string;
-}
-
-export interface Skill {
+export interface Chain {
     name:        string;
     icon:        string;
     group:       Group;
@@ -32,4 +38,8 @@ export enum Group {
     ResonanceChain = "Resonance Chain",
     ResonanceLiberation = "Resonance Liberation",
     ResonanceSkill = "Resonance Skill",
+}
+
+export interface Stat {
+    stat: string;
 }

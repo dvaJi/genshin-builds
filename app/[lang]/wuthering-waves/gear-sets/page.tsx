@@ -6,7 +6,7 @@ import { genPageMetadata } from "@app/seo";
 import Image from "@components/wuthering-waves/Image";
 import type { GearSets } from "@interfaces/wuthering-waves/gear-sets";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getRemoteData } from "@lib/localData";
+import { getWWData } from "@lib/dataApi";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -38,13 +38,17 @@ export async function generateMetadata({
   });
 }
 
-export default async function Page({}: Props) {
-  const data = await getRemoteData<GearSets[]>("wuthering", "gear-sets");
+export default async function Page({ params }: Props) {
+  const data = await getWWData<GearSets[]>({
+    resource: "gears",
+    language: params.lang,
+    select: ["id", "name", "bonus"],
+  });
 
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-ww-100 text-2xl">Wuthering Waves Gear Sets</h2>
+        <h2 className="text-2xl text-ww-100">Wuthering Waves Gear Sets</h2>
         <p>A list of all Gear Sets and their bonuses in Wuthering Waves.</p>
 
         <FrstAds
@@ -56,7 +60,7 @@ export default async function Page({}: Props) {
       <div className="flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
         {data.map((item) => (
           <div key={item.id} className="flex gap-2">
-            <div className="bg-ww-950 border-ww-900 flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border">
+            <div className="flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-900 bg-ww-950">
               <Image
                 className=""
                 src={`/icons/${item.id}.webp`}
@@ -66,11 +70,11 @@ export default async function Page({}: Props) {
               />
             </div>
             <div>
-              <h2 className="text-ww-100 mb-1 text-lg">{item.name} Build</h2>
+              <h2 className="mb-1 text-lg text-ww-100">{item.name} Build</h2>
               <div className="mt-2 flex flex-col gap-3">
                 {item.bonus.map((bonus) => (
-                  <div key={bonus.value} className="text-ww-100 text-sm">
-                    <span className="bg-ww-950 border-ww-900 mr-1 rounded border p-1 text-xs">
+                  <div key={bonus.value} className="text-sm text-ww-100">
+                    <span className="mr-1 rounded border border-ww-900 bg-ww-950 p-1 text-xs">
                       {bonus.count}
                     </span>{" "}
                     {bonus.value}

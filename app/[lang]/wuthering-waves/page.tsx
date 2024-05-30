@@ -8,7 +8,7 @@ import { genPageMetadata } from "@app/seo";
 import Image from "@components/wuthering-waves/Image";
 import type { Characters } from "@interfaces/wuthering-waves/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getRemoteData } from "@lib/localData";
+import { getWWData } from "@lib/dataApi";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -41,15 +41,16 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: Props) {
-  const characters = await getRemoteData<Characters[]>(
-    "wuthering",
-    "characters"
-  );
+  const characters = await getWWData<Characters[]>({
+    resource: "characters",
+    language: params.lang,
+    select: ["id", "name", "rarity"],
+  });
 
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-ww-100 text-2xl">
+        <h2 className="text-2xl text-ww-100">
           Wuthering Waves Characters List | Builds and Team
         </h2>
         <p>
@@ -75,7 +76,7 @@ export default async function Page({ params }: Props) {
           >
             <div
               className={clsx(
-                `overflow-hidden rounded transition-all rarity-${char.rarity} ring-ww-800 ring-0 group-hover:ring-4`
+                `overflow-hidden rounded transition-all rarity-${char.rarity} ring-0 ring-ww-800 group-hover:ring-4`
               )}
             >
               <Image
@@ -86,7 +87,7 @@ export default async function Page({ params }: Props) {
                 height={124}
               />
             </div>
-            <h2 className="text-ww-100 w-24 truncate text-center text-sm group-hover:text-white">
+            <h2 className="w-24 truncate text-center text-sm text-ww-100 group-hover:text-white">
               {char.name} Build
             </h2>
           </Link>
