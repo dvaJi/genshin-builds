@@ -156,7 +156,6 @@ export default async function GenshinCharacterPage({ params }: Props) {
     language: langData as any,
     select: ["id", "name", "rarity", "stats"],
     asMap: true,
-    revalidate: 0,
   });
 
   const artifactsList = await getGenshinData<Record<string, Artifact>>({
@@ -164,7 +163,6 @@ export default async function GenshinCharacterPage({ params }: Props) {
     language: langData as any,
     select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
     asMap: true,
-    revalidate: 0,
   });
 
   let weapons: Record<string, Weapon> = {};
