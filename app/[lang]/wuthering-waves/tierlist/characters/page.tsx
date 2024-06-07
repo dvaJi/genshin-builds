@@ -64,7 +64,7 @@ export default async function Page({ params, searchParams }: Props) {
   const table = searchParams?.type ?? "overall";
 
   if (!tables.includes(table as any)) {
-    redirect(`/wuthering-waves/tierlist/characters`);
+    return redirect(`/wuthering-waves/tierlist/characters`);
   }
   const tiers = tierlist[table as (typeof tables)[number]];
 

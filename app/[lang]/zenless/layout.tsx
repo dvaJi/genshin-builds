@@ -60,7 +60,21 @@ type Props = {
 
 export default function ZenlessLayout({ children, params }: Props) {
   return (
-    <IntlProvider locale={params.lang} messages={{}}>
+    <IntlProvider
+      locale={params.lang}
+      messages={
+        {
+          layout: {
+            home: "Home",
+            characters: "Characters",
+            bangboos: "Bangboos",
+            "disk-drives": "Disk Drives",
+            "w-engines": "W Engines",
+            blog: "Blog",
+          },
+        } as any
+      }
+    >
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <section
         className={clsx(
@@ -70,8 +84,8 @@ export default function ZenlessLayout({ children, params }: Props) {
       >
         <ZenlessHeader locale={params.lang} />
 
-        <div className="news-detail py-4 text-zinc-950  lg:min-h-[600px] lg:px-20 xl:min-h-[750px]">
-          <div className="container mx-auto ">{children}</div>
+        <div className="news-detail py-4 text-zinc-950 lg:min-h-[600px] lg:px-20 xl:min-h-[750px]">
+          <div className="container mx-auto">{children}</div>
           <div className="section__foot" />
         </div>
 

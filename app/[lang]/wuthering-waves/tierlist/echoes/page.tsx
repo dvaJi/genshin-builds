@@ -49,7 +49,6 @@ export default async function Page({ params }: Props) {
     filter: {
       id: "echoes",
     },
-    revalidate: 1,
   });
 
   const echoes = await getWWData<Record<string, Echoes>>({
