@@ -42,6 +42,11 @@ async function getData<T>(
 
       if (options.filter && res.status === 404) return null as T;
 
+      if (!res.ok) {
+        console.error("Error fetching data", res.statusText, res.text());
+        throw new Error(res.statusText);
+      }
+
       if (options.asMap) {
         const data = await res.json();
         return data.reduce((acc: any, curr: any) => {
