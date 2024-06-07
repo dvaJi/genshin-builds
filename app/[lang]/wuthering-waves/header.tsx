@@ -21,17 +21,17 @@ const navRoutes: NavRoutes[] = [
     name: "Tier List",
     children: [
       {
-        id: "characters",
+        id: "tierlist_characters",
         name: "Characters Tier List",
         href: "/wuthering-waves/tierlist/characters",
       },
       {
-        id: "weapons",
+        id: "tierlist_weapons",
         name: "Weapons Tier List",
         href: "/wuthering-waves/tierlist/weapons",
       },
       {
-        id: "echoes",
+        id: "tierlist_echoes",
         name: "Echoes Tier List",
         href: "/wuthering-waves/tierlist/echoes",
       }

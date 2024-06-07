@@ -24,7 +24,25 @@ type Props = {
 
 export default async function WWLayout({ children, params }: Props) {
   return (
-    <IntlProvider locale={params.lang} messages={{}}>
+    <IntlProvider
+      locale={params.lang}
+      messages={
+        {
+          layout: {
+            characters: "Characters",
+            echoes: "Echoes",
+            weapons: "Weapons",
+            "gear-sets": "Gear Sets",
+            tierlist_characters: "Characters Tier List",
+            tierlist_characters_desc: "Best characters in the game",
+            tierlist_weapons: "Weapons Tier List",
+            tierlist_weapons_desc: "Best weapons in the game",
+            tierlist_echoes: "Echoes Tier List",
+            tierlist_echoes_desc: "Best echoes in the game",
+          },
+        } as any
+      }
+    >
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div
         className={clsx(
