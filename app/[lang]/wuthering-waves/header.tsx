@@ -16,6 +16,27 @@ const navRoutes: NavRoutes[] = [
   { id: "echoes", name: "Echoes", href: "/wuthering-waves/echoes" },
   { id: "weapons", name: "Weapons", href: "/wuthering-waves/weapons" },
   { id: "gear-sets", name: "Gear Sets", href: "/wuthering-waves/gear-sets" },
+  {
+    id: "tierlist",
+    name: "Tier List",
+    children: [
+      {
+        id: "characters",
+        name: "Characters Tier List",
+        href: "/wuthering-waves/tierlist/characters",
+      },
+      {
+        id: "weapons",
+        name: "Weapons Tier List",
+        href: "/wuthering-waves/tierlist/weapons",
+      },
+      {
+        id: "echoes",
+        name: "Echoes Tier List",
+        href: "/wuthering-waves/tierlist/echoes",
+      }
+    ],
+  },
 ];
 
 type Props = {
@@ -26,7 +47,7 @@ export default function WWHeader({ locale }: Props) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   return (
     <div className="relative left-0 top-0 z-50 w-full border-b border-ww-900 bg-ww-950 shadow-md backdrop-blur md:border-b-0">
-      <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
+      <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0">
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
           <Link
             href={`/${locale}/wuthering-waves`}

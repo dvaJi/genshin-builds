@@ -26,9 +26,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  const title = "Wuthering Waves Gear Sets List";
+  const title = "Wuthering Waves (WuWa) Gear Sets List";
   const description =
-    "A complete list of all Gear Sets and their bonuses in Wuthering Waves. This page offer most updated Gear Sets information.";
+    "A complete list of all Gear Sets and their bonuses in Wuthering Waves (WuWa). This page offer most updated Gear Sets information.";
 
   return genPageMetadata({
     title,

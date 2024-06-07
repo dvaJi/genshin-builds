@@ -1,11 +1,29 @@
 .rarity-5 {
-  background-image: url(https://rerollcdn.com/STARRAIL/Rarity/5_sm.png) !important;
+  background-image: url(https://genshinbuilds.aipurrjects.com/5_sm.png) !important;
   background-size: contain !important;
   background-position: 50% !important;
   order: -1;
 }
 .rarity-4 {
-  background-image: url(https://rerollcdn.com/STARRAIL/Rarity/4_sm.png) !important;
+  background-image: url(https://genshinbuilds.aipurrjects.com/4_sm.png) !important;
+  background-size: contain !important;
+  background-position: 50% !important;
+  order: -1;
+}
+.rarity-3 {
+  background-image: url(https://genshinbuilds.aipurrjects.com/3_sm.png) !important;
+  background-size: contain !important;
+  background-position: 50% !important;
+  order: -1;
+}
+.rarity-2 {
+  background-image: url(https://genshinbuilds.aipurrjects.com/2_sm.png) !important;
+  background-size: contain !important;
+  background-position: 50% !important;
+  order: -1;
+}
+.rarity-1 {
+  background-image: url(https://genshinbuilds.aipurrjects.com/1_sm.png) !important;
   background-size: contain !important;
   background-position: 50% !important;
   order: -1;

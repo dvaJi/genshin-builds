@@ -64,8 +64,8 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `Wuthering Waves ${character.name} | Builds and Team`;
-  const description = `${character.name} is an ${rarityToString(character.rarity)} character in Wuthering Waves. This page is going to provide you with the best builds and team for ${character.name}.`;
+  const title = `Wuthering Waves (WuWa) ${character.name} | Builds and Team`;
+  const description = `${character.name} is an ${rarityToString(character.rarity)} character in Wuthering Waves (WuWa). This page is going to provide you with the best builds and team for ${character.name}.`;
 
   return genPageMetadata({
     title,

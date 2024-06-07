@@ -1,6 +1,8 @@
 export interface NavRoutes {
   id: string;
   name: string;
-  href: string;
-  dropdownMenu?: NavRoutes[];
+  href?: string;
+  children?: NavRoutes[];
+  icon?: JSX.Element;
+  isNew?: boolean;
 }

@@ -26,9 +26,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  const title = "Wuthering Waves Weapons | Builds and Team";
+  const title = "Wuthering Waves (WuWa) Weapons | Builds and Team";
   const description =
-    "A complete list of all weapons in Wuthering Waves. This page offer most updated weapons' information including skills.";
+    "A complete list of all weapons in Wuthering Waves (WuWa). This page offer most updated weapons' information including skills.";
 
   return genPageMetadata({
     title,

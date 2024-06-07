@@ -1,25 +1,13 @@
+import type { CharactersAPI } from "@interfaces/enka";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import type { SelectBuilds, SelectPlayer } from "@lib/db/schema";
-import { CharactersAPI } from "interfaces/enka";
+
 import { ENKA_NAMES, REAL_SUBSTAT_VALUES, STAT_NAMES } from "./substats";
 
-export async function encodeBuilds(data: CharactersAPI[]) {
-  const artifactsDetail = await import(
-    "../_content/genshin/data/artifacts_detail.json"
-  );
-
-  const getSetId = (artifactId: number) => {
-    for (const value of artifactsDetail.default) {
-      if (!value.ids) {
-        continue;
-      }
-      if (value.ids.includes(artifactId.toString().slice(0, 4))) {
-        return Number("2" + value.set);
-      }
-    }
-    return 0;
-  };
-
+export async function encodeBuilds(
+  data: CharactersAPI[],
+  artifactsDetail: any[]
+) {
   return data.map((avatar) => {
     const equip = avatar.equipList
       .map((item) => {
@@ -85,19 +73,34 @@ export async function encodeBuilds(data: CharactersAPI[]) {
         (acc, item: any) => {
           if (!item) return acc;
           if (item.equipType === "EQUIP_BRACER") {
-            acc.flower = { ...item, setId: getSetId(item.itemId) };
+            acc.flower = {
+              ...item,
+              setId: getSetId(item.itemId, artifactsDetail),
+            };
           }
           if (item.equipType === "EQUIP_NECKLACE") {
-            acc.plume = { ...item, setId: getSetId(item.itemId) };
+            acc.plume = {
+              ...item,
+              setId: getSetId(item.itemId, artifactsDetail),
+            };
           }
           if (item.equipType === "EQUIP_SHOES") {
-            acc.sands = { ...item, setId: getSetId(item.itemId) };
+            acc.sands = {
+              ...item,
+              setId: getSetId(item.itemId, artifactsDetail),
+            };
           }
           if (item.equipType === "EQUIP_RING") {
-            acc.goblet = { ...item, setId: getSetId(item.itemId) };
+            acc.goblet = {
+              ...item,
+              setId: getSetId(item.itemId, artifactsDetail),
+            };
           }
           if (item.equipType === "EQUIP_DRESS") {
-            acc.circlet = { ...item, setId: getSetId(item.itemId) };
+            acc.circlet = {
+              ...item,
+              setId: getSetId(item.itemId, artifactsDetail),
+            };
           }
           if (!item.equipType) {
             acc.weapon = item;
@@ -214,6 +217,18 @@ export async function encodeBuilds(data: CharactersAPI[]) {
     };
   });
 }
+
+const getSetId = (artifactId: number, artifactsDetail: any[]) => {
+  for (const value of artifactsDetail) {
+    if (!value.ids) {
+      continue;
+    }
+    if (value.ids.includes(artifactId.toString().slice(0, 4))) {
+      return Number("2" + value.set);
+    }
+  }
+  return 0;
+};
 
 export async function decodeBuilds(
   data: (SelectBuilds & {

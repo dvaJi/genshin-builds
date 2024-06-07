@@ -1,24 +1,25 @@
 "use server";
 
-import { createId } from "@paralleldrive/cuid2";
 import { eq, sql } from "drizzle-orm";
+import type { PlayerDataAPI as EnkaPlayerDataAPI } from "interfaces/enka";
+import type { PlayerDataAPI as MiHomoPlayerDataAPI } from "interfaces/mihomo";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 import { db } from "@lib/db";
 import {
+  type InsertBuilds,
+  type InsertHSRPlayer,
+  type InsertPlayer,
   builds,
   hsrBuilds,
   hsrPlayers,
   players,
-  type InsertBuilds,
-  type InsertHSRPlayer,
-  type InsertPlayer,
 } from "@lib/db/schema";
+import { getRemoteData } from "@lib/localData";
+import { createId } from "@paralleldrive/cuid2";
 import { encodeBuilds as encodeEnkaBuilds } from "@utils/leaderboard-enc";
 import { encodeBuilds as encodeMihomoBuilds } from "@utils/mihomo_enc";
-import type { PlayerDataAPI as EnkaPlayerDataAPI } from "interfaces/enka";
-import type { PlayerDataAPI as MiHomoPlayerDataAPI } from "interfaces/mihomo";
 
 const submitHSRUIDSchema = z.object({
   uid: z.string().min(1),
@@ -299,6 +300,11 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     };
   }
 
+  const artifactsDetail = await getRemoteData<{ set: number; ids: string[] }[]>(
+    "genshin",
+    "artifacts_detail"
+  );
+
   try {
     let player = await db.query.players.findFirst({
       where: eq(players.uuid, data.uid),
@@ -350,7 +356,10 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         return { message: "error insertPlayer" };
       }
 
-      const encodedData = await encodeEnkaBuilds(data.avatarInfoList);
+      const encodedData = await encodeEnkaBuilds(
+        data.avatarInfoList,
+        artifactsDetail
+      );
       const insertBuilds: InsertBuilds[] = encodedData.map((avatar) => ({
         ...avatar,
         id: createId(),
@@ -388,7 +397,10 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       });
 
       // Update builds
-      const encodedData = await encodeEnkaBuilds(data.avatarInfoList);
+      const encodedData = await encodeEnkaBuilds(
+        data.avatarInfoList,
+        artifactsDetail
+      );
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
       const updateBuilds = encodedData
         .filter((avatar) => avatarsIds.includes(avatar.avatarId))
