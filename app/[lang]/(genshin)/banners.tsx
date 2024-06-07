@@ -36,7 +36,9 @@ export async function Banners({ lang }: Props) {
   });
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4">
+    <div
+      className={`grid grid-cols-2 ${banners.length > 3 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
+    >
       {banners.map((banner) => (
         <Link
           href={`/${lang}/banners/${banner.name.endsWith("Weapon Banner") ? "weapons" : "characters"}`}
