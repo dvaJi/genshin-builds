@@ -6,6 +6,7 @@ type IntlProviderProps = {
   common?: Record<string, string>;
   messages?: Record<string, string>;
   locale?: string;
+  game: string;
   children: React.ReactNode;
 };
 

@@ -61,6 +61,7 @@ type Props = {
 export default function ZenlessLayout({ children, params }: Props) {
   return (
     <IntlProvider
+      game="zenless"
       locale={params.lang}
       messages={
         {

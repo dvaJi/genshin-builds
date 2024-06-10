@@ -28,7 +28,7 @@ export default async function HSRLayout({ children, params }: Props) {
   const { messages } = await useTranslations(params.lang, "hsr", "layout");
 
   return (
-    <IntlProvider locale={params.lang} messages={messages}>
+    <IntlProvider locale={params.lang} messages={messages} game="hsr">
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div
         className={clsx(

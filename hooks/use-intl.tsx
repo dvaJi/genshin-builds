@@ -2,6 +2,7 @@
 
 import { localeToLang } from "@utils/locale-to-lang";
 import { templateReplacement } from "@utils/template-replacement";
+
 import { IntlMessage } from "./intl-context";
 import useIntlContext from "./use-intl-context";
 
@@ -20,14 +21,19 @@ export interface useIntlResponse {
 
 type InputType = IntlFormatProps | string;
 
-const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
+const resolvePath = (
+  dict: IntlMessage,
+  namespace = "",
+  locale: any,
+  game: string
+) => {
   let message: unknown = dict;
 
   namespace.split(".").forEach((part) => {
     const next = (message as any)[part];
 
     if (part == null || next == null) {
-      const errorMsg = `[useIntl] Could not resolve \`${namespace}\` in messages. ${locale}`;
+      const errorMsg = `[useIntl][${game}] Could not resolve \`${namespace}\` in messages. ${locale}`;
       console.error(errorMsg);
     }
 
@@ -38,9 +44,9 @@ const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
 };
 
 const useIntl = (namespace?: string): useIntlResponse => {
-  const { messages: dict = {}, common, locale } = useIntlContext();
+  const { messages: dict = {}, common, locale, game } = useIntlContext();
 
-  const message = resolvePath(dict, namespace, locale);
+  const message = resolvePath(dict, namespace, locale, game);
 
   const format = (input: InputType, values?: Record<string, string>) => {
     if (typeof input === "string") {

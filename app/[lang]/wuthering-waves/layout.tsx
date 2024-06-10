@@ -25,6 +25,7 @@ type Props = {
 export default async function WWLayout({ children, params }: Props) {
   return (
     <IntlProvider
+      game="wuthering-waves"
       locale={params.lang}
       messages={
         {

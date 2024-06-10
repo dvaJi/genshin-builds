@@ -21,7 +21,7 @@ export default async function GenshinLayout({ children, params }: Props) {
   );
 
   return (
-    <IntlProvider locale={params.lang} messages={messages} common={common}>
+    <IntlProvider locale={params.lang} messages={messages} common={common} game="genshin">
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div className="flex min-h-screen flex-col bg-vulcan-900">
         <Header />

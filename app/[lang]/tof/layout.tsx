@@ -48,7 +48,21 @@ type Props = {
 
 export default function TofLayout({ children, params }: Props) {
   return (
-    <IntlProvider locale={params.lang} messages={{}}>
+    <IntlProvider
+      locale={params.lang}
+      messages={
+        {
+          layout: {
+            characters: "Characters",
+            weapons: "Weapons",
+            matrices: "Matrices",
+            blog: "Blog",
+          },
+          characters: {}
+        } as any
+      }
+      game="tof"
+    >
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div
         className={clsx(

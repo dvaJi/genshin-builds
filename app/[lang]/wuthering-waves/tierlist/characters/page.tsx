@@ -1,10 +1,9 @@
 import clsx from "clsx";
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
+// import { redirect } from "next/navigation";
 import { genPageMetadata } from "@app/seo";
 import Image from "@components/wuthering-waves/Image";
 import { Characters } from "@interfaces/wuthering-waves/characters";
@@ -24,10 +23,6 @@ type Props = {
   };
 };
 const tables = ["overall", "mainDPS", "subDPS", "support"] as const;
-
-export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
-}
 
 export async function generateMetadata({
   params,
@@ -63,9 +58,9 @@ export default async function Page({ params, searchParams }: Props) {
 
   const table = searchParams?.type ?? "overall";
 
-  if (!tables.includes(table as any)) {
-    return redirect(`/wuthering-waves/tierlist/characters`);
-  }
+  // if (!tables.includes(table as any)) {
+  //   return redirect(`/wuthering-waves/tierlist/characters`);
+  // }
   const tiers = tierlist[table as (typeof tables)[number]];
 
   return (

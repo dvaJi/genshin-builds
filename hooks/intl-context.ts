@@ -7,6 +7,7 @@ export type IntlContextShape = {
   messages?: IntlMessage;
   common?: IntlMessage;
   locale: string;
+  game: string;
 };
 
 export const IntlContext = createContext<IntlContextShape | undefined>(
