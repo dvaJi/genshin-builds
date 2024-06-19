@@ -10,6 +10,7 @@ import CharacterBestEquip from "@components/hsr/CharacterBestEquip";
 import CharacterBuild from "@components/hsr/CharacterBuild";
 import CharacterInfoStat from "@components/hsr/CharacterInfoStat";
 import CharacterTrace from "@components/hsr/CharacterTrace";
+import Image from "@components/hsr/Image";
 import Stars from "@components/hsr/Stars";
 import useTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
@@ -94,7 +95,7 @@ export async function generateMetadata({
     title,
     description,
     path: `/hsr/character/${params.id}`,
-    image: getHsrUrl(`/characters/${character.id}/icon.png`),
+    image: getHsrUrl(`/characters/${character.id}/icon_2.png`),
     locale,
   });
 }
@@ -221,8 +222,8 @@ export default async function CharacterPage({ params }: Props) {
     <div>
       <div className="flex flex-col md:flex-row">
         <div className="flex justify-center">
-          <img
-            src={getHsrUrl(`/characters/${character.id}/icon.png`)}
+          <Image
+            src={`/characters/${character.id}/icon_2.png`}
             alt={character.name}
             width={144}
             height={168}
@@ -235,8 +236,8 @@ export default async function CharacterPage({ params }: Props) {
         <div className="ml-4">
           <h2 className="flex items-center text-3xl font-semibold leading-loose text-slate-50">
             {character.name}
-            <img
-              src={getHsrUrl(`/${character.combat_type.id}.webp`)}
+            <Image
+              src={`/${character.combat_type.id}.webp`}
               alt={character.combat_type.name}
               width={24}
               height={24}
@@ -247,8 +248,8 @@ export default async function CharacterPage({ params }: Props) {
           <div className="flex items-center">
             <Stars stars={character.rarity} />
             <div className="ml-4 flex items-center">
-              <img
-                src={getHsrUrl(`/${character.path.id}.webp`)}
+              <Image
+                src={`/${character.path.id}.webp`}
                 alt={character.path.name}
                 width="20"
                 height="20"
@@ -332,10 +333,8 @@ export default async function CharacterPage({ params }: Props) {
                           >
                             <div className="mr-2 flex flex-shrink-0 items-center justify-center">
                               <div className="flex-shrink-0 justify-center rounded-full text-center">
-                                <img
-                                  src={getHsrUrl(
-                                    `/characters/${getHsrId(c.id)}/icon.png`
-                                  )}
+                                <Image
+                                  src={`/characters/${getHsrId(c.id)}/icon_2.png`}
                                   alt={charactersMap[getHsrId(c.id)].name}
                                   width={48}
                                   height={56}
@@ -355,13 +354,10 @@ export default async function CharacterPage({ params }: Props) {
                                 <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
                                   {charactersMap[getHsrId(c.id)].name}
                                 </span>
-                                <img
-                                  src={getHsrUrl(
-                                    `/${
-                                      charactersMap[getHsrId(c.id)].combat_type
-                                        .id
-                                    }.webp`
-                                  )}
+                                <Image
+                                  src={`/${
+                                    charactersMap[getHsrId(c.id)].combat_type.id
+                                  }.webp`}
                                   alt={
                                     charactersMap[getHsrId(c.id)].combat_type
                                       .name
@@ -374,12 +370,10 @@ export default async function CharacterPage({ params }: Props) {
                               </h3>
                               <div className="flex items-center">
                                 <div className="flex items-center">
-                                  <img
-                                    src={getHsrUrl(
-                                      `/${
-                                        charactersMap[getHsrId(c.id)].path.id
-                                      }.webp`
-                                    )}
+                                  <Image
+                                    src={`/${
+                                      charactersMap[getHsrId(c.id)].path.id
+                                    }.webp`}
                                     alt={
                                       charactersMap[getHsrId(c.id)].path.name
                                     }
@@ -422,12 +416,8 @@ export default async function CharacterPage({ params }: Props) {
                   >
                     <div className="mr-4 flex w-[64px] flex-shrink-0 items-center justify-center">
                       <div className="flex-shrink-0 justify-center rounded-full bg-hsr-surface3 text-center">
-                        <img
-                          src={getHsrUrl(
-                            `/characters/${character.id}/${skill.id}.png`,
-                            70,
-                            70
-                          )}
+                        <Image
+                          src={`/characters/${character.id}/${skill.id}.png`}
                           width={64}
                           height={64}
                           className="p-1"
@@ -502,10 +492,8 @@ export default async function CharacterPage({ params }: Props) {
                 <div key={eidolon.id} className="mb-2 flex items-center">
                   <div className="mr-4 flex w-[64px] flex-shrink-0 items-center justify-center">
                     <div className="flex-shrink-0 justify-center rounded-full bg-hsr-surface3 text-center">
-                      <img
-                        src={getHsrUrl(
-                          `/characters/${character.id}/${eidolon.id}.png`
-                        )}
+                      <Image
+                        src={`/characters/${character.id}/${eidolon.id}.png`}
                         width={64}
                         height={64}
                         alt={eidolon.name}

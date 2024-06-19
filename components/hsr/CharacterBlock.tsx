@@ -1,6 +1,8 @@
-import { getHsrUrl } from "@lib/imgUrl";
-import type { Character } from "@interfaces/hsr";
 import { memo } from "react";
+
+import type { Character } from "@interfaces/hsr";
+
+import Image from "./Image";
 
 type Props = {
   character: Character;
@@ -9,11 +11,11 @@ type Props = {
 function CharacterBlock({ character }: Props) {
   return (
     <div className="group flex flex-col items-center overflow-hidden bg-hsr-surface2 shadow-sm transition-all hover:bg-hsr-surface3">
-      <img
-        src={getHsrUrl(`/characters/${character.id}/icon.png`, 140, 140)}
+      <Image
+        src={`/characters/${character.id}/icon_2.png`}
         alt={character.name}
-        width="128"
-        height="128"
+        width="140"
+        height="140"
         loading="lazy"
         className="rounded-full"
       />{" "}
@@ -21,16 +23,16 @@ function CharacterBlock({ character }: Props) {
         {character.name}
       </span>{" "}
       <div className="mb-4 flex">
-        <img
-          src={getHsrUrl(`/${character.path.id}.webp`)}
+        <Image
+          src={`/${character.path.id}.webp`}
           alt={character.path.name}
           width="60"
           height="54"
           loading="lazy"
           className="w-[30px]"
         />
-        <img
-          src={getHsrUrl(`/${character.combat_type.id}.webp`)}
+        <Image
+          src={`/${character.combat_type.id}.webp`}
           alt={character.combat_type.name}
           width="60"
           height="54"
