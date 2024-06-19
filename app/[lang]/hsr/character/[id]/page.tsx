@@ -306,90 +306,97 @@ export default async function CharacterPage({ params }: Props) {
                 <div key={team.name} className="mt-4">
                   <h3 className="text-lg text-slate-300">{team.name}</h3>
                   <div className="flex flex-wrap gap-4">
-                    {team.data.characters.map((c) => (
-                      <div
-                        key={c.id}
-                        className="group relative mb-2 flex max-w-xl items-center rounded bg-hsr-surface2 p-2 hover:bg-hsr-surface3"
-                      >
-                        {c.isFlex ? (
-                          <div className="hmr-1 flex flex-shrink-0 items-center justify-center">
-                            <div className="mr-2 h-[56px] w-[48px] rounded border border-gray-200/5 bg-gray-200/5">
-                              <BsPersonFill className="h-full w-full opacity-10 group-hover:opacity-30" />
-                            </div>
-                            <div className="flex flex-col">
-                              <h3 className="flex items-center text-slate-50">
-                                <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
-                                  {c.role}
-                                </span>
-                              </h3>
-                              <span className="text-sm">{c.id}</span>
-                            </div>
-                          </div>
-                        ) : (
-                          <Link
-                            href={`/${params.lang}/hsr/character/${c.id}`}
-                            className="flex items-center"
-                            prefetch={false}
-                          >
-                            <div className="mr-2 flex flex-shrink-0 items-center justify-center">
-                              <div className="flex-shrink-0 justify-center rounded-full text-center">
-                                <Image
-                                  src={`/characters/${getHsrId(c.id)}/icon_2.png`}
-                                  alt={charactersMap[getHsrId(c.id)].name}
-                                  width={48}
-                                  height={56}
-                                  className={clsx("rounded border", {
-                                    "border-yellow-400":
-                                      charactersMap[getHsrId(c.id)].rarity ===
-                                      5,
-                                    "border-purple-400":
-                                      charactersMap[getHsrId(c.id)].rarity ===
-                                      4,
-                                  })}
-                                />
+                    {team.data.characters.map((c) => {
+                      if (!charactersMap[c.id]) {
+                        console.log(c);
+                        return null;
+                      }
+                      return (
+                        <div
+                          key={c.id}
+                          className="group relative mb-2 flex max-w-xl items-center rounded bg-hsr-surface2 p-2 hover:bg-hsr-surface3"
+                        >
+                          {c.isFlex ? (
+                            <div className="hmr-1 flex flex-shrink-0 items-center justify-center">
+                              <div className="mr-2 h-[56px] w-[48px] rounded border border-gray-200/5 bg-gray-200/5">
+                                <BsPersonFill className="h-full w-full opacity-10 group-hover:opacity-30" />
+                              </div>
+                              <div className="flex flex-col">
+                                <h3 className="flex items-center text-slate-50">
+                                  <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
+                                    {c.role}
+                                  </span>
+                                </h3>
+                                <span className="text-sm">{c.id}</span>
                               </div>
                             </div>
-                            <div className="flex flex-col">
-                              <h3 className="flex items-center text-slate-50">
-                                <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
-                                  {charactersMap[getHsrId(c.id)].name}
-                                </span>
-                                <Image
-                                  src={`/${
-                                    charactersMap[getHsrId(c.id)].combat_type.id
-                                  }.webp`}
-                                  alt={
-                                    charactersMap[getHsrId(c.id)].combat_type
-                                      .name
-                                  }
-                                  width={24}
-                                  height={24}
-                                  loading="lazy"
-                                  className="ml-2 inline-block w-[24px] select-none"
-                                />
-                              </h3>
-                              <div className="flex items-center">
-                                <div className="flex items-center">
+                          ) : (
+                            <Link
+                              href={`/${params.lang}/hsr/character/${c.id}`}
+                              className="flex items-center"
+                              prefetch={false}
+                            >
+                              <div className="mr-2 flex flex-shrink-0 items-center justify-center">
+                                <div className="flex-shrink-0 justify-center rounded-full text-center">
                                   <Image
-                                    src={`/${
-                                      charactersMap[getHsrId(c.id)].path.id
-                                    }.webp`}
-                                    alt={
-                                      charactersMap[getHsrId(c.id)].path.name
-                                    }
-                                    width="20"
-                                    height="20"
-                                    loading="lazy"
-                                    className="mr-2 inline-block w-[16px] select-none"
+                                    src={`/characters/${getHsrId(c.id)}/icon_2.png`}
+                                    alt={charactersMap[getHsrId(c.id)].name}
+                                    width={48}
+                                    height={56}
+                                    className={clsx("rounded border", {
+                                      "border-yellow-400":
+                                        charactersMap[getHsrId(c.id)].rarity ===
+                                        5,
+                                      "border-purple-400":
+                                        charactersMap[getHsrId(c.id)].rarity ===
+                                        4,
+                                    })}
                                   />
-                                  <span className="text-sm">{c.role}</span>
                                 </div>
                               </div>
-                            </div>
-                          </Link>
-                        )}
-                      </div>
-                    ))}
+                              <div className="flex flex-col">
+                                <h3 className="flex items-center text-slate-50">
+                                  <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
+                                    {charactersMap[getHsrId(c.id)].name}
+                                  </span>
+                                  <Image
+                                    src={`/${
+                                      charactersMap[getHsrId(c.id)].combat_type
+                                        .id
+                                    }.webp`}
+                                    alt={
+                                      charactersMap[getHsrId(c.id)].combat_type
+                                        .name
+                                    }
+                                    width={24}
+                                    height={24}
+                                    loading="lazy"
+                                    className="ml-2 inline-block w-[24px] select-none"
+                                  />
+                                </h3>
+                                <div className="flex items-center">
+                                  <div className="flex items-center">
+                                    <Image
+                                      src={`/${
+                                        charactersMap[getHsrId(c.id)].path.id
+                                      }.webp`}
+                                      alt={
+                                        charactersMap[getHsrId(c.id)].path.name
+                                      }
+                                      width="20"
+                                      height="20"
+                                      loading="lazy"
+                                      className="mr-2 inline-block w-[16px] select-none"
+                                    />
+                                    <span className="text-sm">{c.role}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </Link>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}

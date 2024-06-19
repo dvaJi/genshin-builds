@@ -11,5 +11,7 @@ export const getURL = () => {
 };
 
 export function getHsrId(id: string) {
+  if (id.endsWith("_boy") || id.endsWith("_girl")) return id;
+  if (id === "trailblazer_imaginary") return "trailblazer_harmony_boy";
   return id.startsWith("trailblazer") ? id + "_boy" : id;
 }

@@ -14,8 +14,8 @@ function CharacterBlock({ character }: Props) {
       <Image
         src={`/characters/${character.id}/icon_2.png`}
         alt={character.name}
-        width="140"
-        height="140"
+        width={140}
+        height={140}
         loading="lazy"
         className="rounded-full"
       />{" "}

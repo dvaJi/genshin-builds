@@ -12,6 +12,7 @@ import type { Character } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
+import { getHsrId } from "@utils/helpers";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -117,19 +118,28 @@ export default async function HSRTierlistPage({ params }: Props) {
               {tier}
             </div>
             <div className="flex flex-wrap">
-              {tierCharacters.map((characterId: string) => (
-                <Link
-                  key={characterId}
-                  href={`/${params.lang}/hsr/character/${characterId}`}
-                  className="mx-2"
-                  prefetch={false}
-                >
-                  <CharacterBlock
+              {tierCharacters.map((characterId: string) => {
+                const char = charactersMap[getHsrId(characterId)];
+
+                if (!char) {
+                  console.log("Character not found", characterId);
+                  return null;
+                }
+
+                return (
+                  <Link
                     key={characterId}
-                    character={charactersMap[characterId]}
-                  />
-                </Link>
-              ))}
+                    href={`/${params.lang}/hsr/character/${char.id}`}
+                    className="mx-2"
+                    prefetch={false}
+                  >
+                    <CharacterBlock
+                      key={characterId}
+                      character={char}
+                    />
+                  </Link>
+                )
+              })}
             </div>
           </div>
         ))}
