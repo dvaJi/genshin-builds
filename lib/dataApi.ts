@@ -29,13 +29,19 @@ async function getData<T>(
   tags: string[]
 ): Promise<T> {
   const MAX_RETRIES = 3;
+  let revalidate = options.revalidate ? options.revalidate : 60 * 60 * 24;
+
+  if (tags.includes("genshin-data")) {
+    revalidate = 0;
+  }
+
   for (let i = 0; i < MAX_RETRIES; i++) {
     try {
       const res = await fetch(url, {
         method: "POST",
         body: JSON.stringify(options),
         next: {
-          revalidate: options.revalidate ? options.revalidate : 60 * 60 * 24,
+          revalidate,
           tags,
         },
       });
