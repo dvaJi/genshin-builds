@@ -307,7 +307,8 @@ export default async function CharacterPage({ params }: Props) {
                   <h3 className="text-lg text-slate-300">{team.name}</h3>
                   <div className="flex flex-wrap gap-4">
                     {team.data.characters.map((c) => {
-                      if (!charactersMap[c.id]) {
+                      const teamCharacter = charactersMap[getHsrId(c.id)];
+                      if (!teamCharacter && !c.isFlex) {
                         console.log(c);
                         return null;
                       }
@@ -340,16 +341,14 @@ export default async function CharacterPage({ params }: Props) {
                                 <div className="flex-shrink-0 justify-center rounded-full text-center">
                                   <Image
                                     src={`/characters/${getHsrId(c.id)}/icon_2.png`}
-                                    alt={charactersMap[getHsrId(c.id)].name}
+                                    alt={teamCharacter.name}
                                     width={48}
                                     height={56}
                                     className={clsx("rounded border", {
                                       "border-yellow-400":
-                                        charactersMap[getHsrId(c.id)].rarity ===
-                                        5,
+                                        teamCharacter.rarity === 5,
                                       "border-purple-400":
-                                        charactersMap[getHsrId(c.id)].rarity ===
-                                        4,
+                                        teamCharacter.rarity === 4,
                                     })}
                                   />
                                 </div>
@@ -357,17 +356,13 @@ export default async function CharacterPage({ params }: Props) {
                               <div className="flex flex-col">
                                 <h3 className="flex items-center text-slate-50">
                                   <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
-                                    {charactersMap[getHsrId(c.id)].name}
+                                    {teamCharacter.name}
                                   </span>
                                   <Image
                                     src={`/${
-                                      charactersMap[getHsrId(c.id)].combat_type
-                                        .id
+                                      teamCharacter.combat_type.id
                                     }.webp`}
-                                    alt={
-                                      charactersMap[getHsrId(c.id)].combat_type
-                                        .name
-                                    }
+                                    alt={teamCharacter.combat_type.name}
                                     width={24}
                                     height={24}
                                     loading="lazy"

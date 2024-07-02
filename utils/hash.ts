@@ -15,8 +15,32 @@ export function hashToNum(host: string, index: number, min = 0, max = 1) {
   return Math.floor(random(hash, min, max));
 }
 
-export function slugify2(value?: string, separator = "-") {
-  if (!value) return "";
+const specialChars = {
+  á: "a",
+  é: "e",
+  í: "i",
+  ó: "o",
+  ú: "u",
+  ñ: "n",
+  ü: "u",
+  Á: "A",
+  É: "E",
+  Í: "I",
+  Ó: "O",
+  Ú: "U",
+};
+
+export function slugify2(_value?: string, separator = "-") {
+  if (!_value) return "";
+
+  let value = _value.slice();
+
+  for (const key in specialChars) {
+    value = value.replace(
+      new RegExp(key, "g"),
+      specialChars[key as keyof typeof specialChars]
+    );
+  }
 
   return value
     .toLowerCase()
@@ -25,7 +49,6 @@ export function slugify2(value?: string, separator = "-") {
     .replace(/[^a-z0-9-]/g, "")
     .replace(/--+/g, separator);
 }
-
 
 export function slugify(value?: string, separator = "_") {
   if (!value) return "";
