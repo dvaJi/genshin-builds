@@ -104,7 +104,7 @@ export default async function Page({ params }: Props) {
                 >
                   {echoes[char] ? (
                     <Link
-                      href={`/${params.lang}/wuthering-waves/echoes/${char}`}
+                      href={`/${params.lang}/wuthering-waves/echoes/${char.replace("é", "e")}`}
                       className="flex flex-col items-center justify-center gap-2"
                       prefetch={false}
                     >
@@ -115,7 +115,7 @@ export default async function Page({ params }: Props) {
                       >
                         <Image
                           className="transition-transform ease-in-out group-hover:scale-110"
-                          src={`/echoes/${char}.webp`}
+                          src={`/echoes/${char.replace("é", "e")}.webp`}
                           alt={echoes[char].name}
                           width={100}
                           height={100}
@@ -148,7 +148,7 @@ export default async function Page({ params }: Props) {
             <div className="flex w-20 shrink-0 flex-col items-center gap-2">
               <Image
                 className="rounded-full"
-                src={`/echoes/${char}.webp`}
+                src={`/echoes/${char.replace("é", "e")}.webp`}
                 alt={echoes[char].name}
                 width={60}
                 height={60}

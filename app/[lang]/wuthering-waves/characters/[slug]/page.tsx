@@ -225,7 +225,7 @@ export default async function CharacterPage({ params }: Props) {
                 className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
               >
                 <Image
-                  src={`/echoes/${echo.replace(/ /g, "_").toLowerCase()}.webp`}
+                  src={`/echoes/${echo.replace(/ /g, "_").toLowerCase().replace("é", "e")}.webp`}
                   alt={echo}
                   width={40}
                   height={40}
