@@ -51,8 +51,6 @@ export async function generateMetadata({
   const publishedTime = new Date().toISOString();
   const image = `/zenless/characters/portrait_${character.id}.png`;
 
-  const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
-
   return {
     title,
     description,
@@ -64,7 +62,7 @@ export async function generateMetadata({
       url: `https://genshin-builds.com/zenless/characters/${slug}`,
       images: [
         {
-          url: ogImage,
+          url: image,
         },
       ],
     },
@@ -72,7 +70,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      images: [image],
     },
   };
 }
@@ -165,7 +163,6 @@ export default async function CharactersPage({
               <div>
                 <div className="flex">
                   <h4 className="font-semibold">{skill.name}</h4>
-                  <h5 className="ml-4 text-sm">{skill.type?.join(" ")}</h5>
                 </div>
                 <p
                   className="whitespace-pre-line"
@@ -200,7 +197,6 @@ export default async function CharactersPage({
               <div>
                 <div className="flex">
                   <h4 className="font-semibold">{skill.name}</h4>
-                  <h5 className="ml-4 text-sm">{skill.type?.join(" ")}</h5>
                 </div>
                 <p className="whitespace-pre-line">{skill.description}</p>
               </div>

@@ -1,8 +1,8 @@
 export interface DiskDrives {
-    id:     string;
     name:   string;
     rarity: Rarity;
     bonus:  Bonus[];
+    id:     string;
 }
 
 export interface Bonus {
@@ -11,7 +11,5 @@ export interface Bonus {
 }
 
 export enum Rarity {
-    A = "A",
-    B = "B",
     S = "S",
 }

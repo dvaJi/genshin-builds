@@ -46,35 +46,33 @@ export default async function CharactersPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="mt-6 flex flex-wrap items-center justify-center gap-1 md:gap-4">
-        {data
-          .filter((c) => !c.tba)
-          .map((character) => (
-            <Link
-              key={character.id}
-              href={`/${params.lang}/zenless/characters/${character.id}`}
-              className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
-              prefetch={false}
+        {data.map((character) => (
+          <Link
+            key={character.id}
+            href={`/${params.lang}/zenless/characters/${character.id}`}
+            className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
+            prefetch={false}
+          >
+            <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
+              <Image
+                className="max-w-max"
+                src={`/characters/portrait_${character.id}.png`}
+                alt={character.name}
+                width={200}
+                height={200}
+              />
+            </div>
+            <div
+              className="absolute bottom-0 flex h-7 w-full items-center justify-center"
+              style={{
+                background:
+                  "repeating-linear-gradient( -45deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5) 3px, rgba(60,60,60,0.5) 3px, rgba(60, 60, 60,0.5) 7px )",
+              }}
             >
-              <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
-                <Image
-                  className="max-w-max"
-                  src={`/characters/portrait_${character.id}.png`}
-                  alt={character.name}
-                  width={200}
-                  height={200}
-                />
-              </div>
-              <div
-                className="absolute bottom-0 flex h-7 w-full items-center justify-center"
-                style={{
-                  background:
-                    "repeating-linear-gradient( -45deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5) 3px, rgba(60,60,60,0.5) 3px, rgba(60, 60, 60,0.5) 7px )",
-                }}
-              >
-                <h2 className="font-bold text-white">{character.name}</h2>
-              </div>
-            </Link>
-          ))}
+              <h2 className="font-bold text-white">{character.name}</h2>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
