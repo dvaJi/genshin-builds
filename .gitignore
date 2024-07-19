@@ -40,3 +40,5 @@ yarn-error.log*
 target/
 
 _content/tmp/*
+# Sentry Config File
+.env.sentry-build-plugin
