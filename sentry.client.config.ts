@@ -1,7 +1,6 @@
 // This file configures the initialization of Sentry on the client.
 // The config you add here will be used whenever a users loads a page in their browser.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
-
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
@@ -26,5 +25,19 @@ Sentry.init({
       maskAllText: true,
       blockAllMedia: true,
     }),
+  ],
+
+  ignoreErrors: [
+    `Cannot read properties of null (reading 'scrollX')`,
+
+    // Ignore freestar, GoogleADS, Google Tag Manager, Google Analytics, and Google Recaptcha errors
+    /.+Blocked a frame with origin.+/,
+    /.+Blocked a restricted frame with origin.+/,
+    /.+freestar.refreshActiveSlots is not a function.+/,
+    /.+Cannot read properties of null \(reading 'document'\).+/,
+    /.+https:\/\/goo.gl\/LdLk22.+/,
+    /.+https:\/\/www.googletagmanager.com\/gtm.js.+/,
+    /.+https:\/\/www.google-analytics.com\/analytics.js.+/,
+    /.+https:\/\/www.google.com\/recaptcha\/api.js.+/,
   ],
 });
