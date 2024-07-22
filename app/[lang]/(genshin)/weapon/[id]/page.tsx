@@ -10,13 +10,11 @@ import { BreadcrumbList, WithContext } from "schema-dts";
 import { genPageMetadata } from "@app/seo";
 import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
 import useTranslations from "@hooks/use-translations";
-import { i18n } from "@i18n-config";
 import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData, getRemoteData } from "@lib/localData";
-import { localeToLang } from "@utils/locale-to-lang";
 import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
 
 import WeaponStats from "./stats";
@@ -27,27 +25,11 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; id: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const _weapons = await getGenshinData<Weapon[]>({
-      resource: "weapons",
-      language: localeToLang(lang),
-      select: ["id"],
-    });
-
-    routes.push(
-      ..._weapons.map((c) => ({
-        lang,
-        id: c.id,
-      }))
-    );
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {
