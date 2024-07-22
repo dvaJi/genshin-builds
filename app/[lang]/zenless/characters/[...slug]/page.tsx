@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import Image from "@components/zenless/Image";
 import type { Characters } from "@interfaces/zenless/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getRemoteData } from "@lib/localData";
+import { getZenlessData } from "@lib/dataApi";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -20,7 +20,9 @@ export async function generateStaticParams() {
   const routes: { lang: string; slug: string[] }[] = [];
 
   for await (const lang of i18n.locales) {
-    const data = await getRemoteData<Characters[]>("zenless", "characters");
+    const data = await getZenlessData<Characters[]>({
+      resource: "characters",
+    });
 
     routes.push(
       ...data.map((c) => ({
@@ -39,8 +41,11 @@ export async function generateMetadata({
   params: { slug: string[] };
 }): Promise<Metadata | undefined> {
   const slug = decodeURI(params.slug.join("/"));
-  const data = await getRemoteData<Characters[]>("zenless", "characters");
-  const character = data.find((c) => c.id === slug);
+
+  const character = await getZenlessData<Characters>({
+    resource: "characters",
+    filter: { id: slug },
+  });
 
   if (!character) {
     return;
@@ -81,9 +86,10 @@ export default async function CharactersPage({
   params: { slug: string[] };
 }) {
   const slug = decodeURI(params.slug.join("/"));
-  const data = await getRemoteData<Characters[]>("zenless", "characters");
-
-  const character = data.find((c) => c.id === slug);
+  const character = await getZenlessData<Characters>({
+    resource: "characters",
+    filter: { id: slug },
+  });
 
   if (!character) {
     return notFound();
@@ -166,7 +172,11 @@ export default async function CharactersPage({
                 </div>
                 <p
                   className="whitespace-pre-line"
-                  dangerouslySetInnerHTML={{ __html: skill.description }}
+                  dangerouslySetInnerHTML={{
+                    __html: skill.description
+                      .replaceAll("color: #ffffff", "font-weight: bold")
+                      .replaceAll("\\\\n", "<br>"),
+                  }}
                 />
               </div>
             </div>
@@ -198,7 +208,15 @@ export default async function CharactersPage({
                 <div className="flex">
                   <h4 className="font-semibold">{skill.name}</h4>
                 </div>
-                <p className="whitespace-pre-line">{skill.description}</p>
+                <p
+                  className="whitespace-pre-line"
+                  dangerouslySetInnerHTML={{
+                    __html: skill.description.replaceAll(
+                      "color: #ffffff",
+                      "font-weight: bold"
+                    ),
+                  }}
+                />
               </div>
             </div>
           ))}

@@ -1,4 +1,9 @@
-import { GENSHIN_API_URL, HSR_API_URL, WW_API_URL } from "./constants";
+import {
+  GENSHIN_API_URL,
+  HSR_API_URL,
+  WW_API_URL,
+  ZENLESS_API_URL,
+} from "./constants";
 
 type APIOptions = {
   resource: string;
@@ -21,6 +26,10 @@ export async function getHSRData<T>(options: APIOptions) {
 
 export async function getWWData<T>(options: APIOptions) {
   return getData<T>(WW_API_URL, options, ["ww-data"]);
+}
+
+export async function getZenlessData<T>(options: APIOptions) {
+  return getData<T>(ZENLESS_API_URL, options, ["zenless-data"]);
 }
 
 async function getData<T>(

@@ -1,4 +1,3 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -6,7 +5,7 @@ import { notFound } from "next/navigation";
 import Image from "@components/zenless/Image";
 import type { Bangboos } from "@interfaces/zenless/bangboos";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getRemoteData } from "@lib/localData";
+import { getZenlessData } from "@lib/dataApi";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -14,23 +13,11 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
-export const revalidate = 43200;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; slug: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const data = await getRemoteData<Bangboos[]>("zenless", "bangboos");
-
-    routes.push(
-      ...data.map((c) => ({
-        lang,
-        slug: c.id,
-      }))
-    );
-  }
-
-  return routes;
+  return [];
 }
 
 export async function generateMetadata({
@@ -39,17 +26,19 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata | undefined> {
   const slug = params.slug;
-  const data = await getRemoteData<Bangboos[]>("zenless", "bangboos");
-  const character = data.find((c) => c.id === slug);
+  const bangboo = await getZenlessData<Bangboos>({
+    resource: "bangboos",
+    filter: { id: slug },
+  });
 
-  if (!character) {
+  if (!bangboo) {
     return;
   }
 
-  const title = `${character.name} Zenless Zone Zero`;
-  const description = `Learn about the ${character.name} Bangboo in Zenless Zone Zero. Also included are their skills, upgrade costs, and more.`;
+  const title = `${bangboo.name} Zenless Zone Zero`;
+  const description = `Learn about the ${bangboo.name} Bangboo in Zenless Zone Zero. Also included are their skills, upgrade costs, and more.`;
   const publishedTime = new Date().toISOString();
-  const image = `/zenless/bangboos/${character.id}.png`;
+  const image = `/zenless/bangboos/${bangboo.id}.png`;
 
   const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
 
@@ -83,9 +72,10 @@ export default async function BangbooPage({
   params: { slug: string };
 }) {
   const slug = params.slug;
-  const data = await getRemoteData<Bangboos[]>("zenless", "bangboos");
-
-  const bangboo = data.find((c) => c.id === slug);
+  const bangboo = await getZenlessData<Bangboos>({
+    resource: "bangboos",
+    filter: { id: slug },
+  });
 
   if (!bangboo) {
     return notFound();

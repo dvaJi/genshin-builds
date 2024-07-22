@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "@components/zenless/Image";
 import type { Characters } from "@interfaces/zenless/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getRemoteData } from "@lib/localData";
+import { getZenlessData } from "@lib/dataApi";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -35,7 +35,9 @@ type Props = {
 };
 
 export default async function CharactersPage({ params }: Props) {
-  const data = await getRemoteData<Characters[]>("zenless", "characters");
+  const data = await getZenlessData<Characters[]>({
+    resource: "characters",
+  });
   return (
     <div className="relative">
       <h1 className="text-6xl font-semibold">Characters</h1>
