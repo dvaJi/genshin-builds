@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 
+import * as Sentry from "@sentry/nextjs";
 import { invalidateAction } from "@app/admin/invalidator/actions";
 import Button from "@components/ui/Button";
 
@@ -14,7 +15,7 @@ type Props = {
 
 export default function Error({ error, reset }: Props) {
   useEffect(() => {
-    console.error(error);
+    Sentry.captureException(error);
   }, [error]);
 
   return (

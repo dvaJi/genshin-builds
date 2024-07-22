@@ -6,10 +6,12 @@ import * as Sentry from "@sentry/nextjs";
 Sentry.init({
   dsn: "https://9c7422fbfed53fb87f55bc455bb22a83@o95426.ingest.us.sentry.io/4507630267400192",
 
+  tracePropagationTargets: ["localhost", /^https:\/\/genshin-builds\.com\/api/],
+
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1,
 
-  sampleRate: 1,
+  sampleRate: 0.25,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
@@ -35,7 +37,7 @@ Sentry.init({
       // So we need to find the last frame that is not from Sentry or pubfig.engine.js
 
       const adsFilenames =
-        /.*(pubfig\.engine\.js|prebid-analytics\.js|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v[0-9]+\.[0-9]+\.[0-9]+\.js).*/;
+        /.*(hadron\.js|pubfig\.engine\.js|prebid-analytics\.js|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v[0-9]+\.[0-9]+\.[0-9]+\.js).*/;
 
       for (let i = frames.length - 1; i >= 0; i--) {
         const frame = frames[i];
