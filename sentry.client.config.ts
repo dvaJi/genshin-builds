@@ -9,10 +9,12 @@ Sentry.init({
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1,
 
+  sampleRate: 1,
+
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 
-  replaysOnErrorSampleRate: 1.0,
+  replaysOnErrorSampleRate: 1,
 
   // This sets the sample rate to be 10%. You may want this to be 100% while
   // in development and sample at a lower rate in production
@@ -27,17 +29,48 @@ Sentry.init({
     }),
   ],
 
-  ignoreErrors: [
-    `Cannot read properties of null (reading 'scrollX')`,
+  beforeSend(event) {
+    const hasAdsStackFrame = (frames: Sentry.StackFrame[]) => {
+      // Sometimes the last frame is not the one we want, like: "\u003Canonymous\u003E"
+      // So we need to find the last frame that is not from Sentry or pubfig.engine.js
 
-    // Ignore freestar, GoogleADS, Google Tag Manager, Google Analytics, and Google Recaptcha errors
-    /.+Blocked a frame with origin.+/,
-    /.+Blocked a restricted frame with origin.+/,
-    /.+freestar.refreshActiveSlots is not a function.+/,
-    /.+Cannot read properties of null \(reading 'document'\).+/,
-    /.+https:\/\/goo.gl\/LdLk22.+/,
-    /.+https:\/\/www.googletagmanager.com\/gtm.js.+/,
-    /.+https:\/\/www.google-analytics.com\/analytics.js.+/,
-    /.+https:\/\/www.google.com\/recaptcha\/api.js.+/,
-  ],
+      const adsFilenames = /.*(pubfig\.engine\.js|prebid-analytics\.js).*/;
+
+      for (let i = frames.length - 1; i >= 0; i--) {
+        const frame = frames[i];
+        if (adsFilenames.test(frame.filename ?? "")) {
+          return true;
+        }
+      }
+
+      return false;
+    };
+
+    if (
+      hasAdsStackFrame(event.exception?.values?.[0]?.stacktrace?.frames ?? [])
+    ) {
+      return null;
+    }
+
+    const hasAdsBreadcrumb = (
+      breadcrumbs: IterableIterator<Sentry.Breadcrumb>
+    ) => {
+      // Define a regex pattern to match the desired domains
+      const domainPattern = /.*([a-z]\.pub\.network|googleads.g.doubleclick).*/;
+
+      for (const breadcrumb of breadcrumbs) {
+        if (domainPattern.test(breadcrumb.data?.url)) {
+          return true;
+        }
+      }
+
+      return false;
+    };
+
+    if (hasAdsBreadcrumb(event.breadcrumbs?.values() ?? ([] as any))) {
+      return null;
+    }
+
+    return null;
+  },
 });
