@@ -1,3 +1,10 @@
+import { Changelog } from "interfaces/genshin/changelog";
+import type { Metadata } from "next";
+import importDynamic from "next/dynamic";
+import { notFound, redirect } from "next/navigation";
+
+import { genPageMetadata } from "@app/seo";
+import useTranslations from "@hooks/use-translations";
 import type {
   Artifact,
   Character,
@@ -5,20 +12,12 @@ import type {
   TCGCard,
   Weapon,
 } from "@interfaces/genshin";
-import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
-import { notFound, redirect } from "next/navigation";
-
-import { genPageMetadata } from "@app/seo";
-import ChangelogVersion from "../view";
-
-import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getRemoteData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
-import { i18n } from "i18n-config";
-import { Changelog } from "interfaces/genshin/changelog";
+
+import ChangelogVersion from "../view";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -30,14 +29,11 @@ type Props = {
 };
 
 export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+export const revalidate = 43200;
 
-export async function generateStaticParams() {
-  const langs = i18n.locales;
-  const changelogs = await getRemoteData<Changelog[]>("genshin", "changelog");
-
-  return langs
-    .map((lang) => changelogs.map((c) => ({ lang, version: c.version })))
-    .flat(Infinity);
+export function generateStaticParams() {
+  return [];
 }
 
 export async function generateMetadata({

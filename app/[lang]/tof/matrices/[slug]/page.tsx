@@ -10,7 +10,6 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
 import { slugify2 } from "@utils/hash";
 import { getRarityColor, rarityToString } from "@utils/rarity";
-import { i18n } from "@i18n-config";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -18,23 +17,11 @@ const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
 });
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 86400;
 
-export async function generateStaticParams() {
-  const routes: { lang: string; slug: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const data = await getRemoteData<Matrices[]>("tof", "matrices");
-
-    routes.push(
-      ...data.map((c) => ({
-        lang,
-        slug: slugify2(c.name),
-      }))
-    );
-  }
-
-  return routes;
+export function generateStaticParams() {
+  return [];
 }
 
 interface Props {
@@ -87,7 +74,7 @@ export default async function MatrixPage({ params }: Props) {
             height={192}
           />
           <div className="">
-            <h2 className="text-tof-50 mb-4 text-4xl font-bold lg:text-6xl">
+            <h2 className="mb-4 text-4xl font-bold text-tof-50 lg:text-6xl">
               {matrix.name}
             </h2>
             <span
@@ -111,7 +98,7 @@ export default async function MatrixPage({ params }: Props) {
       <div className="rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">
         {matrix.sets.map((bonus) => (
           <div key={bonus.need} className="flex flex-col">
-            <div className="text-tof-50 text-2xl font-bold">
+            <div className="text-2xl font-bold text-tof-50">
               {bonus.need} Pieces
             </div>
             <span dangerouslySetInnerHTML={{ __html: bonus.description }} />
