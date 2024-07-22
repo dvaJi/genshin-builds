@@ -20,7 +20,8 @@ Sentry.init({
       // Sometimes the last frame is not the one we want, like: "\u003Canonymous\u003E"
       // So we need to find the last frame that is not from Sentry or pubfig.engine.js
 
-      const adsFilenames = /.*(pubfig\.engine\.js|prebid-analytics\.js).*/;
+      const adsFilenames =
+        /.*(pubfig\.engine\.js|prebid-analytics\.js|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v[0-9]+\.[0-9]+\.[0-9]+\.js).*/;
 
       for (let i = frames.length - 1; i >= 0; i--) {
         const frame = frames[i];
@@ -57,6 +58,6 @@ Sentry.init({
       return null;
     }
 
-    return null;
+    return event;
   },
 });
