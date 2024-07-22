@@ -46,24 +46,30 @@ interface Props {
 }
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 43200;
 
 export async function generateStaticParams() {
   const routes: { lang: string; id: string }[] = [];
 
   for await (const lang of i18n.locales) {
-    const _characters = await getGenshinData<Character[]>({
-      resource: "characters",
-      language: localeToLang(lang),
-      select: ["id"],
-    });
+    const _characters = (
+      await getGenshinData<Character[]>({
+        resource: "characters",
+        language: localeToLang(lang),
+        select: ["id"],
+      })
+    ).sort((a, b) => b.release - a.release);
 
-    routes.push(
-      ..._characters.map((c) => ({
+    // Only the first 10 latest characters
+    const characters = _characters.slice(0, 10);
+
+    characters.forEach((character) => {
+      routes.push({
         lang,
-        id: c.id,
-      }))
-    );
+        id: character.id,
+      });
+    });
   }
 
   return routes;
