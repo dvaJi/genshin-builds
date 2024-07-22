@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default async function BangboosPage() {
   const data = await getZenlessData<DiskDrives[]>({
-    resource: "diskDrives",
+    resource: "disk-drives",
   });
   return (
     <div className="relative z-0">
