@@ -9,13 +9,14 @@ import { Fragment } from "react";
 
 import { genPageMetadata } from "@app/seo";
 import ElementIcon from "@components/genshin/ElementIcon";
+import Image from "@components/genshin/Image";
+import GoTo from "@components/go-to";
 import Button from "@components/ui/Button";
 import FrstAds from "@components/ui/FrstAds";
 import useTranslations from "@hooks/use-translations";
 import type { Artifact, Beta, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getUrl } from "@lib/imgUrl";
 import { getData, getRemoteData } from "@lib/localData";
 import { capitalize } from "@utils/capitalize";
 import { localeToLang } from "@utils/locale-to-lang";
@@ -68,7 +69,7 @@ export async function generateMetadata({
       id: params.character,
     },
   });
-  const _betaCharacter = beta[locale].characters.find(
+  const _betaCharacter = beta[locale]?.characters?.find(
     (c: any) => c.id === params.character
   );
 
@@ -140,7 +141,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
   });
 
   return (
-    <div className="relative mx-auto max-w-screen-md">
+    <div className="relative mx-auto max-w-screen-lg">
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
@@ -155,9 +156,11 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                 `genshin-bg-rarity-${character.rarity}`
               )}
             >
-              <img
-                src={getUrl(`/characters/${character.id}/image.png`, 100, 100)}
+              <Image
+                src={`/characters/${character.id}/image.png`}
                 alt={character.name}
+                width={100}
+                height={100}
               />
             </div>
             <div className="mr-2 flex items-center">
@@ -199,10 +202,10 @@ export default async function GenshinCharacterTeams({ params }: Props) {
           </h2>
           <div className="">
             {characterTeams.teams.map((team: TeamData, index: number) => (
-              <a
-                href={`#team_${index}`}
+              <GoTo
+                elementId={`#team_${index}`}
                 key={team.name}
-                className="container card grid grid-cols-[350px_auto] gap-5 hover:bg-vulcan-700"
+                className="container card grid gap-5 hover:bg-vulcan-700 md:grid-cols-[350px_auto]"
               >
                 <div className="flex items-center gap-4">
                   <div className="text-center text-lg">
@@ -238,13 +241,9 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                           `genshin-bg-rarity-${characters[char.id].rarity}`
                         )}
                       >
-                        <img
+                        <Image
                           className="rounded-full"
-                          src={getUrl(
-                            `/characters/${char.id}/image.png`,
-                            100,
-                            100
-                          )}
+                          src={`/characters/${char.id}/image.png`}
                           alt={characters[char.id].name}
                           width={100}
                           height={100}
@@ -264,7 +263,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                     </Link>
                   ))}
                 </div>
-              </a>
+              </GoTo>
             ))}
           </div>
         </div>
@@ -287,22 +286,18 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                   {team.characters.map((char) => (
                     <div
                       key={char.id}
-                      className="container grid grid-cols-[120px_220px_auto] gap-5 border-b border-vulcan-600 py-4 last:border-b-0"
+                      className="grid grid-cols-1 border-b border-vulcan-600 md:container last:border-b-0 md:grid-cols-[120px_220px_auto] md:gap-5 md:py-4"
                     >
-                      <div className="block aspect-square text-center">
+                      <div className="block text-center md:aspect-square">
                         <div className="font-bold text-slate-200">
                           {t({
                             id: char.role.toLowerCase(),
                             defaultMessage: char.role,
                           })}
                         </div>
-                        <img
-                          className="mx-auto mt-2 aspect-square rounded-full object-cover"
-                          src={getUrl(
-                            `/characters/${char.id}/image.png`,
-                            100,
-                            100
-                          )}
+                        <Image
+                          className="mx-auto mt-2 rounded-full object-cover md:aspect-square"
+                          src={`/characters/${char.id}/image.png`}
                           alt={characters[char.id].name}
                           width={100}
                           height={100}
@@ -327,7 +322,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                           {characters[char.id].element}
                         </div>
                       </div>
-                      <div className="block aspect-square text-center">
+                      <div className="block text-center md:aspect-square">
                         <h4 className="text-center font-bold text-slate-200">
                           {t("char_role_build", {
                             name: characters[char.id].name,
@@ -346,8 +341,8 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                               <h6 className="text-sm">
                                 {artifactsMap[art].name}
                               </h6>
-                              <img
-                                src={getUrl(`/artifacts/${art}.png`)}
+                              <Image
+                                src={`/artifacts/${art}.png`}
                                 alt={artifactsMap[art].name}
                                 width={36}
                                 height={36}
@@ -394,8 +389,8 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                               <h6 className="text-sm">
                                 {weaponsMap[weapon].name}
                               </h6>
-                              <img
-                                src={getUrl(`/weapons/${weapon}.png`)}
+                              <Image
+                                src={`/weapons/${weapon}.png`}
                                 alt={weapon}
                                 width={36}
                                 height={36}
@@ -405,7 +400,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                           ))}
                         </div>
                       </div>
-                      <div className="flex aspect-square items-center text-zinc-400">
+                      <div className="mb-6 flex items-center text-zinc-400 md:mb-0 md:aspect-square">
                         {char.description}
                       </div>
                     </div>

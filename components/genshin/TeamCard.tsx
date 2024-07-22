@@ -29,7 +29,7 @@ const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
       <div className="grid grid-cols-4 gap-2">
         {team.characters.map((block, i) => (
           <div key={`${block.role}${block.id}${i}`} className="flex flex-col">
-            <div className="text-center text-xs lg:text-sm">
+            <div className="md:min-h-auto min-h-10 text-center text-xs lg:text-sm">
               {t({ id: block.role.toLowerCase(), defaultMessage: block.role })}
             </div>
             <div className="flex justify-center text-center">
@@ -48,7 +48,7 @@ const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
                     loading={asyncLoad ? "lazy" : "eager"}
                   />
                   <ElementIcon
-                    type={block.element}
+                    type={t(block.element)}
                     height={20}
                     width={20}
                     className="absolute right-3 top-3 rounded-full bg-vulcan-700 lg:right-5 lg:top-5"
