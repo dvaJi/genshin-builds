@@ -37,7 +37,7 @@ Sentry.init({
       // So we need to find the last frame that is not from Sentry or pubfig.engine.js
 
       const adsFilenames =
-        /.*(hadron\.js|pubfig\.engine\.js|prebid-analytics\.js|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v[0-9]+\.[0-9]+\.[0-9]+\.js).*/;
+        /.*(bao-csm|hadron\.js|pubfig\.engine|prebid-analytics|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v).*/;
 
       for (let i = frames.length - 1; i >= 0; i--) {
         const frame = frames[i];
