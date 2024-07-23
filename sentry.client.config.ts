@@ -37,7 +37,7 @@ Sentry.init({
       // So we need to find the last frame that is not from Sentry or pubfig.engine.js
 
       const adsFilenames =
-        /.*(bao-csm|hadron\.js|inpage\.js|pubfig\.engine|prebid-analytics|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v).*/;
+        /.*(bao-csm|tag\/js\/gpt\.js|hadron\.js|inpage\.js|pubfig\.engine|prebid-analytics|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v).*/;
 
       for (let i = frames.length - 1; i >= 0; i--) {
         const frame = frames[i];
@@ -59,7 +59,7 @@ Sentry.init({
       breadcrumbs: IterableIterator<Sentry.Breadcrumb>
     ) => {
       // Define a regex pattern to match the desired domains
-      const domainPattern = /.*([a-z]\.pub\.network|googleads.g.doubleclick).*/;
+      const domainPattern = /.*([a-z]\.pub\.network|googleads\.g\.doubleclick|ib\.adnxs.com|hadron\.ad).*/;
 
       for (const breadcrumb of breadcrumbs) {
         if (domainPattern.test(breadcrumb.data?.url)) {
