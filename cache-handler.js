@@ -12,6 +12,7 @@ CacheHandler.onCreation(async () => {
   // use redis client during build could cause issue https://github.com/caching-tools/next-shared-cache/issues/284#issuecomment-1919145094
   if (PHASE_PRODUCTION_BUILD !== process.env.NEXT_PHASE) {
     const redisUrl = process.env.REDIS_URL ?? "redis://localhost:6379";
+    console.log("Using Redis URL:", redisUrl);
     try {
       // Create a Redis client.
       client = createClient({
@@ -38,7 +39,6 @@ CacheHandler.onCreation(async () => {
       await client.connect();
       console.info("Redis client connected.");
     } catch (error) {
-      console.log(redisUrl);
       console.warn("Failed to connect Redis client:", error);
 
       console.warn("Disconnecting the Redis client...");
