@@ -6,6 +6,8 @@ import * as Sentry from "@sentry/nextjs";
 Sentry.init({
   dsn: "https://9c7422fbfed53fb87f55bc455bb22a83@o95426.ingest.us.sentry.io/4507630267400192",
 
+  enabled: process.env.IS_DEV_ENV !== "true",
+
   tracePropagationTargets: ["localhost", /^https:\/\/genshin-builds\.com\/api/],
 
   // Adjust this value in production, or use tracesSampler for greater control
@@ -59,7 +61,8 @@ Sentry.init({
       breadcrumbs: IterableIterator<Sentry.Breadcrumb>
     ) => {
       // Define a regex pattern to match the desired domains
-      const domainPattern = /.*([a-z]\.pub\.network|googleads\.g\.doubleclick|ib\.adnxs.com|hadron\.ad).*/;
+      const domainPattern =
+        /.*([a-z]\.pub\.network|googleads\.g\.doubleclick|ib\.adnxs.com|hadron\.ad).*/;
 
       for (const breadcrumb of breadcrumbs) {
         if (domainPattern.test(breadcrumb.data?.url)) {
