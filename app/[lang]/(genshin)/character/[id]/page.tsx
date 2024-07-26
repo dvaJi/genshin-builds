@@ -93,7 +93,7 @@ export async function generateMetadata({
       id: params.id,
     },
   });
-  const _betaCharacter = beta[locale].characters.find(
+  const _betaCharacter = beta[locale]?.characters?.find(
     (c: any) => c.id === params.id
   );
 
@@ -138,7 +138,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
       id: params.id,
     },
   });
-  const _betaCharacter = beta[locale].characters.find(
+  const _betaCharacter = beta[locale]?.characters?.find(
     (c: any) => c.id === params.id
   );
 

@@ -38,6 +38,7 @@ CacheHandler.onCreation(async () => {
       await client.connect();
       console.info("Redis client connected.");
     } catch (error) {
+      console.log(redisUrl);
       console.warn("Failed to connect Redis client:", error);
 
       console.warn("Disconnecting the Redis client...");
