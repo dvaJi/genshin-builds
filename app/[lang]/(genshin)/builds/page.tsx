@@ -70,7 +70,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     select: ["id", "name", "rarity", "element"],
   });
 
-  const characters = [...beta[locale].characters, ..._characters];
+  const characters = [...(beta[locale]?.characters ?? []), ..._characters];
 
   const buildsOld = await getRemoteData<Record<string, Build[]>>(
     "genshin",

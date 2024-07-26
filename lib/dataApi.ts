@@ -25,11 +25,21 @@ export async function getHSRData<T>(options: APIOptions) {
 }
 
 export async function getWWData<T>(options: APIOptions) {
-  return getData<T>(WW_API_URL, options, ["ww-data"]);
+  try {
+    return getData<T>(WW_API_URL, options, ["ww-data"]);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }
 
 export async function getZenlessData<T>(options: APIOptions) {
-  return getData<T>(ZENLESS_API_URL, options, ["zenless-data"]);
+  try {
+    return getData<T>(ZENLESS_API_URL, options, ["zenless-data"]);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }
 
 async function getData<T>(
@@ -68,6 +78,7 @@ async function getData<T>(
 
       return res.json() as Promise<T>;
     } catch (error) {
+      console.log(error);
       if (
         error instanceof SyntaxError &&
         error.message.includes("Bad Gateway") &&

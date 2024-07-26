@@ -79,7 +79,7 @@ export default async function GenshinCharacters({ params }: Props) {
   const beta = await getData<Beta>("genshin", "beta");
 
   const allCharacters = [
-    ...beta[locale].characters.map((c: any) => {
+    ...(beta[locale]?.characters ?? []).map((c: any) => {
       // only include this columns: ["id", "name", "element", "rarity"]
       const { id, name, element, rarity } = c;
       return { id, name, element, rarity, beta: true, release: 0 };

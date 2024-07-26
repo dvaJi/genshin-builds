@@ -55,7 +55,7 @@ export async function generateMetadata({
     filter: { id: params.id },
   });
   const beta = await getData<Beta>("genshin", "beta");
-  const _betaWeapon = beta[locale].weapons.find((c: any) => c.id === params.id);
+  const _betaWeapon = beta[locale]?.weapons?.find((c: any) => c.id === params.id);
 
   const weapon = _weapon || _betaWeapon;
 
@@ -91,7 +91,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
     filter: { id: params.id },
   });
   const beta = await getData<Beta>("genshin", "beta");
-  const _betaWeapon = beta[locale].weapons.find((c: any) => c.id === params.id);
+  const _betaWeapon = beta[locale]?.weapons?.find((c: any) => c.id === params.id);
 
   const weapon:
     | (Weapon & {
@@ -108,7 +108,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
     "mostused-builds"
   );
   const recommendedCharacters = Object.entries(builds)
-    .filter(([_, build]: any) => build.weapons.includes(weapon.id))
+    .filter(([_, build]: any) => build?.weapons?.includes(weapon.id))
     .map(([character]) => character);
 
   const ascensionTotal = calculateTotalWeaponAscensionMaterials(
