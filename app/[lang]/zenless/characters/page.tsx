@@ -48,7 +48,7 @@ export default async function CharactersPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="mt-6 flex flex-wrap items-center justify-center gap-1 md:gap-4">
-        {data.map((character) => (
+        {data?.map((character) => (
           <Link
             key={character.id}
             href={`/${params.lang}/zenless/characters/${character.id}`}
