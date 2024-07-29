@@ -31,6 +31,8 @@ export async function generateStaticParams() {
       select: ["id", "name", "rarity"],
     });
 
+    if (!_characters) continue;
+
     routes.push(
       ..._characters.map((c) => ({
         lang,
@@ -97,7 +99,7 @@ export default async function CharacterPage({ params }: Props) {
   const charactersTeam = character.teams.reduce(
     (acc, c) => {
       const [char] = c.split("~");
-      const ch = characters.find((c) => c.name === char)!;
+      const ch = characters?.find((c) => c.name === char)!;
       if (!acc[char]) {
         acc[char] = ch;
       }

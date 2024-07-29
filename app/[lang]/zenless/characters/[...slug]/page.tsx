@@ -24,6 +24,8 @@ export async function generateStaticParams() {
       resource: "characters",
     });
 
+    if (!data) continue;
+
     routes.push(
       ...data.map((c) => ({
         lang,
