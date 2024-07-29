@@ -61,7 +61,7 @@ export default async function Page({ params, searchParams }: Props) {
   // if (!tables.includes(table as any)) {
   //   return redirect(`/wuthering-waves/tierlist/characters`);
   // }
-  const tiers = tierlist[table as (typeof tables)[number]];
+  const tiers = tierlist?.[table as (typeof tables)[number]];
 
   return (
     <div>
@@ -122,7 +122,7 @@ export default async function Page({ params, searchParams }: Props) {
         </Link>
       </div>
       <div className="mb-8 flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {Object.entries(tiers).map(([tier, chars]) => (
+        {Object.entries(tiers ?? {}).map(([tier, chars]) => (
           <div
             key={tier}
             className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0"
@@ -144,7 +144,7 @@ export default async function Page({ params, searchParams }: Props) {
                   key={char}
                   className="group flex flex-col items-center justify-center gap-2"
                 >
-                  {characters[char] ? (
+                  {characters?.[char] ? (
                     <Link
                       href={`/${params.lang}/wuthering-waves/characters/${char}`}
                       className="flex flex-col items-center justify-center gap-2"
@@ -182,29 +182,31 @@ export default async function Page({ params, searchParams }: Props) {
       />
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">Explanation</h2>
       <div className="flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {Object.entries(tierlist.explanations).map(([char, explanation]) => (
-          <div
-            key={char}
-            className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0"
-          >
-            <div className="flex w-20 shrink-0 flex-col items-center gap-2">
-              <Image
-                className="rounded-full"
-                src={`/characters/thumb_${char}.webp`}
-                alt={characters[char].name}
-                width={60}
-                height={60}
-              />
-              <span className="text-center text-sm">
-                {characters[char].name}
-              </span>
-            </div>
+        {Object.entries(tierlist?.explanations ?? {}).map(
+          ([char, explanation]) => (
             <div
-              className="text-sm text-ww-100"
-              dangerouslySetInnerHTML={{ __html: explanation }}
-            />
-          </div>
-        ))}
+              key={char}
+              className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0"
+            >
+              <div className="flex w-20 shrink-0 flex-col items-center gap-2">
+                <Image
+                  className="rounded-full"
+                  src={`/characters/thumb_${char}.webp`}
+                  alt={characters?.[char].name ?? char}
+                  width={60}
+                  height={60}
+                />
+                <span className="text-center text-sm">
+                  {characters?.[char].name}
+                </span>
+              </div>
+              <div
+                className="text-sm text-ww-100"
+                dangerouslySetInnerHTML={{ __html: explanation }}
+              />
+            </div>
+          )
+        )}
       </div>
     </div>
   );

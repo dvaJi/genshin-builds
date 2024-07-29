@@ -44,7 +44,7 @@ export default async function BangboosPage() {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="mx-2 my-4 flex flex-col gap-2 md:mx-0">
-        {data.map((drive) => (
+        {data?.map((drive) => (
           <div
             key={drive.name}
             className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2"

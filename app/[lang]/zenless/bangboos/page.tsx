@@ -49,7 +49,7 @@ export default async function BangboosPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <div className="mt-6 flex flex-wrap items-center justify-center gap-1 md:gap-4">
-        {data.map((bangboo) => (
+        {data?.map((bangboo) => (
           <Link
             key={bangboo.name}
             href={`/${params.lang}/zenless/bangboos/${bangboo.id}`}

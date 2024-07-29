@@ -66,7 +66,7 @@ export default async function Page({ params }: Props) {
       </div>
       {/* <CharactersList characters={characters} /> */}
       <div className="flex flex-wrap justify-center gap-4 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {characters.map((char) => (
+        {characters?.map((char) => (
           <Link
             key={char.id}
             href={`/${params.lang}/wuthering-waves/characters/${char.id}`}

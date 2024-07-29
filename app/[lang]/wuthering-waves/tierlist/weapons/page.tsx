@@ -113,12 +113,12 @@ export default async function Page({ params }: Props) {
         Swords Tierlist
       </h2>
       <div className="mb-8 flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {Object.entries(tierlist.sword).map(([tier, chars]) => (
+        {Object.entries(tierlist?.sword ?? {}).map(([tier, chars]) => (
           <Tier
             key={"sword" + tier}
             tier={tier}
             weapons={chars}
-            weaponsMap={weapons}
+            weaponsMap={weapons ?? {}}
           />
         ))}
       </div>
@@ -130,12 +130,12 @@ export default async function Page({ params }: Props) {
         Broadblade Tierlist
       </h2>
       <div className="mb-8 flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {Object.entries(tierlist.broadblade).map(([tier, chars]) => (
+        {Object.entries(tierlist?.broadblade ?? {}).map(([tier, chars]) => (
           <Tier
             key={"broadblade" + tier}
             tier={tier}
             weapons={chars}
-            weaponsMap={weapons}
+            weaponsMap={weapons ?? {}}
           />
         ))}
       </div>
@@ -147,12 +147,12 @@ export default async function Page({ params }: Props) {
         Gauntlet Tierlist
       </h2>
       <div className="mb-8 flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {Object.entries(tierlist.gauntlet).map(([tier, chars]) => (
+        {Object.entries(tierlist?.gauntlet ?? {}).map(([tier, chars]) => (
           <Tier
             key={"gauntlet" + tier}
             tier={tier}
             weapons={chars}
-            weaponsMap={weapons}
+            weaponsMap={weapons ?? {}}
           />
         ))}
       </div>
@@ -164,12 +164,12 @@ export default async function Page({ params }: Props) {
         Rectifier Tierlist
       </h2>
       <div className="mb-8 flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {Object.entries(tierlist.rectifier).map(([tier, chars]) => (
+        {Object.entries(tierlist?.rectifier ?? {}).map(([tier, chars]) => (
           <Tier
             key={"rectifier" + tier}
             tier={tier}
             weapons={chars}
-            weaponsMap={weapons}
+            weaponsMap={weapons ?? {}}
           />
         ))}
       </div>
@@ -181,12 +181,12 @@ export default async function Page({ params }: Props) {
         Pistol Tierlist
       </h2>
       <div className="mb-8 flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {Object.entries(tierlist.pistol).map(([tier, chars]) => (
+        {Object.entries(tierlist?.pistol ?? {}).map(([tier, chars]) => (
           <Tier
             key={"pistol" + tier}
             tier={tier}
             weapons={chars}
-            weaponsMap={weapons}
+            weaponsMap={weapons ?? {}}
           />
         ))}
       </div>

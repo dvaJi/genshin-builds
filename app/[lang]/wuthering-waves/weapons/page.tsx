@@ -69,7 +69,7 @@ export default async function Page({ params }: Props) {
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       </div>
       <div className="flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {weapons.map((item) => (
+        {weapons?.map((item) => (
           <div key={item.id} className="flex gap-2">
             <div className="flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-900 bg-ww-950">
               <Image
