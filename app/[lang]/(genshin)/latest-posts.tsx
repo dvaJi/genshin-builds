@@ -3,6 +3,10 @@ import { getNews } from "@lib/news";
 
 export async function LatestPosts() {
   const data = await getNews("genshin-impact");
+  
+  if (!data) {
+    return null;
+  }
 
   return (
     <div className="grid gap-2 md:grid-cols-3 lg:grid-cols-3 lg:gap-4">
