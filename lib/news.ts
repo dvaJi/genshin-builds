@@ -40,7 +40,12 @@ export async function getNews(game: string) {
       },
     });
 
-    const data = await res.json() as Promise<News[]>;
+    if (!res.ok) {
+      console.error("Error fetching news:", res.statusText);
+      return [];
+    }
+
+    const data = (await res.json()) as Promise<News[]>;
 
     return data ?? [];
   } catch (error) {
