@@ -105,7 +105,7 @@ const nextConfig = {
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
-  // cacheHandler: !isDev ? require.resolve("./cache-handler.js") : undefined, FIXME: Implement cache handler
+  cacheHandler: !isDev && process.env.REDIS_URL ? require.resolve("./cache-handler.js") : undefined,
 };
 
 module.exports = withAxiom(withBundleAnalyzer(nextConfig));

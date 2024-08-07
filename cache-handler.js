@@ -1,4 +1,3 @@
-// Source: https://github.com/vercel/next.js/blob/canary/examples/cache-handler-redis/cache-handler.js
 const { CacheHandler } = require("@neshca/cache-handler");
 const createRedisHandler = require("@neshca/cache-handler/redis-stack").default;
 const createLruHandler = require("@neshca/cache-handler/local-lru").default;
@@ -7,24 +6,21 @@ const { PHASE_PRODUCTION_BUILD } = require("next/constants");
 
 /* from https://caching-tools.github.io/next-shared-cache/redis */
 CacheHandler.onCreation(async () => {
-  console.log("Creating cache handler...");
   let client;
   // use redis client during build could cause issue https://github.com/caching-tools/next-shared-cache/issues/284#issuecomment-1919145094
   if (PHASE_PRODUCTION_BUILD !== process.env.NEXT_PHASE) {
-    const redisUrl = process.env.REDIS_URL ?? "redis://localhost:6379";
-    console.log("Using Redis URL:", redisUrl);
     try {
       // Create a Redis client.
       client = createClient({
-        url: redisUrl,
+        url: process.env.REDIS_URL ?? "redis://localhost:6379",
       });
 
       // Redis won't work without error handling.
       client.on("error", (e) => {
         throw e;
       });
+      
     } catch (error) {
-      console.log(redisUrl);
       console.warn("Failed to create Redis client:", error);
     }
   }
@@ -50,7 +46,7 @@ CacheHandler.onCreation(async () => {
         })
         .catch(() => {
           console.warn(
-            "Failed to quit the Redis client after failing to connect."
+            "Failed to quit the Redis client after failing to connect.",
           );
         });
     }
@@ -59,18 +55,26 @@ CacheHandler.onCreation(async () => {
   /** @type {import("@neshca/cache-handler").Handler | null} */
   let redisHandler = null;
   if (client?.isReady) {
+    console.log("Redis client is ready");
     // Create the `redis-stack` Handler if the client is available and connected.
     redisHandler = await createRedisHandler({
       client,
-      keyPrefix: "gb:",
+      keyPrefix: "prefix:",
       timeoutMs: 1000,
     });
+    console.log("Redis handler created successfully", redisHandler.name);
+  } else {
+    console.warn("Redis client is not ready. Reason:", client ? "Client exists but is not ready" : "Client was not created");
+    if (client) {
+      console.warn("Redis connection state:", client.isOpen ? "Open" : "Closed");
+      console.warn("Redis connection state:", client.isReady ? "Ready" : "not redy");
+    }
   }
   // Fallback to LRU handler if Redis client is not available.
   // The application will still work, but the cache will be in memory only and not shared.
   const LRUHandler = createLruHandler();
   console.warn(
-    "Falling back to LRU handler because Redis client is not available."
+    "Falling back to LRU handler because Redis client is not available.",
   );
 
   return {
