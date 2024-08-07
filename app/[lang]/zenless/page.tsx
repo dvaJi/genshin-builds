@@ -34,7 +34,7 @@ export default async function Page({ params }: Props) {
       <h1 className="text-6xl font-semibold">Welcome to ZenlessBuilds</h1>
       <p>
         Discover character builds, comprehensive guides, and a wiki database all
-        in one place.
+        in one place for Zenless Zone Zero (ZZZ).
       </p>
 
       <FrstAds
@@ -46,9 +46,7 @@ export default async function Page({ params }: Props) {
       <div className="mt-6">
         <h2 className="text-3xl font-semibold">News</h2>
         <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
-          {data.map((post) => (
-            <NewsPostCard key={post.title} post={post} />
-          ))}
+          {data?.map((post) => <NewsPostCard key={post.title} post={post} />)}
         </div>
         <div className="mt-4">
           <Link
