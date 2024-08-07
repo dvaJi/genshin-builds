@@ -28,16 +28,23 @@ export interface FeaturedImage {
 export async function getNews(game: string) {
   const baseUrl = process.env.NEWS_API_URL;
 
-  const res = await fetch(`${baseUrl}?game=${game}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": process.env.NEWS_API_KEY ?? "",
-    },
-    next: {
-      tags: ["news-api"],
-    },
-  });
+  try {
+    const res = await fetch(`${baseUrl}?game=${game}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": process.env.NEWS_API_KEY ?? "",
+      },
+      next: {
+        tags: ["news-api"],
+      },
+    });
 
-  return res.json() as Promise<News[]>;
+    const data = await res.json() as Promise<News[]>;
+
+    return data ?? [];
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    return [];
+  }
 }
