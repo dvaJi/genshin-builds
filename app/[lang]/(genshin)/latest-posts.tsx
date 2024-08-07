@@ -3,8 +3,8 @@ import { getNews } from "@lib/news";
 
 export async function LatestPosts() {
   const data = await getNews("genshin-impact");
-  
-  if (!data) {
+
+  if (!data || !Array.isArray(data)) {
     return null;
   }
 
