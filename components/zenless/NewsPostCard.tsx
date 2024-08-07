@@ -34,7 +34,7 @@ const NewsPostCard = ({ post }: Props) => {
         <h3 className="my-1 text-xl font-semibold text-zinc-950 transition-all group-hover:underline">
           {post.title}
         </h3>
-        <p
+        <div
           className="mb-1 text-sm text-zinc-400"
           dangerouslySetInnerHTML={{ __html: post.excerpt }}
         />
