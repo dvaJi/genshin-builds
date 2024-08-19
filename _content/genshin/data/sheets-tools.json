@@ -1,0 +1,58 @@
+{
+  "wish-tally-community": {
+    "name": "Wish Tally - Community",
+    "purpose": "This sheet aggregates all shared Wish Tally documents from our community, providing you with detailed statistics on wishes.",
+    "creator": "Yippy",
+    "url": "https://docs.google.com/spreadsheets/d/1NV2dvHQpD5_pCH92-YgnCEH2LVNmMxwGUW6E3fwL4CM/edit",
+    "hoyolab": "https://www.hoyolab.com/article/390587",
+    "categories": ["Statistic"],
+    "tags": ["Statistic", "Tracker", "Wish"],
+    "images": ["/sheets/wish_tally_01.webp", "/sheets/wish_tally_02.webp"]
+  },
+  "teyvat-central-banking-systems": {
+    "name": "Teyvat Central Banking Systems",
+    "purpose": "Effortlessly track and manage your Genshin Impact resources, including Primogems, Genesis Crystals, Resin, and Mora, with this document. Automatically update your records by using the provided feedback URL, which securely connects to miHoYo's API. Stay on top of your in-game progress with precise and up-to-date information.",
+    "creator": "Yippy",
+    "url": "https://docs.google.com/spreadsheets/d/1VrNIbZGj2XhVZv7eRMgoSO3xUhOm0EVFGFqW0y1BLpI/edit",
+    "hoyolab": "https://www.hoyolab.com/article/1940532",
+    "categories": ["Tracker"],
+    "tags": ["Fragile Resin", "Genesis Crystal", "Mora", "Primogem", "Tracker"],
+    "images": [
+      "/sheets/teyvat_central_banking_systems_01.png",
+      "/sheets/teyvat_central_banking_systems_02.webp"
+    ]
+  },
+  "parametric-transformer": {
+    "name": "Parametric Transformer",
+    "purpose": "This sheet organizes and analyzes the distribution of groups for each material used in the Parametric Transformer. It provides a comprehensive overview of how materials are grouped, enabling efficient tracking and optimization of your Parametric Transformer usage.",
+    "url": "https://docs.google.com/spreadsheets/d/1M2EpQp0_i34Mb7dpjsczK0wSC8QHj3w4nBhC4vIfDXM/edit",
+    "categories": ["Statistic"],
+    "tags": ["Statistic"],
+    "images": [
+      "/sheets/parametric_transformer_01.jpg",
+      "/sheets/parametric_transformer_02.jpg"
+    ]
+  },
+  "genshin-impact-helper-teams-character-builds": {
+    "name": "Genshin Impact Helper Team’s Character Builds",
+    "purpose": "This sheet compiles and showcases the optimized character builds recommended by the Genshin Impact Helper Team. It serves as a comprehensive resource for selecting the best weapons, artifacts, and talent priorities to maximize the performance of your characters in various scenarios.",
+    "url": "https://docs.google.com/spreadsheets/d/1gNxZ2xab1J6o1TuNVWMeLOZ7TPOqrsf3SshP5DLvKzI/edit",
+    "categories": ["Character Build"],
+    "tags": ["Characters"],
+    "images": [
+      "/sheets/genshin_impact_helper_teams_character_builds_01.jpg",
+      "/sheets/genshin_impact_helper_teams_character_builds_02.jpg"
+    ]
+  },
+  "genshin-impact-calculators": {
+    "name": "Genshin Impact Calculators",
+    "purpose": "This collection of Genshin Impact calculators provides precise tools for optimizing various aspects of your gameplay, from damage output and resource management to character leveling and artifact enhancement. Use these calculators to make informed decisions and enhance your in-game efficiency.",
+    "url": "https://docs.google.com/spreadsheets/d/1yNV3ld2kOzl8VvZb2bg6GLQ1KRryovrb6C8Wp9tw2Q8/edit",
+    "categories": ["Calculator"],
+    "tags": ["Calculator"],
+    "images": [
+      "/sheets/genshin-impact-calculators_01.jpg",
+      "/sheets/genshin-impact-calculators_02.jpg"
+    ]
+  }
+}

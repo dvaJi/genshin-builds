@@ -36,6 +36,8 @@
     "materials_desc": "Teyvat'tan tüm Malzemeleri keşfedin",
     "cooking_ingredient": "Pişirme Malzemesi",
     "cooking_ingredient_desc": "Tüm pişirme malzemelerini keşfedin",
+    "sheets_tools": "Sayfa Araçları",
+    "sheets_tools_desc": "Özenle seçilmiş Genshin Impact araçları ve hesap makineleri koleksiyonumuzu keşfedin",
     "food": "Gıda",
     "food_desc": "Tüm yemek tariflerini ve ekibiniz için pişirebileceğiniz en iyi yemekleri keşfedin",
     "potions": "İksirler",
@@ -489,5 +491,17 @@
     "best_artifacts": "En İyi Eserler",
     "main_stats": "Ana İstatistikler",
     "substats": "Alt İstatistikler"
+  },
+  "sheets_tools": {
+    "title": "Genshin Impact Araçları & Hesap Makineleri - Kapsamlı Sayfa Koleksiyonu",
+    "description": "Karakter yapılarını, dilek istatistiklerini ve kaynak yönetimi sayfalarını içeren özenle seçilmiş Genshin Impact araçları ve hesap makineleri koleksiyonumuzu keşfedin. Oyun deneyiminizi optimize edin, gerekli araçlara kolayca erişin ve Genshin Impact deneyiminizi geliştirmek için tasarlanmış detaylı bilgilerle zenginleştirin.",
+    "sheets_tools": "Genshin Impact Araçları & Hesap Makineleri",
+    "sheets_tools_desc": "Karakter Yapıları, Dilek İstatistikleri, Malzeme Dağılımı ve Daha Fazlası için Nihai Kaynak Merkezi",
+    "detail_title": "{name} - Genshin Impact {category} Aracı",
+    "creator": "Yaratıcı",
+    "categories": "Kategoriler",
+    "tags": "Etiketler",
+    "hoyolab_article": "Hoyolab Makalesi",
+    "link": "Sayfaya Bağlantı"
   }
 }

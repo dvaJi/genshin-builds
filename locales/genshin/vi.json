@@ -36,6 +36,8 @@
     "materials_desc": "Khám phá tất cả Tài liệu từ Teyvat",
     "cooking_ingredient": "Thành phần nấu ăn",
     "cooking_ingredient_desc": "Khám phá tất cả các thành phần nấu ăn",
+    "sheets_tools": "Công Cụ Bảng Tính",
+    "sheets_tools_desc": "Khám phá bộ sưu tập công cụ và máy tính Genshin Impact được chọn lọc kỹ càng của chúng tôi",
     "food": "Món ăn",
     "food_desc": "Khám phá tất cả các công thức nấu ăn và những món ăn ngon nhất để nấu cho nhóm của bạn",
     "potions": "độc dược",
@@ -489,5 +491,17 @@
     "best_artifacts": "Bảo vật tốt nhất",
     "main_stats": "Chỉ số chính",
     "substats": "Chỉ số phụ"
+  },
+  "sheets_tools": {
+    "title": "Công Cụ & Máy Tính Genshin Impact - Bộ Sưu Tập Bảng Tính Toàn Diện",
+    "description": "Khám phá bộ sưu tập công cụ và máy tính Genshin Impact được chọn lọc kỹ càng của chúng tôi, bao gồm các bản dựng nhân vật, thống kê điều ước và bảng quản lý tài nguyên. Tối ưu hóa trò chơi của bạn với việc truy cập dễ dàng vào các công cụ cần thiết và những thông tin chi tiết được thiết kế để nâng cao trải nghiệm Genshin Impact của bạn.",
+    "sheets_tools": "Công Cụ & Máy Tính Genshin Impact",
+    "sheets_tools_desc": "Trung Tâm Tài Nguyên Tối Ưu của Bạn cho Bản Dựng Nhân Vật, Thống Kê Điều Ước, Phân Bổ Nguyên Liệu và Hơn Thế Nữa",
+    "detail_title": "{name} - Công Cụ {category} của Genshin Impact",
+    "creator": "Người Tạo",
+    "categories": "Danh Mục",
+    "tags": "Thẻ",
+    "hoyolab_article": "Bài Viết Hoyolab",
+    "link": "Liên Kết đến Bảng Tính"
   }
 }

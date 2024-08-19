@@ -36,6 +36,8 @@
     "materials_desc": "Temukan semua Material dari Teyvat",
     "cooking_ingredient": "Bahan Memasak",
     "cooking_ingredient_desc": "Temukan semua bahan masakan",
+    "sheets_tools": "Alat Lembar",
+    "sheets_tools_desc": "Jelajahi koleksi alat dan kalkulator Genshin Impact pilihan kami",
     "food": "Makanan",
     "food_desc": "Temukan semua resep memasak dan makanan terbaik untuk dimasak untuk tim Anda",
     "potions": "Ramuan",
@@ -489,5 +491,17 @@
     "best_artifacts": "Artefak Terbaik",
     "main_stats": "Statistik Utama",
     "substats": "Statistik Tambahan"
+  },
+  "sheets_tools": {
+    "title": "Alat & Kalkulator Genshin Impact - Koleksi Lembar Lengkap",
+    "description": "Jelajahi koleksi alat dan kalkulator Genshin Impact pilihan kami, termasuk build karakter, statistik tally keinginan, dan lembar manajemen sumber daya. Optimalkan gameplay Anda dengan akses mudah ke alat penting dan wawasan mendetail yang dirancang untuk meningkatkan pengalaman Genshin Impact Anda.",
+    "sheets_tools": "Alat & Kalkulator Genshin Impact",
+    "sheets_tools_desc": "Pusat Sumber Daya Utama Anda untuk Build Karakter, Statistik Tally Keinginan, Distribusi Material, dan Lainnya",
+    "detail_title": "{name} - Alat {category} Genshin Impact",
+    "creator": "Pembuat",
+    "categories": "Kategori",
+    "tags": "Tag",
+    "hoyolab_article": "Artikel Hoyolab",
+    "link": "Tautan ke Lembar"
   }
 }

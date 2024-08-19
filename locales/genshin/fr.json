@@ -36,6 +36,8 @@
     "materials_desc": "Découvrez tous les matériaux de Teyvat",
     "cooking_ingredient": "Ingrédient de cuisine",
     "cooking_ingredient_desc": "Découvrez tous les ingrédients de cuisine",
+    "sheets_tools": "Outils de Feuilles",
+    "sheets_tools_desc": "Explorez notre collection d'outils et de calculatrices Genshin Impact soigneusement sélectionnés",
     "food": "Aliments",
     "food_desc": "Découvrez toutes les recettes de cuisine et les meilleurs plats à cuisiner pour votre équipe",
     "potions": "Potions",
@@ -489,5 +491,17 @@
     "best_artifacts": "Meilleurs Artefacts",
     "main_stats": "Statistiques Principales",
     "substats": "Sous-statistiques"
+  },
+  "sheets_tools": {
+    "title": "Outils et Calculatrices Genshin Impact - Collection Complète de Feuilles",
+    "description": "Explorez notre collection d'outils et de calculatrices Genshin Impact, y compris des builds de personnages, des statistiques de vœux et des feuilles de gestion des ressources. Optimisez votre gameplay avec un accès facile aux outils essentiels et des informations détaillées pour améliorer votre expérience Genshin Impact.",
+    "sheets_tools": "Outils et Calculatrices Genshin Impact",
+    "sheets_tools_desc": "Votre Hub de Ressources Ultime pour les Builds de Personnages, les Statistiques de Vœux, la Répartition des Matériaux, et Plus",
+    "detail_title": "{name} - Outil de {category} de Genshin Impact",
+    "creator": "Créateur",
+    "categories": "Catégories",
+    "tags": "Étiquettes",
+    "hoyolab_article": "Article Hoyolab",
+    "link": "Lien vers la Feuille"
   }
 }

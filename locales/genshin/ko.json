@@ -36,6 +36,8 @@
     "materials_desc": "Teyvat의 모든 재료를 발견하십시오",
     "cooking_ingredient": "요리 재료",
     "cooking_ingredient_desc": "모든 요리 재료를 발견하십시오",
+    "sheets_tools": "시트 도구",
+    "sheets_tools_desc": "선별된 Genshin Impact 도구 및 계산기 컬렉션을 탐색하세요",
     "food": "음식",
     "food_desc": "팀을 위해 요리할 수 있는 모든 요리 레시피와 최고의 음식을 찾아보세요.",
     "potions": "물약",
@@ -489,5 +491,17 @@
     "best_artifacts": "최고의 유물",
     "main_stats": "주요 스탯",
     "substats": "부 스탯"
+  },
+  "sheets_tools": {
+    "title": "Genshin Impact 도구 및 계산기 - 종합 시트 컬렉션",
+    "description": "캐릭터 빌드, 소원 통계, 리소스 관리 시트를 포함한 선별된 Genshin Impact 도구 및 계산기 컬렉션을 탐색하세요. 필수 도구에 쉽게 접근하고 Genshin Impact 경험을 향상시키기 위한 세부적인 통찰력을 제공하여 게임 플레이를 최적화하세요.",
+    "sheets_tools": "Genshin Impact 도구 및 계산기",
+    "sheets_tools_desc": "캐릭터 빌드, 소원 통계, 재료 분배 등을 위한 궁극적인 리소스 허브",
+    "detail_title": "{name} - Genshin Impact {category} 도구",
+    "creator": "제작자",
+    "categories": "카테고리",
+    "tags": "태그",
+    "hoyolab_article": "Hoyolab 기사",
+    "link": "시트로 이동"
   }
 }

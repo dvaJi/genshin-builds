@@ -36,6 +36,8 @@
     "materials_desc": "Teyvat からすべてのマテリアルを発見する",
     "cooking_ingredient": "調理材料",
     "cooking_ingredient_desc": "すべての食材を発見する",
+    "sheets_tools": "シートツール",
+    "sheets_tools_desc": "Genshin Impactのツールと計算機の厳選されたコレクションをご覧ください",
     "food": "食べ物",
     "food_desc": "すべての料理レシピと、チームのために作るのに最適な料理を見つけてください",
     "potions": "ポーション",
@@ -489,5 +491,17 @@
     "best_artifacts": "最高の聖遺物",
     "main_stats": "主要ステータス",
     "substats": "副次ステータス"
+  },
+  "sheets_tools": {
+    "title": "Genshin Impact ツール＆計算機 - 包括的なシートコレクション",
+    "description": "キャラクタービルド、ウィッシュ統計、リソース管理シートなど、Genshin Impactのツールと計算機の厳選されたコレクションをご覧ください。ゲームプレイを最適化するための必須ツールへの簡単なアクセスと、Genshin Impactの体験を向上させるための詳細な洞察を提供します。",
+    "sheets_tools": "Genshin Impact ツール＆計算機",
+    "sheets_tools_desc": "キャラクタービルド、ウィッシュ統計、素材分配などのための究極のリソースハブ",
+    "detail_title": "{name} - Genshin Impact {category} ツール",
+    "creator": "クリエイター",
+    "categories": "カテゴリー",
+    "tags": "タグ",
+    "hoyolab_article": "Hoyolab記事",
+    "link": "シートへのリンク"
   }
 }

@@ -153,6 +153,11 @@ const navRoutes: Route[] = [
         name: "Fishing",
         href: "/fishing",
       },
+      {
+        id: "sheets_tools",
+        name: "Sheets Tools",
+        href: "/sheets-tools",
+      }
     ],
   },
 ];

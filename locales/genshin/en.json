@@ -36,6 +36,8 @@
     "materials_desc": "Discover all the Materials from Teyvat",
     "cooking_ingredient": "Cooking Ingredient",
     "cooking_ingredient_desc": "Discover all the cooking ingredients",
+    "sheets_tools": "Sheets Tools",
+    "sheets_tools_desc": "Explore our curated collection of Genshin Impact tools and calculators",
     "food": "Food",
     "food_desc": "Discover all the cooking recipes and the best food to cook for your team",
     "potions": "Potions",
@@ -489,5 +491,17 @@
     "best_artifacts": "Best Artifacts",
     "main_stats": "Main Stats",
     "substats": "Sub Stats"
+  },
+  "sheets_tools": {
+    "title": "Genshin Impact Tools & Calculators - Comprehensive Sheets Collection",
+    "description": "Explore our curated collection of Genshin Impact tools and calculators, including character builds, wish tally stats, and resource management sheets. Optimize your gameplay with easy access to essential tools and detailed insights tailored to enhance your Genshin Impact experience.",
+    "sheets_tools": "Genshin Impact Tools & Calculators",
+    "sheets_tools_desc": "Your Ultimate Resource Hub for Character Builds, Wish Tally Stats, Material Distribution, and More",
+    "detail_title": "{name} - Genshin Impact {category} Tool",
+    "creator": "Creator",
+    "categories": "Categories",
+    "tags": "Tags",
+    "hoyolab_article": "Hoyolab Article",
+    "link": "Link to Sheet"
   }
 }

@@ -36,6 +36,8 @@
     "materials_desc": "發現提瓦特的所有材料",
     "cooking_ingredient": "烹飪原料",
     "cooking_ingredient_desc": "發現所有的烹飪原料",
+    "sheets_tools": "表單工具",
+    "sheets_tools_desc": "探索我們精心策劃的 Genshin Impact 工具和計算器合集",
     "food": "食物",
     "food_desc": "發現所有烹飪食譜和為您的團隊烹飪的最佳食物",
     "potions": "藥水",
@@ -489,5 +491,17 @@
     "best_artifacts": "最佳神器",
     "main_stats": "主要屬性",
     "substats": "副屬性"
+  },
+  "sheets_tools": {
+    "title": "Genshin Impact 工具與計算器 - 全面表單集合",
+    "description": "探索我們精心策劃的 Genshin Impact 工具和計算器合集，包括角色建構、祈願統計、資源管理表單。透過輕鬆存取必要工具和深入見解來優化您的遊戲體驗，專為提升您的 Genshin Impact 體驗而設計。",
+    "sheets_tools": "Genshin Impact 工具與計算器",
+    "sheets_tools_desc": "角色建構、祈願統計、材料分配等的最終資源中心",
+    "detail_title": "{name} - Genshin Impact {category} 工具",
+    "creator": "創作者",
+    "categories": "類別",
+    "tags": "標籤",
+    "hoyolab_article": "Hoyolab 文章",
+    "link": "表單連結"
   }
 }

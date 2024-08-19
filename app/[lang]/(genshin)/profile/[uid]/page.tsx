@@ -1,20 +1,20 @@
+import { Profile } from "interfaces/profile";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
+import { submitGenshinUID } from "@app/actions";
 import { genPageMetadata } from "@app/seo";
 import DynamicBackground from "@components/DynamicBackground";
 import ProfileArtifactsTable from "@components/genshin/ProfileArtifactsTable";
 import ProfileBuildsTable from "@components/genshin/ProfileBuildsTable";
-import { FavoriteGenshinProfile } from "./favorite";
-import { SyncGenshinProfile } from "./sync";
-
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getBuild, getPlayer } from "@lib/genshinShowcase";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
-import { Profile } from "interfaces/profile";
-import { submitGenshinUID } from "@app/actions";
+
+import { FavoriteGenshinProfile } from "./favorite";
+import { SyncGenshinProfile } from "./sync";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -106,11 +106,11 @@ export default async function GenshinPlayerProfile({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <div className="relative">
+      <div className="relative z-10">
         <ProfileFavorites />
       </div>
       <div
-        className="relative mt-4 rounded-xl bg-cover bg-center"
+        className="relative z-10 mt-4 rounded-xl bg-cover bg-center"
         style={{
           backgroundImage: `url(${getUrlLQ(
             `/profile/${profile.namecardId}_1.png`

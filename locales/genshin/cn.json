@@ -36,6 +36,8 @@
     "materials_desc": "探索特依瓦的所有材料",
     "cooking_ingredient": "烹饪材料",
     "cooking_ingredient_desc": "探索所有烹饪材料",
+    "sheets_tools": "工具合集",
+    "sheets_tools_desc": "探索我们精心策划的 Genshin Impact 工具和计算器合集",
     "food": "食物",
     "food_desc": "探索所有烹饪食谱和为您的队伍烹饪的最佳食物",
     "potions": "药剂",
@@ -489,5 +491,17 @@
     "best_artifacts": "最佳圣遗物",
     "main_stats": "主要属性",
     "substats": "副属性"
+  },
+  "sheets_tools": {
+    "title": "Genshin Impact 工具与计算器 - 全面工具合集",
+    "description": "探索我们精心策划的 Genshin Impact 工具和计算器合集，包括角色养成、祈愿统计、资源管理表等。通过便捷访问必要工具和详细见解来优化您的游戏体验，专为提升您的 Genshin Impact 体验而设计。",
+    "sheets_tools": "Genshin Impact 工具与计算器",
+    "sheets_tools_desc": "角色养成、祈愿统计、材料分配等的终极资源中心",
+    "detail_title": "{name} - Genshin Impact {category} 工具",
+    "creator": "创作者",
+    "categories": "类别",
+    "tags": "标签",
+    "hoyolab_article": "Hoyolab 文章",
+    "link": "表格链接"
   }
 }
