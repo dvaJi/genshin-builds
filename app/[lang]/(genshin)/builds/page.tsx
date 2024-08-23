@@ -1,11 +1,10 @@
 import type { Build } from "interfaces/build";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import FrstAds from "@components/ui/FrstAds";
-import useTranslations from "@hooks/use-translations";
+import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -17,7 +16,10 @@ import ElementsFilter from "./elements-filter";
 import List from "./list";
 import Search from "./search";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
+const Ads = dynamicImport(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamicImport(() => import("@components/ui/FrstAds"), {
+  ssr: false,
+});
 
 interface Props {
   params: {
@@ -43,8 +45,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "genshin", "builds");
+  const { t, locale } = await getTranslations(params.lang, "genshin", "builds");
 
   const title = t("title");
   const description = t("description");
@@ -58,106 +59,106 @@ export async function generateMetadata({
 }
 
 export default async function GenshinCharacterPage({ params }: Props) {
-  const { t, langData, locale, common, dict } = await useTranslations(
+  const { t, langData, locale, common, dict } = await getTranslations(
     params.lang,
     "genshin",
     "builds"
   );
-  const beta = await getData<Beta>("genshin", "beta");
-  const _characters = await getGenshinData<Character[]>({
-    resource: "characters",
-    language: langData as any,
-    select: ["id", "name", "rarity", "element"],
-  });
+  const [beta, _characters, buildsOld, weaponsList, artifactsList] =
+    await Promise.all([
+      getData<Beta>("genshin", "beta"),
+      getGenshinData<Character[]>({
+        resource: "characters",
+        language: langData as any,
+        select: ["id", "name", "rarity", "element"],
+      }),
+      getRemoteData<Record<string, Build>>("genshin", "builds"),
+      getGenshinData<Record<string, Weapon>>({
+        resource: "weapons",
+        language: langData as any,
+        select: ["id", "name", "rarity", "stats"],
+        asMap: true,
+      }),
+      getGenshinData<Record<string, Artifact>>({
+        resource: "artifacts",
+        language: langData as any,
+        select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
+        asMap: true,
+      }),
+    ]);
 
-  const characters = [...(beta[locale]?.characters ?? []), ..._characters];
-
-  const buildsOld = await getRemoteData<Record<string, Build[]>>(
-    "genshin",
-    "builds"
-  );
-  const weaponsList = await getGenshinData<Record<string, Weapon>>({
-    resource: "weapons",
-    language: langData as any,
-    select: ["id", "name", "rarity", "stats"],
-    asMap: true,
-  });
-
-  const artifactsList = await getGenshinData<Record<string, Artifact>>({
-    resource: "artifacts",
-    language: langData as any,
-    select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
-    asMap: true,
-  });
   const bonusSets = getBonusSet(artifactsList, dict, common);
 
-  const allBuilds = characters
-    .map((character) => {
-      const builds = buildsOld[character.id];
-      // const mostUsed = builds?.find((build) => build.most_used) as MostUsedBuild;
-      if (!builds) {
-        return null;
-      }
+  const characters = (beta[locale]?.characters ?? []).concat(_characters);
 
-      const build = builds.filter((build) => build.recommended)[0] ?? builds[0];
-      const weapons = build.weapons
-        .map((weapon) => ({
-          ...weaponsList[weapon.id],
+  const allBuilds = [];
+  for (const character of characters) {
+    const builds = buildsOld[character.id];
+    if (!builds) {
+      continue;
+    }
+
+    const build =
+      builds.builds?.filter((b) => b.recommended)[0] ?? builds.builds?.[0];
+    const weapons = build.weapons
+      .map((weapon) => {
+        const weaponData = weaponsList[weapon.id];
+        if (!weaponData) {
+          return undefined;
+        }
+        return {
+          ...weaponData,
           r: weapon.r,
-        }))
-        .filter((weapon) => weapon);
-      const artifacts = build.sets
-        .map((set) => {
-          return set.map((artifact) => {
-            if (bonusSets[artifact]) {
-              return bonusSets[artifact];
-            }
+        };
+      })
+      .filter((weapon) => weapon !== undefined);
+    const artifacts = build.sets.map((set) => {
+      return set
+        .map((artifact) => {
+          if (bonusSets[artifact]) {
+            return bonusSets[artifact];
+          }
 
-            return artifactsList[artifact];
-          });
+          return artifactsList[artifact];
         })
-        .filter((artifact) => artifact);
+        .filter((artifact) => artifact !== undefined);
+    });
 
-      return {
-        character,
-        role: build.role,
-        element: t(character.element),
-        weapons,
-        artifacts,
-        stats_priority: build.stats_priority.map((s) =>
-          common[s] ? common[s] : s
-        ),
-        stats: {
-          circlet:
-            build.stats?.circlet?.map((s) => (common[s] ? common[s] : s)) || [],
-          flower:
-            build.stats?.flower?.map((s) => (common[s] ? common[s] : s)) || [],
-          goblet:
-            build.stats?.goblet?.map((s) => (common[s] ? common[s] : s)) || [],
-          plume:
-            build.stats?.plume?.map((s) => (common[s] ? common[s] : s)) || [],
-          sands:
-            build.stats?.sands?.map((s) => (common[s] ? common[s] : s)) || [],
-        },
-      };
-    })
-    .filter((build) => build !== null);
+    allBuilds.push({
+      character,
+      role: build.role,
+      element: t(character.element),
+      weapons,
+      artifacts,
+      stats_priority: build.stats_priority.map((s) =>
+        common[s] ? common[s] : s
+      ),
+      note: build.build_notes,
+      stats: {
+        circlet:
+          build.stats?.circlet?.map((s) => (common[s] ? common[s] : s)) || [],
+        flower:
+          build.stats?.flower?.map((s) => (common[s] ? common[s] : s)) || [],
+        goblet:
+          build.stats?.goblet?.map((s) => (common[s] ? common[s] : s)) || [],
+        plume:
+          build.stats?.plume?.map((s) => (common[s] ? common[s] : s)) || [],
+        sands:
+          build.stats?.sands?.map((s) => (common[s] ? common[s] : s)) || [],
+      },
+    });
+  }
 
-  const elements = characters.reduce(
-    (acc, character) => {
-      const element = {
+  const elements: { label: string; value: string }[] = [];
+
+  for (const character of characters) {
+    if (!elements.find((e) => e.value === character.element)) {
+      elements.push({
         label: t(character.element),
         value: character.element,
-      };
-
-      if (!acc.find((el) => el.value === element.value)) {
-        acc.push(element);
-      }
-
-      return acc;
-    },
-    [] as { label: string; value: string }[]
-  );
+      });
+    }
+  }
 
   return (
     <main className="relative mx-auto max-w-screen-lg">

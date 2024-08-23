@@ -32,7 +32,6 @@ export default function BuildCard({ build, locale, messages }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div
-      key={build!.character.id}
       className={clsx(
         "card relative col-span-4 grid w-full grid-cols-12 gap-4 sm:col-span-2 lg:col-span-4",
         {
@@ -61,6 +60,7 @@ export default function BuildCard({ build, locale, messages }: Props) {
             <ElementIcon type={build!.element} width={24} height={24} />
           </div>
         </Link>
+        {isExpanded ? <p className="mt-4 text-xs">{build.note}</p> : null}
       </div>
       <div className="col-span-6 ml-5 flex w-[110px] flex-col items-start lg:col-span-2">
         <div className="build-name mb-2 text-lg text-slate-200">
@@ -69,7 +69,7 @@ export default function BuildCard({ build, locale, messages }: Props) {
         <Badge className="text-slate-300">{build!.role}</Badge>
       </div>
       <div
-        className={clsx("-mb-1 ml-2 grid grid-cols-2 justify-between gap-2 ", {
+        className={clsx("-mb-1 ml-2 grid grid-cols-2 justify-between gap-2", {
           "col-span-12 lg:col-span-8": isExpanded,
           "col-span-12 lg:col-span-4": !isExpanded,
         })}

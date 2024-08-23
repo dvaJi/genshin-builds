@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import { Build, MostUsedBuild } from "interfaces/build";
+import { Build, type CharBuild, MostUsedBuild } from "interfaces/build";
 import { Beta } from "interfaces/genshin/beta";
 import { TeamData, type Teams } from "interfaces/teams";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 import { notFound } from "next/navigation";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
@@ -19,7 +19,7 @@ import CharacterTalentMaterials from "@components/genshin/CharacterTalentMateria
 import CharacterTeam from "@components/genshin/CharacterTeam";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Image from "@components/genshin/Image";
-import useTranslations from "@hooks/use-translations";
+import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -33,8 +33,8 @@ import {
   calculateTotalTalentMaterials,
 } from "@utils/totals";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
+const Ads = dynamicImport(() => import("@components/ui/Ads"), { ssr: false });
+const FrstAds = dynamicImport(() => import("@components/ui/FrstAds"), {
   ssr: false,
 });
 
@@ -78,8 +78,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, langData, locale } = await useTranslations(
+  const { t, langData, locale } = await getTranslations(
     params.lang,
     "genshin",
     "character"
@@ -125,12 +124,42 @@ export async function generateMetadata({
 }
 
 export default async function GenshinCharacterPage({ params }: Props) {
-  const { t, langData, locale, common, dict } = await useTranslations(
+  const { t, langData, locale, common, dict } = await getTranslations(
     params.lang,
     "genshin",
     "character"
   );
-  const beta = await getData<Beta>("genshin", "beta");
+  const [
+    beta,
+    _buildsOld,
+    communityBuilds,
+    teams,
+    _characters,
+    weaponsList,
+    artifactsList,
+  ] = await Promise.all([
+    getData<Beta>("genshin", "beta"),
+    getRemoteData<Record<string, Build>>("genshin", "builds"),
+    getRemoteData<Record<string, MostUsedBuild>>("genshin", "mostused-builds"),
+    getRemoteData<Teams>("genshin", "teams"),
+    getGenshinData<Character[]>({
+      resource: "characters",
+      language: langData as any,
+      select: ["id", "name", "rarity", "element"],
+    }),
+    getGenshinData<Record<string, Weapon>>({
+      resource: "weapons",
+      language: langData as any,
+      select: ["id", "name", "rarity", "stats"],
+      asMap: true,
+    }),
+    getGenshinData<Record<string, Artifact>>({
+      resource: "artifacts",
+      language: langData as any,
+      select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
+      asMap: true,
+    }),
+  ]);
   const _character = await getGenshinData<Character>({
     resource: "characters",
     language: langData as any,
@@ -152,95 +181,65 @@ export default async function GenshinCharacterPage({ params }: Props) {
     return notFound();
   }
 
-  const _buildsOld = await getRemoteData<Record<string, Build[]>>(
-    "genshin",
-    "builds"
-  );
-  const buildsOld = _buildsOld[character.id] || [];
-  const weaponsList = await getGenshinData<Record<string, Weapon>>({
-    resource: "weapons",
-    language: langData as any,
-    select: ["id", "name", "rarity", "stats"],
-    asMap: true,
-  });
-
-  const artifactsList = await getGenshinData<Record<string, Artifact>>({
-    resource: "artifacts",
-    language: langData as any,
-    select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
-    asMap: true,
-  });
+  const buildsOld = _buildsOld[character.id] || { builds: [] };
 
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact & { children?: Artifact[] }> = {};
-  let builds: Build[] = [];
-  const mubuild: MostUsedBuild = (
-    await getRemoteData<Record<string, MostUsedBuild>>(
-      "genshin",
-      "mostused-builds"
-    )
-  )[character.id];
+  let builds: CharBuild[] = [];
+  const mubuild: MostUsedBuild = communityBuilds[character.id];
 
   if (buildsOld) {
-    const weaponsIds: string[] = [];
-    const artifactsIds: string[] = [];
-    buildsOld.forEach((build) => {
-      weaponsIds.push(...build.weapons.map((w) => w.id));
-      artifactsIds.push(
-        ...build.sets.reduce<string[]>((arr, set) => {
-          arr.push(...set);
+    const weaponsIds = new Set<string>();
+    const artifactsIds = new Set<string>();
 
-          return arr;
-        }, [])
-      );
+    const mapStats = (stats: string[]) => stats.map((s) => common[s] || s);
+
+    for (const build of buildsOld.builds) {
+      for (const w of build.weapons) {
+        weaponsIds.add(w.id);
+      }
+      for (const set of build.sets) {
+        for (const id of set) {
+          artifactsIds.add(id);
+        }
+      }
+
       const newBuild = {
         ...build,
-        stats_priority: build.stats_priority.map((s) =>
-          common[s] ? common[s] : s
-        ),
+        stats_priority: mapStats(build.stats_priority),
         stats: {
-          circlet:
-            build.stats?.circlet?.map((s) => (common[s] ? common[s] : s)) || [],
-          flower:
-            build.stats?.flower?.map((s) => (common[s] ? common[s] : s)) || [],
-          goblet:
-            build.stats?.goblet?.map((s) => (common[s] ? common[s] : s)) || [],
-          plume:
-            build.stats?.plume?.map((s) => (common[s] ? common[s] : s)) || [],
-          sands:
-            build.stats?.sands?.map((s) => (common[s] ? common[s] : s)) || [],
+          circlet: mapStats(build.stats?.circlet || []),
+          flower: mapStats(build.stats?.flower || []),
+          goblet: mapStats(build.stats?.goblet || []),
+          plume: mapStats(build.stats?.plume || []),
+          sands: mapStats(build.stats?.sands || []),
         },
       };
       builds.push(newBuild);
-    });
+    }
 
-    const weaponIds = Object.keys(weaponsList);
-    weaponIds.forEach((weaponId) => {
-      if (
-        weaponsIds.includes(weaponId) ||
-        mubuild?.weapons?.includes(weaponId)
-      ) {
+    for (const weaponId of Object.keys(weaponsList)) {
+      if (weaponsIds.has(weaponId) || mubuild?.weapons?.includes(weaponId)) {
         weapons[weaponId] = weaponsList[weaponId];
       }
-    });
+    }
 
-    const artifactIds = Object.keys(artifactsList);
-    artifactIds.forEach((artifactId) => {
+    for (const artifactId of Object.keys(artifactsList)) {
       if (
-        artifactsIds.includes(artifactId) ||
-        mubuild?.artifacts?.find((a) => a.includes(artifactId))
+        artifactsIds.has(artifactId) ||
+        mubuild?.artifacts?.some((a) => a.includes(artifactId))
       ) {
         artifacts[artifactId] = artifactsList[artifactId];
       }
-    });
+    }
 
     // Add custom sets by bonus
     const bonusSets = getBonusSet(artifactsList, dict, common);
-    Object.keys(bonusSets).forEach((key) => {
-      if (artifactsIds.includes(key)) {
+    for (const key of Object.keys(bonusSets)) {
+      if (artifactsIds.has(key)) {
         artifacts[key] = bonusSets[key];
       }
-    });
+    }
   }
 
   const talentsTotal = calculateTotalTalentMaterials(
@@ -248,7 +247,6 @@ export default async function GenshinCharacterPage({ params }: Props) {
   );
   const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
 
-  const teams = await getRemoteData<Teams>("genshin", "teams");
   const recommendedTeams: TeamData[] = teams[character.id]?.teams || [];
 
   const jsonLd: WithContext<BreadcrumbList> = {
@@ -341,9 +339,15 @@ export default async function GenshinCharacterPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       {builds?.length > 0 || mubuild ? (
-        <h2 className="mb-3 text-3xl text-white">
-          {t("builds", { name: character.name })}
-        </h2>
+        <>
+          <h2 className="mb-3 text-3xl text-white">
+            {t("builds", { name: character.name })}
+          </h2>
+          <p
+            className="text-sm"
+            dangerouslySetInnerHTML={{ __html: buildsOld.notes }}
+          />
+        </>
       ) : null}
       {builds?.length > 0
         ? builds.map((build) => (

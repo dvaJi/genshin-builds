@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { getImg } from "@lib/imgUrl";
-import { getRemoteData } from "@lib/localData";
+import { getSafeRemoteData } from "@lib/localData";
 
 type Timeline = {
   name: string;
@@ -20,7 +20,14 @@ type Props = {
 };
 
 export async function Banners({ lang }: Props) {
-  const timeline = await getRemoteData<Timeline[][]>("genshin", "timeline");
+  const [hasErrors, timeline] = await getSafeRemoteData<Timeline[][]>(
+    "genshin",
+    "timeline"
+  );
+
+  if (hasErrors) {
+    return null;
+  }
 
   const now = new Date();
   const banners = timeline.flat().filter((t) => {

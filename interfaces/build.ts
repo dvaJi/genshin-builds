@@ -11,7 +11,7 @@ interface SetsStats {
   circlet: string[];
 }
 
-export interface Build {
+export type CharBuild = {
   id: string;
   name: string;
   description: string;
@@ -22,6 +22,12 @@ export interface Build {
   stats_priority: string[];
   stats: SetsStats;
   talent_priority: string[];
+  build_notes: string;
+};
+
+export interface Build {
+  notes: string;
+  builds: CharBuild[];
 }
 
 export type MostUsedBuild = {

@@ -36,6 +36,20 @@ export async function getRemoteData<T>(
   }
 }
 
+export async function getSafeRemoteData<T>(
+  game: string,
+  dataFile: string,
+  revalidate = 60 * 60 * 24
+): Promise<[boolean, T]> {
+  try {
+    const data = await getRemoteData<T>(game, dataFile, revalidate);
+    return [true, data];
+  } catch (err) {
+    console.log("Data not found", { game, dataFile });
+    return [false, {} as T];
+  }
+}
+
 export async function getData<T>(game: string, dataFile: string) {
   try {
     const data = require(`../_content/${game}/data/${dataFile}.json`);

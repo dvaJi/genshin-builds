@@ -1,4 +1,4 @@
-import { Build } from "interfaces/build";
+import type { CharBuild } from "interfaces/build";
 import { ReactNode } from "react";
 
 import type { Artifact, Weapon } from "@interfaces/genshin";
@@ -9,7 +9,7 @@ import ArtifactRecommendedStats from "./ArtifactRecommendedStats";
 import WeaponCard from "./WeaponCard";
 
 type Props = {
-  build: Build;
+  build: CharBuild;
   locale: string;
   weapons: Record<string, Weapon>;
   artifacts: Record<string, Artifact>;
@@ -107,6 +107,7 @@ const CharacterBuildCard = ({
               </div>
             ))}
           </div>
+          {build.build_notes && <p className="mt-4">{build.build_notes}</p>}
         </div>
         <div className="flex max-w-sm flex-col flex-wrap content-start">
           <h4 className="mb-2 text-lg font-semibold text-slate-300">
