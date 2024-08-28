@@ -1,11 +1,19 @@
-# *
+# Block all bots from accessing the /admin directory
 User-agent: *
-Allow: /
 Disallow: /admin
+
+# Block all bots from accessing any URLs under /tcg/deck-builder that include the query parameter 'code'
 Disallow: */tcg/deck-builder?code=*
 
-# Host
+# Allow all other URLs to be accessed
+Allow: /
+
+# Yandex-specific directive to ignore the nxtPuid parameter
+User-agent: Yandex
+Clean-param: nxtPuid /profile/
+
+# Specify the preferred host
 Host: https://genshin-builds.com
 
-# Sitemaps
+# Specify the location of the sitemap
 Sitemap: https://genshin-builds.com/sitemap.xml
