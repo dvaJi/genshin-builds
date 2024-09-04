@@ -37,6 +37,7 @@ export async function getNews(game: string) {
       },
       next: {
         tags: ["news-api"],
+        revalidate: 43200,
       },
     });
 
