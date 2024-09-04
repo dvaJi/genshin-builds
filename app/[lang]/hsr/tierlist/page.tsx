@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { i18n } from "i18n-config";
-import { Tierlist } from "interfaces/hsr/tierlist";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 import Link from "next/link";
@@ -8,10 +7,9 @@ import Link from "next/link";
 import { genPageMetadata } from "@app/seo";
 import CharacterBlock from "@components/hsr/CharacterBlock";
 import useTranslations from "@hooks/use-translations";
-import type { Character } from "@interfaces/hsr";
+import type { Character, Tiers } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
-import { getRemoteData } from "@lib/localData";
 import { getHsrId } from "@utils/helpers";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -64,7 +62,13 @@ export default async function HSRTierlistPage({ params }: Props) {
     select: ["id", "name", "rarity", "combat_type", "path"],
   });
 
-  const tierlists = await getRemoteData<Tierlist>("hsr", "tierlist");
+  const tierlist = await getHSRData<Tiers>({
+    resource: "tierlists",
+    language: langData,
+    filter: {
+      id: "overall",
+    },
+  });
 
   const charactersMap = characters.reduce(
     (acc, character) => {
@@ -98,51 +102,50 @@ export default async function HSRTierlistPage({ params }: Props) {
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       </div>
       <div className="mt-4 flex flex-col bg-hsr-surface2 shadow-2xl">
-        {Object.entries(tierlists["overall"]).map(([tier, tierCharacters]) => (
-          <div
-            key={tier}
-            className="flex items-center border-b border-accent-1  py-2 last:border-b-0 "
-          >
+        {Object.entries(tierlist)
+          .filter(([key]) => key !== "id")
+          .map(([tier, tierCharacters]) => (
             <div
-              className={clsx(
-                "w-16 shrink-0 flex-grow-0 text-center text-2xl font-semibold",
-                {
-                  "text-red-500": tier === "SS",
-                  "text-yellow-500": tier === "S",
-                  "text-green-500": tier === "A",
-                  "text-blue-500": tier === "B",
-                  "text-gray-500": tier === "C",
-                }
-              )}
+              key={tier}
+              className="flex items-center border-b border-accent-1 py-2 last:border-b-0"
             >
-              {tier}
-            </div>
-            <div className="flex flex-wrap">
-              {tierCharacters.map((characterId: string) => {
-                const char = charactersMap[getHsrId(characterId)];
+              <div
+                className={clsx(
+                  "w-16 shrink-0 flex-grow-0 text-center text-2xl font-semibold",
+                  {
+                    "text-red-500": tier === "SS",
+                    "text-yellow-500": tier === "S",
+                    "text-green-500": tier === "A",
+                    "text-blue-500": tier === "B",
+                    "text-gray-500": tier === "C",
+                  }
+                )}
+              >
+                {tier}
+              </div>
+              <div className="flex flex-wrap">
+                {tierCharacters.map((characterId: string) => {
+                  const char = charactersMap[getHsrId(characterId)];
 
-                if (!char) {
-                  console.log("Character not found", characterId);
-                  return null;
-                }
+                  if (!char) {
+                    console.log("Character not found", characterId);
+                    return null;
+                  }
 
-                return (
-                  <Link
-                    key={characterId}
-                    href={`/${params.lang}/hsr/character/${char.id}`}
-                    className="mx-2"
-                    prefetch={false}
-                  >
-                    <CharacterBlock
+                  return (
+                    <Link
                       key={characterId}
-                      character={char}
-                    />
-                  </Link>
-                )
-              })}
+                      href={`/${params.lang}/hsr/character/${char.id}`}
+                      className="mx-2"
+                      prefetch={false}
+                    >
+                      <CharacterBlock key={characterId} character={char} />
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

@@ -6,9 +6,10 @@ import { submitHSRUID } from "@app/actions";
 import { genPageMetadata } from "@app/seo";
 import useTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getHSRData } from "@lib/dataApi";
 import { getBuild, getPlayer } from "@lib/hsrShowcase";
 import { getHsrUrl } from "@lib/imgUrl";
-import { getData } from "@lib/localData";
+
 import Builds from "./builds";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -78,10 +79,13 @@ export default async function HSRProfilePage({ params }: Props) {
     return redirect(`/${params.lang}/hsr/showcase`);
   }
 
-  const propertiesCommonMap = await getData<
-    Record<string, Record<string, string>>
-  >("hsr", "properties_common");
-  const propertiesCommon = propertiesCommonMap[langData];
+  const propertiesCommon = await getHSRData<Record<string, string>>({
+    resource: "properties",
+    language: "en",
+    filter: {
+      id: langData,
+    },
+  });
 
   const profile = res.data;
 

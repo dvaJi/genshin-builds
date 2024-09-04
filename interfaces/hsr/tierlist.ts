@@ -1,11 +1,11 @@
 export interface Tierlist {
-  overall: Overall;
-  single: Overall;
-  aoe: Overall;
-  support: Overall;
+  overall: Tiers;
+  single: Tiers;
+  aoe: Tiers;
+  support: Tiers;
 }
 
-export interface Overall {
+export interface Tiers {
   "SS ": string[];
   "S ": string[];
   "A ": string[];
