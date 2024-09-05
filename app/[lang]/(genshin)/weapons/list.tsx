@@ -28,7 +28,6 @@ export default function WeaponsList({ weapons }: Props) {
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
   useEffect(() => {
-    console.log("searchTerm", debouncedSearchTerm, typeFilter, weapons);
     setWeaponFilter(
       weapons.filter((w) => {
         let nameFilter = true;

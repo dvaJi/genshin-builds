@@ -201,7 +201,6 @@ const columns: ColumnDef<Build & { player: Profile }>[] = [
 
 function LeaderBoardBuildsTable({ data }: Props) {
   const { t } = useIntl("profile");
-  // console.log("re-rendering LeaderBoardBuildsTable");
 
   const table = useReactTable({
     data,

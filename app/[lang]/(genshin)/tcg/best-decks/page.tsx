@@ -83,7 +83,6 @@ export default async function GenshinBestDecks({ params }: Props) {
   const bestDecks = Object.values(_bestDecks).filter(
     (a: any) => a !== "best-decks"
   );
-  console.log(bestDecks);
 
   const cCharacters = await getGenshinData<Record<string, TCGCard>>({
     resource: "tcgCharacters",
