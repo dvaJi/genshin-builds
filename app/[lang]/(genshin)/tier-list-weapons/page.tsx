@@ -1,15 +1,14 @@
-import type { Weapon } from "@interfaces/genshin";
+import { TierlistWeapons } from "interfaces/tierlist";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import GenshinTierlistWeaponsView from "./list";
-
 import useTranslations from "@hooks/use-translations";
+import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getRemoteData } from "@lib/localData";
-import { TierlistWeapons } from "interfaces/tierlist";
+
+import GenshinTierlistWeaponsView from "./list";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -59,10 +58,11 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
     language: langData,
     asMap: true,
   });
-  const tierlist = await getRemoteData<Record<string, TierlistWeapons>>(
-    "genshin",
-    "tierlist-weapons"
-  );
+  const tierlist = await getGenshinData<Record<string, TierlistWeapons>>({
+    resource: "tierlists",
+    language: langData,
+    filter: { id: "weapons" },
+  });
 
   return (
     <div>

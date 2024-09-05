@@ -12,7 +12,6 @@ import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import { getRemoteData } from "@lib/localData";
 import { getTimeAgo } from "@lib/timeago";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -55,10 +54,17 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     "banners_weapons"
   );
 
-  const { historical, rerunPrediction } = await getRemoteData<{
+  const { historical, rerunPrediction } = await getGenshinData<{
     historical: BannerHistorical[];
     rerunPrediction: BannerReRunPrediction[];
-  }>("genshin", "banners-weapons");
+  }>({
+    resource: "banners",
+    language: params.lang,
+    filter: {
+      id: "weapons",
+    },
+  });
+
   const weapons = await getGenshinData<Weapon[]>({
     resource: "weapons",
     select: ["id", "name"],

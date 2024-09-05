@@ -1,16 +1,9 @@
+import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import ChangelogVersion from "./view";
-
 import useTranslations from "@hooks/use-translations";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getGenshinData } from "@lib/dataApi";
-import { getRemoteData } from "@lib/localData";
-import { getAllMaterialsMap } from "@utils/materials";
-import { i18n } from "i18n-config";
-
 import type {
   Artifact,
   Changelog,
@@ -19,6 +12,12 @@ import type {
   TCGCard,
   Weapon,
 } from "@interfaces/genshin";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
+import { getRemoteData } from "@lib/localData";
+import { getAllMaterialsMap } from "@utils/materials";
+
+import ChangelogVersion from "./view";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -48,9 +47,10 @@ export async function generateMetadata({
     "genshin",
     "changelog"
   );
-  const changelog = (
-    await getRemoteData<Changelog[]>("genshin", "changelog")
-  ).filter((c) => !c.beta);
+  const changelog = await getGenshinData<Changelog[]>({
+    resource: "changelog",
+    language: locale,
+  });
   const currentVersion = changelog[changelog.length - 1];
 
   const title = t({

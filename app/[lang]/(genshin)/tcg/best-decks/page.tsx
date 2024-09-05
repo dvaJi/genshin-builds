@@ -11,7 +11,6 @@ import type { TCGCard } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import { getRemoteData } from "@lib/localData";
 import { encodeDeckCode } from "@utils/gcg-share-code";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -66,12 +65,25 @@ export default async function GenshinBestDecks({ params }: Props) {
     "tcg_decks"
   );
 
-  const bestDecks = await getRemoteData<
-    {
-      c: string[];
-      a: string[];
-    }[]
-  >("genshin", "tcg-bestdecks");
+  const _bestDecks = await getGenshinData<
+    Record<
+      string,
+      {
+        c: string[];
+        a: string[];
+      }
+    >
+  >({
+    resource: "tcgBestDecks",
+    language: langData,
+    filter: {
+      id: "best-decks",
+    },
+  });
+  const bestDecks = Object.values(_bestDecks).filter(
+    (a: any) => a !== "best-decks"
+  );
+  console.log(bestDecks);
 
   const cCharacters = await getGenshinData<Record<string, TCGCard>>({
     resource: "tcgCharacters",

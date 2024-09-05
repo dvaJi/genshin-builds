@@ -1,7 +1,7 @@
 import Link from "next/link";
 
+import { getGenshinData } from "@lib/dataApi";
 import { getImg } from "@lib/imgUrl";
-import { getSafeRemoteData } from "@lib/localData";
 
 type Timeline = {
   name: string;
@@ -20,17 +20,16 @@ type Props = {
 };
 
 export async function Banners({ lang }: Props) {
-  const [hasErrors, timeline] = await getSafeRemoteData<Timeline[][]>(
-    "genshin",
-    "timeline"
-  );
-
-  if (hasErrors) {
-    return null;
-  }
+  const { data } = await getGenshinData<{ data: Timeline[][] }>({
+    resource: "timelines",
+    language: lang,
+    filter: {
+      id: "timeline",
+    },
+  });
 
   const now = new Date();
-  const banners = timeline.flat().filter((t) => {
+  const banners = data.flat().filter((t) => {
     if (t.name.endsWith("Banner")) {
       // Check if the banner is active, eg: 2021-10-20
       if (t.start && t.end) {

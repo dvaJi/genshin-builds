@@ -1,14 +1,13 @@
-import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+import { CharacterTier, Tierlist } from "interfaces/tierlist";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-
 import useTranslations from "@hooks/use-translations";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getRemoteData } from "@lib/localData";
-import { CharacterTier, Tierlist } from "interfaces/tierlist";
+
 import GenshinTierlistView from "./list";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -73,10 +72,11 @@ export default async function GenshinTierlist({ params }: Props) {
     asMap: true,
   });
 
-  const tierlist = await getRemoteData<Record<string, Tierlist>>(
-    "genshin",
-    "tierlist-characters"
-  );
+  const tierlist = await getGenshinData<Record<string, Tierlist>>({
+    resource: "tierlists",
+    language: langData,
+    filter: { id: "characters" },
+  });
 
   const _tiers = ["0", "1", "2", "3", "4"];
 

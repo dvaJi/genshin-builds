@@ -13,7 +13,6 @@ import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import { getRemoteData } from "@lib/localData";
 import { getTimeAgo } from "@lib/timeago";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
@@ -56,10 +55,17 @@ export default async function GenshinBannerCharacters({ params }: Props) {
     "banners_characters"
   );
 
-  const { historical, rerunPrediction } = await getRemoteData<{
+  const { historical, rerunPrediction } = await getGenshinData<{
     historical: BannerHistorical[];
     rerunPrediction: BannerReRunPrediction[];
-  }>("genshin", "banners-characters");
+  }>({
+    resource: "banners",
+    language: params.lang,
+    filter: {
+      id: "characters",
+    },
+  });
+
   const characters = await getGenshinData<Character[]>({
     resource: "characters",
     language: langData,

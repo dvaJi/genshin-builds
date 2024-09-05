@@ -38,7 +38,7 @@ const CharacterCommonBuildCard = ({
             {messages.weapons}
           </h4>
           <div className="w-full">
-            {build.weapons.map((weapon, i) => (
+            {build?.weapons.map((weapon, i) => (
               <WeaponCard
                 key={weapon}
                 position={i + 1}
@@ -52,7 +52,7 @@ const CharacterCommonBuildCard = ({
           <h4 className="mb-2 text-lg font-semibold text-slate-300">
             {messages.artifacts}
           </h4>
-          {build.artifacts.map((set, i) => (
+          {build?.artifacts.map((set, i) => (
             <ArtifactCard
               key={`${set.join("")}`}
               position={i + 1}

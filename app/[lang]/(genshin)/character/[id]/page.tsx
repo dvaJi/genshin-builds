@@ -132,7 +132,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const [
     beta,
     _buildsOld,
-    communityBuilds,
+    mubuild,
     teams,
     _characters,
     weaponsList,
@@ -140,7 +140,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
   ] = await Promise.all([
     getData<Beta>("genshin", "beta"),
     getRemoteData<Record<string, Build>>("genshin", "builds"),
-    getRemoteData<Record<string, MostUsedBuild>>("genshin", "mostused-builds"),
+    getGenshinData<MostUsedBuild>({
+      resource: "mostUsedBuilds",
+      language: langData as any,
+      filter: {
+        id: params.id,
+      },
+    }),
     getRemoteData<Teams>("genshin", "teams"),
     getGenshinData<Character[]>({
       resource: "characters",
@@ -186,7 +192,6 @@ export default async function GenshinCharacterPage({ params }: Props) {
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact & { children?: Artifact[] }> = {};
   let builds: CharBuild[] = [];
-  const mubuild: MostUsedBuild = communityBuilds[character.id];
 
   if (buildsOld) {
     const weaponsIds = new Set<string>();
@@ -377,7 +382,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
             />
           ))
         : null}
-      {mubuild && (
+      {mubuild !== null ? (
         <CharacterCommonBuildCard
           build={mubuild}
           artifacts={artifacts}
@@ -391,7 +396,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
             choose_2: t("choose_2"),
           }}
         />
-      )}
+      ) : null}
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}

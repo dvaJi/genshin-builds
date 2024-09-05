@@ -45,8 +45,13 @@ export async function generateMetadata({
     "genshin",
     "changelog"
   );
-  const changelog = await getRemoteData<Changelog[]>("genshin", "changelog");
-  const currentVersion = changelog.find((c) => c.version === params.version);
+  const currentVersion = await getGenshinData<Changelog>({
+    resource: "changelog",
+    language: locale,
+    filter: {
+      id: params.version,
+    },
+  });
 
   if (!currentVersion) return undefined;
 
