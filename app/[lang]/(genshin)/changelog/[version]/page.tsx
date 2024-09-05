@@ -14,7 +14,6 @@ import type {
 } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getRemoteData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
 
 import ChangelogVersion from "../view";
@@ -82,9 +81,19 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     "genshin",
     "changelog"
   );
-  const changelog = await getRemoteData<Changelog[]>("genshin", "changelog");
+  const changelog = await getGenshinData<Changelog[]>({
+    resource: "changelog",
+    language: langData,
+    select: ["version"],
+  });
 
-  const cl = changelog.find((c) => c.version === params.version);
+  const cl = await getGenshinData<Changelog>({
+    resource: "changelog",
+    language: langData,
+    filter: {
+      id: params.version,
+    },
+  });
 
   if (!cl) {
     return notFound();

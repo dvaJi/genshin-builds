@@ -14,7 +14,6 @@ import type {
 } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getRemoteData } from "@lib/localData";
 import { getAllMaterialsMap } from "@utils/materials";
 
 import ChangelogVersion from "./view";
@@ -112,8 +111,12 @@ export default async function GenshinBannerWeapons({ params }: Props) {
   });
 
   const changelog = (
-    await getRemoteData<Changelog[]>("genshin", "changelog")
-  ).filter((c) => !c.beta);
+    await getGenshinData<Changelog[]>({
+      resource: "changelog",
+      language: langData,
+      revalidate: 0,
+    })
+  ).sort((a, b) => (b.version > a.version ? -1 : 1));
 
   const materialsMap = await getAllMaterialsMap(langData);
 
@@ -123,7 +126,8 @@ export default async function GenshinBannerWeapons({ params }: Props) {
   const foodMap: any = {};
   const tcgMap: any = {};
 
-  const cl = changelog[changelog.length - 1];
+  const cl =
+    changelog.find((c) => c.current) ?? changelog[changelog.length - 1];
 
   const item = cl.items;
   item.avatar?.forEach((a: string) => {
