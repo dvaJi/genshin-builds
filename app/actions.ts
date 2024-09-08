@@ -264,34 +264,33 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     return { message: parse.error.message };
   }
 
-  const response = await fetch(process.env.GENSHIN_MHY_API!, {
-    method: "POST",
-    body: JSON.stringify({
-      uid: parse.data.uid,
-    }),
-    headers: {
-      Agent: "GenshinBuilds/1.0.0",
-    },
-    next: {
-      revalidate: 0,
-    },
-  });
+  const response = await fetch(
+    `${process.env.GENSHIN_MHY_API}/uid/${parse.data.uid}`,
+    {
+      method: "GET",
+      headers: {
+        "accept-encoding": "*",
+        "User-Agent": `enkanetwork.js/v2.8.6`,
+      },
+      referrerPolicy: "strict-origin-when-cross-origin",
+      next: {
+        revalidate: 0,
+      },
+    }
+  );
 
-  if (response.status === 404) {
-    console.log("Player not found", { uid: parse.data.uid });
-    return { message: "Player not found" };
-  }
+  const jsonResponse = await response.json();
 
   if (!response.ok) {
     console.log("Invalid uid", {
       uid: parse.data.uid,
       response: response.status,
-      message: await response.text(),
+      message: jsonResponse.message,
     });
     return { message: "Invalid uid" };
   }
 
-  const data = (await response.json()) as EnkaPlayerDataAPI;
+  const data = jsonResponse as EnkaPlayerDataAPI;
 
   if (!data.avatarInfoList || data.avatarInfoList.length < 1) {
     console.error("Player profile has no public showcase", data);
