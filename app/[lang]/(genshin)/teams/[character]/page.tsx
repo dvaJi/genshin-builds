@@ -17,7 +17,7 @@ import useTranslations from "@hooks/use-translations";
 import type { Artifact, Beta, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getData, getRemoteData } from "@lib/localData";
+import { getData } from "@lib/localData";
 import { capitalize } from "@utils/capitalize";
 import { localeToLang } from "@utils/locale-to-lang";
 
@@ -118,8 +118,13 @@ export default async function GenshinCharacterTeams({ params }: Props) {
     return redirect(`/${params.lang}/teams`);
   }
 
-  const teams = await getRemoteData<Teams>("genshin", "teams");
-  const characterTeams = teams[params.character];
+  const characterTeams = await getGenshinData<Teams>({
+    resource: "teams",
+    language: langData,
+    filter: {
+      id: params.character,
+    },
+  });
 
   // No teams for this character, redirect to the character page instead.
   if (!characterTeams) {

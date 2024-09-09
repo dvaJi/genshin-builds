@@ -147,7 +147,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
         id: params.id,
       },
     }),
-    getRemoteData<Teams>("genshin", "teams"),
+    getGenshinData<Teams>({
+      resource: "teams",
+      language: langData,
+      filter: {
+        id: params.id,
+      },
+    }),
     getGenshinData<Character[]>({
       resource: "characters",
       language: langData as any,
@@ -252,7 +258,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   );
   const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
 
-  const recommendedTeams: TeamData[] = teams[character.id]?.teams || [];
+  const recommendedTeams: TeamData[] = teams?.teams || [];
 
   const jsonLd: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",

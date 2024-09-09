@@ -10,7 +10,6 @@ import useTranslations from "@hooks/use-translations";
 import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getRemoteData } from "@lib/localData";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -59,7 +58,10 @@ export default async function GenshinCharacters({ params }: Props) {
     "teams"
   );
 
-  const teams = await getRemoteData<Teams>("genshin", "teams");
+  const teams = await getGenshinData<Teams[]>({
+    resource: "teams",
+    language: langData,
+  });
 
   const characters = await getGenshinData<Record<string, Character>>({
     resource: "characters",
@@ -68,17 +70,17 @@ export default async function GenshinCharacters({ params }: Props) {
     asMap: true,
   });
 
-  const teamsByName: Record<string, TeamData[]> = Object.entries(teams).reduce(
-    (map, [id, characterTeams]) => {
-      if (!characters[id]?.name || !characterTeams.teams[0]) return map;
+  const teamsByName: Record<string, TeamData[]> = teams.reduce(
+    (map, { id, teams }) => {
+      if (!characters[id]?.name || !teams[0]) return map;
 
       if (!map[characters[id].name]) {
         map[characters[id].name] = [];
       }
 
       map[characters[id].name].push({
-        name: characterTeams.teams[0].name,
-        characters: characterTeams.teams[0].characters.map((c) => ({
+        name: teams[0].name,
+        characters: teams[0].characters.map((c) => ({
           id: c.id,
           name: characters[c.id]?.name || "",
           role: c.role,
