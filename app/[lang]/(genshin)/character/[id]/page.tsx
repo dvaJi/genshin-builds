@@ -25,7 +25,7 @@ import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import { getData, getRemoteData } from "@lib/localData";
+import { getData } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
 import { localeToLang } from "@utils/locale-to-lang";
 import {
@@ -139,7 +139,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
     artifactsList,
   ] = await Promise.all([
     getData<Beta>("genshin", "beta"),
-    getRemoteData<Record<string, Build>>("genshin", "builds"),
+    getGenshinData<Build>({
+      resource: "builds",
+      language: langData as any,
+      filter: {
+        id: params.id,
+      },
+    }),
     getGenshinData<MostUsedBuild>({
       resource: "mostUsedBuilds",
       language: langData as any,
@@ -193,7 +199,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     return notFound();
   }
 
-  const buildsOld = _buildsOld[character.id] || { builds: [] };
+  const buildsOld = _buildsOld || { builds: [] };
 
   let weapons: Record<string, Weapon> = {};
   let artifacts: Record<string, Artifact & { children?: Artifact[] }> = {};

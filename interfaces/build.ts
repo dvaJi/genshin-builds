@@ -26,6 +26,7 @@ export type CharBuild = {
 };
 
 export interface Build {
+  id: string;
   notes: string;
   builds: CharBuild[];
 }

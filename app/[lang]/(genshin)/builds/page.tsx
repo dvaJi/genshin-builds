@@ -9,7 +9,7 @@ import { i18n } from "@i18n-config";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getData, getRemoteData } from "@lib/localData";
+import { getData } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
 
 import ElementsFilter from "./elements-filter";
@@ -72,7 +72,11 @@ export default async function GenshinCharacterPage({ params }: Props) {
         language: langData as any,
         select: ["id", "name", "rarity", "element"],
       }),
-      getRemoteData<Record<string, Build>>("genshin", "builds"),
+      getGenshinData<Record<string, Build>>({
+        resource: "builds",
+        language: langData as any,
+        asMap: true,
+      }),
       getGenshinData<Record<string, Weapon>>({
         resource: "weapons",
         language: langData as any,
