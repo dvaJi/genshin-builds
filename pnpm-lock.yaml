@@ -27,8 +27,8 @@ importers:
         specifier: ^0.7.3
         version: 0.7.3(nanostores@0.11.3)(react@18.3.1)
       '@neshca/cache-handler':
-        specifier: ^1.5.1
-        version: 1.5.1(next@14.2.11(@babel/core@7.24.3)(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(redis@4.7.0)
+        specifier: ^1.7.1
+        version: 1.7.1(next@14.2.11(@babel/core@7.24.3)(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(redis@4.7.0)
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
         version: 2.2.2
@@ -1285,8 +1285,8 @@ packages:
       nanostores: ^0.9.0 || ^0.10.0 || ^0.11.0
       react: '>=18.0.0'
 
-  '@neshca/cache-handler@1.5.1':
-    resolution: {integrity: sha512-qdTFXKxOYiXP8CclVGdffbzD6BvsRHPCoqnj2fS0ZPn7uaNsaMc83KhvxtBHAzWbowbo3zT+SRcWCBmOhYLIZg==}
+  '@neshca/cache-handler@1.7.1':
+    resolution: {integrity: sha512-lmmfdWrfaI1Fxnj8FBRhTjx6YSJLcAJay9CmniPzvFkl973tMTxUF3jVOa9Rn9KpYclsAsAl1PgfZF69Fh7KRg==}
     peerDependencies:
       next: '>=13.5.1'
       redis: '>=4.6'
@@ -3745,10 +3745,6 @@ packages:
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
-
-  lru-cache@10.3.0:
-    resolution: {integrity: sha512-CQl19J/g+Hbjbv4Y3mFNNXFEL/5t/KCg8POCuUqd4rMKjGG+j1ybER83hxV58zL+dFI1PTkt3GNFSHRt+d8qEQ==}
-    engines: {node: 14 || >=16.14}
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -6504,10 +6500,10 @@ snapshots:
       nanostores: 0.11.3
       react: 18.3.1
 
-  '@neshca/cache-handler@1.5.1(next@14.2.11(@babel/core@7.24.3)(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(redis@4.7.0)':
+  '@neshca/cache-handler@1.7.1(next@14.2.11(@babel/core@7.24.3)(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(redis@4.7.0)':
     dependencies:
       cluster-key-slot: 1.1.2
-      lru-cache: 10.3.0
+      lru-cache: 10.4.3
       next: 14.2.11(@babel/core@7.24.3)(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       redis: 4.7.0
 
@@ -9253,8 +9249,6 @@ snapshots:
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
-
-  lru-cache@10.3.0: {}
 
   lru-cache@10.4.3: {}
 

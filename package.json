@@ -26,7 +26,7 @@
     "@freestar/pubfig-adslot-react-component": "^3.6.2",
     "@nanostores/persistent": "^0.10.2",
     "@nanostores/react": "^0.7.3",
-    "@neshca/cache-handler": "^1.5.1",
+    "@neshca/cache-handler": "^1.7.1",
     "@paralleldrive/cuid2": "^2.2.2",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",

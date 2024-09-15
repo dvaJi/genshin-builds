@@ -105,7 +105,10 @@ const nextConfig = {
   ],
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
-  cacheHandler: !isDev && process.env.REDIS_URL ? require.resolve("./cache-handler.js") : undefined,
+  cacheHandler: !isDev && process.env.REDIS_URL ? require.resolve("./cache-handler.mjs") : undefined,
+  experimental: {
+    instrumentationHook: true,
+  }
 };
 
 module.exports = withAxiom(withBundleAnalyzer(nextConfig));
