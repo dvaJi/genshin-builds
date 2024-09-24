@@ -356,15 +356,9 @@ export default async function GenshinCharacterPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       {builds?.length > 0 || mubuild ? (
-        <>
-          <h2 className="mb-3 text-3xl text-white">
-            {t("builds", { name: character.name })}
-          </h2>
-          <p
-            className="text-sm"
-            dangerouslySetInnerHTML={{ __html: buildsOld.notes }}
-          />
-        </>
+        <h2 className="mb-3 text-3xl text-white">
+          {t("builds", { name: character.name })}
+        </h2>
       ) : null}
       {builds?.length > 0
         ? builds.map((build) => (
@@ -394,6 +388,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
             />
           ))
         : null}
+      {builds?.length > 0 || mubuild ? (
+        <p
+          className="text-sm"
+          dangerouslySetInnerHTML={{ __html: buildsOld.notes ?? "" }}
+        />
+      ) : null}
+
       {mubuild !== null ? (
         <CharacterCommonBuildCard
           build={mubuild}
