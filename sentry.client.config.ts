@@ -33,13 +33,29 @@ Sentry.init({
     }),
   ],
 
+  ignoreErrors: [
+    "Script error.",
+    "ResizeObserver loop limit exceeded",
+    "Uncaught Error: unreachable: e.data !== MessagePort",
+    "Object captured as promise rejection with keys: [object has no keys]",
+  ],
+
+  denyUrls: [
+    /pagead\/managed\/js\/gpt\//i,
+    /googlesyndication\.com/i,
+    /googletagservices\.com/i,
+    /pubads\.g\.doubleclick\.net/i,
+    /securepubads\.g\.doubleclick\.net/i,
+    /adservice\.google\.com/i,
+  ],
+
   beforeSend(event) {
     const hasAdsStackFrame = (frames: Sentry.StackFrame[]) => {
       // Sometimes the last frame is not the one we want, like: "\u003Canonymous\u003E"
       // So we need to find the last frame that is not from Sentry or pubfig.engine.js
 
       const adsFilenames =
-        /.*(bao-csm|tag\/js\/gpt\.js|hadron\.js|inpage\.js|pubfig\.engine|prebid-analytics|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v).*/;
+        /.*(bao-csm|tag\/js\/gpt\.js|hadron\.js|inpage\.js|pubfig\.engine|prebid-analytics|app:\/\/\/ym\.[0-9]\.js|app:\/\/\/pageFold\/ftpagefold_v|uv\.handler\.js|pubads_impl\.js|pubfig\.min\.js).*/;
 
       for (let i = frames.length - 1; i >= 0; i--) {
         const frame = frames[i];
@@ -62,7 +78,7 @@ Sentry.init({
     ) => {
       // Define a regex pattern to match the desired domains
       const domainPattern =
-        /.*([a-z]\.pub\.network|googleads\.g\.doubleclick|ib\.adnxs.com|hadron\.ad).*/;
+        /.*([a-z]\.pub\.network|googleads\.g\.doubleclick|ib\.adnxs.com|hadron\.ad|ups\.analytics\.yahoo\.com).*/;
 
       for (const breadcrumb of breadcrumbs) {
         if (domainPattern.test(breadcrumb.data?.url)) {
