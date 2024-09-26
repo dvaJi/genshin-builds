@@ -86,7 +86,8 @@
     "latest_posts_desc": "Resta aggiornato con le ultime notizie, guide e suggerimenti per Genshin Impact.",
     "view_all_posts": "Visualizza Tutti gli Articoli",
     "server_timers": "Timer del Server",
-    "server_timers_desc": "Il reset giornaliero avviene alle 04:00 (4 AM), in base al fuso orario del tuo server. Il reset settimanale avviene ogni lunedì, anche alle 04:00 (4 AM)."
+    "server_timers_desc": "Il reset giornaliero avviene alle 04:00 (4 AM), in base al fuso orario del tuo server. Il reset settimanale avviene ogni lunedì, anche alle 04:00 (4 AM).",
+    "shortcuts": "Scorciatoie"
   },
   "characters": {
     "title": "Elenco dei personaggi di Genshin Impact",

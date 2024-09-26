@@ -12,6 +12,7 @@ import { getGenshinData } from "@lib/dataApi";
 import { Banners } from "./banners";
 import FarmableToday from "./farmable-today";
 import { LatestPosts } from "./latest-posts";
+import Shortcuts from "./shortcuts";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -82,7 +83,7 @@ export default async function IndexPage({ params }: Props) {
   const days = domains.characters[0].rotation.map((r) => r.day);
 
   return (
-    <div>
+    <div className="mx-2 md:mx-0">
       <div className="card">
         <h1 className="text-lg text-slate-100">
           {t({
@@ -102,6 +103,14 @@ export default async function IndexPage({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
+      <br/>
+      <h2 className="text-2xl font-semibold text-gray-200">
+        {t({
+          id: "shortcuts",
+          defaultMessage: "Shortcuts",
+        })}
+      </h2>
+      <Shortcuts lang={params.lang} />
       <div className="mt-4">
         <div className="m-2">
           <h2 className="text-2xl font-semibold text-gray-200">

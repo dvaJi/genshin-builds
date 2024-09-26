@@ -86,7 +86,8 @@
     "latest_posts_desc": "Tetap terkini dengan berita, panduan, dan tips terbaru untuk Genshin Impact.",
     "view_all_posts": "Lihat Semua Pos",
     "server_timers": "Pengatur Waktu Server",
-    "server_timers_desc": "Reset harian terjadi pada pukul 04:00 (4 AM), berdasarkan zona waktu server Anda. Reset mingguan terjadi setiap hari Senin, juga pada pukul 04:00 (4 AM)."
+    "server_timers_desc": "Reset harian terjadi pada pukul 04:00 (4 AM), berdasarkan zona waktu server Anda. Reset mingguan terjadi setiap hari Senin, juga pada pukul 04:00 (4 AM).",
+    "shortcuts": "Pintasan"
   },
   "characters": {
     "title": "Daftar Karakter Genshin Impact",

@@ -86,7 +86,8 @@
     "latest_posts_desc": "隨時了解《原神》的最新消息、指南和技巧。",
     "view_all_posts": "查看所有文章",
     "server_timers": "伺服器計時器",
-    "server_timers_desc": "每日重置基於您伺服器的時區，在凌晨 4 點（04:00）發生。每週重置也發生在每週一的凌晨 4 點（04:00）。"
+    "server_timers_desc": "每日重置基於您伺服器的時區，在凌晨 4 點（04:00）發生。每週重置也發生在每週一的凌晨 4 點（04:00）。",
+    "shortcuts": "捷徑"
   },
   "characters": {
     "title": "Genshin Impact 角色列表",

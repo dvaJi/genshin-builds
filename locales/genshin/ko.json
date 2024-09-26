@@ -86,7 +86,8 @@
     "latest_posts_desc": "Genshin Impact의 최신 뉴스, 가이드 및 팁을 항상 확인하세요.",
     "view_all_posts": "모든 게시물 보기",
     "server_timers": "서버 타이머",
-    "server_timers_desc": "매일 리셋은 서버의 시간대를 기준으로 04:00 (4 AM)에 발생합니다. 주간 리셋은 매주 월요일에도 마찬가지로 04:00 (4 AM)에 발생합니다."
+    "server_timers_desc": "매일 리셋은 서버의 시간대를 기준으로 04:00 (4 AM)에 발생합니다. 주간 리셋은 매주 월요일에도 마찬가지로 04:00 (4 AM)에 발생합니다.",
+    "shortcuts": "바로 가기"
   },
   "characters": {
     "title": "Genshin 임팩트 캐릭터 목록",

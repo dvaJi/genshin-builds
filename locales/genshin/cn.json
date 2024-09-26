@@ -86,7 +86,8 @@
     "latest_posts_desc": "随时了解《原神》的最新新闻、指南和技巧。",
     "view_all_posts": "查看所有文章",
     "server_timers": "服务器计时器",
-    "server_timers_desc": "每日重置基于您服务器的时区，在凌晨 4 点（04:00）发生。每周重置也发生在每周一的凌晨 4 点（04:00）。"
+    "server_timers_desc": "每日重置基于您服务器的时区，在凌晨 4 点（04:00）发生。每周重置也发生在每周一的凌晨 4 点（04:00）。",
+    "shortcuts": "快捷方式"
   },
   "characters": {
     "title": "原神角色列表",

@@ -86,7 +86,8 @@
     "latest_posts_desc": "Mantente al día con las últimas noticias, guías y consejos para Genshin Impact.",
     "view_all_posts": "Ver Todas las Publicaciones",
     "server_timers": "Temporizadores del Servidor",
-    "server_timers_desc": "El reinicio diario ocurre a las 04:00 (4 AM), según la zona horaria de tu servidor. El reinicio semanal ocurre cada lunes, también a las 04:00 (4 AM)."
+    "server_timers_desc": "El reinicio diario ocurre a las 04:00 (4 AM), según la zona horaria de tu servidor. El reinicio semanal ocurre cada lunes, también a las 04:00 (4 AM).",
+    "shortcuts": "Accesos Directos"
   },
   "characters": {
     "title": "Lista de personajes Genshin Impact",

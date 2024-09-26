@@ -86,7 +86,8 @@
     "latest_posts_desc": "Bleiben Sie mit den neuesten Nachrichten, Anleitungen und Tipps für Genshin Impact auf dem Laufenden.",
     "view_all_posts": "Alle Beiträge anzeigen",
     "server_timers": "Server-Zeitgeber",
-    "server_timers_desc": "Der tägliche Reset erfolgt um 04:00 Uhr (4 Uhr) basierend auf der Zeitzone Ihres Servers. Der wöchentliche Reset erfolgt jeden Montag ebenfalls um 04:00 Uhr (4 Uhr)."
+    "server_timers_desc": "Der tägliche Reset erfolgt um 04:00 Uhr (4 Uhr) basierend auf der Zeitzone Ihres Servers. Der wöchentliche Reset erfolgt jeden Montag ebenfalls um 04:00 Uhr (4 Uhr).",
+    "shortcuts": "Verknüpfungen"
   },
   "characters": {
     "title": "Genshin Impact Liste der Figuren",

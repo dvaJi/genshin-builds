@@ -86,7 +86,8 @@
     "latest_posts_desc": "Luôn cập nhật với tin tức, hướng dẫn và mẹo mới nhất cho Genshin Impact.",
     "view_all_posts": "Xem Tất Cả Bài Viết",
     "server_timers": "Bộ Hẹn Giờ Máy Chủ",
-    "server_timers_desc": "Sự đặt lại hàng ngày diễn ra vào lúc 04:00 (4 AM), dựa trên múi giờ của máy chủ của bạn. Sự đặt lại hàng tuần diễn ra vào mỗi thứ Hai, cũng vào lúc 04:00 (4 AM)."
+    "server_timers_desc": "Sự đặt lại hàng ngày diễn ra vào lúc 04:00 (4 AM), dựa trên múi giờ của máy chủ của bạn. Sự đặt lại hàng tuần diễn ra vào mỗi thứ Hai, cũng vào lúc 04:00 (4 AM).",
+    "shortcuts": "Lối tắt"
   },
   "characters": {
     "title": "Genshin Impact Danh sách nhân vật",

@@ -86,7 +86,8 @@
     "latest_posts_desc": "Stay up-to-date with the latest news, guides, and tips for Genshin Impact.",
     "view_all_posts": "View All Posts",
     "server_timers": "Server Timers",
-    "server_timers_desc": "The daily reset occurs at 04:00 (4 AM), based on your server's time zone. The weekly reset occurs each Monday, also at 04:00 (4 AM)."
+    "server_timers_desc": "The daily reset occurs at 04:00 (4 AM), based on your server's time zone. The weekly reset occurs each Monday, also at 04:00 (4 AM).",
+    "shortcuts": "Shortcuts"
   },
   "characters": {
     "title": "Genshin Impact Characters List",

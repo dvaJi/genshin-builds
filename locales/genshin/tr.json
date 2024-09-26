@@ -86,7 +86,8 @@
     "latest_posts_desc": "Genshin Impact için en son haberleri, rehberleri ve ipuçlarını takip edin.",
     "view_all_posts": "Tüm Gönderileri Gör",
     "server_timers": "Sunucu Zamanlayıcıları",
-    "server_timers_desc": "Günlük sıfırlama, sunucunuzun saat dilimine göre 04:00'te (4 AM) gerçekleşir. Haftalık sıfırlama her Pazartesi günü, aynı şekilde saat 04:00'te (4 AM) gerçekleşir."
+    "server_timers_desc": "Günlük sıfırlama, sunucunuzun saat dilimine göre 04:00'te (4 AM) gerçekleşir. Haftalık sıfırlama her Pazartesi günü, aynı şekilde saat 04:00'te (4 AM) gerçekleşir.",
+    "shortcuts": "Kısayollar"
   },
   "characters": {
     "title": "Genshin Impact Karakter Listesi",

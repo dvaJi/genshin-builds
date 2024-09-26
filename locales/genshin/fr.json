@@ -86,7 +86,8 @@
     "latest_posts_desc": "Restez à jour avec les dernières actualités, guides et astuces pour Genshin Impact.",
     "view_all_posts": "Voir tous les articles",
     "server_timers": "Minuteries du serveur",
-    "server_timers_desc": "La réinitialisation quotidienne a lieu à 04:00 (4 AM), selon le fuseau horaire de votre serveur. La réinitialisation hebdomadaire a lieu chaque lundi, également à 04:00 (4 AM)."
+    "server_timers_desc": "La réinitialisation quotidienne a lieu à 04:00 (4 AM), selon le fuseau horaire de votre serveur. La réinitialisation hebdomadaire a lieu chaque lundi, également à 04:00 (4 AM).",
+    "shortcuts": "Raccourcis"
   },
   "characters": {
     "title": "Genshin Impact Liste des personnages",
