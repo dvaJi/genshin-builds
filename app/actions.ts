@@ -292,13 +292,6 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
 
   const data = jsonResponse as EnkaPlayerDataAPI;
 
-  if (!data.avatarInfoList || data.avatarInfoList.length < 1) {
-    console.error("Player profile has no public showcase", data);
-    return {
-      message: `Oops! It seems you missed a step or didn't follow the instructions "How To Get Your Character Build Showcase" correctly. Please ensure you have completed all the required steps as outlined in the instructions to proceed.`,
-    };
-  }
-
   const artifactsDetail = await getRemoteData<{ set: number; ids: string[] }[]>(
     "genshin",
     "artifacts_detail"
@@ -313,7 +306,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       console.log(`Player [${data.uid}] not found, creating new one`);
       const uniqueCharacters = () => {
         const characters = new Set();
-        data.avatarInfoList.forEach((avatar) => {
+        (data.avatarInfoList ?? []).forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
         data.playerInfo.showAvatarInfoList.forEach((avatar) => {
@@ -356,7 +349,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       }
 
       const encodedData = await encodeEnkaBuilds(
-        data.avatarInfoList,
+        data.avatarInfoList ?? [],
         artifactsDetail
       );
       const insertBuilds: InsertBuilds[] = encodedData.map((avatar) => ({
@@ -397,7 +390,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
 
       // Update builds
       const encodedData = await encodeEnkaBuilds(
-        data.avatarInfoList,
+        data.avatarInfoList ?? [],
         artifactsDetail
       );
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
@@ -467,7 +460,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         currentAvatarsIds.forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
-        data.avatarInfoList.forEach((avatar) => {
+        (data.avatarInfoList ?? []).forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
         data.playerInfo.showAvatarInfoList.forEach((avatar) => {

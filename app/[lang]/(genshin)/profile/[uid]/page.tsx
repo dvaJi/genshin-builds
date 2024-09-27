@@ -71,13 +71,15 @@ export default async function GenshinPlayerProfile({ params }: Props) {
     "profile"
   );
 
-  if (!params.uid || !/^(18|[1-35-9])\d{8}$/.test(params.uid.toString())) {
+  if (!params.uid || !/^\d{6,10}$/.test(params.uid.toString())) {
+    console.log("Invalid UID", params.uid);
     return notFound();
   }
 
   const player = await getPlayer(params.uid);
 
   if (!player) {
+    console.log("Player not found", params.uid);
     const formdata = new FormData();
     formdata.append("uid", params.uid);
     const submitRes = await submitGenshinUID({}, formdata);
@@ -89,6 +91,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
   const res = await getBuild(langData, params.uid);
 
   if (res.code !== 200 || !res.data) {
+    console.log("Build not found", params.uid);
     return notFound();
   }
 
@@ -171,6 +174,12 @@ export default async function GenshinPlayerProfile({ params }: Props) {
           </div>
         </div>
       </div>
+      {profile.builds.length === 0 ? (
+        <div className="card relative z-10 m-2 mx-auto max-w-xl text-center text-white">
+          Please enable the &quot;Show Character Details&quot; option in your
+          Character Showcase in-game to see the details.
+        </div>
+      ) : null}
       <div>
         <ProfileBuildsTable data={profile.builds} />
       </div>

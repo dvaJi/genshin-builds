@@ -150,7 +150,9 @@ const columns: ColumnDef<Build>[] = [
     },
   },
   {
+    id: "critValue",
     header: "critvalue",
+    accessorKey: "critValue",
     cell: (info) => {
       const cv = info.row.original.critValue ?? 0;
       return (
