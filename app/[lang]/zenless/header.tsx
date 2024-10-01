@@ -16,6 +16,7 @@ const navRoutes: NavRoutes[] = [
   { id: "bangboos", name: "Bangboos", href: "/zenless/bangboos" },
   { id: "disk-drives", name: "Disk Drives", href: "/zenless/disk-drives" },
   { id: "w-engines", name: "W Engines", href: "/zenless/w-engines" },
+  { id: "tierlist", name: "Tierlist", href: "/zenless/tierlist" },
   { id: "blog", name: "Blog", href: "/zenless/blog" },
 ];
 

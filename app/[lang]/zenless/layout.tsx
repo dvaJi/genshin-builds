@@ -6,6 +6,7 @@ import { AiOutlineTwitter } from "react-icons/ai";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
+import LanguageSelector from "@components/ui/LanguageSelector";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
 import "../../../styles/globals.css";
@@ -122,11 +123,10 @@ export default function ZenlessLayout({ children, params }: Props) {
                   <AiOutlineTwitter className="inline" />{" "}
                   <span className="text-base">Twitter</span>
                 </a>
+                <LanguageSelector />
               </div>
 
-              <div className="flex flex-1 flex-col">
-                {/* <LanguageSelector /> */}
-              </div>
+              <div className="flex flex-1 flex-col" />
               <div className="flex flex-1 flex-col"></div>
               <div className="flex-1">
                 <p className="text-sm">
