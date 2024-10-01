@@ -3,7 +3,7 @@ import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import Image from "@components/zenless/Image";
-import type { Bangboos } from "@interfaces/zenless/bangboos";
+import type { WEngines } from "@interfaces/zenless/wEngines";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
 
@@ -26,8 +26,8 @@ export async function generateMetadata({
   params: { lang: string; slug: string };
 }): Promise<Metadata | undefined> {
   const slug = params.slug;
-  const bangboo = await getZenlessData<Bangboos>({
-    resource: "bangboos",
+  const bangboo = await getZenlessData<WEngines>({
+    resource: "w-engines",
     filter: { id: slug },
     language: params.lang,
   });
@@ -73,13 +73,13 @@ export default async function BangbooPage({
   params: { lang: string; slug: string };
 }) {
   const slug = params.slug;
-  const bangboo = await getZenlessData<Bangboos>({
-    resource: "bangboos",
+  const item = await getZenlessData<WEngines>({
+    resource: "w-engines",
     filter: { id: slug },
     language: params.lang,
   });
 
-  if (!bangboo) {
+  if (!item) {
     return notFound();
   }
 
@@ -87,26 +87,27 @@ export default async function BangbooPage({
     <div className="relative mx-auto max-w-screen-lg">
       <div className="mx-2 mb-5 flex gap-4 md:mx-0">
         <Image
-          src={`/bangboos/${bangboo.icon}.webp`}
+          src={`/w-engines/${item.icon}.webp`}
           width={200}
           height={200}
-          alt={bangboo.name}
+          alt={item.name}
         />
         <div>
           <h1 className="text-2xl font-semibold md:text-5xl">
-            Zenless Zone Zero (ZZZ) {bangboo.name} Bangboo
+            Zenless Zone Zero (ZZZ) {item.name} Bangboo
           </h1>
-          <p>
-            <b>Rarity</b>:{" "}
-            <Image
-              src={`/icons/rank_${bangboo.rarity}.png`}
-              width={24}
-              height={24}
-              alt={bangboo.rarity >= 4 ? "S" : "A"}
-              className="inline"
-            />{" "}
-            Rank
-          </p>
+          <div className="flex">
+            {Array.from({ length: item.rarity }).map((_, i) => (
+              <Image
+                key={i}
+                src="/icons/start.png"
+                width={24}
+                height={24}
+                alt="Star"
+              />
+            ))}
+          </div>
+          <p dangerouslySetInnerHTML={{ __html: item.description }} />
         </div>
       </div>
       <FrstAds
@@ -115,33 +116,16 @@ export default async function BangbooPage({
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
 
-      <h2 className="text-2xl font-semibold">{bangboo.name} Skills</h2>
+      <h2 className="text-2xl font-semibold">{item.name} Refinements</h2>
       <div className="mx-2 mb-4 flex flex-col gap-2 md:mx-0">
-        {Object.values(bangboo.skills).map((skill, i) => (
-          <div
-            key={skill.name}
-            className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2"
-          >
-            <div className="flex w-[120px] min-w-[120px] flex-col items-center justify-center">
-              <Image
-                className="mr-2 h-12 w-12"
-                src={`/icons/bangboo_${i === 0 ? "a" : i === 1 ? "b" : "c"}.png`}
-                alt={skill.name}
-                width={48}
-                height={48}
-              />
-            </div>
-            <div>
-              <div className="flex">
-                <h4 className="font-semibold">{skill.name}</h4>
-              </div>
-              <p
-                className="whitespace-pre-line"
-                dangerouslySetInnerHTML={{ __html: skill.description }}
-              />
-            </div>
+        <div className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2">
+          <div>
+            <h4 className="font-semibold">{item.talents[0].name}</h4>
+            <p
+              dangerouslySetInnerHTML={{ __html: item.talents[0].description }}
+            />
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

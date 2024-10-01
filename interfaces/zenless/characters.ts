@@ -6,7 +6,7 @@ export interface Characters {
     main_stats:          string[];
     sub_stats:           string[];
     team:                string;
-    rarity:              Rarity;
+    rarity:              number;
     element:             string[];
     type:                string;
     house:               string;
@@ -21,6 +21,7 @@ export interface Characters {
     anomaly_proficiency: number;
     energy_regen:        number;
     skills:              Skill[];
+    talents:            Skill[];
 }
 
 export enum Rarity {

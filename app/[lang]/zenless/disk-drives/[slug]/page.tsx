@@ -3,7 +3,7 @@ import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import Image from "@components/zenless/Image";
-import type { Bangboos } from "@interfaces/zenless/bangboos";
+import type { DiskDrives } from "@interfaces/zenless/diskDrives";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
 
@@ -26,20 +26,20 @@ export async function generateMetadata({
   params: { lang: string; slug: string };
 }): Promise<Metadata | undefined> {
   const slug = params.slug;
-  const bangboo = await getZenlessData<Bangboos>({
-    resource: "bangboos",
+  const item = await getZenlessData<DiskDrives>({
+    resource: "disk-drives",
     filter: { id: slug },
     language: params.lang,
   });
 
-  if (!bangboo) {
+  if (!item) {
     return;
   }
 
-  const title = `${bangboo.name} Zenless Zone Zero`;
-  const description = `Learn about the ${bangboo.name} Bangboo in Zenless Zone Zero. Also included are their skills, upgrade costs, and more.`;
+  const title = `${item.name} Zenless Zone Zero`;
+  const description = `Learn about the ${item.name} Disk Drive in Zenless Zone Zero (ZZZ), including effects, how to obtain, and more.`;
   const publishedTime = new Date().toISOString();
-  const image = `/zenless/bangboos/${bangboo.id}.png`;
+  const image = `/zenless/disk-drives/${item.id}.png`;
 
   const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
 
@@ -51,7 +51,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime: `${publishedTime}`,
-      url: `https://genshin-builds.com/zenless/bangboos/${slug}`,
+      url: `https://genshin-builds.com/zenless/disk-drives/${slug}`,
       images: [
         {
           url: ogImage,
@@ -67,46 +67,40 @@ export async function generateMetadata({
   };
 }
 
-export default async function BangbooPage({
+export default async function DriskDriveDetailPage({
   params,
 }: {
   params: { lang: string; slug: string };
 }) {
   const slug = params.slug;
-  const bangboo = await getZenlessData<Bangboos>({
-    resource: "bangboos",
+  const item = await getZenlessData<DiskDrives>({
+    resource: "disk-drives",
     filter: { id: slug },
     language: params.lang,
   });
 
-  if (!bangboo) {
+  if (!item) {
     return notFound();
   }
 
   return (
     <div className="relative mx-auto max-w-screen-lg">
       <div className="mx-2 mb-5 flex gap-4 md:mx-0">
-        <Image
-          src={`/bangboos/${bangboo.icon}.webp`}
-          width={200}
-          height={200}
-          alt={bangboo.name}
-        />
+        <div className="h-40 w-40 flex-shrink-0">
+          <Image
+            src={`/disk-drives/${item.icon}.webp`}
+            width={156}
+            height={156}
+            alt={item.name}
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div>
           <h1 className="text-2xl font-semibold md:text-5xl">
-            Zenless Zone Zero (ZZZ) {bangboo.name} Bangboo
+            Zenless Zone Zero (ZZZ) {item.name} Disk Drive
           </h1>
-          <p>
-            <b>Rarity</b>:{" "}
-            <Image
-              src={`/icons/rank_${bangboo.rarity}.png`}
-              width={24}
-              height={24}
-              alt={bangboo.rarity >= 4 ? "S" : "A"}
-              className="inline"
-            />{" "}
-            Rank
-          </p>
+          <p className="text-sm text-neutral-300">{item.filter}</p>
+          <p className="text-sm">{item.story}</p>
         </div>
       </div>
       <FrstAds
@@ -115,33 +109,30 @@ export default async function BangbooPage({
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
 
-      <h2 className="text-2xl font-semibold">{bangboo.name} Skills</h2>
+      <h2 className="text-2xl font-semibold">{item.name} Effects</h2>
       <div className="mx-2 mb-4 flex flex-col gap-2 md:mx-0">
-        {Object.values(bangboo.skills).map((skill, i) => (
-          <div
-            key={skill.name}
-            className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2"
-          >
-            <div className="flex w-[120px] min-w-[120px] flex-col items-center justify-center">
-              <Image
-                className="mr-2 h-12 w-12"
-                src={`/icons/bangboo_${i === 0 ? "a" : i === 1 ? "b" : "c"}.png`}
-                alt={skill.name}
-                width={48}
-                height={48}
-              />
+        <div className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2">
+          <div>
+            <div className="flex">
+              <h4 className="font-semibold">2 PC</h4>
             </div>
-            <div>
-              <div className="flex">
-                <h4 className="font-semibold">{skill.name}</h4>
-              </div>
-              <p
-                className="whitespace-pre-line"
-                dangerouslySetInnerHTML={{ __html: skill.description }}
-              />
-            </div>
+            <p
+              className="whitespace-pre-line"
+              dangerouslySetInnerHTML={{ __html: item.set2 }}
+            />
           </div>
-        ))}
+        </div>
+        <div className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2">
+          <div>
+            <div className="flex">
+              <h4 className="font-semibold">4 PC</h4>
+            </div>
+            <p
+              className="whitespace-pre-line"
+              dangerouslySetInnerHTML={{ __html: item.set4 }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

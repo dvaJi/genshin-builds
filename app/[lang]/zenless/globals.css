@@ -6,6 +6,7 @@
   width: 25.9rem;
   height: 20.8rem;
   background: url(https://zenless.hoyoverse.com/_nuxt/img/inner-top.5496864.png) no-repeat 0 0 / 100% auto;
+  opacity: 0.1;
 }
 
 .section__foot {
@@ -17,5 +18,9 @@
   z-index: -1;
   right: 0;
   background-size: auto 100%;
+  opacity: 0.1;
 }
 
+.character__skill-description img {
+  display: inline-block;
+}

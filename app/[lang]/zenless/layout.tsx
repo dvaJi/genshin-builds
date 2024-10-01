@@ -79,13 +79,13 @@ export default function ZenlessLayout({ children, params }: Props) {
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <section
         className={clsx(
-          "flex min-h-screen flex-col bg-zinc-100 text-gray-200",
+          "flex min-h-screen flex-col bg-neutral-800 text-gray-100",
           poppins.className
         )}
       >
         <ZenlessHeader locale={params.lang} />
 
-        <div className="news-detail py-4 text-zinc-950 lg:min-h-[600px] lg:px-20 xl:min-h-[750px]">
+        <div className="news-detail py-4 text-zinc-100 lg:min-h-[600px] lg:px-20 xl:min-h-[750px]">
           <div className="container mx-auto">{children}</div>
           <div className="section__foot" />
         </div>

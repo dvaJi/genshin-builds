@@ -1,15 +1,11 @@
 export interface DiskDrives {
-    name:   string;
-    rarity: Rarity;
-    bonus:  Bonus[];
+    _id:    number;
     id:     string;
-}
-
-export interface Bonus {
-    count: number;
-    value: string;
-}
-
-export enum Rarity {
-    S = "S",
+    name:   string;
+    icon:   string;
+    icon2:  string;
+    story:  string;
+    filter: string;
+    set2:   string;
+    set4:   string;
 }

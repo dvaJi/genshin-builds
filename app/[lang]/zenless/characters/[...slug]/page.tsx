@@ -40,12 +40,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string[] };
+  params: { lang: string; slug: string[] };
 }): Promise<Metadata | undefined> {
   const slug = decodeURI(params.slug.join("/"));
 
   const character = await getZenlessData<Characters>({
     resource: "characters",
+    language: params.lang,
     filter: { id: slug },
   });
 
@@ -85,12 +86,14 @@ export async function generateMetadata({
 export default async function CharactersPage({
   params,
 }: {
-  params: { slug: string[] };
+  params: { lang: string; slug: string[] };
 }) {
   const slug = decodeURI(params.slug.join("/"));
   const character = await getZenlessData<Characters>({
     resource: "characters",
+    language: params.lang,
     filter: { id: slug },
+    revalidate: 0,
   });
 
   if (!character) {
@@ -111,7 +114,15 @@ export default async function CharactersPage({
             Zenless Zone Zero (ZZZ) {character.name} Build
           </h1>
           <p>
-            <b>Rarity</b>: {character.rarity}
+            <b>Rarity</b>:{" "}
+            <Image
+              src={`/icons/rank_${character.rarity}.png`}
+              width={24}
+              height={24}
+              alt={character.rarity >= 4 ? "S" : "A"}
+              className="inline"
+            />{" "}
+            Rank
           </p>
           <p>
             <b>Element</b>: {character.element}
@@ -129,99 +140,75 @@ export default async function CharactersPage({
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <div className="mx-2 mb-4 rounded-lg border-2 border-zinc-950 bg-zinc-100 p-4 md:mx-0">
-        <h2 className="font-semibold">{character.name} Upgrade Materials</h2>
-        <div className="pb-2 italic">TBD</div>
-
-        <h2 className="font-semibold">
-          {character.name} Best Disk Drives Gear Sets
-        </h2>
-        <div className="pb-2 italic">TBD</div>
-
-        <h2 className="font-semibold">
-          {character.name} Best W-Engines Weapons
-        </h2>
-        <div className="pb-2 italic">TBD</div>
-
-        <h2 className="font-semibold">{character.name} Best Stats</h2>
-        <div className="pb-2 italic">TBD</div>
-
-        <h2 className="font-semibold">{character.name} Best Substats</h2>
-        <div className="italic">TBD</div>
-      </div>
       <h2 className="text-2xl font-semibold">{character.name} Skills</h2>
       <div className="mx-2 mb-4 flex flex-col gap-2 md:mx-0">
-        {character.skills
-          .filter((s) => s.group !== "Talent")
-          .map((skill) => (
-            <div
-              key={skill.name}
-              className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2"
-            >
-              <div className="flex w-[120px] min-w-[120px] flex-col items-center justify-center">
-                <Image
-                  className="mr-2 h-12 w-12"
-                  src={`/icons/${skill.group?.toLowerCase()}.png`}
-                  alt={skill.name}
-                  width={48}
-                  height={48}
-                />
-                <h3 className="text-center font-semibold">{skill.title}</h3>
-              </div>
-              <div>
-                <div className="flex">
-                  <h4 className="font-semibold">{skill.name}</h4>
-                </div>
-                <p
-                  className="whitespace-pre-line"
-                  dangerouslySetInnerHTML={{
-                    __html: skill.description
-                      .replaceAll("color: #ffffff", "font-weight: bold")
-                      .replaceAll("\\\\n", "<br>"),
-                  }}
-                />
-              </div>
+        {character.skills.map((skill) => (
+          <div
+            key={skill.name}
+            className="flex gap-2 rounded-lg border-2 border-neutral-600 p-2"
+          >
+            <div className="flex w-[120px] min-w-[120px] flex-col items-center justify-center">
+              <Image
+                className="mr-2 h-12 w-12"
+                src={`/icons/${skill.group?.toLowerCase()}.png`}
+                alt={skill.name}
+                width={48}
+                height={48}
+              />
+              <h3 className="text-center font-semibold">{skill.title}</h3>
             </div>
-          ))}
+            <div>
+              <div className="flex">
+                <h4 className="font-semibold">{skill.name}</h4>
+              </div>
+              <p
+                className="character__skill-description whitespace-pre-line"
+                dangerouslySetInnerHTML={{
+                  __html: skill.description
+                    .replaceAll("color: #FFFFFF", "font-weight: bold")
+                    .replaceAll("color: #98EFF0", "color: #60abac")
+                    .replaceAll("\\\\n", "<br>"),
+                }}
+              />
+            </div>
+          </div>
+        ))}
       </div>
 
       <h2 className="text-2xl font-semibold">{character.name} Talents</h2>
       <div className="mx-2 flex flex-col gap-2 md:mx-0">
-        {character.skills
-          .filter((s) => s.group === "Talent")
-          .map((skill) => (
-            <div
-              key={skill.name}
-              className="flex rounded-lg border-2 border-zinc-950 p-2"
-            >
-              <div className="flex w-[120px] min-w-[120px] flex-col items-center">
-                <div className="flex items-center justify-center rounded-full border-2 border-zinc-950 bg-black/50 p-1">
-                  <Image
-                    className="h-12 w-12"
-                    src={`/icons/${skill.title?.toLowerCase()}.png`}
-                    alt={skill.name}
-                    width={48}
-                    height={48}
-                  />
-                </div>
-                <h3 className="text-center font-semibold">{skill.title}</h3>
-              </div>
-              <div>
-                <div className="flex">
-                  <h4 className="font-semibold">{skill.name}</h4>
-                </div>
-                <p
-                  className="whitespace-pre-line"
-                  dangerouslySetInnerHTML={{
-                    __html: skill.description.replaceAll(
-                      "color: #ffffff",
-                      "font-weight: bold"
-                    ),
-                  }}
+        {character.talents.map((talent) => (
+          <div
+            key={talent.name}
+            className="flex rounded-lg border-2 border-neutral-600 p-2"
+          >
+            <div className="flex w-[120px] min-w-[120px] flex-col items-center">
+              <div className="flex items-center justify-center rounded-full border-2 border-zinc-950 bg-black/50 p-1">
+                <Image
+                  className="h-12 w-12"
+                  src={`/icons/${talent.title?.toLowerCase()}.png`}
+                  alt={talent.name}
+                  width={48}
+                  height={48}
                 />
               </div>
+              <h3 className="text-center font-semibold">{talent.title}</h3>
             </div>
-          ))}
+            <div>
+              <div className="flex">
+                <h4 className="font-semibold">{talent.name}</h4>
+              </div>
+              <p
+                className="whitespace-pre-line"
+                dangerouslySetInnerHTML={{
+                  __html: talent.description
+                    .replaceAll("color: #FFFFFF", "font-weight: bold")
+                    .replaceAll("color: #98EFF0", "color: #60abac"),
+                }}
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

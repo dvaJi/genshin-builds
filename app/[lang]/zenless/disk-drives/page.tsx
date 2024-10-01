@@ -1,6 +1,7 @@
 import { i18n } from "i18n-config";
 import { Metadata } from "next";
 import importDynamic from "next/dynamic";
+import Link from "next/link";
 
 import Image from "@components/zenless/Image";
 import type { DiskDrives } from "@interfaces/zenless/diskDrives";
@@ -21,14 +22,21 @@ export async function generateStaticParams() {
   return langs.map((lang) => ({ lang }));
 }
 
+type Props = {
+  params: {
+    lang: string;
+  };
+};
+
 export const metadata: Metadata = {
   title: "Zenless Zone Zero (ZZZ) Disk Drives List",
   description: "A list of all Disk Drives gear sets in Zenless Zone Zero",
 };
 
-export default async function BangboosPage() {
+export default async function DiskDrivesPage({ params }: Props) {
   const data = await getZenlessData<DiskDrives[]>({
     resource: "disk-drives",
+    language: params.lang,
   });
   return (
     <div className="relative z-0">
@@ -43,38 +51,33 @@ export default async function BangboosPage() {
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <div className="mx-2 my-4 flex flex-col gap-2 md:mx-0">
-        {data?.map((drive) => (
-          <div
-            key={drive.name}
-            className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2"
+      <div className="mt-6 flex flex-wrap items-center justify-center gap-1 md:gap-4">
+        {data?.map((item) => (
+          <Link
+            key={item.name}
+            href={`/${params.lang}/zenless/disk-drives/${item.id}`}
+            className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
+            prefetch={false}
           >
-            <div className="flex w-[120px] min-w-[120px] flex-col items-center justify-center">
+            <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
               <Image
-                className="mr-2 h-12 w-12"
-                src={`/disk-drives/${drive.id}.png`}
-                alt={drive.name}
-                width={48}
-                height={48}
+                className="max-w-max"
+                src={`/disk-drives/${item.icon}.webp`}
+                alt={item.name}
+                width={200}
+                height={200}
               />
-              <h3 className="text-center font-semibold">{drive.rarity}</h3>
             </div>
-            <div>
-              <div className="flex">
-                <h4 className="font-semibold">{drive.name}</h4>
-              </div>
-              <div>
-                {drive.bonus.map((b) => (
-                  <p key={b.value} className="py-1">
-                    <span className="mr-1 rounded bg-zinc-200 px-1 text-xs">
-                      {b.count}
-                    </span>
-                    {b.value}
-                  </p>
-                ))}
-              </div>
+            <div
+              className="absolute bottom-0 flex h-7 w-full items-center justify-center"
+              style={{
+                background:
+                  "repeating-linear-gradient( -45deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5) 3px, rgba(60,60,60,0.5) 3px, rgba(60, 60, 60,0.5) 7px )",
+              }}
+            >
+              <h2 className="font-bold text-white">{item.name}</h2>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

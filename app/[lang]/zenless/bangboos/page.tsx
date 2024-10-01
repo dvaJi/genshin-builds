@@ -36,6 +36,8 @@ type Props = {
 export default async function BangboosPage({ params }: Props) {
   const data = await getZenlessData<Bangboos[]>({
     resource: "bangboos",
+    language: params.lang,
+    revalidate: 0
   });
   return (
     <div>
@@ -59,7 +61,7 @@ export default async function BangboosPage({ params }: Props) {
             <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
               <Image
                 className="max-w-max"
-                src={`/bangboos/${bangboo.id}.png`}
+                src={`/bangboos/${bangboo.icon}.webp`}
                 alt={bangboo.name}
                 width={200}
                 height={200}

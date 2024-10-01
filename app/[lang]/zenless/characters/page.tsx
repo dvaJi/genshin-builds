@@ -35,9 +35,12 @@ type Props = {
 };
 
 export default async function CharactersPage({ params }: Props) {
-  const data = await getZenlessData<Characters[]>({
-    resource: "characters",
-  });
+  const data = (
+    await getZenlessData<Characters[]>({
+      resource: "characters",
+      language: params.lang,
+    })
+  )?.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <div className="relative">
       <h1 className="text-6xl font-semibold">Characters</h1>
@@ -58,7 +61,7 @@ export default async function CharactersPage({ params }: Props) {
             <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
               <Image
                 className="max-w-max"
-                src={`/characters/portrait_${character.id}.png`}
+                src={`/characters/portrait_${character.id}.webp`}
                 alt={character.name}
                 width={200}
                 height={200}

@@ -51,7 +51,7 @@ export default async function Page({ params }: Props) {
         <div className="mt-4">
           <Link
             href={`/${params.lang}/zenless/blog`}
-            className="rounded-2xl border-2 border-black px-4 py-2 font-semibold ring-black transition-all hover:bg-white hover:ring-4"
+            className="rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4"
             prefetch={false}
           >
             See more

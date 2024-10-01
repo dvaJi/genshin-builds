@@ -1,25 +1,18 @@
 export interface WEngines {
+    _id:              number;
+    id:               string;
+    codename:         string;
+    name:             string;
+    description:      string;
+    shortDescription: string;
+    rarity:           number;
+    icon:             string;
+    materials:        string;
+    talents:          Talent[];
+}
+
+export interface Talent {
     name:        string;
-    rarity:      Rarity;
-    type:        Type;
-    bonus:       string;
+    level:       number;
     description: string;
-    base_atk:    number;
-    stat_name:   string;
-    stat_value:  number;
-    id:          string;
-}
-
-export enum Rarity {
-    A = "A",
-    B = "B",
-    S = "S",
-}
-
-export enum Type {
-    Anomaly = "Anomaly",
-    Attack = "Attack",
-    Defense = "Defense",
-    Stun = "Stun",
-    Support = "Support",
 }

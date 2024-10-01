@@ -31,7 +31,7 @@ const NewsPostCard = ({ post }: Props) => {
           <div className="mr-1 text-sm">{formattedDate}</div>
           {/* <div className="">Events</div> */}
         </div>
-        <h3 className="my-1 text-xl font-semibold text-zinc-950 transition-all group-hover:underline">
+        <h3 className="my-1 text-xl font-semibold text-zinc-50 transition-all group-hover:underline">
           {post.title}
         </h3>
         <div
