@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Nunito } from "next/font/google";
 import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
 
@@ -13,7 +13,7 @@ import "../../../styles/globals.css";
 import "./globals.css";
 import ZenlessHeader from "./header";
 
-const poppins = Poppins({
+const nunito = Nunito({
   weight: ["400", "600", "700"],
   display: "swap",
   variable: "--font-poppins",
@@ -81,7 +81,7 @@ export default function ZenlessLayout({ children, params }: Props) {
       <section
         className={clsx(
           "flex min-h-screen flex-col bg-neutral-800 text-gray-100",
-          poppins.className
+          nunito.className
         )}
       >
         <ZenlessHeader locale={params.lang} />
