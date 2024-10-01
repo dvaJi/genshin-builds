@@ -93,7 +93,6 @@ export default async function CharactersPage({
     resource: "characters",
     language: params.lang,
     filter: { id: slug },
-    revalidate: 0,
   });
 
   if (!character) {

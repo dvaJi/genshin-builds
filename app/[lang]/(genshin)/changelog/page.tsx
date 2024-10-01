@@ -114,7 +114,6 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     await getGenshinData<Changelog[]>({
       resource: "changelog",
       language: langData,
-      revalidate: 0,
     })
   ).sort((a, b) => (b.version > a.version ? -1 : 1));
 

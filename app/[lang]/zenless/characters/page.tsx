@@ -61,7 +61,7 @@ export default async function CharactersPage({ params }: Props) {
             <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
               <Image
                 className="max-w-max"
-                src={`/characters/portrait_${character.id}.webp`}
+                src={`/characters/portrait_${character.id}_2.webp`}
                 alt={character.name}
                 width={200}
                 height={200}

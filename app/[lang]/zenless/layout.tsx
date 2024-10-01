@@ -114,6 +114,13 @@ export default function ZenlessLayout({ children, params }: Props) {
                 >
                   Contact
                 </Link>
+                <Link
+                  href="/zenless/codes"
+                  className="rounded-3xl px-3 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
+                  title="Zenless Zone Zero (ZZZ) All Redeem Codes"
+                >
+                  Codes
+                </Link>
                 <a
                   href="https://twitter.com/earlyggcom"
                   target="_blank"

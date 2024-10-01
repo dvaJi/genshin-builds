@@ -37,7 +37,6 @@ export default async function BangboosPage({ params }: Props) {
   const data = await getZenlessData<Bangboos[]>({
     resource: "bangboos",
     language: params.lang,
-    revalidate: 0
   });
   return (
     <div>
