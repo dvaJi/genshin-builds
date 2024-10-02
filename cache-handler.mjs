@@ -11,7 +11,7 @@ CacheHandler.onCreation(async () => {
     // Create a Redis client.
     client = createClient({
       url: process.env.REDIS_URL ?? "redis://localhost:6379",
-      keyPrefix: process.env.GIT_HASH,
+      keyPrefix: process.env.GIT_HASH || process.env.SOURCE_COMMIT,
     });
 
     // Redis won't work without error handling. https://github.com/redis/node-redis?tab=readme-ov-file#events
