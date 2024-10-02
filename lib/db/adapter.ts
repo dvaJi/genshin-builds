@@ -1,13 +1,15 @@
 // Most of the code is taken from: https://github.com/nextauthjs/next-auth/pull/7165
-import { createId } from "@paralleldrive/cuid2";
 import { and, eq } from "drizzle-orm";
-import type { Adapter } from "next-auth/adapters";
+import type { Adapter, AdapterAccount, AdapterUser } from "next-auth/adapters";
+
+import { createId } from "@paralleldrive/cuid2";
+
 import type { db } from "./index";
 import { accounts, sessions, users, verificationTokens } from "./schema";
 
 export function DrizzleAdapter(client: typeof db): Adapter {
   return {
-    async createUser(data) {
+    async createUser(data: AdapterUser) {
       return await client
         .insert(users)
         .values({ ...data, id: createId() })
@@ -66,7 +68,7 @@ export function DrizzleAdapter(client: typeof db): Adapter {
         .returning()
         .then((res) => res[0]);
     },
-    async linkAccount(rawAccount) {
+    async linkAccount(rawAccount: AdapterAccount) {
       await client.insert(accounts).values(rawAccount);
     },
     async getUserByAccount(account) {
