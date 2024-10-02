@@ -54,8 +54,8 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `${character.name} Zenless Zone Zero (ZZZ) Build Guide`;
-  const description = `Discover the best builds and teams for ${character.name} in Zenless Zone Zero (ZZZ). Also included are their skills, upgrade costs, and more.`;
+  const title = `${character.fullname} Zenless Zone Zero (ZZZ) Build Guide`;
+  const description = `Discover the best builds and teams for ${character.fullname} in Zenless Zone Zero (ZZZ). Also included are their skills, upgrade costs, and more.`;
   const publishedTime = new Date().toISOString();
   const image = `/zenless/characters/portrait_${character.id}.png`;
 
@@ -103,14 +103,14 @@ export default async function CharactersPage({
     <div className="relative mx-auto max-w-screen-lg">
       <div className="mx-2 mb-5 flex gap-4 md:mx-0">
         <Image
-          src={`/characters/portrait_${character.id}.png`}
+          src={`/characters/portrait_${character.id}_2.webp`}
           width={200}
           height={200}
-          alt={character.name}
+          alt={character.fullname}
         />
         <div>
           <h1 className="text-2xl font-semibold md:text-5xl">
-            Zenless Zone Zero (ZZZ) {character.name} Build
+            Zenless Zone Zero (ZZZ) {character.fullname} Build
           </h1>
           <p>
             <b>Rarity</b>:{" "}

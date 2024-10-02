@@ -1,15 +1,25 @@
 export interface Characters {
-    name:                string;
-    id:                  string;
+    _id:         number;
+    id:          string;
+    codename:    string;
+    nameEn:      string;
+    name:        string;
+    fullname:    string;
+    house:       string;
+    houseIcon:   string;
+    type:        string;
+    typeIcon:    string;
+    element:     string[];
+    elementIcon: string[];
+    gender:      string;
+    icon:        string;
+    rarity:      number;
+    partnerInfo: PartnerInfo;
     drive:               string[];
     engine:              string[];
     main_stats:          string[];
     sub_stats:           string[];
     team:                string;
-    rarity:              number;
-    element:             string[];
-    type:                string;
-    house:               string;
     hp:                  number;
     def:                 number;
     atk:                 number;
@@ -24,9 +34,19 @@ export interface Characters {
     talents:            Skill[];
 }
 
-export enum Rarity {
-    A = "A",
-    S = "S",
+export interface PartnerInfo {
+    birthday?:        string;
+    fullName?:        string;
+    gender?:          string;
+    iconPath?:        string;
+    impressionF?:     string;
+    impressionM?:     string;
+    outlook?:         string;
+    profileDesc?:     string;
+    race?:            string;
+    roleIcon?:        string;
+    stature?:         string;
+    unlockCondition?: string[];
 }
 
 export interface Skill {
