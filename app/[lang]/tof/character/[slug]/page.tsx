@@ -76,7 +76,7 @@ export default async function CharacterPage({ params }: Props) {
   if (!character) {
     return notFound();
   }
-  const items = await getRemoteData<Items[]>("tof", "items", 0);
+  const items = await getRemoteData<Items[]>("tof", "items");
 
   const gifts = items
     .filter((item) => {
