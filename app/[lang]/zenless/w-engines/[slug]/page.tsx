@@ -91,6 +91,7 @@ export default async function BangbooPage({
           width={200}
           height={200}
           alt={item.name}
+          className="h-full w-full object-cover"
         />
         <div>
           <h1 className="text-2xl font-semibold md:text-5xl">

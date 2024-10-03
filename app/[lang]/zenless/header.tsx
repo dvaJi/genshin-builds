@@ -30,11 +30,16 @@ export default function ZenlessHeader({ locale }: Props) {
     <header className="z-50 bg-zinc-950 px-4 lg:mx-0">
       <div className="container mx-auto flex justify-between py-2">
         <div className="flex w-full items-center justify-between pr-4 md:inline-block md:w-auto md:pr-0">
-          <h1 className="text-xl md:py-5">
-            <Link href={`/${locale}/zenless`} prefetch={false}>
-              ZenlessBuilds
-            </Link>
-          </h1>
+          <div className="relative">
+            <h1 className="text-xl md:py-5">
+              <Link href={`/${locale}/zenless`} prefetch={false}>
+                ZenlessBuilds
+              </Link>
+            </h1>
+            <p className="absolute -bottom-2 text-xxs text-gray-400 md:bottom-2">
+              by <Link href="/">genshin-builds.com</Link>
+            </p>
+          </div>
           <button
             role="button"
             className="z-50 md:hidden"

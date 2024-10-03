@@ -38,6 +38,7 @@ export default async function BangboosPage({ params }: Props) {
   const data = await getZenlessData<WEngines[]>({
     resource: "w-engines",
     language: params.lang,
+    select: ["id", "name", "icon"],
   });
   return (
     <div className="relative z-0">

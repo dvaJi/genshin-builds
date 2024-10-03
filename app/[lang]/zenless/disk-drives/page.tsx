@@ -37,6 +37,7 @@ export default async function DiskDrivesPage({ params }: Props) {
   const data = await getZenlessData<DiskDrives[]>({
     resource: "disk-drives",
     language: params.lang,
+    select: ["id", "name", "icon"],
   });
   return (
     <div className="relative z-0">

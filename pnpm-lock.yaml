@@ -65,6 +65,9 @@ importers:
       drizzle-orm:
         specifier: ^0.33.0
         version: 0.33.0(@opentelemetry/api@1.9.0)(@types/pg@8.11.10)(@types/react@18.3.11)(postgres@3.4.4)(react@18.3.1)
+      lucide-react:
+        specifier: ^0.447.0
+        version: 0.447.0(react@18.3.1)
       nanostores:
         specifier: ^0.11.3
         version: 0.11.3
@@ -2292,9 +2295,6 @@ packages:
   '@types/negotiator@0.6.3':
     resolution: {integrity: sha512-JkXTOdKs5MF086b/pt8C3+yVp3iDUwG635L7oCH6HvJvvr6lSUU5oe/gLXnPEfYRROHjJIPgCV6cuAg8gGkntQ==}
 
-  '@types/node@20.16.10':
-    resolution: {integrity: sha512-vQUKgWTjEIRFCvK6CyriPH3MZYiYlNy0fKiEYHWbcoWLEgs4opurGGKlebrTLqdSMIbXImH6XExNiIyNUv3WpA==}
-
   '@types/node@22.7.4':
     resolution: {integrity: sha512-y+NPi1rFzDs1NdQHHToqeiX2TIS79SWEAw9GYhkkx8bD0ChpfqC+n2j5OXOCpzfojBEBt6DnEnnG9MY0zk1XLg==}
 
@@ -3902,6 +3902,11 @@ packages:
   lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
+
+  lucide-react@0.447.0:
+    resolution: {integrity: sha512-SZ//hQmvi+kDKrNepArVkYK7/jfeZ5uFNEnYmd45RKZcbGD78KLnrcNXmgeg6m+xNHFvTG+CblszXCy4n6DN4w==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
   magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
@@ -7804,11 +7809,6 @@ snapshots:
 
   '@types/negotiator@0.6.3': {}
 
-  '@types/node@20.16.10':
-    dependencies:
-      undici-types: 6.19.8
-    optional: true
-
   '@types/node@22.7.4':
     dependencies:
       undici-types: 6.19.8
@@ -7819,7 +7819,7 @@ snapshots:
 
   '@types/pg@8.11.10':
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 22.7.4
       pg-protocol: 1.7.0
       pg-types: 4.0.2
     optional: true
@@ -9596,6 +9596,10 @@ snapshots:
   lru-cache@6.0.0:
     dependencies:
       yallist: 4.0.0
+
+  lucide-react@0.447.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   magic-string@0.25.9:
     dependencies:

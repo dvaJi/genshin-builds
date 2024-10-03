@@ -4,9 +4,19 @@ import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import Image from "@components/zenless/Image";
+import type { Bangboos } from "@interfaces/zenless/bangboos";
+import type { Builds } from "@interfaces/zenless/build";
 import type { Characters } from "@interfaces/zenless/characters";
+import type { Commons } from "@interfaces/zenless/commons";
+import type { DiskDrives } from "@interfaces/zenless/diskDrives";
+import type { WEngines } from "@interfaces/zenless/wEngines";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
+
+import BuildsComponent from "./builds";
+import Skill from "./skill";
+import SkillPriority from "./skill-priority";
+import TeamsComponent from "./teams";
 
 const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
@@ -22,6 +32,7 @@ export async function generateStaticParams() {
   for await (const lang of i18n.locales) {
     const data = await getZenlessData<Characters[]>({
       resource: "characters",
+      select: ["id"],
     });
 
     if (!data) continue;
@@ -57,7 +68,7 @@ export async function generateMetadata({
   const title = `${character.fullname} Zenless Zone Zero (ZZZ) Build Guide`;
   const description = `Discover the best builds and teams for ${character.fullname} in Zenless Zone Zero (ZZZ). Also included are their skills, upgrade costs, and more.`;
   const publishedTime = new Date().toISOString();
-  const image = `/zenless/characters/portrait_${character.id}.png`;
+  const image = `/zenless/characters/portrait_${character.id}_2.webp`;
 
   return {
     title,
@@ -99,9 +110,52 @@ export default async function CharactersPage({
     return notFound();
   }
 
+  const build = await getZenlessData<Builds>({
+    resource: "builds",
+    filter: { id: slug },
+  });
+
+  const wEnginesMap =
+    (await getZenlessData<Record<string, WEngines>>({
+      resource: "w-engines",
+      language: params.lang,
+      select: ["id", "name", "icon", "rarity"],
+      asMap: true,
+    })) ?? {};
+
+  const diskDrivesMap =
+    (await getZenlessData<Record<string, DiskDrives>>({
+      resource: "disk-drives",
+      language: params.lang,
+      select: ["id", "name", "icon"],
+      asMap: true,
+    })) ?? {};
+
+  const charactersMap =
+    (await getZenlessData<Record<string, Characters>>({
+      resource: "characters",
+      language: params.lang,
+      select: ["id", "name"],
+      asMap: true,
+    })) ?? {};
+
+  const bangboosMap =
+    (await getZenlessData<Record<string, Bangboos>>({
+      resource: "bangboos",
+      language: params.lang,
+      select: ["id", "name", "icon"],
+      asMap: true,
+    })) ?? {};
+
+  const commons =
+    (await getZenlessData<Commons>({
+      resource: "commons",
+      filter: { id: params.lang },
+    })) ?? ({} as Commons);
+
   return (
-    <div className="relative mx-auto max-w-screen-lg">
-      <div className="mx-2 mb-5 flex gap-4 md:mx-0">
+    <div className="relative mx-2 max-w-screen-lg md:mx-auto">
+      <div className="mb-5 flex gap-4">
         <Image
           src={`/characters/portrait_${character.id}_2.webp`}
           width={200}
@@ -139,76 +193,75 @@ export default async function CharactersPage({
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-2xl font-semibold">{character.name} Skills</h2>
-      <div className="mx-2 mb-4 flex flex-col gap-2 md:mx-0">
-        {character.skills.map((skill) => (
-          <div
-            key={skill.name}
-            className="flex gap-2 rounded-lg border-2 border-neutral-600 p-2"
-          >
-            <div className="flex w-[120px] min-w-[120px] flex-col items-center justify-center">
-              <Image
-                className="mr-2 h-12 w-12"
-                src={`/icons/${skill.group?.toLowerCase()}.png`}
-                alt={skill.name}
-                width={48}
-                height={48}
-              />
-              <h3 className="text-center font-semibold">{skill.title}</h3>
-            </div>
-            <div>
-              <div className="flex">
-                <h4 className="font-semibold">{skill.name}</h4>
-              </div>
-              <p
-                className="character__skill-description whitespace-pre-line"
-                dangerouslySetInnerHTML={{
-                  __html: skill.description
-                    .replaceAll("color: #FFFFFF", "font-weight: bold")
-                    .replaceAll("color: #98EFF0", "color: #60abac")
-                    .replaceAll("\\\\n", "<br>"),
-                }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
 
-      <h2 className="text-2xl font-semibold">{character.name} Talents</h2>
-      <div className="mx-2 flex flex-col gap-2 md:mx-0">
-        {character.talents.map((talent) => (
-          <div
-            key={talent.name}
-            className="flex rounded-lg border-2 border-neutral-600 p-2"
-          >
-            <div className="flex w-[120px] min-w-[120px] flex-col items-center">
-              <div className="flex items-center justify-center rounded-full border-2 border-zinc-950 bg-black/50 p-1">
-                <Image
-                  className="h-12 w-12"
-                  src={`/icons/${talent.title?.toLowerCase()}.png`}
-                  alt={talent.name}
-                  width={48}
-                  height={48}
-                />
-              </div>
-              <h3 className="text-center font-semibold">{talent.title}</h3>
-            </div>
-            <div>
-              <div className="flex">
-                <h4 className="font-semibold">{talent.name}</h4>
-              </div>
-              <p
-                className="whitespace-pre-line"
-                dangerouslySetInnerHTML={{
-                  __html: talent.description
-                    .replaceAll("color: #FFFFFF", "font-weight: bold")
-                    .replaceAll("color: #98EFF0", "color: #60abac"),
-                }}
-              />
-            </div>
-          </div>
+      {build ? (
+        <>
+          <BuildsComponent
+            lang={params.lang}
+            characterName={character.fullname}
+            builds={build.builds}
+            commons={commons}
+            diskDrivesMap={diskDrivesMap}
+            wEnginesMap={wEnginesMap}
+          />
+          <FrstAds
+            placementName="genshinbuilds_incontent_1"
+            classList={["flex", "justify-center"]}
+          />
+          <TeamsComponent
+            lang={params.lang}
+            characterName={character.fullname}
+            teams={build.teams}
+            charactersMap={charactersMap}
+            bangboosMap={bangboosMap}
+          />
+          <FrstAds
+            placementName="genshinbuilds_incontent_2"
+            classList={["flex", "justify-center"]}
+          />
+          <SkillPriority
+            characterName={character.fullname}
+            skillData={build.talentsPriority}
+          />
+        </>
+      ) : null}
+
+      <FrstAds
+        placementName="genshinbuilds_incontent_3"
+        classList={["flex", "justify-center"]}
+      />
+      <h2 className="text-2xl font-semibold">{character.name} Skills</h2>
+      <div className="mb-4 flex flex-col gap-2">
+        {character.skills.map((skill) => (
+          <Skill
+            key={skill.name}
+            icon={`${skill.group?.toLowerCase()}.png`}
+            name={skill.name}
+            title={skill.title ?? ""}
+            description={skill.description}
+          />
         ))}
       </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_4"
+        classList={["flex", "justify-center"]}
+      />
+      <h2 className="text-2xl font-semibold">{character.name} Talents</h2>
+      <div className="flex flex-col gap-2">
+        {character.talents.map((talent) => (
+          <Skill
+            key={talent.name}
+            icon={`${talent.title?.toLowerCase()}.png`}
+            name={talent.name}
+            title={talent.title ?? ""}
+            description={talent.description}
+          />
+        ))}
+      </div>
+      <FrstAds
+        placementName="genshinbuilds_incontent_5"
+        classList={["flex", "justify-center"]}
+      />
     </div>
   );
 }

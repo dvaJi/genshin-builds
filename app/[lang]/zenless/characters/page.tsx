@@ -39,6 +39,7 @@ export default async function CharactersPage({ params }: Props) {
     await getZenlessData<Characters[]>({
       resource: "characters",
       language: params.lang,
+      select: ["id", "name"],
     })
   )?.sort((a, b) => a.name.localeCompare(b.name));
   return (

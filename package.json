@@ -39,6 +39,7 @@
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.33.0",
+    "lucide-react": "^0.447.0",
     "nanostores": "^0.11.3",
     "negotiator": "^0.6.3",
     "next": "^14.2.14",
