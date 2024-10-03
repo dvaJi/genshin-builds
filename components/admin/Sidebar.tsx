@@ -1,17 +1,6 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-
-import { Session } from "@lib/session";
-import UserAvatar from "./UserAvatar";
-
 export default function Sidebar() {
-  const { data: session, status } = useSession();
-
-  if (status === "unauthenticated" || status === "loading") {
-    return null;
-  }
-
   return (
     <>
       <div className="mx-auto mt-4 flex flex-grow flex-col space-y-4 text-zinc-400">
@@ -32,7 +21,7 @@ export default function Sidebar() {
         </button>
       </div>
       <div className="mb-2 flex items-center justify-center">
-        <UserAvatar session={session as Session} />
+        {/* <UserAvatar session={session as Session} /> */}
       </div>
     </>
   );

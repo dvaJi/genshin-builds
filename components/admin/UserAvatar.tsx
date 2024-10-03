@@ -1,10 +1,8 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
-import { Session } from "@lib/session";
-import { signOut } from "next-auth/react";
 
 type Props = {
-  session: Session;
+  session: any;
 };
 
 function UserAvatar({ session }: Props) {
@@ -45,7 +43,7 @@ function UserAvatar({ session }: Props) {
           <DropdownMenu.Separator className="mx-4 my-1 h-[1px] bg-zinc-800" />
 
           <DropdownMenu.Item
-            onClick={() => signOut()}
+            onClick={() => console.log("Log out")}
             className="group relative flex cursor-pointer select-none items-center px-5 py-2 text-sm leading-none text-zinc-500 outline-none data-[highlighted]:bg-zinc-800/50 data-[highlighted]:text-zinc-300"
           >
             Log Out
