@@ -42,7 +42,8 @@ export async function getNews(game: string) {
     });
 
     if (!res.ok) {
-      console.error("Error fetching news:", res.statusText);
+      const text = await res.text();
+      console.error("Error fetching news:", res.statusText, text);
       return [];
     }
 

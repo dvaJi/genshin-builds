@@ -129,62 +129,17 @@ export default async function GenshinCharacterPage({ params }: Props) {
     "genshin",
     "character"
   );
-  const [
-    beta,
-    _buildsOld,
-    mubuild,
-    teams,
-    _characters,
-    weaponsList,
-    artifactsList,
-  ] = await Promise.all([
+
+  const [beta, _character] = await Promise.all([
     getData<Beta>("genshin", "beta"),
-    getGenshinData<Build>({
-      resource: "builds",
-      language: langData as any,
-      filter: {
-        id: params.id,
-      },
-    }),
-    getGenshinData<MostUsedBuild>({
-      resource: "mostUsedBuilds",
-      language: langData as any,
-      filter: {
-        id: params.id,
-      },
-    }),
-    getGenshinData<Teams>({
-      resource: "teams",
-      language: langData,
-      filter: {
-        id: params.id,
-      },
-    }),
-    getGenshinData<Character[]>({
+    getGenshinData<Character>({
       resource: "characters",
       language: langData as any,
-      select: ["id", "name", "rarity", "element"],
-    }),
-    getGenshinData<Record<string, Weapon>>({
-      resource: "weapons",
-      language: langData as any,
-      select: ["id", "name", "rarity", "stats"],
-      asMap: true,
-    }),
-    getGenshinData<Record<string, Artifact>>({
-      resource: "artifacts",
-      language: langData as any,
-      select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
-      asMap: true,
+      filter: {
+        id: params.id,
+      },
     }),
   ]);
-  const _character = await getGenshinData<Character>({
-    resource: "characters",
-    language: langData as any,
-    filter: {
-      id: params.id,
-    },
-  });
   const _betaCharacter = beta[locale]?.characters?.find(
     (c: any) => c.id === params.id
   );
@@ -198,6 +153,48 @@ export default async function GenshinCharacterPage({ params }: Props) {
   if (!character) {
     return notFound();
   }
+
+  const [_buildsOld, mubuild, teams, _characters, weaponsList, artifactsList] =
+    await Promise.all([
+      getGenshinData<Build>({
+        resource: "builds",
+        language: langData as any,
+        filter: {
+          id: params.id,
+        },
+      }),
+      getGenshinData<MostUsedBuild>({
+        resource: "mostUsedBuilds",
+        language: langData as any,
+        filter: {
+          id: params.id,
+        },
+      }),
+      getGenshinData<Teams>({
+        resource: "teams",
+        language: langData,
+        filter: {
+          id: params.id,
+        },
+      }),
+      getGenshinData<Character[]>({
+        resource: "characters",
+        language: langData as any,
+        select: ["id", "name", "rarity", "element"],
+      }),
+      getGenshinData<Record<string, Weapon>>({
+        resource: "weapons",
+        language: langData as any,
+        select: ["id", "name", "rarity", "stats"],
+        asMap: true,
+      }),
+      getGenshinData<Record<string, Artifact>>({
+        resource: "artifacts",
+        language: langData as any,
+        select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
+        asMap: true,
+      }),
+    ]);
 
   const buildsOld = _buildsOld || { builds: [] };
 

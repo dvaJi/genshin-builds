@@ -64,7 +64,8 @@ async function getData<T>(
       if (options.filter && res.status === 404) return null as T;
 
       if (!res.ok) {
-        console.error("Error fetching data", res.statusText, res.text());
+        const text = await res.text();
+        console.error("Error fetching data", res.statusText, text);
         throw new Error(res.statusText);
       }
 
@@ -78,7 +79,7 @@ async function getData<T>(
 
       return res.json() as Promise<T>;
     } catch (error) {
-      console.log(error);
+      console.log(i, error);
       if (
         error instanceof SyntaxError &&
         error.message.includes("Bad Gateway") &&
@@ -86,6 +87,7 @@ async function getData<T>(
       ) {
         continue; // if it's a "Bad Gateway" error and we haven't reached the max retries, retry
       } else {
+        console.error({ options });
         console.error("Error fetching data", error);
         throw error; // if it's a different error or we've reached the max retries, throw the error
       }
