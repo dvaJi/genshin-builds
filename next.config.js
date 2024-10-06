@@ -109,9 +109,9 @@ const nextConfig = {
   //   !isDev && process.env.REDIS_URL
   //     ? require.resolve("./cache-handler.mjs")
   //     : undefined,
-  // experimental: {
-  //   instrumentationHook: true,
-  // },
+  experimental: {
+    instrumentationHook: true,
+  },
 };
 
 module.exports = withAxiom(withBundleAnalyzer(nextConfig));
