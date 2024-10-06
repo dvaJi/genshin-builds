@@ -103,10 +103,6 @@ const nextConfig = {
       permanent: true,
     },
   ],
-  generateBuildId: async () => {
-    // This could be anything, using the latest git hash
-    return process.env.GIT_HASH || process.env.SOURCE_COMMIT;
-  },
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
   cacheHandler:
