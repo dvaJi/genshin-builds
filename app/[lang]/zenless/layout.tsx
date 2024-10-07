@@ -12,6 +12,7 @@ import { GA_TRACKING_ID } from "@lib/gtag";
 import "../../../styles/globals.css";
 import "./globals.css";
 import ZenlessHeader from "./header";
+import { RiPatreonFill } from "react-icons/ri";
 
 const nunito = Nunito({
   weight: ["400", "600", "700"],
@@ -129,6 +130,15 @@ export default function ZenlessLayout({ children, params }: Props) {
                 >
                   <AiOutlineTwitter className="inline" />{" "}
                   <span className="text-base">Twitter</span>
+                </a>
+                <a
+                  href="https://www.patreon.com/GenshinBuilds"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group my-1 text-lg"
+                >
+                  <RiPatreonFill className="inline group-hover:text-red-400" />{" "}
+                  <span className="text-base">Patreon</span>
                 </a>
                 <LanguageSelector />
               </div>

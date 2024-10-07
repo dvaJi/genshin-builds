@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
+import { RiPatreonFill } from "react-icons/ri";
+
 
 import LanguageSelector from "@components/ui/LanguageSelector";
 import useIntl from "@hooks/use-intl";
@@ -41,13 +43,22 @@ export default function GenshinFooter() {
               Changelog
             </Link>
             <a
-              href="https://twitter.com/genshin_builds"
+              href="https://twitter.com/earlyggcom"
               target="_blank"
               rel="noopener noreferrer"
               className="group my-1 text-lg"
             >
               <AiOutlineTwitter className="inline group-hover:text-blue-400" />{" "}
               <span className="text-base">Twitter</span>
+            </a>
+            <a
+              href="https://www.patreon.com/GenshinBuilds"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group my-1 text-lg"
+            >
+              <RiPatreonFill className="inline group-hover:text-red-400" />{" "}
+              <span className="text-base">Patreon</span>
             </a>
           </div>
 

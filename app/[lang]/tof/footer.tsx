@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { RiPatreonFill } from "react-icons/ri";
 
 export default function Footer() {
   return (
@@ -13,6 +15,24 @@ export default function Footer() {
             <Link href="/contact" className="my-2" prefetch={false}>
               Contact
             </Link>
+            <a
+              href="https://twitter.com/earlyggcom"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-3xl px-3 py-1 text-lg font-semibold transition-colors hover:bg-white hover:text-black"
+            >
+              <AiOutlineTwitter className="inline" />{" "}
+              <span className="text-base">Twitter</span>
+            </a>
+            <a
+              href="https://www.patreon.com/GenshinBuilds"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group my-1 text-lg"
+            >
+              <RiPatreonFill className="inline group-hover:text-red-400" />{" "}
+              <span className="text-base">Patreon</span>
+            </a>
           </div>
           <div className="flex flex-1 flex-col"></div>
           <div className="flex-1">
