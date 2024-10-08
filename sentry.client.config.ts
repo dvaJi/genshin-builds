@@ -38,6 +38,7 @@ Sentry.init({
     "ResizeObserver loop limit exceeded",
     "Uncaught Error: unreachable: e.data !== MessagePort",
     "Object captured as promise rejection with keys: [object has no keys]",
+    "HierarchyRequestError: The operation would yield an incorrect node tree."
   ],
 
   denyUrls: [
