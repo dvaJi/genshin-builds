@@ -29,7 +29,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   const parse = submitHSRUIDSchema.safeParse({
     uid: formData.get("uid"),
   });
-  console.log("submitHSRUID", { prevState, parse });
+  console.log("[submitHSRUID] Starting", { prevState, parse });
 
   if (!parse.success) {
     return { message: "Missing uid" };
@@ -48,12 +48,12 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   );
 
   if (response.status === 404) {
-    console.error("Player not found", { uid: parse.data.uid });
+    console.error("[submitHSRUID] Player not found", { uid: parse.data.uid });
     return { message: "Player not found" };
   }
 
   if (!response.ok) {
-    console.error("Error in request", {
+    console.error("[submitHSRUID] Error in request", {
       uid: parse.data.uid,
       response: response.status,
     });
@@ -68,7 +68,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
   const data = (await response.json()) as MiHomoPlayerDataAPI;
 
   if (!data.player.is_display) {
-    console.error("Player profile is not public", data);
+    console.error("[submitHSRUID] Player profile is not public", data);
     return { message: "Player profile is not public" };
   }
 
@@ -78,7 +78,9 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
     });
 
     if (!player) {
-      console.log(`Player [${data.player.uid}] not found, creating new one`);
+      console.log(
+        `[submitHSRUID] Player [${data.player.uid}] not found, creating new one`
+      );
       const insert: InsertHSRPlayer = {
         id: createId(),
         uuid: data.player.uid,
@@ -100,7 +102,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         .values(insert)
         .returning();
       if (!insertedPlayer) {
-        console.error("error insertPlayer");
+        console.error("[submitHSRUID] error insertPlayer");
         // Print error to the user
         return { message: "Error creating player profile" };
       }
@@ -124,7 +126,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
           });
 
         if (insertAvatars.length !== insertBuilds.length) {
-          console.error("error insertAvatars", insertAvatars);
+          console.error("[submitHSRUID] error insertAvatars", insertAvatars);
           return { message: "error insertAvatars" };
         }
       }
@@ -164,11 +166,13 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         });
 
       if (updatedPlayer.length !== 1) {
-        console.error("error updatedPlayer", updatedPlayer);
+        console.error("[submitHSRUID] error updatedPlayer", updatedPlayer);
         return { message: "error updatedPlayer" };
       }
 
-      console.log("Player data updated", { uuid: data.player.uid });
+      console.log("[submitHSRUID] Player data updated", {
+        uuid: data.player.uid,
+      });
 
       const currentBuilds = await db.query.hsrBuilds.findMany({
         where: eq(hsrBuilds.playerId, player!.id),
@@ -194,14 +198,14 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
             updatedId: hsrBuilds.id,
           });
 
-        console.log("updatedBuild", updatedBuild);
+        console.log("[submitHSRUID] updatedBuild", updatedBuild);
         if (updatedBuild.length !== 1) {
-          console.error("error updatedBuild", updatedBuild);
+          console.error("[submitHSRUID] error updatedBuild", updatedBuild);
           return { message: "error updatedBuild" };
         }
       }
 
-      console.log("Builds updated", { uuid: data.player.uid });
+      console.log("[submitHSRUID] Builds updated", { uuid: data.player.uid });
 
       // insert new builds
       const insertBuilds = encodedData
@@ -226,25 +230,27 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
             insertedId: hsrBuilds.id,
           });
 
-        console.log("newBuilds", newBuilds);
+        console.log("[submitHSRUID] newBuilds", newBuilds);
         if (newBuilds.length !== insertBuilds.length) {
-          console.error("error newBuilds", newBuilds);
+          console.error("[submitHSRUID] error newBuilds", newBuilds);
           return { message: "error newBuilds" };
         }
 
-        console.log("New builds inserted", { uuid: data.player.uid });
+        console.log("[submitHSRUID] New builds inserted", {
+          uuid: data.player.uid,
+        });
       }
     }
 
-    console.log("Success!", { uuid: data.player.uid });
-    revalidatePath(`/hsr/showcase/profile/${data.player.uid}`);
+    console.log("[submitHSRUID] Success!", { uuid: data.player.uid });
+    revalidatePath(`/[lang]/hsr/showcase/profile/${data.player.uid}`);
     return {
       message: "Success",
       uid: data.player.uid,
     };
   } catch (error) {
+    console.error("[submitHSRUID] catch error", parse, error);
     console.log(error);
-    console.error("[api] user", parse, error);
     return {
       message: "Error, please try again later",
     };
@@ -258,9 +264,10 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
   const parse = submitGenshinUIDSchema.safeParse({
     uid: formData.get("uid") || prevState?.uid,
   });
-  console.log("submitGenshinUID", { prevState, parse });
+  console.log("[submitGenshinUID] Starting", { prevState, formData });
 
   if (!parse.success) {
+    console.log("[submitGenshinUID] Missing uid", { error: parse.error });
     return { message: parse.error.message };
   }
 
@@ -282,7 +289,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
   const jsonResponse = await response.json();
 
   if (!response.ok) {
-    console.log("Invalid uid", {
+    console.log("[submitGenshinUID] Invalid uid", {
       uid: parse.data.uid,
       response: response.status,
       message: jsonResponse.message,
@@ -303,13 +310,15 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     });
 
     if (!player) {
-      console.log(`Player [${data.uid}] not found, creating new one`);
+      console.log(
+        `[submitGenshinUID] Player [${data.uid}] not found, creating new one`
+      );
       const uniqueCharacters = () => {
         const characters = new Set();
         (data.avatarInfoList ?? []).forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
-        data.playerInfo.showAvatarInfoList.forEach((avatar) => {
+        data.playerInfo?.showAvatarInfoList?.forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
         return characters.size;
@@ -344,7 +353,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           where: eq(players.uuid, data.uid),
         });
       } else {
-        console.error("error insertPlayer", result);
+        console.error("[submitGenshinUID] error insertPlayer", result);
         return { message: "error insertPlayer" };
       }
 
@@ -367,17 +376,23 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           });
 
         if (insertAvatars.length !== insertBuilds.length) {
-          console.error("error insertAvatars", insertAvatars);
+          console.error(
+            "[submitGenshinUID] error insertAvatars",
+            insertAvatars
+          );
           return { message: "error insertAvatars" };
         }
       }
     } else {
       // Check if we got the cached player data
       if (data.ttl < 60) {
-        console.log("Player data is cached, returning cached data", {
-          uid: data.uid,
-          ttl: data.ttl,
-        });
+        console.log(
+          "[submitGenshinUID] Player data is cached, returning cached data",
+          {
+            uid: data.uid,
+            ttl: data.ttl,
+          }
+        );
         return {
           message: "Success",
           uid: data.uid,
@@ -413,7 +428,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           });
 
         if (updatedBuild.length !== 1) {
-          console.error("error updatedBuild", updatedBuild);
+          console.error("[submitGenshinUID] error updatedBuild", updatedBuild);
           return {
             message: "error updatedBuild",
           };
@@ -444,7 +459,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           });
 
         if (newBuilds.length !== insertBuilds.length) {
-          console.error("error newBuilds", newBuilds);
+          console.error("[submitGenshinUID] error newBuilds", newBuilds);
           return { message: "error newBuilds" };
         }
       }
@@ -457,13 +472,13 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         .groupBy(sql`${builds.avatarId}`);
       const uniqueCharacters = () => {
         const characters = new Set();
-        currentAvatarsIds.forEach((avatar) => {
+        currentAvatarsIds?.forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
         (data.avatarInfoList ?? []).forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
-        data.playerInfo.showAvatarInfoList.forEach((avatar) => {
+        data.playerInfo?.showAvatarInfoList?.forEach((avatar) => {
           characters.add(avatar.avatarId);
         });
         return characters.size;
@@ -499,22 +514,22 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         });
 
       if (updatedPlayer.length !== 1) {
-        console.error("error updatedPlayer", updatedPlayer);
+        console.error("[submitGenshinUID] error updatedPlayer", updatedPlayer);
         return {
-          message: "error updatedPlayer",
+          message: "[submitGenshinUID] error updatedPlayer",
         };
       }
     }
 
-    console.log("Success!", { uuid: data.uid });
-    revalidatePath(`/profile/${data.uid}`);
+    console.log("[submitGenshinUID] Success!", { uuid: data.uid });
+    revalidatePath(`/[lang]/profile/${data.uid}`, "page");
 
     return {
       message: "Success",
       uid: data.uid,
     };
   } catch (error) {
-    console.error("[api] user", error);
+    console.error("[submitGenshinUID] catch error", parse, error);
     return {
       message: "Error, please try again later",
     };
