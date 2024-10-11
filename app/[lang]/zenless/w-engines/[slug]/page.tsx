@@ -26,20 +26,20 @@ export async function generateMetadata({
   params: { lang: string; slug: string };
 }): Promise<Metadata | undefined> {
   const slug = params.slug;
-  const bangboo = await getZenlessData<WEngines>({
+  const item = await getZenlessData<WEngines>({
     resource: "w-engines",
     filter: { id: slug },
     language: params.lang,
   });
 
-  if (!bangboo) {
+  if (!item) {
     return;
   }
 
-  const title = `${bangboo.name} Zenless Zone Zero`;
-  const description = `Learn about the ${bangboo.name} Bangboo in Zenless Zone Zero. Also included are their skills, upgrade costs, and more.`;
+  const title = `${item.name} Zenless Zone Zero W-Engine`;
+  const description = `Learn about the ${item.name} W-Engine in Zenless Zone Zero. Find out everything you need to know about ${item.name} W-Engine, including stats, passive talents, and how to get it.`;
   const publishedTime = new Date().toISOString();
-  const image = `/zenless/bangboos/${bangboo.id}.png`;
+  const image = `/zenless/w-engines/${item.icon}.webp`;
 
   const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
 
@@ -51,7 +51,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime: `${publishedTime}`,
-      url: `https://genshin-builds.com/zenless/bangboos/${slug}`,
+      url: `https://genshin-builds.com/zenless/w-engines/${slug}`,
       images: [
         {
           url: ogImage,
@@ -67,7 +67,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function BangbooPage({
+export default async function WEnginePage({
   params,
 }: {
   params: { lang: string; slug: string };
@@ -95,7 +95,7 @@ export default async function BangbooPage({
         />
         <div>
           <h1 className="text-2xl font-semibold md:text-5xl">
-            Zenless Zone Zero (ZZZ) {item.name} Bangboo
+            Zenless Zone Zero (ZZZ) {item.name} W-Engine
           </h1>
           <div className="flex">
             {Array.from({ length: item.rarity }).map((_, i) => (

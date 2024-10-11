@@ -39,7 +39,7 @@ export async function generateMetadata({
   const title = `${bangboo.name} Zenless Zone Zero`;
   const description = `Learn about the ${bangboo.name} Bangboo in Zenless Zone Zero. Also included are their skills, upgrade costs, and more.`;
   const publishedTime = new Date().toISOString();
-  const image = `/zenless/bangboos/${bangboo.id}.png`;
+  const image = `/zenless/bangboos/${bangboo.icon}.webp`;
 
   const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
 
