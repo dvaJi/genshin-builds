@@ -65,8 +65,6 @@ export default async function Page({ params, searchParams }: Props) {
     asMap: true,
   });
 
-  console.log(Object.entries(tierlist ?? {}), characters);
-
   return (
     <div>
       <div className="my-2">
