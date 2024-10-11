@@ -36,10 +36,10 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `${item.name} Zenless Zone Zero`;
+  const title = `${item.name} Zenless Zone Zero Disk Drive`;
   const description = `Learn about the ${item.name} Disk Drive in Zenless Zone Zero (ZZZ), including effects, how to obtain, and more.`;
   const publishedTime = new Date().toISOString();
-  const image = `/zenless/disk-drives/${item.id}.png`;
+  const image = `/zenless/disk-drives/${item.icon}.webp`;
 
   const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
 
