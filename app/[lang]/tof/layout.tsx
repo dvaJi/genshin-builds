@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
@@ -48,6 +49,21 @@ type Props = {
 
 export default async function TofLayout({ children, params }: Props) {
   const { lang } = await params;
+  const jsonLd: WithContext<VideoGame> = {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    name: "Tower of Fantasy",
+    url: "http://www.toweroffantasy-global.com/",
+    image: "https://genshinbuilds.aipurrjects.com/genshin/games/tof.webp",
+    description:
+      "Tower of Fantasy is a free-to-play action role-playing game developed and published by Hotta Studio.",
+    author: {
+      "@type": "Organization",
+      name: "Hotta Studio",
+    },
+    applicationCategory: "Game",
+    operatingSystem: "ANDROID, IOS, WINDOWS",
+  };
   return (
     <IntlProvider
       locale={lang}
@@ -65,6 +81,13 @@ export default async function TofLayout({ children, params }: Props) {
       game="tof"
     >
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      ></script>
       <div
         className={clsx(
           "flex h-full min-h-screen flex-col bg-vulcan-900",

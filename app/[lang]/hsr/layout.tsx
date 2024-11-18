@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { Noto_Sans } from "next/font/google";
+import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
@@ -27,9 +28,32 @@ export default async function HSRLayout({ children, params }: Props) {
   const { lang } = await params;
   const { messages } = await getTranslations(lang, "hsr", "layout");
 
+  const jsonLd: WithContext<VideoGame> = {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    name: "Honkai: Star Rail",
+    url: "https://hsr.hoyoverse.com/",
+    image: "https://genshinbuilds.aipurrjects.com/genshin/games/hsr.webp",
+    description:
+      "Honkai: Star Rail is a free-to-play action role-playing game developed and published by miHoYo.",
+    author: {
+      "@type": "Organization",
+      name: "Mihoyo",
+    },
+    applicationCategory: "Game",
+    operatingSystem: "ANDROID, IOS, WINDOWS",
+  };
+
   return (
     <IntlProvider locale={lang} messages={messages} game="hsr">
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      ></script>
       <div
         className={clsx(
           "flex h-full min-h-screen flex-col bg-hsr-bg",

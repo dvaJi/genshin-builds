@@ -4,6 +4,7 @@ import { Nunito } from "next/font/google";
 import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { RiPatreonFill } from "react-icons/ri";
+import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
@@ -62,6 +63,22 @@ type Props = {
 
 export default async function ZenlessLayout({ children, params }: Props) {
   const { lang } = await params;
+  const jsonLd: WithContext<VideoGame> = {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    name: "Zenless Zone Zero",
+    url: "https://zenless.hoyoverse.com/",
+    image: "https://genshinbuilds.aipurrjects.com/genshin/games/zenless.webp",
+    description:
+      "Zenless Zone Zero is a free-to-play action role-playing game developed and published by miHoYo.",
+    author: {
+      "@type": "Organization",
+      name: "miHoYo",
+    },
+    applicationCategory: "Game",
+    operatingSystem: "ANDROID, IOS, WINDOWS",
+  };
+
   return (
     <IntlProvider
       game="zenless"
@@ -80,6 +97,13 @@ export default async function ZenlessLayout({ children, params }: Props) {
       }
     >
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      ></script>
       <section
         className={clsx(
           "flex min-h-screen flex-col bg-neutral-800 text-gray-100",
