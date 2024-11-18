@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { Fragment } from "react";
 import { Tooltip } from "react-tooltip";
 
 import type { Artifact } from "@interfaces/genshin";
@@ -24,7 +25,6 @@ const ArtifactCard = ({
 }: ArtifactCardProps) => {
   return (
     <div className="mb-2 mr-1 rounded-md border border-vulcan-700 bg-vulcan-900">
-      <Tooltip id="my-tooltip" className="max-w-96" place="left" />
       <div className="flex px-4">
         <div className="mr-3 flex items-center">
           {isChooseTwo ? (
@@ -38,12 +38,13 @@ const ArtifactCard = ({
           )}
         </div>
         <div className="m-px flex flex-row flex-wrap justify-between border-b border-gray-800">
-          {artifacts.map((artifact) => (
-            <div
-              key={artifact.id}
-              className={clsx(isChooseTwo ? "max-w-[200px]" : "")}
-              data-tooltip-id="my-tooltip"
-              data-tooltip-children={
+          {artifacts.map((artifact, i) => (
+            <Fragment key={artifact.id}>
+              <Tooltip
+                id={`${i}_${artifact.id}`}
+                className="max-w-96"
+                place="left"
+              >
                 <div className="p-2 text-sm text-slate-200">
                   {artifact?.children ? (
                     artifact.children.map((ca, i) => (
@@ -92,33 +93,37 @@ const ArtifactCard = ({
                     </>
                   )}
                 </div>
-              }
-            >
-              <div className="flex max-w-xs flex-row">
-                <div
-                  className={clsx(
-                    "flex flex-shrink-0 items-center justify-center bg-cover p-1",
-                    `genshin-bg-rarity-${artifact.max_rarity}`
-                  )}
-                >
-                  <Image
-                    src={`/artifacts/${artifact.id}.png`}
-                    height={44}
-                    width={44}
-                    className="aspect-square"
-                    alt={artifact.name}
-                  />
-                </div>
-                <div className="relative flex items-center p-2">
-                  <div className="font-semibold text-white">
-                    {artifact.name}
+              </Tooltip>
+              <div
+                className={clsx(isChooseTwo ? "max-w-[200px]" : "")}
+                data-tooltip-id={`${i}_${artifact.id}`}
+              >
+                <div className="flex max-w-xs flex-row">
+                  <div
+                    className={clsx(
+                      "flex flex-shrink-0 items-center justify-center bg-cover p-1",
+                      `genshin-bg-rarity-${artifact.max_rarity}`
+                    )}
+                  >
+                    <Image
+                      src={`/artifacts/${artifact.id}.png`}
+                      height={44}
+                      width={44}
+                      className="aspect-square"
+                      alt={artifact.name}
+                    />
                   </div>
-                  <div className="ml-2 rounded-md bg-vulcan-800 p-1 px-2 text-xs font-semibold text-gray-400">
-                    {artifacts.length > 1 ? 2 : 4}
+                  <div className="relative flex items-center p-2">
+                    <div className="font-semibold text-white">
+                      {artifact.name}
+                    </div>
+                    <div className="ml-2 rounded-md bg-vulcan-800 p-1 px-2 text-xs font-semibold text-gray-400">
+                      {artifacts.length > 1 ? 2 : 4}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Fragment>
           ))}
         </div>
       </div>
