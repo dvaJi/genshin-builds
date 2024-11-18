@@ -1,21 +1,16 @@
-import type { Artifact } from "@interfaces/genshin";
+import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Image from "next/image";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
 import Badge from "@components/ui/Badge";
-
-import useTranslations from "@hooks/use-translations";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
+import type { Artifact } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-import { i18n } from "i18n-config";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -28,18 +23,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "artifacts"
-  );
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "artifacts");
   const title = t({
     id: "title",
     defaultMessage: "Genshin Artifacts Artifacts List",
@@ -58,11 +49,8 @@ export async function generateMetadata({
 }
 
 export default async function GenshinCharacters({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
-    "genshin",
-    "artifacts"
-  );
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(lang, "genshin", "artifacts");
 
   const artifacts = await getGenshinData<Artifact[]>({
     resource: "artifacts",

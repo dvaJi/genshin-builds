@@ -1,33 +1,23 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import { SubmitGenshinUidForm } from "./submit-uid";
-
-import useTranslations from "@hooks/use-translations";
+import ProfileFavorites from "@components/genshin/ProfileFavorites";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
-const ProfileFavorites = dynamic(
-  () => import("@components/genshin/ProfileFavorites"),
-  { ssr: false }
-);
+import { SubmitGenshinUidForm } from "./submit-uid";
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "profile"
-  );
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "profile");
   const title = t({
     id: "title",
     defaultMessage: "Genshin Impact Profiles",
@@ -47,7 +37,7 @@ export async function generateMetadata({
 }
 
 export default async function GenshinProfileIndex() {
-  // const { t, langData } = await useTranslations(
+  // const { t, langData } = await getTranslations(
   //   params.lang,
   //   "genshin",
   //   "profile"

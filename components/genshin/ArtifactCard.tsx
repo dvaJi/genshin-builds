@@ -1,13 +1,11 @@
+"use client";
+
 import clsx from "clsx";
-import dynamic from "next/dynamic";
+import { Tooltip } from "react-tooltip";
 
 import type { Artifact } from "@interfaces/genshin";
 
 import Image from "./Image";
-
-const Tooltip = dynamic(() => import("../Tooltip"), {
-  ssr: false,
-});
 
 interface ArtifactCardProps {
   position: number;
@@ -26,6 +24,7 @@ const ArtifactCard = ({
 }: ArtifactCardProps) => {
   return (
     <div className="mb-2 mr-1 rounded-md border border-vulcan-700 bg-vulcan-900">
+      <Tooltip id="my-tooltip" className="max-w-96" place="left" />
       <div className="flex px-4">
         <div className="mr-3 flex items-center">
           {isChooseTwo ? (
@@ -40,10 +39,11 @@ const ArtifactCard = ({
         </div>
         <div className="m-px flex flex-row flex-wrap justify-between border-b border-gray-800">
           {artifacts.map((artifact) => (
-            <Tooltip
+            <div
               key={artifact.id}
               className={clsx(isChooseTwo ? "max-w-[200px]" : "")}
-              contents={
+              data-tooltip-id="my-tooltip"
+              data-tooltip-children={
                 <div className="p-2 text-sm text-slate-200">
                   {artifact?.children ? (
                     artifact.children.map((ca, i) => (
@@ -65,10 +65,30 @@ const ArtifactCard = ({
                     ))
                   ) : (
                     <>
+                      <div className="flex">
+                        <Image
+                          src={`/artifacts/${artifact.id}.png`}
+                          height={32}
+                          width={32}
+                          className="ml-1 mr-2 inline-block h-8"
+                          alt={artifact.name}
+                        />
+                        <div className="text-lg font-semibold">
+                          {artifact.name}
+                        </div>
+                      </div>
                       <p className="border-b border-gray-600 py-2">
+                        <span className="mr-2 rounded bg-yellow-950 p-1 text-xs">
+                          2
+                        </span>
                         {artifact["two_pc"]}
                       </p>
-                      <p className="py-2">{artifact["four_pc"]}</p>
+                      <p className="py-2">
+                        <span className="mr-2 rounded bg-yellow-950 p-1 text-xs">
+                          4
+                        </span>
+                        {artifact["four_pc"]}
+                      </p>
                     </>
                   )}
                 </div>
@@ -98,7 +118,7 @@ const ArtifactCard = ({
                   </div>
                 </div>
               </div>
-            </Tooltip>
+            </div>
           ))}
         </div>
       </div>

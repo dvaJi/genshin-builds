@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import { i18n } from "@i18n-config";
 import type { Characters } from "@interfaces/tof/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
 
 import CharactersList from "./characters";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -38,7 +34,7 @@ export default async function TOFPage() {
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-tof-100 text-2xl">Tower of Fantasy Characters</h2>
+        <h2 className="text-2xl text-tof-100">Tower of Fantasy Characters</h2>
         <p>
           Discover character builds, comprehensive guides, and a wiki database
           all in one place.

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import ServerTimers from "@components/ServerTimers";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Character, Domains, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -14,29 +16,16 @@ import FarmableToday from "./farmable-today";
 import { LatestPosts } from "./latest-posts";
 import Shortcuts from "./shortcuts";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-const ServerTimers = dynamic(() => import("@components/ServerTimers"), {
-  ssr: false,
-  loading: () => (
-    <div className="mb-4 grid lg:grid-cols-3">
-      <div className="card min-h-[105px] animate-pulse text-center lg:mr-2" />
-      <div className="card min-h-[105px] animate-pulse text-center lg:mr-2" />
-      <div className="card min-h-[105px] animate-pulse text-center lg:mr-2" />
-    </div>
-  ),
-});
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(
+    lang,
     "genshin",
     "ascension_planner"
   );
@@ -59,8 +48,9 @@ export async function generateMetadata({
 }
 
 export default async function IndexPage({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
     "genshin",
     "ascension_planner"
   );
@@ -103,14 +93,14 @@ export default async function IndexPage({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <br/>
+      <br />
       <h2 className="text-2xl font-semibold text-gray-200">
         {t({
           id: "shortcuts",
           defaultMessage: "Shortcuts",
         })}
       </h2>
-      <Shortcuts lang={params.lang} />
+      <Shortcuts lang={lang} />
       <div className="mt-4">
         <div className="m-2">
           <h2 className="text-2xl font-semibold text-gray-200">
@@ -135,7 +125,7 @@ export default async function IndexPage({ params }: Props) {
               </div>
             }
           >
-            <Banners lang={params.lang} />
+            <Banners lang={lang} />
           </Suspense>
         </div>
         <FrstAds
@@ -172,7 +162,7 @@ export default async function IndexPage({ params }: Props) {
             classList={["flex", "justify-center"]}
           />
           <div className="mx-2 text-right text-sm hover:text-white">
-            <Link href={`/${params.lang}/genshin/blog`} prefetch={false}>
+            <Link href={`/${lang}/genshin/blog`} prefetch={false}>
               {t({
                 id: "view_all_posts",
                 defaultMessage: "View all posts",

@@ -1,10 +1,11 @@
 import { Changelog } from "interfaces/genshin/changelog";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import { notFound, redirect } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type {
   Artifact,
   Character,
@@ -18,13 +19,8 @@ import { getAllMaterialsMap } from "@utils/materials";
 
 import ChangelogVersion from "../view";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string; version: string };
+  params: Promise<{ lang: string; version: string }>;
 };
 
 export const dynamic = "force-dynamic";
@@ -38,17 +34,13 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "changelog"
-  );
+  const { lang, version } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "changelog");
   const currentVersion = await getGenshinData<Changelog>({
     resource: "changelog",
     language: locale,
     filter: {
-      id: params.version,
+      id: version,
     },
   });
 
@@ -76,11 +68,8 @@ export async function generateMetadata({
 }
 
 export default async function GenshinBannerWeapons({ params }: Props) {
-  const { langData } = await useTranslations(
-    params.lang,
-    "genshin",
-    "changelog"
-  );
+  const { lang, version } = await params;
+  const { langData } = await getTranslations(lang, "genshin", "changelog");
   const changelog = await getGenshinData<Changelog[]>({
     resource: "changelog",
     language: langData,
@@ -91,7 +80,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     resource: "changelog",
     language: langData,
     filter: {
-      id: params.version,
+      id: version,
     },
   });
 
@@ -99,7 +88,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
     return notFound();
   }
   if (cl.current) {
-    return redirect(`/${params.lang}/changelog`);
+    return redirect(`/${lang}/changelog`);
   }
 
   const characters = await getGenshinData<Record<string, Character>>({
@@ -185,7 +174,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
         materialsMap={materialsMap}
         tcgMap={tcgMap}
         weaponsMap={weaponsMap}
-        locale={params.lang}
+        locale={lang}
       />
       <FrstAds
         placementName="genshinbuilds_incontent_1"

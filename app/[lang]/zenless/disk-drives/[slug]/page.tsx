@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
 import type { DiskDrives } from "@interfaces/zenless/diskDrives";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -20,16 +16,21 @@ export async function generateStaticParams() {
   return [];
 }
 
+type Props = {
+  params: Promise<{
+    lang: string;
+    slug: string;
+  }>;
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: { lang: string; slug: string };
-}): Promise<Metadata | undefined> {
-  const slug = params.slug;
+}: Props): Promise<Metadata | undefined> {
+  const { lang, slug } = await params;
   const item = await getZenlessData<DiskDrives>({
     resource: "disk-drives",
     filter: { id: slug },
-    language: params.lang,
+    language: lang,
   });
 
   if (!item) {
@@ -67,16 +68,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function DriskDriveDetailPage({
-  params,
-}: {
-  params: { lang: string; slug: string };
-}) {
-  const slug = params.slug;
+export default async function DriskDriveDetailPage({ params }: Props) {
+  const { lang, slug } = await params;
   const item = await getZenlessData<DiskDrives>({
     resource: "disk-drives",
     filter: { id: slug },
-    language: params.lang,
+    language: lang,
   });
 
   if (!item) {

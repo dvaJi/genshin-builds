@@ -1,20 +1,16 @@
 import { i18n } from "i18n-config";
 import { TeamData, Teams } from "interfaces/teams";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import { Fragment } from "react";
 
 import { genPageMetadata } from "@app/seo";
 import TeamCard from "@components/genshin/TeamCard";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -25,14 +21,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "genshin", "teams");
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "teams");
   const title = t({
     id: "title",
     defaultMessage: "Best Team Comp | Party Building Guide",
@@ -52,11 +48,8 @@ export async function generateMetadata({
 }
 
 export default async function GenshinCharacters({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
-    "genshin",
-    "teams"
-  );
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(lang, "genshin", "teams");
 
   const teams = await getGenshinData<Teams[]>({
     resource: "teams",

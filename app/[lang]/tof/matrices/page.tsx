@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import MatrixPortrait from "@components/tof/MatrixPortrait";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import { i18n } from "@i18n-config";
 import type { Matrices } from "@interfaces/tof/matrices";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -11,13 +12,8 @@ import { getRemoteData } from "@lib/localData";
 import { slugify2 } from "@utils/hash";
 import { getRarityColor } from "@utils/rarity";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export const dynamic = "force-static";
@@ -30,17 +26,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
   const title = "Matrices";
   const description = "List of matrices in Tower of Fantasy.";
   return genPageMetadata({
     title,
     description,
     path: `/tof/matrices`,
-    locale: params.lang,
+    locale: lang,
   });
 }
 
 export default async function TOFMatricesPage({ params }: Props) {
+  const { lang } = await params;
   const data = await getRemoteData<Matrices[]>("tof", "matrices");
 
   const ssr = data.filter((m) => m.rarity === 5);
@@ -59,7 +57,7 @@ export default async function TOFMatricesPage({ params }: Props) {
           {ssr.map((matrix) => (
             <Link
               key={matrix.id}
-              href={`/${params.lang}/tof/matrices/${slugify2(matrix.name)}`}
+              href={`/${lang}/tof/matrices/${slugify2(matrix.name)}`}
               prefetch={false}
             >
               <MatrixPortrait matrix={matrix} />
@@ -81,7 +79,7 @@ export default async function TOFMatricesPage({ params }: Props) {
           {sr.map((matrix) => (
             <Link
               key={matrix.id}
-              href={`/${params.lang}/tof/matrices/${slugify2(matrix.name)}`}
+              href={`/${lang}/tof/matrices/${slugify2(matrix.name)}`}
               prefetch={false}
             >
               <MatrixPortrait matrix={matrix} />
@@ -98,7 +96,7 @@ export default async function TOFMatricesPage({ params }: Props) {
           {r.map((matrix) => (
             <Link
               key={matrix.id}
-              href={`/${params.lang}/tof/matrices/${slugify2(matrix.name)}`}
+              href={`/${lang}/tof/matrices/${slugify2(matrix.name)}`}
               prefetch={false}
             >
               <MatrixPortrait matrix={matrix} />
@@ -115,7 +113,7 @@ export default async function TOFMatricesPage({ params }: Props) {
           {n.map((matrix) => (
             <Link
               key={matrix.id}
-              href={`/${params.lang}/tof/matrices/${slugify2(matrix.name)}`}
+              href={`/${lang}/tof/matrices/${slugify2(matrix.name)}`}
               prefetch={false}
             >
               <MatrixPortrait matrix={matrix} />

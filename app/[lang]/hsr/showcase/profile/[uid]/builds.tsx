@@ -1,16 +1,14 @@
 "use client";
 
 import clsx from "clsx";
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import { AiFillLock } from "react-icons/ai";
 import { Tooltip } from "react-tooltip";
 
 import Stars from "@components/hsr/Stars";
+import FrstAds from "@components/ui/FrstAds";
 import { getHsrUrl, getHsrUrlLQ, getUrl } from "@lib/imgUrl";
 import { renderDescription } from "@utils/template-replacement";
-
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   profile: any;
@@ -353,7 +351,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                                 </div>
                               </div>
                               <div className="mt-0.5 flex w-full">
-                                <div className="mx-1 -mt-3 inline-flex w-full justify-center text-center text-lg leading-none text-blue-500  ">
+                                <div className="mx-1 -mt-3 inline-flex w-full justify-center text-center text-lg leading-none text-blue-500">
                                   {Array.from({ length: value.count }).join(
                                     "."
                                   )}

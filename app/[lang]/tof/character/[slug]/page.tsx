@@ -1,12 +1,13 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Image from "@components/tof/Image";
 import TypeIcon from "@components/tof/TypeIcon";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import { i18n } from "@i18n-config";
 import type { Characters } from "@interfaces/tof/characters";
 import type { Items } from "@interfaces/tof/items";
@@ -15,11 +16,6 @@ import { getRemoteData } from "@lib/localData";
 import { slugify2 } from "@utils/hash";
 
 import ProfileBox from "./profile-box";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -42,17 +38,18 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang, slug } = await params;
   const characters = await getRemoteData<Characters[]>("tof", "characters");
-  const character = characters.find((c) => slugify2(c.name) === params.slug);
+  const character = characters.find((c) => slugify2(c.name) === slug);
 
   if (!character) {
     return;
@@ -64,14 +61,15 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/tof/character/${params.slug}`,
-    locale: params.lang,
+    path: `/tof/character/${slug}`,
+    locale: lang,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
+  const { slug } = await params;
   const characters = await getRemoteData<Characters[]>("tof", "characters");
-  const character = characters.find((c) => slugify2(c.name) === params.slug);
+  const character = characters.find((c) => slugify2(c.name) === slug);
 
   if (!character) {
     return notFound();
@@ -136,7 +134,7 @@ export default async function CharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <div className="flex w-full  flex-wrap items-center justify-between">
+      <div className="flex w-full flex-wrap items-center justify-between">
         <div className="flex items-center">
           <Image
             className="h-36 w-36 lg:h-48 lg:w-48"
@@ -146,7 +144,7 @@ export default async function CharacterPage({ params }: Props) {
             height={192}
           />
           <div className="">
-            <h2 className="text-tof-50 mb-4 text-2xl font-bold lg:text-4xl">
+            <h2 className="mb-4 text-2xl font-bold text-tof-50 lg:text-4xl">
               {character.name}
             </h2>
             <span
@@ -169,7 +167,7 @@ export default async function CharacterPage({ params }: Props) {
             height={96}
           />
           <div>
-            <h2 className="text-tof-50 mb-4 text-xl font-bold lg:text-3xl">
+            <h2 className="mb-4 text-xl font-bold text-tof-50 lg:text-3xl">
               {character.weapon.name}
             </h2>
             <div className="flex justify-between">
@@ -195,13 +193,13 @@ export default async function CharacterPage({ params }: Props) {
           classList={["flex", "justify-center"]}
         />
         <div className="mb-10 block">
-          <h2 className="text-tof-50 text-2xl font-bold uppercase">
+          <h2 className="text-2xl font-bold uppercase text-tof-50">
             Part of a set
           </h2>
           <div className="flex rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">
             <Link
               href={`/tof/character/${slugify2(character.name)}`}
-              className="hover:bg-tof-600 flex flex-col items-center rounded-lg p-4"
+              className="flex flex-col items-center rounded-lg p-4 hover:bg-tof-600"
               prefetch={false}
             >
               <Image
@@ -211,11 +209,11 @@ export default async function CharacterPage({ params }: Props) {
                 width={96}
                 height={96}
               />
-              <h3 className="text-tof-50 text-xl">{character.name}</h3>
+              <h3 className="text-xl text-tof-50">{character.name}</h3>
             </Link>
             <Link
               href={`/tof/weapons/${slugify2(character.weapon.name)}`}
-              className="hover:bg-tof-600 flex flex-col items-center rounded-lg p-4"
+              className="flex flex-col items-center rounded-lg p-4 hover:bg-tof-600"
               prefetch={false}
             >
               <Image
@@ -225,11 +223,11 @@ export default async function CharacterPage({ params }: Props) {
                 width={96}
                 height={96}
               />
-              <h3 className="text-tof-50 text-xl">{character.weapon.name}</h3>
+              <h3 className="text-xl text-tof-50">{character.weapon.name}</h3>
             </Link>
             <Link
               href={`/tof/matrices/${slugify2(character.matrix.name)}`}
-              className="hover:bg-tof-600 flex flex-col items-center rounded-lg p-4"
+              className="flex flex-col items-center rounded-lg p-4 hover:bg-tof-600"
               prefetch={false}
             >
               <Image
@@ -239,12 +237,12 @@ export default async function CharacterPage({ params }: Props) {
                 width={96}
                 height={96}
               />
-              <h3 className="text-tof-50 text-xl">{character.matrix.name}</h3>
+              <h3 className="text-xl text-tof-50">{character.matrix.name}</h3>
             </Link>
           </div>
         </div>
         <div className="mb-10 block">
-          <h2 className="text-tof-50 text-2xl font-bold uppercase">
+          <h2 className="text-2xl font-bold uppercase text-tof-50">
             Awakening
           </h2>
           <div className="rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">
@@ -252,10 +250,10 @@ export default async function CharacterPage({ params }: Props) {
               .filter((a) => a.description)
               .map((trait, index) => (
                 <div key={trait.name} className="mb-4">
-                  <h3 className="text-tof-50 text-xl font-bold">
+                  <h3 className="text-xl font-bold text-tof-50">
                     {trait.name}
                   </h3>
-                  <div className="bg-tof-900 mr-4 w-36 rounded px-2 text-yellow-100">
+                  <div className="mr-4 w-36 rounded bg-tof-900 px-2 text-yellow-100">
                     {index === 0 ? "1200 Awakening" : "4000 Awakening"}
                   </div>
                   <div
@@ -273,7 +271,7 @@ export default async function CharacterPage({ params }: Props) {
           classList={["flex", "justify-center"]}
         />
         <div className="mb-8 block">
-          <h2 className="text-tof-50 text-2xl font-bold uppercase">
+          <h2 className="text-2xl font-bold uppercase text-tof-50">
             Preferred Gifts
           </h2>
           <div className="flex flex-col rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">
@@ -322,7 +320,7 @@ export default async function CharacterPage({ params }: Props) {
           classList={["flex", "justify-center"]}
         />
         <div className="mb-8 block">
-          <h2 className="text-tof-50 text-2xl font-bold uppercase">Profile</h2>
+          <h2 className="text-2xl font-bold uppercase text-tof-50">Profile</h2>
           <div className="flex gap-4 rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">
             <ProfileBox label="Title" value={character.weapon.name} />
             <ProfileBox label="Gender" value={character.gender} />
@@ -333,7 +331,7 @@ export default async function CharacterPage({ params }: Props) {
         </div>
 
         <div className="mb-8 block">
-          <h2 className="text-tof-50 text-2xl font-bold uppercase">
+          <h2 className="text-2xl font-bold uppercase text-tof-50">
             Voice Actors
           </h2>
           <div className="flex gap-4 rounded border border-vulcan-700 bg-vulcan-700/90 px-4 py-4 shadow-lg">

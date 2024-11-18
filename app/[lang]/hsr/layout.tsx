@@ -3,14 +3,13 @@ import { Noto_Sans } from "next/font/google";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
-import Footer from "./footer";
-import Header from "./header";
-
-import useTranslations from "@hooks/use-translations";
+import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
 import "../../../styles/globals.css";
 import "../../../styles/hsr-globals.css";
+import Footer from "./footer";
+import Header from "./header";
 
 const notoSans = Noto_Sans({
   weight: ["400", "600", "700"],
@@ -21,14 +20,15 @@ const notoSans = Noto_Sans({
 
 type Props = {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export default async function HSRLayout({ children, params }: Props) {
-  const { messages } = await useTranslations(params.lang, "hsr", "layout");
+  const { lang } = await params;
+  const { messages } = await getTranslations(lang, "hsr", "layout");
 
   return (
-    <IntlProvider locale={params.lang} messages={messages} game="hsr">
+    <IntlProvider locale={lang} messages={messages} game="hsr">
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div
         className={clsx(

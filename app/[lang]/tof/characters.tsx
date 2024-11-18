@@ -1,19 +1,17 @@
 "use client";
 
 import clsx from "clsx";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import CharacterPortrait from "@components/tof/CharacterPortrait";
 import Image from "@components/tof/Image";
+import FrstAds from "@components/ui/FrstAds";
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
 import type { Characters } from "@interfaces/tof/characters";
-import { getRarityColor } from "@utils/rarity";
 import { slugify2 } from "@utils/hash";
-
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
+import { getRarityColor } from "@utils/rarity";
 
 type Props = {
   characters: Characters[];
@@ -98,7 +96,7 @@ export default function CharactersList({ characters }: Props) {
           {rarityOptions.map((rarity) => (
             <button
               className={clsx(
-                "hover:bg-tof-700 mr-2 px-2 py-1 text-xl",
+                "mr-2 px-2 py-1 text-xl hover:bg-tof-700",
                 rarity.value === rarityFilter && "bg-tof-700",
                 getRarityColor(rarity.label)
               )}
@@ -119,7 +117,7 @@ export default function CharactersList({ characters }: Props) {
           {elementOptions.map((element) => (
             <button
               className={clsx(
-                "hover:bg-tof-700 mr-2 px-2 py-1 text-xl",
+                "mr-2 px-2 py-1 text-xl hover:bg-tof-700",
                 element.value === elementFilter && "bg-tof-700"
               )}
               key={element.value}
@@ -145,7 +143,7 @@ export default function CharactersList({ characters }: Props) {
           {resonanceOptions.map((resonance) => (
             <button
               className={clsx(
-                "hover:bg-tof-700 mr-2 px-2 py-1 text-xl",
+                "mr-2 px-2 py-1 text-xl hover:bg-tof-700",
                 resonance.value === resonanceFilter && "bg-tof-700"
               )}
               key={resonance.value}

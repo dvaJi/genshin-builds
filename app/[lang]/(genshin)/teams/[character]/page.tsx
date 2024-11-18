@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { i18n } from "i18n-config";
 import { TeamData, Teams } from "interfaces/teams";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Fragment } from "react";
@@ -11,9 +10,10 @@ import { genPageMetadata } from "@app/seo";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Image from "@components/genshin/Image";
 import GoTo from "@components/go-to";
+import Ads from "@components/ui/Ads";
 import Button from "@components/ui/Button";
 import FrstAds from "@components/ui/FrstAds";
-import useTranslations from "@hooks/use-translations";
+import getTranslations from "@hooks/use-translations";
 import type { Artifact, Beta, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -21,10 +21,8 @@ import { getData } from "@lib/localData";
 import { capitalize } from "@utils/capitalize";
 import { localeToLang } from "@utils/locale-to-lang";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-
 type Props = {
-  params: { lang: string; character: string };
+  params: Promise<{ lang: string; character: string }>;
 };
 
 export const dynamic = "force-static";
@@ -54,9 +52,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale, langData } = await useTranslations(
-    params.lang,
+  const { lang, character: characterParams } = await params;
+  const { t, locale, langData } = await getTranslations(
+    lang,
     "genshin",
     "teams"
   );
@@ -66,11 +64,11 @@ export async function generateMetadata({
     language: langData as any,
     select: ["id", "name"],
     filter: {
-      id: params.character,
+      id: characterParams,
     },
   });
   const _betaCharacter = beta[locale]?.characters?.find(
-    (c: any) => c.id === params.character
+    (c: any) => c.id === characterParams
   );
 
   const character = _character || _betaCharacter;
@@ -94,14 +92,15 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/teams/${params.character}`,
+    path: `/teams/${characterParams}`,
     locale,
   });
 }
 
 export default async function GenshinCharacterTeams({ params }: Props) {
-  const { t, langData, locale, common } = await useTranslations(
-    params.lang,
+  const { lang, character: characterParams } = await params;
+  const { t, langData, locale, common } = await getTranslations(
+    lang,
     "genshin",
     "teams"
   );
@@ -112,23 +111,23 @@ export default async function GenshinCharacterTeams({ params }: Props) {
     select: ["id", "name", "element", "rarity"],
     asMap: true,
   });
-  const character = characters[params.character];
+  const character = characters[characterParams];
 
   if (!character) {
-    return redirect(`/${params.lang}/teams`);
+    return redirect(`/${lang}/teams`);
   }
 
   const characterTeams = await getGenshinData<Teams>({
     resource: "teams",
     language: langData,
     filter: {
-      id: params.character,
+      id: characterParams,
     },
   });
 
   // No teams for this character, redirect to the character page instead.
   if (!characterTeams) {
-    return redirect(`/${params.lang}/character/${params.character}`);
+    return redirect(`/${lang}/character/${characterParams}`);
   }
 
   const weaponsMap = await getGenshinData<Record<string, Weapon>>({
@@ -184,7 +183,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
           <p className="text-slate-300">{characterTeams.overview}</p>
           <div className="mt-4 flex justify-end">
             <Link
-              href={`/${locale}/character/${params.character}`}
+              href={`/${locale}/character/${characterParams}`}
               prefetch={false}
             >
               <Button>

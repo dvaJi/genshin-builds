@@ -19,7 +19,7 @@ const resolvePath = (dict: IntlMessage, namespace = "", locale: any) => {
     const next = (message as any)[part];
 
     if (part == null || next == null) {
-      const errorMsg = `[useTranslations] Could not resolve \`${namespace}\` in messages. ${locale}`;
+      const errorMsg = `[getTranslations] Could not resolve \`${namespace}\` in messages. ${locale}`;
       console.error(errorMsg);
     }
 

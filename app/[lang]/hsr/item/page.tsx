@@ -1,19 +1,15 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Items } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -22,14 +18,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "hsr", "items");
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "hsr", "items");
   const title = t({
     id: "title",
     defaultMessage: "Honkai: Star Rail All Items List",
@@ -48,7 +44,8 @@ export async function generateMetadata({
 }
 
 export default async function HSRItemPage({ params }: Props) {
-  const { t, langData } = await useTranslations(params.lang, "hsr", "items");
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(lang, "hsr", "items");
 
   const items = await getHSRData<Items[]>({
     resource: "items",
@@ -83,7 +80,7 @@ export default async function HSRItemPage({ params }: Props) {
         {items.map((item) => (
           <Link
             key={item.id}
-            href={`/${params.lang}/hsr/item/${item.id}`}
+            href={`/${lang}/hsr/item/${item.id}`}
             className="group/link grid justify-center justify-items-center bg-hsr-surface2 text-center hover:bg-hsr-accent/20"
             prefetch={false}
           >

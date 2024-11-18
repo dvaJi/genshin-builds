@@ -1,15 +1,11 @@
 import { i18n } from "i18n-config";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import NewsPostCard from "@components/zenless/NewsPostCard";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getNews } from "@lib/news";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -21,12 +17,13 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     lang: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
+  const { lang } = await params;
   const data = await getNews("zenless-zone-zero");
 
   return (
@@ -50,7 +47,7 @@ export default async function Page({ params }: Props) {
         </div>
         <div className="mt-4">
           <Link
-            href={`/${params.lang}/zenless/blog`}
+            href={`/${lang}/zenless/blog`}
             className="rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4"
             prefetch={false}
           >

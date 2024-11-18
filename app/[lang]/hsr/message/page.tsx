@@ -1,19 +1,15 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Messages } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -24,14 +20,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "hsr", "messages");
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "hsr", "messages");
   const title = t({
     id: "title",
     defaultMessage: "Honkai: Star Rail Messages",
@@ -50,7 +46,8 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: Props) {
-  const { t, langData } = await useTranslations(params.lang, "hsr", "messages");
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(lang, "hsr", "messages");
 
   const messages = await getHSRData<Messages[]>({
     resource: "messages",
@@ -85,8 +82,8 @@ export default async function Page({ params }: Props) {
         {messages.map((message) => (
           <Link
             key={message.id}
-            href={`/${params.lang}/hsr/message/${message.id}`}
-            className=" flex bg-hsr-surface2 p-3 transition-colors hover:bg-hsr-surface3"
+            href={`/${lang}/hsr/message/${message.id}`}
+            className="flex bg-hsr-surface2 p-3 transition-colors hover:bg-hsr-surface3"
             prefetch={false}
           >
             <img

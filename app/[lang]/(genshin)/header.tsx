@@ -16,7 +16,7 @@ type Route = {
   name: string;
   href?: string;
   children?: Route[];
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   isNew?: boolean;
 };
 

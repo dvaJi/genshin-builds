@@ -1,33 +1,31 @@
 import clsx from "clsx";
 import { BannerHistorical, BannerReRunPrediction } from "interfaces/banner";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import CharacterPortrait from "@components/genshin/CharacterPortrait";
+import Ads from "@components/ui/Ads";
 import Badge from "@components/ui/Badge";
-import useTranslations from "@hooks/use-translations";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getTimeAgo } from "@lib/timeago";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(
+    lang,
     "genshin",
     "banners_characters"
   );
@@ -49,8 +47,9 @@ export async function generateMetadata({
 }
 
 export default async function GenshinBannerCharacters({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
     "genshin",
     "banners_characters"
   );
@@ -60,7 +59,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
     rerunPrediction: BannerReRunPrediction[];
   }>({
     resource: "banners",
-    language: params.lang,
+    language: lang,
     filter: {
       id: "characters",
     },
@@ -98,10 +97,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                 key={h.name}
                 className="mb-1 flex w-full border-b border-gray-700 pb-2 last:border-b-0"
               >
-                <Link
-                  href={`/${params.lang}/character/${h.id}`}
-                  prefetch={false}
-                >
+                <Link href={`/${lang}/character/${h.id}`} prefetch={false}>
                   <CharacterPortrait character={{ id: h.id, name: "" }} />
                 </Link>
                 <div className="flex w-full flex-col items-center justify-center">
@@ -119,10 +115,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                           })}
                         </Badge>
                         <Badge className="text-xs text-gray-300">
-                          {getTimeAgo(
-                            new Date(h.lastRun).getTime(),
-                            params.lang
-                          )}
+                          {getTimeAgo(new Date(h.lastRun).getTime(), lang)}
                         </Badge>
                       </div>
                     </div>
@@ -165,7 +158,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                   {h.main.map((m) => (
                     <Link
                       key={m + h.time}
-                      href={`/${params.lang}/character/${m}`}
+                      href={`/${lang}/character/${m}`}
                       prefetch={false}
                     >
                       <SimpleRarityBox
@@ -184,7 +177,7 @@ export default async function GenshinBannerCharacters({ params }: Props) {
                   {h.secondary.map((m) => (
                     <Link
                       key={m + h.time}
-                      href={`/${params.lang}/character/${m}`}
+                      href={`/${lang}/character/${m}`}
                       prefetch={false}
                     >
                       <SimpleRarityBox

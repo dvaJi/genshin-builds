@@ -1,18 +1,16 @@
 "use client";
 
 import clsx from "clsx";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Fragment, useMemo, useState } from "react";
 
 import CharacterBlock from "@components/hsr/CharacterBlock";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import useIntl from "@hooks/use-intl";
 import type { Character } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHsrUrlLQ } from "@lib/imgUrl";
-
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
 
 type Props = {
   characters: Character[];

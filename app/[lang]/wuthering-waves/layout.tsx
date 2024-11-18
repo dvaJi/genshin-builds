@@ -19,14 +19,15 @@ const poppins = Poppins({
 
 type Props = {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export default async function WWLayout({ children, params }: Props) {
+  const { lang } = await params;
   return (
     <IntlProvider
       game="wuthering-waves"
-      locale={params.lang}
+      locale={lang}
       messages={
         {
           layout: {
@@ -51,7 +52,7 @@ export default async function WWLayout({ children, params }: Props) {
           poppins.className
         )}
       >
-        <Header locale={params.lang} />
+        <Header locale={lang} />
 
         <main className="z-10 mb-8 mt-4 text-gray-300">
           <div className="container mx-auto">{children}</div>

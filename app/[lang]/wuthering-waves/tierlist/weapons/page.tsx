@@ -1,8 +1,9 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import type { TierlistWeapons } from "@interfaces/wuthering-waves/tierlist-weapons";
 import type { Weapons } from "@interfaces/wuthering-waves/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -10,13 +11,8 @@ import { getWWData } from "@lib/dataApi";
 
 import Tier from "./tier";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export const dynamic = "force-static";
@@ -28,6 +24,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
   const title =
     "Best Wuthering Waves (WuWa) Weapons Tierlist - Ultimate Ranking Guide";
   const description =
@@ -37,14 +34,15 @@ export async function generateMetadata({
     title,
     description,
     path: `/wuthering-waves/tierlist/weapons`,
-    locale: params.lang,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
+  const { lang } = await params;
   const tierlist = await getWWData<TierlistWeapons>({
     resource: "tierlist",
-    language: params.lang,
+    language: lang,
     filter: {
       id: "weapons",
     },
@@ -52,7 +50,7 @@ export default async function Page({ params }: Props) {
 
   const weapons = await getWWData<Record<string, Weapons>>({
     resource: "weapons",
-    language: params.lang,
+    language: lang,
     select: ["id", "name", "rarity"],
     asMap: true,
   });

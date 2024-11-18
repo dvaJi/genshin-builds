@@ -1,16 +1,19 @@
 import { useCallback } from "react";
 
 export function useClipboard() {
-  const copyToClipboard = useCallback((text: string) => {
-    navigator.clipboard.writeText(text).then(
-      () => {
+  const copyToClipboard = useCallback(
+    async (text: string): Promise<boolean> => {
+      try {
+        await navigator.clipboard.writeText(text);
         console.log("Copying to clipboard was successful!");
-      },
-      (err) => {
+        return true;
+      } catch (err) {
         console.error("Could not copy text: ", err);
+        return false;
       }
-    );
-  }, []);
+    },
+    []
+  );
 
   return { copyToClipboard };
 }

@@ -1,21 +1,17 @@
 import { i18n } from "i18n-config";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getData } from "@lib/localData";
 
 import GenshinCharactersList from "./list";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -26,18 +22,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "characters"
-  );
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "characters");
   const title = t({
     id: "title",
     defaultMessage: "Genshin Impact Characters List",
@@ -57,8 +49,9 @@ export async function generateMetadata({
 }
 
 export default async function GenshinCharacters({ params }: Props) {
-  const { t, locale, langData } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, locale, langData } = await getTranslations(
+    lang,
     "genshin",
     "characters"
   );

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 
 import { submitHSRUID } from "@app/actions";
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getBuild, getPlayer } from "@lib/hsrShowcase";
@@ -12,23 +13,20 @@ import { getHsrUrl } from "@lib/imgUrl";
 
 import Builds from "./builds";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
 interface Props {
-  params: {
+  params: Promise<{
     uid: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "hsr", "profile");
+  const { lang, uid } = await params;
+  const { t, locale } = await getTranslations(lang, "hsr", "profile");
 
-  const player = await getPlayer(params.uid);
+  const player = await getPlayer(uid);
 
   if (!player) {
     return;
@@ -50,33 +48,34 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/hsr/showcase/profile/${params.uid}`,
+    path: `/hsr/showcase/profile/${uid}`,
     locale,
   });
 }
 
 export default async function HSRProfilePage({ params }: Props) {
-  const { langData } = await useTranslations(params.lang, "hsr", "item");
+  const { lang, uid } = await params;
+  const { langData } = await getTranslations(lang, "hsr", "item");
 
-  if (!params.uid || !/^(18|[1-35-9])\d{8}$/.test(params.uid.toString())) {
-    return redirect(`/${params.lang}/hsr/showcase`);
+  if (!uid || !/^(18|[1-35-9])\d{8}$/.test(uid.toString())) {
+    return redirect(`/${lang}/hsr/showcase`);
   }
 
-  const player = await getPlayer(params.uid);
+  const player = await getPlayer(uid);
 
   if (!player) {
     const formdata = new FormData();
-    formdata.append("uid", params.uid);
+    formdata.append("uid", uid);
     const submitRes = await submitHSRUID({}, formdata);
     if (submitRes.message !== "Success") {
-      return redirect(`/${params.lang}/hsr/showcase`);
+      return redirect(`/${lang}/hsr/showcase`);
     }
   }
 
-  const res = await getBuild(langData, params?.uid);
+  const res = await getBuild(langData, uid);
 
   if (res.code !== 200) {
-    return redirect(`/${params.lang}/hsr/showcase`);
+    return redirect(`/${lang}/hsr/showcase`);
   }
 
   const propertiesCommon = await getHSRData<Record<string, string>>({

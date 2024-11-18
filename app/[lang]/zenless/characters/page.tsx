@@ -1,17 +1,13 @@
 import { i18n } from "i18n-config";
 import { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
 import type { Characters } from "@interfaces/zenless/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 43200;
@@ -29,16 +25,17 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  params: {
+  params: Promise<{
     lang: string;
-  };
+  }>;
 };
 
 export default async function CharactersPage({ params }: Props) {
+  const { lang } = await params;
   const data = (
     await getZenlessData<Characters[]>({
       resource: "characters",
-      language: params.lang,
+      language: lang,
       select: ["id", "name"],
     })
   )?.sort((a, b) => a.name.localeCompare(b.name));
@@ -55,7 +52,7 @@ export default async function CharactersPage({ params }: Props) {
         {data?.map((character) => (
           <Link
             key={character.id}
-            href={`/${params.lang}/zenless/characters/${character.id}`}
+            href={`/${lang}/zenless/characters/${character.id}`}
             className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
             prefetch={false}
           >

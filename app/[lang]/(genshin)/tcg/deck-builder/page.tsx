@@ -1,15 +1,20 @@
+import type { Metadata } from "next";
+import { Toaster } from "sonner";
+
+import { genPageMetadata } from "@app/seo";
+import Alert from "@components/Alert";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type {
   TCGActionCard,
   TCGCard,
   TCGCharacterCard,
 } from "@interfaces/genshin";
-import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
+import { AD_ARTICLE_SLOT } from "@lib/constants";
+import { getGenshinData } from "@lib/dataApi";
+import { decodeDeckCode } from "@utils/gcg-share-code";
 
-import { Toaster } from "sonner";
-
-import { genPageMetadata } from "@app/seo";
-import Alert from "@components/Alert";
 import BuildDeckStateProvider from "../deck-state-provider";
 import Analytics from "./analytics";
 import Cards from "./cards";
@@ -17,29 +22,19 @@ import DrawSimulator from "./draw-simulator";
 import MyDeck from "./my-deck";
 import Share from "./share";
 
-import useTranslations from "@hooks/use-translations";
-import { AD_ARTICLE_SLOT } from "@lib/constants";
-import { getGenshinData } from "@lib/dataApi";
-import { decodeDeckCode } from "@utils/gcg-share-code";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 export const dynamic = "force-dynamic";
 
 type Props = {
-  params: { lang: string };
-  searchParams: Record<string, string>;
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<Record<string, string>>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(
+    lang,
     "genshin",
     "tcg_deck_builder"
   );
@@ -54,8 +49,9 @@ export async function generateMetadata({
 }
 
 export default async function GenshinTCG({ params, searchParams }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
     "genshin",
     "tcg_deck_builder"
   );
@@ -90,8 +86,9 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
     CARD_ORDER.map((card, index) => [card, index + 1])
   ) as Record<string, number>;
 
-  const decodedDeck = searchParams.code
-    ? decodeDeckCode(decodeURIComponent(searchParams.code), CARD_BY_ENCODE_ID)
+  const { code } = await searchParams;
+  const decodedDeck = code
+    ? decodeDeckCode(decodeURIComponent(code), CARD_BY_ENCODE_ID)
     : {
         characterCards: ["undefined", "undefined", "undefined"],
         actionCards: { ["undefined"]: 30 },
@@ -99,10 +96,8 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
 
   return (
     <div className="relative">
-      <BuildDeckStateProvider
-        initialDeck={{ ...decodedDeck, code: searchParams.code }}
-      >
-        {searchParams.code && decodedDeck.characterCards[0] === "undefined" ? (
+      <BuildDeckStateProvider initialDeck={{ ...decodedDeck, code }}>
+        {code && decodedDeck.characterCards[0] === "undefined" ? (
           <div className="absolute left-0 right-0 top-0 flex items-center justify-center">
             <Alert
               className="flex rounded bg-red-400 px-6 py-2 text-center text-red-800"

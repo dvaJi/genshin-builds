@@ -1,21 +1,17 @@
 import clsx from "clsx";
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import CharacterBlock from "@components/hsr/CharacterBlock";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Character, Tiers } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrId } from "@utils/helpers";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -27,14 +23,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "hsr", "tierlist");
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "hsr", "tierlist");
   const title = t({
     id: "title",
     defaultMessage: "Honkai: Star Rail Tier List",
@@ -54,7 +50,8 @@ export async function generateMetadata({
 }
 
 export default async function HSRTierlistPage({ params }: Props) {
-  const { t, langData } = await useTranslations(params.lang, "hsr", "tierlist");
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(lang, "hsr", "tierlist");
 
   const characters = await getHSRData<Character[]>({
     resource: "characters",
@@ -135,7 +132,7 @@ export default async function HSRTierlistPage({ params }: Props) {
                   return (
                     <Link
                       key={characterId}
-                      href={`/${params.lang}/hsr/character/${char.id}`}
+                      href={`/${lang}/hsr/character/${char.id}`}
                       className="mx-2"
                       prefetch={false}
                     >

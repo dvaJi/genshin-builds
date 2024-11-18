@@ -1,23 +1,15 @@
-import type { Domains } from "@interfaces/genshin";
+import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-
-import useTranslations from "@hooks/use-translations";
+import TodoLazy from "@components/genshin/TodoLazy";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
+import type { Domains } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getAllMaterialsMap } from "@utils/materials";
-import { i18n } from "i18n-config";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
-const Todo = importDynamic(() => import("@components/genshin/Todo"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -30,14 +22,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "genshin", "todo");
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "todo");
   const title = t({
     id: "title",
     defaultMessage: "Todo List",
@@ -57,7 +49,8 @@ export async function generateMetadata({
 }
 
 export default async function GenshinTodo({ params }: Props) {
-  const { t, langData } = await useTranslations(params.lang, "genshin", "todo");
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(lang, "genshin", "todo");
 
   const materialsMap = await getAllMaterialsMap(langData);
   const domains = await getGenshinData<Domains>({
@@ -90,7 +83,7 @@ export default async function GenshinTodo({ params }: Props) {
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
         {t({ id: "todo", defaultMessage: "Todo List" })}
       </h2>
-      <Todo materialsMap={materialsMap} planning={planning} days={days} />
+      <TodoLazy materialsMap={materialsMap} planning={planning} days={days} />
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}

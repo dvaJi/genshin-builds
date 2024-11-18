@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import type { Code } from "@interfaces/zenless/code";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
   const title =
     "Zenless Zone Zero (ZZZ) Redeem Codes: Latest Working & Expired Codes";
   const description =
@@ -27,7 +24,7 @@ export async function generateMetadata({
     title,
     description,
     path: `/zenless/tierlist`,
-    locale: params.lang,
+    locale: lang,
   });
 }
 

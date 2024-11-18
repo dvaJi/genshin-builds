@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Messages from "@components/hsr/Messages";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import { Messages as IMessages } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -24,26 +20,22 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, langData, locale } = await useTranslations(
-    params.lang,
-    "hsr",
-    "message"
-  );
+  const { lang, id } = await params;
+  const { t, langData, locale } = await getTranslations(lang, "hsr", "message");
 
   const messageGroup = await getHSRData<IMessages>({
     resource: "messages",
     language: langData,
-    filter: { id: params.id },
+    filter: { id },
   });
 
   if (!messageGroup) {
@@ -67,18 +59,19 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/hsr/message/${params.id}`,
+    path: `/hsr/message/${id}`,
     locale,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
-  const { t, langData } = await useTranslations(params.lang, "hsr", "message");
+  const { lang, id } = await params;
+  const { t, langData } = await getTranslations(lang, "hsr", "message");
 
   const messageGroup = await getHSRData<IMessages>({
     resource: "messages",
     language: langData,
-    filter: { id: params.id },
+    filter: { id },
   });
 
   if (!messageGroup) {
@@ -122,7 +115,7 @@ export default async function CharacterPage({ params }: Props) {
           <menu className="flex flex-col">
             {messageGroup.relatedMessages.map((message, i) => (
               <Link
-                href={`/${params.lang}/hsr/message/${message}`}
+                href={`/${lang}/hsr/message/${message}`}
                 key={message}
                 prefetch={false}
                 className={

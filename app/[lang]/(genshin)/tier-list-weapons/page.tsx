@@ -1,30 +1,28 @@
 import { TierlistWeapons } from "interfaces/tierlist";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 
 import GenshinTierlistWeaponsView from "./list";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
 export const revalidate = 86400;
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(
+    lang,
     "genshin",
     "tierlist_weapons"
   );
@@ -47,8 +45,9 @@ export async function generateMetadata({
 }
 
 export default async function GenshinTierlistWeapons({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
     "genshin",
     "tierlist_weapons"
   );

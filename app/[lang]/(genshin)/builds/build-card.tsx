@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { FaArrowDown } from "react-icons/fa6";
 
 import ElementIcon from "@components/genshin/ElementIcon";
@@ -206,10 +206,9 @@ function Artifacts({
     <div className="flex w-full flex-wrap content-start items-center justify-between gap-1">
       <div className="w-full">{messages.best_artifacts}</div>
       <div className="grid grid-cols-2 gap-1">
-        {artifacts.map((artifact) => (
-          <>
+        {artifacts.map((artifact, i) => (
+          <Fragment key={i + character + artifact[0].id}>
             <ArtifactCard
-              key={character + artifact[0].id}
               artifact={artifact[0]}
               pcs={artifact.length > 1 ? 2 : 1}
             />
@@ -220,7 +219,7 @@ function Artifacts({
                 pcs={2}
               />
             ) : null}
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

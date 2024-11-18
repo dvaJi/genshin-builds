@@ -3,6 +3,6 @@ export interface NavRoutes {
   name: string;
   href?: string;
   children?: NavRoutes[];
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   isNew?: boolean;
 }

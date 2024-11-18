@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
+
 import { SubmitUidForm } from "./submit-uid";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(params.lang, "hsr", "showcase");
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "hsr", "showcase");
   const title = t({
     id: "title",
     defaultMessage: "Honkai: Star Rail Character Showcase",
@@ -37,7 +36,8 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: Props) {
-  const { t } = await useTranslations(params.lang, "hsr", "showcase");
+  const { lang } = await params;
+  const { t } = await getTranslations(lang, "hsr", "showcase");
 
   return (
     <div className="bg-hsr-surface1 p-4 shadow-2xl">

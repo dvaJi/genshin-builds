@@ -2,18 +2,19 @@ import { AxiomWebVitals } from "next-axiom";
 
 import { PreloadResources } from "@app/preload-resources";
 
-export default function Root({
+export default async function Root({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
   return (
-    <html lang={params.lang}>
+    <html lang={lang}>
       <PreloadResources />
       <AxiomWebVitals />
-      <body>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

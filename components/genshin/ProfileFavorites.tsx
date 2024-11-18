@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 import useIntl from "@hooks/use-intl";
@@ -8,8 +9,18 @@ import { useStore } from "@nanostores/react";
 import { profilesFavAtom } from "@state/profiles-fav";
 
 function ProfileFavorites() {
+  const [isClient, setIsClient] = useState(false);
   const profilesFav = useStore(profilesFavAtom);
   const { t, locale } = useIntl("profile");
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <>
       {profilesFav.map((profile) => (

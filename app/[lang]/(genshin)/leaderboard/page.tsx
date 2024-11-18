@@ -1,20 +1,16 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 
 import LeaderboardWrapper from "./wrapper";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -25,18 +21,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "leaderboard"
-  );
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "leaderboard");
   const title = t({
     id: "title",
     defaultMessage: "Leaderboard",
@@ -55,8 +47,9 @@ export async function generateMetadata({
 }
 
 export default async function GenshinTierlistWeapons({ params }: Props) {
-  const { t, langData, locale } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, langData, locale } = await getTranslations(
+    lang,
     "genshin",
     "leaderboard"
   );
@@ -82,7 +75,7 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
       />
       <div className="py-4 text-center">
         <Link
-          href={`/${params.lang}/profile`}
+          href={`/${lang}/profile`}
           className="text-lg font-semibold hover:text-white"
           prefetch={false}
         >

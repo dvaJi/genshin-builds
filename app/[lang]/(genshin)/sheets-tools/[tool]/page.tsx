@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
 import Badge from "@components/ui/Badge";
-import useTranslations from "@hooks/use-translations";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { getData } from "@lib/localData";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 
@@ -44,27 +40,23 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     tool: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "sheets_tools"
-  );
+  const { lang, tool } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "sheets_tools");
 
   const sheets = await getData<Record<string, GenshinImpactCalculators>>(
     "genshin",
     "sheets-tools"
   );
-  const sheet = sheets[params.tool];
+  const sheet = sheets[tool];
 
   if (!sheet) {
     return;
@@ -79,18 +71,19 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/sheets-tools/${params.tool}`,
+    path: `/sheets-tools/${tool}`,
     locale,
   });
 }
 
 export default async function GenshinSheetsToolsPage({ params }: Props) {
-  const { t } = await useTranslations(params.lang, "genshin", "sheets_tools");
+  const { lang, tool } = await params;
+  const { t } = await getTranslations(lang, "genshin", "sheets_tools");
   const sheets = await getData<Record<string, GenshinImpactCalculators>>(
     "genshin",
     "sheets-tools"
   );
-  const sheet = sheets[params.tool];
+  const sheet = sheets[tool];
 
   if (!sheet) {
     return notFound();

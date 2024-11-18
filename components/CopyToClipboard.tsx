@@ -1,42 +1,54 @@
 "use client";
 
+import { type ButtonHTMLAttributes, useEffect, useState } from "react";
+
 import { useClipboard } from "@hooks/use-clipboard";
-import { useEffect, useState, type ButtonHTMLAttributes } from "react";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   content: string;
   children: React.ReactNode;
   copiedText?: string;
+  timeoutDuration?: number; // Added prop for timeout duration
 };
 
 export default function CopyToClipboard({
   content,
   children,
   copiedText = "Copied!",
+  timeoutDuration = 2000, // Default timeout
   ...props
 }: Props) {
   const { copyToClipboard } = useClipboard();
   const [copied, setCopied] = useState(false);
 
-  const handleClick = () => {
-    copyToClipboard(content);
-    setCopied(true);
+  const handleClick = async () => {
+    const success = await copyToClipboard(content);
+    if (success) {
+      setCopied(true);
+    } else {
+      // Handle copy failure if necessary
+    }
   };
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     if (copied) {
       timeout = setTimeout(() => {
         setCopied(false);
-      }, 2000);
+      }, timeoutDuration);
     }
     return () => {
       clearTimeout(timeout);
     };
-  }, [copied]);
+  }, [copied, timeoutDuration]);
 
   return (
-    <button onClick={handleClick} {...props} data-copied={copied}>
+    <button
+      onClick={handleClick}
+      {...props}
+      data-copied={copied}
+      aria-live="polite"
+    >
       {copied ? copiedText : children}
     </button>
   );

@@ -43,13 +43,14 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
-export default function TofLayout({ children, params }: Props) {
+export default async function TofLayout({ children, params }: Props) {
+  const { lang } = await params;
   return (
     <IntlProvider
-      locale={params.lang}
+      locale={lang}
       messages={
         {
           layout: {
@@ -58,7 +59,7 @@ export default function TofLayout({ children, params }: Props) {
             matrices: "Matrices",
             blog: "Blog",
           },
-          characters: {}
+          characters: {},
         } as any
       }
       game="tof"
@@ -70,7 +71,7 @@ export default function TofLayout({ children, params }: Props) {
           openSans.className
         )}
       >
-        <TOFHeader locale={params.lang} />
+        <TOFHeader locale={lang} />
         {/* TODO: need to think a way to add this back in */}
         {/* <DynamicBackground bgStyle={bgStyle} /> */}
 

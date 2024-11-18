@@ -4,25 +4,25 @@ import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import Button from "@components/ui/Button";
-import useTranslations from "@hooks/use-translations";
+import getTranslations from "@hooks/use-translations";
 import { db } from "@lib/db";
 import { players } from "@lib/db/schema";
 
 import { ProfileTable } from "./datatable";
 
 type Props = {
-  params: {
+  params: Promise<{
     lang: string;
-  };
-  searchParams: Record<string, string>;
+  }>;
+  searchParams: Promise<Record<string, string>>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(
+    lang,
     "genshin",
     "leaderboard_profiles"
   );
@@ -48,7 +48,8 @@ export default async function ProfilesAchievementsPage({
   params,
   searchParams,
 }: Props) {
-  const { page } = searchParams;
+  const { lang } = await params;
+  const { page } = await searchParams;
 
   if (page && (isNaN(Number(page)) || Number(page) < 1)) {
     return <div>Invalid page number</div>;
@@ -75,7 +76,7 @@ export default async function ProfilesAchievementsPage({
           take up to 5 minutes to update. Use in-game account UID for profile
           lookup.
         </p>
-        <Link href={`/${params.lang}/profile`} prefetch={false}>
+        <Link href={`/${lang}/profile`} prefetch={false}>
           <Button className="mt-4">Add your profile</Button>
         </Link>
       </div>

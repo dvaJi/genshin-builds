@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import ElementIcon from "@components/wuthering-waves/ElementIcon";
 import Image from "@components/wuthering-waves/Image";
 import TypeIcon from "@components/wuthering-waves/TypeIcon";
@@ -12,11 +13,6 @@ import type { Characters } from "@interfaces/wuthering-waves/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 import { rarityToString } from "@utils/rarity";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -45,20 +41,21 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang, slug } = await params;
   const character = await getWWData<Characters>({
     resource: "characters",
-    language: params.lang,
+    language: lang,
     filter: {
-      id: params.slug,
+      id: slug,
     },
   });
 
@@ -72,17 +69,18 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/wuthering-waves/characters/${params.slug}`,
-    locale: params.lang,
+    path: `/wuthering-waves/characters/${slug}`,
+    locale: lang,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
+  const { lang, slug } = await params;
   const character = await getWWData<Characters>({
     resource: "characters",
-    language: params.lang,
+    language: lang,
     filter: {
-      id: params.slug,
+      id: slug,
     },
   });
 
@@ -92,7 +90,7 @@ export default async function CharacterPage({ params }: Props) {
 
   const characters = await getWWData<Characters[]>({
     resource: "characters",
-    language: params.lang,
+    language: lang,
     select: ["id", "name", "rarity"],
   });
 
@@ -306,7 +304,7 @@ export default async function CharacterPage({ params }: Props) {
           return (
             <Link
               key={team}
-              href={`/${params.lang}/wuthering-waves/characters/${char.id}`}
+              href={`/${lang}/wuthering-waves/characters/${char.id}`}
               className="mb-6 flex flex-col items-center"
               prefetch={false}
             >

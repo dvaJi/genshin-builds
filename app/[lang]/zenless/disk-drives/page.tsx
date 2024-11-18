@@ -1,17 +1,13 @@
 import { i18n } from "i18n-config";
 import { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
 import type { DiskDrives } from "@interfaces/zenless/diskDrives";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 43200;
@@ -23,9 +19,9 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     lang: string;
-  };
+  }>;
 };
 
 export const metadata: Metadata = {
@@ -34,9 +30,10 @@ export const metadata: Metadata = {
 };
 
 export default async function DiskDrivesPage({ params }: Props) {
+  const { lang } = await params;
   const data = await getZenlessData<DiskDrives[]>({
     resource: "disk-drives",
-    language: params.lang,
+    language: lang,
     select: ["id", "name", "icon"],
   });
   return (
@@ -56,7 +53,7 @@ export default async function DiskDrivesPage({ params }: Props) {
         {data?.map((item) => (
           <Link
             key={item.name}
-            href={`/${params.lang}/zenless/disk-drives/${item.id}`}
+            href={`/${lang}/zenless/disk-drives/${item.id}`}
             className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
             prefetch={false}
           >

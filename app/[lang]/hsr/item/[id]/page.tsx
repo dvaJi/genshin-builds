@@ -1,21 +1,17 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Stars from "@components/hsr/Stars";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import { Items } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -26,27 +22,23 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, langData, locale } = await useTranslations(
-    params.lang,
-    "hsr",
-    "item"
-  );
+  const { lang, id } = await params;
+  const { t, langData, locale } = await getTranslations(lang, "hsr", "item");
 
   const item = await getHSRData<Items>({
     resource: "items",
     language: langData,
     select: ["id", "name", "type"],
-    filter: { id: params.id },
+    filter: { id },
   });
 
   if (!item) {
@@ -70,19 +62,20 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/hsr/item/${params.id}`,
+    path: `/hsr/item/${id}`,
     locale,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
-  const { t, langData } = await useTranslations(params.lang, "hsr", "item");
+  const { lang, id } = await params;
+  const { t, langData } = await getTranslations(lang, "hsr", "item");
 
   const item = await getHSRData<Items>({
     resource: "items",
     language: langData,
     select: ["id", "name", "type"],
-    filter: { id: params.id },
+    filter: { id },
   });
 
   if (!item) {
@@ -174,7 +167,7 @@ export default async function CharacterPage({ params }: Props) {
                       {r.materialCost.map((m) => (
                         <Link
                           key={m.id}
-                          href={`/${params.lang}/hsr/item/${m.id}`}
+                          href={`/${lang}/hsr/item/${m.id}`}
                           className="relative flex h-16 w-16 flex-row justify-center"
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}
@@ -206,7 +199,7 @@ export default async function CharacterPage({ params }: Props) {
                       {r.specialMaterialCost.map((m) => (
                         <Link
                           key={m.id}
-                          href={`/${params.lang}/hsr/item/${m.id}`}
+                          href={`/${lang}/hsr/item/${m.id}`}
                           className="relative flex h-16 w-16 flex-row justify-center"
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}

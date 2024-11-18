@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import useTranslations from "@hooks/use-translations";
+import getTranslations from "@hooks/use-translations";
 import { getUrl } from "@lib/imgUrl";
 
 export default async function Shortcuts({ lang }: { lang: string }) {
-  const { t } = await useTranslations(lang, "genshin", "layout");
+  const { t } = await getTranslations(lang, "genshin", "layout");
 
   const routes = [
     {

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
 import Button from "@components/ui/Button";
-import useTranslations from "@hooks/use-translations";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type {
   TCGActionCard,
   TCGCard,
@@ -16,26 +17,17 @@ import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { decodeDeckCode } from "@utils/gcg-share-code";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 export const dynamic = "force-dynamic";
 
 type Props = {
-  params: { lang: string; code: string };
+  params: Promise<{ lang: string; code: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "tcg_cards"
-  );
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "tcg_cards");
   const title = t({
     id: "title",
     defaultMessage: "Genius Invokation TCG Card Game",
@@ -55,11 +47,8 @@ export async function generateMetadata({
 }
 
 export default async function GenshinTCG({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
-    "genshin",
-    "tcg_cards"
-  );
+  const { lang, code } = await params;
+  const { t, langData } = await getTranslations(lang, "genshin", "tcg_cards");
 
   const acards = await getGenshinData<TCGActionCard[]>({
     resource: "tcgActions",
@@ -88,7 +77,7 @@ export default async function GenshinTCG({ params }: Props) {
   );
 
   const decodedDeck = decodeDeckCode(
-    decodeURIComponent(params.code),
+    decodeURIComponent(code),
     CARD_BY_ENCODE_ID
   );
 
@@ -105,10 +94,7 @@ export default async function GenshinTCG({ params }: Props) {
           .map((card) => cardsMapById[card].name)
           .join(" / ")}
       </h2>
-      <Link
-        href={`/${params.lang}/tcg/deck-builder?code=${params.code}`}
-        prefetch={false}
-      >
+      <Link href={`/${lang}/tcg/deck-builder?code=${code}`} prefetch={false}>
         <Button>Edit</Button>
       </Link>
       <div className="card flex flex-wrap content-center justify-center">
@@ -116,7 +102,7 @@ export default async function GenshinTCG({ params }: Props) {
           {decodedDeck.characterCards.map((card) => (
             <Link
               key={card}
-              href={`/${params.lang}/tcg/card/${card}`}
+              href={`/${lang}/tcg/card/${card}`}
               className="group relative cursor-pointer transition-all"
               prefetch={false}
             >
@@ -138,7 +124,7 @@ export default async function GenshinTCG({ params }: Props) {
           {Object.entries(decodedDeck.actionCards).map(([card, amount]) => (
             <Link
               key={card}
-              href={`/${params.lang}/tcg/card/${card}`}
+              href={`/${lang}/tcg/card/${card}`}
               className="group relative m-2 w-20 cursor-pointer transition-all hover:scale-110"
               prefetch={false}
             >

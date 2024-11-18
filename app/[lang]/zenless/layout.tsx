@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
+import { RiPatreonFill } from "react-icons/ri";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
@@ -12,7 +13,6 @@ import { GA_TRACKING_ID } from "@lib/gtag";
 import "../../../styles/globals.css";
 import "./globals.css";
 import ZenlessHeader from "./header";
-import { RiPatreonFill } from "react-icons/ri";
 
 const nunito = Nunito({
   weight: ["400", "600", "700"],
@@ -57,14 +57,15 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
-export default function ZenlessLayout({ children, params }: Props) {
+export default async function ZenlessLayout({ children, params }: Props) {
+  const { lang } = await params;
   return (
     <IntlProvider
       game="zenless"
-      locale={params.lang}
+      locale={lang}
       messages={
         {
           layout: {
@@ -85,7 +86,7 @@ export default function ZenlessLayout({ children, params }: Props) {
           nunito.className
         )}
       >
-        <ZenlessHeader locale={params.lang} />
+        <ZenlessHeader locale={lang} />
 
         <div className="news-detail py-4 text-zinc-100 lg:min-h-[600px] lg:px-20 xl:min-h-[750px]">
           <div className="container mx-auto">{children}</div>

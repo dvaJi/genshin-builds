@@ -1,23 +1,19 @@
 import clsx from "clsx";
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
 import type { Echoes } from "@interfaces/wuthering-waves/echoes";
 import type { TierlistEchoes } from "@interfaces/wuthering-waves/tierlist-echoes";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export const dynamic = "force-static";
@@ -29,6 +25,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
   const title =
     "Best Wuthering Waves (WuWa) Echoes Tierlist - Ultimate Ranking Guide";
   const description =
@@ -38,14 +35,15 @@ export async function generateMetadata({
     title,
     description,
     path: `/wuthering-waves/tierlist/echoes`,
-    locale: params.lang,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
+  const { lang } = await params;
   const tierlist = await getWWData<TierlistEchoes>({
     resource: "tierlist",
-    language: params.lang,
+    language: lang,
     filter: {
       id: "echoes",
     },
@@ -53,7 +51,7 @@ export default async function Page({ params }: Props) {
 
   const echoes = await getWWData<Record<string, Echoes>>({
     resource: "echoes",
-    language: params.lang,
+    language: lang,
     select: ["id", "name", "rarity"],
     asMap: true,
   });
@@ -104,7 +102,7 @@ export default async function Page({ params }: Props) {
                 >
                   {echoes?.[char] ? (
                     <Link
-                      href={`/${params.lang}/wuthering-waves/echoes/${char.replace("é", "e")}`}
+                      href={`/${lang}/wuthering-waves/echoes/${char.replace("é", "e")}`}
                       className="flex flex-col items-center justify-center gap-2"
                       prefetch={false}
                     >

@@ -1,31 +1,28 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
 import type { Characters } from "@interfaces/zenless/characters";
 import type { Tiers } from "@interfaces/zenless/tierlist";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string };
-  searchParams?: {
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<{
     type?: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
   const title =
     "Best Zenless Zone Zero (ZZZ) Characters Tierlist - Ultimate Ranking Guide";
   const description =
@@ -35,12 +32,14 @@ export async function generateMetadata({
     title,
     description,
     path: `/zenless/tierlist`,
-    locale: params.lang,
+    locale: lang,
   });
 }
 
 export default async function Page({ params, searchParams }: Props) {
-  const table = searchParams?.type ?? "overall";
+  const { lang } = await params;
+  const { type } = await searchParams;
+  const table = type ?? "overall";
   const tierlist = await getZenlessData<Tiers>({
     resource: "tierlist",
     filter: {
@@ -60,7 +59,7 @@ export default async function Page({ params, searchParams }: Props) {
 
   const characters = await getZenlessData<Record<string, Characters>>({
     resource: "characters",
-    language: params.lang,
+    language: lang,
     select: ["id", "name", "rarity"],
     asMap: true,
   });
@@ -88,7 +87,7 @@ export default async function Page({ params, searchParams }: Props) {
       </div>
       <div className="relative z-20 mx-2 my-4 flex gap-4 md:mx-0">
         <Link
-          href={`/${params.lang}/zenless/tierlist`}
+          href={`/${lang}/zenless/tierlist`}
           className={clsx(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "overall" ? "bg-neutral-600 text-white" : "bg-neutral-900"
@@ -97,7 +96,7 @@ export default async function Page({ params, searchParams }: Props) {
           Overall
         </Link>
         <Link
-          href={`/${params.lang}/zenless/tierlist?type=dps`}
+          href={`/${lang}/zenless/tierlist?type=dps`}
           className={clsx(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "dps" ? "bg-neutral-600 text-white" : "bg-neutral-900"
@@ -106,7 +105,7 @@ export default async function Page({ params, searchParams }: Props) {
           DPS
         </Link>
         <Link
-          href={`/${params.lang}/zenless/tierlist?type=debuffer`}
+          href={`/${lang}/zenless/tierlist?type=debuffer`}
           className={clsx(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "debuffer"
@@ -117,7 +116,7 @@ export default async function Page({ params, searchParams }: Props) {
           Debuffer
         </Link>
         <Link
-          href={`/${params.lang}/zenless/tierlist?type=supporter`}
+          href={`/${lang}/zenless/tierlist?type=supporter`}
           className={clsx(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "supporter"
@@ -155,7 +154,7 @@ export default async function Page({ params, searchParams }: Props) {
                   >
                     {characters?.[char] ? (
                       <Link
-                        href={`/${params.lang}/zenless/characters/${char}`}
+                        href={`/${lang}/zenless/characters/${char}`}
                         className="flex flex-col items-center justify-center gap-2"
                         prefetch={false}
                       >

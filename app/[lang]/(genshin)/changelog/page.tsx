@@ -1,9 +1,10 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type {
   Artifact,
   Changelog,
@@ -18,11 +19,6 @@ import { getAllMaterialsMap } from "@utils/materials";
 
 import ChangelogVersion from "./view";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
@@ -34,18 +30,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "changelog"
-  );
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "changelog");
   const changelog = await getGenshinData<Changelog[]>({
     resource: "changelog",
     language: locale,
@@ -74,11 +66,8 @@ export async function generateMetadata({
 }
 
 export default async function GenshinBannerWeapons({ params }: Props) {
-  const { langData } = await useTranslations(
-    params.lang,
-    "genshin",
-    "changelog"
-  );
+  const { lang } = await params;
+  const { langData } = await getTranslations(lang, "genshin", "changelog");
 
   const characters = await getGenshinData<Record<string, Character>>({
     resource: "characters",
@@ -173,7 +162,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
         materialsMap={materialsMap}
         tcgMap={tcgMap}
         weaponsMap={weaponsMap}
-        locale={params.lang}
+        locale={lang}
       />
     </div>
   );

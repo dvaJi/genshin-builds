@@ -1,14 +1,17 @@
 import { Profile } from "interfaces/profile";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { submitGenshinUID } from "@app/actions";
 import { genPageMetadata } from "@app/seo";
 import DynamicBackground from "@components/DynamicBackground";
+import TimeAgo from "@components/TimeAgo";
 import ProfileArtifactsTable from "@components/genshin/ProfileArtifactsTable";
 import ProfileBuildsTable from "@components/genshin/ProfileBuildsTable";
-import useTranslations from "@hooks/use-translations";
+import ProfileFavorites from "@components/genshin/ProfileFavorites";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getBuild, getPlayer } from "@lib/genshinShowcase";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
@@ -16,31 +19,16 @@ import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { FavoriteGenshinProfile } from "./favorite";
 import { SyncGenshinProfile } from "./sync";
 
-const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
-
-const ProfileFavorites = dynamic(
-  () => import("@components/genshin/ProfileFavorites"),
-  { ssr: false }
-);
-const TimeAgo = dynamic(() => import("@components/TimeAgo"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string; uid: string };
+  params: Promise<{ lang: string; uid: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "profile"
-  );
-  const player = await getPlayer(params.uid);
+  const { lang, uid } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "profile");
+  const player = await getPlayer(uid);
 
   if (!player) return undefined;
 
@@ -58,40 +46,41 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/profile/${params.uid}`,
+    path: `/profile/${uid}`,
     image: getUrl(`/profile/${player.namecardId}_1.png`),
     locale,
   });
 }
 
 export default async function GenshinPlayerProfile({ params }: Props) {
-  const { t, langData, locale } = await useTranslations(
-    params.lang,
+  const { lang, uid } = await params;
+  const { t, langData, locale } = await getTranslations(
+    lang,
     "genshin",
     "profile"
   );
 
-  if (!params.uid || !/^\d{6,10}$/.test(params.uid.toString())) {
-    console.log("Invalid UID", params.uid);
+  if (!uid || !/^\d{6,10}$/.test(uid.toString())) {
+    console.log("Invalid UID", uid);
     return notFound();
   }
 
-  const player = await getPlayer(params.uid);
+  const player = await getPlayer(uid);
 
   if (!player) {
-    console.log("Player not found", params.uid);
+    console.log("Player not found", uid);
     const formdata = new FormData();
-    formdata.append("uid", params.uid);
+    formdata.append("uid", uid);
     const submitRes = await submitGenshinUID({}, formdata);
     if (submitRes.message !== "Success") {
       return notFound();
     }
   }
 
-  const res = await getBuild(langData, params.uid);
+  const res = await getBuild(langData, uid);
 
   if (res.code !== 200 || !res.data) {
-    console.log("Build not found", params.uid);
+    console.log("Build not found", uid);
     return notFound();
   }
 
@@ -142,7 +131,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
                 {t({
                   id: "uuid",
                   defaultMessage: "UUID: {uuid}",
-                  values: { uuid: params.uid },
+                  values: { uuid: uid },
                 })}
                 <span className="ml-2 inline-block">
                   | <TimeAgo date={profile.updatedAt} locale={locale} />
@@ -169,7 +158,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
             >
               AR{profile.level}
             </div>
-            <SyncGenshinProfile lang={params.lang} uid={params.uid} />
+            <SyncGenshinProfile lang={lang} uid={uid} />
             <FavoriteGenshinProfile profile={profile} />
           </div>
         </div>

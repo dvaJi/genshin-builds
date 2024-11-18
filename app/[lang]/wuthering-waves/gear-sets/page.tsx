@@ -1,20 +1,16 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
 import type { GearSets } from "@interfaces/wuthering-waves/gear-sets";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export const dynamic = "force-static";
@@ -26,6 +22,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
   const title = "Wuthering Waves (WuWa) Gear Sets List";
   const description =
     "A complete list of all Gear Sets and their bonuses in Wuthering Waves (WuWa). This page offer most updated Gear Sets information.";
@@ -34,14 +31,15 @@ export async function generateMetadata({
     title,
     description,
     path: `/wuthering-waves/gear-sets`,
-    locale: params.lang,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
+  const { lang } = await params;
   const data = await getWWData<GearSets[]>({
     resource: "gears",
-    language: params.lang,
+    language: lang,
     select: ["id", "name", "bonus"],
   });
 

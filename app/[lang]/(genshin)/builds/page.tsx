@@ -1,9 +1,10 @@
 import type { Build } from "interfaces/build";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
-import dynamicImport from "next/dynamic";
 
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
@@ -16,15 +17,10 @@ import ElementsFilter from "./elements-filter";
 import List from "./list";
 import Search from "./search";
 
-const Ads = dynamicImport(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamicImport(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 interface Props {
-  params: {
+  params: Promise<{
     lang: string;
-  };
+  }>;
 }
 
 export const dynamic = "force-static";
@@ -45,7 +41,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  const { t, locale } = await getTranslations(params.lang, "genshin", "builds");
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "builds");
 
   const title = t("title");
   const description = t("description");
@@ -59,8 +56,9 @@ export async function generateMetadata({
 }
 
 export default async function GenshinCharacterPage({ params }: Props) {
+  const { lang } = await params;
   const { t, langData, locale, common, dict } = await getTranslations(
-    params.lang,
+    lang,
     "genshin",
     "builds"
   );

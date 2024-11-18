@@ -1,8 +1,9 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
 import type { Bangboos } from "@interfaces/zenless/bangboos";
 import type { Builds } from "@interfaces/zenless/build";
@@ -17,11 +18,6 @@ import BuildsComponent from "./builds";
 import Skill from "./skill";
 import SkillPriority from "./skill-priority";
 import TeamsComponent from "./teams";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 43200;
@@ -48,17 +44,23 @@ export async function generateStaticParams() {
   return routes;
 }
 
+type Props = {
+  params: Promise<{
+    lang: string;
+    slug: string[];
+  }>;
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: { lang: string; slug: string[] };
-}): Promise<Metadata | undefined> {
-  const slug = decodeURI(params.slug.join("/"));
+}: Props): Promise<Metadata | undefined> {
+  const { lang, slug } = await params;
+  const _slug = decodeURI(slug.join("/"));
 
   const character = await getZenlessData<Characters>({
     resource: "characters",
-    language: params.lang,
-    filter: { id: slug },
+    language: lang,
+    filter: { id: _slug },
   });
 
   if (!character) {
@@ -78,7 +80,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime: `${publishedTime}`,
-      url: `https://genshin-builds.com/zenless/characters/${slug}`,
+      url: `https://genshin-builds.com/zenless/characters/${_slug}`,
       images: [
         {
           url: image,
@@ -94,15 +96,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function CharactersPage({
-  params,
-}: {
-  params: { lang: string; slug: string[] };
-}) {
-  const slug = decodeURI(params.slug.join("/"));
+export default async function CharactersPage({ params }: Props) {
+  const { lang, slug: _slug } = await params;
+  const slug = decodeURI(_slug.join("/"));
   const character = await getZenlessData<Characters>({
     resource: "characters",
-    language: params.lang,
+    language: lang,
     filter: { id: slug },
   });
 
@@ -118,7 +117,7 @@ export default async function CharactersPage({
   const wEnginesMap =
     (await getZenlessData<Record<string, WEngines>>({
       resource: "w-engines",
-      language: params.lang,
+      language: lang,
       select: ["id", "name", "icon", "rarity"],
       asMap: true,
     })) ?? {};
@@ -126,7 +125,7 @@ export default async function CharactersPage({
   const diskDrivesMap =
     (await getZenlessData<Record<string, DiskDrives>>({
       resource: "disk-drives",
-      language: params.lang,
+      language: lang,
       select: ["id", "name", "icon"],
       asMap: true,
     })) ?? {};
@@ -134,7 +133,7 @@ export default async function CharactersPage({
   const charactersMap =
     (await getZenlessData<Record<string, Characters>>({
       resource: "characters",
-      language: params.lang,
+      language: lang,
       select: ["id", "name"],
       asMap: true,
     })) ?? {};
@@ -142,7 +141,7 @@ export default async function CharactersPage({
   const bangboosMap =
     (await getZenlessData<Record<string, Bangboos>>({
       resource: "bangboos",
-      language: params.lang,
+      language: lang,
       select: ["id", "name", "icon"],
       asMap: true,
     })) ?? {};
@@ -150,7 +149,7 @@ export default async function CharactersPage({
   const commons =
     (await getZenlessData<Commons>({
       resource: "commons",
-      filter: { id: params.lang },
+      filter: { id: lang },
     })) ?? ({} as Commons);
 
   return (
@@ -197,7 +196,7 @@ export default async function CharactersPage({
       {build ? (
         <>
           <BuildsComponent
-            lang={params.lang}
+            lang={lang}
             characterName={character.fullname}
             builds={build.builds}
             commons={commons}
@@ -209,7 +208,7 @@ export default async function CharactersPage({
             classList={["flex", "justify-center"]}
           />
           <TeamsComponent
-            lang={params.lang}
+            lang={lang}
             characterName={character.fullname}
             teams={build.teams}
             charactersMap={charactersMap}

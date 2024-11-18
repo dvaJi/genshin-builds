@@ -3,7 +3,6 @@ import { Build, type CharBuild, MostUsedBuild } from "interfaces/build";
 import { Beta } from "interfaces/genshin/beta";
 import { TeamData, type Teams } from "interfaces/teams";
 import type { Metadata } from "next";
-import dynamicImport from "next/dynamic";
 import { notFound } from "next/navigation";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
@@ -19,6 +18,8 @@ import CharacterTalentMaterials from "@components/genshin/CharacterTalentMateria
 import CharacterTeam from "@components/genshin/CharacterTeam";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Image from "@components/genshin/Image";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
@@ -33,16 +34,11 @@ import {
   calculateTotalTalentMaterials,
 } from "@utils/totals";
 
-const Ads = dynamicImport(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = dynamicImport(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
     lang: string;
-  };
+  }>;
 }
 
 export const dynamic = "force-static";
@@ -78,8 +74,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang, id } = await params;
   const { t, langData, locale } = await getTranslations(
-    params.lang,
+    lang,
     "genshin",
     "character"
   );
@@ -89,11 +86,11 @@ export async function generateMetadata({
     resource: "characters",
     language: langData as any,
     filter: {
-      id: params.id,
+      id,
     },
   });
   const _betaCharacter = beta[locale]?.characters?.find(
-    (c: any) => c.id === params.id
+    (c: any) => c.id === id
   );
 
   const character = _character || _betaCharacter;
@@ -117,15 +114,16 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/character/${params.id}`,
+    path: `/character/${id}`,
     image: getUrl(`/characters/${character.id}/image.png`),
     locale,
   });
 }
 
 export default async function GenshinCharacterPage({ params }: Props) {
+  const { lang, id } = await params;
   const { t, langData, locale, common, dict } = await getTranslations(
-    params.lang,
+    lang,
     "genshin",
     "character"
   );
@@ -136,12 +134,12 @@ export default async function GenshinCharacterPage({ params }: Props) {
       resource: "characters",
       language: langData as any,
       filter: {
-        id: params.id,
+        id,
       },
     }),
   ]);
   const _betaCharacter = beta[locale]?.characters?.find(
-    (c: any) => c.id === params.id
+    (c: any) => c.id === id
   );
 
   const character:
@@ -160,21 +158,21 @@ export default async function GenshinCharacterPage({ params }: Props) {
         resource: "builds",
         language: langData as any,
         filter: {
-          id: params.id,
+          id,
         },
       }),
       getGenshinData<MostUsedBuild>({
         resource: "mostUsedBuilds",
         language: langData as any,
         filter: {
-          id: params.id,
+          id,
         },
       }),
       getGenshinData<Teams>({
         resource: "teams",
         language: langData,
         filter: {
-          id: params.id,
+          id,
         },
       }),
       getGenshinData<Character[]>({
@@ -271,7 +269,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Genshin Impact",
-        item: `https://genshin-builds.com/${params.lang}/`,
+        item: `https://genshin-builds.com/${lang}/`,
       },
       {
         "@type": "ListItem",
@@ -280,13 +278,13 @@ export default async function GenshinCharacterPage({ params }: Props) {
           id: "characters",
           defaultMessage: "Characters",
         }),
-        item: `https://genshin-builds.com/${params.lang}/characters`,
+        item: `https://genshin-builds.com/${lang}/characters`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: character.name,
-        item: `https://genshin-builds.com/${params.lang}/character/${character.id}`,
+        item: `https://genshin-builds.com/${lang}/character/${character.id}`,
       },
     ],
   };

@@ -1,27 +1,28 @@
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
-import Footer from "./footer";
-import Header from "./header";
-
-import useTranslations from "@hooks/use-translations";
+import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
 import "../../../styles/globals.css";
+import Footer from "./footer";
+import Header from "./header";
 
 type Props = {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export default async function GenshinLayout({ children, params }: Props) {
-  const { messages, common } = await useTranslations(
-    params.lang,
-    "genshin",
-    "layout"
-  );
+  const { lang } = await params;
+  const { messages, common } = await getTranslations(lang, "genshin", "layout");
 
   return (
-    <IntlProvider locale={params.lang} messages={messages} common={common} game="genshin">
+    <IntlProvider
+      locale={lang}
+      messages={messages}
+      common={common}
+      game="genshin"
+    >
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <div className="flex min-h-screen flex-col bg-vulcan-900">
         <Header />

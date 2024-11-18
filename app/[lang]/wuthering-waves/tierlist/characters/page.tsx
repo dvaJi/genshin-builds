@@ -1,32 +1,28 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 
-// import { redirect } from "next/navigation";
 import { genPageMetadata } from "@app/seo";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
 import { Characters } from "@interfaces/wuthering-waves/characters";
 import type { TierlistCharacters } from "@interfaces/wuthering-waves/tierlist-characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
-
 type Props = {
-  params: { lang: string };
-  searchParams?: {
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<{
     type?: string;
-  };
+  }>;
 };
 const tables = ["overall", "mainDPS", "subDPS", "support"] as const;
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
   const title =
     "Best Wuthering Waves (WuWa) Characters Tierlist - Ultimate Ranking Guide";
   const description =
@@ -36,14 +32,15 @@ export async function generateMetadata({
     title,
     description,
     path: `/wuthering-waves/tierlist/characters`,
-    locale: params.lang,
+    locale: lang,
   });
 }
 
 export default async function Page({ params, searchParams }: Props) {
+  const { lang } = await params;
   const tierlist = await getWWData<TierlistCharacters>({
     resource: "tierlist",
-    language: params.lang,
+    language: lang,
     filter: {
       id: "characters",
     },
@@ -51,12 +48,13 @@ export default async function Page({ params, searchParams }: Props) {
 
   const characters = await getWWData<Record<string, Characters>>({
     resource: "characters",
-    language: params.lang,
+    language: lang,
     select: ["id", "name", "rarity"],
     asMap: true,
   });
 
-  const table = searchParams?.type ?? "overall";
+  const { type } = await searchParams;
+  const table = type ?? "overall";
 
   // if (!tables.includes(table as any)) {
   //   return redirect(`/wuthering-waves/tierlist/characters`);
@@ -85,7 +83,7 @@ export default async function Page({ params, searchParams }: Props) {
       </div>
       <div className="mx-2 my-4 flex gap-4 md:mx-0">
         <Link
-          href={`/${params.lang}/wuthering-waves/tierlist/characters`}
+          href={`/${lang}/wuthering-waves/tierlist/characters`}
           className={clsx(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "overall" ? "bg-ww-900 text-white" : "bg-ww-950"
@@ -94,7 +92,7 @@ export default async function Page({ params, searchParams }: Props) {
           Overall
         </Link>
         <Link
-          href={`/${params.lang}/wuthering-waves/tierlist/characters?type=mainDPS`}
+          href={`/${lang}/wuthering-waves/tierlist/characters?type=mainDPS`}
           className={clsx(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "mainDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
@@ -103,7 +101,7 @@ export default async function Page({ params, searchParams }: Props) {
           Main DPS
         </Link>
         <Link
-          href={`/${params.lang}/wuthering-waves/tierlist/characters?type=subDPS`}
+          href={`/${lang}/wuthering-waves/tierlist/characters?type=subDPS`}
           className={clsx(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "subDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
@@ -112,7 +110,7 @@ export default async function Page({ params, searchParams }: Props) {
           Sub DPS
         </Link>
         <Link
-          href={`/${params.lang}/wuthering-waves/tierlist/characters?type=support`}
+          href={`/${lang}/wuthering-waves/tierlist/characters?type=support`}
           className={clsx(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "support" ? "bg-ww-900 text-white" : "bg-ww-950"
@@ -146,7 +144,7 @@ export default async function Page({ params, searchParams }: Props) {
                 >
                   {characters?.[char] ? (
                     <Link
-                      href={`/${params.lang}/wuthering-waves/characters/${char}`}
+                      href={`/${lang}/wuthering-waves/characters/${char}`}
                       className="flex flex-col items-center justify-center gap-2"
                       prefetch={false}
                     >

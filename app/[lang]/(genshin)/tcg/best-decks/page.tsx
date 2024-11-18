@@ -1,22 +1,18 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import CopyToClipboard from "@components/CopyToClipboard";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { TCGCard } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { encodeDeckCode } from "@utils/gcg-share-code";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -28,18 +24,14 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale } = await useTranslations(
-    params.lang,
-    "genshin",
-    "tcg_decks"
-  );
+  const { lang } = await params;
+  const { t, locale } = await getTranslations(lang, "genshin", "tcg_decks");
   const title = t({
     id: "title",
     defaultMessage: "Genius Invokation TCG Card Game",
@@ -59,11 +51,8 @@ export async function generateMetadata({
 }
 
 export default async function GenshinBestDecks({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
-    "genshin",
-    "tcg_decks"
-  );
+  const { lang } = await params;
+  const { t, langData } = await getTranslations(lang, "genshin", "tcg_decks");
 
   const _bestDecks = await getGenshinData<
     Record<
@@ -145,7 +134,7 @@ export default async function GenshinBestDecks({ params }: Props) {
             >
               <div className="flex justify-between">
                 <Link
-                  href={`/${params.lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
+                  href={`/${lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
                   className="mb-4 cursor-pointer text-xl font-semibold text-zinc-200 transition-all hover:text-white"
                   prefetch={false}
                 >
@@ -162,7 +151,7 @@ export default async function GenshinBestDecks({ params }: Props) {
               <div className="relative flex flex-wrap content-center justify-center py-3">
                 <div className="absolute right-0 top-0 z-20 h-full w-full bg-vulcan-800/50 opacity-0 backdrop-blur transition-all group-hover/card:opacity-100">
                   <Link
-                    href={`/${params.lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
+                    href={`/${lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
                     prefetch={false}
                   >
                     <div className="flex h-full items-center justify-center text-lg font-semibold text-zinc-300 transition-all hover:text-white">

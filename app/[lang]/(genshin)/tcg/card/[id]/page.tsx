@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Image from "@components/genshin/Image";
+import Ads from "@components/ui/Ads";
 import Badge from "@components/ui/Badge";
-import useTranslations from "@hooks/use-translations";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { TCGCard } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -26,22 +22,22 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { lang: string; id: string };
+  params: Promise<{ lang: string; id: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, locale, langData } = await useTranslations(
-    params.lang,
+  const { lang, id } = await params;
+  const { t, locale, langData } = await getTranslations(
+    lang,
     "genshin",
     "tcg_card"
   );
   const card = await getGenshinData<TCGCard>({
     resource: "tcgCards",
     language: langData,
-    filter: { id: params.id },
+    filter: { id },
   });
 
   if (!card) return undefined;
@@ -56,23 +52,20 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/tcg/card/${params.id}`,
-    image: getUrl(`/tcg/${params.id}.png`, 160, 160),
+    path: `/tcg/card/${id}`,
+    image: getUrl(`/tcg/${id}.png`, 160, 160),
     locale,
   });
 }
 
 export default async function GenshinCard({ params }: Props) {
-  const { t, langData } = await useTranslations(
-    params.lang,
-    "genshin",
-    "tcg_card"
-  );
+  const { lang, id } = await params;
+  const { t, langData } = await getTranslations(lang, "genshin", "tcg_card");
 
   const card = await getGenshinData<TCGCard>({
     resource: "tcgCards",
     language: langData,
-    filter: { id: params.id },
+    filter: { id },
   });
 
   if (!card) {
@@ -87,7 +80,7 @@ export default async function GenshinCard({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <Link
-        href={`/${params.lang}/tcg`}
+        href={`/${lang}/tcg`}
         className="mt-4 p-4 hover:text-slate-200"
         prefetch={false}
       >
@@ -169,7 +162,7 @@ export default async function GenshinCard({ params }: Props) {
                 <p dangerouslySetInnerHTML={{ __html: skill.desc }} />
               </div>
               {skill?.points?.length > 0 && (
-                <div className="flex h-full flex-col content-center items-center justify-center flex-shrink-0">
+                <div className="flex h-full flex-shrink-0 flex-col content-center items-center justify-center">
                   {skill.points.map((point) => (
                     <div key={point.id} className="flex whitespace-nowrap">
                       <span className="text-lg">{point.count}</span>

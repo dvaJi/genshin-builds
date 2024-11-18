@@ -1,20 +1,16 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Image from "@components/tof/Image";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
 import type { Matrices } from "@interfaces/tof/matrices";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
 import { slugify2 } from "@utils/hash";
 import { getRarityColor, rarityToString } from "@utils/rarity";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -25,18 +21,19 @@ export function generateStaticParams() {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
+  const { lang, slug } = await params;
   const data = await getRemoteData<Matrices[]>("tof", "matrices");
 
-  const matrix = data.find((m) => slugify2(m.name) === params.slug);
+  const matrix = data.find((m) => slugify2(m.name) === slug);
 
   if (!matrix) {
     return;
@@ -48,15 +45,16 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/tof/matrices/${params.slug}`,
-    locale: params.lang,
+    path: `/tof/matrices/${slug}`,
+    locale: lang,
   });
 }
 
 export default async function MatrixPage({ params }: Props) {
+  const { slug } = await params;
   const data = await getRemoteData<Matrices[]>("tof", "matrices");
 
-  const matrix = data.find((m) => slugify2(m.name) === params.slug);
+  const matrix = data.find((m) => slugify2(m.name) === slug);
 
   if (!matrix) {
     return notFound();

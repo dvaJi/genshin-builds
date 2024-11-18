@@ -2,14 +2,15 @@ import clsx from "clsx";
 import type { MostUsedBuild } from "interfaces/build";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
-import importDynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
 import { genPageMetadata } from "@app/seo";
 import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
-import useTranslations from "@hooks/use-translations";
+import Ads from "@components/ui/Ads";
+import FrstAds from "@components/ui/FrstAds";
+import getTranslations from "@hooks/use-translations";
 import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -18,11 +19,6 @@ import { getData } from "@lib/localData";
 import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
 
 import WeaponStats from "./stats";
-
-const Ads = importDynamic(() => import("@components/ui/Ads"), { ssr: false });
-const FrstAds = importDynamic(() => import("@components/ui/FrstAds"), {
-  ssr: false,
-});
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -33,18 +29,18 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
     lang: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t, langData, locale } = await useTranslations(
-    params.lang,
+  const { lang, id } = await params;
+  const { t, langData, locale } = await getTranslations(
+    lang,
     "genshin",
     "weapon"
   );
@@ -52,12 +48,10 @@ export async function generateMetadata({
   const _weapon = await getGenshinData<Weapon>({
     resource: "weapons",
     language: langData,
-    filter: { id: params.id },
+    filter: { id },
   });
   const beta = await getData<Beta>("genshin", "beta");
-  const _betaWeapon = beta[locale]?.weapons?.find(
-    (c: any) => c.id === params.id
-  );
+  const _betaWeapon = beta[locale]?.weapons?.find((c: any) => c.id === id);
 
   const weapon = _weapon || _betaWeapon;
 
@@ -75,27 +69,26 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/weapon/${params.id}`,
+    path: `/weapon/${id}`,
     image: getUrl(`/weapons/${weapon.id}.png`),
     locale,
   });
 }
 
 export default async function GenshinWeaponPage({ params }: Props) {
-  const { t, langData, locale } = await useTranslations(
-    params.lang,
+  const { lang, id } = await params;
+  const { t, langData, locale } = await getTranslations(
+    lang,
     "genshin",
     "weapon"
   );
   const _weapon = await getGenshinData<Weapon>({
     resource: "weapons",
     language: langData,
-    filter: { id: params.id },
+    filter: { id },
   });
   const beta = await getData<Beta>("genshin", "beta");
-  const _betaWeapon = beta[locale]?.weapons?.find(
-    (c: any) => c.id === params.id
-  );
+  const _betaWeapon = beta[locale]?.weapons?.find((c: any) => c.id === id);
 
   const weapon:
     | (Weapon & {
@@ -129,7 +122,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Genshin Impact",
-        item: `https://genshin-builds.com/${params.lang}/`,
+        item: `https://genshin-builds.com/${lang}/`,
       },
       {
         "@type": "ListItem",
@@ -138,13 +131,13 @@ export default async function GenshinWeaponPage({ params }: Props) {
           id: "weapons",
           defaultMessage: "weapons",
         }),
-        item: `https://genshin-builds.com/${params.lang}/weapons`,
+        item: `https://genshin-builds.com/${lang}/weapons`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: weapon.name,
-        item: `https://genshin-builds.com/${params.lang}/weapon/${weapon.id}`,
+        item: `https://genshin-builds.com/${lang}/weapon/${weapon.id}`,
       },
     ],
   };
@@ -220,7 +213,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
             {recommendedCharacters.map((character) => (
               <Link
                 key={character}
-                href={`/${params.lang}/character/${character}`}
+                href={`/${lang}/character/${character}`}
                 className="group mr-10 rounded-full border-4 border-transparent transition hover:border-vulcan-500"
                 prefetch={false}
               >
