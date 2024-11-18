@@ -52,6 +52,7 @@ export function genPageMetadata({
     description,
     openGraph,
     twitter: {
+      site: "@earlyggcom",
       title: `${title} | ${siteMetadata.title}`,
       description: description || siteMetadata.description,
       card: "summary_large_image",
