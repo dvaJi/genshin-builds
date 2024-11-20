@@ -141,7 +141,7 @@ export default async function CharacterPage({ params }: Props) {
     {} as Record<number, Ascension>
   );
 
-  console.log(character)
+  console.log(character);
 
   return (
     <div className="relative">
@@ -215,6 +215,7 @@ export default async function CharacterPage({ params }: Props) {
                 <span className="text-xs">Combat Roles:</span>
                 {Object.values(character.tag).map((tag) => (
                   <Image
+                    key={tag.id}
                     className="cursor-help"
                     src={`/icons/${tag.icon}.webp`}
                     alt={`${tag.name} tag`}
@@ -225,7 +226,7 @@ export default async function CharacterPage({ params }: Props) {
                 ))}
               </div>
             </div>
-            <p className="max-w-3xl text-sm leading-relaxed rounded mt-2 text-ww-50 bg-ww-900 p-2 md:bg-transparent md:p-0">
+            <p className="mt-2 max-w-3xl rounded bg-ww-900 p-2 text-sm leading-relaxed text-ww-50 md:bg-transparent md:p-0">
               {character.description}
             </p>
           </div>
