@@ -33,7 +33,7 @@ function NavItem({ route, position, onClick }: Props) {
     return route.href
       ? route.href === pathname
       : route.children?.some((child) => child.href === pathWithoutLang);
-  }, []);
+  }, [pathname, route.children, route.href]);
 
   const handleMouseEnter = () => {
     setIsHovering(true);
