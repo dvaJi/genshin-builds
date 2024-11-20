@@ -145,7 +145,7 @@ export const localeToWWLang = (locale: string | undefined) => {
     case "es":
       return "es";
     case "ja":
-      return "jp";
+      return "ja";
     case "cn":
       return "cn";
     case "zh-tw":
