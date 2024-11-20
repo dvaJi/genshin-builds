@@ -151,7 +151,7 @@ export default async function Page({ params }: Props) {
             <div className="mx-2 flex flex-col">
               <div className="my-auto">{group.name}</div>
               {group.set.map((s) => (
-                <div className="text-xs font-normal">
+                <div key={group.id + s.key} className="text-xs font-normal">
                   {s.key}-Pc: {s.desc}
                 </div>
               ))}
