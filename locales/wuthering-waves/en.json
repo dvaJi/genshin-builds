@@ -1,0 +1,141 @@
+{
+  "layout": {
+    "title": "Wuthering Waves Wiki & Database | Comprehensive Guides & Tier Lists",
+    "description": "Your ultimate resource for Wuthering Waves: character builds, tier lists, weapons, echoes, and strategies to master the game.",
+    "characters": "Characters",
+    "echoes": "Echoes",
+    "weapons": "Weapons",
+    "inventory": "Inventory",
+    "tierlist_characters": "Tier List - Characters",
+    "tierlist_characters_desc": "Discover the top-ranked characters and their optimal builds to dominate Wuthering Waves.",
+    "tierlist_weapons": "Tier List - Weapons",
+    "tierlist_weapons_desc": "Find the best weapons ranked by power and effectiveness to enhance your gameplay.",
+    "tierlist_echoes": "Tier List - Echoes",
+    "tierlist_echoes_desc": "Explore the most powerful echoes and how they impact your character's performance."
+  },
+  "home": {
+    "title": "Wuthering Waves Wiki & Database | Latest Updates and Guides",
+    "description": "Stay updated with the latest characters, builds, and strategies in Wuthering Waves.",
+    "main_title": "Wuthering Waves Characters List | Best Builds and Teams",
+    "main_description": "Explore a complete list of all Wuthering Waves characters with the most updated information on their builds, weapons, and team compositions."
+  },
+  "character": {
+    "title": "Wuthering Waves {characterName} Guide | Best Builds and Teams",
+    "description": "{characterName} is a {rarityString} ({rarity} ★) character in Wuthering Waves. Discover the best builds and team compositions for {characterName}.",
+    "story_and_voice": "Story & Voice",
+    "main_title": "Wuthering Waves {characterName} Build Guide",
+    "element": "Element",
+    "weapon_type": "Weapon Type",
+    "birth": "Birth",
+    "birthplace": "Birthplace",
+    "affiliation": "Affiliation",
+    "combat_roles": "Combat Roles",
+    "ascension_materials": "{characterName} Ascension Materials",
+    "talent_lvlup_materials": "{characterName} Talent Level-Up Materials",
+    "skills": "{characterName} Skills",
+    "resonance_chain": "{characterName} Resonance Chain",
+    "special_food": "{characterName} Special Food",
+    "no_special_food": "No Special Food"
+  },
+  "character_info": {
+    "title": "Wuthering Waves {characterName} Story & Voice Lines",
+    "description": "Discover the story, voice actors, and more for {characterName} in Wuthering Waves.",
+    "info": "Info",
+    "va": "{characterName} Voice Actor",
+    "chinese": "Chinese",
+    "japanese": "Japanese",
+    "english": "English",
+    "korean": "Korean",
+    "forte_examination_report": "{characterName} Forte Examination Report",
+    "resonance_power": "Resonance Power",
+    "resonance_evaluation_report": "Resonance Evaluation Report",
+    "overclock_diagnostic_report": "Overclock Diagnostic Report",
+    "cherished_items_favors": "{characterName} Cherished Items & Favors",
+    "story": "{characterName} Story",
+    "voice": "{characterName} Voice Lines"
+  },
+  "echoes": {
+    "title": "Wuthering Waves Echoes List | Skills and Effects",
+    "description": "A complete list of all Echoes in Wuthering Waves with detailed skills and effects.",
+    "main_title": "Wuthering Waves Echoes List",
+    "main_description": "Explore all Echoes in Wuthering Waves with the most updated information on their skills and effects."
+  },
+  "echo": {
+    "title": "Wuthering Waves {echoName} Echo Guide | Skills and Effects",
+    "description": "{echoName} is an Echo in Wuthering Waves. Learn about its skills and how to utilize it effectively.",
+    "main_title": "Wuthering Waves {echoName} Echo",
+    "code": "Code",
+    "type": "Type",
+    "rarity": "Rarity",
+    "cost": "Cost",
+    "birthplace": "Birthplace",
+    "echo_skill": "{echoName} Echo Skill",
+    "sonata_effect": "{echoName} Sonata Effect",
+    "num_pieces": "{n}-Piece Set"
+  },
+  "items": {
+    "title": "Wuthering Waves Items List | Usage and Sources",
+    "description": "Comprehensive list of all items in Wuthering Waves, including usage and where to find them.",
+    "main_title": "Wuthering Waves Items List",
+    "main_description": "Explore all items in Wuthering Waves with detailed information on their usage and sources."
+  },
+  "item": {
+    "title": "Wuthering Waves {itemName} Item Guide | Usage and Sources",
+    "description": "{itemName} is a {rarityString} ({rarity} ★) item in Wuthering Waves. Learn how to use it and where to find it.",
+    "main_title": "Wuthering Waves {itemName} Item",
+    "type": "Type",
+    "rarity": "Rarity",
+    "tags": "Tags",
+    "sources": "Sources"
+  },
+  "weapons": {
+    "title": "Wuthering Waves Weapons List | Best Weapons and Skills",
+    "description": "Discover the best weapons in Wuthering Waves with detailed skills and stats.",
+    "main_title": "Wuthering Waves Weapons List",
+    "main_description": "A complete list of all weapons in Wuthering Waves with the most updated information on their skills and stats."
+  },
+  "weapon": {
+    "title": "Wuthering Waves {weaponName} Weapon Guide | Stats and Skills",
+    "description": "{weaponName} is a {rarityString} ({rarity} ★) weapon in Wuthering Waves. Learn about its stats and skills.",
+    "main_title": "Wuthering Waves {weaponName} Weapon",
+    "type": "Type",
+    "rarity": "Rarity",
+    "syntonize": "Syntonize",
+    "ascensions": "Ascensions",
+    "level_n": "Level {n}"
+  },
+  "tierlist_characters": {
+    "title": "Best Wuthering Waves Characters Tier List | Ultimate Ranking Guide",
+    "description": "Explore the top characters in Wuthering Waves with our comprehensive tier list and rankings.",
+    "main_title": "Wuthering Waves Characters Tier List | Rankings and Analysis",
+    "main_description": "Welcome to our comprehensive Wuthering Waves Characters Tier List. We rank characters based on abilities, strengths, and overall utility to help you excel in the game.",
+    "overall": "Overall",
+    "main_dps": "Main DPS",
+    "sub_dps": "Sub DPS",
+    "support": "Support",
+    "explanation": "Explanation"
+  },
+  "tierlist_echoes": {
+    "title": "Best Wuthering Waves Echoes Tier List | Ultimate Ranking Guide",
+    "description": "Discover the most powerful echoes in Wuthering Waves with our detailed tier list and analysis.",
+    "main_title": "Wuthering Waves Echoes Tier List | Rankings and Analysis",
+    "main_description": "Our comprehensive Wuthering Waves Echoes Tier List ranks echoes based on their abilities and impact on gameplay, helping you make informed decisions.",
+    "explanation": "Explanation"
+  },
+  "tierlist_weapons": {
+    "title": "Best Wuthering Waves Weapons Tier List | Ultimate Ranking Guide",
+    "description": "Find out which weapons are the best in Wuthering Waves with our in-depth tier list and rankings.",
+    "main_title": "Wuthering Waves Weapons Tier List | Rankings and Analysis",
+    "main_description": "Our comprehensive Wuthering Waves Weapons Tier List ranks weapons based on power, effectiveness, and overall utility to enhance your gameplay.",
+    "sword": "Sword",
+    "broadblade": "Broadblade",
+    "gauntlet": "Gauntlet",
+    "rectifier": "Rectifier",
+    "pistol": "Pistol",
+    "swords_tierlist": "Sword Tier List",
+    "broadblades_tierlist": "Broadblade Tier List",
+    "gauntlets_tierlist": "Gauntlet Tier List",
+    "rectifiers_tierlist": "Rectifier Tier List",
+    "pistols_tierlist": "Pistol Tier List"
+  }
+}

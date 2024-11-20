@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
+import getTranslations from "@hooks/use-translations";
 import type { Echoes } from "@interfaces/wuthering-waves/echoes";
 import type { TierlistEchoes } from "@interfaces/wuthering-waves/tierlist-echoes";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -26,21 +27,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const title =
-    "Best Wuthering Waves (WuWa) Echoes Tierlist - Ultimate Ranking Guide";
-  const description =
-    "Explore the best Wuthering Waves Echoes Tierlist. Discover detailed rankings and Echoes insights. Find out which Echoes boost your Resonator's stats!";
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "tierlist_echoes"
+  );
 
   return genPageMetadata({
-    title,
-    description,
+    title: t("title"),
+    description: t("description"),
     path: `/wuthering-waves/tierlist/echoes`,
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "tierlist_echoes"
+  );
   const tierlist = await getWWData<TierlistEchoes>({
     resource: "tierlist",
     filter: {
@@ -50,7 +57,7 @@ export default async function Page({ params }: Props) {
 
   const echoes = await getWWData<Record<string, Echoes>>({
     resource: "echoes",
-    language: lang,
+    language: langData,
     select: ["id", "name", "intensityCode", "icon"],
     asMap: true,
   });
@@ -58,16 +65,8 @@ export default async function Page({ params }: Props) {
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-2xl text-ww-100">
-          Wuthering Waves (WuWa) Echoes Tierlist - Ultimate Ranking and Analysis
-        </h2>
-        <p>
-          Welcome to our comprehensive Wuthering Waves Echoes Tierlist. Here, we
-          rank the Echoes based on their ability to boost stats like HP, ATK,
-          and Energy Regeneration. Whether you&apos;re a beginner or a seasoned
-          player, this guide will help you optimize your Resonator&apos;s
-          performance.
-        </p>
+        <h2 className="text-2xl text-ww-100">{t("main_title")}</h2>
+        <p>{t("main_description")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -136,12 +135,15 @@ export default async function Page({ params }: Props) {
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">Explanation</h2>
+      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+        {t("explanation")}
+      </h2>
       <div className="flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
         {Object.entries(tierlist?.explanations ?? {}).map(
           ([char, explanation]) => (
-            <div
+            <Link
               key={char}
+              href={`/${lang}/wuthering-waves/echoes/${char.replace("é", "e")}`}
               className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0"
             >
               <div className="flex w-20 shrink-0 flex-col items-center gap-2">
@@ -160,7 +162,7 @@ export default async function Page({ params }: Props) {
                 className="text-sm text-ww-100"
                 dangerouslySetInnerHTML={{ __html: explanation }}
               />
-            </div>
+            </Link>
           )
         )}
       </div>

@@ -7,6 +7,7 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
+import getTranslations from "@hooks/use-translations";
 import type { Weapons } from "@interfaces/wuthering-waves/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
@@ -25,34 +26,37 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const title = "Wuthering Waves (WuWa) Weapons | Builds and Team";
-  const description =
-    "A complete list of all weapons in Wuthering Waves (WuWa). This page offer most updated weapons' information including skills.";
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "weapons"
+  );
 
   return genPageMetadata({
-    title,
-    description,
+    title: t("title"),
+    description: t("description"),
     path: `/wuthering-waves/weapons`,
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "weapons"
+  );
   const weapons = await getWWData<Weapons[]>({
     resource: "weapons",
-    language: lang,
-    revalidate: 0,
+    language: langData,
   });
 
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-2xl text-ww-100">Wuthering Waves Weapons</h2>
-        <p>
-          A list of all Weapons and their skills in Wuthering Waves. This page
-          offer most updated Weapons information.
-        </p>
+        <h2 className="text-2xl text-ww-100">{t("main_title")}</h2>
+        <p>{t("main_description")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -66,7 +70,7 @@ export default async function Page({ params }: Props) {
           .map((item) => (
             <Link
               key={item.id}
-              href={`/wuthering-waves/weapons/${item.id}`}
+              href={`/${langData}/wuthering-waves/weapons/${item.id}`}
               className="flex h-24 w-24 flex-col items-center transition-all hover:brightness-125"
             >
               <div

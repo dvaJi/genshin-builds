@@ -1,0 +1,141 @@
+{
+  "layout": {
+    "title": "Wuthering Waves Wiki & Basis Data | Panduan Komprehensif & Tier List",
+    "description": "Sumber daya utama Anda untuk Wuthering Waves: build karakter, tier list, senjata, echo, dan strategi untuk menguasai permainan.",
+    "characters": "Karakter",
+    "echoes": "Echo",
+    "weapons": "Senjata",
+    "inventory": "Inventaris",
+    "tierlist_characters": "Tier List - Karakter",
+    "tierlist_characters_desc": "Temukan karakter peringkat teratas dan build optimal mereka untuk mendominasi Wuthering Waves.",
+    "tierlist_weapons": "Tier List - Senjata",
+    "tierlist_weapons_desc": "Temukan senjata terbaik yang diberi peringkat berdasarkan kekuatan dan efektivitas untuk meningkatkan gameplay Anda.",
+    "tierlist_echoes": "Tier List - Echo",
+    "tierlist_echoes_desc": "Jelajahi echo paling kuat dan bagaimana mereka mempengaruhi performa karakter Anda."
+  },
+  "home": {
+    "title": "Wuthering Waves Wiki & Basis Data | Pembaruan Terbaru dan Panduan",
+    "description": "Tetap terupdate dengan karakter, build, dan strategi terbaru di Wuthering Waves.",
+    "main_title": "Daftar Karakter Wuthering Waves | Build dan Tim Terbaik",
+    "main_description": "Jelajahi daftar lengkap semua karakter Wuthering Waves dengan informasi terbaru tentang build, senjata, dan komposisi tim mereka."
+  },
+  "character": {
+    "title": "Panduan {characterName} Wuthering Waves | Build dan Tim Terbaik",
+    "description": "{characterName} adalah karakter {rarityString} ({rarity} ★) di Wuthering Waves. Temukan build dan komposisi tim terbaik untuk {characterName}.",
+    "story_and_voice": "Cerita & Suara",
+    "main_title": "Panduan Build {characterName} Wuthering Waves",
+    "element": "Elemen",
+    "weapon_type": "Jenis Senjata",
+    "birth": "Lahir",
+    "birthplace": "Tempat Lahir",
+    "affiliation": "Afiliasi",
+    "combat_roles": "Peran Tempur",
+    "ascension_materials": "Material Ascension {characterName}",
+    "talent_lvlup_materials": "Material Level-Up Talent {characterName}",
+    "skills": "Skill {characterName}",
+    "resonance_chain": "Resonansi {characterName}",
+    "special_food": "Makanan Spesial {characterName}",
+    "no_special_food": "Tidak Ada Makanan Spesial"
+  },
+  "character_info": {
+    "title": "Cerita & Suara {characterName} di Wuthering Waves",
+    "description": "Temukan cerita, pengisi suara, dan lebih banyak tentang {characterName} di Wuthering Waves.",
+    "info": "Info",
+    "va": "Pengisi Suara {characterName}",
+    "chinese": "Cina",
+    "japanese": "Jepang",
+    "english": "Inggris",
+    "korean": "Korea",
+    "forte_examination_report": "Laporan Pemeriksaan Forte {characterName}",
+    "resonance_power": "Kekuatan Resonansi",
+    "resonance_evaluation_report": "Laporan Evaluasi Resonansi",
+    "overclock_diagnostic_report": "Laporan Diagnostik Overclock",
+    "cherished_items_favors": "Barang Berharga & Favorit {characterName}",
+    "story": "Cerita {characterName}",
+    "voice": "Dialog Suara {characterName}"
+  },
+  "echoes": {
+    "title": "Daftar Echo Wuthering Waves | Skill dan Efek",
+    "description": "Daftar lengkap semua echo di Wuthering Waves dengan skill dan efek yang detail.",
+    "main_title": "Daftar Echo Wuthering Waves",
+    "main_description": "Jelajahi semua echo di Wuthering Waves dengan informasi terbaru tentang skill dan efek mereka."
+  },
+  "echo": {
+    "title": "Panduan Echo {echoName} Wuthering Waves | Skill dan Efek",
+    "description": "{echoName} adalah echo di Wuthering Waves. Pelajari tentang skillnya dan bagaimana menggunakannya secara efektif.",
+    "main_title": "Echo {echoName} Wuthering Waves",
+    "code": "Kode",
+    "type": "Tipe",
+    "rarity": "Kelangkaan",
+    "cost": "Biaya",
+    "birthplace": "Tempat Lahir",
+    "echo_skill": "Skill Echo {echoName}",
+    "sonata_effect": "Efek Sonata {echoName}",
+    "num_pieces": "Set {n} Bagian"
+  },
+  "items": {
+    "title": "Daftar Item Wuthering Waves | Penggunaan dan Sumber",
+    "description": "Daftar lengkap semua item di Wuthering Waves, termasuk penggunaan dan di mana menemukannya.",
+    "main_title": "Daftar Item Wuthering Waves",
+    "main_description": "Jelajahi semua item di Wuthering Waves dengan informasi detail tentang penggunaan dan sumbernya."
+  },
+  "item": {
+    "title": "Panduan Item {itemName} Wuthering Waves | Penggunaan dan Sumber",
+    "description": "{itemName} adalah item {rarityString} ({rarity} ★) di Wuthering Waves. Pelajari cara menggunakannya dan di mana menemukannya.",
+    "main_title": "Item {itemName} Wuthering Waves",
+    "type": "Tipe",
+    "rarity": "Kelangkaan",
+    "tags": "Tag",
+    "sources": "Sumber"
+  },
+  "weapons": {
+    "title": "Daftar Senjata Wuthering Waves | Senjata Terbaik dan Skill",
+    "description": "Temukan senjata terbaik di Wuthering Waves dengan skill dan statistik yang detail.",
+    "main_title": "Daftar Senjata Wuthering Waves",
+    "main_description": "Daftar lengkap semua senjata di Wuthering Waves dengan informasi terbaru tentang skill dan statistik mereka."
+  },
+  "weapon": {
+    "title": "Panduan Senjata {weaponName} Wuthering Waves | Statistik dan Skill",
+    "description": "{weaponName} adalah senjata {rarityString} ({rarity} ★) di Wuthering Waves. Pelajari tentang statistik dan skillnya.",
+    "main_title": "Senjata {weaponName} Wuthering Waves",
+    "type": "Tipe",
+    "rarity": "Kelangkaan",
+    "syntonize": "Sintonisasi",
+    "ascensions": "Ascension",
+    "level_n": "Level {n}"
+  },
+  "tierlist_characters": {
+    "title": "Daftar Tier Karakter Wuthering Waves Terbaik | Panduan Peringkat Utama",
+    "description": "Jelajahi karakter top di Wuthering Waves dengan daftar tier dan peringkat komprehensif kami.",
+    "main_title": "Daftar Tier Karakter Wuthering Waves | Peringkat dan Analisis",
+    "main_description": "Selamat datang di Daftar Tier Karakter Wuthering Waves kami yang komprehensif. Kami memberi peringkat karakter berdasarkan kemampuan, kekuatan, dan utilitas keseluruhan untuk membantu Anda unggul dalam permainan.",
+    "overall": "Keseluruhan",
+    "main_dps": "DPS Utama",
+    "sub_dps": "DPS Tambahan",
+    "support": "Dukungan",
+    "explanation": "Penjelasan"
+  },
+  "tierlist_echoes": {
+    "title": "Daftar Tier Echo Wuthering Waves Terbaik | Panduan Peringkat Utama",
+    "description": "Temukan echo paling kuat di Wuthering Waves dengan daftar tier dan analisis detail kami.",
+    "main_title": "Daftar Tier Echo Wuthering Waves | Peringkat dan Analisis",
+    "main_description": "Selamat datang di Daftar Tier Echo Wuthering Waves kami yang komprehensif. Kami memberi peringkat echo berdasarkan kemampuan, kekuatan, dan utilitas keseluruhan untuk membantu Anda membuat keputusan yang tepat.",
+    "explanation": "Penjelasan"
+  },
+  "tierlist_weapons": {
+    "title": "Daftar Tier Senjata Wuthering Waves Terbaik | Panduan Peringkat Utama",
+    "description": "Cari tahu senjata mana yang terbaik di Wuthering Waves dengan daftar tier dan peringkat mendalam kami.",
+    "main_title": "Daftar Tier Senjata Wuthering Waves | Peringkat dan Analisis",
+    "main_description": "Daftar Tier Senjata Wuthering Waves kami yang komprehensif memberi peringkat senjata berdasarkan kekuatan, efektivitas, dan utilitas keseluruhan untuk meningkatkan gameplay Anda.",
+    "sword": "Pedang",
+    "broadblade": "Pedang Lebar",
+    "gauntlet": "Sarung Tangan",
+    "rectifier": "Rectifier",
+    "pistol": "Pistol",
+    "swords_tierlist": "Daftar Tier Pedang",
+    "broadblades_tierlist": "Daftar Tier Pedang Lebar",
+    "gauntlets_tierlist": "Daftar Tier Sarung Tangan",
+    "rectifiers_tierlist": "Daftar Tier Rectifier",
+    "pistols_tierlist": "Daftar Tier Pistol"
+  }
+}

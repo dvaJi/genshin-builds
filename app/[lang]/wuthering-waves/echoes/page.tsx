@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
+import getTranslations from "@hooks/use-translations";
 import type { Echoes } from "@interfaces/wuthering-waves/echoes";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
@@ -24,34 +25,37 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const title = "Wuthering Waves (WuWa) Echoes List";
-  const description =
-    "A complete list of all Echoes in Wuthering Waves (WuWa). This page offer most updated Echoes information including skills.";
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "echoes"
+  );
 
   return genPageMetadata({
-    title,
-    description,
+    title: t("title"),
+    description: t("description"),
     path: `/wuthering-waves/echoes`,
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "echoes"
+  );
   const echoes = await getWWData<Echoes[]>({
     resource: "echoes",
-    language: lang,
-    revalidate: 0,
+    language: langData,
   });
 
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-2xl text-ww-100">Wuthering Waves Echoes</h2>
-        <p>
-          A list of all Echoes and their skills in Wuthering Waves. This page
-          offer most updated Echoes information.
-        </p>
+        <h2 className="text-2xl text-ww-100">{t("main_title")}</h2>
+        <p>{t("main_description")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -63,7 +67,7 @@ export default async function Page({ params }: Props) {
         {echoes?.map((item) => (
           <Link
             key={item.id}
-            href={`/${lang}/wuthering-waves/echoes/${item.id}`}
+            href={`/${langData}/wuthering-waves/echoes/${item.id}`}
             className="flex h-24 w-24 flex-col items-center transition-all hover:brightness-125"
           >
             <div className="flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-900 bg-ww-950">

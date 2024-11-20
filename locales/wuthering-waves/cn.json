@@ -1,0 +1,141 @@
+{
+  "layout": {
+    "title": "《鳴潮》 维基与数据库 | 全面指南与排名列表",
+    "description": "您掌握 《鳴潮》 的终极资源：角色构建、排行列表、武器、回响，以及掌握游戏的策略。",
+    "characters": "角色",
+    "echoes": "回响",
+    "weapons": "武器",
+    "inventory": "库存",
+    "tierlist_characters": "排名列表 - 角色",
+    "tierlist_characters_desc": "发现顶级角色及其最佳构建，称霸 《鳴潮》。",
+    "tierlist_weapons": "排名列表 - 武器",
+    "tierlist_weapons_desc": "查找按威力和效果排名的最佳武器，提升您的游戏体验。",
+    "tierlist_echoes": "排名列表 - 回响",
+    "tierlist_echoes_desc": "探索最强大的回响，以及它们如何影响您的角色表现。"
+  },
+  "home": {
+    "title": "《鳴潮》 维基与数据库 | 最新更新和指南",
+    "description": "随时了解 《鳴潮》 中的最新角色、构建和策略。",
+    "main_title": "《鳴潮》 角色列表 | 最佳构建和团队",
+    "main_description": "探索 《鳴潮》 中所有角色的完整列表，提供他们的最新构建、武器和团队组合信息。"
+  },
+  "character": {
+    "title": "《鳴潮》 {characterName} 指南 | 最佳构建和团队",
+    "description": "{characterName} 是 《鳴潮》 中的 {rarityString} ({rarity} ★) 角色。发现 {characterName} 的最佳构建和团队组合。",
+    "story_and_voice": "故事和语音",
+    "main_title": "《鳴潮》 {characterName} 构建指南",
+    "element": "元素",
+    "weapon_type": "武器类型",
+    "birth": "生日",
+    "birthplace": "出生地",
+    "affiliation": "隶属",
+    "combat_roles": "战斗角色",
+    "ascension_materials": "{characterName} 突破材料",
+    "talent_lvlup_materials": "{characterName} 天赋升级材料",
+    "skills": "{characterName} 技能",
+    "resonance_chain": "{characterName} 共鸣链",
+    "special_food": "{characterName} 特殊料理",
+    "no_special_food": "无特殊料理"
+  },
+  "character_info": {
+    "title": "《鳴潮》 {characterName} 故事和语音",
+    "description": "探索 《鳴潮》 中 {characterName} 的故事、配音演员等信息。",
+    "info": "信息",
+    "va": "{characterName} 配音演员",
+    "chinese": "中文",
+    "japanese": "日语",
+    "english": "英语",
+    "korean": "韩语",
+    "forte_examination_report": "{characterName} 专长检查报告",
+    "resonance_power": "共鸣力量",
+    "resonance_evaluation_report": "共鸣评估报告",
+    "overclock_diagnostic_report": "超频诊断报告",
+    "cherished_items_favors": "{characterName} 珍爱物品和喜好",
+    "story": "{characterName} 故事",
+    "voice": "{characterName} 语音"
+  },
+  "echoes": {
+    "title": "《鳴潮》 回响列表 | 技能和效果",
+    "description": "《鳴潮》 中所有回响的完整列表，包含详细的技能和效果。",
+    "main_title": "《鳴潮》 回响列表",
+    "main_description": "探索 《鳴潮》 中所有回响的最新技能和效果信息。"
+  },
+  "echo": {
+    "title": "《鳴潮》 {echoName} 回响指南 | 技能和效果",
+    "description": "{echoName} 是 《鳴潮》 中的回响。了解其技能以及如何有效利用。",
+    "main_title": "《鳴潮》 {echoName} 回响",
+    "code": "代码",
+    "type": "类型",
+    "rarity": "稀有度",
+    "cost": "消耗",
+    "birthplace": "出生地",
+    "echo_skill": "{echoName} 回响技能",
+    "sonata_effect": "{echoName} 奏鸣效果",
+    "num_pieces": "{n} 件套装"
+  },
+  "items": {
+    "title": "《鳴潮》 道具列表 | 用法和来源",
+    "description": "《鳴潮》 中所有道具的综合列表，包括用法和获取途径。",
+    "main_title": "《鳴潮》 道具列表",
+    "main_description": "探索 《鳴潮》 中所有道具的详细用法和来源信息。"
+  },
+  "item": {
+    "title": "《鳴潮》 {itemName} 道具指南 | 用法和来源",
+    "description": "{itemName} 是 《鳴潮》 中的 {rarityString} ({rarity} ★) 道具。了解如何使用及获取途径。",
+    "main_title": "《鳴潮》 {itemName} 道具",
+    "type": "类型",
+    "rarity": "稀有度",
+    "tags": "标签",
+    "sources": "来源"
+  },
+  "weapons": {
+    "title": "《鳴潮》 武器列表 | 最佳武器和技能",
+    "description": "发现 《鳴潮》 中的最佳武器，包含详细的技能和属性。",
+    "main_title": "《鳴潮》 武器列表",
+    "main_description": "《鳴潮》 中所有武器的完整列表，提供最新的技能和属性信息。"
+  },
+  "weapon": {
+    "title": "《鳴潮》 {weaponName} 武器指南 | 属性和技能",
+    "description": "{weaponName} 是 《鳴潮》 中的 {rarityString} ({rarity} ★) 武器。了解其属性和技能。",
+    "main_title": "《鳴潮》 {weaponName} 武器",
+    "type": "类型",
+    "rarity": "稀有度",
+    "syntonize": "同步",
+    "ascensions": "突破",
+    "level_n": "等级 {n}"
+  },
+  "tierlist_characters": {
+    "title": "最佳 《鳴潮》 角色排行列表 | 终极排名指南",
+    "description": "通过我们的综合排行列表和排名，探索 《鳴潮》 中的顶级角色。",
+    "main_title": "《鳴潮》 角色排行列表 | 排名和分析",
+    "main_description": "欢迎来到我们的综合 《鳴潮》 角色排行列表。我们根据角色的能力、强度和整体实用性进行排名，帮助您在游戏中脱颖而出。",
+    "overall": "总体",
+    "main_dps": "主力输出",
+    "sub_dps": "副输出",
+    "support": "辅助",
+    "explanation": "说明"
+  },
+  "tierlist_echoes": {
+    "title": "最佳 《鳴潮》 回响排行列表 | 终极排名指南",
+    "description": "通过我们的详细排行列表和分析，发现 《鳴潮》 中最强大的回响。",
+    "main_title": "《鳴潮》 回响排行列表 | 排名和分析",
+    "main_description": "我们的综合 《鳴潮》 回响排行列表根据回响的能力和对游戏的影响进行排名，帮助您做出明智的决策。",
+    "explanation": "说明"
+  },
+  "tierlist_weapons": {
+    "title": "最佳 《鳴潮》 武器排行列表 | 终极排名指南",
+    "description": "通过我们的深入排行列表和排名，找出 《鳴潮》 中最好的武器。",
+    "main_title": "《鳴潮》 武器排行列表 | 排名和分析",
+    "main_description": "我们的综合 《鳴潮》 武器排行列表根据武器的威力、效果和整体实用性进行排名，提升您的游戏体验。",
+    "sword": "剑",
+    "broadblade": "大剑",
+    "gauntlet": "拳套",
+    "rectifier": "校正器",
+    "pistol": "手枪",
+    "swords_tierlist": "剑排行列表",
+    "broadblades_tierlist": "大剑排行列表",
+    "gauntlets_tierlist": "拳套排行列表",
+    "rectifiers_tierlist": "校正器排行列表",
+    "pistols_tierlist": "手枪排行列表"
+  }
+}

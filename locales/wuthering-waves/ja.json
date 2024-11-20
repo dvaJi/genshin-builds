@@ -1,0 +1,141 @@
+{
+  "layout": {
+    "title": "『鳴潮』 ウィキ＆データベース | 包括的なガイド＆ティアリスト",
+    "description": "『鳴潮』の究極のリソース：キャラクタービルド、ティアリスト、武器、エコー、ゲームをマスターするための戦略。",
+    "characters": "キャラクター",
+    "echoes": "エコー",
+    "weapons": "武器",
+    "inventory": "インベントリ",
+    "tierlist_characters": "ティアリスト - キャラクター",
+    "tierlist_characters_desc": "『鳴潮』を制覇するためのトップランクのキャラクターと最適なビルドを発見。",
+    "tierlist_weapons": "ティアリスト - 武器",
+    "tierlist_weapons_desc": "ゲームプレイを強化するためのパワーと効果でランク付けされた最高の武器を見つけよう。",
+    "tierlist_echoes": "ティアリスト - エコー",
+    "tierlist_echoes_desc": "最も強力なエコーとそれがキャラクターのパフォーマンスに与える影響を探求しよう。"
+  },
+  "home": {
+    "title": "『鳴潮』 ウィキ＆データベース | 最新のアップデートとガイド",
+    "description": "『鳴潮』の最新キャラクター、ビルド、戦略を常に把握。",
+    "main_title": "『鳴潮』 キャラクター一覧 | ベストビルドとチーム",
+    "main_description": "最新のビルド、武器、チーム構成に関する情報を持つ全ての『鳴潮』キャラクターの完全なリストを探索しよう。"
+  },
+  "character": {
+    "title": "『鳴潮』 {characterName} ガイド | ベストビルドとチーム",
+    "description": "{characterName}は『鳴潮』の{rarityString}（{rarity} ★）キャラクターです。{characterName}の最適なビルドとチーム構成を発見しよう。",
+    "story_and_voice": "ストーリー＆ボイス",
+    "main_title": "『鳴潮』 {characterName} ビルドガイド",
+    "element": "元素",
+    "weapon_type": "武器タイプ",
+    "birth": "誕生日",
+    "birthplace": "出身地",
+    "affiliation": "所属",
+    "combat_roles": "戦闘役割",
+    "ascension_materials": "{characterName} の突破素材",
+    "talent_lvlup_materials": "{characterName} の天賦レベルアップ素材",
+    "skills": "{characterName} のスキル",
+    "resonance_chain": "{characterName} の共鳴チェーン",
+    "special_food": "{characterName} の特殊料理",
+    "no_special_food": "特殊料理なし"
+  },
+  "character_info": {
+    "title": "『鳴潮』 {characterName} ストーリー＆ボイスライン",
+    "description": "『鳴潮』の{characterName}のストーリー、声優などを発見しよう。",
+    "info": "情報",
+    "va": "{characterName} の声優",
+    "chinese": "中国語",
+    "japanese": "日本語",
+    "english": "英語",
+    "korean": "韓国語",
+    "forte_examination_report": "{characterName} のフォルテ調査報告",
+    "resonance_power": "共鳴力",
+    "resonance_evaluation_report": "共鳴評価報告",
+    "overclock_diagnostic_report": "オーバークロック診断報告",
+    "cherished_items_favors": "{characterName} の大切なアイテム＆好物",
+    "story": "{characterName} のストーリー",
+    "voice": "{characterName} のボイスライン"
+  },
+  "echoes": {
+    "title": "『鳴潮』 エコー一覧 | スキルと効果",
+    "description": "詳細なスキルと効果を持つ『鳴潮』の全エコーの完全なリスト。",
+    "main_title": "『鳴潮』 エコー一覧",
+    "main_description": "全てのエコーの最新情報を持つ『鳴潮』のエコーを探索しよう。"
+  },
+  "echo": {
+    "title": "『鳴潮』 {echoName} エコーガイド | スキルと効果",
+    "description": "{echoName}は『鳴潮』のエコーです。そのスキルと効果的な利用方法を学ぼう。",
+    "main_title": "『鳴潮』 {echoName} エコー",
+    "code": "コード",
+    "type": "タイプ",
+    "rarity": "レアリティ",
+    "cost": "コスト",
+    "birthplace": "出身地",
+    "echo_skill": "{echoName} のエコースキル",
+    "sonata_effect": "{echoName} のソナタ効果",
+    "num_pieces": "{n}セット効果"
+  },
+  "items": {
+    "title": "『鳴潮』 アイテム一覧 | 使用法と入手方法",
+    "description": "『鳴潮』の全アイテムの包括的なリスト。使用法と入手場所を含む。",
+    "main_title": "『鳴潮』 アイテム一覧",
+    "main_description": "全てのアイテムの使用法と入手方法に関する詳細情報を持つ『鳴潮』のアイテムを探索しよう。"
+  },
+  "item": {
+    "title": "『鳴潮』 {itemName} アイテムガイド | 使用法と入手方法",
+    "description": "{itemName}は『鳴潮』の{rarityString}（{rarity} ★）アイテムです。使い方と入手場所を学ぼう。",
+    "main_title": "『鳴潮』 {itemName} アイテム",
+    "type": "タイプ",
+    "rarity": "レアリティ",
+    "tags": "タグ",
+    "sources": "入手方法"
+  },
+  "weapons": {
+    "title": "『鳴潮』 武器一覧 | ベスト武器とスキル",
+    "description": "詳細なスキルとステータスを持つ『鳴潮』の最高の武器を発見しよう。",
+    "main_title": "『鳴潮』 武器一覧",
+    "main_description": "全ての武器の最新情報を持つ『鳴潮』の武器を完全にリストアップ。"
+  },
+  "weapon": {
+    "title": "『鳴潮』 {weaponName} 武器ガイド | ステータスとスキル",
+    "description": "{weaponName}は『鳴潮』の{rarityString}（{rarity} ★）武器です。そのステータスとスキルを学ぼう。",
+    "main_title": "『鳴潮』 {weaponName} 武器",
+    "type": "タイプ",
+    "rarity": "レアリティ",
+    "syntonize": "シントナイズ",
+    "ascensions": "突破",
+    "level_n": "レベル {n}"
+  },
+  "tierlist_characters": {
+    "title": "ベスト『鳴潮』キャラクターティアリスト | 究極のランキングガイド",
+    "description": "包括的なティアリストとランキングで『鳴潮』のトップキャラクターを探求しよう。",
+    "main_title": "『鳴潮』 キャラクターティアリスト | ランキングと分析",
+    "main_description": "包括的な『鳴潮』キャラクターティアリストへようこそ。私たちはキャラクターを能力、強さ、全体的な有用性に基づいてランク付けし、ゲームで成功するための手助けをします。",
+    "overall": "総合",
+    "main_dps": "メインDPS",
+    "sub_dps": "サブDPS",
+    "support": "サポート",
+    "explanation": "説明"
+  },
+  "tierlist_echoes": {
+    "title": "ベスト『鳴潮』エコーティアリスト | 究極のランキングガイド",
+    "description": "詳細なティアリストと分析で『鳴潮』の最も強力なエコーを発見しよう。",
+    "main_title": "『鳴潮』 エコーティアリスト | ランキングと分析",
+    "main_description": "包括的な『鳴潮』エコーティアリストへようこそ。私たちはエコーを能力、強さ、全体的な有用性に基づいてランク付けし、情報に基づいた決定を下せるよう支援します。",
+    "explanation": "説明"
+  },
+  "tierlist_weapons": {
+    "title": "ベスト『鳴潮』武器ティアリスト | 究極のランキングガイド",
+    "description": "詳細なティアリストとランキングで『鳴潮』のベスト武器を見つけよう。",
+    "main_title": "『鳴潮』 武器ティアリスト | ランキングと分析",
+    "main_description": "包括的な『鳴潮』武器ティアリストでは、武器をパワー、効果、全体的な有用性に基づいてランク付けし、ゲーム体験を向上させます。",
+    "sword": "剣",
+    "broadblade": "大剣",
+    "gauntlet": "ガントレット",
+    "rectifier": "レクティファイア",
+    "pistol": "ピストル",
+    "swords_tierlist": "剣ティアリスト",
+    "broadblades_tierlist": "大剣ティアリスト",
+    "gauntlets_tierlist": "ガントレットティアリスト",
+    "rectifiers_tierlist": "レクティファイアティアリスト",
+    "pistols_tierlist": "ピストルティアリスト"
+  }
+}

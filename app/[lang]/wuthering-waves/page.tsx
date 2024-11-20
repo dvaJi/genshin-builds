@@ -7,6 +7,7 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
+import getTranslations from "@hooks/use-translations";
 import type { Characters } from "@interfaces/wuthering-waves/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
@@ -25,36 +26,38 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const title = "Wuthering Waves (WuWa) Characters | Builds and Team";
-  const description =
-    "A complete list of all characters in Wuthering Waves (WuWa). This page offer most updated characters' information including weapons.";
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "home"
+  );
 
   return genPageMetadata({
-    title,
-    description,
+    title: t("title"),
+    description: t("description"),
     path: `/wuthering-waves`,
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "home"
+  );
   const characters = await getWWData<Characters[]>({
     resource: "characters",
-    language: lang,
+    language: langData,
     select: ["id", "name", "rarity"],
   });
 
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-2xl text-ww-100">
-          Wuthering Waves Characters List | Builds and Team
-        </h2>
-        <p>
-          A complete list of all characters in Wuthering Waves. This page offer
-          most updated characters information including weapons.
-        </p>
+        <h2 className="text-2xl text-ww-100">{t("main_title")}</h2>
+        <p>{t("main_description")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -69,7 +72,7 @@ export default async function Page({ params }: Props) {
           .map((char) => (
             <Link
               key={char.id}
-              href={`/${lang}/wuthering-waves/characters/${char.id}`}
+              href={`/${langData}/wuthering-waves/characters/${char.id}`}
               className="group flex flex-col items-center justify-center gap-2"
               title={`${char.name} build`}
             >

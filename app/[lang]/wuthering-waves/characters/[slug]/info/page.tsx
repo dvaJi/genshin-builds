@@ -7,11 +7,11 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
+import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import type { Characters } from "@interfaces/wuthering-waves/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
-import { rarityToString } from "@utils/rarity";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -50,9 +50,14 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, slug } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "character_info"
+  );
   const character = await getWWData<Characters>({
     resource: "characters",
-    language: lang,
+    language: langData,
     filter: {
       id: slug,
     },
@@ -62,26 +67,27 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `Wuthering Waves (WuWa) ${character.name} | Builds and Team`;
-  const description = `${character.name} is an ${rarityToString(character.rarity)} character in Wuthering Waves (WuWa). This page is going to provide you with the best builds and team for ${character.name}.`;
-
   return genPageMetadata({
-    title,
-    description,
-    path: `/wuthering-waves/characters/${slug}`,
-    locale: lang,
+    title: t("title", { characterName: character.name }),
+    description: t("description", { characterName: character.name }),
+    path: `/wuthering-waves/characters/${slug}/info`,
+    locale: langData,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
   const { lang, slug } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "character_info"
+  );
   const character = await getWWData<Characters>({
     resource: "characters",
-    language: lang,
+    language: langData,
     filter: {
       id: slug,
     },
-    revalidate: 0,
   });
 
   if (!character) {
@@ -93,7 +99,7 @@ export default async function CharacterPage({ params }: Props) {
       <div className="grid grid-cols-1">
         <Link
           className="mr-auto flex rounded-md border border-ww-700 bg-ww-900 px-3 py-2 text-white hover:opacity-80"
-          href={`/${lang}/wuthering-waves/characters/${character.id}`}
+          href={`/${langData}/wuthering-waves/characters/${character.id}`}
         >
           <svg
             className="mr-2 w-5"
@@ -107,7 +113,7 @@ export default async function CharacterPage({ params }: Props) {
               clipRule="evenodd"
             ></path>
           </svg>
-          <div>Info</div>
+          <div>{t("info")}</div>
         </Link>
         <div className="col-span-2 m-4 flex flex-col p-4">
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
@@ -115,16 +121,16 @@ export default async function CharacterPage({ params }: Props) {
           </h2>
           <div className="relative z-20 mx-2 mb-6 grid grid-cols-2 gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
             <div className="text-sm font-normal">
-              Chinese: {character.info.cvNameCn}
+              {t("chinese")}: {character.info.cvNameCn}
             </div>
             <div className="text-sm font-normal">
-              Japanese: {character.info.cvNameJp}
+              {t("japanese")}: {character.info.cvNameJp}
             </div>
             <div className="text-sm font-normal">
-              Korean: {character.info.cvNameKo}
+              {t("korean")}: {character.info.cvNameKo}
             </div>
             <div className="text-sm font-normal">
-              English: {character.info.cvNameEn}
+              {t("english")}: {character.info.cvNameEn}
             </div>
           </div>
         </div>
@@ -135,10 +141,12 @@ export default async function CharacterPage({ params }: Props) {
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
         <div className="col-span-2 m-4 flex flex-col p-4">
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Forte Examination Report
+            {t("forte_examination_report", {
+              characterName: character.name,
+            })}
           </h2>
           <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
-            <h3 className="font-bold">Resonance Power</h3>
+            <h3 className="font-bold">{t("resonance_power")}</h3>
             <div className="m-4 border-l-4 border-ww-700 p-4">
               <div className="text-sm font-normal leading-relaxed">
                 {character.info.talentName}
@@ -146,7 +154,7 @@ export default async function CharacterPage({ params }: Props) {
             </div>
           </div>
           <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
-            <h3 className="font-bold">Resonance Evaluation Report</h3>
+            <h3 className="font-bold">{t("resonance_evaluation_report")}</h3>
             <div className="m-4 border-l-4 border-ww-700 p-4">
               <div
                 className="text-sm font-normal leading-relaxed"
@@ -155,7 +163,7 @@ export default async function CharacterPage({ params }: Props) {
             </div>
           </div>
           <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
-            <h3 className="font-bold">Overclock Diagnostic Report</h3>
+            <h3 className="font-bold">{t("overclock_diagnostic_report")}</h3>
             <div className="m-4 border-l-4 border-ww-700 p-4">
               <div
                 className="text-sm font-normal leading-relaxed"
@@ -172,7 +180,9 @@ export default async function CharacterPage({ params }: Props) {
         />
         <div className="col-span-2 m-4 flex flex-col p-4">
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Forte Examination Report
+            {t("cherished_items_favors", {
+              characterName: character.name,
+            })}
           </h2>
           {character.goods.map((good) => (
             <div
@@ -206,7 +216,9 @@ export default async function CharacterPage({ params }: Props) {
         />
         <div className="col-span-2 m-4 flex flex-col p-4">
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Story
+            {t("story", {
+              characterName: character.name,
+            })}
           </h2>
           {character.story.map((story) => (
             <div
@@ -229,7 +241,9 @@ export default async function CharacterPage({ params }: Props) {
         />
         <div className="col-span-2 m-4 flex flex-col p-4">
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Voice
+            {t("voice", {
+              characterName: character.name,
+            })}
           </h2>
           {character.voices.map((voice) => (
             <Fragment key={voice.title}>

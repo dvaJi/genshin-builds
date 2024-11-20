@@ -1,8 +1,12 @@
+import { localesAvailables } from "i18n-config";
 import { cache } from "react";
 
-import { localeToHSRLang, localeToLang } from "@utils/locale-to-lang";
+import {
+  localeToHSRLang,
+  localeToLang,
+  localeToWWLang,
+} from "@utils/locale-to-lang";
 import { templateReplacement } from "@utils/template-replacement";
-import { localesAvailables } from "i18n-config";
 
 export interface IntlFormatProps {
   id: string;
@@ -38,12 +42,26 @@ const getLanguage = (locale: string, game: string) => {
     return localesAvailables.genshin.includes(locale) ? locale : "en";
   }
 
+  if (game === "wuthering-waves") {
+    return localesAvailables["wuthering-waves"].includes(locale)
+      ? locale
+      : "en";
+  }
+
+  if (game === "zenless") {
+    return localesAvailables.zenless.includes(locale) ? locale : "en";
+  }
+
   return locale || "en";
 };
 
 const getLangData = (locale: string, game: string) => {
-  if (game === "hsr") {
+  if (game === "hsr" || game === "zenless") {
     return localeToHSRLang(locale || "en");
+  }
+
+  if (game === "wuthering-waves") {
+    return localeToWWLang(locale || "en");
   }
 
   if (game === "genshin") {
@@ -90,7 +108,7 @@ async function getTranslations(
 
     return values
       ? templateReplacement(defaultMessage ?? id, values)
-      : defaultMessage ?? id;
+      : (defaultMessage ?? id);
   };
 
   return {

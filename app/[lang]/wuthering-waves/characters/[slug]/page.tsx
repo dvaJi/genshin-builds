@@ -8,6 +8,7 @@ import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
 import Material from "@components/wuthering-waves/Material";
+import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
 import type {
   Ascension,
@@ -55,9 +56,14 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, slug } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "character"
+  );
   const character = await getWWData<Characters>({
     resource: "characters",
-    language: lang,
+    language: langData,
     filter: {
       id: slug,
     },
@@ -67,26 +73,31 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `Wuthering Waves (WuWa) ${character.name} | Builds and Team`;
-  const description = `${character.name} is an ${rarityToString(character.rarity)} character in Wuthering Waves (WuWa). This page is going to provide you with the best builds and team for ${character.name}.`;
-
   return genPageMetadata({
-    title,
-    description,
+    title: t("title", { characterName: character.name }),
+    description: t("description", {
+      characterName: character.name,
+      rarity: character.rarity.toString(),
+      rarityString: rarityToString(character.rarity),
+    }),
     path: `/wuthering-waves/characters/${slug}`,
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
   const { lang, slug } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "character"
+  );
   const character = await getWWData<Characters>({
     resource: "characters",
-    language: lang,
+    language: langData,
     filter: {
       id: slug,
     },
-    revalidate: 0,
   });
 
   if (!character) {
@@ -141,8 +152,6 @@ export default async function CharacterPage({ params }: Props) {
     {} as Record<number, Ascension>
   );
 
-  console.log(character);
-
   return (
     <div className="relative">
       <div className="relative z-20 mb-4 flex items-start justify-between">
@@ -168,19 +177,21 @@ export default async function CharacterPage({ params }: Props) {
               />
             </div>
             <Link
-              href={`/${lang}/wuthering-waves/characters/${character.id}/info`}
+              href={`/${langData}/wuthering-waves/characters/${character.id}/info`}
               className="rounded-md border border-ww-700 bg-ww-900 px-3 py-2 text-xs text-white hover:bg-ww-800"
             >
-              Story & Voice
+              {t("story_and_voice")}
             </Link>
           </div>
           <div className="">
             <h1 className="mb-2 text-3xl text-white">
-              Wuthering Waves {character.name} Build
+              {t("main_title", {
+                characterName: character.name,
+              })}
             </h1>
             <div className="flex flex-col items-baseline gap-2">
               <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-                <span className="text-xs">Element:</span>
+                <span className="text-xs">{t("element")}:</span>
                 <Image
                   src={`/icons/${character.element.icon}.webp`}
                   alt={`${character.element.name} type`}
@@ -190,7 +201,7 @@ export default async function CharacterPage({ params }: Props) {
                 {character.element.name}
               </div>
               <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-                <span className="text-xs">Weapon type:</span>
+                <span className="text-xs">{t("weapon_type")}:</span>
                 <Image
                   src={`/icons/${character.weapon.icon}.webp`}
                   alt={`${character.weapon.name} type`}
@@ -200,19 +211,19 @@ export default async function CharacterPage({ params }: Props) {
                 {character.weapon.name}
               </div>
               <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-                <span className="text-xs">Birth:</span>
+                <span className="text-xs">{t("birth")}:</span>
                 {character.info.birth}
               </div>
               <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-                <span className="text-xs">Birthplace:</span>
+                <span className="text-xs">{t("birthplace")}:</span>
                 {character.info.country}
               </div>
               <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-                <span className="text-xs">Affiliation:</span>
+                <span className="text-xs">{t("affiliation")}:</span>
                 {character.info.influence}
               </div>
               <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-                <span className="text-xs">Combat Roles:</span>
+                <span className="text-xs">{t("combat_roles")}:</span>
                 {Object.values(character.tag).map((tag) => (
                   <Image
                     key={tag.id}
@@ -240,7 +251,9 @@ export default async function CharacterPage({ params }: Props) {
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Ascension Materials
+            {t("ascension_materials", {
+              characterName: character.name,
+            })}
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex flex-wrap gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
             {/* {Object.values(ascensionMaterials).map((mat) => (
@@ -261,19 +274,21 @@ export default async function CharacterPage({ params }: Props) {
               </Link>
             ))} */}
             {Object.values(ascensionMaterials).map((mat) => (
-              <Material key={mat._id} lang={lang} item={mat} />
+              <Material key={mat._id} lang={langData} item={mat} />
             ))}
           </div>
         </div>
         <div>
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Talent Level-up Materials
+            {t("talent_lvlup_materials", {
+              characterName: character.name,
+            })}
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex flex-wrap gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
             {Object.values(talentLevelupMaterials).map((mat) => (
               <Material
                 key={mat._id}
-                lang={lang}
+                lang={langData}
                 item={mat}
                 showValue={false}
               />
@@ -422,7 +437,9 @@ export default async function CharacterPage({ params }: Props) {
         })}
       </div> */}
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Active Skills
+        {t("skills", {
+          characterName: character.name,
+        })}
       </h2>
       <div className="relative z-20 mx-2 mb-6 flex-col gap-4 lg:mx-0">
         {Object.values(character.skillTrees).map((tree) => (
@@ -458,7 +475,9 @@ export default async function CharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Resonance Chain
+        {t("resonance_chain", {
+          characterName: character.name,
+        })}
       </h2>
       <div className="mx-2 mb-6 flex-col gap-4 lg:mx-0">
         {character.chains.map((skill) => (
@@ -493,7 +512,9 @@ export default async function CharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Special Food
+        {t("special_food", {
+          characterName: character.name,
+        })}
       </h2>
       <div className="mx-2 mb-6 flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
         {character.specialCook ? (
@@ -516,7 +537,7 @@ export default async function CharacterPage({ params }: Props) {
             </div>
           </div>
         ) : (
-          <div className="text-ww-50">No special food</div>
+          <div className="text-ww-50">{t("no_special_food")}</div>
         )}
       </div>
       <FrstAds

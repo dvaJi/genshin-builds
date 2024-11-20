@@ -6,6 +6,7 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
+import getTranslations from "@hooks/use-translations";
 import type { Echoes } from "@interfaces/wuthering-waves/echoes";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
@@ -28,10 +29,14 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "echo"
+  );
   const item = await getWWData<Echoes>({
     resource: "echoes",
-    language: lang,
+    language: langData,
     filter: {
       id,
     },
@@ -41,27 +46,32 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `Wuthering Waves (WuWa) ${item.name} echo`;
-  const description = `${item.name} is an Echo in Wuthering Waves (WuWa).`;
-
   return genPageMetadata({
-    title,
-    description,
+    title: t("title", {
+      echoName: item.name,
+    }),
+    description: t("description", {
+      echoName: item.name,
+    }),
     path: `/wuthering-waves/echoes/${id}`,
     image: getImg("wuthering", `/echoes/${item.icon.split("/").pop()}.webp`),
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang, id } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "echo"
+  );
   const item = await getWWData<Echoes>({
     resource: "echoes",
-    language: lang,
+    language: langData,
     filter: {
       id,
     },
-    revalidate: 0,
   });
 
   if (!item) {
@@ -85,26 +95,28 @@ export default async function Page({ params }: Props) {
         </div>
         <div className="">
           <h1 className="mb-2 text-3xl text-white">
-            Wuthering Waves {item.name} Echo
+            {t("main_title", {
+              echoName: item.name,
+            })}
           </h1>
           <div className="flex flex-col items-baseline gap-2">
             <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-              <span className="text-xs">Code:</span>
+              <span className="text-xs">{t("code")}:</span>
               {item.code}
             </div>
 
             <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-              <span className="text-xs">Type:</span>
+              <span className="text-xs">{t("type")}:</span>
               {item.type}
             </div>
 
             <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-              <span className="text-xs">Rarity:</span>
-              {item.intensity} (COST {item.intensityCode + 1})
+              <span className="text-xs">{t("rarity")}:</span>
+              {item.intensity} ({t("cost")} {item.intensityCode + 1})
             </div>
 
             <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-              <span className="text-xs">Birthplace:</span>
+              <span className="text-xs">{t("birthplace")}:</span>
               {item.place}
             </div>
           </div>
@@ -119,7 +131,11 @@ export default async function Page({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-xl text-ww-100">Echo Skill</h2>
+      <h2 className="text-xl text-ww-100">
+        {t("echo_skill", {
+          echoName: item.name,
+        })}
+      </h2>
       <div className="relative z-20 mx-2 mb-2 flex rounded border border-zinc-800 bg-zinc-900 p-2 py-4 text-ww-50 lg:mx-0">
         <Image
           src={`/echoes_skills/${item.skill.icon.split("/").pop()}.webp`}
@@ -136,7 +152,11 @@ export default async function Page({ params }: Props) {
         />
       </div>
 
-      <h2 className="text-xl text-ww-100">Sonata Effect</h2>
+      <h2 className="text-xl text-ww-100">
+        {t("sonata_effect", {
+          echoName: item.name,
+        })}
+      </h2>
       <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
         {item.group.map((group) => (
           <div key={group.id} className="flex py-2 text-lg font-bold">
@@ -152,7 +172,10 @@ export default async function Page({ params }: Props) {
               <div className="my-auto">{group.name}</div>
               {group.set.map((s) => (
                 <div key={group.id + s.key} className="text-xs font-normal">
-                  {s.key}-Pc: {s.desc}
+                  {t("num_pieces", {
+                    n: s.key.toString(),
+                  })}
+                  : {formatSimpleDesc(s.desc, s.param)}
                 </div>
               ))}
             </div>

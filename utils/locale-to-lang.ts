@@ -137,3 +137,43 @@ export const localeToHSRLang = (locale: string | undefined) => {
       return "en";
   }
 };
+
+export const localeToWWLang = (locale: string | undefined) => {
+  switch (locale) {
+    case "en":
+      return "en";
+    case "es":
+      return "es";
+    case "ja":
+      return "jp";
+    case "cn":
+      return "cn";
+    case "zh-tw":
+      return "zh-tw";
+    case "cn":
+      return "cn";
+    case "de":
+      return "de";
+    case "fr":
+      return "fr";
+    // case "id":
+    //   return "id";
+    // case "it":
+    //   return "italian";
+    case "ko":
+      return "kr";
+    // case "pt":
+    //   return "pt";
+    // case "ru":
+    //   return "ru";
+    // case "th":
+    //   return "th";
+    // case "tr":
+    //   return "turkish";
+    // case "vi":
+    //   return "vi";
+
+    default:
+      return "en";
+  }
+};

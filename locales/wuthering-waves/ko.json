@@ -1,0 +1,141 @@
+{
+  "layout": {
+    "title": "『명조:워더링 웨이브』 위키 & 데이터베이스 | 종합 가이드 & 티어 리스트",
+    "description": "『명조:워더링 웨이브』의 궁극적인 리소스: 캐릭터 빌드, 티어 리스트, 무기, 에코, 게임을 마스터하기 위한 전략.",
+    "characters": "캐릭터",
+    "echoes": "에코",
+    "weapons": "무기",
+    "inventory": "인벤토리",
+    "tierlist_characters": "티어 리스트 - 캐릭터",
+    "tierlist_characters_desc": "『명조:워더링 웨이브』를 지배하기 위한 최상위 캐릭터와 최적의 빌드를 발견하세요.",
+    "tierlist_weapons": "티어 리스트 - 무기",
+    "tierlist_weapons_desc": "게임 플레이를 향상시키기 위한 강력함과 효과로 랭크된 최고의 무기를 찾아보세요.",
+    "tierlist_echoes": "티어 리스트 - 에코",
+    "tierlist_echoes_desc": "가장 강력한 에코와 그것이 캐릭터 성능에 미치는 영향을 탐색하세요."
+  },
+  "home": {
+    "title": "『명조:워더링 웨이브』 위키 & 데이터베이스 | 최신 업데이트 및 가이드",
+    "description": "『명조:워더링 웨이브』의 최신 캐릭터, 빌드, 전략으로 업데이트 상태를 유지하세요.",
+    "main_title": "『명조:워더링 웨이브』 캐릭터 목록 | 최고의 빌드 및 팀",
+    "main_description": "『명조:워더링 웨이브』의 모든 캐릭터에 대한 최신 빌드, 무기, 팀 구성 정보를 탐색하세요."
+  },
+  "character": {
+    "title": "『명조:워더링 웨이브』 {characterName} 가이드 | 최고의 빌드 및 팀",
+    "description": "{characterName}은 『명조:워더링 웨이브』의 {rarityString} ({rarity} ★) 캐릭터입니다. {characterName}에 대한 최고의 빌드와 팀 구성을 발견하세요.",
+    "story_and_voice": "스토리 & 보이스",
+    "main_title": "『명조:워더링 웨이브』 {characterName} 빌드 가이드",
+    "element": "원소",
+    "weapon_type": "무기 유형",
+    "birth": "생일",
+    "birthplace": "출생지",
+    "affiliation": "소속",
+    "combat_roles": "전투 역할",
+    "ascension_materials": "{characterName} 승천 재료",
+    "talent_lvlup_materials": "{characterName} 특성 레벨 업 재료",
+    "skills": "{characterName} 스킬",
+    "resonance_chain": "{characterName} 공명 체인",
+    "special_food": "{characterName} 특별 요리",
+    "no_special_food": "특별 요리 없음"
+  },
+  "character_info": {
+    "title": "『명조:워더링 웨이브』 {characterName} 스토리 & 보이스 라인",
+    "description": "『명조:워더링 웨이브』에서 {characterName}의 스토리, 성우 등에 대해 알아보세요.",
+    "info": "정보",
+    "va": "{characterName} 성우",
+    "chinese": "중국어",
+    "japanese": "일본어",
+    "english": "영어",
+    "korean": "한국어",
+    "forte_examination_report": "{characterName} 포르테 검사 보고서",
+    "resonance_power": "공명력",
+    "resonance_evaluation_report": "공명 평가 보고서",
+    "overclock_diagnostic_report": "오버클록 진단 보고서",
+    "cherished_items_favors": "{characterName} 소중한 아이템 & 선호품",
+    "story": "{characterName} 스토리",
+    "voice": "{characterName} 보이스 라인"
+  },
+  "echoes": {
+    "title": "『명조:워더링 웨이브』 에코 목록 | 스킬 및 효과",
+    "description": "『명조:워더링 웨이브』의 모든 에코에 대한 상세한 스킬과 효과를 포함한 완전한 목록.",
+    "main_title": "『명조:워더링 웨이브』 에코 목록",
+    "main_description": "『명조:워더링 웨이브』의 모든 에코를 최신 스킬 및 효과 정보와 함께 탐색하세요."
+  },
+  "echo": {
+    "title": "『명조:워더링 웨이브』 {echoName} 에코 가이드 | 스킬 및 효과",
+    "description": "{echoName}은 『명조:워더링 웨이브』의 에코입니다. 그 스킬과 효과적인 활용 방법을 알아보세요.",
+    "main_title": "『명조:워더링 웨이브』 {echoName} 에코",
+    "code": "코드",
+    "type": "유형",
+    "rarity": "희귀도",
+    "cost": "코스트",
+    "birthplace": "출생지",
+    "echo_skill": "{echoName} 에코 스킬",
+    "sonata_effect": "{echoName} 소나타 효과",
+    "num_pieces": "{n}세트 효과"
+  },
+  "items": {
+    "title": "『명조:워더링 웨이브』 아이템 목록 | 사용법 및 획득처",
+    "description": "사용법과 획득 장소를 포함한 『명조:워더링 웨이브』의 모든 아이템에 대한 종합적인 목록.",
+    "main_title": "『명조:워더링 웨이브』 아이템 목록",
+    "main_description": "『명조:워더링 웨이브』의 모든 아이템을 사용법과 획득처에 대한 상세 정보와 함께 탐색하세요."
+  },
+  "item": {
+    "title": "『명조:워더링 웨이브』 {itemName} 아이템 가이드 | 사용법 및 획득처",
+    "description": "{itemName}은 『명조:워더링 웨이브』의 {rarityString} ({rarity} ★) 아이템입니다. 사용 방법과 획득처를 알아보세요.",
+    "main_title": "『명조:워더링 웨이브』 {itemName} 아이템",
+    "type": "유형",
+    "rarity": "희귀도",
+    "tags": "태그",
+    "sources": "획득처"
+  },
+  "weapons": {
+    "title": "『명조:워더링 웨이브』 무기 목록 | 최고의 무기와 스킬",
+    "description": "상세한 스킬과 스탯을 가진 『명조:워더링 웨이브』의 최고의 무기를 발견하세요.",
+    "main_title": "『명조:워더링 웨이브』 무기 목록",
+    "main_description": "『명조:워더링 웨이브』의 모든 무기를 최신 스킬과 스탯 정보와 함께 완전하게 목록화했습니다."
+  },
+  "weapon": {
+    "title": "『명조:워더링 웨이브』 {weaponName} 무기 가이드 | 스탯 및 스킬",
+    "description": "{weaponName}은 『명조:워더링 웨이브』의 {rarityString} ({rarity} ★) 무기입니다. 그 스탯과 스킬에 대해 알아보세요.",
+    "main_title": "『명조:워더링 웨이브』 {weaponName} 무기",
+    "type": "유형",
+    "rarity": "희귀도",
+    "syntonize": "신토나이즈",
+    "ascensions": "승천",
+    "level_n": "레벨 {n}"
+  },
+  "tierlist_characters": {
+    "title": "최고의 『명조:워더링 웨이브』 캐릭터 티어 리스트 | 궁극의 랭킹 가이드",
+    "description": "포괄적인 티어 리스트와 랭킹으로 『명조:워더링 웨이브』의 최고의 캐릭터를 탐색하세요.",
+    "main_title": "『명조:워더링 웨이브』 캐릭터 티어 리스트 | 랭킹 및 분석",
+    "main_description": "우리의 포괄적인 『명조:워더링 웨이브』 캐릭터 티어 리스트에 오신 것을 환영합니다. 우리는 게임에서 성공할 수 있도록 캐릭터의 능력, 강점, 전반적인 유용성에 따라 캐릭터를 랭크합니다.",
+    "overall": "전체",
+    "main_dps": "메인 딜러",
+    "sub_dps": "서브 딜러",
+    "support": "서포트",
+    "explanation": "설명"
+  },
+  "tierlist_echoes": {
+    "title": "최고의 『명조:워더링 웨이브』 에코 티어 리스트 | 궁극의 랭킹 가이드",
+    "description": "상세한 티어 리스트와 분석으로 『명조:워더링 웨이브』의 가장 강력한 에코를 발견하세요.",
+    "main_title": "『명조:워더링 웨이브』 에코 티어 리스트 | 랭킹 및 분석",
+    "main_description": "우리의 포괄적인 『명조:워더링 웨이브』 에코 티어 리스트에 오신 것을 환영합니다. 우리는 에코의 능력, 강점, 전반적인 유용성에 따라 에코를 랭크하여 정보에 입각한 결정을 내릴 수 있도록 도와드립니다.",
+    "explanation": "설명"
+  },
+  "tierlist_weapons": {
+    "title": "최고의 『명조:워더링 웨이브』 무기 티어 리스트 | 궁극의 랭킹 가이드",
+    "description": "상세한 티어 리스트와 랭킹으로 『명조:워더링 웨이브』의 최고의 무기를 찾아보세요.",
+    "main_title": "『명조:워더링 웨이브』 무기 티어 리스트 | 랭킹 및 분석",
+    "main_description": "우리의 포괄적인 『명조:워더링 웨이브』 무기 티어 리스트는 게임 플레이를 향상시키기 위해 무기의 파워, 효과, 전반적인 유용성에 따라 무기를 랭크합니다.",
+    "sword": "검",
+    "broadblade": "대검",
+    "gauntlet": "건틀릿",
+    "rectifier": "렉티파이어",
+    "pistol": "권총",
+    "swords_tierlist": "검 티어 리스트",
+    "broadblades_tierlist": "대검 티어 리스트",
+    "gauntlets_tierlist": "건틀릿 티어 리스트",
+    "rectifiers_tierlist": "렉티파이어 티어 리스트",
+    "pistols_tierlist": "권총 티어 리스트"
+  }
+}

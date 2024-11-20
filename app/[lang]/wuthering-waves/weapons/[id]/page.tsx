@@ -8,6 +8,7 @@ import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
 import Material from "@components/wuthering-waves/Material";
+import getTranslations from "@hooks/use-translations";
 import type { Weapons } from "@interfaces/wuthering-waves/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
@@ -31,10 +32,14 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "weapons"
+  );
   const item = await getWWData<Weapons>({
     resource: "weapons",
-    language: lang,
+    language: langData,
     filter: {
       id,
     },
@@ -44,23 +49,29 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `Wuthering Waves (WuWa) ${item.name} weapon`;
-  const description = `${item.name} is an ${rarityToString(item.rarity)} (${item.rarity} ★) weapon in Wuthering Waves (WuWa).`;
-
   return genPageMetadata({
-    title,
-    description,
+    title: t("title", { weaponName: item.name }),
+    description: t("description", {
+      weaponName: item.name,
+      rarity: item.rarity.toString(),
+      rarityString: rarityToString(item.rarity),
+    }),
     path: `/wuthering-waves/weapons/${id}`,
     image: getImg("wuthering", `/weapons/${item.icon.split("/").pop()}.webp`),
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang, id } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "weapons"
+  );
   const item = await getWWData<Weapons>({
     resource: "weapons",
-    language: lang,
+    language: langData,
     filter: {
       id,
     },
@@ -87,16 +98,18 @@ export default async function Page({ params }: Props) {
         </div>
         <div className="">
           <h1 className="mb-2 text-3xl text-white">
-            Wuthering Waves {item.name} weapon
+            {t("main_title", {
+              weaponName: item.name,
+            })}
           </h1>
           <div className="flex flex-col items-baseline gap-2">
             <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-              <span className="text-xs">Type:</span>
+              <span className="text-xs">{t("type")}:</span>
               {item.type.name}
             </div>
 
             <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
-              <span className="text-xs">Rarity:</span>
+              <span className="text-xs">{t("rarity")}:</span>
               <Stars stars={item.rarity} />
             </div>
           </div>
@@ -111,7 +124,7 @@ export default async function Page({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="text-xl text-ww-100">Syntonize</h2>
+      <h2 className="text-xl text-ww-100">{t("syntonize")}</h2>
       <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
         <p
           className="m-4 border-l-4 border-ww-700 p-2"
@@ -121,11 +134,15 @@ export default async function Page({ params }: Props) {
         />
       </div>
 
-      <h2 className="text-xl text-ww-100">Ascensions</h2>
+      <h2 className="text-xl text-ww-100">{t("ascensions")}</h2>
       <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
         {item.ascensions.map((asc, i) => (
           <div key={"asc" + i} className="flex min-h-24 items-center gap-4">
-            <div className="w-14">Level {i}</div>
+            <div className="w-14">
+              {t("level_n", {
+                n: i.toString(),
+              })}
+            </div>
             {asc.map((a) => (
               <Material key={a._id} lang={lang} item={a} />
             ))}

@@ -5,6 +5,7 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
+import getTranslations from "@hooks/use-translations";
 import { Characters } from "@interfaces/wuthering-waves/characters";
 import type { TierlistCharacters } from "@interfaces/wuthering-waves/tierlist-characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -23,21 +24,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const title =
-    "Best Wuthering Waves (WuWa) Characters Tierlist - Ultimate Ranking Guide";
-  const description =
-    "Explore the best Wuthering Waves Characters Tierlist. Discover detailed rankings and character insights. Find out who tops the list!";
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "tierlist_characters"
+  );
 
   return genPageMetadata({
-    title,
-    description,
+    title: t("title"),
+    description: t("description"),
     path: `/wuthering-waves/tierlist/characters`,
-    locale: lang,
+    locale: langData,
   });
 }
 
 export default async function Page({ params, searchParams }: Props) {
   const { lang } = await params;
+  const { t, langData } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "tierlist_characters"
+  );
   const tierlist = await getWWData<TierlistCharacters>({
     resource: "tierlist",
     filter: {
@@ -47,32 +54,20 @@ export default async function Page({ params, searchParams }: Props) {
 
   const characters = await getWWData<Record<string, Characters>>({
     resource: "characters",
-    language: lang,
+    language: langData,
     select: ["id", "name", "rarity"],
     asMap: true,
   });
 
   const { type } = await searchParams;
   const table = type ?? "overall";
-
-  // if (!tables.includes(table as any)) {
-  //   return redirect(`/wuthering-waves/tierlist/characters`);
-  // }
   const tiers = tierlist?.[table as (typeof tables)[number]];
 
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-2xl text-ww-100">
-          Wuthering Waves (WuWa) Characters Tierlist - Ultimate Ranking and
-          Analysis
-        </h2>
-        <p>
-          Welcome to our comprehensive Wuthering Waves Characters Tierlist.
-          Here, we rank the characters based on their abilities, strengths, and
-          overall utility in the game. Whether you&apos;re a beginner or a
-          seasoned player, this guide will help you make informed decisions.
-        </p>
+        <h2 className="text-2xl text-ww-100">{t("main_title")}</h2>
+        <p>{t("main_description")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -88,7 +83,7 @@ export default async function Page({ params, searchParams }: Props) {
             table === "overall" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
         >
-          Overall
+          {t("overall")}
         </Link>
         <Link
           href={`/${lang}/wuthering-waves/tierlist/characters?type=mainDPS`}
@@ -97,7 +92,7 @@ export default async function Page({ params, searchParams }: Props) {
             table === "mainDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
         >
-          Main DPS
+          {t("main_dps")}
         </Link>
         <Link
           href={`/${lang}/wuthering-waves/tierlist/characters?type=subDPS`}
@@ -106,7 +101,7 @@ export default async function Page({ params, searchParams }: Props) {
             table === "subDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
         >
-          Sub DPS
+          {t("sub_dps")}
         </Link>
         <Link
           href={`/${lang}/wuthering-waves/tierlist/characters?type=support`}
@@ -115,7 +110,7 @@ export default async function Page({ params, searchParams }: Props) {
             table === "support" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
         >
-          Support
+          {t("support")}
         </Link>
       </div>
       <div className="mb-8 flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
@@ -177,7 +172,9 @@ export default async function Page({ params, searchParams }: Props) {
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">Explanation</h2>
+      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+        {t("explanation")}
+      </h2>
       <div className="flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
         {Object.entries(tierlist?.explanations ?? {}).map(
           ([char, explanation]) => (

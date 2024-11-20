@@ -3,6 +3,7 @@ import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
+import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 import { cn } from "@lib/utils";
 
@@ -25,6 +26,12 @@ type Props = {
 
 export default async function WWLayout({ children, params }: Props) {
   const { lang } = await params;
+  const { langData, messages } = await getTranslations(
+    lang,
+    "wuthering-waves",
+    "layout"
+  );
+
   const jsonLd: WithContext<VideoGame> = {
     "@context": "https://schema.org",
     "@type": "VideoGame",
@@ -42,26 +49,7 @@ export default async function WWLayout({ children, params }: Props) {
   };
 
   return (
-    <IntlProvider
-      game="wuthering-waves"
-      locale={lang}
-      messages={
-        {
-          layout: {
-            characters: "Characters",
-            echoes: "Echoes",
-            weapons: "Weapons",
-            "gear-sets": "Gear Sets",
-            tierlist_characters: "Characters Tier List",
-            tierlist_characters_desc: "Best characters in the game",
-            tierlist_weapons: "Weapons Tier List",
-            tierlist_weapons_desc: "Best weapons in the game",
-            tierlist_echoes: "Echoes Tier List",
-            tierlist_echoes_desc: "Best echoes in the game",
-          },
-        } as any
-      }
-    >
+    <IntlProvider game="wuthering-waves" locale={langData} messages={messages}>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <script
         type="application/ld+json"
