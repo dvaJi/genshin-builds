@@ -29,3 +29,20 @@ export function renderDescription(desc: string, params: number[]): string {
 function roundTwoDecimals(value: number) {
   return Math.round(value * 100) / 100;
 }
+
+/**
+ * Replace {n} in description based on params value
+ *
+ *
+ * @param desc
+ * @param params
+ * @returns
+ */
+export function formatSimpleDesc(desc: string, params: string[]) {
+  let str = desc;
+  for (let i = 0; i < params.length; i++) {
+    str = str.replaceAll(`{${i}}`, params[i]);
+  }
+
+  return str;
+}

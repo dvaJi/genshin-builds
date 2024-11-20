@@ -6,7 +6,7 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
-import type { Echoes } from "@interfaces/wuthering-waves/echoes";
+import type { Items } from "@interfaces/wuthering-waves/items";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 
@@ -31,26 +31,25 @@ export async function generateMetadata({
   return genPageMetadata({
     title,
     description,
-    path: `/wuthering-waves/echoes`,
+    path: `/wuthering-waves/items`,
     locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
-  const echoes = await getWWData<Echoes[]>({
-    resource: "echoes",
+  const items = await getWWData<Items[]>({
+    resource: "items",
     language: lang,
-    revalidate: 0,
   });
 
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-2xl text-ww-100">Wuthering Waves Echoes</h2>
+        <h2 className="text-2xl text-ww-100">Wuthering Waves Items</h2>
         <p>
-          A list of all Echoes and their skills in Wuthering Waves. This page
-          offer most updated Echoes information.
+          A list of all items in Wuthering Waves. This page offer most updated
+          items information.
         </p>
 
         <FrstAds
@@ -60,16 +59,16 @@ export default async function Page({ params }: Props) {
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       </div>
       <div className="flex flex-wrap justify-center gap-10 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {echoes?.map((item) => (
+        {items?.map((item) => (
           <Link
             key={item.id}
-            href={`/${lang}/wuthering-waves/echoes/${item.id}`}
+            href={`/wuthering-waves/items/${item.id}`}
             className="flex h-24 w-24 flex-col items-center transition-all hover:brightness-125"
           >
             <div className="flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-900 bg-ww-950">
               <Image
                 className=""
-                src={`/echoes/${item.icon.split("/").pop()}.webp`}
+                src={`/items/${item.icon}.webp`}
                 alt={item.name ?? ""}
                 width={96}
                 height={96}

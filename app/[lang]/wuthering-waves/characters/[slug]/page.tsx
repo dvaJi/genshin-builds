@@ -3,16 +3,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
+import Stars from "@components/hsr/Stars";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import ElementIcon from "@components/wuthering-waves/ElementIcon";
 import Image from "@components/wuthering-waves/Image";
-import TypeIcon from "@components/wuthering-waves/TypeIcon";
+import Material from "@components/wuthering-waves/Material";
 import { i18n } from "@i18n-config";
-import type { Characters } from "@interfaces/wuthering-waves/characters";
+import type {
+  Ascension,
+  Characters,
+} from "@interfaces/wuthering-waves/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 import { rarityToString } from "@utils/rarity";
+import { formatSimpleDesc } from "@utils/template-replacement";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -82,29 +86,62 @@ export default async function CharacterPage({ params }: Props) {
     filter: {
       id: slug,
     },
+    revalidate: 0,
   });
 
   if (!character) {
     return notFound();
   }
 
-  const characters = await getWWData<Characters[]>({
-    resource: "characters",
-    language: lang,
-    select: ["id", "name", "rarity"],
-  });
+  // const characters = await getWWData<Characters[]>({
+  //   resource: "characters",
+  //   language: lang,
+  //   select: ["id", "name", "rarity"],
+  // });
 
-  const charactersTeam = character.teams.reduce(
-    (acc, c) => {
-      const [char] = c.split("~");
-      const ch = characters?.find((c) => c.name === char)!;
-      if (!acc[char]) {
-        acc[char] = ch;
-      }
+  // const charactersTeam = character.teams.reduce(
+  //   (acc, c) => {
+  //     const [char] = c.split("~");
+  //     const ch = characters?.find((c) => c.name === char)!;
+  //     if (!acc[char]) {
+  //       acc[char] = ch;
+  //     }
+  //     return acc;
+  //   },
+  //   {} as Record<string, Characters>
+  // );
+
+  const ascensionMaterials = character.ascensions.reduce(
+    (acc, asc) => {
+      asc.forEach((a) => {
+        if (!acc[a._id]) {
+          acc[a._id] = a;
+        } else {
+          acc[a._id].value = acc[a._id].value + a.value;
+        }
+      });
       return acc;
     },
-    {} as Record<string, Characters>
+    {} as Record<number, Ascension>
   );
+
+  const talentLevelupMaterials = Object.values(character.skillTrees).reduce(
+    (acc, tree) => {
+      Object.values(tree.skill.consume).forEach((m) => {
+        m.forEach((mat) => {
+          if (!acc[mat._id]) {
+            acc[mat._id] = mat;
+          } else {
+            acc[mat._id].value = acc[mat._id].value + mat.value;
+          }
+        });
+      });
+      return acc;
+    },
+    {} as Record<number, Ascension>
+  );
+
+  console.log(character)
 
   return (
     <div className="relative">
@@ -119,45 +156,78 @@ export default async function CharacterPage({ params }: Props) {
           />
         </div>
         <div className="flex gap-4 px-2 lg:px-0">
-          <div
-            className={`flex-shrink-0 flex-grow-0 rarity-${character.rarity} h-[140px] w-[140px] overflow-hidden rounded-lg`}
-          >
-            <Image
-              src={`/characters/thumb_${character.id}.webp`}
-              alt={character.name}
-              width={140}
-              height={140}
-            />
+          <div className="flex flex-col items-center justify-center gap-2">
+            <div
+              className={`flex-shrink-0 flex-grow-0 rarity-${character.rarity} h-[140px] w-[140px] overflow-hidden rounded-lg`}
+            >
+              <Image
+                src={`/characters/thumb_${character.id}.webp`}
+                alt={character.name}
+                width={140}
+                height={140}
+              />
+            </div>
+            <Link
+              href={`/${lang}/wuthering-waves/characters/${character.id}/info`}
+              className="rounded-md border border-ww-700 bg-ww-900 px-3 py-2 text-xs text-white hover:bg-ww-800"
+            >
+              Story & Voice
+            </Link>
           </div>
-          {/* <div
-            className={`h-[220px] w-auto md:h-[320px] rarity-${character.rarity} overflow-hidden rounded-lg`}
-          >
-            <Image
-              className="-translate-y-8 md:-translate-y-12"
-              src={`/characters/portrait_${character.id}.webp`}
-              alt={character.name}
-              width={300}
-              height={380}
-            />
-          </div> */}
           <div className="">
             <h1 className="mb-2 text-3xl text-white">
               Wuthering Waves {character.name} Build
             </h1>
             <div className="flex flex-col items-baseline gap-2">
-              <div className="flex items-center gap-3 rounded bg-ww-900 px-2 py-1 pr-4 text-ww-50">
-                <ElementIcon
-                  type={character.element[0]}
-                  width={30}
-                  height={30}
-                />{" "}
-                {character.element[0]}
+              <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
+                <span className="text-xs">Element:</span>
+                <Image
+                  src={`/icons/${character.element.icon}.webp`}
+                  alt={`${character.element.name} type`}
+                  width={26}
+                  height={26}
+                />
+                {character.element.name}
               </div>
-              <div className="flex items-center gap-3 rounded bg-ww-900 px-2 py-1 pr-4 text-ww-50">
-                <TypeIcon type={character.type[0]} width={30} height={30} />
-                {character.type}
+              <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
+                <span className="text-xs">Weapon type:</span>
+                <Image
+                  src={`/icons/${character.weapon.icon}.webp`}
+                  alt={`${character.weapon.name} type`}
+                  width={26}
+                  height={26}
+                />
+                {character.weapon.name}
+              </div>
+              <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
+                <span className="text-xs">Birth:</span>
+                {character.info.birth}
+              </div>
+              <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
+                <span className="text-xs">Birthplace:</span>
+                {character.info.country}
+              </div>
+              <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
+                <span className="text-xs">Affiliation:</span>
+                {character.info.influence}
+              </div>
+              <div className="flex items-center gap-2 rounded bg-ww-900 px-2 text-sm text-ww-50">
+                <span className="text-xs">Combat Roles:</span>
+                {Object.values(character.tag).map((tag) => (
+                  <Image
+                    className="cursor-help"
+                    src={`/icons/${tag.icon}.webp`}
+                    alt={`${tag.name} tag`}
+                    width={26}
+                    height={26}
+                    title={`${tag.name}: ${tag.desc}`}
+                  />
+                ))}
               </div>
             </div>
+            <p className="max-w-3xl text-sm leading-relaxed rounded mt-2 text-ww-50 bg-ww-900 p-2 md:bg-transparent md:p-0">
+              {character.description}
+            </p>
           </div>
         </div>
       </div>
@@ -166,29 +236,54 @@ export default async function CharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Upgrade Materials
-      </h2>
-      <div className="relative z-20 mx-2 mb-6 flex gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
-        {character.materials.map((mat) => (
-          <div
-            key={mat}
-            className="flex items-center gap-2 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
-          >
-            <Image
-              src={`/mats/${mat.replace(/ /g, "-")}.webp`}
-              alt={mat}
-              width={40}
-              height={40}
-            />
-            <div>{mat}</div>
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+            {character.name} Ascension Materials
+          </h2>
+          <div className="relative z-20 mx-2 mb-6 flex flex-wrap gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
+            {/* {Object.values(ascensionMaterials).map((mat) => (
+              <Link
+                href={`/${lang}/wuthering-waves/items/${mat._id}`}
+                key={mat.id}
+                className="flex items-center gap-2 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
+              >
+                <Image
+                  src={`/items/${mat.icon}.webp`}
+                  alt={mat.name}
+                  width={40}
+                  height={40}
+                />
+                <div>
+                  {mat.name} x {mat.value}
+                </div>
+              </Link>
+            ))} */}
+            {Object.values(ascensionMaterials).map((mat) => (
+              <Material key={mat._id} lang={lang} item={mat} />
+            ))}
           </div>
-        ))}
+        </div>
+        <div>
+          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+            {character.name} Talent Level-up Materials
+          </h2>
+          <div className="relative z-20 mx-2 mb-6 flex flex-wrap gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
+            {Object.values(talentLevelupMaterials).map((mat) => (
+              <Material
+                key={mat._id}
+                lang={lang}
+                item={mat}
+                showValue={false}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-4">
         <div>
-          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
             {character.name} Best Echo Sets
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
@@ -212,10 +307,10 @@ export default async function CharacterPage({ params }: Props) {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
         <div>
-          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
             {character.name} Best Primary Echo
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
@@ -233,13 +328,13 @@ export default async function CharacterPage({ params }: Props) {
                 <div>{echo}</div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-4">
         <div>
-          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
             {character.name} Best Echo Stats
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
@@ -254,10 +349,10 @@ export default async function CharacterPage({ params }: Props) {
                 {stat}
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
         <div>
-          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
             {character.name} Best Echo Substats
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex flex-col gap-2 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
@@ -270,11 +365,11 @@ export default async function CharacterPage({ params }: Props) {
                 {substat}
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+      {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
         {character.name} Best Weapons
       </h2>
       <div className="relative z-20 mx-2 mb-6 flex flex-wrap gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
@@ -292,9 +387,9 @@ export default async function CharacterPage({ params }: Props) {
             {weapon}
           </div>
         ))}
-      </div>
+      </div> */}
 
-      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+      {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
         Best {character.name} Team
       </h2>
       <div className="relative z-20 mx-2 mb-6 flex gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
@@ -324,29 +419,36 @@ export default async function CharacterPage({ params }: Props) {
             </Link>
           );
         })}
-      </div>
+      </div> */}
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
         {character.name} Active Skills
       </h2>
-      <div className="relative z-20 mx-2 mb-6 flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
-        {character.skills.map((skill) => (
-          <div key={skill.name} className="mb-6 flex gap-4 last:mb-0">
-            <Image
-              className="h-20 w-20 rounded-full border border-ww-900 bg-ww-950"
-              src={`/characters/icon_${character.id}_${skill.icon}.webp`}
-              alt={skill.name}
-              width={80}
-              height={80}
-            />
-            <div className="p-1">
-              <h3 className="text-ww-50">{skill.name}</h3>
-              <p
-                className="text-sm"
-                dangerouslySetInnerHTML={{
-                  __html: skill.description.replace(/\\n/g, "<br>"),
-                }}
+      <div className="relative z-20 mx-2 mb-6 flex-col gap-4 lg:mx-0">
+        {Object.values(character.skillTrees).map((tree) => (
+          <div
+            key={tree.skillId}
+            className="mb-2 rounded border border-zinc-800 bg-zinc-900 p-4 last:mb-0"
+          >
+            <div className="flex items-center gap-2">
+              <Image
+                className="h-10 w-10 rounded-full border border-ww-900 bg-ww-950"
+                src={`/icons/${tree.skill.icon}.webp`}
+                alt={tree.skill.name}
+                width={40}
+                height={40}
               />
+              <h3 className="font-bold text-white">{tree.skill.name}</h3>
             </div>
+
+            <p
+              className="text-sm"
+              dangerouslySetInnerHTML={{
+                __html: formatSimpleDesc(
+                  tree.skill.desc.replace(/\\n/g, "<br>"),
+                  tree.skill.param
+                ),
+              }}
+            />
           </div>
         ))}
       </div>
@@ -355,52 +457,33 @@ export default async function CharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Passive Skills
+        {character.name} Resonance Chain
       </h2>
-      <div className="relative z-20 mx-2 mb-6 flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
-        {character.passives.map((skill) => (
-          <div key={skill.name} className="mb-6 flex gap-4 last:mb-0">
-            <Image
-              className="h-20 w-20 rounded-full border border-ww-900 bg-ww-950"
-              src={`/characters/icon_${character.id}_${skill.icon}.webp`}
-              alt={skill.name}
-              width={80}
-              height={80}
-            />
-            <div className="p-1">
-              <h3 className="text-ww-50">{skill.name}</h3>
-              <p
-                className="text-sm"
-                dangerouslySetInnerHTML={{
-                  __html: skill.description.replace(/\\n/g, "<br>"),
-                }}
+      <div className="mx-2 mb-6 flex-col gap-4 lg:mx-0">
+        {character.chains.map((skill) => (
+          <div
+            key={skill.name}
+            className="mb-2 rounded border border-zinc-800 bg-zinc-900 p-4 last:mb-0"
+          >
+            <div className="flex items-center gap-2">
+              <Image
+                className="h-10 w-10 rounded-full border border-ww-900 bg-ww-950"
+                src={`/icons/${skill.icon}.webp`}
+                alt={skill.name}
+                width={40}
+                height={40}
               />
+              <h3 className="font-bold text-white">{skill.name}</h3>
             </div>
-          </div>
-        ))}
-      </div>
-      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Swap Skills
-      </h2>
-      <div className="relative z-20 mx-2 mb-6 flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
-        {character.swap.map((skill) => (
-          <div key={skill.name} className="mb-6 flex gap-4 last:mb-0">
-            <Image
-              className="h-20 w-20 rounded-full border border-ww-900 bg-ww-950"
-              src={`/characters/icon_${character.id}_${skill.icon}.webp`}
-              alt={skill.name}
-              width={80}
-              height={80}
+            <p
+              className="text-sm"
+              dangerouslySetInnerHTML={{
+                __html: formatSimpleDesc(
+                  skill.desc.replace(/\\n/g, "<br>"),
+                  skill.param
+                ),
+              }}
             />
-            <div className="p-1">
-              <h3 className="text-ww-50">{skill.name}</h3>
-              <p
-                className="text-sm"
-                dangerouslySetInnerHTML={{
-                  __html: skill.description.replace(/\\n/g, "<br>"),
-                }}
-              />
-            </div>
           </div>
         ))}
       </div>
@@ -409,29 +492,31 @@ export default async function CharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Resonance Chain
+        {character.name} Special Food
       </h2>
       <div className="mx-2 mb-6 flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
-        {character.chain.map((skill) => (
-          <div key={skill.name} className="mb-6 flex gap-4 last:mb-0">
+        {character.specialCook ? (
+          <div className="mb-6 flex gap-4 last:mb-0">
             <Image
               className="h-20 w-20 rounded-full border border-ww-900 bg-ww-950"
-              src={`/characters/icon_${character.id}_${skill.icon}.webp`}
-              alt={skill.name}
+              src={`/items/${character.specialCook.icon.split(".").pop()}.webp`}
+              alt={character.specialCook.name}
               width={80}
               height={80}
             />
             <div className="p-1">
-              <h3 className="text-ww-50">{skill.name}</h3>
-              <p
-                className="text-sm"
-                dangerouslySetInnerHTML={{
-                  __html: skill.description.replace(/\\n/g, "<br>"),
-                }}
-              />
+              <h3 className="text-ww-50">{character.specialCook.name}</h3>
+              <div>
+                <Stars stars={character.specialCook.rarity} />
+              </div>
+              <p className="text-sm text-ww-300">
+                {character.specialCook.effect}
+              </p>
             </div>
           </div>
-        ))}
+        ) : (
+          <div className="text-ww-50">No special food</div>
+        )}
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_3"

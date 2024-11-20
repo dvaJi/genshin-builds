@@ -40,7 +40,6 @@ export default async function Page({ params, searchParams }: Props) {
   const { lang } = await params;
   const tierlist = await getWWData<TierlistCharacters>({
     resource: "tierlist",
-    language: lang,
     filter: {
       id: "characters",
     },

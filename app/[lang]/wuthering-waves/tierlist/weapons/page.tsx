@@ -42,7 +42,6 @@ export default async function Page({ params }: Props) {
   const { lang } = await params;
   const tierlist = await getWWData<TierlistWeapons>({
     resource: "tierlist",
-    language: lang,
     filter: {
       id: "weapons",
     },
@@ -51,7 +50,7 @@ export default async function Page({ params }: Props) {
   const weapons = await getWWData<Record<string, Weapons>>({
     resource: "weapons",
     language: lang,
-    select: ["id", "name", "rarity"],
+    select: ["id", "name", "rarity", "icon"],
     asMap: true,
   });
 
@@ -117,6 +116,7 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
+            lang={lang}
           />
         ))}
       </div>
@@ -134,6 +134,7 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
+            lang={lang}
           />
         ))}
       </div>
@@ -151,6 +152,7 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
+            lang={lang}
           />
         ))}
       </div>
@@ -168,6 +170,7 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
+            lang={lang}
           />
         ))}
       </div>
@@ -185,6 +188,7 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
+            lang={lang}
           />
         ))}
       </div>

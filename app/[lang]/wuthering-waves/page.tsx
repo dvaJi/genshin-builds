@@ -64,32 +64,33 @@ export default async function Page({ params }: Props) {
       </div>
       {/* <CharactersList characters={characters} /> */}
       <div className="flex flex-wrap justify-center gap-4 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {characters?.map((char) => (
-          <Link
-            key={char.id}
-            href={`/${lang}/wuthering-waves/characters/${char.id}`}
-            className="group flex flex-col items-center justify-center gap-2"
-            prefetch={false}
-            title={`${char.name} build`}
-          >
-            <div
-              className={clsx(
-                `overflow-hidden rounded transition-all rarity-${char.rarity} ring-0 ring-ww-800 group-hover:ring-4`
-              )}
+        {characters
+          ?.sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name))
+          .map((char) => (
+            <Link
+              key={char.id}
+              href={`/${lang}/wuthering-waves/characters/${char.id}`}
+              className="group flex flex-col items-center justify-center gap-2"
+              title={`${char.name} build`}
             >
-              <Image
-                className="transition-transform ease-in-out group-hover:scale-110"
-                src={`/characters/thumb_${char.id}.webp`}
-                alt={char.name}
-                width={124}
-                height={124}
-              />
-            </div>
-            <h2 className="w-24 truncate text-center text-sm text-ww-100 group-hover:text-white">
-              {char.name} Build
-            </h2>
-          </Link>
-        ))}
+              <div
+                className={clsx(
+                  `overflow-hidden rounded transition-all rarity-${char.rarity} ring-0 ring-ww-800 group-hover:ring-4`
+                )}
+              >
+                <Image
+                  className="transition-transform ease-in-out group-hover:scale-110"
+                  src={`/characters/thumb_${char.id}.webp`}
+                  alt={char.name}
+                  width={124}
+                  height={124}
+                />
+              </div>
+              <h2 className="w-24 truncate text-center text-sm text-ww-100 group-hover:text-white">
+                {char.name} Build
+              </h2>
+            </Link>
+          ))}
       </div>
     </div>
   );

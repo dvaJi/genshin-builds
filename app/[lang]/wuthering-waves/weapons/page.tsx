@@ -1,5 +1,7 @@
+import clsx from "clsx";
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
@@ -40,15 +42,7 @@ export default async function Page({ params }: Props) {
   const weapons = await getWWData<Weapons[]>({
     resource: "weapons",
     language: lang,
-    select: [
-      "id",
-      "name",
-      "atk",
-      "stat_name",
-      "stat_value",
-      "skill",
-      "description",
-    ],
+    revalidate: 0,
   });
 
   return (
@@ -66,40 +60,32 @@ export default async function Page({ params }: Props) {
         />
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       </div>
-      <div className="flex flex-col justify-center gap-6 rounded border border-zinc-800 bg-zinc-900 p-4">
-        {weapons?.map((item) => (
-          <div key={item.id} className="flex gap-2">
-            <div className="flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-900 bg-ww-950">
-              <Image
-                className=""
-                src={`/weapons/${item.id}.webp`}
-                alt={item.name}
-                width={124}
-                height={124}
-              />
-            </div>
-            <div>
-              <h2 className="mb-1 text-lg text-ww-100">{item.name} Build</h2>
-              <div className="flex gap-4">
-                <div className="flex items-center rounded border border-ww-900 bg-ww-950 px-1 text-xs text-ww-200">
-                  Base ATK: {item.atk}
-                </div>
-                <div className="flex items-center rounded border border-ww-900 bg-ww-950 px-1 text-xs text-ww-200">
-                  {item.stat_name}: {item.stat_value}
-                </div>
-              </div>
-              <div className="mt-2 text-sm font-semibold text-ww-500">
-                {item.skill}
-              </div>
+      <div className="flex flex-wrap justify-center gap-10 rounded border border-zinc-800 bg-zinc-900 p-4">
+        {weapons
+          ?.sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name))
+          .map((item) => (
+            <Link
+              key={item.id}
+              href={`/wuthering-waves/weapons/${item.id}`}
+              className="flex h-24 w-24 flex-col items-center transition-all hover:brightness-125"
+            >
               <div
-                className="text-sm text-ww-200"
-                dangerouslySetInnerHTML={{
-                  __html: item.description.replace(/\\n/g, "<br>"),
-                }}
-              />
-            </div>
-          </div>
-        ))}
+                className={clsx(
+                  "flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-600",
+                  `rarity-${item.rarity}`
+                )}
+              >
+                <Image
+                  className=""
+                  src={`/weapons/${item.icon.split("/").pop()}.webp`}
+                  alt={item.name ?? ""}
+                  width={96}
+                  height={96}
+                />
+              </div>
+              <h3 className="text-center text-sm leading-5">{item.name}</h3>
+            </Link>
+          ))}
       </div>
     </div>
   );

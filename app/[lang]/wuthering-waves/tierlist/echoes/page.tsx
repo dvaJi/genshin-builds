@@ -43,7 +43,6 @@ export default async function Page({ params }: Props) {
   const { lang } = await params;
   const tierlist = await getWWData<TierlistEchoes>({
     resource: "tierlist",
-    language: lang,
     filter: {
       id: "echoes",
     },
@@ -52,7 +51,7 @@ export default async function Page({ params }: Props) {
   const echoes = await getWWData<Record<string, Echoes>>({
     resource: "echoes",
     language: lang,
-    select: ["id", "name", "rarity"],
+    select: ["id", "name", "intensityCode", "icon"],
     asMap: true,
   });
 
@@ -108,7 +107,8 @@ export default async function Page({ params }: Props) {
                     >
                       <div
                         className={clsx(
-                          `overflow-hidden rounded ring-0 ring-ww-800 transition-all group-hover:ring-4`
+                          `overflow-hidden rounded ring-0 ring-ww-800 transition-all group-hover:ring-4`,
+                          `rarity-${echoes[char].intensityCode + 1}`
                         )}
                       >
                         <Image

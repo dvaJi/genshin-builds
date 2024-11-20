@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 
 import Image from "@components/wuthering-waves/Image";
 import type { Weapons } from "@interfaces/wuthering-waves/weapons";
@@ -7,8 +8,10 @@ type Props = {
   tier: string;
   weapons: string[];
   weaponsMap: Record<string, Weapons>;
+  lang: string;
 };
-export default function Tier({ tier, weapons, weaponsMap }: Props) {
+
+export default function Tier({ tier, weapons, weaponsMap, lang }: Props) {
   return (
     <div className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0">
       <h3
@@ -24,8 +27,9 @@ export default function Tier({ tier, weapons, weaponsMap }: Props) {
       </h3>
       <div className="flex flex-wrap gap-4">
         {weapons.map((char: string) => (
-          <div
+          <Link
             key={char}
+            href={`/${lang}/wuthering-waves/weapons/${char}`}
             className="group flex flex-col items-center justify-center gap-2"
           >
             {weaponsMap[char] ? (
@@ -37,7 +41,7 @@ export default function Tier({ tier, weapons, weaponsMap }: Props) {
                 >
                   <Image
                     className="transition-transform ease-in-out group-hover:scale-110"
-                    src={`/weapons/${char}.webp`}
+                    src={`/weapons/${weaponsMap[char]?.icon?.split("/")?.pop()}.webp`}
                     alt={weaponsMap[char].name}
                     width={80}
                     height={80}
@@ -50,7 +54,7 @@ export default function Tier({ tier, weapons, weaponsMap }: Props) {
             ) : (
               char
             )}
-          </div>
+          </Link>
         ))}
       </div>
     </div>

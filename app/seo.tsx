@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import { i18n } from "../i18n-config";
 
 interface PageSEOProps {
@@ -39,7 +40,7 @@ export function genPageMetadata({
     : {
         title: `${title} | ${siteMetadata.title}`,
         description: description || siteMetadata.description,
-        url: "./",
+        url: redirectedPathName(locale ?? "en"),
         siteName: siteMetadata.title,
         images: image ? [image] : [siteMetadata.socialBanner],
         locale: locale || "en_US",

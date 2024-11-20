@@ -31,29 +31,69 @@
 
 .basic {
   color: #fff;
-  font-weight: 600
+  font-weight: 600;
 }
 
-.electro {
-  color: #de67e9
+.electro,
+.ww-Thunder {
+  font-weight: bolder;
+  color: #b45bff;
 }
 
-.aero {
-  color: #2dc69e
+.aero,
+.ww-Wind {
+  color: #53f9b1;
+  font-weight: bolder;
 }
 
-.fusion {
-  color: #e34b4b
+.fusion,
+.ww-Fire {
+  font-weight: bolder;
+  color: #f0744e;
 }
 
-.glacio {
-  color: #52cdef
+.glacio,
+.ww-Ice {
+  font-weight: bolder;
+  color: #41aefb;
+}
+.ww-Highlight {
+  font-weight: bolder;
+  color: #f7ca2f;
+}
+.spectro,
+.ww-Light {
+  font-weight: bolder;
+  color: #f8e56c;
 }
 
-.spectro {
-  color: #d9c42a
+.havoc,
+.ww-Dark {
+  font-weight: bolder;
+  color: #e649a6;
 }
 
-.havoc {
-  color: #c85286
+.ww-Title {
+  font-weight: bolder;
+  color: #a89969;
+}
+
+.five-star-bg {
+  background: linear-gradient(180deg,#945c2c,#b27330)
+}
+
+.four-star-bg {
+  background: linear-gradient(180deg,#5e5789,#9c75b7)
+}
+
+.three-star-bg {
+  background: linear-gradient(180deg,#567496,#5392b8)
+}
+
+.two-star-bg {
+  background: linear-gradient(180deg,#4b6c67,#519072)
+}
+
+.one-star-bg {
+  background: linear-gradient(180deg,#6a6d74,#868586)
 }
