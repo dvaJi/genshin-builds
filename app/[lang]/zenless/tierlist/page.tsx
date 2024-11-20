@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,6 +10,7 @@ import type { Characters } from "@interfaces/zenless/characters";
 import type { Tiers } from "@interfaces/zenless/tierlist";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
+import { cn } from "@lib/utils";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -88,7 +88,7 @@ export default async function Page({ params, searchParams }: Props) {
       <div className="relative z-20 mx-2 my-4 flex gap-4 md:mx-0">
         <Link
           href={`/${lang}/zenless/tierlist`}
-          className={clsx(
+          className={cn(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "overall" ? "bg-neutral-600 text-white" : "bg-neutral-900"
           )}
@@ -97,7 +97,7 @@ export default async function Page({ params, searchParams }: Props) {
         </Link>
         <Link
           href={`/${lang}/zenless/tierlist?type=dps`}
-          className={clsx(
+          className={cn(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "dps" ? "bg-neutral-600 text-white" : "bg-neutral-900"
           )}
@@ -106,7 +106,7 @@ export default async function Page({ params, searchParams }: Props) {
         </Link>
         <Link
           href={`/${lang}/zenless/tierlist?type=debuffer`}
-          className={clsx(
+          className={cn(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "debuffer"
               ? "bg-neutral-600 text-white"
@@ -117,7 +117,7 @@ export default async function Page({ params, searchParams }: Props) {
         </Link>
         <Link
           href={`/${lang}/zenless/tierlist?type=supporter`}
-          className={clsx(
+          className={cn(
             "rounded-2xl border-2 border-neutral-600 px-4 py-2 font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4",
             table === "supporter"
               ? "bg-neutral-600 text-white"
@@ -136,7 +136,7 @@ export default async function Page({ params, searchParams }: Props) {
               className="flex items-center gap-2 border-b border-neutral-950/50 pb-4 last:border-b-0"
             >
               <h3
-                className={clsx("w-20 shrink-0 text-center text-2xl", {
+                className={cn("w-20 shrink-0 text-center text-2xl", {
                   "text-red-500": tier === "Tier 0",
                   "text-yellow-500": tier === "Tier 1",
                   "text-green-500": tier === "Tier 2",
@@ -159,7 +159,7 @@ export default async function Page({ params, searchParams }: Props) {
                         prefetch={false}
                       >
                         <div
-                          className={clsx(
+                          className={cn(
                             `overflow-hidden rounded transition-all rarity-${characters[char].rarity} ring-0 ring-[#fbfe00] group-hover:ring-4`
                           )}
                         >

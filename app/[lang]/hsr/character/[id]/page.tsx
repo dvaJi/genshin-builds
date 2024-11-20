@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -20,6 +19,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
 import { getStarRailBuild } from "@lib/localData";
+import { cn } from "@lib/utils";
 import { getHsrId } from "@utils/helpers";
 import { localeToHSRLang } from "@utils/locale-to-lang";
 import { renderDescription } from "@utils/template-replacement";
@@ -220,7 +220,7 @@ export default async function CharacterPage({ params }: Props) {
             alt={character.name}
             width={144}
             height={168}
-            className={clsx("rounded border", {
+            className={cn("rounded border", {
               "border-yellow-400": character.rarity === 5,
               "border-purple-400": character.rarity === 4,
             })}
@@ -337,7 +337,7 @@ export default async function CharacterPage({ params }: Props) {
                                     alt={teamCharacter.name}
                                     width={48}
                                     height={56}
-                                    className={clsx("rounded border", {
+                                    className={cn("rounded border", {
                                       "border-yellow-400":
                                         teamCharacter.rarity === 5,
                                       "border-purple-400":

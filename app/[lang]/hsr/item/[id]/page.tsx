@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,6 +11,7 @@ import { Items } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getHsrUrl } from "@lib/imgUrl";
+import { cn } from "@lib/utils";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -91,7 +91,7 @@ export default async function CharacterPage({ params }: Props) {
             alt={item.name}
             width={144}
             height={168}
-            className={clsx("rounded border", {
+            className={cn("rounded border", {
               "border-yellow-400": item.rarity === 5,
               "border-purple-400": item.rarity === 4,
               "border-blue-400": item.rarity === 3,
@@ -177,7 +177,7 @@ export default async function CharacterPage({ params }: Props) {
                           <img
                             loading="eager"
                             src={getHsrUrl(`/items/${m.id}.png`, 128, 128)}
-                            className={clsx(
+                            className={cn(
                               "mb-1 rounded-full border-2 object-contain p-2",
                               {
                                 "bg-yellow-600": m.rarity === 5,
@@ -209,7 +209,7 @@ export default async function CharacterPage({ params }: Props) {
                           <img
                             loading="eager"
                             src={getHsrUrl(`/items/${m.id}.png`, 128, 128)}
-                            className={clsx(
+                            className={cn(
                               "mb-1 rounded-full border-2 object-contain p-2",
                               {
                                 "bg-yellow-600": m.rarity === 5,

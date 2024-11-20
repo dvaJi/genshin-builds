@@ -56,7 +56,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <div>
-      <div className="my-2">
+      <div className="mx-1 my-2 md:mx-0">
         <h2 className="text-2xl text-ww-100">
           Wuthering Waves (WuWa) Weapons Tierlist - Ultimate Ranking and
           Analysis
@@ -77,31 +77,31 @@ export default async function Page({ params }: Props) {
       <div className="mx-2 my-4 flex gap-4 md:mx-0">
         <a
           href="#sword"
-          className="rounded-md border border-ww-700 bg-ww-950 px-3 py-2 hover:opacity-80"
+          className="rounded-md border border-ww-700 bg-ww-950 px-2 py-2 hover:opacity-80"
         >
           Sword
         </a>
         <a
           href="#broadblade"
-          className="rounded-md border border-ww-700 bg-ww-950 px-3 py-2 hover:opacity-80"
+          className="rounded-md border border-ww-700 bg-ww-950 px-2 py-2 hover:opacity-80"
         >
           Broadblade
         </a>
         <a
           href="#gauntlet"
-          className="rounded-md border border-ww-700 bg-ww-950 px-3 py-2 hover:opacity-80"
+          className="rounded-md border border-ww-700 bg-ww-950 px-2 py-2 hover:opacity-80"
         >
           Gauntlet
         </a>
         <a
           href="#rectifier"
-          className="rounded-md border border-ww-700 bg-ww-950 px-3 py-2 hover:opacity-80"
+          className="rounded-md border border-ww-700 bg-ww-950 px-2 py-2 hover:opacity-80"
         >
           Rectifier
         </a>
         <a
           href="#pistol"
-          className="rounded-md border border-ww-700 bg-ww-950 px-3 py-2 hover:opacity-80"
+          className="rounded-md border border-ww-700 bg-ww-950 px-2 py-2 hover:opacity-80"
         >
           Pistol
         </a>

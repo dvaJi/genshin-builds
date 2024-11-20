@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { BannerHistorical, BannerReRunPrediction } from "interfaces/banner";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -14,6 +13,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getTimeAgo } from "@lib/timeago";
+import { cn } from "@lib/utils";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -130,7 +130,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
                   </div>
                   <div className="mt-2 h-1.5 w-full rounded-full bg-gray-700">
                     <div
-                      className={clsx("h-1.5 rounded-full", {
+                      className={cn("h-1.5 rounded-full", {
                         "bg-slate-500": h.percentage < 90,
                         "bg-yellow-500": h.percentage >= 90,
                       })}

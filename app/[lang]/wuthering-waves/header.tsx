@@ -7,7 +7,7 @@ import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 import GameSelector from "@components/GameSelector";
-import NavItem from "@components/NavItem";
+import NavItem from "@components/wuthering-waves/NavItem";
 import Logo from "@components/wuthering-waves/Logo";
 import { GAME } from "@utils/games";
 

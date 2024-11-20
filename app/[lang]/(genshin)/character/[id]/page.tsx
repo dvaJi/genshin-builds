@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { Build, type CharBuild, MostUsedBuild } from "interfaces/build";
 import { Beta } from "interfaces/genshin/beta";
 import { TeamData, type Teams } from "interfaces/teams";
@@ -27,6 +26,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData } from "@lib/localData";
+import { cn } from "@lib/utils";
 import { getBonusSet } from "@utils/bonus_sets";
 import { localeToLang } from "@utils/locale-to-lang";
 import {
@@ -301,7 +301,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
       <div className="relative z-20 mb-4 flex items-start justify-between">
         <div className="flex items-center px-2 lg:px-0">
           <div
-            className={clsx(
+            className={cn(
               "relative mr-2 flex-none rounded-xl border-2 border-gray-900/80",
               `genshin-bg-rarity-${character.rarity}`
             )}
@@ -434,7 +434,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         })}
       </h2>
       <div
-        className={clsx(
+        className={cn(
           "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
           character.skills.length > 3
             ? "lg:grid-cols-3 xl:grid-cols-4"

@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,6 +10,7 @@ import { i18n } from "@i18n-config";
 import type { Weapons } from "@interfaces/tof/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
+import { cn } from "@lib/utils";
 import { slugify2 } from "@utils/hash";
 
 import Skills from "./skills";
@@ -122,7 +122,7 @@ export default async function CharacterPage({ params }: Props) {
               {weapon.name}
             </h2>
             <span
-              className={clsx("text-xl font-bold", {
+              className={cn("text-xl font-bold", {
                 "text-purple-500": weapon.rarity === 4,
                 "text-yellow-200": weapon.rarity === 5,
               })}

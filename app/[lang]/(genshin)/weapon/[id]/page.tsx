@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { MostUsedBuild } from "interfaces/build";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
@@ -16,6 +15,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData } from "@lib/localData";
+import { cn } from "@lib/utils";
 import { calculateTotalWeaponAscensionMaterials } from "@utils/totals";
 
 import WeaponStats from "./stats";
@@ -166,7 +166,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
       <div className="mb-4 flex items-start justify-between">
         <div className="relative flex flex-wrap items-center px-2 lg:flex-nowrap lg:px-0">
           <div
-            className={clsx(
+            className={cn(
               "relative mr-2 flex-none rounded-lg border border-gray-900 lg:mr-5",
               `genshin-bg-rarity-${weapon.rarity}`
             )}

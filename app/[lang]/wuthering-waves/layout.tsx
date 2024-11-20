@@ -1,10 +1,10 @@
-import clsx from "clsx";
 import { Poppins } from "next/font/google";
 import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
 import { GA_TRACKING_ID } from "@lib/gtag";
+import { cn } from "@lib/utils";
 
 import "../../../styles/globals.css";
 import Footer from "./footer";
@@ -71,7 +71,7 @@ export default async function WWLayout({ children, params }: Props) {
         }}
       ></script>
       <div
-        className={clsx(
+        className={cn(
           "flex h-full min-h-screen flex-col bg-zinc-950",
           poppins.className
         )}

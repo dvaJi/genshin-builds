@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -10,6 +9,7 @@ import { Characters } from "@interfaces/wuthering-waves/characters";
 import type { TierlistCharacters } from "@interfaces/wuthering-waves/tierlist-characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
+import { cn } from "@lib/utils";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -83,7 +83,7 @@ export default async function Page({ params, searchParams }: Props) {
       <div className="mx-2 my-4 flex gap-4 md:mx-0">
         <Link
           href={`/${lang}/wuthering-waves/tierlist/characters`}
-          className={clsx(
+          className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "overall" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
@@ -92,7 +92,7 @@ export default async function Page({ params, searchParams }: Props) {
         </Link>
         <Link
           href={`/${lang}/wuthering-waves/tierlist/characters?type=mainDPS`}
-          className={clsx(
+          className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "mainDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
@@ -101,7 +101,7 @@ export default async function Page({ params, searchParams }: Props) {
         </Link>
         <Link
           href={`/${lang}/wuthering-waves/tierlist/characters?type=subDPS`}
-          className={clsx(
+          className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "subDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
@@ -110,7 +110,7 @@ export default async function Page({ params, searchParams }: Props) {
         </Link>
         <Link
           href={`/${lang}/wuthering-waves/tierlist/characters?type=support`}
-          className={clsx(
+          className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "support" ? "bg-ww-900 text-white" : "bg-ww-950"
           )}
@@ -125,7 +125,7 @@ export default async function Page({ params, searchParams }: Props) {
             className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0"
           >
             <h3
-              className={clsx("w-20 shrink-0 text-center text-2xl", {
+              className={cn("w-20 shrink-0 text-center text-2xl", {
                 "text-red-500": tier === "SS",
                 "text-yellow-500": tier === "S",
                 "text-green-500": tier === "A",
@@ -148,7 +148,7 @@ export default async function Page({ params, searchParams }: Props) {
                       prefetch={false}
                     >
                       <div
-                        className={clsx(
+                        className={cn(
                           `overflow-hidden rounded transition-all rarity-${characters[char].rarity} ring-0 ring-ww-800 group-hover:ring-4`
                         )}
                       >

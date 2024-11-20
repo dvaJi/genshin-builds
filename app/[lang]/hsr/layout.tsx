@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { Noto_Sans } from "next/font/google";
 import type { VideoGame, WithContext } from "schema-dts";
 
@@ -6,6 +5,7 @@ import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
 import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
+import { cn } from "@lib/utils";
 
 import "../../../styles/globals.css";
 import "../../../styles/hsr-globals.css";
@@ -55,7 +55,7 @@ export default async function HSRLayout({ children, params }: Props) {
         }}
       ></script>
       <div
-        className={clsx(
+        className={cn(
           "flex h-full min-h-screen flex-col bg-hsr-bg",
           notoSans.className
         )}

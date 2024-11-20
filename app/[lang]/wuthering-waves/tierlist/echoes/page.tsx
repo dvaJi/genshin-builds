@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -11,6 +10,7 @@ import type { Echoes } from "@interfaces/wuthering-waves/echoes";
 import type { TierlistEchoes } from "@interfaces/wuthering-waves/tierlist-echoes";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
+import { cn } from "@lib/utils";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -83,7 +83,7 @@ export default async function Page({ params }: Props) {
             className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0"
           >
             <h3
-              className={clsx("w-20 shrink-0 text-center text-2xl", {
+              className={cn("w-20 shrink-0 text-center text-2xl", {
                 "text-red-500": tier === "SS",
                 "text-yellow-500": tier === "S",
                 "text-green-500": tier === "A",
@@ -106,7 +106,7 @@ export default async function Page({ params }: Props) {
                       prefetch={false}
                     >
                       <div
-                        className={clsx(
+                        className={cn(
                           `overflow-hidden rounded ring-0 ring-ww-800 transition-all group-hover:ring-4`,
                           `rarity-${echoes[char].intensityCode + 1}`
                         )}

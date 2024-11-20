@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,6 +12,7 @@ import type { Characters } from "@interfaces/tof/characters";
 import type { Items } from "@interfaces/tof/items";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
+import { cn } from "@lib/utils";
 import { slugify2 } from "@utils/hash";
 
 import ProfileBox from "./profile-box";
@@ -148,7 +148,7 @@ export default async function CharacterPage({ params }: Props) {
               {character.name}
             </h2>
             <span
-              className={clsx("text-xl font-bold", {
+              className={cn("text-xl font-bold", {
                 "text-purple-500": character.rarity === 4,
                 "text-yellow-200": character.rarity === 5,
               })}
@@ -279,7 +279,7 @@ export default async function CharacterPage({ params }: Props) {
               {preferredGiftTags.map((tag) => (
                 <li key={tag.tagId}>
                   <div
-                    className={clsx(
+                    className={cn(
                       "m-1 rounded shadow",
                       `TOF-bg-${tag.tagId}`
                     )}
@@ -293,7 +293,7 @@ export default async function CharacterPage({ params }: Props) {
               {gifts.map((tag) => (
                 <li key={tag.id}>
                   <div
-                    className={clsx(
+                    className={cn(
                       "relative m-1 rounded shadow",
                       `TOF-bg-${tag.rarity}`
                     )}
