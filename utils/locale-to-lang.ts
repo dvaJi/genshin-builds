@@ -161,7 +161,7 @@ export const localeToWWLang = (locale: string | undefined) => {
     // case "it":
     //   return "italian";
     case "ko":
-      return "kr";
+      return "ko";
     // case "pt":
     //   return "pt";
     // case "ru":
