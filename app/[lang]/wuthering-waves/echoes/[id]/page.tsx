@@ -139,7 +139,7 @@ export default async function Page({ params }: Props) {
       <h2 className="text-xl text-ww-100">Sonata Effect</h2>
       <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
         {item.group.map((group) => (
-          <div className="flex py-2 text-lg font-bold">
+          <div key={group.id} className="flex py-2 text-lg font-bold">
             <Image
               src={`/commons/${group.icon.split("/").pop()}.webp`}
               className="mx-2 my-auto h-12 w-12 rounded-full border-2"

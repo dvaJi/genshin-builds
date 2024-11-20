@@ -113,8 +113,8 @@ export default async function Page({ params }: Props) {
       <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
         {item.tag.map((tag) => (
           <p
+          key={tag.id}
             className="m-4 border-l-4 border-ww-700 p-2"
-            key={tag.id}
             dangerouslySetInnerHTML={{ __html: tag.name }}
           />
         ))}
@@ -124,8 +124,8 @@ export default async function Page({ params }: Props) {
       <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
         {item.source.map((source) => (
           <p
+          key={source.id}
             className="m-4 border-l-4 border-ww-700 p-2"
-            key={source.id}
             dangerouslySetInnerHTML={{ __html: source.name }}
           />
         ))}

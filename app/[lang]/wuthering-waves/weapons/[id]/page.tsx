@@ -124,7 +124,7 @@ export default async function Page({ params }: Props) {
       <h2 className="text-xl text-ww-100">Ascensions</h2>
       <div className="relative z-20 mx-2 mb-2 flex flex-col rounded border border-zinc-800 bg-zinc-900 p-2 text-ww-50 lg:mx-0">
         {item.ascensions.map((asc, i) => (
-          <div className="flex min-h-24 items-center gap-4">
+          <div key={"asc" + i} className="flex min-h-24 items-center gap-4">
             <div className="w-14">Level {i}</div>
             {asc.map((a) => (
               <Material key={a._id} lang={lang} item={a} />
