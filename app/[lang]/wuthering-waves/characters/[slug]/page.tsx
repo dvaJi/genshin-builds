@@ -327,7 +327,7 @@ export default async function CharacterPage({ params }: Props) {
                       const g = sonataEffects[name];
 
                       if (!g) {
-                        return g;
+                        return null;
                       }
 
                       return (
@@ -528,12 +528,15 @@ export default async function CharacterPage({ params }: Props) {
         })}
       </h2>
       {buildsAndTeams?.teams.teams?.map((team) => (
-        <div className="relative z-20 mx-2 mb-6 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
+        <div
+          key={team.name}
+          className="relative z-20 mx-2 mb-6 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0"
+        >
           <h3 className="text-lg text-ww-100">{team.name}</h3>
           <div className="mb-4 text-sm">{team.notes}</div>
           <div className="grid grid-cols-12">
             <div className="col-span-12 flex gap-4 md:col-span-6">
-              {team.composition.map((comp) => {
+              {team.composition.map((comp, compIndex) => {
                 const role = comp.role;
                 const char = slugify2(comp.character).replace(
                   "rover-",
@@ -543,7 +546,10 @@ export default async function CharacterPage({ params }: Props) {
 
                 if (comp.isFlex || !c) {
                   return (
-                    <div className="mb-6 flex flex-col items-center">
+                    <div
+                      key={`${team.name}-${char}-${compIndex}`}
+                      className="mb-6 flex flex-col items-center"
+                    >
                       <div className="flex h-[124px] w-[124px] items-center justify-center rounded bg-ww-950">
                         <LucideUser size={80} />
                       </div>
@@ -555,7 +561,7 @@ export default async function CharacterPage({ params }: Props) {
 
                 return (
                   <Link
-                    key={team.name + char}
+                    key={`${team.name}-${c.id}`}
                     href={`/${lang}/wuthering-waves/characters/${char}`}
                     className="group mb-6 flex flex-col items-center"
                     prefetch={false}
@@ -670,7 +676,10 @@ export default async function CharacterPage({ params }: Props) {
       </h2>
       <div className="mx-2 mb-6 flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
         {character.specialCook ? (
-          <div className="mb-6 flex gap-4 last:mb-0">
+          <div
+            key={character.specialCook.id}
+            className="mb-6 flex gap-4 last:mb-0"
+          >
             <Image
               className="h-20 w-20 rounded-full border border-ww-900 bg-ww-950"
               src={`/items/${character.specialCook.icon.split(".").pop()}.webp`}
