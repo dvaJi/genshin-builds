@@ -95,7 +95,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
         avatars: data.player.space_info.avatar_count,
         lightCones: data.player.space_info.light_cone_count,
         passAreaProgress: data.player.space_info.universe_level,
-        finishAchievementNum: data.player.space_info.achievement_count,
+        finishAchievementNum: data.player.space_info.achievement_count ?? 0,
       };
       const insertedPlayer = await db
         .insert(hsrPlayers)
@@ -158,7 +158,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
           avatars: data.player.space_info.avatar_count,
           lightCones: data.player.space_info.light_cone_count,
           passAreaProgress: data.player.space_info.universe_level,
-          finishAchievementNum: data.player.space_info.achievement_count,
+          finishAchievementNum: data.player.space_info.achievement_count ?? 0,
         })
         .where(eq(hsrPlayers.uuid, data.player.uid))
         .returning({
@@ -330,7 +330,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         level: data.playerInfo.level,
         signature: data.playerInfo.signature ?? "",
         worldLevel: data.playerInfo.worldLevel,
-        finishAchievementNum: data.playerInfo.finishAchievementNum,
+        finishAchievementNum: data.playerInfo.finishAchievementNum ?? 0,
         towerFloorIndex: data.playerInfo.towerFloorIndex,
         towerLevelIndex: data.playerInfo.towerLevelIndex,
         profilePictureId:
@@ -492,7 +492,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           level: data.playerInfo.level,
           signature: data.playerInfo.signature,
           worldLevel: data.playerInfo.worldLevel,
-          finishAchievementNum: data.playerInfo.finishAchievementNum,
+          finishAchievementNum: data.playerInfo.finishAchievementNum ?? 0,
           towerFloorIndex: data.playerInfo.towerFloorIndex,
           towerLevelIndex: data.playerInfo.towerLevelIndex,
           profilePictureId:
