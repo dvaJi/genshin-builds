@@ -35,7 +35,17 @@
     "skills": "{characterName} Fähigkeiten",
     "resonance_chain": "{characterName} Resonanzkette",
     "special_food": "{characterName} Spezialgericht",
-    "no_special_food": "Kein Spezialgericht"
+    "no_special_food": "Kein Spezialgericht",
+    "best_echo_sets": "Beste Echo-Sets für {characterName}",
+    "best_primary_echo": "Bester Primär-Echo von {characterName}",
+    "best_echo_stats": "Beste Werte für {characterName} Echos",
+    "4_cost": "Kosten 4",
+    "3_cost": "Kosten 3",
+    "1_cost": "Kosten 1",
+    "best_echo_substats": "Beste Unterwerte für {characterName} Echos",
+    "best_weapons": "Beste Waffen für {characterName}",
+    "tips_and_tricks": "Beste Tipps & Tricks für {characterName}",
+    "best_teams": "Beste Teams für {characterName}"
   },
   "character_info": {
     "title": "Wuthering Waves {characterName} Geschichte & Sprachaufnahmen",

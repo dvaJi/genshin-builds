@@ -165,7 +165,7 @@ export default async function Page({ params }: Props) {
               className="mx-2 my-auto h-12 w-12 rounded-full border-2"
               width={48}
               height={48}
-              alt={item.skill.icon}
+              alt={group.name}
               style={{ borderColor: `#${group.color}` }}
             />
             <div className="mx-2 flex flex-col">

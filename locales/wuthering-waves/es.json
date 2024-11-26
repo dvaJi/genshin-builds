@@ -35,7 +35,17 @@
     "skills": "Habilidades de {characterName}",
     "resonance_chain": "Cadena de Resonancia de {characterName}",
     "special_food": "Comida Especial de {characterName}",
-    "no_special_food": "Sin Comida Especial"
+    "no_special_food": "Sin Comida Especial",
+    "best_echo_sets": "Mejores Conjuntos de Eco para {characterName}",
+    "best_primary_echo": "Mejor Eco Primario de {characterName}",
+    "best_echo_stats": "Mejores Estadísticas para los Ecos de {characterName}",
+    "4_cost": "Costo 4",
+    "3_cost": "Costo 3",
+    "1_cost": "Costo 1",
+    "best_echo_substats": "Mejores Subestadísticas para los Ecos de {characterName}",
+    "best_weapons": "Mejores Armas para {characterName}",
+    "tips_and_tricks": "Mejores Consejos y Trucos para {characterName}",
+    "best_teams": "Mejores Equipos para {characterName}"
   },
   "character_info": {
     "title": "Historia y Voces de {characterName} en Wuthering Waves",

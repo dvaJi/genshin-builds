@@ -35,7 +35,17 @@
     "skills": "{characterName} 스킬",
     "resonance_chain": "{characterName} 공명 체인",
     "special_food": "{characterName} 특별 요리",
-    "no_special_food": "특별 요리 없음"
+    "no_special_food": "특별 요리 없음",
+    "best_echo_sets": "{characterName}를 위한 최고의 에코 세트",
+    "best_primary_echo": "{characterName}의 최고의 주요 에코",
+    "best_echo_stats": "{characterName} 에코의 최고의 스탯",
+    "4_cost": "코스트 4",
+    "3_cost": "코스트 3",
+    "1_cost": "코스트 1",
+    "best_echo_substats": "{characterName} 에코의 최고의 부가 스탯",
+    "best_weapons": "{characterName}를 위한 최고의 무기",
+    "tips_and_tricks": "{characterName}를 위한 최고의 팁 & 트릭",
+    "best_teams": "{characterName}를 위한 최고의 팀"
   },
   "character_info": {
     "title": "『명조:워더링 웨이브』 {characterName} 스토리 & 보이스 라인",

@@ -35,7 +35,17 @@
     "skills": "{characterName} Skills",
     "resonance_chain": "{characterName} Resonance Chain",
     "special_food": "{characterName} Special Food",
-    "no_special_food": "No Special Food"
+    "no_special_food": "No Special Food",
+    "best_echo_sets": "Best Echo Sets for {characterName}",
+    "best_primary_echo": "{characterName}'s Best Primary Echo",
+    "best_echo_stats": "Best Stats for {characterName} Echoes",
+    "4_cost": "4 Cost",
+    "3_cost": "3 Cost",
+    "1_cost": "1 Cost",
+    "best_echo_substats": "Best Substats for {characterName} Echoes",
+    "best_weapons": "Best Weapons for {characterName}",
+    "tips_and_tricks": "Best Tips & Tricks for {characterName}",
+    "best_teams": "Best Teams for {characterName}"
   },
   "character_info": {
     "title": "Wuthering Waves {characterName} Story & Voice Lines",

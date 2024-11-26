@@ -35,7 +35,17 @@
     "skills": "Навыки {characterName}",
     "resonance_chain": "Цепочка Резонанса {characterName}",
     "special_food": "Особое Блюдо {characterName}",
-    "no_special_food": "Особых Блюд Нет"
+    "no_special_food": "Особых Блюд Нет",
+    "best_echo_sets": "Лучшие Наборы Эхо для {characterName}",
+    "best_primary_echo": "Лучшее Основное Эхо {characterName}",
+    "best_echo_stats": "Лучшие Статы для Эхо {characterName}",
+    "4_cost": "Стоимость 4",
+    "3_cost": "Стоимость 3",
+    "1_cost": "Стоимость 1",
+    "best_echo_substats": "Лучшие Дополнительные Статы для Эхо {characterName}",
+    "best_weapons": "Лучшее Оружие для {characterName}",
+    "tips_and_tricks": "Лучшие Советы и Хитрости для {characterName}",
+    "best_teams": "Лучшие Команды для {characterName}"
   },
   "character_info": {
     "title": "История и Реплики {characterName} в Wuthering Waves",

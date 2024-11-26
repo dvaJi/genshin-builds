@@ -35,7 +35,17 @@
     "skills": "{characterName} のスキル",
     "resonance_chain": "{characterName} の共鳴チェーン",
     "special_food": "{characterName} の特殊料理",
-    "no_special_food": "特殊料理なし"
+    "no_special_food": "特殊料理なし",
+    "best_echo_sets": "{characterName}の最適なエコーセット",
+    "best_primary_echo": "{characterName}の最適なメインエコー",
+    "best_echo_stats": "{characterName}エコーの最適なステータス",
+    "4_cost": "コスト4",
+    "3_cost": "コスト3",
+    "1_cost": "コスト1",
+    "best_echo_substats": "{characterName}エコーの最適なサブステータス",
+    "best_weapons": "{characterName}に最適な武器",
+    "tips_and_tricks": "{characterName}のベストなヒント＆コツ",
+    "best_teams": "{characterName}に最適なチーム"
   },
   "character_info": {
     "title": "『鳴潮』 {characterName} ストーリー＆ボイスライン",

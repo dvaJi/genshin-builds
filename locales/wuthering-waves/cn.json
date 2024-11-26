@@ -35,7 +35,17 @@
     "skills": "{characterName} 技能",
     "resonance_chain": "{characterName} 共鸣链",
     "special_food": "{characterName} 特殊料理",
-    "no_special_food": "无特殊料理"
+    "no_special_food": "无特殊料理",
+    "best_echo_sets": "{characterName} 的最佳回响套装",
+    "best_primary_echo": "{characterName} 的最佳主要回响",
+    "best_echo_stats": "{characterName} 回响的最佳属性",
+    "4_cost": "4 费用",
+    "3_cost": "3 费用",
+    "1_cost": "1 费用",
+    "best_echo_substats": "{characterName} 回响的最佳副属性",
+    "best_weapons": "{characterName} 的最佳武器",
+    "tips_and_tricks": "{characterName} 的最佳技巧和秘诀",
+    "best_teams": "{characterName} 的最佳队伍"
   },
   "character_info": {
     "title": "《鳴潮》 {characterName} 故事和语音",

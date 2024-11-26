@@ -1,3 +1,4 @@
+import { LucideUser } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,12 +11,18 @@ import Image from "@components/wuthering-waves/Image";
 import Material from "@components/wuthering-waves/Material";
 import getTranslations from "@hooks/use-translations";
 import { i18n } from "@i18n-config";
+import type { BuildsAndTeams } from "@interfaces/wuthering-waves/builds-and-teams";
 import type {
   Ascension,
   Characters,
 } from "@interfaces/wuthering-waves/characters";
+import type { Echoes } from "@interfaces/wuthering-waves/echoes";
+import type { Sonatas } from "@interfaces/wuthering-waves/sonatas";
+import type { Weapons } from "@interfaces/wuthering-waves/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
+import { cn } from "@lib/utils";
+import { slugify2 } from "@utils/hash";
 import { rarityToString } from "@utils/rarity";
 import { formatSimpleDesc } from "@utils/template-replacement";
 
@@ -104,23 +111,41 @@ export default async function CharacterPage({ params }: Props) {
     return notFound();
   }
 
-  // const characters = await getWWData<Characters[]>({
-  //   resource: "characters",
-  //   language: lang,
-  //   select: ["id", "name", "rarity"],
-  // });
+  const charactersMap =
+    (await getWWData<Record<string, Characters>>({
+      resource: "characters",
+      language: langData,
+      asMap: true,
+      select: ["id", "name", "rarity"],
+    })) ?? {};
+  const weaponsMap =
+    (await getWWData<Record<string, Weapons>>({
+      resource: "weapons",
+      language: langData,
+      asMap: true,
+      select: ["id", "name", "rarity", "icon"],
+    })) ?? {};
+  const echoesMap =
+    (await getWWData<Record<string, Echoes>>({
+      resource: "echoes",
+      language: langData,
+      asMap: true,
+      select: ["id", "name", "icon", "intensityCode"],
+    })) ?? {};
 
-  // const charactersTeam = character.teams.reduce(
-  //   (acc, c) => {
-  //     const [char] = c.split("~");
-  //     const ch = characters?.find((c) => c.name === char)!;
-  //     if (!acc[char]) {
-  //       acc[char] = ch;
-  //     }
-  //     return acc;
-  //   },
-  //   {} as Record<string, Characters>
-  // );
+  const sonataEffects =
+    (await getWWData<Record<string, Sonatas>>({
+      resource: "sonatas",
+      language: langData,
+      asMap: true,
+    })) ?? {};
+
+  const buildsAndTeams = await getWWData<BuildsAndTeams>({
+    resource: "buildsAndTeams",
+    filter: {
+      id: character.id,
+    },
+  });
 
   const ascensionMaterials = character.ascensions.reduce(
     (acc, asc) => {
@@ -256,23 +281,6 @@ export default async function CharacterPage({ params }: Props) {
             })}
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex flex-wrap gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
-            {/* {Object.values(ascensionMaterials).map((mat) => (
-              <Link
-                href={`/${lang}/wuthering-waves/items/${mat._id}`}
-                key={mat.id}
-                className="flex items-center gap-2 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
-              >
-                <Image
-                  src={`/items/${mat.icon}.webp`}
-                  alt={mat.name}
-                  width={40}
-                  height={40}
-                />
-                <div>
-                  {mat.name} x {mat.value}
-                </div>
-              </Link>
-            ))} */}
             {Object.values(ascensionMaterials).map((mat) => (
               <Material key={mat._id} lang={langData} item={mat} />
             ))}
@@ -299,143 +307,287 @@ export default async function CharacterPage({ params }: Props) {
 
       <div className="grid md:grid-cols-2 md:gap-4">
         <div>
-          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Best Echo Sets
+          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+            {t("best_echo_sets", {
+              characterName: character.name,
+            })}
           </h2>
-          <div className="relative z-20 mx-2 mb-6 flex gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
-            {character.sets.map((set) => {
-              const [name, pieces] = set.split("~");
+          <div className="relative z-20 mx-2 mb-6 flex flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
+            {buildsAndTeams?.builds.bestEchoSets.map((set) => {
+              const e = set.recommendedMainEcho
+                ? echoesMap[set.recommendedMainEcho]
+                : null;
               return (
                 <div
-                  key={set}
-                  className="flex items-center gap-2 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
+                  key={set.setsName.join("-")}
+                  className="grid grid-cols-12 items-center gap-2 border-b border-zinc-800 p-2 last-of-type:border-b-0"
                 >
-                  <Image
-                    src={`/icons/element_${name.replace(/ /g, "-")}.webp`}
-                    alt={name}
-                    width={40}
-                    height={40}
-                  />
-                  <div className="rounded-md bg-ww-900 p-2 text-xs">
-                    {pieces}
+                  <div className="col-span-12 flex flex-col rounded-md border border-ww-900 bg-ww-950 px-3 py-1 md:col-span-4">
+                    {set.setsName.map((name) => {
+                      const g = sonataEffects[name];
+
+                      if (!g) {
+                        return g;
+                      }
+
+                      return (
+                        <div
+                          key={name}
+                          className="flex items-center gap-2 border-b border-ww-900 last-of-type:border-b-0"
+                        >
+                          <Image
+                            src={`/commons/${g.icon.split("/").pop()}.webp`}
+                            className="mx-2 my-auto h-9 w-9 rounded-full border-2"
+                            width={36}
+                            height={36}
+                            alt={g.name}
+                            style={{ borderColor: `#${g.color}` }}
+                          />
+                          <div className="rounded-md bg-ww-900 p-2 text-xs">
+                            {set.setsName.length === 2 ? 2 : 5}pc
+                          </div>
+                          <span className="text-sm">{g.name}</span>
+                        </div>
+                      );
+                    })}
                   </div>
-                  {name}
+                  <div className="col-span-5 md:col-span-4">
+                    {e ? (
+                      <Link
+                        key={e.id}
+                        href={`/${lang}/wuthering-waves/echoes/${e.id}`}
+                        className="group mb-6 flex flex-col items-center"
+                        prefetch={false}
+                      >
+                        <div
+                          className={`overflow-hidden rounded transition-all rarity-${e.intensityCode} ring-0 ring-ww-800 group-hover:ring-4`}
+                        >
+                          <Image
+                            className="transition-transform ease-in-out group-hover:scale-110"
+                            src={`/echoes/${e.icon.split("/").pop()}.webp`}
+                            alt={e.name}
+                            width={80}
+                            height={80}
+                          />
+                        </div>
+                        <span className="text-sm">{e.name}</span>
+                      </Link>
+                    ) : (
+                      set.recommendedMainEcho
+                    )}
+                  </div>
+                  <p
+                    className="col-span-7 m-4 border-l-4 border-ww-700 p-2 pl-4 text-sm md:col-span-4"
+                    dangerouslySetInnerHTML={{ __html: set.explanation }}
+                  />
                 </div>
               );
             })}
-          </div> */}
+          </div>
         </div>
         <div>
-          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Best Primary Echo
+          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+            {t("best_primary_echo", {
+              characterName: character.name,
+            })}
           </h2>
-          <div className="relative z-20 mx-2 mb-6 flex gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
-            {character.primary_echo.map((echo) => (
-              <div
-                key={echo}
-                className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
-              >
-                <Image
-                  src={`/echoes/${echo.replace(/ /g, "_").toLowerCase().replace("é", "e")}.webp`}
-                  alt={echo}
-                  width={40}
-                  height={40}
-                />
-                <div>{echo}</div>
-              </div>
-            ))}
-          </div> */}
+          <div className="relative z-20 mx-2 mb-6 flex flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
+            {buildsAndTeams?.builds.bestMainEchoes.map((echo) => {
+              const e = echoesMap[echo.name];
+              return (
+                <div
+                  key={e.id}
+                  className="grid grid-cols-12 border-b border-zinc-800 p-2 last-of-type:border-b-0"
+                >
+                  <Link
+                    href={`/${lang}/wuthering-waves/echoes/${e.id}`}
+                    className="group col-span-4 mb-6 flex flex-col items-center"
+                    prefetch={false}
+                  >
+                    <div
+                      className={`overflow-hidden rounded transition-all rarity-${e.intensityCode} ring-0 ring-ww-800 group-hover:ring-4`}
+                    >
+                      <Image
+                        className="transition-transform ease-in-out group-hover:scale-110"
+                        src={`/echoes/${e.icon.split("/").pop()}.webp`}
+                        alt={e.name}
+                        width={80}
+                        height={80}
+                      />
+                    </div>
+                    <h4>{e.name}</h4>
+                  </Link>
+                  <p
+                    className="col-span-8 m-4 border-l-4 border-ww-700 p-2 pl-4 text-sm"
+                    dangerouslySetInnerHTML={{ __html: echo.explanation }}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-4">
         <div>
-          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
             {character.name} Best Echo Stats
+            {t("best_echo_stats", {
+              characterName: character.name,
+            })}
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex flex-col gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
-            {character.echoes.map((stat, i) => (
-              <div
-                key={stat}
-                className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-2"
-              >
-                {i === 0 ? "4 Cost: " : ""}
-                {i === 1 ? "3 Cost: " : ""}
-                {i === 2 ? "1 Cost: " : ""}
-                {stat}
-              </div>
-            ))}
-          </div> */}
+            <div className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-2">
+              {t("4_cost")}:{" "}
+              {buildsAndTeams?.builds.bestEchoStats.mainStats.cost4.join(", ")}
+            </div>
+            <div className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-2">
+              {t("3_cost")}:{" "}
+              {buildsAndTeams?.builds.bestEchoStats.mainStats.cost3.join(", ")}
+            </div>
+            <div className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-2">
+              {t("1_cost")}:{" "}
+              {buildsAndTeams?.builds.bestEchoStats.mainStats.cost1.join(", ")}
+            </div>
+          </div>
         </div>
         <div>
-          {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Best Echo Substats
+          <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+            {t("best_echo_substats", {
+              characterName: character.name,
+            })}
           </h2>
           <div className="relative z-20 mx-2 mb-6 flex flex-col gap-2 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
-            {character.substats.map((substat, i) => (
-              <div
-                key={substat}
-                className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
-              >
-                <div className="rounded-md bg-ww-900 p-2 text-xs">{i + 1}</div>
-                {substat}
-              </div>
-            ))}
-          </div> */}
+            {buildsAndTeams?.builds.bestEchoStats.substatsPriority.map(
+              (substat, i) => (
+                <div
+                  key={substat}
+                  className="flex items-center gap-4 rounded-md border border-ww-900 bg-ww-950 px-3 py-1"
+                >
+                  <div className="rounded-md bg-ww-900 p-2 text-xs">
+                    {i + 1}
+                  </div>
+                  {substat}
+                </div>
+              )
+            )}
+          </div>
         </div>
       </div>
 
-      {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        {character.name} Best Weapons
+      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+        {t("best_weapons", {
+          characterName: character.name,
+        })}
       </h2>
       <div className="relative z-20 mx-2 mb-6 flex flex-wrap gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 text-ww-50 lg:mx-0">
-        {character.weapons.map((weapon) => (
-          <div
-            key={weapon}
-            className="flex items-center gap-4 rounded-md bg-ww-900 px-3 py-1"
-          >
-            <Image
-              src={`/weapons/${weapon.replace(/\#/g, "-").replace(/ /g, "_").toLowerCase()}.webp`}
-              alt={weapon}
-              width={40}
-              height={40}
-            />
-            {weapon}
-          </div>
-        ))}
-      </div> */}
-
-      {/* <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-        Best {character.name} Team
-      </h2>
-      <div className="relative z-20 mx-2 mb-6 flex gap-4 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
-        {character.teams.map((team) => {
-          const [character, role] = team.split("~");
-          const char = charactersTeam[character];
+        {buildsAndTeams?.builds.bestWeapons.map((weapon) => {
+          const w = weaponsMap[weapon];
           return (
             <Link
-              key={team}
-              href={`/${lang}/wuthering-waves/characters/${char.id}`}
-              className="mb-6 flex flex-col items-center"
-              prefetch={false}
+              key={weapon}
+              href={`/${lang}/wuthering-waves/weapons/${w.id}`}
+              className="flex h-24 min-h-36 w-24 flex-col items-center transition-all hover:brightness-125"
             >
               <div
-                className={`overflow-hidden rounded transition-all rarity-${char.rarity} ring-0 ring-ww-800 group-hover:ring-4`}
+                className={cn(
+                  "flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-600",
+                  `rarity-${w.rarity}`
+                )}
               >
                 <Image
-                  className="transition-transform ease-in-out group-hover:scale-110"
-                  src={`/characters/thumb_${char.id}.webp`}
-                  alt={char.name}
-                  width={124}
-                  height={124}
+                  className=""
+                  src={`/weapons/${w.icon.split("/").pop()}.webp`}
+                  alt={w.name ?? ""}
+                  width={96}
+                  height={96}
                 />
               </div>
-              <h3>{character}</h3>
-              <div className="text-sm text-ww-300">{role}</div>
+              <h3 className="text-center text-sm leading-5">{w.name}</h3>
             </Link>
           );
         })}
-      </div> */}
+      </div>
+
+      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+        {t("tips_and_tricks", {
+          characterName: character.name,
+        })}
+      </h2>
+      <div className="relative z-20 mx-2 mb-6 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
+        {buildsAndTeams?.builds.tipsAndTricks.map((tip) => (
+          <div key={tip} className="m-4 border-l-4 border-ww-700 p-2 pl-4">
+            <div className="text-sm font-normal leading-relaxed">{tip}</div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
+        {t("best_teams", {
+          characterName: character.name,
+        })}
+      </h2>
+      {buildsAndTeams?.teams.teams?.map((team) => (
+        <div className="relative z-20 mx-2 mb-6 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
+          <h3 className="text-lg text-ww-100">{team.name}</h3>
+          <div className="mb-4 text-sm">{team.notes}</div>
+          <div className="grid grid-cols-12">
+            <div className="col-span-12 flex gap-4 md:col-span-6">
+              {team.composition.map((comp) => {
+                const role = comp.role;
+                const char = slugify2(comp.character).replace(
+                  "rover-",
+                  "rover_"
+                );
+                const c = charactersMap[char];
+
+                if (comp.isFlex || !c) {
+                  return (
+                    <div className="mb-6 flex flex-col items-center">
+                      <div className="flex h-[124px] w-[124px] items-center justify-center rounded bg-ww-950">
+                        <LucideUser size={80} />
+                      </div>
+                      <h4>{char}</h4>
+                      <div className="text-sm text-ww-300">{role}</div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={team.name + char}
+                    href={`/${lang}/wuthering-waves/characters/${char}`}
+                    className="group mb-6 flex flex-col items-center"
+                    prefetch={false}
+                  >
+                    <div
+                      className={`overflow-hidden rounded transition-all rarity-${c.rarity} ring-0 ring-ww-800 group-hover:ring-4`}
+                    >
+                      <Image
+                        className="transition-transform ease-in-out group-hover:scale-110"
+                        src={`/characters/thumb_${char}.webp`}
+                        alt={char}
+                        width={124}
+                        height={124}
+                      />
+                    </div>
+                    <h4>{c?.name || char}</h4>
+                    <div className="text-sm text-ww-300">{role}</div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="col-span-12 md:col-span-6">
+              <p
+                className="m-4 border-l-4 border-ww-700 p-2 pl-4 text-sm"
+                dangerouslySetInnerHTML={{
+                  __html: (team.strategy ?? []).join(", "),
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      ))}
       <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
         {t("skills", {
           characterName: character.name,

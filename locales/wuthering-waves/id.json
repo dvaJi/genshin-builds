@@ -35,7 +35,17 @@
     "skills": "Skill {characterName}",
     "resonance_chain": "Resonansi {characterName}",
     "special_food": "Makanan Spesial {characterName}",
-    "no_special_food": "Tidak Ada Makanan Spesial"
+    "no_special_food": "Tidak Ada Makanan Spesial",
+    "best_echo_sets": "Set Echo Terbaik untuk {characterName}",
+    "best_primary_echo": "Echo Utama Terbaik {characterName}",
+    "best_echo_stats": "Statistik Terbaik untuk Echo {characterName}",
+    "4_cost": "Biaya 4",
+    "3_cost": "Biaya 3",
+    "1_cost": "Biaya 1",
+    "best_echo_substats": "Substatistik Terbaik untuk Echo {characterName}",
+    "best_weapons": "Senjata Terbaik untuk {characterName}",
+    "tips_and_tricks": "Tips & Trik Terbaik untuk {characterName}",
+    "best_teams": "Tim Terbaik untuk {characterName}"
   },
   "character_info": {
     "title": "Cerita & Suara {characterName} di Wuthering Waves",
