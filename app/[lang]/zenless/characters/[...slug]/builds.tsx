@@ -87,14 +87,14 @@ export default function Builds({
                   >
                     <div className="flex gap-2">
                       <Image
-                        src={`/disk-drives/${diskDrivesMap[d.name].icon}.webp`}
+                        src={`/disk-drives/${diskDrivesMap[d.name]?.icon}.webp`}
                         width={46}
                         height={46}
-                        alt={diskDrivesMap[d.name].name}
+                        alt={diskDrivesMap[d.name]?.name ?? d.name}
                       />
                       <div className="flex flex-col">
                         <h5 className="group-hover:text-yellow-400">
-                          {diskDrivesMap[d.name].name}
+                          {diskDrivesMap[d.name]?.name ?? d.name}
                         </h5>
                         <p className="text-sm">{d.pieces} PC</p>
                       </div>
