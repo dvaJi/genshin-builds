@@ -107,7 +107,12 @@ const CharacterBuildCard = ({
               </div>
             ))}
           </div>
-          {build.build_notes && <p className="mt-4">{build.build_notes}</p>}
+          {build.build_notes && (
+            <p
+              className="mt-4"
+              dangerouslySetInnerHTML={{ __html: build.build_notes }}
+            />
+          )}
         </div>
         <div className="flex max-w-sm flex-col flex-wrap content-start">
           <h4 className="mb-2 text-lg font-semibold text-slate-300">
