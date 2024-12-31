@@ -14,29 +14,11 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; slug: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const _characters = await getWWData<Characters[]>({
-      resource: "characters",
-      language: lang,
-      select: ["id", "name", "rarity"],
-    });
-
-    if (!_characters) continue;
-
-    routes.push(
-      ..._characters.map((c) => ({
-        lang,
-        slug: c.id,
-      }))
-    );
-  }
-
-  return routes;
+  return i18n.locales.map((lang) => ({ lang }));
 }
 
 interface Props {
