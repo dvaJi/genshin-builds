@@ -65,7 +65,12 @@ async function getData<T>(
 
       if (!res.ok) {
         const text = await res.text();
-        console.error("Error fetching data", res.statusText, text);
+        console.error(
+          "Error fetching data",
+          res.statusText,
+          text,
+          JSON.stringify(options)
+        );
         throw new Error(res.statusText);
       }
 
@@ -88,7 +93,18 @@ async function getData<T>(
         continue; // if it's a "Bad Gateway" error and we haven't reached the max retries, retry
       } else {
         console.error({ options });
-        console.error("Error fetching data", error);
+        console.error(
+          "Error fetching data",
+          JSON.stringify({
+            options,
+            url,
+            next: {
+              revalidate,
+              tags,
+            },
+          }),
+          error
+        );
         throw error; // if it's a different error or we've reached the max retries, throw the error
       }
     }
