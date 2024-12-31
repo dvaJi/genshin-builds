@@ -42,6 +42,16 @@ export async function getZenlessData<T>(options: APIOptions) {
   }
 }
 
+const isRetryableError = (error: unknown) => {
+  return (
+    (error instanceof SyntaxError && error.message.includes("Bad Gateway")) ||
+    (error instanceof Error &&
+      "code" in error &&
+      error.code === "UND_ERR_SOCKET" &&
+      error.message.includes("other side closed"))
+  );
+};
+
 async function getData<T>(
   url: string,
   options: APIOptions,
@@ -85,14 +95,10 @@ async function getData<T>(
       return res.json() as Promise<T>;
     } catch (error) {
       console.log(i, error);
-      if (
-        error instanceof SyntaxError &&
-        error.message.includes("Bad Gateway") &&
-        i < MAX_RETRIES - 1
-      ) {
-        continue; // if it's a "Bad Gateway" error and we haven't reached the max retries, retry
+      if (isRetryableError(error) && i < MAX_RETRIES - 1) {
+        console.log(`Retrying... (${MAX_RETRIES - i - 1} attempts remaining)`);
+        continue;
       } else {
-        console.error({ options });
         console.error(
           "Error fetching data",
           JSON.stringify({
