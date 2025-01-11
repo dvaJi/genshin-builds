@@ -112,14 +112,14 @@ export default async function Page({ params }: Props) {
                       >
                         <Image
                           className="transition-transform ease-in-out group-hover:scale-110"
-                          src={`/echoes/${char.replace("é", "e")}.webp`}
-                          alt={echoes[char]?.name ?? char}
+                          src={`/echoes/${echoes?.[char]?.icon.split("/").pop()}.webp`}
+                          alt={echoes?.[char]?.name ?? char}
                           width={100}
                           height={100}
                         />
                       </div>
                       <h3 className="w-24 truncate text-center text-sm text-ww-100 group-hover:text-white">
-                        {echoes[char]?.name ?? char}
+                        {echoes?.[char]?.name ?? char}
                       </h3>
                     </Link>
                   ) : (
@@ -149,7 +149,7 @@ export default async function Page({ params }: Props) {
               <div className="flex w-20 shrink-0 flex-col items-center gap-2">
                 <Image
                   className="rounded-full"
-                  src={`/echoes/${char.replace("é", "e")}.webp`}
+                  src={`/echoes/${echoes?.[char]?.icon.split("/").pop()}.webp`}
                   alt={echoes?.[char].name ?? char}
                   width={60}
                   height={60}
