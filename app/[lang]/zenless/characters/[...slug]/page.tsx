@@ -20,28 +20,11 @@ import SkillPriority from "./skill-priority";
 import TeamsComponent from "./teams";
 
 export const dynamic = "force-static";
-export const revalidate = 43200;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; slug: string[] }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const data = await getZenlessData<Characters[]>({
-      resource: "characters",
-      select: ["id"],
-    });
-
-    if (!data) continue;
-
-    routes.push(
-      ...data.map((c) => ({
-        lang,
-        slug: [c.id],
-      }))
-    );
-  }
-
-  return routes;
+  return i18n.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
