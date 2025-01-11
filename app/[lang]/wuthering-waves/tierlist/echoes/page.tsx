@@ -1,4 +1,4 @@
-import { i18n } from "i18n-config";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 
