@@ -135,6 +135,42 @@ export default async function CharactersPage({ params }: Props) {
       filter: { id: lang },
     })) ?? ({} as Commons);
 
+  const finalTeams = build?.teams.filter((team) => {
+    let isValid = true;
+
+    // Remove duplicated teams names
+    if (build?.teams?.filter((t) => t.name === team.name).length > 1) {
+      return false;
+    }
+
+    // Remove teams with missing characters
+    [1, 2, 3].forEach((i) => {
+      const characterKey = `character_${i}` as
+        | "character_1"
+        | "character_2"
+        | "character_3";
+      if (!team[characterKey]) {
+        isValid = false;
+        return;
+      }
+      const charTeam = charactersMap[team[characterKey].name];
+      if (!charTeam) {
+        console.log("Character not found", characterKey, team[characterKey]);
+        isValid = false;
+      }
+    });
+
+    // Remove teams with missing bangboos
+    team.bangboos.forEach((b) => {
+      if (!bangboosMap[b]) {
+        console.log("Bangboo not found", b);
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  });
+
   return (
     <div className="relative mx-2 max-w-screen-lg md:mx-auto">
       <div className="mb-5 flex gap-4">
@@ -193,7 +229,7 @@ export default async function CharactersPage({ params }: Props) {
           <TeamsComponent
             lang={lang}
             characterName={character.fullname}
-            teams={build.teams}
+            teams={finalTeams ?? []}
             charactersMap={charactersMap}
             bangboosMap={bangboosMap}
           />

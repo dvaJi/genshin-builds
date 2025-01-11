@@ -40,6 +40,10 @@ export default function Teams({
                   | "character_3";
                 if (!team[characterKey]) return null;
                 const charTeam = charactersMap[team[characterKey].name];
+                if (!charTeam) {
+                  console.log("Character not found", characterKey, team[characterKey]);
+                  return null;
+                };
 
                 return (
                   <Link
