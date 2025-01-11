@@ -18,10 +18,13 @@ type Props = {
 };
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
+export const revalidate = 86400;
 
-export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
-}
+
+
+
+
 
 export async function generateMetadata({
   params,
