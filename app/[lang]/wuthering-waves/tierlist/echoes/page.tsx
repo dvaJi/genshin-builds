@@ -1,4 +1,4 @@
-import { i18n } from "i18n-config";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -18,10 +18,13 @@ type Props = {
 };
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
+export const revalidate = 86400;
 
-export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
-}
+
+
+
+
 
 export async function generateMetadata({
   params,
