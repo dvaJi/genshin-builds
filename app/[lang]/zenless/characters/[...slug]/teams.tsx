@@ -38,12 +38,30 @@ export default function Teams({
                   | "character_1"
                   | "character_2"
                   | "character_3";
-                if (!team[characterKey]) return null;
-                const charTeam = charactersMap[team[characterKey].name];
+                const teamChar = team[characterKey];
+                if (!teamChar) return null;
+                if (teamChar.isFlex) {
+                  return (
+                    <div className="group flex flex-col items-center justify-center gap-2">
+                      <div className="rounded bg-neutral-700 px-2 text-xs text-neutral-200">
+                        {teamChar.role}
+                      </div>
+                      <div className="overflow-hidden rounded-full ring-0 ring-[#fbfe00] transition-all group-hover:ring-4">
+                        <div className="h-24 w-24 scale-150 transition-transform ease-in-out group-hover:scale-125">
+                          ?
+                        </div>
+                      </div>
+                      <h3 className="w-24 truncate text-center text-sm text-white">
+                        {teamChar.name}
+                      </h3>
+                    </div>
+                  );
+                }
+                const charTeam = charactersMap[teamChar.name];
                 if (!charTeam) {
-                  console.log("Character not found", characterKey, team[characterKey]);
+                  console.log("Character not found", characterKey, teamChar);
                   return null;
-                };
+                }
 
                 return (
                   <Link
@@ -52,7 +70,7 @@ export default function Teams({
                     className="group flex flex-col items-center justify-center gap-2"
                   >
                     <div className="rounded bg-neutral-700 px-2 text-xs text-neutral-200">
-                      {team[characterKey].role}
+                      {teamChar.role}
                     </div>
                     <div className="overflow-hidden rounded-full ring-0 ring-[#fbfe00] transition-all group-hover:ring-4">
                       <Image
@@ -73,7 +91,7 @@ export default function Teams({
               <div className="flex max-w-[220px] flex-col">
                 <h4 className="text-center font-semibold">Best Bangboos</h4>
                 <div className="flex flex-col flex-wrap gap-2 md:flex-row md:items-center md:justify-center">
-                  {team.bangboos.map((b) => (
+                  {[...team.bangboos, ...team.alternative_bangboos].map((b) => (
                     <Link
                       key={b + team.name}
                       href={`/${lang}/zenless/bangboos/${b}`}

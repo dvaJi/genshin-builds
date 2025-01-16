@@ -110,17 +110,27 @@ export default function Builds({
                   <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm">
                     6
                   </span>
-                  {b["main-stats"]["6"]
-                    .map((s) => commons[s as keyof Commons])
-                    .join(", ")}
+                  <div className="flex flex-wrap">
+                    {b["main-stats"]["6"].map((sarr) => (
+                      <div key={sarr.join()}>
+                        {sarr
+                          .map((s) => commons[s as keyof Commons])
+                          .join(" - ")}
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="flex gap-2">
                   <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm">
                     5
                   </span>
                   <div className="flex flex-wrap">
-                    {b["main-stats"]["5"].map((s) => (
-                      <div key={s}>{commons[s as keyof Commons]}</div>
+                    {b["main-stats"]["5"].map((sarr) => (
+                      <div key={sarr.join()}>
+                        {sarr
+                          .map((s) => commons[s as keyof Commons])
+                          .join(" - ")}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -129,8 +139,12 @@ export default function Builds({
                     4
                   </span>
                   <div className="flex flex-wrap">
-                    {b["main-stats"]["4"].map((s) => (
-                      <div key={s}>{commons[s as keyof Commons]}</div>
+                    {b["main-stats"]["4"].map((sarr) => (
+                      <div key={sarr.join()}>
+                        {sarr
+                          .map((s) => commons[s as keyof Commons])
+                          .join(" - ")}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -139,9 +153,9 @@ export default function Builds({
             <div>
               <h4 className="text-xl">Drive Substats</h4>
               <div className="flex flex-col gap-1 p-2">
-                {b["sub-stats"].map((s) => (
-                  <div key={s} className="flex gap-2">
-                    {commons[s as keyof Commons]}
+                {b["sub-stats"].map((sarr) => (
+                  <div key={sarr.join()}>
+                    {sarr.map((s) => commons[s as keyof Commons]).join(" - ")}
                   </div>
                 ))}
               </div>

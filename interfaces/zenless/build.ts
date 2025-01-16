@@ -12,8 +12,8 @@ export interface Build {
   overview: string;
   "w-engines": string[];
   "drive-disc": DriveDisc[];
-  "main-stats": { [key: string]: string[] };
-  "sub-stats": SubStat[];
+  "main-stats": { [key: string]: Array<Stat[]> };
+  "sub-stats": Array<Stat[]>;
 }
 
 export interface DriveDisc {
@@ -21,14 +21,24 @@ export interface DriveDisc {
   pieces: number;
 }
 
-export enum SubStat {
+export enum Stat {
+  AnomalyMastery = "Anomaly Mastery",
   AnomalyProficiency = "Anomaly Proficiency",
   Atk = "ATK",
   CRITRate = "CRIT Rate",
   CritDmg = "CRIT DMG",
   Def = "DEF",
+  ElectricDMGBonus = "Electric DMG Bonus",
+  EnergyRegen = "Energy Regen",
+  EtherDMGBonus = "Ether DMG Bonus",
+  FireDMGBonus = "Fire DMG Bonus",
+  IceDMGBonus = "Ice DMG Bonus",
+  Impact = "Impact",
+  ImpactReduction = "Impact Reduction",
+  PENRatio = "PEN Ratio",
   Pen = "PEN",
   PercentATK = "Percent ATK",
+  PhysicalDMGBonus = "Physical DMG Bonus",
 }
 
 export interface Drivediscs {
@@ -65,24 +75,36 @@ export interface Assist {
 export interface Team {
   name: string;
   overview: string;
-  character_1: Character;
-  character_2: Character;
-  character_3: Character;
+  character_1: Character1;
+  character_2: Character1;
+  character_3: Character1;
+  alternative_characters: Character1[];
   bangboos: string[];
+  alternative_bangboos: string[];
 }
 
-export interface Character {
+export interface Character1 {
   name: string;
+  isFlex: boolean;
   role: Role;
+  note: string;
 }
 
 export enum Role {
   Anomaly = "Anomaly",
+  AnomalyReplacement = "Anomaly Replacement",
+  AnyAnomalyUnit = "Any Anomaly Unit",
+  AnySupport = "Any Support",
   Attack = "Attack",
+  Control = "Control",
   Defense = "Defense",
+  DefenseShred = "Defense Shred",
+  Dps = "DPS",
+  Flex = "Flex",
   Stun = "Stun",
-  StunSubDPS = "Stun/Sub-DPS",
+  StunReplacement = "Stun Replacement",
   Support = "Support",
+  SupportReplacement = "Support Replacement",
 }
 
 export interface WEngines {
