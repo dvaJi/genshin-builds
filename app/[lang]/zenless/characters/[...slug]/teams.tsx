@@ -42,7 +42,7 @@ export default function Teams({
                 if (!teamChar) return null;
                 if (teamChar.isFlex) {
                   return (
-                    <div className="group flex flex-col items-center justify-center gap-2">
+                    <div key={teamChar.name + team.name} className="group flex flex-col items-center justify-center gap-2">
                       <div className="rounded bg-neutral-700 px-2 text-xs text-neutral-200">
                         {teamChar.role}
                       </div>
