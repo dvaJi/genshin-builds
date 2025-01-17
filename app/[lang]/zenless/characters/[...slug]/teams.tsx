@@ -100,14 +100,14 @@ export default function Teams({
                       <div className="overflow-hidden rounded-full ring-0 ring-[#fbfe00] transition-all group-hover:ring-4">
                         <Image
                           className="h-10 w-10 scale-150 transition-transform ease-in-out group-hover:scale-125"
-                          src={`/bangboos/${bangboosMap[b]?.icon}.webp`}
-                          alt={bangboosMap[b].name}
+                          src={`/bangboos/${bangboosMap[b.toLowerCase()]?.icon}.webp`}
+                          alt={bangboosMap[b.toLowerCase()]?.name}
                           width={90}
                           height={90}
                         />
                       </div>
                       <h3 className="truncate text-center text-sm text-white">
-                        {bangboosMap[b].name}
+                        {bangboosMap[b.toLowerCase()]?.name}
                       </h3>
                     </Link>
                   ))}

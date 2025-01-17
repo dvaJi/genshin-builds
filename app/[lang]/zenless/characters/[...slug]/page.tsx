@@ -252,7 +252,7 @@ export default async function CharactersPage({ params }: Props) {
       <div className="mb-4 flex flex-col gap-2">
         {character.skills.map((skill) => (
           <Skill
-            key={skill.name}
+            key={skill.name + skill.title}
             icon={`${skill.group?.toLowerCase()}.png`}
             name={skill.name}
             title={skill.title ?? ""}
@@ -268,7 +268,7 @@ export default async function CharactersPage({ params }: Props) {
       <div className="flex flex-col gap-2">
         {character.talents.map((talent) => (
           <Skill
-            key={talent.name}
+            key={talent.name + talent.title}
             icon={`${talent.title?.toLowerCase()}.png`}
             name={talent.name}
             title={talent.title ?? ""}
