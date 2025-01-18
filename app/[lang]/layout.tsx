@@ -1,6 +1,7 @@
 import { AxiomWebVitals } from "next-axiom";
 
 import { PreloadResources } from "@app/preload-resources";
+import ExternalScripts from "./scripts";
 
 export default async function Root({
   children,
@@ -14,6 +15,7 @@ export default async function Root({
     <html lang={lang}>
       <PreloadResources />
       <AxiomWebVitals />
+      <ExternalScripts />
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
