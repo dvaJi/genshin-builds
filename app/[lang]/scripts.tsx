@@ -5,7 +5,7 @@ export default function ExternalScripts() {
     <>
       <Script
         id="inmobi-cmp"
-        strategy="afterInteractive"
+        async
         dangerouslySetInnerHTML={{
           __html: `
 (function() {
