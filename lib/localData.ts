@@ -1,4 +1,5 @@
 import { Build as HSRBuild } from "interfaces/hsr/build";
+
 import { getHSRData } from "./dataApi";
 
 export async function getLocale(lang: string, game: string) {
@@ -80,16 +81,14 @@ export async function getStarRailBuild(
   try {
     let id = characterId;
 
-    if (characterId.startsWith("trailblazer_destruction")) {
-      id = "trailblazer_destruction";
-    } else if (characterId.startsWith("trailblazer_preservation")) {
-      id = "trailblazer_preservation";
+    if (characterId.startsWith("trailblazer")) {
+      id = characterId.replace("_boy", "").replace("_girl", "");
     }
 
     if (id) {
       const _relics = await getHSRData<HSRBuild>({
         resource: "builds",
-        language: 'en',
+        language: "en",
         filter: {
           id: id,
         },
@@ -102,10 +101,10 @@ export async function getStarRailBuild(
     // }
     const _builds = await getHSRData<HSRBuild>({
       resource: "builds",
-      language: 'en',
+      language: "en",
     });
 
-    return _builds
+    return _builds;
   } catch (err) {
     console.error(err);
     return null;
