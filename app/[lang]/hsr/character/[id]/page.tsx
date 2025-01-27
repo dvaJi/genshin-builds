@@ -153,7 +153,7 @@ export default async function CharacterPage({ params }: Props) {
     });
 
     t.data.alternatives.forEach((c) => {
-      const character = characters[getHsrId(c)];
+      const character = characters[getHsrId(c.id)];
       if (character) {
         charactersMap[character.id] = {
           id: character.id,
@@ -298,6 +298,10 @@ export default async function CharacterPage({ params }: Props) {
               {build.teams.map((team) => (
                 <div key={team.name} className="mt-4">
                   <h3 className="text-lg text-slate-300">{team.name}</h3>
+                  <p
+                    className="text-xs"
+                    dangerouslySetInnerHTML={{ __html: team.overview }}
+                  />
                   <div className="flex flex-wrap gap-4">
                     {team.data.characters.map((c) => {
                       const teamCharacter = charactersMap[getHsrId(c.id)];

@@ -54,15 +54,17 @@ export type Talent = "basic_attack" | "skill" | "ultimate" | "talent";
 export interface Team {
   name: string;
   data: TeamData;
+  overview: string;
 }
 
 export interface TeamData {
   characters: BuildCharacter[];
-  alternatives: string[];
+  alternatives: BuildCharacter[];
 }
 
 export interface BuildCharacter {
   id: string;
   role: string;
   isFlex: boolean;
+  note?: string;
 }
