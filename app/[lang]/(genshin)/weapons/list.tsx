@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import type { Weapon } from "@interfaces/genshin";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -10,14 +9,16 @@ import SearchInput from "@components/SearchInput";
 import StarRarity from "@components/StarRarity";
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
+import type { Weapon } from "@interfaces/genshin";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
+import { capitalize } from "@utils/capitalize";
 
 type Props = {
   weapons: (Weapon & { beta?: boolean })[];
 };
 
-const weaponTypes = ["Sword", "Claymore", "Polearm", "Bow", "Catalyst"];
+const weaponTypes = ["sword", "claymore", "polearm", "bow", "catalyst"];
 
 export default function WeaponsList({ weapons }: Props) {
   const [filteredWeapons, setWeaponFilter] = useState(weapons);
@@ -39,7 +40,7 @@ export default function WeaponsList({ weapons }: Props) {
         }
 
         if (typeFilter) {
-          typeFil = t({ id: w.type, defaultMessage: w.type }) === typeFilter;
+          typeFil = w.type.id === typeFilter;
         }
 
         return nameFilter && typeFil;
@@ -83,7 +84,11 @@ export default function WeaponsList({ weapons }: Props) {
                   <LazyLoadImage
                     className="h-10 w-10"
                     alt={type}
-                    src={getUrl(`/weapons_type/${type}.png`, 40, 40)}
+                    src={getUrl(
+                      `/weapons_type/${capitalize(type)}.png`,
+                      40,
+                      40
+                    )}
                     width={40}
                     height={40}
                   />

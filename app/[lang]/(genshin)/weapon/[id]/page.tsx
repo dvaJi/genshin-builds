@@ -185,7 +185,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
             </div>
             <ul>
               <li>
-                {t({ id: "type", defaultMessage: "Type" })}: {weapon.type}
+                {t({ id: "type", defaultMessage: "Type" })}: {weapon.type.name}
               </li>
               <li>
                 {t({ id: "secondary", defaultMessage: "Secondary" })}:{" "}
