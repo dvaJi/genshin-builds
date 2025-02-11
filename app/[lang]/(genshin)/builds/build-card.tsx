@@ -30,12 +30,13 @@ type Props = {
 
 export default function BuildCard({ build, locale, messages }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div
       className={clsx(
         "card relative col-span-4 grid w-full grid-cols-12 gap-4 sm:col-span-2 lg:col-span-4",
         {
-          "items-start ring ring-slate-600": isExpanded,
+          "ring-primary items-start ring-2": isExpanded,
           "items-center": !isExpanded,
         }
       )}
@@ -56,17 +57,22 @@ export default function BuildCard({ build, locale, messages }: Props) {
             width={100}
             height={100}
           />
-          <div className="absolute -right-1 -top-1 rounded-full bg-vulcan-700 p-1">
+          <div className="bg-card absolute -right-1 -top-1 rounded-full p-1">
             <ElementIcon type={build!.element} width={24} height={24} />
           </div>
         </Link>
-        {isExpanded ? <p className="mt-4 text-xs">{build.note}</p> : null}
+        {isExpanded ? (
+          <p
+            className="mt-4 text-xs"
+            dangerouslySetInnerHTML={{ __html: build.note ?? "" }}
+          />
+        ) : null}
       </div>
       <div className="col-span-6 ml-5 flex w-[110px] flex-col items-start lg:col-span-2">
-        <div className="build-name mb-2 text-lg text-slate-200">
+        <div className="build-name text-card-foreground mb-2 text-lg">
           {build!.character.name}
         </div>
-        <Badge className="text-slate-300">{build!.role}</Badge>
+        <Badge className="text-muted-foreground">{build!.role}</Badge>
       </div>
       <div
         className={clsx("-mb-1 ml-2 grid grid-cols-2 justify-between gap-2", {
@@ -141,9 +147,10 @@ export default function BuildCard({ build, locale, messages }: Props) {
           isExpanded ? messages.hide_build_details : messages.show_build_details
         }
         className={clsx(
-          "absolute right-0 top-10 flex cursor-pointer items-center justify-center rounded-lg bg-vulcan-800 bg-opacity-50 p-3 hover:bg-opacity-100 hover:text-slate-200",
+          "bg-secondary text-secondary-foreground absolute right-0 top-10 flex cursor-pointer items-center justify-center rounded-lg p-3 transition-all",
+          "hover:bg-secondary/80",
           {
-            "rotate-180 bg-opacity-80": isExpanded,
+            "rotate-180": isExpanded,
           }
         )}
       >
@@ -166,7 +173,7 @@ function Weapons({ weapons, messages }: { weapons: Weapon[]; messages: any }) {
 
 function WeaponCard({ weapon }: { weapon: Weapon & { r: number } }) {
   return (
-    <div className="relative col-span-2 mb-1 flex w-full items-center rounded-lg bg-vulcan-700">
+    <div className="bg-secondary relative col-span-2 mb-1 flex w-full items-center rounded-lg">
       <div
         className={clsx(
           "flex h-[40px] w-[40px] min-w-[40px] items-center justify-center overflow-hidden rounded-lg",
@@ -181,10 +188,10 @@ function WeaponCard({ weapon }: { weapon: Weapon & { r: number } }) {
           height={40}
         />
       </div>
-      <div className="ml-2 w-full text-sm text-slate-200">
+      <div className="text-card-foreground ml-2 w-full text-sm">
         {weapon.name}
         {weapon.r > 1 ? (
-          <span className="ml-1 rounded bg-vulcan-500 px-[4px] py-[2px] text-xs">
+          <span className="bg-muted ml-1 rounded px-[4px] py-[2px] text-xs">
             R{weapon.r}
           </span>
         ) : null}
@@ -230,7 +237,7 @@ function ArtifactCard({ artifact, pcs }: { artifact: Artifact; pcs: number }) {
   return (
     <div
       key={artifact.id}
-      className={clsx("relative flex items-center rounded-lg bg-vulcan-700", {
+      className={clsx("bg-secondary relative flex items-center rounded-lg", {
         "col-span-2 w-full text-sm": pcs === 1,
         "col-span-1 w-full text-xs": pcs === 2,
       })}
@@ -243,8 +250,8 @@ function ArtifactCard({ artifact, pcs }: { artifact: Artifact; pcs: number }) {
           width={40}
           height={40}
         />
-        <div className="ml-2 text-slate-200">{artifact.name}</div>
-        <div className="absolute bottom-0 left-7 rounded bg-vulcan-900/80 px-1 text-center text-xxs text-slate-300">
+        <div className="text-card-foreground ml-2">{artifact.name}</div>
+        <div className="bg-background/80 text-muted-foreground absolute bottom-0 left-7 rounded px-1 text-center text-xxs">
           {pcs === 1 ? "4" : "2"}
         </div>
       </div>
@@ -254,18 +261,21 @@ function ArtifactCard({ artifact, pcs }: { artifact: Artifact; pcs: number }) {
 
 function Stats({ stats, messages }: { stats: any; messages: any }) {
   return (
-    <div className="ml-2 flex w-full flex-col flex-wrap justify-between rounded-lg bg-vulcan-700 px-2 py-1 text-sm text-slate-300">
-      <div className="flex w-full items-center">
-        <b className="mr-1">{messages.sands}:</b>
-        {stats.sands.join(" / ")}
-      </div>
-      <div className="flex w-full items-center">
-        <b className="mr-1">{messages.goblet}:</b>
-        {stats.goblet.join(" / ")}
-      </div>
-      <div className="flex w-full items-center">
-        <b className="mr-1">{messages.circlet}:</b>
-        {stats.circlet.join(" / ")}
+    <div className="w-full">
+      <div>{messages.main_stats}</div>
+      <div className="bg-muted/80 text-muted-foreground ml-2 flex w-full flex-col flex-wrap justify-between rounded-lg px-2 py-1 text-sm">
+        <div className="flex w-full items-center">
+          <b className="mr-1">{messages.sands}:</b>
+          {stats.sands.join(" / ")}
+        </div>
+        <div className="flex w-full items-center">
+          <b className="mr-1">{messages.goblet}:</b>
+          {stats.goblet.join(" / ")}
+        </div>
+        <div className="flex w-full items-center">
+          <b className="mr-1">{messages.circlet}:</b>
+          {stats.circlet.join(" / ")}
+        </div>
       </div>
     </div>
   );
@@ -275,17 +285,17 @@ function StatsExpanded({ stats, messages }: { stats: any; messages: any }) {
   return (
     <div className="col-span-6 lg:col-span-4">
       <div>{messages.main_stats}</div>
-      <div className="flex h-[90px] w-full flex-col flex-wrap justify-between whitespace-nowrap rounded-lg bg-vulcan-700 px-2 py-1 text-sm text-slate-300">
+      <div className="bg-muted/80 text-muted-foreground flex h-[90px] w-full flex-col flex-wrap justify-between whitespace-nowrap rounded-lg px-2 py-1 text-sm">
         <div className="flex w-full flex-wrap items-center">
-          <b className="mr-1">{messages.sands}:</b>
+          <b className="text-card-foreground mr-1">{messages.sands}:</b>
           {stats.sands.join(" / ")}
         </div>
         <div className="flex w-full flex-wrap items-center">
-          <b className="mr-1">{messages.goblet}:</b>
+          <b className="text-card-foreground mr-1">{messages.goblet}:</b>
           {stats.goblet.join(" / ")}
         </div>
         <div className="flex w-full flex-wrap items-center">
-          <b className="mr-1">{messages.circlet}:</b>
+          <b className="text-card-foreground mr-1">{messages.circlet}:</b>
           {stats.circlet.join(" / ")}
         </div>
       </div>
@@ -301,15 +311,15 @@ function Substats({
   messages: any;
 }) {
   return (
-    <div className="col-span-6 ml-2 lg:col-span-4">
-      <div className="mb-1 w-full">{messages.substats}</div>
-      <div className="w-full rounded-lg bg-vulcan-700 px-2 py-1 text-sm">
+    <div className="col-span-6 lg:col-span-4">
+      <div>{messages.substats}</div>
+      <div className="bg-muted/80 text-muted-foreground w-full rounded-lg px-2 py-1 text-sm">
         {substats.map((substat, i) => (
           <div
             key={substat}
-            className="flex w-full items-center text-slate-300"
+            className="text-muted-foreground flex w-full items-center"
           >
-            <b className="mr-2">{i + 1}</b>
+            <b className="text-card-foreground mr-2">{i + 1}</b>
             {substat}
           </div>
         ))}

@@ -19,7 +19,7 @@ const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
   const { t, locale } = useIntl("teams");
   return (
     <div className="card mx-2 md:mx-0">
-      <h3 className="text-lg font-semibold text-white lg:text-2xl">
+      <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
         {t({
           id: "character_team",
           defaultMessage: "Best Team for {name}",
@@ -38,7 +38,7 @@ const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
                 className="flex flex-col"
                 prefetch={false}
               >
-                <div className="group relative overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500">
+                <div className="hover:border-primary group relative overflow-hidden rounded-full border-4 border-transparent transition">
                   <Image
                     className="z-20 rounded-full object-cover transition group-hover:scale-110"
                     alt={block.id}
@@ -51,7 +51,7 @@ const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
                     type={t(block.element)}
                     height={20}
                     width={20}
-                    className="absolute right-3 top-3 rounded-full bg-vulcan-700 lg:right-5 lg:top-5"
+                    className="bg-muted absolute right-3 top-3 rounded-full lg:right-5 lg:top-5"
                     asyncLoad={asyncLoad}
                   />
                 </div>

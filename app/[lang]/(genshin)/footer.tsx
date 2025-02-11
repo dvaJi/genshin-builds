@@ -4,18 +4,17 @@ import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { RiPatreonFill } from "react-icons/ri";
 
-
 import LanguageSelector from "@components/ui/LanguageSelector";
 import useIntl from "@hooks/use-intl";
 
 export default function GenshinFooter() {
   const { locale } = useIntl("layout");
   return (
-    <footer className="relative z-10 border-t border-gray-700 border-opacity-50 bg-vulcan-800/90 px-4 py-6 text-gray-300 backdrop-blur md:px-20 md:py-14">
+    <footer className="bg-card border-card text-card-foreground relative z-10 border-t border-opacity-50 px-4 py-6 backdrop-blur md:px-20 md:py-14">
       <div className="container mx-auto">
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex flex-1 flex-col">
-            <p className="mb-2 text-lg font-semibold text-gray-200">
+            <p className="mb-2 text-lg font-semibold text-white">
               GenshinBuilds
             </p>
             <button id="pmLink" className="my-1 text-left hover:!text-white">

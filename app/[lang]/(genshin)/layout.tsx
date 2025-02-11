@@ -5,7 +5,7 @@ import IntlProvider from "@components/IntlProvider";
 import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
-import "../../../styles/globals.css";
+import "./theme.css";
 import Footer from "./footer";
 import Header from "./header";
 
@@ -49,10 +49,10 @@ export default async function GenshinLayout({ children, params }: Props) {
           __html: JSON.stringify(jsonLd),
         }}
       ></script>
-      <div className="flex min-h-screen flex-col bg-vulcan-900">
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
         <Header />
 
-        <main className="z-10 mb-8 mt-4 text-gray-300">
+        <main className="z-10 mb-8 mt-4">
           <div className="container mx-auto">{children}</div>
         </main>
 

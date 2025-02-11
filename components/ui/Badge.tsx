@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import clsx from "clsx";
+import { ReactNode } from "react";
 
 interface CollapsibleProps {
   children: ReactNode;
@@ -7,11 +7,11 @@ interface CollapsibleProps {
   textSize?: string;
 }
 
-const Badge = ({ children, className, textSize = 'xs' }: CollapsibleProps) => {
+const Badge = ({ children, className, textSize = "xs" }: CollapsibleProps) => {
   return (
     <span
       className={clsx(
-        "mr-1 rounded border border-gray-500/40 bg-gray-600/70 p-1 font-bold",
+        "border-border bg-muted mr-1 rounded border p-1 font-bold",
         `text-${textSize}`,
         className
       )}

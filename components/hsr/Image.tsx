@@ -25,7 +25,9 @@ const ForwardImage = React.forwardRef(
   (props: ImageProps, ref: React.Ref<HTMLImageElement>) => {
     // eslint-disable-next-line jsx-a11y/alt-text
     return <Image loader={imageLoader} ref={ref} {...props} />;
-  },
+  }
 );
+
+ForwardImage.displayName = "HsrImage";
 
 export default ForwardImage;

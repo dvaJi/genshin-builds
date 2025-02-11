@@ -385,8 +385,8 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="w-72 rounded border border-vulcan-900 bg-vulcan-800 p-4">
-          <p>
+        <div className="w-72 rounded-lg border border-border bg-card p-4">
+          <p className="text-card-foreground">
             {t({
               id: "no_todo_msg",
               defaultMessage: "No Todos. Add some from the calculator.",
@@ -395,7 +395,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
           <p>
             <Link
               href={`/${locale}/calculator`}
-              className="text-slate-300 hover:text-white"
+              className="text-muted-foreground hover:text-foreground"
               prefetch={false}
             >
               {t({

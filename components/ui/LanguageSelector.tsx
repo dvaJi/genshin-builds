@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { memo, useCallback, useState } from "react";
@@ -42,25 +43,28 @@ function LanguageSelector() {
   const current = languages.find((lang) => lang.id === locale) || languages[0];
 
   return (
-    <>
+    <div className="relative">
       <button
-        className="inline-flex items-center rounded-lg border border-vulcan-700 bg-vulcan-700/30 px-5 py-2.5 text-center text-white hover:border-vulcan-600 hover:bg-vulcan-600/50 focus:outline-none focus:ring-4 focus:ring-slate-600"
         onClick={() => setIsOpen(!isOpen)}
+        data-dropdown-toggle="dropdown"
+        className="border-border bg-secondary/30 text-foreground hover:bg-secondary/50 focus:ring-ring inline-flex items-center rounded-lg border px-5 py-2.5 text-center focus:outline-none focus:ring-2"
+        type="button"
         ref={contentRef as any}
       >
         {current.name}
       </button>
       <div
-        className={`z-10 divide-y divide-gray-100 rounded-lg bg-vulcan-700 shadow-lg lg:w-60 ${
-          isOpen ? "" : "hidden"
-        }`}
+        className={clsx(
+          "divide-border bg-card z-10 divide-y rounded-lg shadow-lg lg:w-60",
+          isOpen ? "block" : "hidden"
+        )}
       >
-        <ul className="grid grid-cols-2 py-2 text-sm text-gray-200">
+        <ul className="text-card-foreground py-2 text-sm">
           {languages.map((option) => (
             <li key={option.id} className="">
               <Link
                 href={redirectedPathName(option.id)}
-                className="block px-4 py-2 hover:bg-gray-600 hover:text-white"
+                className="hover:bg-foreground/10 block px-4 py-2"
                 prefetch={false}
               >
                 {option.name}
@@ -69,7 +73,7 @@ function LanguageSelector() {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

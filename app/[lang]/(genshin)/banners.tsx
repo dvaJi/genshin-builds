@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 import { getGenshinData } from "@lib/dataApi";
 import { getImg } from "@lib/imgUrl";
 
@@ -31,7 +31,6 @@ export async function Banners({ lang }: Props) {
   const now = new Date();
   const banners = data.flat().filter((t) => {
     if (t.name.endsWith("Banner")) {
-      // Check if the banner is active, eg: 2021-10-20
       if (t.start && t.end) {
         const start = new Date(t.start);
         const end = new Date(t.end);
@@ -42,37 +41,59 @@ export async function Banners({ lang }: Props) {
   });
 
   return (
-    <div
-      className={`grid grid-cols-2 ${banners.length > 3 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
-    >
-      {banners.map((banner) => (
-        <Link
-          href={`/${lang}/banners/${banner.name.endsWith("Weapon Banner") ? "weapons" : "characters"}`}
-          key={banner.name}
-          className="group mx-auto max-w-xs overflow-hidden"
-          prefetch={false}
-        >
-          <div className="relative aspect-video w-full overflow-hidden rounded bg-vulcan-900 object-cover">
-            <img
-              src={getImg("genshin", `/events/${banner.image}`, {
-                width: 320,
-                height: 180,
-              })}
-              alt={banner.name}
-              className="aspect-video w-full rounded object-cover shadow-2xl transition-all group-hover:scale-105 group-hover:brightness-110"
-            />
+    <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {banners.map((banner) => {
+        const daysLeft = Math.ceil(
+          (new Date(banner.end).getTime() - now.getTime()) / (1000 * 60 * 60 * 24)
+        );
+        
+        return (
+          <div
+            key={banner.name}
+            className="group transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <Link
+              href={`/${lang}/banners/${banner.name.endsWith("Weapon Banner") ? "weapons" : "characters"}`}
+              className="block overflow-hidden rounded-xl bg-gradient-to-br from-vulcan-800/90 to-vulcan-900/90 shadow-lg transition-all duration-300 hover:shadow-vulcan-500/10"
+              prefetch={false}
+            >
+              <div className="relative aspect-[16/9] overflow-hidden">
+                {/* Banner image */}
+                <Image
+                  src={getImg("genshin", `/events/${banner.image}`, {
+                    width: 400,
+                    height: 225,
+                  })}
+                  alt={banner.name}
+                  width={400}
+                  height={225}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-vulcan-900 via-vulcan-900/20 to-transparent opacity-60" />
+
+                {/* Days left badge */}
+                <div className="absolute bottom-3 right-3">
+                  <span className="rounded-full bg-vulcan-800/90 px-3 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm">
+                    {daysLeft} days left
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-4">
+                <h3 className="text-lg font-medium text-slate-200 transition-colors group-hover:text-white">
+                  {banner.name}
+                </h3>
+                <p className="mt-1 text-sm text-slate-400">
+                  {new Date(banner.start).toLocaleDateString()} -{" "}
+                  {new Date(banner.end).toLocaleDateString()}
+                </p>
+              </div>
+            </Link>
           </div>
-          <div className="text-center">
-            <h3 className="mt-1 text-base text-slate-300 transition-all group-hover:text-slate-100">
-              {banner.name}
-            </h3>
-            <p className="text-xs">
-              {new Date(banner.start).toDateString()} -{" "}
-              {new Date(banner.end).toDateString()}
-            </p>
-          </div>
-        </Link>
-      ))}
+        );
+      })}
     </div>
   );
 }

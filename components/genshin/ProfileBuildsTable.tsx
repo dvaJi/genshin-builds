@@ -410,7 +410,7 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
         {Object.entries(dmgStats)
           .filter((a) => a[1] >= 0.001)
           .map(([key, value]) => (
-            <div key={key} className="flex  justify-between">
+            <div key={key} className="flex justify-between">
               <div>{key}</div>
               <div className="ml-2">{(value * 100).toFixed(1)}%</div>
             </div>

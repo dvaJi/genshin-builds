@@ -17,7 +17,6 @@ export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   const langs = i18n.locales;
-
   return langs.map((lang) => ({ lang }));
 }
 
@@ -59,12 +58,18 @@ export default async function GenshinCharacters({ params }: Props) {
   const characters = await getGenshinData<Character[]>({
     resource: "characters",
     language: langData,
-    select: ["id", "rarity", "name", "element", "release"],
+    select: ["id", "rarity", "name", "element", "release", "weapon_type"],
   });
 
   const elements = characters.reduce((acc, character) => {
-    if (!acc.includes(character.element)) {
-      acc.push(character.element);
+    if (!acc.includes(character.element.id)) {
+      acc.push(character.element.id);
+    }
+    return acc;
+  }, [] as string[]);
+  const weaponsTypes = characters.reduce((acc, character) => {
+    if (!acc.includes(character.weapon_type.id)) {
+      acc.push(character.weapon_type.id);
     }
     return acc;
   }, [] as string[]);
@@ -83,24 +88,45 @@ export default async function GenshinCharacters({ params }: Props) {
   const latestRelease = allCharacters[0].release;
 
   return (
-    <div>
-      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <FrstAds
-        placementName="genshinbuilds_billboard_atf"
-        classList={["flex", "justify-center"]}
-      />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "characters", defaultMessage: "Characters" })}
-      </h2>
-      <GenshinCharactersList
-        characters={allCharacters}
-        elements={elements}
-        latestRelease={latestRelease}
-      />
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
-      />
+    <div className="min-h-screen">
+      <div className="mb-8 flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            {t({ id: "characters", defaultMessage: "Characters" })}
+          </h1>
+          <p className="mt-1 text-lg text-muted-foreground">
+            {t({
+              id: "description",
+              defaultMessage:
+                "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
+            })}
+          </p>
+        </div>
+        <Ads className="hidden md:block" adSlot={AD_ARTICLE_SLOT} />
+      </div>
+
+      <div className="mb-8">
+        <FrstAds
+          placementName="genshinbuilds_billboard_atf"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
+
+      <div className="card">
+        <GenshinCharactersList
+          characters={allCharacters}
+          elements={elements}
+          weaponsTypes={weaponsTypes}
+          latestRelease={latestRelease}
+        />
+      </div>
+
+      <div className="mt-8">
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
     </div>
   );
 }

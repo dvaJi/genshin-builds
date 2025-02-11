@@ -31,15 +31,17 @@ export default function FarmableToday({
 
   return (
     <>
-      <div className="mb-2 flex flex-wrap justify-center">
+      {/* Day Selection */}
+      <div className="mb-6 flex flex-wrap justify-center gap-2">
         {days.map((day) => (
           <Button
             key={day}
-            className={clsx("mx-2 my-1 rounded p-2 px-4", {
-              "bg-vulcan-700": currentDay === day,
-              "text-white": currentDay === day,
-              "bg-vulcan-800": currentDay !== day,
-            })}
+            variant={currentDay === day ? "primary" : "secondary"}
+            size="sm"
+            className={clsx(
+              "min-w-[100px] transform transition-all duration-300",
+              currentDay === day && "shadow-primary/20 scale-105 shadow-lg"
+            )}
             onClick={() => {
               trackClick(`planner_day`);
               setCurrentDay(day);
@@ -49,96 +51,97 @@ export default function FarmableToday({
           </Button>
         ))}
       </div>
-      <div className="m-2">
-        <h2 className="text-2xl font-semibold text-gray-200">
-          {t({
-            id: "farmable_today",
-            defaultMessage: "Farmable today",
-          })}
-        </h2>
-        <p>
-          {t({
-            id: "farmable_today_desc",
-            defaultMessage:
-              "Discover which characters and weapons are farmable today.",
-          })}
-        </p>
-        <div className="card flex flex-col">
-          <table>
-            <tbody>
-              {domains.characters.map((charactersDomain) => (
-                <tr key={charactersDomain.domainName}>
-                  <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
-                    <h3 className="text-lg text-gray-200 ">
-                      {charactersDomain.domainName}
-                    </h3>
-                  </td>
-                  <td className="border-b border-gray-700 pt-2 align-middle">
-                    <div className="flex flex-wrap">
-                      {charactersDomain.rotation
-                        .find((r) => r.day === currentDay)
-                        ?.ids.map((cId) => (
-                          <Link
-                            key={cId}
-                            href={`/${locale}/character/${cId}`}
-                            prefetch={false}
-                          >
-                            <SimpleRarityBox
-                              img={getUrl(
-                                `/characters/${cId}/image.png`,
-                                80,
-                                80
-                              )}
-                              rarity={characters[cId].rarity}
-                              alt={characters[cId].name}
-                              className="h-16 w-16"
-                            />
-                          </Link>
-                        ))}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-              {domains.weapons.map((weaponsDomain) => (
-                <tr
-                  key={weaponsDomain.domainName}
-                  className="border-b border-gray-700 pt-2 align-middle"
-                >
-                  <td className="w-18 border-b border-gray-700 py-2 pr-2 align-middle">
-                    <h3 className="text-lg text-gray-200 ">
-                      {weaponsDomain.domainName}
-                    </h3>
-                  </td>
-                  <td className="border-b border-gray-700 pt-2 align-middle">
-                    <div className="flex flex-wrap">
-                      {weaponsDomain.rotation
-                        .find((r) => r.day === currentDay)
-                        ?.ids.map((cId) => (
-                          <div key={cId}>
-                            {weapons[cId] ? (
-                              <Link
-                                key={cId}
-                                href={`/${locale}/weapon/${cId}`}
-                                prefetch={false}
-                              >
-                                <SimpleRarityBox
-                                  img={getUrl(`/weapons/${cId}.png`, 80, 80)}
-                                  rarity={weapons[cId].rarity}
-                                  alt={weapons[cId].name}
-                                  className="h-16 w-16"
-                                />
-                              </Link>
-                            ) : (
-                              `NOT FOUND ${cId}`
-                            )}
-                          </div>
-                        ))}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+      <div className="space-y-6">
+        {/* Section Header */}
+        <div>
+          <h2 className="text-foreground text-2xl font-semibold">
+            {t({
+              id: "farmable_today",
+              defaultMessage: "Farmable today",
+            })}
+          </h2>
+          <p className="text-muted-foreground">
+            {t({
+              id: "farmable_today_desc",
+              defaultMessage:
+                "Discover which characters and weapons are farmable today.",
+            })}
+          </p>
+        </div>
+
+        {/* Domains Grid */}
+        <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
+          {/* Character Domains */}
+          {domains.characters.map((charactersDomain) => (
+            <div
+              key={charactersDomain.domainName}
+              className="card overflow-hidden"
+            >
+              <h3 className="text-card-foreground mb-4 text-lg font-medium">
+                {charactersDomain.domainName}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {charactersDomain.rotation
+                  .find((r) => r.day === currentDay)
+                  ?.ids.map((cId) => (
+                    <Link
+                      key={cId}
+                      href={`/${locale}/character/${cId}`}
+                      prefetch={false}
+                    >
+                      <SimpleRarityBox
+                        img={getUrl(`/characters/${cId}/image.png`, 80, 80)}
+                        rarity={characters[cId].rarity}
+                        alt={characters[cId].name}
+                        name={characters[cId].name}
+                        className="h-20 w-20 rounded-lg shadow-md"
+                      />
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          ))}
+
+          {/* Weapon Domains */}
+          {domains.weapons.map((weaponsDomain) => (
+            <div
+              key={weaponsDomain.domainName}
+              className="card overflow-hidden"
+            >
+              <h3 className="text-card-foreground mb-4 text-lg font-medium">
+                {weaponsDomain.domainName}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {weaponsDomain.rotation
+                  .find((r) => r.day === currentDay)
+                  ?.ids.map((cId) =>
+                    weapons[cId] ? (
+                      <Link
+                        key={cId}
+                        href={`/${locale}/weapon/${cId}`}
+                        prefetch={false}
+                      >
+                        <SimpleRarityBox
+                          img={getUrl(`/weapons/${cId}.png`, 80, 80)}
+                          rarity={weapons[cId].rarity}
+                          alt={weapons[cId].name}
+                          name={weapons[cId].name}
+                          className="h-20 w-20 rounded-lg shadow-md"
+                        />
+                      </Link>
+                    ) : (
+                      <div
+                        key={cId}
+                        className="bg-destructive/10 text-destructive-foreground rounded px-2 py-1 text-xs"
+                      >
+                        NOT FOUND {cId}
+                      </div>
+                    )
+                  )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

@@ -122,41 +122,40 @@ export default async function GenshinBestDecks({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
+      <h2 className="text-3xl font-semibold tracking-tight text-card-foreground">
         {t({ id: "best_decks", defaultMessage: "Best Decks" })}
       </h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
         {decks.map((deck, i) => (
           <>
             <div
-              className="group/card card flex flex-col"
+              className="group/card relative overflow-hidden rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-lg"
               key={deck.characters[0].id + i}
             >
               <div className="flex justify-between">
                 <Link
                   href={`/${lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
-                  className="mb-4 cursor-pointer text-xl font-semibold text-zinc-200 transition-all hover:text-white"
+                  className="mb-4 text-xl font-semibold text-card-foreground transition-colors hover:text-primary"
                   prefetch={false}
                 >
                   {deck.characters.map((card) => card.name).join(" / ")}
                 </Link>
                 <CopyToClipboard
                   content={generateCode(deck)}
-                  className="min-w-16 translate-y-2 transform rounded bg-vulcan-700 px-2 text-xs text-slate-400 opacity-0 ring-2 ring-transparent transition-all hover:bg-vulcan-600 hover:text-slate-100 group-hover/card:translate-y-0 group-hover/card:opacity-100 data-[copied=true]:ring-green-600/50"
+                  className="opacity-0 transition-all group-hover/card:opacity-100 data-[copied=true]:ring-2 data-[copied=true]:ring-green-600/50"
                   copiedText="Copied!"
                 >
                   Share Code
                 </CopyToClipboard>
               </div>
-              <div className="relative flex flex-wrap content-center justify-center py-3">
-                <div className="absolute right-0 top-0 z-20 h-full w-full bg-vulcan-800/50 opacity-0 backdrop-blur transition-all group-hover/card:opacity-100">
+              <div className="relative flex flex-wrap content-center justify-center gap-2">
+                <div className="absolute inset-0 z-20 flex items-center justify-center bg-card/80 opacity-0 backdrop-blur-sm transition-all group-hover/card:opacity-100">
                   <Link
                     href={`/${lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
+                    className="text-lg font-semibold text-foreground transition-colors hover:text-primary"
                     prefetch={false}
                   >
-                    <div className="flex h-full items-center justify-center text-lg font-semibold text-zinc-300 transition-all hover:text-white">
-                      View Deck
-                    </div>
+                    View Deck
                   </Link>
                 </div>
                 {deck.characters.map((card) => (
@@ -167,9 +166,9 @@ export default async function GenshinBestDecks({ params }: Props) {
                       title={card.name}
                       width={180}
                       height={320}
-                      className="rounded-xl border-2 border-transparent md:w-36"
+                      className="rounded-xl border-2 border-transparent transition-all group-hover/card:border-primary md:w-36"
                     />
-                    <div className="text-center text-sm font-semibold text-zinc-200 transition-all group-hover:text-white">
+                    <div className="mt-2 text-center text-sm font-medium text-muted-foreground transition-colors group-hover/card:text-card-foreground">
                       {card.name}
                     </div>
                   </div>

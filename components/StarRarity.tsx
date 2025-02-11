@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { getUrl } from "@lib/imgUrl";
@@ -14,35 +14,32 @@ interface StarRarityProps {
 }
 
 const StarRarity = ({
+  rarity,
+  starsSize = 24,
   className,
   starClassname,
-  rarity = 1,
-  starsSize = 33,
 }: StarRarityProps) => {
-  const starts = useMemo(() => {
-    let N = rarity,
-      i = 0,
-      a = Array(N);
-
-    while (i < N) a[i++] = i;
-    return a;
-  }, [rarity]);
   return (
-    <div
-      className={clsx("flex w-10 items-center justify-items-center", className)}
-    >
-      {starts.map((star) => (
+    <div className={clsx("flex items-center justify-center", className)}>
+      {[...Array(rarity)].map((_, i) => (
         <div
-          key={`star_${star}`}
-          className={clsx("w-4 text-yellow-400", starClassname, {
-            "-m-1": star > 0,
-          })}
+          key={i}
+          style={{ "--star-delay": `${i * 50}ms` } as React.CSSProperties}
+          className={clsx(
+            "transform transition-transform duration-300",
+            "hover:scale-125 hover:brightness-125",
+            "animate-[starPop_500ms_ease-out_forwards]",
+            "[animation-delay:var(--star-delay)]",
+            "-ml-0.5 first:ml-0",
+            starClassname
+          )}
         >
           <LazyLoadImage
             src={getUrl(`/1_star.png`)}
-            alt="1_star.png"
+            alt="star"
             width={starsSize}
             height={starsSize}
+            className="drop-shadow-[0_2px_3px_rgba(222,184,100,0.4)]"
           />
         </div>
       ))}

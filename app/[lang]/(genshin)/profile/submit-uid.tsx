@@ -1,11 +1,22 @@
 "use client";
 
-import { submitGenshinUID } from "@app/actions";
-import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import { redirect } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
+
+import { submitGenshinUID } from "@app/actions";
+import { Alert, AlertDescription } from "@app/components/ui/alert";
+import { Button } from "@app/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@app/components/ui/card";
+import { Input } from "@app/components/ui/input";
+import { Label } from "@app/components/ui/label";
+import useIntl from "@hooks/use-intl";
 
 const initialState = {
   message: "",
@@ -17,56 +28,58 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button
-      type="submit"
-      aria-disabled={pending}
-      className="disabled:cursor-not-allowed disabled:opacity-50"
-    >
-      {pending ? (
-        <div className="flex justify-center py-4">
-          <FaSpinner className="animate-spin text-2xl" />
-        </div>
-      ) : (
-        t({
-          id: "submit",
-          defaultMessage: "Submit",
-        })
-      )}
+    <Button type="submit" className="w-full" disabled={pending}>
+      {pending && <FaSpinner className="mr-2 h-4 w-4 animate-spin" />}
+      {t({
+        id: "submit",
+        defaultMessage: "Submit",
+      })}
     </Button>
   );
 }
 
 export function SubmitGenshinUidForm() {
   const [state, formAction] = useFormState(submitGenshinUID, initialState);
+  const { t } = useIntl("profile");
 
   if (state?.message === "Success") {
     redirect(`/profile/${state.uid}`);
   }
 
   return (
-    <form action={formAction}>
+    <form action={formAction} className="space-y-6">
       {state?.message && (
-        <div
-          aria-live="polite"
-          role="status"
-          className="text-center text-red-500"
-        >
-          {state.message}
-        </div>
+        <Alert variant="destructive">
+          <AlertDescription>{state.message}</AlertDescription>
+        </Alert>
       )}
-      <div className="relative mx-auto h-14 w-60">
-        <input
-          type="text"
-          placeholder="Your UUID"
-          className="mb-4 w-full max-w-xl rounded border border-vulcan-600 bg-vulcan-900 p-2"
-          id="uid"
-          name="uid"
-          required
-        />
-      </div>
-      <div className="flex items-center justify-center pt-5">
-        <SubmitButton />
-      </div>
+
+      <Card>
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl">Enter Your UID</CardTitle>
+          <CardDescription>
+            Your UID can be found in the game&apos;s profile section
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="uid">
+                {t({ id: "uid", defaultMessage: "UID" })}
+              </Label>
+              <Input
+                id="uid"
+                name="uid"
+                type="text"
+                placeholder="Enter your UID"
+                required
+                className="w-full"
+              />
+            </div>
+            <SubmitButton />
+          </div>
+        </CardContent>
+      </Card>
     </form>
   );
 }

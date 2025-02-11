@@ -3,6 +3,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { submitGenshinUID } from "@app/actions";
+import { Avatar, AvatarFallback, AvatarImage } from "@app/components/ui/avatar";
+import { Badge } from "@app/components/ui/badge";
+import { Card, CardContent } from "@app/components/ui/card";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@app/components/ui/hover-card";
 import { genPageMetadata } from "@app/seo";
 import DynamicBackground from "@components/DynamicBackground";
 import TimeAgo from "@components/TimeAgo";
@@ -28,9 +36,11 @@ export async function generateMetadata({
 }: Props): Promise<Metadata | undefined> {
   const { lang, uid } = await params;
   const { t, locale } = await getTranslations(lang, "genshin", "profile");
-  const player = await getPlayer(uid);
+  const _player = await getPlayer(uid);
 
-  if (!player) return undefined;
+  if (!_player || !_player.length) return undefined;
+
+  const player = _player[0];
 
   const title = t({
     id: "title",
@@ -54,7 +64,7 @@ export async function generateMetadata({
 
 export default async function GenshinPlayerProfile({ params }: Props) {
   const { lang, uid } = await params;
-  const { t, langData, locale } = await getTranslations(
+  const { langData, locale } = await getTranslations(
     lang,
     "genshin",
     "profile"
@@ -98,85 +108,103 @@ export default async function GenshinPlayerProfile({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
+
       <div className="relative z-10">
         <ProfileFavorites />
       </div>
-      <div
-        className="relative z-10 mt-4 rounded-xl bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${getUrlLQ(
-            `/profile/${profile.namecardId}_1.png`
-          )})`,
-        }}
-      >
-        <div className="flex w-full justify-between rounded-xl bg-vulcan-900/50 shadow-xl">
-          <div className="flex">
-            <div className="flex items-center">
-              <img
-                src={getUrl(
-                  `/profile/${
-                    profile.profileCostumeId
-                      ? profile.profileCostumeId
-                      : profile.profilePictureId
-                  }.png`,
-                  142,
-                  142
-                )}
-                className="m-2 min-w-[90px] rounded-full border-2 border-vulcan-600 md:m-0 md:rounded-xl md:border-0"
-                alt="profile"
-              />
-            </div>
-            <div className="flex flex-col justify-center p-2 md:p-4">
-              <span className="text-xxs md:text-xs">
-                {t({
-                  id: "uuid",
-                  defaultMessage: "UUID: {uuid}",
-                  values: { uuid: uid },
-                })}
-                <span className="ml-2 inline-block">
-                  | <TimeAgo date={profile.updatedAt} locale={locale} />
-                </span>
-              </span>
-              <h2 className="text-xl font-semibold text-white md:text-4xl">
-                {profile.nickname}
-              </h2>
-              <p className="text-xxs italic text-slate-300 md:text-sm">
-                {profile.signature}
-              </p>
+
+      <Card className="relative z-10 mt-4 overflow-hidden bg-gradient-to-r from-background/95 to-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <CardContent className="p-0">
+          <div
+            className="relative h-48 w-full bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${getUrlLQ(`/profile/${profile.namecardId}_1.png`)})`,
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-background/20" />
+
+            <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-6">
+              <div className="flex items-end gap-4">
+                <HoverCard>
+                  <HoverCardTrigger>
+                    <Avatar className="h-24 w-24 border-4 border-background">
+                      <AvatarImage
+                        src={getUrl(
+                          `/profile/${profile.profileCostumeId || profile.profilePictureId}.png`,
+                          142,
+                          142
+                        )}
+                      />
+                      <AvatarFallback>
+                        {profile.nickname.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                  </HoverCardTrigger>
+                  <HoverCardContent className="w-80">
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-semibold">
+                        {profile.nickname}
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        {profile.signature}
+                      </p>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
+
+                <div className="mb-1 space-y-1">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span>UID: {uid}</span>
+                    <span>•</span>
+                    <TimeAgo date={profile.updatedAt} locale={locale} />
+                  </div>
+                  <h2 className="text-2xl font-bold text-primary-foreground">
+                    {profile.nickname}
+                  </h2>
+                  <p className="max-w-md text-sm italic text-muted-foreground">
+                    {profile.signature}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Badge
+                  variant="outline"
+                  className="border-primary/20 bg-primary/10"
+                >
+                  {profile.region}
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="bg-yellow-500/10 text-yellow-500"
+                >
+                  AR{profile.level}
+                </Badge>
+                <SyncGenshinProfile lang={lang} uid={uid} />
+                <FavoriteGenshinProfile profile={profile} />
+              </div>
             </div>
           </div>
-          <div className="m-4 flex flex-wrap items-baseline justify-end">
-            <div
-              className="mx-px rounded-lg bg-gray-600 px-2 py-1 text-xs font-semibold text-slate-50 md:mx-1 md:text-base"
-              title="Region"
-            >
-              {profile.region}
-            </div>
-            <div
-              className="mx-px rounded-lg bg-yellow-700 px-2 py-1 text-xs font-semibold text-slate-50 md:mx-1 md:text-base"
-              title="Level"
-            >
-              AR{profile.level}
-            </div>
-            <SyncGenshinProfile lang={lang} uid={uid} />
-            <FavoriteGenshinProfile profile={profile} />
-          </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
+
       {profile.builds.length === 0 ? (
-        <div className="card relative z-10 m-2 mx-auto max-w-xl text-center text-white">
-          Please enable the &quot;Show Character Details&quot; option in your
-          Character Showcase in-game to see the details.
-        </div>
+        <Card className="relative z-10 mx-auto mt-4 max-w-xl">
+          <CardContent className="p-6 text-center text-muted-foreground">
+            Please enable the &quot;Show Character Details&quot; option in your
+            Character Showcase in-game to see the details.
+          </CardContent>
+        </Card>
       ) : null}
-      <div>
+
+      <div className="relative z-10 space-y-8 py-8">
         <ProfileBuildsTable data={profile.builds} />
-      </div>
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center", "z-10"]}
-      />
-      <div>
+
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
+
         <ProfileArtifactsTable data={profile.builds} />
       </div>
     </>

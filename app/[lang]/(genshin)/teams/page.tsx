@@ -77,7 +77,7 @@ export default async function GenshinCharacters({ params }: Props) {
           id: c.id,
           name: characters[c.id]?.name || "",
           role: c.role,
-          element: characters[c.id]?.element || "",
+          element: characters[c.id]?.element.name || "",
         })),
       } as any);
 
@@ -93,7 +93,7 @@ export default async function GenshinCharacters({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
+      <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
         {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
       </h2>
       <div className="grid gap-4 lg:grid-cols-2">

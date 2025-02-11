@@ -66,10 +66,22 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "achievements", defaultMessage: "Todo List" })}
-      </h2>
-      <AchievementsWrapper categories={categories} />
+      <div className="">
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight text-card-foreground">
+            {t({ id: "achievements", defaultMessage: "Achievements" })}
+          </h1>
+          <p className="text-muted-foreground">
+            {t({
+              id: "description",
+              defaultMessage: "Track your Genshin Impact achievements easily",
+            })}
+          </p>
+        </div>
+        <div className="">
+          <AchievementsWrapper categories={categories} />
+        </div>
+      </div>
       <FrstAds
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}

@@ -61,20 +61,43 @@ export default async function GenshinTCG({ params }: Props) {
     .filter((value, index, self) => value && self.indexOf(value) === index);
 
   return (
-    <div>
-      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <FrstAds
-        placementName="genshinbuilds_billboard_atf"
-        classList={["flex", "justify-center"]}
-      />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "cards", defaultMessage: "Genius Invokation TCG Card List" })}
-      </h2>
-      <CardsTable lang={lang} cards={cards} types={types} />
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
-      />
+    <div className="min-h-screen">
+      <div className="mb-8 flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            {t({
+              id: "cards",
+              defaultMessage: "Genius Invokation TCG Card List",
+            })}
+          </h1>
+          <p className="mt-1 text-lg text-muted-foreground">
+            {t({
+              id: "description",
+              defaultMessage:
+                "Browse the complete collection of cards available in Genius Invokation TCG. Filter by type, search by name, and create your own custom decks.",
+            })}
+          </p>
+        </div>
+        <Ads className="hidden md:block" adSlot={AD_ARTICLE_SLOT} />
+      </div>
+
+      <div className="mb-8">
+        <FrstAds
+          placementName="genshinbuilds_billboard_atf"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
+
+      <div className="card">
+        <CardsTable lang={lang} cards={cards} types={types} />
+      </div>
+
+      <div className="mt-8">
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
     </div>
   );
 }

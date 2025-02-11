@@ -1,11 +1,13 @@
 "use client";
 
-import { useStore } from "@nanostores/react";
+import clsx from "clsx";
 import Image from "next/image";
 import { memo, useEffect, useMemo, useState } from "react";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import { Tooltip } from "react-tooltip";
 import { toast } from "sonner";
 
+import { Input } from "@app/components/ui/input";
 import useDebounce from "@hooks/use-debounce";
 import useIntl from "@hooks/use-intl";
 import type {
@@ -14,14 +16,14 @@ import type {
   TCGCharacterCard,
 } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
+import { useStore } from "@nanostores/react";
 import {
   $deckBuilder,
   DECK_SETTINGS,
+  type DeckBuilder,
   addActionCardDeck,
   addCharacterCardDeck,
-  type DeckBuilder,
 } from "@state/deck-builder";
-import clsx from "clsx";
 
 type Props = {
   characters: TCGCharacterCard[];
@@ -70,46 +72,58 @@ function Cards({ actions, characters }: Props) {
   }, [actions, characters, charactersTab]);
 
   return (
-    <div>
-      <div className="flex ">
+    <div className="space-y-4">
+      <div className="inline-flex rounded-lg border bg-card p-1">
         {Object.keys(cardsByType).map((type) => (
           <button
             key={type}
             onClick={() => setTabSelected(type)}
-            className={`${
+            className={clsx(
+              "px-3 py-1.5 text-sm font-medium transition-colors",
+              "rounded-md",
               tabSelected === type
-                ? "bg-vulcan-800 text-white"
-                : "text-vulcan-800  hover:bg-vulcan-600"
-            } rounded-t px-4 py-2 hover:text-white`}
+                ? "bg-secondary text-secondary-foreground"
+                : "text-muted-foreground hover:bg-secondary/50 hover:text-secondary-foreground"
+            )}
           >
             {type}
           </button>
         ))}
       </div>
-      <div className="flex flex-wrap gap-2 bg-vulcan-800 p-3">
-        {cardsByType[tabSelected].map((card) => (
-          <CardComponent
-            key={card.id}
-            card={card}
-            deckBuilder={deckBuilder}
-            maxCharactersErrorMessage={t("max_character_cards_error")}
-            maxActionsErrorMessage={t("max_non_character_cards_error")}
-          />
-        ))}
+
+      <div className="rounded-lg border bg-card p-4">
+        <div className="grid grid-cols-5 gap-3 md:grid-cols-8">
+          {cardsByType[tabSelected].map((card) => (
+            <CardComponent
+              key={card.id}
+              card={card}
+              deckBuilder={deckBuilder}
+              maxCharactersErrorMessage={t("max_character_cards_error")}
+              maxActionsErrorMessage={t("max_non_character_cards_error")}
+            />
+          ))}
+        </div>
       </div>
-      <div>
-        <div className="mt-4">
-          <span className="text-xl font-semibold">{t("or_search")}</span>
-          <input
+
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-medium text-card-foreground">
+          {t("or_search")}
+        </span>
+        <div className="relative flex-1">
+          <HiMagnifyingGlass className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
             type="text"
             placeholder={t("search")}
             value={search}
-            className="ml-4 rounded border-vulcan-600 bg-vulcan-900"
             onChange={(e) => setSearch(e.target.value)}
+            className="pl-9"
           />
         </div>
-        {filteredCards.length > 0 ? (
-          <div className="flex flex-wrap gap-2 bg-vulcan-800 p-3">
+      </div>
+
+      {filteredCards.length > 0 && (
+        <div className="rounded-lg border bg-card p-4">
+          <div className="grid grid-cols-5 gap-3 md:grid-cols-8">
             {filteredCards.map((card) => (
               <CardComponent
                 key={card.id}
@@ -120,11 +134,20 @@ function Cards({ actions, characters }: Props) {
               />
             ))}
           </div>
-        ) : null}
-        {filteredCards.length === 0 && search !== "" ? (
-          <div className="text-center text-gray-300">{t("no_cards_found")}</div>
-        ) : null}
-      </div>
+        </div>
+      )}
+
+      {filteredCards.length === 0 && search !== "" && (
+        <div className="rounded-lg border bg-card/50 px-6 py-12 text-center">
+          <h3 className="text-lg font-medium text-card-foreground">
+            {t("no_cards_found")}
+          </h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {t("try_adjusting_search")}
+          </p>
+        </div>
+      )}
+
       <Tooltip id="cards_tooltip" className="z-40" />
     </div>
   );
@@ -182,12 +205,16 @@ function CardComponent({
           addActionCardDeck(card.id);
         }
       }}
-      className={clsx(`relative rounded`, {
-        "pointer-events-none saturate-0":
-          (isCharacter && deckBuilder.characterCards.includes(card.id)) ||
-          (!isCharacter && deckBuilder.actionCards[card.id] === 2),
-        "saturate-80": !isCharacter && deckBuilder.actionCards[card.id],
-      })}
+      className={clsx(
+        "group relative aspect-[1/1.7] w-full overflow-hidden rounded-lg transition-all",
+        {
+          "pointer-events-none opacity-50":
+            (isCharacter && deckBuilder.characterCards.includes(card.id)) ||
+            (!isCharacter && deckBuilder.actionCards[card.id] === 2),
+          "opacity-80": !isCharacter && deckBuilder.actionCards[card.id],
+          "hover:ring-2 hover:ring-primary": true,
+        }
+      )}
       data-tooltip-id="cards_tooltip"
       data-tooltip-content={
         `${card.name} - ` +
@@ -197,17 +224,19 @@ function CardComponent({
       }
       data-tooltip-place="bottom"
     >
-      <div
-        className={`absolute -left-1 top-1 rounded bg-vulcan-800 px-1 text-xxs text-slate-200`}
-      >
+      <div className="absolute left-1 top-1 z-10 rounded bg-card/90 px-1.5 py-0.5 text-xs font-medium text-card-foreground backdrop-blur-sm">
         {isCharacter ? `♥ ${card.attributes.hp}` : getEnergyValue(card)}
       </div>
       <Image
-        src={getUrl(`/tcg/${card.id}.png`, 50, 85)}
+        src={getUrl(`/tcg/${card.id}.png`, 192, 113)}
         alt={card.name}
-        width={50}
-        height={85}
+        width={113}
+        height={192}
+        className="h-full w-full object-cover transition-all group-hover:scale-105"
       />
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-2 text-center">
+        <span className="text-xs font-medium text-white">{card.name}</span>
+      </div>
     </button>
   );
 }

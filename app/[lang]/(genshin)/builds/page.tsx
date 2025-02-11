@@ -129,7 +129,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     allBuilds.push({
       character,
       role: build.role,
-      element: t(character.element),
+      element: t(character.element.name),
       weapons,
       artifacts,
       stats_priority: build.stats_priority.map((s) =>
@@ -154,10 +154,10 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const elements: { label: string; value: string }[] = [];
 
   for (const character of characters) {
-    if (!elements.find((e) => e.value === character.element)) {
+    if (!elements.find((e) => e.value === character.element.name)) {
       elements.push({
-        label: t(character.element),
-        value: character.element,
+        label: t(character.element.name),
+        value: character.element.name,
       });
     }
   }

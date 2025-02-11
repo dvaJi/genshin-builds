@@ -1,3 +1,7 @@
+import type { CharBuild, MostUsedBuild } from "@interfaces/build";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+import type { TeamData } from "@interfaces/teams";
+
 import {
   GENSHIN_API_URL,
   HSR_API_URL,
@@ -15,6 +19,58 @@ type APIOptions = {
   };
   revalidate?: number;
 };
+
+export async function getGenshinCharacterDetail(id: string, language: string) {
+  const baseUrl = GENSHIN_API_URL.replace(
+    "genshin/api",
+    "genshin/character-detail"
+  );
+  const url = new URL(baseUrl);
+
+  url.searchParams.append("id", id);
+  url.searchParams.append("language", language);
+
+  const res = await fetch(url.toString(), {
+    method: "GET",
+    next: {
+      tags: ["genshin-data", "genshin-character-detail"],
+    },
+  });
+
+  return res.json() as Promise<{
+    character: Character;
+    weapons: Record<string, Weapon>;
+    artifacts: Record<string, Artifact>;
+    builds: CharBuild[];
+    buildsNotes?: string;
+    mubuild: MostUsedBuild;
+    charactersMap: Record<string, Character>;
+    teams: TeamData[];
+  }>;
+}
+
+export async function getGenshinCharacterTeams(id: string, language: string) {
+  const baseUrl = GENSHIN_API_URL.replace("genshin/api", "genshin/teams");
+  const url = new URL(baseUrl);
+
+  url.searchParams.append("id", id);
+  url.searchParams.append("language", language);
+
+  const res = await fetch(url.toString(), {
+    method: "GET",
+    next: {
+      tags: ["genshin-data", "genshin-teams"],
+    },
+  });
+
+  return res.json() as Promise<{
+    overview: string;
+    teams: TeamData[];
+    weaponsMap: Record<string, Weapon>;
+    charactersMap: Record<string, Character>;
+    artifactsMap: Record<string, Artifact>;
+  }>;
+}
 
 export async function getGenshinData<T>(options: APIOptions): Promise<T> {
   return getData<T>(GENSHIN_API_URL, options, ["genshin-data"]);

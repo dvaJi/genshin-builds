@@ -28,4 +28,6 @@ const ForwardImage = React.forwardRef(
   }
 );
 
+ForwardImage.displayName = "TofImage";
+
 export default ForwardImage;

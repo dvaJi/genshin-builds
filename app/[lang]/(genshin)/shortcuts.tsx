@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import getTranslations from "@hooks/use-translations";
@@ -68,29 +69,53 @@ export default async function Shortcuts({ lang }: { lang: string }) {
       image: getUrl("/leaderboard_icon.png"),
     },
   ];
+
   return (
-    <nav className="card">
-      <ul className="group grid grid-cols-4 md:grid-cols-6">
+    <nav className="bg-card relative overflow-hidden rounded-2xl p-6 shadow-xl">
+      <div className="from-primary/5 absolute inset-0 bg-gradient-to-br to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(255,255,255,0.05)_0%,_transparent_50%)]" />
+
+      <ul className="relative grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:gap-4">
         {routes.map((route) => (
-          <li className="relative" key={route.title}>
+          <li
+            className="group relative transform transition-all duration-300 hover:scale-105"
+            key={route.title}
+          >
             <Link
               href={`/${lang}${route.path}`}
-              className="flex flex-col items-center justify-center bg-contain bg-center bg-no-repeat py-4 transition-opacity group-hover:opacity-70 group-hover:hover:opacity-100 group-hover:hover:brightness-200"
-              style={{
-                backgroundImage:
-                  `url('${getUrl("/shortcuts_bg.png")}')`,
-              }}
+              className="block overflow-hidden"
+              prefetch={false}
             >
-              <p className="h-16 w-16">
-                <img
-                  src={route.image}
-                  alt={route.title}
-                  className="object-cover object-center"
-                />
-              </p>
-              <p className="mt-0.5 px-1 text-center font-semibold">
-                {route.title}
-              </p>
+              <div className="bg-muted/40 hover:bg-muted relative flex flex-col items-center rounded-xl p-3 transition-all duration-500">
+                <div className="relative h-12 w-12 md:h-16 md:w-16">
+                  {/* Glow effect */}
+                  <div className="from-primary/20 to-accent/20 absolute -inset-0.5 rounded-full bg-gradient-to-r opacity-0 blur transition-opacity duration-500 group-hover:opacity-100" />
+
+                  {/* Icon background */}
+                  <div className="from-muted/50 to-secondary/50 absolute inset-0 rounded-full bg-gradient-to-br shadow-lg" />
+
+                  {/* Icon */}
+                  <div className="relative flex h-full w-full items-center justify-center">
+                    <Image
+                      src={route.image}
+                      alt={route.title}
+                      width={64}
+                      height={64}
+                      className="h-10 w-10 transform-gpu object-contain transition-all duration-300 group-hover:scale-110 md:h-12 md:w-12"
+                    />
+                  </div>
+                </div>
+
+                {/* Title */}
+                <div className="relative mt-3">
+                  <p className="text-muted-foreground group-hover:text-foreground text-center text-sm font-medium transition-colors duration-300 md:text-base">
+                    {route.title}
+                  </p>
+
+                  {/* Underline effect */}
+                  <div className="via-primary/50 absolute -bottom-1 left-0 h-px w-full bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </div>
+              </div>
             </Link>
           </li>
         ))}

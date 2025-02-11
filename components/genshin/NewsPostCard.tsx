@@ -1,64 +1,77 @@
 "use client";
 
+import { formatDistanceToNow } from "date-fns";
+import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
-import { memo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import type { News } from "@lib/news";
-import { getTimeAgo } from "@lib/timeago";
 
 interface Props {
   post: News;
   type?: "simple" | "detailed";
 }
 
-const NewsPostCard = ({ post, type = "detailed" }: Props) => {
-  const timeAgo = getTimeAgo(new Date(post.date).getTime(), "en");
+export const NewsPostCard = ({ post, type = "simple" }: Props) => {
+  const timeAgo = formatDistanceToNow(new Date(post.date), { addSuffix: true });
+
   return (
-    <Link
-      href={post.url}
-      className="group mx-auto max-w-md overflow-hidden p-2"
-      prefetch={false}
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
-      <div className="relative aspect-video w-full overflow-hidden rounded bg-vulcan-900 object-cover">
-        <LazyLoadImage
-          src={post.featuredImage.sourceUrl}
-          placeholderSrc={post.featuredImage.sourceUrl}
-          alt={post.title}
-          className="aspect-video w-full rounded object-cover shadow-2xl transition-all group-hover:scale-105 group-hover:brightness-110"
-        />
-      </div>
-      <div>
-        <h3 className="my-1 text-lg text-slate-300 transition-all group-hover:text-slate-100">
-          {post.title}
-        </h3>
-        {type === "detailed" ? (
-          <p
-            className="mb-1 text-sm text-slate-400"
-            dangerouslySetInnerHTML={{ __html: post.excerpt }}
+      <Link
+        href={`/genshin/news/${post.slug}`}
+        className="bg-card hover:shadow-primary/10 group block h-full overflow-hidden rounded-xl backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
+        prefetch={false}
+      >
+        <div className="relative aspect-video w-full overflow-hidden">
+          {/* Image gradient overlay */}
+          <div className="from-background via-background/20 absolute inset-0 z-10 bg-gradient-to-t to-transparent opacity-60" />
+
+          {/* Post image */}
+          <Image
+            src={post.featuredImage.sourceUrl}
+            alt={post.title}
+            width={400}
+            height={225}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-        ) : null}
-        {type === "detailed" ? (
-          <div className="flex justify-between">
-            <div>
-              {/* <span className="mr-2 rounded bg-vulcan-600 p-1 px-1.5 text-xs">
-              {guide.type}
-            </span> */}
-              {post.tags.map((tag: string) => (
-                <span
-                  key={tag}
-                  className="mr-2 rounded bg-vulcan-700 p-1 px-1.5 text-xs text-slate-500"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="flex items-baseline text-xs">{timeAgo}</div>
+
+          {/* Post date */}
+          <div className="absolute bottom-3 right-3 z-20">
+            <span className="bg-card/90 text-muted-foreground rounded-full px-3 py-1 text-xs backdrop-blur-sm">
+              {timeAgo}
+            </span>
           </div>
-        ) : null}
-      </div>
-    </Link>
+        </div>
+
+        <div className="p-4">
+          <h3 className="text-card-foreground group-hover:text-primary line-clamp-2 text-lg font-medium transition-colors">
+            {post.title}
+          </h3>
+
+          {type === "detailed" && (
+            <>
+              <p
+                className="text-muted-foreground mt-2 line-clamp-2 text-sm"
+                dangerouslySetInnerHTML={{ __html: post.excerpt }}
+              />
+
+              <div className="mt-3 flex flex-wrap gap-2">
+                {post.tags.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className="bg-secondary/50 text-muted-foreground group-hover:bg-secondary/80 group-hover:text-secondary-foreground inline-flex rounded-full px-3 py-1 text-xs backdrop-blur-sm transition-colors duration-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </Link>
+    </motion.div>
   );
 };
-
-export default memo(NewsPostCard);

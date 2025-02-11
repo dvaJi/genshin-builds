@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%; /* Deeper, richer background */
+    --foreground: 214 32% 91%;
+    --card: 223 47% 14%;
+    --card-foreground: 214 32% 91%;
+    --popover: 223 47% 14%;
+    --popover-foreground: 214 32% 91%;
+    --primary: 36 40% 72%;
+    --primary-foreground: 36 30% 20%; /* Darker gold/brown that matches primary */
+    --secondary: 222 47% 24%;
+    --secondary-foreground: 214 32% 91%;
+    --muted: 222 47% 20%;
+    --muted-foreground: 214 20% 65%;
+    --accent: 36 45% 65%;
+    --accent-foreground: 36 35% 25%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 223 47% 21%;
+
+    --input: 222 47% 24%;
+    --ring: 36 45% 75%;
+    --radius: 1rem;
+
+    /* Chart colors */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Keep existing Vulcan colors for compatibility */
+    --vulcan-50: 226 29% 60%;
+    --vulcan-100: 226 29% 59%;
+    --vulcan-200: 226 29% 55%;
+    --vulcan-300: 226 29% 49%;
+    --vulcan-400: 226 29% 42%;
+    --vulcan-500: 226 29% 33%;
+    --vulcan-600: 226 29% 27%;
+    --vulcan-700: 226 29% 21%;
+    --vulcan-800: 226 29% 17%;
+    --vulcan-900: 226 29% 13%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative rounded-lg border border-border bg-card p-4 text-card-foreground shadow-sm;
+  }
+
+  .input {
+    @apply rounded-md border border-input bg-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  /* Custom react-tooltip  */
+  .react-tooltip {
+    @apply rounded-lg border-border bg-popover p-2 text-popover-foreground shadow-sm;
+  }
+}
+
+/* Direct CSS declarations for rarity backgrounds */
+div[class*="genshin-bg-rarity"] {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.genshin-bg-rarity-1 {
+  background: linear-gradient(135deg, #515151 0%, #2b2b2b 100%);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.genshin-bg-rarity-2 {
+  background: linear-gradient(135deg, #5d7b8e 0%, #2b3d47 100%);
+  box-shadow: inset 0 0 10px rgba(93, 123, 142, 0.2);
+}
+
+.genshin-bg-rarity-3 {
+  background: linear-gradient(135deg, #6b8fc7 0%, #324867 100%);
+  box-shadow: inset 0 0 15px rgba(107, 143, 199, 0.2);
+}
+
+.genshin-bg-rarity-4 {
+  background: linear-gradient(135deg, #a17fef 0%, #6a4ca5 100%);
+  box-shadow: inset 0 0 20px rgba(161, 127, 239, 0.25);
+}
+
+.genshin-bg-rarity-5 {
+  background: linear-gradient(135deg, #deb864 0%, #af8234 100%);
+  box-shadow: inset 0 0 25px rgba(222, 184, 100, 0.3);
+}
+
+/* Hover effects */
+div[class*="genshin-bg-rarity"]:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.1),
+    transparent 70%
+  );
+  animation: shine 0.3s forwards;
+}
+
+@keyframes shine {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes starPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Utility styles */
+.weapon-bonus {
+  word-break: break-word;
+}
+
+.weapon-bonus > span,
+.skill-description > span {
+  font-weight: bold;
+}
+
+.build-option-divider {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: #a7b1c1;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.build-option-divider:before,
+.build-option-divider:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: #36384a;
+  transform: translateY(-50%);
+}
+
+.build-option-divider:before {
+  left: 0;
+}
+
+.build-option-divider:after {
+  right: 0;
+}
+
+/* Custom scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 11px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  @apply rounded-full border-4 border-transparent bg-border;
+}
+
+/* Map marker styles */
+.map-marker {
+  pointer-events: none !important;
+  z-index: 10000 !important;
+}
+
+/* Image styles */
+.gradient-image {
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, transparent 100%);
+  width: 100%;
+  height: 100%;
+}
+
+/* Ad-related styles */
+body {
+  --fsAddBuffer: 22px;
+}

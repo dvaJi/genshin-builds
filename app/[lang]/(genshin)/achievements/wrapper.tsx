@@ -1,10 +1,12 @@
 "use client";
 
-import { useStore } from "@nanostores/react";
-import type { AchievementCategory } from "@interfaces/genshin";
+import clsx from "clsx";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
 
+import Button from "@components/ui/Button";
+import type { AchievementCategory } from "@interfaces/genshin";
+import { useStore } from "@nanostores/react";
 import { $achievementsCompleted } from "@state/achievements";
 
 const AchievementsSearch = dynamic(
@@ -28,9 +30,9 @@ const AchievementsCategories = dynamic(
   }
 );
 
-type Props = {
+interface Props {
   categories: AchievementCategory[];
-};
+}
 
 export default function AchievementsWrapper({ categories }: Props) {
   const [category, setCategory] = useState(categories[0]);
@@ -68,26 +70,54 @@ export default function AchievementsWrapper({ categories }: Props) {
     },
     [achievementsDone, category.id]
   );
+
+  const handleCategoryClick = useCallback((cat: AchievementCategory) => {
+    setCategory(cat);
+    setSearchText("");
+  }, []);
+
+  const exportAchievements = () => {
+    const dataStr =
+      "data:text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(achievementsDone));
+    const downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute(
+      "download",
+      "genshin-impact-com-genshin-achievements.json"
+    );
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  };
+
   return (
-    <div className="flex-row lg:flex">
-      <AchievementsCategories
-        achievementsDone={achievementsDone}
-        categories={categories}
-        categorySelected={category}
-        onClickCategory={setCategory}
-      />
-      <div className="w-full text-white xl:px-4">
-        <AchievementsSearch
-          onSearch={setSearchText}
-          onShowAchieved={() => setShowAchieved((a) => !a)}
-          showAchieved={showAchieved}
+    <div className="relative mx-auto max-w-screen-lg">
+      <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
+        <AchievementsCategories
+          achievementsDone={achievementsDone}
+          categories={categories}
+          categorySelected={category}
+          onClickCategory={handleCategoryClick}
         />
-        <AchievementsList
-          achievements={filteredAchievements}
-          achievementsDone={achievementsDone[category.id]}
-          selectAchievement={selectAchievement}
-          showCompleted={showAchieved}
-        />
+        <div className="space-y-4">
+          <AchievementsSearch
+            onSearch={setSearchText}
+            onShowAchieved={() => setShowAchieved((a) => !a)}
+            showAchieved={showAchieved}
+          />
+          <div className="rounded-lg border bg-card/50">
+            <AchievementsList
+              achievements={filteredAchievements}
+              achievementsDone={achievementsDone[category.id]}
+              selectAchievement={selectAchievement}
+              showCompleted={showAchieved}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 flex justify-end">
+        <Button onClick={exportAchievements}>Export Achievements</Button>
       </div>
     </div>
   );

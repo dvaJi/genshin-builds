@@ -23,11 +23,11 @@ const WeaponCard = ({
   return (
     <Link
       href={`/${locale}/weapon/${weapon.id}`}
-      className="mb-2 flex w-full rounded border border-vulcan-700 bg-vulcan-900 px-4 transition hover:border-vulcan-600 hover:bg-vulcan-800"
+      className="border-border hover:bg-card mb-2 flex w-full rounded-md border px-4 transition-all hover:shadow-md"
       prefetch={false}
     >
       <div className="mr-2 flex items-center">
-        <span className="mr-2 rounded bg-vulcan-600 p-1 text-xs text-slate-300">
+        <span className="bg-muted text-muted-foreground mr-2 rounded p-1 text-xs">
           {position}
         </span>
       </div>
@@ -45,16 +45,16 @@ const WeaponCard = ({
         />
       </div>
       <div className="ml-4 flex flex-col justify-center">
-        <div className="font-bold text-white">
+        <div className="text-card-foreground font-bold">
           {weapon.name}{" "}
           {refinement !== undefined && refinement > 0 && (
-            <span className="rounded bg-vulcan-600 p-1 text-xxs">
+            <span className="bg-muted ml-1 rounded px-[4px] py-[2px] text-xxs">
               R{refinement}
               {refinement < 5 ? "+" : ""}
             </span>
           )}
         </div>
-        <p className="relative text-xs text-gray-300">
+        <p className="text-muted-foreground relative text-xs">
           {weapon.stats.secondary}
         </p>
       </div>

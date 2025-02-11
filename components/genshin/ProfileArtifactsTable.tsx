@@ -63,7 +63,7 @@ const columns: ColumnDef<any>[] = [
     cell: (info) => {
       if (!info.row.original.mainStat) return null;
       const [label, value] = Object.entries<string>(
-        info.row.original.mainStat,
+        info.row.original.mainStat
       )[0];
       return (
         <div className={clsx("rounded px-1 py-1 text-left text-xs text-white")}>
@@ -121,7 +121,7 @@ const columns: ColumnDef<any>[] = [
     },
   },
   {
-    header: "critvalue",
+    header: "critValue",
     cell: (info) => {
       const cv = info.row.original.critValue ?? 0;
       if (!cv) return null;
@@ -208,11 +208,11 @@ function ProfileArtifactsTable({ data }: Props) {
                         {t({
                           id: flexRender(
                             header.column.columnDef.header,
-                            header.getContext(),
+                            header.getContext()
                           ) as any,
                           defaultMessage: flexRender(
                             header.column.columnDef.header,
-                            header.getContext(),
+                            header.getContext()
                           ) as any,
                         })}
                         {{
@@ -240,7 +240,7 @@ function ProfileArtifactsTable({ data }: Props) {
                     <td key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </td>
                   );

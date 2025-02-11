@@ -1,6 +1,7 @@
 import { AxiomWebVitals } from "next-axiom";
 
 import { PreloadResources } from "@app/preload-resources";
+
 import ExternalScripts from "./scripts";
 
 export default async function Root({
@@ -13,6 +14,9 @@ export default async function Root({
   const { lang } = await params;
   return (
     <html lang={lang}>
+      <head>
+        <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />
+      </head>
       <PreloadResources />
       <AxiomWebVitals />
       <ExternalScripts />

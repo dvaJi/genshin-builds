@@ -4,61 +4,60 @@ import clsx from "clsx";
 import { memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-type Props = {
+interface SimpleRarityBoxProps {
   img: string;
-  rarity: number;
   placeholderSrc?: string;
+  rarity?: number;
   name?: string;
-  size?: number;
   alt?: string;
   className?: string;
-  nameSeparateBlock?: boolean;
   classNameBlock?: string;
-};
+  nameSeparateBlock?: boolean;
+}
 
 const SimpleRarityBox = ({
+  img,
+  placeholderSrc,
+  rarity = 1,
   name,
   alt,
-  img,
-  rarity = 0,
   className,
-  nameSeparateBlock = false,
-  placeholderSrc,
   classNameBlock,
-}: Props) => {
-  const imgAdditionalStyle = nameSeparateBlock
-    ? "mb-0 rounded rounded-b-none"
-    : "";
+  nameSeparateBlock = false,
+}: SimpleRarityBoxProps) => {
   return (
     <>
       <div
         className={clsx(
-          `group relative m-1 block overflow-hidden rounded text-center`,
-          imgAdditionalStyle,
+          "aspect-square overflow-hidden rounded-lg",
           `genshin-bg-rarity-${rarity}`,
           className
         )}
       >
-        <LazyLoadImage
-          className="group-hover:opacity-70"
-          src={img}
-          placeholderSrc={placeholderSrc}
-          alt={alt ?? name}
-          title={alt ?? name}
-          loading="lazy"
-          draggable="false"
-        />
+        <div className="group relative h-full w-full">
+          <LazyLoadImage
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+            src={img}
+            placeholderSrc={placeholderSrc}
+            alt={alt ?? name}
+            title={alt ?? name}
+            loading="lazy"
+            draggable="false"
+          />
 
-        {!nameSeparateBlock && name && (
-          <span className="absolute bottom-0 left-0 inline-block w-full rounded-sm rounded-t-none bg-gray-900 bg-opacity-90 p-1 text-xs opacity-80 transition-all group-hover:text-white group-hover:opacity-100">
-            {name}
-          </span>
-        )}
+          {!nameSeparateBlock && name && (
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pb-1 pt-4">
+              <span className="block text-center text-xs font-medium text-white">
+                {name}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
       {nameSeparateBlock && name && (
         <span
           className={clsx(
-            "m-1 mt-0 inline-block overflow-hidden rounded rounded-t-none bg-vulcan-900 bg-opacity-90 p-1 text-center text-xs",
+            "bg-card/80 text-card-foreground mt-1 block w-full truncate rounded-md px-2 py-1 text-center text-xs shadow-sm backdrop-blur-sm",
             classNameBlock
           )}
         >

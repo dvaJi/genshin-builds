@@ -76,8 +76,8 @@ const CharactersTier = ({
                   ...characters[tier.id],
                   constellationNum: tier.min_c,
                   element: t({
-                    id: characters[tier.id].element,
-                    defaultMessage: characters[tier.id].element,
+                    id: characters[tier.id].element.name,
+                    defaultMessage: characters[tier.id].element.name,
                   }),
                 }}
                 weapon={weaponsMap[tier.w_id]}
@@ -100,8 +100,8 @@ const CharactersTier = ({
                   ...characters[tier.id],
                   constellationNum: tier.min_c,
                   element: t({
-                    id: characters[tier.id].element,
-                    defaultMessage: characters[tier.id].element,
+                    id: characters[tier.id].element.name,
+                    defaultMessage: characters[tier.id].element.name,
                   }),
                 }}
                 weapon={weaponsMap[tier.w_id]}
@@ -124,8 +124,8 @@ const CharactersTier = ({
                   ...characters[tier.id],
                   constellationNum: tier.min_c,
                   element: t({
-                    id: characters[tier.id].element,
-                    defaultMessage: characters[tier.id].element,
+                    id: characters[tier.id].element.name,
+                    defaultMessage: characters[tier.id].element.name,
                   }),
                 }}
                 weapon={weaponsMap[tier.w_id]}

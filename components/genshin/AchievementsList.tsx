@@ -1,88 +1,76 @@
 import clsx from "clsx";
 import { AiOutlineCheck } from "react-icons/ai";
 
-import useIntl from "@hooks/use-intl";
-import type { Achievement } from "@interfaces/genshin";
-import { trackClick } from "@lib/gtag";
+import Image from "@components/genshin/Image";
 
-import Image from "./Image";
-
-type Props = {
-  achievements: Achievement[];
-  achievementsDone: number[];
-  showCompleted: boolean;
+interface Props {
+  achievements: any[];
+  achievementsDone?: number[];
   selectAchievement: (id: number) => void;
-};
+  showCompleted: boolean;
+}
 
-const AchievementsList = ({
-  achievementsDone,
+export default function AchievementsList({
   achievements,
-  showCompleted,
+  achievementsDone,
   selectAchievement,
-}: Props) => {
-  const { t } = useIntl("achievements");
+  showCompleted,
+}: Props) {
   return (
-    <div className="flex flex-1 flex-col space-y-2 pt-20 lg:pt-2">
-      {achievements
-        .sort((a, b) => a.order - b.order)
-        .filter((ach) =>
-          !showCompleted ? !achievementsDone?.includes(ach.id) : true,
-        )
-        .map((ach) => (
-          <div
-            key={ach.id}
-            className={clsx(
-              "flex items-center rounded-2xl bg-vulcan-800 px-3 py-3 text-white shadow",
-              {
-                "opacity-50": achievementsDone?.includes(ach.id),
-              },
-            )}
-          >
-            <div className="flex-1">
-              <p className="font-semibold leading-tight md:text-lg">
-                {ach.name}
-              </p>
-              <p className="mt-px text-sm leading-tight opacity-75 md:text-base">
-                {ach.desc}
-              </p>
-            </div>
-            <div className="flex items-center">
-              <div className="mr-1 text-lg font-semibold">{ach.reward}</div>
-              <Image
-                src="/primogem.png"
-                width={24}
-                height={24}
-                alt="primogem"
-                className="w-6"
-              />
-            </div>
-            <div>
-              <button
-                onClick={() => {
-                  trackClick(
-                    `achievement_${
-                      achievementsDone?.includes(ach.id) ? "revert" : "done"
-                    }`,
-                  );
-                  selectAchievement(ach.id);
-                }}
-                className="ml-1 flex items-center justify-center rounded-xl bg-gray-700 p-2 transition-all"
-                title={t({
-                  id: "show_achieved",
-                  defaultMessage: "Show Achieved",
-                })}
-              >
-                <AiOutlineCheck
-                  className={clsx({
-                    "text-white": achievementsDone?.includes(ach.id),
-                  })}
-                />
-              </button>
-            </div>
-          </div>
-        ))}
+    <div className="divide-y divide-border">
+      {showCompleted
+        ? achievements.map((ach) => RowItem(ach))
+        : achievements
+            .filter((ach) => !achievementsDone?.includes(ach.id))
+            .map((ach) => RowItem(ach))}
     </div>
   );
-};
 
-export default AchievementsList;
+  function RowItem(ach: any) {
+    return (
+      <div
+        key={ach.id}
+        className={clsx(
+          "flex items-center justify-between gap-4 px-4 py-3 transition-colors",
+          {
+            "bg-muted/50": achievementsDone?.includes(ach.id),
+          }
+        )}
+      >
+        <div className="flex-1 space-y-1">
+          <h4 className="text-sm font-medium leading-none text-foreground">
+            {ach.name}
+          </h4>
+          <p className="text-sm text-muted-foreground">{ach.desc}</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <span className="text-sm font-medium text-foreground">
+              {ach.reward}
+            </span>
+            <Image
+              src="/primogem.png"
+              width={20}
+              height={20}
+              alt="primogem"
+              className="h-5 w-5"
+            />
+          </div>
+          <button
+            onClick={() => {
+              selectAchievement(ach.id);
+            }}
+            className={clsx(
+              "flex h-8 w-8 items-center justify-center rounded-md transition-colors",
+              achievementsDone?.includes(ach.id)
+                ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            )}
+          >
+            <AiOutlineCheck className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    );
+  }
+}

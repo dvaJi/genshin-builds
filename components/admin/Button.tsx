@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               state === "error",
             "border-red-600 bg-transparent text-red-600 hover:bg-red-600 hover:text-zinc-200":
               state === "error_ghost",
-            "bg-white ": state === "abort",
+            "bg-white": state === "abort",
           },
           { "pointer-events-none": disabled, "opacity-50": disabled }
         )}
@@ -41,5 +41,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
+Button.displayName = "Button";
 
 export default Button;

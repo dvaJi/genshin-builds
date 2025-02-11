@@ -1,11 +1,16 @@
 "use client";
 
-import clsx from "clsx";
-// import { revalidatePath } from "next/cache";
 import { useFormState, useFormStatus } from "react-dom";
 import { MdSync } from "react-icons/md";
 
 import { submitGenshinUID } from "@app/actions";
+import { Button } from "@app/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@app/components/ui/tooltip";
 
 const initialState = {
   message: "",
@@ -16,17 +21,25 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button
-      type="submit"
-      className="mx-px cursor-pointer rounded-lg bg-gray-700/40 px-2 py-1 text-xs font-semibold text-slate-50 hover:bg-gray-700/90 md:mx-1 md:text-base"
-      title="Sync Data"
-    >
-      <MdSync
-        className={clsx("-mt-1 inline-block", {
-          "animate-spin": pending,
-        })}
-      />
-    </button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            type="submit"
+            disabled={pending}
+            className="h-9 w-9 rounded-full"
+          >
+            <MdSync className={`h-4 w-4 ${pending ? "animate-spin" : ""}`} />
+            <span className="sr-only">Sync profile data</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="bottom">
+          <p className="text-sm">Sync profile data</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }
 
@@ -36,14 +49,10 @@ type Props = {
 };
 
 export function SyncGenshinProfile({ uid }: Props) {
-  const [state, formAction] = useFormState(submitGenshinUID, {
+  const [_, formAction] = useFormState(submitGenshinUID, {
     ...initialState,
     uid,
   });
-
-  if (state?.message === "Success") {
-    // revalidatePath(`/${lang}/profile/${uid}`);
-  }
 
   return (
     <form action={formAction}>

@@ -1,8 +1,10 @@
 "use client";
 
+import { Fragment, useState } from "react";
+
+import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import type { Ascension } from "@interfaces/genshin";
-import { Fragment, useState } from "react";
 
 type Props = {
   ascensions: Ascension[];
@@ -14,31 +16,34 @@ function CharacterStats({ ascensions }: Props) {
 
   return (
     <>
-      <div className="mb-4 flex flex-wrap justify-center">
+      <div className="mb-4 flex flex-wrap justify-center gap-2">
         {ascensions.map((ascension) => (
-          <button
+          <Button
             key={ascension.level.join()}
             onClick={() => setSelected(ascension)}
-            className="my-1 mr-2 cursor-pointer rounded bg-vulcan-700 px-3 py-2 hover:bg-vulcan-600 data-[selected=true]:bg-vulcan-600 data-[selected=true]:text-white"
-            data-selected={ascension.level.join() === selected.level.join()}
+            variant={
+              ascension.level.join() === selected.level.join()
+                ? "primary"
+                : "secondary"
+            }
           >
             {t({
               id: "lv.",
               defaultMessage: "Lv.",
             })}
             {ascension.level.join(" - ")}
-          </button>
+          </Button>
         ))}
       </div>
-      <div className="grid grid-cols-3 rounded bg-vulcan-900">
-        <div className="bg-vulcan-700 py-2"></div>
-        <div className="bg-vulcan-700 py-2">
+      <div className="grid grid-cols-3 rounded">
+        <div className="bg-muted py-2"></div>
+        <div className="bg-muted py-2">
           {t({
             id: "before_ascension",
             defaultMessage: "Before Ascension",
           })}
         </div>
-        <div className="bg-vulcan-700 py-2">
+        <div className="bg-muted py-2">
           {t({
             id: "after_ascension",
             defaultMessage: "After Ascension",
@@ -46,13 +51,11 @@ function CharacterStats({ ascensions }: Props) {
         </div>
         {selected.stats.map((stat) => (
           <Fragment key={stat.label}>
-            <div className="border-b border-vulcan-700 px-2 py-1">
-              {stat.label}
-            </div>
-            <div className="border-b border-vulcan-700 py-1">
+            <div className="border-muted border-b px-2 py-1">{stat.label}</div>
+            <div className="border-muted border-b py-1">
               {stat.values ? stat.values[0] : "-"}
             </div>
-            <div className="border-b border-vulcan-700 py-1">
+            <div className="border-muted border-b py-1">
               {stat.values ? stat.values[1] : "-"}
             </div>
           </Fragment>

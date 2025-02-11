@@ -94,16 +94,11 @@ const CharacterBuildCard = ({
           </h4>
           <div className="mt-2 flex flex-wrap gap-2">
             {build.stats_priority.map((s, i) => (
-              <div
-                key={s}
-                className="flex rounded border border-vulcan-500/30 bg-vulcan-700"
-              >
-                <span className="rounded-l p-1 text-xxs text-slate-300">
+              <div key={s} className="border-border flex rounded border">
+                <span className="bg-muted rounded-l p-1 text-xxs text-slate-300">
                   {i + 1}
                 </span>
-                <span className="bg-vulcan-900 p-1 text-xs text-slate-200">
-                  {s}
-                </span>
+                <span className="p-1 text-xs text-slate-200">{s}</span>
               </div>
             ))}
           </div>

@@ -24,13 +24,13 @@ function CharacterTeam({ team, index }: Props) {
   return (
     <div
       className={clsx(
-        "mx-2 mb-4 flex items-center rounded border-b border-r border-vulcan-600 border-r-transparent px-2 py-1 pb-4",
+        "border-border mx-2 my-4 flex items-center rounded border-b border-r border-r-transparent px-2 py-1 pb-4",
         {
-          "border-r-vulcan-600 bg-vulcan-900": isOpen,
-        },
+          "bg-background border-r-border": isOpen,
+        }
       )}
     >
-      <div className="rounded bg-vulcan-500 p-1 text-xxs text-slate-300">
+      <div className="bg-muted rounded p-1 text-xxs text-slate-300">
         #{index + 1}
       </div>
       {/* <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div> */}
@@ -44,7 +44,7 @@ function CharacterTeam({ team, index }: Props) {
           >
             <div className="relative">
               <Image
-                className="rounded-full border-4 border-transparent transition group-hover:border-vulcan-500 group-hover:shadow-xl"
+                className="group-hover:border-primary rounded-full border-4 border-transparent transition group-hover:shadow-xl"
                 src={`/characters/${character.id}/image.png`}
                 alt={character.name || character.id}
                 width={100}
@@ -107,8 +107,8 @@ function CharacterTeam({ team, index }: Props) {
       </div>
       <button
         className={clsx("rounded p-1", {
-          "bg-vulcan-300 text-slate-100": isOpen,
-          "bg-vulcan-600 text-slate-300": !isOpen,
+          "bg-muted text-slate-100": isOpen,
+          "bg-muted text-slate-300": !isOpen,
         })}
         onClick={() => {
           setIsOpen(!isOpen);

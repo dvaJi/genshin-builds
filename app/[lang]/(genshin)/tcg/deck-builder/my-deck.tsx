@@ -1,20 +1,20 @@
 "use client";
 
-import { useStore } from "@nanostores/react";
 import Image from "next/image";
 import { memo } from "react";
+import { FaMinus, FaPlus } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 
 import useIntl from "@hooks/use-intl";
 import type { TCGCard } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
+import { useStore } from "@nanostores/react";
 import {
   $deckBuilder,
   addActionCardDeck,
   removeActionCardDeck,
   removeCharacterCardDeck,
 } from "@state/deck-builder";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import { Tooltip } from "react-tooltip";
 
 type Props = {
   cardsMapById: Record<string, TCGCard>;
@@ -26,26 +26,24 @@ function MyDeck({ cardsMapById }: Props) {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-2 md:justify-normal">
+      <div className="grid grid-cols-3 gap-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9">
         {deckBuilder.characterCards.map((card, i) => (
           <div
             key={"c" + card + i}
-            className="relative flex flex-col items-center justify-center rounded-xl border-2 border-vulcan-200/20"
+            className="group relative aspect-[1/1.7] w-full overflow-hidden rounded-lg border border-border/50"
           >
             {card === "undefined" ? (
-              <div className="flex h-[130px] w-[76px] items-center justify-center overflow-hidden rounded-xl border-2 border-transparent text-xs">
+              <div className="flex h-full items-center justify-center bg-card/50 p-2 text-center text-xs text-muted-foreground">
                 {t("character_num", { num: `${i + 1}` })}
               </div>
             ) : (
               <>
-                <div
-                  className={`absolute left-0 top-1 rounded bg-vulcan-800 px-1 text-xs text-slate-200`}
-                >
+                <div className="absolute left-1 top-1 z-10 rounded bg-card/90 px-1.5 py-0.5 text-xs font-medium text-card-foreground backdrop-blur-sm">
                   ♥ {cardsMapById[card].attributes.hp}
                 </div>
                 <button
                   onClick={() => removeCharacterCardDeck(card)}
-                  className="absolute bottom-1 rounded bg-vulcan-800 px-1 text-xs"
+                  className="absolute bottom-1 left-1 z-10 rounded bg-card/90 p-1 text-xs text-muted-foreground opacity-0 transition-opacity hover:text-card-foreground group-hover:opacity-100"
                 >
                   <FaMinus />
                 </button>
@@ -58,7 +56,7 @@ function MyDeck({ cardsMapById }: Props) {
                   data-tooltip-content={cardsMapById[card].name}
                   data-tooltip-id="deck_tooltip"
                   data-tooltip-place="bottom"
-                  className="h-[130px] w-[76px] rounded-xl border-2 border-transparent transition-all group-hover:border-white group-hover:brightness-125"
+                  className="h-full w-full object-cover transition-all group-hover:scale-105"
                 />
               </>
             )}
@@ -67,44 +65,44 @@ function MyDeck({ cardsMapById }: Props) {
         {Object.entries(deckBuilder.actionCards).map(([card, amount]) => (
           <div
             key={card}
-            className="relative flex flex-col items-center justify-center rounded-xl border-2 border-vulcan-200/20"
+            className="group relative aspect-[1/1.7] w-full overflow-hidden rounded-lg border border-border/50"
           >
             {card === "undefined" ? (
-              <div className="flex h-[130px] w-[76px] items-center justify-center overflow-hidden rounded-xl border-2 border-transparent text-center text-xxs">
+              <div className="flex h-full items-center justify-center bg-card/50 p-2 text-center text-xs text-muted-foreground">
                 {t("non_character_card_needed", { amount: amount.toString() })}
               </div>
             ) : (
               <>
-                <div
-                  className={`absolute left-0 top-1 rounded bg-vulcan-800 px-1 text-xs text-slate-200`}
-                >
+                <div className="absolute left-1 top-1 z-10 rounded bg-card/90 px-1.5 py-0.5 text-xs font-medium text-card-foreground backdrop-blur-sm">
                   {cardsMapById[card].attributes.cost}
                 </div>
-                <div className="absolute bottom-1 flex rounded bg-vulcan-800 text-xs">
+                <div className="absolute bottom-1 left-1 z-10 flex items-center gap-1 rounded bg-card/90 px-1.5 py-0.5 text-xs backdrop-blur-sm">
                   <button
                     onClick={() => removeActionCardDeck(card)}
-                    className="px-1 opacity-30 transition-all hover:opacity-100"
+                    className="text-muted-foreground opacity-0 transition-opacity hover:text-card-foreground group-hover:opacity-100"
                   >
                     <FaMinus />
                   </button>
-                  {amount}
+                  <span className="font-medium text-card-foreground">
+                    {amount}
+                  </span>
                   <button
                     onClick={() => addActionCardDeck(card)}
-                    className="px-1 opacity-30 transition-all hover:opacity-100"
+                    className="text-muted-foreground opacity-0 transition-opacity hover:text-card-foreground group-hover:opacity-100"
                   >
                     <FaPlus />
                   </button>
                 </div>
                 <Image
-                  src={getUrl(`/tcg/${card}.png`, 80, 140)}
+                  src={getUrl(`/tcg/${card}.png`, 173, 101)}
                   alt={cardsMapById[card].name}
                   title={cardsMapById[card].name}
-                  width={76}
-                  height={130}
+                  width={101}
+                  height={173}
                   data-tooltip-content={cardsMapById[card].name}
                   data-tooltip-id="deck_tooltip"
                   data-tooltip-place="bottom"
-                  className="h-[130px] w-[76px] rounded-xl border-2 border-transparent transition-all group-hover:border-white group-hover:brightness-125"
+                  className="h-full w-full object-cover transition-all group-hover:scale-105"
                 />
               </>
             )}

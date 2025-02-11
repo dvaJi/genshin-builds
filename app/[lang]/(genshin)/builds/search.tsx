@@ -2,6 +2,7 @@
 
 import { MdClose } from "react-icons/md";
 
+import Input from "@components/ui/Input";
 import { useStore } from "@nanostores/react";
 
 import { $filters } from "./state";
@@ -17,14 +18,13 @@ function Search({ messages }: Props) {
   const ad = useStore($filters);
   return (
     <div className="relative">
-      <input
+      <Input
         placeholder={messages.searchPlaceholder}
         value={ad.search}
-        className="w-full rounded-md p-2 text-slate-200"
         onChange={(e) => $filters.set({ ...ad, search: e.target.value })}
       />
       <button
-        className="absolute right-2 top-2 p-1 text-slate-400 hover:text-slate-200"
+        className="text-muted absolute right-2 top-2 p-1 hover:text-white"
         onClick={() => $filters.set({ ...ad, search: "" })}
         title={messages.clearSearch}
       >

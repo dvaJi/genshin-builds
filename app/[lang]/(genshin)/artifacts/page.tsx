@@ -1,7 +1,9 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
+import { Card, CardContent } from "@app/components/ui/card";
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import Badge from "@components/ui/Badge";
@@ -58,135 +60,169 @@ export default async function GenshinCharacters({ params }: Props) {
   });
 
   return (
-    <div>
+    <div className="container mx-auto px-4">
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
+      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
         {t({ id: "artifacts", defaultMessage: "Artifacts" })}
       </h2>
-      <div className="card grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
         {artifacts.map((artifact) => (
-          <div
-            key={artifact._id}
-            className="m-2 rounded-lg border border-vulcan-600 bg-vulcan-700 px-4 py-2"
-          >
-            <div className="flex">
-              <div>
-                <Image
-                  src={getUrl(`/artifacts/${artifact.id}.png`, 96, 96)}
-                  alt={artifact.name}
-                  width={94}
-                  height={94}
-                />
-              </div>
-              <div>
-                <h4 className="text-lg text-slate-50">{artifact.name}</h4>
-                <p className="text-sm">
-                  {t({ id: "max_rarity", defaultMessage: "Max Rarity" })}:{" "}
-                  {artifact.max_rarity}
-                </p>
-                <div className="flex">
-                  {artifact.circlet && (
+          <Card key={artifact._id}>
+            <CardContent className="p-4">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <Link href={`/${lang}/artifacts/${artifact.id}`}>
                     <Image
-                      src={getUrl(
-                        `/artifacts/${artifact.circlet.id}.png`,
-                        54,
-                        54
-                      )}
-                      width={45}
-                      height={45}
-                      alt={artifact.circlet.name}
-                      title={artifact.circlet.name}
-                      loading="lazy"
+                      src={getUrl(`/artifacts/${artifact.id}.png`, 96, 96)}
+                      alt={artifact.name}
+                      width={94}
+                      height={94}
+                      className="rounded-md transition-opacity hover:opacity-80"
                     />
-                  )}
-                  {artifact.flower && (
-                    <Image
-                      src={getUrl(
-                        `/artifacts/${artifact.flower.id}.png`,
-                        54,
-                        54
-                      )}
-                      width={45}
-                      height={45}
-                      alt={artifact.flower.name}
-                      title={artifact.flower.name}
-                      loading="lazy"
-                    />
-                  )}
-                  {artifact.goblet && (
-                    <Image
-                      src={getUrl(
-                        `/artifacts/${artifact.goblet.id}.png`,
-                        54,
-                        54
-                      )}
-                      width={45}
-                      height={45}
-                      alt={artifact.goblet.name}
-                      title={artifact.goblet.name}
-                      loading="lazy"
-                    />
-                  )}
-                  {artifact.plume && (
-                    <Image
-                      src={getUrl(
-                        `/artifacts/${artifact.plume.id}.png`,
-                        54,
-                        54
-                      )}
-                      width={45}
-                      height={45}
-                      alt={artifact.plume.name}
-                      title={artifact.plume.name}
-                      loading="lazy"
-                    />
-                  )}
-                  {artifact.sands && (
-                    <Image
-                      src={getUrl(
-                        `/artifacts/${artifact.sands.id}.png`,
-                        54,
-                        54
-                      )}
-                      width={45}
-                      height={45}
-                      alt={artifact.sands.name}
-                      title={artifact.sands.name}
-                      loading="lazy"
-                    />
-                  )}
+                  </Link>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Link
+                    href={`/${lang}/artifacts/${artifact.id}`}
+                    className="transition-colors hover:text-primary"
+                  >
+                    <h4 className="text-lg font-semibold">{artifact.name}</h4>
+                  </Link>
+                  <p className="text-sm text-muted-foreground">
+                    {t({ id: "max_rarity", defaultMessage: "Max Rarity" })}:{" "}
+                    {artifact.max_rarity}
+                  </p>
+                  <div className="flex gap-1">
+                    {artifact.circlet && (
+                      <Image
+                        src={getUrl(
+                          `/artifacts/${artifact.circlet.id}.png`,
+                          54,
+                          54
+                        )}
+                        width={45}
+                        height={45}
+                        alt={artifact.circlet.name}
+                        title={artifact.circlet.name}
+                        loading="lazy"
+                        className="rounded-sm"
+                      />
+                    )}
+                    {artifact.flower && (
+                      <Image
+                        src={getUrl(
+                          `/artifacts/${artifact.flower.id}.png`,
+                          54,
+                          54
+                        )}
+                        width={45}
+                        height={45}
+                        alt={artifact.flower.name}
+                        title={artifact.flower.name}
+                        loading="lazy"
+                        className="rounded-sm"
+                      />
+                    )}
+                    {artifact.goblet && (
+                      <Image
+                        src={getUrl(
+                          `/artifacts/${artifact.goblet.id}.png`,
+                          54,
+                          54
+                        )}
+                        width={45}
+                        height={45}
+                        alt={artifact.goblet.name}
+                        title={artifact.goblet.name}
+                        loading="lazy"
+                        className="rounded-sm"
+                      />
+                    )}
+                    {artifact.plume && (
+                      <Image
+                        src={getUrl(
+                          `/artifacts/${artifact.plume.id}.png`,
+                          54,
+                          54
+                        )}
+                        width={45}
+                        height={45}
+                        alt={artifact.plume.name}
+                        title={artifact.plume.name}
+                        loading="lazy"
+                        className="rounded-sm"
+                      />
+                    )}
+                    {artifact.sands && (
+                      <Image
+                        src={getUrl(
+                          `/artifacts/${artifact.sands.id}.png`,
+                          54,
+                          54
+                        )}
+                        width={45}
+                        height={45}
+                        alt={artifact.sands.name}
+                        title={artifact.sands.name}
+                        loading="lazy"
+                        className="rounded-sm"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="text-xs">
-              {artifact.one_pc && (
-                <p className="py-2" title={artifact.one_pc}>
-                  <Badge textSize="xxs">1</Badge> {artifact.one_pc}
-                </p>
-              )}
-              {artifact.two_pc && (
-                <p className="py-2" title={artifact.two_pc}>
-                  <Badge textSize="xxs">2</Badge>
-                  {artifact.two_pc}
-                </p>
-              )}
-              {artifact.four_pc && (
-                <p className="py-2" title={artifact.four_pc}>
-                  <Badge textSize="xxs">4</Badge>
-                  {artifact.four_pc}
-                </p>
-              )}
-            </div>
-          </div>
+              <div className="mt-4 space-y-2.5">
+                {artifact.one_pc && (
+                  <div
+                    className="flex items-start gap-2.5"
+                    title={artifact.one_pc}
+                  >
+                    <Badge variant="outline" className="shrink-0">
+                      1
+                    </Badge>
+                    <span className="text-sm leading-tight text-muted-foreground">
+                      {artifact.one_pc}
+                    </span>
+                  </div>
+                )}
+                {artifact.two_pc && (
+                  <div
+                    className="flex items-start gap-2.5"
+                    title={artifact.two_pc}
+                  >
+                    <Badge variant="outline" className="shrink-0">
+                      2
+                    </Badge>
+                    <span className="text-sm leading-tight text-muted-foreground">
+                      {artifact.two_pc}
+                    </span>
+                  </div>
+                )}
+                {artifact.four_pc && (
+                  <div
+                    className="flex items-start gap-2.5"
+                    title={artifact.four_pc}
+                  >
+                    <Badge variant="outline" className="shrink-0">
+                      4
+                    </Badge>
+                    <span className="text-sm leading-tight text-muted-foreground">
+                      {artifact.four_pc}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
+        classList={["flex", "justify-center", "mt-8"]}
       />
     </div>
   );

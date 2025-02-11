@@ -2,6 +2,7 @@
 
 import { type ButtonHTMLAttributes, useEffect, useState } from "react";
 
+import { Button } from "@app/components/ui/button";
 import { useClipboard } from "@hooks/use-clipboard";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -43,13 +44,13 @@ export default function CopyToClipboard({
   }, [copied, timeoutDuration]);
 
   return (
-    <button
+    <Button
       onClick={handleClick}
       {...props}
       data-copied={copied}
       aria-live="polite"
     >
       {copied ? copiedText : children}
-    </button>
+    </Button>
   );
 }

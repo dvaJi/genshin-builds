@@ -1,14 +1,14 @@
 "use client";
 
-import type { Ascension } from "@interfaces/genshin";
 import clsx from "clsx";
 import { memo } from "react";
 
-import SimpleRarityBox from "../SimpleRarityBox";
-
 import useIntl from "@hooks/use-intl";
+import type { Ascension } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 import type { AscensionTotal } from "@utils/totals";
+
+import SimpleRarityBox from "../SimpleRarityBox";
 
 type Props = {
   ascension: Ascension[];
@@ -26,7 +26,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
           className={clsx(
             "grid grid-cols-6 items-center px-4 lg:grid-cols-10",
             {
-              "bg-vulcan-700": i % 2 === 0,
+              "bg-muted/70": i % 2 === 0,
               "rounded rounded-b-none": i === 0,
             }
           )}
@@ -97,7 +97,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
           </div>
         </div>
       ))}
-      <div className="grid grid-cols-7 items-center rounded-b bg-vulcan-700 px-4 py-5 lg:grid-cols-11">
+      <div className="bg-muted grid grid-cols-7 items-center rounded-b px-4 py-5 lg:grid-cols-11">
         <div className="flex items-center justify-center text-sm font-bold lg:text-base">
           {t({ id: "total", defaultMessage: "Total" })}
         </div>

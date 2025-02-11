@@ -1,25 +1,34 @@
 import clsx from "clsx";
-import { forwardRef } from "react";
+import React from "react";
 
-type ButtonProps = React.ComponentPropsWithoutRef<"input">;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  error?: boolean;
+}
 
-const Input = forwardRef<HTMLInputElement, ButtonProps>(
-  ({ children, className, ...props }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, error, type, ...props }, ref) => {
     return (
-      <div className="flex flex-1 relative items-center bg-vulcan-900 rounded-2xl h-12 focus-within:border-vulcan-500 border-2 border-transparent ease-in duration-100 mb-2">
-        <input
-          ref={ref}
-          className={clsx(
-            "w-full pl-4 min-h-full text-white placeholder-gray-500 leading-none bg-transparent border-none focus:outline-none",
-            className
-          )}
-          {...props}
-        >
-          {children}
-        </input>
-      </div>
+      <input
+        type={type}
+        className={clsx(
+          "input",
+          "bg-background flex h-9 w-full rounded-md px-3 py-1 text-sm transition-colors",
+          "file:border-0 file:bg-transparent file:text-sm file:font-medium",
+          "placeholder:text-muted-foreground",
+          "focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-1",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          {
+            "border-destructive ring-destructive": error,
+          },
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
     );
   }
 );
+
+Input.displayName = "Input";
 
 export default Input;

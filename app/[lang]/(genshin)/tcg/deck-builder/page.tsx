@@ -100,8 +100,8 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
         {code && decodedDeck.characterCards[0] === "undefined" ? (
           <div className="absolute left-0 right-0 top-0 flex items-center justify-center">
             <Alert
-              className="flex rounded bg-red-400 px-6 py-2 text-center text-red-800"
-              closeClassName="text-red-900 font-semibold hover:text-black"
+              className="bg-destructive/90 text-destructive-foreground flex rounded-lg px-6 py-2 text-center"
+              closeClassName="text-destructive-foreground/90 font-semibold hover:text-destructive-foreground"
               autoCloseDelay={2000}
             >
               {t("error_invalid_deck_code")}
@@ -114,46 +114,55 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
           classList={["flex", "justify-center"]}
         />
         <div className="grid gap-4 md:grid-cols-3">
-          <div className="md:col-span-2">
-            <h1 className="my-6 text-2xl font-semibold text-gray-200">
-              {t("title")}
-            </h1>
+          <div className="space-y-6 md:col-span-2">
             <div>
-              <h2 className="my-2 text-xl font-semibold text-gray-300">
-                {t("my_deck")}
-              </h2>
-              <MyDeck cardsMapById={cardsMapById} />
+              <h1 className="text-2xl font-semibold tracking-tight text-card-foreground">
+                {t("title")}
+              </h1>
+              <p className="text-muted-foreground">{t("description")}</p>
             </div>
-            <div className="mt-4">
-              <h2 className="my-2 text-xl font-semibold text-gray-300">
-                {t("cards")}
-              </h2>
-              <Cards actions={acards} characters={ccards} />
+            <div className="space-y-4">
+              <div>
+                <h2 className="text-lg font-medium text-card-foreground">
+                  {t("my_deck")}
+                </h2>
+                <div className="mt-2">
+                  <MyDeck cardsMapById={cardsMapById} />
+                </div>
+              </div>
+              <div>
+                <h2 className="text-lg font-medium text-card-foreground">
+                  {t("cards")}
+                </h2>
+                <div className="mt-2">
+                  <Cards actions={acards} characters={ccards} />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <div>
-              <h2 className="my-2 text-xl font-semibold text-gray-300">
+          <div className="space-y-6">
+            <div className="rounded-lg border bg-card shadow-sm">
+              <h2 className="border-b p-4 text-lg font-medium text-card-foreground">
                 {t("share_deck")}
               </h2>
-              <div className="flex justify-between bg-vulcan-800 p-4">
+              <div className="p-4">
                 <Share ENCODE_ID_BY_CARD={ENCODE_ID_BY_CARD} />
               </div>
             </div>
-            <div>
-              <h2 className="my-2 text-xl font-semibold text-gray-300">
+            <div className="rounded-lg border bg-card shadow-sm">
+              <h2 className="border-b p-4 text-lg font-medium text-card-foreground">
                 {t("analytics")}
               </h2>
-              <div className="">
+              <div className="p-4">
                 <Analytics cardsMapById={cardsMapById} />
               </div>
             </div>
-            <div>
-              <h2 className="my-2 text-xl font-semibold text-gray-300">
+            <div className="rounded-lg border bg-card shadow-sm">
+              <h2 className="border-b p-4 text-lg font-medium text-card-foreground">
                 {t("draw_simulator")}
               </h2>
-              <div className="bg-vulcan-800 p-4">
+              <div className="p-4">
                 <DrawSimulator cardsMapById={{}} />
               </div>
             </div>
@@ -163,10 +172,9 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
           toastOptions={{
             unstyled: true,
             classNames: {
-              toast:
-                "bg-vulcan-800 items-center gap-4 flex p-4 rounded-xl shadow-xl",
-              title: "inline text-slate-50 font-bold",
-              description: "text-slate-100",
+              toast: "bg-card text-card-foreground flex items-center gap-4 p-4 rounded-lg border shadow-lg",
+              title: "font-medium",
+              description: "text-muted-foreground text-sm",
             },
           }}
         />

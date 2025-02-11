@@ -1,20 +1,20 @@
+import { eq } from "drizzle-orm";
+
 import { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { decodeBuilds, regionParse } from "@utils/leaderboard-enc";
-import { eq } from "drizzle-orm";
+
 import { getGenshinData } from "./dataApi";
 import { db } from "./db";
 import { builds, players } from "./db/schema";
 
 export async function getPlayer(uid: string) {
-  return db.query.players.findFirst({
-    where: eq(players.uuid, uid),
-  });
+  return db.select().from(players).where(eq(players.uuid, uid));
 }
 
 export async function getBuild(lang: any, uid: string) {
-  const playerData = await getPlayer(uid);
+  const _playerData = await getPlayer(uid);
 
-  if (!playerData) {
+  if (!_playerData || !_playerData.length) {
     return {
       code: 404,
       data: {
@@ -23,9 +23,12 @@ export async function getBuild(lang: any, uid: string) {
     };
   }
 
-  const buildsData = await db.query.builds.findMany({
-    where: eq(builds.playerId, playerData.id),
-  });
+  const playerData = _playerData[0];
+
+  const buildsData = await db
+    .select()
+    .from(builds)
+    .where(eq(builds.playerId, playerData.id));
 
   const characters = await getGenshinData<Character[]>({
     resource: "characters",

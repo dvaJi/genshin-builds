@@ -1,6 +1,5 @@
 "use client";
 
-import { useStore } from "@nanostores/react";
 import Image from "next/image";
 import { memo, useMemo } from "react";
 import { Tooltip } from "react-tooltip";
@@ -8,6 +7,7 @@ import { Tooltip } from "react-tooltip";
 import useIntl from "@hooks/use-intl";
 import type { TCGCard } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
+import { useStore } from "@nanostores/react";
 import { $deckBuilder } from "@state/deck-builder";
 
 type Props = {
@@ -82,47 +82,54 @@ function Analytics({ cardsMapById }: Props) {
   }, [cardsMapById, deck.actionCards, deck.characterCards]);
 
   return (
-    <div>
-      <div className="flex justify-between">
-        <div className="flex flex-col items-center rounded bg-vulcan-600 p-4">
-          <h4 className="text-xl font-semibold text-slate-200">
+    <div className="space-y-4">
+      <div className="grid grid-cols-3 gap-4">
+        <div className="rounded-lg bg-card p-4 text-center shadow-sm">
+          <h4 className="text-xl font-semibold text-card-foreground">
             {stats.totalCharacterCards}+{stats.totalActionCards}
           </h4>
-          <p className="text-sm">{t("total_cards")}</p>
+          <p className="text-sm text-muted-foreground">{t("total_cards")}</p>
         </div>
-        <div className="flex flex-col items-center rounded bg-vulcan-600 p-4">
-          <h4 className="text-xl font-semibold text-slate-200">
+        <div className="rounded-lg bg-card p-4 text-center shadow-sm">
+          <h4 className="text-xl font-semibold text-card-foreground">
             {stats.totalCost}
           </h4>
-          <p className="text-sm">{t("total_cost")}</p>
+          <p className="text-sm text-muted-foreground">{t("total_cost")}</p>
         </div>
-        <div className="flex flex-col items-center rounded bg-vulcan-600 p-4">
-          <h4 className="text-xl font-semibold text-slate-200">
+        <div className="rounded-lg bg-card p-4 text-center shadow-sm">
+          <h4 className="text-xl font-semibold text-card-foreground">
             {stats.avgCost.toFixed(1)}
           </h4>
-          <p className="text-sm">{t("average_cost_per_card")}</p>
+          <p className="text-sm text-muted-foreground">
+            {t("average_cost_per_card")}
+          </p>
         </div>
       </div>
-      <div className="mt-4 rounded bg-vulcan-800 p-4">
-        <table className="min-w-full text-left text-sm">
+
+      <div className="rounded-lg border bg-card p-4 shadow-sm">
+        <table className="min-w-full text-sm">
           <thead>
             <tr>
-              <th>{t("cost")}</th>
-              <th>✦ 0</th>
-              <th>✦ 1</th>
-              <th>✦ 2</th>
-              <th>✦ 3</th>
-              <th>✦ 4</th>
-              <th>✦ 5</th>
-              <th>✦ 6</th>
-              <th>✦ 7</th>
+              <th className="text-left font-medium text-card-foreground">
+                {t("cost")}
+              </th>
+              {Array.from({ length: 8 }).map((_, i) => (
+                <th
+                  key={i}
+                  className="text-center font-medium text-card-foreground"
+                >
+                  ✦ {i}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{t("number_of_cards")}</td>
+              <td className="py-2 text-muted-foreground">
+                {t("number_of_cards")}
+              </td>
               {Object.values(stats.costs).map((cost, i) => (
-                <td className="text-center" key={i}>
+                <td key={i} className="text-center text-muted-foreground">
                   {cost === 0 ? "-" : `x${cost}`}
                 </td>
               ))}
@@ -131,96 +138,40 @@ function Analytics({ cardsMapById }: Props) {
         </table>
       </div>
 
-      <div className="mt-4 rounded bg-vulcan-800 p-4">
-        <table className="min-w-full text-left text-sm">
+      <div className="rounded-lg border bg-card p-4 shadow-sm">
+        <table className="min-w-full text-sm">
           <thead>
             <tr>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/same.png`)}
-                  alt="Same"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/unaligned_element.png`)}
-                  alt="Unaligned Element"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/energy.png`)}
-                  alt="Energy"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/anemo.png`)}
-                  alt="Anemo"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/geo.png`)}
-                  alt="Geo"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/electro.png`)}
-                  alt="Electro"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/dendro.png`)}
-                  alt="Dendro"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/hydro.png`)}
-                  alt="Hydro"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/pyro.png`)}
-                  alt="Pyro"
-                  width={18}
-                  height={18}
-                />
-              </th>
-              <th>
-                <Image
-                  src={getUrl(`/tcg/cryo.png`)}
-                  alt="Cryo"
-                  width={18}
-                  height={18}
-                />
-              </th>
+              {[
+                "same",
+                "unaligned_element",
+                "energy",
+                "anemo",
+                "geo",
+                "electro",
+                "dendro",
+                "hydro",
+                "pyro",
+                "cryo",
+              ].map((type) => (
+                <th key={type} className="px-2">
+                  <Image
+                    src={getUrl(`/tcg/${type}.png`)}
+                    alt={type}
+                    width={18}
+                    height={18}
+                    className="mx-auto"
+                  />
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             <tr>
               {Object.values(stats.cardsByType).map((count, i) => (
-                <td key={i}>{count === 0 ? "---" : `x${count}`}</td>
+                <td key={i} className="text-center text-muted-foreground">
+                  {count === 0 ? "---" : `x${count}`}
+                </td>
               ))}
             </tr>
           </tbody>
