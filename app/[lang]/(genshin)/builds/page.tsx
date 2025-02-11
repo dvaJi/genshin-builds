@@ -6,7 +6,6 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
-import { i18n } from "@i18n-config";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -24,18 +23,11 @@ interface Props {
 }
 
 export const dynamic = "force-static";
-export const revalidate = 43200;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    routes.push({
-      lang,
-    });
-  }
-
-  return routes;
+  return [];
 }
 
 export async function generateMetadata({
@@ -60,7 +52,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const { t, langData, locale, common, dict } = await getTranslations(
     lang,
     "genshin",
-    "builds"
+    "builds",
   );
   const [beta, _characters, buildsOld, weaponsList, artifactsList] =
     await Promise.all([
@@ -69,41 +61,75 @@ export default async function GenshinCharacterPage({ params }: Props) {
         resource: "characters",
         language: langData as any,
         select: ["id", "name", "rarity", "element"],
+        revalidate: 0,
       }),
       getGenshinData<Record<string, Build>>({
         resource: "builds",
         language: langData as any,
         asMap: true,
+        revalidate: 0,
       }),
       getGenshinData<Record<string, Weapon>>({
         resource: "weapons",
         language: langData as any,
         select: ["id", "name", "rarity", "stats"],
         asMap: true,
+        revalidate: 0,
       }),
       getGenshinData<Record<string, Artifact>>({
         resource: "artifacts",
         language: langData as any,
         select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
         asMap: true,
+        revalidate: 0,
       }),
     ]);
 
   const bonusSets = getBonusSet(artifactsList, dict, common);
 
-  const characters = (beta[locale]?.characters ?? []).concat(_characters);
+  // Ensure beta characters are valid and have required properties
+  const betaCharacters = (beta[locale]?.characters ?? []).filter(
+    (char) =>
+      char &&
+      typeof char === "object" &&
+      char.id &&
+      char.element &&
+      typeof char.element === "object" &&
+      char.element.name,
+  );
+
+  // Filter out any invalid characters from the main list
+  const validCharacters = _characters.filter(
+    (char) =>
+      char &&
+      typeof char === "object" &&
+      char.id &&
+      char.element &&
+      typeof char.element === "object" &&
+      char.element.name,
+  );
+
+  const characters = [...betaCharacters, ...validCharacters];
 
   const allBuilds = [];
   for (const character of characters) {
+    // Skip if character is not valid
+    if (!character?.id) continue;
+
     const builds = buildsOld[character.id];
-    if (!builds) {
+    // Skip if no builds data exists for this character
+    if (!builds?.builds?.length) {
       continue;
     }
 
     const build =
-      builds.builds?.filter((b) => b.recommended)[0] ?? builds.builds?.[0];
-    const weapons = build.weapons
+      builds.builds.filter((b) => b.recommended)[0] ?? builds.builds[0];
+    // Skip if no valid build
+    if (!build) continue;
+
+    const weapons = (build.weapons || [])
       .map((weapon) => {
+        if (!weapon?.id) return undefined;
         const weaponData = weaponsList[weapon.id];
         if (!weaponData) {
           return undefined;
@@ -113,27 +139,28 @@ export default async function GenshinCharacterPage({ params }: Props) {
           r: weapon.r,
         };
       })
-      .filter((weapon) => weapon !== undefined);
-    const artifacts = build.sets.map((set) => {
+      .filter(Boolean);
+
+    const artifacts = (build.sets || []).map((set) => {
       return set
         .map((artifact) => {
+          if (!artifact) return undefined;
           if (bonusSets[artifact]) {
             return bonusSets[artifact];
           }
-
           return artifactsList[artifact];
         })
-        .filter((artifact) => artifact !== undefined);
+        .filter(Boolean);
     });
 
     allBuilds.push({
       character,
       role: build.role,
-      element: t(character.element.name),
+      element: character.element?.name ? t(character.element.name) : "",
       weapons,
       artifacts,
-      stats_priority: build.stats_priority.map((s) =>
-        common[s] ? common[s] : s
+      stats_priority: (build.stats_priority || []).map((s) =>
+        common[s] ? common[s] : s,
       ),
       note: build.build_notes,
       stats: {
