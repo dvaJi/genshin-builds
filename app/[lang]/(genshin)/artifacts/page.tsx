@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Badge } from "@app/components/ui/badge";
 import { Card, CardContent } from "@app/components/ui/card";
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
-import Badge from "@components/ui/Badge";
 import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
 import type { Artifact } from "@interfaces/genshin";
@@ -102,7 +102,7 @@ export default async function GenshinCharacters({ params }: Props) {
                         src={getUrl(
                           `/artifacts/${artifact.circlet.id}.png`,
                           54,
-                          54
+                          54,
                         )}
                         width={45}
                         height={45}
@@ -117,7 +117,7 @@ export default async function GenshinCharacters({ params }: Props) {
                         src={getUrl(
                           `/artifacts/${artifact.flower.id}.png`,
                           54,
-                          54
+                          54,
                         )}
                         width={45}
                         height={45}
@@ -132,7 +132,7 @@ export default async function GenshinCharacters({ params }: Props) {
                         src={getUrl(
                           `/artifacts/${artifact.goblet.id}.png`,
                           54,
-                          54
+                          54,
                         )}
                         width={45}
                         height={45}
@@ -147,7 +147,7 @@ export default async function GenshinCharacters({ params }: Props) {
                         src={getUrl(
                           `/artifacts/${artifact.plume.id}.png`,
                           54,
-                          54
+                          54,
                         )}
                         width={45}
                         height={45}
@@ -162,7 +162,7 @@ export default async function GenshinCharacters({ params }: Props) {
                         src={getUrl(
                           `/artifacts/${artifact.sands.id}.png`,
                           54,
-                          54
+                          54,
                         )}
                         width={45}
                         height={45}

@@ -12,19 +12,19 @@ export interface Weapon {
   bonus: string;
   specialProp?: string;
   stats: Stats;
-  ascensions: Ascension[];
+  ascensions: WeaponAscension[];
   refinement_raw: RefinementRaw;
   refinements: Refinement[];
 }
 
-export interface Ascension {
+export interface WeaponAscension {
   ascension: number;
   level: number;
-  materials: Material[];
+  materials: WeaponMaterial[];
   cost?: number;
 }
 
-export interface Material {
+export interface WeaponMaterial {
   _id: number;
   id: string;
   name: string;

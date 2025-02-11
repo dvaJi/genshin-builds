@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
 
@@ -13,21 +12,21 @@ const AchievementsSearch = dynamic(
   () => import("@components/genshin/AchievementsSearch"),
   {
     ssr: false,
-  }
+  },
 );
 
 const AchievementsList = dynamic(
   () => import("@components/genshin/AchievementsList"),
   {
     ssr: false,
-  }
+  },
 );
 
 const AchievementsCategories = dynamic(
   () => import("@components/genshin/AchievementsCategories"),
   {
     ssr: false,
-  }
+  },
 );
 
 interface Props {
@@ -43,9 +42,9 @@ export default function AchievementsWrapper({ categories }: Props) {
   const filteredAchievements = useMemo(
     () =>
       category.achievements.filter((ach) =>
-        ach.name.toLowerCase().includes(searchText.toLowerCase())
+        ach.name.toLowerCase().includes(searchText.toLowerCase()),
       ),
-    [category, searchText]
+    [category, searchText],
   );
 
   const selectAchievement = useCallback(
@@ -60,7 +59,7 @@ export default function AchievementsWrapper({ categories }: Props) {
 
       if (exist) {
         _achievementsDone[catId] = _achievementsDone[catId].filter(
-          (a) => a !== id
+          (a) => a !== id,
         );
       } else {
         _achievementsDone[catId] = [..._achievementsDone[catId], id];
@@ -68,7 +67,7 @@ export default function AchievementsWrapper({ categories }: Props) {
 
       $achievementsCompleted.set(_achievementsDone);
     },
-    [achievementsDone, category.id]
+    [achievementsDone, category.id],
   );
 
   const handleCategoryClick = useCallback((cat: AchievementCategory) => {
@@ -84,7 +83,7 @@ export default function AchievementsWrapper({ categories }: Props) {
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute(
       "download",
-      "genshin-impact-com-genshin-achievements.json"
+      "genshin-impact-com-genshin-achievements.json",
     );
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();

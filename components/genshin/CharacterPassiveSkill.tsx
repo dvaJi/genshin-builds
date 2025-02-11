@@ -3,13 +3,13 @@
 import { memo } from "react";
 
 import useIntl from "@hooks/use-intl";
-import type { Passive } from "@interfaces/genshin";
+import type { Constellation } from "@interfaces/genshin/character";
 
 import Image from "./Image";
 
 type Props = {
   characterId: string;
-  passive: Passive;
+  passive: Constellation;
 };
 
 const PassiveSkill = ({ passive, characterId }: Props) => {

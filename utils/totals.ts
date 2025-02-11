@@ -32,7 +32,7 @@ type Level = {
 export function calculateTotalAscensionMaterials(
   ascension: Ascension[],
   ascensionMin = 1,
-  ascensionMax = 6
+  ascensionMax = 6,
 ) {
   if (ascensionMin === ascensionMax) return { items: [], cost: 0 };
   const talentIndexFolder = [
@@ -104,14 +104,14 @@ export function calculateTotalAscensionMaterials(
           .sort((a, b) => a.index - b.index || a.rarity - b.rarity);
         return acc;
       },
-      { cost: 0, items: [] }
+      { cost: 0, items: [] },
     );
 }
 
 export function calculateTotalTalentMaterials(
   talents: TalentMaterial[],
   levelMin = 1,
-  levelMax = 10
+  levelMax = 10,
 ) {
   const talentIndexFolder = [
     "talent_lvl_up_materials",
@@ -123,7 +123,7 @@ export function calculateTotalTalentMaterials(
     .filter((t) => t.level >= levelMin && t.level <= levelMax)
     .reduce<TalentTotal>(
       (acc, cur) => {
-        acc.cost = acc.cost + cur.cost;
+        acc.cost = acc.cost + (cur.cost ?? 0);
         acc.items = [
           ...cur.items.map((item, index) => ({
             id: item.id,
@@ -147,14 +147,14 @@ export function calculateTotalTalentMaterials(
           .sort((a, b) => a.index - b.index || a.rarity - b.rarity);
         return acc;
       },
-      { cost: 0, items: [] }
+      { cost: 0, items: [] },
     );
 }
 
 export function calculateTotalWeaponAscensionMaterials(
   ascension: WeaponAscension[],
   ascensionMin = 1,
-  ascensionMax = 6
+  ascensionMax = 6,
 ) {
   const talentIndexFolder = [
     "weapon_primary_materials",
@@ -165,11 +165,11 @@ export function calculateTotalWeaponAscensionMaterials(
 
   return ascension
     .filter(
-      (asc) => asc.ascension >= ascensionMin && asc.ascension <= ascensionMax
+      (asc) => asc.ascension >= ascensionMin && asc.ascension <= ascensionMax,
     )
     .reduce<AscensionTotal>(
       (acc, cur) => {
-        acc.cost = acc.cost + cur.cost;
+        acc.cost = acc.cost + (cur.cost ?? 0);
         acc.items = [
           ...cur.materials.map((item, index) => ({
             id: item.id,
@@ -193,7 +193,7 @@ export function calculateTotalWeaponAscensionMaterials(
           .sort((a, b) => a.index - b.index || a.rarity - b.rarity);
         return acc;
       },
-      { cost: 0, items: [] }
+      { cost: 0, items: [] },
     );
 }
 
