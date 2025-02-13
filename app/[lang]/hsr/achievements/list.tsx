@@ -1,23 +1,25 @@
 "use client";
 
-import useIntl from "@hooks/use-intl";
-import { useStore } from "@nanostores/react";
-import { $achievements } from "@state/hsr-achievements";
-import type { Achievement } from "@interfaces/hsr";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
 
+import { Input } from "@app/components/ui/input";
+import useIntl from "@hooks/use-intl";
+import type { Achievement } from "@interfaces/hsr";
+import { useStore } from "@nanostores/react";
+import { $achievements } from "@state/hsr-achievements";
+
 const AchievementsCategories = dynamic(
   () => import("@components/hsr/AchievementsCategories"),
-  { ssr: false }
+  { ssr: false },
 );
 const AchievementsList = dynamic(
   () => import("@components/hsr/AchievementsList"),
-  { ssr: false }
+  { ssr: false },
 );
 const AchievementsTotal = dynamic(
   () => import("@components/hsr/AchievementsTotal"),
-  { ssr: false }
+  { ssr: false },
 );
 
 export type Category = {
@@ -45,12 +47,12 @@ export default function List({ categories, achievements, rewardValue }: Props) {
     (ac: { _id: number; r: number }[]) => {
       const total = ac.length;
       const totalRewards = ac.reduce((a, b) => a + b.r || 0, 0);
-      const completedAchievements = ac.filter(
-        (a) => (achievementsDone?.ids || [])?.includes(a._id)
+      const completedAchievements = ac.filter((a) =>
+        (achievementsDone?.ids || [])?.includes(a._id),
       );
       const collectedRewards = completedAchievements.reduce(
         (a, b) => a + b.r || 0,
-        0
+        0,
       );
       const completed = completedAchievements.length;
       const percentage = ((completed / total) * 100).toFixed(1);
@@ -63,7 +65,7 @@ export default function List({ categories, achievements, rewardValue }: Props) {
         percentage,
       };
     },
-    [achievementsDone?.ids]
+    [achievementsDone?.ids],
   );
 
   const progress = useMemo(() => {
@@ -71,7 +73,7 @@ export default function List({ categories, achievements, rewardValue }: Props) {
       Object.values(achievements).map((a) => ({
         _id: a._id,
         r: rewardValue[a.rarity],
-      }))
+      })),
     );
   }, [achievements, calculateProgress, rewardValue]);
 
@@ -93,12 +95,11 @@ export default function List({ categories, achievements, rewardValue }: Props) {
   }
 
   return (
-    <menu className="w-full">
+    <menu className="mt-2 w-full">
       <AchievementsTotal progress={progress} />
       <div className="flex h-full gap-2">
         <div className="sticky top-0 flex h-screen flex-col gap-2 overflow-y-auto px-1 pt-2">
-          <input
-            className="h-10 w-full rounded-md bg-transparent px-4 text-white outline-none focus:ring-hsr-accent"
+          <Input
             placeholder={t({
               id: "search",
               defaultMessage: "Search...",

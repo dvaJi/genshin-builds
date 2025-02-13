@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 13%; /* #212121 - darker background */
+    --foreground: 0 0% 45%; /* #ffffff73 - muted text */
+
+    --card: 0 0% 16%; /* #282828 as requested */
+    --card-foreground: 0 0% 65%; /* #ffffffa6 as requested */
+
+    --popover: 0 0% 16%;
+    --popover-foreground: 0 0% 65%;
+
+    --primary: 35 100% 72%; /* #ffc870 as requested */
+    --primary-foreground: 0 0% 13%;
+
+    --secondary: 0 0% 19%;
+    --secondary-foreground: 35 100% 72%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 45%; /* #ffffff73 as requested */
+
+    --accent: 39 28% 71%; /* #dbc291 as requested */
+    --accent-foreground: 0 0% 13%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 24%;
+    --input: 0 0% 22%;
+    --ring: 35 100% 72%;
+    --radius: 0.7rem;
+
+    /* Chart colors */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Keep existing Vulcan colors for compatibility */
+    --vulcan-50: 226 29% 60%;
+    --vulcan-100: 226 29% 59%;
+    --vulcan-200: 226 29% 55%;
+    --vulcan-300: 226 29% 49%;
+    --vulcan-400: 226 29% 42%;
+    --vulcan-500: 226 29% 33%;
+    --vulcan-600: 226 29% 27%;
+    --vulcan-700: 226 29% 21%;
+    --vulcan-800: 226 29% 17%;
+    --vulcan-900: 226 29% 13%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative rounded-lg border border-border bg-card p-4 text-card-foreground shadow-sm;
+  }
+
+  .input {
+    @apply rounded-md border border-input bg-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  /* Custom react-tooltip  */
+  .react-tooltip {
+    @apply rounded-lg border-border bg-popover p-2 text-popover-foreground shadow-sm;
+  }
+
+  .tooltip {
+    @apply relative cursor-help;
+  }
+
+  .tooltip::before {
+    @apply absolute -top-8 left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 transition-opacity content-[attr(data-tooltip)];
+  }
+
+  .tooltip:hover::before {
+    @apply opacity-100;
+  }
+}
+
+@keyframes starPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Utility styles */
+.weapon-bonus {
+  word-break: break-word;
+}
+
+.weapon-bonus > span,
+.skill-description > span {
+  font-weight: bold;
+}
+
+.build-option-divider {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: #a7b1c1;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.build-option-divider:before,
+.build-option-divider:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: #36384a;
+  transform: translateY(-50%);
+}
+
+.build-option-divider:before {
+  left: 0;
+}
+
+.build-option-divider:after {
+  right: 0;
+}
+
+/* Custom scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 11px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  @apply rounded-full border-4 border-transparent bg-border;
+}
+
+/* Map marker styles */
+.map-marker {
+  pointer-events: none !important;
+  z-index: 10000 !important;
+}
+
+/* Image styles */
+.gradient-image {
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, transparent 100%);
+  width: 100%;
+  height: 100%;
+}
+
+/* Ad-related styles */
+body {
+  --fsAddBuffer: 22px;
+}
+
+.hsr-multiborder {
+  height: 55%;
+  margin-top: 2.5rem;
+  position: absolute;
+  width: 0.2rem;
+}
+
+.hsr-multiborder:before {
+  bottom: 0;
+}
+.hsr-multiborder:after {
+  top: 0;
+}
+.hsr-multiborder:after,
+.hsr-multiborder:before {
+  background-color: hsl(var(--accent));
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  content: "";
+  display: inline-block;
+  height: 0.2rem;
+  position: absolute;
+  width: 1.6rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .hsr-multiborder {
+    margin-top: -2px;
+    height: 0.2rem;
+    margin-left: 15%;
+    position: relative;
+    width: 70%;
+  }
+
+  .hsr-multiborder:after,
+  .hsr-multiborder:before {
+    height: 1.5rem;
+    top: 0;
+    width: 0.2rem;
+  }
+
+  .hsr-multiborder:before {
+    left: 0;
+  }
+  .hsr-multiborder:after {
+    right: 0;
+  }
+}

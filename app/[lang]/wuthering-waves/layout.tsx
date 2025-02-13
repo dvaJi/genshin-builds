@@ -7,10 +7,9 @@ import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 import { cn } from "@lib/utils";
 
-import "../../../styles/globals.css";
 import Footer from "./footer";
-import "./globals.css";
 import Header from "./header";
+import "./theme.css";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
@@ -29,7 +28,7 @@ export default async function WWLayout({ children, params }: Props) {
   const { langData, messages } = await getTranslations(
     lang,
     "wuthering-waves",
-    "layout"
+    "layout",
   );
 
   const jsonLd: WithContext<VideoGame> = {
@@ -61,7 +60,7 @@ export default async function WWLayout({ children, params }: Props) {
       <div
         className={cn(
           "flex h-full min-h-screen flex-col bg-zinc-950",
-          poppins.className
+          poppins.className,
         )}
       >
         <Header locale={lang} />

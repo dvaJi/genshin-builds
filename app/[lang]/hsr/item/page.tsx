@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
+import Image from "@components/hsr/Image";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
@@ -81,16 +82,18 @@ export default async function HSRItemPage({ params }: Props) {
           <Link
             key={item.id}
             href={`/${lang}/hsr/item/${item.id}`}
-            className="group/link grid justify-center justify-items-center bg-hsr-surface2 text-center hover:bg-hsr-accent/20"
+            className="group/link grid justify-center justify-items-center border border-border bg-card text-center ring-primary hover:bg-muted hover:ring-2"
             prefetch={false}
           >
-            <img
+            <Image
               className="h-[128px] w-[128px]"
-              src={getHsrUrl(`/items/${item.id}.png`, 128, 128)}
+              src={`/items/${item.id}.png`}
+              width={128}
+              height={128}
               alt={item.name}
             />
             <h3
-              className="px-1 pb-3 leading-5 group-hover/link:text-white"
+              className="px-1 pb-3 leading-5 group-hover/link:text-secondary-foreground"
               dangerouslySetInnerHTML={{ __html: item.name }}
             />
           </Link>

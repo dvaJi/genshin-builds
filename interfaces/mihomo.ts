@@ -18,7 +18,7 @@ export interface Character {
   element:     Avatar;
   skills:      Skill[];
   skill_trees: SkillTree[];
-  light_cone:  LightCone;
+  light_cone:  LightCone | null;
   relics:      Relic[];
   relic_sets:  RelicSet[];
   attributes:  Addition[];

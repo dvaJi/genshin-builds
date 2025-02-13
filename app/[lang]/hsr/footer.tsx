@@ -20,7 +20,7 @@ export default function HSRFooter() {
   };
 
   return (
-    <footer className="z-20 border-t border-gray-800 border-opacity-50 bg-hsr-surface1 px-20 py-14 text-gray-400">
+    <footer className="z-20 border-t border-card border-opacity-50 bg-card px-20 py-14 text-card-foreground">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
@@ -53,6 +53,94 @@ export default function HSRFooter() {
               <RiPatreonFill className="inline group-hover:text-red-400" />{" "}
               <span className="text-base">Patreon</span>
             </a>
+          </div>
+          <div className="flex flex-1 flex-col">
+            <p className="mb-2 text-lg font-semibold text-foreground">Games</p>
+            <div className="space-y-2">
+              {/* Genshin Impact */}
+              <div className="flex flex-col">
+                <p className="text-sm font-medium text-foreground">
+                  Genshin Impact
+                </p>
+                <Link
+                  href={`/${locale}/characters`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Characters
+                </Link>
+                <Link
+                  href={`/${locale}/teams`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Best Teams
+                </Link>
+                <Link
+                  href={`/${locale}/builds`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Builds
+                </Link>
+              </div>
+
+              {/* Zenless Zone Zero */}
+              <div className="flex flex-col">
+                <p className="text-sm font-medium text-foreground">
+                  Zenless Zone Zero
+                </p>
+                <Link
+                  href={`/${locale}/zenless/characters`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Characters
+                </Link>
+                <Link
+                  href={`/${locale}/zenless/tierlist`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Tierlist
+                </Link>
+              </div>
+
+              {/* Wuthering Waves */}
+              <div className="flex flex-col">
+                <p className="text-sm font-medium text-foreground">
+                  Wuthering Waves
+                </p>
+                <Link
+                  href={`/${locale}/wuthering-waves`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Characters
+                </Link>
+                <Link
+                  href={`/${locale}/wuthering-waves/tierlist/characters`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Tierlist Characters
+                </Link>
+                <Link
+                  href={`/${locale}/wuthering-waves/tierlist/weapons`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Tierlist Weapons
+                </Link>
+                <Link
+                  href={`/${locale}/wuthering-waves/tierlist/echoes`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Tierlist Echoes
+                </Link>
+              </div>
+            </div>
           </div>
           <div className="flex flex-1 flex-col">
             <button onClick={redirectedPathName("en")} className="my-2">

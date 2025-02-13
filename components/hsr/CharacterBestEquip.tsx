@@ -1,10 +1,11 @@
 "use client";
 
-import useIntl from "@hooks/use-intl";
-import { getHsrUrl } from "@lib/imgUrl";
-import type { LightCone, Relic } from "@interfaces/hsr";
 import { Relics } from "interfaces/hsr/build";
 import { memo } from "react";
+
+import useIntl from "@hooks/use-intl";
+import type { LightCone, Relic } from "@interfaces/hsr";
+import { getHsrUrl } from "@lib/imgUrl";
 
 type Props = {
   characterName: string;
@@ -23,25 +24,23 @@ function CharacterBestEquip({
   const { t } = useIntl("character");
 
   return (
-    <div className="flex flex-col gap-4 md:flex-row">
+    <div className="flex flex-col gap-4 text-card-foreground md:flex-row">
       <div>
-        <h3 className="text-slate-300">
+        <h2 className="mb-4 text-xl font-semibold text-accent">
           {t({
             id: "best_relics",
             defaultMessage: "{name} Best Relics",
             values: { name: characterName },
           })}
-        </h3>
+        </h2>
         {relics.set.map((r) => (
           <div
             key={r.ids.join("-")}
-            className="mb-2 mt-1 flex flex-col rounded-sm bg-hsr-surface2 px-2 py-1 text-sm font-semibold"
+            className="mb-2 mt-1 flex flex-col rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
           >
             {r.ids.map((id) => (
               <div key={id} className="flex items-center">
-                <div className="mr-2 rounded bg-hsr-surface3 p-2">
-                  {r.amount}
-                </div>
+                <div className="mr-2 rounded bg-card p-2">{r.amount}</div>
                 <img
                   src={getHsrUrl(`/relics/${id}.png`, 64, 64)}
                   alt={relicsMap[id].name}
@@ -55,7 +54,7 @@ function CharacterBestEquip({
         ))}
       </div>
       <div>
-        <h3 className="text-slate-300">
+        <h3 className="text-lg font-semibold text-accent">
           {t({
             id: "best_ornaments",
             defaultMessage: "{name} Best Ornaments",
@@ -65,7 +64,7 @@ function CharacterBestEquip({
         {relics.ornament.map((r) => (
           <div
             key={r}
-            className="mb-2 mt-1 flex items-center rounded-sm bg-hsr-surface2 px-2 py-1 text-sm font-semibold"
+            className="mb-2 mt-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
           >
             <img
               src={getHsrUrl(`/relics/${r}.png`, 64, 64)}
@@ -78,7 +77,7 @@ function CharacterBestEquip({
         ))}
       </div>
       <div>
-        <h3 className="text-slate-300">
+        <h3 className="text-lg font-semibold text-accent">
           {t({
             id: "best_lightcones",
             defaultMessage: "{name} Best Light Cones",
@@ -88,7 +87,7 @@ function CharacterBestEquip({
         {lightcones.map((r) => (
           <div
             key={r}
-            className="mb-2 mt-1 flex items-center rounded-sm bg-hsr-surface2 px-2 py-1 text-sm font-semibold"
+            className="mb-2 mt-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
           >
             <img
               src={getHsrUrl(`/lightcones/${r}.png`, 50, 50)}

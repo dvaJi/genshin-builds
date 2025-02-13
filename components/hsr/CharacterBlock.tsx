@@ -10,7 +10,7 @@ type Props = {
 
 function CharacterBlock({ character }: Props) {
   return (
-    <div className="group flex flex-col items-center overflow-hidden bg-hsr-surface2 shadow-sm transition-all hover:bg-hsr-surface3">
+    <div className="group flex flex-col items-center overflow-hidden border border-border bg-card shadow-sm ring-primary transition-all hover:bg-muted hover:ring-2">
       <Image
         src={`/characters/${character.id}/icon_2.png`}
         alt={character.name}
@@ -19,7 +19,7 @@ function CharacterBlock({ character }: Props) {
         loading="lazy"
         className="rounded-full"
       />{" "}
-      <span className="font-semibold group-hover:text-hsr-accent">
+      <span className="font-semibold group-hover:text-accent">
         {character.name}
       </span>{" "}
       <div className="mb-4 flex">

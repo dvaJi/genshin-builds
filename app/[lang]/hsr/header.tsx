@@ -28,8 +28,8 @@ export default function HSRHeader() {
   const { locale } = useIntl("layout");
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   return (
-    <div className="relative left-0 top-0 z-50 w-full border-b border-black bg-hsr-surface1 shadow-md backdrop-blur md:border-b-0">
-      <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0 ">
+    <div className="relative left-0 top-0 z-50 w-full border-b border-muted bg-card shadow-md backdrop-blur md:border-b-0">
+      <div className="mx-auto block w-full max-w-6xl items-center px-4 py-2 text-sm md:flex md:py-0">
         <div className="flex items-center justify-between pr-4 md:inline-block md:pr-0">
           <Link
             href={`/${locale}/hsr`}
@@ -53,7 +53,7 @@ export default function HSRHeader() {
         <div
           className={clsx(
             "absolute left-0 z-10 mt-2 block max-h-[80vh] w-screen overflow-auto bg-vulcan-800 pb-4 pt-2 md:relative md:ml-10 md:mt-0 md:flex md:flex-grow md:justify-between md:overflow-visible md:bg-transparent md:py-0",
-            { hidden: !isMobileNavOpen }
+            { hidden: !isMobileNavOpen },
           )}
         >
           <ul className="flex flex-col md:flex-row">

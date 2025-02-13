@@ -1,5 +1,6 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
@@ -78,57 +79,60 @@ export default async function Page({ params }: Props) {
       </div>
       <menu className="grid grid-cols-1 md:grid-cols-2">
         {relics.map((relic) => (
-          <div
+          <Link
             key={relic.id}
-            className="mx-4 mb-8 flex flex-col bg-hsr-surface2 p-3"
+            href={`/${lang}/hsr/relics/${relic.id}`}
+            className="transition-transform hover:scale-[1.02]"
           >
-            <div className="flex">
+            <div className="card mx-4 mb-8 flex flex-col">
+              <div className="flex">
+                <div>
+                  <img
+                    src={getHsrUrl(`/relics/${relic.id}.png`, 100, 100)}
+                    width={88}
+                    height={88}
+                    alt={relic.name}
+                  />
+                </div>
+                <div className="ml-4">
+                  <div>{relic.name}</div>
+                  <div className="text-sm">
+                    {t({
+                      id: "set",
+                      defaultMessage: "Set",
+                    })}
+                  </div>
+                  <div className="flex">
+                    {relic.pieces.map((piece) => (
+                      <div
+                        key={piece.id}
+                        className="mx-1 flex"
+                        data-tooltip-id="item_tooltip"
+                        data-tooltip-content={piece.name}
+                        data-tooltip-place="bottom"
+                      >
+                        <img
+                          src={getHsrUrl(`/pieces/${piece.id}.png`, 48, 48)}
+                          width={36}
+                          height={36}
+                          alt={piece.name}
+                        />
+                        <span className="hidden">{piece.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
               <div>
-                <img
-                  src={getHsrUrl(`/relics/${relic.id}.png`, 100, 100)}
-                  width={88}
-                  height={88}
-                  alt={relic.name}
-                />
-              </div>
-              <div className="ml-4">
-                <div>{relic.name}</div>
-                <div className="text-sm">
-                  {t({
-                    id: "set",
-                    defaultMessage: "Set",
-                  })}
-                </div>
-                <div className="flex">
-                  {relic.pieces.map((piece) => (
-                    <div
-                      key={piece.id}
-                      className="mx-1 flex"
-                      data-tooltip-id="item_tooltip"
-                      data-tooltip-content={piece.name}
-                      data-tooltip-place="bottom"
-                    >
-                      <img
-                        src={getHsrUrl(`/pieces/${piece.id}.png`, 48, 48)}
-                        width={36}
-                        height={36}
-                        alt={piece.name}
-                      />
-                      <span className="hidden">{piece.name}</span>
-                    </div>
-                  ))}
-                </div>
+                {Object.entries(relic.effects).map(([pcs, effect]) => (
+                  <div key={pcs} className="my-1 text-xs">
+                    <span className="mr-2 text-primary">{pcs}</span>
+                    <span dangerouslySetInnerHTML={{ __html: effect }}></span>
+                  </div>
+                ))}
               </div>
             </div>
-            <div>
-              {Object.entries(relic.effects).map(([pcs, effect]) => (
-                <div key={pcs} className="my-1 text-xs">
-                  <span className="mr-2 text-hsr-accent">{pcs}</span>
-                  <span dangerouslySetInnerHTML={{ __html: effect }}></span>
-                </div>
-              ))}
-            </div>
-          </div>
+          </Link>
         ))}
       </menu>
       {/* <Tooltip id="item_tooltip" /> */}

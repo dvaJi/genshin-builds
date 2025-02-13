@@ -27,7 +27,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
 
   return (
     <>
-      <div className="relative z-20 my-6 flex items-center justify-center gap-3">
+      <div className="card relative z-20 my-6 flex items-center justify-center gap-3">
         {profile.builds.map((build: any) => (
           <button
             key={build._id}
@@ -35,9 +35,9 @@ export default function Builds({ profile, propertiesCommon }: Props) {
             className={clsx(
               "cursor-pointer rounded-full border-2 text-center align-middle shadow",
               {
-                "border-hsr-accent": buildSelected._id === build._id,
+                "border-secondary-foreground": buildSelected._id === build._id,
                 "border-black/10": buildSelected._id !== build._id,
-              }
+              },
             )}
             data-tooltip-id="characters_tooltip"
             data-tooltip-content={build.name}
@@ -51,7 +51,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                 {
                   "bg-yellow-700": build.rarity === 5,
                   "bg-purple-700": build.rarity === 4,
-                }
+                },
               )}
             >
               <img
@@ -67,10 +67,10 @@ export default function Builds({ profile, propertiesCommon }: Props) {
         <Tooltip id="characters_tooltip" className="z-40" />
       </div>
       <div
-        className="relative mx-auto flex min-h-[500px] max-w-[1100px] select-none overflow-hidden rounded-lg bg-zinc-900 bg-cover shadow-xl"
+        className="relative mx-auto flex min-h-[500px] max-w-[1100px] select-none overflow-hidden rounded-lg bg-background bg-cover text-card-foreground shadow-xl"
         style={{
           backgroundImage: `url(${getHsrUrl(
-            `/bg/bgelement_${buildSelected.combat_type.id}.webp`
+            `/bg/bgelement_${buildSelected.combat_type.id}.webp`,
           )})`,
         }}
       >
@@ -79,7 +79,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
           src={getHsrUrl(
             `/profiles/${buildSelected.avatarId}_portrait.png`,
             600,
-            600
+            600,
           )}
           alt={buildSelected.name}
         />
@@ -99,7 +99,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                 {buildSelected.ranks.map((rank: any, i: number) => (
                   <div
                     key={rank._id}
-                    className="relative h-12 w-12 rounded-full border-2 border-white/50 bg-hsr-bg/80"
+                    className="relative h-12 w-12 rounded-full border-2 border-white/50 bg-card/80"
                     data-tooltip-id="talents_tooltip"
                     data-tooltip-place="right"
                     data-title-attr={rank.name}
@@ -109,7 +109,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                       src={getHsrUrl(
                         `/profiles/${buildSelected.avatarId}_rank${i + 1}.png`,
                         70,
-                        70
+                        70,
                       )}
                       alt={rank.name}
                     />
@@ -125,20 +125,20 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                 {buildSelected.skills.map((skill: any, i: number) => (
                   <div
                     key={skill._id}
-                    className="relative h-14 w-14 rounded-full border-2 border-white/50 bg-hsr-bg/80"
+                    className="relative h-14 w-14 rounded-full border-2 border-white/50 bg-card/80"
                     data-tooltip-id="talents_tooltip"
                     data-tooltip-place="left"
                     data-title-attr={skill.name}
                     data-tooltip-content={renderDescription(
                       skill.desc,
-                      skill.levels[skill.level - 1].params
+                      skill.levels[skill.level - 1].params,
                     )}
                   >
                     <img
                       src={getHsrUrl(
                         `/profiles/${buildSelected.avatarId}_skill${i + 1}.png`,
                         60,
-                        60
+                        60,
                       )}
                       alt={skill.name}
                     />
@@ -154,7 +154,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
               className="z-40"
               render={({ content, activeAnchor }) => (
                 <div className="z-40 w-44 text-xs">
-                  <div className="pb-0.5 text-hsr-accent">
+                  <div className="pb-0.5 font-semibold text-primary">
                     {activeAnchor?.getAttribute("data-title-attr")}
                   </div>
                   <div dangerouslySetInnerHTML={{ __html: content ?? "" }} />
@@ -171,7 +171,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                     src={getHsrUrl(
                       `/lightcones/${buildSelected.lightCone.id}.png`,
                       90,
-                      70
+                      70,
                     )}
                     alt={buildSelected.lightCone.name}
                   />
@@ -218,7 +218,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                           {buildSelected.additions[key]
                             ? formatValues(
                                 value + buildSelected.additions[key],
-                                key
+                                key,
                               )
                             : formatValues(value, key)}
                         </div>
@@ -232,7 +232,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                         </div>
                       </div>
                     </div>
-                  )
+                  ),
                 )}
                 {Object.entries(buildSelected.additions)
                   .filter(([key]: any) => !buildSelected.attributes[key])
@@ -261,7 +261,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                           {buildSelected.additions[key]
                             ? formatValues(
                                 value + buildSelected.additions[key],
-                                key
+                                key,
                               )
                             : formatValues(value, key)}
                         </div>
@@ -289,7 +289,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                     data-data-tooltip-place="left"
                     style={{
                       backgroundImage: `url(${getUrl(
-                        `/bg_${relic.rarity}star.png`
+                        `/bg_${relic.rarity}star.png`,
                       )})`,
                     }}
                   >
@@ -297,7 +297,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                       src={getHsrUrl(
                         `/profiles/${relic.setId}_${relic.type}.png`,
                         50,
-                        50
+                        50,
                       )}
                       alt={relic?.name}
                     />
@@ -325,7 +325,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                               {formatValues(value, key)}
                             </div>
                           </div>
-                        )
+                        ),
                       )}
                     </div>
                     <div className="flex w-44 flex-wrap">
@@ -353,13 +353,13 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                               <div className="mt-0.5 flex w-full">
                                 <div className="mx-1 -mt-3 inline-flex w-full justify-center text-center text-lg leading-none text-blue-500">
                                   {Array.from({ length: value.count }).join(
-                                    "."
+                                    ".",
                                   )}
                                 </div>
                               </div>
                             </div>
                           </div>
-                        )
+                        ),
                       )}
                     </div>
                   </div>
@@ -392,7 +392,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                   className="z-40"
                   render={({ content, activeAnchor }) => (
                     <div className="z-40 w-44 text-xs">
-                      <div className="pb-1 font-semibold text-hsr-accent">
+                      <div className="pb-1 font-semibold text-primary">
                         {content}
                       </div>
                       <div className="flex flex-col">
@@ -405,7 +405,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                               dangerouslySetInnerHTML={{
                                 __html:
                                   activeAnchor?.getAttribute(
-                                    "data-tooltip-effect2"
+                                    "data-tooltip-effect2",
                                   ) ?? "",
                               }}
                             />
@@ -420,7 +420,7 @@ export default function Builds({ profile, propertiesCommon }: Props) {
                               dangerouslySetInnerHTML={{
                                 __html:
                                   activeAnchor?.getAttribute(
-                                    "data-tooltip-effect4"
+                                    "data-tooltip-effect4",
                                   ) ?? "",
                               }}
                             />

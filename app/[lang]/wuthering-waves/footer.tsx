@@ -38,7 +38,80 @@ export default function HSRFooter() {
               <span className="text-base">Patreon</span>
             </a>
           </div>
-          <div className="flex flex-1 flex-col"></div>
+          <div className="flex flex-1 flex-col">
+            <p className="mb-2 text-lg font-semibold text-foreground">Games</p>
+            <div className="space-y-2">
+              {/* Genshin Impact */}
+              <div className="flex flex-col">
+                <p className="text-sm font-medium text-foreground">
+                  Genshin Impact
+                </p>
+                <Link
+                  href={`/en/characters`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Characters
+                </Link>
+                <Link
+                  href={`/en/teams`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Best Teams
+                </Link>
+                <Link
+                  href={`/en/builds`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Builds
+                </Link>
+              </div>
+
+              {/* Honkai: Star Rail */}
+              <div className="flex flex-col">
+                <p className="text-sm font-medium text-foreground">
+                  Honkai: Star Rail
+                </p>
+                <Link
+                  href={`/en/hsr`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Characters
+                </Link>
+                <Link
+                  href={`/en/hsr/tierlist`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Tierlist
+                </Link>
+              </div>
+
+              {/* Zenless Zone Zero */}
+              <div className="flex flex-col">
+                <p className="text-sm font-medium text-foreground">
+                  Zenless Zone Zero
+                </p>
+                <Link
+                  href={`/en/zenless/characters`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Characters
+                </Link>
+                <Link
+                  href={`/en/zenless/tierlist`}
+                  className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                  prefetch={false}
+                >
+                  Tierlist
+                </Link>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-1 flex-col"></div>
           <div className="flex-1">
             <p className="text-sm">

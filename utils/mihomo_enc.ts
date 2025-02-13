@@ -1,6 +1,3 @@
-import type { Character, LightCone, Relic } from "@interfaces/hsr";
-import type { SelectHSRBuilds, SelectHSRPlayer } from "@lib/db/schema";
-
 import {
   Addition,
   Character as CharactersAPI,
@@ -8,8 +5,11 @@ import {
   Skill,
 } from "interfaces/mihomo";
 
+import type { Character, LightCone, Relic } from "@interfaces/hsr";
+import type { SelectHSRBuilds, SelectHSRPlayer } from "@lib/db/schema";
+
 export async function encodeBuilds(
-  data: CharactersAPI[]
+  data: CharactersAPI[],
 ): Promise<Omit<SelectHSRBuilds[], "playerId">> {
   const encSkills = (skills: Skill[]) =>
     skills.reduce((acc, skill) => {
@@ -33,20 +33,21 @@ export async function encodeBuilds(
               (stat) =>
                 `${stat.field}${stat.percent ? "_percent" : ""}|${stat.value}/${
                   stat.count ?? 0
-                }_${stat.step ?? 0}`
+                }_${stat.step ?? 0}`,
             )
             .join(","),
           [`${gearName}CritValue`]: 0,
         };
         return acc;
       },
-      {} as Record<string, any>
+      {} as Record<string, any>,
     );
 
   const encStats = (attrs: Addition[]) => {
     return attrs
       .map(
-        (attr) => `${attr.field}${attr.percent ? "_percent" : ""}|${attr.value}`
+        (attr) =>
+          `${attr.field}${attr.percent ? "_percent" : ""}|${attr.value}`,
       )
       .join(",");
   };
@@ -64,10 +65,12 @@ export async function encodeBuilds(
       additions: encStats(avatar.additions),
       properties: encStats(avatar.properties),
 
-      lightConeId: Number(avatar.light_cone.id),
-      lightConeLevel: avatar.light_cone.level,
-      lightConePromotion: avatar.light_cone.promotion,
-      lightConeRank: avatar.light_cone.rank,
+      lightConeId: avatar.light_cone ? Number(avatar.light_cone.id) : null,
+      lightConeLevel: avatar.light_cone ? avatar.light_cone.level : null,
+      lightConePromotion: avatar.light_cone
+        ? avatar.light_cone.promotion
+        : null,
+      lightConeRank: avatar.light_cone ? avatar.light_cone.rank : null,
 
       ...encodedRelics.head,
       ...encodedRelics.hands,
@@ -85,7 +88,7 @@ export async function decodeBuilds(
   })[],
   characters: Character[],
   lightCones: LightCone[],
-  relics: Relic[]
+  relics: Relic[],
 ) {
   const decodeStr = (str: string | null): Record<string, number> =>
     str
@@ -134,7 +137,7 @@ export async function decodeBuilds(
         relicsSets.push(set);
 
         const piece = set.pieces.find(
-          (a) => a._id.toString().slice(1) === id.toString().slice(1)
+          (a) => a._id.toString().slice(1) === id.toString().slice(1),
         );
         // console.log("piece", relicIdToType(id.toString()), setId, typeof piece, id.toString(), set.pieces.map((a) => ({id: a._id, nam: a.name})))
         const rarity = build[`${pieceName}RelicRarity`];
@@ -176,7 +179,7 @@ export async function decodeBuilds(
           count: relicsSets.filter((r) => r.id === relic.id).length,
         },
       }),
-      {}
+      {},
     );
 
     // const stats = decodeStr(build.fightProps);

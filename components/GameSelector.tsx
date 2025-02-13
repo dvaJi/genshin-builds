@@ -1,11 +1,15 @@
 "use client";
 
-import clsx from "clsx";
-import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 import { GAME, GameProps } from "utils/games";
 
-import { useClickOutside } from "@hooks/use-clickoutside";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "@app/components/ui/select";
+import { cn } from "@app/lib/utils";
 import useIntl from "@hooks/use-intl";
 
 import Image from "./genshin/Image";
@@ -16,74 +20,57 @@ type Props = {
   buttonClassName?: string;
 };
 
-function GameSelector({ currentGame, className, buttonClassName }: Props) {
+function GameSelector({ currentGame, buttonClassName }: Props) {
   const { locale } = useIntl("layout");
-  const [isOpen, setIsOpen] = useState(false);
-  const close = useCallback(() => setIsOpen(false), []);
-  const contentRef = useClickOutside<HTMLDivElement>(
-    isOpen ? close : undefined,
-    [],
-  );
+  const router = useRouter();
 
   return (
-    <div className={clsx("relative", className)} ref={contentRef}>
-      <button
-        type="button"
-        aria-haspopup="true"
-        aria-expanded="true"
-        data-is-open={isOpen}
-        className={clsx(
-          "flex h-8 w-full items-center rounded px-2 backdrop-blur-sm md:w-10 lg:w-44 xl:w-48",
-          isOpen ? "bg-zinc-700/50" : "bg-zinc-700/30",
+    <Select
+      defaultValue={currentGame.slug}
+      onValueChange={(value) => {
+        const game = Object.values(GAME).find((g) => g.slug === value);
+        if (game) {
+          router.push(`/${locale}${game.path}`);
+        }
+      }}
+    >
+      <SelectTrigger
+        className={cn(
+          "flex h-8 w-full items-center rounded-md bg-card hover:bg-accent hover:text-accent-foreground md:w-10 lg:w-44 xl:w-48",
+          "border-none focus:ring-0 focus:ring-offset-0",
           buttonClassName,
         )}
-        onClick={() => setIsOpen((o) => !o)}
       >
         <Image
-          className="mr-3 h-6 w-6 rounded"
+          className="h-6 w-6 rounded"
           src={`/games/${currentGame.slug}.webp`}
           alt={currentGame.name}
           width={32}
           height={32}
         />
-        <span className="text-sm md:hidden lg:inline-block">
-          {currentGame.name}
-        </span>
-      </button>
-      <div
-        tabIndex={-1}
-        role="menu"
-        aria-hidden={!isOpen}
-        className={clsx(
-          "top-13 absolute w-full rounded-b bg-zinc-700/90 shadow-md backdrop-blur-xl",
-          isOpen ? "block" : "hidden",
-        )}
-      >
+        <span className="ml-3 hidden lg:inline-block">{currentGame.name}</span>
+      </SelectTrigger>
+      <SelectContent className="border border-border bg-card" align="start">
         {Object.values(GAME).map((game) => (
-          <Link
-            key={game.name}
-            href={`/${locale}${game.path}`}
-            prefetch={false}
+          <SelectItem
+            key={game.slug}
+            value={game.slug}
+            className="focus:bg-accent focus:text-accent-foreground"
           >
-            <button
-              type="button"
-              tabIndex={0}
-              role="menuitem"
-              className="flex h-full w-full items-center px-2 py-2 text-left text-sm hover:bg-zinc-500"
-            >
+            <div className="flex items-center gap-3">
               <Image
-                className="mr-3 h-6 w-6 rounded"
+                className="h-6 w-6 rounded"
                 src={`/games/${game.slug}.webp`}
                 alt={game.name}
                 width={32}
                 height={32}
               />
-              <span className="md:hidden lg:block">{game.name}</span>
-            </button>
-          </Link>
+              <span>{game.name}</span>
+            </div>
+          </SelectItem>
         ))}
-      </div>
-    </div>
+      </SelectContent>
+    </Select>
   );
 }
 

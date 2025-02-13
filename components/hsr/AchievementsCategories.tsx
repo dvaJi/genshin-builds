@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { memo } from "react";
 
 import type { Category } from "@app/[lang]/hsr/achievements/list";
+import { cn } from "@app/lib/utils";
 import { getHsrUrl } from "@lib/imgUrl";
 
 type Props = {
@@ -29,10 +30,11 @@ function AchievementsCategories({
       <button
         key={category.name}
         className={clsx(
-          "flex cursor-pointer items-center rounded-md bg-hsr-surface3 px-4 py-2 leading-tight ring-1 ring-transparent hover:bg-white/20 hover:ring-hsr-accent",
+          "flex cursor-pointer items-center rounded-md bg-card px-4 py-2 leading-tight ring-1 ring-transparent hover:bg-muted hover:ring-accent",
           {
-            "ring-hsr-accent": category.id === selectedCategory,
-          }
+            "bg-primary hover:bg-primary/80 hover:ring-primary":
+              category.id === selectedCategory,
+          },
         )}
         onClick={() => onClickCategory(category)}
       >
@@ -42,12 +44,26 @@ function AchievementsCategories({
           className="mr-2 h-12 w-12"
         />
         <div className="w-full text-left">
-          <p className="text-white">{category.name}</p>
+          <p
+            className={cn({
+              "text-primary-foreground": category.id === selectedCategory,
+              "text-card-foreground": category.id !== selectedCategory,
+            })}
+          >
+            {category.name}
+          </p>
           <div className="flex justify-between">
             <p className="mt-1 inline-block text-sm">
               {progress.completed}/{progress.total} ({progress.percentage}%)
             </p>
-            <div className="mt-1 flex items-center rounded-md bg-hsr-bg px-1 text-sm">
+            <div
+              className={cn("mt-1 flex items-center rounded-md px-1 text-sm", {
+                "bg-background":
+                  progress.collectedRewards !== progress.totalRewards,
+                "bg-accent":
+                  progress.collectedRewards === progress.totalRewards,
+              })}
+            >
               {progress.collectedRewards}/{progress.totalRewards}
               <img
                 src={getHsrUrl("/stellar_jade.png")}

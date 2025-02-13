@@ -40,7 +40,7 @@ export default async function Page({ params }: Props) {
   const { t } = await getTranslations(lang, "hsr", "showcase");
 
   return (
-    <div className="bg-hsr-surface1 p-4 shadow-2xl">
+    <div className="card">
       <h2 className="text-3xl font-semibold uppercase text-slate-100">
         {t({
           id: "character_showcase",

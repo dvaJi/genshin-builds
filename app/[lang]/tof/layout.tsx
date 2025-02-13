@@ -7,10 +7,9 @@ import GoogleAnalytics from "@components/GoogleAnalytics";
 import IntlProvider from "@components/IntlProvider";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
-import "../../../styles/globals.css";
 import Footer from "./footer";
-import "./globals.css";
 import TOFHeader from "./header";
+import "./theme.css";
 
 const openSans = Open_Sans({
   weight: ["400", "600", "700"],
@@ -91,7 +90,7 @@ export default async function TofLayout({ children, params }: Props) {
       <div
         className={clsx(
           "flex h-full min-h-screen flex-col bg-vulcan-900",
-          openSans.className
+          openSans.className,
         )}
       >
         <TOFHeader locale={lang} />

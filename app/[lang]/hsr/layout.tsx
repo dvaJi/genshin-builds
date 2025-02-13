@@ -7,10 +7,9 @@ import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 import { cn } from "@lib/utils";
 
-import "../../../styles/globals.css";
-import "../../../styles/hsr-globals.css";
 import Footer from "./footer";
 import Header from "./header";
+import "./theme.css";
 
 const notoSans = Noto_Sans({
   weight: ["400", "600", "700"],
@@ -56,13 +55,13 @@ export default async function HSRLayout({ children, params }: Props) {
       ></script>
       <div
         className={cn(
-          "flex h-full min-h-screen flex-col bg-hsr-bg",
-          notoSans.className
+          "flex h-full min-h-screen flex-col bg-background text-foreground",
+          notoSans.className,
         )}
       >
         <Header />
 
-        <main className="z-10 mb-8 mt-4 text-gray-400">
+        <main className="z-10 mb-8 mt-4">
           <div className="container mx-auto">{children}</div>
         </main>
 

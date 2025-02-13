@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Keep existing Vulcan colors for compatibility */
+    --vulcan-50: 226 29% 60%;
+    --vulcan-100: 226 29% 59%;
+    --vulcan-200: 226 29% 55%;
+    --vulcan-300: 226 29% 49%;
+    --vulcan-400: 226 29% 42%;
+    --vulcan-500: 226 29% 33%;
+    --vulcan-600: 226 29% 27%;
+    --vulcan-700: 226 29% 21%;
+    --vulcan-800: 226 29% 17%;
+    --vulcan-900: 226 29% 13%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative rounded-lg border border-border bg-card p-4 text-card-foreground shadow-sm;
+  }
+
+  .input {
+    @apply rounded-md border border-input bg-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  /* Custom react-tooltip  */
+  .react-tooltip {
+    @apply rounded-lg border-border bg-popover p-2 text-popover-foreground shadow-sm;
+  }
+}
+
+/* Direct CSS declarations for rarity backgrounds */
+div[class*="genshin-bg-rarity"] {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@keyframes shine {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes starPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Custom scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 11px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  @apply rounded-full border-4 border-transparent bg-border;
+}
+
+/* Image styles */
+.gradient-image {
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, transparent 100%);
+  width: 100%;
+  height: 100%;
+}
+
+/* Ad-related styles */
+body {
+  --fsAddBuffer: 22px;
+}
+
+.news-detail::before {
+  content: "";
+  position: absolute;
+  top: 10.6rem;
+  left: -6.9rem;
+  width: 25.9rem;
+  height: 20.8rem;
+  background: url(https://zenless.hoyoverse.com/_nuxt/img/inner-top.5496864.png)
+    no-repeat 0 0 / 100% auto;
+  opacity: 0.1;
+}
+
+.section__foot {
+  position: absolute;
+  bottom: 0.6rem;
+  background: url(https://zenless.hoyoverse.com/_nuxt/img/inner-foot.ebee1c3.png)
+    no-repeat 0 0 / 100% 100%;
+  width: 20.4rem;
+  height: 20.8rem;
+  z-index: -1;
+  right: 0;
+  background-size: auto 100%;
+  opacity: 0.1;
+}
+
+.character__skill-description img {
+  display: inline-block;
+}

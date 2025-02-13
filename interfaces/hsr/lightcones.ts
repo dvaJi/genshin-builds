@@ -2,6 +2,7 @@ export interface LightCone {
   _id: number;
   id: string;
   name: string;
+  desc: string;
   rarity: number;
   pathType: string;
   pathTypeText: string;

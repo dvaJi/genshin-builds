@@ -90,10 +90,10 @@ export default async function HSRProfilePage({ params }: Props) {
 
   return (
     <div>
-      <section className="relative z-10 flex bg-hsr-surface1 p-4 shadow-2xl">
+      <section className="card relative z-10 flex">
         <div>
           <img
-            className="shadow-1 mx-auto rounded-full border-4 border-hsr-accent"
+            className="shadow-1 mx-auto rounded-full border-4 border-accent"
             width="100"
             height="100"
             alt="Icon"
@@ -104,27 +104,27 @@ export default async function HSRProfilePage({ params }: Props) {
           </div>
         </div>
         <div className="mx-auto grid max-w-xl cursor-default grid-cols-2 gap-2 p-2 pt-2">
-          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-hsr-surface3 bg-hsr-bg px-2 py-1.5 text-xs font-bold shadow-sm">
+          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
             <span className="text-1 truncate">UID</span>
             <span>{profile.uuid}</span>
           </div>
-          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-hsr-surface3 bg-hsr-bg px-2 py-1.5 text-xs font-bold shadow-sm">
+          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
             <span className="text-1">Trailblaze Lvl</span>
             <span>{profile.level}</span>
           </div>
-          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-hsr-surface3 bg-hsr-bg px-2 py-1.5 text-xs font-bold shadow-sm">
+          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
             <span className="text-1">Equilibrium Lvl</span>
             <span>{profile.worldLevel}</span>
           </div>
-          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-hsr-surface3 bg-hsr-bg px-2 py-1.5 text-xs font-bold shadow-sm">
+          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
             <span className="text-1">Achievements</span>
             <span>{profile.finishAchievementNum}</span>
           </div>
-          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-hsr-surface3 bg-hsr-bg px-2 py-1.5 text-xs font-bold shadow-sm">
+          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
             <span className="text-1">Characters</span>
             <span>{profile.friends}</span>
           </div>
-          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-hsr-surface3 bg-hsr-bg px-2 py-1.5 text-xs font-bold shadow-sm">
+          <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
             <span className="text-1">Simulated</span>
             <span>{profile.passAreaProgress}</span>
           </div>

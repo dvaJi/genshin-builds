@@ -1,4 +1,5 @@
 import { memo } from "react";
+
 import { getHsrUrl } from "@lib/imgUrl";
 
 type Props = {
@@ -18,9 +19,9 @@ function CharacterInfoStat({ label, max, value }: Props) {
         />
         {label.toUpperCase()}
       </div>
-      <div className="h-2 flex-grow rounded bg-hsr-surface3">
+      <div className="h-2 flex-grow rounded bg-muted">
         <span
-          className="block h-full min-w-[8px] rounded bg-hsr-accent/50"
+          className="block h-full min-w-[8px] rounded bg-accent"
           style={{ width: (value / max) * 100 + "%" }}
         ></span>
       </div>

@@ -41,7 +41,7 @@ export async function generateStaticParams() {
       ..._characters.map((c) => ({
         lang,
         id: c.id,
-      }))
+      })),
     );
   }
 
@@ -62,7 +62,7 @@ export async function generateMetadata({
   const { t, langData, locale } = await getTranslations(
     lang,
     "hsr",
-    "characters"
+    "characters",
   );
 
   const character = await getHSRData<Character>({
@@ -227,7 +227,7 @@ export default async function CharacterPage({ params }: Props) {
           />
         </div>
         <div className="ml-4">
-          <h2 className="flex items-center text-3xl font-semibold leading-loose text-slate-50">
+          <h1 className="flex items-center text-3xl font-semibold leading-loose text-accent">
             {character.name}
             <Image
               src={`/${character.combat_type.id}.webp`}
@@ -237,7 +237,7 @@ export default async function CharacterPage({ params }: Props) {
               loading="lazy"
               className="ml-2 inline-block w-[24px] select-none"
             />
-          </h2>
+          </h1>
           <div className="flex items-center">
             <Stars stars={character.rarity} />
             <div className="ml-4 flex items-center">
@@ -261,7 +261,7 @@ export default async function CharacterPage({ params }: Props) {
           <CharacterInfoStat label="speed" value={maxSpeed} max={500} />
         </div>
       </div>
-      <div className="relative bg-hsr-surface1 p-4 shadow-2xl">
+      <div className="relative mt-2 rounded-md border border-border bg-card p-4 shadow-2xl">
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
           classList={["flex", "justify-center"]}
@@ -288,7 +288,7 @@ export default async function CharacterPage({ params }: Props) {
                 lightConesMap={lightConesMap}
                 relicsMap={relicsMap}
               />
-              <h2 className="text-xl text-slate-200">
+              <h2 className="text-xl font-semibold text-accent">
                 {t({
                   id: "best_teams",
                   defaultMessage: "{name} Best Teams",
@@ -297,9 +297,11 @@ export default async function CharacterPage({ params }: Props) {
               </h2>
               {build.teams.map((team) => (
                 <div key={team.name} className="mt-4">
-                  <h3 className="text-lg text-slate-300">{team.name}</h3>
+                  <h3 className="text-lg font-semibold text-accent">
+                    {team.name}
+                  </h3>
                   <p
-                    className="text-xs"
+                    className="mb-2 text-sm"
                     dangerouslySetInnerHTML={{ __html: team.overview }}
                   />
                   <div className="flex flex-wrap gap-4">
@@ -312,16 +314,16 @@ export default async function CharacterPage({ params }: Props) {
                       return (
                         <div
                           key={c.id}
-                          className="group relative mb-2 flex max-w-xl items-center rounded bg-hsr-surface2 p-2 hover:bg-hsr-surface3"
+                          className="group relative mb-2 flex max-w-xl items-center rounded bg-muted p-2 hover:bg-accent hover:text-accent-foreground"
                         >
                           {c.isFlex ? (
                             <div className="hmr-1 flex flex-shrink-0 items-center justify-center">
-                              <div className="mr-2 h-[56px] w-[48px] rounded border border-gray-200/5 bg-gray-200/5">
+                              <div className="mr-2 h-[56px] w-[48px] rounded border border-card bg-card">
                                 <BsPersonFill className="h-full w-full opacity-10 group-hover:opacity-30" />
                               </div>
                               <div className="flex flex-col">
-                                <h3 className="flex items-center text-slate-50">
-                                  <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
+                                <h3 className="flex items-center">
+                                  <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap text-card-foreground">
                                     {c.role}
                                   </span>
                                 </h3>
@@ -351,8 +353,8 @@ export default async function CharacterPage({ params }: Props) {
                                 </div>
                               </div>
                               <div className="flex flex-col">
-                                <h3 className="flex items-center text-slate-50">
-                                  <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap">
+                                <h3 className="flex items-center font-semibold">
+                                  <span className="w-[80px] overflow-hidden text-ellipsis whitespace-nowrap text-card-foreground">
                                     {teamCharacter.name}
                                   </span>
                                   <Image
@@ -399,7 +401,7 @@ export default async function CharacterPage({ params }: Props) {
             classList={["flex", "justify-center"]}
           />
           <div>
-            <h2 className="text-xl text-slate-200">
+            <h2 className="text-xl font-semibold text-accent">
               {t({
                 id: "skills",
                 defaultMessage: "Skills",
@@ -414,7 +416,7 @@ export default async function CharacterPage({ params }: Props) {
                     className="group relative mb-2 flex items-center"
                   >
                     <div className="mr-4 flex w-[64px] flex-shrink-0 items-center justify-center">
-                      <div className="flex-shrink-0 justify-center rounded-full bg-hsr-surface3 text-center">
+                      <div className="flex-shrink-0 justify-center rounded-full bg-background text-center">
                         <Image
                           src={`/characters/${character.id}/${skill.id}.png`}
                           width={64}
@@ -426,13 +428,13 @@ export default async function CharacterPage({ params }: Props) {
                     </div>
                     <div className="flex flex-col p-2">
                       <div className="flex items-center">
-                        <div className="font-semibold text-slate-200">
+                        <div className="font-semibold text-card-foreground">
                           {skill.name}
                         </div>
-                        <div className="mx-1 rounded bg-slate-800 px-2 py-1 text-xs text-slate-300">
+                        <div className="mx-1 rounded bg-muted px-2 py-1 text-xs text-muted-foreground">
                           {skill.type}
                         </div>
-                        <div className="mx-1 rounded bg-zinc-800 px-2 py-1 text-xs text-slate-300">
+                        <div className="mx-1 rounded bg-secondary px-2 py-1 text-xs text-secondary-foreground">
                           {skill.tag}
                         </div>
                       </div>
@@ -442,7 +444,7 @@ export default async function CharacterPage({ params }: Props) {
                           dangerouslySetInnerHTML={{
                             __html: renderDescription(
                               skill.desc,
-                              skill.levels[0].params
+                              skill.levels[0].params,
                             ),
                           }}
                         />
@@ -457,7 +459,7 @@ export default async function CharacterPage({ params }: Props) {
             classList={["flex", "justify-center"]}
           />
           <div>
-            <h2 className="text-xl text-slate-200">
+            <h2 className="text-xl font-semibold text-accent">
               {t({
                 id: "traces",
                 defaultMessage: "Traces",
@@ -480,7 +482,7 @@ export default async function CharacterPage({ params }: Props) {
             classList={["flex", "justify-center"]}
           />
           <div>
-            <h2 className="text-xl text-slate-200">
+            <h2 className="text-xl font-semibold text-accent">
               {t({
                 id: "eidolon",
                 defaultMessage: "Eidolon",
@@ -490,7 +492,7 @@ export default async function CharacterPage({ params }: Props) {
               {character.eidolons.map((eidolon) => (
                 <div key={eidolon.id} className="mb-2 flex items-center">
                   <div className="mr-4 flex w-[64px] flex-shrink-0 items-center justify-center">
-                    <div className="flex-shrink-0 justify-center rounded-full bg-hsr-surface3 text-center">
+                    <div className="flex-shrink-0 justify-center rounded-full bg-background text-center">
                       <Image
                         src={`/characters/${character.id}/${eidolon.id}.png`}
                         width={64}
@@ -500,7 +502,7 @@ export default async function CharacterPage({ params }: Props) {
                     </div>
                   </div>
                   <div>
-                    <div className="font-semibold text-slate-200">
+                    <div className="font-semibold text-card-foreground">
                       {eidolon.name}
                     </div>
                     <div>

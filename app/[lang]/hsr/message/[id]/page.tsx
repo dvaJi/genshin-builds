@@ -80,7 +80,7 @@ export default async function CharacterPage({ params }: Props) {
 
   return (
     <div>
-      <div className="relative bg-hsr-surface1 p-4 shadow-2xl">
+      <div className="card relative">
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
           classList={["flex", "justify-center"]}
@@ -120,8 +120,8 @@ export default async function CharacterPage({ params }: Props) {
                 prefetch={false}
                 className={
                   message === messageGroup.id
-                    ? "m-1 bg-hsr-accent p-2 text-white"
-                    : "m-1 bg-hsr-surface3 p-2"
+                    ? "m-1 bg-accent p-2 text-accent-foreground"
+                    : "m-1 bg-card p-2"
                 }
               >
                 {t({

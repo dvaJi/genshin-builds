@@ -83,21 +83,21 @@ export default async function Page({ params }: Props) {
           <Link
             key={message.id}
             href={`/${lang}/hsr/message/${message.id}`}
-            className="flex bg-hsr-surface2 p-3 transition-colors hover:bg-hsr-surface3"
+            className="card flex text-card-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
             prefetch={false}
           >
             <img
-              className="mr-4 h-14 w-14 rounded-full border-2 border-slate-600 bg-slate-800 object-contain"
+              className="mr-4 h-14 w-14 rounded-full border-2 border-secondary bg-secondary object-contain"
               src={getHsrUrl(
-                `/avatar/round/${message.contacts.icon || "8002"}.png`
+                `/avatar/round/${message.contacts.icon || "8002"}.png`,
               )}
               alt={message.contacts.name}
             />
             <div className="mr-auto flex flex-col">
-              <h3 className="text-left font-semibold leading-tight text-white">
+              <h3 className="text-left font-semibold leading-tight">
                 {message.contacts.name}
               </h3>
-              <span className="text-left text-sm leading-snug text-white">
+              <span className="text-left text-sm leading-snug">
                 {message.contacts.signature}
               </span>
             </div>

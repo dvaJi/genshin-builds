@@ -11,9 +11,8 @@ import IntlProvider from "@components/IntlProvider";
 import LanguageSelector from "@components/ui/LanguageSelector";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
-import "../../../styles/globals.css";
-import "./globals.css";
 import ZenlessHeader from "./header";
+import "./theme.css";
 
 const nunito = Nunito({
   weight: ["400", "600", "700"],
@@ -107,7 +106,7 @@ export default async function ZenlessLayout({ children, params }: Props) {
       <section
         className={clsx(
           "flex min-h-screen flex-col bg-neutral-800 text-gray-100",
-          nunito.className
+          nunito.className,
         )}
       >
         <ZenlessHeader locale={lang} />
@@ -117,32 +116,30 @@ export default async function ZenlessLayout({ children, params }: Props) {
           <div className="section__foot" />
         </div>
 
-        <footer className="bg-zinc-950 px-4 pb-4 md:px-2 lg:px-0">
-          <div className="mb-4 bg-zinc-900 py-2">
-            <div className="container mx-auto flex">
-              <h4 className="text-lg text-gray-200">ZenlessBuilds</h4>
-            </div>
-          </div>
+        <footer className="z-20 border-t border-card border-opacity-50 bg-card px-4 py-6 text-card-foreground backdrop-blur md:px-20 md:py-14">
           <div className="container mx-auto">
             <div className="flex flex-col gap-6 lg:flex-row">
-              <div className="flex flex-col items-start gap-2">
+              <div className="flex flex-1 flex-col">
+                <p className="mb-2 text-lg font-semibold text-foreground">
+                  ZenlessBuilds
+                </p>
                 <Link
-                  href="/privacy-policy"
-                  className="rounded-3xl px-3 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
+                  href={`/${lang}/privacy-policy`}
+                  className="my-1 text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Privacy Policy
                 </Link>
                 <Link
-                  href="/contact"
-                  className="rounded-3xl px-3 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
+                  href={`/${lang}/contact`}
+                  className="my-1 text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Contact
                 </Link>
                 <Link
-                  href="/zenless/codes"
-                  className="rounded-3xl px-3 py-1 font-semibold transition-colors hover:bg-white hover:text-black"
+                  href={`/${lang}/zenless/codes`}
+                  className="my-1 text-muted-foreground hover:text-foreground"
                   title="Zenless Zone Zero (ZZZ) All Redeem Codes"
                 >
                   Codes
@@ -151,9 +148,9 @@ export default async function ZenlessLayout({ children, params }: Props) {
                   href="https://twitter.com/earlyggcom"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-3xl px-3 py-1 text-lg font-semibold transition-colors hover:bg-white hover:text-black"
+                  className="group my-1 text-lg"
                 >
-                  <AiOutlineTwitter className="inline" />{" "}
+                  <AiOutlineTwitter className="inline group-hover:text-blue-400" />{" "}
                   <span className="text-base">Twitter</span>
                 </a>
                 <a
@@ -165,11 +162,102 @@ export default async function ZenlessLayout({ children, params }: Props) {
                   <RiPatreonFill className="inline group-hover:text-red-400" />{" "}
                   <span className="text-base">Patreon</span>
                 </a>
-                <LanguageSelector />
               </div>
 
-              <div className="flex flex-1 flex-col" />
-              <div className="flex flex-1 flex-col"></div>
+              <div className="flex flex-1 flex-col">
+                <p className="mb-2 text-lg font-semibold text-foreground">
+                  Games
+                </p>
+                <div className="space-y-2">
+                  {/* Genshin Impact */}
+                  <div className="flex flex-col">
+                    <p className="text-sm font-medium text-foreground">
+                      Genshin Impact
+                    </p>
+                    <Link
+                      href={`/${lang}/characters`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Characters
+                    </Link>
+                    <Link
+                      href={`/${lang}/teams`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Best Teams
+                    </Link>
+                    <Link
+                      href={`/${lang}/builds`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Builds
+                    </Link>
+                  </div>
+
+                  {/* Honkai: Star Rail */}
+                  <div className="flex flex-col">
+                    <p className="text-sm font-medium text-foreground">
+                      Honkai: Star Rail
+                    </p>
+                    <Link
+                      href={`/${lang}/hsr`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Characters
+                    </Link>
+                    <Link
+                      href={`/${lang}/hsr/tierlist`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Tierlist
+                    </Link>
+                  </div>
+
+                  {/* Wuthering Waves */}
+                  <div className="flex flex-col">
+                    <p className="text-sm font-medium text-foreground">
+                      Wuthering Waves
+                    </p>
+                    <Link
+                      href={`/${lang}/wuthering-waves`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Characters
+                    </Link>
+                    <Link
+                      href={`/${lang}/wuthering-waves/tierlist/characters`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Tierlist Characters
+                    </Link>
+                    <Link
+                      href={`/${lang}/wuthering-waves/tierlist/weapons`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Tierlist Weapons
+                    </Link>
+                    <Link
+                      href={`/${lang}/wuthering-waves/tierlist/echoes`}
+                      className="my-1 text-sm text-muted-foreground hover:text-foreground"
+                      prefetch={false}
+                    >
+                      Tierlist Echoes
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-1 flex-col">
+                <LanguageSelector />
+              </div>
               <div className="flex-1">
                 <p className="text-sm">
                   ZenlessBuilds is a Database, Tier List, and Guide for Zenless

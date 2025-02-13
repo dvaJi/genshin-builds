@@ -9,14 +9,14 @@ function MessageBlock({ message }: { message: Message }) {
       <img
         loading="eager"
         src={getHsrUrl(
-          `/avatar/round/${message.senderContactId || "8002"}.png`
+          `/avatar/round/${message.senderContactId || "8002"}.png`,
         )}
         alt={message.sender}
         className="h-14 w-14 rounded-full object-contain"
       />
       <div className="flex flex-col gap-1">
-        <span className="font-bold text-gray-200">{message.sender}</span>
-        <div className="rounded-md bg-hsr-surface3 bg-opacity-80 px-4 py-2 font-semibold">
+        <span className="font-bold text-card-foreground">{message.sender}</span>
+        <div className="rounded-md bg-background bg-opacity-80 px-4 py-2 font-semibold">
           {message.type === "Text" ? <span>{message.text}</span> : null}
           {message.type === "Image" || message.type === "Sticker" ? (
             <img

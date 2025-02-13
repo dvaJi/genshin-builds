@@ -1,5 +1,6 @@
 import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import Stars from "@components/hsr/Stars";
@@ -76,15 +77,15 @@ export default async function Page({ params }: Props) {
       const value = params[i];
       str = str.replaceAll(
         `#${i + 1}[f1]%`,
-        `<span class="text-yellow-600">${value}</span>`
+        `<span class="text-secondary-foreground">${value}</span>`,
       );
       str = str.replaceAll(
         `#${i + 1}[i]%`,
-        `<span class="text-yellow-600">${value}</span>`
+        `<span class="text-secondary-foreground">${value}</span>`,
       );
       str = str.replaceAll(
         `#${i + 1}[i]`,
-        `<span class="text-yellow-600">${value}</span>`
+        `<span class="text-secondary-foreground">${value}</span>`,
       );
     }
 
@@ -116,48 +117,53 @@ export default async function Page({ params }: Props) {
       </div>
       <menu className="grid grid-cols-1 md:grid-cols-2">
         {equipment.map((lightcone) => (
-          <div
+          <Link
             key={lightcone.id}
-            className="mx-4 mb-8 flex flex-col bg-hsr-surface2 p-3"
+            href={`/${lang}/hsr/lightcones/${lightcone.id}`}
+            className="transition-transform hover:scale-[1.02]"
           >
-            <div className="flex">
-              <div className="shrink-0">
-                <img
-                  src={getHsrUrl(`/lightcones/${lightcone.id}.png`, 100, 100)}
-                  width={88}
-                  height={88}
-                  alt={lightcone.name}
-                />
-              </div>
-              <div className="ml-4">
-                <div className="font-semibold text-slate-100">
-                  {lightcone.name}
-                </div>
-                <div className="text-sm">
+            <div className="card mx-4 mb-8 flex flex-col">
+              <div className="flex">
+                <div className="shrink-0">
                   <img
-                    src={getHsrUrl(`/${lightcone.pathType.toLowerCase()}.webp`)}
-                    className="mr-1 inline-block h-4 w-4"
-                    alt={lightcone.pathTypeText}
+                    src={getHsrUrl(`/lightcones/${lightcone.id}.png`, 100, 100)}
+                    width={88}
+                    height={88}
+                    alt={lightcone.name}
                   />
-                  {lightcone.pathTypeText}
                 </div>
-                <div className="mt-1 text-sm">
-                  <Stars stars={lightcone.rarity} />
-                </div>
-                <div className="text-xs text-hsr-accent">
-                  {lightcone.effectName}
-                </div>
-                <div className="flex">
-                  <p
-                    className="text-sm"
-                    dangerouslySetInnerHTML={{
-                      __html: formatDesc(lightcone),
-                    }}
-                  />
+                <div className="ml-4">
+                  <div className="font-semibold text-slate-100">
+                    {lightcone.name}
+                  </div>
+                  <div className="text-sm">
+                    <img
+                      src={getHsrUrl(
+                        `/${lightcone.pathType.toLowerCase()}.webp`,
+                      )}
+                      className="mr-1 inline-block h-4 w-4"
+                      alt={lightcone.pathTypeText}
+                    />
+                    {lightcone.pathTypeText}
+                  </div>
+                  <div className="mt-1 text-sm">
+                    <Stars stars={lightcone.rarity} />
+                  </div>
+                  <div className="text-xs text-accent">
+                    {lightcone.effectName}
+                  </div>
+                  <div className="flex">
+                    <p
+                      className="text-sm"
+                      dangerouslySetInnerHTML={{
+                        __html: formatDesc(lightcone),
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </menu>
     </div>

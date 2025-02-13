@@ -61,9 +61,9 @@ export default function CharactersList({ characters }: Props) {
   return (
     <div>
       <div className="mt-4">
-        <div className="mb-4 flex flex-col bg-hsr-surface2 p-4 pt-2 md:flex-row">
+        <div className="mb-4 flex flex-col border border-border bg-card p-4 pt-2 md:flex-row">
           <section>
-            <small className="mb-1 w-full text-xs uppercase text-slate-300">
+            <small className="mb-1 w-full text-xs uppercase text-muted-foreground">
               {t({
                 id: "type",
                 defaultMessage: "Type",
@@ -86,7 +86,7 @@ export default function CharactersList({ characters }: Props) {
                         ]);
                       } else {
                         setCombarTypeFilterSelected(
-                          combarTypeFilterSelected.filter((t) => t !== type.id)
+                          combarTypeFilterSelected.filter((t) => t !== type.id),
                         );
                       }
                     }}
@@ -94,11 +94,11 @@ export default function CharactersList({ characters }: Props) {
                   <label
                     htmlFor={type.id}
                     className={clsx(
-                      "mr-1 cursor-pointer border border-transparent p-1 hover:border-hsr-accent/50",
+                      "mr-1 cursor-pointer border border-transparent p-1 hover:border-primary",
                       {
-                        "border-hsr-accent bg-hsr-surface3":
+                        "border-accent bg-accent-foreground":
                           combarTypeFilterSelected.includes(type.id),
-                      }
+                      },
                     )}
                   >
                     <img
@@ -115,7 +115,7 @@ export default function CharactersList({ characters }: Props) {
             </div>
           </section>
           <section>
-            <small className="mb-1 w-full text-xs uppercase text-slate-300">
+            <small className="mb-1 w-full text-xs uppercase text-muted-foreground">
               {t({
                 id: "element",
                 defaultMessage: "Element",
@@ -138,7 +138,7 @@ export default function CharactersList({ characters }: Props) {
                         ]);
                       } else {
                         setPathTypeFilterSelected(
-                          pathTypeFilterSelected.filter((t) => t !== type.id)
+                          pathTypeFilterSelected.filter((t) => t !== type.id),
                         );
                       }
                     }}
@@ -146,11 +146,11 @@ export default function CharactersList({ characters }: Props) {
                   <label
                     htmlFor={type.id}
                     className={clsx(
-                      "mr-1 cursor-pointer border border-transparent p-1 hover:border-hsr-accent/50",
+                      "mr-1 cursor-pointer border border-transparent p-1 hover:border-primary",
                       {
-                        "border-hsr-accent bg-hsr-surface3":
+                        "border-accent bg-accent-foreground":
                           pathTypeFilterSelected.includes(type.id),
-                      }
+                      },
                     )}
                   >
                     <img
@@ -173,7 +173,7 @@ export default function CharactersList({ characters }: Props) {
         placementName="genshinbuilds_incontent_1"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="text-3xl font-semibold uppercase leading-loose">
+      <h2 className="text-3xl font-semibold uppercase leading-loose text-accent">
         <span className="text-yellow-400">SSR</span>{" "}
         {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>
@@ -191,7 +191,7 @@ export default function CharactersList({ characters }: Props) {
             </li>
           ))}
       </menu>
-      <h2 className="text-3xl font-semibold uppercase leading-loose">
+      <h2 className="text-3xl font-semibold uppercase leading-loose text-accent">
         <span className="text-purple-400">SR</span>{" "}
         {t({ id: "characters", defaultMessage: "Characters" })}
       </h2>

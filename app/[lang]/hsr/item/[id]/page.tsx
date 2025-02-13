@@ -111,7 +111,7 @@ export default async function CharacterPage({ params }: Props) {
           <p>{item.description}</p>
         </div>
       </div>
-      <div className="relative bg-hsr-surface1 p-4 shadow-2xl">
+      <div className="card relative">
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
           classList={["flex", "justify-center"]}
@@ -185,7 +185,7 @@ export default async function CharacterPage({ params }: Props) {
                                 "bg-blue-600": m.rarity === 3,
                                 "bg-green-600": m.rarity === 2,
                                 "bg-zinc-600": m.rarity === 1,
-                              }
+                              },
                             )}
                             alt={m.name}
                           />
@@ -217,7 +217,7 @@ export default async function CharacterPage({ params }: Props) {
                                 "bg-blue-600": m.rarity === 3,
                                 "bg-green-600": m.rarity === 2,
                                 "bg-zinc-600": m.rarity === 1,
-                              }
+                              },
                             )}
                             alt={m.name}
                           />

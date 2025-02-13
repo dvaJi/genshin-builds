@@ -1,13 +1,13 @@
 "use client";
 
-import type { LightCone, Relic } from "@interfaces/hsr";
+import { BuildData } from "interfaces/hsr/build";
 import { memo } from "react";
 
-import Stars from "./Stars";
-
 import useIntl from "@hooks/use-intl";
+import type { LightCone, Relic } from "@interfaces/hsr";
 import { getHsrUrl } from "@lib/imgUrl";
-import { BuildData } from "interfaces/hsr/build";
+
+import Stars from "./Stars";
 
 type Props = {
   name: string;
@@ -27,8 +27,8 @@ function CharacterBuild({
   const { t } = useIntl("character");
 
   return (
-    <div>
-      <h2 className="font-semibold text-slate-200">
+    <div className="text-card-foreground">
+      <h2 className="mb-4 text-xl font-semibold text-accent">
         {t({
           id: name,
           defaultMessage: name,
@@ -37,18 +37,18 @@ function CharacterBuild({
       <div className="mb-4 flex flex-col gap-4 md:flex-row">
         <div className="flex gap-4">
           <div>
-            <h3 className="text-slate-300">
+            <h3 className="text-lg font-semibold text-accent">
               {t({
                 id: "best_light_cone",
                 defaultMessage: "Best Light Cone",
               })}
             </h3>
-            <div className="my-1 flex items-center rounded-sm bg-hsr-surface2 px-2 py-1 text-sm font-semibold">
+            <div className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold">
               <img
                 src={getHsrUrl(
                   `/lightcones/${lightConesMap[data.bestLightCone].id}.png`,
                   80,
-                  80
+                  80,
                 )}
                 width={80}
                 height={80}
@@ -63,7 +63,7 @@ function CharacterBuild({
             </div>
           </div>
           <div>
-            <h3 className="text-slate-300">
+            <h3 className="text-lg font-semibold text-accent">
               {t({
                 id: "relics_and_ornament",
                 defaultMessage: "Relics and Ornaments",
@@ -72,7 +72,7 @@ function CharacterBuild({
             {data.relics.map((r) => (
               <div
                 key={r}
-                className="my-1 flex items-center rounded-sm bg-hsr-surface2 px-2 py-1 text-sm font-semibold"
+                className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
               >
                 <img
                   src={getHsrUrl(`/relics/${relicsMap[r].id}.png`, 64, 64)}
@@ -87,7 +87,7 @@ function CharacterBuild({
         </div>
         <div className="flex gap-4">
           <div>
-            <h3 className="text-slate-300">
+            <h3 className="text-lg font-semibold text-accent">
               {t({
                 id: "best_stats",
                 defaultMessage: "{name} Best Stats",
@@ -96,10 +96,7 @@ function CharacterBuild({
             </h3>
             <div className="flex flex-col text-sm">
               {Object.entries(data.mainStat ?? {}).map(([stat, value]) => (
-                <div
-                  key={stat}
-                  className="my-1 rounded-sm bg-hsr-surface2 px-2 py-1"
-                >
+                <div key={stat} className="my-1 rounded-sm bg-muted px-2 py-1">
                   <b className="inline">
                     {t({
                       id: stat,
@@ -112,7 +109,7 @@ function CharacterBuild({
             </div>
           </div>
           <div>
-            <h3 className="text-slate-300">
+            <h3 className="text-lg font-semibold text-accent">
               {t({
                 id: "best_substats",
                 defaultMessage: "{name} Best Substats",
@@ -125,7 +122,7 @@ function CharacterBuild({
                 ?.map((s) => (
                   <div
                     key={s.value}
-                    className="my-1 flex items-center rounded-sm bg-hsr-surface2 px-2 py-1"
+                    className="my-1 flex items-center rounded-sm bg-muted px-2 py-1"
                   >
                     {s.value}
                     <span className="ml-2">

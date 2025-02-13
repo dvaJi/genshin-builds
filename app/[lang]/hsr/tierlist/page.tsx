@@ -72,7 +72,7 @@ export default async function HSRTierlistPage({ params }: Props) {
       acc[character.id] = character;
       return acc;
     },
-    {} as Record<string, Character>
+    {} as Record<string, Character>,
   );
 
   return (
@@ -98,13 +98,13 @@ export default async function HSRTierlistPage({ params }: Props) {
         />
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       </div>
-      <div className="mt-4 flex flex-col bg-hsr-surface2 shadow-2xl">
+      <div className="mt-4 flex flex-col">
         {Object.entries(tierlist)
           .filter(([key]) => key !== "id")
           .map(([tier, tierCharacters]) => (
             <div
               key={tier}
-              className="flex items-center border-b border-accent-1 py-2 last:border-b-0"
+              className="flex items-center border-b border-border py-2 last:border-b-0"
             >
               <div
                 className={clsx(
@@ -115,12 +115,12 @@ export default async function HSRTierlistPage({ params }: Props) {
                     "text-green-500": tier === "A",
                     "text-blue-500": tier === "B",
                     "text-gray-500": tier === "C",
-                  }
+                  },
                 )}
               >
                 {tier}
               </div>
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap gap-2">
                 {tierCharacters.map((characterId: string) => {
                   const char = charactersMap[getHsrId(characterId)];
 
@@ -133,7 +133,7 @@ export default async function HSRTierlistPage({ params }: Props) {
                     <Link
                       key={characterId}
                       href={`/${lang}/hsr/character/${char.id}`}
-                      className="mx-2"
+                      className="max-w-28"
                       prefetch={false}
                     >
                       <CharacterBlock key={characterId} character={char} />

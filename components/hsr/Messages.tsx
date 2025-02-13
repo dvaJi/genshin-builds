@@ -1,7 +1,10 @@
 "use client";
 
-import type { Message } from "@interfaces/hsr";
 import { useState } from "react";
+
+import { Button } from "@app/components/ui/button";
+import type { Message } from "@interfaces/hsr";
+
 import MessageBlock from "./MessageBlock";
 
 function Messages({
@@ -19,17 +22,13 @@ function Messages({
       <>
         <div className="flex flex-col gap-1 leading-snug md:flex-row md:gap-6 lg:flex-row lg:gap-6 xl:flex-row xl:gap-6">
           {startingMessageId.map((messageId) => (
-            <button
+            <Button
               key={messageId}
-              className={
-                selectedMessage === messageId
-                  ? "cursor-pointer rounded-sm bg-hsr-accent p-2 text-white"
-                  : "cursor-pointer bg-hsr-surface2 p-2"
-              }
+              variant={selectedMessage === messageId ? "default" : "secondary"}
               onClick={() => setSelectedMessage(messageId)}
             >
               {messages[messageId].text}
-            </button>
+            </Button>
           ))}
         </div>
         <MessageBlock message={messages[selectedMessage]} />
@@ -47,14 +46,14 @@ function Messages({
   if (startingMessageId.length > 1 && !isStartingMessage) {
     return (
       <>
-        <div className="-mx-4 flex flex-col gap-2 bg-hsr-surface3 bg-opacity-50 p-4">
+        <div className="-mx-4 flex flex-col gap-2 bg-muted bg-opacity-50 p-4">
           {startingMessageId.map((messageId) => (
             <button
               key={messageId}
               className={
                 selectedMessage === messageId
-                  ? "cursor-pointer rounded-md bg-hsr-accent bg-opacity-90 px-4 py-1 text-left font-semibold text-slate-100"
-                  : "mx-4 cursor-pointer rounded-md bg-hsr-surface1 bg-opacity-60 px-4 py-1 text-left font-semibold text-slate-200"
+                  ? "cursor-pointer rounded-md bg-primary bg-opacity-90 px-4 py-1 text-left font-semibold text-accent-foreground"
+                  : "mx-4 cursor-pointer rounded-md bg-background bg-opacity-60 px-4 py-1 text-left font-semibold text-card-foreground"
               }
               onClick={() => setSelectedMessage(messageId)}
             >
