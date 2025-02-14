@@ -28,7 +28,7 @@ const CharacterSkill = ({ skill, characterId }: Props) => {
     <div className="flex justify-center lg:block">
       <div
         className={clsx(
-          "card relative flex w-11/12 flex-col justify-start overflow-hidden p-0 lg:w-full",
+          "card relative mx-2 flex w-full flex-col justify-start overflow-hidden p-0",
           isOpen ? "h-auto" : "h-30 lg:h-60",
         )}
       >

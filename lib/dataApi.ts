@@ -23,7 +23,7 @@ type APIOptions = {
 export async function getGenshinCharacterDetail(id: string, language: string) {
   const baseUrl = GENSHIN_API_URL.replace(
     "genshin/api",
-    "genshin/character-detail"
+    "genshin/character-detail",
   );
   const url = new URL(baseUrl);
 
@@ -56,10 +56,12 @@ export async function getGenshinCharacterTeams(id: string, language: string) {
   url.searchParams.append("id", id);
   url.searchParams.append("language", language);
 
+  console.log(url.toString());
   const res = await fetch(url.toString(), {
     method: "GET",
     next: {
       tags: ["genshin-data", "genshin-teams"],
+      revalidate: 0,
     },
   });
 
@@ -111,7 +113,7 @@ const isRetryableError = (error: unknown) => {
 async function getData<T>(
   url: string,
   options: APIOptions,
-  tags: string[]
+  tags: string[],
 ): Promise<T> {
   const MAX_RETRIES = 3;
   let revalidate = options.revalidate ? options.revalidate : 86400;
@@ -135,7 +137,7 @@ async function getData<T>(
           "Error fetching data",
           res.statusText,
           text,
-          JSON.stringify(options)
+          JSON.stringify(options),
         );
         throw new Error(res.statusText);
       }
@@ -165,7 +167,7 @@ async function getData<T>(
               tags,
             },
           }),
-          error
+          error,
         );
         throw error; // if it's a different error or we've reached the max retries, throw the error
       }

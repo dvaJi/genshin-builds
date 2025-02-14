@@ -53,7 +53,7 @@ export default async function TofLayout({ children, params }: Props) {
     "@type": "VideoGame",
     name: "Tower of Fantasy",
     url: "http://www.toweroffantasy-global.com/",
-    image: "https://genshinbuilds.aipurrjects.com/genshin/games/tof.webp",
+    image: "https://images.genshin-builds.com/genshin/games/tof.webp",
     description:
       "Tower of Fantasy is a free-to-play action role-playing game developed and published by Hotta Studio.",
     author: {

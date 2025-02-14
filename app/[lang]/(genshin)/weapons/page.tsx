@@ -17,7 +17,6 @@ export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   const langs = i18n.locales;
-
   return langs.map((lang) => ({ lang }));
 }
 
@@ -48,9 +47,9 @@ export async function generateMetadata({
   });
 }
 
-export default async function GenshinCharacters({ params }: Props) {
+export default async function GenshinWeapons({ params }: Props) {
   const { lang } = await params;
-  const { t, langData, locale } = await getTranslations(
+  const { t, locale, langData } = await getTranslations(
     lang,
     "genshin",
     "weapons"
@@ -62,33 +61,58 @@ export default async function GenshinCharacters({ params }: Props) {
     select: ["id", "rarity", "name", "type"],
   });
 
+  const weaponTypes = weapons.reduce((acc, weapon) => {
+    if (!acc.includes(weapon.type.id)) {
+      acc.push(weapon.type.id);
+    }
+    return acc;
+  }, [] as string[]);
+
   const beta = await getData<Beta>("genshin", "beta");
 
   const allWeapons = [
-    ...(beta[locale]?.weapons ?? []).map((c: any) => {
-      const { id, name, type, rarity } = c;
+    ...(beta[locale]?.weapons ?? []).map((w: any) => {
+      const { id, name, type, rarity } = w;
       return { id, name, type, rarity, beta: true };
     }),
-    ...weapons.sort((a, b) => {
-      return b.rarity - a.rarity || a.name.localeCompare(b.name);
-    }),
+    ...weapons,
   ] as (Weapon & { beta?: boolean })[];
 
   return (
-    <div>
-      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <FrstAds
-        placementName="genshinbuilds_billboard_atf"
-        classList={["flex", "justify-center"]}
-      />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "weapons", defaultMessage: "Weapons" })}
-      </h2>
-      <WeaponsList weapons={allWeapons} />
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
-      />
+    <div className="min-h-screen px-2 sm:px-0">
+      <div className="mb-4 flex flex-col items-center justify-between gap-2 sm:mb-8 sm:gap-4 md:flex-row">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            {t({ id: "weapons", defaultMessage: "Weapons" })}
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground sm:text-lg">
+            {t({
+              id: "description",
+              defaultMessage:
+                "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
+            })}
+          </p>
+        </div>
+        <Ads className="hidden md:block" adSlot={AD_ARTICLE_SLOT} />
+      </div>
+
+      <div className="mb-4 sm:mb-8">
+        <FrstAds
+          placementName="genshinbuilds_billboard_atf"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
+
+      <div className="card overflow-hidden">
+        <WeaponsList weapons={allWeapons} weaponTypes={weaponTypes} />
+      </div>
+
+      <div className="mt-4 sm:mt-8">
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
     </div>
   );
 }

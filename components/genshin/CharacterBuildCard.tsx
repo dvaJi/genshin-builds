@@ -74,6 +74,7 @@ const CharacterBuildCard = ({
               messages={{
                 choose_2: messages.choose_2,
               }}
+              locale={locale}
             />
           ))}
         </div>
@@ -94,8 +95,8 @@ const CharacterBuildCard = ({
           </h4>
           <div className="mt-2 flex flex-wrap gap-2">
             {build.stats_priority.map((s, i) => (
-              <div key={s} className="border-border flex rounded border">
-                <span className="bg-muted rounded-l p-1 text-xxs text-slate-300">
+              <div key={s} className="flex rounded border border-border">
+                <span className="rounded-l bg-muted p-1 text-xxs text-slate-300">
                   {i + 1}
                 </span>
                 <span className="p-1 text-xs text-slate-200">{s}</span>

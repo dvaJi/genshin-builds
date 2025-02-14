@@ -1,21 +1,24 @@
 import { memo } from "react";
 
+import { cn } from "@lib/utils";
+
 import Image from "./Image";
 
-const Logo = () => {
+type LogoProps = {
+  className?: string;
+};
+
+const Logo = ({ className }: LogoProps) => {
   return (
-    <>
+    <div className={cn("flex items-center", className)}>
       <Image
         src={"/logo.png"}
-        className="fill-current text-white md:w-48"
+        className="md:min-w-26 fill-current text-white md:max-w-28"
         alt="GenshinBuilds logo"
         width={90}
         height={38}
       />
-      <span className="hidden text-lg font-normal text-gray-100">
-        GenshinBuilds
-      </span>
-    </>
+    </div>
   );
 };
 

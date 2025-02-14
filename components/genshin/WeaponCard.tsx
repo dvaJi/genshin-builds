@@ -23,18 +23,18 @@ const WeaponCard = ({
   return (
     <Link
       href={`/${locale}/weapon/${weapon.id}`}
-      className="border-border hover:bg-card mb-2 flex w-full rounded-md border px-4 transition-all hover:shadow-md"
+      className="mb-2 flex w-full rounded-md border border-border px-2 transition-all hover:bg-card hover:shadow-md sm:px-4"
       prefetch={false}
     >
-      <div className="mr-2 flex items-center">
-        <span className="bg-muted text-muted-foreground mr-2 rounded p-1 text-xs">
+      <div className="mr-1 flex items-center sm:mr-2">
+        <span className="mr-1 rounded bg-muted p-1 text-xs text-muted-foreground sm:mr-2">
           {position}
         </span>
       </div>
       <div
         className={clsx(
           "relative my-1 flex flex-none items-center justify-center rounded bg-cover",
-          `genshin-bg-rarity-${weapon.rarity}`
+          `genshin-bg-rarity-${weapon.rarity}`,
         )}
       >
         <Image
@@ -42,19 +42,20 @@ const WeaponCard = ({
           height={64}
           width={64}
           alt={weapon.name}
+          className="h-12 w-12 sm:h-16 sm:w-16"
         />
       </div>
-      <div className="ml-4 flex flex-col justify-center">
-        <div className="text-card-foreground font-bold">
+      <div className="ml-2 flex flex-col justify-center sm:ml-4">
+        <div className="text-sm font-bold text-card-foreground sm:text-base">
           {weapon.name}{" "}
           {refinement !== undefined && refinement > 0 && (
-            <span className="bg-muted ml-1 rounded px-[4px] py-[2px] text-xxs">
+            <span className="ml-1 rounded bg-muted px-[4px] py-[2px] text-xxs">
               R{refinement}
               {refinement < 5 ? "+" : ""}
             </span>
           )}
         </div>
-        <p className="text-muted-foreground relative text-xs">
+        <p className="relative text-xs text-muted-foreground">
           {weapon.stats.secondary}
         </p>
       </div>

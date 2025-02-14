@@ -36,7 +36,7 @@ export default async function WWLayout({ children, params }: Props) {
     "@type": "VideoGame",
     name: "Wuthering Waves",
     url: "https://wutheringwaves.kurogames.com/",
-    image: "https://genshinbuilds.aipurrjects.com/genshin/games/wuthering.webp",
+    image: "https://images.genshin-builds.com/genshin/games/wuthering.webp",
     description:
       "Wuthering Waves is a free-to-play action role-playing game developed and published by Kuro Games.",
     author: {

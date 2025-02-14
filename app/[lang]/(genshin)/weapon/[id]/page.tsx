@@ -1,12 +1,14 @@
-import type { MostUsedBuild } from "interfaces/build";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { LuStar, LuTarget } from "react-icons/lu";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
+import { Badge } from "@app/components/ui/badge";
 import { genPageMetadata } from "@app/seo";
 import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMaterials";
+import { WeaponTypeBadge } from "@components/genshin/WeaponTypeBadge";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
@@ -28,21 +30,18 @@ export async function generateStaticParams() {
   return [];
 }
 
-interface Props {
-  params: Promise<{
-    id: string;
-    lang: string;
-  }>;
-}
+type Props = {
+  params: Promise<{ lang: string; id: string }>;
+};
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(
+  const { t, locale, langData } = await getTranslations(
     lang,
     "genshin",
-    "weapon"
+    "weapon",
   );
 
   const _weapon = await getGenshinData<Weapon>({
@@ -61,10 +60,15 @@ export async function generateMetadata({
 
   const title = t({
     id: "title",
-    defaultMessage: "{name} Genshin Impact Weapon Details",
+    defaultMessage: "{name} in Genshin Impact - Best Weapons Guide",
     values: { name: weapon.name },
   });
-  const description = weapon.description;
+  const description = t({
+    id: "description",
+    defaultMessage:
+      "Everything you need to know about {name} in Genshin Impact. Find its stats, refinements, recommended characters, and ascension materials.",
+    values: { name: weapon.name },
+  });
 
   return genPageMetadata({
     title,
@@ -80,8 +84,9 @@ export default async function GenshinWeaponPage({ params }: Props) {
   const { t, langData, locale } = await getTranslations(
     lang,
     "genshin",
-    "weapon"
+    "weapon",
   );
+
   const _weapon = await getGenshinData<Weapon>({
     resource: "weapons",
     language: langData,
@@ -90,17 +95,14 @@ export default async function GenshinWeaponPage({ params }: Props) {
   const beta = await getData<Beta>("genshin", "beta");
   const _betaWeapon = beta[locale]?.weapons?.find((c: any) => c.id === id);
 
-  const weapon:
-    | (Weapon & {
-        beta?: boolean | undefined;
-      })
-    | undefined = _weapon || _betaWeapon;
+  const weapon: (Weapon & { beta?: boolean }) | undefined =
+    _weapon || _betaWeapon;
 
   if (!weapon) {
     return notFound();
   }
 
-  const builds = await getGenshinData<MostUsedBuild>({
+  const builds = await getGenshinData<any>({
     resource: "mostUsedBuilds",
     language: langData as any,
     asMap: true,
@@ -111,7 +113,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
     .map(([character]) => character);
 
   const ascensionTotal = calculateTotalWeaponAscensionMaterials(
-    weapon.ascensions
+    weapon.ascensions,
   );
 
   const jsonLd: WithContext<BreadcrumbList> = {
@@ -129,7 +131,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
         position: 2,
         name: t({
           id: "weapons",
-          defaultMessage: "weapons",
+          defaultMessage: "Weapons",
         }),
         item: `https://genshin-builds.com/${lang}/weapons`,
       },
@@ -150,85 +152,108 @@ export default async function GenshinWeaponPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd),
         }}
-      ></script>
-      {weapon.beta ? (
-        <div className="flex items-center justify-center">
-          <div className="rounded border border-red-400/50 bg-red-600/50 p-1 text-center text-white">
+      />
+
+      <div className="relative z-20 mb-4 flex flex-col items-start justify-between space-y-2 sm:space-y-4">
+        <div className="flex w-full flex-col items-center px-2 sm:flex-row sm:items-start lg:px-0">
+          <div
+            className={cn(
+              "relative mb-3 flex-none rounded-xl border-2 border-gray-900/80 sm:mb-0 sm:mr-4",
+              `genshin-bg-rarity-${weapon.rarity}`,
+            )}
+          >
+            <img
+              className="h-28 w-28 sm:h-32 sm:w-32 md:h-40 md:w-40"
+              src={getUrl(`/weapons/${weapon.id}.png`, 160, 160)}
+              alt={weapon.name}
+              width={160}
+              height={160}
+            />
+          </div>
+          <div className="flex flex-grow flex-col space-y-2 text-center sm:text-left">
+            <div className="mb-2 flex flex-col items-center sm:mb-0 sm:flex-row sm:items-center">
+              <h1 className="mb-2 text-2xl text-white sm:mb-0 sm:mr-2 sm:text-3xl">
+                {t({
+                  id: "weapon_title",
+                  defaultMessage: "Genshin Impact {name}",
+                  values: { name: weapon.name },
+                })}
+              </h1>
+            </div>
+            <div className="mt-1 flex flex-wrap justify-center gap-1.5 sm:justify-start sm:gap-2">
+              <WeaponTypeBadge weaponType={weapon.type} />
+              <Badge variant="secondary" className="text-xs sm:text-sm">
+                <LuStar className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{weapon.rarity}★</span>
+              </Badge>
+              {weapon.stats.secondary && (
+                <Badge variant="secondary" className="text-xs sm:text-sm">
+                  <LuTarget className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                  <span className="truncate">{weapon.stats.secondary}</span>
+                </Badge>
+              )}
+            </div>
+            <blockquote className="mt-6 italic">
+              {weapon.description}
+            </blockquote>
+          </div>
+        </div>
+      </div>
+
+      {weapon.beta && (
+        <div className="flex items-center justify-center px-4 sm:px-0">
+          <div className="w-full rounded border border-red-400/50 bg-red-600/50 p-2 text-center text-white">
             Current content is a subject to change!
           </div>
         </div>
-      ) : null}
+      )}
+
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <div className="mb-4 flex items-start justify-between">
-        <div className="relative flex flex-wrap items-center px-2 lg:flex-nowrap lg:px-0">
-          <div
-            className={cn(
-              "relative mr-2 flex-none rounded-lg border border-gray-900 lg:mr-5",
-              `genshin-bg-rarity-${weapon.rarity}`
-            )}
-          >
-            <img
-              className="h-52 w-52"
-              src={getUrl(`/weapons/${weapon.id}.png`, 236, 236)}
-              alt={weapon.name}
-            />
-          </div>
-          <div className="flex flex-grow flex-col">
-            <div className="mr-2 flex items-center">
-              <h1 className="mr-2 text-3xl text-white">
-                {weapon.name} ({weapon.rarity}★)
-              </h1>
-            </div>
-            <ul>
-              <li>
-                {t({ id: "type", defaultMessage: "Type" })}: {weapon.type.name}
-              </li>
-              <li>
-                {t({ id: "secondary", defaultMessage: "Secondary" })}:{" "}
-                {weapon.stats.secondary || "N/A"}
-              </li>
-            </ul>
-            <div>{weapon.description}</div>
-          </div>
-        </div>
+
+      <div className="mb-8">
+        <WeaponStats weapon={weapon} />
       </div>
-      <WeaponStats weapon={weapon} />
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
-      />
+
       {recommendedCharacters.length > 0 && (
         <>
           <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
             {t({
               id: "recommended_characters",
-              defaultMessage: "Recomended Characters",
+              defaultMessage: "Recommended Characters",
             })}
           </h2>
-          <div className="mx-4 mb-4 flex lg:mx-0">
+          <div className="card mx-4 mb-8 flex flex-wrap gap-4 p-4 lg:mx-0">
             {recommendedCharacters.map((character) => (
               <Link
                 key={character}
                 href={`/${lang}/character/${character}`}
-                className="group mr-10 rounded-full border-4 border-transparent transition hover:border-vulcan-500"
+                className="group relative inline-block scale-100 rounded-lg transition-all hover:scale-105"
                 prefetch={false}
               >
-                <img
-                  className="rounded-full group-hover:shadow-xl"
-                  src={getUrl(`/characters/${character}/image.png`, 126, 126)}
-                  alt={character}
-                  width="100"
-                  height="100"
-                />
+                <div className="relative rounded-lg border-2 border-gray-900/80 bg-muted">
+                  <img
+                    className="h-20 w-20 rounded-lg sm:h-24 sm:w-24"
+                    src={getUrl(`/characters/${character}/image.png`, 96, 96)}
+                    alt={character}
+                    width={96}
+                    height={96}
+                  />
+                </div>
               </Link>
             ))}
           </div>
         </>
       )}
+
+      <FrstAds
+        placementName="genshinbuilds_incontent_1"
+        classList={["flex", "justify-center"]}
+      />
+
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({
           id: "ascension_materials",

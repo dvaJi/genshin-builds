@@ -5,9 +5,9 @@ import IntlProvider from "@components/IntlProvider";
 import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
-import "./theme.css";
 import Footer from "./footer";
 import Header from "./header";
+import "./theme.css";
 
 type Props = {
   children: React.ReactNode;
@@ -23,7 +23,7 @@ export default async function GenshinLayout({ children, params }: Props) {
     "@type": "VideoGame",
     name: "Genshin Impact",
     url: "https://genshin.mihoyo.com/",
-    image: "https://genshinbuilds.aipurrjects.com/genshin/games/genshin.webp",
+    image: "https://images.genshin-builds.com/genshin/games/genshin.webp",
     description:
       "Genshin Impact is a free-to-play action role-playing game developed and published by miHoYo.",
     author: {
@@ -53,7 +53,7 @@ export default async function GenshinLayout({ children, params }: Props) {
         <Header />
 
         <main className="z-10 mb-8 mt-4">
-          <div className="container mx-auto">{children}</div>
+          <div className="mx-auto md:container">{children}</div>
         </main>
 
         <Footer />

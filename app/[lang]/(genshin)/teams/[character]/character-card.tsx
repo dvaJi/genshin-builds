@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@app/components/ui/card";
 import { cn } from "@app/lib/utils";
+import { ElementBadge } from "@components/genshin/ElementBadge";
 import Image from "@components/genshin/Image";
 import useIntl from "@hooks/use-intl";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
@@ -42,7 +43,7 @@ export function CharacterCard({
             <div
               className={cn(
                 "relative h-20 w-20 rounded-md",
-                `genshin-bg-rarity-${character.rarity}`
+                `genshin-bg-rarity-${character.rarity}`,
               )}
             >
               <Image
@@ -66,28 +67,7 @@ export function CharacterCard({
               <Badge variant="outline" className="text-xs">
                 {characterTeam.role}
               </Badge>
-              <Badge
-                variant="secondary"
-                className={`text-xs ${
-                  character.element.id === "dendro"
-                    ? "bg-green-900/50 text-green-400"
-                    : character.element.id === "cryo"
-                      ? "bg-cyan-900/50 text-cyan-400"
-                      : character.element.id === "electro"
-                        ? "bg-purple-900/50 text-purple-400"
-                        : character.element.id === "geo"
-                          ? "bg-yellow-900/50 text-yellow-400"
-                          : character.element.id === "hydro"
-                            ? "bg-blue-900/50 text-blue-400"
-                            : character.element.id === "pyro"
-                              ? "bg-red-900/50 text-red-400"
-                              : character.element.id === "anemo"
-                                ? "bg-green-900/50 text-green-400"
-                                : ""
-                }`}
-              >
-                {character.element.name}
-              </Badge>
+              <ElementBadge element={character.element} />
               {characterTeam.c_min > 0 ? (
                 <Badge variant="outline" className="text-xs">
                   {t("constellation_num", {

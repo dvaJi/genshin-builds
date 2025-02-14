@@ -186,6 +186,65 @@ body {
   --fsAddBuffer: 22px;
 }
 
+[id="genshinbuilds_incontent_3"],
+[id="genshinbuilds_incontent_4"],
+[id="genshinbuilds_incontent_2"],
+[id="genshinbuilds_sticky_pushdown-pushdown-cls"],
+[id="genshinbuilds_billboard_atf"],
+[id="genshinbuilds_incontent_1"],
+[id="genshinbuilds_incontent_5"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: calc(var(--height) + var(--fsAddBuffer));
+  width: 100%;
+}
+[id="genshinbuilds_billboard_atf"] {
+  --height: 280px;
+}
+[id="genshinbuilds_incontent_1"] {
+  --height: 280px;
+}
+[id="genshinbuilds_incontent_2"] {
+  --height: 280px;
+}
+[id="genshinbuilds_incontent_3"] {
+  --height: 280px;
+}
+[id="genshinbuilds_incontent_4"] {
+  --height: 280px;
+}
+[id="genshinbuilds_incontent_5"] {
+  --height: 280px;
+}
+[id="genshinbuilds_sticky_pushdown-pushdown-cls"] {
+  --height: 100px;
+}
+@media only screen and (min-width: 768px) {
+  [id="genshinbuilds_billboard_atf"] {
+    --height: 250px;
+  }
+  [id="genshinbuilds_incontent_1"] {
+    --height: 250px;
+  }
+  [id="genshinbuilds_incontent_2"] {
+    --height: 250px;
+  }
+  [id="genshinbuilds_incontent_3"] {
+    --height: 250px;
+  }
+  [id="genshinbuilds_incontent_4"] {
+    --height: 250px;
+  }
+  [id="genshinbuilds_incontent_5"] {
+    --height: 250px;
+  }
+  [id="genshinbuilds_sticky_pushdown-pushdown-cls"] {
+    --height: 90px;
+  }
+}
+
 /* TOF */
 .TOF-bg-5,
 .TOF-bg-SSR {

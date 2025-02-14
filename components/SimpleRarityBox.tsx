@@ -13,6 +13,7 @@ interface SimpleRarityBoxProps {
   className?: string;
   classNameBlock?: string;
   nameSeparateBlock?: boolean;
+  hideNameOnMobile?: boolean;
 }
 
 const SimpleRarityBox = ({
@@ -24,14 +25,15 @@ const SimpleRarityBox = ({
   className,
   classNameBlock,
   nameSeparateBlock = false,
+  hideNameOnMobile,
 }: SimpleRarityBoxProps) => {
   return (
     <>
       <div
         className={clsx(
-          "aspect-square overflow-hidden rounded-lg",
+          "aspect-square overflow-hidden rounded-md",
           `genshin-bg-rarity-${rarity}`,
-          className
+          className,
         )}
       >
         <div className="group relative h-full w-full">
@@ -46,7 +48,13 @@ const SimpleRarityBox = ({
           />
 
           {!nameSeparateBlock && name && (
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pb-1 pt-4">
+            <div
+              className={clsx(
+                "absolute inset-x-0 bottom-0",
+                hideNameOnMobile ? "hidden sm:block" : "block",
+                "bg-gradient-to-t from-black/80 to-transparent pb-1 pt-4",
+              )}
+            >
               <span className="block text-center text-xs font-medium text-white">
                 {name}
               </span>
@@ -57,8 +65,9 @@ const SimpleRarityBox = ({
       {nameSeparateBlock && name && (
         <span
           className={clsx(
-            "bg-card/80 text-card-foreground mt-1 block w-full truncate rounded-md px-2 py-1 text-center text-xs shadow-sm backdrop-blur-sm",
-            classNameBlock
+            "mt-1 block w-full truncate rounded-md bg-card/80 px-2 py-1 text-center text-xs text-card-foreground shadow-sm backdrop-blur-sm",
+            classNameBlock,
+            hideNameOnMobile && "hidden sm:block",
           )}
         >
           {name}

@@ -32,7 +32,7 @@ export default async function HSRLayout({ children, params }: Props) {
     "@type": "VideoGame",
     name: "Honkai: Star Rail",
     url: "https://hsr.hoyoverse.com/",
-    image: "https://genshinbuilds.aipurrjects.com/genshin/games/hsr.webp",
+    image: "https://images.genshin-builds.com/genshin/games/hsr.webp",
     description:
       "Honkai: Star Rail is a free-to-play action role-playing game developed and published by miHoYo.",
     author: {

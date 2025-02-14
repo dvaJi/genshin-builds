@@ -36,6 +36,9 @@ const nextConfig = {
         hostname: "genshinbuilds.aipurrjects.com",
       },
       {
+        hostname: "images.genshin-builds.com",
+      },
+      {
         hostname: "cdn.discordapp.com",
       },
     ],

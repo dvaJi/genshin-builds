@@ -196,6 +196,20 @@ module.exports = {
             transform: "translateX(100%)",
           },
         },
+        slideDown: {
+          from: { height: "0", opacity: "0" },
+          to: {
+            height: "var(--radix-collapsible-content-height)",
+            opacity: "1",
+          },
+        },
+        slideUp: {
+          from: {
+            height: "var(--radix-collapsible-content-height)",
+            opacity: "1",
+          },
+          to: { height: "0", opacity: "0" },
+        },
       },
       animation: {
         overlayShow: "overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -204,20 +218,16 @@ module.exports = {
           "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        slideDown: "slideDown 200ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideUp: "slideUp 200ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      backgroundImage: {
-        "rarity-1": "linear-gradient(135deg, #515151 0%, #2b2b2b 100%)",
-        "rarity-2": "linear-gradient(135deg, #5d7b8e 0%, #2b3d47 100%)",
-        "rarity-3": "linear-gradient(135deg, #6b8fc7 0%, #324867 100%)",
-        "rarity-4": "linear-gradient(135deg, #a17fef 0%, #6a4ca5 100%)",
-        "rarity-5": "linear-gradient(135deg, #deb864 0%, #af8234 100%)",
-        "grid-white":
-          "linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+      "@media (prefers-reduced-motion: reduce)": {
+        "*, ::before, ::after": {
+          "animation-duration": "0.01ms !important",
+          "animation-iteration-count": "1 !important",
+          "transition-duration": "0.01ms !important",
+          "scroll-behavior": "auto !important",
+        },
       },
     },
   },
@@ -238,7 +248,7 @@ module.exports = {
             textShadow: value,
           }),
         },
-        { values: theme("textShadow") }
+        { values: theme("textShadow") },
       );
     }),
     plugin(function ({ addComponents, theme }) {

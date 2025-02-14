@@ -52,7 +52,7 @@ export default async function GenshinCharacters({ params }: Props) {
   const { t, locale, langData } = await getTranslations(
     lang,
     "genshin",
-    "characters"
+    "characters",
   );
 
   const characters = await getGenshinData<Character[]>({
@@ -88,13 +88,13 @@ export default async function GenshinCharacters({ params }: Props) {
   const latestRelease = allCharacters[0].release;
 
   return (
-    <div className="min-h-screen">
-      <div className="mb-8 flex flex-col items-center justify-between gap-4 md:flex-row">
+    <div className="min-h-screen px-2 sm:px-0">
+      <div className="mb-4 flex flex-col items-center justify-between gap-2 sm:mb-8 sm:gap-4 md:flex-row">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
             {t({ id: "characters", defaultMessage: "Characters" })}
           </h1>
-          <p className="mt-1 text-lg text-muted-foreground">
+          <p className="mt-1 text-sm text-muted-foreground sm:text-lg">
             {t({
               id: "description",
               defaultMessage:
@@ -105,14 +105,14 @@ export default async function GenshinCharacters({ params }: Props) {
         <Ads className="hidden md:block" adSlot={AD_ARTICLE_SLOT} />
       </div>
 
-      <div className="mb-8">
+      <div className="mb-4 sm:mb-8">
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
           classList={["flex", "justify-center"]}
         />
       </div>
 
-      <div className="card">
+      <div className="card overflow-hidden">
         <GenshinCharactersList
           characters={allCharacters}
           elements={elements}
@@ -121,7 +121,7 @@ export default async function GenshinCharacters({ params }: Props) {
         />
       </div>
 
-      <div className="mt-8">
+      <div className="mt-4 sm:mt-8">
         <FrstAds
           placementName="genshinbuilds_incontent_1"
           classList={["flex", "justify-center"]}

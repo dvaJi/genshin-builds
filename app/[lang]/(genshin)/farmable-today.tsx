@@ -31,16 +31,16 @@ export default function FarmableToday({
 
   return (
     <>
-      {/* Day Selection */}
-      <div className="mb-6 flex flex-wrap justify-center gap-2">
+      {/* Day Selection - More compact on mobile */}
+      <div className="mb-4 flex flex-wrap justify-center gap-1.5 sm:mb-6 sm:gap-2">
         {days.map((day) => (
           <Button
             key={day}
             variant={currentDay === day ? "primary" : "secondary"}
             size="sm"
             className={clsx(
-              "min-w-[100px] transform transition-all duration-300",
-              currentDay === day && "shadow-primary/20 scale-105 shadow-lg"
+              "min-w-[90px] transform text-sm transition-all duration-300 sm:min-w-[100px]",
+              currentDay === day && "scale-105 shadow-lg shadow-primary/20",
             )}
             onClick={() => {
               trackClick(`planner_day`);
@@ -52,16 +52,16 @@ export default function FarmableToday({
         ))}
       </div>
 
-      <div className="space-y-6">
-        {/* Section Header */}
+      <div className="space-y-4 sm:space-y-6">
+        {/* Section Header - Reduced spacing on mobile */}
         <div>
-          <h2 className="text-foreground text-2xl font-semibold">
+          <h2 className="text-xl font-semibold text-foreground sm:text-2xl">
             {t({
               id: "farmable_today",
               defaultMessage: "Farmable today",
             })}
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm text-muted-foreground sm:text-base">
             {t({
               id: "farmable_today_desc",
               defaultMessage:
@@ -70,18 +70,18 @@ export default function FarmableToday({
           </p>
         </div>
 
-        {/* Domains Grid */}
-        <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
+        {/* Domains Grid - Optimized for mobile */}
+        <div className="grid gap-3 sm:grid-cols-1 sm:gap-4 lg:grid-cols-2">
           {/* Character Domains */}
           {domains.characters.map((charactersDomain) => (
             <div
               key={charactersDomain.domainName}
-              className="card overflow-hidden"
+              className="card overflow-hidden p-3 sm:p-4"
             >
-              <h3 className="text-card-foreground mb-4 text-lg font-medium">
+              <h3 className="mb-2 text-base font-medium text-card-foreground sm:mb-4 sm:text-lg">
                 {charactersDomain.domainName}
               </h3>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {charactersDomain.rotation
                   .find((r) => r.day === currentDay)
                   ?.ids.map((cId) => (
@@ -91,11 +91,12 @@ export default function FarmableToday({
                       prefetch={false}
                     >
                       <SimpleRarityBox
-                        img={getUrl(`/characters/${cId}/image.png`, 80, 80)}
+                        img={getUrl(`/characters/${cId}/image.png`, 64, 64)}
                         rarity={characters[cId].rarity}
                         alt={characters[cId].name}
                         name={characters[cId].name}
-                        className="h-20 w-20 rounded-lg shadow-md"
+                        hideNameOnMobile
+                        className="h-16 w-16 rounded-lg shadow-md sm:h-20 sm:w-20"
                       />
                     </Link>
                   ))}
@@ -107,12 +108,12 @@ export default function FarmableToday({
           {domains.weapons.map((weaponsDomain) => (
             <div
               key={weaponsDomain.domainName}
-              className="card overflow-hidden"
+              className="card overflow-hidden p-3 sm:p-4"
             >
-              <h3 className="text-card-foreground mb-4 text-lg font-medium">
+              <h3 className="mb-2 text-base font-medium text-card-foreground sm:mb-4 sm:text-lg">
                 {weaponsDomain.domainName}
               </h3>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {weaponsDomain.rotation
                   .find((r) => r.day === currentDay)
                   ?.ids.map((cId) =>
@@ -123,21 +124,22 @@ export default function FarmableToday({
                         prefetch={false}
                       >
                         <SimpleRarityBox
-                          img={getUrl(`/weapons/${cId}.png`, 80, 80)}
+                          img={getUrl(`/weapons/${cId}.png`, 64, 64)}
                           rarity={weapons[cId].rarity}
                           alt={weapons[cId].name}
                           name={weapons[cId].name}
-                          className="h-20 w-20 rounded-lg shadow-md"
+                          hideNameOnMobile
+                          className="h-14 w-14 rounded-lg shadow-md sm:w-20 md:h-20"
                         />
                       </Link>
                     ) : (
                       <div
                         key={cId}
-                        className="bg-destructive/10 text-destructive-foreground rounded px-2 py-1 text-xs"
+                        className="rounded bg-destructive/10 px-2 py-1 text-xs text-destructive-foreground"
                       >
                         NOT FOUND {cId}
                       </div>
-                    )
+                    ),
                   )}
               </div>
             </div>

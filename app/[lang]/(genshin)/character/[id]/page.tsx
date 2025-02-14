@@ -3,8 +3,11 @@ import { Beta } from "interfaces/genshin/beta";
 import { TeamData } from "interfaces/teams";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { FaBirthdayCake, FaMapMarkedAlt, FaUserFriends } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
+import { Badge } from "@app/components/ui/badge";
 import { genPageMetadata } from "@app/seo";
 import CharacterAscencionMaterials from "@components/genshin/CharacterAscencionMaterials";
 import CharacterBuildCard from "@components/genshin/CharacterBuildCard";
@@ -15,8 +18,10 @@ import CharacterSkill from "@components/genshin/CharacterSkill";
 import CharacterStats from "@components/genshin/CharacterStats";
 import CharacterTalentMaterials from "@components/genshin/CharacterTalentMaterials";
 import CharacterTeam from "@components/genshin/CharacterTeam";
+import { ElementBadge } from "@components/genshin/ElementBadge";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Image from "@components/genshin/Image";
+import { WeaponTypeBadge } from "@components/genshin/WeaponTypeBadge";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
@@ -77,7 +82,7 @@ export async function generateMetadata({
   const { t, langData, locale } = await getTranslations(
     lang,
     "genshin",
-    "character"
+    "character",
   );
 
   const beta = await getData<Beta>("genshin", "beta");
@@ -89,7 +94,7 @@ export async function generateMetadata({
     },
   });
   const _betaCharacter = beta[locale]?.characters?.find(
-    (c: any) => c.id === id
+    (c: any) => c.id === id,
   );
 
   const character = _character || _betaCharacter;
@@ -124,7 +129,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   const { t, langData, locale, common } = await getTranslations(
     lang,
     "genshin",
-    "character"
+    "character",
   );
 
   const detail = await getGenshinCharacterDetail(id, langData);
@@ -141,7 +146,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   let builds: CharBuild[] = detail.builds || [];
 
   const talentsTotal = calculateTotalTalentMaterials(
-    character.talent_materials
+    character.talent_materials,
   );
   const ascensionTotal = calculateTotalAscensionMaterials(character.ascension);
 
@@ -184,25 +189,25 @@ export default async function GenshinCharacterPage({ params }: Props) {
           __html: JSON.stringify(jsonLd),
         }}
       ></script>
-      <div className="relative z-20 mb-4 flex items-start justify-between">
-        <div className="flex items-center px-2 lg:px-0">
+      <div className="relative z-20 mb-4 flex flex-col items-start justify-between space-y-2 sm:space-y-4">
+        <div className="flex w-full flex-col items-center px-2 sm:flex-row sm:items-start lg:px-0">
           <div
             className={cn(
-              "relative mr-2 flex-none rounded-xl border-2 border-gray-900/80",
-              `genshin-bg-rarity-${character.rarity}`
+              "relative mb-3 flex-none rounded-xl border-2 border-gray-900/80 sm:mb-0 sm:mr-4",
+              `genshin-bg-rarity-${character.rarity}`,
             )}
           >
             <Image
-              className="h-40 w-40"
+              className="h-28 w-28 sm:h-32 sm:w-32 md:h-40 md:w-40"
               src={`/characters/${character.id}/image.png`}
               alt={character.name}
               width={160}
               height={160}
             />
           </div>
-          <div className="flex flex-grow flex-col">
-            <div className="mr-2 flex items-center">
-              <h1 className="mr-2 text-3xl text-white">
+          <div className="flex flex-grow flex-col space-y-2 text-center sm:text-left">
+            <div className="mb-2 flex flex-col items-center sm:mb-0 sm:flex-row sm:items-center">
+              <h1 className="mb-2 text-2xl text-white sm:mb-0 sm:mr-2 sm:text-3xl">
                 {t({
                   id: "character_title",
                   defaultMessage: "Genshin Impact {name} Build",
@@ -215,18 +220,41 @@ export default async function GenshinCharacterPage({ params }: Props) {
                 height={30}
               />
             </div>
-            <div className="hidden text-gray-200 md:block">
+            <div className="mt-1 flex flex-wrap justify-center gap-1.5 sm:justify-start sm:gap-2">
+              <WeaponTypeBadge weaponType={character.weapon_type} />
+              <ElementBadge element={character.element} />
+              <Badge
+                variant="secondary"
+                className="max-w-[120px] text-xs sm:max-w-none sm:text-sm"
+              >
+                <FaUserFriends className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.affiliation}</span>
+              </Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">
+                <FaBirthdayCake className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.birthday.join("/")}</span>
+              </Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">
+                <FaStar className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.constellation}</span>
+              </Badge>
+              <Badge
+                variant="secondary"
+                className="max-w-[120px] text-xs sm:max-w-none sm:text-sm"
+              >
+                <FaMapMarkedAlt className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.domain}</span>
+              </Badge>
+            </div>
+            <blockquote className="mt-6 italic">
               {character.description}
-            </div>
-            <div className="hidden text-gray-200 md:block">
-              {character.affiliation}
-            </div>
+            </blockquote>
           </div>
         </div>
       </div>
       {(character as any).beta ? (
-        <div className="flex items-center justify-center">
-          <div className="rounded border border-red-400/50 bg-red-600/50 p-1 text-center text-white">
+        <div className="flex items-center justify-center px-4 sm:px-0">
+          <div className="w-full rounded border border-red-400/50 bg-red-600/50 p-2 text-center text-white">
             Current content is a subject to change!
           </div>
         </div>
@@ -237,7 +265,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       {builds?.length > 0 || detail.mubuild ? (
-        <h2 className="mb-3 text-3xl text-white">
+        <h2 className="mb-3 ml-4 text-3xl text-white md:ml-0">
           {t("builds", { name: character.name })}
         </h2>
       ) : null}
@@ -302,7 +330,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           values: { name: character.name },
         })}
       </h2>
-      <div className="card mx-4 mb-4 flex flex-wrap justify-between p-0 md:mx-0">
+      <div className="card mx-2 mb-4 flex flex-wrap justify-between p-0 sm:mx-4 md:mx-0">
         {recommendedTeams.map((team, index) => (
           <CharacterTeam key={team.name + index} team={team} index={index} />
         ))}
@@ -321,10 +349,10 @@ export default async function GenshinCharacterPage({ params }: Props) {
       </h2>
       <div
         className={cn(
-          "relative z-20 mb-8 grid w-full grid-cols-1 justify-center gap-4",
+          "relative z-20 mb-8 grid w-full grid-cols-1 gap-3 sm:gap-4",
           character.skills.length > 3
             ? "lg:grid-cols-3 xl:grid-cols-4"
-            : "lg:grid-cols-3"
+            : "lg:grid-cols-3",
         )}
       >
         {character.skills.map((skill) => (
@@ -342,7 +370,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t({ id: "passives", defaultMessage: "Passives" })}
       </h2>
-      <div className="mb-8 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-3">
+      <div className="mb-8 grid w-full grid-cols-1 gap-3 px-2 sm:gap-4 sm:px-4 lg:grid-cols-3">
         {character.passives.map((passive) => (
           <CharacterPassiveSkill
             key={passive.id}
@@ -357,7 +385,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           defaultMessage: "Constellations",
         })}
       </h2>
-      <div className="mb-8 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-3">
+      <div className="mb-8 grid w-full grid-cols-1 gap-3 px-2 sm:gap-4 sm:px-4 lg:grid-cols-3">
         {character.constellations
           .filter((c) => c.level > 0)
           .map((constellation) => (
@@ -378,7 +406,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           defaultMessage: "Stats",
         })}
       </h2>
-      <div className="card mx-4 mb-8 lg:mx-0">
+      <div className="card mx-2 mb-8 sm:mx-4 lg:mx-0">
         {character.ascension[1].stats && (
           <CharacterStats ascensions={character.ascension} />
         )}
@@ -389,7 +417,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           defaultMessage: "Ascension Materials",
         })}
       </h2>
-      <div className="card mx-4 mb-8 p-0 lg:mx-0">
+      <div className="card mx-2 mb-8 p-0 sm:mx-4 lg:mx-0">
         <CharacterAscencionMaterials
           ascension={character.ascension}
           ascensionTotal={ascensionTotal}
@@ -405,7 +433,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           defaultMessage: "Talent Materials",
         })}
       </h2>
-      <div className="card mx-4 p-0 lg:mx-0">
+      <div className="card mx-2 p-0 sm:mx-4 lg:mx-0">
         <CharacterTalentMaterials
           talents={character.talent_materials}
           talentsTotal={talentsTotal}

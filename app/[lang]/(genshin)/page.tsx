@@ -18,15 +18,15 @@ import Shortcuts from "./shortcuts";
 
 // Loading components with improved visual design
 const LoadingCard = () => (
-  <div className="bg-card/90 relative h-64 w-full animate-pulse overflow-hidden rounded-xl p-6">
-    <div className="bg-muted/50 h-32 w-full rounded-lg" />
-    <div className="bg-muted/50 mt-4 h-4 w-2/3 rounded" />
-    <div className="bg-muted/50 mt-2 h-4 w-1/3 rounded" />
+  <div className="relative h-[280px] w-full animate-pulse overflow-hidden rounded-xl bg-card/90 p-4 sm:h-64 sm:p-6">
+    <div className="h-28 w-full rounded-lg bg-muted/50 sm:h-32" />
+    <div className="mt-3 h-4 w-2/3 rounded bg-muted/50 sm:mt-4" />
+    <div className="mt-2 h-4 w-1/3 rounded bg-muted/50" />
   </div>
 );
 
 const LoadingGrid = () => (
-  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
     <LoadingCard />
     <LoadingCard />
     <LoadingCard />
@@ -43,7 +43,7 @@ const SuspenseAd = ({
 }) => (
   <Suspense
     fallback={
-      <div className="bg-card/50 h-24 w-full animate-pulse rounded-lg backdrop-blur-sm" />
+      <div className="h-24 w-full animate-pulse rounded-lg bg-card/50 backdrop-blur-sm" />
     }
   >
     <FrstAds placementName={placementName} classList={classList} />
@@ -61,7 +61,7 @@ export async function generateMetadata({
   const { t, locale } = await getTranslations(
     lang,
     "genshin",
-    "ascension_planner"
+    "ascension_planner",
   );
   const title = t({
     id: "title",
@@ -108,25 +108,25 @@ export default async function IndexPage({ params }: Props) {
   const { t, langData } = await getTranslations(
     lang,
     "genshin",
-    "ascension_planner"
+    "ascension_planner",
   );
 
   const { domains, charactersMap, weaponsMap } = await getData(langData);
   const days = domains.characters[0].rotation.map((r) => r.day);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
       {/* Welcome Card */}
-      <div className="bg-card/95 relative overflow-hidden rounded-2xl p-8 shadow-xl backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-xl bg-card/95 p-4 shadow-xl backdrop-blur-xl sm:rounded-2xl sm:p-8">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,_rgba(255,255,255,0.08)_0%,_transparent_50%)]" />
         <div className="relative">
-          <h1 className="text-foreground text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h1 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
             {t({
               id: "welcome_title",
               defaultMessage: "Welcome to Genshin-Builds! ✨",
             })}
           </h1>
-          <p className="text-muted-foreground mt-4 max-w-3xl text-lg leading-relaxed">
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground sm:mt-4 sm:text-lg">
             {t({
               id: "welcome_desc",
               defaultMessage:
@@ -138,23 +138,23 @@ export default async function IndexPage({ params }: Props) {
 
       <SuspenseAd
         placementName="genshinbuilds_billboard_atf"
-        classList={["mt-8 flex justify-center"]}
+        classList={["mt-6 sm:mt-8 flex justify-center"]}
       />
 
       {/* Shortcuts Section */}
-      <section className="mt-12">
-        <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
+      <section className="mt-8 sm:mt-12">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0 sm:text-3xl">
           {t({ id: "shortcuts", defaultMessage: "Shortcuts" })}
         </h2>
         <Shortcuts lang={lang} />
       </section>
 
       {/* Banners Section */}
-      <section className="mt-12">
-        <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
+      <section className="mt-8 sm:mt-12">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0 sm:text-3xl">
           {t({ id: "banners", defaultMessage: "Banners" })}
         </h2>
-        <p className="mb-6 text-lg text-slate-300">
+        <p className="mb-4 text-base text-slate-300 sm:mb-6 sm:text-lg">
           {t({
             id: "banners_desc",
             defaultMessage:
@@ -168,15 +168,15 @@ export default async function IndexPage({ params }: Props) {
 
       <SuspenseAd
         placementName="genshinbuilds_incontent_1"
-        classList={["mt-12 flex justify-center"]}
+        classList={["mt-8 sm:mt-12 flex justify-center"]}
       />
 
       {/* Latest Posts Section */}
-      <section className="mt-12">
-        <h2 className="mb-4 text-2xl font-semibold tracking-tight text-white">
+      <section className="mt-8 sm:mt-12">
+        <h2 className="mb-3 text-xl font-semibold tracking-tight text-white sm:mb-4 sm:text-2xl">
           {t({ id: "latest_posts", defaultMessage: "Latest Posts" })}
         </h2>
-        <p className="mb-6 text-lg text-slate-300">
+        <p className="mb-4 text-base text-slate-300 sm:mb-6 sm:text-lg">
           {t({
             id: "latest_posts_desc",
             defaultMessage:
@@ -189,10 +189,10 @@ export default async function IndexPage({ params }: Props) {
 
         <SuspenseAd
           placementName="genshinbuilds_incontent_2"
-          classList={["mt-8 flex justify-center"]}
+          classList={["mt-6 sm:mt-8 flex justify-center"]}
         />
 
-        <div className="mt-4 text-right">
+        <div className="mt-3 text-right sm:mt-4">
           <Link
             href={`/${lang}/genshin/blog`}
             className="inline-flex items-center text-sm font-medium text-slate-300 transition-colors hover:text-white"
@@ -215,11 +215,11 @@ export default async function IndexPage({ params }: Props) {
       </section>
 
       {/* Server Timers Section */}
-      <section className="mt-12">
-        <h2 className="mb-4 text-2xl font-semibold tracking-tight text-white">
+      <section className="mt-8 sm:mt-12">
+        <h2 className="mb-3 text-xl font-semibold tracking-tight text-white sm:mb-4 sm:text-2xl">
           {t({ id: "server_timers", defaultMessage: "Server Timers" })}
         </h2>
-        <p className="mb-6 text-lg text-slate-300">
+        <p className="mb-4 text-base text-slate-300 sm:mb-6 sm:text-lg">
           {t({
             id: "server_timers_desc",
             defaultMessage:
@@ -232,16 +232,16 @@ export default async function IndexPage({ params }: Props) {
       </section>
 
       <Suspense>
-        <Ads className="mx-auto mt-12" adSlot={AD_ARTICLE_SLOT} />
+        <Ads className="mx-auto mt-8 sm:mt-12" adSlot={AD_ARTICLE_SLOT} />
       </Suspense>
 
       <SuspenseAd
         placementName="genshinbuilds_incontent_3"
-        classList={["mt-12 flex justify-center"]}
+        classList={["mt-8 sm:mt-12 flex justify-center"]}
       />
 
       {/* Farmable Today Section */}
-      <section className="mt-12">
+      <section className="mt-8 sm:mt-12">
         <Suspense fallback={<LoadingGrid />}>
           <FarmableToday
             days={days}
@@ -254,7 +254,7 @@ export default async function IndexPage({ params }: Props) {
 
       <SuspenseAd
         placementName="genshinbuilds_incontent_4"
-        classList={["mt-12 flex justify-center mb-12"]}
+        classList={["mt-8 sm:mt-12 flex justify-center mb-8 sm:mb-12"]}
       />
     </div>
   );

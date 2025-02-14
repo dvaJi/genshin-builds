@@ -67,7 +67,7 @@ export default async function ZenlessLayout({ children, params }: Props) {
     "@type": "VideoGame",
     name: "Zenless Zone Zero",
     url: "https://zenless.hoyoverse.com/",
-    image: "https://genshinbuilds.aipurrjects.com/genshin/games/zenless.webp",
+    image: "https://images.genshin-builds.com/genshin/games/zenless.webp",
     description:
       "Zenless Zone Zero is a free-to-play action role-playing game developed and published by miHoYo.",
     author: {

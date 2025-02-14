@@ -24,14 +24,14 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
         <div
           key={ascen.level.join()}
           className={clsx(
-            "grid grid-cols-6 items-center px-4 lg:grid-cols-10",
+            "grid grid-cols-[0.8fr_repeat(5,1fr)] items-center gap-1 px-2 sm:grid-cols-6 sm:gap-2 sm:px-4 lg:grid-cols-10",
             {
               "bg-muted/70": i % 2 === 0,
               "rounded rounded-b-none": i === 0,
-            }
+            },
           )}
         >
-          <div className="flex items-center justify-center text-sm lg:text-base">
+          <div className="flex items-center justify-center text-xs font-medium sm:text-sm lg:text-base">
             LV.{ascen.level.join(" - ")}
           </div>
           <div className="flex items-center justify-center">
@@ -39,7 +39,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
               img={getUrl(`/materials/mora.png`, 64, 64)}
               name={ascen?.cost?.toString() || "0"}
               rarity={1}
-              className="h-16 w-16"
+              className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
             />
             <p className="hidden lg:block">Mora</p>
           </div>
@@ -50,7 +50,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
                   img={getUrl(`/materials/${ascen.mat1.id}.png`, 64, 64)}
                   name={ascen.mat1.amount.toString()}
                   rarity={ascen.mat1.rarity}
-                  className="h-16 w-16"
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
                 />
                 <p className="hidden lg:block">{ascen.mat1.name}</p>
               </>
@@ -63,7 +63,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
                   img={getUrl(`/materials/${ascen.mat2.id}.png`, 64, 64)}
                   name={ascen.mat2.amount.toString()}
                   rarity={ascen.mat2.rarity || 1}
-                  className="h-16 w-16"
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
                 />
                 <p className="hidden lg:block">{ascen.mat2.name}</p>
               </>
@@ -76,7 +76,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
                   img={getUrl(`/materials/${ascen.mat3.id}.png`, 64, 64)}
                   name={ascen.mat3.amount.toString()}
                   rarity={ascen.mat3.rarity || 1}
-                  className="h-16 w-16"
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
                 />
                 <p className="hidden lg:block">{ascen.mat3.name}</p>
               </>
@@ -89,7 +89,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
                   img={getUrl(`/materials/${ascen.mat4.id}.png`, 64, 64)}
                   name={ascen.mat4.amount.toString()}
                   rarity={ascen.mat4.rarity || 1}
-                  className="h-16 w-16"
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
                 />
                 <p className="hidden lg:block">{ascen.mat4.name}</p>
               </>
@@ -97,8 +97,8 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
           </div>
         </div>
       ))}
-      <div className="bg-muted grid grid-cols-7 items-center rounded-b px-4 py-5 lg:grid-cols-11">
-        <div className="flex items-center justify-center text-sm font-bold lg:text-base">
+      <div className="grid grid-cols-[0.8fr_repeat(5,1fr)] items-center gap-1 rounded-b bg-muted px-2 py-3 sm:grid-cols-6 sm:gap-2 sm:px-4 sm:py-4 lg:grid-cols-10">
+        <div className="flex items-center justify-center text-xs font-bold uppercase sm:text-sm lg:text-base">
           {t({ id: "total", defaultMessage: "Total" })}
         </div>
         <div className="flex items-center justify-center">
@@ -106,7 +106,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
             img={getUrl(`/materials/mora.png`, 64, 64)}
             name={ascensionTotal.cost.toString()}
             rarity={1}
-            className="h-16 w-16"
+            className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
           />
         </div>
         {ascensionTotal.items.map((item) => (
@@ -115,7 +115,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
               img={getUrl(`/materials/${item.id}.png`, 64, 64)}
               name={item.amount.toString()}
               rarity={item.rarity}
-              className="h-16 w-16"
+              className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
             />
           </div>
         ))}

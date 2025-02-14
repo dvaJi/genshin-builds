@@ -42,7 +42,7 @@ export async function generateMetadata({
   const { t, locale, langData } = await getTranslations(
     lang,
     "genshin",
-    "teams"
+    "teams",
   );
   const beta = await getData<Beta>("genshin", "beta");
   const _character = await getGenshinData<Character>({
@@ -54,7 +54,7 @@ export async function generateMetadata({
     },
   });
   const _betaCharacter = beta[locale]?.characters?.find(
-    (c: any) => c.id === characterParams
+    (c: any) => c.id === characterParams,
   );
 
   const character = _character || _betaCharacter;
@@ -88,10 +88,11 @@ export default async function GenshinCharacterTeams({ params }: Props) {
   const { t, langData, locale } = await getTranslations(
     lang,
     "genshin",
-    "teams"
+    "teams",
   );
 
   const detail = await getGenshinCharacterTeams(characterParams, langData);
+  console.group(detail);
 
   if (!detail) {
     return redirect(`/${lang}/teams`);
@@ -140,7 +141,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
             <div
               className={clsx(
                 "relative mr-4 h-[100px] w-[100px] flex-none shrink-0 overflow-hidden rounded-xl object-cover",
-                `genshin-bg-rarity-${character.rarity}`
+                `genshin-bg-rarity-${character.rarity}`,
               )}
             >
               <Image
@@ -212,7 +213,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                       <div
                         className={clsx(
                           "relative flex-none rounded-full",
-                          `genshin-bg-rarity-${detail.charactersMap[char.id].rarity}`
+                          `genshin-bg-rarity-${detail.charactersMap[char.id].rarity}`,
                         )}
                       >
                         <Image

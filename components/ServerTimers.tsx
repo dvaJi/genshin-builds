@@ -50,7 +50,7 @@ function ServerTimers() {
   ];
 
   return (
-    <div className="grid gap-4 md:grid-cols-3">
+    <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
       {regions.map((region, index) => (
         <motion.div
           key={region.name}
@@ -58,39 +58,43 @@ function ServerTimers() {
           initial="hidden"
           animate="visible"
           transition={{ delay: index * 0.1 }}
-          className="bg-card group relative overflow-hidden rounded-xl p-6 shadow-md transition-shadow hover:shadow-lg"
+          className="group relative overflow-hidden rounded-lg bg-card p-3 shadow-md transition-shadow hover:shadow-lg sm:rounded-xl sm:p-6"
         >
           {/* Background effects */}
-          <div className="from-primary/5 absolute inset-0 bg-gradient-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.05)_0%,_transparent_60%)]" />
 
           <div className="relative">
             {/* Region header */}
-            <div className="mb-4 text-center">
-              <h3 className="text-card-foreground text-xl font-medium">
+            <div className="mb-2 text-center sm:mb-4">
+              <h3 className="text-base font-medium text-card-foreground sm:text-xl">
                 {region.name}{" "}
-                <span className="text-muted-foreground text-sm">
+                <span className="text-xs text-muted-foreground sm:text-sm">
                   ({region.timezone})
                 </span>
               </h3>
             </div>
 
             {/* Timer sections */}
-            <div className="space-y-3">
-              <div className="bg-muted/50 group-hover:bg-muted rounded-lg p-3 text-center transition-colors duration-300">
-                <p className="text-muted-foreground text-sm">Daily Reset in</p>
+            <div className="space-y-2 sm:space-y-3">
+              <div className="rounded bg-muted/50 p-2 text-center transition-colors duration-300 group-hover:bg-muted sm:p-3">
+                <p className="text-xs text-muted-foreground sm:text-sm">
+                  Daily Reset in
+                </p>
                 <p
-                  className="text-card-foreground mt-1 font-mono text-lg"
+                  className="mt-0.5 font-mono text-base text-card-foreground sm:mt-1 sm:text-lg"
                   suppressHydrationWarning
                 >
                   {region.daily}
                 </p>
               </div>
 
-              <div className="bg-muted/50 group-hover:bg-muted rounded-lg p-3 text-center transition-colors duration-300">
-                <p className="text-muted-foreground text-sm">Weekly Reset in</p>
+              <div className="rounded bg-muted/50 p-2 text-center transition-colors duration-300 group-hover:bg-muted sm:p-3">
+                <p className="text-xs text-muted-foreground sm:text-sm">
+                  Weekly Reset in
+                </p>
                 <p
-                  className="text-card-foreground mt-1 font-mono text-lg"
+                  className="mt-0.5 font-mono text-base text-card-foreground sm:mt-1 sm:text-lg"
                   suppressHydrationWarning
                 >
                   {region.weekly}

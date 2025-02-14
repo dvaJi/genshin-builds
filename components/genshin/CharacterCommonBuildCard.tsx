@@ -1,5 +1,4 @@
 import { MostUsedBuild } from "interfaces/build";
-import Link from "next/link";
 
 import type { Artifact, Weapon } from "@interfaces/genshin";
 
@@ -20,23 +19,23 @@ type Props = {
   };
 };
 
-const CharacterCommonBuildCard = ({
+export default function CharacterCommonBuildCard({
   build,
-  weapons,
   artifacts,
+  weapons,
   locale,
   messages,
-}: Props) => {
+}: Props) {
   return (
-    <div className="card mx-4 mb-4 md:mx-0">
-      <h3 className="mb-4 text-xl font-semibold text-slate-200">
-        {messages.title}
-      </h3>
-      <div className="flex flex-wrap gap-4">
-        <div className="flex flex-col flex-wrap content-start">
-          <h4 className="mb-2 text-lg font-semibold text-slate-300">
-            {messages.weapons}
-          </h4>
+    <div className="card mx-2 mb-4 p-3 sm:mx-4 sm:p-4 md:mx-0">
+      <div className="mb-3 flex flex-col space-y-2 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+        <h3 className="text-xl font-semibold text-white">{messages.title}</h3>
+        <div className="text-sm text-gray-400">{messages.disclaimer}</div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="space-y-2">
+          <h4 className="font-medium text-white">{messages.weapons}</h4>
           <div className="w-full">
             {build?.weapons.map((weapon, i) => (
               <WeaponCard
@@ -48,10 +47,9 @@ const CharacterCommonBuildCard = ({
             ))}
           </div>
         </div>
-        <div className="flex flex-col flex-wrap content-start">
-          <h4 className="mb-2 text-lg font-semibold text-slate-300">
-            {messages.artifacts}
-          </h4>
+
+        <div className="space-y-2">
+          <h4 className="font-medium text-white">{messages.artifacts}</h4>
           {build?.artifacts.map((set, i) => (
             <ArtifactCard
               key={`${set.join("")}`}
@@ -67,15 +65,6 @@ const CharacterCommonBuildCard = ({
           ))}
         </div>
       </div>
-      <Link
-        href={`/${locale}/profile`}
-        className="hover:text-slate-100"
-        prefetch={false}
-      >
-        <i>{messages.disclaimer}</i>
-      </Link>
     </div>
   );
-};
-
-export default CharacterCommonBuildCard;
+}

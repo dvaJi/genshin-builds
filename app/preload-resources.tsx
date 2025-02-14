@@ -32,6 +32,9 @@ export function PreloadResources() {
   ReactDOM.preconnect("https://confiant-integrations.global.ssl.fastly.net", {
     crossOrigin: "anonymous",
   });
+  ReactDOM.preconnect("https://cdn.confiant-integrations.net", {
+    crossOrigin: "anonymous",
+  });
   ReactDOM.preconnect("https://securepubads.g.doubleclick.net", {
     crossOrigin: "anonymous",
   });

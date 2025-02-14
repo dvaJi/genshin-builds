@@ -50,12 +50,17 @@ function GameSelector({ currentGame, buttonClassName }: Props) {
         />
         <span className="ml-3 hidden lg:inline-block">{currentGame.name}</span>
       </SelectTrigger>
-      <SelectContent className="border border-border bg-card" align="start">
+      <SelectContent 
+        className="border border-border bg-card z-[100]" 
+        align="start"
+        onClick={(e) => e.stopPropagation()}
+      >
         {Object.values(GAME).map((game) => (
           <SelectItem
             key={game.slug}
             value={game.slug}
             className="focus:bg-accent focus:text-accent-foreground"
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-3">
               <Image
