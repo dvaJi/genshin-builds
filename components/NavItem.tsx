@@ -6,13 +6,13 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 
-type RouteChild = {
+export type RouteChild = {
   id: string;
   name: string;
   href: string;
 };
 
-type RouteType = {
+export type RouteType = {
   id: string;
   name: string;
   href?: string;
