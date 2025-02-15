@@ -48,7 +48,7 @@ export async function generateMetadata({
   const { t, langData } = await getTranslations(
     lang,
     "wuthering-waves",
-    "character"
+    "character",
   );
   const character = await getWWData<Characters>({
     resource: "characters",
@@ -79,7 +79,7 @@ export default async function CharacterPage({ params }: Props) {
   const { t, langData } = await getTranslations(
     lang,
     "wuthering-waves",
-    "character"
+    "character",
   );
   const character = await getWWData<Characters>({
     resource: "characters",
@@ -140,7 +140,7 @@ export default async function CharacterPage({ params }: Props) {
       });
       return acc;
     },
-    {} as Record<number, Ascension>
+    {} as Record<number, Ascension>,
   );
 
   const talentLevelupMaterials = Object.values(character.skillTrees).reduce(
@@ -156,7 +156,7 @@ export default async function CharacterPage({ params }: Props) {
       });
       return acc;
     },
-    {} as Record<number, Ascension>
+    {} as Record<number, Ascension>,
   );
 
   return (
@@ -185,7 +185,7 @@ export default async function CharacterPage({ params }: Props) {
             </div>
             <Link
               href={`/${langData}/wuthering-waves/characters/${character.id}/info`}
-              className="rounded-md border border-ww-700 bg-ww-900 px-3 py-2 text-xs text-white hover:bg-ww-800"
+              className="rounded-md border border-primary bg-background px-3 py-2 text-xs text-white hover:bg-accent"
             >
               {t("story_and_voice")}
             </Link>
@@ -342,7 +342,7 @@ export default async function CharacterPage({ params }: Props) {
                         prefetch={false}
                       >
                         <div
-                          className={`overflow-hidden rounded transition-all rarity-${e.intensityCode} ring-0 ring-ww-800 group-hover:ring-4`}
+                          className={`overflow-hidden rounded transition-all rarity-${e.intensityCode} ring-0 ring-primary group-hover:ring-4`}
                         >
                           <Image
                             className="transition-transform ease-in-out group-hover:scale-110"
@@ -359,7 +359,7 @@ export default async function CharacterPage({ params }: Props) {
                     )}
                   </div>
                   <p
-                    className="col-span-7 m-4 border-l-4 border-ww-700 p-2 pl-4 text-sm md:col-span-4"
+                    className="col-span-7 m-4 border-l-4 border-primary p-2 pl-4 text-sm md:col-span-4"
                     dangerouslySetInnerHTML={{ __html: set.explanation }}
                   />
                 </div>
@@ -387,7 +387,7 @@ export default async function CharacterPage({ params }: Props) {
                     prefetch={false}
                   >
                     <div
-                      className={`overflow-hidden rounded transition-all rarity-${e.intensityCode} ring-0 ring-ww-800 group-hover:ring-4`}
+                      className={`overflow-hidden rounded transition-all rarity-${e.intensityCode} ring-0 ring-primary group-hover:ring-4`}
                     >
                       <Image
                         className="transition-transform ease-in-out group-hover:scale-110"
@@ -400,7 +400,7 @@ export default async function CharacterPage({ params }: Props) {
                     <h4>{e.name}</h4>
                   </Link>
                   <p
-                    className="col-span-8 m-4 border-l-4 border-ww-700 p-2 pl-4 text-sm"
+                    className="col-span-8 m-4 border-l-4 border-primary p-2 pl-4 text-sm"
                     dangerouslySetInnerHTML={{ __html: echo.explanation }}
                   />
                 </div>
@@ -451,7 +451,7 @@ export default async function CharacterPage({ params }: Props) {
                   </div>
                   {substat}
                 </div>
-              )
+              ),
             )}
           </div>
         </div>
@@ -474,7 +474,7 @@ export default async function CharacterPage({ params }: Props) {
               <div
                 className={cn(
                   "flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden rounded border border-ww-600",
-                  `rarity-${w.rarity}`
+                  `rarity-${w.rarity}`,
                 )}
               >
                 <Image
@@ -498,7 +498,7 @@ export default async function CharacterPage({ params }: Props) {
       </h2>
       <div className="relative z-20 mx-2 mb-6 rounded border border-zinc-800 bg-zinc-900 p-4 lg:mx-0">
         {buildsAndTeams?.builds.tipsAndTricks.map((tip) => (
-          <div key={tip} className="m-4 border-l-4 border-ww-700 p-2 pl-4">
+          <div key={tip} className="m-4 border-l-4 border-primary p-2 pl-4">
             <div className="text-sm font-normal leading-relaxed">{tip}</div>
           </div>
         ))}
@@ -522,7 +522,7 @@ export default async function CharacterPage({ params }: Props) {
                 const role = comp.role;
                 const char = slugify2(comp.character).replace(
                   "rover-",
-                  "rover_"
+                  "rover_",
                 );
                 const c = charactersMap[char];
 
@@ -535,8 +535,10 @@ export default async function CharacterPage({ params }: Props) {
                       <div className="flex h-[124px] w-[124px] items-center justify-center rounded bg-ww-950">
                         <LucideUser size={80} />
                       </div>
-                      <h4>{char}</h4>
-                      <div className="text-sm text-ww-300">{role}</div>
+                      <h4 className="text-card-foreground">{char}</h4>
+                      <div className="text-sm text-muted-foreground">
+                        {role}
+                      </div>
                     </div>
                   );
                 }
@@ -549,7 +551,7 @@ export default async function CharacterPage({ params }: Props) {
                     prefetch={false}
                   >
                     <div
-                      className={`overflow-hidden rounded transition-all rarity-${c.rarity} ring-0 ring-ww-800 group-hover:ring-4`}
+                      className={`overflow-hidden rounded transition-all rarity-${c.rarity} ring-0 ring-primary group-hover:ring-4`}
                     >
                       <Image
                         className="transition-transform ease-in-out group-hover:scale-110"
@@ -559,15 +561,15 @@ export default async function CharacterPage({ params }: Props) {
                         height={124}
                       />
                     </div>
-                    <h4>{c?.name || char}</h4>
-                    <div className="text-sm text-ww-300">{role}</div>
+                    <h4 className="text-card-foreground">{c?.name || char}</h4>
+                    <div className="text-sm text-muted-foreground">{role}</div>
                   </Link>
                 );
               })}
             </div>
             <div className="col-span-12 md:col-span-6">
               <p
-                className="m-4 border-l-4 border-ww-700 p-2 pl-4 text-sm"
+                className="m-4 border-l-4 border-primary p-2 pl-4 text-sm"
                 dangerouslySetInnerHTML={{
                   __html: (team.strategy ?? []).join(", "),
                 }}
@@ -603,7 +605,7 @@ export default async function CharacterPage({ params }: Props) {
               dangerouslySetInnerHTML={{
                 __html: formatSimpleDesc(
                   tree.skill.desc.replace(/\\n/g, "<br>"),
-                  tree.skill.param
+                  tree.skill.param,
                 ),
               }}
             />
@@ -640,7 +642,7 @@ export default async function CharacterPage({ params }: Props) {
               dangerouslySetInnerHTML={{
                 __html: formatSimpleDesc(
                   skill.desc.replace(/\\n/g, "<br>"),
-                  skill.param
+                  skill.param,
                 ),
               }}
             />
