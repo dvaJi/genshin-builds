@@ -87,7 +87,7 @@ export default function TOFHeader({ locale }: Props) {
   };
 
   return (
-    <nav className="sticky left-0 top-0 z-50 w-full border-b border-vulcan-700 bg-vulcan-900/80 shadow-md backdrop-blur-md md:border-b-0">
+    <nav className="z-50 w-full border-b border-vulcan-700 bg-vulcan-900 shadow-md md:border-b-0">
       <div className="mx-auto block w-full max-w-6xl items-center px-2 py-1 text-sm sm:px-4 sm:py-2 md:flex md:py-0">
         <div className="flex h-12 items-center justify-between pr-2 sm:pr-4 md:inline-block md:h-auto md:pr-0">
           <Link
