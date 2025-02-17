@@ -30,23 +30,28 @@ export async function getGenshinCharacterDetail(id: string, language: string) {
   url.searchParams.append("id", id);
   url.searchParams.append("language", language);
 
-  const res = await fetch(url.toString(), {
-    method: "GET",
-    next: {
-      tags: ["genshin-data", "genshin-character-detail"],
-    },
-  });
+  try {
+    const res = await fetch(url.toString(), {
+      method: "GET",
+      next: {
+        tags: ["genshin-data", "genshin-character-detail"],
+      },
+    });
 
-  return res.json() as Promise<{
-    character: Character;
-    weapons: Record<string, Weapon>;
-    artifacts: Record<string, Artifact>;
-    builds: CharBuild[];
-    buildsNotes?: string;
-    mubuild: MostUsedBuild;
-    charactersMap: Record<string, Character>;
-    teams: TeamData[];
-  }>;
+    return res.json() as Promise<{
+      character: Character;
+      weapons: Record<string, Weapon>;
+      artifacts: Record<string, Artifact>;
+      builds: CharBuild[];
+      buildsNotes?: string;
+      mubuild: MostUsedBuild;
+      charactersMap: Record<string, Character>;
+      teams: TeamData[];
+    }>;
+  } catch (error) {
+    console.log(url, error);
+    throw error;
+  }
 }
 
 export async function getGenshinCharacterTeams(id: string, language: string) {
@@ -57,21 +62,25 @@ export async function getGenshinCharacterTeams(id: string, language: string) {
   url.searchParams.append("language", language);
 
   console.log(url.toString());
-  const res = await fetch(url.toString(), {
-    method: "GET",
-    next: {
-      tags: ["genshin-data", "genshin-teams"],
-      revalidate: 0,
-    },
-  });
+  try {
+    const res = await fetch(url.toString(), {
+      method: "GET",
+      next: {
+        tags: ["genshin-data", "genshin-teams"],
+      },
+    });
 
-  return res.json() as Promise<{
-    overview: string;
-    teams: TeamData[];
-    weaponsMap: Record<string, Weapon>;
-    charactersMap: Record<string, Character>;
-    artifactsMap: Record<string, Artifact>;
-  }>;
+    return res.json() as Promise<{
+      overview: string;
+      teams: TeamData[];
+      weaponsMap: Record<string, Weapon>;
+      charactersMap: Record<string, Character>;
+      artifactsMap: Record<string, Artifact>;
+    }>;
+  } catch (error) {
+    console.log(url, error);
+    throw error;
+  }
 }
 
 export async function getGenshinData<T>(options: APIOptions): Promise<T> {
