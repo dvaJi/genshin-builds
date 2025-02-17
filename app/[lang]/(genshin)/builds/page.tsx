@@ -61,27 +61,23 @@ export default async function GenshinCharacterPage({ params }: Props) {
         resource: "characters",
         language: langData as any,
         select: ["id", "name", "rarity", "element"],
-        revalidate: 0,
       }),
       getGenshinData<Record<string, Build>>({
         resource: "builds",
         language: langData as any,
         asMap: true,
-        revalidate: 0,
       }),
       getGenshinData<Record<string, Weapon>>({
         resource: "weapons",
         language: langData as any,
         select: ["id", "name", "rarity", "stats"],
         asMap: true,
-        revalidate: 0,
       }),
       getGenshinData<Record<string, Artifact>>({
         resource: "artifacts",
         language: langData as any,
         select: ["id", "name", "max_rarity", "two_pc", "four_pc"],
         asMap: true,
-        revalidate: 0,
       }),
     ]);
 

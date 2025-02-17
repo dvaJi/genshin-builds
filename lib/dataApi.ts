@@ -61,7 +61,6 @@ export async function getGenshinCharacterTeams(id: string, language: string) {
   url.searchParams.append("id", id);
   url.searchParams.append("language", language);
 
-  console.log(url.toString());
   try {
     const res = await fetch(url.toString(), {
       method: "GET",
