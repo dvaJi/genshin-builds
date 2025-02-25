@@ -173,37 +173,40 @@ export default async function CharactersPage({ params }: Props) {
 
   return (
     <div className="relative mx-2 max-w-screen-lg md:mx-auto">
-      <div className="mb-5 flex gap-4">
+      <div className="mb-5 flex flex-col sm:flex-row gap-4">
         <Image
           src={`/characters/portrait_${character.id}_2.webp`}
           width={200}
           height={200}
           alt={character.fullname}
+          className="mx-auto sm:mx-0 w-48 sm:w-auto"
         />
-        <div>
-          <h1 className="text-2xl font-semibold md:text-5xl">
-            Zenless Zone Zero (ZZZ) {character.fullname} Build
+        <div className="text-center sm:text-left">
+          <h1 className="text-3xl md:text-5xl font-semibold mb-2">
+            {character.fullname} Build Guide
           </h1>
-          <p>
-            <b>Rarity</b>:{" "}
-            <Image
-              src={`/icons/rank_${character.rarity}.png`}
-              width={24}
-              height={24}
-              alt={character.rarity >= 4 ? "S" : "A"}
-              className="inline"
-            />{" "}
-            Rank
-          </p>
-          <p>
-            <b>Element</b>: {character.element}
-          </p>
-          <p>
-            <b>House</b>: {character.house}
-          </p>
-          <p>
-            <b>Type</b>: {character.type}
-          </p>
+          <div className="space-y-1 text-sm md:text-base">
+            <p>
+              <b>Rarity</b>:{" "}
+              <Image
+                src={`/icons/rank_${character.rarity}.png`}
+                width={24}
+                height={24}
+                alt={character.rarity >= 4 ? "S" : "A"}
+                className="inline"
+              />{" "}
+              Rank
+            </p>
+            <p>
+              <b>Element</b>: {character.element}
+            </p>
+            <p>
+              <b>House</b>: {character.house}
+            </p>
+            <p>
+              <b>Type</b>: {character.type}
+            </p>
+          </div>
         </div>
       </div>
       <FrstAds
@@ -235,7 +238,7 @@ export default async function CharactersPage({ params }: Props) {
           />
           <FrstAds
             placementName="genshinbuilds_incontent_2"
-            classList={["flex", "justify-center"]}
+            classList={["flex", "justify-center", "my-4"]}
           />
           <SkillPriority
             characterName={character.fullname}
@@ -246,39 +249,43 @@ export default async function CharactersPage({ params }: Props) {
 
       <FrstAds
         placementName="genshinbuilds_incontent_3"
-        classList={["flex", "justify-center"]}
+        classList={["flex", "justify-center", "my-4"]}
       />
-      <h2 className="text-2xl font-semibold">{character.name} Skills</h2>
-      <div className="mb-4 flex flex-col gap-2">
-        {character.skills.map((skill) => (
-          <Skill
-            key={skill.name + skill.title}
-            icon={`${skill.group?.toLowerCase()}.png`}
-            name={skill.name}
-            title={skill.title ?? ""}
-            description={skill.description}
-          />
-        ))}
+      <div className="space-y-4">
+        <h2 className="text-2xl md:text-3xl font-semibold">{character.name} Skills</h2>
+        <div className="flex flex-col gap-2">
+          {character.skills.map((skill) => (
+            <Skill
+              key={skill.name + skill.title}
+              icon={`${skill.group?.toLowerCase()}.png`}
+              name={skill.name}
+              title={skill.title ?? ""}
+              description={skill.description}
+            />
+          ))}
+        </div>
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_4"
-        classList={["flex", "justify-center"]}
+        classList={["flex", "justify-center", "my-4"]}
       />
-      <h2 className="text-2xl font-semibold">{character.name} Talents</h2>
-      <div className="flex flex-col gap-2">
-        {character.talents.map((talent) => (
-          <Skill
-            key={talent.name + talent.title}
-            icon={`${talent.title?.toLowerCase()}.png`}
-            name={talent.name}
-            title={talent.title ?? ""}
-            description={talent.description}
-          />
-        ))}
+      <div className="space-y-4">
+        <h2 className="text-2xl md:text-3xl font-semibold">{character.name} Talents</h2>
+        <div className="flex flex-col gap-2">
+          {character.talents.map((talent) => (
+            <Skill
+              key={talent.name + talent.title}
+              icon={`${talent.title?.toLowerCase()}.png`}
+              name={talent.name}
+              title={talent.title ?? ""}
+              description={talent.description}
+            />
+          ))}
+        </div>
       </div>
       <FrstAds
         placementName="genshinbuilds_incontent_5"
-        classList={["flex", "justify-center"]}
+        classList={["flex", "justify-center", "my-4"]}
       />
     </div>
   );

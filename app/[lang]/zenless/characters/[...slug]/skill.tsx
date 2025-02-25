@@ -10,10 +10,10 @@ type Props = {
 
 export default function Skill({ icon, name, title, description }: Props) {
   return (
-    <div className="flex gap-2 rounded-lg border-2 border-neutral-600 bg-neutral-900 p-2">
-      <div className="flex w-[120px] min-w-[120px] flex-col items-center justify-center">
+    <div className="flex flex-col sm:flex-row gap-2 rounded-lg border-2 border-neutral-600 bg-neutral-900 p-3 md:p-4">
+      <div className="flex sm:w-[120px] sm:min-w-[120px] flex-row sm:flex-col items-center gap-2 sm:justify-center">
         <Image
-          className="mr-2 h-12 w-12"
+          className="h-10 w-10 sm:h-12 sm:w-12"
           src={`/icons/${icon}`}
           alt={name}
           width={48}
@@ -23,10 +23,10 @@ export default function Skill({ icon, name, title, description }: Props) {
       </div>
       <div>
         <div className="flex">
-          <h4 className="font-semibold">{name}</h4>
+          <h4 className="font-semibold text-sm md:text-base">{name}</h4>
         </div>
         <p
-          className="character__skill-description whitespace-pre-line"
+          className="character__skill-description whitespace-pre-line text-sm md:text-base"
           dangerouslySetInnerHTML={{
             __html: description
               .replaceAll("color: #FFFFFF", "font-weight: bold")

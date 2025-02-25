@@ -25,28 +25,28 @@ export default function Builds({
 }: Props) {
   return (
     <div>
-      <h2 className="text-2xl font-semibold">{characterName} Best Builds</h2>
+      <h2 className="text-2xl md:text-3xl font-semibold mb-4">{characterName} Best Builds</h2>
       {builds.map((b) => (
         <div
           key={b.name}
-          className="mb-4 flex flex-col gap-2 rounded-lg border-2 border-neutral-600 bg-neutral-900 p-2"
+          className="mb-4 flex flex-col gap-4 rounded-lg border-2 border-neutral-600 bg-neutral-900 p-3 md:p-4"
         >
           <h3 className="text-xl font-semibold">{b.name}</h3>
           <p
             className="text-neutral-200"
             dangerouslySetInnerHTML={{ __html: b.overview }}
           />
-          <div className="flex flex-wrap justify-between">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <h4 className="text-lg">Best W-Engines</h4>
-              <div className="flex flex-col gap-1 p-2">
+              <h4 className="text-lg font-medium mb-2">Best W-Engines</h4>
+              <div className="flex flex-col gap-2">
                 {b["w-engines"].map((w) => (
                   <Link
                     key={w}
                     href={`/${lang}/zenless/w-engines/${w}`}
-                    className="group rounded-md ring-neutral-600 hover:ring-2"
+                    className="group rounded-md ring-neutral-600 hover:ring-2 p-1"
                   >
-                    <div className="flex gap-2">
+                    <div className="flex items-center gap-2">
                       <Image
                         src={`/w-engines/${wEnginesMap[w].icon}.webp`}
                         width={48}
@@ -54,7 +54,7 @@ export default function Builds({
                         alt={wEnginesMap[w].name}
                       />
                       <div className="flex flex-col">
-                        <h5 className="group-hover:text-yellow-400">
+                        <h5 className="group-hover:text-yellow-400 font-medium">
                           {wEnginesMap[w].name}
                         </h5>
                         <div className="flex">
@@ -77,15 +77,15 @@ export default function Builds({
               </div>
             </div>
             <div>
-              <h4 className="text-xl">Drive Disc Build</h4>
-              <div className="flex flex-col gap-1 p-2">
+              <h4 className="text-lg font-medium mb-2">Drive Disc Build</h4>
+              <div className="flex flex-col gap-2">
                 {b["drive-disc"].map((d) => (
                   <Link
                     key={d.name}
                     href={`/${lang}/zenless/disk-drives/${d.name}`}
-                    className="group rounded-md ring-neutral-600 hover:ring-2"
+                    className="group rounded-md ring-neutral-600 hover:ring-2 p-1"
                   >
-                    <div className="flex gap-2">
+                    <div className="flex items-center gap-2">
                       <Image
                         src={`/disk-drives/${diskDrivesMap[d.name]?.icon}.webp`}
                         width={46}
@@ -93,10 +93,10 @@ export default function Builds({
                         alt={diskDrivesMap[d.name]?.name ?? d.name}
                       />
                       <div className="flex flex-col">
-                        <h5 className="group-hover:text-yellow-400">
+                        <h5 className="group-hover:text-yellow-400 font-medium">
                           {diskDrivesMap[d.name]?.name ?? d.name}
                         </h5>
-                        <p className="text-sm">{d.pieces} PC</p>
+                        <p className="text-sm text-neutral-300">{d.pieces} PC</p>
                       </div>
                     </div>
                   </Link>
@@ -104,15 +104,15 @@ export default function Builds({
               </div>
             </div>
             <div>
-              <h4 className="text-xl">Drive Main Stats</h4>
-              <div className="flex flex-col gap-1 p-2">
+              <h4 className="text-lg font-medium mb-2">Drive Main Stats</h4>
+              <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
-                  <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm">
+                  <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm font-medium">
                     6
                   </span>
-                  <div className="flex flex-wrap">
+                  <div className="flex flex-wrap gap-1">
                     {b["main-stats"]["6"].map((sarr) => (
-                      <div key={sarr.join()}>
+                      <div key={sarr.join()} className="text-sm">
                         {sarr
                           .map((s) => commons[s as keyof Commons])
                           .join(" - ")}
@@ -121,12 +121,12 @@ export default function Builds({
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm">
+                  <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm font-medium">
                     5
                   </span>
-                  <div className="flex flex-wrap">
+                  <div className="flex flex-wrap gap-1">
                     {b["main-stats"]["5"].map((sarr) => (
-                      <div key={sarr.join()}>
+                      <div key={sarr.join()} className="text-sm">
                         {sarr
                           .map((s) => commons[s as keyof Commons])
                           .join(" - ")}
@@ -135,12 +135,12 @@ export default function Builds({
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm">
+                  <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm font-medium">
                     4
                   </span>
-                  <div className="flex flex-wrap">
+                  <div className="flex flex-wrap gap-1">
                     {b["main-stats"]["4"].map((sarr) => (
-                      <div key={sarr.join()}>
+                      <div key={sarr.join()} className="text-sm">
                         {sarr
                           .map((s) => commons[s as keyof Commons])
                           .join(" - ")}
@@ -151,10 +151,10 @@ export default function Builds({
               </div>
             </div>
             <div>
-              <h4 className="text-xl">Drive Substats</h4>
-              <div className="flex flex-col gap-1 p-2">
+              <h4 className="text-lg font-medium mb-2">Drive Substats</h4>
+              <div className="flex flex-col gap-2">
                 {b["sub-stats"].map((sarr) => (
-                  <div key={sarr.join()}>
+                  <div key={sarr.join()} className="text-sm">
                     {sarr.map((s) => commons[s as keyof Commons]).join(" - ")}
                   </div>
                 ))}

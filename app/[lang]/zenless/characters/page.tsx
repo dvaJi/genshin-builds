@@ -40,15 +40,15 @@ export default async function CharactersPage({ params }: Props) {
     })
   )?.sort((a, b) => a.name.localeCompare(b.name));
   return (
-    <div className="relative">
-      <h1 className="text-6xl font-semibold">Characters</h1>
-      <p>A complete list of all playable characters in Zenless Zone Zero.</p>
+    <div className="relative px-4 md:px-0">
+      <h1 className="text-4xl md:text-6xl font-semibold">Characters</h1>
+      <p className="text-sm md:text-base mt-2">A complete list of all playable characters in Zenless Zone Zero.</p>
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-1 md:gap-4">
+      <div className="mt-4 md:mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-4">
         {data?.map((character) => (
           <Link
             key={character.id}
@@ -56,7 +56,7 @@ export default async function CharactersPage({ params }: Props) {
             className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
             prefetch={false}
           >
-            <div className="flex aspect-square h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
+            <div className="flex aspect-square h-auto md:h-40 items-center justify-center rounded-t bg-black group-hover:bg-[#fbfe00]">
               <Image
                 className="max-w-max"
                 src={`/characters/portrait_${character.id}_2.webp`}
@@ -66,13 +66,13 @@ export default async function CharactersPage({ params }: Props) {
               />
             </div>
             <div
-              className="absolute bottom-0 flex h-7 w-full items-center justify-center"
+              className="absolute bottom-0 flex h-6 md:h-7 w-full items-center justify-center"
               style={{
                 background:
                   "repeating-linear-gradient( -45deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5) 3px, rgba(60,60,60,0.5) 3px, rgba(60, 60, 60,0.5) 7px )",
               }}
             >
-              <h2 className="font-bold text-white">{character.name}</h2>
+              <h2 className="text-sm md:text-base font-bold text-white truncate px-2">{character.name}</h2>
             </div>
           </Link>
         ))}
