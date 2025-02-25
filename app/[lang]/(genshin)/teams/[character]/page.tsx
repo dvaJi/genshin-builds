@@ -293,7 +293,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                   classList={["flex", "justify-center"]}
                 />
               ) : null}
-              {index === 3 ? (
+              {index > 2 ? (
                 <FrstAds
                   placementName="genshinbuilds_incontent_5"
                   classList={["flex", "justify-center"]}
@@ -303,12 +303,10 @@ export default async function GenshinCharacterTeams({ params }: Props) {
           ))}
         </div>
       </div>
-      {detail.teams.length <= 3 ? (
         <FrstAds
-          placementName={`genshinbuilds_incontent_${detail.teams.length + 2}`}
+          placementName="genshinbuilds_incontent_5"
           classList={["flex", "justify-center"]}
         />
-      ) : null}
     </div>
   );
 }
