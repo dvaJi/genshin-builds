@@ -58,7 +58,7 @@ export function CharacterCard({
             <CardTitle className="text-xl">
               <Link
                 className="hover:underline"
-                href={`/${locale}/characters/${characterTeam.id}`}
+                href={`/${locale}/teams/${characterTeam.id}`}
               >
                 {character.name}
               </Link>

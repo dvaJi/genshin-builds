@@ -184,9 +184,9 @@ export default async function GenshinCharacterTeams({ params }: Props) {
               <GoTo
                 elementId={`#team_${index + 1}`}
                 key={team.name + team.characters.map((c) => c.id).join("")}
-                className="container card flex flex-row items-center gap-5 transition hover:text-accent hover:ring-4 hover:ring-accent"
+                className="container card flex flex-col md:flex-row items-center gap-5 transition hover:text-accent hover:ring-4 hover:ring-accent"
               >
-                <div className="flex w-[49%] flex-col items-center">
+                <div className="flex md:w-[49%] flex-col items-center">
                   <div className="">
                     <Badge variant="secondary">#{index + 1}</Badge>
                     <Badge
@@ -200,7 +200,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                     {team.name}
                   </h3>
                 </div>
-                <div className="relative flex w-[50%] gap-2">
+                <div className="relative grid grid-cols-2 md:flex md:w-[50%] gap-2">
                   {team.characters.map((char) => (
                     <Link
                       key={char.id + team.name}
@@ -269,7 +269,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                 </div>
                 <p className="text-secondary-foreground">{team.description}</p>
               </div>
-              <div className="hidden grid-cols-2 gap-6 lg:grid">
+              <div className="grid-cols-1 md:grid-cols-2 gap-6 grid">
                 {team.characters.map((char) => (
                   <CharacterCard
                     key={char.id}
