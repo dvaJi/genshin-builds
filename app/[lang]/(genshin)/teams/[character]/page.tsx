@@ -184,9 +184,9 @@ export default async function GenshinCharacterTeams({ params }: Props) {
               <GoTo
                 elementId={`#team_${index + 1}`}
                 key={team.name + team.characters.map((c) => c.id).join("")}
-                className="container card flex flex-col md:flex-row items-center gap-5 transition hover:text-accent hover:ring-4 hover:ring-accent"
+                className="container card flex flex-col items-center gap-5 transition hover:text-accent hover:ring-4 hover:ring-accent md:flex-row"
               >
-                <div className="flex md:w-[49%] flex-col items-center">
+                <div className="flex flex-col items-center md:w-[49%]">
                   <div className="">
                     <Badge variant="secondary">#{index + 1}</Badge>
                     <Badge
@@ -200,7 +200,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                     {team.name}
                   </h3>
                 </div>
-                <div className="relative grid grid-cols-2 md:flex md:w-[50%] gap-2">
+                <div className="relative grid grid-cols-2 gap-2 md:flex md:w-[50%]">
                   {team.characters.map((char) => (
                     <Link
                       key={char.id + team.name}
@@ -267,9 +267,12 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                     {t("tier_num", { num: team.tier })}
                   </Badge>
                 </div>
-                <p className="text-secondary-foreground">{team.description}</p>
+                <p
+                  className="text-secondary-foreground"
+                  dangerouslySetInnerHTML={{ __html: team.description ?? "" }}
+                />
               </div>
-              <div className="grid-cols-1 md:grid-cols-2 gap-6 grid">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {team.characters.map((char) => (
                   <CharacterCard
                     key={char.id}
@@ -303,10 +306,10 @@ export default async function GenshinCharacterTeams({ params }: Props) {
           ))}
         </div>
       </div>
-        <FrstAds
-          placementName="genshinbuilds_incontent_5"
-          classList={["flex", "justify-center"]}
-        />
+      <FrstAds
+        placementName="genshinbuilds_incontent_5"
+        classList={["flex", "justify-center"]}
+      />
     </div>
   );
 }

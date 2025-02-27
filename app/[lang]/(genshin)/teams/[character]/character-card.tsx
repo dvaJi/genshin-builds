@@ -80,7 +80,10 @@ export function CharacterCard({
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm text-slate-400">{characterTeam.description}</p>
+        <p
+          className="text-sm text-slate-400"
+          dangerouslySetInnerHTML={{ __html: characterTeam.description ?? "" }}
+        />
 
         <div className="space-y-4">
           <div>
