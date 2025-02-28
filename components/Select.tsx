@@ -13,6 +13,7 @@ type SelectProps = {
   onChange: (value: Option) => void;
   itemsListRender: (option: Option) => React.ReactNode;
   selectedIconRender?: (option: Option) => React.ReactNode;
+  groupBy?: (option: Option) => string;
 };
 
 const Select = ({
@@ -20,6 +21,7 @@ const Select = ({
   onChange,
   itemsListRender,
   selectedIconRender,
+  groupBy,
   ...props
 }: SelectProps) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -29,9 +31,24 @@ const Select = ({
 
   const filteredOptions = useMemo<Option[]>(() => {
     return options.filter((op) =>
-      op.name.toLowerCase().includes(filter.toLowerCase())
+      op.name.toLowerCase().includes(filter.toLowerCase()),
     );
   }, [filter, options]);
+
+  // Group options if groupBy function is provided
+  const groupedOptions = useMemo(() => {
+    if (!groupBy) return null;
+
+    const groups: Record<string, Option[]> = {};
+    filteredOptions.forEach((option) => {
+      const group = groupBy(option);
+      if (!groups[group]) {
+        groups[group] = [];
+      }
+      groups[group].push(option);
+    });
+    return groups;
+  }, [filteredOptions, groupBy]);
 
   const placeholder = props.placeholder || "Select";
 
@@ -54,43 +71,65 @@ const Select = ({
       <div
         className={clsx(
           "options absolute z-50 flex min-h-full w-full flex-col rounded-lg border border-gray-900 bg-vulcan-700 pl-2 text-white shadow-lg",
-          isFocused ? "" : "hidden"
+          isFocused ? "" : "hidden",
         )}
       >
         {filteredOptions.length ? (
           <div className="h-64 overflow-x-auto">
-            {filteredOptions.map((option) => (
-              <span
-                key={option.name}
-                onClick={() => {
-                  setSelected(option);
-                  onChange(option);
-                  setFilter("");
+            {groupedOptions
+              ? // Render grouped options
+                Object.entries(groupedOptions).map(([group, options]) => (
+                  <div key={group}>
+                    <div className="px-3 py-2 text-xs font-semibold text-gray-400">
+                      {group}
+                    </div>
+                    {options.map((option) => (
+                      <span
+                        key={option.name}
+                        onClick={() => {
+                          setSelected(option);
+                          onChange(option);
+                          setFilter("");
 
-                  if (props.clearOnSelect) {
-                    setSelected(options[0]);
-                  }
-                }}
-                className={clsx(
-                  "mr-2 flex cursor-pointer rounded-md p-3 hover:bg-vulcan-600",
-                  {
-                    "bg-vulcan-500": selected === option,
-                  }
-                )}
-              >
-                {itemsListRender(option)}
-                {/* <img
-                  className="w-6 h-6 mr-3"
-                  src={getUrl(
-                    `/characters/${option.id}/image.png`,
-                    32,
-                    32
-                  )}
-                  alt={option.name}
-                />
-                <span className="flex-1 text-base">{option.name}</span> */}
-              </span>
-            ))}
+                          if (props.clearOnSelect) {
+                            setSelected(options[0]);
+                          }
+                        }}
+                        className={clsx(
+                          "mr-2 flex cursor-pointer rounded-md p-3 hover:bg-vulcan-600",
+                          {
+                            "bg-vulcan-500": selected === option,
+                          },
+                        )}
+                      >
+                        {itemsListRender(option)}
+                      </span>
+                    ))}
+                  </div>
+                ))
+              : // Render ungrouped options
+                filteredOptions.map((option) => (
+                  <span
+                    key={option.name}
+                    onClick={() => {
+                      setSelected(option);
+                      onChange(option);
+                      setFilter("");
+
+                      if (props.clearOnSelect) {
+                        setSelected(options[0]);
+                      }
+                    }}
+                    className={clsx(
+                      "mr-2 flex cursor-pointer rounded-md p-3 hover:bg-vulcan-600",
+                      {
+                        "bg-vulcan-500": selected === option,
+                      },
+                    )}
+                  >
+                    {itemsListRender(option)}
+                  </span>
+                ))}
           </div>
         ) : (
           <span className="my-2 mr-2 flex cursor-pointer rounded-xl p-3">

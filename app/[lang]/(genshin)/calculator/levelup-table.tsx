@@ -1,7 +1,8 @@
 "use client";
 
-import { getUrl } from "@lib/imgUrl";
 import { MdArrowRightAlt } from "react-icons/md";
+
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   heros_wit: string;
@@ -124,58 +125,113 @@ export function LevelUpTable({
   }
 
   return (
-    <div className="card block w-full overflow-x-auto whitespace-nowrap">
-      <div className="table w-full">
-        <div className="bg-item w-full rounded-xl p-4">
-          <table>
-            <tr>
-              <th className="font-display px-2 text-gray-400" colSpan={3}>
-                {level}
-              </th>
-              <th className="font-display px-2 align-bottom text-gray-400">
-                {items}
-              </th>
-              <th className="font-display px-2 align-bottom text-gray-400">
-                {wasted}
-              </th>
-              <th className="font-display px-2 text-right align-bottom text-gray-400">
-                {mora}
-              </th>
-            </tr>
-            {result.map((row, i) => (
-              <tr key={row.mora}>
-                <td className="border-b border-gray-700 py-1 pl-2 text-center text-white">
-                  {step[i]}
-                </td>
-                <td className="border-b border-gray-700 py-1 text-center text-white">
-                  <MdArrowRightAlt className="mb-1 !inline-block text-gray-400" />
-                </td>
-                <td className="border-b border-gray-700 py-1 pr-2 text-center text-white">
-                  {step[i + 1]}
-                </td>
-                <td className="min-w-[180px] whitespace-nowrap border-b border-gray-700 px-2 py-1 text-white">
-                  {resources.map((res, j) =>
-                    row.usage[j] > 0 ? (
-                      <span className="mr-2" key={res.image + i}>
-                        <img
-                          src={res.image}
-                          alt={res.label}
-                          className="inline h-6 w-6"
-                        />
-                        <span>{row.usage[j]}</span>
-                      </span>
-                    ) : null
-                  )}
-                </td>
-                <td className="border-b border-gray-700 px-2 py-1 text-center text-white">
-                  {Math.abs(row.over)}
-                </td>
-                <td className="border-b border-gray-700 px-2 py-1 text-right text-white">
-                  {numberFormat.format(row.mora)}
-                </td>
+    <div className="card w-full overflow-hidden">
+      <div className="rounded-xl bg-vulcan-900 p-4 shadow-lg">
+        <h3 className="mb-3 text-center text-lg font-medium text-white">
+          Character Level-Up Materials
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[350px]">
+            <thead>
+              <tr>
+                <th
+                  className="px-3 py-2 text-left font-medium text-gray-300"
+                  colSpan={3}
+                >
+                  {level}
+                </th>
+                <th className="px-3 py-2 text-left font-medium text-gray-300">
+                  {items}
+                </th>
+                <th className="px-3 py-2 text-center font-medium text-gray-300">
+                  {wasted}
+                </th>
+                <th className="px-3 py-2 text-right font-medium text-gray-300">
+                  {mora}
+                </th>
               </tr>
-            ))}
+            </thead>
+            <tbody>
+              {result.map((row, i) => (
+                <tr
+                  key={`level-${step[i]}-${step[i + 1]}`}
+                  className="transition hover:bg-vulcan-800/30"
+                >
+                  <td className="border-b border-gray-700 px-3 py-2 text-center text-white">
+                    <span className="font-medium">{step[i]}</span>
+                  </td>
+                  <td className="border-b border-gray-700 px-1 py-2 text-center text-gray-400">
+                    <MdArrowRightAlt
+                      className="inline-block text-lg"
+                      aria-label="to"
+                    />
+                  </td>
+                  <td className="border-b border-gray-700 px-3 py-2 text-center text-white">
+                    <span className="font-medium">{step[i + 1]}</span>
+                  </td>
+                  <td className="min-w-[180px] border-b border-gray-700 px-3 py-2 text-white">
+                    <div className="flex flex-wrap items-center gap-1">
+                      {resources.map((res, j) =>
+                        row.usage[j] > 0 ? (
+                          <span
+                            className="flex items-center rounded bg-vulcan-800 px-1 py-0.5"
+                            key={res.image + i}
+                          >
+                            <img
+                              src={res.image}
+                              alt={res.label}
+                              className="mr-1 h-5 w-5"
+                              width={20}
+                              height={20}
+                            />
+                            <span className="text-sm">{row.usage[j]}</span>
+                          </span>
+                        ) : null,
+                      )}
+                    </div>
+                  </td>
+                  <td className="border-b border-gray-700 px-3 py-2 text-center text-amber-300">
+                    {Math.abs(row.over)}
+                  </td>
+                  <td className="border-b border-gray-700 px-3 py-2 text-right text-white">
+                    {numberFormat.format(row.mora)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
+        </div>
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-3 px-1 py-2 text-sm text-gray-300">
+          <div className="flex items-center">
+            <img
+              src={getUrl("/materials/heros_wit.png", 24)}
+              alt={heros_wit}
+              className="mr-1 h-5 w-5"
+              width={20}
+              height={20}
+            />
+            <span>{heros_wit} = 20,000 EXP</span>
+          </div>
+          <div className="flex items-center">
+            <img
+              src={getUrl("/materials/adventurers_experience.png", 24)}
+              alt={adventurers_experience}
+              className="mr-1 h-5 w-5"
+              width={20}
+              height={20}
+            />
+            <span>{adventurers_experience} = 5,000 EXP</span>
+          </div>
+          <div className="flex items-center">
+            <img
+              src={getUrl("/materials/wanderers_advice.png", 24)}
+              alt={wanderes_advice}
+              className="mr-1 h-5 w-5"
+              width={20}
+              height={20}
+            />
+            <span>{wanderes_advice} = 1,000 EXP</span>
+          </div>
         </div>
       </div>
     </div>

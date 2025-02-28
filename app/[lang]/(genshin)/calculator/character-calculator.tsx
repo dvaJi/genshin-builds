@@ -2,8 +2,10 @@
 
 import clsx from "clsx";
 import { CalculationCharacterResult } from "interfaces/calculator";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
+import { toast } from "sonner";
 
 import Select from "@components/Select";
 import SkillLabel from "@components/SkillLabel";
@@ -34,10 +36,17 @@ export function CharacterCalculator({ characters }: Props) {
   const [addedToTodo, setAddedToTodo] = useState(false);
   const { t, localeGI } = useIntl("calculator");
   const { t: tCharacter } = useIntl("character");
-  const [calculate, { called, loading, data, reset }] =
+  const [calculate, { called, loading, data, error, reset }] =
     useLazyFetch<CalculationCharacterResult>(
-      "genshin/calculate_character_level"
+      "genshin/calculate_character_level",
     );
+
+  // Reset added to todo state when data changes
+  useEffect(() => {
+    if (data) {
+      setAddedToTodo(false);
+    }
+  }, [data]);
 
   const canCalculate = useMemo(() => {
     const characterIsSelected = !!character;
@@ -65,7 +74,47 @@ export function CharacterCalculator({ characters }: Props) {
     intendedTalent3Lvl,
   ]);
 
+  const validationErrors = useMemo(() => {
+    const errors = [];
+
+    if (intendedLevel.lvl < currentLevel.lvl) {
+      errors.push(
+        t({
+          id: "intended_level_error",
+          defaultMessage: "Intended level must be higher than current level",
+        }),
+      );
+    }
+    if (intendedTalent1Lvl < currentTalent1Lvl) {
+      errors.push(
+        t({
+          id: "intended_talent_error",
+          defaultMessage:
+            "Intended talent levels must be higher than current levels",
+        }),
+      );
+    }
+
+    return errors;
+  }, [
+    currentLevel.lvl,
+    intendedLevel.lvl,
+    currentTalent1Lvl,
+    intendedTalent1Lvl,
+    t,
+  ]);
+
   const addToTodo = useCallback(() => {
+    if (!data?.items) {
+      toast.error(
+        t({
+          id: "no_data_to_add",
+          defaultMessage: "No calculation data to add to todo list",
+        }),
+      );
+      return;
+    }
+
     trackClick("calculator_add_character_todo");
     setAddedToTodo(true);
     const resourcesMap = data?.items.reduce(
@@ -73,7 +122,7 @@ export function CharacterCalculator({ characters }: Props) {
         map[item.id] = item.amount;
         return map;
       },
-      {} as Record<string, number>
+      {} as Record<string, number>,
     );
 
     todos.set([
@@ -96,6 +145,10 @@ export function CharacterCalculator({ characters }: Props) {
         resourcesMap,
       ],
     ]);
+
+    toast.success(
+      t({ id: "added_to_todo_list", defaultMessage: "Added to Todo List" }),
+    );
   }, [
     character.id,
     character.name,
@@ -105,12 +158,13 @@ export function CharacterCalculator({ characters }: Props) {
     currentTalent1Lvl,
     currentTalent2Lvl,
     currentTalent3Lvl,
-    data?.items,
+    data,
     intendedLevel.asc,
     intendedLevel.lvl,
     intendedTalent1Lvl,
     intendedTalent2Lvl,
     intendedTalent3Lvl,
+    t,
   ]);
 
   const numFormat = Intl.NumberFormat();
@@ -118,10 +172,16 @@ export function CharacterCalculator({ characters }: Props) {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
       <div>
-        <span className="my-4 text-lg">
+        <span className="my-4 block text-lg font-medium">
           {t({ id: "character_level", defaultMessage: "Character Level" })}
         </span>
-        <div>
+        <div className="mb-4">
+          <label
+            htmlFor="character-select"
+            className="mb-2 block text-sm font-medium"
+          >
+            {t({ id: "select_character", defaultMessage: "Select Character" })}
+          </label>
           <Select
             options={characters.map((c) => ({ id: c.id, name: c.name }))}
             onChange={(option) => {
@@ -149,7 +209,7 @@ export function CharacterCalculator({ characters }: Props) {
           />
         </div>
         <div className="mt-4">
-          <span>
+          <span className="mb-2 block text-sm font-medium">
             {t({ id: "current_level", defaultMessage: "Current Level" })}
           </span>
           <div className="flex flex-wrap items-center">
@@ -157,17 +217,18 @@ export function CharacterCalculator({ characters }: Props) {
               <button
                 key={level.lvl + level.asclLvl}
                 className={clsx(
-                  "m-1 flex h-10 w-10 flex-col items-center justify-center rounded-full border-2 border-vulcan-400 border-opacity-20 font-semibold leading-none transition duration-100 hover:border-opacity-100 focus:border-vulcan-500 focus:outline-none",
+                  "m-1 flex h-10 w-10 flex-col items-center justify-center rounded-full border-2 border-vulcan-400 border-opacity-20 font-semibold leading-none transition duration-100 hover:border-opacity-100 focus:border-vulcan-500 focus:outline-none focus:ring-2 focus:ring-vulcan-500/50",
                   level.lvl === currentLevel.lvl &&
                     level.asclLvl === currentLevel.asclLvl
                     ? "border-opacity-100 bg-vulcan-600 text-white"
-                    : ""
+                    : "",
                 )}
                 onClick={() => {
                   setCurrentLevel(level);
                   reset();
                   setAddedToTodo(false);
                 }}
+                aria-label={`${t({ id: "level", defaultMessage: "Level" })} ${level.lvl}${level.asc ? "+" : ""}`}
               >
                 <div className="">{level.lvl}</div>
                 <img
@@ -185,7 +246,7 @@ export function CharacterCalculator({ characters }: Props) {
           </div>
         </div>
         <div>
-          <span>
+          <span className="mb-2 mt-3 block text-sm font-medium">
             {t({ id: "intended_level", defaultMessage: "Intended Level" })}
           </span>
           <div className="flex flex-wrap items-center">
@@ -193,21 +254,30 @@ export function CharacterCalculator({ characters }: Props) {
               <button
                 key={level.lvl + level.asclLvl}
                 className={clsx(
-                  "m-1 flex h-10 w-10 flex-col items-center justify-center rounded-full border-2 border-vulcan-400 border-opacity-20 font-semibold leading-none transition duration-100 hover:border-opacity-100 focus:border-vulcan-500 focus:outline-none",
+                  "m-1 flex h-10 w-10 flex-col items-center justify-center rounded-full border-2 border-vulcan-400 border-opacity-20 font-semibold leading-none transition duration-100 hover:border-opacity-100 focus:border-vulcan-500 focus:outline-none focus:ring-2 focus:ring-vulcan-500/50",
                   level.lvl === intendedLevel.lvl &&
                     level.asclLvl === intendedLevel.asclLvl
                     ? "border-opacity-100 bg-vulcan-600 text-white"
-                    : ""
+                    : "",
+                  level.lvl < currentLevel.lvl
+                    ? "cursor-not-allowed opacity-50"
+                    : "",
                 )}
                 onClick={() => {
-                  setIntendedLevel(level);
-                  reset();
-                  setAddedToTodo(false);
+                  if (level.lvl >= currentLevel.lvl) {
+                    setIntendedLevel(level);
+                    reset();
+                    setAddedToTodo(false);
+                  }
                 }}
+                disabled={level.lvl < currentLevel.lvl}
+                aria-label={`${t({ id: "level", defaultMessage: "Level" })} ${level.lvl}${level.asc ? "+" : ""}`}
               >
                 <div className="">{level.lvl}</div>
                 <img
                   src={getUrl(`/ascension.png`, 16, 16)}
+                  width={16}
+                  height={16}
                   className={clsx("w-4", {
                     "opacity-100": level.asc,
                     "opacity-25": !level.asc,
@@ -220,7 +290,7 @@ export function CharacterCalculator({ characters }: Props) {
         </div>
       </div>
       <div>
-        <span className="my-4 text-lg">
+        <span className="my-4 block text-lg font-medium">
           {t({ id: "talents_level", defaultMessage: "Talents Level" })}
         </span>
         <div className="grid grid-cols-3 gap-2">
@@ -264,85 +334,146 @@ export function CharacterCalculator({ characters }: Props) {
             />
           </div>
         </div>
-        <div>{t({ id: "current_level", defaultMessage: "Current Level" })}</div>
+        <div>
+          <span className="mb-2 block text-sm font-medium">
+            {t({ id: "current_level", defaultMessage: "Current Level" })}
+          </span>
+        </div>
         <div className="grid grid-cols-3 gap-2">
           <Input
             type="number"
             value={currentTalent1Lvl}
             onChange={(e) => {
-              setCurrentTalent1Lvl(Number(e.target.value));
+              const value = Math.min(
+                Math.max(Number(e.target.value) || 1, 1),
+                10,
+              );
+              setCurrentTalent1Lvl(value);
               reset();
               setAddedToTodo(false);
             }}
             min="1"
             max="10"
+            aria-label={tCharacter({
+              id: "normal_attack",
+              defaultMessage: "Normal Attack",
+            })}
           />
           <Input
             type="number"
             value={currentTalent2Lvl}
             onChange={(e) => {
-              setCurrentTalent2Lvl(Number(e.target.value));
+              const value = Math.min(
+                Math.max(Number(e.target.value) || 1, 1),
+                10,
+              );
+              setCurrentTalent2Lvl(value);
               reset();
               setAddedToTodo(false);
             }}
             min="1"
             max="10"
+            aria-label={tCharacter({ id: "skill", defaultMessage: "Skill" })}
           />
           <Input
             type="number"
             value={currentTalent3Lvl}
             onChange={(e) => {
-              setCurrentTalent3Lvl(Number(e.target.value));
+              const value = Math.min(
+                Math.max(Number(e.target.value) || 1, 1),
+                10,
+              );
+              setCurrentTalent3Lvl(value);
               reset();
               setAddedToTodo(false);
             }}
             min="1"
             max="10"
+            aria-label={tCharacter({ id: "burst", defaultMessage: "Burst" })}
           />
         </div>
         <div>
-          {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+          <span className="mb-2 mt-3 block text-sm font-medium">
+            {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+          </span>
         </div>
         <div className="grid grid-cols-3 gap-2">
           <Input
             type="number"
             value={intendedTalent1Lvl}
             onChange={(e) => {
-              setIntendedTalent1Lvl(Number(e.target.value));
+              const value = Math.min(
+                Math.max(
+                  Number(e.target.value) || currentTalent1Lvl,
+                  currentTalent1Lvl,
+                ),
+                10,
+              );
+              setIntendedTalent1Lvl(value);
               reset();
               setAddedToTodo(false);
             }}
-            min="1"
+            min={currentTalent1Lvl}
             max="10"
+            aria-label={tCharacter({
+              id: "normal_attack",
+              defaultMessage: "Normal Attack",
+            })}
           />
           <Input
             type="number"
             value={intendedTalent2Lvl}
             onChange={(e) => {
-              setIntendedTalent2Lvl(Number(e.target.value));
+              const value = Math.min(
+                Math.max(
+                  Number(e.target.value) || currentTalent2Lvl,
+                  currentTalent2Lvl,
+                ),
+                10,
+              );
+              setIntendedTalent2Lvl(value);
               reset();
               setAddedToTodo(false);
             }}
-            min="1"
+            min={currentTalent2Lvl}
             max="10"
+            aria-label={tCharacter({ id: "skill", defaultMessage: "Skill" })}
           />
           <Input
             type="number"
             value={intendedTalent3Lvl}
             onChange={(e) => {
-              setIntendedTalent3Lvl(Number(e.target.value));
+              const value = Math.min(
+                Math.max(
+                  Number(e.target.value) || currentTalent3Lvl,
+                  currentTalent3Lvl,
+                ),
+                10,
+              );
+              setIntendedTalent3Lvl(value);
               reset();
               setAddedToTodo(false);
             }}
-            min="1"
+            min={currentTalent3Lvl}
             max="10"
+            aria-label={tCharacter({ id: "burst", defaultMessage: "Burst" })}
           />
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
+        {validationErrors.length > 0 && (
+          <div className="mb-4 w-full rounded-md bg-red-500/20 p-3 text-sm text-red-200">
+            <ul className="list-inside list-disc">
+              {validationErrors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div>
           <Button
-            disabled={!canCalculate}
+            disabled={!canCalculate || loading}
             onClick={() => {
               trackClick("calculate_character");
               calculate({
@@ -365,13 +496,46 @@ export function CharacterCalculator({ characters }: Props) {
               });
             }}
           >
-            {t({ id: "calculate", defaultMessage: "Calculate" })}
+            {loading ? (
+              <span className="flex items-center">
+                <FaSpinner className="mr-2 animate-spin" />
+                {t({ id: "calculating", defaultMessage: "Calculating..." })}
+              </span>
+            ) : (
+              t({ id: "calculate", defaultMessage: "Calculate" })
+            )}
           </Button>
         </div>
+        {error && (
+          <div className="mt-4 w-full rounded-md bg-red-500/20 p-4">
+            <p className="text-center text-red-200">
+              {t({
+                id: "calculation_error",
+                defaultMessage: "Error occurred during calculation",
+              })}
+            </p>
+          </div>
+        )}
         {called && !loading && data && (
           <div className="w-full lg:w-auto">
-            <div className="mt-2 block rounded-lg bg-vulcan-900 p-4 md:inline-block">
-              <table>
+            <div className="mt-4 block rounded-lg bg-vulcan-900 p-4 md:inline-block">
+              <h3 className="mb-2 text-center text-lg font-medium">
+                {t({
+                  id: "calculation_result",
+                  defaultMessage: "Calculation Result",
+                })}
+              </h3>
+              <table className="w-full">
+                <thead>
+                  <tr>
+                    <th className="pb-2 text-right">
+                      {t({ id: "amount", defaultMessage: "Amount" })}
+                    </th>
+                    <th className="pb-2 text-left">
+                      {t({ id: "material", defaultMessage: "Material" })}
+                    </th>
+                  </tr>
+                </thead>
                 <tbody>
                   {data.items.map((res) => (
                     <tr key={res.name}>
@@ -380,7 +544,7 @@ export function CharacterCalculator({ characters }: Props) {
                           <span className="mr-2">
                             {numFormat.format(res.amount)}
                           </span>
-                          <span>x</span>
+                          <span>×</span>
                         </div>
                       </td>
                       <td className="border-b border-gray-800 py-1">
@@ -412,9 +576,9 @@ export function CharacterCalculator({ characters }: Props) {
                   )}
                 </tbody>
               </table>
-              <div className="mt-2 flex justify-center">
+              <div className="mt-4 flex justify-center">
                 {addedToTodo ? (
-                  <div className="inline-flex content-center justify-center p-1">
+                  <div className="inline-flex items-center justify-center p-1 text-green-400">
                     <GiCheckMark className="mr-2" />
                     <span>
                       {t({

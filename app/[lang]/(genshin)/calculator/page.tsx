@@ -2,6 +2,7 @@ import { i18n } from "i18n-config";
 import type { Metadata } from "next";
 
 import { genPageMetadata } from "@app/seo";
+import { TooltipProvider } from "@app/components/ui/tooltip";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
@@ -94,76 +95,78 @@ export default async function GenshinCalculator({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <div>
-        <h3 className="text-xl text-white">
-          {t("character_ascension_calculator")}
-        </h3>
-        <p>{t("character_ascension_calculator_desc")}</p>
-      </div>
-      <div className="card">
-        <CharacterCalculator characters={characters} />
-      </div>
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
-      />
-      <div className="mt-6">
-        <h3 className="text-xl text-white">
-          {t("weapon_ascension_calculator")}
-        </h3>
-        <p>{t("weapon_ascension_calculator_desc")}</p>
-      </div>
-      <div className="card">
-        <WeaponCalculator weapons={weapons} />
-      </div>
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
-      />
-      <div className="mt-6">
-        <h3 className="text-xl text-white">{t("resin_calculator")}</h3>
-        <p>{t("resin_calculator_desc")}</p>
-      </div>
-      <ResinCalculatorForm />
-      <div className="mt-6">
-        <h3 className="text-xl text-white">{t("friendship_exp_calculator")}</h3>
-        <p>{t("friendship_exp_calculator_desc")}</p>
-      </div>
-      <FriendshipExpCalculatorForm />
-      <div className="mt-6">
-        <h3 className="text-xl text-white">{t("fate_price_calculator")}</h3>
-        <p>{t("fate_price_calculator_desc")}</p>
-      </div>
-      <FrstAds
-        placementName="genshinbuilds_incontent_2"
-        classList={["flex", "justify-center"]}
-      />
-      <FatePriceCalculatorForm />
-      <div className="mt-6">
-        <h3 className="text-xl text-white">{t("fate_count_calculator")}</h3>
-        <p>{t("fate_count_calculator_desc")}</p>
-      </div>
-      <FateCountCalculatorForm />
-      <div className="flex justify-between gap-4">
-        <LevelUpTable
-          adventurers_experience={dict.adventurers_experience}
-          heros_wit={dict.heros_wit}
-          items={dict.items}
-          level={dict.level}
-          mora={dict.mora}
-          wanderes_advice={dict.wanderes_advice}
-          wasted={dict.wasted}
+      <TooltipProvider>
+        <div>
+          <h3 className="text-xl text-white">
+            {t("character_ascension_calculator")}
+          </h3>
+          <p>{t("character_ascension_calculator_desc")}</p>
+        </div>
+        <div className="card">
+          <CharacterCalculator characters={characters} />
+        </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
         />
-        <ResinTable
-          quantity={dict.quantity}
-          time={dict.time}
-          originalResin={dict.original_resin}
+        <div className="mt-6">
+          <h3 className="text-xl text-white">
+            {t("weapon_ascension_calculator")}
+          </h3>
+          <p>{t("weapon_ascension_calculator_desc")}</p>
+        </div>
+        <div className="card">
+          <WeaponCalculator weapons={weapons} />
+        </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
         />
-      </div>
-      <FrstAds
-        placementName="genshinbuilds_incontent_3"
-        classList={["flex", "justify-center"]}
-      />
+        <div className="mt-6">
+          <h3 className="text-xl text-white">{t("resin_calculator")}</h3>
+          <p>{t("resin_calculator_desc")}</p>
+        </div>
+        <ResinCalculatorForm />
+        <div className="mt-6">
+          <h3 className="text-xl text-white">{t("friendship_exp_calculator")}</h3>
+          <p>{t("friendship_exp_calculator_desc")}</p>
+        </div>
+        <FriendshipExpCalculatorForm />
+        <div className="mt-6">
+          <h3 className="text-xl text-white">{t("fate_price_calculator")}</h3>
+          <p>{t("fate_price_calculator_desc")}</p>
+        </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_2"
+          classList={["flex", "justify-center"]}
+        />
+        <FatePriceCalculatorForm />
+        <div className="mt-6">
+          <h3 className="text-xl text-white">{t("fate_count_calculator")}</h3>
+          <p>{t("fate_count_calculator_desc")}</p>
+        </div>
+        <FateCountCalculatorForm />
+        <div className="flex justify-between gap-4">
+          <LevelUpTable
+            adventurers_experience={dict.adventurers_experience}
+            heros_wit={dict.heros_wit}
+            items={dict.items}
+            level={dict.level}
+            mora={dict.mora}
+            wanderes_advice={dict.wanderes_advice}
+            wasted={dict.wasted}
+          />
+          <ResinTable
+            quantity={dict.quantity}
+            time={dict.time}
+            originalResin={dict.original_resin}
+          />
+        </div>
+        <FrstAds
+          placementName="genshinbuilds_incontent_3"
+          classList={["flex", "justify-center"]}
+        />
+      </TooltipProvider>
     </div>
   );
 }
