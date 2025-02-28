@@ -1,15 +1,8 @@
-const isDev = process.env.IS_DEV_ENV === "true";
+import type { NextConfig } from "next";
 
-const { withAxiom } = require("next-axiom");
+import { withSentryConfig } from "@sentry/nextjs";
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
-/**
- * @type {import('next').NextConfig}
- **/
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx"],
   reactStrictMode: true,
   images: {
@@ -127,13 +120,7 @@ const nextConfig = {
   //     : undefined,
 };
 
-module.exports = withAxiom(withBundleAnalyzer(nextConfig));
-
-// Injected content via Sentry wizard below
-
-const { withSentryConfig } = require("@sentry/nextjs");
-
-module.exports = withSentryConfig(module.exports, {
+export default withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options
 
@@ -144,18 +131,8 @@ module.exports = withSentryConfig(module.exports, {
   silent: !process.env.CI,
 
   sourcemaps: {
+    disable: true,
     deleteSourcemapsAfterUpload: true,
-  },
-
-  // For all available options, see:
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-  // Upload a larger set of source maps for prettier stack traces (increases build time)
-  widenClientFileUpload: true,
-
-  // Automatically annotate React components to show their full name in breadcrumbs and session replay
-  reactComponentAnnotation: {
-    enabled: true,
   },
 
   // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
@@ -164,15 +141,6 @@ module.exports = withSentryConfig(module.exports, {
   // side errors will fail.
   // tunnelRoute: "/monitoring",
 
-  // Hides source maps from generated client bundles
-  hideSourceMaps: true,
-
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,
-
-  // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-  // See the following for more information:
-  // https://docs.sentry.io/product/crons/
-  // https://vercel.com/docs/cron-jobs
-  // automaticVercelMonitors: true,
 });

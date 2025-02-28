@@ -7,7 +7,7 @@
     "node": "22"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "postbuild": "next-sitemap",
     "lint": "next lint",
@@ -51,11 +51,11 @@
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.7",
     "drizzle-orm": "0.38.4",
-    "lucide-react": "^0.475.0",
+    "lucide-react": "^0.476.0",
     "motion": "^12.4.7",
     "nanostores": "^0.11.4",
     "negotiator": "^1.0.0",
-    "next": "15.1.7",
+    "next": "15.2.0",
     "next-axiom": "^1.9.1",
     "next-mdx-remote": "^5.0.0",
     "next-pwa": "^5.6.0",
@@ -77,22 +77,21 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "15.1.7",
-    "@next/env": "15.1.7",
+    "@next/env": "15.2.0",
     "@sentry/webpack-plugin": "^3.2.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^22.13.5",
     "@types/qrcode": "^1.5.5",
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "@types/react-lazy-load-image-component": "^1.6.4",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.30.4",
     "eslint": "^9.21.0",
-    "eslint-config-next": "15.1.7",
-    "eslint-config-prettier": "^10.0.1",
+    "eslint-config-next": "15.2.0",
+    "eslint-config-prettier": "^10.0.2",
     "postcss": "^8.5.3",
     "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
@@ -101,8 +100,8 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/react": "npm:types-react@19.0.0-rc.1",
-      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+      "@types/react": "19.0.10",
+      "@types/react-dom": "19.0.4"
     }
   }
 }

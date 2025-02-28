@@ -1,5 +1,5 @@
 {
-    "editor.tabSize": 2,
-    "typescript.preferences.preferTypeOnlyAutoImports": true,
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+  "editor.tabSize": 2,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

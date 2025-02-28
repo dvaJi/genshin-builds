@@ -83,7 +83,7 @@ function LightConeStats({ lightcone }: Props) {
       maxLevel: ascension.maxLevel,
       materials: ascension.materials || [],
     }));
-  }, [lightcone.ascend, level]);
+  }, [lightcone.ascend]);
 
   return (
     <div className="">
