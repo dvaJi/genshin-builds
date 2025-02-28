@@ -1,7 +1,8 @@
 "use client";
 
 import { redirect } from "next/navigation";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 
 import { submitHSRUID } from "@app/actions";
 import { Button } from "@app/components/ui/button";
@@ -34,7 +35,7 @@ function SubmitButton() {
 
 export function SubmitUidForm() {
   const { t } = useIntl("showcase");
-  const [state, formAction] = useFormState(submitHSRUID, initialState);
+  const [state, formAction] = useActionState(submitHSRUID, initialState);
 
   if (state?.message === "Success") {
     redirect(`/hsr/showcase/profile/${state.uid}`);

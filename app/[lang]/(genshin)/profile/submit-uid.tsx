@@ -1,7 +1,8 @@
 "use client";
 
 import { redirect } from "next/navigation";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 
 import { submitGenshinUID } from "@app/actions";
@@ -39,7 +40,7 @@ function SubmitButton() {
 }
 
 export function SubmitGenshinUidForm() {
-  const [state, formAction] = useFormState(submitGenshinUID, initialState);
+  const [state, formAction] = useActionState(submitGenshinUID, initialState);
   const { t } = useIntl("profile");
 
   if (state?.message === "Success") {

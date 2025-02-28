@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 
-import { calculateFriendshipExp } from "./actions";
 import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
+
+import { calculateFriendshipExp } from "./actions";
 
 const initialState = {
   message: "",
@@ -38,9 +39,9 @@ export function FriendshipExpCalculatorForm() {
   const ar = 50;
   const [expPercentage, setExpPercentage] = useState(20);
   const [randomEvents, setRandomEvents] = useState(0);
-  const [state, formAction] = useFormState(
+  const [state, formAction] = useActionState(
     calculateFriendshipExp,
-    initialState
+    initialState,
   );
 
   return (
@@ -111,7 +112,7 @@ export function FriendshipExpCalculatorForm() {
                 value={randomEvents}
                 onChange={(e) =>
                   setRandomEvents(
-                    Math.max(0, Math.min(10, Number(e.target.value)))
+                    Math.max(0, Math.min(10, Number(e.target.value))),
                   )
                 }
                 min="0"

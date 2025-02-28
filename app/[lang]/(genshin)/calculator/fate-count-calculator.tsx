@@ -1,13 +1,14 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { type ReactNode, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 
-import { calculateFateCount } from "./actions";
 import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
+
+import { calculateFateCount } from "./actions";
 
 const initialState = {
   message: "",
@@ -35,7 +36,7 @@ function SubmitButton({ text }: { text: ReactNode }) {
 
 export function FateCountCalculatorForm() {
   const { t } = useIntl("calculator");
-  const [state, formAction] = useFormState(calculateFateCount, initialState);
+  const [state, formAction] = useActionState(calculateFateCount, initialState);
 
   const fateValues = [
     {

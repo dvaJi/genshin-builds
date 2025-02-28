@@ -3,14 +3,15 @@
 import dayjs from "dayjs";
 import rTime from "dayjs/plugin/relativeTime";
 import dynamic from "next/dynamic";
-import { useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 
-import { calculateResin } from "./actions";
 import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
+
+import { calculateResin } from "./actions";
 
 dayjs.extend(rTime);
 
@@ -46,7 +47,7 @@ function SubmitButton() {
 export function ResinCalculatorForm() {
   const { t } = useIntl("calculator");
   const [type, setType] = useState("maxResin");
-  const [state, formAction] = useFormState(calculateResin, initialState);
+  const [state, formAction] = useActionState(calculateResin, initialState);
 
   return (
     <div className="card">
@@ -164,7 +165,7 @@ export function ResinCalculatorForm() {
                               className="mr-1 inline-block h-6"
                               src={getUrl(
                                 state.result.condensedResin.image,
-                                26
+                                26,
                               )}
                               alt={state.result.condensedResin.label}
                             />

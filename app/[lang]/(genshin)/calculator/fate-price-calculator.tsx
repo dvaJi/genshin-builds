@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { type ReactNode, useActionState, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 import { MdCheck, MdClose } from "react-icons/md";
 
-import { calculateFatePrice } from "./actions";
 import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
+
+import { calculateFatePrice } from "./actions";
 
 const initialState = {
   message: "",
@@ -96,7 +97,7 @@ export function FatePriceCalculatorForm() {
   const [currencyLabel, setCurrencyLabel] = useState<string>("");
   const [money, setMoney] = useState<number>(200);
   const [fate, setFate] = useState<number>(80);
-  const [state, formAction] = useFormState(calculateFatePrice, initialState);
+  const [state, formAction] = useActionState(calculateFatePrice, initialState);
 
   const currencies = [
     { label: "USD ($)", value: "USD" },
@@ -173,12 +174,12 @@ export function FatePriceCalculatorForm() {
                       <p className="text-white">
                         {numberFormat.format(value.amount)} +{" "}
                         {numberFormat.format(
-                          value.firstTime ? value.amount : value.bonus
+                          value.firstTime ? value.amount : value.bonus,
                         )}{" "}
                         ={" "}
                         {numberFormat.format(
                           value.amount +
-                            (value.firstTime ? value.amount : value.bonus)
+                            (value.firstTime ? value.amount : value.bonus),
                         )}
                       </p>
                     </div>
@@ -305,7 +306,7 @@ export function FatePriceCalculatorForm() {
                         {numberFormat.format(
                           (res.amount +
                             (res.firstTime ? res.amount : res.bonus)) *
-                            res.qty
+                            res.qty,
                         )}
                       </td>
                       <td className="border-t border-gray-700 text-right text-white">
