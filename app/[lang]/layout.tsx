@@ -1,6 +1,7 @@
 import { AxiomWebVitals } from "next-axiom";
 
 import { PreloadResources } from "@app/preload-resources";
+import { FormbricksProvider } from "@components/Formbricks";
 
 import ExternalScripts from "./scripts";
 
@@ -25,6 +26,7 @@ export default async function Root({
       <PreloadResources />
       <AxiomWebVitals />
       <ExternalScripts />
+      <FormbricksProvider />
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

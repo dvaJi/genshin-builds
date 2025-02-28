@@ -1,16 +1,16 @@
 import { i18n } from "i18n-config";
 import { TeamData, Teams } from "interfaces/teams";
 import type { Metadata } from "next";
-import { Fragment } from "react";
 
 import { genPageMetadata } from "@app/seo";
-import TeamCard from "@components/genshin/TeamCard";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import getTranslations from "@hooks/use-translations";
 import type { Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
+
+import GenshinTeamsList from "./list";
 
 export const dynamic = "force-static";
 
@@ -31,12 +31,12 @@ export async function generateMetadata({
   const { t, locale } = await getTranslations(lang, "genshin", "teams");
   const title = t({
     id: "title",
-    defaultMessage: "Best Team Comp | Party Building Guide",
+    defaultMessage: "Best Team Comps | Genshin Impact Party Building Guide",
   });
   const description = t({
     id: "description",
     defaultMessage:
-      "This is a guide to making the best party in Genshin Impact. Learn how to make the best party! We introduce the best party composition for each task including exploring areas, slaying field bosses, and more!",
+      "Discover the best team compositions for Genshin Impact with our comprehensive party building guide. Find optimal team comps for each character, explore different elemental synergies, and maximize your team's combat effectiveness.",
   });
 
   return genPageMetadata({
@@ -44,10 +44,38 @@ export async function generateMetadata({
     description,
     path: `/teams`,
     locale,
+    openGraph: {
+      title: title,
+      description: description,
+      url: `https://genshin-builds.com/${locale}/teams`,
+      siteName: "Genshin Builds",
+      images: [
+        {
+          url: "https://genshin-builds.com/images/og-image-teams.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Genshin Impact Best Team Compositions",
+        },
+      ],
+      locale: locale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: ["https://genshin-builds.com/images/og-image-teams.jpg"],
+    },
+    alternates: {
+      canonical: `https://genshin-builds.com/${locale}/teams`,
+      languages: Object.fromEntries(
+        i18n.locales.map((l) => [l, `https://genshin-builds.com/${l}/teams`]),
+      ),
+    },
   });
 }
 
-export default async function GenshinCharacters({ params }: Props) {
+export default async function GenshinTeams({ params }: Props) {
   const { lang } = await params;
   const { t, langData } = await getTranslations(lang, "genshin", "teams");
 
@@ -63,6 +91,7 @@ export default async function GenshinCharacters({ params }: Props) {
     asMap: true,
   });
 
+  // Process teams data
   const teamsByName: Record<string, TeamData[]> = teams.reduce(
     (map, { id, teams }) => {
       if (!characters[id]?.name || !teams[0]) return map;
@@ -83,37 +112,61 @@ export default async function GenshinCharacters({ params }: Props) {
 
       return map;
     },
-    {} as Record<string, TeamData[]>
+    {} as Record<string, TeamData[]>,
   );
 
+  // Extract all unique elements from the teams data
+  const allElements = new Set<string>();
+  Object.values(teamsByName).forEach((teamArray) => {
+    teamArray.forEach((team) => {
+      team.characters.forEach((character) => {
+        if (character.element) {
+          allElements.add(character.element);
+        }
+      });
+    });
+  });
+
+  const elements = Array.from(allElements);
+
   return (
-    <div>
-      <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-      <FrstAds
-        placementName="genshinbuilds_billboard_atf"
-        classList={["flex", "justify-center"]}
-      />
-      <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
-        {t({ id: "best_team_comp", defaultMessage: "Best Team Comp" })}
-      </h2>
-      <div className="grid gap-4 lg:grid-cols-2">
-        {Object.entries(teamsByName).map(([mainName, teams], i) => (
-          <Fragment key={mainName}>
-            {teams.map((team) => (
-              <TeamCard
-                key={team.name}
-                team={team}
-                mainName={mainName}
-                asyncLoad={i > 4}
-              />
-            ))}
-          </Fragment>
-        ))}
+    <div className="min-h-screen px-2 sm:px-0">
+      <div className="mb-4 flex flex-col items-center justify-between gap-2 sm:mb-8 sm:gap-4 md:flex-row">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            {t({
+              id: "best_team_comp",
+              defaultMessage: "Best Team Compositions",
+            })}
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground sm:text-lg">
+            {t({
+              id: "teams_description",
+              defaultMessage:
+                "Discover the best team comps for Genshin Impact characters to maximize your team's combat effectiveness.",
+            })}
+          </p>
+        </div>
+        <Ads className="hidden md:block" adSlot={AD_ARTICLE_SLOT} />
       </div>
-      <FrstAds
-        placementName="genshinbuilds_incontent_1"
-        classList={["flex", "justify-center"]}
-      />
+
+      <div className="mb-4 sm:mb-8">
+        <FrstAds
+          placementName="genshinbuilds_billboard_atf"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
+
+      <div className="card overflow-hidden">
+        <GenshinTeamsList teamsByName={teamsByName} elements={elements} />
+      </div>
+
+      <div className="mt-4 sm:mt-8">
+        <FrstAds
+          placementName="genshinbuilds_incontent_1"
+          classList={["flex", "justify-center"]}
+        />
+      </div>
     </div>
   );
 }

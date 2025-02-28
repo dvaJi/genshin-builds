@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.0",
+    "@formbricks/js": "^3.0.2",
     "@freestar/pubfig-adslot-react-component": "^3.6.2",
     "@nanostores/persistent": "^0.10.2",
     "@nanostores/react": "^0.8.4",
