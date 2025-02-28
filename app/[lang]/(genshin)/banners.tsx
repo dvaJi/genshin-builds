@@ -1,5 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
+import { cn } from "@app/lib/utils";
 import { getGenshinData } from "@lib/dataApi";
 import { getImg } from "@lib/imgUrl";
 
@@ -41,12 +43,20 @@ export async function Banners({ lang }: Props) {
   });
 
   return (
-    <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div
+      className={cn(
+        "mt-6 grid gap-4",
+        banners.length === 3
+          ? "sm:grid-cols-3 lg:grid-cols-3"
+          : "sm:grid-cols-2 lg:grid-cols-4",
+      )}
+    >
       {banners.map((banner) => {
         const daysLeft = Math.ceil(
-          (new Date(banner.end).getTime() - now.getTime()) / (1000 * 60 * 60 * 24)
+          (new Date(banner.end).getTime() - now.getTime()) /
+            (1000 * 60 * 60 * 24),
         );
-        
+
         return (
           <div
             key={banner.name}
