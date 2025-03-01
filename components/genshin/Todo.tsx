@@ -1,24 +1,19 @@
 "use client";
 
-import clsx from "clsx";
 import Link from "next/link";
-import { useCallback, useMemo, useState } from "react";
-import {
-  CgArrowLongRight,
-  CgChevronLeft,
-  CgChevronRight,
-} from "react-icons/cg";
+import { memo, useCallback, useMemo, useState } from "react";
+import { HiOutlineCalendarDays } from "react-icons/hi2";
+import { IoAnalyticsOutline } from "react-icons/io5";
 
-import Select from "@components/Select";
-import ItemPopover from "@components/genshin/ItemPopover";
 import ItemPopoverSummary from "@components/genshin/ItemPopoverSummary";
-import Button from "@components/ui/Button";
 import useIntl from "@hooks/use-intl";
 import { trackClick } from "@lib/gtag";
 import { useStore } from "@nanostores/react";
 import { Todo, todos as todosAtom } from "@state/todo";
 
-import Image from "./Image";
+import TodoFarmTodayList from "./TodoFarmTodayList";
+import TodoItem from "./TodoItem";
+import TodoTotalProgress from "./TodoTotalProgress";
 
 type Props = {
   planning: Record<string, any>;
@@ -26,10 +21,126 @@ type Props = {
   days: string[];
 };
 
+// Empty state component
+const EmptyTodoState = memo(({ locale }: { locale: string }) => {
+  const { t } = useIntl("todo");
+
+  return (
+    <div className="flex min-h-[300px] flex-col items-center justify-center rounded-lg border border-border bg-card/50 p-8 text-center shadow-sm backdrop-blur-sm">
+      <div className="mb-4 rounded-full bg-muted p-4">
+        <HiOutlineCalendarDays className="h-8 w-8 text-muted-foreground" />
+      </div>
+      <h3 className="mb-2 text-xl font-medium text-foreground">
+        {t({
+          id: "no_todo_title",
+          defaultMessage: "No todos yet",
+        })}
+      </h3>
+      <p className="mb-4 max-w-md text-muted-foreground">
+        {t({
+          id: "no_todo_msg",
+          defaultMessage: "No Todos. Add some from the calculator.",
+        })}
+      </p>
+      <Link
+        href={`/${locale}/calculator`}
+        className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        prefetch={false}
+      >
+        {t({
+          id: "go_to_calculator",
+          defaultMessage: "Go to Calculator page",
+        })}
+      </Link>
+    </div>
+  );
+});
+EmptyTodoState.displayName = "EmptyTodoState";
+
+// Summary section component
+const SummarySection = memo(
+  ({
+    summary,
+    originalSummary,
+    todoIdsByResource,
+    updateAllTodoResourcesById,
+    materialsMap,
+  }: {
+    summary: Record<string, number>;
+    originalSummary: Record<string, number>;
+    todoIdsByResource: Record<string, any[]>;
+    updateAllTodoResourcesById: (newData: any) => void;
+    materialsMap: Record<string, any>;
+  }) => {
+    const { t } = useIntl("todo");
+
+    return (
+      <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+        <div className="flex items-center gap-2 border-b border-border bg-muted/30 px-4 py-3">
+          <IoAnalyticsOutline className="h-5 w-5 text-muted-foreground" />
+          <h2 className="text-base font-semibold text-foreground">
+            {t({
+              id: "summary",
+              defaultMessage: "Summary",
+            })}
+          </h2>
+        </div>
+        <div className="p-4">
+          <div className="flex flex-wrap justify-center gap-2">
+            {Object.entries(summary).map(([id, data]) => (
+              <ItemPopoverSummary
+                key={id}
+                id={id}
+                data={data}
+                originalData={originalSummary[id]}
+                idsByResource={todoIdsByResource[id]}
+                handleOnChange={updateAllTodoResourcesById}
+                materialInfo={materialsMap[id]}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  },
+  (prevProps, nextProps) => {
+    // Custom equality check for better performance
+    const summaryKeysEqual =
+      Object.keys(prevProps.summary).length ===
+      Object.keys(nextProps.summary).length;
+    if (!summaryKeysEqual) return false;
+
+    // Check if any summary values have changed
+    for (const key in prevProps.summary) {
+      if (prevProps.summary[key] !== nextProps.summary[key]) {
+        return false;
+      }
+    }
+
+    return true;
+  },
+);
+SummarySection.displayName = "SummarySection";
+
+// TodoList container component
+const TodoListContainer = memo(
+  ({ children }: { children: React.ReactNode }) => {
+    return (
+      <div className="lg:col-span-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {children}
+        </div>
+      </div>
+    );
+  },
+);
+TodoListContainer.displayName = "TodoListContainer";
+
+// Main component
 const TodoList = ({ materialsMap, planning, days }: Props) => {
   const todos = useStore(todosAtom);
   const [currentDay, setCurrentDay] = useState(days[new Date().getDay()]);
-  const { t, locale } = useIntl("todo");
+  const { locale } = useIntl("todo");
 
   const { summary, originalSummary } = useMemo(() => {
     const summary: Record<string, number> = {};
@@ -70,19 +181,25 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
 
   const farmToday = useMemo(() => {
     const isSunday = currentDay === "Sun";
+
     return todos.reduce<Record<string, number>>((acc, value) => {
-      if (isSunday || planning[currentDay].includes(value[0].id)) {
+      // Check if the item should be included in today's farming
+      const shouldIncludeItem =
+        isSunday || planning[currentDay].includes(value[0].id);
+
+      if (shouldIncludeItem) {
         for (const [id, data] of Object.entries(value[4])) {
           const mat = materialsMap[id];
+          // Extract these complex checks to separate variables
+          const isTalentOrWeaponMaterial = [
+            "talent_lvl_up_materials",
+            "weapon_primary_materials",
+          ].includes(mat?.type);
           const isWeeklyBoss =
             mat?.type === "talent_lvl_up_materials" && mat.rarity === 5;
-          if (
-            id !== "crown_of_insight" &&
-            ["talent_lvl_up_materials", "weapon_primary_materials"].includes(
-              mat?.type
-            ) &&
-            !isWeeklyBoss
-          ) {
+          const isCrownOfInsight = id === "crown_of_insight";
+
+          if (!isCrownOfInsight && isTalentOrWeaponMaterial && !isWeeklyBoss) {
             if (acc[id] === undefined) {
               acc[id] = 0;
             }
@@ -94,12 +211,13 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
     }, {});
   }, [currentDay, materialsMap, planning, todos]);
 
+  // Memoize all the callback functions to prevent unnecessary re-renders
   const removeTodo = useCallback(
     (id: string) => {
       trackClick("todo_remove_todo");
       todosAtom.set(todos.filter((todo) => todo[0].id !== id));
     },
-    [todos]
+    [todos],
   );
 
   const moveTodo = useCallback(
@@ -113,21 +231,14 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         todosAtom.set(newTodos);
       }
     },
-    [todos]
+    [todos],
   );
 
   const updateTodoResourcesById = useCallback(
     (id: string, newData: any) => {
-      // trackClick("todo_update_todo_byid");
       const todo = todos.find((todo) => todo[0].id === id);
       if (todo) {
         todo[4] = { ...todo[4], [newData.id]: newData.value };
-        console.log(
-          "updateTodoResourcesById",
-          id,
-          newData,
-          todo[4][newData.id]
-        );
 
         const newTodos = [...todos].map((oldtodo) => {
           if (oldtodo[0].id === id) {
@@ -139,273 +250,114 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
         todosAtom.set(newTodos);
       }
     },
-    [todos]
+    [todos],
   );
 
+  // This function is passed to many components and was recreated too often
+  // Memoize it with a stable reference
   const updateAllTodoResourcesById = useCallback(
     (newData: any) => {
       trackClick("todo_update_todo_all");
       const { idsByResource, remainingById } = newData;
-      // console.log(idsByResource, remainingById);
 
       const modifiedTodos: Todo[] = [];
       idsByResource.forEach((data: any, index: number) => {
-        const todo = todos[data[3]];
-        todo[4][newData.id] = remainingById[index];
-        console.log(
-          "updateAllTodoResourcesById",
-          newData.id,
-          todo[4][newData.id]
-        );
-        modifiedTodos.push(todo);
-      });
-
-      const newTodos = [...todos].map((todo) => {
-        if (modifiedTodos.some((t) => t[0].id === todo[0].id)) {
-          return modifiedTodos.find((t) => t[0].id === todo[0].id) || todo;
+        const todoIndex = data[3];
+        const todo = todos[todoIndex];
+        if (todo) {
+          todo[4][newData.id] = remainingById[index];
+          modifiedTodos.push(todo);
         }
-        return todo;
       });
-      // console.log(newTodos, modifiedTodos);
 
-      todosAtom.set(newTodos);
+      // Only update todos if there are modifications
+      if (modifiedTodos.length > 0) {
+        const newTodos = [...todos].map((todo) => {
+          const modifiedTodo = modifiedTodos.find(
+            (t) => t[0].id === todo[0].id,
+          );
+          return modifiedTodo || todo;
+        });
+
+        todosAtom.set(newTodos);
+      }
     },
-    [todos]
+    [todos],
   );
 
+  const progressPercentage = useMemo(() => {
+    if (Object.keys(originalSummary).length === 0) return 0;
+
+    const totalNeeded = Object.entries(originalSummary).reduce(
+      (a, [key, value]) => {
+        if (key === "mora") return a / 100;
+        return a + value;
+      },
+      0,
+    );
+    const totalCompleted = Object.entries(summary).reduce((a, [key, value]) => {
+      if (key === "mora") return a / 100;
+      return a + value;
+    }, 0);
+
+    const current = totalNeeded - totalCompleted;
+    return Math.floor((current / totalNeeded) * 100);
+  }, [summary, originalSummary]);
+
+  const handleDayChange = useCallback((day: string) => {
+    setCurrentDay(day);
+  }, []);
+
+  if (todos.length === 0) {
+    return <EmptyTodoState locale={locale} />;
+  }
+
   return (
-    <div>
-      {todos.length > 0 ? (
-        <div className="inline-grid grid-cols-1 lg:grid-cols-4">
-          <div className="">
-            <div>
-              <div className="relative z-50 flex">
-                <h1 className="p-2 text-lg font-semibold text-white">
-                  {t({
-                    id: "farm_today",
-                    defaultMessage: "Farm today",
-                  })}
-                </h1>
-                <Select
-                  selectedIconRender={() => null}
-                  onChange={(e) => setCurrentDay(e.name)}
-                  options={days.map((day) => ({ value: day, name: day }))}
-                  itemsListRender={(items) => <>{items.name}</>}
-                />
-              </div>
-              <div className="card flex flex-wrap justify-center">
-                {Object.keys(farmToday).length === 0 ? (
-                  <div>Nothing to farm today!</div>
-                ) : (
-                  Object.entries(farmToday).map(([id, data]) => (
-                    <ItemPopoverSummary
-                      key={id}
-                      id={id}
-                      data={data}
-                      originalData={originalSummary[id]}
-                      idsByResource={todoIdsByResource[id]}
-                      handleOnChange={updateAllTodoResourcesById}
-                      materialInfo={materialsMap[id]}
-                    />
-                  ))
-                )}
-              </div>
-            </div>
-            <div className="card w-full">
-              <h1 className="p-2 text-lg font-semibold text-white">
-                {t({
-                  id: "summary",
-                  defaultMessage: "Summary",
-                })}
-              </h1>
-              <div className="flex flex-wrap justify-center">
-                {Object.entries(summary).map(([id, data]) => (
-                  <ItemPopoverSummary
-                    key={id}
-                    id={id}
-                    data={data}
-                    originalData={originalSummary[id]}
-                    idsByResource={todoIdsByResource[id]}
-                    handleOnChange={updateAllTodoResourcesById}
-                    materialInfo={materialsMap[id]}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="col-span-3 m-3 inline-grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {todos.map((todo, i) => (
-              <div key={todo[0].id + i} className="card flex h-full w-full p-0">
-                <div className="relative flex w-full flex-shrink-0 flex-col">
-                  <div className="mx-2 flex justify-between p-2">
-                    <p className="text-lg font-semibold text-white">
-                      {todo[0].name}
-                    </p>
-                    <div>
-                      <button
-                        onClick={() => moveTodo(todo[0].id, i, i - 1)}
-                        disabled={i === 0}
-                        className="rounded-none rounded-l-xl border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
-                      >
-                        <CgChevronLeft />
-                      </button>
-                      <button
-                        onClick={() => moveTodo(todo[0].id, i, i + 1)}
-                        disabled={i + 1 === todos.length}
-                        className="rounded-none rounded-r-xl border-2 border-white border-opacity-10 px-1 py-1 text-white transition duration-100 hover:border-vulcan-500 focus:border-vulcan-500 focus:outline-none disabled:border-gray-600 disabled:opacity-50"
-                      >
-                        <CgChevronRight />
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex flex-grow flex-col justify-between p-2">
-                    <div className="mb-2 flex min-h-[104px] items-center justify-between">
-                      <div className="ml-2 flex justify-center">
-                        <div
-                          className={clsx(
-                            "h-24 w-24 overflow-hidden rounded-md bg-cover shadow-md",
-                            `genshin-bg-rarity-${todo[0].r}`
-                          )}
-                        >
-                          <Image
-                            draggable="false"
-                            height="96"
-                            width="96"
-                            src={
-                              todo[1] === "character"
-                                ? `/characters/${todo[0].id}/image.png`
-                                : `/weapons/${todo[0].id}.png`
-                            }
-                            alt={todo[0].name}
-                            className="h-auto w-full"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex h-full flex-col justify-center">
-                        <div className="flex flex-col">
-                          <div className="flex w-36">
-                            <div>
-                              <h4 className="text-sm font-semibold text-white">
-                                {t({
-                                  id: "levels",
-                                  defaultMessage: "Levels",
-                                })}
-                              </h4>
-                              <div className="flex justify-center text-sm">
-                                <div>
-                                  <p>{todo[2][0]}</p>
-                                </div>
-                                <div>
-                                  <CgArrowLongRight className="mx-2 h-full" />
-                                </div>
-                                <div className="inline-flex items-center justify-center">
-                                  <p>{todo[2][2]}</p>
-                                  <Image
-                                    src={`/ascension.png`}
-                                    className={clsx("ml-1 h-3 w-3", {
-                                      "opacity-100": todo[2][3],
-                                      "opacity-0": !todo[2][3],
-                                    })}
-                                    alt="ascension"
-                                    width={16}
-                                    height={16}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        {Object.keys(todo[3]).length > 0 && (
-                          <div className="mt-2 flex flex-col">
-                            <h4 className="text-sm font-semibold text-white">
-                              {t({
-                                id: "talents",
-                                defaultMessage: "Talents",
-                              })}
-                            </h4>
-                            <div className="flex">
-                              <div>
-                                {Object.entries(todo[3]).map(([id, value]) => (
-                                  <div key={id} className="flex">
-                                    <div className="flex justify-center text-xs">
-                                      <div>
-                                        <p>{value[0]}</p>
-                                      </div>
-                                      <div>
-                                        <CgArrowLongRight className="mx-2 h-full" />
-                                      </div>
-                                      <div>
-                                        <p>{value[1]}</p>
-                                      </div>
-                                    </div>
-                                    <div className="ml-2 text-xs text-gray-500">
-                                      {t({ id: id, defaultMessage: id })}
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+    <div className="space-y-6">
+      <TodoTotalProgress
+        progressPercentage={progressPercentage}
+        todosLength={todos.length}
+      />
 
-                    <div className="flex flex-wrap justify-center">
-                      {Object.entries(todo[4]).map(([id, data]) => (
-                        <ItemPopover
-                          key={id}
-                          id={id}
-                          data={data}
-                          originalData={todo[5][id]}
-                          handleOnChange={(newValues) =>
-                            updateTodoResourcesById(todo[0].id, newValues)
-                          }
-                          materialInfo={materialsMap[id]}
-                        />
-                      ))}
-                    </div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+        <div className="lg:col-span-1">
+          <div className="space-y-6">
+            <TodoFarmTodayList
+              farmToday={farmToday}
+              currentDay={currentDay}
+              setCurrentDay={handleDayChange}
+              originalSummary={originalSummary}
+              todoIdsByResource={todoIdsByResource}
+              updateAllTodoResourcesById={updateAllTodoResourcesById}
+              materialsMap={materialsMap}
+              days={days}
+            />
 
-                    <div className="mx-2 flex justify-between">
-                      <span className="text-lg text-white">#{i + 1}</span>
-                      <Button
-                        className=""
-                        onClick={() => removeTodo(todo[0].id)}
-                      >
-                        X{" "}
-                        {t({
-                          id: "delete",
-                          defaultMessage: "Delete",
-                        })}
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <SummarySection
+              summary={summary}
+              originalSummary={originalSummary}
+              todoIdsByResource={todoIdsByResource}
+              updateAllTodoResourcesById={updateAllTodoResourcesById}
+              materialsMap={materialsMap}
+            />
           </div>
         </div>
-      ) : (
-        <div className="w-72 rounded-lg border border-border bg-card p-4">
-          <p className="text-card-foreground">
-            {t({
-              id: "no_todo_msg",
-              defaultMessage: "No Todos. Add some from the calculator.",
-            })}
-          </p>
-          <p>
-            <Link
-              href={`/${locale}/calculator`}
-              className="text-muted-foreground hover:text-foreground"
-              prefetch={false}
-            >
-              {t({
-                id: "go_to_calculator",
-                defaultMessage: "Go to Calculator page",
-              })}
-            </Link>
-          </p>
-        </div>
-      )}
+
+        <TodoListContainer>
+          {todos.map((todo, i) => (
+            <TodoItem
+              key={todo[0].id + i}
+              todo={todo}
+              index={i}
+              totalLength={todos.length}
+              moveTodo={moveTodo}
+              removeTodo={removeTodo}
+              updateTodoResourcesById={updateTodoResourcesById}
+              materialsMap={materialsMap}
+            />
+          ))}
+        </TodoListContainer>
+      </div>
     </div>
   );
 };
