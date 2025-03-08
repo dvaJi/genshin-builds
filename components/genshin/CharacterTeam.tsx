@@ -24,13 +24,13 @@ function CharacterTeam({ team, index }: Props) {
   return (
     <div
       className={clsx(
-        "border-border mx-2 my-4 flex items-center rounded border-b border-r border-r-transparent px-2 py-1 pb-4",
+        "mx-2 my-4 flex items-center rounded border-b border-r border-border border-r-transparent px-2 py-1 pb-4",
         {
-          "bg-background border-r-border": isOpen,
-        }
+          "border-r-border bg-background": isOpen,
+        },
       )}
     >
-      <div className="bg-muted rounded p-1 text-xxs text-slate-300">
+      <div className="rounded bg-muted p-1 text-xxs text-slate-300">
         #{index + 1}
       </div>
       {/* <div className="hidden lg:mx-4 lg:block">Tier: {team.tier}</div> */}
@@ -44,7 +44,7 @@ function CharacterTeam({ team, index }: Props) {
           >
             <div className="relative">
               <Image
-                className="group-hover:border-primary rounded-full border-4 border-transparent transition group-hover:shadow-xl"
+                className="rounded-full border-4 border-transparent transition group-hover:border-primary group-hover:shadow-xl"
                 src={`/characters/${character.id}/image.png`}
                 alt={character.name || character.id}
                 width={100}
