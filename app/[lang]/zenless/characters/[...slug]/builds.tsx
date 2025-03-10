@@ -25,7 +25,9 @@ export default function Builds({
 }: Props) {
   return (
     <div>
-      <h2 className="text-2xl md:text-3xl font-semibold mb-4">{characterName} Best Builds</h2>
+      <h2 className="mb-4 text-2xl font-semibold md:text-3xl">
+        {characterName} Best Builds
+      </h2>
       {builds.map((b) => (
         <div
           key={b.name}
@@ -34,17 +36,17 @@ export default function Builds({
           <h3 className="text-xl font-semibold">{b.name}</h3>
           <p
             className="text-neutral-200"
-            dangerouslySetInnerHTML={{ __html: b.overview }}
+            dangerouslySetInnerHTML={{ __html: b.overview ?? "" }}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <h4 className="text-lg font-medium mb-2">Best W-Engines</h4>
+              <h4 className="mb-2 text-lg font-medium">Best W-Engines</h4>
               <div className="flex flex-col gap-2">
                 {b["w-engines"].map((w) => (
                   <Link
                     key={w}
                     href={`/${lang}/zenless/w-engines/${w}`}
-                    className="group rounded-md ring-neutral-600 hover:ring-2 p-1"
+                    className="group rounded-md p-1 ring-neutral-600 hover:ring-2"
                   >
                     <div className="flex items-center gap-2">
                       <Image
@@ -54,7 +56,7 @@ export default function Builds({
                         alt={wEnginesMap[w].name}
                       />
                       <div className="flex flex-col">
-                        <h5 className="group-hover:text-yellow-400 font-medium">
+                        <h5 className="font-medium group-hover:text-yellow-400">
                           {wEnginesMap[w].name}
                         </h5>
                         <div className="flex">
@@ -67,7 +69,7 @@ export default function Builds({
                                 height={14}
                                 alt="Star"
                               />
-                            )
+                            ),
                           )}
                         </div>
                       </div>
@@ -77,13 +79,13 @@ export default function Builds({
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-medium mb-2">Drive Disc Build</h4>
+              <h4 className="mb-2 text-lg font-medium">Drive Disc Build</h4>
               <div className="flex flex-col gap-2">
                 {b["drive-disc"].map((d) => (
                   <Link
                     key={d.name}
                     href={`/${lang}/zenless/disk-drives/${d.name}`}
-                    className="group rounded-md ring-neutral-600 hover:ring-2 p-1"
+                    className="group rounded-md p-1 ring-neutral-600 hover:ring-2"
                   >
                     <div className="flex items-center gap-2">
                       <Image
@@ -93,10 +95,12 @@ export default function Builds({
                         alt={diskDrivesMap[d.name]?.name ?? d.name}
                       />
                       <div className="flex flex-col">
-                        <h5 className="group-hover:text-yellow-400 font-medium">
+                        <h5 className="font-medium group-hover:text-yellow-400">
                           {diskDrivesMap[d.name]?.name ?? d.name}
                         </h5>
-                        <p className="text-sm text-neutral-300">{d.pieces} PC</p>
+                        <p className="text-sm text-neutral-300">
+                          {d.pieces} PC
+                        </p>
                       </div>
                     </div>
                   </Link>
@@ -104,7 +108,7 @@ export default function Builds({
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-medium mb-2">Drive Main Stats</h4>
+              <h4 className="mb-2 text-lg font-medium">Drive Main Stats</h4>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
                   <span className="rounded-md bg-neutral-600 px-2 py-1 text-sm font-medium">
@@ -151,7 +155,7 @@ export default function Builds({
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-medium mb-2">Drive Substats</h4>
+              <h4 className="mb-2 text-lg font-medium">Drive Substats</h4>
               <div className="flex flex-col gap-2">
                 {b["sub-stats"].map((sarr) => (
                   <div key={sarr.join()} className="text-sm">

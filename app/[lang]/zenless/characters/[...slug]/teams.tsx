@@ -22,7 +22,7 @@ export default function Teams({
 }: Props) {
   return (
     <>
-      <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+      <h2 className="mb-4 text-2xl font-semibold md:text-3xl">
         {characterName} Best Teams and Bangboo
       </h2>
       <div className="mb-4 flex w-full flex-col gap-3">
@@ -32,7 +32,7 @@ export default function Teams({
             className="flex flex-col gap-3 rounded-lg border-2 border-neutral-600 bg-neutral-900 p-3 md:p-4"
           >
             <h3 className="text-xl font-semibold">{team.name}</h3>
-            <div className="flex flex-col lg:flex-row w-full justify-between gap-4 px-0 md:px-2">
+            <div className="flex w-full flex-col justify-between gap-4 px-0 md:px-2 lg:flex-row">
               {[1, 2, 3].map((i) => {
                 const characterKey = `character_${i}` as
                   | "character_1"
@@ -42,12 +42,15 @@ export default function Teams({
                 if (!teamChar) return null;
                 if (teamChar.isFlex) {
                   return (
-                    <div key={teamChar.name + team.name} className="group flex flex-col items-center justify-center gap-2">
+                    <div
+                      key={teamChar.name + team.name}
+                      className="group flex flex-col items-center justify-center gap-2"
+                    >
                       <div className="rounded bg-neutral-700 px-2 text-xs text-neutral-200">
                         {teamChar.role}
                       </div>
                       <div className="overflow-hidden rounded-full ring-0 ring-[#fbfe00] transition-all group-hover:ring-4">
-                        <div className="h-16 w-16 md:h-24 md:w-24 scale-150 transition-transform ease-in-out group-hover:scale-125 flex items-center justify-center text-2xl">
+                        <div className="flex h-16 w-16 scale-150 items-center justify-center text-2xl transition-transform ease-in-out group-hover:scale-125 md:h-24 md:w-24">
                           ?
                         </div>
                       </div>
@@ -74,7 +77,7 @@ export default function Teams({
                     </div>
                     <div className="overflow-hidden rounded-full ring-0 ring-[#fbfe00] transition-all group-hover:ring-4">
                       <Image
-                        className="h-16 w-16 md:h-24 md:w-24 scale-150 transition-transform ease-in-out group-hover:scale-125"
+                        className="h-16 w-16 scale-150 transition-transform ease-in-out group-hover:scale-125 md:h-24 md:w-24"
                         src={`/characters/portrait_${charTeam.id}_2.webp`}
                         alt={charTeam.name}
                         width={130}
@@ -88,9 +91,11 @@ export default function Teams({
                 );
               })}
 
-              <div className="flex w-full lg:max-w-[220px] flex-col">
-                <h4 className="text-center font-semibold mb-2">Best Bangboos</h4>
-                <div className="flex flex-row lg:flex-col flex-wrap justify-center gap-3">
+              <div className="flex w-full flex-col lg:max-w-[220px]">
+                <h4 className="mb-2 text-center font-semibold">
+                  Best Bangboos
+                </h4>
+                <div className="flex flex-row flex-wrap justify-center gap-3 lg:flex-col">
                   {[...team.bangboos, ...team.alternative_bangboos].map((b) => (
                     <Link
                       key={b + team.name}
@@ -99,14 +104,14 @@ export default function Teams({
                     >
                       <div className="overflow-hidden rounded-full ring-0 ring-[#fbfe00] transition-all group-hover:ring-4">
                         <Image
-                          className="h-8 w-8 md:h-10 md:w-10 scale-150 transition-transform ease-in-out group-hover:scale-125"
+                          className="h-8 w-8 scale-150 transition-transform ease-in-out group-hover:scale-125 md:h-10 md:w-10"
                           src={`/bangboos/${bangboosMap[b.toLowerCase()]?.icon}.webp`}
                           alt={bangboosMap[b.toLowerCase()]?.name}
                           width={90}
                           height={90}
                         />
                       </div>
-                      <h3 className="truncate text-center text-xs md:text-sm text-white max-w-[100px]">
+                      <h3 className="max-w-[100px] truncate text-center text-xs text-white md:text-sm">
                         {bangboosMap[b.toLowerCase()]?.name}
                       </h3>
                     </Link>
@@ -116,7 +121,7 @@ export default function Teams({
             </div>
             <p
               className="mt-2 px-1 text-sm md:text-base"
-              dangerouslySetInnerHTML={{ __html: team.overview }}
+              dangerouslySetInnerHTML={{ __html: team.overview ?? "" }}
             />
           </div>
         ))}
