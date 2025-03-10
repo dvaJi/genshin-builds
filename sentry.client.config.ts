@@ -4,41 +4,25 @@
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  dsn: "https://9c7422fbfed53fb87f55bc455bb22a83@o95426.ingest.us.sentry.io/4507630267400192",
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
   enabled: process.env.IS_DEV_ENV !== "true",
 
   tracePropagationTargets: ["localhost", /^https:\/\/genshin-builds\.com\/api/],
 
   // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 1,
-
-  sampleRate: 0.25,
+  sampleRate: 1,
+  tracesSampleRate: 0.01,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
-
-  replaysOnErrorSampleRate: 1,
-
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
-
-  // You can remove this option if you're not planning to use the Sentry Session Replay feature:
-  integrations: [
-    Sentry.replayIntegration({
-      // Additional Replay configuration goes in here, for example:
-      maskAllText: true,
-      blockAllMedia: true,
-    }),
-  ],
 
   ignoreErrors: [
     "Script error.",
     "ResizeObserver loop limit exceeded",
     "Uncaught Error: unreachable: e.data !== MessagePort",
     "Object captured as promise rejection with keys: [object has no keys]",
-    "HierarchyRequestError: The operation would yield an incorrect node tree."
+    "HierarchyRequestError: The operation would yield an incorrect node tree.",
   ],
 
   denyUrls: [
@@ -75,7 +59,7 @@ Sentry.init({
     }
 
     const hasAdsBreadcrumb = (
-      breadcrumbs: IterableIterator<Sentry.Breadcrumb>
+      breadcrumbs: IterableIterator<Sentry.Breadcrumb>,
     ) => {
       // Define a regex pattern to match the desired domains
       const domainPattern =

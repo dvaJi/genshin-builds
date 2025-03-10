@@ -4,10 +4,11 @@
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  dsn: "https://9c7422fbfed53fb87f55bc455bb22a83@o95426.ingest.us.sentry.io/4507630267400192",
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
   // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 1,
+  sampleRate: 1,
+  tracesSampleRate: 0.01,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
@@ -40,7 +41,7 @@ Sentry.init({
     }
 
     const hasAdsBreadcrumb = (
-      breadcrumbs: IterableIterator<Sentry.Breadcrumb>
+      breadcrumbs: IterableIterator<Sentry.Breadcrumb>,
     ) => {
       // Define a regex pattern to match the desired domains
       const domainPattern = /.*([a-z]\.pub\.network|googleads.g.doubleclick).*/;
