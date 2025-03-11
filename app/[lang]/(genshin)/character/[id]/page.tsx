@@ -300,7 +300,9 @@ export default async function GenshinCharacterPage({ params }: Props) {
       {builds?.length > 0 || detail.mubuild ? (
         <p
           className="text-sm"
-          dangerouslySetInnerHTML={{ __html: detail.buildsNotes ?? "" }}
+          dangerouslySetInnerHTML={{
+            __html: (detail.buildsNotes ?? "").replaceAll("<br>", "<br/>"),
+          }}
         />
       ) : null}
 

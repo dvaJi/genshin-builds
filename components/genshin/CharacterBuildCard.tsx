@@ -95,7 +95,7 @@ const CharacterBuildCard = ({
           </h4>
           <div className="mt-2 flex flex-wrap gap-2">
             {build.stats_priority.map((s, i) => (
-              <div key={s} className="flex rounded border border-border">
+              <div key={s + i} className="flex rounded border border-border">
                 <span className="rounded-l bg-muted p-1 text-xxs text-slate-300">
                   {i + 1}
                 </span>
@@ -106,7 +106,7 @@ const CharacterBuildCard = ({
           {build.build_notes && (
             <p
               className="mt-4"
-              dangerouslySetInnerHTML={{ __html: build.build_notes }}
+              dangerouslySetInnerHTML={{ __html: build.build_notes ?? "" }}
             />
           )}
         </div>
