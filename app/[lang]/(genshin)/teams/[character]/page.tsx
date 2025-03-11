@@ -99,7 +99,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
 
   const detail = await getGenshinCharacterTeams(characterParams, langData);
 
-  if (!detail) {
+  if (!detail || (detail as any).error) {
     return redirect(`/${lang}/teams`);
   }
 
