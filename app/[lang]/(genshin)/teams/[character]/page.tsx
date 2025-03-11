@@ -5,6 +5,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Fragment } from "react";
 
+import * as Sentry from "@sentry/nextjs";
 import { Badge } from "@app/components/ui/badge";
 import { Separator } from "@app/components/ui/separator";
 import { genPageMetadata } from "@app/seo";
@@ -90,6 +91,11 @@ export default async function GenshinCharacterTeams({ params }: Props) {
     "genshin",
     "teams",
   );
+
+  Sentry.setTags({
+    character: characterParams,
+    lang,
+  });
 
   const detail = await getGenshinCharacterTeams(characterParams, langData);
 

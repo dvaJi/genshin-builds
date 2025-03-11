@@ -78,6 +78,22 @@ Sentry.init({
       return null;
     }
 
+    if (typeof window !== "undefined") {
+      const router = window.__NEXT_DATA__?.props?.pageProps?.__N_SSP
+        ? null
+        : (window as any).next?.router;
+
+      if (router) {
+        event.extra = {
+          ...event.extra,
+          nextjs_route: router.route,
+          query_params: router.query,
+          asPath: router.asPath,
+          pathname: router.pathname,
+        };
+      }
+    }
+
     return event;
   },
 });
