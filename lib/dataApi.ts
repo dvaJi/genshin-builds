@@ -35,7 +35,6 @@ export async function getGenshinCharacterDetail(id: string, language: string) {
       method: "GET",
       next: {
         tags: ["genshin-data", "genshin-character-detail"],
-        revalidate: 0,
       },
     });
 
