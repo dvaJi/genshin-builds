@@ -27,7 +27,7 @@ export async function generateMetadata({
   const { t, langData } = await getTranslations(
     lang,
     "wuthering-waves",
-    "tierlist_characters"
+    "tierlist_characters",
   );
 
   return genPageMetadata({
@@ -43,7 +43,7 @@ export default async function Page({ params, searchParams }: Props) {
   const { t, langData } = await getTranslations(
     lang,
     "wuthering-waves",
-    "tierlist_characters"
+    "tierlist_characters",
   );
   const tierlist = await getWWData<TierlistCharacters>({
     resource: "tierlist",
@@ -80,7 +80,7 @@ export default async function Page({ params, searchParams }: Props) {
           href={`/${lang}/wuthering-waves/tierlist/characters`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
-            table === "overall" ? "bg-ww-900 text-white" : "bg-ww-950"
+            table === "overall" ? "bg-ww-900 text-white" : "bg-ww-950",
           )}
         >
           {t("overall")}
@@ -89,7 +89,7 @@ export default async function Page({ params, searchParams }: Props) {
           href={`/${lang}/wuthering-waves/tierlist/characters?type=mainDPS`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
-            table === "mainDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
+            table === "mainDPS" ? "bg-ww-900 text-white" : "bg-ww-950",
           )}
         >
           {t("main_dps")}
@@ -98,7 +98,7 @@ export default async function Page({ params, searchParams }: Props) {
           href={`/${lang}/wuthering-waves/tierlist/characters?type=subDPS`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
-            table === "subDPS" ? "bg-ww-900 text-white" : "bg-ww-950"
+            table === "subDPS" ? "bg-ww-900 text-white" : "bg-ww-950",
           )}
         >
           {t("sub_dps")}
@@ -107,7 +107,7 @@ export default async function Page({ params, searchParams }: Props) {
           href={`/${lang}/wuthering-waves/tierlist/characters?type=support`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
-            table === "support" ? "bg-ww-900 text-white" : "bg-ww-950"
+            table === "support" ? "bg-ww-900 text-white" : "bg-ww-950",
           )}
         >
           {t("support")}
@@ -144,7 +144,7 @@ export default async function Page({ params, searchParams }: Props) {
                     >
                       <div
                         className={cn(
-                          `overflow-hidden rounded transition-all rarity-${characters[char].rarity} ring-0 ring-ww-800 group-hover:ring-4`
+                          `overflow-hidden rounded transition-all rarity-${characters[char].rarity} ring-0 ring-ww-800 group-hover:ring-4`,
                         )}
                       >
                         <Image
@@ -186,12 +186,12 @@ export default async function Page({ params, searchParams }: Props) {
                 <Image
                   className="rounded-full"
                   src={`/characters/thumb_${char}.webp`}
-                  alt={characters?.[char].name ?? char}
+                  alt={characters?.[char]?.name ?? char}
                   width={60}
                   height={60}
                 />
                 <span className="text-center text-sm">
-                  {characters?.[char].name}
+                  {characters?.[char]?.name ?? char}
                 </span>
               </div>
               <div
@@ -199,7 +199,7 @@ export default async function Page({ params, searchParams }: Props) {
                 dangerouslySetInnerHTML={{ __html: explanation }}
               />
             </div>
-          )
+          ),
         )}
       </div>
     </div>
