@@ -114,10 +114,10 @@ const nextConfig: NextConfig = {
   },
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
-  // cacheHandler:
-  //   !isDev && process.env.REDIS_URL
-  //     ? require.resolve("./cache-handler.mjs")
-  //     : undefined,
+  cacheHandler: process.env.REDIS_URL
+    ? require.resolve("./cache-handler.mjs")
+    : undefined,
+  cacheMaxMemorySize: 0, // 1GB in bytes
 };
 
 export default withSentryConfig(nextConfig, {
