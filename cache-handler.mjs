@@ -1,18 +1,5 @@
 import Redis from "ioredis";
 
-// // Define the structure for cache entries
-// interface CacheEntry {
-//   value: any;
-//   lastModified: number;
-//   tags: string[];
-// }
-
-// // Define the context object passed to set method
-// interface CacheContext {
-//   tags: string[];
-//   revalidate?: number | false;
-// }
-
 export default class RedisCacheHandler {
   redis;
   prefix = "next-cache:";
@@ -46,19 +33,44 @@ export default class RedisCacheHandler {
       const data = await this.redis.get(this.getFullKey(key));
       if (!data) return undefined;
 
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+
+      // Handle streaming response
+      if (
+        parsed.value &&
+        typeof parsed.value === "object" &&
+        parsed.value.readable
+      ) {
+        return {
+          ...parsed,
+          value: Buffer.from(parsed.value),
+        };
+      }
+
+      return parsed;
     } catch (error) {
       console.error("Error getting cache entry:", error);
       return undefined;
     }
   }
 
-  async set(key, data, ctx) {
+  async set(key, data, ctx = {}) {
     try {
+      // Handle streaming response
+      let valueToStore = data;
+      if (data && typeof data === "object" && data.readable) {
+        valueToStore = await new Promise((resolve, reject) => {
+          const chunks = [];
+          data.on("data", (chunk) => chunks.push(chunk));
+          data.on("end", () => resolve(Buffer.concat(chunks)));
+          data.on("error", reject);
+        });
+      }
+
       const entry = {
-        value: data,
+        value: valueToStore,
         lastModified: Date.now(),
-        tags: ctx.tags,
+        tags: Array.isArray(ctx.tags) ? ctx.tags : [],
       };
 
       const fullKey = this.getFullKey(key);
@@ -75,9 +87,12 @@ export default class RedisCacheHandler {
         await this.redis.set(fullKey, JSON.stringify(entry));
       }
 
-      // Also store keys by tag for efficient revalidation
-      for (const tag of ctx.tags) {
-        await this.redis.sadd(`${this.prefix}tag:${tag}`, fullKey);
+      // Only process tags if they exist
+      if (Array.isArray(ctx.tags) && ctx.tags.length > 0) {
+        // Also store keys by tag for efficient revalidation
+        for (const tag of ctx.tags) {
+          await this.redis.sadd(`${this.prefix}tag:${tag}`, fullKey);
+        }
       }
     } catch (error) {
       console.error("Error setting cache entry:", error);
@@ -112,8 +127,6 @@ export default class RedisCacheHandler {
     // as we don't have request-specific memory cache
   }
 
-  // Additional utility methods
-
   async clear() {
     try {
       // Get all keys with our prefix
@@ -127,7 +140,6 @@ export default class RedisCacheHandler {
     }
   }
 
-  // Cleanup resources when no longer needed
   async close() {
     await this.redis.quit();
     console.log("Redis connection closed");
