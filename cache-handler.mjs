@@ -7,6 +7,8 @@ export default class RedisCacheHandler {
   connectionAttempts = 0;
   maxRetries = 3;
   retryDelay = 1000; // 1 second
+  isConnected = false;
+  reconnecting = false;
 
   constructor(options = {}) {
     // Implement singleton pattern to reuse connections
@@ -17,79 +19,142 @@ export default class RedisCacheHandler {
     const redisOptions = {
       maxRetriesPerRequest: 3,
       retryStrategy(times) {
+        // Don't retry forever
+        if (times > 10) {
+          return null;
+        }
+        // Exponential backoff with max delay of 3 seconds
         const delay = Math.min(times * 100, 3000);
         return delay;
       },
       reconnectOnError(err) {
-        const targetError = "READONLY";
-        if (err.message.includes(targetError)) {
+        const targetErrors = ["READONLY", "EPIPE", "ECONNRESET"];
+        if (targetErrors.some((e) => err.message.includes(e))) {
           return true;
         }
         return false;
       },
+      // Close if Redis connection is broken or unresponsive
+      connectTimeout: 10000,
+      disconnectTimeout: 5000,
+      commandTimeout: 5000,
       enableReadyCheck: true,
       maxLoadingRetryTime: 5000,
-      showFriendlyErrorStack: true,
-      // Add connection pool settings
+      // Connection pool settings
       connectionName: "next-cache",
       db: 0,
       enableOfflineQueue: true,
-      // Close connection after being idle
-      disconnectTimeout: 5000,
+      // Auto-reconnect settings
+      autoResubscribe: true,
+      autoResendUnfulfilledCommands: true,
+      retryUnfulfilledCommands: true,
+      lazyConnect: false,
     };
 
-    this.redis = new Redis(
+    this.initializeRedis(
       options.redisUrl || process.env.REDIS_URL || "redis://localhost:6379",
-      redisOptions
+      redisOptions,
     );
+    RedisCacheHandler.instance = this;
+  }
 
-    if (options.prefix) {
-      this.prefix = options.prefix;
-    }
+  async initializeRedis(url, options) {
+    try {
+      this.redis = new Redis(url, options);
 
-    this.redis.on("connect", () => {
-      this.connectionAttempts = 0;
-      // console.log("Connected to Redis server");
-    });
+      this.redis.on("connect", () => {
+        this.isConnected = true;
+        this.connectionAttempts = 0;
+        this.reconnecting = false;
+      });
 
-    this.redis.on("error", async (err) => {
-      console.error("Redis connection error:", err);
-      
-      // Handle max clients error specifically
-      if (err.message.includes("max number of clients reached")) {
-        if (this.connectionAttempts < this.maxRetries) {
-          this.connectionAttempts++;
-          console.log(`Retrying connection attempt ${this.connectionAttempts}...`);
-          
-          // Wait before retrying
-          await new Promise(resolve => setTimeout(resolve, this.retryDelay));
-          
+      this.redis.on("ready", () => {
+        this.isConnected = true;
+        console.log("Redis connection is ready");
+      });
+
+      this.redis.on("error", async (err) => {
+        console.error("Redis connection error:", err);
+        this.isConnected = false;
+
+        if (err.message.includes("EPIPE") && !this.reconnecting) {
+          this.reconnecting = true;
+          await this.handleConnectionError();
+        }
+      });
+
+      this.redis.on("close", () => {
+        this.isConnected = false;
+        console.log("Redis connection closed");
+      });
+
+      this.redis.on("end", () => {
+        this.isConnected = false;
+        console.log("Redis connection ended");
+      });
+
+      // Handle process termination
+      const cleanup = async () => {
+        if (this.redis) {
           try {
-            await this.redis.disconnect();
-            this.redis = new Redis(
-              options.redisUrl || process.env.REDIS_URL || "redis://localhost:6379",
-              redisOptions
-            );
-          } catch (retryErr) {
-            console.error("Failed to retry connection:", retryErr);
+            await this.close();
+          } catch (error) {
+            console.error("Error during cleanup:", error);
           }
         }
-      }
-    });
+      };
 
-    // Handle process termination
-    const cleanup = async () => {
+      process.on("SIGTERM", cleanup);
+      process.on("SIGINT", cleanup);
+      process.on("exit", cleanup);
+    } catch (error) {
+      console.error("Failed to initialize Redis:", error);
+      throw error;
+    }
+  }
+
+  async handleConnectionError() {
+    if (this.connectionAttempts >= this.maxRetries) {
+      console.error("Max reconnection attempts reached");
+      return;
+    }
+
+    try {
+      this.connectionAttempts++;
+      console.log(
+        `Attempting to reconnect (${this.connectionAttempts}/${this.maxRetries})...`,
+      );
+
+      // Close existing connection if it exists
       if (this.redis) {
-        console.log("Closing Redis connection...");
-        await this.redis.quit();
+        try {
+          await this.redis.disconnect();
+        } catch (error) {
+          // Ignore disconnect errors
+        }
       }
-    };
 
-    process.on('SIGTERM', cleanup);
-    process.on('SIGINT', cleanup);
-    process.on('exit', cleanup);
+      // Wait before retrying
+      await new Promise((resolve) =>
+        setTimeout(resolve, this.retryDelay * this.connectionAttempts),
+      );
 
-    RedisCacheHandler.instance = this;
+      // Reinitialize connection
+      await this.initializeRedis(
+        process.env.REDIS_URL || "redis://localhost:6379",
+        this.redis.options,
+      );
+    } catch (error) {
+      console.error("Reconnection attempt failed:", error);
+      this.reconnecting = false;
+    }
+  }
+
+  async ensureConnection() {
+    if (!this.isConnected && !this.reconnecting) {
+      await this.handleConnectionError();
+    }
+    return this.isConnected;
   }
 
   getFullKey(key) {
@@ -98,6 +163,10 @@ export default class RedisCacheHandler {
 
   async get(key) {
     try {
+      if (!(await this.ensureConnection())) {
+        return undefined;
+      }
+
       const data = await this.redis.get(this.getFullKey(key));
       if (!data) return undefined;
 
@@ -124,6 +193,10 @@ export default class RedisCacheHandler {
 
   async set(key, data, ctx = {}) {
     try {
+      if (!(await this.ensureConnection())) {
+        return;
+      }
+
       // Handle streaming response
       let valueToStore = data;
       if (data && typeof data === "object" && data.readable) {
@@ -169,6 +242,10 @@ export default class RedisCacheHandler {
 
   async revalidateTag(tags) {
     try {
+      if (!(await this.ensureConnection())) {
+        return;
+      }
+
       const tagsArray = Array.isArray(tags) ? tags : [tags];
 
       for (const tag of tagsArray) {
@@ -197,6 +274,10 @@ export default class RedisCacheHandler {
 
   async clear() {
     try {
+      if (!(await this.ensureConnection())) {
+        return;
+      }
+
       // Get all keys with our prefix
       const keys = await this.redis.keys(`${this.prefix}*`);
 
@@ -212,6 +293,7 @@ export default class RedisCacheHandler {
     try {
       if (this.redis) {
         await this.redis.quit();
+        this.isConnected = false;
         console.log("Redis connection closed");
       }
     } catch (error) {
