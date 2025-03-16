@@ -1,27 +1,95 @@
 import Redis from "ioredis";
 
 export default class RedisCacheHandler {
+  static instance;
   redis;
   prefix = "next-cache:";
+  connectionAttempts = 0;
+  maxRetries = 3;
+  retryDelay = 1000; // 1 second
 
   constructor(options = {}) {
-    // Use provided Redis URL or default to localhost
+    // Implement singleton pattern to reuse connections
+    if (RedisCacheHandler.instance) {
+      return RedisCacheHandler.instance;
+    }
+
+    const redisOptions = {
+      maxRetriesPerRequest: 3,
+      retryStrategy(times) {
+        const delay = Math.min(times * 100, 3000);
+        return delay;
+      },
+      reconnectOnError(err) {
+        const targetError = "READONLY";
+        if (err.message.includes(targetError)) {
+          return true;
+        }
+        return false;
+      },
+      enableReadyCheck: true,
+      maxLoadingRetryTime: 5000,
+      showFriendlyErrorStack: true,
+      // Add connection pool settings
+      connectionName: "next-cache",
+      db: 0,
+      enableOfflineQueue: true,
+      // Close connection after being idle
+      disconnectTimeout: 5000,
+    };
+
     this.redis = new Redis(
       options.redisUrl || process.env.REDIS_URL || "redis://localhost:6379",
+      redisOptions
     );
 
     if (options.prefix) {
       this.prefix = options.prefix;
     }
 
-    // Log connection status
     this.redis.on("connect", () => {
+      this.connectionAttempts = 0;
       // console.log("Connected to Redis server");
     });
 
-    this.redis.on("error", (err) => {
+    this.redis.on("error", async (err) => {
       console.error("Redis connection error:", err);
+      
+      // Handle max clients error specifically
+      if (err.message.includes("max number of clients reached")) {
+        if (this.connectionAttempts < this.maxRetries) {
+          this.connectionAttempts++;
+          console.log(`Retrying connection attempt ${this.connectionAttempts}...`);
+          
+          // Wait before retrying
+          await new Promise(resolve => setTimeout(resolve, this.retryDelay));
+          
+          try {
+            await this.redis.disconnect();
+            this.redis = new Redis(
+              options.redisUrl || process.env.REDIS_URL || "redis://localhost:6379",
+              redisOptions
+            );
+          } catch (retryErr) {
+            console.error("Failed to retry connection:", retryErr);
+          }
+        }
+      }
     });
+
+    // Handle process termination
+    const cleanup = async () => {
+      if (this.redis) {
+        console.log("Closing Redis connection...");
+        await this.redis.quit();
+      }
+    };
+
+    process.on('SIGTERM', cleanup);
+    process.on('SIGINT', cleanup);
+    process.on('exit', cleanup);
+
+    RedisCacheHandler.instance = this;
   }
 
   getFullKey(key) {
@@ -141,7 +209,13 @@ export default class RedisCacheHandler {
   }
 
   async close() {
-    await this.redis.quit();
-    console.log("Redis connection closed");
+    try {
+      if (this.redis) {
+        await this.redis.quit();
+        console.log("Redis connection closed");
+      }
+    } catch (error) {
+      console.error("Error closing Redis connection:", error);
+    }
   }
 }
