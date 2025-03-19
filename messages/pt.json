@@ -1,25 +1,20 @@
 {
   "Genshin": {
     "common": {
-      "Catalisador": "Catalyst",
       "Catalyst": "Catalisador",
       "Hydro": "Hydro",
       "Mondstadt": "Mondstadt",
-      "Espadão": "Claymore",
       "Claymore": "Espadão",
       "Cryo": "Cryo",
       "Liyue": "Liyue",
-      "Arco": "Bow",
       "Bow": "Arco",
       "Dendro": "Dendro",
       "Sumeru": "Sumeru",
-      "Espada": "Sword",
       "Sword": "Espada",
       "Inazuma": "Inazuma",
       "Electro": "Electro",
       "Pyro": "Pyro",
       "Anemo": "Anemo",
-      "Lança": "Polearm",
       "Polearm": "Lança",
       "Geo": "Geo",
       "character.constellations": "Constelação",
@@ -236,7 +231,8 @@
       "ascension_phase_num": "Fase de Ascensão {num}",
       "most_used_title": "Build Mais Usado pela Comunidade",
       "most_used_disclaimer": "Este build é baseado nos artefatos e armas mais usados pela comunidade. Se você quiser contribuir para esses dados, pode fazer isso enviando seu UID clicando aqui.",
-      "build_title": "Build de {name}"
+      "build_title": "Build de {name}",
+      "lv": "Lv."
     },
     "weapons": {
       "title": "Lista de Armas de Impacto Genshin",

@@ -1,29 +1,21 @@
 {
   "Genshin": {
     "common": {
-      "Catalyseur": "Catalyst",
       "Catalyst": "Catalyseur",
       "Hydro": "Hydro",
       "Mondstadt": "Mondstadt",
-      "Épée à deux mains": "Claymore",
       "Claymore": "Épée à deux mains",
       "Cryo": "Cryo",
       "Liyue": "Liyue",
-      "Arc": "Bow",
       "Bow": "Arc",
       "Dendro": "Dendro",
       "Sumeru": "Sumeru",
-      "Épée à une main": "Sword",
       "Sword": "Épée à une main",
       "Inazuma": "Inazuma",
-      "Électro": "Electro",
       "Electro": "Électro",
       "Pyro": "Pyro",
-      "Anémo": "Anemo",
       "Anemo": "Anémo",
-      "Arme d'hast": "Polearm",
       "Polearm": "Arme d'hast",
-      "Géo": "Geo",
       "Geo": "Géo",
       "character.constellations": "Constellations",
       "character.passives": "Aptitude passive",
@@ -239,7 +231,8 @@
       "ascension_phase_num": "Phase d'Ascension {num}",
       "most_used_title": "Build le plus utilisé par la Communauté",
       "most_used_disclaimer": "Ce build est basé sur les artefacts et armes les plus utilisés par la communauté. Si vous souhaitez contribuer à ces données, vous pouvez le faire en soumettant votre UID en cliquant ici.",
-      "build_title": "Build de {name}"
+      "build_title": "Build de {name}",
+      "lv": "LV."
     },
     "weapons": {
       "title": "Genshin Impact Liste des armes",
@@ -928,7 +921,6 @@
       "not_found_description": "Nous sommes désolés, mais la page que vous recherchez n'existe pas.",
       "go_home": "Rentrer chez eux"
     },
-
     "tierlist": {
       "title": "Liste de niveau Zenless Zone Zero (ZZZ)",
       "description": "Cette liste de niveaux du jeu CrossPlatform Zenless Zone Zero classe les personnages du jeu en différents niveaux en fonction de leurs performances dans le jeu.",

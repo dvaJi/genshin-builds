@@ -1,33 +1,21 @@
 {
   "Genshin": {
     "common": {
-      "สื่อเวท": "Catalyst",
       "Catalyst": "สื่อเวท",
-      "น้ำ": "Hydro",
       "Hydro": "น้ำ",
       "Mondstadt": "Mondstadt",
-      "ดาบใหญ่": "Claymore",
       "Claymore": "ดาบใหญ่",
-      "น้ำแข็ง": "Cryo",
       "Cryo": "น้ำแข็ง",
       "Liyue": "Liyue",
-      "ธนู": "Bow",
       "Bow": "ธนู",
-      "ไม้": "Dendro",
       "Dendro": "ไม้",
       "Sumeru": "Sumeru",
-      "ดาบ": "Sword",
       "Sword": "ดาบ",
       "Inazuma": "Inazuma",
-      "ไฟฟ้า": "Electro",
       "Electro": "ไฟฟ้า",
-      "ไฟ": "Pyro",
       "Pyro": "ไฟ",
-      "ลม": "Anemo",
       "Anemo": "ลม",
-      "หอก": "Polearm",
       "Polearm": "หอก",
-      "หิน": "Geo",
       "Geo": "หิน",
       "character.constellations": "กลุ่มดาว",
       "character.passives": "พรสวรรค์ติดตัว",
@@ -243,7 +231,8 @@
       "ascension_phase_num": "ขั้นตอนการขึ้นสวรรค์ {num}",
       "most_used_title": "บิลด์ที่ใช้บ่อยที่สุดจากชุมชน",
       "most_used_disclaimer": "บิลด์นี้ขึ้นอยู่กับของประดับและอาวุธที่ชุมชนใช้มากที่สุด หากคุณต้องการมีส่วนร่วมในข้อมูลนี้ คุณสามารถทำได้โดยการส่ง UID ของคุณโดยคลิกที่นี่",
-      "build_title": "บิลด์ของ {name}"
+      "build_title": "บิลด์ของ {name}",
+      "lv": "LV."
     },
     "weapons": {
       "title": "รายการอาวุธ Genshin Impact",
