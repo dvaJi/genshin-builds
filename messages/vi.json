@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "Hồ sơ để so sánh tiến trình của bạn với những người chơi khác",
       "profiles": "hồ sơ",
       "profiles_desc": "Hồ sơ để so sánh tiến trình của bạn với những người chơi khác",
-      "blog": "Blog"
+      "blog": "Blog",
+      "Tools": "Công cụ"
     },
     "ascension_planner": {
       "title": "Cơ sở dữ liệu Wiki Genshin-Builds.com",
@@ -170,7 +171,8 @@
       "view_all_posts": "Xem Tất Cả Bài Viết",
       "server_timers": "Bộ Hẹn Giờ Máy Chủ",
       "server_timers_desc": "Sự đặt lại hàng ngày diễn ra vào lúc 04:00 (4 AM), dựa trên múi giờ của máy chủ của bạn. Sự đặt lại hàng tuần diễn ra vào mỗi thứ Hai, cũng vào lúc 04:00 (4 AM).",
-      "shortcuts": "Lối tắt"
+      "shortcuts": "Lối tắt",
+      "farmable_today_desc": "Khám phá những nhân vật và vũ khí nào có thể nuôi ngày nay."
     },
     "characters": {
       "title": "Genshin Impact Danh sách nhân vật",
@@ -182,7 +184,25 @@
       "hydro": "thủy điện",
       "electro": "điện",
       "cryo": "đông lạnh",
-      "dendro": "dendro"
+      "dendro": "dendro",
+      "Bow": "Cây cung",
+      "Catalyst": "Chất xúc tác",
+      "Claymore": "Đất sét",
+      "Polearm": "Polearm",
+      "Sword": "Gươm",
+      "clear_all": "Rõ ràng tất cả",
+      "element_filter": "Bộ lọc phần tử",
+      "no_characters_found": "Không tìm thấy nhân vật",
+      "rarity_filter": "Bộ lọc Rarity",
+      "search": "Nhân vật tìm kiếm ...",
+      "sort_ascending": "Sắp xếp tăng dần",
+      "sort_descending": "Sắp xếp giảm dần",
+      "sort_element": "Yếu tố",
+      "sort_name": "Tên",
+      "sort_rarity": "Hiếm khi",
+      "sort_release": "Ngày phát hành",
+      "try_adjusting_filters": "Thử điều chỉnh các bộ lọc hoặc thuật ngữ tìm kiếm của bạn",
+      "weapon_filter": "Bộ lọc vũ khí"
     },
     "character": {
       "title": "{name} trong Genshin Impact: Hướng dẫn xây dựng tối ưu",
@@ -232,7 +252,19 @@
       "most_used_title": "Cấu hình Được Sử dụng Nhiều Nhất từ Cộng đồng",
       "most_used_disclaimer": "Cấu hình này dựa trên các bảo vật và vũ khí được cộng đồng sử dụng nhiều nhất. Nếu bạn muốn đóng góp vào dữ liệu này, bạn có thể làm như vậy bằng cách gửi UID của bạn bằng cách nhấp vào đây.",
       "build_title": "Cấu hình {name}",
-      "lv": "Lv."
+      "lv": "Lv.",
+      "best_artifacts": "Cổ vật tốt nhất",
+      "best_weapons": "Vũ khí tốt nhất",
+      "clear_search": "Tìm kiếm rõ ràng",
+      "hide_build_details": "Ẩn chi tiết xây dựng",
+      "intended_level_error": "Mức dự định phải cao hơn mức hiện tại",
+      "intended_talent_error": "Mức độ tài năng dự định phải cao hơn mức hiện tại",
+      "main_stats": "Số liệu thống kê chính",
+      "no_data_to_add": "Không có dữ liệu tính toán để thêm vào danh sách TODO",
+      "passive": "Thụ động",
+      "search_placeholder": "Tìm kiếm các bản dựng ...",
+      "show_build_details": "Hiển thị chi tiết xây dựng",
+      "substats": "Thay thế"
     },
     "weapons": {
       "title": "Danh sách vũ khí Genshin Impact",
@@ -244,7 +276,23 @@
       "level": "Cấp độ",
       "stats": "Chỉ số",
       "ascension": "thăng thiên",
-      "refinement": "Tinh luyện"
+      "refinement": "Tinh luyện",
+      "Bow": "Cây cung",
+      "Catalyst": "Chất xúc tác",
+      "Claymore": "Đất sét",
+      "Polearm": "Polearm",
+      "Sword": "Gươm",
+      "clear_all": "Rõ ràng tất cả",
+      "filters": "Bộ lọc",
+      "no_weapons_found": "Không tìm thấy vũ khí",
+      "rarity_filter": "Bộ lọc Rarity",
+      "sort_ascending": "Sắp xếp tăng dần",
+      "sort_descending": "Sắp xếp giảm dần",
+      "sort_name": "Tên",
+      "sort_rarity": "Hiếm khi",
+      "sort_type": "Kiểu",
+      "try_adjusting_filters": "Thử điều chỉnh các bộ lọc hoặc thuật ngữ tìm kiếm của bạn",
+      "weapon_filter": "Bộ lọc vũ khí"
     },
     "weapon": {
       "title": "{name} Chi tiết vũ khí Genshin Impact",
@@ -258,7 +306,11 @@
       "ascension": "thăng thiên",
       "refinement": "Tinh luyện",
       "recommended_characters": "Nhân vật được đề xuất",
-      "ascension_materials": "Vật liệu thăng thiên"
+      "ascension_materials": "Vật liệu thăng thiên",
+      "base_atk": "Cơ sở ATK",
+      "lv": "Lv.",
+      "total": "Tổng cộng",
+      "weapon_title": "Genshin Impact {name} vũ khí"
     },
     "artifacts": {
       "title": "Danh sách hiện vật Genshin Impact",
@@ -270,7 +322,13 @@
       "1piece_bonus": "Tiền thưởng 1 mảnh",
       "1piece_artifact_sets": "Bộ hiện vật 1 món",
       "2piece_bonus": "Tiền thưởng 2 mảnh",
-      "4piece_bonus": "Tiền thưởng 4 mảnh"
+      "4piece_bonus": "Tiền thưởng 4 mảnh",
+      "artifact_description": "{name} là một tạo tác trong tác động của Genshin. \nTìm hiểu thêm về hiệu ứng thiết lập tạo tác của nó, nhân vật tốt nhất và vị trí tạo tác ở đây!",
+      "artifact_details": "{name} Genshin Impact Artifact {Rarity} Stars Rarity",
+      "artifact_pieces": "Các mảnh vật phẩm",
+      "four_pc": "4 PC",
+      "one_pc": "1 PC",
+      "two_pc": "2 PC"
     },
     "tierlist": {
       "title": "Danh sách cấp Genshin Impact (Nhân vật xuất sắc nhất)",
@@ -278,7 +336,9 @@
       "tierlist": "danh sách cấp bậc",
       "main_dps": "DPS chính",
       "sub_dps": "DPS phụ",
-      "support": "Hỗ trợ"
+      "support": "Hỗ trợ",
+      "six_constellation": "Danh sách Tierl",
+      "zero_constellation": "Danh sách C0 Tierl"
     },
     "tierlist_weapons": {
       "title": "Danh sách cấp vũ khí Genshin Impact (Vũ khí tốt nhất)",
@@ -337,7 +397,24 @@
       "goblet": "Cốc",
       "circlet": "Vòng",
       "substats": "Thuộc Tính Phụ",
-      "weapons": "Vũ Khí"
+      "weapons": "Vũ Khí",
+      "anemo": "ANEMO",
+      "clear_all": "Rõ ràng tất cả",
+      "cryo": "Cryo",
+      "dendro": "Dendro",
+      "electro": "Điện",
+      "element_filter": "Bộ lọc phần tử",
+      "geo": "Geo",
+      "hydro": "Thủy điện",
+      "no_teams_found": "Không có đội tìm thấy",
+      "pyro": "Pyro",
+      "search_teams": "Các đội tìm kiếm ...",
+      "sort_ascending": "Sắp xếp tăng dần",
+      "sort_character": "Tên nhân vật",
+      "sort_descending": "Sắp xếp giảm dần",
+      "sort_element": "Yếu tố",
+      "teams_description": "Khám phá nhóm tốt nhất cho các nhân vật Genshin Impact để tối đa hóa hiệu quả chiến đấu của đội của bạn.",
+      "try_adjusting_filters": "Thử điều chỉnh các bộ lọc hoặc thuật ngữ tìm kiếm của bạn"
     },
     "fishing": {
       "title": "Genshin Impact Fishing (Cá, Mồi câu, Cần câu và Điểm câu)",
@@ -348,7 +425,8 @@
       "inazuma": "Inazuma",
       "enkanomiya": "Enkanomiya",
       "the_chasm": "Vực thẳm",
-      "sumeru": "người Sumeru"
+      "sumeru": "người Sumeru",
+      "source": "Nguồn"
     },
     "calculator": {
       "title": "Máy tính Genshin Impact",
@@ -411,7 +489,64 @@
       "or": "hoặc",
       "desired_resin": "Nhựa cây mong muốn",
       "current_time": "Thời gian hiện tại",
-      "replenished_at": "Sẽ được bổ sung vào lúc: {timeToWait} ({relativeTimeToWait})"
+      "replenished_at": "Sẽ được bổ sung vào lúc: {timeToWait} ({relativeTimeToWait})",
+      "adventurers_experience": "Kinh nghiệm của các nhà thám hiểm",
+      "calculateByMoney": "Tính toán bằng tiền",
+      "calculate_by_fate": "Tính toán theo số phận",
+      "calculate_by_money": "Tính toán bằng tiền",
+      "calculating": "Tính toán ...",
+      "calculation_error": "Lỗi xảy ra trong quá trình tính toán",
+      "calculation_result": "Kết quả tính toán",
+      "calculation_results": "Kết quả tính toán",
+      "daysUntilPull_desc": "Ngày cho đến khi kéo",
+      "decrease_random_events": "Giảm các sự kiện ngẫu nhiên",
+      "enter_amount": "Nhập số tiền",
+      "enter_fate_amount": "Nhập số tiền số phận",
+      "enter_friendship_values_and_calculate": "Nhập các giá trị tình bạn của nhân vật của bạn và nhấp vào Tính toán để xem kết quả",
+      "enter_values_and_calculate": "Hoàn thành biểu mẫu",
+      "estimated_resin_time": "Thời gian ước tính",
+      "estimated_resin_tooltip": "Đây là một ước tính dựa trên đầu vào của bạn",
+      "exp_percentage_help": "Tiến bộ hiện tại trong Bar Friendship Exp",
+      "first_time_bonus_active": "Tiền thưởng lần đầu tiên hoạt động",
+      "first_time_help": "Chỉ bật nếu có phần thưởng \"lần đầu tiên\"",
+      "friendship_calculation_results": "Kết quả tính toán tình bạn",
+      "friendship_level_help": "Chọn mức độ tình bạn hiện tại của nhân vật của bạn",
+      "genesis_crystal": "Tinh thể Genesis",
+      "genesis_crystal_desc": "Tiền tệ đặc biệt",
+      "heros_wit": "Anh hùng hóm hỉnh",
+      "increase_random_events": "Tăng các sự kiện ngẫu nhiên",
+      "intended_level_error": "Mức dự định phải cao hơn mức hiện tại",
+      "intertwinedFate": "Số phận đan xen",
+      "intertwinedFate_desc": "Số phận đan xen",
+      "material": "Vật liệu",
+      "max": "Tối đa",
+      "mora": "Mora",
+      "no_data_to_add": "Không có dữ liệu tính toán để thêm vào danh sách TODO",
+      "original_resin": "Nhựa ban đầu",
+      "parameters": "Tham số",
+      "please_select_currency": "Vui lòng chọn tiền tệ",
+      "please_select_level": "Vui lòng chọn một cấp độ",
+      "price_in_currency": "Giá trong {tiền tệ}",
+      "primogem": "Primogem",
+      "primogem_desc": "Tiền tệ đặc biệt",
+      "random_events_help": "Các sự kiện ngẫu nhiên hàng ngày mang lại cho tình bạn exp",
+      "resin_calculation_results": "Kết quả tính toán",
+      "resin_percent": "Nhựa {phần trăm}%",
+      "select_currency_first": "Chọn đồng thời trước",
+      "select_friendship_level": "Chọn cấp độ tình bạn",
+      "select_weapon": "Chọn vũ khí",
+      "standard_bonus": "Tiền thưởng tiêu chuẩn",
+      "stardust": "Stardust",
+      "stardustLeft_desc": "Stardust rời đi",
+      "stardust_desc": "Tiền tệ được sử dụng để mua tài nguyên hiếm từ cửa hàng.",
+      "starglitter": "Starglitter",
+      "starglitter_desc": "Tiền tệ được sử dụng để mua tài nguyên hiếm từ cửa hàng.",
+      "top_up_packages": "Gói hàng đầu",
+      "wanderers_advice": "Lời khuyên của người lang thang",
+      "weapon_level": "Mức vũ khí",
+      "weapon_not_selected": "Vui lòng chọn vũ khí",
+      "welkin_moon_desc": "Ưu đãi đăng ký 30 ngày",
+      "your_resources": "Tài nguyên của bạn"
     },
     "todo": {
       "title": "Danh sách việc cần làm trong Genshin Impact",
@@ -431,7 +566,13 @@
       "total_remaining": "Tổng số còn lại",
       "priority": "Sự ưu tiên",
       "inventory": "Hàng tồn kho",
-      "save_and_close": "Lưu và Đóng"
+      "save_and_close": "Lưu và Đóng",
+      "ascension": "Thăng thiên",
+      "complete": "Hoàn thành",
+      "no_todo_title": "Chưa có todos",
+      "nothing_today": "Không có gì để trang trại ngày hôm nay!",
+      "progress": "Tiến triển",
+      "todo_title": "Tiêu đề TODO"
     },
     "achievements": {
       "title": "Thành tựu Genshin Impact",
@@ -477,7 +618,16 @@
       "cards": "Danh Sách Bài Genius Invokation TCG",
       "all": "Tất cả",
       "search": "Tìm kiếm bài...",
-      "create_deck": "Tạo Bộ Bài"
+      "create_deck": "Tạo Bộ Bài",
+      "character card": "Thẻ nhân vật",
+      "deck": "Boong",
+      "edit": "Biên tập",
+      "equipment card": "Thẻ thiết bị",
+      "event card": "Thẻ sự kiện",
+      "no_cards_found": "Không tìm thấy thẻ",
+      "subtitle": "Duyệt bộ sưu tập đầy đủ các thẻ có sẵn trong Genius Invokation TCG. \nLọc theo loại, tìm kiếm theo tên và tạo các sàn tùy chỉnh của riêng bạn.",
+      "support card": "Thẻ hỗ trợ",
+      "try_adjusting_filters": "Thử điều chỉnh các bộ lọc hoặc thuật ngữ tìm kiếm của bạn"
     },
     "tcg_card": {
       "title": "{name} - Danh sách thẻ Genshin Impact TCG",
@@ -496,7 +646,10 @@
     "tcg_decks": {
       "title": "Khám phá những bộ bài hàng đầu trong Genius Invokation TCG: Meta Builds cho Genshin Impact Card Game",
       "description": "Bài viết này cung cấp danh sách đầy đủ các bộ bài tốt nhất trong TCG, Genius Invokation. ",
-      "best_decks": "Bộ bài hàng đầu"
+      "best_decks": "Bộ bài hàng đầu",
+      "deck_builder": "Xem boong",
+      "share_code": "Mã chia sẻ",
+      "view_deck": "Xem boong"
     },
     "tcg_deck_builder": {
       "title": "Người Xây Dựng Bộ Bài Genius Invokation TCG",
@@ -530,7 +683,8 @@
       "number_of_cards": "Số Lượng Bài",
       "draw_simulator": "Trình Mô Phỏng Rút",
       "min_cards_simulator": "ℹ️ Bạn cần có ít nhất 6 lá bài không phải nhân vật để thử Trình Mô Phỏng Rút.",
-      "draw_cards": "Rút {num} lá bài!"
+      "draw_cards": "Rút {num} lá bài!",
+      "try_adjusting_search": "Thử điều chỉnh tìm kiếm"
     },
     "profile": {
       "title": "Hồ sơ Tác động Genshin",
@@ -551,10 +705,57 @@
       "constellation": "chòm sao",
       "weapon": "vũ khí",
       "artifact": "hiện vật",
-      "owner": "Chủ sở hữu"
+      "owner": "Chủ sở hữu",
+      "ATK": "ATK",
+      "Achievements": "Thành tích",
+      "Adventure Rank": "Xếp hạng phiêu lưu",
+      "Characters": "Ký tự",
+      "DEF": "Def",
+      "EM": "Em",
+      "ER%": "%",
+      "Last update": "Cập nhật cuối cùng",
+      "Max HP": "Tối đa HP",
+      "Nickname": "Biệt danh",
+      "Signature": "Chữ ký",
+      "Spiral Abyss": "Abyss xoắn ốc",
+      "ascension": "Thăng thiên",
+      "critValue": "Giá trị phê bình",
+      "how_to_showcase_characters": "Cách nhận Build Showcase nhân vật của bạn:",
+      "how_to_showcase_characters_1": "1. Mở Genshin Impact.",
+      "how_to_showcase_characters_2": "2. Truy cập menu.",
+      "how_to_showcase_characters_3": "3. Nhấp vào biểu tượng Chỉnh sửa gần tên người dùng của bạn.",
+      "how_to_showcase_characters_4": "4. Chọn \"Sao chép UID\" (bạn có thể bỏ qua bước này nếu bạn nhớ UID của mình).",
+      "how_to_showcase_characters_5": "5. Chọn \"Chỉnh sửa hồ sơ\".",
+      "how_to_showcase_characters_6": "6. Kích hoạt tùy chọn \"Hiển thị chi tiết ký tự\".",
+      "how_to_showcase_characters_7": "7. Trong cột \"Showcase ký tự\", chọn các ký tự bạn muốn giới thiệu.",
+      "level": "Mức độ",
+      "no_builds": "Vui lòng bật tùy chọn \"Hiển thị chi tiết ký tự\" trong giới thiệu nhân vật của bạn trong trò chơi để xem chi tiết.",
+      "profile_not_found": "Hồ sơ không tìm thấy!",
+      "profile_not_found_desc": "Hồ sơ này hiện không tồn tại. \nNếu bạn muốn tạo nó, xin vui lòng gửi UID của bạn.",
+      "submit_uid": "Gửi uid",
+      "submit_uid_desc": "UID của bạn có thể được tìm thấy trong phần hồ sơ của trò chơi",
+      "sync_profile_data": "Đồng bộ hóa dữ liệu hồ sơ",
+      "title_detail": "{name} giới thiệu tác động Genshin"
     },
-    "leaderboard": {},
-    "leaderboard_profiles": {},
+    "leaderboard": {
+      "description": "Biểu đồ tác động do cộng đồng điều khiển cộng đồng giới thiệu các bản dựng và cấu hình nhân vật đặc biệt. \nTìm cảm hứng cho nhóm của bạn hoặc gửi các bản dựng của riêng bạn để cạnh tranh.",
+      "failed_load_data": "Không tải được, vui lòng thử lại sau.",
+      "leaderboard": "Bảng xếp hạng - Top Builds từ cộng đồng",
+      "loading_data": "Đang tải...",
+      "next": "Kế tiếp",
+      "previous": "Trước",
+      "section_still_in_development": "Phần này vẫn đang được phát triển.",
+      "submit_uid": "Gửi UID của bạn ở đây!",
+      "title": "Bảng xếp hạng bản dựng tác động của Genshin: Xem ai đứng đầu"
+    },
+    "leaderboard_profiles": {
+      "add_profile": "Thêm hồ sơ của bạn",
+      "description": "Khám phá cách thêm tài khoản tác động Genshin của bạn vào GenshinBuilds để tra cứu hồ sơ. \nĐảm bảo cài đặt hồ sơ trong trò chơi của bạn được cấu hình chính xác. \nTìm hiểu về việc cập nhật giới thiệu, sử dụng biệt danh trong trò chơi, UID và tên hồ sơ của Enka.Network.",
+      "invalid_page_number": "Số trang không hợp lệ",
+      "next": "Kế tiếp",
+      "previous": "Trước",
+      "title": "Tra cứu hồ sơ tác động của Genshin"
+    },
     "changelog": {
       "title": "Cập nhật Genshin Impact {version}: Các Tính Năng Mới Nhất, Thay Đổi và Cải Tiến",
       "description": "Khám phá tất cả cuộc phiêu lưu mới trong Genshin Impact {version}! Hướng dẫn toàn diện của chúng tôi bao gồm các tính năng mới nhất, cập nhật nhân vật và cải tiến gameplay. Hãy luôn dẫn đầu tại Teyvat với bản ghi chi tiết của phiên bản mới nhất.",
@@ -588,6 +789,9 @@
       "tags": "Thẻ",
       "hoyolab_article": "Bài Viết Hoyolab",
       "link": "Liên Kết đến Bảng Tính"
+    },
+    "bangboos": {
+      "w-engines": "Động cơ W."
     }
   },
   "HSR": {
@@ -630,20 +834,35 @@
       "best_relics": "Các di vật tốt nhất của {name}",
       "best_ornaments": "Các trang sức tốt nhất của {name}",
       "best_lightcones": "Các Light Cone tốt nhất của {name}",
-      "best_teams": "Các đội tốt nhất của {name}"
+      "best_teams": "Các đội tốt nhất của {name}",
+      "body": "Thân hình",
+      "feet": "Bàn chân",
+      "rope": "Dây thừng",
+      "sphere": "Quả cầu"
     },
     "lightcones": {
       "title": "Honkai: Star Rail Light Nón Danh sách",
       "description": "Danh sách đầy đủ tất cả các Nón ánh sáng và chỉ số của chúng trong Honkai: Star Rail.",
       "lightcones": "Nón ánh sáng",
-      "lightcones_desc": "Nón Ánh sáng là vật phẩm mà các nhân vật có thể trang bị để tăng HP Cơ bản, ATK Cơ bản và Phòng thủ Cơ bản của họ, đồng thời cấp khả năng bị động cho những nhân vật có đường đi phù hợp với Đường đi của Nón Ánh sáng."
+      "lightcones_desc": "Nón Ánh sáng là vật phẩm mà các nhân vật có thể trang bị để tăng HP Cơ bản, ATK Cơ bản và Phòng thủ Cơ bản của họ, đồng thời cấp khả năng bị động cho những nhân vật có đường đi phù hợp với Đường đi của Nón Ánh sáng.",
+      "ability": "Khả năng",
+      "alternative": "Thay thế",
+      "best_in_slot": "Tốt nhất trong khe",
+      "recommended_characters": "Ký tự được đề xuất",
+      "stats": "Số liệu thống kê"
     },
     "relics": {
       "title": "Honkai: Danh sách Di vật Đường sắt Ngôi sao",
       "description": "Danh sách đầy đủ tất cả các Thánh tích và chỉ số của chúng trong Honkai: Star Rail.",
       "relics": "xá lợi",
       "relics_desc": "Di vật là vật phẩm có thể trang bị cho nhân vật. ",
-      "set": "Bộ"
+      "set": "Bộ",
+      "description_detail": "Khám phá các di tích tốt nhất cho {name} trong Honkai: Star Rail. \nCũng bao gồm các số liệu thống kê của họ, đặt tiền thưởng, và nhiều hơn nữa.",
+      "ornament": "Trang trí",
+      "piece_set": "Bộ mảnh",
+      "recommended_characters": "Ký tự được đề xuất",
+      "relic_pieces": "Các mảnh di tích",
+      "title_detail": "{name} Honkai: Star Rail Dire"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Bảng Xếp hạng Tier",
@@ -686,7 +905,8 @@
       "story": "Câu chuyện",
       "source": "Nguồn",
       "world_level_required": "Yêu cầu Cấp độ Thế giới",
-      "cost": "Chi phí"
+      "cost": "Chi phí",
+      "world_level_require": "Cấp độ thế giới yêu cầu"
     },
     "achievements": {
       "title": "Thành tựu Honkai: Star Rail",
@@ -697,7 +917,22 @@
     },
     "profile": {
       "title": "Hồ Sơ Người Chơi Honkai: Star Rail {playerUID}",
-      "description": "Hồ Sơ Người Chơi Honkai: Star Rail {playerUID}"
+      "description": "Hồ Sơ Người Chơi Honkai: Star Rail {playerUID}",
+      "achievements": "Thành tích",
+      "characters": "Ký tự",
+      "simulated": "Mô phỏng"
+    },
+    "lightcone": {
+      "ascension_materials": "Vật liệu thăng thiên cần thiết",
+      "ascension_materials_none": "Không có vật liệu cần thiết cho sự thăng thiên này",
+      "atk": "ATK",
+      "def": "Def",
+      "hp": "HP",
+      "level": "Mức độ",
+      "slider_view": "Chế độ xem thanh trượt",
+      "stats": "Số liệu thống kê",
+      "table_view": "Chế độ xem bảng",
+      "total_ascension_materials_required": "Tổng tài liệu cần thiết để cấp {Cấp độ}"
     }
   },
   "zenless": {
@@ -713,7 +948,16 @@
       "priority": "Sự ưu tiên",
       "explanation": "Giải thích",
       "teams": "{character_name} Các đội tốt nhất và Bangboo",
-      "best_bangboos": "Bangboos tốt nhất"
+      "best_bangboos": "Bangboos tốt nhất",
+      "description": "Khám phá các bản dựng và nhóm tốt nhất cho {chacentername} trong Zenless Zone Zero (ZZZ). \nCũng bao gồm các kỹ năng của họ, chi phí nâng cấp, và nhiều hơn nữa.",
+      "element": "Yếu tố",
+      "house": "Căn nhà",
+      "rank": "Thứ hạng",
+      "rarity": "Hiếm khi",
+      "skills": "Kỹ năng",
+      "title": "{chacentername} Zenless Zone Zero (ZZZ) Hướng dẫn xây dựng",
+      "title_suffix": "Hướng dẫn xây dựng",
+      "type": "Kiểu"
     },
     "wengines": {
       "title": "Zenless Zone Zero (ZZZ) Danh sách W-Engines",
@@ -721,7 +965,11 @@
     },
     "bangboos": {
       "w-engines": "Zenless Zone Zero (ZZZ) Danh sách ổ đĩa",
-      "w-engines-description": "Một danh sách đầy đủ của tất cả các ổ đĩa và tiền thưởng của họ trong Zenless Zone Zero."
+      "w-engines-description": "Một danh sách đầy đủ của tất cả các ổ đĩa và tiền thưởng của họ trong Zenless Zone Zero.",
+      "bangboos": "Zenless Zone Zero Bangboo",
+      "bangboos_description": "Bangboo là 'vật nuôi' trong Zenless Zone Zero giúp nhóm của bạn - tìm mọi Bangboo có sẵn trong trò chơi dưới đây!",
+      "description": "Một danh sách đầy đủ của tất cả Bangboos có thể chơi được trong Zenless Zone Zero.",
+      "title": "Zenless Zone Zero (ZZZ) Danh sách Bangboos"
     },
     "wengine": {
       "title": "{itemname} Zenless Zone Zero W-Engine",
@@ -780,6 +1028,203 @@
       "debuffer": "Debuffer",
       "supporter": "Người ủng hộ",
       "explanation": "Giải thích"
+    },
+    "bangboo": {
+      "description": "Tìm hiểu tất cả về {Bangboo} Bangboo trong Zenless Zone Zero (ZZZ). \nXem mô tả kỹ năng chi tiết và cách sử dụng Bangboo này một cách hiệu quả.",
+      "main_title": "Hướng dẫn Zzz Bangboo",
+      "rank": "Thứ hạng",
+      "rarity": "Hiếm khi",
+      "title": "mật"
+    },
+    "characters": {
+      "characters": "Zenless Zone Zero (ZZZ) Danh sách",
+      "characters_description": "Các ký tự (Đại lý) là các đơn vị có thể đạt được trong Zenless Zone Zero (ZZZ) - Tìm mọi đại lý có sẵn trong trò chơi tại đây!",
+      "description": "Một danh sách đầy đủ của tất cả các ký tự có thể chơi được trong Zenless Zone Zero.",
+      "title": "Zenless Zone Zero (ZZZ) Danh sách ký tự"
+    },
+    "home": {
+      "description": "Genshin-Builds.com là một wiki cho Zenless Zone Zero (ZZZ). \nKiểm tra hướng dẫn, danh sách cấp độ và đánh giá của chúng tôi cho các nhân vật có sẵn trong trò chơi.",
+      "news": "Tin tức",
+      "see_more": "Xem thêm",
+      "title": "Zenless Zone Zero (Zzz) Wiki",
+      "welcome": "Chào mừng bạn đến với ZenlessBuilds",
+      "welcome_description": "Khám phá các bản dựng nhân vật, hướng dẫn toàn diện và cơ sở dữ liệu wiki tất cả ở một nơi cho Zenless Zone Zero (ZZZ)."
+    },
+    "layout": {
+      "bangboos": "Bangboo",
+      "blog": "Blog",
+      "characters": "Đại lý",
+      "disk-drives": "Đĩa lái",
+      "home": "Trang chủ",
+      "tierlist": "Danh sách Tierl",
+      "w-engines": "Động cơ w"
+    }
+  },
+  "WW": {
+    "character": {
+      "1_cost": "1 chi phí",
+      "3_cost": "3 chi phí",
+      "4_cost": "4 chi phí",
+      "affiliation": "Liên kết",
+      "ascension_materials": "{chacentername} Vật liệu thăng thiên",
+      "best_echo_sets": "Các bộ Echo tốt nhất cho {chacentername}",
+      "best_echo_stats": "Số liệu thống kê tốt nhất cho {chacentername} Echoes",
+      "best_echo_substats": "Những người thay thế tốt nhất cho {chacentername} tiếng vang",
+      "best_primary_echo": "{charactername} echo chính tốt nhất của",
+      "best_teams": "Các đội tốt nhất cho {chacentername}",
+      "best_weapons": "Vũ khí tốt nhất cho {charactername}",
+      "birth": "Sinh",
+      "birthplace": "Nơi sinh",
+      "combat_roles": "Vai trò chiến đấu",
+      "description": "{chacentername} là một ký tự {RarityString} ({Rarity} ★) trong sóng wuthering. \nKhám phá các bản dựng và thành phần nhóm tốt nhất cho {chacentername}.",
+      "element": "Yếu tố",
+      "main_title": "Wuthering Waves {chacentername} Hướng dẫn xây dựng",
+      "no_special_food": "Không có thức ăn đặc biệt",
+      "resonance_chain": "{ChacterName} Chuỗi cộng hưởng",
+      "skills": "{charactername} Kỹ năng",
+      "special_food": "{chacentername} Thực phẩm đặc biệt",
+      "story_and_voice": "Câu chuyện",
+      "talent_lvlup_materials": "{charactername} Vật liệu tăng cấp tài năng",
+      "tips_and_tricks": "Lời khuyên tốt nhất",
+      "title": "Wuthering Waves {chacentername} Hướng dẫn | \nCác bản dựng và đội tốt nhất",
+      "weapon_type": "Loại vũ khí"
+    },
+    "character_info": {
+      "cherished_items_favors": "{charactername} Các mục ấp ủ",
+      "chinese": "Trung Quốc",
+      "description": "Khám phá câu chuyện, diễn viên lồng tiếng, và nhiều hơn nữa cho {chacentername} trong sóng wuthering.",
+      "english": "Tiếng Anh",
+      "forte_examination_report": "{charactername} Báo cáo kiểm tra Forte",
+      "info": "Thông tin",
+      "japanese": "Nhật Bản",
+      "korean": "Hàn Quốc",
+      "overclock_diagnostic_report": "Đan xung báo cáo chẩn đoán",
+      "resonance_evaluation_report": "Báo cáo đánh giá cộng hưởng",
+      "resonance_power": "Sức mạnh cộng hưởng",
+      "story": "{Charactername} Câu chuyện",
+      "title": "Wuthering Waves {chacentername} Câu chuyện",
+      "va": "{charactername} diễn viên giọng nói",
+      "voice": "{charactername} dòng giọng nói"
+    },
+    "echo": {
+      "birthplace": "Nơi sinh",
+      "code": "Mã số",
+      "cost": "Trị giá",
+      "description": "{Echoname} là một tiếng vang trong sóng wuthering. \nTìm hiểu về các kỹ năng của nó và làm thế nào để sử dụng nó một cách hiệu quả.",
+      "echo_skill": "{echoname} kỹ năng echo",
+      "main_title": "Wuthering Waves {Echoname} Echo",
+      "num_pieces": "{N} -Piece Set",
+      "rarity": "Hiếm khi",
+      "sonata_effect": "{Echoname} Hiệu ứng sonata",
+      "title": "Wuthering Waves {Echoname} Hướng dẫn Echo | \nKỹ năng và hiệu ứng",
+      "type": "Kiểu"
+    },
+    "echoes": {
+      "description": "Một danh sách đầy đủ của tất cả các tiếng vang trong sóng wuthering với các kỹ năng và hiệu ứng chi tiết.",
+      "main_description": "Khám phá tất cả các tiếng vang trong sóng wuthering với thông tin được cập nhật nhất về các kỹ năng và hiệu ứng của chúng.",
+      "main_title": "Wuthering Waves Echoes Danh sách",
+      "title": "Wuthering Waves Echoes Danh sách | \nKỹ năng và hiệu ứng"
+    },
+    "home": {
+      "clear_all": "Rõ ràng tất cả",
+      "description": "Luôn cập nhật các nhân vật, bản dựng và chiến lược mới nhất trong sóng Wuthering.",
+      "filters": "Bộ lọc",
+      "main_description": "Khám phá một danh sách đầy đủ tất cả các nhân vật Wuthering Waves với thông tin được cập nhật nhất về các bản dựng, vũ khí và thành phần nhóm của họ.",
+      "main_title": "Danh sách nhân vật Wuthering Waves | \nCác bản dựng và đội tốt nhất",
+      "no_characters_found": "Không tìm thấy nhân vật",
+      "rarity_filter": "Bộ lọc Rarity",
+      "search": "Nhân vật tìm kiếm ...",
+      "sort_ascending": "Sắp xếp tăng dần",
+      "sort_descending": "Sắp xếp giảm dần",
+      "sort_name": "Tên",
+      "sort_rarity": "Hiếm khi",
+      "sort_release": "Ngày phát hành",
+      "title": "Wuthering Waves Wiki",
+      "try_adjusting_filters": "Thử điều chỉnh các bộ lọc hoặc thuật ngữ tìm kiếm của bạn"
+    },
+    "item": {
+      "description": "{itemName} là một mục {RarityString} ({Rarity} ★) trong sóng wuthering. \nTìm hiểu cách sử dụng nó và nơi để tìm nó.",
+      "main_title": "Wuthering Waves {itemName} mục",
+      "rarity": "Hiếm khi",
+      "sources": "Nguồn",
+      "tags": "Tags",
+      "title": "Wuthering Waves {ItemName} Hướng dẫn mục | \nSử dụng và nguồn",
+      "type": "Kiểu"
+    },
+    "items": {
+      "description": "Danh sách toàn diện của tất cả các mục trong sóng wuthering, bao gồm cả việc sử dụng và nơi tìm thấy chúng.",
+      "main_description": "Khám phá tất cả các mục trong sóng Wuthering với thông tin chi tiết về việc sử dụng và nguồn của chúng.",
+      "main_title": "Danh sách các mục Wuthering Waves",
+      "title": "Danh sách các mục Wuthering Waves | \nSử dụng và nguồn"
+    },
+    "layout": {
+      "characters": "Ký tự",
+      "description": "Tài nguyên cuối cùng của bạn cho Wuthering Waves: Xây dựng nhân vật, danh sách cấp, vũ khí, tiếng vang và chiến lược để làm chủ trò chơi.",
+      "echoes": "Tiếng vang",
+      "inventory": "Hàng tồn kho",
+      "tierlist_characters": "Danh sách cấp - ký tự",
+      "tierlist_characters_desc": "Khám phá các ký tự được xếp hạng hàng đầu và các bản dựng tối ưu của chúng để thống trị sóng Wuthering.",
+      "tierlist_echoes": "Danh sách cấp - Echoes",
+      "tierlist_echoes_desc": "Khám phá tiếng vang mạnh mẽ nhất và cách chúng tác động đến hiệu suất của nhân vật của bạn.",
+      "tierlist_weapons": "Danh sách cấp - Vũ khí",
+      "tierlist_weapons_desc": "Tìm vũ khí tốt nhất được xếp hạng bởi sức mạnh và hiệu quả để nâng cao lối chơi của bạn.",
+      "title": "Wuthering Waves Wiki",
+      "weapons": "Vũ khí"
+    },
+    "tierlist_characters": {
+      "description": "Khám phá các nhân vật hàng đầu trong Wuthering Waves với danh sách và thứ hạng toàn diện của chúng tôi.",
+      "explanation": "Giải thích",
+      "main_description": "Chào mừng bạn đến với danh sách các nhân vật Wuthering Waves toàn diện của chúng tôi. \nChúng tôi xếp hạng các nhân vật dựa trên khả năng, điểm mạnh và tiện ích tổng thể để giúp bạn vượt trội trong trò chơi.",
+      "main_dps": "DPS chính",
+      "main_title": "Danh sách của Wuthering Waves Nhân vật | \nXếp hạng và phân tích",
+      "overall": "Tổng thể",
+      "sub_dps": "DPS phụ",
+      "support": "Ủng hộ",
+      "title": "Danh sách các nhân vật Wuthering Waves tốt nhất | \nHướng dẫn xếp hạng cuối cùng"
+    },
+    "tierlist_echoes": {
+      "description": "Khám phá tiếng vang mạnh nhất trong sóng Wuthering với danh sách và phân tích cấp chi tiết của chúng tôi.",
+      "explanation": "Giải thích",
+      "main_description": "Wuthering Waves toàn diện của chúng tôi vang vọng danh sách cấp bậc của chúng tôi dựa trên khả năng và tác động của chúng đối với trò chơi, giúp bạn đưa ra quyết định sáng suốt.",
+      "main_title": "Wuthering Waves vang vọng danh sách tầng | \nXếp hạng và phân tích",
+      "title": "Sóng Wuthering tốt nhất vang vọng danh sách tầng | \nHướng dẫn xếp hạng cuối cùng"
+    },
+    "tierlist_weapons": {
+      "broadblade": "Broadblade",
+      "broadblades_tierlist": "Danh sách cấp độ Broadblade",
+      "description": "Tìm ra vũ khí nào là tốt nhất trong các sóng wuthering với danh sách và bảng xếp hạng cấp độ chuyên sâu của chúng tôi.",
+      "gauntlet": "Gauntlet",
+      "gauntlets_tierlist": "Danh sách tầng Gauntlet",
+      "main_description": "Danh sách các cấp độ vũ khí toàn diện của chúng tôi xếp hạng vũ khí dựa trên sức mạnh, hiệu quả và tiện ích tổng thể để nâng cao lối chơi của bạn.",
+      "main_title": "Danh sách của Wuthering Waves Vũ khí | \nXếp hạng và phân tích",
+      "pistol": "Súng lục",
+      "pistols_tierlist": "Danh sách cấp khẩu súng lục",
+      "rectifier": "Bộ chỉnh lưu",
+      "rectifiers_tierlist": "Danh sách tầng chỉnh lưu",
+      "sword": "Gươm",
+      "swords_tierlist": "Danh sách tầng kiếm",
+      "title": "Danh sách Wuthering Waves tốt nhất Danh sách Cấp vũ khí | \nHướng dẫn xếp hạng cuối cùng"
+    },
+    "weapon": {
+      "ascensions": "Sự thăng thiên",
+      "description": "{Weaponname} là một vũ khí {RarityString} ({Rarity} ★) trong sóng wuthering. \nTìm hiểu về số liệu thống kê và kỹ năng của nó.",
+      "level_n": "Cấp độ {n}",
+      "main_title": "Wuthering Waves {Weaponname} Vũ khí",
+      "rarity": "Hiếm khi",
+      "syntonize": "Đồng bộ",
+      "title": "Wuthering Waves {Weaponname} Hướng dẫn vũ khí | \nSố liệu thống kê và kỹ năng",
+      "type": "Kiểu"
+    },
+    "weapons": {
+      "ascensions": "Sự thăng thiên",
+      "description": "Khám phá những vũ khí tốt nhất trong sóng wuthering với các kỹ năng và chỉ số chi tiết.",
+      "level_n": "Cấp độ {n}",
+      "main_description": "Một danh sách đầy đủ tất cả các vũ khí trong sóng Wuthering với thông tin được cập nhật nhất về các kỹ năng và số liệu thống kê của chúng.",
+      "main_title": "Danh sách vũ khí của Wuthering Waves",
+      "rarity": "Hiếm khi",
+      "syntonize": "Đồng bộ",
+      "title": "Danh sách vũ khí của Wuthering Waves | \nVũ khí và kỹ năng tốt nhất",
+      "type": "Kiểu"
     }
   }
 }

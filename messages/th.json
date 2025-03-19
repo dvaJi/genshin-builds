@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "โปรไฟล์เพื่อเปรียบเทียบความก้าวหน้าของคุณกับผู้เล่นคนอื่นๆ",
       "profiles": "โปรไฟล์",
       "profiles_desc": "โปรไฟล์เพื่อเปรียบเทียบความก้าวหน้าของคุณกับผู้เล่นคนอื่นๆ",
-      "blog": "บล็อก"
+      "blog": "บล็อก",
+      "Tools": "เครื่องมือ"
     },
     "ascension_planner": {
       "title": "ฐานข้อมูล Wiki ของ Genshin-Builds.com",
@@ -170,7 +171,8 @@
       "view_all_posts": "ดูโพสต์ทั้งหมด",
       "server_timers": "ตัวจับเวลาเซิร์ฟเวอร์",
       "server_timers_desc": "การรีเซ็ตประจำวันเกิดขึ้นที่ 04:00 (4 โมงเช้า) โดยมีการเปลี่ยนโซนเวลาของเซิร์ฟเวอร์ของคุณเป็นพื้นฐาน การรีเซ็ตรายสัปดาห์เกิดขึ้นทุกวันจันทร์เช่นกัน ที่ 04:00 (4 โมงเช้า)",
-      "shortcuts": "ทางลัด"
+      "shortcuts": "ทางลัด",
+      "farmable_today_desc": "ค้นพบว่าตัวละครและอาวุธใดในวันนี้"
     },
     "characters": {
       "title": "รายชื่อตัวละคร Genshin Impact",
@@ -182,7 +184,25 @@
       "hydro": "ไฮโดร",
       "electro": "อิเล็กโทร",
       "cryo": "ไครโอ",
-      "dendro": "เดนโดร"
+      "dendro": "เดนโดร",
+      "Bow": "โค้งคำนับ",
+      "Catalyst": "ตัวเร่งปฏิกิริยา",
+      "Claymore": "เคลย์มอร์",
+      "Polearm": "polearm",
+      "Sword": "ดาบ",
+      "clear_all": "ล้างทั้งหมด",
+      "element_filter": "ตัวกรององค์ประกอบ",
+      "no_characters_found": "ไม่พบอักขระ",
+      "rarity_filter": "ตัวกรองหายาก",
+      "search": "ค้นหาอักขระ ...",
+      "sort_ascending": "เรียงลำดับ",
+      "sort_descending": "เรียงลำดับ",
+      "sort_element": "องค์ประกอบ",
+      "sort_name": "ชื่อ",
+      "sort_rarity": "ความหายาก",
+      "sort_release": "วันที่วางจำหน่าย",
+      "try_adjusting_filters": "ลองปรับตัวกรองหรือคำค้นหาของคุณ",
+      "weapon_filter": "ตัวกรองอาวุธ"
     },
     "character": {
       "title": "{name} ใน Genshin Impact: คู่มือการสร้างแบบสุดยอด",
@@ -232,7 +252,19 @@
       "most_used_title": "บิลด์ที่ใช้บ่อยที่สุดจากชุมชน",
       "most_used_disclaimer": "บิลด์นี้ขึ้นอยู่กับของประดับและอาวุธที่ชุมชนใช้มากที่สุด หากคุณต้องการมีส่วนร่วมในข้อมูลนี้ คุณสามารถทำได้โดยการส่ง UID ของคุณโดยคลิกที่นี่",
       "build_title": "บิลด์ของ {name}",
-      "lv": "LV."
+      "lv": "LV.",
+      "best_artifacts": "สิ่งประดิษฐ์ที่ดีที่สุด",
+      "best_weapons": "อาวุธที่ดีที่สุด",
+      "clear_search": "ล้างการค้นหา",
+      "hide_build_details": "ซ่อนรายละเอียดการสร้าง",
+      "intended_level_error": "ระดับที่ตั้งใจจะต้องสูงกว่าระดับปัจจุบัน",
+      "intended_talent_error": "ระดับความสามารถที่ตั้งใจจะต้องสูงกว่าระดับปัจจุบัน",
+      "main_stats": "สถิติหลัก",
+      "no_data_to_add": "ไม่มีข้อมูลการคำนวณที่จะเพิ่มลงในรายการสิ่งที่ต้องทำ",
+      "passive": "แฝงตัว",
+      "search_placeholder": "ค้นหาสร้าง ...",
+      "show_build_details": "แสดงรายละเอียดการสร้าง",
+      "substats": "สิ่งที่น่าสนใจ"
     },
     "weapons": {
       "title": "รายการอาวุธ Genshin Impact",
@@ -244,7 +276,23 @@
       "level": "ระดับ",
       "stats": "สถิติ",
       "ascension": "การเสด็จขึ้นสู่สวรรค์",
-      "refinement": "การปรับแต่ง"
+      "refinement": "การปรับแต่ง",
+      "Bow": "โค้งคำนับ",
+      "Catalyst": "ตัวเร่งปฏิกิริยา",
+      "Claymore": "เคลย์มอร์",
+      "Polearm": "polearm",
+      "Sword": "ดาบ",
+      "clear_all": "ล้างทั้งหมด",
+      "filters": "ตัวกรอง",
+      "no_weapons_found": "ไม่พบอาวุธ",
+      "rarity_filter": "ตัวกรองหายาก",
+      "sort_ascending": "เรียงลำดับ",
+      "sort_descending": "เรียงลำดับ",
+      "sort_name": "ชื่อ",
+      "sort_rarity": "ความหายาก",
+      "sort_type": "พิมพ์",
+      "try_adjusting_filters": "ลองปรับตัวกรองหรือคำค้นหาของคุณ",
+      "weapon_filter": "ตัวกรองอาวุธ"
     },
     "weapon": {
       "title": "{name} รายละเอียดอาวุธ Genshin Impact",
@@ -258,7 +306,11 @@
       "ascension": "การเสด็จขึ้นสู่สวรรค์",
       "refinement": "การปรับแต่ง",
       "recommended_characters": "ตัวละครที่แนะนำ",
-      "ascension_materials": "วัสดุแอสเซนชัน"
+      "ascension_materials": "วัสดุแอสเซนชัน",
+      "base_atk": "ฐาน ATK",
+      "lv": "LV.",
+      "total": "ทั้งหมด",
+      "weapon_title": "Genshin Impact {name} อาวุธ"
     },
     "artifacts": {
       "title": "รายการสิ่งประดิษฐ์ Genshin Impact",
@@ -270,7 +322,13 @@
       "1piece_bonus": "โบนัส 1 ชิ้น",
       "1piece_artifact_sets": "ชุดสิ่งประดิษฐ์ 1 ชิ้น",
       "2piece_bonus": "โบนัส 2 ชิ้น",
-      "4piece_bonus": "โบนัส 4 ชิ้น"
+      "4piece_bonus": "โบนัส 4 ชิ้น",
+      "artifact_description": "{ชื่อ} เป็นสิ่งประดิษฐ์ที่ตั้งไว้ใน Genshin Impact \nเรียนรู้เพิ่มเติมเกี่ยวกับเอฟเฟกต์ชุดสิ่งประดิษฐ์ตัวละครที่ดีที่สุดและตำแหน่งสิ่งประดิษฐ์ที่นี่!",
+      "artifact_details": "{name} Genshin Impact Artifact {rarity} stars rarity rarity",
+      "artifact_pieces": "ชิ้นส่วน",
+      "four_pc": "4 พีซี",
+      "one_pc": "1 พีซี",
+      "two_pc": "2 พีซี"
     },
     "tierlist": {
       "title": "รายชื่อระดับ Genshin Impact (ตัวละครที่ดีที่สุด)",
@@ -278,7 +336,9 @@
       "tierlist": "รายการระดับ",
       "main_dps": "DPS หลัก",
       "sub_dps": "ย่อย DPS",
-      "support": "สนับสนุน"
+      "support": "สนับสนุน",
+      "six_constellation": "C6 Tierlist",
+      "zero_constellation": "C0 Tierlist"
     },
     "tierlist_weapons": {
       "title": "รายการระดับอาวุธ Genshin Impact (อาวุธที่ดีที่สุด)",
@@ -337,7 +397,24 @@
       "goblet": "ถ้วย",
       "circlet": "วงแหวน",
       "substats": "สถานะรอง",
-      "weapons": "อาวุธ"
+      "weapons": "อาวุธ",
+      "anemo": "เกี่ยวกับโรคโลหิตจาง",
+      "clear_all": "ล้างทั้งหมด",
+      "cryo": "การแช่แข็ง",
+      "dendro": "Dendro",
+      "electro": "เครื่องใช้ไฟฟ้า",
+      "element_filter": "ตัวกรององค์ประกอบ",
+      "geo": "GEO",
+      "hydro": "น้ำ",
+      "no_teams_found": "ไม่พบทีม",
+      "pyro": "ปัสสาวะ",
+      "search_teams": "ค้นหาทีม ...",
+      "sort_ascending": "เรียงลำดับ",
+      "sort_character": "ชื่อตัวละคร",
+      "sort_descending": "เรียงลำดับ",
+      "sort_element": "องค์ประกอบ",
+      "teams_description": "ค้นพบคอมพ์ทีมที่ดีที่สุดสำหรับตัวละคร Genshin Impact เพื่อเพิ่มประสิทธิภาพการต่อสู้ของทีมของคุณ",
+      "try_adjusting_filters": "ลองปรับตัวกรองหรือคำค้นหาของคุณ"
     },
     "fishing": {
       "title": "Genshin Impact Fishing (ปลา เหยื่อ คันเบ็ด และจุดตกปลา)",
@@ -348,7 +425,8 @@
       "inazuma": "อินาสึมะ",
       "enkanomiya": "เอนคาโนมิยะ",
       "the_chasm": "เหว",
-      "sumeru": "สุเมรุ"
+      "sumeru": "สุเมรุ",
+      "source": "แหล่งที่มา"
     },
     "calculator": {
       "title": "เครื่องคิดเลข Genshin Impact",
@@ -411,7 +489,64 @@
       "or": "หรือ",
       "desired_resin": "รีซินที่ต้องการ",
       "current_time": "เวลาปัจจุบัน",
-      "replenished_at": "จะเติมเต็มที่: {timeToWait} ({relativeTimeToWait})"
+      "replenished_at": "จะเติมเต็มที่: {timeToWait} ({relativeTimeToWait})",
+      "adventurers_experience": "ประสบการณ์นักผจญภัย",
+      "calculateByMoney": "คำนวณโดยเงิน",
+      "calculate_by_fate": "คำนวณโดยโชคชะตา",
+      "calculate_by_money": "คำนวณโดยเงิน",
+      "calculating": "การคำนวณ ...",
+      "calculation_error": "เกิดข้อผิดพลาดระหว่างการคำนวณ",
+      "calculation_result": "ผลการคำนวณ",
+      "calculation_results": "ผลการคำนวณ",
+      "daysUntilPull_desc": "วันจนกระทั่งดึง",
+      "decrease_random_events": "ลดเหตุการณ์แบบสุ่ม",
+      "enter_amount": "ป้อนจำนวนเงิน",
+      "enter_fate_amount": "ป้อนจำนวนโชคชะตา",
+      "enter_friendship_values_and_calculate": "ป้อนค่ามิตรภาพของตัวละครของคุณและคลิกคำนวณเพื่อดูผลลัพธ์",
+      "enter_values_and_calculate": "กรอกแบบฟอร์ม",
+      "estimated_resin_time": "เวลาประมาณ",
+      "estimated_resin_tooltip": "นี่คือการประเมินตามอินพุตของคุณ",
+      "exp_percentage_help": "ความคืบหน้าในปัจจุบันใน Friendship Exp Bar",
+      "first_time_bonus_active": "โบนัสครั้งแรกใช้งานได้",
+      "first_time_help": "เปิดใช้งานเฉพาะในกรณีที่ \"ครั้งแรก\" มีโบนัส",
+      "friendship_calculation_results": "ผลการคำนวณมิตรภาพ",
+      "friendship_level_help": "เลือกระดับมิตรภาพปัจจุบันของตัวละครของคุณ",
+      "genesis_crystal": "Genesis Crystal",
+      "genesis_crystal_desc": "สกุลเงินพิเศษ",
+      "heros_wit": "ปัญญาของฮีโร่",
+      "increase_random_events": "เพิ่มเหตุการณ์แบบสุ่ม",
+      "intended_level_error": "ระดับที่ตั้งใจจะต้องสูงกว่าระดับปัจจุบัน",
+      "intertwinedFate": "ชะตากรรมที่เชื่อมโยงกัน",
+      "intertwinedFate_desc": "ชะตากรรมที่เชื่อมโยงกัน",
+      "material": "วัสดุ",
+      "max": "สูงสุด",
+      "mora": "โมรา",
+      "no_data_to_add": "ไม่มีข้อมูลการคำนวณที่จะเพิ่มลงในรายการสิ่งที่ต้องทำ",
+      "original_resin": "เรซินดั้งเดิม",
+      "parameters": "พารามิเตอร์",
+      "please_select_currency": "กรุณาเลือกสกุลเงิน",
+      "please_select_level": "กรุณาเลือกระดับ",
+      "price_in_currency": "ราคาใน {สกุลเงิน}",
+      "primogem": "Primogem",
+      "primogem_desc": "สกุลเงินพิเศษ",
+      "random_events_help": "เหตุการณ์สุ่มทุกวันที่ให้มิตรภาพ EXP",
+      "resin_calculation_results": "ผลการคำนวณ",
+      "resin_percent": "เรซิน {เปอร์เซ็นต์}%",
+      "select_currency_first": "เลือกพร้อมกันก่อน",
+      "select_friendship_level": "เลือกระดับมิตรภาพ",
+      "select_weapon": "เลือกอาวุธ",
+      "standard_bonus": "โบนัสมาตรฐาน",
+      "stardust": "สตาร์ดิส",
+      "stardustLeft_desc": "Stardust ซ้าย",
+      "stardust_desc": "สกุลเงินที่ใช้ในการซื้อทรัพยากรที่หายากจากร้านค้า",
+      "starglitter": "คนดาว",
+      "starglitter_desc": "สกุลเงินที่ใช้ในการซื้อทรัพยากรที่หายากจากร้านค้า",
+      "top_up_packages": "แพ็คเกจเติมเงิน",
+      "wanderers_advice": "คำแนะนำของ Wanderer",
+      "weapon_level": "ระดับอาวุธ",
+      "weapon_not_selected": "กรุณาเลือกอาวุธ",
+      "welkin_moon_desc": "ข้อเสนอการสมัครสมาชิก 30 วัน",
+      "your_resources": "ทรัพยากรของคุณ"
     },
     "todo": {
       "title": "รายการสิ่งที่ต้องทำของ Genshin Impact",
@@ -431,7 +566,13 @@
       "total_remaining": "คงเหลือทั้งหมด",
       "priority": "ลำดับความสำคัญ",
       "inventory": "รายการสิ่งของ",
-      "save_and_close": "บันทึกและปิด"
+      "save_and_close": "บันทึกและปิด",
+      "ascension": "เสด็จขึ้นสู่สวรรค์",
+      "complete": "สมบูรณ์",
+      "no_todo_title": "ยังไม่มีโทโดส",
+      "nothing_today": "วันนี้ไม่มีอะไรทำฟาร์ม!",
+      "progress": "ความคืบหน้า",
+      "todo_title": "ชื่อเรื่อง"
     },
     "achievements": {
       "title": "ความสำเร็จของ Genshin Impact",
@@ -477,7 +618,16 @@
       "cards": "รายการการ์ด Genius Invokation TCG",
       "all": "ทั้งหมด",
       "search": "ค้นหาการ์ด...",
-      "create_deck": "สร้างสำรับ"
+      "create_deck": "สร้างสำรับ",
+      "character card": "การ์ดตัวละคร",
+      "deck": "ดาดฟ้า",
+      "edit": "แก้ไข",
+      "equipment card": "บัตรอุปกรณ์",
+      "event card": "บัตรจัดกิจกรรม",
+      "no_cards_found": "ไม่พบการ์ด",
+      "subtitle": "เรียกดูคอลเลกชันที่สมบูรณ์ของการ์ดที่มีอยู่ใน Genius Invokation TCG \nกรองตามประเภทค้นหาตามชื่อและสร้างสำรับที่กำหนดเองของคุณเอง",
+      "support card": "การ์ดสนับสนุน",
+      "try_adjusting_filters": "ลองปรับตัวกรองหรือคำค้นหาของคุณ"
     },
     "tcg_card": {
       "title": "{name} - รายการการ์ด Genshin Impact TCG",
@@ -496,7 +646,10 @@
     "tcg_decks": {
       "title": "ค้นพบเด็คชั้นนำใน Genius Invokation TCG: Meta Builds สำหรับเกมการ์ด Genshin Impact",
       "description": "บทความนี้แสดงรายชื่อสำรับที่ดีที่สุดใน TCG, Genius Invokation ",
-      "best_decks": "ชั้นดาดฟ้า"
+      "best_decks": "ชั้นดาดฟ้า",
+      "deck_builder": "ดูดาดฟ้า",
+      "share_code": "แชร์รหัส",
+      "view_deck": "ดูดาดฟ้า"
     },
     "tcg_deck_builder": {
       "title": "ผู้สร้างสำรับ Genius Invokation TCG",
@@ -530,7 +683,8 @@
       "number_of_cards": "จำนวนการ์ด",
       "draw_simulator": "โปรแกรมจำลองการ์ด",
       "min_cards_simulator": "ℹ️ คุณจำเป็นต้องมีการ์ดไม่ใช่ตัวละครอย่างน้อย 6 ใบเพื่อลองโปรแกรมจำลองการ์ด",
-      "draw_cards": "ดึงการ์ด {num} ใบ!"
+      "draw_cards": "ดึงการ์ด {num} ใบ!",
+      "try_adjusting_search": "ลองปรับการค้นหา"
     },
     "profile": {
       "title": "โปรไฟล์ผลกระทบของ Genshin",
@@ -551,10 +705,57 @@
       "constellation": "กลุ่มดาว",
       "weapon": "อาวุธ",
       "artifact": "สิ่งประดิษฐ์",
-      "owner": "เจ้าของ"
+      "owner": "เจ้าของ",
+      "ATK": "ATK",
+      "Achievements": "ความสำเร็จ",
+      "Adventure Rank": "อันดับผจญภัย",
+      "Characters": "ตัวละคร",
+      "DEF": "def",
+      "EM": "em",
+      "ER%": "ER%",
+      "Last update": "อัปเดตล่าสุด",
+      "Max HP": "สูงสุด HP",
+      "Nickname": "ชื่อเล่น",
+      "Signature": "ลายเซ็น",
+      "Spiral Abyss": "ก้นบึ้ง",
+      "ascension": "เสด็จขึ้นสู่สวรรค์",
+      "critValue": "ค่า crit",
+      "how_to_showcase_characters": "วิธีรับการแสดงตัวละครของคุณ:",
+      "how_to_showcase_characters_1": "1. ผลกระทบของ Genshin เปิด",
+      "how_to_showcase_characters_2": "2. เข้าถึงเมนู",
+      "how_to_showcase_characters_3": "3. คลิกที่ไอคอนแก้ไขที่อยู่ใกล้ชื่อผู้ใช้ของคุณ",
+      "how_to_showcase_characters_4": "4. เลือก \"Copy UID\" (คุณอาจข้ามขั้นตอนนี้หากคุณจำ UID ของคุณ)",
+      "how_to_showcase_characters_5": "5. เลือก \"แก้ไขโปรไฟล์\"",
+      "how_to_showcase_characters_6": "6. เปิดใช้งานตัวเลือก \"แสดงรายละเอียดอักขระ\"",
+      "how_to_showcase_characters_7": "7. ในคอลัมน์ \"Character Showcase\" เลือกอักขระที่คุณต้องการแสดง",
+      "level": "ระดับ",
+      "no_builds": "โปรดเปิดใช้งานตัวเลือก \"แสดงรายละเอียดอักขระ\" ในตัวละครของคุณแสดงในเกมเพื่อดูรายละเอียด",
+      "profile_not_found": "ไม่พบโปรไฟล์!",
+      "profile_not_found_desc": "โปรไฟล์นี้ไม่มีอยู่ในปัจจุบัน \nหากคุณต้องการสร้างโปรดส่ง UID ของคุณ",
+      "submit_uid": "ส่ง UID",
+      "submit_uid_desc": "UID ของคุณสามารถพบได้ในส่วนโปรไฟล์ของเกม",
+      "sync_profile_data": "ซิงค์ข้อมูลโปรไฟล์",
+      "title_detail": "{name} Genshin Impact Showcase"
     },
-    "leaderboard": {},
-    "leaderboard_profiles": {},
+    "leaderboard": {
+      "description": "Genshin Impact Board บอร์ดที่ขับเคลื่อนด้วยชุมชนแสดงการสร้างตัวละครที่ยอดเยี่ยมและการกำหนดค่า \nค้นหาแรงบันดาลใจสำหรับทีมของคุณหรือส่งงานสร้างของคุณเองเพื่อแข่งขัน",
+      "failed_load_data": "ไม่สามารถโหลดได้โปรดลองอีกครั้งในภายหลัง",
+      "leaderboard": "ลีดเดอร์บอร์ด - สร้างจากชุมชน",
+      "loading_data": "กำลังโหลด ...",
+      "next": "ต่อไป",
+      "previous": "ก่อนหน้า",
+      "section_still_in_development": "ส่วนนี้ยังอยู่ในระหว่างการพัฒนา",
+      "submit_uid": "ส่ง UID ของคุณที่นี่!",
+      "title": "Genshin Impact Build Rankings: ดูว่าใครอยู่ด้านบน"
+    },
+    "leaderboard_profiles": {
+      "add_profile": "เพิ่มโปรไฟล์ของคุณ",
+      "description": "ค้นพบวิธีเพิ่มบัญชี Genshin Impact ของคุณไปยัง Genshinbuilds สำหรับการค้นหาโปรไฟล์ \nตรวจสอบให้แน่ใจว่าการตั้งค่าโปรไฟล์ในเกมของคุณได้รับการกำหนดค่าอย่างถูกต้อง \nเรียนรู้เกี่ยวกับการอัพเดทโชว์ผลงานโดยใช้ชื่อเล่นในเกม uids และชื่อโปรไฟล์ของ Enka.network",
+      "invalid_page_number": "หมายเลขหน้าไม่ถูกต้อง",
+      "next": "ต่อไป",
+      "previous": "ก่อนหน้า",
+      "title": "การค้นหาโปรไฟล์ผลกระทบของ Genshin"
+    },
     "changelog": {
       "title": "อัพเดท Genshin Impact {version}: คุณสมบัติล่าสุด, การเปลี่ยนแปลง และการปรับปรุง",
       "description": "ค้นพบผจญภัยใหม่ทั้งหมดใน Genshin Impact {version}! คู่มือครอบคลุมครบทุกคุณสมบัติล่าสุด, การอัพเดทตัวละคร, และการปรับปรุงในการเล่นเกม อยู่ข้างหน้าใน Teyvat ด้วยบันทึกรายละเอียดเวอร์ชันล่าสุด",
@@ -588,6 +789,9 @@
       "tags": "แท็ก",
       "hoyolab_article": "บทความ Hoyolab",
       "link": "ลิงก์ไปยังแผ่นงาน"
+    },
+    "bangboos": {
+      "w-engines": "W-engines"
     }
   },
   "HSR": {
@@ -630,20 +834,35 @@
       "best_relics": "วัตถุโบราณที่ดีที่สุดของ{name}",
       "best_ornaments": "ตกแต่งที่ดีที่สุดของ{name}",
       "best_lightcones": "ไฟฉายที่ดีที่สุดของ{name}",
-      "best_teams": "ทีมที่ดีที่สุดของ{name}"
+      "best_teams": "ทีมที่ดีที่สุดของ{name}",
+      "body": "ร่างกาย",
+      "feet": "เท้า",
+      "rope": "เชือก",
+      "sphere": "ทรงกลม"
     },
     "lightcones": {
       "title": "Honkai: รายการ Star Rail Light Cones",
       "description": "รายการทั้งหมดของ Light Cones และสถิติใน Honkai: Star Rail",
       "lightcones": "กรวยไฟ",
-      "lightcones_desc": "Light Cones เป็นไอเท็มที่ตัวละครสวมใส่เพื่อเพิ่ม Base HP, Base ATK และ Base DEF และมอบความสามารถแบบพาสซีฟให้กับตัวละครที่มีเส้นทางตรงกับ Light Cone"
+      "lightcones_desc": "Light Cones เป็นไอเท็มที่ตัวละครสวมใส่เพื่อเพิ่ม Base HP, Base ATK และ Base DEF และมอบความสามารถแบบพาสซีฟให้กับตัวละครที่มีเส้นทางตรงกับ Light Cone",
+      "ability": "ความสามารถ",
+      "alternative": "ทางเลือก",
+      "best_in_slot": "ดีที่สุดในสล็อต",
+      "recommended_characters": "อักขระที่แนะนำ",
+      "stats": "สถิติ"
     },
     "relics": {
       "title": "Honkai: รายการสมบัติของ Star Rail",
       "description": "รายการทั้งหมดของ Relics และสถิติของพวกมันใน Honkai: Star Rail",
       "relics": "พระธาตุ",
       "relics_desc": "Relics คือไอเทมที่สามารถสวมใส่ให้กับตัวละครได้ ",
-      "set": "ชุด"
+      "set": "ชุด",
+      "description_detail": "ค้นพบพระธาตุที่ดีที่สุดสำหรับ {ชื่อ} ใน Honkai: Star Rail \nรวมถึงสถิติของพวกเขาโบนัสและอื่น ๆ",
+      "ornament": "เครื่องประดับ",
+      "piece_set": "ชุดชิ้นส่วน",
+      "recommended_characters": "อักขระที่แนะนำ",
+      "relic_pieces": "ของที่ระลึก",
+      "title_detail": "{name} honkai: Star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail รายการเทียร์ลิสต์",
@@ -686,7 +905,8 @@
       "story": "เรื่องราว",
       "source": "Nguồn",
       "world_level_required": "ค่าระดับโลกที่จำเป็น",
-      "cost": "ค่าใช้จ่าย"
+      "cost": "ค่าใช้จ่าย",
+      "world_level_require": "ระดับโลกต้องการ"
     },
     "achievements": {
       "title": "รางวัลใน Honkai: Star Rail",
@@ -697,7 +917,22 @@
     },
     "profile": {
       "title": "โปรไฟล์ผู้เล่น Honkai: Star Rail {playerUID}",
-      "description": "โปรไฟล์ผู้เล่น Honkai: Star Rail {playerUID}"
+      "description": "โปรไฟล์ผู้เล่น Honkai: Star Rail {playerUID}",
+      "achievements": "ความสำเร็จ",
+      "characters": "ตัวละคร",
+      "simulated": "ที่ได้ถูกจำลอง"
+    },
+    "lightcone": {
+      "ascension_materials": "จำเป็นต้องใช้วัสดุสวรรค์",
+      "ascension_materials_none": "ไม่จำเป็นต้องใช้วัสดุสำหรับสวรรค์นี้",
+      "atk": "ATK",
+      "def": "def",
+      "hp": "HP",
+      "level": "ระดับ",
+      "slider_view": "มุมมองตัวเลื่อน",
+      "stats": "สถิติ",
+      "table_view": "มุมมองตาราง",
+      "total_ascension_materials_required": "วัสดุทั้งหมดที่จำเป็นในระดับ {ระดับ}"
     }
   },
   "zenless": {
@@ -721,7 +956,8 @@
       "priority": "ลำดับความสำคัญ",
       "explanation": "คำอธิบาย",
       "teams": "{character_name} ทีมที่ดีที่สุดและ bangboo",
-      "best_bangboos": "Best Bangboos"
+      "best_bangboos": "Best Bangboos",
+      "title": "{ตัวละครชื่อ} zenless zero zero (zzz) คู่มือการสร้าง"
     },
     "wengines": {
       "title": "Zenless Zone Zero (ZZZ) รายการ W-Engines",
@@ -729,7 +965,11 @@
     },
     "bangboos": {
       "w-engines": "Zenless Zone Zero (ZZZ) รายการไดรฟ์ดิสก์",
-      "w-engines-description": "รายการที่สมบูรณ์ของไดรฟ์ดิสก์ทั้งหมดและโบนัสของพวกเขาใน Zenless Zone Zero"
+      "w-engines-description": "รายการที่สมบูรณ์ของไดรฟ์ดิสก์ทั้งหมดและโบนัสของพวกเขาใน Zenless Zone Zero",
+      "bangboos": "Zenless Zone Zero Bangboo List",
+      "bangboos_description": "Bangboo เป็น 'สัตว์เลี้ยง' ใน Zenless Zone Zero ที่ช่วยทีมของคุณ - ค้นหาทุก bangboo ที่มีอยู่ในเกมด้านล่าง!",
+      "description": "รายการที่สมบูรณ์ของ Bangboos ที่เล่นได้ทั้งหมดใน Zenless Zone Zero",
+      "title": "Zenless Zone Zero (ZZZ) รายชื่อ Bangboos"
     },
     "wengine": {
       "title": "{itemname} Zenless ZOER ZERO W-Engine",
@@ -788,6 +1028,203 @@
       "debuffer": "ผู้บารง",
       "supporter": "ผู้สนับสนุน",
       "explanation": "คำอธิบาย"
+    },
+    "bangboo": {
+      "description": "เรียนรู้ทั้งหมดเกี่ยวกับ {bangboo} bangboo ใน Zenless Zone Zero (ZZZ) \nดูคำอธิบายทักษะโดยละเอียดและวิธีการใช้ bangboo นี้อย่างมีประสิทธิภาพ",
+      "main_title": "คู่มือ zzz bangboo",
+      "rank": "จัดอันดับ",
+      "rarity": "ความหายาก",
+      "title": "{bangboo} - Zenless Zone Zero (ZZZ) Bangboo Guide"
+    },
+    "characters": {
+      "characters": "รายการตัวแทน Zero Zero (ZZZ)",
+      "characters_description": "ตัวละคร (ตัวแทน) เป็นหน่วยที่หาได้ใน Zenless Zone Zero (ZZZ) - ค้นหาตัวแทนทุกคนที่มีอยู่ในเกมที่นี่!",
+      "description": "รายการที่สมบูรณ์ของอักขระที่เล่นได้ทั้งหมดใน Zenless Zone Zero",
+      "title": "รายการอักขระ zenless zero zero (zzz)"
+    },
+    "home": {
+      "description": "Genshin-builds.com เป็นวิกิสำหรับ Zenless Zone Zero (ZZZ) \nตรวจสอบคำแนะนำของเรารายการระดับและบทวิจารณ์สำหรับตัวละครที่มีอยู่ในเกม",
+      "news": "ข่าว",
+      "see_more": "ดูเพิ่มเติม",
+      "title": "Zenless Zone Zero (ZZZ) Wiki",
+      "welcome": "ยินดีต้อนรับสู่ ZenlessBuilds",
+      "welcome_description": "Discover ตัวละครสร้างมัคคุเทศก์ที่ครอบคลุมและฐานข้อมูล Wiki ทั้งหมดในที่เดียวสำหรับ ZENLESS ZONE ZERO (ZZZ)"
+    },
+    "layout": {
+      "bangboos": "คนอื่น ๆ",
+      "blog": "บล็อก",
+      "characters": "ตัวแทน",
+      "disk-drives": "ขับดิสก์",
+      "home": "บ้าน",
+      "tierlist": "ผู้เล่นชั้น",
+      "w-engines": "เครื่องยนต์ W-engine"
+    }
+  },
+  "WW": {
+    "character": {
+      "1_cost": "1 ราคา",
+      "3_cost": "3 ค่าใช้จ่าย",
+      "4_cost": "4 ราคา",
+      "affiliation": "การเข้าร่วม",
+      "ascension_materials": "{ตัวละครชื่อ} วัสดุสวรรค์",
+      "best_echo_sets": "ชุด echo ที่ดีที่สุดสำหรับ {charactername}",
+      "best_echo_stats": "สถิติที่ดีที่สุดสำหรับ {ตัวละคร} echoes",
+      "best_echo_substats": "substats ที่ดีที่สุดสำหรับ {charactername} echoes",
+      "best_primary_echo": "{{ตัวละคร} echo หลักที่ดีที่สุด",
+      "best_teams": "ทีมที่ดีที่สุดสำหรับ {ตัวละคร}",
+      "best_weapons": "อาวุธที่ดีที่สุดสำหรับ {ตัวละคร}",
+      "birth": "การเกิด",
+      "birthplace": "บ้านเกิด",
+      "combat_roles": "บทบาทการต่อสู้",
+      "description": "{ตัวละครชื่อ} เป็น {raritystring} ({rarity} ★) ตัวละครในคลื่น wuthering \nค้นพบการสร้างที่ดีที่สุดและการแต่งเพลงของทีมสำหรับ {ตัวละคร}",
+      "element": "องค์ประกอบ",
+      "main_title": "Wuthering Waves {ตัวละคร} Build Guide",
+      "no_special_food": "ไม่มีอาหารพิเศษ",
+      "resonance_chain": "{charactername} Resonance Chain",
+      "skills": "{ตัวละครชื่อ} ทักษะ",
+      "special_food": "{ตัวละครชื่อ} อาหารพิเศษ",
+      "story_and_voice": "เรื่องราว",
+      "talent_lvlup_materials": "{ตัวละครชื่อ} วัสดุระดับความสามารถพิเศษ",
+      "tips_and_tricks": "เคล็ดลับที่ดีที่สุด",
+      "title": "Wuthering Waves {ตัวละคร} คู่มือ | \nสร้างและทีมที่ดีที่สุด",
+      "weapon_type": "ประเภทอาวุธ"
+    },
+    "character_info": {
+      "cherished_items_favors": "{ตัวละครชื่อ} รายการหวงแหน",
+      "chinese": "ชาวจีน",
+      "description": "ค้นพบเรื่องราวนักแสดงเสียงและอื่น ๆ สำหรับ {ตัวละคร} ใน Wuthering Waves",
+      "english": "ภาษาอังกฤษ",
+      "forte_examination_report": "{อักขระชื่อ} รายงานการสอบ Forte",
+      "info": "ข้อมูล",
+      "japanese": "ญี่ปุ่น",
+      "korean": "เกาหลี",
+      "overclock_diagnostic_report": "รายงานการวินิจฉัยโอเวอร์คล็อก",
+      "resonance_evaluation_report": "รายงานการประเมินเสียงสะท้อน",
+      "resonance_power": "พลังกำทอน",
+      "story": "{ตัวละคร} เรื่องราว",
+      "title": "Wuthering Waves {ตัวละคร} เรื่องราว",
+      "va": "{ตัวละคร} นักแสดงเสียง",
+      "voice": "{อักขระชื่อ} เส้นเสียง"
+    },
+    "echo": {
+      "birthplace": "บ้านเกิด",
+      "code": "รหัส",
+      "cost": "ค่าใช้จ่าย",
+      "description": "{echoname} เป็นเสียงสะท้อนในคลื่น wuthering \nเรียนรู้เกี่ยวกับทักษะและวิธีการใช้อย่างมีประสิทธิภาพ",
+      "echo_skill": "{echoname} ทักษะ echo",
+      "main_title": "Wuthering Waves {echoname} echo",
+      "num_pieces": "{n} -piece set",
+      "rarity": "ความหายาก",
+      "sonata_effect": "{echoname} sonata effect",
+      "title": "Wuthering Waves {echoname} echo Guide | \nทักษะและผลกระทบ",
+      "type": "พิมพ์"
+    },
+    "echoes": {
+      "description": "รายการที่สมบูรณ์ของเสียงสะท้อนทั้งหมดในคลื่น wuthering ที่มีทักษะและผลกระทบโดยละเอียด",
+      "main_description": "สำรวจเสียงสะท้อนทั้งหมดในคลื่น wuthering ด้วยข้อมูลที่ได้รับการปรับปรุงมากที่สุดเกี่ยวกับทักษะและผลกระทบของพวกเขา",
+      "main_title": "Wuthering Waves Echoes List",
+      "title": "Wuthering Waves Echoes List | \nทักษะและผลกระทบ"
+    },
+    "home": {
+      "clear_all": "ล้างทั้งหมด",
+      "description": "รับการอัปเดตด้วยตัวละครล่าสุดการสร้างและกลยุทธ์ใน Wuthering Waves",
+      "filters": "ตัวกรอง",
+      "main_description": "สำรวจรายการที่สมบูรณ์ของตัวละคร Wuthering Waves ทั้งหมดพร้อมข้อมูลที่ได้รับการปรับปรุงมากที่สุดเกี่ยวกับการสร้างอาวุธและการแต่งเพลงของทีม",
+      "main_title": "Wuthering Waves charage list | \nสร้างและทีมที่ดีที่สุด",
+      "no_characters_found": "ไม่พบอักขระ",
+      "rarity_filter": "ตัวกรองหายาก",
+      "search": "ค้นหาอักขระ ...",
+      "sort_ascending": "เรียงลำดับ",
+      "sort_descending": "เรียงลำดับ",
+      "sort_name": "ชื่อ",
+      "sort_rarity": "ความหายาก",
+      "sort_release": "วันที่วางจำหน่าย",
+      "title": "Wuthering Waves Wiki",
+      "try_adjusting_filters": "ลองปรับตัวกรองหรือคำค้นหาของคุณ"
+    },
+    "item": {
+      "description": "{itemName} เป็น {rarityString} ({rarity} ★) รายการในคลื่น wuthering \nเรียนรู้วิธีการใช้งานและหาได้ที่ไหน",
+      "main_title": "Wuthering Waves {itemName} รายการ",
+      "rarity": "ความหายาก",
+      "sources": "แหล่งกำเนิด",
+      "tags": "แท็ก",
+      "title": "Wuthering Waves {itemName} คู่มือรายการ | \nการใช้งานและแหล่งข้อมูล",
+      "type": "พิมพ์"
+    },
+    "items": {
+      "description": "รายการที่ครอบคลุมของรายการทั้งหมดในคลื่น wuthering รวมถึงการใช้งานและสถานที่ที่จะหาพวกเขา",
+      "main_description": "สำรวจรายการทั้งหมดในคลื่น wuthering พร้อมข้อมูลโดยละเอียดเกี่ยวกับการใช้งานและแหล่งที่มาของพวกเขา",
+      "main_title": "รายการ Wuthering Waves รายการ",
+      "title": "รายการ Wuthering Waves รายการ | \nการใช้งานและแหล่งข้อมูล"
+    },
+    "layout": {
+      "characters": "ตัวละคร",
+      "description": "ทรัพยากรที่ดีที่สุดของคุณสำหรับ Wuthering Waves: ตัวละครสร้างรายการระดับอาวุธเสียงสะท้อนและกลยุทธ์ในการควบคุมเกม",
+      "echoes": "เสียงก้อง",
+      "inventory": "รายการสิ่งของ",
+      "tierlist_characters": "รายการระดับ - อักขระ",
+      "tierlist_characters_desc": "ค้นพบตัวละครอันดับสูงสุดและการสร้างที่ดีที่สุดของพวกเขาเพื่อครอบงำคลื่น wuthering",
+      "tierlist_echoes": "รายการระดับ - ก้อง",
+      "tierlist_echoes_desc": "สำรวจเสียงสะท้อนที่ทรงพลังที่สุดและวิธีที่พวกเขาส่งผลกระทบต่อประสิทธิภาพของตัวละครของคุณ",
+      "tierlist_weapons": "รายการระดับ - อาวุธ",
+      "tierlist_weapons_desc": "ค้นหาอาวุธที่ดีที่สุดที่ได้รับการจัดอันดับด้วยพลังและประสิทธิผลเพื่อปรับปรุงการเล่นเกมของคุณ",
+      "title": "Wuthering Waves Wiki",
+      "weapons": "อาวุธ"
+    },
+    "tierlist_characters": {
+      "description": "สำรวจตัวละครชั้นนำในคลื่น Wuthering ด้วยรายการระดับและการจัดอันดับที่ครอบคลุมของเรา",
+      "explanation": "คำอธิบาย",
+      "main_description": "ยินดีต้อนรับสู่รายการระดับตัวละคร Wauthering Waves ที่ครอบคลุมของเรา \nเราจัดอันดับตัวละครตามความสามารถจุดแข็งและยูทิลิตี้โดยรวมเพื่อช่วยให้คุณเก่งในเกม",
+      "main_dps": "DPS หลัก",
+      "main_title": "Wuthering Waves อักขระรายการระดับ | \nการจัดอันดับและการวิเคราะห์",
+      "overall": "โดยรวม",
+      "sub_dps": "ย่อย DPS",
+      "support": "สนับสนุน",
+      "title": "Best Wuthering Waves อักขระรายการระดับ | \nคู่มือการจัดอันดับที่ดีที่สุด"
+    },
+    "tierlist_echoes": {
+      "description": "ค้นพบเสียงสะท้อนที่ทรงพลังที่สุดในคลื่น wuthering ด้วยรายการและการวิเคราะห์ระดับรายละเอียดของเรา",
+      "explanation": "คำอธิบาย",
+      "main_description": "คลื่นความร้อนที่ครอบคลุมของเรา Echoes Tier List จัดอันดับเสียงก้องตามความสามารถและผลกระทบต่อการเล่นเกมช่วยให้คุณตัดสินใจอย่างชาญฉลาด",
+      "main_title": "Wuthering Waves ETHER ECHOES TIER \nการจัดอันดับและการวิเคราะห์",
+      "title": "Wuthering Waves Best Echoes Tier List | \nคู่มือการจัดอันดับที่ดีที่สุด"
+    },
+    "tierlist_weapons": {
+      "broadblade": "เบาบาง",
+      "broadblades_tierlist": "รายการระดับ Broadblade",
+      "description": "ค้นหาว่าอาวุธใดที่ดีที่สุดในคลื่น wuthering ด้วยรายการระดับเชิงลึกและการจัดอันดับของเรา",
+      "gauntlet": "ถุงมือ",
+      "gauntlets_tierlist": "รายชื่อชั้น Gauntlet",
+      "main_description": "รายชื่ออาวุธ Wauthering Waves Waves ของเราจัดอันดับอาวุธตามอำนาจประสิทธิภาพและยูทิลิตี้โดยรวมเพื่อปรับปรุงการเล่นเกมของคุณ",
+      "main_title": "Wuthering Waves Weapons Tier รายการ | \nการจัดอันดับและการวิเคราะห์",
+      "pistol": "ปืนพก",
+      "pistols_tierlist": "รายชื่อปืนพก",
+      "rectifier": "เครื่องเรียงกระแส",
+      "rectifiers_tierlist": "รายการชั้นนำ",
+      "sword": "ดาบ",
+      "swords_tierlist": "รายการระดับดาบ",
+      "title": "Wuthering Waves Waves Waves Weapons List | \nคู่มือการจัดอันดับที่ดีที่สุด"
+    },
+    "weapon": {
+      "ascensions": "การขึ้นเครื่อง",
+      "description": "{WeaponName} เป็น {raritystring} ({rarity} ★) อาวุธในคลื่น wuthering \nเรียนรู้เกี่ยวกับสถิติและทักษะ",
+      "level_n": "ระดับ {n}",
+      "main_title": "Wuthering Waves {อาวุธ} อาวุธ",
+      "rarity": "ความหายาก",
+      "syntonize": "ซินตัน",
+      "title": "Wuthering Waves {WeaponName} Guide อาวุธ | \nสถิติและทักษะ",
+      "type": "พิมพ์"
+    },
+    "weapons": {
+      "ascensions": "การขึ้นเครื่อง",
+      "description": "ค้นพบอาวุธที่ดีที่สุดในคลื่น Wuthering ที่มีทักษะและสถิติโดยละเอียด",
+      "level_n": "ระดับ {n}",
+      "main_description": "รายการอาวุธทั้งหมดในคลื่น Wuthering พร้อมข้อมูลที่ได้รับการปรับปรุงมากที่สุดเกี่ยวกับทักษะและสถิติของพวกเขา",
+      "main_title": "Wuthering Waves Weapons List",
+      "rarity": "ความหายาก",
+      "syntonize": "ซินตัน",
+      "title": "Wuthering Waves Weapons List | \nอาวุธและทักษะที่ดีที่สุด",
+      "type": "พิมพ์"
     }
   }
 }

@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "Profili per confrontare i tuoi progressi con altri giocatori",
       "profiles": "Profili",
       "profiles_desc": "Profili per confrontare i tuoi progressi con altri giocatori",
-      "blog": "Blog"
+      "blog": "Blog",
+      "Tools": "Utensili"
     },
     "ascension_planner": {
       "title": "Database wiki di Genshin-Builds.com",
@@ -196,7 +197,12 @@
       "element_filter": "Filtro elemento",
       "clear_all": "Cancella tutto",
       "no_characters_found": "Nessun personaggio trovato",
-      "try_adjusting_filters": "Prova a regolare i filtri o il termine di ricerca"
+      "try_adjusting_filters": "Prova a regolare i filtri o il termine di ricerca",
+      "Bow": "Arco",
+      "Catalyst": "Catalizzatore",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Spada"
     },
     "character": {
       "title": "{name} in Genshin Impact: Guida definitiva alla costruzione",
@@ -233,7 +239,7 @@
       "main dps": "DS principale",
       "sub dps": "Sub DPS",
       "support": "Supporto",
-      "lv": "liv.",
+      "lv": "Lv",
       "before_ascension": "Prima dell'Ascensione",
       "after_ascension": "Dopo l'Ascensione",
       "constellation_lvl": "Costellazione Liv. {level}",
@@ -280,7 +286,12 @@
       "rarity_filter": "Filtro rarità",
       "clear_all": "Cancella tutto",
       "no_weapons_found": "Nessuna armi trovata",
-      "try_adjusting_filters": "Prova a regolare i filtri o il termine di ricerca"
+      "try_adjusting_filters": "Prova a regolare i filtri o il termine di ricerca",
+      "Bow": "Arco",
+      "Catalyst": "Catalizzatore",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Spada"
     },
     "weapon": {
       "title": "{name} Dettagli dell'arma a impatto di Genshin",
@@ -395,7 +406,14 @@
       "element_filter": "Filtro elemento",
       "clear_all": "Cancella tutto",
       "no_teams_found": "Nessuna squadra trovata",
-      "try_adjusting_filters": "Prova a regolare i filtri o il termine di ricerca"
+      "try_adjusting_filters": "Prova a regolare i filtri o il termine di ricerca",
+      "anemo": "Anemo",
+      "cryo": "Cryo",
+      "dendro": "Dendro",
+      "electro": "Electro",
+      "geo": "Geo",
+      "hydro": "Hydro",
+      "pyro": "PIRO"
     },
     "fishing": {
       "title": "Genshin Impact Fishing (pesci, esche, canne da pesca e punti di pesca)",
@@ -604,7 +622,11 @@
       "no_cards_found": "Nessuna carta trovata",
       "try_adjusting_filters": "Prova a regolare i filtri o il termine di ricerca",
       "deck": "Ponte",
-      "edit": "Modificare"
+      "edit": "Modificare",
+      "character card": "Carta del personaggio",
+      "equipment card": "Scheda dell'attrezzatura",
+      "event card": "Scheda di eventi",
+      "support card": "Scheda di supporto"
     },
     "tcg_card": {
       "title": "{name} - Elenco delle carte GCC di Genshin Impact",
@@ -625,7 +647,8 @@
       "description": "Questo articolo fornisce un elenco completo dei migliori mazzi del GCC, Genius Invokation. ",
       "best_decks": "I migliori mazzi",
       "view_deck": "Visualizza il mazzo",
-      "share_code": "Codice di condivisione"
+      "share_code": "Codice di condivisione",
+      "deck_builder": "Visualizza il mazzo"
     },
     "tcg_deck_builder": {
       "title": "Costruttore di Mazzi Genius Invokation TCG",
@@ -698,7 +721,20 @@
       "profile_not_found_desc": "Questo profilo attualmente non esiste. \nSe vuoi crearlo, invia il tuo uid.",
       "title_detail": "{name} Genshin Impact Showcase",
       "no_builds": "Abilita l'opzione \"Mostra dettagli del personaggio\" nella vetrina del tuo personaggio nel gioco per vedere i dettagli.",
-      "sync_profile_data": "Dati del profilo di sincronizzazione"
+      "sync_profile_data": "Dati del profilo di sincronizzazione",
+      "ATK": "ATK",
+      "Achievements": "Risultati",
+      "Adventure Rank": "Rango di avventura",
+      "Characters": "Caratteri",
+      "DEF": "Def",
+      "EM": "Em",
+      "ER%": "Er%",
+      "Last update": "Ultimo aggiornamento",
+      "Max HP": "Max HP",
+      "Nickname": "Soprannome",
+      "Signature": "Firma",
+      "Spiral Abyss": "Abisso a spirale",
+      "critValue": "Valore del critico"
     },
     "leaderboard": {
       "title": "Classifiche Genshin Impact Build: guarda chi è in cima",
@@ -759,25 +795,44 @@
   },
   "HSR": {
     "item": {
-      "world_level_require": "Richiesta di livello mondiale"
+      "world_level_require": "Richiesta di livello mondiale",
+      "cost": "Costo",
+      "description": "Informazioni su {itemName} {itemType} Item.",
+      "source": "Fonte",
+      "story": "Storia",
+      "title": "Honkai: Star Rail {ItemName} Item",
+      "world_level_required": "Livello mondiale richiesto"
     },
     "lightcones": {
       "ability": "Capacità",
       "stats": "Statistiche",
       "recommended_characters": "Caratteri consigliati",
       "best_in_slot": "Meglio nello slot",
-      "alternative": "Alternativa"
+      "alternative": "Alternativa",
+      "description": "Un elenco completo di tutti i coni di luce e le loro statistiche in Honkai: Star Rail.",
+      "lightcones": "Coni leggeri",
+      "lightcones_desc": "I coni di luce sono oggetti equipaggiabili dai personaggi per aumentare la loro base HP, Base ATK e Base DEF e concedere una capacità passiva di personaggi il cui percorso corrisponde a quello del cono della luce.",
+      "title": "Honkai: elenchi di coni di luce ferroviaria a stella"
     },
     "relics": {
       "piece_set": "Set di pezzi",
       "relic_pieces": "Pezzi di reliquia",
       "recommended_characters": "Caratteri consigliati",
-      "ornament": "Ornamento"
+      "ornament": "Ornamento",
+      "description": "Un elenco completo di tutte le reliquie e delle loro statistiche in Honkai: Star Rail.",
+      "description_detail": "Scopri le migliori reliquie per {nome} in Honkai: Star Rail. \nSono inclusi anche le loro statistiche, i bonus stabiliti e altro ancora.",
+      "relics": "Reliquie",
+      "relics_desc": "Le reliquie sono elementi che possono essere attrezzati sui personaggi. \nLe reliquie forniscono statistiche aggiuntive, tra cui HP, velocità, attacco e difesa al personaggio attrezzato. \nTutte le reliquie danno potenziamenti extra se abbinati alle loro controparti, chiamate \"set\". \nLe reliquie possono essere aggiornate con il materiale EXP per aumentare le statistiche.",
+      "set": "Impostato",
+      "title": "Honkai: elenco di reliquie ferroviarie di stelle",
+      "title_detail": "{Nome} Honkai: Star Rail Relic"
     },
     "profile": {
       "simulated": "Simulato",
       "characters": "Caratteri",
-      "achievements": "Risultati"
+      "achievements": "Risultati",
+      "description": "Honkai: Star Rail {PlayerUid} Profilo del giocatore",
+      "title": "Honkai: Star Rail {PlayerUid} Profilo del giocatore"
     },
     "lightcone": {
       "hp": "HP",
@@ -790,6 +845,93 @@
       "level": "Livello",
       "stats": "Statistiche",
       "total_ascension_materials_required": "Materiali totali richiesti per livellare {level}"
+    },
+    "achievements": {
+      "achievements": "Risultati",
+      "achievements_desc": "Elenco di tutti i risultati in Honkai Star Rail e come completarli in modo da poter segnare facilmente alcune giades stellari.",
+      "description": "Un elenco completo di tutti i risultati in Honkai: Star Rail.",
+      "search": "Ricerca...",
+      "title": "Honkai: risultati di stelle ferroviari"
+    },
+    "character": {
+      "best_light_cone": "Miglior cono luminoso",
+      "best_lightcones": "{nome} migliori coni di luce",
+      "best_ornaments": "{nome} migliori ornamenti",
+      "best_relics": "{nome} migliori reliquie",
+      "best_stats": "{nome} migliori statistiche",
+      "best_substats": "{Nome} Best Substats",
+      "best_teams": "{Nome} migliori team",
+      "body": "Corpo",
+      "characters": "Caratteri",
+      "description": "Scopri le migliori build e team per {nome} in Honkai: Star Rail. \nSono anche incluse le loro capacità, i costi di aggiornamento e altro ancora.",
+      "eidolon": "Eidolon",
+      "feet": "Piedi",
+      "relics_and_ornament": "Reliquie e ornamenti",
+      "rope": "Corda",
+      "skills": "Competenze",
+      "sphere": "Sfera",
+      "title": "Honkai: Star Rail {Nome} Build Guide",
+      "traces": "Tracce"
+    },
+    "characters": {
+      "characters": "Caratteri",
+      "characters_description": "I personaggi sono unità ottenibili in Honkai: Star Rail.",
+      "description": "Un elenco completo di tutti i personaggi giocabili in Honkai: Star Rail ..",
+      "element": "Elemento",
+      "title": "Honkai: elenco di star Rail Tutti i personaggi",
+      "type": "Tipo"
+    },
+    "items": {
+      "description": "Un elenco completo di tutti gli articoli in Honkai: Star Rail.",
+      "items": "Elementi",
+      "items_desc": "Gli articoli sono oggetti da collezione da Honkai: Star Rail. \nLa maggior parte degli articoli è accessibile attraverso l'inventario.",
+      "title": "Honkai: elenco di articoli di star Rail Tutti gli articoli"
+    },
+    "layout": {
+      "achievements": "Risultati",
+      "blog": "Blog",
+      "characters": "Caratteri",
+      "contact": "Contatto",
+      "description": "Un elenco completo di tutti i personaggi giocabili in Honkai: Star Rail.",
+      "footer": "HSRBUILDS è un database, un elenco di livello e una guida per Honkai: Star Rail.",
+      "footer_advice": "Honkai: Star Rail non è approvato da Hoyoverse o Cognosphere Pte. \nLtd., E non riflette le opinioni o le opinioni di chiunque sia ufficialmente coinvolto nella produzione o nella gestione di Honkai: Star Rail.",
+      "items": "Elementi",
+      "lightcones": "Coni leggeri",
+      "messages": "Messaggi",
+      "privacy_policy": "politica sulla riservatezza",
+      "relics": "Reliquie",
+      "showcase": "Vetrina",
+      "tierlist": "Tierlist",
+      "title": "Honkai: database Wiki di Star Rail"
+    },
+    "message": {
+      "description": "Scopri tutti i messaggi da {name} - {firma}",
+      "message": "Messaggio {Messagenumber}",
+      "messages": "Messaggi",
+      "related_messages": "Messaggi correlati",
+      "section": "Sezione {sectionnumber}",
+      "title": "Honkai: Star Rail {Nome} Messaggi"
+    },
+    "messages": {
+      "description": "Un elenco completo di tutti i messaggi in Honkai: Star Rail.",
+      "messages": "Messaggi",
+      "messages_desc": "I messaggi sono comunicazioni di testo che il Trailblazer riceve da altri caratteri e NPC.",
+      "title": "Honkai: messaggi ferroviari a stella"
+    },
+    "showcase": {
+      "character_showcase": "Showcase del personaggio",
+      "description": "Mostra i tuoi personaggi Honkai: Star Rail con il nostro strumento di vetrina del personaggio. \nBasta selezionare il tuo personaggio, scegliere la tua build e condividere la tua creazione con il mondo.",
+      "enter_uid": "Inserisci UID per visualizzare la tua vetrina",
+      "enter_uid_input": "Inserisci uid",
+      "loading": "Caricamento...",
+      "submit": "Invia",
+      "title": "Honkai: Star Rail Character Showcase"
+    },
+    "tierlist": {
+      "description": "Scopri un elenco di livello completo classifica tutti i personaggi a 5 stelle, a 4 stelle, DPS e di supporto in HSR, permettendoti di prendere decisioni informate sulla composizione della tua squadra. \nStai al passo con la competizione e scatena il vero potenziale della tua squadra con la nostra guida sapientemente curata. \nEsplora l'elenco di livello e scopri i powerhouses che ti porteranno alla vittoria a Honkai: Star Rail.",
+      "tierlist": "Tierlist",
+      "tierlist_desc": "Esplora l'elenco di livello Honkai: Star Rail! \nScopri i personaggi più performanti in HSR, tra cui personaggi a 5 stelle, a 4 stelle, DPS e di supporto, tutti con competenza in questa guida completa. \nStai al passo con il gioco e fai scelte informate con questa preziosa risorsa.",
+      "title": "Honkai: elenco di livelli ferroviari a stella"
     }
   },
   "WW": {
@@ -804,14 +946,159 @@
       "rarity_filter": "Filtro rarità",
       "filters": "Filtri",
       "sort_ascending": "Ordinare ascendente",
-      "sort_descending": "Ordina la discendenza"
+      "sort_descending": "Ordina la discendenza",
+      "description": "Rimani aggiornato con gli ultimi personaggi, build e strategie nelle onde di Wuthering.",
+      "main_description": "Esplora un elenco completo di tutti i personaggi di Wuthering Waves con le informazioni più aggiornate sulle loro build, armi e composizioni di squadra.",
+      "main_title": "Wuthering Waves Elenco dei personaggi | \nMigliori build e squadre",
+      "title": "Wuthering Waves Wiki"
     },
     "weapons": {
       "type": "Tipo",
       "rarity": "Rarità",
       "syntonize": "Sintonizzazione",
       "ascensions": "Ascensioni",
-      "level_n": "Livello {n}"
+      "level_n": "Livello {n}",
+      "description": "Scopri le migliori armi nelle onde di Wuthering con abilità e statistiche dettagliate.",
+      "main_description": "Un elenco completo di tutte le armi nelle onde di Wuthering con le informazioni più aggiornate sulle loro capacità e statistiche.",
+      "main_title": "Wuthering Waves Elenco delle armi",
+      "title": "Wuthering Waves Elenco delle armi | \nMigliori armi e abilità"
+    },
+    "character": {
+      "1_cost": "1 costo",
+      "3_cost": "3 costo",
+      "4_cost": "4 costo",
+      "affiliation": "Affiliazione",
+      "ascension_materials": "{CharacterTername} Materiali ascendenti",
+      "best_echo_sets": "I migliori set di eco per {CharacterName}",
+      "best_echo_stats": "Le migliori statistiche per {personaggio} echi",
+      "best_echo_substats": "I migliori sottostati per {charactername} echi",
+      "best_primary_echo": "{CharacterTername} La migliore eco principale di",
+      "best_teams": "I migliori team per {Charactername}",
+      "best_weapons": "Migliori armi per {charactername}",
+      "birth": "Nascita",
+      "birthplace": "Luogo di nascita",
+      "combat_roles": "Ruoli da combattimento",
+      "description": "{CharacterName} è un personaggio {RarityString} ({rarity} ★) nelle onde di Wuthering. \nScopri le migliori build e composizioni di squadra per {Charactername}.",
+      "element": "Elemento",
+      "main_title": "Wuthering Waves {CharacterName} Build Guide",
+      "no_special_food": "Nessun cibo speciale",
+      "resonance_chain": "{CharacterTername} Resonance Chain",
+      "skills": "{Caracername} abilità",
+      "special_food": "{CharacterTername} cibo speciale",
+      "story_and_voice": "Storia",
+      "talent_lvlup_materials": "{CharacterTername} materiali di livello dei talenti",
+      "tips_and_tricks": "I migliori consigli",
+      "title": "Wuthering Waves {CharacterName} Guida | \nMigliori build e squadre",
+      "weapon_type": "Tipo d'arma"
+    },
+    "character_info": {
+      "cherished_items_favors": "{CharacterTername} oggetti amati",
+      "chinese": "cinese",
+      "description": "Scopri la storia, i doppiatori e altro per {Charactername} nelle onde di Wuthering.",
+      "english": "Inglese",
+      "forte_examination_report": "{CHACHACTERName} Rapporto sull'esame dei forti",
+      "info": "Informazioni",
+      "japanese": "giapponese",
+      "korean": "coreano",
+      "overclock_diagnostic_report": "Rapporto diagnostico overclock",
+      "resonance_evaluation_report": "Rapporto di valutazione della risonanza",
+      "resonance_power": "Potere di risonanza",
+      "story": "{CharacterTername} Storia",
+      "title": "Wuthering Waves {CharacterName} Storia",
+      "va": "{CharacterTername} doppiatore",
+      "voice": "{CHARACTERNAME} linee vocali"
+    },
+    "echo": {
+      "birthplace": "Luogo di nascita",
+      "code": "Codice",
+      "cost": "Costo",
+      "description": "{Echoname} è un'eco nelle onde di Wuthering. \nScopri le sue capacità e come utilizzarle in modo efficace.",
+      "echo_skill": "{Echoname} Echo Abilità",
+      "main_title": "Wuthering Waves {echoname} echo",
+      "num_pieces": "{n} -met set",
+      "rarity": "Rarità",
+      "sonata_effect": "{Echoname} Effetto Sonata",
+      "title": "Wuthering Waves {echoname} Echo Guide | \nAbilità ed effetti",
+      "type": "Tipo"
+    },
+    "echoes": {
+      "description": "Un elenco completo di tutti gli echi nelle onde di Wuthering con abilità ed effetti dettagliati.",
+      "main_description": "Esplora tutti gli echi nelle onde di Wuthering con le informazioni più aggiornate sulle loro capacità e effetti.",
+      "main_title": "Wuthering Waves Echoes Elenco",
+      "title": "Wuthering Waves Echoes Elenco | \nAbilità ed effetti"
+    },
+    "item": {
+      "description": "{ItemName} è un {rarityString} ({rarity} ★) elemento nelle onde Wuthering. \nImpara a usarlo e dove trovarlo.",
+      "main_title": "Wuthering Waves {ItemName} Item",
+      "rarity": "Rarità",
+      "sources": "Fonti",
+      "tags": "Tag",
+      "title": "Wuthering Waves {ItemName} Guida agli articoli | \nUtilizzo e fonti",
+      "type": "Tipo"
+    },
+    "items": {
+      "description": "Elenco completo di tutti gli articoli nelle onde di Wuthering, incluso l'uso e dove trovarli.",
+      "main_description": "Esplora tutti gli articoli nelle onde di Wuthering con informazioni dettagliate sul loro utilizzo e fonti.",
+      "main_title": "Wuthering Waves Elems Elenco",
+      "title": "Wuthering Waves Elems Elenco | \nUtilizzo e fonti"
+    },
+    "layout": {
+      "characters": "Caratteri",
+      "description": "La tua ultima risorsa per le onde di Wuthering: build di personaggi, liste di livello, armi, echi e strategie per padroneggiare il gioco.",
+      "echoes": "Echi",
+      "inventory": "Inventario",
+      "tierlist_characters": "Elenco di livello - caratteri",
+      "tierlist_characters_desc": "Scopri i personaggi di alto livello e le loro build ottimali per dominare le onde di Wuthering.",
+      "tierlist_echoes": "Elenco di livello - echi",
+      "tierlist_echoes_desc": "Esplora gli echi più potenti e il modo in cui hanno un impatto sulle prestazioni del tuo personaggio.",
+      "tierlist_weapons": "Elenco di livello - Armi",
+      "tierlist_weapons_desc": "Trova le migliori armi classificate dal potere e dall'efficacia per migliorare il tuo gameplay.",
+      "title": "Wuthering Waves Wiki",
+      "weapons": "Armi"
+    },
+    "tierlist_characters": {
+      "description": "Esplora i migliori personaggi delle onde di Wuthering con la nostra lista di livelli completi e le classifiche.",
+      "explanation": "Spiegazione",
+      "main_description": "Benvenuti nella nostra lista di titoli di Wuthering Waves completi. \nClattiamo i personaggi in base a abilità, punti di forza e utilità generale per aiutarti a eccellere nel gioco.",
+      "main_dps": "DPS principale",
+      "main_title": "Wuthering Waves Personaggi Elenco di livello | \nClassifiche e analisi",
+      "overall": "Complessivamente",
+      "sub_dps": "Sub dps",
+      "support": "Supporto",
+      "title": "Best Wuthering Waves Personaggi Elenco di livello | \nGuida di classifica finale"
+    },
+    "tierlist_echoes": {
+      "description": "Scopri gli echi più potenti nelle onde di Wuthering con la nostra lista e l'analisi dettagliate di livello.",
+      "explanation": "Spiegazione",
+      "main_description": "Le nostre onde di Wuthering complete Echoes Echos Tier List Echoes in base alle loro capacità e all'impatto sul gameplay, aiutandoti a prendere decisioni informate.",
+      "main_title": "Wuthering Waves Echoes Eceass Elenco | \nClassifiche e analisi",
+      "title": "Le migliori onde di Wuthering echeggiano elenco di livello | \nGuida di classifica finale"
+    },
+    "tierlist_weapons": {
+      "broadblade": "Broadblade",
+      "broadblades_tierlist": "Elenco di livello Broadblade",
+      "description": "Scopri quali armi sono le migliori in onde di Wuthering con la nostra lista e le classifiche di livello approfondito.",
+      "gauntlet": "Guanto",
+      "gauntlets_tierlist": "Elenco di livello Gauntlet",
+      "main_description": "Le nostre ondate di Wuthering complete Waves Weapons Tier Elenco classifica le armi in base al potere, all'efficacia e all'utilità generale per migliorare il tuo gameplay.",
+      "main_title": "Wuthering Waves Weapons Elenco di livello | \nClassifiche e analisi",
+      "pistol": "Pistola",
+      "pistols_tierlist": "Elenco di livello a pistola",
+      "rectifier": "Rettificatore",
+      "rectifiers_tierlist": "Elenco di livello rettificatore",
+      "sword": "Spada",
+      "swords_tierlist": "Elenco di livello spada",
+      "title": "Best Wuthering Waves Weapons Tier Elenco | \nGuida di classifica finale"
+    },
+    "weapon": {
+      "ascensions": "Ascensioni",
+      "description": "{WeaponName} è un {RarityString} ({rarity} ★) Arma nelle onde di Wuthering. \nScopri le sue statistiche e le sue abilità.",
+      "level_n": "Livello {n}",
+      "main_title": "Wuthering Waves {armi} Arma",
+      "rarity": "Rarità",
+      "syntonize": "Sintonizzazione",
+      "title": "Wuthering Waves {WeaponName} Guida all'arma | \nStatistiche e abilità",
+      "type": "Tipo"
     }
   },
   "zenless": {

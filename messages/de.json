@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "Profile, um deinen Fortschritt mit anderen Spielern zu vergleichen",
       "profiles": "Profile",
       "profiles_desc": "Profile, um deinen Fortschritt mit anderen Spielern zu vergleichen",
-      "blog": "Blog"
+      "blog": "Blog",
+      "Tools": "Werkzeuge"
     },
     "ascension_planner": {
       "title": "Genshin Impact Wiki-Datenbank",
@@ -170,7 +171,8 @@
       "view_all_posts": "Alle Beiträge anzeigen",
       "server_timers": "Server-Zeitgeber",
       "server_timers_desc": "Der tägliche Reset erfolgt um 04:00 Uhr (4 Uhr) basierend auf der Zeitzone Ihres Servers. Der wöchentliche Reset erfolgt jeden Montag ebenfalls um 04:00 Uhr (4 Uhr).",
-      "shortcuts": "Verknüpfungen"
+      "shortcuts": "Verknüpfungen",
+      "farmable_today_desc": "Entdecken Sie heute, welche Charaktere und Waffen heute beunruhigbar sind."
     },
     "characters": {
       "title": "Genshin Impact Liste der Figuren",
@@ -182,7 +184,25 @@
       "hydro": "Hydro",
       "electro": "Elektro",
       "cryo": "Kryo",
-      "dendro": "Dendro"
+      "dendro": "Dendro",
+      "Bow": "Bogen",
+      "Catalyst": "Katalysator",
+      "Claymore": "Claymore",
+      "Polearm": "Stangenwaffe",
+      "Sword": "Schwert",
+      "clear_all": "Alle klar",
+      "element_filter": "Elementfilter",
+      "no_characters_found": "Keine Charaktere gefunden",
+      "rarity_filter": "Raritätsfilter",
+      "search": "Suchzeichen ...",
+      "sort_ascending": "Sortieren aufsteigend",
+      "sort_descending": "Sortieren absteigend",
+      "sort_element": "Element",
+      "sort_name": "Name",
+      "sort_rarity": "Seltenheit",
+      "sort_release": "Veröffentlichungsdatum",
+      "try_adjusting_filters": "Versuchen Sie, Ihre Filter oder Suchbegriff anzupassen",
+      "weapon_filter": "Waffenfilter"
     },
     "character": {
       "title": "{name} in Genshin Impact: Der ultimative Build-Guide",
@@ -232,7 +252,19 @@
       "most_used_title": "Am häufigsten verwendetes Build der Community",
       "most_used_disclaimer": "Dieses Build basiert auf den am häufigsten verwendeten Artefakten und Waffen der Community. Wenn du zu diesen Daten beitragen möchtest, kannst du dies tun, indem du deine UID hier einreichst.",
       "build_title": "{name} Build",
-      "lv": "Lv."
+      "lv": "Lv.",
+      "best_artifacts": "Beste Artefakte",
+      "best_weapons": "Beste Waffe",
+      "clear_search": "Klare Suche",
+      "hide_build_details": "Build -Details ausblenden",
+      "intended_level_error": "Das beabsichtigte Level muss höher sein als das aktuelle Niveau",
+      "intended_talent_error": "Die beabsichtigten Talentniveaus müssen höher sein als die aktuellen Ebenen",
+      "main_stats": "Hauptstatistiken",
+      "no_data_to_add": "Keine Berechnungsdaten, die zur Todo -Liste hinzugefügt werden sollen",
+      "passive": "Passiv",
+      "search_placeholder": "Suche baute ...",
+      "show_build_details": "Aufbaudetails anzeigen",
+      "substats": "Substate"
     },
     "weapons": {
       "title": "Genshin Impact Liste der Waffen",
@@ -244,7 +276,23 @@
       "level": "Stufe",
       "stats": "Attribute",
       "ascension": "Aufstieg",
-      "refinement": "Verfeinerung"
+      "refinement": "Verfeinerung",
+      "Bow": "Bogen",
+      "Catalyst": "Katalysator",
+      "Claymore": "Claymore",
+      "Polearm": "Stangenwaffe",
+      "Sword": "Schwert",
+      "clear_all": "Alle klar",
+      "filters": "Filter",
+      "no_weapons_found": "Keine Waffen gefunden",
+      "rarity_filter": "Raritätsfilter",
+      "sort_ascending": "Sortieren aufsteigend",
+      "sort_descending": "Sortieren absteigend",
+      "sort_name": "Name",
+      "sort_rarity": "Seltenheit",
+      "sort_type": "Typ",
+      "try_adjusting_filters": "Versuchen Sie, Ihre Filter oder Suchbegriff anzupassen",
+      "weapon_filter": "Waffenfilter"
     },
     "weapon": {
       "title": "{name} Genshin Impact Waffendetails",
@@ -258,7 +306,11 @@
       "ascension": "Aufstieg",
       "refinement": "Verfeinerung",
       "recommended_characters": "Empfohlene Figuren",
-      "ascension_materials": "Aufstiegsmaterialien"
+      "ascension_materials": "Aufstiegsmaterialien",
+      "base_atk": "Basis atk",
+      "lv": "Lv.",
+      "total": "Gesamt",
+      "weapon_title": "Gen -Impact {Name} Waffe"
     },
     "artifacts": {
       "title": "Genshin Impact Liste der Artefakte",
@@ -270,7 +322,13 @@
       "1piece_bonus": "Set-Bonus mit 1 Teil",
       "1piece_artifact_sets": "Artefakt-Sets mit 1 Teil",
       "2piece_bonus": "Set-Bonus mit 2 Teilen",
-      "4piece_bonus": "Set-Bonus mit 4 Teilen"
+      "4piece_bonus": "Set-Bonus mit 4 Teilen",
+      "artifact_description": "{Name} ist ein Artefakt in Genshin Impact. \nErfahren Sie hier mehr über den Artefakt -Set -Effekt, die besten Charaktere und den Artefaktort!",
+      "artifact_details": "{Name} Genshin Impact Artefact {Rarity} Sterne Rarity",
+      "artifact_pieces": "Artefaktstücke",
+      "four_pc": "4 PC",
+      "one_pc": "1 PC",
+      "two_pc": "2 PC"
     },
     "tierlist": {
       "title": "Genshin Impact Rangliste (Beste Figuren)",
@@ -278,7 +336,9 @@
       "tierlist": "Rangliste",
       "main_dps": "Haupt-Kämpfer",
       "sub_dps": "Zusatz-Kämpfer",
-      "support": "Unterstützung"
+      "support": "Unterstützung",
+      "six_constellation": "C6 Tierlist",
+      "zero_constellation": "C0 Tierlist"
     },
     "tierlist_weapons": {
       "title": "Genshin Impact Rangliste der Waffen (Beste Waffen)",
@@ -337,7 +397,24 @@
       "goblet": "Kelch",
       "circlet": "Krone",
       "substats": "Nebenwerte",
-      "weapons": "Waffen"
+      "weapons": "Waffen",
+      "anemo": "Anemo",
+      "clear_all": "Alle klar",
+      "cryo": "Kryo",
+      "dendro": "Dendro",
+      "electro": "Elektro",
+      "element_filter": "Elementfilter",
+      "geo": "Geo",
+      "hydro": "Hydro",
+      "no_teams_found": "Keine Teams gefunden",
+      "pyro": "Pyro",
+      "search_teams": "Suchteams ...",
+      "sort_ascending": "Sortieren aufsteigend",
+      "sort_character": "Charaktername",
+      "sort_descending": "Sortieren absteigend",
+      "sort_element": "Element",
+      "teams_description": "Entdecken Sie die besten Team -Comps für Gen -Impact -Charaktere von Genshin, um die Kampfwirksamkeit Ihres Teams zu maximieren.",
+      "try_adjusting_filters": "Versuchen Sie, Ihre Filter oder Suchbegriff anzupassen"
     },
     "fishing": {
       "title": "Genshin Impact Angeln (Fische, Köder, Angelruten und Angelpunkte)",
@@ -348,7 +425,8 @@
       "inazuma": "Inazuma",
       "enkanomiya": "Enkanomiya",
       "the_chasm": "Große Kluft",
-      "sumeru": "Sumeru"
+      "sumeru": "Sumeru",
+      "source": "Quelle"
     },
     "calculator": {
       "title": "Genshin Impact Rechner",
@@ -411,7 +489,64 @@
       "or": "oder",
       "desired_resin": "Gewünschtes Harz",
       "current_time": "Aktuelle Zeit",
-      "replenished_at": "Wird aufgefüllt um: {timeToWait} ({relativeTimeToWait})"
+      "replenished_at": "Wird aufgefüllt um: {timeToWait} ({relativeTimeToWait})",
+      "adventurers_experience": "Abenteurer erleben",
+      "calculateByMoney": "Durch Geld berechnen",
+      "calculate_by_fate": "Berechnen Sie nach Schicksal",
+      "calculate_by_money": "Durch Geld berechnen",
+      "calculating": "Berechnung ...",
+      "calculation_error": "Bei der Berechnung trat Fehler auf",
+      "calculation_result": "Berechnungsergebnis",
+      "calculation_results": "Berechnungsergebnisse",
+      "daysUntilPull_desc": "Tage bis zum Ziehen",
+      "decrease_random_events": "Zufällige Ereignisse verringern",
+      "enter_amount": "Betrag eingeben",
+      "enter_fate_amount": "Schicksal eingeben",
+      "enter_friendship_values_and_calculate": "Geben Sie die Freundschaftswerte Ihres Charakters ein und klicken Sie auf Berechnen, um Ergebnisse anzuzeigen",
+      "enter_values_and_calculate": "Füllen Sie das Formular aus",
+      "estimated_resin_time": "Geschätzte Zeit",
+      "estimated_resin_tooltip": "Dies ist eine Schätzung, die auf Ihren Eingaben basiert",
+      "exp_percentage_help": "Aktuelle Fortschritte in der Freundschafts -Exp -Bar",
+      "first_time_bonus_active": "Erstbonus aktiv",
+      "first_time_help": "Nur aktivieren, wenn der Bonus zum ersten Mal vorhanden ist",
+      "friendship_calculation_results": "Ergebnisse der Freundschaftsberechnung",
+      "friendship_level_help": "Wählen Sie das aktuelle Freundschaftsniveau Ihres Charakters aus",
+      "genesis_crystal": "Genesis Crystal",
+      "genesis_crystal_desc": "Besondere Währung",
+      "heros_wit": "Heldenwitz",
+      "increase_random_events": "Erhöhen Sie zufällige Ereignisse",
+      "intended_level_error": "Das beabsichtigte Level muss höher sein als das aktuelle Niveau",
+      "intertwinedFate": "Verlockenes Schicksal",
+      "intertwinedFate_desc": "Verlockenes Schicksal",
+      "material": "Material",
+      "max": "Max",
+      "mora": "Mora",
+      "no_data_to_add": "Keine Berechnungsdaten, die zur Todo -Liste hinzugefügt werden sollen",
+      "original_resin": "Originalharz",
+      "parameters": "Parameter",
+      "please_select_currency": "Bitte wählen Sie Währung",
+      "please_select_level": "Bitte wählen Sie eine Ebene aus",
+      "price_in_currency": "Preis in {Währung}",
+      "primogem": "Primogem",
+      "primogem_desc": "Besondere Währung",
+      "random_events_help": "Tägliche zufällige Ereignisse, die Freundschaft exp geben",
+      "resin_calculation_results": "Berechnungsergebnisse",
+      "resin_percent": "Harz {Prozent}%",
+      "select_currency_first": "Wählen Sie zuerst die Parallelität",
+      "select_friendship_level": "Wählen Sie Freundschaftsniveau",
+      "select_weapon": "Waffe auswählen",
+      "standard_bonus": "Standard -Bonus",
+      "stardust": "Stardust",
+      "stardustLeft_desc": "Stardust links",
+      "stardust_desc": "Währung verwendet, um seltene Ressourcen aus dem Laden zu kaufen.",
+      "starglitter": "StarGlitter",
+      "starglitter_desc": "Währung verwendet, um seltene Ressourcen aus dem Laden zu kaufen.",
+      "top_up_packages": "Aufladungspakete",
+      "wanderers_advice": "Wanderers Rat",
+      "weapon_level": "Waffenebene",
+      "weapon_not_selected": "Bitte wählen Sie eine Waffe aus",
+      "welkin_moon_desc": "30 -tägiges Abonnementangebot",
+      "your_resources": "Ihre Ressourcen"
     },
     "todo": {
       "title": "Genshin Impact Aufgabenliste",
@@ -431,7 +566,13 @@
       "total_remaining": "Gesamt verblieben",
       "priority": "Priorität",
       "inventory": "Inventar",
-      "save_and_close": "Speichern und schließen"
+      "save_and_close": "Speichern und schließen",
+      "ascension": "Aufstieg",
+      "complete": "Vollständig",
+      "no_todo_title": "Kein Todos noch",
+      "nothing_today": "Heute nichts zu bewirtschaften!",
+      "progress": "Fortschritt",
+      "todo_title": "Todo -Titel"
     },
     "achievements": {
       "title": "Genshin Impact Errungenschaften",
@@ -477,7 +618,16 @@
       "cards": "Genius Invokation TCG Kartenliste",
       "all": "Alle",
       "search": "Karten suchen...",
-      "create_deck": "Deck erstellen"
+      "create_deck": "Deck erstellen",
+      "character card": "Charakterkarte",
+      "deck": "Deck",
+      "edit": "Bearbeiten",
+      "equipment card": "Ausrüstungskarte",
+      "event card": "Eventkarte",
+      "no_cards_found": "Keine Karten gefunden",
+      "subtitle": "Durchsuchen Sie die vollständige Kartensammlung, die im Genie -Invokation TCG erhältlich ist. \nFiltern Sie nach Typ, suchen Sie nach Namen und erstellen Sie Ihre eigenen benutzerdefinierten Decks.",
+      "support card": "Unterstützungskarte",
+      "try_adjusting_filters": "Versuchen Sie, Ihre Filter oder Suchbegriff anzupassen"
     },
     "tcg_card": {
       "title": "{name} - Genshin Impact Liste der TCG Karten",
@@ -496,7 +646,10 @@
     "tcg_decks": {
       "title": "Entdecke die besten Decks in Geniale Beschwörung TCG: Meta Builds für das Kartenspiel Genshin Impact",
       "description": "Dieser Artikel enthält eine umfassende Liste der besten Decks in TCG Geniale Beschwörung.",
-      "best_decks": "Beste Decks"
+      "best_decks": "Beste Decks",
+      "deck_builder": "Deck anzeigen",
+      "share_code": "Code teilen",
+      "view_deck": "Deck anzeigen"
     },
     "tcg_deck_builder": {
       "title": "Genius Invokation TCG Deck-Bauer",
@@ -530,7 +683,8 @@
       "number_of_cards": "Anzahl der Karten",
       "draw_simulator": "Kartenzieh-Simulator",
       "min_cards_simulator": "ℹ️ Sie müssen mindestens 6 Nicht-Charakter-Karten haben, um den Kartenzieh-Simulator zu verwenden.",
-      "draw_cards": "{num} Karten ziehen!"
+      "draw_cards": "{num} Karten ziehen!",
+      "try_adjusting_search": "Versuchen Sie, die Suche anzupassen"
     },
     "profile": {
       "title": "Genshin Impact Profil",
@@ -551,10 +705,57 @@
       "constellation": "Sternenbild",
       "weapon": "Waffe",
       "artifact": "Artefakt",
-      "owner": "Besitzer"
+      "owner": "Besitzer",
+      "ATK": "Atk",
+      "Achievements": "Erfolge",
+      "Adventure Rank": "Abenteuerrang",
+      "Characters": "Charaktere",
+      "DEF": "Def",
+      "EM": "Em",
+      "ER%": "ER%",
+      "Last update": "Letztes Update",
+      "Max HP": "Max HP",
+      "Nickname": "Spitzname",
+      "Signature": "Unterschrift",
+      "Spiral Abyss": "Spiralabyss",
+      "ascension": "Aufstieg",
+      "critValue": "Kritischer Wert",
+      "how_to_showcase_characters": "So erhalten Sie Ihren Charakter Build Showcase:",
+      "how_to_showcase_characters_1": "1. Open Genshin Impact.",
+      "how_to_showcase_characters_2": "2. Greifen Sie auf das Menü zu.",
+      "how_to_showcase_characters_3": "3. Klicken Sie auf das Symbol Bearbeiten in der Nähe Ihres Benutzernamens.",
+      "how_to_showcase_characters_4": "4. Wählen Sie \"UID kopieren\" (Sie können diesen Schritt überspringen, wenn Sie sich an Ihre UID erinnern).",
+      "how_to_showcase_characters_5": "5. Wählen Sie \"Profil bearbeiten\".",
+      "how_to_showcase_characters_6": "6. Aktivieren Sie die Option \"Charakterdetails anzeigen\".",
+      "how_to_showcase_characters_7": "7. Wählen Sie in der Spalte \"Character Showcase\" die Zeichen aus, die Sie präsentieren möchten.",
+      "level": "Ebene",
+      "no_builds": "Bitte aktivieren Sie die Option \"Charakterdetails anzeigen\" in Ihrem Charakter-Showcase im Spiel, um die Details anzuzeigen.",
+      "profile_not_found": "Profil nicht gefunden!",
+      "profile_not_found_desc": "Dieses Profil existiert derzeit nicht. \nWenn Sie es erstellen möchten, senden Sie bitte Ihre UID.",
+      "submit_uid": "Uid einreichen",
+      "submit_uid_desc": "Ihre UID ist im Profilabschnitt des Spiels zu finden",
+      "sync_profile_data": "Profildaten synchronisieren",
+      "title_detail": "{Name} Genshin Impact Showcase"
     },
-    "leaderboard": {},
-    "leaderboard_profiles": {},
+    "leaderboard": {
+      "description": "Community-gesteuerte Gen-Impact-Rangliste, die außergewöhnliche Charakterbaufläden und -konfigurationen präsentiert. \nFinden Sie Inspiration für Ihr Team oder reichen Sie Ihre eigenen Builds ein, um an Wettkämpfen teilzunehmen.",
+      "failed_load_data": "Versäumt zu laden, versuchen Sie es später erneut.",
+      "leaderboard": "Rangliste - Top -Builds aus der Community",
+      "loading_data": "Laden...",
+      "next": "Nächste",
+      "previous": "Vorherige",
+      "section_still_in_development": "Dieser Abschnitt ist noch in der Entwicklung.",
+      "submit_uid": "Senden Sie Ihre UID hier!",
+      "title": "Gen -Impact -Rangliste der Gen -Impact: Sehen Sie, wer an der Spitze steht"
+    },
+    "leaderboard_profiles": {
+      "add_profile": "Fügen Sie Ihr Profil hinzu",
+      "description": "Entdecken Sie, wie Sie Ihr Sehens -Impact -Konto zu Genshinbuilds für die Profil -Suche hinzufügen können. \nStellen Sie sicher, dass Ihre Einstellungen im Spiel im Spiel korrekt konfiguriert sind. \nErfahren Sie mehr über das Aktualisieren von Showcases unter Verwendung von Spitznamen, UIDs und den Profilnamen von Enka.network.",
+      "invalid_page_number": "Ungültige Seitennummer",
+      "next": "Nächste",
+      "previous": "Vorherige",
+      "title": "Gen -Impact -Profile suchen"
+    },
     "changelog": {
       "title": "Genshin Impact {version} Update: Neueste Funktionen, Änderungen und Verbesserungen",
       "description": "Entdecken Sie alle neuen Abenteuer in Genshin Impact {version}! Unser umfassender Leitfaden behandelt die neuesten Funktionen, Charakter-Updates und Gameplay-Verbesserungen. Bleiben Sie mit dem detaillierten Änderungsprotokoll der neuesten Version in Teyvat auf dem Laufenden.",
@@ -588,6 +789,9 @@
       "tags": "Tags",
       "hoyolab_article": "Hoyolab-Artikel",
       "link": "Link zum Blatt"
+    },
+    "bangboos": {
+      "w-engines": "W-Engines"
     }
   },
   "HSR": {
@@ -630,20 +834,35 @@
       "best_relics": "Beste Relikte für {name}",
       "best_ornaments": "Beste Verzierungen für {name}",
       "best_lightcones": "Beste Lichtkegel für {name}",
-      "best_teams": "Beste Teams für {name}"
+      "best_teams": "Beste Teams für {name}",
+      "body": "Körper",
+      "feet": "Füße",
+      "rope": "Seil",
+      "sphere": "Kugel"
     },
     "lightcones": {
       "title": "Honkai: Star Rail Light Cones-Listen",
       "description": "Eine vollständige Liste aller Lichtkegel und ihrer Statistiken in Honkai: Star Rail.",
       "lightcones": "Lichtkegel",
-      "lightcones_desc": "Lichtkegel sind Gegenstände, die Charaktere ausrüsten können, um ihre Basis-HP, Basis-ANG und Basis-DEF zu erhöhen und Charakteren, deren Weg mit dem des Lichtkegels übereinstimmt, eine passive Fähigkeit zu verleihen."
+      "lightcones_desc": "Lichtkegel sind Gegenstände, die Charaktere ausrüsten können, um ihre Basis-HP, Basis-ANG und Basis-DEF zu erhöhen und Charakteren, deren Weg mit dem des Lichtkegels übereinstimmt, eine passive Fähigkeit zu verleihen.",
+      "ability": "Fähigkeit",
+      "alternative": "Alternative",
+      "best_in_slot": "Am besten im Slot",
+      "recommended_characters": "Empfohlene Zeichen",
+      "stats": "Statistiken"
     },
     "relics": {
       "title": "Honkai: Liste der Star Rail-Relikte",
       "description": "Eine vollständige Liste aller Relikte und ihrer Statistiken in Honkai: Star Rail.",
       "relics": "Relikte",
       "relics_desc": "Relikte sind Gegenstände, mit denen Charaktere ausgerüstet werden können. ",
-      "set": "Satz"
+      "set": "Satz",
+      "description_detail": "Entdecken Sie die besten Relikte für {Name} in Honkai: Star Rail. \nEbenfalls enthalten sind ihre Statistiken, Set -Boni und mehr.",
+      "ornament": "Ornament",
+      "piece_set": "Stückset",
+      "recommended_characters": "Empfohlene Zeichen",
+      "relic_pieces": "Reliktstücke",
+      "title_detail": "{Name} Honkai: Star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Tierliste",
@@ -686,7 +905,8 @@
       "story": "Geschichte",
       "source": "Quelle",
       "world_level_required": "Benötigte Weltstufe",
-      "cost": "Kosten"
+      "cost": "Kosten",
+      "world_level_require": "Weltebene erfordern"
     },
     "achievements": {
       "title": "Erfolge in Honkai: Star Rail",
@@ -697,7 +917,22 @@
     },
     "profile": {
       "title": "Honkai: Star Rail {playerUID} Spielerprofil",
-      "description": "Honkai: Star Rail {playerUID} Spielerprofil"
+      "description": "Honkai: Star Rail {playerUID} Spielerprofil",
+      "achievements": "Erfolge",
+      "characters": "Charaktere",
+      "simulated": "Simuliert"
+    },
+    "lightcone": {
+      "ascension_materials": "Aufstiegsmaterialien erforderlich",
+      "ascension_materials_none": "Für diesen Aufstieg sind keine Materialien erforderlich",
+      "atk": "Atk",
+      "def": "Def",
+      "hp": "HP",
+      "level": "Ebene",
+      "slider_view": "Slider -Ansicht",
+      "stats": "Statistiken",
+      "table_view": "Tabellenansicht",
+      "total_ascension_materials_required": "Gesamtmaterialien, die zum Level {Level} erforderlich sind"
     }
   },
   "WW": {
@@ -719,7 +954,18 @@
       "title": "Wuthering Waves Wiki & Datenbank | Neueste Updates und Anleitungen",
       "description": "Bleiben Sie mit den neuesten Charakteren, Builds und Strategien in Wuthering Waves auf dem Laufenden.",
       "main_title": "Wuthering Waves Charakterliste | Beste Builds und Teams",
-      "main_description": "Erkunden Sie eine vollständige Liste aller Wuthering Waves Charaktere mit den aktuellsten Informationen zu ihren Builds, Waffen und Teamzusammenstellungen."
+      "main_description": "Erkunden Sie eine vollständige Liste aller Wuthering Waves Charaktere mit den aktuellsten Informationen zu ihren Builds, Waffen und Teamzusammenstellungen.",
+      "clear_all": "Alle klar",
+      "filters": "Filter",
+      "no_characters_found": "Keine Charaktere gefunden",
+      "rarity_filter": "Raritätsfilter",
+      "search": "Suchzeichen ...",
+      "sort_ascending": "Sortieren aufsteigend",
+      "sort_descending": "Sortieren absteigend",
+      "sort_name": "Name",
+      "sort_rarity": "Seltenheit",
+      "sort_release": "Veröffentlichungsdatum",
+      "try_adjusting_filters": "Versuchen Sie, Ihre Filter oder Suchbegriff anzupassen"
     },
     "character": {
       "title": "Wuthering Waves {characterName} Guide | Beste Builds und Teams",
@@ -804,7 +1050,12 @@
       "title": "Wuthering Waves Waffenliste | Beste Waffen und Fähigkeiten",
       "description": "Entdecken Sie die besten Waffen in Wuthering Waves mit detaillierten Fähigkeiten und Statistiken.",
       "main_title": "Wuthering Waves Waffenliste",
-      "main_description": "Eine vollständige Liste aller Waffen in Wuthering Waves mit den aktuellsten Informationen zu ihren Fähigkeiten und Statistiken."
+      "main_description": "Eine vollständige Liste aller Waffen in Wuthering Waves mit den aktuellsten Informationen zu ihren Fähigkeiten und Statistiken.",
+      "ascensions": "Aufstieg",
+      "level_n": "Ebene {n}",
+      "rarity": "Seltenheit",
+      "syntonize": "Syntonisieren",
+      "type": "Typ"
     },
     "weapon": {
       "title": "Wuthering Waves {weaponName} Waffen-Guide | Statistiken und Fähigkeiten",
@@ -864,7 +1115,16 @@
       "priority": "Priorität",
       "explanation": "Erläuterung",
       "teams": "{character_name} Beste Teams und Bangboo",
-      "best_bangboos": "Beste Bangboos"
+      "best_bangboos": "Beste Bangboos",
+      "description": "Entdecken Sie die besten Builds und Teams für {CharacterName} in Zenless Zone Null (ZZZ). \nEbenfalls enthalten sind ihre Fähigkeiten, Upgradekosten und mehr.",
+      "element": "Element",
+      "house": "Haus",
+      "rank": "Rang",
+      "rarity": "Seltenheit",
+      "skills": "Fähigkeiten",
+      "title": "{Zeichenname} Zenlose Zone Null (Zzz) Build -Handbuch",
+      "title_suffix": "Leitfaden bauen",
+      "type": "Typ"
     },
     "wengines": {
       "title": "Zenless Zone Zero (ZZZ) W-Engines-Liste",
@@ -872,7 +1132,11 @@
     },
     "bangboos": {
       "w-engines": "ZEZL -DISK -Laufwerke Zenless Zone Zero (ZZZ)",
-      "w-engines-description": "Eine vollständige Liste aller Festplatten und ihr Bonus in Zenless Zone Null."
+      "w-engines-description": "Eine vollständige Liste aller Festplatten und ihr Bonus in Zenless Zone Null.",
+      "bangboos": "Zenlose Zone Zero Bangboo -Liste",
+      "bangboos_description": "Bangboo sind \"Haustiere\" in Zenless Zone Zero, die Ihrem Team helfen - Finden Sie jeden im Spiel unten verfügbaren Bangboo!",
+      "description": "Eine vollständige Liste aller spielbaren Bangboos in Zenless Zone Null.",
+      "title": "Zenless Zone Zero (ZZZ) Bangboos -Liste"
     },
     "wengine": {
       "title": "{itemname} Zenlose Zone Null W-Engine",
@@ -931,6 +1195,36 @@
       "debuffer": "Debuffer",
       "supporter": "Fan",
       "explanation": "Erläuterung"
+    },
+    "bangboo": {
+      "description": "Erfahren Sie alles über {Bangboo} Bangboo in Zenless Zone Zero (Zzz). \nSehen Sie sich detaillierte Fähigkeiten an und wie Sie diesen Bangboo effektiv verwenden.",
+      "main_title": "Zzz Bangboo Guide",
+      "rank": "Rang",
+      "rarity": "Seltenheit",
+      "title": "{Bangboo} - Zenless Zone Zero (Zzz) Bangboo Guide"
+    },
+    "characters": {
+      "characters": "ZEZL -Agentenliste Zenless Zone Null (ZZZ)",
+      "characters_description": "Charaktere (Agenten) sind Einheiten in Zenless Zone Zero (ZZZ) - Finden Sie jeden im Spiel verfügbaren Agenten!",
+      "description": "Eine vollständige Liste aller spielbaren Charaktere in Zenless Zone Null.",
+      "title": "Zzz -Zeichenliste zzziger Zone Null (ZZZ)"
+    },
+    "home": {
+      "description": "Genshin-builds.com ist ein Wiki für Zenless Zone Null (ZZZ). \nÜberprüfen Sie unsere Führer, Tierlisten und Bewertungen für im Spiel verfügbare Charaktere.",
+      "news": "Nachricht",
+      "see_more": "Sehen Sie mehr",
+      "title": "Zenlose Zone Null (Zzz) Wiki",
+      "welcome": "Willkommen bei Zenlessbuilds",
+      "welcome_description": "Entdecken Sie Charakterbuilds, umfassende Führer und eine Wiki -Datenbank an einem Ort für Zenless Zone Null (ZZZ)."
+    },
+    "layout": {
+      "bangboos": "Bangboo",
+      "blog": "Blog",
+      "characters": "Agenten",
+      "disk-drives": "Fahrplatte fahren",
+      "home": "Heim",
+      "tierlist": "Tierliste",
+      "w-engines": "W-Engine"
     }
   }
 }

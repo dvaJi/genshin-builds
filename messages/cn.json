@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "档案，与其他玩家比较您的进度",
       "profiles": "档案",
       "profiles_desc": "档案，与其他玩家比较您的进度",
-      "blog": "博客"
+      "blog": "博客",
+      "Tools": "Tools"
     },
     "ascension_planner": {
       "title": "Genshin Impact Wiki Database",
@@ -196,7 +197,12 @@
       "element_filter": "Element Filter",
       "clear_all": "Clear all",
       "no_characters_found": "No characters found",
-      "try_adjusting_filters": "Try adjusting your filters or search term"
+      "try_adjusting_filters": "Try adjusting your filters or search term",
+      "Bow": "Bow",
+      "Catalyst": "Catalyst",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Sword"
     },
     "character": {
       "title": "《原神》{name}终极建造指南",
@@ -233,7 +239,7 @@
       "main dps": "主DPS",
       "sub dps": "副DPS",
       "support": "支援",
-      "lv": "等级",
+      "lv": "Lv",
       "before_ascension": "飞升前",
       "after_ascension": "飞升后",
       "constellation_lvl": "命座等级 {level}",
@@ -280,7 +286,12 @@
       "rarity_filter": "Rarity Filter",
       "clear_all": "Clear all",
       "no_weapons_found": "No weapons found",
-      "try_adjusting_filters": "Try adjusting your filters or search term"
+      "try_adjusting_filters": "Try adjusting your filters or search term",
+      "Bow": "Bow",
+      "Catalyst": "Catalyst",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Sword"
     },
     "weapon": {
       "title": "《原神》{name}武器详情",
@@ -395,7 +406,14 @@
       "element_filter": "Element Filter",
       "clear_all": "Clear all",
       "no_teams_found": "No teams found",
-      "try_adjusting_filters": "Try adjusting your filters or search term"
+      "try_adjusting_filters": "Try adjusting your filters or search term",
+      "anemo": "Anemo",
+      "cryo": "Cryo",
+      "dendro": "Dendro",
+      "electro": "Electro",
+      "geo": "Geo",
+      "hydro": "Hydro",
+      "pyro": "Pyro"
     },
     "fishing": {
       "title": "原神钓鱼（鱼、鱼饵、鱼竿和钓鱼点）",
@@ -604,7 +622,11 @@
       "no_cards_found": "No cards found",
       "try_adjusting_filters": "Try adjusting your filters or search term",
       "deck": "Deck",
-      "edit": "Edit"
+      "edit": "Edit",
+      "character card": "Character Card",
+      "equipment card": "Equipment Card",
+      "event card": "Event Card",
+      "support card": "Support Card"
     },
     "tcg_card": {
       "title": "{name} - 原神 TCG 卡牌列表",
@@ -625,7 +647,8 @@
       "description": "本文提供了天命召唤 TCG 中最佳卡组的综合列表。包括原神卡牌游戏的元卡组构建，使其成为希望提升游戏水平并攀登排行榜的玩家的终极指南。通过这些信息，读者可以随时了解当前的元环境，并在构建自己的卡组时做出明智的决策。",
       "best_decks": "顶级卡组",
       "view_deck": "View Deck",
-      "share_code": "Share Code"
+      "share_code": "Share Code",
+      "deck_builder": "View Deck"
     },
     "tcg_deck_builder": {
       "title": "天命召唤卡组构建器",
@@ -698,7 +721,20 @@
       "profile_not_found_desc": "This profile currently does not exist. If you want to create it, please submit your UID.",
       "title_detail": "{name} Genshin Impact Showcase",
       "no_builds": "Please enable the \"Show Character Details\" option in your Character Showcase in-game to see the details.",
-      "sync_profile_data": "Sync profile data"
+      "sync_profile_data": "Sync profile data",
+      "ATK": "ATK",
+      "Achievements": "Achievements",
+      "Adventure Rank": "Adventure Rank",
+      "Characters": "Characters",
+      "DEF": "DEF",
+      "EM": "EM",
+      "ER%": "ER%",
+      "Last update": "Last Update",
+      "Max HP": "Max HP",
+      "Nickname": "Nickname",
+      "Signature": "Signature",
+      "Spiral Abyss": "Spiral Abyss",
+      "critValue": "Crit Value"
     },
     "leaderboard": {
       "title": "Genshin Impact Build Rankings: See Who's On Top",
@@ -772,7 +808,8 @@
       "showcase": "角色展示",
       "messages": "消息",
       "items": "物品",
-      "blog": "博客"
+      "blog": "博客",
+      "achievements": "Achievements"
     },
     "characters": {
       "title": "崩坏：星穹铁道所有角色列表",
@@ -796,7 +833,11 @@
       "best_relics": "{name}最佳圣遗物",
       "best_ornaments": "{name}最佳饰品",
       "best_lightcones": "{name}最佳光锥",
-      "best_teams": "{name}最佳团队"
+      "best_teams": "{name}最佳团队",
+      "body": "Body",
+      "feet": "Feet",
+      "rope": "Rope",
+      "sphere": "Sphere"
     },
     "lightcones": {
       "title": "崩坏：星穹铁道光锥列表",
@@ -818,7 +859,9 @@
       "piece_set": "Piece Set",
       "relic_pieces": "Relic Pieces",
       "recommended_characters": "Recommended Characters",
-      "ornament": "Ornament"
+      "ornament": "Ornament",
+      "description_detail": "Discover the best Relics for {name} in Honkai: Star Rail. Also included are their stats, set bonuses, and more.",
+      "title_detail": "{name} Honkai: Star Rail Relic"
     },
     "tierlist": {
       "title": "崩坏：星穹铁道排行榜",

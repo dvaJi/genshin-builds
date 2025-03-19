@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "İlerlemenizi diğer oyuncularla karşılaştırmak için profiller",
       "profiles": "Profiller",
       "profiles_desc": "İlerlemenizi diğer oyuncularla karşılaştırmak için profiller",
-      "blog": "Blog"
+      "blog": "Blog",
+      "Tools": "Aletler"
     },
     "ascension_planner": {
       "title": "Genshin Impact Wiki Veritabanı",
@@ -196,7 +197,12 @@
       "element_filter": "Eleman filtresi",
       "clear_all": "Hepsini temizlemek",
       "no_characters_found": "Karakter bulunamadı",
-      "try_adjusting_filters": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin"
+      "try_adjusting_filters": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin",
+      "Bow": "Yay",
+      "Catalyst": "Katalizör",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Kılıç"
     },
     "character": {
       "title": "Genshin Impact {name} En İyi Oluşturma Rehberi",
@@ -233,7 +239,7 @@
       "main dps": "Ana DPS",
       "sub dps": "Alt DPS",
       "support": "Destek olmak",
-      "lv": "Sv.",
+      "lv": "LV",
       "before_ascension": "Yükselişten Önce",
       "after_ascension": "Yükselişten Sonra",
       "constellation_lvl": "Takımyıldızı Sv. {level}",
@@ -280,7 +286,12 @@
       "rarity_filter": "Nadirlik filtresi",
       "clear_all": "Hepsini temizlemek",
       "no_weapons_found": "Silah bulunamadı",
-      "try_adjusting_filters": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin"
+      "try_adjusting_filters": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin",
+      "Bow": "Yay",
+      "Catalyst": "Katalizör",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Kılıç"
     },
     "weapon": {
       "title": "{name} Genshin Darbe Silahı Ayrıntıları",
@@ -395,7 +406,14 @@
       "element_filter": "Eleman filtresi",
       "clear_all": "Hepsini temizlemek",
       "no_teams_found": "Takım bulunamadı",
-      "try_adjusting_filters": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin"
+      "try_adjusting_filters": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin",
+      "anemo": "Anemo",
+      "cryo": "Kravat",
+      "dendro": "Dendro",
+      "electro": "Elektro",
+      "geo": "Coğrafi",
+      "hydro": "Hidro",
+      "pyro": "Piro"
     },
     "fishing": {
       "title": "Genshin Darbeli Balıkçılık (Balık, Yemler, Oltalar ve Balık tutma noktaları)",
@@ -604,7 +622,11 @@
       "no_cards_found": "Kart bulunamadı",
       "try_adjusting_filters": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin",
       "deck": "Güverte",
-      "edit": "Düzenlemek"
+      "edit": "Düzenlemek",
+      "character card": "Karakter kartı",
+      "equipment card": "Ekipman kartı",
+      "event card": "Olay kartı",
+      "support card": "Destek kartı"
     },
     "tcg_card": {
       "title": "{name} - Genshin Impact TCG Kart Listesi",
@@ -625,7 +647,8 @@
       "description": "Bu makale, TCG Genius Invokation'daki en iyi destelerin kapsamlı bir listesini sunar. ",
       "best_decks": "Üst Güverte",
       "view_deck": "Güverteyi Görüntüle",
-      "share_code": "Hisse Kodu"
+      "share_code": "Hisse Kodu",
+      "deck_builder": "Güverteyi Görüntüle"
     },
     "tcg_deck_builder": {
       "title": "Dahiler İstilası TCG Destek Oluşturucu",
@@ -698,7 +721,20 @@
       "profile_not_found_desc": "Bu profil şu anda mevcut değil. \nYaratmak istiyorsanız, lütfen UID'nizi gönderin.",
       "title_detail": "{name} Genshin Etki Vitrini",
       "no_builds": "Ayrıntıları görmek için lütfen karakter vitrini oyundaki \"karakter ayrıntılarını göster\" seçeneğini etkinleştirin.",
-      "sync_profile_data": "Profil verilerini senkronize edin"
+      "sync_profile_data": "Profil verilerini senkronize edin",
+      "ATK": "Atk",
+      "Achievements": "Başarılar",
+      "Adventure Rank": "Macera rütbesi",
+      "Characters": "Karakter",
+      "DEF": "DEF",
+      "EM": "EM",
+      "ER%": "ER%",
+      "Last update": "Son Güncelleme",
+      "Max HP": "Max HP",
+      "Nickname": "Takma ad",
+      "Signature": "İmza",
+      "Spiral Abyss": "Spiral uçurum",
+      "critValue": "Kritik değer"
     },
     "leaderboard": {
       "title": "Genshin Impact Build Sıralamaları: Kimin üstte olduğunu görün",
@@ -759,25 +795,44 @@
   },
   "HSR": {
     "item": {
-      "world_level_require": "Dünya Seviyesi Gerekli"
+      "world_level_require": "Dünya Seviyesi Gerekli",
+      "cost": "Maliyet",
+      "description": "{İtemName} {itemType} öğesi hakkında bilgi.",
+      "source": "Kaynak",
+      "story": "Hikaye",
+      "title": "Honkai: Star Rail {itemname} öğesi",
+      "world_level_required": "Dünya Seviyesi Gerekli"
     },
     "lightcones": {
       "ability": "Yetenek",
       "stats": "İstatistikler",
       "recommended_characters": "Önerilen karakterler",
       "best_in_slot": "Yuvada en iyisi",
-      "alternative": "Alternatif"
+      "alternative": "Alternatif",
+      "description": "Honkai: Yıldız Demiryolu'ndaki tüm ışık konilerinin ve istatistiklerinin tam bir listesi.",
+      "lightcones": "Hafif koniler",
+      "lightcones_desc": "Işık konileri, temel HP'lerini, taban ATK ve Base Def'lerini artırmak için karakterler tarafından donatılabilir ürünlerdir ve yolu ışık konisi ile eşleşen karakterlere pasif bir yetenek verir.",
+      "title": "Honkai: Yıldız Demiryolu Işık Konileri Listeleri"
     },
     "relics": {
       "piece_set": "Parça seti",
       "relic_pieces": "Kalıntı parçaları",
       "recommended_characters": "Önerilen karakterler",
-      "ornament": "Süs"
+      "ornament": "Süs",
+      "description": "Honkai'deki tüm kalıntıların ve istatistiklerinin tam bir listesi: Yıldız Demiryolu.",
+      "description_detail": "Honkai: Yıldız Rayında {Name} için en iyi kalıntıları keşfedin. \nAyrıca istatistikleri, set bonusları ve daha fazlası dahildir.",
+      "relics": "Kalıntılar",
+      "relics_desc": "Kalıntılar, karakterlere donatılabilen öğelerdir. \nKalıntılar, donanımlı karaktere HP, hız, saldırı ve savunma dahil ek istatistikler sağlar. \nTüm kalıntılar, \"set\" olarak adlandırılan meslektaşlarıyla eşleştirildiğinde ekstra destekler verir. \nİstatistikleri artırmak için kalıntılar exp malzemesi ile yükseltilebilir.",
+      "set": "Ayarlamak",
+      "title": "Honkai: Yıldız Demiryolu Kalıntıları Listesi",
+      "title_detail": "{Name} Honkai: Star Rail Relic"
     },
     "profile": {
       "simulated": "Simüle edilmiş",
       "characters": "Karakter",
-      "achievements": "Başarılar"
+      "achievements": "Başarılar",
+      "description": "Honkai: Star Rail {PlayerUid} Oyuncu Profili",
+      "title": "Honkai: Star Rail {PlayerUid} Oyuncu Profili"
     },
     "lightcone": {
       "hp": "HP",
@@ -790,6 +845,93 @@
       "level": "Seviyesi",
       "stats": "İstatistikler",
       "total_ascension_materials_required": "{level} seviyesi için gereken toplam malzeme"
+    },
+    "achievements": {
+      "achievements": "Başarılar",
+      "achievements_desc": "Honkai Star Rail'deki tüm başarıların listesi ve bunların nasıl tamamlanacağı, böylece bazı yıldız jadlarını kolayca puanlayabilirsiniz.",
+      "description": "Honkai'deki tüm başarıların tam bir listesi: Yıldız Demiryolu.",
+      "search": "Aramak...",
+      "title": "Honkai: Yıldız Demiryolu Başarıları"
+    },
+    "character": {
+      "best_light_cone": "En iyi ışık konisi",
+      "best_lightcones": "{name} en iyi ışık konileri",
+      "best_ornaments": "{name} en iyi süs eşyaları",
+      "best_relics": "{name} en iyi kalıntılar",
+      "best_stats": "{name} en iyi istatistikler",
+      "best_substats": "{name} en iyi subtats",
+      "best_teams": "{name} en iyi takımlar",
+      "body": "Vücut",
+      "characters": "Karakter",
+      "description": "Honkai: Star Rail'deki {name} için en iyi yapıları ve ekipleri keşfedin. \nAyrıca becerileri, yükseltme maliyetleri ve daha fazlası dahildir.",
+      "eidolon": "Eidolon",
+      "feet": "Ayak",
+      "relics_and_ornament": "Kalıntılar ve süs",
+      "rope": "Halat",
+      "skills": "Yetenekler",
+      "sphere": "Küre",
+      "title": "Honkai: Star Rail {Name} Yapı Kılavuzu",
+      "traces": "İzler"
+    },
+    "characters": {
+      "characters": "Karakter",
+      "characters_description": "Karakterler Honkai: Yıldız Rayında elde edilebilir birimlerdir.",
+      "description": "Honkai'deki tüm oynanabilir karakterlerin tam bir listesi: Yıldız Demiryolu ..",
+      "element": "Eleman",
+      "title": "Honkai: Yıldız Demiryolu Tüm Karakterler Listesi",
+      "type": "Tip"
+    },
+    "items": {
+      "description": "Honkai'deki tüm öğelerin tam bir listesi: Yıldız Demiryolu.",
+      "items": "Öğeler",
+      "items_desc": "Ürünler Honkai: Yıldız Demiryolundan tahsil edilebilir nesnelerdir. \nÖğelerin çoğuna envanter üzerinden erişilebilir.",
+      "title": "Honkai: Yıldız Demiryolu Tüm Öğeler Listesi"
+    },
+    "layout": {
+      "achievements": "Başarılar",
+      "blog": "Blog",
+      "characters": "Karakter",
+      "contact": "Temas etmek",
+      "description": "Honkai: Star Rail'deki tüm oynanabilir karakterlerin tam bir listesi.",
+      "footer": "HSRBuilds bir veritabanı, katman listesi ve Honkai: Star Rail için rehberdir.",
+      "footer_advice": "Honkai: Yıldız Rayı Hoyoverse veya Cognosfere Pte tarafından onaylanmamıştır. \nLtd. Ve Honkai: Yıldız Demiryolunu üretmeye veya yönetmeye resmi olarak katılan kimsenin görüşlerini veya görüşlerini yansıtmaz.",
+      "items": "Öğeler",
+      "lightcones": "Hafif koniler",
+      "messages": "Mesaj",
+      "privacy_policy": "Gizlilik Politikası",
+      "relics": "Kalıntılar",
+      "showcase": "Vitrin",
+      "tierlist": "Tierlist",
+      "title": "Honkai: Yıldız Demiryolu Wiki Veritabanı"
+    },
+    "message": {
+      "description": "{Name} - {imza} adresindeki tüm mesajları keşfedin",
+      "message": "Mesaj {MessageNumber}",
+      "messages": "Mesaj",
+      "related_messages": "İlgili Mesajlar",
+      "section": "Bölüm {Bölüm Number}",
+      "title": "Honkai: Yıldız Demiryolu {Name} Mesajlar"
+    },
+    "messages": {
+      "description": "Honkai'deki tüm mesajların tam bir listesi: Yıldız Demiryolu.",
+      "messages": "Mesaj",
+      "messages_desc": "Mesajlar, Trailblazer'ın diğer karakterlerden ve NPC'lerden aldığı metin iletişimidir.",
+      "title": "Honkai: Yıldız Ray Mesajları"
+    },
+    "showcase": {
+      "character_showcase": "Karakter Vitrini",
+      "description": "Honkai: Yıldız Demiryolu Karakterlerini Karakter Vitrin Aracımızla Göster. \nKarakterinizi seçin, yapınızı seçin ve yaratımınızı dünyayla paylaşın.",
+      "enter_uid": "Vitrini görüntülemek için uid girin",
+      "enter_uid_input": "Uid girin",
+      "loading": "Yükleme ...",
+      "submit": "Göndermek",
+      "title": "Honkai: Yıldız Demiryolu Karakter Vitrini"
+    },
+    "tierlist": {
+      "description": "Kapsamlı bir katman listesi, HSR'deki tüm 5 yıldızlı, 4 yıldızlı, DPS ve destek karakterlerini sıralayarak ekip kompozisyonunuz hakkında bilinçli kararlar vermenize izin veriyor. \nRekabetin önünde kalın ve ustalıkla küratörlü rehberimizle kadrouzun gerçek potansiyelini serbest bırakın. \nSeviye listesini keşfedin ve sizi Honkai: Star Rail'de zafere götürecek güç merkezlerini ortaya çıkarın.",
+      "tierlist": "Tierlist",
+      "tierlist_desc": "Nihai Honkai: Yıldız Demiryolu Seviye Listesini keşfedin! \n5 yıldızlı, 4 yıldızlı, DPS ve destek karakterleri dahil olmak üzere HSR'deki en iyi performans gösteren karakterleri keşfedin, hepsi bu kapsamlı kılavuzda ustaca sıralanın. \nOyunun önünde kalın ve bu paha biçilmez kaynakla bilinçli seçimler yapın.",
+      "title": "Honkai: Yıldız Demiryolu Katman Listesi"
     }
   },
   "WW": {
@@ -804,14 +946,159 @@
       "rarity_filter": "Nadirlik filtresi",
       "filters": "Filtreler",
       "sort_ascending": "Artan Sır",
-      "sort_descending": "Azar"
+      "sort_descending": "Azar",
+      "description": "Wuthering dalgalarındaki en son karakterler, yapılar ve stratejilerle güncel kalın.",
+      "main_description": "Yapıları, silahları ve ekip kompozisyonları hakkında en güncel bilgilerle tüm Wuthering Waves karakterlerinin tam bir listesini keşfedin.",
+      "main_title": "Wuthering Waves Karakterler Listesi | \nEn iyi yapılar ve takımlar",
+      "title": "Wuthering Waves Wiki"
     },
     "weapons": {
       "type": "Tip",
       "rarity": "Nadirlik",
       "syntonize": "Uydurmak",
       "ascensions": "Yükseliş",
-      "level_n": "Seviye {n}"
+      "level_n": "Seviye {n}",
+      "description": "Ayrıntılı beceriler ve istatistiklerle wuthering dalgalarındaki en iyi silahları keşfedin.",
+      "main_description": "Becerileri ve istatistikleri hakkında en güncel bilgilerle Wuthering dalgalarındaki tüm silahların tam bir listesi.",
+      "main_title": "Wuthering Waves Silah Listesi",
+      "title": "Wuthering Waves Silah Listesi | \nEn iyi silah ve beceriler"
+    },
+    "character": {
+      "1_cost": "1 Maliyet",
+      "3_cost": "3 Maliyet",
+      "4_cost": "4 Maliyet",
+      "affiliation": "Bağlılık",
+      "ascension_materials": "{charatername} Yükseliş Malzemeleri",
+      "best_echo_sets": "{Charatername} için en iyi yankı setleri",
+      "best_echo_stats": "{Chagername} yankıları için en iyi istatistikler",
+      "best_echo_substats": "{Chagername} yankıları için en iyi subtats",
+      "best_primary_echo": "{charatername} 'ın en iyi birincil yankısı",
+      "best_teams": "{Chagername} için en iyi takımlar",
+      "best_weapons": "{Charatername} için en iyi silahlar",
+      "birth": "Doğum",
+      "birthplace": "Doğum yeri",
+      "combat_roles": "Savaş rolleri",
+      "description": "{charatername}, wuthering dalgalarında {raritystring} ({nadirlik} ★) karakterdir. \n{CorcaTtername} için en iyi yapıları ve ekip kompozisyonlarını keşfedin.",
+      "element": "Eleman",
+      "main_title": "Wuthering Waves {Chargername} Yapı Kılavuzu",
+      "no_special_food": "Özel yemek yok",
+      "resonance_chain": "{charatername} rezonans zinciri",
+      "skills": "{charatername} becerileri",
+      "special_food": "{charaternamame} özel yemekler",
+      "story_and_voice": "Hikaye",
+      "talent_lvlup_materials": "{chagertername} yetenek seviyesi yükseltme malzemeleri",
+      "tips_and_tricks": "En İyi İpuçları",
+      "title": "Wuthering Waves {Chargtername} Kılavuz | \nEn iyi yapılar ve takımlar",
+      "weapon_type": "Silah türü"
+    },
+    "character_info": {
+      "cherished_items_favors": "{charatername} değerlenmiş öğeler",
+      "chinese": "Çince",
+      "description": "Wuthering dalgalarında hikayeyi, ses aktörlerini ve daha fazlasını {charatername} için keşfedin.",
+      "english": "İngilizce",
+      "forte_examination_report": "{charatername} forte muayene raporu",
+      "info": "Bilgi",
+      "japanese": "Japonca",
+      "korean": "Koreli",
+      "overclock_diagnostic_report": "Overclock Teşhis Raporu",
+      "resonance_evaluation_report": "Rezonans Değerlendirme Raporu",
+      "resonance_power": "Rezonans gücü",
+      "story": "{charatername} hikayesi",
+      "title": "Wuthering Waves {Chargername} Hikayesi",
+      "va": "{charatername} seslendirme oyuncusu",
+      "voice": "{charatername} ses satırları"
+    },
+    "echo": {
+      "birthplace": "Doğum yeri",
+      "code": "Kodlamak",
+      "cost": "Maliyet",
+      "description": "{echoname} wuthering dalgalarında bir yankıdır. \nBecerileri ve nasıl etkili bir şekilde kullanılacağı hakkında bilgi edinin.",
+      "echo_skill": "{echoname} yankı becerisi",
+      "main_title": "Wuthering Waves {echoname} echo",
+      "num_pieces": "{n} -piece seti",
+      "rarity": "Nadirlik",
+      "sonata_effect": "{echoname} Sonata Etkisi",
+      "title": "Wuthering Waves {echoname} Yankı Kılavuzu | \nBeceriler ve Etkiler",
+      "type": "Tip"
+    },
+    "echoes": {
+      "description": "Ayrıntılı beceri ve efektlerle wuthering dalgalarındaki tüm yankıların tam bir listesi.",
+      "main_description": "Becerileri ve etkileri hakkında en güncel bilgilerle Wuthering dalgalarındaki tüm yankıları keşfedin.",
+      "main_title": "Wuthering Waves yankıları listesi",
+      "title": "Wuthering Waves yankıları listesi | \nBeceriler ve Etkiler"
+    },
+    "item": {
+      "description": "{itemName}, wuthering dalgalarında bir {rarityString} ({nadirlik} ★) öğesidir. \nNasıl kullanılacağını ve nerede bulacağınızı öğrenin.",
+      "main_title": "Wuthering Waves {itemName} öğe",
+      "rarity": "Nadirlik",
+      "sources": "Kaynak",
+      "tags": "Etiketler",
+      "title": "Wuthering Waves {ItemName} Öğe Kılavuzu | \nKullanım ve kaynaklar",
+      "type": "Tip"
+    },
+    "items": {
+      "description": "Wuthering dalgalarındaki kullanım ve nerede bulunacağı dahil tüm öğelerin kapsamlı bir listesi.",
+      "main_description": "Wutering dalgalarındaki tüm öğeleri, kullanımları ve kaynakları hakkında ayrıntılı bilgilerle keşfedin.",
+      "main_title": "Wuthering Waves öğeleri listesi",
+      "title": "Wuthering Waves Öğeler Listesi | \nKullanım ve kaynaklar"
+    },
+    "layout": {
+      "characters": "Karakter",
+      "description": "Wuthering dalgaları için nihai kaynağınız: Karakter yapıları, katman listeleri, silahlar, yankılar ve oyunda ustalaşacak stratejiler.",
+      "echoes": "Yankılar",
+      "inventory": "Envanter",
+      "tierlist_characters": "Seviye Listesi - Karakterler",
+      "tierlist_characters_desc": "Wuthering dalgalarına hakim olmak için en üst düzey karakterleri ve en uygun yapılarını keşfedin.",
+      "tierlist_echoes": "Seviye Listesi - Yankı",
+      "tierlist_echoes_desc": "En güçlü yankıları ve karakterinizin performansını nasıl etkilediğini keşfedin.",
+      "tierlist_weapons": "Seviye Listesi - Silahlar",
+      "tierlist_weapons_desc": "Oyununuzu geliştirmek için güç ve etkinliğe göre sıralanan en iyi silahları bulun.",
+      "title": "Wuthering Waves Wiki",
+      "weapons": "Silah"
+    },
+    "tierlist_characters": {
+      "description": "Kapsamlı katman listemiz ve sıralamalarımızla wuthering dalgalarındaki en iyi karakterleri keşfedin.",
+      "explanation": "Açıklama",
+      "main_description": "Kapsamlı Wuthering Waves karakterleri listemize hoş geldiniz. \nOyunda mükemmel olmanıza yardımcı olmak için karakterleri yeteneklere, güçlü yönlere ve genel faydalara göre sıralıyoruz.",
+      "main_dps": "Ana DPS",
+      "main_title": "Wuthering Waves Karakterler Katman Listesi | \nSıralama ve Analiz",
+      "overall": "Etraflı",
+      "sub_dps": "Alt DPS",
+      "support": "Destek",
+      "title": "En İyi Wuthering Waves Karakterler Katman Listesi | \nUltimate Sıralama Kılavuzu"
+    },
+    "tierlist_echoes": {
+      "description": "Ayrıntılı katman listemiz ve analizimizle wuthering dalgalarındaki en güçlü yankıları keşfedin.",
+      "explanation": "Açıklama",
+      "main_description": "Kapsamlı Wuthering Waves, Tier Liste yankılarımız, yeteneklerine ve oyun üzerindeki etkilerine dayalı yankılar sıralar ve bilinçli kararlar vermenize yardımcı olur.",
+      "main_title": "Wuthering Waves yankılanan Seviye Listesi | \nSıralama ve Analiz",
+      "title": "En İyi Wuthering Waves Yankılar Seviye Listesi | \nUltimate Sıralama Kılavuzu"
+    },
+    "tierlist_weapons": {
+      "broadblade": "Broadblade",
+      "broadblades_tierlist": "Broadblade katman listesi",
+      "description": "Derinlemesine katman listemiz ve sıralamalarımızla wuthering dalgalarında hangi silahların en iyisi olduğunu öğrenin.",
+      "gauntlet": "Eldiven",
+      "gauntlets_tierlist": "Gauntlet katman listesi",
+      "main_description": "Kapsamlı Wuthering Waves Silah katman listemiz, oyununuzu geliştirmek için güç, etkinlik ve genel faydaya dayalı silahları sıralar.",
+      "main_title": "Wuthering Waves Silah Katman Listesi | \nSıralama ve Analiz",
+      "pistol": "Tabanca",
+      "pistols_tierlist": "Tabanca katman listesi",
+      "rectifier": "Doğrultucu",
+      "rectifiers_tierlist": "Doğrultucu katman listesi",
+      "sword": "Kılıç",
+      "swords_tierlist": "Kılıç Katman Listesi",
+      "title": "En İyi Wuthering Waves Silah Katman Listesi | \nUltimate Sıralama Kılavuzu"
+    },
+    "weapon": {
+      "ascensions": "Yükseliş",
+      "description": "{SilahonName}, wuthering dalgalarında bir {raritystring} ({nadirlik} ★) silahtır. \nİstatistikleri ve becerileri hakkında bilgi edinin.",
+      "level_n": "Seviye {n}",
+      "main_title": "Wuthering Waves {SilahonName} Silah",
+      "rarity": "Nadirlik",
+      "syntonize": "Uydurmak",
+      "title": "Wuthering Waves {SilahonName} Silah Kılavuzu | \nİstatistikler ve Beceriler",
+      "type": "Tip"
     }
   },
   "zenless": {

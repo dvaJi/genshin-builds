@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "Perfiles para comparar tu progreso con otros jugadores",
       "profiles": "Perfiles",
       "profiles_desc": "Perfiles para comparar tu progreso con otros jugadores",
-      "blog": "Blog"
+      "blog": "Blog",
+      "Tools": "Herramientas"
     },
     "ascension_planner": {
       "title": "Genshin Impact Base de datos Wiki",
@@ -196,7 +197,12 @@
       "element_filter": "Filtro de elementos",
       "clear_all": "Despejar todo",
       "no_characters_found": "No se encontraron personajes",
-      "try_adjusting_filters": "Intente ajustar sus filtros o término de búsqueda"
+      "try_adjusting_filters": "Intente ajustar sus filtros o término de búsqueda",
+      "Bow": "Arco",
+      "Catalyst": "Catalizador",
+      "Claymore": "Casa antigua",
+      "Polearm": "Polarmo",
+      "Sword": "Espada"
     },
     "character": {
       "title": "{name} en Genshin Impact: La Guía de Construcción Definitiva",
@@ -233,7 +239,7 @@
       "main dps": "DPS Principal",
       "sub dps": "DPS Secundario",
       "support": "Soporte",
-      "lv": "Nv.",
+      "lv": "Lv",
       "before_ascension": "Antes de la Ascensión",
       "after_ascension": "Después de la Ascensión",
       "constellation_lvl": "Constelación Nv. {level}",
@@ -280,7 +286,12 @@
       "rarity_filter": "Filtro de rareza",
       "clear_all": "Despejar todo",
       "no_weapons_found": "No se encontraron armas",
-      "try_adjusting_filters": "Intente ajustar sus filtros o término de búsqueda"
+      "try_adjusting_filters": "Intente ajustar sus filtros o término de búsqueda",
+      "Bow": "Arco",
+      "Catalyst": "Catalizador",
+      "Claymore": "Casa antigua",
+      "Polearm": "Polarmo",
+      "Sword": "Espada"
     },
     "weapon": {
       "title": "{name} Genshin Impact Detalles del Arma",
@@ -395,7 +406,14 @@
       "element_filter": "Filtro de elementos",
       "clear_all": "Despejar todo",
       "no_teams_found": "No se encontraron equipos",
-      "try_adjusting_filters": "Intente ajustar sus filtros o término de búsqueda"
+      "try_adjusting_filters": "Intente ajustar sus filtros o término de búsqueda",
+      "anemo": "Anemo",
+      "cryo": "Crio",
+      "dendro": "Dendro",
+      "electro": "Electro",
+      "geo": "Geo",
+      "hydro": "Hídico",
+      "pyro": "Piro"
     },
     "fishing": {
       "title": "Genshin Impact Pesca (pescado, cebos, cañas de pescar y puntos de pesca)",
@@ -604,7 +622,11 @@
       "no_cards_found": "No se encuentran cartas",
       "try_adjusting_filters": "Intente ajustar sus filtros o término de búsqueda",
       "deck": "Cubierta",
-      "edit": "Editar"
+      "edit": "Editar",
+      "character card": "Carta de carácter",
+      "equipment card": "Tarjeta de equipo",
+      "event card": "Tarjeta de eventos",
+      "support card": "Tarjeta de apoyo"
     },
     "tcg_card": {
       "title": "{name} - Lista de cartas de Genshin Impact TCG",
@@ -625,7 +647,8 @@
       "description": "Este artículo proporciona una lista completa de los mejores mazos en TCG, Invocación de los Sabios. ",
       "best_decks": "Mejores Mazos",
       "view_deck": "Mazo",
-      "share_code": "Código compartido"
+      "share_code": "Código compartido",
+      "deck_builder": "Mazo"
     },
     "tcg_deck_builder": {
       "title": "Constructor de Mazos Invocación de los Sabios TCG",
@@ -698,7 +721,20 @@
       "profile_not_found_desc": "Este perfil actualmente no existe. \nSi desea crearlo, envíe su UID.",
       "title_detail": "{name} Genshin Impact Showcase",
       "no_builds": "Actúe la opción \"Mostrar detalles del personaje\" en tu espectáculo de personajes en el juego para ver los detalles.",
-      "sync_profile_data": "Datos de perfil de sincronización"
+      "sync_profile_data": "Datos de perfil de sincronización",
+      "ATK": "ATK",
+      "Achievements": "Logros",
+      "Adventure Rank": "Rango de aventura",
+      "Characters": "Personajes",
+      "DEF": "Defensor",
+      "EM": "Em",
+      "ER%": "ER%",
+      "Last update": "Última actualización",
+      "Max HP": "Max HP",
+      "Nickname": "Apodo",
+      "Signature": "Firma",
+      "Spiral Abyss": "Abismo espiral",
+      "critValue": "Valor crítico"
     },
     "leaderboard": {
       "title": "Ranking de construcción de impacto de Genshin: ver quién está en la cima",
@@ -797,7 +833,11 @@
       "best_relics": "Mejores reliquias de {name}",
       "best_ornaments": "Mejores adornos de {name}",
       "best_lightcones": "Mejores Light Cones de {name}",
-      "best_teams": "Mejores equipos de {name}"
+      "best_teams": "Mejores equipos de {name}",
+      "body": "Cuerpo",
+      "feet": "Pies",
+      "rope": "Soga",
+      "sphere": "Esfera"
     },
     "lightcones": {
       "title": "Honkai: Listas de conos de luz Star Rail",
@@ -819,7 +859,9 @@
       "piece_set": "Piezas establecidas",
       "relic_pieces": "Piezas de reliquia",
       "recommended_characters": "Personajes recomendados",
-      "ornament": "Ornamento"
+      "ornament": "Ornamento",
+      "description_detail": "Descubra las mejores reliquias para {name} en Honkai: Star Rail. \nTambién se incluyen sus estadísticas, bonificaciones establecidas y más.",
+      "title_detail": "{nombre} Honkai: Reliquia de Rail Star"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Lista de Niveles",

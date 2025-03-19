@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "Профили для сравнения вашего прогресса с другими игроками",
       "profiles": "Профили",
       "profiles_desc": "Профили для сравнения вашего прогресса с другими игроками",
-      "blog": "Блог"
+      "blog": "Блог",
+      "Tools": "Инструменты"
     },
     "ascension_planner": {
       "title": "База данных Genshin Impact Wiki",
@@ -170,7 +171,8 @@
       "view_all_posts": "Посмотреть Все Публикации",
       "server_timers": "Таймеры Сервера",
       "server_timers_desc": "Ежедневный сброс происходит в 04:00 (4 утра) по времени вашего сервера. Еженедельный сброс происходит каждый понедельник также в 04:00 (4 утра).",
-      "shortcuts": "Ярлыки"
+      "shortcuts": "Ярлыки",
+      "farmable_today_desc": "Узнайте, какие персонажи и оружие сегодня можно ферме."
     },
     "characters": {
       "title": "Список персонажей Genshin Impact",
@@ -182,7 +184,25 @@
       "hydro": "Гидро",
       "electro": "Электро",
       "cryo": "Крио",
-      "dendro": "Дендро"
+      "dendro": "Дендро",
+      "Bow": "Поклон",
+      "Catalyst": "Катализатор",
+      "Claymore": "Клеймор",
+      "Polearm": "Полярм",
+      "Sword": "Меч",
+      "clear_all": "Очистить все",
+      "element_filter": "Элемент фильтр",
+      "no_characters_found": "Никаких персонажей не найдено",
+      "rarity_filter": "Редкость фильтр",
+      "search": "Поисковые персонажи ...",
+      "sort_ascending": "Сортируйте восхождение",
+      "sort_descending": "Сортировать нисходящее",
+      "sort_element": "Элемент",
+      "sort_name": "Имя",
+      "sort_rarity": "Редкость",
+      "sort_release": "Дата выпуска",
+      "try_adjusting_filters": "Попробуйте настроить фильтры или поиск",
+      "weapon_filter": "Оружие фильтр"
     },
     "character": {
       "title": "{name} в Genshin Impact: Последний руководство по сборке",
@@ -232,7 +252,19 @@
       "most_used_title": "Наиболее часто используемый билд сообществом",
       "most_used_disclaimer": "Этот билд основан на наиболее часто используемых артефактах и оружии сообщества. Если вы хотите внести свой вклад в эти данные, вы можете сделать это, отправив свой UID, нажав здесь.",
       "build_title": "Билд {name}",
-      "lv": "Дольдо"
+      "lv": "Дольдо",
+      "best_artifacts": "Лучшие артефакты",
+      "best_weapons": "Лучшее оружие",
+      "clear_search": "Чистый поиск",
+      "hide_build_details": "Скрыть детали сборки",
+      "intended_level_error": "Предполагаемый уровень должен быть выше, чем текущий уровень",
+      "intended_talent_error": "Предполагаемые уровни талантов должны быть выше, чем текущие уровни",
+      "main_stats": "Основная статистика",
+      "no_data_to_add": "Нет данных расчета для добавления в список TODO",
+      "passive": "Пассивный",
+      "search_placeholder": "Поиск сборки ...",
+      "show_build_details": "Показать детали сборки",
+      "substats": "Вещества"
     },
     "weapons": {
       "title": "Список ударного оружия Genshin",
@@ -244,7 +276,23 @@
       "level": "Уровень",
       "stats": "Статистика",
       "ascension": "Вознесение",
-      "refinement": "Уточнение"
+      "refinement": "Уточнение",
+      "Bow": "Поклон",
+      "Catalyst": "Катализатор",
+      "Claymore": "Клеймор",
+      "Polearm": "Полярм",
+      "Sword": "Меч",
+      "clear_all": "Очистить все",
+      "filters": "Фильтры",
+      "no_weapons_found": "Оружия не найдено",
+      "rarity_filter": "Редкость фильтр",
+      "sort_ascending": "Сортируйте восхождение",
+      "sort_descending": "Сортировать нисходящее",
+      "sort_name": "Имя",
+      "sort_rarity": "Редкость",
+      "sort_type": "Тип",
+      "try_adjusting_filters": "Попробуйте настроить фильтры или поиск",
+      "weapon_filter": "Оружие фильтр"
     },
     "weapon": {
       "title": "{name} Детали ударного оружия Genshin",
@@ -258,7 +306,11 @@
       "ascension": "Вознесение",
       "refinement": "Уточнение",
       "recommended_characters": "Рекомендуемые персонажи",
-      "ascension_materials": "Материалы Вознесения"
+      "ascension_materials": "Материалы Вознесения",
+      "base_atk": "Базовый ATK",
+      "lv": "Дольдо",
+      "total": "Общий",
+      "weapon_title": "Genshin Impact {имя} оружие"
     },
     "artifacts": {
       "title": "Список артефактов Genshin Impact",
@@ -270,7 +322,13 @@
       "1piece_bonus": "Бонус за 1 предмет",
       "1piece_artifact_sets": "Наборы артефактов из 1 предмета",
       "2piece_bonus": "Бонус за 2 предмета",
-      "4piece_bonus": "Бонус за 4 предмета"
+      "4piece_bonus": "Бонус за 4 предмета",
+      "artifact_description": "{name} - это артефакт, набор в Genshin Empact. \nУзнайте больше о его эффекте набора артефактов, лучших персонажах и местоположении артефакта здесь!",
+      "artifact_details": "{name} genshin Impact artifact {Rarity} Звезды Rarity",
+      "artifact_pieces": "Артефактные произведения",
+      "four_pc": "4 шт",
+      "one_pc": "1 шт",
+      "two_pc": "2 шт"
     },
     "tierlist": {
       "title": "Список уровней Genshin Impact (лучшие персонажи)",
@@ -278,7 +336,9 @@
       "tierlist": "Список уровней",
       "main_dps": "Основной ДПС",
       "sub_dps": "Дополнительный ДПС",
-      "support": "Поддерживать"
+      "support": "Поддерживать",
+      "six_constellation": "C6 Tierlist",
+      "zero_constellation": "C0 Tierlist"
     },
     "tierlist_weapons": {
       "title": "Список уровней оружия Genshin Impact (Лучшее оружие)",
@@ -337,7 +397,24 @@
       "goblet": "Кубок",
       "circlet": "Обруч",
       "substats": "Второстепенные Характеристики",
-      "weapons": "Оружие"
+      "weapons": "Оружие",
+      "anemo": "Анемо",
+      "clear_all": "Очистить все",
+      "cryo": "Крио",
+      "dendro": "Дендо",
+      "electro": "Электро",
+      "element_filter": "Элемент фильтр",
+      "geo": "Гео",
+      "hydro": "Гидро",
+      "no_teams_found": "Команды не нашли",
+      "pyro": "Пиро",
+      "search_teams": "Поисковые команды ...",
+      "sort_ascending": "Сортируйте восхождение",
+      "sort_character": "Имя персонажа",
+      "sort_descending": "Сортировать нисходящее",
+      "sort_element": "Элемент",
+      "teams_description": "Откройте для себя лучшие команды для персонажей Genshin Impact, чтобы максимизировать боевую эффективность вашей команды.",
+      "try_adjusting_filters": "Попробуйте настроить фильтры или поиск"
     },
     "fishing": {
       "title": "Genshin Impact Fishing (рыба, приманки, удочки и рыболовные точки)",
@@ -348,7 +425,8 @@
       "inazuma": "Инадзума",
       "enkanomiya": "Энканомия",
       "the_chasm": "Пропасть",
-      "sumeru": "Сумеру"
+      "sumeru": "Сумеру",
+      "source": "Источник"
     },
     "calculator": {
       "title": "Калькулятор Genshin Impact",
@@ -411,7 +489,64 @@
       "or": "или",
       "desired_resin": "Желаемая смола",
       "current_time": "Текущее время",
-      "replenished_at": "Пополнится в: {timeToWait} ({relativeTimeToWait})"
+      "replenished_at": "Пополнится в: {timeToWait} ({relativeTimeToWait})",
+      "adventurers_experience": "Опыт приключений",
+      "calculateByMoney": "Рассчитывать по деньгам",
+      "calculate_by_fate": "Рассчитать по судьбе",
+      "calculate_by_money": "Рассчитывать по деньгам",
+      "calculating": "Расчет ...",
+      "calculation_error": "Ошибка произошла во время расчета",
+      "calculation_result": "Результат расчета",
+      "calculation_results": "Результаты расчета",
+      "daysUntilPull_desc": "Дни до тяги",
+      "decrease_random_events": "Уменьшить случайные события",
+      "enter_amount": "Введите сумму",
+      "enter_fate_amount": "Введите сумму судьбы",
+      "enter_friendship_values_and_calculate": "Введите значения дружбы вашего персонажа и нажмите «Расчет», чтобы увидеть результаты",
+      "enter_values_and_calculate": "Заполните форму",
+      "estimated_resin_time": "Расчетное время",
+      "estimated_resin_tooltip": "Это оценка, основанная на ваших входах",
+      "exp_percentage_help": "Текущий прогресс в баре Friendy Exp",
+      "first_time_bonus_active": "В первый раз бонус активно",
+      "first_time_help": "Включить только если присутствует бонус \"в первый раз\"",
+      "friendship_calculation_results": "Результаты расчета дружбы",
+      "friendship_level_help": "Выберите текущий уровень дружбы вашего персонажа",
+      "genesis_crystal": "Genesis Crystal",
+      "genesis_crystal_desc": "Специальная валюта",
+      "heros_wit": "Остроумие героя",
+      "increase_random_events": "Увеличить случайные события",
+      "intended_level_error": "Предполагаемый уровень должен быть выше, чем текущий уровень",
+      "intertwinedFate": "Переплетенная судьба",
+      "intertwinedFate_desc": "Переплетенная судьба",
+      "material": "Материал",
+      "max": "Максимум",
+      "mora": "Мора",
+      "no_data_to_add": "Нет данных расчета для добавления в список TODO",
+      "original_resin": "Оригинальная смола",
+      "parameters": "Параметры",
+      "please_select_currency": "Пожалуйста, выберите валюту",
+      "please_select_level": "Пожалуйста, выберите уровень",
+      "price_in_currency": "Цена в {валюте}",
+      "primogem": "Примогем",
+      "primogem_desc": "Специальная валюта",
+      "random_events_help": "Ежедневные случайные события, которые дают дружбу.",
+      "resin_calculation_results": "Результаты расчета",
+      "resin_percent": "Смола {процент}%",
+      "select_currency_first": "Выберите параллелизм в первую очередь",
+      "select_friendship_level": "Выберите уровень дружбы",
+      "select_weapon": "Выберите оружие",
+      "standard_bonus": "Стандартный бонус",
+      "stardust": "Stardust",
+      "stardustLeft_desc": "Stardust осталась",
+      "stardust_desc": "Валюта, используемая для покупки редких ресурсов в магазине.",
+      "starglitter": "Звездный житель",
+      "starglitter_desc": "Валюта, используемая для покупки редких ресурсов в магазине.",
+      "top_up_packages": "Пополнительные пакеты",
+      "wanderers_advice": "Совет Странника",
+      "weapon_level": "Уровень оружия",
+      "weapon_not_selected": "Пожалуйста, выберите оружие",
+      "welkin_moon_desc": "30 -дневное предложение подписки",
+      "your_resources": "Ваши ресурсы"
     },
     "todo": {
       "title": "Список задач Genshin Impact",
@@ -431,7 +566,13 @@
       "total_remaining": "Всего осталось",
       "priority": "приоритет",
       "inventory": "Инвентарь",
-      "save_and_close": "Сохрани и закрой"
+      "save_and_close": "Сохрани и закрой",
+      "ascension": "Вознесение",
+      "complete": "Полный",
+      "no_todo_title": "Нет тодо",
+      "nothing_today": "Сегодня нечего фермы!",
+      "progress": "Прогресс",
+      "todo_title": "Todo название"
     },
     "achievements": {
       "title": "Достижения Genshin Impact",
@@ -477,7 +618,16 @@
       "cards": "Список карт Genius Invokation TCG",
       "all": "Все",
       "search": "Поиск карт...",
-      "create_deck": "Создать колоду"
+      "create_deck": "Создать колоду",
+      "character card": "Карта персонажа",
+      "deck": "Палуба",
+      "edit": "Редактировать",
+      "equipment card": "Карта оборудования",
+      "event card": "Карта событий",
+      "no_cards_found": "Карт не найдено",
+      "subtitle": "Просмотрите полную коллекцию карт, доступных в гениальном вызове TCG. \nФильтруйте по вводу, поиск по имени и создайте свои собственные палубы.",
+      "support card": "Карта поддержки",
+      "try_adjusting_filters": "Попробуйте настроить фильтры или поиск"
     },
     "tcg_card": {
       "title": "{name} - Список карт Genshin Impact TCG",
@@ -496,7 +646,10 @@
     "tcg_decks": {
       "title": "Откройте для себя лучшие колоды в Genius Invokation TCG: Meta Builds для карточной игры Genshin Impact",
       "description": "В этой статье представлен исчерпывающий список лучших колод в ККИ Genius Invokation. ",
-      "best_decks": "Лучшие колоды"
+      "best_decks": "Лучшие колоды",
+      "deck_builder": "Посмотреть колоду",
+      "share_code": "Поделиться кодом",
+      "view_deck": "Посмотреть колоду"
     },
     "tcg_deck_builder": {
       "title": "Конструктор колод Genius Invokation TCG",
@@ -530,7 +683,8 @@
       "number_of_cards": "Количество карт",
       "draw_simulator": "Симулятор раздачи",
       "min_cards_simulator": "ℹ️ Для использования Симулятора раздачи вам необходимо иметь как минимум 6 карт, не являющихся персонажами.",
-      "draw_cards": "Раздать {num} карт!"
+      "draw_cards": "Раздать {num} карт!",
+      "try_adjusting_search": "Попробуйте настроить поиск"
     },
     "profile": {
       "title": "Профили воздействия Genshin",
@@ -551,10 +705,57 @@
       "constellation": "Созвездие",
       "weapon": "Оружие",
       "artifact": "Артефакт",
-      "owner": "Владелец"
+      "owner": "Владелец",
+      "ATK": "Атк",
+      "Achievements": "Достижения",
+      "Adventure Rank": "Приключение",
+      "Characters": "Персонажи",
+      "DEF": "Дефект",
+      "EM": "ЭМ",
+      "ER%": "ER%",
+      "Last update": "Последнее обновление",
+      "Max HP": "Макс",
+      "Nickname": "Прозвище",
+      "Signature": "Подпись",
+      "Spiral Abyss": "Спиральная пропасть",
+      "ascension": "Вознесение",
+      "critValue": "Критическое значение",
+      "how_to_showcase_characters": "Как заставить витрину строительства вашего персонажа:",
+      "how_to_showcase_characters_1": "1. Открыть удар Геншина.",
+      "how_to_showcase_characters_2": "2. Доступ к меню.",
+      "how_to_showcase_characters_3": "3. Нажмите на значок редактирования, расположенный рядом с вашим именем пользователя.",
+      "how_to_showcase_characters_4": "4. Выберите «Скопировать UID» (вы можете пропустить этот шаг, если помните свой UID).",
+      "how_to_showcase_characters_5": "5. Выберите «Изменить профиль».",
+      "how_to_showcase_characters_6": "6. Включите опцию «Показать детали персонажа».",
+      "how_to_showcase_characters_7": "7. В столбце «Витрина символов» выберите символы, которые вы хотите продемонстрировать.",
+      "level": "Уровень",
+      "no_builds": "Пожалуйста, включите опцию «Показать детали персонажа» в витрине персонажа в игре, чтобы увидеть детали.",
+      "profile_not_found": "Профиль не найден!",
+      "profile_not_found_desc": "В настоящее время этого профиля не существует. \nЕсли вы хотите его создать, отправьте свой UID.",
+      "submit_uid": "Отправить UID",
+      "submit_uid_desc": "Ваш UID можно найти в разделе профиля игры",
+      "sync_profile_data": "Синхронизированные данные профиля",
+      "title_detail": "{name} genshin Impact Showcase"
     },
-    "leaderboard": {},
-    "leaderboard_profiles": {},
+    "leaderboard": {
+      "description": "Сообщество, управляемое сообществом Genshin Impact Soarde, демонстрирует исключительные сборки и конфигурации. \nНайдите вдохновение для своей команды или отправьте свои собственные сборки, чтобы конкурировать.",
+      "failed_load_data": "Не удалось загрузить, попробуйте еще раз позже.",
+      "leaderboard": "Таблица лидеров - лучшие сборки от сообщества",
+      "loading_data": "Загрузка ...",
+      "next": "Следующий",
+      "previous": "Предыдущий",
+      "section_still_in_development": "Этот раздел все еще находится в разработке.",
+      "submit_uid": "Отправьте свой UID здесь!",
+      "title": "Genshin Impact Build Rankings: Посмотрите, кто на вершине"
+    },
+    "leaderboard_profiles": {
+      "add_profile": "Добавьте свой профиль",
+      "description": "Узнайте, как добавить свою учетную запись Genshin Impact в Genshinbuilds для поиска профиля. \nУбедитесь, что настройки вашего внутриигрового профиля правильно настроены. \nУзнайте об обновлении витрин, использующих имена профилей в игре, UIDS и Enka.network.",
+      "invalid_page_number": "Недопустимый номер страницы",
+      "next": "Следующий",
+      "previous": "Предыдущий",
+      "title": "Genshin Impact Profiles Lookup"
+    },
     "changelog": {
       "title": "Обновление Genshin Impact {version}: Новейшие функции, изменения и улучшения",
       "description": "Откройте для себя все новые приключения в Genshin Impact {version}! Наше подробное руководство охватывает последние функции, обновления персонажей и улучшения геймплея. Оставайтесь впереди в Тейвате благодаря подробному журналу изменений в новейшей версии.",
@@ -588,6 +789,9 @@
       "tags": "Теги",
       "hoyolab_article": "Статья на Hoyolab",
       "link": "Ссылка на Лист"
+    },
+    "bangboos": {
+      "w-engines": "W-Engines"
     }
   },
   "HSR": {
@@ -630,20 +834,35 @@
       "best_relics": "Лучшие реликвии для {name}",
       "best_ornaments": "Лучшие украшения для {name}",
       "best_lightcones": "Лучшие световые конусы для {name}",
-      "best_teams": "Лучшие команды для {name}"
+      "best_teams": "Лучшие команды для {name}",
+      "body": "Тело",
+      "feet": "Ноги",
+      "rope": "Веревка",
+      "sphere": "Сфера"
     },
     "lightcones": {
       "title": "Хонкай: списки световых конусов Star Rail",
       "description": "Полный список всех световых конусов и их характеристик в игре Honkai: Star Rail.",
       "lightcones": "Световые конусы",
-      "lightcones_desc": "Световые конусы — это предметы, которые Персонажи экипируют для увеличения своих базовых HP, базовой атаки и базовой защиты, а также дают пассивную способность персонажам, чей путь совпадает с путем Светового конуса."
+      "lightcones_desc": "Световые конусы — это предметы, которые Персонажи экипируют для увеличения своих базовых HP, базовой атаки и базовой защиты, а также дают пассивную способность персонажам, чей путь совпадает с путем Светового конуса.",
+      "ability": "Способность",
+      "alternative": "Альтернатива",
+      "best_in_slot": "Лучший в слоте",
+      "recommended_characters": "Рекомендуемые персонажи",
+      "stats": "Статистика"
     },
     "relics": {
       "title": "Хонкай: Список реликвий Star Rail",
       "description": "Полный список всех реликвий и их характеристики в Honkai: Star Rail.",
       "relics": "Реликвии",
       "relics_desc": "Реликвии — это предметы, которыми можно экипировать персонажей. ",
-      "set": "Набор"
+      "set": "Набор",
+      "description_detail": "Откройте для себя лучшие реликвии для {name} в Honkai: Star Rail. \nТакже включены их статистика, установленные бонусы и многое другое.",
+      "ornament": "Орнамент",
+      "piece_set": "Кусок набор",
+      "recommended_characters": "Рекомендуемые персонажи",
+      "relic_pieces": "Реликвии",
+      "title_detail": "{name} honkai: star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Таблица уровней",
@@ -686,7 +905,8 @@
       "story": "История",
       "source": "Источник",
       "world_level_required": "Требуется уровень мира",
-      "cost": "Стоимость"
+      "cost": "Стоимость",
+      "world_level_require": "Мировой уровень требуется"
     },
     "achievements": {
       "title": "Достижения в Honkai: Star Rail",
@@ -697,7 +917,22 @@
     },
     "profile": {
       "title": "Профиль игрока Honkai: Star Rail {playerUID}",
-      "description": "Профиль игрока Honkai: Star Rail {playerUID}"
+      "description": "Профиль игрока Honkai: Star Rail {playerUID}",
+      "achievements": "Достижения",
+      "characters": "Персонажи",
+      "simulated": "Смоделирован"
+    },
+    "lightcone": {
+      "ascension_materials": "Требуются материалы для восхождения",
+      "ascension_materials_none": "Для этого восхождения не требуется материалов",
+      "atk": "Атк",
+      "def": "Дефект",
+      "hp": "Hp.",
+      "level": "Уровень",
+      "slider_view": "Слайдер вид",
+      "stats": "Статистика",
+      "table_view": "Взгляд таблицы",
+      "total_ascension_materials_required": "Общее количество материалов, необходимых для уровня {уровня}"
     }
   },
   "WW": {
@@ -719,7 +954,18 @@
       "title": "Wuthering Waves Вики и База Данных | Последние Обновления и Гайды",
       "description": "Будьте в курсе последних персонажей, билдов и стратегий в Wuthering Waves.",
       "main_title": "Список Персонажей Wuthering Waves | Лучшие Билды и Команды",
-      "main_description": "Исследуйте полный список всех персонажей Wuthering Waves с самой актуальной информацией о их билдах, оружии и составах команд."
+      "main_description": "Исследуйте полный список всех персонажей Wuthering Waves с самой актуальной информацией о их билдах, оружии и составах команд.",
+      "clear_all": "Очистить все",
+      "filters": "Фильтры",
+      "no_characters_found": "Никаких персонажей не найдено",
+      "rarity_filter": "Редкость фильтр",
+      "search": "Поисковые персонажи ...",
+      "sort_ascending": "Сортируйте восхождение",
+      "sort_descending": "Сортировать нисходящее",
+      "sort_name": "Имя",
+      "sort_rarity": "Редкость",
+      "sort_release": "Дата выпуска",
+      "try_adjusting_filters": "Попробуйте настроить фильтры или поиск"
     },
     "character": {
       "title": "Гайд по {characterName} в Wuthering Waves | Лучшие Билды и Команды",
@@ -804,7 +1050,12 @@
       "title": "Список Оружия в Wuthering Waves | Лучшее Оружие и Навыки",
       "description": "Откройте для себя лучшее оружие в Wuthering Waves с подробными навыками и характеристиками.",
       "main_title": "Список Оружия Wuthering Waves",
-      "main_description": "Полный список всего оружия в Wuthering Waves с самой актуальной информацией о их навыках и характеристиках."
+      "main_description": "Полный список всего оружия в Wuthering Waves с самой актуальной информацией о их навыках и характеристиках.",
+      "ascensions": "Подъема",
+      "level_n": "Уровень {n}",
+      "rarity": "Редкость",
+      "syntonize": "Синтонизировать",
+      "type": "Тип"
     },
     "weapon": {
       "title": "Гайд по Оружию {weaponName} в Wuthering Waves | Характеристики и Навыки",
@@ -899,7 +1150,17 @@
       "priority": "Приоритет",
       "explanation": "Объяснение",
       "teams": "{character_name} Лучшие команды и Bangboo",
-      "best_bangboos": "Лучший багбук"
+      "best_bangboos": "Лучший багбук",
+      "description": "Откройте для себя лучшие сборки и команды для {charcytername} в Zenless Zone Zero (ZZZ). \nТакже включены их навыки, затраты на обновление и многое другое.",
+      "element": "Элемент",
+      "house": "Дом",
+      "rank": "Классифицировать",
+      "rarity": "Редкость",
+      "skills": "Навыки",
+      "talents": "{характер} таланты",
+      "title": "{haremtername} Zenless Zone Zero (ZZZ) Руководство по сборке",
+      "title_suffix": "Руководство по сборке",
+      "type": "Тип"
     },
     "error": {
       "not_found_title": "Не найдено",
@@ -907,7 +1168,12 @@
       "go_home": "Иди домой"
     },
     "bangboos": {
-      "w-engines": "W-Engines"
+      "w-engines": "W-Engines",
+      "bangboos": "Zenless Zone Zero Bangbubo список",
+      "bangboos_description": "Bangboo - это «домашние животные» в Zenless Zone Zero, которые помогают вашей команде - найти каждый Bangboo, доступный в игре ниже!",
+      "description": "Полный список всех играбельных Bangbubos в Zenless Zone Zero.",
+      "title": "Zenless Zone Zero (zzz) Список Bangboos",
+      "w-engines-description": "Полный список всех дисков диска и их бонус в беззен -зоне нулевой."
     },
     "tierlist": {
       "title": "Зона Zen без зоны (ZZZ) Список уровней",
@@ -919,6 +1185,46 @@
       "debuffer": "Дебаффер",
       "supporter": "Сторонник",
       "explanation": "Объяснение"
+    },
+    "bangboo": {
+      "description": "Узнайте все о {bangboo} bangboo в Zenless Zone Zero (ZZZ). \nПосмотреть подробные описания навыков и как эффективно использовать этот Bangboo.",
+      "main_title": "Zzz Bangboo Guide",
+      "rank": "Классифицировать",
+      "rarity": "Редкость",
+      "title": "{bangboo} - Zenless Zone Zero (zzz) Guide"
+    },
+    "characters": {
+      "characters": "Список агентов без дзен без дзена (ZZZ)",
+      "characters_description": "Персонажи (агенты) являются доступными единицами в Zenless Zone Zero (ZZZ) - найдите каждого агента, доступного в игре здесь!",
+      "description": "Полный список всех играбельных персонажей в Zenless Zone Zero.",
+      "title": "Список символов Zenless Zen Zero (ZZZ)"
+    },
+    "home": {
+      "description": "Genshin-builds.com-вики для беззеной зоны Zero (ZZZ). \nПроверьте наши руководства, списки уровней и обзоры персонажей, доступных в игре.",
+      "news": "Новости",
+      "see_more": "Увидеть больше",
+      "title": "Zenless Zone Zero (Zzz) Вики",
+      "welcome": "Добро пожаловать в ZenlessBuilds",
+      "welcome_description": "Откройте для себя сборки персонажа, всеобъемлющие гиды и базу данных вики в одном месте для беззеной зоны Zero (ZZZ)."
+    },
+    "layout": {
+      "bangboos": "Bangboo",
+      "blog": "Блог",
+      "characters": "Агенты",
+      "disk-drives": "Диск",
+      "home": "Дом",
+      "tierlist": "Lierlist",
+      "w-engines": "W-двигатель"
+    },
+    "wengine": {
+      "description": "Узнайте о {itemname} w-ingine в Zenless Zone Zero. \nУзнайте все, что вам нужно знать о {itemname} w-ingine, включая статистику, пассивные таланты и как ее получить.",
+      "engine_refinements": "{itemName} уточнения",
+      "engine_title": "Zenless Zone Zero (zzz) {itemname} w-engine",
+      "title": "{itemname} Zenless Zone Zero w-ingine"
+    },
+    "wengines": {
+      "description": "Список всего оружия w-engines и их статистика в беззенской зоне ноль.",
+      "title": "Zenless Zone Zero (ZZZ) W-engines"
     }
   }
 }

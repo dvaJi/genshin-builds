@@ -4,8 +4,9 @@ import { BuildData } from "interfaces/hsr/build";
 import { useTranslations } from "next-intl";
 import { memo } from "react";
 
+import Image from "@components/hsr/Image";
+import { Link } from "@i18n/navigation";
 import type { LightCone, Relic } from "@interfaces/hsr";
-import { getHsrUrl } from "@lib/imgUrl";
 
 import Stars from "./Stars";
 
@@ -35,13 +36,12 @@ function CharacterBuild({
             <h3 className="text-lg font-semibold text-accent">
               {t("best_light_cone")}
             </h3>
-            <div className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold">
-              <img
-                src={getHsrUrl(
-                  `/lightcones/${lightConesMap[data.bestLightCone].id}.png`,
-                  80,
-                  80,
-                )}
+            <Link
+              href={`/hsr/lightcones/${data.bestLightCone}`}
+              className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold hover:bg-accent/20"
+            >
+              <Image
+                src={`/lightcones/${lightConesMap[data.bestLightCone].id}.png`}
                 width={80}
                 height={80}
                 alt={lightConesMap[data.bestLightCone].name}
@@ -52,25 +52,26 @@ function CharacterBuild({
                   <Stars stars={lightConesMap[data.bestLightCone].rarity} />
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div>
             <h3 className="text-lg font-semibold text-accent">
               {t("relics_and_ornament")}
             </h3>
             {data.relics.map((r) => (
-              <div
+              <Link
                 key={r}
-                className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
+                href={`/hsr/relics/${r}`}
+                className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold hover:bg-accent/20"
               >
-                <img
-                  src={getHsrUrl(`/relics/${relicsMap[r].id}.png`, 64, 64)}
+                <Image
+                  src={`/relics/${relicsMap[r].id}.png`}
                   alt={relicsMap[r].name}
                   width={48}
                   height={48}
                 />
                 <span className="ml-2">{relicsMap[r].name}</span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

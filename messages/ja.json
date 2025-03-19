@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール",
       "profiles": "プロファイル",
       "profiles_desc": "あなたの進行状況を他のプレイヤーと比較するためのプロフィール",
-      "blog": "ブログ"
+      "blog": "ブログ",
+      "Tools": "ツール"
     },
     "ascension_planner": {
       "title": "Genshin Impact ウィキ データベース",
@@ -170,7 +171,8 @@
       "view_all_posts": "すべての記事を表示",
       "server_timers": "サーバータイマー",
       "server_timers_desc": "日々のリセットは、サーバーのタイムゾーンを基に、04:00 (4 AM) に発生します。週次のリセットは毎週月曜日も同様に、04:00 (4 AM) に発生します。",
-      "shortcuts": "ショートカット"
+      "shortcuts": "ショートカット",
+      "farmable_today_desc": "今日どのキャラクターと武器が農場にいるかを発見してください。"
     },
     "characters": {
       "title": "原神インパクトキャラクター一覧",
@@ -182,7 +184,25 @@
       "hydro": "ハイドロ",
       "electro": "エレクトロ",
       "cryo": "クライオ",
-      "dendro": "デンドロ"
+      "dendro": "デンドロ",
+      "Bow": "弓",
+      "Catalyst": "触媒",
+      "Claymore": "クレイモア",
+      "Polearm": "極地",
+      "Sword": "剣",
+      "clear_all": "すべてをクリアします",
+      "element_filter": "要素フィルター",
+      "no_characters_found": "キャラクターは見つかりません",
+      "rarity_filter": "希少性フィルター",
+      "search": "文字を検索...",
+      "sort_ascending": "昇順をソートします",
+      "sort_descending": "下降をソートします",
+      "sort_element": "要素",
+      "sort_name": "名前",
+      "sort_rarity": "珍しい",
+      "sort_release": "発売日",
+      "try_adjusting_filters": "フィルターまたは検索用語を調整してみてください",
+      "weapon_filter": "武器フィルター"
     },
     "character": {
       "title": "原神 {name} ザ・究極ビルドガイド",
@@ -232,7 +252,19 @@
       "most_used_title": "コミュニティで最も使用されているビルド",
       "most_used_disclaimer": "このビルドは、コミュニティによって最も使用されている聖遺物と武器に基づいています。このデータに貢献したい場合は、ここをクリックしてUIDを送信してください。",
       "build_title": "{name}のビルド",
-      "lv": "lv。"
+      "lv": "lv。",
+      "best_artifacts": "最高のアーティファクト",
+      "best_weapons": "最高の武器",
+      "clear_search": "クリア検索",
+      "hide_build_details": "ビルドの詳細を非表示にします",
+      "intended_level_error": "目的のレベルは、現在のレベルよりも高い必要があります",
+      "intended_talent_error": "意図された人材レベルは、現在のレベルよりも高い必要があります",
+      "main_stats": "主な統計",
+      "no_data_to_add": "TODOリストに追加する計算データはありません",
+      "passive": "受け身",
+      "search_placeholder": "検索ビルド...",
+      "show_build_details": "ビルドの詳細を表示します",
+      "substats": "サブザット"
     },
     "weapons": {
       "title": "原神インパクト武器一覧",
@@ -244,7 +276,23 @@
       "level": "レベル",
       "stats": "統計",
       "ascension": "上昇",
-      "refinement": "洗練"
+      "refinement": "洗練",
+      "Bow": "弓",
+      "Catalyst": "触媒",
+      "Claymore": "クレイモア",
+      "Polearm": "極地",
+      "Sword": "剣",
+      "clear_all": "すべてをクリアします",
+      "filters": "フィルター",
+      "no_weapons_found": "武器は見つかりません",
+      "rarity_filter": "希少性フィルター",
+      "sort_ascending": "昇順をソートします",
+      "sort_descending": "下降をソートします",
+      "sort_name": "名前",
+      "sort_rarity": "珍しい",
+      "sort_type": "タイプ",
+      "try_adjusting_filters": "フィルターまたは検索用語を調整してみてください",
+      "weapon_filter": "武器フィルター"
     },
     "weapon": {
       "title": "{name}原神インパクト武器の詳細",
@@ -258,7 +306,11 @@
       "ascension": "上昇",
       "refinement": "洗練",
       "recommended_characters": "おすすめキャラクター",
-      "ascension_materials": "アセンションの材料"
+      "ascension_materials": "アセンションの材料",
+      "base_atk": "ベースATK",
+      "lv": "lv。",
+      "total": "合計",
+      "weapon_title": "Genshin Impact {name}武器"
     },
     "artifacts": {
       "title": "原神インパクトアーティファクト一覧",
@@ -270,7 +322,13 @@
       "1piece_bonus": "1枚ボーナス",
       "1piece_artifact_sets": "1ピースアーティファクトセット",
       "2piece_bonus": "2ピースボーナス",
-      "4piece_bonus": "4ピースボーナス"
+      "4piece_bonus": "4ピースボーナス",
+      "artifact_description": "{name}は、Genshin Impactに設定されたアーティファクトです。\nそのアーティファクトセットエフェクト、最高のキャラクター、アーティファクトの場所の詳細については、こちらをご覧ください！",
+      "artifact_details": "{name} genshin Impact Artifact {rarity}星のRarity",
+      "artifact_pieces": "アーティファクトピース",
+      "four_pc": "4 PC",
+      "one_pc": "1 PC",
+      "two_pc": "2 PC"
     },
     "tierlist": {
       "title": "原神インパクトティアリスト（ベストキャラクター）",
@@ -278,7 +336,9 @@
       "tierlist": "ティアリスト",
       "main_dps": "メインDPS",
       "sub_dps": "サブDPS",
-      "support": "サポート"
+      "support": "サポート",
+      "six_constellation": "C6ティアリスト",
+      "zero_constellation": "C0ティアリスト"
     },
     "tierlist_weapons": {
       "title": "Genshin Impact Weapons Tier List (最高の武器)",
@@ -337,7 +397,24 @@
       "goblet": "杯",
       "circlet": "サークレット",
       "substats": "サブステータス",
-      "weapons": "武器"
+      "weapons": "武器",
+      "anemo": "アネモ",
+      "clear_all": "すべてをクリアします",
+      "cryo": "クライオ",
+      "dendro": "デンドロ",
+      "electro": "エレクトロ",
+      "element_filter": "要素フィルター",
+      "geo": "ジオ",
+      "hydro": "ハイドロ",
+      "no_teams_found": "チームは見つかりませんでした",
+      "pyro": "パイロ",
+      "search_teams": "チームを検索...",
+      "sort_ascending": "昇順をソートします",
+      "sort_character": "文字名",
+      "sort_descending": "下降をソートします",
+      "sort_element": "要素",
+      "teams_description": "Genshin Impactキャラクターの最高のチームコンプを発見して、チームの戦闘効果を最大化してください。",
+      "try_adjusting_filters": "フィルターまたは検索用語を調整してみてください"
     },
     "fishing": {
       "title": "Genshin Impact Fishing (魚、餌、釣り竿、釣りポイント)",
@@ -348,7 +425,8 @@
       "inazuma": "イナズマ",
       "enkanomiya": "えんかのみや",
       "the_chasm": "割れ目",
-      "sumeru": "スメル"
+      "sumeru": "スメル",
+      "source": "ソース"
     },
     "calculator": {
       "title": "原神計算ツール",
@@ -411,7 +489,64 @@
       "or": "または",
       "desired_resin": "希望の樹脂",
       "current_time": "現在の時間",
-      "replenished_at": "次回の補充予定: {timeToWait} ({relativeTimeToWait})"
+      "replenished_at": "次回の補充予定: {timeToWait} ({relativeTimeToWait})",
+      "adventurers_experience": "冒険者の経験",
+      "calculateByMoney": "お金で計算します",
+      "calculate_by_fate": "運命によって計算されます",
+      "calculate_by_money": "お金で計算します",
+      "calculating": "計算...",
+      "calculation_error": "計算中にエラーが発生しました",
+      "calculation_result": "計算結果",
+      "calculation_results": "計算結果",
+      "daysUntilPull_desc": "プルまでの日",
+      "decrease_random_events": "ランダムイベントを減らします",
+      "enter_amount": "量を入力します",
+      "enter_fate_amount": "運命額を入力します",
+      "enter_friendship_values_and_calculate": "キャラクターの友情の価値を入力し、[計算]をクリックして結果を表示します",
+      "enter_values_and_calculate": "フォームに記入してください",
+      "estimated_resin_time": "推定時間",
+      "estimated_resin_tooltip": "これは、入力に基づいた推定値です",
+      "exp_percentage_help": "友情経験の現在の進歩",
+      "first_time_bonus_active": "初めてのボーナスアクティブ",
+      "first_time_help": "「初回」ボーナスが存在する場合にのみ有効にします",
+      "friendship_calculation_results": "友情計算結果",
+      "friendship_level_help": "キャラクターの現在の友情レベルを選択してください",
+      "genesis_crystal": "ジェネシスクリスタル",
+      "genesis_crystal_desc": "特別通貨",
+      "heros_wit": "ヒーローの機知",
+      "increase_random_events": "ランダムイベントを増やします",
+      "intended_level_error": "目的のレベルは、現在のレベルよりも高い必要があります",
+      "intertwinedFate": "運命が絡み合った",
+      "intertwinedFate_desc": "運命が絡み合った",
+      "material": "材料",
+      "max": "マックス",
+      "mora": "モラ",
+      "no_data_to_add": "TODOリストに追加する計算データはありません",
+      "original_resin": "元の樹脂",
+      "parameters": "パラメーター",
+      "please_select_currency": "通貨を選択してください",
+      "please_select_level": "レベルを選択してください",
+      "price_in_currency": "{通貨}の価格",
+      "primogem": "Primogem",
+      "primogem_desc": "特別通貨",
+      "random_events_help": "友情を与える毎日のランダムイベント",
+      "resin_calculation_results": "計算結果",
+      "resin_percent": "樹脂{パーセント}％",
+      "select_currency_first": "最初に並行性を選択します",
+      "select_friendship_level": "友情レベルを選択します",
+      "select_weapon": "武器を選択します",
+      "standard_bonus": "標準ボーナス",
+      "stardust": "スターダスト",
+      "stardustLeft_desc": "スターダストが左",
+      "stardust_desc": "店からまれなリソースを購入するために使用される通貨。",
+      "starglitter": "starglitter",
+      "starglitter_desc": "店からまれなリソースを購入するために使用される通貨。",
+      "top_up_packages": "トップアップパッケージ",
+      "wanderers_advice": "放浪者のアドバイス",
+      "weapon_level": "武器レベル",
+      "weapon_not_selected": "武器を選択してください",
+      "welkin_moon_desc": "30日間のサブスクリプションオファー",
+      "your_resources": "あなたのリソース"
     },
     "todo": {
       "title": "原神インパクト Todoリスト",
@@ -431,7 +566,13 @@
       "total_remaining": "残りの合計",
       "priority": "優先順位",
       "inventory": "在庫",
-      "save_and_close": "保存して閉じます"
+      "save_and_close": "保存して閉じます",
+      "ascension": "上昇",
+      "complete": "完了",
+      "no_todo_title": "まだトドスはありません",
+      "nothing_today": "今日は農場にはありません！",
+      "progress": "進捗",
+      "todo_title": "TODOタイトル"
     },
     "achievements": {
       "title": "原神インパクトの実績",
@@ -477,7 +618,16 @@
       "cards": "Genius Invokation TCG カードリスト",
       "all": "すべて",
       "search": "カードを検索...",
-      "create_deck": "デッキを作成"
+      "create_deck": "デッキを作成",
+      "character card": "キャラクターカード",
+      "deck": "デッキ",
+      "edit": "編集",
+      "equipment card": "機器カード",
+      "event card": "イベントカード",
+      "no_cards_found": "カードは見つかりません",
+      "subtitle": "Genius Invokation TCGで利用可能なカードの完全なコレクションを閲覧します。\nタイプごとにフィルタリングし、名前で検索し、独自のカスタムデッキを作成します。",
+      "support card": "サポートカード",
+      "try_adjusting_filters": "フィルターまたは検索用語を調整してみてください"
     },
     "tcg_card": {
       "title": "{name} - 原神インパクトTCGカードリスト",
@@ -496,7 +646,10 @@
     "tcg_decks": {
       "title": "Genius Invokation TCG のトップ デッキを発見: Genshin Impact Card Game のメタ ビルド",
       "description": "この記事では、TCG の最高のデッキ、Genius Invokation の包括的なリストを提供します。 ",
-      "best_decks": "トップデッキ"
+      "best_decks": "トップデッキ",
+      "deck_builder": "デッキを表示します",
+      "share_code": "コードを共有します",
+      "view_deck": "デッキを表示します"
     },
     "tcg_deck_builder": {
       "title": "Genius Invokation TCG デッキビルダー",
@@ -530,7 +683,8 @@
       "number_of_cards": "カードの数",
       "draw_simulator": "ドローシミュレーター",
       "min_cards_simulator": "ℹ️ ドローシミュレーターを試すには、少なくとも6枚の非キャラクターカードが必要です。",
-      "draw_cards": "{num} 枚のカードを引きます！"
+      "draw_cards": "{num} 枚のカードを引きます！",
+      "try_adjusting_search": "検索を調整してみてください"
     },
     "profile": {
       "title": "原神インパクトプロファイル",
@@ -551,10 +705,57 @@
       "constellation": "星座",
       "weapon": "武器",
       "artifact": "アーティファクト",
-      "owner": "所有者"
+      "owner": "所有者",
+      "ATK": "atk",
+      "Achievements": "成果",
+      "Adventure Rank": "アドベンチャーランク",
+      "Characters": "文字",
+      "DEF": "def",
+      "EM": "em",
+      "ER%": "er％",
+      "Last update": "最後の更新",
+      "Max HP": "最大HP",
+      "Nickname": "ニックネーム",
+      "Signature": "サイン",
+      "Spiral Abyss": "スパイラルアビス",
+      "ascension": "上昇",
+      "critValue": "クリティカル価値",
+      "how_to_showcase_characters": "キャラクターのビルドショーケースを取得する方法：",
+      "how_to_showcase_characters_1": "1.オープンゲンシンの衝撃。",
+      "how_to_showcase_characters_2": "2。メニューにアクセスします。",
+      "how_to_showcase_characters_3": "3.ユーザー名の近くにある編集アイコンをクリックします。",
+      "how_to_showcase_characters_4": "4.「UIDをコピー」を選択します（UIDを覚えている場合は、この手順をスキップできます）。",
+      "how_to_showcase_characters_5": "5.「プロファイルの編集」を選択します。",
+      "how_to_showcase_characters_6": "6.「キャラクターの詳細を表示」オプションを有効にします。",
+      "how_to_showcase_characters_7": "7。「キャラクターショーケース」列で、紹介する文字を選択します。",
+      "level": "レベル",
+      "no_builds": "キャラクターショーケース内の「キャラクターの詳細を表示」オプションを有効にして、詳細を確認してください。",
+      "profile_not_found": "プロフィールが見つかりません！",
+      "profile_not_found_desc": "このプロファイルは現在存在していません。\n作成したい場合は、UIDを送信してください。",
+      "submit_uid": "UIDを送信します",
+      "submit_uid_desc": "UIDはゲームのプロフィールセクションにあります",
+      "sync_profile_data": "プロファイルデータを同期します",
+      "title_detail": "{name} Genshin Impact Showcase"
     },
-    "leaderboard": {},
-    "leaderboard_profiles": {},
+    "leaderboard": {
+      "description": "コミュニティ主導のGenshinインパクトリーダーボードは、例外的なキャラクターのビルドと構成を紹介します。\nチームのインスピレーションを見つけたり、競争するために独自のビルドを提出してください。",
+      "failed_load_data": "ロードに失敗しました。後でもう一度やり直してください。",
+      "leaderboard": "リーダーボード - コミュニティからのトップビルド",
+      "loading_data": "読み込み...",
+      "next": "次",
+      "previous": "前の",
+      "section_still_in_development": "このセクションはまだ開発中です。",
+      "submit_uid": "ここにUIDを提出してください！",
+      "title": "Genshin Impact Buildランキング：誰がトップになっているかを確認してください"
+    },
+    "leaderboard_profiles": {
+      "add_profile": "プロフィールを追加します",
+      "description": "プロファイルルックアップのために、Genshin ImpactアカウントをGenshinbuildsに追加する方法をご覧ください。\nゲーム内のプロファイル設定が正しく構成されていることを確認してください。\nショーケースの更新、ゲーム内のニックネーム、UID、およびENKA.Networkのプロフィール名を使用して学びます。",
+      "invalid_page_number": "無効なページ番号",
+      "next": "次",
+      "previous": "前の",
+      "title": "Genshin Impact Profiles Lookup"
+    },
     "changelog": {
       "title": "Genshin Impact {version} アップデート：最新の機能、変更、および改善点",
       "description": "Genshin Impact {version} での新しい冒険をすべて発見しましょう！ 当社の包括的なガイドでは、最新の機能、キャラクターアップデート、ゲームプレイの向上点を網羅しています。最新バージョンの詳細な変更履歴でTeyvatで先を行く。",
@@ -588,6 +789,9 @@
       "tags": "タグ",
       "hoyolab_article": "Hoyolab記事",
       "link": "シートへのリンク"
+    },
+    "bangboos": {
+      "w-engines": "Wエンジン"
     }
   },
   "HSR": {
@@ -630,20 +834,35 @@
       "best_relics": "{name}のベストレリック",
       "best_ornaments": "{name}のベストオーナメント",
       "best_lightcones": "{name}のベストライトコーン",
-      "best_teams": "{name}のベストチーム"
+      "best_teams": "{name}のベストチーム",
+      "body": "体",
+      "feet": "足",
+      "rope": "ロープ",
+      "sphere": "球"
     },
     "lightcones": {
       "title": "Honkai: スターレール ライトコーン リスト",
       "description": "Honkai: Star Rail のすべてのライト コーンとそのステータスの完全なリスト。",
       "lightcones": "ライトコーン",
-      "lightcones_desc": "ライトコーンはキャラクターが装備できるアイテムで、ベースHP、ベースATK、ベースDEFをブーストし、ライトコーンのパスと一致するキャラクターにパッシブアビリティを与えます。"
+      "lightcones_desc": "ライトコーンはキャラクターが装備できるアイテムで、ベースHP、ベースATK、ベースDEFをブーストし、ライトコーンのパスと一致するキャラクターにパッシブアビリティを与えます。",
+      "ability": "能力",
+      "alternative": "代替",
+      "best_in_slot": "最高のスロット",
+      "recommended_characters": "推奨文字",
+      "stats": "統計"
     },
     "relics": {
       "title": "Honkai: スターレールレリックリスト",
       "description": "Honkai: Star Rail のすべてのレリックとそのステータスの完全なリスト。",
       "relics": "遺物",
       "relics_desc": "レリックはキャラクターに装備できるアイテムです。",
-      "set": "設定"
+      "set": "設定",
+      "description_detail": "Honkai：Star Railで{Name}に最適な遺物を発見してください。\nまた、統計、セットボーナスなども含まれています。",
+      "ornament": "オーナメント",
+      "piece_set": "ピースセット",
+      "recommended_characters": "推奨文字",
+      "relic_pieces": "遺物の作品",
+      "title_detail": "{name} Honkai：Star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail 星のレールティアリスト",
@@ -686,7 +905,8 @@
       "story": "ストーリー",
       "source": "出典",
       "world_level_required": "必要ワールドレベル",
-      "cost": "コスト"
+      "cost": "コスト",
+      "world_level_require": "世界レベルが必要です"
     },
     "achievements": {
       "title": "崩壊3rd：星軌の実績",
@@ -697,7 +917,22 @@
     },
     "profile": {
       "title": "崩壊：星穹鉄道 {playerUID} プレイヤープロフィール",
-      "description": "崩壊：星穹鉄道 {playerUID} プレイヤープロフィール"
+      "description": "崩壊：星穹鉄道 {playerUID} プレイヤープロフィール",
+      "achievements": "成果",
+      "characters": "文字",
+      "simulated": "シミュレーション"
+    },
+    "lightcone": {
+      "ascension_materials": "アセンション資料が必要です",
+      "ascension_materials_none": "この昇天には材料は必要ありません",
+      "atk": "atk",
+      "def": "def",
+      "hp": "HP",
+      "level": "レベル",
+      "slider_view": "スライダービュー",
+      "stats": "統計",
+      "table_view": "テーブルビュー",
+      "total_ascension_materials_required": "レベル{レベル}に必要な総材料"
     }
   },
   "WW": {
@@ -719,7 +954,18 @@
       "title": "『鳴潮』 ウィキ＆データベース | 最新のアップデートとガイド",
       "description": "『鳴潮』の最新キャラクター、ビルド、戦略を常に把握。",
       "main_title": "『鳴潮』 キャラクター一覧 | ベストビルドとチーム",
-      "main_description": "最新のビルド、武器、チーム構成に関する情報を持つ全ての『鳴潮』キャラクターの完全なリストを探索しよう。"
+      "main_description": "最新のビルド、武器、チーム構成に関する情報を持つ全ての『鳴潮』キャラクターの完全なリストを探索しよう。",
+      "clear_all": "すべてをクリアします",
+      "filters": "フィルター",
+      "no_characters_found": "キャラクターは見つかりません",
+      "rarity_filter": "希少性フィルター",
+      "search": "文字を検索...",
+      "sort_ascending": "昇順をソートします",
+      "sort_descending": "下降をソートします",
+      "sort_name": "名前",
+      "sort_rarity": "珍しい",
+      "sort_release": "発売日",
+      "try_adjusting_filters": "フィルターまたは検索用語を調整してみてください"
     },
     "character": {
       "title": "『鳴潮』 {characterName} ガイド | ベストビルドとチーム",
@@ -804,7 +1050,12 @@
       "title": "『鳴潮』 武器一覧 | ベスト武器とスキル",
       "description": "詳細なスキルとステータスを持つ『鳴潮』の最高の武器を発見しよう。",
       "main_title": "『鳴潮』 武器一覧",
-      "main_description": "全ての武器の最新情報を持つ『鳴潮』の武器を完全にリストアップ。"
+      "main_description": "全ての武器の最新情報を持つ『鳴潮』の武器を完全にリストアップ。",
+      "ascensions": "昇天",
+      "level_n": "レベル{n}",
+      "rarity": "珍しい",
+      "syntonize": "シングン",
+      "type": "タイプ"
     },
     "weapon": {
       "title": "『鳴潮』 {weaponName} 武器ガイド | ステータスとスキル",
@@ -872,7 +1123,8 @@
       "priority": "優先度",
       "explanation": "説明",
       "teams": "{character_name}最高のチームとBangboo",
-      "best_bangboos": "最高のバンブー"
+      "best_bangboos": "最高のバンブー",
+      "title": "{CharacterName} Zenless Zone Zero（zzz）ビルドガイド"
     },
     "wengines": {
       "title": "Zenless Zone Zero（ZZZ）W-Enginesリスト",
@@ -880,7 +1132,11 @@
     },
     "bangboos": {
       "w-engines": "Zenless Zone Zero（zzz）ディスクドライブリスト",
-      "w-engines-description": "すべてのディスクドライブの完全なリストとZenless Zone Zeroでのボーナス。"
+      "w-engines-description": "すべてのディスクドライブの完全なリストとZenless Zone Zeroでのボーナス。",
+      "bangboos": "Zenless Zone Zero Bangboo List",
+      "bangboos_description": "Bangbooは、チームを支援するZenless Zone Zeroの「ペット」です。以下のゲームで利用可能なすべてのBangbooを見つけてください！",
+      "description": "Zenless Zone Zeroのすべてのプレイ可能なバンブーの完全なリスト。",
+      "title": "Zenless Zone Zero（Zzz）Bangboosリスト"
     },
     "wengine": {
       "title": "{itemname} Zenless Zone Zero W-Engine",
@@ -939,6 +1195,36 @@
       "debuffer": "デバッファー",
       "supporter": "サポーター",
       "explanation": "説明"
+    },
+    "bangboo": {
+      "description": "{Bangboo} Zenless Zone Zero（ZZZ）のBangbooについてすべてを学びます。\n詳細なスキルの説明と、このバングーを効果的に使用する方法を表示します。",
+      "main_title": "Zzz Bangboo Guide",
+      "rank": "ランク",
+      "rarity": "珍しい",
+      "title": "{Bangboo}  -  Zenless Zone Zero（zzz）Bangboo Guide"
+    },
+    "characters": {
+      "characters": "Zenless Zone Zero（zzz）エージェントリスト",
+      "characters_description": "キャラクター（エージェント）は、Zenless Zone Zero（ZZZ）で入手可能なユニットです - ここでゲームで利用可能なすべてのエージェントを見つけてください！",
+      "description": "Zenless Zone Zeroのすべてのプレイ可能なキャラクターの完全なリスト。",
+      "title": "Zenless Zone Zero（zzz）文字リスト"
+    },
+    "home": {
+      "description": "Genshin-Builds.comは、Zenless Zone Zero（ZZZ）のWikiです。\nゲームで利用可能なキャラクターのガイド、層のリスト、レビューを確認してください。",
+      "news": "ニュース",
+      "see_more": "もっと参照してください",
+      "title": "Zenless Zone Zero（zzz）wiki",
+      "welcome": "ZenlessBuildsへようこそ",
+      "welcome_description": "Zenless Zone Zero（ZZZ）のために、キャラクタービルド、包括的なガイド、Wikiデータベースをすべて1か所で発見します。"
+    },
+    "layout": {
+      "bangboos": "バンブー",
+      "blog": "ブログ",
+      "characters": "エージェント",
+      "disk-drives": "ドライブディスク",
+      "home": "家",
+      "tierlist": "ティアリスト",
+      "w-engines": "W-エンジン"
     }
   }
 }

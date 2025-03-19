@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "用於比較您與其他玩家進度的個人資料",
       "profiles": "簡介",
       "profiles_desc": "用於比較您與其他玩家進度的個人資料",
-      "blog": "部落格"
+      "blog": "部落格",
+      "Tools": "工具"
     },
     "ascension_planner": {
       "title": "Genshin Impact Wiki 數據庫",
@@ -170,7 +171,8 @@
       "view_all_posts": "查看所有文章",
       "server_timers": "伺服器計時器",
       "server_timers_desc": "每日重置基於您伺服器的時區，在凌晨 4 點（04:00）發生。每週重置也發生在每週一的凌晨 4 點（04:00）。",
-      "shortcuts": "捷徑"
+      "shortcuts": "捷徑",
+      "farmable_today_desc": "發現今天哪些角色和武器可以耕種。"
     },
     "characters": {
       "title": "Genshin Impact 角色列表",
@@ -182,7 +184,25 @@
       "hydro": "水電",
       "electro": "電",
       "cryo": "冷凍",
-      "dendro": "登卓"
+      "dendro": "登卓",
+      "Bow": "弓",
+      "Catalyst": "催化劑",
+      "Claymore": "克萊莫爾",
+      "Polearm": "POLEARM",
+      "Sword": "劍",
+      "clear_all": "清除全部",
+      "element_filter": "元素過濾器",
+      "no_characters_found": "找不到字符",
+      "rarity_filter": "稀有過濾器",
+      "search": "搜索字符...",
+      "sort_ascending": "排序上升",
+      "sort_descending": "排序下降",
+      "sort_element": "元素",
+      "sort_name": "姓名",
+      "sort_rarity": "稀有",
+      "sort_release": "發布日期",
+      "try_adjusting_filters": "嘗試調整過濾器或搜索術語",
+      "weapon_filter": "武器過濾器"
     },
     "character": {
       "title": "《原神》{name}：終極構建指南",
@@ -232,7 +252,19 @@
       "most_used_title": "社群最常使用的配置",
       "most_used_disclaimer": "此配置基於社群中最常使用的神器和武器。如果你想對這些數據作出貢獻，請點擊這裡提交你的UID。",
       "build_title": "{name}配置",
-      "lv": "LV。"
+      "lv": "LV。",
+      "best_artifacts": "最好的文物",
+      "best_weapons": "最好的武器",
+      "clear_search": "清除搜索",
+      "hide_build_details": "隱藏構建細節",
+      "intended_level_error": "預期水平必須高於當前水平",
+      "intended_talent_error": "預期的人才水平必須高於目前的水平",
+      "main_stats": "主要統計數據",
+      "no_data_to_add": "沒有計算數據要添加到待辦事項列表",
+      "passive": "被動的",
+      "search_placeholder": "搜索構建...",
+      "show_build_details": "顯示構建細節",
+      "substats": "取代"
     },
     "weapons": {
       "title": "Genshin Impact 武器列表",
@@ -244,7 +276,23 @@
       "level": "等級",
       "stats": "統計數據",
       "ascension": "阿森松島",
-      "refinement": "求精"
+      "refinement": "求精",
+      "Bow": "弓",
+      "Catalyst": "催化劑",
+      "Claymore": "克萊莫爾",
+      "Polearm": "POLEARM",
+      "Sword": "劍",
+      "clear_all": "清除全部",
+      "filters": "過濾器",
+      "no_weapons_found": "找不到武器",
+      "rarity_filter": "稀有過濾器",
+      "sort_ascending": "排序上升",
+      "sort_descending": "排序下降",
+      "sort_name": "姓名",
+      "sort_rarity": "稀有",
+      "sort_type": "類型",
+      "try_adjusting_filters": "嘗試調整過濾器或搜索術語",
+      "weapon_filter": "武器過濾器"
     },
     "weapon": {
       "title": "{name} Genshin Impact 武器詳情",
@@ -258,7 +306,11 @@
       "ascension": "阿森松島",
       "refinement": "求精",
       "recommended_characters": "推薦角色",
-      "ascension_materials": "提升材料"
+      "ascension_materials": "提升材料",
+      "base_atk": "基礎ATK",
+      "lv": "LV。",
+      "total": "全部的",
+      "weapon_title": "Genshin衝擊{名稱}武器"
     },
     "artifacts": {
       "title": "Genshin Impact 神器列表",
@@ -270,7 +322,13 @@
       "1piece_bonus": "1 件紅利",
       "1piece_artifact_sets": "1 件神器套裝",
       "2piece_bonus": "2 件套",
-      "4piece_bonus": "4 件套"
+      "4piece_bonus": "4 件套",
+      "artifact_description": "{名稱}是Genshin Impact中的一個工件。\n在此處了解有關其人工製品設定效果，最佳角色和文物位置的更多信息！",
+      "artifact_details": "{name} Genshin衝擊偽像{rarity}星星稀有",
+      "artifact_pieces": "人工製品",
+      "four_pc": "4 PC",
+      "one_pc": "1個",
+      "two_pc": "2 pc"
     },
     "tierlist": {
       "title": "Genshin Impact Tier 列表（最佳角色）",
@@ -278,7 +336,9 @@
       "tierlist": "等級清單",
       "main_dps": "主要DPS",
       "sub_dps": "亞DPS",
-      "support": "支持"
+      "support": "支持",
+      "six_constellation": "C6層",
+      "zero_constellation": "c0 tierList"
     },
     "tierlist_weapons": {
       "title": "Genshin Impact 武器等級列表（最佳武器）",
@@ -337,7 +397,24 @@
       "goblet": "聖杯",
       "circlet": "頭飾",
       "substats": "副屬性",
-      "weapons": "武器"
+      "weapons": "武器",
+      "anemo": "Anemo",
+      "clear_all": "清除全部",
+      "cryo": "冷凍",
+      "dendro": "Dendro",
+      "electro": "電",
+      "element_filter": "元素過濾器",
+      "geo": "地理",
+      "hydro": "水力",
+      "no_teams_found": "找不到球隊",
+      "pyro": "pyro",
+      "search_teams": "搜索團隊...",
+      "sort_ascending": "排序上升",
+      "sort_character": "角色名稱",
+      "sort_descending": "排序下降",
+      "sort_element": "元素",
+      "teams_description": "查找Genshin Impact角色的最佳團隊構成，以最大程度地提高團隊的戰鬥效果。",
+      "try_adjusting_filters": "嘗試調整過濾器或搜索術語"
     },
     "fishing": {
       "title": "Genshin Impact Fishing（魚、魚餌、釣魚竿和釣魚點）",
@@ -348,7 +425,8 @@
       "inazuma": "閃電",
       "enkanomiya": "圓宮",
       "the_chasm": "鴻溝",
-      "sumeru": "須彌"
+      "sumeru": "須彌",
+      "source": "來源"
     },
     "calculator": {
       "title": "原神計算器",
@@ -411,7 +489,64 @@
       "or": "或",
       "desired_resin": "期望的樹脂",
       "current_time": "當前時間",
-      "replenished_at": "將在{timeToWait}時補充（相對等待時間為{relativeTimeToWait}）"
+      "replenished_at": "將在{timeToWait}時補充（相對等待時間為{relativeTimeToWait}）",
+      "adventurers_experience": "冒險家的經驗",
+      "calculateByMoney": "通過金錢計算",
+      "calculate_by_fate": "通過命運計算",
+      "calculate_by_money": "通過金錢計算",
+      "calculating": "計算...",
+      "calculation_error": "計算過程中發生錯誤",
+      "calculation_result": "計算結果",
+      "calculation_results": "計算結果",
+      "daysUntilPull_desc": "幾天直到拉",
+      "decrease_random_events": "減少隨機事件",
+      "enter_amount": "輸入金額",
+      "enter_fate_amount": "輸入命運金額",
+      "enter_friendship_values_and_calculate": "輸入角色的友誼價值觀，然後單擊計算以查看結果",
+      "enter_values_and_calculate": "填寫表格",
+      "estimated_resin_time": "估計的時間",
+      "estimated_resin_tooltip": "這是基於您的輸入的估計值",
+      "exp_percentage_help": "當前的友誼經驗欄中的進展",
+      "first_time_bonus_active": "首次獎勵活躍",
+      "first_time_help": "僅當出現“首次”獎勵時啟用",
+      "friendship_calculation_results": "友誼計算結果",
+      "friendship_level_help": "選擇角色當前的友誼水平",
+      "genesis_crystal": "創世紀晶體",
+      "genesis_crystal_desc": "特殊貨幣",
+      "heros_wit": "英雄的智慧",
+      "increase_random_events": "增加隨機事件",
+      "intended_level_error": "預期水平必須高於當前水平",
+      "intertwinedFate": "交織在一起的命運",
+      "intertwinedFate_desc": "交織在一起的命運",
+      "material": "材料",
+      "max": "最大限度",
+      "mora": "猜拳",
+      "no_data_to_add": "沒有計算數據要添加到待辦事項列表",
+      "original_resin": "原始樹脂",
+      "parameters": "參數",
+      "please_select_currency": "請選擇貨幣",
+      "please_select_level": "請選擇一個級別",
+      "price_in_currency": "價格{貨幣}",
+      "primogem": "原則",
+      "primogem_desc": "特殊貨幣",
+      "random_events_help": "每日隨機事件，使友誼經驗豐富",
+      "resin_calculation_results": "計算結果",
+      "resin_percent": "樹脂{％}％",
+      "select_currency_first": "首先選擇並發",
+      "select_friendship_level": "選擇友誼水平",
+      "select_weapon": "選擇武器",
+      "standard_bonus": "標準獎金",
+      "stardust": "星塵",
+      "stardustLeft_desc": "星塵離開了",
+      "stardust_desc": "用於從商店購買稀有資源的貨幣。",
+      "starglitter": "Starglitter",
+      "starglitter_desc": "用於從商店購買稀有資源的貨幣。",
+      "top_up_packages": "充值軟件包",
+      "wanderers_advice": "流浪者的建議",
+      "weapon_level": "武器水平",
+      "weapon_not_selected": "請選擇武器",
+      "welkin_moon_desc": "30天訂閱優惠",
+      "your_resources": "您的資源"
     },
     "todo": {
       "title": "Genshin Impact待辦事項列表",
@@ -431,7 +566,13 @@
       "total_remaining": "總剩餘",
       "priority": "優先事項",
       "inventory": "存貨",
-      "save_and_close": "保存並關閉"
+      "save_and_close": "保存並關閉",
+      "ascension": "提升",
+      "complete": "完全的",
+      "no_todo_title": "還沒有戀人",
+      "nothing_today": "今天沒有什麼可以耕種的！",
+      "progress": "進步",
+      "todo_title": "托多標題"
     },
     "achievements": {
       "title": "原神影響成就",
@@ -477,7 +618,16 @@
       "cards": "Genius Invokation TCG 卡片清單",
       "all": "全部",
       "search": "搜索卡片...",
-      "create_deck": "創建卡組"
+      "create_deck": "創建卡組",
+      "character card": "角色卡",
+      "deck": "甲板",
+      "edit": "編輯",
+      "equipment card": "設備卡",
+      "event card": "活動卡",
+      "no_cards_found": "找不到卡",
+      "subtitle": "瀏覽Genius Invokation TCG中可用的卡片的完整集合。\n按類型過濾，按名稱搜索，然後創建自己的自定義甲板。",
+      "support card": "支持卡",
+      "try_adjusting_filters": "嘗試調整過濾器或搜索術語"
     },
     "tcg_card": {
       "title": "{name} - Genshin Impact TCG 卡片列表",
@@ -496,7 +646,10 @@
     "tcg_decks": {
       "title": "發現 Genius Invokation TCG 中的頂級套牌：Genshin Impact 紙牌遊戲的元構建",
       "description": "本文提供了 TCG Genius Invokation 中最佳套牌的完整列表。",
-      "best_decks": "頂層甲板"
+      "best_decks": "頂層甲板",
+      "deck_builder": "查看甲板",
+      "share_code": "共享代碼",
+      "view_deck": "查看甲板"
     },
     "tcg_deck_builder": {
       "title": "Genius Invokation TCG 卡組建造師",
@@ -530,7 +683,8 @@
       "number_of_cards": "卡片數量",
       "draw_simulator": "抽卡模擬器",
       "min_cards_simulator": "ℹ️ 您需要至少 6 張非角色卡才能嘗試抽卡模擬器。",
-      "draw_cards": "抽取 {num} 張卡！"
+      "draw_cards": "抽取 {num} 張卡！",
+      "try_adjusting_search": "嘗試調整搜索"
     },
     "profile": {
       "title": "Genshin 影響概況",
@@ -551,10 +705,57 @@
       "constellation": "星座",
       "weapon": "武器",
       "artifact": "人工製品",
-      "owner": "所有者"
+      "owner": "所有者",
+      "ATK": "ATK",
+      "Achievements": "成就",
+      "Adventure Rank": "冒險等級",
+      "Characters": "人物",
+      "DEF": "防禦",
+      "EM": "Em",
+      "ER%": "er％",
+      "Last update": "最後更新",
+      "Max HP": "最大HP",
+      "Nickname": "暱稱",
+      "Signature": "簽名",
+      "Spiral Abyss": "螺旋深淵",
+      "ascension": "提升",
+      "critValue": "暴力價值",
+      "how_to_showcase_characters": "如何獲得角色構建展示櫃：",
+      "how_to_showcase_characters_1": "1。打開Genshin撞擊。",
+      "how_to_showcase_characters_2": "2。訪問菜單。",
+      "how_to_showcase_characters_3": "3。單擊位於用戶名附近的編輯圖標。",
+      "how_to_showcase_characters_4": "4。選擇“複製UID”（如果您記得UID，可以跳過此步驟）。",
+      "how_to_showcase_characters_5": "5。選擇“編輯配置文件”。",
+      "how_to_showcase_characters_6": "6。啟用“顯示字符詳細信息”選項。",
+      "how_to_showcase_characters_7": "7。在“角色展示”列中，選擇要展示的字符。",
+      "level": "等級",
+      "no_builds": "請在遊戲中的角色展示中啟用“顯示字符詳細信息”選項，以查看詳細信息。",
+      "profile_not_found": "找不到個人資料！",
+      "profile_not_found_desc": "此配置文件當前不存在。\n如果要創建它，請提交您的UID。",
+      "submit_uid": "提交UID",
+      "submit_uid_desc": "您的UID可以在遊戲的個人資料部分中找到",
+      "sync_profile_data": "同步配置文件數據",
+      "title_detail": "{name} Genshin Impact展示櫃"
     },
-    "leaderboard": {},
-    "leaderboard_profiles": {},
+    "leaderboard": {
+      "description": "由社區驅動的Genshin影響排行榜展示出色的角色構建和配置。\n為您的團隊找到靈感或提交自己的構建以競爭。",
+      "failed_load_data": "無法加載，請稍後再試。",
+      "leaderboard": "排行榜 - 社區的頂級構建",
+      "loading_data": "載入中...",
+      "next": "下一個",
+      "previous": "以前的",
+      "section_still_in_development": "本節仍在開發中。",
+      "submit_uid": "在這裡提交您的UID！",
+      "title": "Genshin Impact構建排名：看看誰在"
+    },
+    "leaderboard_profiles": {
+      "add_profile": "添加您的個人資料",
+      "description": "發現如何將您的Genshin Impact帳戶添加到Genshinbuilds以查找個人資料。\n確保正確配置您的遊戲中配置文件設置。\n了解有關使用遊戲中的暱稱，UID和ENKA.NETWORK的個人資料名稱來更新展示箱。",
+      "invalid_page_number": "無效的頁碼",
+      "next": "下一個",
+      "previous": "以前的",
+      "title": "Genshin撞擊配置文件查找"
+    },
     "changelog": {
       "title": "原神 {version} 更新：最新功能、變更和改進",
       "description": "發現原神 {version} 中的所有新冒險！我們全面的指南涵蓋了最新的功能、角色更新和遊戲改進。通過最新版本的詳細變更記錄，始終走在提瓦特的前沿。",
@@ -588,6 +789,9 @@
       "tags": "標籤",
       "hoyolab_article": "Hoyolab 文章",
       "link": "表單連結"
+    },
+    "bangboos": {
+      "w-engines": "W-Engines"
     }
   },
   "HSR": {
@@ -630,20 +834,35 @@
       "best_relics": "{name} 最佳遺物",
       "best_ornaments": "{name} 最佳裝飾",
       "best_lightcones": "{name} 最佳光錐",
-      "best_teams": "{name} 最佳隊伍"
+      "best_teams": "{name} 最佳隊伍",
+      "body": "身體",
+      "feet": "腳",
+      "rope": "繩索",
+      "sphere": "領域"
     },
     "lightcones": {
       "title": "崩壞：星軌光錐列表",
       "description": "崩壞：星軌中所有光錐及其統計數據的完整列表。",
       "lightcones": "光錐",
-      "lightcones_desc": "光錐是角色可以裝備的物品，可以提高他們的基礎生命值、基礎攻擊力和基礎防禦力，並賦予路徑與光錐匹配的角色被動能力。"
+      "lightcones_desc": "光錐是角色可以裝備的物品，可以提高他們的基礎生命值、基礎攻擊力和基礎防禦力，並賦予路徑與光錐匹配的角色被動能力。",
+      "ability": "能力",
+      "alternative": "選擇",
+      "best_in_slot": "最好的插槽",
+      "recommended_characters": "推薦字符",
+      "stats": "統計"
     },
     "relics": {
       "title": "崩壞：星軌遺物一覽",
       "description": "《崩壞：星軌》中所有遺跡及其統計數據的完整列表。",
       "relics": "文物",
       "relics_desc": "遺物是可以裝備到角色身上的物品。",
-      "set": "放"
+      "set": "放",
+      "ornament": "裝飾品",
+      "piece_set": "件套裝",
+      "recommended_characters": "推薦字符",
+      "relic_pieces": "遺物",
+      "title_detail": "{名稱} HONKAI：Star Rail Relic",
+      "description_detail": "在Honkai：Star Rail中發現{名稱}的最佳文物。\n還包括他們的統計數據，設定獎金等。"
     },
     "tierlist": {
       "title": "Honkai: Star Rail 星軌等級表",
@@ -686,7 +905,8 @@
       "story": "故事",
       "source": "來源",
       "world_level_required": "所需世界等級",
-      "cost": "花費"
+      "cost": "花費",
+      "world_level_require": "世界一級需要"
     },
     "achievements": {
       "title": "崩坏3rd：星轨成就",
@@ -697,7 +917,22 @@
     },
     "profile": {
       "title": "崩壞：星穹鐵道 {playerUID} 玩家檔案",
-      "description": "崩壞：星穹鐵道 {playerUID} 玩家檔案"
+      "description": "崩壞：星穹鐵道 {playerUID} 玩家檔案",
+      "achievements": "成就",
+      "characters": "人物",
+      "simulated": "模擬"
+    },
+    "lightcone": {
+      "ascension_materials": "需要提升材料",
+      "ascension_materials_none": "此提升不需要材料",
+      "atk": "ATK",
+      "def": "防禦",
+      "hp": "惠普",
+      "level": "等級",
+      "slider_view": "滑塊視圖",
+      "stats": "統計",
+      "table_view": "表視圖",
+      "total_ascension_materials_required": "水平{級別}所需的總材料"
     }
   },
   "WW": {

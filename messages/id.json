@@ -139,7 +139,8 @@
       "leaderboard_profiles_desc": "Profil untuk membandingkan kemajuan Anda dengan pemain lain",
       "profiles": "Profil",
       "profiles_desc": "Profil untuk membandingkan kemajuan Anda dengan pemain lain",
-      "blog": "Blog"
+      "blog": "Blog",
+      "Tools": "Peralatan"
     },
     "ascension_planner": {
       "title": "Basis Data Wiki Genshin-Builds.com",
@@ -170,7 +171,8 @@
       "view_all_posts": "Lihat Semua Pos",
       "server_timers": "Pengatur Waktu Server",
       "server_timers_desc": "Reset harian terjadi pada pukul 04:00 (4 AM), berdasarkan zona waktu server Anda. Reset mingguan terjadi setiap hari Senin, juga pada pukul 04:00 (4 AM).",
-      "shortcuts": "Pintasan"
+      "shortcuts": "Pintasan",
+      "farmable_today_desc": "Temukan karakter dan senjata mana yang bisa ditanami saat ini."
     },
     "characters": {
       "title": "Daftar Karakter Genshin Impact",
@@ -182,7 +184,25 @@
       "hydro": "Hidro",
       "electro": "Elektro",
       "cryo": "Kryo",
-      "dendro": "Dendro"
+      "dendro": "Dendro",
+      "Bow": "Busur",
+      "Catalyst": "Katalisator",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Pedang",
+      "clear_all": "Bersihkan semuanya",
+      "element_filter": "Filter elemen",
+      "no_characters_found": "Tidak ada karakter yang ditemukan",
+      "rarity_filter": "Filter kelangkaan",
+      "search": "Karakter pencarian ...",
+      "sort_ascending": "Urutkan naik",
+      "sort_descending": "Urutkan turun",
+      "sort_element": "Elemen",
+      "sort_name": "Nama",
+      "sort_rarity": "Keanehan",
+      "sort_release": "Tanggal rilis",
+      "try_adjusting_filters": "Coba sesuaikan filter atau istilah pencarian Anda",
+      "weapon_filter": "Filter senjata"
     },
     "character": {
       "title": "{name} di Genshin Impact: Panduan Bangunan Terbaik",
@@ -232,7 +252,19 @@
       "most_used_title": "Build Paling Banyak Digunakan oleh Komunitas",
       "most_used_disclaimer": "Build ini berdasarkan artefak dan senjata yang paling banyak digunakan oleh komunitas. Jika Anda ingin berkontribusi pada data ini, Anda dapat melakukannya dengan mengirimkan UID Anda dengan mengklik di sini.",
       "build_title": "Build {name}",
-      "lv": "Lv."
+      "lv": "Lv.",
+      "best_artifacts": "Artefak terbaik",
+      "best_weapons": "Senjata terbaik",
+      "clear_search": "CLEAR Pencarian",
+      "hide_build_details": "Sembunyikan Detail Bangun",
+      "intended_level_error": "Level yang dimaksud harus lebih tinggi dari level saat ini",
+      "intended_talent_error": "Tingkat bakat yang dimaksud harus lebih tinggi dari level saat ini",
+      "main_stats": "Statistik utama",
+      "no_data_to_add": "Tidak ada data perhitungan untuk ditambahkan ke daftar TODO",
+      "passive": "Pasif",
+      "search_placeholder": "Cari Builds ...",
+      "show_build_details": "Tampilkan detail pembuatan",
+      "substats": "Substat"
     },
     "weapons": {
       "title": "Daftar Senjata Genshin Impact",
@@ -244,7 +276,23 @@
       "level": "Tingkat",
       "stats": "Statistik",
       "ascension": "Kenaikan",
-      "refinement": "Perbaikan"
+      "refinement": "Perbaikan",
+      "Bow": "Busur",
+      "Catalyst": "Katalisator",
+      "Claymore": "Claymore",
+      "Polearm": "Polearm",
+      "Sword": "Pedang",
+      "clear_all": "Bersihkan semuanya",
+      "filters": "Filter",
+      "no_weapons_found": "Tidak ada senjata yang ditemukan",
+      "rarity_filter": "Filter kelangkaan",
+      "sort_ascending": "Urutkan naik",
+      "sort_descending": "Urutkan turun",
+      "sort_name": "Nama",
+      "sort_rarity": "Keanehan",
+      "sort_type": "Jenis",
+      "try_adjusting_filters": "Coba sesuaikan filter atau istilah pencarian Anda",
+      "weapon_filter": "Filter senjata"
     },
     "weapon": {
       "title": "{name} Detail Senjata Genshin Impact",
@@ -258,7 +306,11 @@
       "ascension": "Kenaikan",
       "refinement": "Perbaikan",
       "recommended_characters": "Karakter yang Direkomendasikan",
-      "ascension_materials": "Bahan Kenaikan"
+      "ascension_materials": "Bahan Kenaikan",
+      "base_atk": "Dasar atk",
+      "lv": "Lv.",
+      "total": "Total",
+      "weapon_title": "Genshin Impact {name} senjata"
     },
     "artifacts": {
       "title": "Daftar Artefak Dampak Genshin",
@@ -270,7 +322,13 @@
       "1piece_bonus": "Bonus 1 Buah",
       "1piece_artifact_sets": "Set Artefak 1 Bagian",
       "2piece_bonus": "Bonus 2 Potong",
-      "4piece_bonus": "Bonus 4 Potong"
+      "4piece_bonus": "Bonus 4 Potong",
+      "artifact_description": "{name} adalah artefak yang ditetapkan dalam dampak Genshin. \nPelajari lebih lanjut tentang efek set artefak, karakter terbaik, dan lokasi artefak di sini!",
+      "artifact_details": "{name} Genshin Impact Artifact {Rarity} Stars Rarity",
+      "artifact_pieces": "Karya artefak",
+      "four_pc": "4 pc",
+      "one_pc": "1 pc",
+      "two_pc": "2 pc"
     },
     "tierlist": {
       "title": "Daftar Tier Dampak Genshin (Karakter Terbaik)",
@@ -278,7 +336,9 @@
       "tierlist": "Daftar tingkatan",
       "main_dps": "DPS Utama",
       "sub_dps": "Sub DPS",
-      "support": "Mendukung"
+      "support": "Mendukung",
+      "six_constellation": "Tierlist C6",
+      "zero_constellation": "Tierlist C0"
     },
     "tierlist_weapons": {
       "title": "Daftar Tier Senjata Genshin Impact (Senjata Terbaik)",
@@ -337,7 +397,24 @@
       "goblet": "Piala",
       "circlet": "Mahkota",
       "substats": "Stat Tambahan",
-      "weapons": "Senjata"
+      "weapons": "Senjata",
+      "anemo": "Anemo",
+      "clear_all": "Bersihkan semuanya",
+      "cryo": "Cryo",
+      "dendro": "Dendro",
+      "electro": "Elektro",
+      "element_filter": "Filter elemen",
+      "geo": "Geo",
+      "hydro": "Hydro",
+      "no_teams_found": "Tidak ada tim yang ditemukan",
+      "pyro": "Piro",
+      "search_teams": "Tim pencarian ...",
+      "sort_ascending": "Urutkan naik",
+      "sort_character": "Nama Karakter",
+      "sort_descending": "Urutkan turun",
+      "sort_element": "Elemen",
+      "teams_description": "Temukan Komps Tim Terbaik untuk Karakter Dampak Genshin untuk memaksimalkan keefektifan tempur tim Anda.",
+      "try_adjusting_filters": "Coba sesuaikan filter atau istilah pencarian Anda"
     },
     "fishing": {
       "title": "Genshin Impact Fishing (Ikan, Umpan, Pancing, dan Titik Pancing)",
@@ -348,7 +425,8 @@
       "inazuma": "Inazuma",
       "enkanomiya": "Enkanomiya",
       "the_chasm": "Jurang",
-      "sumeru": "Sumeru"
+      "sumeru": "Sumeru",
+      "source": "Sumber"
     },
     "calculator": {
       "title": "Kalkulator Genshin Impact",
@@ -411,7 +489,64 @@
       "or": "atau",
       "desired_resin": "Resin yang Diinginkan",
       "current_time": "Waktu Saat Ini",
-      "replenished_at": "Akan diisi kembali pada: {waktuTunggu} ({waktuRelatifTunggu})"
+      "replenished_at": "Akan diisi kembali pada: {waktuTunggu} ({waktuRelatifTunggu})",
+      "adventurers_experience": "Pengalaman petualang",
+      "calculateByMoney": "Hitung dengan uang",
+      "calculate_by_fate": "Hitung dengan nasib",
+      "calculate_by_money": "Hitung dengan uang",
+      "calculating": "Menghitung ...",
+      "calculation_error": "Kesalahan terjadi selama perhitungan",
+      "calculation_result": "Hasil perhitungan",
+      "calculation_results": "Hasil perhitungan",
+      "daysUntilPull_desc": "Hari sampai tarik",
+      "decrease_random_events": "Kurangi peristiwa acak",
+      "enter_amount": "Masukkan jumlah",
+      "enter_fate_amount": "Masukkan Jumlah Nasib",
+      "enter_friendship_values_and_calculate": "Masukkan nilai persahabatan karakter Anda dan klik Hitung untuk melihat hasilnya",
+      "enter_values_and_calculate": "Lengkapi formulir",
+      "estimated_resin_time": "Perkiraan waktu",
+      "estimated_resin_tooltip": "Ini adalah perkiraan berdasarkan input Anda",
+      "exp_percentage_help": "Kemajuan saat ini di Bar Exp Persahabatan",
+      "first_time_bonus_active": "Bonus pertama kali aktif",
+      "first_time_help": "Aktifkan hanya jika bonus \"pertama kali\" hadir",
+      "friendship_calculation_results": "Hasil Perhitungan Persahabatan",
+      "friendship_level_help": "Pilih tingkat persahabatan karakter Anda saat ini",
+      "genesis_crystal": "Genesis Crystal",
+      "genesis_crystal_desc": "Mata Uang Khusus",
+      "heros_wit": "Kecerdasan pahlawan",
+      "increase_random_events": "Tingkatkan peristiwa acak",
+      "intended_level_error": "Level yang dimaksud harus lebih tinggi dari level saat ini",
+      "intertwinedFate": "Nasib yang saling terkait",
+      "intertwinedFate_desc": "Nasib yang saling terkait",
+      "material": "Bahan",
+      "max": "Max",
+      "mora": "Mora",
+      "no_data_to_add": "Tidak ada data perhitungan untuk ditambahkan ke daftar TODO",
+      "original_resin": "Resin asli",
+      "parameters": "Parameter",
+      "please_select_currency": "Pilih Mata Uang",
+      "please_select_level": "Pilih level",
+      "price_in_currency": "Harga dalam {mata uang}",
+      "primogem": "Primogem",
+      "primogem_desc": "Mata Uang Khusus",
+      "random_events_help": "Peristiwa acak harian yang memberikan persahabatan exp",
+      "resin_calculation_results": "Hasil perhitungan",
+      "resin_percent": "Resin {persen}%",
+      "select_currency_first": "Pilih konkurensi terlebih dahulu",
+      "select_friendship_level": "Pilih Level Persahabatan",
+      "select_weapon": "Pilih Senjata",
+      "standard_bonus": "Bonus standar",
+      "stardust": "Stardust",
+      "stardustLeft_desc": "Stardust pergi",
+      "stardust_desc": "Mata uang digunakan untuk membeli sumber daya langka dari toko.",
+      "starglitter": "Starglitter",
+      "starglitter_desc": "Mata uang digunakan untuk membeli sumber daya langka dari toko.",
+      "top_up_packages": "Paket top-up",
+      "wanderers_advice": "Saran Wanderer",
+      "weapon_level": "Tingkat senjata",
+      "weapon_not_selected": "Pilih senjata",
+      "welkin_moon_desc": "Penawaran Berlangganan 30 Hari",
+      "your_resources": "Sumber daya Anda"
     },
     "todo": {
       "title": "Daftar Todo Dampak Genshin",
@@ -431,7 +566,13 @@
       "total_remaining": "Total Sisa",
       "priority": "Prioritas",
       "inventory": "Inventaris",
-      "save_and_close": "Simpan dan tutup"
+      "save_and_close": "Simpan dan tutup",
+      "ascension": "Kenaikan",
+      "complete": "Menyelesaikan",
+      "no_todo_title": "Belum ada Todos",
+      "nothing_today": "Tidak ada yang bisa ditanami hari ini!",
+      "progress": "Kemajuan",
+      "todo_title": "Judul Todo"
     },
     "achievements": {
       "title": "Pencapaian Dampak Genshin",
@@ -477,7 +618,16 @@
       "cards": "Daftar Kartu Genius Invokation TCG",
       "all": "Semua",
       "search": "Cari kartu...",
-      "create_deck": "Buat Dek"
+      "create_deck": "Buat Dek",
+      "character card": "Kartu Karakter",
+      "deck": "Dek",
+      "edit": "Edit",
+      "equipment card": "Kartu peralatan",
+      "event card": "Kartu acara",
+      "no_cards_found": "Tidak ada kartu yang ditemukan",
+      "subtitle": "Jelajahi koleksi kartu lengkap yang tersedia dalam Invokation TCG jenius. \nFilter berdasarkan ketik, cari berdasarkan nama, dan buat deck khusus Anda sendiri.",
+      "support card": "Kartu pendukung",
+      "try_adjusting_filters": "Coba sesuaikan filter atau istilah pencarian Anda"
     },
     "tcg_card": {
       "title": "{name} - Daftar Kartu TCG Genshin Impact",
@@ -496,7 +646,10 @@
     "tcg_decks": {
       "title": "Temukan Dek Teratas di Genius Invokasi TCG: Meta Builds untuk Genshin Impact Card Game",
       "description": "Artikel ini memberikan daftar lengkap deck terbaik di TCG, Genius Invokasi. ",
-      "best_decks": "Dek Teratas"
+      "best_decks": "Dek Teratas",
+      "deck_builder": "View Deck",
+      "share_code": "Bagikan Kode",
+      "view_deck": "View Deck"
     },
     "tcg_deck_builder": {
       "title": "Pembuat Dek Genius Invokation TCG",
@@ -530,7 +683,8 @@
       "number_of_cards": "Jumlah Kartu",
       "draw_simulator": "Simulator Menggambar",
       "min_cards_simulator": "ℹ️ Anda perlu memiliki setidaknya 6 kartu non-karakter untuk mencoba Simulator Menggambar.",
-      "draw_cards": "Gambar {num} kartu!"
+      "draw_cards": "Gambar {num} kartu!",
+      "try_adjusting_search": "Coba sesuaikan pencarian"
     },
     "profile": {
       "title": "Profil Genshin Impact",
@@ -551,10 +705,57 @@
       "constellation": "Konstelasi",
       "weapon": "Senjata",
       "artifact": "Artefak",
-      "owner": "Pemilik"
+      "owner": "Pemilik",
+      "ATK": "ATK",
+      "Achievements": "Pencapaian",
+      "Adventure Rank": "Peringkat Petualangan",
+      "Characters": "Karakter",
+      "DEF": "Def",
+      "EM": "Em",
+      "ER%": "ER%",
+      "Last update": "Pembaruan terakhir",
+      "Max HP": "Max HP",
+      "Nickname": "Nama panggilan",
+      "Signature": "Tanda tangan",
+      "Spiral Abyss": "Jurang spiral",
+      "ascension": "Kenaikan",
+      "critValue": "Nilai kritik",
+      "how_to_showcase_characters": "Cara mendapatkan showcase build karakter Anda:",
+      "how_to_showcase_characters_1": "1. Buka Dampak Genshin.",
+      "how_to_showcase_characters_2": "2. Akses menu.",
+      "how_to_showcase_characters_3": "3. Klik ikon Edit yang terletak di dekat nama pengguna Anda.",
+      "how_to_showcase_characters_4": "4. Pilih \"Salin UID\" (Anda dapat melewatkan langkah ini jika Anda mengingat UID Anda).",
+      "how_to_showcase_characters_5": "5. Pilih \"Edit Profil\".",
+      "how_to_showcase_characters_6": "6. Aktifkan opsi \"Tampilkan Detail Karakter\".",
+      "how_to_showcase_characters_7": "7. Di kolom \"Character Showcase\", pilih karakter yang ingin Anda tampilkan.",
+      "level": "Tingkat",
+      "no_builds": "Harap aktifkan opsi \"Tampilkan Detail Karakter\" di showcase karakter Anda dalam game untuk melihat detailnya.",
+      "profile_not_found": "Profil tidak ditemukan!",
+      "profile_not_found_desc": "Profil ini saat ini tidak ada. \nJika Anda ingin membuatnya, silakan kirimkan UID Anda.",
+      "submit_uid": "Kirim UID",
+      "submit_uid_desc": "UID Anda dapat ditemukan di bagian Profil Game",
+      "sync_profile_data": "Sinkronkan data profil",
+      "title_detail": "{name} Genshin Impact Showcase"
     },
-    "leaderboard": {},
-    "leaderboard_profiles": {},
+    "leaderboard": {
+      "description": "Papan peringkat Genshin Impact yang digerakkan oleh masyarakat menampilkan karakter dan konfigurasi karakter yang luar biasa. \nTemukan inspirasi untuk tim Anda atau kirimkan bangunan Anda sendiri untuk bersaing.",
+      "failed_load_data": "Gagal memuat, coba lagi nanti.",
+      "leaderboard": "Papan peringkat - Top builds dari komunitas",
+      "loading_data": "Memuat...",
+      "next": "Berikutnya",
+      "previous": "Sebelumnya",
+      "section_still_in_development": "Bagian ini masih dalam pengembangan.",
+      "submit_uid": "Kirimkan UID Anda di sini!",
+      "title": "Genshin Impact Build Rankings: Lihat siapa yang ada di atas"
+    },
+    "leaderboard_profiles": {
+      "add_profile": "Tambahkan profil Anda",
+      "description": "Temukan cara menambahkan akun Genshin Impact Anda ke GenshinBuilds untuk pencarian profil. \nPastikan pengaturan profil dalam game Anda dikonfigurasi dengan benar. \nPelajari tentang memperbarui showcases, menggunakan nama panggilan dalam game, UIDS, dan nama profil ENKA.Network.",
+      "invalid_page_number": "Nomor halaman tidak valid",
+      "next": "Berikutnya",
+      "previous": "Sebelumnya",
+      "title": "Pencarian profil dampak genshin"
+    },
     "changelog": {
       "title": "Pembaruan Genshin Impact {version}: Fitur Terbaru, Perubahan, dan Peningkatan",
       "description": "Temukan semua petualangan baru dalam Genshin Impact {version}! Panduan komprehensif kami mencakup fitur terbaru, pembaruan karakter, dan peningkatan gameplay. Tetap unggul di Teyvat dengan catatan perubahan detail versi terbaru.",
@@ -588,6 +789,9 @@
       "tags": "Tag",
       "hoyolab_article": "Artikel Hoyolab",
       "link": "Tautan ke Lembar"
+    },
+    "bangboos": {
+      "w-engines": "W-ENGINES"
     }
   },
   "HSR": {
@@ -630,20 +834,35 @@
       "best_relics": "Relik Terbaik {name}",
       "best_ornaments": "Hiasan Terbaik {name}",
       "best_lightcones": "Light Cone Terbaik {name}",
-      "best_teams": "Tim Terbaik {name}"
+      "best_teams": "Tim Terbaik {name}",
+      "body": "Tubuh",
+      "feet": "Kaki",
+      "rope": "Tali",
+      "sphere": "Bola"
     },
     "lightcones": {
       "title": "Honkai: Daftar Kerucut Cahaya Rel Bintang",
       "description": "Daftar lengkap semua Kerucut Cahaya dan statistiknya di Honkai: Star Rail.",
       "lightcones": "Kerucut Cahaya",
-      "lightcones_desc": "Kerucut Cahaya adalah item yang dapat digunakan oleh karakter untuk meningkatkan HP Dasar, ATK Dasar, dan DEF Dasar mereka dan memberikan kemampuan pasif kepada karakter yang jalurnya cocok dengan Kerucut Cahaya."
+      "lightcones_desc": "Kerucut Cahaya adalah item yang dapat digunakan oleh karakter untuk meningkatkan HP Dasar, ATK Dasar, dan DEF Dasar mereka dan memberikan kemampuan pasif kepada karakter yang jalurnya cocok dengan Kerucut Cahaya.",
+      "ability": "Kemampuan",
+      "alternative": "Alternatif",
+      "best_in_slot": "Terbaik di slot",
+      "recommended_characters": "Karakter yang disarankan",
+      "stats": "Statistik"
     },
     "relics": {
       "title": "Honkai: Daftar Peninggalan Rel Bintang",
       "description": "Daftar lengkap semua Relik dan statusnya di Honkai: Star Rail.",
       "relics": "Peninggalan",
       "relics_desc": "Relik adalah item yang dapat dipasang pada karakter. ",
-      "set": "Mengatur"
+      "set": "Mengatur",
+      "description_detail": "Temukan peninggalan terbaik untuk {name} di Honkai: Star Rail. \nJuga termasuk statistik mereka, bonus yang ditetapkan, dan banyak lagi.",
+      "ornament": "Ornamen",
+      "piece_set": "Set potongan",
+      "recommended_characters": "Karakter yang disarankan",
+      "relic_pieces": "Potongan peninggalan",
+      "title_detail": "{Name} Honkai: Star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Daftar Tier",
@@ -686,7 +905,8 @@
       "story": "Kisah",
       "source": "Sumber",
       "world_level_required": "Tingkat Dunia yang Diperlukan",
-      "cost": "Biaya"
+      "cost": "Biaya",
+      "world_level_require": "Tingkat dunia membutuhkan"
     },
     "achievements": {
       "title": "Prestasi Honkai: Star Rail",
@@ -697,7 +917,22 @@
     },
     "profile": {
       "title": "Profil Pemain Honkai: Star Rail {playerUID}",
-      "description": "Profil Pemain Honkai: Star Rail {playerUID}"
+      "description": "Profil Pemain Honkai: Star Rail {playerUID}",
+      "achievements": "Pencapaian",
+      "characters": "Karakter",
+      "simulated": "Disimulasikan"
+    },
+    "lightcone": {
+      "ascension_materials": "Bahan kenaikan diperlukan",
+      "ascension_materials_none": "Tidak ada bahan yang diperlukan untuk kenaikan ini",
+      "atk": "ATK",
+      "def": "Def",
+      "hp": "Hp",
+      "level": "Tingkat",
+      "slider_view": "Tampilan Slider",
+      "stats": "Statistik",
+      "table_view": "Tampilan Tabel",
+      "total_ascension_materials_required": "Total bahan yang diperlukan untuk level {level}"
     }
   },
   "WW": {
@@ -719,7 +954,18 @@
       "title": "Wuthering Waves Wiki & Basis Data | Pembaruan Terbaru dan Panduan",
       "description": "Tetap terupdate dengan karakter, build, dan strategi terbaru di Wuthering Waves.",
       "main_title": "Daftar Karakter Wuthering Waves | Build dan Tim Terbaik",
-      "main_description": "Jelajahi daftar lengkap semua karakter Wuthering Waves dengan informasi terbaru tentang build, senjata, dan komposisi tim mereka."
+      "main_description": "Jelajahi daftar lengkap semua karakter Wuthering Waves dengan informasi terbaru tentang build, senjata, dan komposisi tim mereka.",
+      "clear_all": "Bersihkan semuanya",
+      "filters": "Filter",
+      "no_characters_found": "Tidak ada karakter yang ditemukan",
+      "rarity_filter": "Filter kelangkaan",
+      "search": "Karakter pencarian ...",
+      "sort_ascending": "Urutkan naik",
+      "sort_descending": "Urutkan turun",
+      "sort_name": "Nama",
+      "sort_rarity": "Keanehan",
+      "sort_release": "Tanggal rilis",
+      "try_adjusting_filters": "Coba sesuaikan filter atau istilah pencarian Anda"
     },
     "character": {
       "title": "Panduan {characterName} Wuthering Waves | Build dan Tim Terbaik",
@@ -804,7 +1050,12 @@
       "title": "Daftar Senjata Wuthering Waves | Senjata Terbaik dan Skill",
       "description": "Temukan senjata terbaik di Wuthering Waves dengan skill dan statistik yang detail.",
       "main_title": "Daftar Senjata Wuthering Waves",
-      "main_description": "Daftar lengkap semua senjata di Wuthering Waves dengan informasi terbaru tentang skill dan statistik mereka."
+      "main_description": "Daftar lengkap semua senjata di Wuthering Waves dengan informasi terbaru tentang skill dan statistik mereka.",
+      "ascensions": "Kenaikan",
+      "level_n": "Level {n}",
+      "rarity": "Keanehan",
+      "syntonize": "Sintonisasi",
+      "type": "Jenis"
     },
     "weapon": {
       "title": "Panduan Senjata {weaponName} Wuthering Waves | Statistik dan Skill",
@@ -887,7 +1138,17 @@
       "priority": "Prioritas",
       "explanation": "Penjelasan",
       "teams": "{character_name} tim terbaik dan bangboo",
-      "best_bangboos": "Bangboos terbaik"
+      "best_bangboos": "Bangboos terbaik",
+      "description": "Temukan build dan tim terbaik untuk {karaktername} di zenless zona zero (zzz). \nJuga termasuk keterampilan mereka, biaya peningkatan, dan banyak lagi.",
+      "element": "Elemen",
+      "house": "Rumah",
+      "rank": "Pangkat",
+      "rarity": "Keanehan",
+      "skills": "Keterampilan",
+      "talents": "{karaktername} talenta",
+      "title": "{CharacterName} Zenless Zone Zero (ZZZ) Build Guide",
+      "title_suffix": "Bangun panduan",
+      "type": "Jenis"
     },
     "error": {
       "not_found_title": "Tidak ditemukan",
@@ -895,7 +1156,12 @@
       "go_home": "Pulang"
     },
     "bangboos": {
-      "w-engines": "W-ENGINES"
+      "w-engines": "W-ENGINES",
+      "bangboos": "Zenless Zone Zero Bangboo List",
+      "bangboos_description": "Bangboo adalah 'hewan peliharaan' di zona zenless nol yang membantu tim Anda - temukan setiap bangoo yang tersedia dalam permainan di bawah ini!",
+      "description": "Daftar lengkap semua Bangboos yang dapat dimainkan di zona zenless nol.",
+      "title": "Zenless Zone Zero (ZZZ) Daftar Bangboos",
+      "w-engines-description": "Daftar lengkap semua drive disk dan bonus mereka di Zenless Zone Zero."
     },
     "tierlist": {
       "title": "Zenless Zone Zero (ZZZ) Daftar Tier",
@@ -907,6 +1173,58 @@
       "debuffer": "Debuffer",
       "supporter": "Pendukung",
       "explanation": "Penjelasan"
+    },
+    "bangboo": {
+      "description": "Pelajari semua tentang {bangboo} Bangboo di zona zenless nol (zzz). \nLihat deskripsi keterampilan yang terperinci dan cara menggunakan bangoo ini secara efektif.",
+      "main_title": "Panduan Zzz Bangboo",
+      "rank": "Pangkat",
+      "rarity": "Keanehan",
+      "title": "{Bangboo} - Zenless Zone Zero (ZZZ) Bangboo Guide"
+    },
+    "characters": {
+      "characters": "Zenless Zone Zero (ZZZ) Daftar Agen",
+      "characters_description": "Karakter (agen) adalah unit yang dapat diperoleh di zenless zona nol (zzz) - temukan setiap agen yang tersedia dalam permainan di sini!",
+      "description": "Daftar lengkap semua karakter yang dapat dimainkan di Zenless Zone Zero.",
+      "title": "Zenless Zone Zero (ZZZ) Daftar Karakter"
+    },
+    "diskdrive": {
+      "description": "Pelajari tentang drive disk {itemName} di zenless zona nol (zzz), termasuk efek, cara mendapatkan, dan banyak lagi.",
+      "disk_title": "Zenless Zone Zero (zzz) {item_name} disk drive",
+      "item_effects": "{item_name} efek",
+      "title": "{itemName} zenless zona nol disk drive"
+    },
+    "diskdrives": {
+      "description": "Daftar semua set disk drive yang tersedia di Zenless Zone Zero.",
+      "diskDrives": "Zenless Zone Zero Drive Disk Sets",
+      "diskDrivesDescription": "Daftar lengkap semua drive disk dan bonus mereka di Zenless Zone Zero.",
+      "title": "Zenless Zone Zero (ZZZ) Drive Disk Daftar"
+    },
+    "home": {
+      "description": "Genshin-Builds.com adalah wiki untuk Zenless Zone Zero (ZZZ). \nPeriksa panduan, daftar tingkat, dan ulasan kami untuk karakter yang tersedia dalam permainan.",
+      "news": "Berita",
+      "see_more": "Lihat lebih banyak",
+      "title": "Zenless Zone Zero (ZZZ) Wiki",
+      "welcome": "Selamat datang di ZenlessBuilds",
+      "welcome_description": "Temukan karakter build, panduan komprehensif, dan database wiki semua di satu tempat untuk zenless zona nol (zzz)."
+    },
+    "layout": {
+      "bangboos": "Bangboo",
+      "blog": "Blog",
+      "characters": "Agen",
+      "disk-drives": "Disk drive",
+      "home": "Rumah",
+      "tierlist": "Tierlist",
+      "w-engines": "W-engine"
+    },
+    "wengine": {
+      "description": "Pelajari tentang {itemName} w-engine di zenless zona nol. \nCari tahu semua yang perlu Anda ketahui tentang {itemName} w-engine, termasuk statistik, bakat pasif, dan cara mendapatkannya.",
+      "engine_refinements": "{itemName} Penyempurnaan",
+      "engine_title": "Zenless Zone Zero (zzz) {itemName} w-engine",
+      "title": "{itemName} zenless zona nol w-engine"
+    },
+    "wengines": {
+      "description": "Daftar semua senjata mesin-W dan statistik mereka di zona zenless nol.",
+      "title": "Zenless Zone Zero (ZZZ) W-Engine List"
     }
   }
 }

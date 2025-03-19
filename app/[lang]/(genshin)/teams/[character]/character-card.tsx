@@ -31,7 +31,7 @@ export function CharacterCard({
   artifactsMap,
   weaponsMap,
 }: Props) {
-  const customt = useTranslations("Genshin.extrasutff");
+  const commont = useTranslations("Genshin.common");
   const t = useTranslations("Genshin.teams");
 
   return (
@@ -53,7 +53,6 @@ export function CharacterCard({
               />
             </div>
           </Link>
-          {customt("lol")}
           <div>
             <CardTitle className="text-xl">
               <Link
@@ -163,7 +162,7 @@ export function CharacterCard({
               <div>
                 <h4 className="text-xs text-slate-500">{t("substats")}</h4>
                 <p className="text-sm">
-                  {characterTeam.sub_stats.map((st) => t(st)).join(" / ")}
+                  {characterTeam.sub_stats.map((st) => commont(st)).join(" / ")}
                 </p>
               </div>
             </div>
