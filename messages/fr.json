@@ -205,7 +205,9 @@
       "clear_all": "Effacer tout",
       "no_characters_found": "Aucun personnage trouvé",
       "try_adjusting_filters": "Essayez d'ajuster vos filtres ou votre terme de recherche"
-    },
+    }
+  },
+  "zenless": {
     "character": {
       "talents": "{characterName} talents",
       "builds": "{character_name} Best Builds",
@@ -274,9 +276,8 @@
       "not_found_title": "Pas trouvé",
       "not_found_description": "Nous sommes désolés, mais la page que vous recherchez n'existe pas.",
       "go_home": "Rentrer chez eux"
-    }
-  },
-  "zenless": {
+    },
+
     "tierlist": {
       "title": "Liste de niveau Zenless Zone Zero (ZZZ)",
       "description": "Cette liste de niveaux du jeu CrossPlatform Zenless Zone Zero classe les personnages du jeu en différents niveaux en fonction de leurs performances dans le jeu.",

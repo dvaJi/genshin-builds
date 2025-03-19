@@ -204,7 +204,9 @@
       "clear_all": "Alle klar",
       "no_characters_found": "Keine Charaktere gefunden",
       "try_adjusting_filters": "Versuchen Sie, Ihre Filter oder Suchbegriff anzupassen"
-    },
+    }
+  },
+  "zenless": {
     "character": {
       "talents": "{characterName} Talente",
       "builds": "{character_name} Beste Builds",
@@ -273,9 +275,7 @@
       "not_found_title": "Nicht gefunden",
       "not_found_description": "Es tut uns leid, aber die Seite, nach der Sie suchen, gibt es nicht.",
       "go_home": "Nach Hause gehen"
-    }
-  },
-  "zenless": {
+    },
     "tierlist": {
       "title": "Zenless Zone Zero (ZZZ) Tierliste",
       "description": "Diese Tierliste des CrossPlatform -Spiels Zenless Zone Zero kategorisiert die Charaktere des Spiels in verschiedenen Ebenen, basierend auf ihrer Leistung im Spiel.",

@@ -213,7 +213,9 @@
       "clear_all": "すべてをクリアします",
       "no_characters_found": "キャラクターは見つかりません",
       "try_adjusting_filters": "フィルターまたは検索用語を調整してみてください"
-    },
+    }
+  },
+  "zenless": {
     "character": {
       "description": "Zenless Zone Zero（ZZZ）で{characterName}の最高のビルドとチームを発見してください。\nまた、スキル、アップグレードコストなども含まれています。",
       "title_suffix": "ビルドガイド",
@@ -290,9 +292,7 @@
       "not_found_title": "見つかりません",
       "not_found_description": "申し訳ありませんが、探しているページは存在しません。",
       "go_home": "家に帰れ"
-    }
-  },
-  "zenless": {
+    },
     "tierlist": {
       "title": "Zenless Zone Zero（ZZZ）層リスト",
       "description": "CrossPlatformゲームのこの層リストZenless Zone Zeroは、ゲームのパフォーマンスに基づいて、ゲームのキャラクターを異なる層に分類します。",

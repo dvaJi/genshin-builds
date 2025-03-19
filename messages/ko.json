@@ -213,7 +213,9 @@
       "clear_all": "모든 것을 지우십시오",
       "no_characters_found": "발견 된 문자가 없습니다",
       "try_adjusting_filters": "필터 또는 검색어를 조정해보십시오"
-    },
+    }
+  },
+  "zenless": {
     "character": {
       "skill_priority": "{character_name} 기술 우선 순위",
       "skill": "기능",
@@ -226,9 +228,10 @@
       "not_found_title": "찾을 수 없습니다",
       "not_found_description": "미안하지만 찾고있는 페이지는 존재하지 않습니다.",
       "go_home": "집에 가십시오"
-    }
-  },
-  "zenless": {
+    },
+    "bangboos": {
+      "w-engines": "W- 엔진"
+    },
     "tierlist": {
       "title": "Zenless Zone Zero (ZZZ) 계층 목록",
       "description": "CrossPlatform 게임 Zenless Zone Zero 의이 계층 목록은 게임의 성능에 따라 게임 캐릭터를 다른 계층으로 분류합니다.",

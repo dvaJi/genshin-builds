@@ -57,7 +57,8 @@
       "leaderboard_profiles_desc": "Profiles to compare your progress with other players",
       "profiles": "Profiles",
       "profiles_desc": "Profiles to compare your progress with other players",
-      "blog": "Blog"
+      "blog": "Blog",
+      "tools": "Tools"
     },
     "ascension_planner": {
       "title": "Genshin Impact Wiki Database",
@@ -787,6 +788,9 @@
       "tags": "Tags",
       "hoyolab_article": "Hoyolab Article",
       "link": "Link to Sheet"
+    },
+    "bangboos": {
+      "w-engines": "W-Engines"
     }
   },
   "HSR": {

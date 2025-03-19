@@ -209,7 +209,9 @@
       "clear_all": "ล้างทั้งหมด",
       "no_characters_found": "ไม่พบอักขระ",
       "try_adjusting_filters": "ลองปรับตัวกรองหรือคำค้นหาของคุณ"
-    },
+    }
+  },
+  "zenless": {
     "character": {
       "description": "ค้นพบการสร้างและทีมที่ดีที่สุดสำหรับ {characterName} ใน Zenless Zone Zero (ZZZ) \nรวมถึงทักษะของพวกเขาค่าใช้จ่ายในการอัพเกรดและอื่น ๆ",
       "title_suffix": "คู่มือสร้าง",
@@ -286,9 +288,7 @@
       "not_found_title": "ไม่พบ",
       "not_found_description": "เราขออภัย แต่หน้าคุณกำลังมองหาไม่มีอยู่จริง",
       "go_home": "กลับบ้าน"
-    }
-  },
-  "zenless": {
+    },
     "tierlist": {
       "title": "Zenless Zone Zero (ZZZ) รายการระดับ",
       "description": "รายการระดับของเกม Crossplatform Zener Zero จัดหมวดหมู่ตัวละครของเกมเป็นระดับที่แตกต่างกันตามการแสดงของพวกเขาในเกม",

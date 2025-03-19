@@ -16,7 +16,6 @@ interface ArtifactCardProps {
   messages: {
     choose_2: string;
   };
-  locale: string;
 }
 
 const ArtifactCard = ({

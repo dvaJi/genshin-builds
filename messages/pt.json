@@ -202,7 +202,9 @@
       "clear_all": "Limpar tudo",
       "no_characters_found": "Nenhum personagem encontrado",
       "try_adjusting_filters": "Tente ajustar seus filtros ou termo de pesquisa"
-    },
+    }
+  },
+  "zenless": {
     "character": {
       "talents": "{characterName} talentos",
       "builds": "{caractere_name} Melhores compilações",
@@ -271,9 +273,7 @@
       "not_found_title": "Não encontrado",
       "not_found_description": "Lamentamos, mas a página que você está procurando não existe.",
       "go_home": "Ir para casa"
-    }
-  },
-  "zenless": {
+    },
     "tierlist": {
       "title": "Lista de camadas Zero Zero Zero (ZZZ) (ZZZ)",
       "description": "Esta lista de níveis do jogo Crossplataform Zenless Zone Zero categoriza os personagens do jogo em diferentes camadas com base em seu desempenho no jogo.",

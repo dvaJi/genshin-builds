@@ -108,6 +108,12 @@
     },
     "character": {
       "passive": "被動的"
+    },
+    "bangboos": {
+      "w-engines": "W-Engines"
+    },
+    "layout": {
+      "tools": "工具"
     }
   },
   "WW": {

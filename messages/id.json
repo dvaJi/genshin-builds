@@ -140,7 +140,9 @@
       "profiles": "Profil",
       "profiles_desc": "Profil untuk membandingkan kemajuan Anda dengan pemain lain",
       "blog": "Blog"
-    },
+    }
+  },
+  "zenless": {
     "codes": {
       "title": "Zenless Zone Zero (ZZZ) Kode Redeem: Kerja Terbaru",
       "description": "Zenless Zone Zero (ZZZ) adalah RPG aksi populer yang dikembangkan oleh Hoyoverse. \nPanduan ini menyediakan kode penukaran zzz terbaru, cara menggunakannya, dan hadiah apa yang dapat Anda harapkan. \nNantikan pembaruan rutin!",
@@ -182,9 +184,10 @@
       "not_found_title": "Tidak ditemukan",
       "not_found_description": "Kami minta maaf, tetapi halaman yang Anda cari tidak ada.",
       "go_home": "Pulang"
-    }
-  },
-  "zenless": {
+    },
+    "bangboos": {
+      "w-engines": "W-ENGINES"
+    },
     "tierlist": {
       "title": "Zenless Zone Zero (ZZZ) Daftar Tier",
       "description": "Daftar tingkat CrossPlatform Zenless Zone Zero Zero ini mengkategorikan karakter game menjadi tingkatan yang berbeda berdasarkan kinerja mereka dalam game.",
