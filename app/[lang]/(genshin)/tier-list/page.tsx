@@ -1,10 +1,11 @@
 import { CharacterTier, Tierlist } from "interfaces/tierlist";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -21,28 +22,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "tierlist");
-  const title = t({
-    id: "title",
-    defaultMessage: "Genshin Impact Tier List (Best Characters)",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.tierlist",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "All the best characters and their builds ranked in order of power, viability, and versatility to clear content.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/tier-list`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinTierlist({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "genshin", "tierlist");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.tierlist");
+  const langData = getLangData(lang, "genshin");
 
   const characters = await getGenshinData<Record<string, Character[]>>({
     resource: "characters",
@@ -108,10 +108,7 @@ export default async function GenshinTierlist({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="my-6 text-center text-2xl font-semibold text-gray-200 lg:text-left">
-        {t({
-          id: "title",
-          defaultMessage: "Genshin Impact Best Characters Tier List",
-        })}
+        {t("title")}
       </h2>
       <GenshinTierlistView
         artifactsMap={artifactsMap}

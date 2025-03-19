@@ -1,11 +1,12 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import type { Relic } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -14,7 +15,7 @@ import { getHsrUrl } from "@lib/imgUrl";
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -25,28 +26,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "hsr", "relics");
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail Relics List",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.relics",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "A complete list of all Relics and their stats in Honkai: Star Rail.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/relics`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "relics");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.relics");
+  const langData = getLangData(lang, "hsr");
 
   const relics = await getHSRData<Relic[]>({
     resource: "relics",
@@ -58,18 +58,9 @@ export default async function Page({ params }: Props) {
     <div>
       <div className="my-2">
         <h2 className="text-3xl font-semibold uppercase text-slate-100">
-          {t({
-            id: "relics",
-            defaultMessage: "Relics",
-          })}
+          {t("relics")}
         </h2>
-        <p className="px-4 text-sm">
-          {t({
-            id: "relics_desc",
-            defaultMessage:
-              'Relics are items that can be equipped onto characters. Relics provide additional stats, but not limited to, HP, Speed, Attack, and Defense to the equipped character. All Relics give extra boosts when paired with their counterparts, called a "set". Relics can be upgraded with EXP material to increase stats.',
-          })}
-        </p>
+        <p className="px-4 text-sm">{t("relics_desc")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -81,7 +72,7 @@ export default async function Page({ params }: Props) {
         {relics.map((relic) => (
           <Link
             key={relic.id}
-            href={`/${lang}/hsr/relics/${relic.id}`}
+            href={`/hsr/relics/${relic.id}`}
             className="transition-transform hover:scale-[1.02]"
           >
             <div className="card mx-4 mb-8 flex flex-col">
@@ -96,12 +87,7 @@ export default async function Page({ params }: Props) {
                 </div>
                 <div className="ml-4">
                   <div>{relic.name}</div>
-                  <div className="text-sm">
-                    {t({
-                      id: "set",
-                      defaultMessage: "Set",
-                    })}
-                  </div>
+                  <div className="text-sm">{t("set")}</div>
                   <div className="flex">
                     {relic.pieces.map((piece) => (
                       <div

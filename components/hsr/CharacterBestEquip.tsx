@@ -1,9 +1,9 @@
 "use client";
 
 import { Relics } from "interfaces/hsr/build";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
 import type { LightCone, Relic } from "@interfaces/hsr";
 import { getHsrUrl } from "@lib/imgUrl";
 
@@ -21,17 +21,13 @@ function CharacterBestEquip({
   lightConesMap,
   relicsMap,
 }: Props) {
-  const { t } = useIntl("character");
+  const t = useTranslations("HSR.character");
 
   return (
     <div className="flex flex-col gap-4 text-card-foreground md:flex-row">
       <div>
         <h2 className="mb-4 text-xl font-semibold text-accent">
-          {t({
-            id: "best_relics",
-            defaultMessage: "{name} Best Relics",
-            values: { name: characterName },
-          })}
+          {t("best_relics", { name: characterName })}
         </h2>
         {relics.set.map((r) => (
           <div
@@ -55,11 +51,7 @@ function CharacterBestEquip({
       </div>
       <div>
         <h3 className="text-lg font-semibold text-accent">
-          {t({
-            id: "best_ornaments",
-            defaultMessage: "{name} Best Ornaments",
-            values: { name: characterName },
-          })}
+          {t("best_ornaments", { name: characterName })}
         </h3>
         {relics.ornament.map((r) => (
           <div
@@ -78,11 +70,7 @@ function CharacterBestEquip({
       </div>
       <div>
         <h3 className="text-lg font-semibold text-accent">
-          {t({
-            id: "best_lightcones",
-            defaultMessage: "{name} Best Light Cones",
-            values: { name: characterName },
-          })}
+          {t("best_lightcones", { name: characterName })}
         </h3>
         {lightcones.map((r) => (
           <div

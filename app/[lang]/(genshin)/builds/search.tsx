@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { MdClose } from "react-icons/md";
 
 import Input from "@components/ui/Input";
@@ -24,7 +25,7 @@ function Search({ messages }: Props) {
         onChange={(e) => $filters.set({ ...ad, search: e.target.value })}
       />
       <button
-        className="text-muted absolute right-2 top-2 p-1 hover:text-white"
+        className="absolute right-2 top-2 p-1 text-muted hover:text-white"
         onClick={() => $filters.set({ ...ad, search: "" })}
         title={messages.clearSearch}
       >
@@ -34,4 +35,4 @@ function Search({ messages }: Props) {
   );
 }
 
-export default Search;
+export default memo(Search);

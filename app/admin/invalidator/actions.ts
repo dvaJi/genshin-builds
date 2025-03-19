@@ -1,8 +1,9 @@
 "use server";
 
-import { i18n } from "@i18n-config";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { z } from "zod";
+
+import { i18n } from "@i18n/config";
 
 const invalidateSchema = z.object({
   type: z.string(z.enum(["tag", "path"])),

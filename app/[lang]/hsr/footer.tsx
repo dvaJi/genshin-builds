@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { RiPatreonFill } from "react-icons/ri";
 
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 
 export default function HSRFooter() {
-  const { t, locale } = useIntl("layout");
+  const t = useTranslations("HSR.layout");
   const pathName = usePathname();
   const redirectedPathName = (locale: string) => {
     return () => {
@@ -25,15 +25,11 @@ export default function HSRFooter() {
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-1 flex-col">
             <h4 className="mb-3 text-gray-200">Star Rail Builds</h4>
-            <Link
-              href={`/${locale}/privacy-policy`}
-              className="my-2"
-              prefetch={false}
-            >
-              {t({ id: "privacy_policy", defaultMessage: "Privacy Policy" })}
+            <Link href={`/privacy-policy`} className="my-2" prefetch={false}>
+              {t("privacy_policy")}
             </Link>
-            <Link href={`/${locale}/contact`} className="my-2" prefetch={false}>
-              {t({ id: "contact", defaultMessage: "Contact" })}
+            <Link href={`/contact`} className="my-2" prefetch={false}>
+              {t("contact")}
             </Link>
             <a
               href="https://twitter.com/earlyggcom"
@@ -63,21 +59,21 @@ export default function HSRFooter() {
                   Genshin Impact
                 </p>
                 <Link
-                  href={`/${locale}/characters`}
+                  href={`/characters`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Characters
                 </Link>
                 <Link
-                  href={`/${locale}/teams`}
+                  href={`/teams`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Best Teams
                 </Link>
                 <Link
-                  href={`/${locale}/builds`}
+                  href={`/builds`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
@@ -91,14 +87,14 @@ export default function HSRFooter() {
                   Zenless Zone Zero
                 </p>
                 <Link
-                  href={`/${locale}/zenless/characters`}
+                  href={`/zenless/characters`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Characters
                 </Link>
                 <Link
-                  href={`/${locale}/zenless/tierlist`}
+                  href={`/zenless/tierlist`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
@@ -112,28 +108,28 @@ export default function HSRFooter() {
                   Wuthering Waves
                 </p>
                 <Link
-                  href={`/${locale}/wuthering-waves`}
+                  href={`/wuthering-waves`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Characters
                 </Link>
                 <Link
-                  href={`/${locale}/wuthering-waves/tierlist/characters`}
+                  href={`/wuthering-waves/tierlist/characters`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Tierlist Characters
                 </Link>
                 <Link
-                  href={`/${locale}/wuthering-waves/tierlist/weapons`}
+                  href={`/wuthering-waves/tierlist/weapons`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Tierlist Weapons
                 </Link>
                 <Link
-                  href={`/${locale}/wuthering-waves/tierlist/echoes`}
+                  href={`/wuthering-waves/tierlist/echoes`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
@@ -189,20 +185,8 @@ export default function HSRFooter() {
             </button>
           </div>
           <div className="flex-1">
-            <p className="text-sm">
-              {t({
-                id: "footer",
-                defaultMessage:
-                  "Star Rail Builds is a Database, Tier List, and Guide for Honkai: Star Rail.",
-              })}
-            </p>
-            <p className="mt-3 text-xs">
-              {t({
-                id: "footer_advice",
-                defaultMessage:
-                  "Star Rail Builds is not endorsed by HoYoverse or COGNOSPHERE PTE. LTD., and does not reflect the views or opinions of anyone officially involved in producing or managing Honkai: Star Rail.",
-              })}
-            </p>
+            <p className="text-sm">{t("footer")}</p>
+            <p className="mt-3 text-xs">{t("footer_advice")}</p>
           </div>
         </div>
       </div>

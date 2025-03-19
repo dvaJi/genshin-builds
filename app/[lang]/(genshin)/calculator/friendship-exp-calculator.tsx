@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useActionState, useState } from "react";
 import { MdHelpOutline } from "react-icons/md";
 
@@ -9,7 +10,6 @@ import {
   TooltipTrigger,
 } from "@app/components/ui/tooltip";
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 
 import { calculateFriendshipExp } from "./actions";
 
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 export function FriendshipExpCalculatorForm() {
-  const { t } = useIntl("calculator");
+  const t = useTranslations("Genshin.calculator");
   const ar = 50;
   const [friendshipLevel, setFriendshipLevel] = useState<number | null>(null);
   const [expPercentage, setExpPercentage] = useState(20);
@@ -67,11 +67,7 @@ export function FriendshipExpCalculatorForm() {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent>
-                      {t({
-                        id: "friendship_level_help",
-                        defaultMessage:
-                          "Select your character's current friendship level",
-                      })}
+                      {t("friendship_level_help")}
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -119,13 +115,7 @@ export function FriendshipExpCalculatorForm() {
                         <MdHelpOutline size={16} />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      {t({
-                        id: "exp_percentage_help",
-                        defaultMessage:
-                          "Current progress in the friendship EXP bar",
-                      })}
-                    </TooltipContent>
+                    <TooltipContent>{t("exp_percentage_help")}</TooltipContent>
                   </Tooltip>
                 </div>
 
@@ -166,13 +156,7 @@ export function FriendshipExpCalculatorForm() {
                         <MdHelpOutline size={16} />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      {t({
-                        id: "random_events_help",
-                        defaultMessage:
-                          "Daily random events that give friendship EXP",
-                      })}
-                    </TooltipContent>
+                    <TooltipContent>{t("random_events_help")}</TooltipContent>
                   </Tooltip>
                 </div>
 
@@ -233,7 +217,7 @@ export function FriendshipExpCalculatorForm() {
                 disabled={!isFormValid}
                 className="w-full disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {t({ id: "calculate", defaultMessage: "Calculate" })}
+                {t("calculate")}
               </Button>
             </div>
           </div>
@@ -242,10 +226,7 @@ export function FriendshipExpCalculatorForm() {
             {state.result ? (
               <div className="w-full max-w-md rounded-xl bg-vulcan-900 p-6 shadow-lg">
                 <h3 className="mb-4 text-center text-xl font-medium text-white">
-                  {t({
-                    id: "friendship_calculation_results",
-                    defaultMessage: "Friendship Calculation Results",
-                  })}
+                  {t("friendship_calculation_results")}
                 </h3>
                 <p className="mb-4 text-center text-gray-400">
                   {t("based_on_ar", { ar: ar.toString() })}
@@ -276,11 +257,7 @@ export function FriendshipExpCalculatorForm() {
             ) : (
               <div className="rounded-lg border border-dashed border-vulcan-600 p-8 text-center">
                 <p className="text-gray-400">
-                  {t({
-                    id: "enter_friendship_values_and_calculate",
-                    defaultMessage:
-                      "Enter your character's friendship values and click Calculate to see results",
-                  })}
+                  {t("enter_friendship_values_and_calculate")}
                 </p>
               </div>
             )}

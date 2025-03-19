@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Messages from "@components/hsr/Messages";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import { Messages as IMessages } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -30,7 +31,11 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(lang, "hsr", "message");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.message",
+  });
+  const langData = getLangData(lang, "hsr");
 
   const messageGroup = await getHSRData<IMessages>({
     resource: "messages",
@@ -42,31 +47,26 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail {name} Messages",
-    values: { name: messageGroup.contacts.name },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage: "Discover all messages from {name} - {signature}",
-    values: {
-      name: messageGroup.contacts.name,
-      signature: messageGroup.contacts.signature || "",
-    },
+  const title = t("title", { name: messageGroup.contacts.name });
+  const description = t("description", {
+    name: messageGroup.contacts.name,
+    signature: messageGroup.contacts.signature || "",
   });
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/message/${id}`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "message");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.message");
+  const langData = getLangData(lang, "hsr");
 
   const messageGroup = await getHSRData<IMessages>({
     resource: "messages",
@@ -89,11 +89,7 @@ export default async function CharacterPage({ params }: Props) {
         {messageGroup.sections.map((section, i) => (
           <div key={section.id} className="mt-4">
             <h2 className="text-3xl font-semibold uppercase text-slate-100">
-              {t({
-                id: "section",
-                defaultMessage: "Section {sectionNumber}",
-                values: { sectionNumber: `${i + 1}` },
-              })}
+              {t("section", { sectionNumber: `${i + 1}` })}
             </h2>
             <menu className="mt-4 flex flex-col gap-4">
               <Messages
@@ -107,28 +103,20 @@ export default async function CharacterPage({ params }: Props) {
       {messageGroup.relatedMessages && (
         <div className="mt-4">
           <h2 className="text-3xl font-semibold uppercase text-slate-100">
-            {t({
-              id: "related_messages",
-              defaultMessage: "Related Messages",
-            })}
+            {t("related_messages")}
           </h2>
           <menu className="flex flex-col">
             {messageGroup.relatedMessages.map((message, i) => (
               <Link
-                href={`/${lang}/hsr/message/${message}`}
+                href={`/hsr/message/${message}`}
                 key={message}
-                prefetch={false}
                 className={
                   message === messageGroup.id
                     ? "m-1 bg-accent p-2 text-accent-foreground"
                     : "m-1 bg-card p-2"
                 }
               >
-                {t({
-                  id: "message",
-                  defaultMessage: "Message {messageNumber}",
-                  values: { messageNumber: `${i + 1}` },
-                })}
+                {t("message", { messageNumber: `${i + 1}` })}
               </Link>
             ))}
           </menu>

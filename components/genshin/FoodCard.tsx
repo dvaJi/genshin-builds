@@ -1,8 +1,7 @@
 import clsx from "clsx";
-import Link from "next/link";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import { getUrl } from "@lib/imgUrl";
 
 import SimpleRarityBox from "../SimpleRarityBox";
@@ -14,14 +13,13 @@ interface FoodCardProps {
 }
 
 const FoodCard = ({ item }: FoodCardProps) => {
-  const { locale } = useIntl("food");
   return (
     <div className="mb-2 flex flex-col rounded border border-vulcan-700 bg-vulcan-800">
       <div className="flex h-full flex-row">
         <div
           className={clsx(
             "relative flex flex-none items-center justify-center rounded rounded-br-none rounded-tr-none bg-cover",
-            `genshin-bg-rarity-${item.rarity}`
+            `genshin-bg-rarity-${item.rarity}`,
           )}
         >
           <Image
@@ -50,16 +48,13 @@ const FoodCard = ({ item }: FoodCardProps) => {
           />
           {item.character && (
             <div className="bottom-0 right-0 float-right">
-              <Link
-                href={`/${locale}/character/${item.character.id}`}
-                prefetch={false}
-              >
+              <Link href={`/character/${item.character.id}`}>
                 <div className="group overflow-hidden rounded-full border-4 border-transparent transition hover:border-vulcan-500 hover:shadow-xl">
                   <SimpleRarityBox
                     img={getUrl(
                       `/characters/${item.character.id}/image.png`,
                       48,
-                      48
+                      48,
                     )}
                     alt={item.character.name}
                     rarity={0}

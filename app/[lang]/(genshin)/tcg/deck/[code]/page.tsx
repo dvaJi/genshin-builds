@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import Button from "@components/ui/Button";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type {
   TCGActionCard,
   TCGCard,
@@ -26,29 +27,28 @@ type Props = {
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
-  const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "tcg_cards");
-  const title = t({
-    id: "title",
-    defaultMessage: "Genius Invokation TCG Card Game",
+  const { lang, code } = await params;
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.tcg_cards",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Genius Invokation TCG is a new card game feature in Genshin Impact. Guide includes what is the Genius Invocation TCG, character card game, how to get cards!",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
-    path: `/tcg`,
-    locale,
+    path: `/tcg/deck/${code}`,
+    locale: lang,
   });
 }
 
 export default async function GenshinTCG({ params }: Props) {
   const { lang, code } = await params;
-  const { t, langData } = await getTranslations(lang, "genshin", "tcg_cards");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.tcg_cards");
+  const langData = getLangData(lang, "genshin");
 
   const acards = await getGenshinData<TCGActionCard[]>({
     resource: "tcgActions",
@@ -64,7 +64,7 @@ export default async function GenshinTCG({ params }: Props) {
   const cards = [...acards, ...ccards];
 
   const cardsMapById = Object.fromEntries(
-    cards.map((card) => [card.id, card])
+    cards.map((card) => [card.id, card]),
   ) as Record<string, TCGCard>;
 
   const CARD_ORDER = cards
@@ -73,12 +73,12 @@ export default async function GenshinTCG({ params }: Props) {
     .map((card) => card.id);
 
   const CARD_BY_ENCODE_ID: Record<number, string> = Object.fromEntries(
-    CARD_ORDER.map((card, index) => [index + 1, card])
+    CARD_ORDER.map((card, index) => [index + 1, card]),
   );
 
   const decodedDeck = decodeDeckCode(
     decodeURIComponent(code),
-    CARD_BY_ENCODE_ID
+    CARD_BY_ENCODE_ID,
   );
 
   return (
@@ -89,22 +89,21 @@ export default async function GenshinTCG({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "deck", defaultMessage: "Deck" })}:{" "}
+        {t("deck")}:{" "}
         {decodedDeck.characterCards
           .map((card) => cardsMapById[card].name)
           .join(" / ")}
       </h2>
-      <Link href={`/${lang}/tcg/deck-builder?code=${code}`} prefetch={false}>
-        <Button>Edit</Button>
+      <Link href={`/tcg/deck-builder?code=${code}`} prefetch={false}>
+        <Button>{t("edit")}</Button>
       </Link>
       <div className="card flex flex-wrap content-center justify-center">
         <div className="flex flex-wrap content-center justify-center">
           {decodedDeck.characterCards.map((card) => (
             <Link
               key={card}
-              href={`/${lang}/tcg/card/${card}`}
+              href={`/tcg/card/${card}`}
               className="group relative cursor-pointer transition-all"
-              prefetch={false}
             >
               <Image
                 src={getUrl(`/tcg/${card}.png`, 170, 310)}
@@ -124,9 +123,8 @@ export default async function GenshinTCG({ params }: Props) {
           {Object.entries(decodedDeck.actionCards).map(([card, amount]) => (
             <Link
               key={card}
-              href={`/${lang}/tcg/card/${card}`}
+              href={`/tcg/card/${card}`}
               className="group relative m-2 w-20 cursor-pointer transition-all hover:scale-110"
-              prefetch={false}
             >
               <Image
                 src={getUrl(`/tcg/${card}.png`, 150, 90)}

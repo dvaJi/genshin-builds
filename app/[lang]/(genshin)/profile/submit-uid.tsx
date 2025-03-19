@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
@@ -17,7 +18,6 @@ import {
 } from "@app/components/ui/card";
 import { Input } from "@app/components/ui/input";
 import { Label } from "@app/components/ui/label";
-import useIntl from "@hooks/use-intl";
 
 const initialState = {
   message: "",
@@ -25,23 +25,20 @@ const initialState = {
 };
 
 function SubmitButton() {
-  const { t } = useIntl("profile");
+  const t = useTranslations("Genshin.profile");
   const { pending } = useFormStatus();
 
   return (
     <Button type="submit" className="w-full" disabled={pending}>
       {pending && <FaSpinner className="mr-2 h-4 w-4 animate-spin" />}
-      {t({
-        id: "submit",
-        defaultMessage: "Submit",
-      })}
+      {t("submit")}
     </Button>
   );
 }
 
 export function SubmitGenshinUidForm() {
   const [state, formAction] = useActionState(submitGenshinUID, initialState);
-  const { t } = useIntl("profile");
+  const t = useTranslations("Genshin.profile");
 
   if (state?.message === "Success") {
     redirect(`/profile/${state.uid}`);
@@ -57,22 +54,18 @@ export function SubmitGenshinUidForm() {
 
       <Card>
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Enter Your UID</CardTitle>
-          <CardDescription>
-            Your UID can be found in the game&apos;s profile section
-          </CardDescription>
+          <CardTitle className="text-2xl">{t("submit_uid")}</CardTitle>
+          <CardDescription>{t("submit_uid_desc")}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="uid">
-                {t({ id: "uid", defaultMessage: "UID" })}
-              </Label>
+              <Label htmlFor="uid">{t("uid")}</Label>
               <Input
                 id="uid"
                 name="uid"
                 type="text"
-                placeholder="Enter your UID"
+                placeholder={t("submit_uid")}
                 required
                 className="w-full"
               />

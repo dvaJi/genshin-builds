@@ -1,10 +1,10 @@
 import { desc } from "drizzle-orm";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Button from "@components/ui/Button";
-import getTranslations from "@hooks/use-translations";
+import { Link } from "@i18n/navigation";
 import { db } from "@lib/db";
 import { players } from "@lib/db/schema";
 
@@ -21,38 +21,31 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "leaderboard_profiles"
-  );
-  const title = t({
-    id: "title",
-    defaultMessage: "Genshin Impact Profiles Lookup",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.leaderboard_profiles",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Discover how to add your Genshin Impact account to GenshinBuilds for profile lookup. Ensure your in-game profile settings are correctly configured. Learn about updating showcases, using in-game nicknames, UIDs, and Enka.Network's profile names.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/leaderboard/profiles`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function ProfilesAchievementsPage({
-  params,
+  // params,
   searchParams,
 }: Props) {
-  const { lang } = await params;
+  // const { lang } = await params;
   const { page } = await searchParams;
+  const t = await getTranslations("Genshin.leaderboard_profiles");
 
   if (page && (isNaN(Number(page)) || Number(page) < 1)) {
-    return <div>Invalid page number</div>;
+    return <div>{t("invalid_page_number")}</div>;
   }
 
   // const totalPlayers = await db.select({ count: count() }).from(players);
@@ -66,18 +59,10 @@ export default async function ProfilesAchievementsPage({
   return (
     <div>
       <div className="card">
-        <h1 className="text-2xl font-semibold text-gray-200">
-          Genshin Impact Profiles Lookup
-        </h1>
-        <p>
-          Learn how to add your Genshin Impact account to Genshin-Builds for
-          profile lookup. Ensure your in-game profile settings are correctly
-          configured to enable access. Please note that Genshin showcases may
-          take up to 5 minutes to update. Use in-game account UID for profile
-          lookup.
-        </p>
-        <Link href={`/${lang}/profile`} prefetch={false}>
-          <Button className="mt-4">Add your profile</Button>
+        <h1 className="text-2xl font-semibold text-gray-200">{t("title")}</h1>
+        <p>{t("description")}</p>
+        <Link href={`/profile`} prefetch={false}>
+          <Button className="mt-4">{t("add_profile")}</Button>
         </Link>
       </div>
       <ProfileTable data={playersData} />
@@ -90,7 +75,7 @@ export default async function ProfilesAchievementsPage({
             className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
             disabled={(page ?? "1") === "1"}
           >
-            Previous
+            {t("previous")}
           </button>
         </Link>
         {/* <span className="mx-2 text-lg">{pagination.pageIndex + 1}</span> */}
@@ -102,7 +87,7 @@ export default async function ProfilesAchievementsPage({
             className="rounded border border-vulcan-600 p-1 transition-colors hover:border-vulcan-500 hover:bg-vulcan-500 disabled:opacity-50"
             disabled={playersData.length < 20}
           >
-            Next
+            {t("next")}
           </button>
         </Link>
       </div>

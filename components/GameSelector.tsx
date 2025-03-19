@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { GAME, GameProps } from "utils/games";
 
 import {
@@ -10,7 +9,7 @@ import {
   SelectTrigger,
 } from "@app/components/ui/select";
 import { cn } from "@app/lib/utils";
-import useIntl from "@hooks/use-intl";
+import { useRouter } from "@i18n/navigation";
 
 import Image from "./genshin/Image";
 
@@ -21,7 +20,6 @@ type Props = {
 };
 
 function GameSelector({ currentGame, buttonClassName }: Props) {
-  const { locale } = useIntl("layout");
   const router = useRouter();
 
   return (
@@ -30,7 +28,7 @@ function GameSelector({ currentGame, buttonClassName }: Props) {
       onValueChange={(value) => {
         const game = Object.values(GAME).find((g) => g.slug === value);
         if (game) {
-          router.push(`/${locale}${game.path}`);
+          router.push(game.path);
         }
       }}
     >
@@ -50,8 +48,8 @@ function GameSelector({ currentGame, buttonClassName }: Props) {
         />
         <span className="ml-3 hidden lg:inline-block">{currentGame.name}</span>
       </SelectTrigger>
-      <SelectContent 
-        className="border border-border bg-card z-[100]" 
+      <SelectContent
+        className="z-[100] border border-border bg-card"
         align="start"
         onClick={(e) => e.stopPropagation()}
       >

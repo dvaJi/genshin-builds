@@ -1,16 +1,16 @@
 "use client";
 
-import type { Weapon } from "@interfaces/genshin";
+import clsx from "clsx";
+import { Roles, TierNums, TierlistWeapons } from "interfaces/tierlist";
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import WeaponsTier from "@components/genshin/WeaponsTier";
-import useIntl from "@hooks/use-intl";
+import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
-import clsx from "clsx";
-import { Roles, TierNums, TierlistWeapons } from "interfaces/tierlist";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -28,7 +28,7 @@ export default function GenshinTierlistWeaponsView({
 }: Props) {
   const [typeFilter, setTypeFilter] = useState("sword");
   const [selectedCol, setSelectedCol] = useState<Roles>(Roles.maindps);
-  const { t } = useIntl("tierlist_weapons");
+  const t = useTranslations("Genshin.tierlist_weapons");
 
   const changeTierTab = (role: Roles) => {
     setSelectedCol(role);
@@ -44,7 +44,7 @@ export default function GenshinTierlistWeaponsView({
               "mr-1 rounded border hover:border-gray-700 hover:bg-vulcan-800",
               type.toLowerCase() === typeFilter
                 ? "border-gray-700 bg-vulcan-800"
-                : "border-gray-800"
+                : "border-gray-800",
             )}
             onClick={() => {
               trackClick(`tierlist_${type}`);
@@ -69,7 +69,7 @@ export default function GenshinTierlistWeaponsView({
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5",
             "pointer-events-auto lg:pointer-events-none",
-            selectedCol !== Roles.maindps ? "opacity-50 lg:opacity-100" : ""
+            selectedCol !== Roles.maindps ? "opacity-50 lg:opacity-100" : "",
           )}
           onClick={() => {
             trackClick(`tierlist_${Roles.maindps}`);
@@ -77,14 +77,14 @@ export default function GenshinTierlistWeaponsView({
           }}
         >
           <h3 className="text-center text-lg font-semibold text-white">
-            {t({ id: "main_dps", defaultMessage: "Main DPS" })}
+            {t("main_dps")}
           </h3>
         </button>
         <button
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5",
             "pointer-events-auto lg:pointer-events-none",
-            selectedCol !== Roles.subdps ? "opacity-50 lg:opacity-100" : ""
+            selectedCol !== Roles.subdps ? "opacity-50 lg:opacity-100" : "",
           )}
           onClick={() => {
             trackClick(`tierlist_${Roles.subdps}`);
@@ -92,14 +92,14 @@ export default function GenshinTierlistWeaponsView({
           }}
         >
           <h3 className="text-center text-lg font-semibold text-white">
-            {t({ id: "sub_dps", defaultMessage: "Sub DPS" })}
+            {t("sub_dps")}
           </h3>
         </button>
         <button
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5",
             "pointer-events-auto lg:pointer-events-none",
-            selectedCol !== Roles.support ? "opacity-50 lg:opacity-100" : ""
+            selectedCol !== Roles.support ? "opacity-50 lg:opacity-100" : "",
           )}
           onClick={() => {
             trackClick(`tierlist_${Roles.support}`);
@@ -107,7 +107,7 @@ export default function GenshinTierlistWeaponsView({
           }}
         >
           <h3 className="text-center text-lg font-semibold text-white">
-            {t({ id: "support", defaultMessage: "Support" })}
+            {t("support")}
           </h3>
         </button>
       </div>

@@ -1,11 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { memo } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 
-import useIntl from "@hooks/use-intl";
 import type { TCGCard } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 import { useStore } from "@nanostores/react";
@@ -22,7 +22,7 @@ type Props = {
 
 function MyDeck({ cardsMapById }: Props) {
   const deckBuilder = useStore($deckBuilder);
-  const { t } = useIntl("tcg_deck_builder");
+  const t = useTranslations("Genshin.tcg_deck_builder");
 
   return (
     <div>

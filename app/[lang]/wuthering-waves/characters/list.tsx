@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from "@components/ui/select";
 import Image from "@components/wuthering-waves/Image";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { Characters } from "@interfaces/wuthering-waves/characters";
 import { cn } from "@lib/utils";
 
@@ -35,7 +35,7 @@ type Props = {
 type SortOption = "name" | "rarity" | "release";
 
 export default function WWCharactersList({ characters }: Props) {
-  const { t, locale } = useIntl("home");
+  const t = useTranslations("WW.home");
   const [nameFilter, setNameFilter] = useState<string>("");
   const [rarityFilter, setRarityFilter] = useState<number[]>([]);
   const [sortBy, setSortBy] = useState<SortOption>("rarity");
@@ -71,17 +71,17 @@ export default function WWCharactersList({ characters }: Props) {
   }[] = [
     {
       value: "release",
-      label: t({ id: "sort_release", defaultMessage: "Release Date" }),
+      label: t("sort_release"),
       icon: <LuText className="h-4 w-4" />,
     },
     {
       value: "name",
-      label: t({ id: "sort_name", defaultMessage: "Name" }),
+      label: t("sort_name"),
       icon: <LuText className="h-4 w-4" />,
     },
     {
       value: "rarity",
-      label: t({ id: "sort_rarity", defaultMessage: "Rarity" }),
+      label: t("sort_rarity"),
       icon: <LuSparkles className="h-4 w-4" />,
     },
   ];
@@ -95,10 +95,7 @@ export default function WWCharactersList({ characters }: Props) {
             <HiMagnifyingGlass className="absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground sm:left-2.5 sm:h-4 sm:w-4" />
             <Input
               type="text"
-              placeholder={t({
-                id: "search",
-                defaultMessage: "Search characters...",
-              })}
+              placeholder={t("search")}
               value={nameFilter}
               onChange={(e) => setNameFilter(e.target.value)}
               className="h-8 w-full pl-7 text-xs sm:h-9 sm:pl-8 sm:text-sm md:h-10 md:text-base"
@@ -138,10 +135,7 @@ export default function WWCharactersList({ characters }: Props) {
                 "flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background text-foreground transition-colors hover:bg-accent sm:h-9 sm:w-9 md:h-10 md:w-10",
                 sortAsc && "text-primary hover:text-accent-foreground",
               )}
-              title={t({
-                id: sortAsc ? "sort_ascending" : "sort_descending",
-                defaultMessage: sortAsc ? "Sort Ascending" : "Sort Descending",
-              })}
+              title={sortAsc ? t("sort_ascending") : t("sort_descending")}
             >
               <LuArrowUpDown
                 className={cn(
@@ -157,7 +151,7 @@ export default function WWCharactersList({ characters }: Props) {
         <Collapsible className="sm:hidden">
           <CollapsibleTrigger className="relative flex w-full items-center justify-between rounded-lg border border-input bg-card/50 p-3 text-sm font-medium text-foreground hover:bg-accent/5 active:translate-y-[1px] active:bg-accent/10">
             <div className="flex items-center gap-2">
-              <span>Filters</span>
+              <span>{t("filters")}</span>
               {rarityFilter.length > 0 && (
                 <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-accent/90 px-1.5 text-xs font-medium text-accent-foreground">
                   {rarityFilter.length}
@@ -172,7 +166,7 @@ export default function WWCharactersList({ characters }: Props) {
               {/* Rarity Filter */}
               <div className="space-y-1.5">
                 <h3 className="text-xs font-medium text-foreground/70">
-                  {t({ id: "rarity_filter", defaultMessage: "Rarity Filter" })}
+                  {t("rarity_filter")}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {[5, 4].map((rarity) => (
@@ -211,7 +205,7 @@ export default function WWCharactersList({ characters }: Props) {
             {/* Rarity Filter */}
             <div className="space-y-2 sm:space-y-3">
               <h3 className="text-xs font-medium text-foreground/70 sm:text-sm">
-                {t({ id: "rarity_filter", defaultMessage: "Rarity Filter" })}
+                {t("rarity_filter")}
               </h3>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {[5, 4].map((rarity) => (
@@ -264,7 +258,7 @@ export default function WWCharactersList({ characters }: Props) {
               onClick={() => setRarityFilter([])}
               className="text-[10px] text-muted-foreground hover:text-foreground sm:text-xs"
             >
-              {t({ id: "clear_all", defaultMessage: "Clear all" })}
+              {t("clear_all")}
             </button>
           </div>
         )}
@@ -274,7 +268,7 @@ export default function WWCharactersList({ characters }: Props) {
           {filteredAndSortedCharacters.map((char) => (
             <Link
               key={char.id}
-              href={`/${locale}/wuthering-waves/characters/${char.id}`}
+              href={`/wuthering-waves/characters/${char.id}`}
               className="group flex flex-col items-center justify-center gap-1.5"
               title={`${char.name} build`}
             >
@@ -304,16 +298,10 @@ export default function WWCharactersList({ characters }: Props) {
         {filteredAndSortedCharacters.length === 0 && (
           <div className="rounded-lg border border-input bg-card/50 px-4 py-8 text-center sm:px-6 sm:py-12">
             <h3 className="text-base font-medium text-foreground/80 sm:text-lg">
-              {t({
-                id: "no_characters_found",
-                defaultMessage: "No characters found",
-              })}
+              {t("no_characters_found")}
             </h3>
             <p className="mt-1 text-sm text-muted-foreground sm:mt-2">
-              {t({
-                id: "try_adjusting_filters",
-                defaultMessage: "Try adjusting your filters or search term",
-              })}
+              {t("try_adjusting_filters")}
             </p>
           </div>
         )}

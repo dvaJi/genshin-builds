@@ -1,8 +1,9 @@
+import { routing } from "i18n/routing";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { notFound } from "next/navigation";
 import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
-import IntlProvider from "@components/IntlProvider";
-import getTranslations from "@hooks/use-translations";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
 import Footer from "./footer";
@@ -16,7 +17,9 @@ type Props = {
 
 export default async function GenshinLayout({ children, params }: Props) {
   const { lang } = await params;
-  const { messages, common } = await getTranslations(lang, "genshin", "layout");
+  if (!hasLocale(routing.locales, lang)) {
+    notFound();
+  }
 
   const jsonLd: WithContext<VideoGame> = {
     "@context": "https://schema.org",
@@ -35,12 +38,7 @@ export default async function GenshinLayout({ children, params }: Props) {
   };
 
   return (
-    <IntlProvider
-      locale={lang}
-      messages={messages}
-      common={common}
-      game="genshin"
-    >
+    <NextIntlClientProvider>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <script
         type="application/ld+json"
@@ -58,6 +56,6 @@ export default async function GenshinLayout({ children, params }: Props) {
 
         <Footer />
       </div>
-    </IntlProvider>
+    </NextIntlClientProvider>
   );
 }

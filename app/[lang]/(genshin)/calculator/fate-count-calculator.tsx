@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { type ReactNode, useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
@@ -11,7 +12,6 @@ import {
   TooltipTrigger,
 } from "@app/components/ui/tooltip";
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 import { calculateFateCount } from "./actions";
@@ -41,7 +41,7 @@ function SubmitButton({ text }: { text: ReactNode }) {
 }
 
 export function FateCountCalculatorForm() {
-  const { t } = useIntl("calculator");
+  const t = useTranslations("Genshin.calculator");
   const [state, formAction] = useActionState(calculateFateCount, initialState);
   const [formValues, setFormValues] = useState({
     intertwinedFate: 0,

@@ -1,14 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import CharacterPortrait from "@components/tof/CharacterPortrait";
 import Image from "@components/tof/Image";
 import FrstAds from "@components/ui/FrstAds";
 import useDebounce from "@hooks/use-debounce";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { Characters } from "@interfaces/tof/characters";
 import { slugify2 } from "@utils/hash";
 import { getRarityColor } from "@utils/rarity";
@@ -23,7 +22,6 @@ export default function CharactersList({ characters }: Props) {
   const [rarityFilter, setRarityFilter] = useState<number | null>(null);
   const [elementFilter, setElementFilter] = useState("");
   const [resonanceFilter, setResonanceFilter] = useState("");
-  const { t, locale } = useIntl("characters");
 
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
@@ -57,7 +55,7 @@ export default function CharactersList({ characters }: Props) {
         })
         .sort((a, b) => {
           return b.rarity - a.rarity || a.name.localeCompare(b.name);
-        })
+        }),
     );
   };
 
@@ -98,7 +96,7 @@ export default function CharactersList({ characters }: Props) {
               className={clsx(
                 "mr-2 px-2 py-1 text-xl hover:bg-tof-700",
                 rarity.value === rarityFilter && "bg-tof-700",
-                getRarityColor(rarity.label)
+                getRarityColor(rarity.label),
               )}
               key={rarity.value}
               onClick={() => {
@@ -118,7 +116,7 @@ export default function CharactersList({ characters }: Props) {
             <button
               className={clsx(
                 "mr-2 px-2 py-1 text-xl hover:bg-tof-700",
-                element.value === elementFilter && "bg-tof-700"
+                element.value === elementFilter && "bg-tof-700",
               )}
               key={element.value}
               onClick={() => {
@@ -144,7 +142,7 @@ export default function CharactersList({ characters }: Props) {
             <button
               className={clsx(
                 "mr-2 px-2 py-1 text-xl hover:bg-tof-700",
-                resonance.value === resonanceFilter && "bg-tof-700"
+                resonance.value === resonanceFilter && "bg-tof-700",
               )}
               key={resonance.value}
               onClick={() => {
@@ -168,7 +166,7 @@ export default function CharactersList({ characters }: Props) {
         <input
           type="text"
           className="rounded border-opacity-50 bg-vulcan-700 px-2 py-1 text-white"
-          placeholder={t({ id: "search", defaultMessage: "Search..." })}
+          placeholder="Search by name"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -181,7 +179,7 @@ export default function CharactersList({ characters }: Props) {
         {filteredCharacters.map((character) => (
           <Link
             key={character.id}
-            href={`/${locale}/tof/character/${slugify2(character.name)}`}
+            href={`/tof/character/${slugify2(character.name)}`}
             prefetch={false}
           >
             <CharacterPortrait character={character} key={character.id} />

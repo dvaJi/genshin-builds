@@ -1,5 +1,6 @@
 import { Profile } from "interfaces/profile";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { submitGenshinUID } from "@app/actions";
@@ -19,7 +20,7 @@ import ProfileBuildsTable from "@components/genshin/ProfileBuildsTable";
 import ProfileFavorites from "@components/genshin/ProfileFavorites";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getBuild, getPlayer } from "@lib/genshinShowcase";
 import { getUrl, getUrlLQ } from "@lib/imgUrl";
@@ -35,40 +36,35 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, uid } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "profile");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.profile",
+  });
+
   const _player = await getPlayer(uid);
 
   if (!_player || !_player.length) return undefined;
 
   const player = _player[0];
 
-  const title = t({
-    id: "title",
-    defaultMessage: "{name} Genshin Impact Showcase",
-    values: { name: player.nickname },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage: "Genshin Impact Showcase for {name}",
-    values: { name: player.nickname },
-  });
+  const title = t("title_detail", { name: player.nickname });
+  const description = t("description", { name: player.nickname });
 
   return genPageMetadata({
     title,
     description,
     path: `/profile/${uid}`,
     image: getUrl(`/profile/${player.namecardId}_1.png`),
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinPlayerProfile({ params }: Props) {
   const { lang, uid } = await params;
-  const { langData, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "profile"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.profile");
+  const langData = getLangData(lang, "genshin");
 
   if (!uid || !/^\d{6,10}$/.test(uid.toString())) {
     console.log("Invalid UID", uid);
@@ -132,7 +128,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
                         src={getUrl(
                           `/profile/${profile.profileCostumeId || profile.profilePictureId}.png`,
                           142,
-                          142
+                          142,
                         )}
                       />
                       <AvatarFallback>
@@ -156,7 +152,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <span>UID: {uid}</span>
                     <span>•</span>
-                    <TimeAgo date={profile.updatedAt} locale={locale} />
+                    <TimeAgo date={profile.updatedAt} locale={lang} />
                   </div>
                   <h2 className="text-2xl font-bold text-primary-foreground">
                     {profile.nickname}
@@ -191,8 +187,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
       {profile.builds.length === 0 ? (
         <Card className="relative z-10 mx-auto mt-4 max-w-xl">
           <CardContent className="p-6 text-center text-muted-foreground">
-            Please enable the &quot;Show Character Details&quot; option in your
-            Character Showcase in-game to see the details.
+            {t("no_builds")}
           </CardContent>
         </Card>
       ) : null}

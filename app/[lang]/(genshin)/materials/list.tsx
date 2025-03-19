@@ -1,11 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import SearchInput from "@components/SearchInput";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import useDebounce from "@hooks/use-debounce";
-import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 import { Material } from "@utils/materials";
 
@@ -17,7 +17,7 @@ export default function GenshinMaterialsList({ materials }: Props) {
   const [filteredMaterials, setMaterials] = useState(materials);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
-  const { t } = useIntl("materials");
+  const t = useTranslations("Genshin.materials");
 
   useEffect(() => {
     setMaterials(
@@ -31,7 +31,7 @@ export default function GenshinMaterialsList({ materials }: Props) {
         }
 
         return nameFilter && typeFil;
-      })
+      }),
     );
   }, [debouncedSearchTerm, materials]);
 
@@ -40,7 +40,7 @@ export default function GenshinMaterialsList({ materials }: Props) {
       <SearchInput
         value={searchTerm}
         setValue={setSearchTerm}
-        placeholder={t({ id: "search", defaultMessage: "Search..." })}
+        placeholder={t("search")}
       />
       <div className="flex flex-wrap justify-center">
         {filteredMaterials.map((material) => (

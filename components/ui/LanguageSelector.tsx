@@ -1,12 +1,11 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { memo, useCallback, useState } from "react";
+import { useLocale } from "next-intl";
+import { memo, startTransition, useCallback, useMemo, useState } from "react";
 
 import { useClickOutside } from "@hooks/use-clickoutside";
-import useIntl from "@hooks/use-intl";
+import { useRouter } from "@i18n/navigation";
 
 const languages = [
   { id: "en", name: "English" },
@@ -27,27 +26,37 @@ const languages = [
 ];
 
 function LanguageSelector() {
-  const { locale } = useIntl("layout");
-  const pathName = usePathname();
-  const redirectedPathName = (locale: string) => {
-    if (!pathName) return "/";
-    const segments = pathName.split("/");
-    segments[1] = locale;
-    return segments.join("/");
-  };
-
   const [isOpen, setIsOpen] = useState(false);
   const close = useCallback(() => setIsOpen(false), []);
+
+  const router = useRouter();
+  const locale = useLocale();
+
   const contentRef = useClickOutside(isOpen ? close : undefined, []);
 
-  const current = languages.find((lang) => lang.id === locale) || languages[0];
+  const current = useMemo(
+    () => languages.find((lang) => lang.id === locale) || languages[0],
+    [locale],
+  );
+
+  function onSelectChange(nextLocale: string) {
+    startTransition(() => {
+      router.replace(
+        // @ts-expect-error -- TypeScript will validate that only known `params`
+        // are used in combination with a given `pathname`. Since the two will
+        // always match for the current route, we can skip runtime checks.
+        { pathname, params },
+        { locale: nextLocale },
+      );
+    });
+  }
 
   return (
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
         data-dropdown-toggle="dropdown"
-        className="border-border bg-secondary/30 text-foreground hover:bg-secondary/50 focus:ring-ring inline-flex items-center rounded-lg border px-5 py-2.5 text-center focus:outline-none focus:ring-2"
+        className="inline-flex items-center rounded-lg border border-border bg-secondary/30 px-5 py-2.5 text-center text-foreground hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-ring"
         type="button"
         ref={contentRef as any}
       >
@@ -55,20 +64,18 @@ function LanguageSelector() {
       </button>
       <div
         className={clsx(
-          "divide-border bg-card z-10 divide-y rounded-lg shadow-lg lg:w-60",
-          isOpen ? "block" : "hidden"
+          "z-10 divide-y divide-border rounded-lg bg-card shadow-lg lg:w-60",
+          isOpen ? "block" : "hidden",
         )}
       >
-        <ul className="text-card-foreground py-2 text-sm">
+        <ul className="py-2 text-sm text-card-foreground">
           {languages.map((option) => (
-            <li key={option.id} className="">
-              <Link
-                href={redirectedPathName(option.id)}
-                className="hover:bg-foreground/10 block px-4 py-2"
-                prefetch={false}
-              >
-                {option.name}
-              </Link>
+            <li
+              key={option.id}
+              className="block px-4 py-2 hover:bg-foreground/10"
+              onClick={() => onSelectChange(option.id)}
+            >
+              {option.name}
             </li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
@@ -7,7 +8,6 @@ import { useFormStatus } from "react-dom";
 import { submitHSRUID } from "@app/actions";
 import { Button } from "@app/components/ui/button";
 import { Input } from "@app/components/ui/input";
-import useIntl from "@hooks/use-intl";
 
 const initialState = {
   message: "",
@@ -15,26 +15,18 @@ const initialState = {
 };
 
 function SubmitButton() {
-  const { t } = useIntl("showcase");
+  const t = useTranslations("HSR.showcase");
   const { pending } = useFormStatus();
 
   return (
     <Button type="submit" disabled={pending}>
-      {pending
-        ? t({
-            id: "loading",
-            defaultMessage: "Loading...",
-          })
-        : t({
-            id: "submit",
-            defaultMessage: "Submit",
-          })}
+      {pending ? t("loading") : t("submit")}
     </Button>
   );
 }
 
 export function SubmitUidForm() {
-  const { t } = useIntl("showcase");
+  const t = useTranslations("HSR.showcase");
   const [state, formAction] = useActionState(submitHSRUID, initialState);
 
   if (state?.message === "Success") {
@@ -57,10 +49,7 @@ export function SubmitUidForm() {
           type="text"
           id="uid"
           name="uid"
-          placeholder={t({
-            id: "enter_uid_input",
-            defaultMessage: "Enter UID",
-          })}
+          placeholder={t("enter_uid_input")}
           required
         />
       </div>

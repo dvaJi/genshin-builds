@@ -1,10 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { memo, useMemo } from "react";
 import { Tooltip } from "react-tooltip";
 
-import useIntl from "@hooks/use-intl";
 import type { TCGCard } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 import { useStore } from "@nanostores/react";
@@ -16,7 +16,7 @@ type Props = {
 
 function Analytics({ cardsMapById }: Props) {
   const deck = useStore($deckBuilder);
-  const { t } = useIntl("tcg_deck_builder");
+  const t = useTranslations("Genshin.tcg_deck_builder");
 
   const stats = useMemo(() => {
     let totalCharacterCards = 0;

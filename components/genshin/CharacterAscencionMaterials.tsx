@@ -1,9 +1,9 @@
 "use client";
 
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
 import type { Ascension } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 import type { AscensionTotal } from "@utils/totals";
@@ -16,7 +16,7 @@ type Props = {
 };
 
 const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
-  const { t } = useIntl("character");
+  const t = useTranslations("Genshin.character");
 
   return (
     <>
@@ -99,7 +99,7 @@ const CharacterAscencionMaterials = ({ ascension, ascensionTotal }: Props) => {
       ))}
       <div className="grid grid-cols-[0.8fr_repeat(5,1fr)] items-center gap-1 rounded-b bg-muted px-2 py-3 sm:grid-cols-6 sm:gap-2 sm:px-4 sm:py-4 lg:grid-cols-10">
         <div className="flex items-center justify-center text-xs font-bold uppercase sm:text-sm lg:text-base">
-          {t({ id: "total", defaultMessage: "Total" })}
+          {t("total")}
         </div>
         <div className="flex items-center justify-center">
           <SimpleRarityBox

@@ -1,7 +1,6 @@
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 import { CgArrowLongRight } from "react-icons/cg";
-
-import useIntl from "@hooks/use-intl";
 
 import Image from "./Image";
 
@@ -10,15 +9,12 @@ type Props = {
 };
 
 function TodoItemLevels({ levels }: Props) {
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
 
   return (
     <div>
       <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        {t({
-          id: "levels",
-          defaultMessage: "Levels",
-        })}
+        {t("levels")}
       </div>
       <div className="flex items-center space-x-2 text-sm font-medium">
         <span>{levels[0]}</span>
@@ -29,7 +25,7 @@ function TodoItemLevels({ levels }: Props) {
             <Image
               src="/ascension.png"
               className="ml-1 h-3 w-3"
-              alt="ascension"
+              alt={t("ascension")}
               width={16}
               height={16}
             />

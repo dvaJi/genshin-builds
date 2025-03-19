@@ -1,9 +1,9 @@
+import { useTranslations } from "next-intl";
 import { memo, useCallback } from "react";
 import { CgChevronLeft, CgChevronRight } from "react-icons/cg";
 
 import { Button } from "@app/components/ui/button";
 import { cn } from "@app/lib/utils";
-import useIntl from "@hooks/use-intl";
 import type { Todo } from "@state/todo";
 
 import Image from "./Image";
@@ -28,7 +28,7 @@ const TodoItem = ({
   updateTodoResourcesById: (id: string, newData: any) => void;
   materialsMap: Record<string, any>;
 }) => {
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
 
   // Extract the todo ID for dependency arrays
   const todoId = todo[0].id;
@@ -128,10 +128,7 @@ const TodoItem = ({
               onClick={handleDelete}
               className="w-full justify-center bg-destructive/10 text-destructive hover:bg-destructive/20"
             >
-              {t({
-                id: "delete",
-                defaultMessage: "Delete",
-              })}
+              {t("delete")}
             </Button>
           </div>
         </div>

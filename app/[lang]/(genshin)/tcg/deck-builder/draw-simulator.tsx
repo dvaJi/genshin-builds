@@ -1,13 +1,12 @@
 "use client";
 
-import { useStore } from "@nanostores/react";
-import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import Image from "@components/genshin/Image";
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import type { TCGCard } from "@interfaces/genshin";
-import { getUrl } from "@lib/imgUrl";
+import { useStore } from "@nanostores/react";
 import { $deckBuilder } from "@state/deck-builder";
 
 type Props = {
@@ -17,12 +16,12 @@ type Props = {
 function DrawSimulator({}: Props) {
   const deckBuilder = useStore($deckBuilder);
   const [drawCards, setDrawCards] = useState<string[]>([]);
-  const { t } = useIntl("tcg_deck_builder");
+  const t = useTranslations("Genshin.tcg_deck_builder");
 
   const allCards = [
     deckBuilder.characterCards,
     Object.entries(deckBuilder.actionCards).flatMap(([id, count]) =>
-      Array(count).fill(id)
+      Array(count).fill(id),
     ),
   ]
     .flat()
@@ -38,7 +37,7 @@ function DrawSimulator({}: Props) {
         {drawCards.map((cardId, i) => (
           <div key={cardId + i}>
             <Image
-              src={getUrl(`/tcg/${cardId}.png`, 170, 310)}
+              src={`/tcg/${cardId}.png`}
               alt={cardId}
               width={50}
               height={100}

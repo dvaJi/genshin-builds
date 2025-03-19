@@ -1,10 +1,12 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Button } from "@app/components/ui/button";
 import { Card, CardContent } from "@app/components/ui/card";
+import { Link } from "@i18n/navigation";
 
 export default function NotFound() {
+  const t = useTranslations("Genshin.profile");
   return (
     <Card className="relative mx-auto max-w-md overflow-hidden">
       <CardContent className="p-6">
@@ -17,15 +19,14 @@ export default function NotFound() {
         />
         <div className="relative z-10 text-center">
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Profile not found!
+            {t("profile_not_found")}
           </h2>
           <p className="mb-6 text-lg text-muted-foreground">
-            This profile currently does not exist. If you want to create it,
-            please submit your UID.
+            {t("profile_not_found_desc")}
           </p>
-          <Link href="/profile/" prefetch={false}>
+          <Link href="/profile/">
             <Button variant="default" size="lg">
-              Submit UID
+              {t("submit_uid")}
             </Button>
           </Link>
         </div>

@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Error() {
+  const t = useTranslations("zenless.error");
   return (
     <div className="relative z-20 overflow-hidden p-6">
       <Image
@@ -14,9 +16,9 @@ export default function Error() {
         alt="Nicole"
       />
       <div className="relative z-20 text-center">
-        <h2 className="mb-6 text-3xl">Not Found</h2>
+        <h2 className="mb-6 text-3xl">{t("not_found_title")}</h2>
         <p className="text-lg">
-          We&apos;re sorry, but the page you are looking for does not exist.
+          {t("not_found_description")}
           <br />
           <br />
           <br />
@@ -25,7 +27,7 @@ export default function Error() {
             className="text-slate-800 underline hover:text-slate-950"
           >
             <button className="rounded-2xl border-2 border-black px-4 py-2 font-semibold ring-black transition-all hover:bg-white hover:ring-4">
-              Go Home
+              {t("go_home")}
             </button>
           </Link>
         </p>

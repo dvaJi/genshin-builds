@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
@@ -20,7 +21,6 @@ import { CharacterCard } from "@components/genshin/CharacterCard";
 import ElementIcon from "@components/genshin/ElementIcon";
 import Image from "@components/genshin/Image";
 import Input from "@components/ui/Input";
-import useIntl from "@hooks/use-intl";
 import type { Character } from "@interfaces/genshin";
 import { cn } from "@lib/utils";
 import { capitalize } from "@utils/capitalize";
@@ -48,7 +48,7 @@ export default function GenshinCharactersList({
   weaponsTypes,
   latestRelease,
 }: Props) {
-  const { t, locale } = useIntl("characters");
+  const t = useTranslations("Genshin.characters");
   const [elementsFilter, setElementsFilter] = useState<string[]>([]);
   const [weaponFilter, setWeaponFilter] = useState<string[]>([]);
   const [nameFilter, setNameFilter] = useState<string>("");
@@ -110,22 +110,22 @@ export default function GenshinCharactersList({
   }[] = [
     {
       value: "release",
-      label: t({ id: "sort_release", defaultMessage: "Release Date" }),
+      label: t("sort_release"),
       icon: <LuCalendarDays className="h-4 w-4" />,
     },
     {
       value: "name",
-      label: t({ id: "sort_name", defaultMessage: "Name" }),
+      label: t("sort_name"),
       icon: <LuText className="h-4 w-4" />,
     },
     {
       value: "rarity",
-      label: t({ id: "sort_rarity", defaultMessage: "Rarity" }),
+      label: t("sort_rarity"),
       icon: <LuSparkles className="h-4 w-4" />,
     },
     {
       value: "element",
-      label: t({ id: "sort_element", defaultMessage: "Element" }),
+      label: t("sort_element"),
       icon: <LuAtom className="h-4 w-4" />,
     },
   ];
@@ -139,10 +139,7 @@ export default function GenshinCharactersList({
             <HiMagnifyingGlass className="absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground sm:left-2.5 sm:h-4 sm:w-4" />
             <Input
               type="text"
-              placeholder={t({
-                id: "search",
-                defaultMessage: "Search characters...",
-              })}
+              placeholder={t("search")}
               value={nameFilter}
               onChange={(e) => setNameFilter(e.target.value)}
               className="h-8 w-full pl-7 text-xs sm:h-9 sm:pl-8 sm:text-sm md:h-10 md:text-base"
@@ -182,10 +179,7 @@ export default function GenshinCharactersList({
                 "flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background text-foreground transition-colors hover:bg-accent sm:h-9 sm:w-9 md:h-10 md:w-10",
                 sortAsc && "text-primary hover:text-accent-foreground",
               )}
-              title={t({
-                id: sortAsc ? "sort_ascending" : "sort_descending",
-                defaultMessage: sortAsc ? "Sort Ascending" : "Sort Descending",
-              })}
+              title={sortAsc ? t("sort_ascending") : t("sort_descending")}
             >
               <LuArrowUpDown
                 className={cn(
@@ -220,7 +214,7 @@ export default function GenshinCharactersList({
               {/* Weapon Type Filter */}
               <div className="space-y-1.5 border-b border-input/50 pb-2.5 last:border-0 last:pb-0">
                 <h3 className="text-xs font-medium text-foreground/70">
-                  {t({ id: "weapon_filter", defaultMessage: "Weapon Filter" })}
+                  {t("weapon_filter")}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {weaponsTypes.map((type) => (
@@ -250,9 +244,7 @@ export default function GenshinCharactersList({
                         height={16}
                         className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                       />
-                      <span className="truncate">
-                        {t({ id: capitalize(type), defaultMessage: type })}
-                      </span>
+                      <span className="truncate">{t(capitalize(type))}</span>
                     </button>
                   ))}
                 </div>
@@ -261,7 +253,7 @@ export default function GenshinCharactersList({
               {/* Rarity Filter */}
               <div className="space-y-1.5 border-b border-input/50 pb-2.5 last:border-0 last:pb-0">
                 <h3 className="text-xs font-medium text-foreground/70">
-                  {t({ id: "rarity_filter", defaultMessage: "Rarity Filter" })}
+                  {t("rarity_filter")}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {[5, 4].map((rarity) => (
@@ -294,10 +286,7 @@ export default function GenshinCharactersList({
               {/* Element Filter */}
               <div className="space-y-1.5 border-b border-input/50 pb-2.5 last:border-0 last:pb-0">
                 <h3 className="text-xs font-medium text-foreground/70">
-                  {t({
-                    id: "element_filter",
-                    defaultMessage: "Element Filter",
-                  })}
+                  {t("element_filter")}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {elements.map((element) => (
@@ -327,10 +316,7 @@ export default function GenshinCharactersList({
                         className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                       />
                       <span className="truncate">
-                        {t({
-                          id: element.toLowerCase(),
-                          defaultMessage: element,
-                        })}
+                        {t(element.toLowerCase())}
                       </span>
                     </button>
                   ))}
@@ -351,7 +337,7 @@ export default function GenshinCharactersList({
             {/* Weapon Type Filter */}
             <div className="space-y-2 border-b border-input/50 pb-3 last:border-0 last:pb-0 sm:space-y-3 sm:border-0 sm:pb-0">
               <h3 className="text-xs font-medium text-foreground/70 sm:text-sm">
-                {t({ id: "weapon_filter", defaultMessage: "Weapon Filter" })}
+                {t("weapon_filter")}
               </h3>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {weaponsTypes.map((type) => (
@@ -379,9 +365,7 @@ export default function GenshinCharactersList({
                       height={16}
                       className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                     />
-                    <span className="truncate">
-                      {t({ id: capitalize(type), defaultMessage: type })}
-                    </span>
+                    <span className="truncate">{t(capitalize(type))}</span>
                   </button>
                 ))}
               </div>
@@ -390,7 +374,7 @@ export default function GenshinCharactersList({
             {/* Rarity Filter */}
             <div className="space-y-2 border-b border-input/50 pb-3 last:border-0 last:pb-0 sm:space-y-3 sm:border-0 sm:pb-0">
               <h3 className="text-xs font-medium text-foreground/70 sm:text-sm">
-                {t({ id: "rarity_filter", defaultMessage: "Rarity Filter" })}
+                {t("rarity_filter")}
               </h3>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {[5, 4].map((rarity) => (
@@ -423,7 +407,7 @@ export default function GenshinCharactersList({
             {/* Element Filter */}
             <div className="space-y-2 border-b border-input/50 pb-3 last:border-0 last:pb-0 sm:space-y-3 sm:border-0 sm:pb-0">
               <h3 className="text-xs font-medium text-foreground/70 sm:text-sm">
-                {t({ id: "element_filter", defaultMessage: "Element Filter" })}
+                {t("element_filter")}
               </h3>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {elements.map((element) => (
@@ -452,12 +436,7 @@ export default function GenshinCharactersList({
                       width={16}
                       className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                     />
-                    <span className="truncate">
-                      {t({
-                        id: element.toLowerCase(),
-                        defaultMessage: element,
-                      })}
-                    </span>
+                    <span className="truncate">{t(element.toLowerCase())}</span>
                   </button>
                 ))}
               </div>
@@ -487,9 +466,7 @@ export default function GenshinCharactersList({
                     width={12}
                     className="h-3 w-3 sm:h-3.5 sm:w-3.5"
                   />
-                  <span className="truncate">
-                    {t({ id: element.toLowerCase(), defaultMessage: element })}
-                  </span>
+                  <span className="truncate">{t(element.toLowerCase())}</span>
                   <span className="ml-0.5 sm:ml-1">×</span>
                 </button>
               ))}
@@ -508,9 +485,7 @@ export default function GenshinCharactersList({
                     height={12}
                     className="h-3 w-3 sm:h-3.5 sm:w-3.5"
                   />
-                  <span className="truncate">
-                    {t({ id: capitalize(type), defaultMessage: type })}
-                  </span>
+                  <span className="truncate">{t(capitalize(type))}</span>
                   <span className="ml-0.5 sm:ml-1">×</span>
                 </button>
               ))}
@@ -535,7 +510,7 @@ export default function GenshinCharactersList({
               }}
               className="text-[10px] text-muted-foreground hover:text-foreground sm:text-xs"
             >
-              {t({ id: "clear_all", defaultMessage: "Clear all" })}
+              {t("clear_all")}
             </button>
           </div>
         )}
@@ -552,7 +527,6 @@ export default function GenshinCharactersList({
             <CharacterCard
               key={character.id}
               character={character}
-              locale={locale}
               latestRelease={latestRelease}
             />
           ))}
@@ -562,16 +536,10 @@ export default function GenshinCharactersList({
         {filteredAndSortedCharacters.length === 0 && (
           <div className="rounded-lg border border-input bg-card/50 px-4 py-8 text-center sm:px-6 sm:py-12">
             <h3 className="text-base font-medium text-foreground/80 sm:text-lg">
-              {t({
-                id: "no_characters_found",
-                defaultMessage: "No characters found",
-              })}
+              {t("no_characters_found")}
             </h3>
             <p className="mt-1 text-sm text-muted-foreground sm:mt-2">
-              {t({
-                id: "try_adjusting_filters",
-                defaultMessage: "Try adjusting your filters or search term",
-              })}
+              {t("try_adjusting_filters")}
             </p>
           </div>
         )}

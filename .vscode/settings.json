@@ -1,5 +1,9 @@
 {
   "editor.tabSize": 2,
   "typescript.preferences.preferTypeOnlyAutoImports": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "i18n-ally.localesPaths": ["./messages"],
+  "i18n-ally.keystyle": "nested",
+  "editor.formatOnSave": true,
+  "i18n-ally.enabledFrameworks": ["next-intl"]
 }

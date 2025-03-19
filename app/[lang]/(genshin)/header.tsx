@@ -1,14 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
 import { memo, useEffect, useRef, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 import GameSelector from "@components/GameSelector";
 import NavItem from "@components/NavItem";
 import Logo from "@components/genshin/Logo";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import "@styles/mobile-nav.css";
 import { GAME } from "@utils/games";
 
@@ -170,7 +169,6 @@ const navRoutes: Route[] = [
 ];
 
 const GenshinLayoutHeader = () => {
-  const { locale } = useIntl("layout");
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const touchStartX = useRef(0);
@@ -244,11 +242,7 @@ const GenshinLayoutHeader = () => {
     <nav className="sticky left-0 top-0 z-50 w-full border-b border-border bg-card/80 shadow-md backdrop-blur-md md:border-b-0">
       <div className="mx-auto block w-full max-w-6xl items-center px-2 py-1 text-sm sm:px-4 sm:py-2 md:flex md:py-0">
         <div className="flex h-12 items-center justify-between pr-2 sm:pr-4 md:inline-block md:h-auto md:pr-0">
-          <Link
-            href={`/${locale}`}
-            className="flex h-full items-center"
-            prefetch={false}
-          >
+          <Link href="/" className="flex h-full items-center">
             <Logo className="h-8 w-auto sm:h-10" />
           </Link>
           <button

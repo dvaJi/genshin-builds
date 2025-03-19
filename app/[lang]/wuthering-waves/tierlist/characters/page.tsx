@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import { Characters } from "@interfaces/wuthering-waves/characters";
 import type { TierlistCharacters } from "@interfaces/wuthering-waves/tierlist-characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 import { cn } from "@lib/utils";
+
+export const revalidate = 86400;
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -24,27 +27,26 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "tierlist_characters",
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "WW.tierlist_characters",
+  });
 
   return genPageMetadata({
     title: t("title"),
     description: t("description"),
     path: `/wuthering-waves/tierlist/characters`,
-    locale: langData,
+    locale: lang,
   });
 }
 
 export default async function Page({ params, searchParams }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "tierlist_characters",
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("WW.tierlist_characters");
+  const langData = getLangData(lang, "wuthering-waves");
+
   const tierlist = await getWWData<TierlistCharacters>({
     resource: "tierlist",
     filter: {
@@ -77,7 +79,7 @@ export default async function Page({ params, searchParams }: Props) {
       </div>
       <div className="mx-2 my-4 flex gap-4 md:mx-0">
         <Link
-          href={`/${lang}/wuthering-waves/tierlist/characters`}
+          href={`/wuthering-waves/tierlist/characters`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "overall" ? "bg-ww-900 text-white" : "bg-ww-950",
@@ -86,7 +88,7 @@ export default async function Page({ params, searchParams }: Props) {
           {t("overall")}
         </Link>
         <Link
-          href={`/${lang}/wuthering-waves/tierlist/characters?type=mainDPS`}
+          href={`/wuthering-waves/tierlist/characters?type=mainDPS`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "mainDPS" ? "bg-ww-900 text-white" : "bg-ww-950",
@@ -95,7 +97,7 @@ export default async function Page({ params, searchParams }: Props) {
           {t("main_dps")}
         </Link>
         <Link
-          href={`/${lang}/wuthering-waves/tierlist/characters?type=subDPS`}
+          href={`/wuthering-waves/tierlist/characters?type=subDPS`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "subDPS" ? "bg-ww-900 text-white" : "bg-ww-950",
@@ -104,7 +106,7 @@ export default async function Page({ params, searchParams }: Props) {
           {t("sub_dps")}
         </Link>
         <Link
-          href={`/${lang}/wuthering-waves/tierlist/characters?type=support`}
+          href={`/wuthering-waves/tierlist/characters?type=support`}
           className={cn(
             "rounded-md border border-ww-700 px-3 py-2 hover:opacity-80",
             table === "support" ? "bg-ww-900 text-white" : "bg-ww-950",
@@ -138,9 +140,8 @@ export default async function Page({ params, searchParams }: Props) {
                 >
                   {characters?.[char] ? (
                     <Link
-                      href={`/${lang}/wuthering-waves/characters/${char}`}
+                      href={`/wuthering-waves/characters/${char}`}
                       className="flex flex-col items-center justify-center gap-2"
-                      prefetch={false}
                     >
                       <div
                         className={cn(

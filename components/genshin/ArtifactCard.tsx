@@ -1,10 +1,10 @@
 "use client";
 
-import clsx from "clsx";
-import Link from "next/link";
 import { Fragment } from "react";
 import { Tooltip } from "react-tooltip";
 
+import { cn } from "@app/lib/utils";
+import { Link } from "@i18n/navigation";
 import type { Artifact } from "@interfaces/genshin";
 
 import Image from "./Image";
@@ -24,7 +24,6 @@ const ArtifactCard = ({
   artifacts,
   isChooseTwo,
   messages,
-  locale,
 }: ArtifactCardProps) => {
   return (
     <div className="mb-2 flex w-full rounded-md border border-border px-2 transition-all hover:bg-card hover:shadow-md sm:px-4">
@@ -52,7 +51,7 @@ const ArtifactCard = ({
                   artifact.children.map((ca, i) => (
                     <div
                       key={ca.id + artifact.id}
-                      className={clsx("block border-gray-600 py-1", {
+                      className={cn("block border-gray-600 py-1", {
                         "border-b": i + 1 < artifact.children!.length,
                       })}
                     >
@@ -98,16 +97,14 @@ const ArtifactCard = ({
             </Tooltip>
             <Link
               href={
-                artifact.children?.length
-                  ? "#"
-                  : `/${locale}/artifacts/${artifact.id}`
+                artifact.children?.length ? "#" : `/artifacts/${artifact.id}`
               }
-              className={clsx(isChooseTwo ? "max-w-[200px]" : "")}
+              className={cn(isChooseTwo ? "max-w-[200px]" : "")}
               data-tooltip-id={`${i}_${artifact.id}`}
             >
               <div className="flex max-w-xs flex-row">
                 <div
-                  className={clsx(
+                  className={cn(
                     "flex flex-shrink-0 items-center justify-center bg-cover p-0.5 sm:p-1",
                     `genshin-bg-rarity-${artifact.max_rarity}`,
                   )}

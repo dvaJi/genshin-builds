@@ -1,13 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
-import { Fragment, useState } from "react";
+import { Fragment, memo, useState } from "react";
 import { FaArrowDown } from "react-icons/fa6";
 
 import ElementIcon from "@components/genshin/ElementIcon";
 import Image from "@components/genshin/Image";
 import Badge from "@components/ui/Badge";
+import { Link } from "@i18n/navigation";
 import type { Artifact, Weapon } from "@interfaces/genshin";
 
 export type BuildCardMessages = {
@@ -28,7 +28,7 @@ type Props = {
   messages: BuildCardMessages;
 };
 
-export default function BuildCard({ build, locale, messages }: Props) {
+function BuildCard({ build, messages }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -36,28 +36,27 @@ export default function BuildCard({ build, locale, messages }: Props) {
       className={clsx(
         "card relative col-span-4 grid w-full grid-cols-12 gap-4 sm:col-span-2 lg:col-span-4",
         {
-          "ring-primary items-start ring-2": isExpanded,
+          "items-start ring-2 ring-primary": isExpanded,
           "items-center": !isExpanded,
-        }
+        },
       )}
     >
       <div className="relative col-span-6 flex flex-col items-center justify-center lg:col-span-2">
         <Link
-          href={`/${locale}/character/${build!.character.id}`}
+          href={`/character/${build!.character.id}`}
           className="relative flex flex-col items-center justify-center"
-          prefetch={false}
         >
           <Image
             alt={build!.character.name}
             className={clsx(
               "rounded-md",
-              `genshin-bg-rarity-${build!.character.rarity}`
+              `genshin-bg-rarity-${build!.character.rarity}`,
             )}
             src={`/characters/${build!.character.id}/image.png`}
             width={100}
             height={100}
           />
-          <div className="bg-card absolute -right-1 -top-1 rounded-full p-1">
+          <div className="absolute -right-1 -top-1 rounded-full bg-card p-1">
             <ElementIcon type={build!.element} width={24} height={24} />
           </div>
         </Link>
@@ -69,7 +68,7 @@ export default function BuildCard({ build, locale, messages }: Props) {
         ) : null}
       </div>
       <div className="col-span-6 ml-5 flex w-[110px] flex-col items-start lg:col-span-2">
-        <div className="build-name text-card-foreground mb-2 text-lg">
+        <div className="build-name mb-2 text-lg text-card-foreground">
           {build!.character.name}
         </div>
         <Badge className="text-muted-foreground">{build!.role}</Badge>
@@ -147,11 +146,11 @@ export default function BuildCard({ build, locale, messages }: Props) {
           isExpanded ? messages.hide_build_details : messages.show_build_details
         }
         className={clsx(
-          "bg-secondary text-secondary-foreground absolute right-0 top-10 flex cursor-pointer items-center justify-center rounded-lg p-3 transition-all",
+          "absolute right-0 top-10 flex cursor-pointer items-center justify-center rounded-lg bg-secondary p-3 text-secondary-foreground transition-all",
           "hover:bg-secondary/80",
           {
             "rotate-180": isExpanded,
-          }
+          },
         )}
       >
         <FaArrowDown />
@@ -173,11 +172,11 @@ function Weapons({ weapons, messages }: { weapons: Weapon[]; messages: any }) {
 
 function WeaponCard({ weapon }: { weapon: Weapon & { r: number } }) {
   return (
-    <div className="bg-secondary relative col-span-2 mb-1 flex w-full items-center rounded-lg">
+    <div className="relative col-span-2 mb-1 flex w-full items-center rounded-lg bg-secondary">
       <div
         className={clsx(
           "flex h-[40px] w-[40px] min-w-[40px] items-center justify-center overflow-hidden rounded-lg",
-          `genshin-bg-rarity-${weapon.rarity}`
+          `genshin-bg-rarity-${weapon.rarity}`,
         )}
       >
         <Image
@@ -188,10 +187,10 @@ function WeaponCard({ weapon }: { weapon: Weapon & { r: number } }) {
           height={40}
         />
       </div>
-      <div className="text-card-foreground ml-2 w-full text-sm">
+      <div className="ml-2 w-full text-sm text-card-foreground">
         {weapon.name}
         {weapon.r > 1 ? (
-          <span className="bg-muted ml-1 rounded px-[4px] py-[2px] text-xs">
+          <span className="ml-1 rounded bg-muted px-[4px] py-[2px] text-xs">
             R{weapon.r}
           </span>
         ) : null}
@@ -237,7 +236,7 @@ function ArtifactCard({ artifact, pcs }: { artifact: Artifact; pcs: number }) {
   return (
     <div
       key={artifact.id}
-      className={clsx("bg-secondary relative flex items-center rounded-lg", {
+      className={clsx("relative flex items-center rounded-lg bg-secondary", {
         "col-span-2 w-full text-sm": pcs === 1,
         "col-span-1 w-full text-xs": pcs === 2,
       })}
@@ -250,8 +249,8 @@ function ArtifactCard({ artifact, pcs }: { artifact: Artifact; pcs: number }) {
           width={40}
           height={40}
         />
-        <div className="text-card-foreground ml-2">{artifact.name}</div>
-        <div className="bg-background/80 text-muted-foreground absolute bottom-0 left-7 rounded px-1 text-center text-xxs">
+        <div className="ml-2 text-card-foreground">{artifact.name}</div>
+        <div className="absolute bottom-0 left-7 rounded bg-background/80 px-1 text-center text-xxs text-muted-foreground">
           {pcs === 1 ? "4" : "2"}
         </div>
       </div>
@@ -263,7 +262,7 @@ function Stats({ stats, messages }: { stats: any; messages: any }) {
   return (
     <div className="w-full">
       <div>{messages.main_stats}</div>
-      <div className="bg-muted/80 text-muted-foreground ml-2 flex w-full flex-col flex-wrap justify-between rounded-lg px-2 py-1 text-sm">
+      <div className="ml-2 flex w-full flex-col flex-wrap justify-between rounded-lg bg-muted/80 px-2 py-1 text-sm text-muted-foreground">
         <div className="flex w-full items-center">
           <b className="mr-1">{messages.sands}:</b>
           {stats.sands.join(" / ")}
@@ -285,17 +284,17 @@ function StatsExpanded({ stats, messages }: { stats: any; messages: any }) {
   return (
     <div className="col-span-6 lg:col-span-4">
       <div>{messages.main_stats}</div>
-      <div className="bg-muted/80 text-muted-foreground flex h-[90px] w-full flex-col flex-wrap justify-between whitespace-nowrap rounded-lg px-2 py-1 text-sm">
+      <div className="flex h-[90px] w-full flex-col flex-wrap justify-between whitespace-nowrap rounded-lg bg-muted/80 px-2 py-1 text-sm text-muted-foreground">
         <div className="flex w-full flex-wrap items-center">
-          <b className="text-card-foreground mr-1">{messages.sands}:</b>
+          <b className="mr-1 text-card-foreground">{messages.sands}:</b>
           {stats.sands.join(" / ")}
         </div>
         <div className="flex w-full flex-wrap items-center">
-          <b className="text-card-foreground mr-1">{messages.goblet}:</b>
+          <b className="mr-1 text-card-foreground">{messages.goblet}:</b>
           {stats.goblet.join(" / ")}
         </div>
         <div className="flex w-full flex-wrap items-center">
-          <b className="text-card-foreground mr-1">{messages.circlet}:</b>
+          <b className="mr-1 text-card-foreground">{messages.circlet}:</b>
           {stats.circlet.join(" / ")}
         </div>
       </div>
@@ -313,13 +312,13 @@ function Substats({
   return (
     <div className="col-span-6 lg:col-span-4">
       <div>{messages.substats}</div>
-      <div className="bg-muted/80 text-muted-foreground w-full rounded-lg px-2 py-1 text-sm">
+      <div className="w-full rounded-lg bg-muted/80 px-2 py-1 text-sm text-muted-foreground">
         {substats.map((substat, i) => (
           <div
             key={substat}
-            className="text-muted-foreground flex w-full items-center"
+            className="flex w-full items-center text-muted-foreground"
           >
-            <b className="text-card-foreground mr-2">{i + 1}</b>
+            <b className="mr-2 text-card-foreground">{i + 1}</b>
             {substat}
           </div>
         ))}
@@ -327,3 +326,5 @@ function Substats({
     </div>
   );
 }
+
+export default memo(BuildCard);

@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import Image from "@components/zenless/Image";
 import type { TalentsPriority } from "@interfaces/zenless/build";
@@ -23,6 +24,7 @@ type Props = {
 };
 
 export default function SkillPriority({ characterName, skillData }: Props) {
+  const t = useTranslations("zenless.character");
   const sortedSkills = Object.entries(skillData)
     .filter(([key]) => key !== "notes")
     .sort(([, a], [, b]) => b.priority - a.priority);
@@ -30,7 +32,9 @@ export default function SkillPriority({ characterName, skillData }: Props) {
   return (
     <>
       <h2 className="text-2xl font-semibold md:text-3xl">
-        {characterName} Skill Priority
+        {t("skill_priority", {
+          character_name: characterName,
+        })}
       </h2>
       <div className="mb-4 flex flex-col gap-2 rounded-lg border-2 border-neutral-600 bg-neutral-900 p-3 md:p-4">
         <div
@@ -43,13 +47,13 @@ export default function SkillPriority({ characterName, skillData }: Props) {
               <thead>
                 <tr className="rounded-md bg-neutral-800">
                   <th className="border-b border-neutral-700 px-3 py-2 text-left text-sm md:px-4 md:text-base">
-                    Skill
+                    {t("skill")}
                   </th>
                   <th className="border-b border-neutral-700 px-3 py-2 text-left text-sm md:px-4 md:text-base">
-                    Priority
+                    {t("priority")}
                   </th>
                   <th className="border-b border-neutral-700 px-3 py-2 text-left text-sm md:px-4 md:text-base">
-                    Explanation
+                    {t("explanation")}
                   </th>
                 </tr>
               </thead>

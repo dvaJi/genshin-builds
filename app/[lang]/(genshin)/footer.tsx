@@ -1,14 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { RiPatreonFill } from "react-icons/ri";
 
 import LanguageSelector from "@components/ui/LanguageSelector";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 
 export default function GenshinFooter() {
-  const { locale } = useIntl("layout");
   return (
     <footer className="relative z-10 border-t border-muted bg-card px-4 py-6 text-card-foreground backdrop-blur md:px-20 md:py-14">
       <div className="container mx-auto">
@@ -24,21 +22,21 @@ export default function GenshinFooter() {
               Privacy Manager
             </button>
             <Link
-              href={`/${locale}/privacy-policy`}
+              href={`/privacy-policy`}
               className="my-1 text-muted-foreground hover:text-foreground"
               prefetch={false}
             >
               Privacy Policy
             </Link>
             <Link
-              href={`/${locale}/contact`}
+              href={`/contact`}
               className="my-1 text-muted-foreground hover:text-foreground"
               prefetch={false}
             >
               Contact
             </Link>
             <Link
-              href={`/${locale}/changelog`}
+              href={`/changelog`}
               className="my-1 text-muted-foreground hover:text-foreground"
               prefetch={false}
             >
@@ -76,7 +74,7 @@ export default function GenshinFooter() {
                   Honkai: Star Rail
                 </p>
                 <Link
-                  href={`/${locale}/hsr`}
+                  href={`/hsr`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                   title="Explore Honkai: Star Rail characters, skills, and builds"
@@ -84,7 +82,7 @@ export default function GenshinFooter() {
                   Characters
                 </Link>
                 <Link
-                  href={`/${locale}/hsr/tierlist`}
+                  href={`/hsr/tierlist`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                   title="Honkai: Star Rail tier list - Best characters ranked"
@@ -99,7 +97,7 @@ export default function GenshinFooter() {
                   Zenless Zone Zero
                 </p>
                 <Link
-                  href={`/${locale}/zenless/characters`}
+                  href={`/zenless/characters`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                   title="Zenless Zone Zero character list - Abilities and stats"
@@ -107,7 +105,7 @@ export default function GenshinFooter() {
                   Characters
                 </Link>
                 <Link
-                  href={`/${locale}/zenless/tierlist`}
+                  href={`/zenless/tierlist`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                   title="Zenless Zone Zero tier list - Best agents ranked"
@@ -122,7 +120,7 @@ export default function GenshinFooter() {
                   Wuthering Waves
                 </p>
                 <Link
-                  href={`/${locale}/wuthering-waves`}
+                  href={`/wuthering-waves`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                   title="Discover Wuthering Waves characters, skills, and builds"
@@ -130,7 +128,7 @@ export default function GenshinFooter() {
                   Characters
                 </Link>
                 <Link
-                  href={`/${locale}/wuthering-waves/tierlist/characters`}
+                  href={`/wuthering-waves/tierlist/characters`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                   title="Wuthering Waves tier list - Best characters ranked"
@@ -138,7 +136,7 @@ export default function GenshinFooter() {
                   Tierlist Characters
                 </Link>
                 <Link
-                  href={`/${locale}/wuthering-waves/tierlist/weapons`}
+                  href={`/wuthering-waves/tierlist/weapons`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                   title="Wuthering Waves weapon tier list - Best weapons ranked"
@@ -146,7 +144,7 @@ export default function GenshinFooter() {
                   Tierlist Weapons
                 </Link>
                 <Link
-                  href={`/${locale}/wuthering-waves/tierlist/echoes`}
+                  href={`/wuthering-waves/tierlist/echoes`}
                   className="my-1 text-sm text-muted-foreground hover:text-primary"
                   prefetch={false}
                   title="Wuthering Waves echoes tier list - Best echoes for builds"

@@ -1,10 +1,11 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { routing } from "@i18n/routing";
 import type { Achievement } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -14,9 +15,7 @@ import List from "./list";
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -27,27 +26,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "hsr", "achievements");
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail Achievements",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.achievements",
   });
-  const description = t({
-    id: "description",
-    defaultMessage: "A complete list of all achievements in Honkai: Star Rail.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/achievements`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function HSRAchievementsPage({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "achievements");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.achievements");
+  const langData = getLangData(lang, "hsr");
 
   const achievements = await getHSRData<Achievement[]>({
     resource: "achievements",
@@ -62,7 +61,7 @@ export default async function HSRAchievementsPage({ params }: Props) {
 
   const allSeriesText = [
     ...new Set(
-      achievements.map((a) => a.seriesText).filter((a) => a !== undefined)
+      achievements.map((a) => a.seriesText).filter((a) => a !== undefined),
     ),
   ];
   const categories = allSeriesText
@@ -85,25 +84,16 @@ export default async function HSRAchievementsPage({ params }: Props) {
       a[b._id] = b;
       return a;
     },
-    {} as Record<number, Achievement>
+    {} as Record<number, Achievement>,
   );
 
   return (
     <div>
       <div className="my-2">
         <h2 className="text-3xl font-semibold uppercase text-slate-100">
-          {t({
-            id: "achievements",
-            defaultMessage: "Achievements",
-          })}
+          {t("achievements")}
         </h2>
-        <p className="px-4 text-sm">
-          {t({
-            id: "achievements_desc",
-            defaultMessage:
-              "List of all achievements in Honkai Star Rail and how to complete them so you can score some Stellar Jades easily.",
-          })}
-        </p>
+        <p className="px-4 text-sm">{t("achievements_desc")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"

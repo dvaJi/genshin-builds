@@ -1,13 +1,14 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import Link from "next/link";
 
 import { genPageMetadata } from "@app/seo";
 import CopyToClipboard from "@components/CopyToClipboard";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import type { TCGCard } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -18,9 +19,7 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -31,28 +30,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "tcg_decks");
-  const title = t({
-    id: "title",
-    defaultMessage: "Genius Invokation TCG Card Game",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.tcg_decks",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Genius Invokation TCG is a new card game feature in Genshin Impact. Guide includes what is the Genius Invocation TCG, character card game, how to get cards!",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/tcg/best-decks`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinBestDecks({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "genshin", "tcg_decks");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.tcg_decks");
+  const langData = getLangData(lang, "genshin");
 
   const _bestDecks = await getGenshinData<
     Record<
@@ -70,7 +68,7 @@ export default async function GenshinBestDecks({ params }: Props) {
     },
   });
   const bestDecks = Object.values(_bestDecks).filter(
-    (a: any) => a !== "best-decks"
+    (a: any) => a !== "best-decks",
   );
 
   const cCharacters = await getGenshinData<Record<string, TCGCard>>({
@@ -102,7 +100,7 @@ export default async function GenshinBestDecks({ params }: Props) {
     .map((card) => card.id);
 
   const ENCODE_ID_BY_CARD: Record<string, number> = Object.fromEntries(
-    CARD_ORDER.map((card, index) => [card, index + 1])
+    CARD_ORDER.map((card, index) => [card, index + 1]),
   ) as Record<string, number>;
 
   const generateCode = (deck: {
@@ -112,7 +110,7 @@ export default async function GenshinBestDecks({ params }: Props) {
     encodeDeckCode(
       deck.characters.map((c) => c.id),
       deck.actions.map((a) => [a.id, a.count]),
-      ENCODE_ID_BY_CARD
+      ENCODE_ID_BY_CARD,
     );
 
   return (
@@ -123,7 +121,7 @@ export default async function GenshinBestDecks({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="text-3xl font-semibold tracking-tight text-card-foreground">
-        {t({ id: "best_decks", defaultMessage: "Best Decks" })}
+        {t("best_decks")}
       </h2>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {decks.map((deck, i) => (
@@ -134,7 +132,7 @@ export default async function GenshinBestDecks({ params }: Props) {
             >
               <div className="flex justify-between">
                 <Link
-                  href={`/${lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
+                  href={`/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
                   className="mb-4 text-xl font-semibold text-card-foreground transition-colors hover:text-primary"
                   prefetch={false}
                 >
@@ -145,17 +143,17 @@ export default async function GenshinBestDecks({ params }: Props) {
                   className="opacity-0 transition-all group-hover/card:opacity-100 data-[copied=true]:ring-2 data-[copied=true]:ring-green-600/50"
                   copiedText="Copied!"
                 >
-                  Share Code
+                  {t("share_code")}
                 </CopyToClipboard>
               </div>
               <div className="relative flex flex-wrap content-center justify-center gap-2">
                 <div className="absolute inset-0 z-20 flex items-center justify-center bg-card/80 opacity-0 backdrop-blur-sm transition-all group-hover/card:opacity-100">
                   <Link
-                    href={`/${lang}/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
+                    href={`/tcg/deck-builder?code=${encodeURIComponent(generateCode(deck))}`}
                     className="text-lg font-semibold text-foreground transition-colors hover:text-primary"
                     prefetch={false}
                   >
-                    View Deck
+                    {t("view_deck")}
                   </Link>
                 </div>
                 {deck.characters.map((card) => (

@@ -1,11 +1,9 @@
-import { i18n } from "i18n-config";
+import { routing } from "@i18n/routing";
 
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 export const metadata = {
@@ -23,7 +21,10 @@ export default async function Contact() {
           you&apos;re free to report an issue, propose an idea, ask for a
           feature or anything to improve the app in my github:{" "}
           <a href="https://github.com/dvaJi/genshin-builds">Github</a>
-          or send an email to genshinbuildscom@gmail.com
+          or send an email to{" "}
+          <a href="mailto:contact@genshin-builds.com">
+            contact@genshin-builds.com
+          </a>
         </div>
       </div>
     </div>

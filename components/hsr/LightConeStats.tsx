@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useCallback, useMemo, useState } from "react";
 
 import { Label } from "@app/components/ui/label";
@@ -19,7 +19,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@app/components/ui/tabs";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import { LightCone, Material } from "@interfaces/hsr";
 import { getHsrUrl } from "@lib/imgUrl";
 
@@ -28,7 +28,7 @@ type Props = {
 };
 
 function LightConeStats({ lightcone }: Props) {
-  const { t, locale } = useIntl("lightcones");
+  const t = useTranslations("HSR.lightcone");
   const [level, setLevel] = useState(1);
   const [viewMode, setViewMode] = useState<"slider" | "table">("slider");
 
@@ -92,13 +92,15 @@ function LightConeStats({ lightcone }: Props) {
         onValueChange={(v) => setViewMode(v as "slider" | "table")}
       >
         <TabsList>
-          <TabsTrigger value="slider">Slider View</TabsTrigger>
-          <TabsTrigger value="table">Table View</TabsTrigger>
+          <TabsTrigger value="slider">{t("slider_view")}</TabsTrigger>
+          <TabsTrigger value="table">{t("table_view")}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="slider" className="mt-4">
           <div className="mb-4">
-            <Label>Level: {level}</Label>
+            <Label>
+              {t("level")}: {level}
+            </Label>
             <Slider
               value={[level]}
               onValueChange={(v) => setLevel(v[0])}
@@ -112,25 +114,19 @@ function LightConeStats({ lightcone }: Props) {
           {currentStats && (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
               <div className="rounded border border-border bg-background p-4">
-                <div className="text-sm text-muted-foreground">
-                  {t({ id: "hp", defaultMessage: "HP" })}
-                </div>
+                <div className="text-sm text-muted-foreground">{t("hp")}</div>
                 <div className="text-lg font-semibold text-card-foreground">
                   {currentStats.hp.toLocaleString()}
                 </div>
               </div>
               <div className="rounded border border-border bg-background p-4">
-                <div className="text-sm text-muted-foreground">
-                  {t({ id: "atk", defaultMessage: "ATK" })}
-                </div>
+                <div className="text-sm text-muted-foreground">{t("atk")}</div>
                 <div className="text-lg font-semibold text-card-foreground">
                   {currentStats.atk.toLocaleString()}
                 </div>
               </div>
               <div className="rounded border border-border bg-background p-4">
-                <div className="text-sm text-muted-foreground">
-                  {t({ id: "def", defaultMessage: "DEF" })}
-                </div>
+                <div className="text-sm text-muted-foreground">{t("def")}</div>
                 <div className="text-lg font-semibold text-card-foreground">
                   {currentStats.def.toLocaleString()}
                 </div>
@@ -139,16 +135,13 @@ function LightConeStats({ lightcone }: Props) {
           )}
           <div className="mt-6">
             <h3 className="mb-4 text-lg font-semibold text-accent">
-              {t({
-                id: "ascension_materials",
-                defaultMessage: "Ascension Materials Required",
-              })}
+              {t("ascension_materials")}
             </h3>
             <div className="rounded border border-border bg-background p-4">
               <div className="flex flex-wrap gap-2">
                 {slideAscension.map((material) => (
                   <Link
-                    href={`/${locale}/hsr/item/${material.id}`}
+                    href={`/hsr/item/${material.id}`}
                     key={material.id + "slider"}
                     className="flex items-center rounded bg-muted p-2 text-card-foreground hover:bg-primary hover:text-primary-foreground"
                   >
@@ -167,10 +160,7 @@ function LightConeStats({ lightcone }: Props) {
               </div>
               {slideAscension.length === 0 && (
                 <div className="text-muted-foreground">
-                  {t({
-                    id: "ascension_materials_none",
-                    defaultMessage: "No materials required for this ascension",
-                  })}
+                  {t("ascension_materials_none")}
                 </div>
               )}
             </div>
@@ -182,21 +172,24 @@ function LightConeStats({ lightcone }: Props) {
             <Table className="rounded-md border">
               <TableHeader>
                 <TableRow>
-                  <TableHead className="sticky left-0 z-10">Stats</TableHead>
+                  <TableHead className="sticky left-0 z-10">
+                    {t("stats")}
+                  </TableHead>
                   {lightcone.ascend.map((ascension) => (
                     <TableHead
                       key={ascension.promotion}
                       colSpan={2}
                       className="text-center"
                     >
-                      Level {ascension.levelReq || 1}-{ascension.maxLevel}
+                      {t("level")} {ascension.levelReq || 1}-
+                      {ascension.maxLevel}
                     </TableHead>
                   ))}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow className="border-b border-border">
-                  <TableCell>HP</TableCell>
+                  <TableCell>{t("hp")}</TableCell>
                   {lightcone.ascend.map((ascension) => {
                     const baseStats = calculateStats(ascension.levelReq || 1);
                     const maxStats = calculateStats(ascension.maxLevel);
@@ -218,7 +211,7 @@ function LightConeStats({ lightcone }: Props) {
                   })}
                 </TableRow>
                 <TableRow>
-                  <TableCell>ATK</TableCell>
+                  <TableCell>{t("atk")}</TableCell>
                   {lightcone.ascend.map((ascension) => {
                     const baseStats = calculateStats(ascension.levelReq || 1);
                     const maxStats = calculateStats(ascension.maxLevel);
@@ -240,7 +233,7 @@ function LightConeStats({ lightcone }: Props) {
                   })}
                 </TableRow>
                 <TableRow>
-                  <TableCell>DEF</TableCell>
+                  <TableCell>{t("def")}</TableCell>
                   {lightcone.ascend.map((ascension) => {
                     const baseStats = calculateStats(ascension.levelReq || 1);
                     const maxStats = calculateStats(ascension.maxLevel);
@@ -266,7 +259,7 @@ function LightConeStats({ lightcone }: Props) {
           </div>
           <div className="mt-6">
             <h4 className="mb-2 text-base font-semibold text-card-foreground">
-              Total Materials Required to Level {level}
+              {t("total_ascension_materials_required")}
             </h4>
             <div className="flex flex-wrap gap-2">
               {Object.values(
@@ -285,7 +278,7 @@ function LightConeStats({ lightcone }: Props) {
                   ),
               ).map((material) => (
                 <Link
-                  href={`/${locale}/hsr/item/${material.id}`}
+                  href={`/hsr/item/${material.id}`}
                   key={material.id}
                   className="flex items-center rounded bg-muted p-2 text-card-foreground hover:bg-primary hover:text-primary-foreground"
                 >

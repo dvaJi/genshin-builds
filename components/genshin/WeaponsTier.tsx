@@ -1,8 +1,7 @@
 import clsx from "clsx";
 import { Roles, TierNums, TierlistWeapons } from "interfaces/tierlist";
-import Link from "next/link";
 
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { Weapon } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 
@@ -21,7 +20,6 @@ const WeaponsTier = ({
   weaponsMap,
   selectedCol,
 }: WeaponsTierProps) => {
-  const { locale } = useIntl("tierlist_weapons");
   let tierText = "SS";
 
   switch (tier) {
@@ -65,7 +63,7 @@ const WeaponsTier = ({
       >
         {tierlist.maindps[tier].map((t) => (
           <div key={t} className="inline-block">
-            <Link key={t} href={`/${locale}/weapon/${t}`} prefetch={false}>
+            <Link key={t} href={`/weapon/${t}`} prefetch={false}>
               <SimpleRarityBox
                 img={getUrl(`/weapons/${t}.png`, 96, 96)}
                 rarity={weaponsMap[t]?.rarity}
@@ -85,11 +83,11 @@ const WeaponsTier = ({
       >
         {tierlist.subdps[tier].map((t) => (
           <div key={t} className="inline-block">
-            <Link key={t} href={`/${locale}/weapon/${t}`} prefetch={false}>
+            <Link key={t} href={`/weapon/${t}`} prefetch={false}>
               <SimpleRarityBox
                 img={getUrl(`/weapons/${t}.png`, 96, 96)}
-                rarity={weaponsMap[t].rarity}
-                name={weaponsMap[t].name}
+                rarity={weaponsMap[t]?.rarity}
+                name={weaponsMap[t]?.name}
                 className="h-24 w-24"
                 nameSeparateBlock={true}
                 classNameBlock="w-24"
@@ -105,11 +103,11 @@ const WeaponsTier = ({
       >
         {tierlist.support[tier].map((t) => (
           <div key={t} className="relative inline-block">
-            <Link key={t} href={`/${locale}/weapon/${t}`} prefetch={false}>
+            <Link key={t} href={`/weapon/${t}`} prefetch={false}>
               <SimpleRarityBox
                 img={getUrl(`/weapons/${t}.png`, 96, 96)}
-                rarity={weaponsMap[t].rarity}
-                name={weaponsMap[t].name}
+                rarity={weaponsMap[t]?.rarity}
+                name={weaponsMap[t]?.name}
                 className="h-24 w-24"
                 nameSeparateBlock={true}
                 classNameBlock="w-24"

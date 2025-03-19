@@ -1,9 +1,12 @@
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { Poppins } from "next/font/google";
+import { notFound } from "next/navigation";
 import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
-import IntlProvider from "@components/IntlProvider";
-import getTranslations from "@hooks/use-translations";
+import { localesAvailables } from "@i18n/config";
+import { redirect } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import { GA_TRACKING_ID } from "@lib/gtag";
 import { cn } from "@lib/utils";
 
@@ -25,11 +28,17 @@ type Props = {
 
 export default async function WWLayout({ children, params }: Props) {
   const { lang } = await params;
-  const { langData, messages } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "layout",
-  );
+
+  if (!hasLocale(routing.locales, lang)) {
+    notFound();
+  }
+
+  if (!localesAvailables["wuthering-waves"].includes(lang)) {
+    redirect({
+      href: `/wuthering-waves/`,
+      locale: routing.defaultLocale,
+    });
+  }
 
   const jsonLd: WithContext<VideoGame> = {
     "@context": "https://schema.org",
@@ -48,7 +57,7 @@ export default async function WWLayout({ children, params }: Props) {
   };
 
   return (
-    <IntlProvider game="wuthering-waves" locale={langData} messages={messages}>
+    <NextIntlClientProvider>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <script
         type="application/ld+json"
@@ -63,7 +72,7 @@ export default async function WWLayout({ children, params }: Props) {
           poppins.className,
         )}
       >
-        <Header locale={lang} />
+        <Header />
 
         <main className="z-10 mb-8 mt-4 text-gray-300">
           <div className="container mx-auto">{children}</div>
@@ -71,6 +80,6 @@ export default async function WWLayout({ children, params }: Props) {
 
         <Footer />
       </div>
-    </IntlProvider>
+    </NextIntlClientProvider>
   );
 }

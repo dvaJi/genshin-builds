@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { CalculationCharacterResult } from "interfaces/calculator";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
@@ -11,8 +12,8 @@ import Select from "@components/Select";
 import SkillLabel from "@components/SkillLabel";
 import Button from "@components/ui/Button";
 import Input from "@components/ui/Input";
-import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
+import { getLangData } from "@i18n/langData";
 import type { Character } from "@interfaces/genshin";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
@@ -34,8 +35,9 @@ export function CharacterCalculator({ characters }: Props) {
   const [intendedTalent2Lvl, setIntendedTalent2Lvl] = useState(10);
   const [intendedTalent3Lvl, setIntendedTalent3Lvl] = useState(10);
   const [addedToTodo, setAddedToTodo] = useState(false);
-  const { t, localeGI } = useIntl("calculator");
-  const { t: tCharacter } = useIntl("character");
+  const t = useTranslations("Genshin.calculator");
+  const locale = useLocale();
+  const langData = getLangData(locale, "genshin");
   const [calculate, { called, loading, data, error, reset }] =
     useLazyFetch<CalculationCharacterResult>(
       "genshin/calculate_character_level",
@@ -78,21 +80,10 @@ export function CharacterCalculator({ characters }: Props) {
     const errors = [];
 
     if (intendedLevel.lvl < currentLevel.lvl) {
-      errors.push(
-        t({
-          id: "intended_level_error",
-          defaultMessage: "Intended level must be higher than current level",
-        }),
-      );
+      errors.push(t("intended_level_error"));
     }
     if (intendedTalent1Lvl < currentTalent1Lvl) {
-      errors.push(
-        t({
-          id: "intended_talent_error",
-          defaultMessage:
-            "Intended talent levels must be higher than current levels",
-        }),
-      );
+      errors.push(t("intended_talent_error"));
     }
 
     return errors;
@@ -106,12 +97,7 @@ export function CharacterCalculator({ characters }: Props) {
 
   const addToTodo = useCallback(() => {
     if (!data?.items) {
-      toast.error(
-        t({
-          id: "no_data_to_add",
-          defaultMessage: "No calculation data to add to todo list",
-        }),
-      );
+      toast.error(t("no_data_to_add"));
       return;
     }
 
@@ -146,9 +132,7 @@ export function CharacterCalculator({ characters }: Props) {
       ],
     ]);
 
-    toast.success(
-      t({ id: "added_to_todo_list", defaultMessage: "Added to Todo List" }),
-    );
+    toast.success(t("added_to_todo_list"));
   }, [
     character.id,
     character.name,
@@ -173,14 +157,14 @@ export function CharacterCalculator({ characters }: Props) {
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
       <div>
         <span className="my-4 block text-lg font-medium">
-          {t({ id: "character_level", defaultMessage: "Character Level" })}
+          {t("character_level")}
         </span>
         <div className="mb-4">
           <label
             htmlFor="character-select"
             className="mb-2 block text-sm font-medium"
           >
-            {t({ id: "select_character", defaultMessage: "Select Character" })}
+            {t("select_character")}
           </label>
           <Select
             options={characters.map((c) => ({ id: c.id, name: c.name }))}
@@ -210,7 +194,7 @@ export function CharacterCalculator({ characters }: Props) {
         </div>
         <div className="mt-4">
           <span className="mb-2 block text-sm font-medium">
-            {t({ id: "current_level", defaultMessage: "Current Level" })}
+            {t("current_level")}
           </span>
           <div className="flex flex-wrap items-center">
             {levels.map((level) => (
@@ -228,7 +212,7 @@ export function CharacterCalculator({ characters }: Props) {
                   reset();
                   setAddedToTodo(false);
                 }}
-                aria-label={`${t({ id: "level", defaultMessage: "Level" })} ${level.lvl}${level.asc ? "+" : ""}`}
+                aria-label={`${t("level")} ${level.lvl}${level.asc ? "+" : ""}`}
               >
                 <div className="">{level.lvl}</div>
                 <img
@@ -247,7 +231,7 @@ export function CharacterCalculator({ characters }: Props) {
         </div>
         <div>
           <span className="mb-2 mt-3 block text-sm font-medium">
-            {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+            {t("intended_level")}
           </span>
           <div className="flex flex-wrap items-center">
             {levels.map((level) => (
@@ -271,7 +255,7 @@ export function CharacterCalculator({ characters }: Props) {
                   }
                 }}
                 disabled={level.lvl < currentLevel.lvl}
-                aria-label={`${t({ id: "level", defaultMessage: "Level" })} ${level.lvl}${level.asc ? "+" : ""}`}
+                aria-label={`${t("level")} ${level.lvl}${level.asc ? "+" : ""}`}
               >
                 <div className="">{level.lvl}</div>
                 <img
@@ -291,19 +275,16 @@ export function CharacterCalculator({ characters }: Props) {
       </div>
       <div>
         <span className="my-4 block text-lg font-medium">
-          {t({ id: "talents_level", defaultMessage: "Talents Level" })}
+          {t("talents_level")}
         </span>
         <div className="grid grid-cols-3 gap-2">
           <div className="my-2 text-center">
             <SkillLabel
               skill="normal_attack"
               messages={{
-                normal_attack: tCharacter({
-                  id: "normal_attack",
-                  defaultMessage: "Normal Attack",
-                }),
-                skill: tCharacter({ id: "skill", defaultMessage: "Skill" }),
-                burst: tCharacter({ id: "burst", defaultMessage: "Burst" }),
+                normal_attack: t("normal_attack"),
+                skill: t("skill"),
+                burst: t("burst"),
               }}
             />
           </div>
@@ -311,12 +292,9 @@ export function CharacterCalculator({ characters }: Props) {
             <SkillLabel
               skill="skill"
               messages={{
-                normal_attack: tCharacter({
-                  id: "normal_attack",
-                  defaultMessage: "Normal Attack",
-                }),
-                skill: tCharacter({ id: "skill", defaultMessage: "Skill" }),
-                burst: tCharacter({ id: "burst", defaultMessage: "Burst" }),
+                normal_attack: t("normal_attack"),
+                skill: t("skill"),
+                burst: t("burst"),
               }}
             />
           </div>
@@ -324,19 +302,16 @@ export function CharacterCalculator({ characters }: Props) {
             <SkillLabel
               skill="burst"
               messages={{
-                normal_attack: tCharacter({
-                  id: "normal_attack",
-                  defaultMessage: "Normal Attack",
-                }),
-                skill: tCharacter({ id: "skill", defaultMessage: "Skill" }),
-                burst: tCharacter({ id: "burst", defaultMessage: "Burst" }),
+                normal_attack: t("normal_attack"),
+                skill: t("skill"),
+                burst: t("burst"),
               }}
             />
           </div>
         </div>
         <div>
           <span className="mb-2 block text-sm font-medium">
-            {t({ id: "current_level", defaultMessage: "Current Level" })}
+            {t("current_level")}
           </span>
         </div>
         <div className="grid grid-cols-3 gap-2">
@@ -354,10 +329,7 @@ export function CharacterCalculator({ characters }: Props) {
             }}
             min="1"
             max="10"
-            aria-label={tCharacter({
-              id: "normal_attack",
-              defaultMessage: "Normal Attack",
-            })}
+            aria-label={t("normal_attack")}
           />
           <Input
             type="number"
@@ -373,7 +345,7 @@ export function CharacterCalculator({ characters }: Props) {
             }}
             min="1"
             max="10"
-            aria-label={tCharacter({ id: "skill", defaultMessage: "Skill" })}
+            aria-label={t("skill")}
           />
           <Input
             type="number"
@@ -389,12 +361,12 @@ export function CharacterCalculator({ characters }: Props) {
             }}
             min="1"
             max="10"
-            aria-label={tCharacter({ id: "burst", defaultMessage: "Burst" })}
+            aria-label={t("burst")}
           />
         </div>
         <div>
           <span className="mb-2 mt-3 block text-sm font-medium">
-            {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+            {t("intended_level")}
           </span>
         </div>
         <div className="grid grid-cols-3 gap-2">
@@ -415,10 +387,7 @@ export function CharacterCalculator({ characters }: Props) {
             }}
             min={currentTalent1Lvl}
             max="10"
-            aria-label={tCharacter({
-              id: "normal_attack",
-              defaultMessage: "Normal Attack",
-            })}
+            aria-label={t("normal_attack")}
           />
           <Input
             type="number"
@@ -437,7 +406,7 @@ export function CharacterCalculator({ characters }: Props) {
             }}
             min={currentTalent2Lvl}
             max="10"
-            aria-label={tCharacter({ id: "skill", defaultMessage: "Skill" })}
+            aria-label={t("skill")}
           />
           <Input
             type="number"
@@ -456,7 +425,7 @@ export function CharacterCalculator({ characters }: Props) {
             }}
             min={currentTalent3Lvl}
             max="10"
-            aria-label={tCharacter({ id: "burst", defaultMessage: "Burst" })}
+            aria-label={t("burst")}
           />
         </div>
       </div>
@@ -478,7 +447,7 @@ export function CharacterCalculator({ characters }: Props) {
               trackClick("calculate_character");
               calculate({
                 characterId: character.id,
-                lang: localeGI,
+                lang: langData,
                 params: {
                   currentLevel,
                   intendedLevel,
@@ -499,41 +468,29 @@ export function CharacterCalculator({ characters }: Props) {
             {loading ? (
               <span className="flex items-center">
                 <FaSpinner className="mr-2 animate-spin" />
-                {t({ id: "calculating", defaultMessage: "Calculating..." })}
+                {t("calculating")}
               </span>
             ) : (
-              t({ id: "calculate", defaultMessage: "Calculate" })
+              t("calculate")
             )}
           </Button>
         </div>
         {error && (
           <div className="mt-4 w-full rounded-md bg-red-500/20 p-4">
-            <p className="text-center text-red-200">
-              {t({
-                id: "calculation_error",
-                defaultMessage: "Error occurred during calculation",
-              })}
-            </p>
+            <p className="text-center text-red-200">{t("calculation_error")}</p>
           </div>
         )}
         {called && !loading && data && (
           <div className="w-full lg:w-auto">
             <div className="mt-4 block rounded-lg bg-vulcan-900 p-4 md:inline-block">
               <h3 className="mb-2 text-center text-lg font-medium">
-                {t({
-                  id: "calculation_result",
-                  defaultMessage: "Calculation Result",
-                })}
+                {t("calculation_result")}
               </h3>
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="pb-2 text-right">
-                      {t({ id: "amount", defaultMessage: "Amount" })}
-                    </th>
-                    <th className="pb-2 text-left">
-                      {t({ id: "material", defaultMessage: "Material" })}
-                    </th>
+                    <th className="pb-2 text-right">{t("amount")}</th>
+                    <th className="pb-2 text-left">{t("material")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -565,11 +522,7 @@ export function CharacterCalculator({ characters }: Props) {
                     <tr>
                       <td colSpan={2} className="text-center">
                         <span className="text-center italic text-pink-900">
-                          {t({
-                            id: "exp_wasted",
-                            defaultMessage: "EXP Wasted",
-                          })}{" "}
-                          {numFormat.format(data.expWasted)}
+                          {t("exp_wasted")} {numFormat.format(data.expWasted)}
                         </span>
                       </td>
                     </tr>
@@ -580,20 +533,10 @@ export function CharacterCalculator({ characters }: Props) {
                 {addedToTodo ? (
                   <div className="inline-flex items-center justify-center p-1 text-green-400">
                     <GiCheckMark className="mr-2" />
-                    <span>
-                      {t({
-                        id: "added_to_todo_list",
-                        defaultMessage: "Added to Todo List",
-                      })}
-                    </span>
+                    <span>{t("added_to_todo_list")}</span>
                   </div>
                 ) : (
-                  <Button onClick={addToTodo}>
-                    {t({
-                      id: "add_to_todo_list",
-                      defaultMessage: "Add to Todo List",
-                    })}
-                  </Button>
+                  <Button onClick={addToTodo}>{t("add_to_todo_list")}</Button>
                 )}
               </div>
             </div>

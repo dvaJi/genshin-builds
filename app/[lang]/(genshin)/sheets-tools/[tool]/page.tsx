@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import Badge from "@components/ui/Badge";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
-import { i18n } from "@i18n-config";
+import { routing } from "@i18n/routing";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { getData } from "@lib/localData";
@@ -27,11 +27,11 @@ interface GenshinImpactCalculators {
 export async function generateStaticParams() {
   const sheets = await getData<Record<string, GenshinImpactCalculators>>(
     "genshin",
-    "sheets-tools"
+    "sheets-tools",
   );
   const routes: { lang: string; tool: string }[] = [];
 
-  for await (const lang of i18n.locales) {
+  for await (const lang of routing.locales) {
     for (const tool of Object.keys(sheets)) {
       routes.push({ lang, tool });
     }
@@ -50,11 +50,14 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, tool } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "sheets_tools");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.sheets_tools",
+  });
 
   const sheets = await getData<Record<string, GenshinImpactCalculators>>(
     "genshin",
-    "sheets-tools"
+    "sheets-tools",
   );
   const sheet = sheets[tool];
 
@@ -72,16 +75,18 @@ export async function generateMetadata({
     title,
     description,
     path: `/sheets-tools/${tool}`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinSheetsToolsPage({ params }: Props) {
   const { lang, tool } = await params;
-  const { t } = await getTranslations(lang, "genshin", "sheets_tools");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.sheets_tools");
   const sheets = await getData<Record<string, GenshinImpactCalculators>>(
     "genshin",
-    "sheets-tools"
+    "sheets-tools",
   );
   const sheet = sheets[tool];
 

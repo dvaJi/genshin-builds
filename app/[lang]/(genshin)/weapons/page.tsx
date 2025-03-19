@@ -1,11 +1,12 @@
-import { i18n } from "i18n-config";
 import { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { routing } from "@i18n/routing";
 import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -16,8 +17,7 @@ import WeaponsList from "./list";
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -28,32 +28,28 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "weapons");
-  const title = t({
-    id: "title",
-    defaultMessage: "Genshin Impact Weapons List",
+
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.weapons",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/weapons`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinWeapons({ params }: Props) {
   const { lang } = await params;
-  const { t, locale, langData } = await getTranslations(
-    lang,
-    "genshin",
-    "weapons"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.weapons");
+  const langData = getLangData(lang, "genshin");
 
   const weapons = await getGenshinData<Weapon[]>({
     resource: "weapons",
@@ -71,7 +67,7 @@ export default async function GenshinWeapons({ params }: Props) {
   const beta = await getData<Beta>("genshin", "beta");
 
   const allWeapons = [
-    ...(beta[locale]?.weapons ?? []).map((w: any) => {
+    ...(beta[lang]?.weapons ?? []).map((w: any) => {
       const { id, name, type, rarity } = w;
       return { id, name, type, rarity, beta: true };
     }),
@@ -83,14 +79,10 @@ export default async function GenshinWeapons({ params }: Props) {
       <div className="mb-4 flex flex-col items-center justify-between gap-2 sm:mb-8 sm:gap-4 md:flex-row">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            {t({ id: "weapons", defaultMessage: "Weapons" })}
+            {t("weapons")}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground sm:text-lg">
-            {t({
-              id: "description",
-              defaultMessage:
-                "All the best weapons, locations, and stats, including Bows, Catalysts, Claymores, Swords, and Polearms.",
-            })}
+            {t("description")}
           </p>
         </div>
         <Ads className="hidden md:block" adSlot={AD_ARTICLE_SLOT} />

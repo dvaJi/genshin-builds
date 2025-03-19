@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 
@@ -7,18 +7,18 @@ import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
-import getTranslations from "@hooks/use-translations";
-import { i18n } from "@i18n-config";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Characters } from "@interfaces/wuthering-waves/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
-export const revalidate = 86400;
+export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return [];
 }
 
 interface Props {
@@ -32,11 +32,12 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, slug } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "character_info"
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "WW.character_info",
+  });
+  const langData = getLangData(lang, "wuthering-waves");
+
   const character = await getWWData<Characters>({
     resource: "characters",
     language: langData,
@@ -59,11 +60,11 @@ export async function generateMetadata({
 
 export default async function CharacterPage({ params }: Props) {
   const { lang, slug } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "character_info"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("WW.character_info");
+  const langData = getLangData(lang, "wuthering-waves");
+
   const character = await getWWData<Characters>({
     resource: "characters",
     language: langData,
@@ -81,7 +82,7 @@ export default async function CharacterPage({ params }: Props) {
       <div className="grid grid-cols-1">
         <Link
           className="mr-auto flex rounded-md border border-ww-700 bg-ww-900 px-3 py-2 text-white hover:opacity-80"
-          href={`/${langData}/wuthering-waves/characters/${character.id}`}
+          href={`/wuthering-waves/characters/${character.id}`}
         >
           <svg
             className="mr-2 w-5"

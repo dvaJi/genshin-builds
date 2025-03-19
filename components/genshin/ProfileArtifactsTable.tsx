@@ -2,9 +2,9 @@
 
 import clsx from "clsx";
 import { ArtifactType, Build } from "interfaces/profile";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
-import useIntl from "@hooks/use-intl";
 import {
   ColumnDef,
   SortingState,
@@ -63,7 +63,7 @@ const columns: ColumnDef<any>[] = [
     cell: (info) => {
       if (!info.row.original.mainStat) return null;
       const [label, value] = Object.entries<string>(
-        info.row.original.mainStat
+        info.row.original.mainStat,
       )[0];
       return (
         <div className={clsx("rounded px-1 py-1 text-left text-xs text-white")}>
@@ -131,7 +131,7 @@ const columns: ColumnDef<any>[] = [
 ];
 
 function ProfileArtifactsTable({ data }: Props) {
-  const { t } = useIntl("profile");
+  const t = useTranslations("Genshin.profile");
   const [sorting, setSorting] = useState<SortingState>([
     { id: "critValue", desc: true },
   ]);
@@ -205,16 +205,12 @@ function ProfileArtifactsTable({ data }: Props) {
                           onClick: header.column.getToggleSortingHandler(),
                         }}
                       >
-                        {t({
-                          id: flexRender(
+                        {t(
+                          flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           ) as any,
-                          defaultMessage: flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          ) as any,
-                        })}
+                        )}
                         {{
                           asc: " ▴",
                           desc: " ▾",
@@ -240,7 +236,7 @@ function ProfileArtifactsTable({ data }: Props) {
                     <td key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </td>
                   );
@@ -280,19 +276,14 @@ function ProfileArtifactsTable({ data }: Props) {
           {">>"}
         </button>
         <span className="flex items-center gap-1">
-          <div>
-            {t({
-              id: "page",
-              defaultMessage: "Page",
-            })}
-          </div>
+          <div>{t("page")}</div>
           <strong>
             {table.getState().pagination.pageIndex + 1} of{" "}
             {table.getPageCount()}
           </strong>
         </span>
         <span className="flex items-center gap-1">
-          | {t({ id: "goto", defaultMessage: "Go to page" })}:{" "}
+          | {t("goto")}:{" "}
           <input
             type="number"
             defaultValue={table.getState().pagination.pageIndex + 1}
@@ -312,11 +303,7 @@ function ProfileArtifactsTable({ data }: Props) {
         >
           {[10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
-              {t({
-                id: "show",
-                defaultMessage: "Show {pageSize}",
-                values: { pageSize: pageSize.toString() },
-              })}
+              {t("show", { pageSize: pageSize.toString() })}
             </option>
           ))}
         </select>

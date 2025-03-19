@@ -1,7 +1,6 @@
-import clsx from "clsx";
-import Link from "next/link";
-
+import { cn } from "@app/lib/utils";
 import Image from "@components/wuthering-waves/Image";
+import { Link } from "@i18n/navigation";
 
 type Props = {
   lang: string;
@@ -17,14 +16,14 @@ type Props = {
 
 const rText = ["", "one", "two", "three", "four", "five"];
 
-export default function Material({ lang, item, showValue = true }: Props) {
+export default function Material({ item, showValue = true }: Props) {
   return (
     <div className="flex items-end justify-center">
       <Link
-        href={`/${lang}/wuthering-waves/items/${item._id}`}
-        className={clsx(
+        href={`/wuthering-waves/items/${item._id}`}
+        className={cn(
           "relative m-1 rounded transition-all hover:brightness-125",
-          `${rText[item.rarity]}-star-bg`
+          `${rText[item.rarity]}-star-bg`,
         )}
       >
         <Image

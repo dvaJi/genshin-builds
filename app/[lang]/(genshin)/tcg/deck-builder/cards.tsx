@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { memo, useEffect, useMemo, useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
@@ -9,7 +10,6 @@ import { toast } from "sonner";
 
 import { Input } from "@app/components/ui/input";
 import useDebounce from "@hooks/use-debounce";
-import useIntl from "@hooks/use-intl";
 import type {
   TCGActionCard,
   TCGCard,
@@ -37,7 +37,7 @@ function Cards({ actions, characters }: Props) {
   const [filteredCards, setFilteredCards] = useState<TCGCard[]>([]);
   const [search, setSearch] = useState<string>("");
   const debouncedSearchTerm = useDebounce(search, 200, 2);
-  const { t } = useIntl("tcg_deck_builder");
+  const t = useTranslations("Genshin.tcg_deck_builder");
 
   useEffect(() => {
     if (debouncedSearchTerm !== "") {
@@ -45,8 +45,8 @@ function Cards({ actions, characters }: Props) {
         (characters as TCGCard[])
           .concat(actions as TCGCard[])
           .filter((card) =>
-            card.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-          )
+            card.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
+          ),
       );
     }
   }, [actions, characters, debouncedSearchTerm]);
@@ -63,7 +63,7 @@ function Cards({ actions, characters }: Props) {
         }
         return acc;
       },
-      {} as Record<string, TCGActionCard[]>
+      {} as Record<string, TCGActionCard[]>,
     );
     return {
       [charactersTab]: characters,
@@ -83,7 +83,7 @@ function Cards({ actions, characters }: Props) {
               "rounded-md",
               tabSelected === type
                 ? "bg-secondary text-secondary-foreground"
-                : "text-muted-foreground hover:bg-secondary/50 hover:text-secondary-foreground"
+                : "text-muted-foreground hover:bg-secondary/50 hover:text-secondary-foreground",
             )}
           >
             {type}
@@ -182,7 +182,7 @@ function CardComponent({
       onClick={() => {
         if (isCharacter) {
           const totalChars = deckBuilder.characterCards.filter(
-            (c) => c !== "undefined"
+            (c) => c !== "undefined",
           ).length;
           if (totalChars >= DECK_SETTINGS.MAX_CHARACTER_CARDS) {
             toast.error("Error", {
@@ -194,7 +194,7 @@ function CardComponent({
         } else {
           const totalActions = Object.entries(deckBuilder.actionCards).reduce(
             (acc, [key, amount]) => (key === "undefined" ? acc : acc + amount),
-            0
+            0,
           );
           if (totalActions >= DECK_SETTINGS.MAX_ACTION_CARDS) {
             toast.error("Error", {
@@ -213,7 +213,7 @@ function CardComponent({
             (!isCharacter && deckBuilder.actionCards[card.id] === 2),
           "opacity-80": !isCharacter && deckBuilder.actionCards[card.id],
           "hover:ring-2 hover:ring-primary": true,
-        }
+        },
       )}
       data-tooltip-id="cards_tooltip"
       data-tooltip-content={

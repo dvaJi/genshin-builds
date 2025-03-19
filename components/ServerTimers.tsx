@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
-import useIntl from "@hooks/use-intl";
 import useServerTime from "@hooks/use-server-time";
 
 const regionContainerVariants = {
@@ -18,7 +18,7 @@ const regionContainerVariants = {
 };
 
 function ServerTimers() {
-  const { tfn } = useIntl("ascension_planner");
+  const t = useTranslations("Genshin.ascension_planner");
   const {
     NARemaining,
     NAWeekRemaining,
@@ -30,19 +30,19 @@ function ServerTimers() {
 
   const regions = [
     {
-      name: tfn({ id: "europe", defaultMessage: "Europe" }),
+      name: t("europe"),
       timezone: "GMT+1",
       daily: EURemaining,
       weekly: EUWeekRemaining,
     },
     {
-      name: tfn({ id: "north_america", defaultMessage: "North America" }),
+      name: t("north_america"),
       timezone: "GMT-5",
       daily: NARemaining,
       weekly: NAWeekRemaining,
     },
     {
-      name: tfn({ id: "asia", defaultMessage: "Asia" }),
+      name: t("asia"),
       timezone: "GMT+8",
       daily: AsiaRemaining,
       weekly: AsiaWeekRemaining,

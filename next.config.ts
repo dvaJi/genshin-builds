@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 import { withSentryConfig } from "@sentry/nextjs";
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx"],
@@ -120,7 +123,7 @@ const nextConfig: NextConfig = {
   cacheMaxMemorySize: 1073741824, // 1GB in bytes
 };
 
-export default withSentryConfig(nextConfig, {
+export default withSentryConfig(withNextIntl(nextConfig), {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options
 

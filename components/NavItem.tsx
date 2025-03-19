@@ -1,10 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
+
+import { Link, usePathname } from "@i18n/navigation";
 
 export type RouteChild = {
   id: string;

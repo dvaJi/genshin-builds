@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
 
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import { cn } from "@lib/utils";
 
 type Route = {
@@ -24,7 +24,7 @@ type Props = {
 
 function NavItem({ route, position, onClick }: Props) {
   const [isHovering, setIsHovering] = useState(false);
-  const { t, locale } = useIntl("layout");
+  const t = useTranslations("WW.layout");
   const pathname = usePathname();
 
   const isActive = useMemo(() => {
@@ -55,12 +55,11 @@ function NavItem({ route, position, onClick }: Props) {
         <Link
           className={cn(
             "ml-4 mt-4 block font-semibold hover:text-ww-50 md:ml-0 md:mt-0 md:px-3 md:py-2",
-            isActive ? "text-white" : "text-ww-300"
+            isActive ? "text-white" : "text-ww-300",
           )}
-          href={`/${locale}${route.href}`}
-          prefetch={false}
+          href={route.href!}
         >
-          {t({ id: route.id, defaultMessage: route.name })}
+          {t(route.id)}
           {route.isNew && (
             <span className="absolute right-2 top-4 flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ww-100 opacity-75"></span>
@@ -74,7 +73,7 @@ function NavItem({ route, position, onClick }: Props) {
             className={cn(
               "ml-4 mt-6 block cursor-default text-xs font-semibold uppercase md:ml-0 md:mr-1 md:mt-0 md:inline-block md:px-3 md:py-2 md:text-sm md:normal-case",
               isHovering ? "md:text-white" : "md:text-ww-300",
-              isActive ? "text-white md:text-white" : "text-slate-500"
+              isActive ? "text-white md:text-white" : "text-slate-500",
             )}
           >
             {route.name}
@@ -95,7 +94,7 @@ function NavItem({ route, position, onClick }: Props) {
                 "md:right-0": position > 0.7,
                 "-md:left-10": position > 0.5 && position <= 0.7,
                 "-md:left-0": position <= 0.5,
-              }
+              },
             )}
           >
             <div className="mt-2 max-h-[calc(100vh-80px)] min-w-[140px] overflow-y-auto overflow-x-hidden md:mt-0 md:w-[650px] md:max-w-[calc(100vw-600px)] md:rounded-sm md:border md:border-t-0 md:border-ww-800 md:bg-ww-950 md:shadow-xl xl:max-w-[calc(100vw-250px)]">
@@ -105,14 +104,13 @@ function NavItem({ route, position, onClick }: Props) {
                     <Link
                       key={child.id}
                       className="mb-2 rounded-sm text-sm text-ww-100 transition-colors hover:bg-ww-900 md:p-4"
-                      href={`/${locale}${child.href}`}
-                      prefetch={false}
+                      href={child.href!}
                     >
                       <div className="capitalize md:font-semibold">
-                        {t({ id: child.id, defaultMessage: child.name })}
+                        {t(child.id)}
                       </div>
                       <p className="hidden text-xs text-ww-400 md:block">
-                        {t({ id: `${child.id}_desc`, defaultMessage: "" })}
+                        {t(`${child.id}_desc`)}
                       </p>
                     </Link>
                   ))}

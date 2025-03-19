@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { type ReactNode, useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
@@ -11,7 +12,6 @@ import {
   TooltipTrigger,
 } from "@app/components/ui/tooltip";
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 import { calculateFatePrice } from "./actions";
@@ -29,6 +29,7 @@ function SubmitButton({
   text: ReactNode;
   disabled?: boolean;
 }) {
+  const t = useTranslations("Genshin.calculator");
   const { pending } = useFormStatus();
 
   return (
@@ -43,7 +44,7 @@ function SubmitButton({
       {pending ? (
         <div className="flex items-center justify-center py-2">
           <FaSpinner className="mr-2 animate-spin" />
-          <span>Calculating...</span>
+          <span>{t("calculating")}</span>
         </div>
       ) : (
         text
@@ -105,7 +106,7 @@ const prices = {
 };
 
 export function FatePriceCalculatorForm() {
-  const { t } = useIntl("calculator");
+  const t = useTranslations("Genshin.calculator");
   const [currency, setCurrency] = useState<string>("");
   const [usedPrices, setUsedPrices] = useState<number[]>([]);
   const [values, setValues] = useState<typeof __values>(__values);

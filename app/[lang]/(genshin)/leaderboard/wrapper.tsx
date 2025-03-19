@@ -1,23 +1,25 @@
 "use client";
 
-import type { Character } from "@interfaces/genshin";
+import { Build, Profile } from "interfaces/profile";
+import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { FaSpinner } from "react-icons/fa";
 import useSWR from "swr";
 
-import useIntl from "@hooks/use-intl";
-import { Build, Profile } from "interfaces/profile";
+import { getLangData } from "@i18n/langData";
+import { useRouter } from "@i18n/navigation";
+import type { Character } from "@interfaces/genshin";
+
 import Filters from "./filters";
 
 const LeaderBoardBuildsTable = dynamic(
   () => import("@components/genshin/LeaderBoardBuildsTable"),
-  { ssr: false }
+  { ssr: false },
 );
 
 type Props = {
   characters: Character[];
-  locale: string;
 };
 
 type Filters = {
@@ -29,22 +31,25 @@ async function fetcher(url: string) {
   return await res.json();
 }
 
-export default function LeaderboardWrapper({ characters, locale }: Props) {
+export default function LeaderboardWrapper({ characters }: Props) {
+  const t = useTranslations("Genshin.leaderboard");
+  const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get("page") || "1";
   const charactersParams = searchParams.get("characters") || "";
 
-  const { localeGI } = useIntl("leaderboard");
+  const langData = getLangData(locale, "genshin");
+
   const { data, error } = useSWR<(Build & { player: Profile })[]>(
-    `/api/genshin/leaderboard?lang=${localeGI}&characters=${charactersParams}&page=${page}`,
-    fetcher
+    `/api/genshin/leaderboard?lang=${langData}&characters=${charactersParams}&page=${page}`,
+    fetcher,
   );
 
   function changePage(nextPage: number) {
     if (charactersParams) {
       router.push(
-        `/${locale}/leaderboard?page=${nextPage}&characters=${charactersParams}`
+        `/${locale}/leaderboard?page=${nextPage}&characters=${charactersParams}`,
       );
     } else {
       router.push(`/${locale}/leaderboard?page=${nextPage}`);
@@ -56,7 +61,7 @@ export default function LeaderboardWrapper({ characters, locale }: Props) {
     router.push(`/${locale}/leaderboard?page=1&characters=${characters}`);
   }
 
-  if (error) return <div>Failed to load, please try again later.</div>;
+  if (error) return <div>{t("failed_load_data")}</div>;
 
   return (
     <div>
@@ -66,7 +71,7 @@ export default function LeaderboardWrapper({ characters, locale }: Props) {
       {!data ? (
         <div className="my-8 flex items-center justify-center text-2xl text-gray-400">
           <FaSpinner className="mr-2 animate-spin" />
-          <span>Loading...</span>
+          <span>{t("loading_data")}</span>
         </div>
       ) : (
         <>
@@ -77,7 +82,7 @@ export default function LeaderboardWrapper({ characters, locale }: Props) {
               onClick={() => changePage(Number(page) - 1)}
               disabled={page === "1"}
             >
-              Previous
+              {t("previous")}
             </button>
             {/* <span className="mx-2 text-lg">{pagination.pageIndex + 1}</span> */}
             <button
@@ -85,7 +90,7 @@ export default function LeaderboardWrapper({ characters, locale }: Props) {
               onClick={() => changePage(Number(page) + 1)}
               disabled={data.length < 20}
             >
-              Next
+              {t("next")}
             </button>
           </div>
         </>

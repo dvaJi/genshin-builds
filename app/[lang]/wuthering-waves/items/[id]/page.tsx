@@ -1,5 +1,5 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
@@ -7,7 +7,7 @@ import Stars from "@components/hsr/Stars";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type { Items } from "@interfaces/wuthering-waves/items";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
@@ -20,21 +20,22 @@ type Props = {
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
-export const revalidate = 86400;
+export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return [];
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "item"
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "WW.item",
+  });
+  const langData = getLangData(lang, "wuthering-waves");
+
   const item = await getWWData<Items>({
     resource: "items",
     language: langData,
@@ -64,11 +65,11 @@ export async function generateMetadata({
 
 export default async function Page({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "item"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("WW.item");
+  const langData = getLangData(lang, "wuthering-waves");
+
   const item = await getWWData<Items>({
     resource: "items",
     language: langData,

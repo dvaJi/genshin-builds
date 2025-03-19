@@ -1,6 +1,5 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { Separator } from "@app/components/ui/separator";
@@ -11,7 +10,8 @@ import LightConeSuperimposition from "@components/hsr/LightConeSuperimposition";
 import Stars from "@components/hsr/Stars";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Character, LightCone } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -19,27 +19,11 @@ import { getHsrUrl } from "@lib/imgUrl";
 import { getStarRailBuild } from "@lib/localData";
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; id: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const lightcones = await getHSRData<LightCone[]>({
-      resource: "lightcones",
-      language: lang,
-      select: ["id"],
-    });
-
-    routes.push(
-      ...lightcones.map((lc) => ({
-        lang,
-        id: lc.id,
-      })),
-    );
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {
@@ -53,11 +37,11 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(
-    lang,
-    "hsr",
-    "lightcones",
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.lightcones",
+  });
+  const langData = getLangData(lang, "hsr");
 
   const lightcone = await getHSRData<LightCone>({
     resource: "lightcones",
@@ -69,21 +53,11 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail {name} Light Cone Details",
-    values: { name: lightcone.name },
-  });
-
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "{name} is a {rarity}-star light cone of the {path} path. Learn about its stats, effects and more.",
-    values: {
-      name: lightcone.name,
-      rarity: lightcone.rarity.toString(),
-      path: lightcone.pathTypeText,
-    },
+  const title = t("title", { name: lightcone.name });
+  const description = t("description", {
+    name: lightcone.name,
+    rarity: lightcone.rarity.toString(),
+    path: lightcone.pathTypeText,
   });
 
   return genPageMetadata({
@@ -91,13 +65,16 @@ export async function generateMetadata({
     description,
     path: `/hsr/lightcones/${id}`,
     image: getHsrUrl(`/lightcones/${lightcone.id}.png`),
-    locale,
+    locale: lang,
   });
 }
 
 export default async function LightConePage({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "lightcones");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.lightcones");
+  const langData = getLangData(lang, "hsr");
 
   const lightcone = await getHSRData<LightCone>({
     resource: "lightcones",
@@ -207,7 +184,7 @@ export default async function LightConePage({ params }: Props) {
 
               <div>
                 <h2 className="text-xl font-semibold text-accent">
-                  Ability: {lightcone.effectName}
+                  {t("ability")}: {lightcone.effectName}
                 </h2>
                 <LightConeSuperimposition lightcone={lightcone} />
               </div>
@@ -218,7 +195,9 @@ export default async function LightConePage({ params }: Props) {
               />
               <Separator className="my-4" />
 
-              <h2 className="text-xl font-semibold text-accent">Stats</h2>
+              <h2 className="text-xl font-semibold text-accent">
+                {t("stats")}
+              </h2>
               {lightcone.ascend && lightcone.ascend.length > 0 && (
                 <LightConeStats lightcone={lightcone} />
               )}
@@ -233,17 +212,14 @@ export default async function LightConePage({ params }: Props) {
               {filteredCharacterBuilds.length > 0 && (
                 <div>
                   <h2 className="mb-4 text-xl font-semibold text-accent">
-                    {t({
-                      id: "recommended_characters",
-                      defaultMessage: "Recommended Characters",
-                    })}
+                    {t("recommended_characters")}
                   </h2>
                   <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
                     {filteredCharacterBuilds.map(
                       ({ character, isBestLightCone, isAlternative }) => (
                         <Link
                           key={character.id}
-                          href={`/${lang}/hsr/character/${character.id}`}
+                          href={`/hsr/character/${character.id}`}
                           className="group flex items-center rounded border border-border bg-background p-2 transition-colors hover:border-accent"
                         >
                           <Image
@@ -261,12 +237,12 @@ export default async function LightConePage({ params }: Props) {
                               <Stars stars={character.rarity} />
                               {isBestLightCone ? (
                                 <span className="rounded bg-accent/20 px-1.5 py-0.5 text-xs text-accent">
-                                  Best in Slot
+                                  {t("best_in_slot")}
                                 </span>
                               ) : (
                                 isAlternative && (
                                   <span className="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
-                                    Alternative
+                                    {t("alternative")}
                                   </span>
                                 )
                               )}

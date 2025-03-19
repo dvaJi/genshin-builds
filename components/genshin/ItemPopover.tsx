@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { memo, useCallback, useMemo, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
@@ -10,7 +11,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@app/components/ui/popover";
-import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 import SimpleRarityBox from "../SimpleRarityBox";
@@ -34,7 +34,7 @@ function ItemPopoverComponent({
 }: PopoverProps) {
   const [inventory, setInventory] = useState(originalData - data);
   const [open, setOpen] = useState(false);
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
   const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
 
   // Memoize the remaining calculation
@@ -132,9 +132,7 @@ function ItemPopoverComponent({
         <div className="space-y-4 p-4">
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">
-                {t({ id: "progress", defaultMessage: "Progress" })}
-              </span>
+              <span className="text-muted-foreground">{t("progress")}</span>
               <span className="font-medium">{progressPercentage}%</span>
             </div>
             <div className="relative h-2 w-full overflow-hidden rounded-full bg-muted">
@@ -148,13 +146,13 @@ function ItemPopoverComponent({
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div className="rounded-md bg-muted/40 px-3 py-2">
               <div className="text-xs text-muted-foreground">
-                {t({ id: "remaining", defaultMessage: "Remaining" })}
+                {t("remaining")}
               </div>
               <div className="font-medium">{remaining}</div>
             </div>
             <div className="rounded-md bg-muted/40 px-3 py-2">
               <div className="text-xs text-muted-foreground">
-                {t({ id: "inventory", defaultMessage: "Inventory" })}
+                {t("inventory")}
               </div>
               <div className="font-medium">{inventory}</div>
             </div>
@@ -190,7 +188,7 @@ function ItemPopoverComponent({
           </div>
 
           <Button className="w-full justify-center" onClick={handleSave}>
-            {t({ id: "save_and_close", defaultMessage: "Save and close" })}
+            {t("save_and_close")}
           </Button>
         </div>
       </PopoverContent>

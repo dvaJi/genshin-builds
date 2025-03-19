@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { memo, useCallback, useMemo, useState } from "react";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { IoAnalyticsOutline } from "react-icons/io5";
 
 import ItemPopoverSummary from "@components/genshin/ItemPopoverSummary";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import { trackClick } from "@lib/gtag";
 import { useStore } from "@nanostores/react";
 import { Todo, todos as todosAtom } from "@state/todo";
@@ -22,8 +22,8 @@ type Props = {
 };
 
 // Empty state component
-const EmptyTodoState = memo(({ locale }: { locale: string }) => {
-  const { t } = useIntl("todo");
+const EmptyTodoState = memo(() => {
+  const t = useTranslations("Genshin.todo");
 
   return (
     <div className="flex min-h-[300px] flex-col items-center justify-center rounded-lg border border-border bg-card/50 p-8 text-center shadow-sm backdrop-blur-sm">
@@ -31,26 +31,14 @@ const EmptyTodoState = memo(({ locale }: { locale: string }) => {
         <HiOutlineCalendarDays className="h-8 w-8 text-muted-foreground" />
       </div>
       <h3 className="mb-2 text-xl font-medium text-foreground">
-        {t({
-          id: "no_todo_title",
-          defaultMessage: "No todos yet",
-        })}
+        {t("no_todo_title")}
       </h3>
-      <p className="mb-4 max-w-md text-muted-foreground">
-        {t({
-          id: "no_todo_msg",
-          defaultMessage: "No Todos. Add some from the calculator.",
-        })}
-      </p>
+      <p className="mb-4 max-w-md text-muted-foreground">{t("no_todo_msg")}</p>
       <Link
-        href={`/${locale}/calculator`}
+        href={`/calculator`}
         className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-        prefetch={false}
       >
-        {t({
-          id: "go_to_calculator",
-          defaultMessage: "Go to Calculator page",
-        })}
+        {t("go_to_calculator")}
       </Link>
     </div>
   );
@@ -72,17 +60,14 @@ const SummarySection = memo(
     updateAllTodoResourcesById: (newData: any) => void;
     materialsMap: Record<string, any>;
   }) => {
-    const { t } = useIntl("todo");
+    const t = useTranslations("Genshin.todo");
 
     return (
       <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
         <div className="flex items-center gap-2 border-b border-border bg-muted/30 px-4 py-3">
           <IoAnalyticsOutline className="h-5 w-5 text-muted-foreground" />
           <h2 className="text-base font-semibold text-foreground">
-            {t({
-              id: "summary",
-              defaultMessage: "Summary",
-            })}
+            {t("summary")}
           </h2>
         </div>
         <div className="p-4">
@@ -140,7 +125,6 @@ TodoListContainer.displayName = "TodoListContainer";
 const TodoList = ({ materialsMap, planning, days }: Props) => {
   const todos = useStore(todosAtom);
   const [currentDay, setCurrentDay] = useState(days[new Date().getDay()]);
-  const { locale } = useIntl("todo");
 
   const { summary, originalSummary } = useMemo(() => {
     const summary: Record<string, number> = {};
@@ -309,7 +293,7 @@ const TodoList = ({ materialsMap, planning, days }: Props) => {
   }, []);
 
   if (todos.length === 0) {
-    return <EmptyTodoState locale={locale} />;
+    return <EmptyTodoState />;
   }
 
   return (

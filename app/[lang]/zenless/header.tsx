@@ -1,29 +1,28 @@
 "use client";
 
-import clsx from "clsx";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
+import { cn } from "@app/lib/utils";
 import GameSelector from "@components/GameSelector";
 import NavItem, { RouteType } from "@components/NavItem";
+import { Link } from "@i18n/navigation";
 import { GAME } from "@utils/games";
 
-const navRoutes: RouteType[] = [
-  { id: "home", name: "Home", href: "/zenless" },
-  { id: "characters", name: "Characters", href: "/zenless/characters" },
-  { id: "bangboos", name: "Bangboos", href: "/zenless/bangboos" },
-  { id: "disk-drives", name: "Disk Drives", href: "/zenless/disk-drives" },
-  { id: "w-engines", name: "W Engines", href: "/zenless/w-engines" },
-  { id: "tierlist", name: "Tierlist", href: "/zenless/tierlist" },
-  { id: "blog", name: "Blog", href: "/zenless/blog" },
-];
+export default function ZenlessHeader() {
+  const t = useTranslations("zenless.layout");
 
-type Props = {
-  locale: string;
-};
+  const navRoutes: RouteType[] = [
+    { id: "home", name: t("home"), href: "/zenless" },
+    { id: "characters", name: t("characters"), href: "/zenless/characters" },
+    { id: "bangboos", name: t("bangboos"), href: "/zenless/bangboos" },
+    { id: "disk-drives", name: t("disk-drives"), href: "/zenless/disk-drives" },
+    { id: "w-engines", name: t("w-engines"), href: "/zenless/w-engines" },
+    { id: "tierlist", name: t("tierlist"), href: "/zenless/tierlist" },
+    { id: "blog", name: t("blog"), href: "/zenless/blog" },
+  ];
 
-export default function ZenlessHeader({ locale }: Props) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const touchStartX = useRef(0);
@@ -94,7 +93,7 @@ export default function ZenlessHeader({ locale }: Props) {
         <div className="flex h-12 items-center justify-between pr-2 sm:pr-4 md:inline-block md:h-auto md:pr-0">
           <div className="relative">
             <h1 className="text-xl md:py-5">
-              <Link href={`/${locale}/zenless`} prefetch={false}>
+              <Link href={`/zenless`} prefetch={false}>
                 ZenlessBuilds
               </Link>
             </h1>
@@ -120,7 +119,7 @@ export default function ZenlessHeader({ locale }: Props) {
           ref={navigationRef}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
-          className={clsx(
+          className={cn(
             "mobile-nav-content fixed inset-x-0 top-[3.25rem] z-10 block max-h-[calc(100vh-3.25rem)] overflow-auto bg-zinc-900 pb-6 pt-2 shadow-lg sm:top-[3.75rem] sm:max-h-[calc(100vh-3.75rem)] md:relative md:inset-auto md:ml-10 md:mt-0 md:flex md:max-h-none md:flex-grow md:justify-between md:overflow-visible md:bg-transparent md:pb-0 md:pt-0 md:shadow-none",
             isMobileNavOpen && !isClosing && "animate-slide-in",
             isClosing && "animate-slide-out",
@@ -135,7 +134,7 @@ export default function ZenlessHeader({ locale }: Props) {
             {navRoutes.map((route, index) => (
               <div
                 key={route.id}
-                className={clsx(
+                className={cn(
                   "mobile-nav-item",
                   "md:transform-none md:opacity-100",
                 )}
@@ -159,7 +158,7 @@ export default function ZenlessHeader({ locale }: Props) {
 
       {(isMobileNavOpen || isClosing) && (
         <div
-          className={clsx(
+          className={cn(
             "fixed inset-0 z-0 bg-zinc-950/80 backdrop-blur-sm md:hidden",
             isMobileNavOpen && !isClosing && "animate-fade-in",
             isClosing && "animate-fade-out",

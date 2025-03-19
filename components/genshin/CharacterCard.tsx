@@ -1,6 +1,5 @@
-import Link from "next/link";
-
 import Image from "@components/genshin/Image";
+import { Link } from "@i18n/navigation";
 import { cn } from "@lib/utils";
 import { capitalize } from "@utils/capitalize";
 
@@ -15,21 +14,15 @@ interface CharacterCardProps {
     beta?: boolean;
     release: number;
   };
-  locale: string;
   latestRelease: number;
 }
 
 export function CharacterCard({
   character,
-  locale,
   latestRelease,
 }: CharacterCardProps) {
   return (
-    <Link
-      href={`/${locale}/character/${character.id}`}
-      prefetch={false}
-      className="group/card block"
-    >
+    <Link href={`/character/${character.id}`} className="group/card block">
       <div className="relative">
         <div
           className={cn(

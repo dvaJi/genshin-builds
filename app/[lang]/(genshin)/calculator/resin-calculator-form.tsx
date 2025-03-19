@@ -2,6 +2,7 @@
 
 import dayjs from "dayjs";
 import rTime from "dayjs/plugin/relativeTime";
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { useActionState, useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
@@ -14,7 +15,6 @@ import {
   TooltipTrigger,
 } from "@app/components/ui/tooltip";
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 import { calculateResin } from "./actions";
@@ -30,7 +30,7 @@ const initialState = {
 };
 
 function SubmitButton() {
-  const { t } = useIntl("calculator");
+  const t = useTranslations("Genshin.calculator");
   const { pending } = useFormStatus();
 
   return (
@@ -42,17 +42,17 @@ function SubmitButton() {
       {pending ? (
         <div className="flex items-center justify-center">
           <FaSpinner className="mr-2 animate-spin" />
-          {t({ id: "calculating", defaultMessage: "Calculating..." })}
+          {t("calculating")}
         </div>
       ) : (
-        t({ id: "calculate", defaultMessage: "Calculate" })
+        t("calculate")
       )}
     </Button>
   );
 }
 
 export function ResinCalculatorForm() {
-  const { t } = useIntl("calculator");
+  const t = useTranslations("Genshin.calculator");
   const [type, setType] = useState("maxResin");
   const [currentResin, setCurrentResin] = useState(0);
   const [desiredResin, setDesiredResin] = useState(0);
@@ -154,7 +154,7 @@ export function ResinCalculatorForm() {
                 <div className="mt-1 flex items-center justify-between">
                   <span className="text-xs text-gray-400">0</span>
                   <span className="text-xs text-gray-400">
-                    Max: {MAX_RESIN}
+                    {t("max")}: {MAX_RESIN}
                   </span>
                 </div>
               </div>
@@ -215,7 +215,7 @@ export function ResinCalculatorForm() {
                 <div className="mt-1 flex items-center justify-between">
                   <span className="text-xs text-gray-400">0</span>
                   <span className="text-xs text-gray-400">
-                    Max: {MAX_RESIN}
+                    {t("max")}: {MAX_RESIN}
                   </span>
                 </div>
               </div>
@@ -241,20 +241,13 @@ export function ResinCalculatorForm() {
                     <div className="mt-3 flex items-center justify-center rounded-md bg-vulcan-700/50 py-2">
                       <MdOutlineTimer className="mr-2" />
                       <span className="text-sm text-gray-200">
-                        {t({
-                          id: "estimated_resin_time",
-                          defaultMessage: "Estimated time",
-                        })}
-                        : <strong>{estimatedTime}</strong>
+                        {t("estimated_resin_time")}:{" "}
+                        <strong>{estimatedTime}</strong>
                       </span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    {t({
-                      id: "estimated_resin_tooltip",
-                      defaultMessage:
-                        "This is an estimate based on your inputs",
-                    })}
+                    {t("estimated_resin_tooltip")}
                   </TooltipContent>
                 </Tooltip>
               )}
@@ -386,12 +379,12 @@ export function ResinCalculatorForm() {
                     alt="Original Resin"
                     className="mx-auto mb-4 h-16 w-16 opacity-60"
                   />
-                  <p className="mb-2 text-lg text-gray-300">
+                  {/* <p className="mb-2 text-lg text-gray-300">
                     {t("resin_calculator_hint")}
                   </p>
                   <p className="text-sm text-gray-400">
                     {t("resin_calculator_desc_short")}
-                  </p>
+                  </p> */}
                 </div>
                 <SubmitButton />
               </div>

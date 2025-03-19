@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { memo, useCallback, useMemo, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
@@ -10,7 +11,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@app/components/ui/popover";
-import useIntl from "@hooks/use-intl";
 import { getUrl } from "@lib/imgUrl";
 
 import SimpleRarityBox from "../SimpleRarityBox";
@@ -59,7 +59,7 @@ function ItemPopoverSummaryComponent({
 }: PopoverProps) {
   const [inventory, setInventory] = useState(originalData - data);
   const [open, setOpen] = useState(false);
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
   const numFormat = Intl.NumberFormat(undefined, { notation: "compact" });
 
   // Memoize the remaining calculation
@@ -200,9 +200,7 @@ function ItemPopoverSummaryComponent({
         <div className="space-y-4 p-4">
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">
-                {t({ id: "progress", defaultMessage: "Progress" })}
-              </span>
+              <span className="text-muted-foreground">{t("progress")}</span>
               <span className="font-medium">{progressPercentage}%</span>
             </div>
             <div className="relative h-2 w-full overflow-hidden rounded-full bg-muted">
@@ -216,16 +214,13 @@ function ItemPopoverSummaryComponent({
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div className="rounded-md bg-muted/40 px-3 py-2">
               <div className="text-xs text-muted-foreground">
-                {t({
-                  id: "total_remaining",
-                  defaultMessage: "Total remaining",
-                })}
+                {t("total_remaining")}
               </div>
               <div className="font-medium">{remaining}</div>
             </div>
             <div className="rounded-md bg-muted/40 px-3 py-2">
               <div className="text-xs text-muted-foreground">
-                {t({ id: "inventory", defaultMessage: "Inventory" })}
+                {t("inventory")}
               </div>
               <div className="font-medium">{inventory}</div>
             </div>
@@ -233,9 +228,7 @@ function ItemPopoverSummaryComponent({
 
           {idsByResource.length > 0 && (
             <div className="rounded-md bg-muted/40 p-3">
-              <div className="mb-2 text-sm font-medium">
-                {t({ id: "priority", defaultMessage: "Priority" })}
-              </div>
+              <div className="mb-2 text-sm font-medium">{t("priority")}</div>
               <div className="custom-scroll max-h-32 space-y-1.5 overflow-y-auto pr-1">
                 {idsByResource.map((data, i) => (
                   <div
@@ -296,7 +289,7 @@ function ItemPopoverSummaryComponent({
           </div>
 
           <Button className="w-full justify-center" onClick={handleSave}>
-            {t({ id: "save_and_close", defaultMessage: "Save and close" })}
+            {t("save_and_close")}
           </Button>
         </div>
       </PopoverContent>

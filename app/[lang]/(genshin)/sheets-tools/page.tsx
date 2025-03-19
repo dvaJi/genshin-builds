@@ -1,11 +1,11 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { Link } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getUrl } from "@lib/imgUrl";
 import { getData } from "@lib/localData";
@@ -13,9 +13,7 @@ import { getData } from "@lib/localData";
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 interface GenshinImpactCalculators {
@@ -37,7 +35,10 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "sheets_tools");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.sheets_tools",
+  });
   const title = t("title");
   const description = t("description");
 
@@ -45,17 +46,19 @@ export async function generateMetadata({
     title,
     description,
     path: `/sheets-tools`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinSheetsTools({ params }: Props) {
   const { lang } = await params;
-  const { t } = await getTranslations(lang, "genshin", "sheets_tools");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.sheets_tools");
 
   const sheets = await getData<Record<string, GenshinImpactCalculators>>(
     "genshin",
-    "sheets-tools"
+    "sheets-tools",
   );
 
   return (
