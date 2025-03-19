@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
+import { getLangData } from "@i18n/langData";
 import type { WEngines } from "@interfaces/zenless/wEngines";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
@@ -27,53 +30,50 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { slug, lang } = await params;
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "zenless.wengine",
+  });
+  const langData = getLangData(lang, "zenless");
   const item = await getZenlessData<WEngines>({
     resource: "w-engines",
     filter: { id: slug },
-    language: lang,
+    language: langData,
   });
 
   if (!item) {
     return;
   }
 
-  const title = `${item.name} Zenless Zone Zero W-Engine`;
-  const description = `Learn about the ${item.name} W-Engine in Zenless Zone Zero. Find out everything you need to know about ${item.name} W-Engine, including stats, passive talents, and how to get it.`;
-  const publishedTime = new Date().toISOString();
+  const title = t("title", {
+    itemname: item.name,
+  });
+  const description = t("description", {
+    itemname: item.name,
+  });
   const image = `/zenless/w-engines/${item.icon}.webp`;
 
   const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
 
-  return {
+  return genPageMetadata({
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime: `${publishedTime}`,
-      url: `https://genshin-builds.com/zenless/w-engines/${slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+    image: ogImage,
+    path: `/zenless/w-engines/${slug}`,
+    locale: lang,
+  });
 }
 
 export default async function WEnginePage({ params }: Props) {
   const { lang, slug } = await params;
+  setRequestLocale(lang);
+
+  const t = await getTranslations("zenless.wengine");
+  const langData = getLangData(lang, "zenless");
   const item = await getZenlessData<WEngines>({
     resource: "w-engines",
     filter: { id: slug },
-    language: lang,
+    language: langData,
   });
 
   if (!item) {
@@ -92,7 +92,9 @@ export default async function WEnginePage({ params }: Props) {
         />
         <div>
           <h1 className="text-2xl font-semibold md:text-5xl">
-            Zenless Zone Zero (ZZZ) {item.name} W-Engine
+            {t("engine_title", {
+              itemname: item.name,
+            })}
           </h1>
           <div className="flex">
             {Array.from({ length: item.rarity }).map((_, i) => (
@@ -114,7 +116,11 @@ export default async function WEnginePage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
 
-      <h2 className="text-2xl font-semibold">{item.name} Refinements</h2>
+      <h2 className="text-2xl font-semibold">
+        {t("engine_refinements", {
+          itemname: item.name,
+        })}
+      </h2>
       <div className="mx-2 mb-4 flex flex-col gap-2 md:mx-0">
         <div className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2">
           <div>

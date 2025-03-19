@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { LuMinus, LuPlus } from "react-icons/lu";
 
@@ -10,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@app/components/ui/card";
-import useIntl from "@hooks/use-intl";
 import type { Weapon } from "@interfaces/genshin";
 
 type Props = {
@@ -18,7 +18,7 @@ type Props = {
 };
 
 export default function WeaponStats({ weapon }: Props) {
-  const { t } = useIntl("weapon");
+  const t = useTranslations("Genshin.weapon");
   const [refinement, setRefinement] = useState(0);
   const [weaponStatIndex, setWeaponStatIndex] = useState(0);
 
@@ -26,9 +26,7 @@ export default function WeaponStats({ weapon }: Props) {
     <div className="grid grid-cols-1 gap-4 px-4 lg:grid-cols-2 lg:px-0">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-          <CardTitle className="text-2xl font-bold">
-            {t({ id: "stats", defaultMessage: "Stats" })}
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold">{t("stats")}</CardTitle>
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
@@ -52,7 +50,7 @@ export default function WeaponStats({ weapon }: Props) {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
               <div className="text-lg font-medium">
-                {t({ id: "base_atk", defaultMessage: "Base ATK" })}
+                {t("base_atk")}
                 <span className="ml-2 text-xl text-primary">
                   {weapon.stats.levels[weaponStatIndex]?.primary}
                 </span>
@@ -68,13 +66,13 @@ export default function WeaponStats({ weapon }: Props) {
             </div>
             <div className="space-y-1">
               <div className="text-lg font-medium">
-                {t({ id: "level", defaultMessage: "Level" })}
+                {t("level")}
                 <span className="ml-2 text-xl text-primary">
                   {weapon.stats.levels[weaponStatIndex]?.level}
                 </span>
               </div>
               <div className="text-lg font-medium">
-                {t({ id: "ascension", defaultMessage: "Ascension" })}
+                {t("ascension")}
                 <span className="ml-2 text-xl text-primary">
                   {weapon.stats.levels[weaponStatIndex]?.ascension}
                 </span>
@@ -87,7 +85,7 @@ export default function WeaponStats({ weapon }: Props) {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
           <CardTitle className="text-2xl font-bold">
-            {t({ id: "refinement", defaultMessage: "Refinement" })}
+            {t("refinement")}
           </CardTitle>
           <div className="flex items-center gap-2">
             <Button

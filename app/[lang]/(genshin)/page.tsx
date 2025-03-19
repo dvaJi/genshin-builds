@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -6,7 +7,7 @@ import { genPageMetadata } from "@app/seo";
 import ServerTimers from "@components/ServerTimers";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type { Character, Domains, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -58,26 +59,18 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "ascension_planner",
-  );
-  const title = t({
-    id: "title",
-    defaultMessage: "Genshin Builds | Genshin Impact Wiki Database",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.ascension_planner",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Learn about every character in Genshin Impact including their skills, talents, builds, and tier list.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/`,
-    locale,
+    locale: lang,
   });
 }
 
@@ -105,11 +98,9 @@ async function getData(langData: string) {
 
 export default async function IndexPage({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "genshin",
-    "ascension_planner",
-  );
+  setRequestLocale(lang);
+  const langData = getLangData(lang, "genshin");
+  const t = await getTranslations("Genshin.ascension_planner");
 
   const { domains, charactersMap, weaponsMap } = await getData(langData);
   const days = domains.characters[0].rotation.map((r) => r.day);
@@ -121,17 +112,10 @@ export default async function IndexPage({ params }: Props) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,_rgba(255,255,255,0.08)_0%,_transparent_50%)]" />
         <div className="relative">
           <h1 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-            {t({
-              id: "welcome_title",
-              defaultMessage: "Welcome to Genshin-Builds! ✨",
-            })}
+            {t("welcome_title")}
           </h1>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground sm:mt-4 sm:text-lg">
-            {t({
-              id: "welcome_desc",
-              defaultMessage:
-                "Discover character builds, comprehensive guides, and a wiki database all in one place. Genshin-Builds is here to assist you in planning your farming activities with an ascension calculator. Keep track of your progress effortlessly with a convenient todo list. Level up your Genshin Impact experience with this invaluable resource!",
-            })}
+            {t("welcome_desc")}
           </p>
         </div>
       </div>
@@ -144,22 +128,18 @@ export default async function IndexPage({ params }: Props) {
       {/* Shortcuts Section */}
       <section className="mt-8 sm:mt-12">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0 sm:text-3xl">
-          {t({ id: "shortcuts", defaultMessage: "Shortcuts" })}
+          {t("shortcuts")}
         </h2>
-        <Shortcuts lang={lang} />
+        <Shortcuts />
       </section>
 
       {/* Banners Section */}
       <section className="mt-8 sm:mt-12">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0 sm:text-3xl">
-          {t({ id: "banners", defaultMessage: "Banners" })}
+          {t("banners")}
         </h2>
         <p className="mb-4 text-base text-slate-300 sm:mb-6 sm:text-lg">
-          {t({
-            id: "banners_desc",
-            defaultMessage:
-              "Check out the latest banners and their duration in Genshin Impact.",
-          })}
+          {t("banners_desc")}
         </p>
         <Suspense fallback={<LoadingGrid />}>
           <Banners lang={lang} />
@@ -174,14 +154,10 @@ export default async function IndexPage({ params }: Props) {
       {/* Latest Posts Section */}
       <section className="mt-8 sm:mt-12">
         <h2 className="mb-3 text-xl font-semibold tracking-tight text-white sm:mb-4 sm:text-2xl">
-          {t({ id: "latest_posts", defaultMessage: "Latest Posts" })}
+          {t("latest_posts")}
         </h2>
         <p className="mb-4 text-base text-slate-300 sm:mb-6 sm:text-lg">
-          {t({
-            id: "latest_posts_desc",
-            defaultMessage:
-              "Stay up to date with the latest news, guides, and updates in Genshin Impact.",
-          })}
+          {t("latest_posts_desc")}
         </p>
         <Suspense fallback={<LoadingGrid />}>
           <LatestPosts />
@@ -198,7 +174,7 @@ export default async function IndexPage({ params }: Props) {
             className="inline-flex items-center text-sm font-medium text-slate-300 transition-colors hover:text-white"
             prefetch={false}
           >
-            {t({ id: "view_all_posts", defaultMessage: "View all posts" })}
+            {t("view_all_posts")}
             <svg
               className="ml-1 h-4 w-4"
               viewBox="0 0 20 20"
@@ -217,14 +193,10 @@ export default async function IndexPage({ params }: Props) {
       {/* Server Timers Section */}
       <section className="mt-8 sm:mt-12">
         <h2 className="mb-3 text-xl font-semibold tracking-tight text-white sm:mb-4 sm:text-2xl">
-          {t({ id: "server_timers", defaultMessage: "Server Timers" })}
+          {t("server_timers")}
         </h2>
         <p className="mb-4 text-base text-slate-300 sm:mb-6 sm:text-lg">
-          {t({
-            id: "server_timers_desc",
-            defaultMessage:
-              "The daily reset occurs at 04:00 (4 AM), based on your server's time zone. The weekly reset occurs each Monday, also at 04:00 (4 AM).",
-          })}
+          {t("server_timers_desc")}
         </p>
         <Suspense fallback={<LoadingCard />}>
           <ServerTimers />

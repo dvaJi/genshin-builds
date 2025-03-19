@@ -1,6 +1,5 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
@@ -8,7 +7,8 @@ import Image from "@components/hsr/Image";
 import Stars from "@components/hsr/Stars";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Character, Relic } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -16,27 +16,11 @@ import { getHsrUrl } from "@lib/imgUrl";
 import { getStarRailBuild } from "@lib/localData";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const dynamicParams = true;
+export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; id: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const relics = await getHSRData<Relic[]>({
-      resource: "relics",
-      language: lang,
-      select: ["id"],
-    });
-
-    routes.push(
-      ...relics.map((relic) => ({
-        lang,
-        id: relic.id,
-      })),
-    );
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {
@@ -50,7 +34,11 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(lang, "hsr", "relics");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.relics",
+  });
+  const langData = getLangData(lang, "hsr");
 
   const relic = await getHSRData<Relic>({
     resource: "relics",
@@ -62,31 +50,24 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail {name} Relic Set Details",
-    values: { name: relic.name },
-  });
-
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "{name} is a relic set in Honkai: Star Rail. Learn about its pieces, effects and best characters to use it on.",
-    values: { name: relic.name },
-  });
+  const title = t("title_detail", { name: relic.name });
+  const description = t("description_detail", { name: relic.name });
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/relics/${id}`,
     image: getHsrUrl(`/relics/${relic.id}.png`),
-    locale,
+    locale: lang,
   });
 }
 
 export default async function RelicPage({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "relics");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.relics");
+  const langData = getLangData(lang, "hsr");
 
   const relic = await getHSRData<Relic>({
     resource: "relics",
@@ -180,8 +161,7 @@ export default async function RelicPage({ params }: Props) {
                   {Object.entries(relic.effects).map(([pieces, effect]) => (
                     <div key={pieces} className="mb-4">
                       <div className="mb-2 font-semibold text-card-foreground">
-                        {pieces}{" "}
-                        {t({ id: "piece_set", defaultMessage: "Piece Set" })}
+                        {pieces} {t("piece_set")}
                       </div>
                       <p
                         className="text-sm"
@@ -194,7 +174,7 @@ export default async function RelicPage({ params }: Props) {
 
               <div>
                 <h2 className="mb-4 text-xl font-semibold text-accent">
-                  {t({ id: "relic_pieces", defaultMessage: "Relic Pieces" })}
+                  {t("relic_pieces")}
                 </h2>
                 <div className="grid grid-cols-1 gap-2">
                   {relic.pieces.map((piece) => (
@@ -229,17 +209,14 @@ export default async function RelicPage({ params }: Props) {
               {filteredCharacterBuilds.length > 0 && (
                 <div>
                   <h2 className="mb-4 text-xl font-semibold text-accent">
-                    {t({
-                      id: "recommended_characters",
-                      defaultMessage: "Recommended Characters",
-                    })}
+                    {t("recommended_characters")}
                   </h2>
                   <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
                     {filteredCharacterBuilds.map(
                       ({ character, setCount, isOrnament }) => (
                         <Link
                           key={character.id}
-                          href={`/${lang}/hsr/character/${character.id}`}
+                          href={`/hsr/character/${character.id}`}
                           className="group flex items-center rounded border border-border bg-background p-2 transition-colors hover:border-accent"
                         >
                           <Image
@@ -257,7 +234,7 @@ export default async function RelicPage({ params }: Props) {
                               <Stars stars={character.rarity} />
                               {isOrnament ? (
                                 <span className="rounded bg-accent/20 px-1.5 py-0.5 text-xs text-accent">
-                                  Ornament
+                                  {t("ornament")}
                                 </span>
                               ) : (
                                 setCount > 0 && (

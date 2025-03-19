@@ -1,10 +1,10 @@
+import { useTranslations } from "next-intl";
 import type { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
 import { Checkbox } from "@app/components/ui/checkbox";
 import Input from "@components/ui/Input";
-import useIntl from "@hooks/use-intl";
 
 interface Props {
   onSearch: (searchText: string) => void;
@@ -17,7 +17,7 @@ export default function AchievementsSearch({
   onShowAchieved,
   showAchieved,
 }: Props) {
-  const { t } = useIntl("achievements");
+  const t = useTranslations("Genshin.achievements");
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -40,10 +40,7 @@ export default function AchievementsSearch({
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setSearchTerm(e.target.value)
             }
-            placeholder={t({
-              id: "search",
-              defaultMessage: "Search achievements...",
-            })}
+            placeholder={t("search")}
             className="w-full pl-9"
           />
         </div>
@@ -54,7 +51,7 @@ export default function AchievementsSearch({
               onCheckedChange={onShowAchieved}
               className="mr-2"
             />
-            {t({ id: "show_achieved", defaultMessage: "Show Achieved" })}
+            {t("show_achieved")}
           </label>
         </div>
       </div>

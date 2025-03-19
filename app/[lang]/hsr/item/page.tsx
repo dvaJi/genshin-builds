@@ -1,21 +1,21 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Image from "@components/hsr/Image";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import type { Items } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
-import { getHsrUrl } from "@lib/imgUrl";
 
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -26,27 +26,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "hsr", "items");
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail All Items List",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.items",
   });
-  const description = t({
-    id: "description",
-    defaultMessage: "A complete list of all items in Honkai: Star Rail.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/item`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function HSRItemPage({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "items");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.items");
+  const langData = getLangData(lang, "hsr");
 
   const items = await getHSRData<Items[]>({
     resource: "items",
@@ -58,18 +58,9 @@ export default async function HSRItemPage({ params }: Props) {
     <div>
       <div className="my-2">
         <h2 className="text-3xl font-semibold uppercase text-slate-100">
-          {t({
-            id: "items",
-            defaultMessage: "Items",
-          })}
+          {t("items")}
         </h2>
-        <p className="px-4 text-sm">
-          {t({
-            id: "items_desc",
-            defaultMessage:
-              "Items are collectible objects from Honkai: Star Rail. Majority of the items can be accessed through the Inventory.",
-          })}
-        </p>
+        <p className="px-4 text-sm">{t("items_desc")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -81,9 +72,8 @@ export default async function HSRItemPage({ params }: Props) {
         {items.map((item) => (
           <Link
             key={item.id}
-            href={`/${lang}/hsr/item/${item.id}`}
+            href={`/hsr/item/${item.id}`}
             className="group/link grid justify-center justify-items-center border border-border bg-card text-center ring-primary hover:bg-muted hover:ring-2"
-            prefetch={false}
           >
             <Image
               className="h-[128px] w-[128px]"

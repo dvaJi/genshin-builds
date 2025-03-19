@@ -1,12 +1,12 @@
 "use client";
 
-import clsx from "clsx";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import { cn } from "@app/lib/utils";
 import TimeAgo from "@components/TimeAgo";
 import Badge from "@components/ui/Badge";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { SelectPlayer } from "@lib/db/schema";
 import { getUrlLQ } from "@lib/imgUrl";
 import {
@@ -28,7 +28,6 @@ const columns: ColumnDef<SelectPlayer>[] = [
         <Link
           href={`/profile/${info.row.original.uuid}`}
           className="flex place-items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap hover:text-white"
-          prefetch={false}
         >
           <Badge className="w-10 text-center">
             {regionParse(info.row.original.uuid)}
@@ -37,7 +36,7 @@ const columns: ColumnDef<SelectPlayer>[] = [
             src={getUrlLQ(
               `/profile/${info.row.original.profileCostumeId || info.row.original.profilePictureId}.png`,
               25,
-              25
+              25,
             )}
             width={25}
             height={25}
@@ -112,7 +111,8 @@ export function ProfileTable({ data }: Props) {
       desc: true,
     },
   ]);
-  const { t } = useIntl("profile");
+
+  const t = useTranslations("Genshin.profile");
 
   const table = useReactTable({
     data,
@@ -139,7 +139,7 @@ export function ProfileTable({ data }: Props) {
                   <th
                     key={header.id}
                     colSpan={header.colSpan}
-                    className={clsx("min-w-[70px] text-left text-sm", {
+                    className={cn("min-w-[70px] text-left text-sm", {
                       "bg-black/20": header.column.getIsSorted(),
                     })}
                   >
@@ -152,16 +152,12 @@ export function ProfileTable({ data }: Props) {
                           onClick: header.column.getToggleSortingHandler(),
                         }}
                       >
-                        {t({
-                          id: flexRender(
+                        {t(
+                          flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           ) as any,
-                          defaultMessage: flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          ) as any,
-                        })}
+                        )}
                         {{
                           asc: " ▴",
                           desc: " ▾",

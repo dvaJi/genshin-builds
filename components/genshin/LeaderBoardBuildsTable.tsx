@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import { ArtifactType, Build, Profile } from "interfaces/profile";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Fragment } from "react";
 
 import Badge from "@components/ui/Badge";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import {
   ColumnDef,
   Row,
@@ -103,7 +103,7 @@ const columns: ColumnDef<Build & { player: Profile }>[] = [
         <div
           className={clsx(
             "min-w-[25px] rounded px-1 py-1 text-left text-xs text-white",
-            customClass
+            customClass,
           )}
         >{`C${value}`}</div>
       );
@@ -200,7 +200,7 @@ const columns: ColumnDef<Build & { player: Profile }>[] = [
 ];
 
 function LeaderBoardBuildsTable({ data }: Props) {
-  const { t } = useIntl("profile");
+  const t = useTranslations("Genshin.profile");
 
   const table = useReactTable({
     data,
@@ -235,16 +235,12 @@ function LeaderBoardBuildsTable({ data }: Props) {
                           onClick: header.column.getToggleSortingHandler(),
                         }}
                       >
-                        {t({
-                          id: flexRender(
+                        {t(
+                          flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           ) as any,
-                          defaultMessage: flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          ) as any,
-                        })}
+                        )}
                         {{
                           asc: " ▴",
                           desc: " ▾",
@@ -270,7 +266,7 @@ function LeaderBoardBuildsTable({ data }: Props) {
                       <td key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext()
+                          cell.getContext(),
                         )}
                       </td>
                     );
@@ -279,7 +275,7 @@ function LeaderBoardBuildsTable({ data }: Props) {
                 {row.getIsExpanded() && (
                   <tr>
                     <td colSpan={row.getVisibleCells().length}>
-                      {renderSubComponent({ row })}
+                      <RenderSubComponent row={row} />
                     </td>
                   </tr>
                 )}
@@ -292,7 +288,8 @@ function LeaderBoardBuildsTable({ data }: Props) {
   );
 }
 
-const renderSubComponent = ({ row }: { row: Row<Build> }) => {
+const RenderSubComponent = ({ row }: { row: Row<Build> }) => {
+  const t = useTranslations("Genshin.profile");
   const data = row.original;
 
   const pieces = data.sets.length === 1 ? 4 : 2;
@@ -357,7 +354,7 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
     <div className="flex flex-col items-center justify-center">
       <div className="mb-2 mt-1 flex w-80 flex-col bg-vulcan-700 p-2">
         <div className="flex justify-center">
-          Level {data.level} / Ascension {data.ascension}
+          {t("level")} {data.level} / {t("ascension")} {data.ascension}
         </div>
         <div className="flex justify-between border-b border-vulcan-600">
           <div className="flex">
@@ -373,7 +370,9 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
             </span>
           </div>
           <div>
-            <span>Level {data.weapon.level}</span>
+            <span>
+              {t("level")} {data.weapon.level}
+            </span>
             <span className="">/{data.weapon.promoteLevel}</span>
           </div>
         </div>
@@ -407,7 +406,7 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
         {Object.entries(dmgStats)
           .filter((a) => a[1] >= 0.001)
           .map(([key, value]) => (
-            <div key={key} className="flex  justify-between">
+            <div key={key} className="flex justify-between">
               <div>{key}</div>
               <div className="ml-2">{(value * 100).toFixed(1)}%</div>
             </div>
@@ -421,14 +420,14 @@ const renderSubComponent = ({ row }: { row: Row<Build> }) => {
               key={key}
               className={clsx(
                 "group relative mx-2 flex overflow-hidden rounded-lg border shadow-2xl",
-                cvQuality(calcCv(value))[1]
+                cvQuality(calcCv(value))[1],
               )}
             >
               <div className="h-32 w-24">
                 <span
                   className={clsx(
                     "absolute left-0 top-0 z-10 m-1 bg-gray-900/50 px-2 text-xxs shadow-black text-shadow",
-                    cvQuality(calcCv(value))[0]
+                    cvQuality(calcCv(value))[0],
                   )}
                 >
                   CV {calcCv(value).toFixed(1)}

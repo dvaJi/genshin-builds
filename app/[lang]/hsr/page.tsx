@@ -1,10 +1,11 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { routing } from "@i18n/routing";
 import type { Character } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -18,35 +19,34 @@ type Props = {
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "hsr", "characters");
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail All Characters List",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.characters",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "A complete list of all playable characters in Honkai: Star Rail.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "characters");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.characters");
+  const langData = getLangData(lang, "hsr");
 
   const characters = await getHSRData<Character[]>({
     resource: "characters",
@@ -57,16 +57,8 @@ export default async function Page({ params }: Props) {
   return (
     <div>
       <div className="my-2">
-        <h2 className="text-hsr-100 text-2xl">
-          {t({ id: "characters", defaultMessage: "Characters" })}
-        </h2>
-        <p>
-          {t({
-            id: "characters_description",
-            defaultMessage:
-              "Characters are obtainable units in Honkai: Star Rail.",
-          })}
-        </p>
+        <h2 className="text-hsr-100 text-2xl">{t("characters")}</h2>
+        <p>{t("characters_description")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"

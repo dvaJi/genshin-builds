@@ -1,11 +1,12 @@
-import { i18n } from "i18n-config";
 import { FoodItem } from "interfaces/genshin/food";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { routing } from "@i18n/routing";
 import type { Food } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -15,9 +16,7 @@ import GenshinMaterialsList from "./list";
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -28,28 +27,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "food");
-  const title = t({
-    id: "title",
-    defaultMessage: "Genshin Impact Cooking Recipes List",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.food",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Discover all the cooking recipes and the best food to cook for your team.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/food`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinFood({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "genshin", "food");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.food");
+  const langData = getLangData(lang, "genshin");
 
   const dishesList = await getGenshinData<Food[]>({
     resource: "food",
@@ -101,9 +99,7 @@ export default async function GenshinFood({ params }: Props) {
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="my-6 text-2xl font-semibold text-gray-200">
-        {t({ id: "food", defaultMessage: "Food" })}
-      </h2>
+      <h2 className="my-6 text-2xl font-semibold text-gray-200">{t("food")}</h2>
       <GenshinMaterialsList food={food} />
       <FrstAds
         placementName="genshinbuilds_incontent_1"

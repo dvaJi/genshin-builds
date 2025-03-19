@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 import { SubmitUidForm } from "./submit-uid";
@@ -16,43 +16,33 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "hsr", "showcase");
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail Character Showcase",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.showcase",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Show off your Honkai: Star Rail characters with our character showcase tool. Simply select your character, choose your build, and share your creation with the world.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/showcase`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
-  const { t } = await getTranslations(lang, "hsr", "showcase");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.showcase");
 
   return (
     <div className="card">
       <h2 className="text-3xl font-semibold uppercase text-slate-100">
-        {t({
-          id: "character_showcase",
-          defaultMessage: "Character Showcase",
-        })}
+        {t("character_showcase")}
       </h2>
-      <p className="px-4 text-sm">
-        {t({
-          id: "enter_uid",
-          defaultMessage: "Enter UID to view your showcase",
-        })}
-      </p>
+      <p className="px-4 text-sm">{t("enter_uid")}</p>
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <FrstAds
         placementName="genshinbuilds_billboard_atf"

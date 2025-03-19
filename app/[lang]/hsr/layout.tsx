@@ -1,9 +1,12 @@
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { Noto_Sans } from "next/font/google";
+import { notFound } from "next/navigation";
 import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
-import IntlProvider from "@components/IntlProvider";
-import getTranslations from "@hooks/use-translations";
+import { localesAvailables } from "@i18n/config";
+import { redirect } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import { GA_TRACKING_ID } from "@lib/gtag";
 import { cn } from "@lib/utils";
 
@@ -25,7 +28,16 @@ type Props = {
 
 export default async function HSRLayout({ children, params }: Props) {
   const { lang } = await params;
-  const { messages } = await getTranslations(lang, "hsr", "layout");
+  if (!hasLocale(routing.locales, lang)) {
+    notFound();
+  }
+
+  if (!localesAvailables.hsr.includes(lang)) {
+    redirect({
+      href: `/hsr/`,
+      locale: routing.defaultLocale,
+    });
+  }
 
   const jsonLd: WithContext<VideoGame> = {
     "@context": "https://schema.org",
@@ -44,7 +56,7 @@ export default async function HSRLayout({ children, params }: Props) {
   };
 
   return (
-    <IntlProvider locale={lang} messages={messages} game="hsr">
+    <NextIntlClientProvider>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <script
         type="application/ld+json"
@@ -67,6 +79,6 @@ export default async function HSRLayout({ children, params }: Props) {
 
         <Footer />
       </div>
-    </IntlProvider>
+    </NextIntlClientProvider>
   );
 }

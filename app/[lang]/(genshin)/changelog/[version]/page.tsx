@@ -1,11 +1,13 @@
 import { Changelog } from "interfaces/genshin/changelog";
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { redirect } from "@i18n/navigation";
 import type {
   Artifact,
   Character,
@@ -35,10 +37,14 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, version } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "changelog");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.changelog",
+  });
+  const langData = getLangData(lang, "genshin");
   const currentVersion = await getGenshinData<Changelog>({
     resource: "changelog",
-    language: locale,
+    language: langData,
     filter: {
       id: version,
     },
@@ -46,30 +52,22 @@ export async function generateMetadata({
 
   if (!currentVersion) return undefined;
 
-  const title = t({
-    id: "title",
-    defaultMessage:
-      "Genshin Impact {version} Update: Latest Features, Changes, and Improvements",
-    values: { version: currentVersion.version },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Discover all the new adventures in Genshin Impact {version}! Our comprehensive guide covers the latest features, character updates, and gameplay enhancements. Stay ahead in Teyvat with the newest version's detailed changelog.",
-    values: { version: currentVersion.version },
-  });
+  const title = t("title", { version: currentVersion.version });
+  const description = t("description", { version: currentVersion.version });
 
   return genPageMetadata({
     title,
     description,
     path: `/changelog/${currentVersion.version}`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinBannerWeapons({ params }: Props) {
   const { lang, version } = await params;
-  const { langData } = await getTranslations(lang, "genshin", "changelog");
+  setRequestLocale(lang);
+
+  const langData = getLangData(lang, "genshin");
   const changelog = await getGenshinData<Changelog[]>({
     resource: "changelog",
     language: langData,
@@ -87,8 +85,12 @@ export default async function GenshinBannerWeapons({ params }: Props) {
   if (!cl) {
     return notFound();
   }
+
   if (cl.current) {
-    return redirect(`/${lang}/changelog`);
+    return redirect({
+      href: `/changelog`,
+      locale: lang,
+    });
   }
 
   const characters = await getGenshinData<Record<string, Character>>({

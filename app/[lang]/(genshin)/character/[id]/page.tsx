@@ -2,6 +2,7 @@ import { type CharBuild } from "interfaces/build";
 import { Beta } from "interfaces/genshin/beta";
 import { TeamData } from "interfaces/teams";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { FaBirthdayCake, FaMapMarkedAlt, FaUserFriends } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
@@ -24,15 +25,13 @@ import Image from "@components/genshin/Image";
 import { WeaponTypeBadge } from "@components/genshin/WeaponTypeBadge";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
-import { i18n } from "@i18n-config";
+import { getLangData } from "@i18n/langData";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinCharacterDetail, getGenshinData } from "@lib/dataApi";
 import { getUrl } from "@lib/imgUrl";
 import { getData } from "@lib/localData";
 import { cn } from "@lib/utils";
-import { localeToLang } from "@utils/locale-to-lang";
 import {
   calculateTotalAscensionMaterials,
   calculateTotalTalentMaterials,
@@ -50,40 +49,18 @@ export const dynamicParams = true;
 export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; id: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const _characters = (
-      await getGenshinData<Character[]>({
-        resource: "characters",
-        language: localeToLang(lang),
-        select: ["id"],
-      })
-    ).sort((a, b) => b.release - a.release);
-
-    // Only the first 10 latest characters
-    const characters = _characters.slice(0, 10);
-
-    characters.forEach((character) => {
-      routes.push({
-        lang,
-        id: character.id,
-      });
-    });
-  }
-
-  return routes;
+  return [];
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "character",
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.character",
+  });
+  const langData = getLangData(lang, "genshin");
 
   const beta = await getData<Beta>("genshin", "beta");
   const _character = await getGenshinData<Character>({
@@ -93,9 +70,7 @@ export async function generateMetadata({
       id,
     },
   });
-  const _betaCharacter = beta[locale]?.characters?.find(
-    (c: any) => c.id === id,
-  );
+  const _betaCharacter = beta[lang]?.characters?.find((c: any) => c.id === id);
 
   const character = _character || _betaCharacter;
 
@@ -103,34 +78,24 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "{name} in Genshin Impact: The Ultimate Build Guide",
-    values: { name: character.name },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Enhance your Genshin Impact experience with the ultimate builds and top-performing teams for {name}. Unlock in-depth information on their skills, upgrade costs, and much more. Explore now and optimize your gameplay like never before.",
-    values: { name: character.name },
-  });
+  const title = t("title", { name: character.name });
+  const description = t("description", { name: character.name });
 
   return genPageMetadata({
     title,
     description,
     path: `/character/${id}`,
     image: getUrl(`/characters/${character.id}/image.png`),
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinCharacterPage({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData, locale, common } = await getTranslations(
-    lang,
-    "genshin",
-    "character",
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.character");
+  const langData = getLangData(lang, "genshin");
 
   const detail = await getGenshinCharacterDetail(id, langData);
 
@@ -140,6 +105,11 @@ export default async function GenshinCharacterPage({ params }: Props) {
     return notFound();
   }
 
+  const _common = await getData<Record<string, Record<string, string>>>(
+    "genshin",
+    "common",
+  );
+  const common = _common[lang] || _common["en"];
   let weapons: Record<string, Weapon> = detail.weapons || {};
   let artifacts: Record<string, Artifact & { children?: Artifact[] }> =
     detail.artifacts || {};
@@ -165,16 +135,15 @@ export default async function GenshinCharacterPage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 2,
-        name: t({
-          id: "characters",
-          defaultMessage: "Characters",
-        }),
+        name: t("characters"),
         item: `https://genshin-builds.com/${lang}/characters`,
       },
       {
         "@type": "ListItem",
         position: 3,
-        name: character.name,
+        name: t("character_title", {
+          name: character.name,
+        }),
         item: `https://genshin-builds.com/${lang}/character/${character.id}`,
       },
     ],
@@ -208,11 +177,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           <div className="flex flex-grow flex-col space-y-2 text-center sm:text-left">
             <div className="mb-2 flex flex-col items-center sm:mb-0 sm:flex-row sm:items-center">
               <h1 className="mb-2 text-2xl text-white sm:mb-0 sm:mr-2 sm:text-3xl">
-                {t({
-                  id: "character_title",
-                  defaultMessage: "Genshin Impact {name} Build",
-                  values: { name: character.name },
-                })}
+                {t("character_title", { name: character.name })}
               </h1>
               <ElementIcon
                 type={common[character.element.name]}
@@ -276,7 +241,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
               build={build}
               artifacts={artifacts}
               weapons={weapons}
-              locale={locale}
+              locale={lang}
               messages={{
                 title: t("build_title", {
                   name: build.role,
@@ -311,7 +276,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           build={detail.mubuild}
           artifacts={artifacts}
           weapons={weapons}
-          locale={locale}
+          locale={lang}
           messages={{
             title: t("most_used_title"),
             disclaimer: t("most_used_disclaimer"),
@@ -326,11 +291,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({
-          id: "best_team_comp",
-          defaultMessage: "Best {name} Teams",
-          values: { name: character.name },
-        })}
+        {t("best_team_comp", { name: character.name })}
       </h2>
       <div className="card mx-2 mb-4 flex flex-wrap justify-between p-0 sm:mx-4 md:mx-0">
         {recommendedTeams.map((team, index) => (
@@ -343,11 +304,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
       <h2 className="relative z-50 mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({
-          id: "skills",
-          defaultMessage: "{name} Skills",
-          values: { name: character.name },
-        })}
+        {t("skills", { name: character.name })}
       </h2>
       <div
         className={cn(
@@ -369,9 +326,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         placementName="genshinbuilds_incontent_3"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({ id: "passives", defaultMessage: "Passives" })}
-      </h2>
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">{t("passives")}</h2>
       <div className="mb-8 grid w-full grid-cols-1 gap-3 px-2 sm:gap-4 sm:px-4 lg:grid-cols-3">
         {character.passives.map((passive) => (
           <CharacterPassiveSkill
@@ -382,10 +337,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         ))}
       </div>
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({
-          id: "constellations",
-          defaultMessage: "Constellations",
-        })}
+        {t("constellations")}
       </h2>
       <div className="mb-8 grid w-full grid-cols-1 gap-3 px-2 sm:gap-4 sm:px-4 lg:grid-cols-3">
         {character.constellations
@@ -402,22 +354,14 @@ export default async function GenshinCharacterPage({ params }: Props) {
         placementName="genshinbuilds_incontent_4"
         classList={["flex", "justify-center"]}
       />
-      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({
-          id: "stats",
-          defaultMessage: "Stats",
-        })}
-      </h2>
+      <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">{t("stats")}</h2>
       <div className="card mx-2 mb-8 sm:mx-4 lg:mx-0">
         {character.ascension[1].stats && (
           <CharacterStats ascensions={character.ascension} />
         )}
       </div>
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({
-          id: "ascension_materials",
-          defaultMessage: "Ascension Materials",
-        })}
+        {t("ascension_materials")}
       </h2>
       <div className="card mx-2 mb-8 p-0 sm:mx-4 lg:mx-0">
         <CharacterAscencionMaterials
@@ -430,10 +374,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({
-          id: "talent_materials",
-          defaultMessage: "Talent Materials",
-        })}
+        {t("talent_materials")}
       </h2>
       <div className="card mx-2 p-0 sm:mx-4 lg:mx-0">
         <CharacterTalentMaterials

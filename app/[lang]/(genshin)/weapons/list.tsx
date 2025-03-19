@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
@@ -19,7 +19,7 @@ import {
 import StarRarity from "@components/StarRarity";
 import Image from "@components/genshin/Image";
 import Input from "@components/ui/Input";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { Weapon } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 import { cn } from "@lib/utils";
@@ -41,7 +41,7 @@ type Props = {
 type SortOption = "name" | "rarity" | "type";
 
 export default function WeaponsList({ weapons, weaponTypes }: Props) {
-  const { t, locale } = useIntl("weapons");
+  const t = useTranslations("Genshin.weapons");
   const [weaponFilter, setWeaponFilter] = useState<string[]>([]);
   const [nameFilter, setNameFilter] = useState<string>("");
   const [rarityFilter, setRarityFilter] = useState<number[]>([]);
@@ -83,17 +83,17 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
   }[] = [
     {
       value: "rarity",
-      label: t({ id: "sort_rarity", defaultMessage: "Rarity" }),
+      label: t("sort_rarity"),
       icon: <LuSparkles className="h-4 w-4" />,
     },
     {
       value: "name",
-      label: t({ id: "sort_name", defaultMessage: "Name" }),
+      label: t("sort_name"),
       icon: <LuText className="h-4 w-4" />,
     },
     {
       value: "type",
-      label: t({ id: "sort_type", defaultMessage: "Type" }),
+      label: t("sort_type"),
       icon: <LuSword className="h-4 w-4" />,
     },
   ];
@@ -107,10 +107,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
             <HiMagnifyingGlass className="absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground sm:left-2.5 sm:h-4 sm:w-4" />
             <Input
               type="text"
-              placeholder={t({
-                id: "search",
-                defaultMessage: "Search weapons...",
-              })}
+              placeholder={t("search")}
               value={nameFilter}
               onChange={(e) => setNameFilter(e.target.value)}
               className="h-8 w-full pl-7 text-xs sm:h-9 sm:pl-8 sm:text-sm md:h-10 md:text-base"
@@ -150,10 +147,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
                 "flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background text-foreground transition-colors hover:bg-accent sm:h-9 sm:w-9 md:h-10 md:w-10",
                 sortAsc && "text-primary hover:text-accent-foreground",
               )}
-              title={t({
-                id: sortAsc ? "sort_ascending" : "sort_descending",
-                defaultMessage: sortAsc ? "Sort Ascending" : "Sort Descending",
-              })}
+              title={sortAsc ? t("sort_ascending") : t("sort_descending")}
             >
               <LuArrowUpDown
                 className={cn(
@@ -169,7 +163,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
         <Collapsible className="sm:hidden">
           <CollapsibleTrigger className="relative flex w-full items-center justify-between rounded-lg border border-input bg-card/50 p-3 text-sm font-medium text-foreground hover:bg-accent/5 active:translate-y-[1px] active:bg-accent/10">
             <div className="flex items-center gap-2">
-              <span>Filters</span>
+              <span>{t("filters")}</span>
               {(weaponFilter.length > 0 || rarityFilter.length > 0) && (
                 <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-accent/90 px-1.5 text-xs font-medium text-accent-foreground">
                   {weaponFilter.length + rarityFilter.length}
@@ -184,7 +178,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
               {/* Weapon Type Filter */}
               <div className="space-y-1.5 border-b border-input/50 pb-2.5 last:border-0 last:pb-0">
                 <h3 className="text-xs font-medium text-foreground/70">
-                  {t({ id: "weapon_filter", defaultMessage: "Weapon Filter" })}
+                  {t("weapon_filter")}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {weaponTypes.map((type) => (
@@ -214,9 +208,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
                         height={16}
                         className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                       />
-                      <span className="truncate">
-                        {t({ id: capitalize(type), defaultMessage: type })}
-                      </span>
+                      <span className="truncate">{t(capitalize(type))}</span>
                     </button>
                   ))}
                 </div>
@@ -225,7 +217,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
               {/* Rarity Filter */}
               <div className="space-y-1.5 border-b border-input/50 pb-2.5 last:border-0 last:pb-0">
                 <h3 className="text-xs font-medium text-foreground/70">
-                  {t({ id: "rarity_filter", defaultMessage: "Rarity Filter" })}
+                  {t("rarity_filter")}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {[5, 4, 3].map((rarity) => (
@@ -264,7 +256,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
             {/* Weapon Type Filter */}
             <div className="space-y-2 border-b border-input/50 pb-3 last:border-0 last:pb-0 sm:space-y-3 sm:border-0 sm:pb-0">
               <h3 className="text-xs font-medium text-foreground/70 sm:text-sm">
-                {t({ id: "weapon_filter", defaultMessage: "Weapon Filter" })}
+                {t("weapon_filter")}
               </h3>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {weaponTypes.map((type) => (
@@ -292,9 +284,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
                       height={16}
                       className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                     />
-                    <span className="truncate">
-                      {t({ id: capitalize(type), defaultMessage: type })}
-                    </span>
+                    <span className="truncate">{t(capitalize(type))}</span>
                   </button>
                 ))}
               </div>
@@ -303,7 +293,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
             {/* Rarity Filter */}
             <div className="space-y-2 border-b border-input/50 pb-3 last:border-0 last:pb-0 sm:space-y-3 sm:border-0 sm:pb-0">
               <h3 className="text-xs font-medium text-foreground/70 sm:text-sm">
-                {t({ id: "rarity_filter", defaultMessage: "Rarity Filter" })}
+                {t("rarity_filter")}
               </h3>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {[5, 4, 3].map((rarity) => (
@@ -354,9 +344,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
                     height={12}
                     className="h-3 w-3 sm:h-3.5 sm:w-3.5"
                   />
-                  <span className="truncate">
-                    {t({ id: capitalize(type), defaultMessage: type })}
-                  </span>
+                  <span className="truncate">{t(capitalize(type))}</span>
                   <span className="ml-0.5 sm:ml-1">×</span>
                 </button>
               ))}
@@ -380,7 +368,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
               }}
               className="text-[10px] text-muted-foreground hover:text-foreground sm:text-xs"
             >
-              {t({ id: "clear_all", defaultMessage: "Clear all" })}
+              {t("clear_all")}
             </button>
           </div>
         )}
@@ -396,8 +384,7 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
           {filteredAndSortedWeapons.map((weapon) => (
             <Link
               key={weapon.id}
-              href={`/${locale}/weapon/${weapon.id}`}
-              prefetch={false}
+              href={`/weapon/${weapon.id}`}
               className="group relative inline-block scale-100 rounded-lg bg-muted transition-all hover:scale-105 hover:bg-accent hover:shadow-lg"
             >
               {/* Beta Badge */}
@@ -440,16 +427,10 @@ export default function WeaponsList({ weapons, weaponTypes }: Props) {
         {filteredAndSortedWeapons.length === 0 && (
           <div className="rounded-lg border border-input bg-card/50 px-3 py-6 text-center sm:px-6 sm:py-12">
             <h3 className="text-sm font-medium text-foreground/80 sm:text-lg">
-              {t({
-                id: "no_weapons_found",
-                defaultMessage: "No weapons found",
-              })}
+              {t("no_weapons_found")}
             </h3>
             <p className="mt-1 text-xs text-muted-foreground sm:mt-2 sm:text-sm">
-              {t({
-                id: "try_adjusting_filters",
-                defaultMessage: "Try adjusting your filters or search term",
-              })}
+              {t("try_adjusting_filters")}
             </p>
           </div>
         )}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { MdSync } from "react-icons/md";
@@ -19,6 +20,7 @@ const initialState = {
 };
 
 function SubmitButton() {
+  const t = useTranslations("Genshin.profile");
   const { pending } = useFormStatus();
 
   return (
@@ -33,11 +35,11 @@ function SubmitButton() {
             className="h-9 w-9 rounded-full"
           >
             <MdSync className={`h-4 w-4 ${pending ? "animate-spin" : ""}`} />
-            <span className="sr-only">Sync profile data</span>
+            <span className="sr-only">{t("sync_profile_data")}</span>
           </Button>
         </TooltipTrigger>
         <TooltipContent side="bottom">
-          <p className="text-sm">Sync profile data</p>
+          <p className="text-sm">{t("sync_profile_data")}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

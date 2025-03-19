@@ -1,5 +1,5 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
@@ -8,7 +8,7 @@ import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
 import Material from "@components/wuthering-waves/Material";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type { Weapons } from "@interfaces/wuthering-waves/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getWWData } from "@lib/dataApi";
@@ -22,21 +22,22 @@ type Props = {
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
-export const revalidate = 86400;
+export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return [];
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "weapons"
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "WW.weapons",
+  });
+  const langData = getLangData(lang, "wuthering-waves");
+
   const item = await getWWData<Weapons>({
     resource: "weapons",
     language: langData,
@@ -58,17 +59,17 @@ export async function generateMetadata({
     }),
     path: `/wuthering-waves/weapons/${id}`,
     image: getImg("wuthering", `/weapons/${item.icon.split("/").pop()}.webp`),
-    locale: langData,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "weapons"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("WW.weapons");
+  const langData = getLangData(lang, "wuthering-waves");
+
   const item = await getWWData<Weapons>({
     resource: "weapons",
     language: langData,

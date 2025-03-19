@@ -1,12 +1,11 @@
 "use client";
 
 import type { Changelog } from "interfaces/genshin/changelog";
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 import SimpleRarityBox from "@components/SimpleRarityBox";
-import useIntl from "@hooks/use-intl";
+import { Link, useRouter } from "@i18n/navigation";
 import type { TCGCard } from "@interfaces/genshin";
 import { getUrl } from "@lib/imgUrl";
 
@@ -37,37 +36,17 @@ export default function ChangelogVersion({
   materialsMap,
   foodMap,
   tcgMap,
-  locale,
 }: Props) {
-  const { t } = useIntl("changelog");
+  const t = useTranslations("Genshin.changelog");
   const router = useRouter();
 
   return (
     <div>
       <div className="mx-2 md:mx-0">
-        <h1 className="text-2xl text-white">
-          {t({
-            id: "changelog",
-            defaultMessage:
-              "Explore the Exciting New Features in Genshin Impact Version {version}",
-            values: { version },
-          })}
-        </h1>
-        <p className="text-sm">
-          {t({
-            id: "changelog_description",
-            defaultMessage:
-              "A detailed look into the enhancements and additions that Version {version} brings to your Genshin Impact experience, including new characters, quests, and gameplay mechanics.",
-            values: { version },
-          })}
-        </p>
+        <h1 className="text-2xl text-white">{t("changelog", { version })}</h1>
+        <p className="text-sm">{t("changelog_description", { version })}</p>
         <div className="my-2">
-          <span>
-            {t({
-              id: "version_selecter",
-              defaultMessage: "Version selected:",
-            })}
-          </span>
+          <span>{t("version_selecter")}</span>
           <select
             className="ml-2 h-8 rounded-md bg-vulcan-600 py-1 text-white"
             onChange={(e) => {
@@ -90,12 +69,7 @@ export default function ChangelogVersion({
             <h2 className="text-xl text-white">Characters</h2>
             <div className="card flex flex-wrap justify-center">
               {changelog.items.avatar.map((a: string) => (
-                <Link
-                  key={a}
-                  href={`/${locale}/character/${a}`}
-                  className="mx-1"
-                  prefetch={false}
-                >
+                <Link key={a} href={`/character/${a}`} className="mx-1">
                   <SimpleRarityBox
                     img={getUrl(`/characters/${a}/image.png`, 120, 120)}
                     rarity={charactersMap[a].rarity}
@@ -115,12 +89,7 @@ export default function ChangelogVersion({
             <h2 className="text-xl text-white">Artifacts</h2>
             <div className="card flex flex-wrap justify-center">
               {changelog.items.artifact.map((a: string) => (
-                <Link
-                  key={a}
-                  href={`/${locale}/artifacts`}
-                  className="mx-1"
-                  prefetch={false}
-                >
+                <Link key={a} href={`/artifacts/${a}`} className="mx-1">
                   <SimpleRarityBox
                     img={getUrl(`/artifacts/${a}.png`, 120, 120)}
                     rarity={artifactsMap[a].max_rarity}
@@ -144,12 +113,7 @@ export default function ChangelogVersion({
             <h2 className="text-xl text-white">Weapons</h2>
             <div className="card flex flex-wrap justify-center">
               {changelog.items.weapon.map((a: string) => (
-                <Link
-                  key={a}
-                  href={`/${locale}/weapon/${a}`}
-                  className="mx-1"
-                  prefetch={false}
-                >
+                <Link key={a} href={`/weapon/${a}`} className="mx-1">
                   <SimpleRarityBox
                     img={getUrl(`/weapons/${a}.png`, 120, 120)}
                     rarity={weaponsMap[a].rarity}
@@ -191,12 +155,7 @@ export default function ChangelogVersion({
             <h2 className="text-xl text-white">Food</h2>
             <div className="card flex flex-wrap justify-center">
               {changelog.items.food.map((a: string) => (
-                <Link
-                  key={a}
-                  href={`/${locale}/food`}
-                  className="mx-1"
-                  prefetch={false}
-                >
+                <Link key={a} href={`/food/${a}`} className="mx-1">
                   <SimpleRarityBox
                     img={getUrl(`/food/${foodMap[a].id}.png`, 120, 120)}
                     rarity={foodMap[a].rarity}
@@ -220,12 +179,7 @@ export default function ChangelogVersion({
             <h2 className="text-xl text-white">TCG</h2>
             <div className="card flex flex-wrap justify-center">
               {changelog.items.tcg.map((a: string) => (
-                <Link
-                  key={a}
-                  href={`/${locale}/tcg/card/${a}`}
-                  className="mx-1"
-                  prefetch={false}
-                >
+                <Link key={a} href={`/tcg/card/${a}`} className="mx-1">
                   <SimpleRarityBox
                     img={getUrl(`/tcg/${tcgMap[a].id}.png`, 120, 120)}
                     rarity={0}

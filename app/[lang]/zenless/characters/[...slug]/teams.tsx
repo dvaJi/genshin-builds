@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 import Image from "@components/zenless/Image";
@@ -20,10 +21,13 @@ export default function Teams({
   bangboosMap,
   charactersMap,
 }: Props) {
+  const t = useTranslations("zenless.character");
   return (
     <>
       <h2 className="mb-4 text-2xl font-semibold md:text-3xl">
-        {characterName} Best Teams and Bangboo
+        {t("teams", {
+          character_name: characterName,
+        })}
       </h2>
       <div className="mb-4 flex w-full flex-col gap-3">
         {teams.map((team) => (
@@ -93,7 +97,7 @@ export default function Teams({
 
               <div className="flex w-full flex-col lg:max-w-[220px]">
                 <h4 className="mb-2 text-center font-semibold">
-                  Best Bangboos
+                  {t("best_bangboos")}
                 </h4>
                 <div className="flex flex-row flex-wrap justify-center gap-3 lg:flex-col">
                   {[...team.bangboos, ...team.alternative_bangboos].map((b) => (

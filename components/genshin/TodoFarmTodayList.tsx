@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 import { HiOutlineCalendarDays, HiOutlineCheck } from "react-icons/hi2";
 
@@ -8,7 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@app/components/ui/select";
-import useIntl from "@hooks/use-intl";
 
 import ItemPopoverSummary from "./ItemPopoverSummary";
 
@@ -33,7 +33,7 @@ function TodoFarmTodayList({
   materialsMap,
   days,
 }: Props) {
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
   const hasMaterialsToFarm = Object.keys(farmToday).length > 0;
 
   return (
@@ -42,10 +42,7 @@ function TodoFarmTodayList({
         <div className="flex items-center gap-2">
           <HiOutlineCalendarDays className="h-5 w-5 text-muted-foreground" />
           <h2 className="text-base font-semibold text-foreground">
-            {t({
-              id: "farm_today",
-              defaultMessage: "Farm today",
-            })}
+            {t("farm_today")}
           </h2>
         </div>
         <Select onValueChange={setCurrentDay} defaultValue={currentDay}>
@@ -81,16 +78,11 @@ function TodoFarmTodayList({
 
 // Empty Farm Today component
 const EmptyFarmToday = memo(() => {
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
 
   return (
     <div className="flex items-center justify-center rounded-lg bg-muted/30 p-4 text-center text-sm text-muted-foreground">
-      <span>
-        {t({
-          id: "nothing_today",
-          defaultMessage: "Nothing to farm today!",
-        })}
-      </span>
+      <span>{t("nothing_today")}</span>
       <HiOutlineCheck className="ml-2 h-4 w-4" />
     </div>
   );

@@ -30,7 +30,8 @@
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@db/*": ["db/*"],
-      "@i18n-config": ["i18n-config.ts"]
+      "@i18n-config": ["i18n-config.ts"],
+      "@i18n/*": ["i18n/*"]
     },
     "incremental": true,
     "plugins": [

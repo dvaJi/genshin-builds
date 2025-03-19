@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, memo, useEffect, useState } from "react";
 
 import FrstAds from "@components/ui/FrstAds";
 import { useStore } from "@nanostores/react";
@@ -34,7 +34,7 @@ function List({ builds, locale, messages }: Props) {
           return false;
         }
         return true;
-      })
+      }),
     );
   }, [ad.elements, ad.search, builds]);
 
@@ -57,4 +57,4 @@ function List({ builds, locale, messages }: Props) {
   );
 }
 
-export default List;
+export default memo(List);

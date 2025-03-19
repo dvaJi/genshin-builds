@@ -1,11 +1,12 @@
 "use client";
 
 import { BuildData } from "interfaces/hsr/build";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
+import Image from "@components/hsr/Image";
+import { Link } from "@i18n/navigation";
 import type { LightCone, Relic } from "@interfaces/hsr";
-import { getHsrUrl } from "@lib/imgUrl";
 
 import Stars from "./Stars";
 
@@ -24,32 +25,23 @@ function CharacterBuild({
   relicsMap,
   characterName,
 }: Props) {
-  const { t } = useIntl("character");
+  const t = useTranslations("HSR.character");
 
   return (
     <div className="text-card-foreground">
-      <h2 className="mb-4 text-xl font-semibold text-accent">
-        {t({
-          id: name,
-          defaultMessage: name,
-        })}
-      </h2>
+      <h2 className="mb-4 text-xl font-semibold text-accent">{name}</h2>
       <div className="mb-4 flex flex-col gap-4 md:flex-row">
         <div className="flex gap-4">
           <div>
             <h3 className="text-lg font-semibold text-accent">
-              {t({
-                id: "best_light_cone",
-                defaultMessage: "Best Light Cone",
-              })}
+              {t("best_light_cone")}
             </h3>
-            <div className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold">
-              <img
-                src={getHsrUrl(
-                  `/lightcones/${lightConesMap[data.bestLightCone].id}.png`,
-                  80,
-                  80,
-                )}
+            <Link
+              href={`/hsr/lightcones/${data.bestLightCone}`}
+              className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold hover:bg-accent/20"
+            >
+              <Image
+                src={`/lightcones/${lightConesMap[data.bestLightCone].id}.png`}
                 width={80}
                 height={80}
                 alt={lightConesMap[data.bestLightCone].name}
@@ -60,61 +52,45 @@ function CharacterBuild({
                   <Stars stars={lightConesMap[data.bestLightCone].rarity} />
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div>
             <h3 className="text-lg font-semibold text-accent">
-              {t({
-                id: "relics_and_ornament",
-                defaultMessage: "Relics and Ornaments",
-              })}
+              {t("relics_and_ornament")}
             </h3>
             {data.relics.map((r) => (
-              <div
+              <Link
                 key={r}
-                className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
+                href={`/hsr/relics/${r}`}
+                className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold hover:bg-accent/20"
               >
-                <img
-                  src={getHsrUrl(`/relics/${relicsMap[r].id}.png`, 64, 64)}
+                <Image
+                  src={`/relics/${relicsMap[r].id}.png`}
                   alt={relicsMap[r].name}
                   width={48}
                   height={48}
                 />
                 <span className="ml-2">{relicsMap[r].name}</span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
         <div className="flex gap-4">
           <div>
             <h3 className="text-lg font-semibold text-accent">
-              {t({
-                id: "best_stats",
-                defaultMessage: "{name} Best Stats",
-                values: { name: characterName },
-              })}
+              {t("best_stats", { name: characterName })}
             </h3>
             <div className="flex flex-col text-sm">
               {Object.entries(data.mainStat ?? {}).map(([stat, value]) => (
                 <div key={stat} className="my-1 rounded-sm bg-muted px-2 py-1">
-                  <b className="inline">
-                    {t({
-                      id: stat,
-                      defaultMessage: stat,
-                    })}
-                  </b>
-                  : {value}
+                  <b className="inline">{t(stat)}</b>: {value}
                 </div>
               ))}
             </div>
           </div>
           <div>
             <h3 className="text-lg font-semibold text-accent">
-              {t({
-                id: "best_substats",
-                defaultMessage: "{name} Best Substats",
-                values: { name: characterName },
-              })}
+              {t("best_substats", { name: characterName })}
             </h3>
             <div className="flex flex-col text-sm">
               {data.subStat

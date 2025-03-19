@@ -1,13 +1,14 @@
-import clsx from "clsx";
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { cn } from "@app/lib/utils";
 import { genPageMetadata } from "@app/seo";
 import CharacterBlock from "@components/hsr/CharacterBlock";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import type { Character, Tiers } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -17,9 +18,7 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -30,28 +29,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "hsr", "tierlist");
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail Tier List",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.tierlist",
   });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Discover a comprehensive tier list ranks all the 5-Star, 4-Star, DPS, and support characters in HSR, allowing you to make informed decisions about your team composition. Stay ahead of the competition and unleash the true potential of your squad with our expertly curated guide. Explore the Tier List and uncover the powerhouses that will lead you to victory in Honkai: Star Rail.",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/tierlist`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function HSRTierlistPage({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "tierlist");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.tierlist");
+  const langData = getLangData(lang, "hsr");
 
   const characters = await getHSRData<Character[]>({
     resource: "characters",
@@ -79,18 +77,9 @@ export default async function HSRTierlistPage({ params }: Props) {
     <div>
       <div className="my-2">
         <h2 className="text-3xl font-semibold uppercase text-slate-100">
-          {t({
-            id: "tierlist",
-            defaultMessage: "Tierlist",
-          })}
+          {t("tierlist")}
         </h2>
-        <p className="px-2 text-sm">
-          {t({
-            id: "tierlist_desc",
-            defaultMessage:
-              "Explore the Ultimate Honkai: Star Rail Tier List! Discover the top-performing characters in HSR, including 5-Star, 4-Star, DPS, and support characters, all expertly ranked in this comprehensive guide. Stay ahead of the game and make informed choices with this invaluable resource.",
-          })}
-        </p>
+        <p className="px-2 text-sm">{t("tierlist_desc")}</p>
 
         <FrstAds
           placementName="genshinbuilds_billboard_atf"
@@ -107,7 +96,7 @@ export default async function HSRTierlistPage({ params }: Props) {
               className="flex items-center border-b border-border py-2 last:border-b-0"
             >
               <div
-                className={clsx(
+                className={cn(
                   "w-16 shrink-0 flex-grow-0 text-center text-2xl font-semibold",
                   {
                     "text-red-500": tier === "SS",
@@ -132,9 +121,8 @@ export default async function HSRTierlistPage({ params }: Props) {
                   return (
                     <Link
                       key={characterId}
-                      href={`/${lang}/hsr/character/${char.id}`}
+                      href={`/hsr/character/${char.id}`}
                       className="max-w-28"
-                      prefetch={false}
                     >
                       <CharacterBlock key={characterId} character={char} />
                     </Link>

@@ -6,7 +6,6 @@ import { genPageMetadata } from "@app/seo";
 import Image from "@components/tof/Image";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import { i18n } from "@i18n-config";
 import type { Weapons } from "@interfaces/tof/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
@@ -17,23 +16,11 @@ import Skills from "./skills";
 import Stats from "./stats";
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; slug: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const data = await getRemoteData<Weapons[]>("tof", "weapons");
-
-    routes.push(
-      ...data.map((c) => ({
-        lang,
-        slug: slugify2(c.name),
-      }))
-    );
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {
@@ -98,7 +85,7 @@ export default async function CharacterPage({ params }: Props) {
       acc[index + 1] = currentCoefficients;
       return acc;
     },
-    {} as Record<string, Record<string, number>>
+    {} as Record<string, Record<string, number>>,
   );
 
   return (
@@ -144,7 +131,7 @@ export default async function CharacterPage({ params }: Props) {
                 label={stat.name}
                 value={Math.floor(
                   (weaponLevel * stat.upgradeProp + stat.value) *
-                    (advancementCoefficients?.[weaponStars]?.[stat.id] ?? 1)
+                    (advancementCoefficients?.[weaponStars]?.[stat.id] ?? 1),
                 ).toString()}
               />
             ))}

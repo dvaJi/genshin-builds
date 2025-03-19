@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { RiPatreonFill } from "react-icons/ri";
 
 import Logo from "@components/wuthering-waves/Logo";
+import { Link } from "@i18n/navigation";
 
 export default function HSRFooter() {
   return (
@@ -13,10 +13,10 @@ export default function HSRFooter() {
             <h4 className="mb-3 text-gray-200">
               <Logo />
             </h4>
-            <Link href={`/en/privacy-policy`} className="my-2" prefetch={false}>
+            <Link href={`/privacy-policy`} className="my-2" prefetch={false}>
               Privacy Policy
             </Link>
-            <Link href={`/en/contact`} className="my-2" prefetch={false}>
+            <Link href={`/contact`} className="my-2" prefetch={false}>
               Contact
             </Link>
             <a
@@ -47,21 +47,21 @@ export default function HSRFooter() {
                   Genshin Impact
                 </p>
                 <Link
-                  href={`/en/characters`}
+                  href={`/characters`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Characters
                 </Link>
                 <Link
-                  href={`/en/teams`}
+                  href={`/teams`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Best Teams
                 </Link>
                 <Link
-                  href={`/en/builds`}
+                  href={`/builds`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
@@ -75,14 +75,14 @@ export default function HSRFooter() {
                   Honkai: Star Rail
                 </p>
                 <Link
-                  href={`/en/hsr`}
+                  href={`/hsr`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Characters
                 </Link>
                 <Link
-                  href={`/en/hsr/tierlist`}
+                  href={`/hsr/tierlist`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
@@ -96,14 +96,14 @@ export default function HSRFooter() {
                   Zenless Zone Zero
                 </p>
                 <Link
-                  href={`/en/zenless/characters`}
+                  href={`/zenless/characters`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Characters
                 </Link>
                 <Link
-                  href={`/en/zenless/tierlist`}
+                  href={`/zenless/tierlist`}
                   className="my-1 text-sm text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >

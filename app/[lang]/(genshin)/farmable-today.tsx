@@ -1,12 +1,12 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { Character, Domains, Weapon } from "@interfaces/genshin";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
@@ -24,7 +24,7 @@ export default function FarmableToday({
   characters,
   weapons,
 }: Props) {
-  const { t, locale } = useIntl("ascension_planner");
+  const t = useTranslations("Genshin.ascension_planner");
   const currentDayIndex = new Date().getDay();
   const adjustedDayIndex = currentDayIndex === 0 ? 6 : currentDayIndex - 1;
   const [currentDay, setCurrentDay] = useState(days[adjustedDayIndex]);
@@ -56,17 +56,10 @@ export default function FarmableToday({
         {/* Section Header - Reduced spacing on mobile */}
         <div>
           <h2 className="text-xl font-semibold text-foreground sm:text-2xl">
-            {t({
-              id: "farmable_today",
-              defaultMessage: "Farmable today",
-            })}
+            {t("farmable_today")}
           </h2>
           <p className="text-sm text-muted-foreground sm:text-base">
-            {t({
-              id: "farmable_today_desc",
-              defaultMessage:
-                "Discover which characters and weapons are farmable today.",
-            })}
+            {t("farmable_today_desc")}
           </p>
         </div>
 
@@ -85,11 +78,7 @@ export default function FarmableToday({
                 {charactersDomain.rotation
                   .find((r) => r.day === currentDay)
                   ?.ids.map((cId) => (
-                    <Link
-                      key={cId}
-                      href={`/${locale}/character/${cId}`}
-                      prefetch={false}
-                    >
+                    <Link key={cId} href={`/character/${cId}`}>
                       <SimpleRarityBox
                         img={getUrl(`/characters/${cId}/image.png`, 64, 64)}
                         rarity={characters[cId].rarity}
@@ -118,11 +107,7 @@ export default function FarmableToday({
                   .find((r) => r.day === currentDay)
                   ?.ids.map((cId) =>
                     weapons[cId] ? (
-                      <Link
-                        key={cId}
-                        href={`/${locale}/weapon/${cId}`}
-                        prefetch={false}
-                      >
+                      <Link key={cId} href={`/weapon/${cId}`}>
                         <SimpleRarityBox
                           img={getUrl(`/weapons/${cId}.png`, 64, 64)}
                           rarity={weapons[cId].rarity}

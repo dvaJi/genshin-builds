@@ -1,13 +1,14 @@
 import { BannerHistorical, BannerReRunPrediction } from "interfaces/banner";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import SimpleRarityBox from "@components/SimpleRarityBox";
 import Ads from "@components/ui/Ads";
 import Badge from "@components/ui/Badge";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -23,35 +24,27 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "banners_weapons"
-  );
-  const title = t({
-    id: "title",
-    defaultMessage: "Genshin Impact Weapons Banners",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.banners_weapons",
   });
-  const description = t({
-    id: "description",
-    defaultMessage: "Discover all the weapons banners and their rates",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/banners/weapons`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinBannerWeapons({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "genshin",
-    "banners_weapons"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.banners_weapons");
+  const langData = getLangData(lang, "genshin");
 
   const { historical, rerunPrediction } = await getGenshinData<{
     historical: BannerHistorical[];
@@ -75,7 +68,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
       map[cur.id] = cur.name;
       return map;
     },
-    {} as Record<string, string>
+    {} as Record<string, string>,
   );
 
   return (
@@ -87,16 +80,14 @@ export default async function GenshinBannerWeapons({ params }: Props) {
       />
       <div className="mt-4 grid gap-6 md:grid-cols-2">
         <div>
-          <h1 className="text-4xl text-white">
-            {t({ id: "rerun_prediction", defaultMessage: "Rerun Prediction" })}
-          </h1>
+          <h1 className="text-4xl text-white">{t("rerun_prediction")}</h1>
           <div className="card w-full">
             {rerunPrediction.map((h) => (
               <div
                 key={h.name}
                 className="mb-1 flex w-full border-b border-gray-700 pb-2 last:border-b-0"
               >
-                <Link href={`/${lang}/weapon/${h.id}`} prefetch={false}>
+                <Link href={`/weapon/${h.id}`}>
                   <SimpleRarityBox
                     key={h.name}
                     img={getUrl(`/weapons/${h.id}.png`, 96, 96)}
@@ -115,11 +106,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
                       </span>
                       <div>
                         <Badge className="mr-2 text-xs text-gray-300">
-                          {t({
-                            id: "runs",
-                            defaultMessage: "{runs} runs",
-                            values: { runs: h.runs.toString() },
-                          })}
+                          {t("runs", { runs: h.runs.toString() })}
                         </Badge>
                         <Badge className="text-xs text-gray-300">
                           {getTimeAgo(new Date(h.lastRun).getTime(), lang)}
@@ -143,9 +130,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
           </div>
         </div>
         <div>
-          <h1 className="text-4xl text-white">
-            {t({ id: "historical", defaultMessage: "Historical" })}
-          </h1>
+          <h1 className="text-4xl text-white">{t("historical")}</h1>
           <div className="card overflow-x-scroll xl:overflow-x-hidden">
             {historical.map((h) => (
               <div
@@ -162,11 +147,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
                 </div>
                 <div className="col-span flex min-w-min justify-center">
                   {h.main.map((m) => (
-                    <Link
-                      key={m + h.time}
-                      href={`/${lang}/weapon/${m}`}
-                      prefetch={false}
-                    >
+                    <Link key={m + h.time} href={`/weapon/${m}`}>
                       <SimpleRarityBox
                         img={getUrl(`/weapons/${m}.png`, 96, 96)}
                         rarity={5}
@@ -181,11 +162,7 @@ export default async function GenshinBannerWeapons({ params }: Props) {
                 </div>
                 <div className="col-span-2 ml-10 flex min-w-max justify-center md:ml-0">
                   {h.secondary.map((m) => (
-                    <Link
-                      key={m + h.time}
-                      href={`/${lang}/weapon/${m}`}
-                      prefetch={false}
-                    >
+                    <Link key={m + h.time} href={`/weapon/${m}`}>
                       <SimpleRarityBox
                         key={m + h.time}
                         img={getUrl(`/weapons/${m}.png`, 96, 96)}

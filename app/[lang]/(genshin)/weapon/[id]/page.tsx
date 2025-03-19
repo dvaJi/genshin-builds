@@ -1,6 +1,6 @@
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { LuStar, LuTarget } from "react-icons/lu";
 import { BreadcrumbList, WithContext } from "schema-dts";
@@ -11,7 +11,8 @@ import WeaponAscensionMaterials from "@components/genshin/WeaponAscensionMateria
 import { WeaponTypeBadge } from "@components/genshin/WeaponTypeBadge";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -38,11 +39,11 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, locale, langData } = await getTranslations(
-    lang,
-    "genshin",
-    "weapon",
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.weapon",
+  });
+  const langData = getLangData(lang, "genshin");
 
   const _weapon = await getGenshinData<Weapon>({
     resource: "weapons",
@@ -50,7 +51,7 @@ export async function generateMetadata({
     filter: { id },
   });
   const beta = await getData<Beta>("genshin", "beta");
-  const _betaWeapon = beta[locale]?.weapons?.find((c: any) => c.id === id);
+  const _betaWeapon = beta[lang]?.weapons?.find((c: any) => c.id === id);
 
   const weapon = _weapon || _betaWeapon;
 
@@ -58,34 +59,22 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "{name} in Genshin Impact - Best Weapons Guide",
-    values: { name: weapon.name },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Everything you need to know about {name} in Genshin Impact. Find its stats, refinements, recommended characters, and ascension materials.",
-    values: { name: weapon.name },
-  });
+  const title = t("title", { name: weapon.name });
+  const description = t("description", { name: weapon.name });
 
   return genPageMetadata({
     title,
     description,
     path: `/weapon/${id}`,
     image: getUrl(`/weapons/${weapon.id}.png`),
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinWeaponPage({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "weapon",
-  );
+  const t = await getTranslations("Genshin.weapon");
+  const langData = getLangData(lang, "genshin");
 
   const _weapon = await getGenshinData<Weapon>({
     resource: "weapons",
@@ -93,7 +82,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
     filter: { id },
   });
   const beta = await getData<Beta>("genshin", "beta");
-  const _betaWeapon = beta[locale]?.weapons?.find((c: any) => c.id === id);
+  const _betaWeapon = beta[lang]?.weapons?.find((c: any) => c.id === id);
 
   const weapon: (Weapon & { beta?: boolean }) | undefined =
     _weapon || _betaWeapon;
@@ -129,16 +118,15 @@ export default async function GenshinWeaponPage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 2,
-        name: t({
-          id: "weapons",
-          defaultMessage: "Weapons",
-        }),
+        name: t("weapons"),
         item: `https://genshin-builds.com/${lang}/weapons`,
       },
       {
         "@type": "ListItem",
         position: 3,
-        name: weapon.name,
+        name: t("weapon_title", {
+          name: weapon.name,
+        }),
         item: `https://genshin-builds.com/${lang}/weapon/${weapon.id}`,
       },
     ],
@@ -173,11 +161,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
           <div className="flex flex-grow flex-col space-y-2 text-center sm:text-left">
             <div className="mb-2 flex flex-col items-center sm:mb-0 sm:flex-row sm:items-center">
               <h1 className="mb-2 text-2xl text-white sm:mb-0 sm:mr-2 sm:text-3xl">
-                {t({
-                  id: "weapon_title",
-                  defaultMessage: "Genshin Impact {name}",
-                  values: { name: weapon.name },
-                })}
+                {t("weapon_title", { name: weapon.name })}
               </h1>
             </div>
             <div className="mt-1 flex flex-wrap justify-center gap-1.5 sm:justify-start sm:gap-2">
@@ -221,18 +205,14 @@ export default async function GenshinWeaponPage({ params }: Props) {
       {recommendedCharacters.length > 0 && (
         <>
           <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-            {t({
-              id: "recommended_characters",
-              defaultMessage: "Recommended Characters",
-            })}
+            {t("recommended_characters")}
           </h2>
           <div className="card mx-4 mb-8 flex flex-wrap gap-4 p-4 lg:mx-0">
             {recommendedCharacters.map((character) => (
               <Link
                 key={character}
-                href={`/${lang}/character/${character}`}
+                href={`/character/${character}`}
                 className="group relative inline-block scale-100 rounded-lg transition-all hover:scale-105"
-                prefetch={false}
               >
                 <div className="relative rounded-lg border-2 border-gray-900/80 bg-muted">
                   <img
@@ -255,10 +235,7 @@ export default async function GenshinWeaponPage({ params }: Props) {
       />
 
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
-        {t({
-          id: "ascension_materials",
-          defaultMessage: "Ascension Materials",
-        })}
+        {t("ascension_materials")}
       </h2>
       <div className="card mx-4 p-0 lg:mx-0">
         <WeaponAscensionMaterials

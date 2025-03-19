@@ -4,7 +4,6 @@ import { Open_Sans } from "next/font/google";
 import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
-import IntlProvider from "@components/IntlProvider";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
 import Footer from "./footer";
@@ -64,21 +63,7 @@ export default async function TofLayout({ children, params }: Props) {
     operatingSystem: "ANDROID, IOS, WINDOWS",
   };
   return (
-    <IntlProvider
-      locale={lang}
-      messages={
-        {
-          layout: {
-            characters: "Characters",
-            weapons: "Weapons",
-            matrices: "Matrices",
-            blog: "Blog",
-          },
-          characters: {},
-        } as any
-      }
-      game="tof"
-    >
+    <>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <script
         type="application/ld+json"
@@ -103,6 +88,6 @@ export default async function TofLayout({ children, params }: Props) {
 
         <Footer />
       </div>
-    </IntlProvider>
+    </>
   );
 }

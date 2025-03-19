@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { i18n } from "../i18n-config";
+import { i18n } from "@i18n/config";
 
 interface PageSEOProps {
   title: string;
@@ -73,7 +73,7 @@ export function genPageMetadata({
             acc[hreflang] = redirectedPathName(locale);
             return acc;
           },
-          {} as Record<string, string>
+          {} as Record<string, string>,
         ),
         "x-default": redirectedPathName("en"),
       },

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { cn } from "@app/lib/utils";
+import { Link } from "@i18n/navigation";
 import { getGenshinData } from "@lib/dataApi";
 import { getImg } from "@lib/imgUrl";
 
@@ -63,9 +63,8 @@ export async function Banners({ lang }: Props) {
             className="group transform transition-all duration-300 hover:-translate-y-2"
           >
             <Link
-              href={`/${lang}/banners/${banner.name.endsWith("Weapon Banner") ? "weapons" : "characters"}`}
+              href={`/banners/${banner.name.endsWith("Weapon Banner") ? "weapons" : "characters"}`}
               className="block overflow-hidden rounded-xl bg-gradient-to-br from-vulcan-800/90 to-vulcan-900/90 shadow-lg transition-all duration-300 hover:shadow-vulcan-500/10"
-              prefetch={false}
             >
               <div className="relative aspect-[16/9] overflow-hidden">
                 {/* Banner image */}

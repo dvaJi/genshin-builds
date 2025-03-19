@@ -74,7 +74,6 @@ const CharacterBuildCard = ({
               messages={{
                 choose_2: messages.choose_2,
               }}
-              locale={locale}
             />
           ))}
         </div>

@@ -1,24 +1,20 @@
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 import { CgArrowLongRight } from "react-icons/cg";
-
-import useIntl from "@hooks/use-intl";
 
 type Props = {
   talents: Record<string, [number, number]>;
 };
 
 function TodoItemTalents({ talents }: Props) {
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
 
   if (Object.keys(talents).length === 0) return null;
 
   return (
     <div>
       <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        {t({
-          id: "talents",
-          defaultMessage: "Talents",
-        })}
+        {t("talents")}
       </div>
       <div className="space-y-1">
         {Object.entries(talents).map(([id, value]) => (
@@ -28,9 +24,7 @@ function TodoItemTalents({ talents }: Props) {
               <CgArrowLongRight className="mx-2 h-3 w-3 text-muted-foreground" />
               <span>{value[1]}</span>
             </div>
-            <span className="text-xs text-muted-foreground">
-              {t({ id: id, defaultMessage: id })}
-            </span>
+            <span className="text-xs text-muted-foreground">{t(id)}</span>
           </div>
         ))}
       </div>

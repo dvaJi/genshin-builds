@@ -1,17 +1,17 @@
 import { Metadata } from "next";
-import Image from "next/image";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { Badge } from "@app/components/ui/badge";
 import { Card, CardContent } from "@app/components/ui/card";
 import { genPageMetadata } from "@app/seo";
+import Image from "@components/genshin/Image";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type { Artifact } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
-import { getUrl } from "@lib/imgUrl";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -29,11 +29,11 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "artifacts"
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.artifacts",
+  });
+  const langData = getLangData(lang, "genshin");
 
   const artifact = await getGenshinData<Artifact>({
     resource: "artifacts",
@@ -43,30 +43,27 @@ export async function generateMetadata({
 
   if (!artifact) return;
 
-  const title = `${artifact.name} - ${t({
-    id: "artifact_details",
-    defaultMessage: "Artifact Details",
-  })}`;
+  const title = t("artifact_details", {
+    name: artifact.name,
+    rarity: artifact.max_rarity,
+  });
 
-  const description = t(
-    {
-      id: "artifact_description",
-      defaultMessage: "Details and bonuses for the {name} artifact set.",
-    },
-    { name: artifact.name }
-  );
+  const description = t("artifact_description", { name: artifact.name });
 
   return genPageMetadata({
     title,
     description,
     path: `/artifacts/${id}`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function ArtifactDetail({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(lang, "genshin", "artifacts");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.artifacts");
+  const langData = getLangData(lang, "genshin");
 
   const artifact = await getGenshinData<Artifact>({
     resource: "artifacts",
@@ -97,11 +94,11 @@ export default async function ArtifactDetail({ params }: Props) {
           <div className="flex flex-col gap-6 md:flex-row">
             <div className="flex-shrink-0">
               <Image
-                src={getUrl(`/artifacts/${artifact.id}.png`, 160, 160)}
+                src={`/artifacts/${artifact.id}.png`}
                 alt={artifact.name}
                 width={160}
                 height={160}
-                className="rounded-lg"
+                className="aspect-square rounded-lg"
                 priority
               />
             </div>
@@ -110,8 +107,7 @@ export default async function ArtifactDetail({ params }: Props) {
               <div>
                 <h1 className="text-3xl font-bold">{artifact.name}</h1>
                 <p className="mt-2 text-lg text-muted-foreground">
-                  {t({ id: "max_rarity", defaultMessage: "Max Rarity" })}:{" "}
-                  {artifact.max_rarity}★
+                  {t("max_rarity")}: {artifact.max_rarity}★
                 </p>
               </div>
 
@@ -119,7 +115,7 @@ export default async function ArtifactDetail({ params }: Props) {
                 {artifact.one_pc && (
                   <div className="flex items-start gap-3">
                     <Badge variant="outline" className="mt-0.5 shrink-0">
-                      1pc
+                      {t("one_pc")}
                     </Badge>
                     <p className="text-muted-foreground">{artifact.one_pc}</p>
                   </div>
@@ -127,7 +123,7 @@ export default async function ArtifactDetail({ params }: Props) {
                 {artifact.two_pc && (
                   <div className="flex items-start gap-3">
                     <Badge variant="outline" className="mt-0.5 shrink-0">
-                      2pc
+                      {t("two_pc")}
                     </Badge>
                     <p className="text-muted-foreground">{artifact.two_pc}</p>
                   </div>
@@ -135,7 +131,7 @@ export default async function ArtifactDetail({ params }: Props) {
                 {artifact.four_pc && (
                   <div className="flex items-start gap-3">
                     <Badge variant="outline" className="mt-0.5 shrink-0">
-                      4pc
+                      {t("four_pc")}
                     </Badge>
                     <p className="text-muted-foreground">{artifact.four_pc}</p>
                   </div>
@@ -146,9 +142,7 @@ export default async function ArtifactDetail({ params }: Props) {
         </CardContent>
       </Card>
 
-      <h2 className="mb-4 text-2xl font-semibold">
-        {t({ id: "artifact_pieces", defaultMessage: "Artifact Pieces" })}
-      </h2>
+      <h2 className="mb-4 text-2xl font-semibold">{t("artifact_pieces")}</h2>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {pieces.map((piece) => (
@@ -156,11 +150,11 @@ export default async function ArtifactDetail({ params }: Props) {
             <CardContent className="p-4">
               <div className="flex gap-4">
                 <Image
-                  src={getUrl(`/artifacts/${piece!.id}.png`, 96, 96)}
+                  src={`/artifacts/${piece!.id}.png`}
                   alt={piece!.name}
-                  width={96}
-                  height={96}
-                  className="rounded-md"
+                  width={80}
+                  height={80}
+                  className="aspect-square rounded-md"
                 />
                 <div>
                   <h3 className="font-semibold">{piece!.name}</h3>

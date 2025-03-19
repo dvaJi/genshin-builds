@@ -2,24 +2,10 @@ import { Build as HSRBuild } from "interfaces/hsr/build";
 
 import { getHSRData } from "./dataApi";
 
-export async function getLocale(lang: string, game: string) {
-  try {
-    const locale = await import(`../locales/${game}/${lang}.json`);
-    return locale.default;
-  } catch (err) {
-    try {
-      const locale = await import(`../locales/${game}/en.json`);
-      return locale.default;
-    } catch (err) {
-      return {};
-    }
-  }
-}
-
 export async function getRemoteData<T>(
   game: string,
   dataFile: string,
-  revalidate = 60 * 60 * 24
+  revalidate = 60 * 60 * 24,
 ) {
   try {
     const res = await fetch(
@@ -28,7 +14,7 @@ export async function getRemoteData<T>(
         next: {
           revalidate,
         },
-      }
+      },
     );
     const data = await res.json();
     return data as T;
@@ -41,7 +27,7 @@ export async function getRemoteData<T>(
 export async function getSafeRemoteData<T>(
   game: string,
   dataFile: string,
-  revalidate = 60 * 60 * 24
+  revalidate = 60 * 60 * 24,
 ): Promise<[boolean, T]> {
   try {
     const data = await getRemoteData<T>(game, dataFile, revalidate);
@@ -64,7 +50,7 @@ export async function getData<T>(game: string, dataFile: string) {
 
 export async function getCommon(
   lang: string,
-  game: string
+  game: string,
 ): Promise<Record<string, string>> {
   try {
     const common = require(`../_content/${game}/data/common.json`);
@@ -76,7 +62,7 @@ export async function getCommon(
 }
 
 export async function getStarRailBuild(
-  characterId: string
+  characterId: string,
 ): Promise<HSRBuild | null> {
   try {
     let id = characterId;

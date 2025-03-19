@@ -1,11 +1,12 @@
 import type { Build } from "interfaces/build";
 import type { Beta } from "interfaces/genshin/beta";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
@@ -34,7 +35,10 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "builds");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.builds",
+  });
 
   const title = t("title");
   const description = t("description");
@@ -43,20 +47,22 @@ export async function generateMetadata({
     title,
     description,
     path: `/builds`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinCharacterPage({ params }: Props) {
   const { lang } = await params;
-  const { t, langData, locale, common, dict } = await getTranslations(
-    lang,
-    "genshin",
-    "builds",
-  );
-  const [beta, _characters, buildsOld, weaponsList, artifactsList] =
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.builds");
+  const tDict = await getTranslations("Genshin.character");
+  const langData = getLangData(lang, "genshin");
+
+  const [beta, _common, _characters, buildsOld, weaponsList, artifactsList] =
     await Promise.all([
       getData<Beta>("genshin", "beta"),
+      getData<Record<string, Record<string, string>>>("genshin", "common"),
       getGenshinData<Character[]>({
         resource: "characters",
         language: langData as any,
@@ -81,10 +87,19 @@ export default async function GenshinCharacterPage({ params }: Props) {
       }),
     ]);
 
+  const common = _common[lang] || _common["en"];
+  const dict = {
+    "18atk_set": tDict("18atk_set"),
+    "20energyrecharge_set": tDict("20energyrecharge_set"),
+    "15anemodmg_set": tDict("15anemodmg_set"),
+    "25physicaldmg_set": tDict("25physicaldmg_set"),
+    "80elementalmastery_set": tDict("80elementalmastery_set"),
+    others: tDict("others"),
+  };
   const bonusSets = getBonusSet(artifactsList, dict, common);
 
   // Ensure beta characters are valid and have required properties
-  const betaCharacters = (beta[locale]?.characters ?? []).filter(
+  const betaCharacters = (beta[lang]?.characters ?? []).filter(
     (char) =>
       char &&
       typeof char === "object" &&
@@ -206,7 +221,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
       </div>
       <List
         builds={allBuilds}
-        locale={locale}
+        locale={lang}
         messages={{
           show_build_details: t("show_build_details"),
           hide_build_details: t("hide_build_details"),

@@ -1,13 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Fragment, useMemo, useState } from "react";
 
 import CharacterBlock from "@components/hsr/CharacterBlock";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { Character } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHsrUrlLQ } from "@lib/imgUrl";
@@ -23,7 +23,7 @@ export default function CharactersList({ characters }: Props) {
   const [pathTypeFilterSelected, setPathTypeFilterSelected] = useState<
     string[]
   >([]);
-  const { t, locale } = useIntl("characters");
+  const t = useTranslations("HSR.characters");
 
   const combatTypes = useMemo(() => {
     const types = characters.map((character) => character.combat_type);
@@ -64,10 +64,7 @@ export default function CharactersList({ characters }: Props) {
         <div className="mb-4 flex flex-col border border-border bg-card p-4 pt-2 md:flex-row">
           <section>
             <small className="mb-1 w-full text-xs uppercase text-muted-foreground">
-              {t({
-                id: "type",
-                defaultMessage: "Type",
-              })}
+              {t("type")}
             </small>
             <div className="flex">
               {combatTypes.map((type) => (
@@ -116,10 +113,7 @@ export default function CharactersList({ characters }: Props) {
           </section>
           <section>
             <small className="mb-1 w-full text-xs uppercase text-muted-foreground">
-              {t({
-                id: "element",
-                defaultMessage: "Element",
-              })}
+              {t("element")}
             </small>
             <div className="flex">
               {pathTypes.map((type) => (
@@ -174,36 +168,28 @@ export default function CharactersList({ characters }: Props) {
         classList={["flex", "justify-center"]}
       />
       <h2 className="text-3xl font-semibold uppercase leading-loose text-accent">
-        <span className="text-yellow-400">SSR</span>{" "}
-        {t({ id: "characters", defaultMessage: "Characters" })}
+        <span className="text-yellow-400">SSR</span> {t("characters")}
       </h2>
       <menu className="grid grid-cols-3 gap-4 md:grid-cols-5">
         {filteredCharacters
           .filter((c) => c.rarity === 5)
           .map((character) => (
             <li key={character.id}>
-              <Link
-                href={`/${locale}/hsr/character/${character.id}`}
-                prefetch={false}
-              >
+              <Link href={`/hsr/character/${character.id}`}>
                 <CharacterBlock character={character} />
               </Link>
             </li>
           ))}
       </menu>
       <h2 className="text-3xl font-semibold uppercase leading-loose text-accent">
-        <span className="text-purple-400">SR</span>{" "}
-        {t({ id: "characters", defaultMessage: "Characters" })}
+        <span className="text-purple-400">SR</span> {t("characters")}
       </h2>
       <menu className="grid grid-cols-3 gap-4 md:grid-cols-5">
         {filteredCharacters
           .filter((c) => c.rarity === 4)
           .map((character) => (
             <li key={character.id}>
-              <Link
-                href={`/${locale}/hsr/character/${character.id}`}
-                prefetch={false}
-              >
+              <Link href={`/hsr/character/${character.id}`}>
                 <CharacterBlock character={character} />
               </Link>
             </li>

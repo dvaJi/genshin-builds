@@ -1,10 +1,10 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type { TierlistWeapons } from "@interfaces/wuthering-waves/tierlist-weapons";
 import type { Weapons } from "@interfaces/wuthering-waves/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -12,41 +12,36 @@ import { getWWData } from "@lib/dataApi";
 
 import Tier from "./tier";
 
+export const revalidate = 86400;
+
 type Props = {
   params: Promise<{ lang: string }>;
 };
-
-export const dynamic = "force-static";
-
-export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
-}
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "tierlist_weapons"
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "WW.tierlist_weapons",
+  });
 
   return genPageMetadata({
     title: t("title"),
     description: t("description"),
     path: `/wuthering-waves/tierlist/weapons`,
-    locale: langData,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "tierlist_weapons"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("WW.tierlist_weapons");
+  const langData = getLangData(lang, "wuthering-waves");
+
   const tierlist = await getWWData<TierlistWeapons>({
     resource: "tierlist",
     filter: {
@@ -115,7 +110,6 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
-            lang={lang}
           />
         ))}
       </div>
@@ -133,7 +127,6 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
-            lang={lang}
           />
         ))}
       </div>
@@ -151,7 +144,6 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
-            lang={lang}
           />
         ))}
       </div>
@@ -169,7 +161,6 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
-            lang={lang}
           />
         ))}
       </div>
@@ -187,7 +178,6 @@ export default async function Page({ params }: Props) {
             tier={tier}
             weapons={chars}
             weaponsMap={weapons ?? {}}
-            lang={lang}
           />
         ))}
       </div>

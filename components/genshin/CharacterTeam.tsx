@@ -2,11 +2,11 @@
 
 import clsx from "clsx";
 import { TeamData } from "interfaces/teams";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { memo, useState } from "react";
 import { BiCollapseVertical, BiExpandVertical } from "react-icons/bi";
 
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import { capitalize } from "@utils/capitalize";
 
 import ElementIcon from "./ElementIcon";
@@ -19,7 +19,7 @@ type Props = {
 
 function CharacterTeam({ team, index }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const { t, locale } = useIntl("character");
+  const t = useTranslations("Genshin.character");
 
   return (
     <div
@@ -38,9 +38,8 @@ function CharacterTeam({ team, index }: Props) {
         {team.characters.map((character) => (
           <Link
             key={character.id}
-            href={`/${locale}/teams/${character.id}`}
+            href={`/teams/${character.id}`}
             className="group flex flex-col items-center text-center lg:mr-8"
-            prefetch={false}
           >
             <div className="relative">
               <Image
@@ -63,10 +62,7 @@ function CharacterTeam({ team, index }: Props) {
               />
             </div>
             <div className="h-8 text-xs lg:text-sm">
-              {t({
-                id: character.role.toLowerCase(),
-                defaultMessage: character.role,
-              })}
+              {t(character.role.toLowerCase())}
             </div>
             {isOpen && (
               <div className="flex">

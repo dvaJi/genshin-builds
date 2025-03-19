@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { CalculationItemResult } from "interfaces/calculator";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
@@ -9,8 +10,8 @@ import { toast } from "sonner";
 
 import Select from "@components/Select";
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import useLazyFetch from "@hooks/use-lazy-fetch";
+import { getLangData } from "@i18n/langData";
 import type { Weapon } from "@interfaces/genshin";
 import { trackClick } from "@lib/gtag";
 import { getUrl } from "@lib/imgUrl";
@@ -26,7 +27,9 @@ export function WeaponCalculator({ weapons }: Props) {
   const [currentLevel, setCurrentLevel] = useState(levels[0]);
   const [intendedLevel, setIntendedLevel] = useState(levels[13]);
   const [addedToTodo, setAddedToTodo] = useState(false);
-  const { t, localeGI } = useIntl("calculator");
+  const t = useTranslations("Genshin.calculator");
+  const locale = useLocale();
+  const langData = getLangData(locale, "genshin");
   const [calculate, { called, loading, data, error, reset }] = useLazyFetch<
     CalculationItemResult[]
   >("genshin/calculate_weapon_level");
@@ -47,12 +50,7 @@ export function WeaponCalculator({ weapons }: Props) {
 
   const addToTodo = useCallback(() => {
     if (!data) {
-      toast.error(
-        t({
-          id: "no_data_to_add",
-          defaultMessage: "No calculation data to add to todo list",
-        }),
-      );
+      toast.error(t("no_data_to_add"));
       return;
     }
 
@@ -83,9 +81,7 @@ export function WeaponCalculator({ weapons }: Props) {
       ],
     ]);
 
-    toast.success(
-      t({ id: "added_to_todo_list", defaultMessage: "Added to Todo List" }),
-    );
+    toast.success(t("added_to_todo_list"));
   }, [
     currentLevel.asc,
     currentLevel.lvl,
@@ -102,21 +98,11 @@ export function WeaponCalculator({ weapons }: Props) {
     const errors = [];
 
     if (!weapon) {
-      errors.push(
-        t({
-          id: "weapon_not_selected",
-          defaultMessage: "Please select a weapon",
-        }),
-      );
+      errors.push(t("weapon_not_selected"));
     }
 
     if (intendedLevel.lvl < currentLevel.lvl) {
-      errors.push(
-        t({
-          id: "intended_level_error",
-          defaultMessage: "Intended level must be higher than current level",
-        }),
-      );
+      errors.push(t("intended_level_error"));
     }
 
     return errors;
@@ -128,14 +114,14 @@ export function WeaponCalculator({ weapons }: Props) {
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
       <div className="flex flex-col">
         <span className="my-4 block text-lg font-medium">
-          {t({ id: "weapon_level", defaultMessage: "Weapon Level" })}
+          {t("weapon_level")}
         </span>
         <div className="mb-4">
           <label
             htmlFor="weapon-select"
             className="mb-2 block text-sm font-medium"
           >
-            {t({ id: "select_weapon", defaultMessage: "Select Weapon" })}
+            {t("select_weapon")}
           </label>
           <Select
             options={weapons.map((w) => ({ id: w.id, name: w.name }))}
@@ -170,7 +156,7 @@ export function WeaponCalculator({ weapons }: Props) {
 
         <div className="mt-4">
           <span className="mb-2 block text-sm font-medium">
-            {t({ id: "current_level", defaultMessage: "Current Level" })}
+            {t("current_level")}
           </span>
           <div className="flex flex-wrap items-center">
             {levels.map((level) => (
@@ -188,7 +174,7 @@ export function WeaponCalculator({ weapons }: Props) {
                   reset();
                   setAddedToTodo(false);
                 }}
-                aria-label={`${t({ id: "level", defaultMessage: "Level" })} ${level.lvl}${level.asc ? "+" : ""}`}
+                aria-label={`${t("level")} ${level.lvl}${level.asc ? "+" : ""}`}
               >
                 <div className="">{level.lvl}</div>
                 <img
@@ -207,7 +193,7 @@ export function WeaponCalculator({ weapons }: Props) {
         </div>
         <div>
           <span className="mb-2 mt-4 block text-sm font-medium">
-            {t({ id: "intended_level", defaultMessage: "Intended Level" })}
+            {t("intended_level")}
           </span>
           <div className="flex flex-wrap items-center">
             {levels.map((level) => (
@@ -231,7 +217,7 @@ export function WeaponCalculator({ weapons }: Props) {
                   }
                 }}
                 disabled={level.lvl < currentLevel.lvl}
-                aria-label={`${t({ id: "level", defaultMessage: "Level" })} ${level.lvl}${level.asc ? "+" : ""}`}
+                aria-label={`${t("level")} ${level.lvl}${level.asc ? "+" : ""}`}
               >
                 <div className="">{level.lvl}</div>
                 <img
@@ -271,7 +257,7 @@ export function WeaponCalculator({ weapons }: Props) {
               trackClick("calculate_weapon");
               calculate({
                 weaponId: weapon.id,
-                lang: localeGI,
+                lang: langData,
                 params: {
                   currentLevel: currentLevel,
                   intendedLevel: intendedLevel,
@@ -282,22 +268,17 @@ export function WeaponCalculator({ weapons }: Props) {
             {loading ? (
               <span className="flex items-center">
                 <FaSpinner className="mr-2 animate-spin" />
-                {t({ id: "calculating", defaultMessage: "Calculating..." })}
+                {t("calculating")}
               </span>
             ) : (
-              t({ id: "calculate", defaultMessage: "Calculate" })
+              t("calculate")
             )}
           </Button>
         </div>
 
         {error && (
           <div className="mt-4 w-full rounded-md bg-red-500/20 p-4">
-            <p className="text-center text-red-200">
-              {t({
-                id: "calculation_error",
-                defaultMessage: "Error occurred during calculation",
-              })}
-            </p>
+            <p className="text-center text-red-200">{t("calculation_error")}</p>
           </div>
         )}
 
@@ -305,10 +286,7 @@ export function WeaponCalculator({ weapons }: Props) {
           <div className="w-full lg:w-auto">
             <div className="mt-4 block rounded-lg bg-vulcan-900 p-4 md:inline-block">
               <h3 className="mb-2 text-center text-lg font-medium">
-                {t({
-                  id: "calculation_result",
-                  defaultMessage: "Calculation Result",
-                })}
+                {t("calculation_result")}
               </h3>
 
               <div className="flex items-center justify-center py-2">
@@ -332,12 +310,8 @@ export function WeaponCalculator({ weapons }: Props) {
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="pb-2 text-right">
-                      {t({ id: "amount", defaultMessage: "Amount" })}
-                    </th>
-                    <th className="pb-2 text-left">
-                      {t({ id: "material", defaultMessage: "Material" })}
-                    </th>
+                    <th className="pb-2 text-right">{t("amount")}</th>
+                    <th className="pb-2 text-left">{t("material")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -372,20 +346,10 @@ export function WeaponCalculator({ weapons }: Props) {
                 {addedToTodo ? (
                   <div className="inline-flex items-center justify-center p-1 text-green-400">
                     <GiCheckMark className="mr-2" />
-                    <span>
-                      {t({
-                        id: "added_to_todo_list",
-                        defaultMessage: "Added to Todo List",
-                      })}
-                    </span>
+                    <span>{t("added_to_todo_list")}</span>
                   </div>
                 ) : (
-                  <Button onClick={addToTodo}>
-                    {t({
-                      id: "add_to_todo_list",
-                      defaultMessage: "Add to Todo List",
-                    })}
-                  </Button>
+                  <Button onClick={addToTodo}>{t("add_to_todo_list")}</Button>
                 )}
               </div>
             </div>

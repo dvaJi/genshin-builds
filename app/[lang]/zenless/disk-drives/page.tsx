@@ -1,10 +1,13 @@
-import { i18n } from "i18n-config";
 import { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import type { DiskDrives } from "@interfaces/zenless/diskDrives";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
@@ -13,9 +16,7 @@ export const dynamic = "force-static";
 export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 type Props = {
@@ -24,26 +25,38 @@ type Props = {
   }>;
 };
 
-export const metadata: Metadata = {
-  title: "Zenless Zone Zero (ZZZ) Disk Drives List",
-  description: "A list of all Disk Drives gear sets in Zenless Zone Zero",
-};
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata | undefined> {
+  const { lang } = await params;
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "zenless.diskdrives",
+  });
+
+  return genPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: `/zenless/disk-drives`,
+    locale: lang,
+  });
+}
 
 export default async function DiskDrivesPage({ params }: Props) {
   const { lang } = await params;
+  setRequestLocale(lang);
+
+  const t = await getTranslations("zenless.diskdrives");
+  const langData = getLangData(lang, "zenless");
   const data = await getZenlessData<DiskDrives[]>({
     resource: "disk-drives",
-    language: lang,
+    language: langData,
     select: ["id", "name", "icon"],
   });
   return (
     <div className="relative z-0">
-      <h1 className="text-4xl font-semibold">
-        Zenless Zone Zero (ZZZ) Disk Drives List
-      </h1>
-      <p>
-        A complete list of all Disk Drives and their bonus in Zenless Zone Zero.
-      </p>
+      <h1 className="text-4xl font-semibold">{t("diskDrives")}</h1>
+      <p>{t("diskDrivesDescription")}</p>
       <FrstAds
         placementName="genshinbuilds_billboard_atf"
         classList={["flex", "justify-center"]}
@@ -53,7 +66,7 @@ export default async function DiskDrivesPage({ params }: Props) {
         {data?.map((item) => (
           <Link
             key={item.name}
-            href={`/${lang}/zenless/disk-drives/${item.id}`}
+            href={`/zenless/disk-drives/${item.id}`}
             className="group relative items-center justify-center overflow-hidden rounded-lg border-2 border-zinc-950 text-center ring-[#fbfe00] transition-all hover:scale-105 hover:ring-8"
             prefetch={false}
           >

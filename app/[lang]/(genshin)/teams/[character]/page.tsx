@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { TeamData } from "interfaces/teams";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { Fragment } from "react";
 
@@ -15,7 +15,8 @@ import GoTo from "@components/go-to";
 import Ads from "@components/ui/Ads";
 import Button from "@components/ui/Button";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Beta, Character } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinCharacterTeams, getGenshinData } from "@lib/dataApi";
@@ -40,11 +41,13 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, character: characterParams } = await params;
-  const { t, locale, langData } = await getTranslations(
-    lang,
-    "genshin",
-    "teams",
-  );
+
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.teams",
+  });
+  const langData = getLangData(lang, "genshin");
+
   const beta = await getData<Beta>("genshin", "beta");
   const _character = await getGenshinData<Character>({
     resource: "characters",
@@ -54,7 +57,7 @@ export async function generateMetadata({
       id: characterParams,
     },
   });
-  const _betaCharacter = beta[locale]?.characters?.find(
+  const _betaCharacter = beta[lang]?.characters?.find(
     (c: any) => c.id === characterParams,
   );
 
@@ -64,33 +67,23 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "detail_title",
-    defaultMessage: "{name} Team Guide: Mastering Synergy in Genshin Impact",
-    values: { name: character.name },
-  });
-  const description = t({
-    id: "detail_title",
-    defaultMessage:
-      "Unlock the full potential of your {name} team in Genshin Impact with our comprehensive guide. Discover optimal team compositions, artifact recommendations, and gameplay strategies to dominate in Teyvat.",
-    values: { name: character.name },
-  });
+  const title = t("detail_title", { name: character.name });
+  const description = t("detail_description", { name: character.name });
 
   return genPageMetadata({
     title,
     description,
     path: `/teams/${characterParams}`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinCharacterTeams({ params }: Props) {
   const { lang, character: characterParams } = await params;
-  const { t, langData, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "teams",
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.teams");
+  const langData = getLangData(lang, "genshin");
 
   Sentry.setTags({
     character: characterParams,
@@ -163,10 +156,7 @@ export default async function GenshinCharacterTeams({ params }: Props) {
             />
           </div>
           <div className="mt-4 flex justify-end">
-            <Link
-              href={`/${locale}/character/${characterParams}`}
-              prefetch={false}
-            >
+            <Link href={`/character/${characterParams}`}>
               <Button>
                 {t("view_character_page", {
                   name: character.name,
@@ -211,9 +201,8 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                     <Link
                       key={char.id + team.name}
                       className="group relative rounded-full border-4 border-accent-foreground transition hover:border-primary"
-                      href={`/${locale}/teams/${char.id}`}
+                      href={`/teams/${char.id}`}
                       title={`${detail.charactersMap[char.id].name} best team guide`}
-                      prefetch={false}
                     >
                       <div
                         className={clsx(
@@ -282,7 +271,6 @@ export default async function GenshinCharacterTeams({ params }: Props) {
                 {team.characters.map((char) => (
                   <CharacterCard
                     key={char.id}
-                    locale={locale}
                     characterTeam={char}
                     character={detail.charactersMap[char.id]}
                     artifactsMap={detail.artifactsMap}

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 
 import { submitHSRUID } from "@app/actions";
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
 import { getBuild, getPlayer } from "@lib/hsrShowcase";
@@ -24,7 +25,10 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, uid } = await params;
-  const { t, locale } = await getTranslations(lang, "hsr", "profile");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.profile",
+  });
 
   const player = await getPlayer(uid);
 
@@ -32,30 +36,21 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail {playerUID} Player Profile",
-    values: { playerUID: player.uuid },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage: "Honkai: Star Rail {playerUID} Player Profile",
-    values: {
-      playerUID: player.uuid,
-    },
-  });
+  const title = t("title", { playerUID: player.uuid });
+  const description = t("description", { playerUID: player.uuid });
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/showcase/profile/${uid}`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function HSRProfilePage({ params }: Props) {
   const { lang, uid } = await params;
-  const { langData } = await getTranslations(lang, "hsr", "item");
+  const t = await getTranslations("HSR.profile");
+  const langData = getLangData(lang, "hsr");
 
   if (!uid || !/^(18|[1-35-9])\d{8}$/.test(uid.toString())) {
     return redirect(`/${lang}/hsr/showcase`);
@@ -117,15 +112,15 @@ export default async function HSRProfilePage({ params }: Props) {
             <span>{profile.worldLevel}</span>
           </div>
           <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
-            <span className="text-1">Achievements</span>
+            <span className="text-1">{t("achievements")}</span>
             <span>{profile.finishAchievementNum}</span>
           </div>
           <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
-            <span className="text-1">Characters</span>
+            <span className="text-1">{t("characters")}</span>
             <span>{profile.friends}</span>
           </div>
           <div className="shadow-1 flex items-center justify-between gap-1 rounded-md border border-border bg-background px-2 py-1.5 text-xs font-bold shadow-sm">
-            <span className="text-1">Simulated</span>
+            <span className="text-1">{t("simulated")}</span>
             <span>{profile.passAreaProgress}</span>
           </div>
         </div>

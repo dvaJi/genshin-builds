@@ -1,7 +1,7 @@
 import type { FishingPoint } from "interfaces/fishing";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
 import type { Fish } from "@interfaces/genshin";
 
 import FishMiniCard from "./FishMiniCard";
@@ -20,13 +20,11 @@ const FishingPointCard = ({
   fish,
   isFishSelected,
 }: FishingPointCardProps) => {
-  const { t } = useIntl("fishing");
+  const t = useTranslations("Genshin.fishing");
 
   return (
     <div>
-      <h2 className="mb-2 ml-4 text-3xl lg:ml-0">
-        {t({ id: city, defaultMessage: city })}
-      </h2>
+      <h2 className="mb-2 ml-4 text-3xl lg:ml-0">{t(city)}</h2>
       {fishingPoints.map((point) => (
         <div
           key={city + point.id}
@@ -41,7 +39,7 @@ const FishingPointCard = ({
               height={320}
             />
           </div>
-          <div className="h-full  flex-grow p-5 text-center">
+          <div className="h-full flex-grow p-5 text-center">
             {point.fish.map((f) => (
               <FishMiniCard
                 key={point.id + f}

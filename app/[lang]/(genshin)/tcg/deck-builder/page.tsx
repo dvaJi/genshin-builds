@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Toaster } from "sonner";
 
 import { genPageMetadata } from "@app/seo";
 import Alert from "@components/Alert";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
 import type {
   TCGActionCard,
   TCGCard,
@@ -33,28 +34,28 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(
-    lang,
-    "genshin",
-    "tcg_deck_builder"
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.tcg_deck_builder",
+  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
-    title: t("title"),
-    description: t("description"),
+    title,
+    description,
     path: `/tcg/deck-builder`,
-    locale,
+    locale: lang,
     noOpenGraph: true,
   });
 }
 
 export default async function GenshinTCG({ params, searchParams }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "genshin",
-    "tcg_deck_builder"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.tcg_deck_builder");
+  const langData = getLangData(lang, "genshin");
 
   const acards = await getGenshinData<TCGActionCard[]>({
     resource: "tcgActions",
@@ -70,7 +71,7 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
   const cards = [...acards, ...ccards];
 
   const cardsMapById = Object.fromEntries(
-    cards.map((card) => [card.id, card])
+    cards.map((card) => [card.id, card]),
   ) as Record<string, TCGCard>;
 
   const CARD_ORDER = cards
@@ -79,11 +80,11 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
     .map((card) => card.id);
 
   const CARD_BY_ENCODE_ID: Record<number, string> = Object.fromEntries(
-    CARD_ORDER.map((card, index) => [index + 1, card])
+    CARD_ORDER.map((card, index) => [index + 1, card]),
   );
 
   const ENCODE_ID_BY_CARD: Record<string, number> = Object.fromEntries(
-    CARD_ORDER.map((card, index) => [card, index + 1])
+    CARD_ORDER.map((card, index) => [card, index + 1]),
   ) as Record<string, number>;
 
   const { code } = await searchParams;
@@ -100,7 +101,7 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
         {code && decodedDeck.characterCards[0] === "undefined" ? (
           <div className="absolute left-0 right-0 top-0 flex items-center justify-center">
             <Alert
-              className="bg-destructive/90 text-destructive-foreground flex rounded-lg px-6 py-2 text-center"
+              className="flex rounded-lg bg-destructive/90 px-6 py-2 text-center text-destructive-foreground"
               closeClassName="text-destructive-foreground/90 font-semibold hover:text-destructive-foreground"
               autoCloseDelay={2000}
             >
@@ -172,7 +173,8 @@ export default async function GenshinTCG({ params, searchParams }: Props) {
           toastOptions={{
             unstyled: true,
             classNames: {
-              toast: "bg-card text-card-foreground flex items-center gap-4 p-4 rounded-lg border shadow-lg",
+              toast:
+                "bg-card text-card-foreground flex items-center gap-4 p-4 rounded-lg border shadow-lg",
               title: "font-medium",
               description: "text-muted-foreground text-sm",
             },

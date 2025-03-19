@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Stars from "@components/hsr/Stars";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import { Items } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -32,7 +33,12 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(lang, "hsr", "item");
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.item",
+  });
+
+  const langData = getLangData(lang, "hsr");
 
   const item = await getHSRData<Items>({
     resource: "items",
@@ -45,31 +51,26 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail {itemName} Item",
-    values: { itemName: item.name },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage: "Information about the {itemName} {itemType} item.",
-    values: {
-      itemName: item.name,
-      itemType: item.type.name || "",
-    },
+  const title = t("title", { itemName: item.name });
+  const description = t("description", {
+    itemName: item.name,
+    itemType: item.type.name || "",
   });
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/item/${id}`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "item");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.item");
+  const langData = getLangData(lang, "hsr");
 
   const item = await getHSRData<Items>({
     resource: "items",
@@ -117,24 +118,14 @@ export default async function CharacterPage({ params }: Props) {
           classList={["flex", "justify-center"]}
         />
         <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
-        <h3 className="text-xl text-slate-200">
-          {t({
-            id: "story",
-            defaultMessage: "Story",
-          })}
-        </h3>
+        <h3 className="text-xl text-slate-200">{t("story")}</h3>
         {item.story ? (
           <div
             className="mb-4"
             dangerouslySetInnerHTML={{ __html: item.story }}
           />
         ) : null}
-        <h3 className="text-xl text-slate-200">
-          {t({
-            id: "source",
-            defaultMessage: "Source",
-          })}
-        </h3>
+        <h3 className="text-xl text-slate-200">{t("source")}</h3>
         <div>
           {item.source?.map((s) => (
             <div
@@ -147,32 +138,23 @@ export default async function CharacterPage({ params }: Props) {
                   <div key={r.worldLevelRequire || 0}>
                     {r.worldLevelRequire ? (
                       <div className="my-1 text-sm">
-                        {t({
-                          id: "world_level_require",
-                          defaultMessage: "World Level Require",
-                        })}
-                        : {r.worldLevelRequire}
+                        {t("world_level_require")}: {r.worldLevelRequire}
                       </div>
                     ) : null}
                     {r.coinCost ? (
                       <div className="my-1 text-sm">
-                        {t({
-                          id: "cost",
-                          defaultMessage: "Cost",
-                        })}
-                        : {r.coinCost}
+                        {t("cost")}: {r.coinCost}
                       </div>
                     ) : null}
                     <div className="mt-2 flex gap-4">
                       {r.materialCost.map((m) => (
                         <Link
                           key={m.id}
-                          href={`/${lang}/hsr/item/${m.id}`}
+                          href={`/hsr/item/${m.id}`}
                           className="relative flex h-16 w-16 flex-row justify-center"
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}
                           data-data-tooltip-place="bottom"
-                          prefetch={false}
                         >
                           <img
                             loading="eager"
@@ -199,12 +181,11 @@ export default async function CharacterPage({ params }: Props) {
                       {r.specialMaterialCost.map((m) => (
                         <Link
                           key={m.id}
-                          href={`/${lang}/hsr/item/${m.id}`}
+                          href={`/hsr/item/${m.id}`}
                           className="relative flex h-16 w-16 flex-row justify-center"
                           data-tooltip-id="item_tooltip"
                           data-tooltip-content={m.name}
                           data-data-tooltip-place="bottom"
-                          prefetch={false}
                         >
                           <img
                             loading="eager"

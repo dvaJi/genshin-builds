@@ -1,12 +1,12 @@
-
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Echoes } from "@interfaces/wuthering-waves/echoes";
 import type { TierlistEchoes } from "@interfaces/wuthering-waves/tierlist-echoes";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -21,36 +21,30 @@ export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = 86400;
 
-
-
-
-
-
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "tierlist_echoes"
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "WW.tierlist_echoes",
+  });
 
   return genPageMetadata({
     title: t("title"),
     description: t("description"),
     path: `/wuthering-waves/tierlist/echoes`,
-    locale: langData,
+    locale: lang,
   });
 }
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "tierlist_echoes"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("WW.tierlist_echoes");
+  const langData = getLangData(lang, "wuthering-waves");
+
   const tierlist = await getWWData<TierlistEchoes>({
     resource: "tierlist",
     filter: {
@@ -103,14 +97,13 @@ export default async function Page({ params }: Props) {
                 >
                   {echoes?.[char] ? (
                     <Link
-                      href={`/${lang}/wuthering-waves/echoes/${char.replace("é", "e")}`}
+                      href={`/wuthering-waves/echoes/${char.replace("é", "e")}`}
                       className="flex flex-col items-center justify-center gap-2"
-                      prefetch={false}
                     >
                       <div
                         className={cn(
                           `overflow-hidden rounded ring-0 ring-ww-800 transition-all group-hover:ring-4`,
-                          `rarity-${echoes[char].intensityCode + 1}`
+                          `rarity-${echoes[char].intensityCode + 1}`,
                         )}
                       >
                         <Image
@@ -146,7 +139,7 @@ export default async function Page({ params }: Props) {
           ([char, explanation]) => (
             <Link
               key={char}
-              href={`/${lang}/wuthering-waves/echoes/${char.replace("é", "e")}`}
+              href={`/wuthering-waves/echoes/${char.replace("é", "e")}`}
               className="flex items-center gap-2 border-b border-ww-950/50 pb-4 last:border-b-0"
             >
               <div className="flex w-20 shrink-0 flex-col items-center gap-2">
@@ -166,7 +159,7 @@ export default async function Page({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: explanation }}
               />
             </Link>
-          )
+          ),
         )}
       </div>
     </div>

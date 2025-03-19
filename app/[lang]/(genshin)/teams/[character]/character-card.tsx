@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Fragment } from "react";
 import { Tooltip } from "react-tooltip";
 
@@ -14,12 +14,11 @@ import {
 import { cn } from "@app/lib/utils";
 import { ElementBadge } from "@components/genshin/ElementBadge";
 import Image from "@components/genshin/Image";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import type { CharacterTeam } from "@interfaces/teams";
 
 type Props = {
-  locale: string;
   characterTeam: CharacterTeam;
   character: Character;
   artifactsMap: Record<string, Artifact>;
@@ -27,19 +26,19 @@ type Props = {
 };
 
 export function CharacterCard({
-  locale,
   characterTeam,
   character,
   artifactsMap,
   weaponsMap,
 }: Props) {
-  const { t } = useIntl("teams");
+  const commont = useTranslations("Genshin.common");
+  const t = useTranslations("Genshin.teams");
 
   return (
     <Card>
       <CardHeader>
         <div className="flex items-center gap-4">
-          <Link href={`/${locale}/characters/${characterTeam.id}`}>
+          <Link href={`/characters/${characterTeam.id}`}>
             <div
               className={cn(
                 "relative h-20 w-20 rounded-md",
@@ -58,7 +57,7 @@ export function CharacterCard({
             <CardTitle className="text-xl">
               <Link
                 className="hover:underline"
-                href={`/${locale}/teams/${characterTeam.id}`}
+                href={`/teams/${characterTeam.id}`}
               >
                 {character.name}
               </Link>
@@ -128,7 +127,7 @@ export function CharacterCard({
                     </div>
                   </Tooltip>
                   <Link
-                    href={`/${locale}/artifacts/${artifact}`}
+                    href={`/artifacts/${artifact}`}
                     className="hover:text-primary"
                     data-tooltip-id={artifact}
                   >
@@ -163,7 +162,7 @@ export function CharacterCard({
               <div>
                 <h4 className="text-xs text-slate-500">{t("substats")}</h4>
                 <p className="text-sm">
-                  {characterTeam.sub_stats.map((st) => t(st)).join(" / ")}
+                  {characterTeam.sub_stats.map((st) => commont(st)).join(" / ")}
                 </p>
               </div>
             </div>
@@ -215,7 +214,7 @@ export function CharacterCard({
                     />
                   </Tooltip>
                   <Link
-                    href={`/${locale}/weapon/${weapon}`}
+                    href={`/weapon/${weapon}`}
                     className="hover:text-primary"
                     data-tooltip-id={weapon}
                   >

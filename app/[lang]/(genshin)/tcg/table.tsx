@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 import { HiMagnifyingGlass } from "react-icons/hi2";
@@ -16,34 +16,33 @@ import {
   SelectValue,
 } from "@components/ui/select";
 import useDebounce from "@hooks/use-debounce";
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 import type { TCGCard } from "@interfaces/genshin";
 
 type Props = {
-  lang: string;
   cards: TCGCard[];
   types: string[];
 };
 
-function CardsTable({ lang, cards, types }: Props) {
+function CardsTable({ cards, types }: Props) {
   const [filteredCards, setFilteredCards] = useState<TCGCard[]>(cards);
   const [typeSelected, setTypeSelected] = useState("All");
   const [search, setSearch] = useState<string>("");
   const debouncedSearchTerm = useDebounce(search, 200);
-  const { t } = useIntl("tcg_cards");
+  const t = useTranslations("Genshin.tcg_cards");
 
   useEffect(() => {
     let _filteredCards = cards;
 
     if (typeSelected !== "All") {
       _filteredCards = _filteredCards.filter(
-        (card) => card.attributes.card_type === typeSelected
+        (card) => card.attributes.card_type === typeSelected,
       );
     }
 
     if (debouncedSearchTerm !== "") {
       _filteredCards = _filteredCards.filter((card) =>
-        card.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+        card.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
       );
     }
 
@@ -61,37 +60,30 @@ function CardsTable({ lang, cards, types }: Props) {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder={t({
-                id: "search",
-                defaultMessage: "Search cards...",
-              })}
+              placeholder={t("search")}
               className="w-full pl-10"
             />
           </div>
 
           <Select value={typeSelected} onValueChange={setTypeSelected}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue
-                placeholder={t({ id: "all", defaultMessage: "All Types" })}
-              />
+              <SelectValue placeholder={t("all")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="All">
-                {t({ id: "all", defaultMessage: "All Types" })}
-              </SelectItem>
+              <SelectItem value="All">{t("all")}</SelectItem>
               {types.map((type) => (
                 <SelectItem key={type} value={type}>
-                  {t({ id: type.toLowerCase(), defaultMessage: type })}
+                  {t(type.toLowerCase())}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
 
-        <Link href={`/${lang}/tcg/deck-builder`} prefetch={false}>
+        <Link href={`/tcg/deck-builder`}>
           <Button variant="primary" className="w-full lg:w-40">
             <FaPenToSquare className="mr-2" />
-            {t({ id: "create_deck", defaultMessage: "Create Deck" })}
+            {t("create_deck")}
           </Button>
         </Link>
       </div>
@@ -99,9 +91,8 @@ function CardsTable({ lang, cards, types }: Props) {
         {filteredCards.map((card, i) => (
           <Link
             key={card.id + i}
-            href={`/${lang}/tcg/card/${card.id}`}
+            href={`/tcg/card/${card.id}`}
             className="group relative block cursor-pointer rounded-lg border-2 border-transparent transition-all hover:scale-105 hover:border-input"
-            prefetch={false}
           >
             <TCGCardComponent card={card} />
           </Link>
@@ -112,13 +103,10 @@ function CardsTable({ lang, cards, types }: Props) {
       {filteredCards.length === 0 && (
         <div className="rounded-lg border border-input bg-card/50 px-6 py-12 text-center">
           <h3 className="text-lg font-medium text-foreground/80">
-            {t({ id: "no_cards_found", defaultMessage: "No cards found" })}
+            {t("no_cards_found")}
           </h3>
           <p className="mt-2 text-muted-foreground">
-            {t({
-              id: "try_adjusting_filters",
-              defaultMessage: "Try adjusting your filters or search term",
-            })}
+            {t("try_adjusting_filters")}
           </p>
         </div>
       )}

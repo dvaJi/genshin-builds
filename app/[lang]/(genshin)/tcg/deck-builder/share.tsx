@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import importDynamic from "next/dynamic";
 import { memo } from "react";
 import { FaFacebookSquare, FaLink, FaTwitterSquare } from "react-icons/fa";
@@ -9,7 +10,6 @@ import { toast } from "sonner";
 import { Button } from "@app/components/ui/button";
 import { Input } from "@app/components/ui/input";
 import CopyToClipboard from "@components/CopyToClipboard";
-import useIntl from "@hooks/use-intl";
 import { useStore } from "@nanostores/react";
 import { $deckBuilder, DECK_SETTINGS } from "@state/deck-builder";
 import { encodeDeckCode } from "@utils/gcg-share-code";
@@ -27,7 +27,7 @@ type Props = {
 
 function Share({ ENCODE_ID_BY_CARD }: Props) {
   const deck = useStore($deckBuilder);
-  const { t } = useIntl("tcg_deck_builder");
+  const t = useTranslations("Genshin.tcg_deck_builder");
 
   function encode() {
     if (deck.characterCards.length < DECK_SETTINGS.MAX_CHARACTER_CARDS) {
@@ -36,7 +36,7 @@ function Share({ ENCODE_ID_BY_CARD }: Props) {
     }
     const totalActions = Object.entries(deck.actionCards).reduce(
       (acc, [key, amount]) => (key === "undefined" ? acc : acc + amount),
-      0
+      0,
     );
     if (totalActions < DECK_SETTINGS.MAX_ACTION_CARDS) {
       toast.error(t("min_non_character_cards_error"));
@@ -45,7 +45,7 @@ function Share({ ENCODE_ID_BY_CARD }: Props) {
     const newCode = encodeDeckCode(
       deck.characterCards,
       Object.entries(deck.actionCards),
-      ENCODE_ID_BY_CARD
+      ENCODE_ID_BY_CARD,
     );
     $deckBuilder.set({ ...deck, code: newCode });
   }

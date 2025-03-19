@@ -1,15 +1,15 @@
 "use client";
 
-import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+import clsx from "clsx";
+import { Roles, TierNums, Tierlist } from "interfaces/tierlist";
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import CharactersTier from "@components/genshin/CharactersTier";
-import useIntl from "@hooks/use-intl";
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { trackClick } from "@lib/gtag";
-import clsx from "clsx";
-import { Roles, TierNums, Tierlist } from "interfaces/tierlist";
 
 const Ads = dynamic(() => import("@components/ui/Ads"), { ssr: false });
 const FrstAds = dynamic(() => import("@components/ui/FrstAds"), { ssr: false });
@@ -36,7 +36,7 @@ export default function GenshinTierlistView({
     data: tierlist,
     id: "tierlist",
   });
-  const { t } = useIntl("tierlist");
+  const t = useTranslations("Genshin.tierlist");
 
   const changeTierTab = (role: Roles) => {
     setSelectedCol(role);
@@ -49,38 +49,38 @@ export default function GenshinTierlistView({
         <button
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5 hover:bg-vulcan-700",
-            selectedList.id !== "tierlist" ? "opacity-50" : "text-white"
+            selectedList.id !== "tierlist" ? "opacity-50" : "text-white",
           )}
           onClick={() => {
             trackClick(`tierlist_original`);
             setSelectedList({ data: tierlist, id: "tierlist" });
           }}
         >
-          {t({ id: "tierlist", defaultMessage: "Tierlist" })}
+          {t("tierlist")}
         </button>
         <button
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5 hover:bg-vulcan-700",
-            selectedList.id !== "tierlistCZero" ? "opacity-50" : "text-white"
+            selectedList.id !== "tierlistCZero" ? "opacity-50" : "text-white",
           )}
           onClick={() => {
             trackClick(`tierlist_c0`);
             setSelectedList({ data: tierlistCZero, id: "tierlistCZero" });
           }}
         >
-          {t({ id: "zero_constellation", defaultMessage: "C0 Tierlist" })}
+          {t("zero_constellation")}
         </button>
         <button
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5 hover:bg-vulcan-700",
-            selectedList.id !== "tierlistCSix" ? "opacity-50" : "text-white"
+            selectedList.id !== "tierlistCSix" ? "opacity-50" : "text-white",
           )}
           onClick={() => {
             trackClick(`tierlist_c6`);
             setSelectedList({ data: tierlistCSix, id: "tierlistCSix" });
           }}
         >
-          {t({ id: "six_constellation", defaultMessage: "C6 Tierlist" })}
+          {t("six_constellation")}
         </button>
       </div>
       <div className="mb-6 grid w-full grid-cols-8 gap-4">
@@ -89,7 +89,7 @@ export default function GenshinTierlistView({
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5",
             "pointer-events-auto lg:pointer-events-none",
-            selectedCol !== Roles.maindps ? "opacity-50 lg:opacity-100" : ""
+            selectedCol !== Roles.maindps ? "opacity-50 lg:opacity-100" : "",
           )}
           onClick={() => {
             trackClick(`tierlist_${Roles.maindps}`);
@@ -97,14 +97,14 @@ export default function GenshinTierlistView({
           }}
         >
           <h3 className="text-center text-lg font-semibold text-white">
-            {t({ id: "main_dps", defaultMessage: "Main DPS" })}
+            {t("main_dps")}
           </h3>
         </button>
         <button
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5",
             "pointer-events-auto lg:pointer-events-none",
-            selectedCol !== Roles.subdps ? "opacity-50 lg:opacity-100" : ""
+            selectedCol !== Roles.subdps ? "opacity-50 lg:opacity-100" : "",
           )}
           onClick={() => {
             trackClick(`tierlist_${Roles.subdps}`);
@@ -112,14 +112,14 @@ export default function GenshinTierlistView({
           }}
         >
           <h3 className="text-center text-lg font-semibold text-white">
-            {t({ id: "sub_dps", defaultMessage: "Sub DPS" })}
+            {t("sub_dps")}
           </h3>
         </button>
         <button
           className={clsx(
             "col-span-2 rounded-xl bg-vulcan-800 p-5",
             "pointer-events-auto lg:pointer-events-none",
-            selectedCol !== Roles.support ? "opacity-50 lg:opacity-100" : ""
+            selectedCol !== Roles.support ? "opacity-50 lg:opacity-100" : "",
           )}
           onClick={() => {
             trackClick(`tierlist_${Roles.support}`);
@@ -127,7 +127,7 @@ export default function GenshinTierlistView({
           }}
         >
           <h3 className="text-center text-lg font-semibold text-white">
-            {t({ id: "support", defaultMessage: "Support" })}
+            {t("support")}
           </h3>
         </button>
       </div>

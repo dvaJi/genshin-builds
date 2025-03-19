@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { BsPersonFill } from "react-icons/bs";
 
@@ -12,8 +12,8 @@ import Image from "@components/hsr/Image";
 import Stars from "@components/hsr/Stars";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
-import { i18n } from "@i18n-config";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { Character, LightCone, Relic } from "@interfaces/hsr";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getHSRData } from "@lib/dataApi";
@@ -21,31 +21,14 @@ import { getHsrUrl } from "@lib/imgUrl";
 import { getStarRailBuild } from "@lib/localData";
 import { cn } from "@lib/utils";
 import { getHsrId } from "@utils/helpers";
-import { localeToHSRLang } from "@utils/locale-to-lang";
 import { renderDescription } from "@utils/template-replacement";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const dynamicParams = true;
+export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; id: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const _characters = await getHSRData<Character[]>({
-      resource: "characters",
-      language: localeToHSRLang(lang),
-      select: ["id"],
-    });
-
-    routes.push(
-      ..._characters.map((c) => ({
-        lang,
-        id: c.id,
-      })),
-    );
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {
@@ -59,11 +42,11 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, id } = await params;
-  const { t, langData, locale } = await getTranslations(
-    lang,
-    "hsr",
-    "characters",
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "HSR.character",
+  });
+  const langData = getLangData(lang, "hsr");
 
   const character = await getHSRData<Character>({
     resource: "characters",
@@ -75,30 +58,24 @@ export async function generateMetadata({
     return;
   }
 
-  const title = t({
-    id: "title",
-    defaultMessage: "Honkai: Star Rail {name} Build Guide",
-    values: { name: character.name },
-  });
-  const description = t({
-    id: "description",
-    defaultMessage:
-      "Discover the best builds and teams for {name} in Honkai: Star Rail. Also included are their skills, upgrade costs, and more.",
-    values: { name: character.name },
-  });
+  const title = t("title", { name: character.name });
+  const description = t("description", { name: character.name });
 
   return genPageMetadata({
     title,
     description,
     path: `/hsr/character/${id}`,
     image: getHsrUrl(`/characters/${character.id}/icon_2.png`),
-    locale,
+    locale: lang,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
   const { lang, id } = await params;
-  const { t, langData } = await getTranslations(lang, "hsr", "character");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("HSR.character");
+  const langData = getLangData(lang, "hsr");
 
   const character = await getHSRData<Character>({
     resource: "characters",
@@ -289,11 +266,7 @@ export default async function CharacterPage({ params }: Props) {
                 relicsMap={relicsMap}
               />
               <h2 className="text-xl font-semibold text-accent">
-                {t({
-                  id: "best_teams",
-                  defaultMessage: "{name} Best Teams",
-                  values: { name: character.name },
-                })}
+                {t("best_teams", { name: character.name })}
               </h2>
               {build.teams.map((team) => (
                 <div key={team.name} className="mt-4">
@@ -332,9 +305,8 @@ export default async function CharacterPage({ params }: Props) {
                             </div>
                           ) : (
                             <Link
-                              href={`/${lang}/hsr/character/${c.id}`}
+                              href={`/hsr/character/${c.id}`}
                               className="flex items-center"
-                              prefetch={false}
                             >
                               <div className="mr-2 flex flex-shrink-0 items-center justify-center">
                                 <div className="flex-shrink-0 justify-center rounded-full text-center">
@@ -401,12 +373,7 @@ export default async function CharacterPage({ params }: Props) {
             classList={["flex", "justify-center"]}
           />
           <div>
-            <h2 className="text-xl font-semibold text-accent">
-              {t({
-                id: "skills",
-                defaultMessage: "Skills",
-              })}
-            </h2>
+            <h2 className="text-xl font-semibold text-accent">{t("skills")}</h2>
             <div>
               {character.skills
                 .filter((s) => s.tag)
@@ -459,12 +426,7 @@ export default async function CharacterPage({ params }: Props) {
             classList={["flex", "justify-center"]}
           />
           <div>
-            <h2 className="text-xl font-semibold text-accent">
-              {t({
-                id: "traces",
-                defaultMessage: "Traces",
-              })}
-            </h2>
+            <h2 className="text-xl font-semibold text-accent">{t("traces")}</h2>
             <div className="flex flex-col">
               {character.skillTreePoints
                 .sort((a, b) => a.type - b.type)
@@ -483,10 +445,7 @@ export default async function CharacterPage({ params }: Props) {
           />
           <div>
             <h2 className="text-xl font-semibold text-accent">
-              {t({
-                id: "eidolon",
-                defaultMessage: "Eidolon",
-              })}
+              {t("eidolon")}
             </h2>
             <div>
               {character.eidolons.map((eidolon) => (

@@ -1,10 +1,10 @@
 "use client";
 
 import { TeamData } from "interfaces/teams";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
+import { Link } from "@i18n/navigation";
 
 import ElementIcon from "./ElementIcon";
 import Image from "./Image";
@@ -16,29 +16,21 @@ interface TeamCardProps {
 }
 
 const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
-  const { t, locale } = useIntl("teams");
+  const t = useTranslations("Genshin.teams");
   return (
     <div className="card mx-2 md:mx-0">
       <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-        {t({
-          id: "character_team",
-          defaultMessage: "Best Team for {name}",
-          values: { name: mainName },
-        })}
+        {t("character_team", { name: mainName })}
       </h3>
       <div className="grid grid-cols-4 gap-2">
         {team.characters.map((block, i) => (
           <div key={`${block.role}${block.id}${i}`} className="flex flex-col">
             <div className="md:min-h-auto min-h-10 text-center text-xs lg:text-sm">
-              {t({ id: block.role.toLowerCase(), defaultMessage: block.role })}
+              {t(block.role.toLowerCase())}
             </div>
             <div className="flex justify-center text-center">
-              <Link
-                href={`/${locale}/teams/${block.id}`}
-                className="flex flex-col"
-                prefetch={false}
-              >
-                <div className="hover:border-primary group relative overflow-hidden rounded-full border-4 border-transparent transition">
+              <Link href={`/teams/${block.id}`} className="flex flex-col">
+                <div className="group relative overflow-hidden rounded-full border-4 border-transparent transition hover:border-primary">
                   <Image
                     className="z-20 rounded-full object-cover transition group-hover:scale-110"
                     alt={block.id}
@@ -48,10 +40,10 @@ const TeamCard = ({ team, mainName, asyncLoad = true }: TeamCardProps) => {
                     loading={asyncLoad ? "lazy" : "eager"}
                   />
                   <ElementIcon
-                    type={t(block.element)}
+                    type={block.element}
                     height={20}
                     width={20}
-                    className="bg-muted absolute right-3 top-3 rounded-full lg:right-5 lg:top-5"
+                    className="absolute right-3 top-3 rounded-full bg-muted lg:right-5 lg:top-5"
                     asyncLoad={asyncLoad}
                   />
                 </div>

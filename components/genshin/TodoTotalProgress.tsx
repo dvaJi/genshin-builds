@@ -1,6 +1,5 @@
+import { useTranslations } from "next-intl";
 import { memo } from "react";
-
-import useIntl from "@hooks/use-intl";
 
 type Props = {
   progressPercentage: number;
@@ -8,13 +7,13 @@ type Props = {
 };
 
 function TodoTotalProgress({ progressPercentage, todosLength }: Props) {
-  const { t } = useIntl("todo");
+  const t = useTranslations("Genshin.todo");
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
       <div className="flex items-center gap-3">
         <h1 className="text-2xl font-bold tracking-tight text-foreground">
-          {t({ id: "todo_title", defaultMessage: "Todo List" })}
+          {t("todo_title")}
         </h1>
         <div className="flex items-center space-x-1 rounded-full bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground">
           <span>{todosLength}</span>
@@ -32,8 +31,7 @@ function TodoTotalProgress({ progressPercentage, todosLength }: Props) {
           />
         </div>
         <span className="text-sm font-medium text-muted-foreground">
-          {progressPercentage}%{" "}
-          {t({ id: "complete", defaultMessage: "complete" })}
+          {progressPercentage}% {t("complete")}
         </span>
       </div>
     </div>

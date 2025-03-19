@@ -1,9 +1,9 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Fragment, memo, useState } from "react";
 
 import Button from "@components/ui/Button";
-import useIntl from "@hooks/use-intl";
 import type { Ascension } from "@interfaces/genshin";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 function CharacterStats({ ascensions }: Props) {
   const [selected, setSelected] = useState(ascensions[0]);
-  const { t } = useIntl("character");
+  const t = useTranslations("Genshin.character");
 
   return (
     <>
@@ -27,28 +27,15 @@ function CharacterStats({ ascensions }: Props) {
                 : "secondary"
             }
           >
-            {t({
-              id: "lv.",
-              defaultMessage: "Lv.",
-            })}
+            {t("lv")}
             {ascension.level.join(" - ")}
           </Button>
         ))}
       </div>
       <div className="grid grid-cols-3 rounded">
         <div className="bg-muted py-2"></div>
-        <div className="bg-muted py-2">
-          {t({
-            id: "before_ascension",
-            defaultMessage: "Before Ascension",
-          })}
-        </div>
-        <div className="bg-muted py-2">
-          {t({
-            id: "after_ascension",
-            defaultMessage: "After Ascension",
-          })}
-        </div>
+        <div className="bg-muted py-2">{t("before_ascension")}</div>
+        <div className="bg-muted py-2">{t("after_ascension")}</div>
         {selected.stats.map((stat) => (
           <Fragment key={stat.label}>
             <div className="border-b border-muted px-2 py-1">{stat.label}</div>
@@ -65,4 +52,4 @@ function CharacterStats({ ascensions }: Props) {
   );
 }
 
-export default CharacterStats;
+export default memo(CharacterStats);

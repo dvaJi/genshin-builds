@@ -1,8 +1,8 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
 import type { Constellation } from "@interfaces/genshin/character";
 
 import Image from "./Image";
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const PassiveSkill = ({ passive, characterId }: Props) => {
-  const { t } = useIntl("character");
+  const t = useTranslations("Genshin.character");
   return (
     <div className="card relative flex flex-col items-center justify-start overflow-hidden lg:w-full">
       <Image
@@ -27,12 +27,8 @@ const PassiveSkill = ({ passive, characterId }: Props) => {
         <h4 className="text-lg font-bold text-white">{passive.name}</h4>
         <h3 className="text-sm italic">
           {passive.level > 0
-            ? t({
-                id: "ascension_phase_num",
-                defaultMessage: "Ascension Phase {num}",
-                values: { num: passive.level.toString() },
-              })
-            : "Passive"}
+            ? t("ascension_phase_num", { num: passive.level.toString() })
+            : t("passive")}
         </h3>
       </div>
       <div

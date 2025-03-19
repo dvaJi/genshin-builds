@@ -1,8 +1,8 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
 import type { Constellation } from "@interfaces/genshin";
 
 import Image from "./Image";
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const ConstellationCard = ({ constellation, characterId }: Props) => {
-  const { t } = useIntl("character");
+  const t = useTranslations("Genshin.character");
   return (
     <div className="card relative flex flex-col items-center justify-start overflow-hidden lg:w-full">
       <Image
@@ -29,11 +29,7 @@ const ConstellationCard = ({ constellation, characterId }: Props) => {
       <div className="flex flex-col items-center pb-2 text-center">
         <h4 className="text-lg font-bold text-white">{constellation.name}</h4>
         <h3 className="text-sm italic">
-          {t({
-            id: "constellation_lvl",
-            defaultMessage: "Constellation Lv. {level}",
-            values: { level: constellation.level.toString() },
-          })}
+          {t("constellation_lvl", { level: constellation.level.toString() })}
         </h3>
       </div>
       <div

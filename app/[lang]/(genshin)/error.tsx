@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect } from "react";
 
 import * as Sentry from "@sentry/nextjs";
 import { invalidateAction } from "@app/admin/invalidator/actions";
 import Button from "@components/ui/Button";
+import { Link } from "@i18n/navigation";
 
 type Props = {
   error: Error & { digest?: string };
@@ -37,7 +37,6 @@ export default function Error({ error, reset }: Props) {
           <Link
             href="/contact"
             className="text-slate-300 underline hover:text-slate-50"
-            prefetch={false}
           >
             contact our support team
           </Link>{" "}

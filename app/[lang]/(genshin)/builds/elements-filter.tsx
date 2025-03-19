@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { memo } from "react";
 
 import ElementIcon from "@components/genshin/ElementIcon";
 import { useStore } from "@nanostores/react";
@@ -38,4 +39,4 @@ function ElementsFilter({ elements }: Props) {
   );
 }
 
-export default ElementsFilter;
+export default memo(ElementsFilter);

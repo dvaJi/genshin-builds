@@ -1,14 +1,17 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { Nunito } from "next/font/google";
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { RiPatreonFill } from "react-icons/ri";
 import type { VideoGame, WithContext } from "schema-dts";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
-import IntlProvider from "@components/IntlProvider";
 import LanguageSelector from "@components/ui/LanguageSelector";
+import { localesAvailables } from "@i18n/config";
+import { Link, redirect } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import { GA_TRACKING_ID } from "@lib/gtag";
 
 import ZenlessHeader from "./header";
@@ -62,6 +65,18 @@ type Props = {
 
 export default async function ZenlessLayout({ children, params }: Props) {
   const { lang } = await params;
+
+  if (!hasLocale(routing.locales, lang)) {
+    notFound();
+  }
+
+  if (!localesAvailables["zenless"].includes(lang)) {
+    redirect({
+      href: `/zenless/`,
+      locale: routing.defaultLocale,
+    });
+  }
+
   const jsonLd: WithContext<VideoGame> = {
     "@context": "https://schema.org",
     "@type": "VideoGame",
@@ -79,22 +94,7 @@ export default async function ZenlessLayout({ children, params }: Props) {
   };
 
   return (
-    <IntlProvider
-      game="zenless"
-      locale={lang}
-      messages={
-        {
-          layout: {
-            home: "Home",
-            characters: "Characters",
-            bangboos: "Bangboos",
-            "disk-drives": "Disk Drives",
-            "w-engines": "W Engines",
-            blog: "Blog",
-          },
-        } as any
-      }
-    >
+    <NextIntlClientProvider>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <script
         type="application/ld+json"
@@ -109,7 +109,7 @@ export default async function ZenlessLayout({ children, params }: Props) {
           nunito.className,
         )}
       >
-        <ZenlessHeader locale={lang} />
+        <ZenlessHeader />
 
         <div className="news-detail py-4 text-zinc-100 lg:min-h-[600px] lg:px-20 xl:min-h-[750px]">
           <div className="container mx-auto">{children}</div>
@@ -124,21 +124,21 @@ export default async function ZenlessLayout({ children, params }: Props) {
                   ZenlessBuilds
                 </p>
                 <Link
-                  href={`/${lang}/privacy-policy`}
+                  href={`/privacy-policy`}
                   className="my-1 text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Privacy Policy
                 </Link>
                 <Link
-                  href={`/${lang}/contact`}
+                  href={`/contact`}
                   className="my-1 text-muted-foreground hover:text-foreground"
                   prefetch={false}
                 >
                   Contact
                 </Link>
                 <Link
-                  href={`/${lang}/zenless/codes`}
+                  href={`/zenless/codes`}
                   className="my-1 text-muted-foreground hover:text-foreground"
                   title="Zenless Zone Zero (ZZZ) All Redeem Codes"
                 >
@@ -175,21 +175,21 @@ export default async function ZenlessLayout({ children, params }: Props) {
                       Genshin Impact
                     </p>
                     <Link
-                      href={`/${lang}/characters`}
+                      href={`/characters`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
                       Characters
                     </Link>
                     <Link
-                      href={`/${lang}/teams`}
+                      href={`/teams`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
                       Best Teams
                     </Link>
                     <Link
-                      href={`/${lang}/builds`}
+                      href={`/builds`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
@@ -203,14 +203,14 @@ export default async function ZenlessLayout({ children, params }: Props) {
                       Honkai: Star Rail
                     </p>
                     <Link
-                      href={`/${lang}/hsr`}
+                      href={`/hsr`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
                       Characters
                     </Link>
                     <Link
-                      href={`/${lang}/hsr/tierlist`}
+                      href={`/hsr/tierlist`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
@@ -224,28 +224,28 @@ export default async function ZenlessLayout({ children, params }: Props) {
                       Wuthering Waves
                     </p>
                     <Link
-                      href={`/${lang}/wuthering-waves`}
+                      href={`/wuthering-waves`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
                       Characters
                     </Link>
                     <Link
-                      href={`/${lang}/wuthering-waves/tierlist/characters`}
+                      href={`/wuthering-waves/tierlist/characters`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
                       Tierlist Characters
                     </Link>
                     <Link
-                      href={`/${lang}/wuthering-waves/tierlist/weapons`}
+                      href={`/wuthering-waves/tierlist/weapons`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
                       Tierlist Weapons
                     </Link>
                     <Link
-                      href={`/${lang}/wuthering-waves/tierlist/echoes`}
+                      href={`/wuthering-waves/tierlist/echoes`}
                       className="my-1 text-sm text-muted-foreground hover:text-foreground"
                       prefetch={false}
                     >
@@ -274,6 +274,6 @@ export default async function ZenlessLayout({ children, params }: Props) {
           </div>
         </footer>
       </section>
-    </IntlProvider>
+    </NextIntlClientProvider>
   );
 }

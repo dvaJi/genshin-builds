@@ -1,10 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
 
 import { Input } from "@app/components/ui/input";
-import useIntl from "@hooks/use-intl";
 import type { Achievement } from "@interfaces/hsr";
 import { useStore } from "@nanostores/react";
 import { $achievements } from "@state/hsr-achievements";
@@ -40,7 +40,7 @@ type Props = {
 export default function List({ categories, achievements, rewardValue }: Props) {
   const [category, setCategory] = useState(categories[0]);
   const [searchText, setSearchText] = useState("");
-  const { t } = useIntl("achievements");
+  const t = useTranslations("HSR.achievements");
   const achievementsDone = useStore($achievements);
 
   const calculateProgress = useCallback(
@@ -100,10 +100,7 @@ export default function List({ categories, achievements, rewardValue }: Props) {
       <div className="flex h-full gap-2">
         <div className="sticky top-0 flex h-screen flex-col gap-2 overflow-y-auto px-1 pt-2">
           <Input
-            placeholder={t({
-              id: "search",
-              defaultMessage: "Search...",
-            })}
+            placeholder={t("search")}
             type="text"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}

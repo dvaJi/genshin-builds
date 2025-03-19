@@ -1,11 +1,12 @@
 "use client";
 
 import { Relics } from "interfaces/hsr/build";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
-import useIntl from "@hooks/use-intl";
+import Image from "@components/hsr/Image";
+import { Link } from "@i18n/navigation";
 import type { LightCone, Relic } from "@interfaces/hsr";
-import { getHsrUrl } from "@lib/imgUrl";
 
 type Props = {
   characterName: string;
@@ -21,17 +22,13 @@ function CharacterBestEquip({
   lightConesMap,
   relicsMap,
 }: Props) {
-  const { t } = useIntl("character");
+  const t = useTranslations("HSR.character");
 
   return (
     <div className="flex flex-col gap-4 text-card-foreground md:flex-row">
       <div>
-        <h2 className="mb-4 text-xl font-semibold text-accent">
-          {t({
-            id: "best_relics",
-            defaultMessage: "{name} Best Relics",
-            values: { name: characterName },
-          })}
+        <h2 className="text-lg font-semibold text-accent">
+          {t("best_relics", { name: characterName })}
         </h2>
         {relics.set.map((r) => (
           <div
@@ -39,64 +36,62 @@ function CharacterBestEquip({
             className="mb-2 mt-1 flex flex-col rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
           >
             {r.ids.map((id) => (
-              <div key={id} className="flex items-center">
+              <Link
+                href={`/hsr/relics/${id}`}
+                key={id}
+                className="flex items-center hover:text-accent/80"
+              >
                 <div className="mr-2 rounded bg-card p-2">{r.amount}</div>
-                <img
-                  src={getHsrUrl(`/relics/${id}.png`, 64, 64)}
+                <Image
+                  src={`/relics/${id}.png`}
                   alt={relicsMap[id].name}
                   width={48}
                   height={48}
                 />
                 <span className="ml-2">{relicsMap[id].name}</span>
-              </div>
+              </Link>
             ))}
           </div>
         ))}
       </div>
       <div>
         <h3 className="text-lg font-semibold text-accent">
-          {t({
-            id: "best_ornaments",
-            defaultMessage: "{name} Best Ornaments",
-            values: { name: characterName },
-          })}
+          {t("best_ornaments", { name: characterName })}
         </h3>
         {relics.ornament.map((r) => (
-          <div
+          <Link
             key={r}
-            className="mb-2 mt-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
+            href={`/hsr/relics/${r}`}
+            className="mb-2 mt-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold hover:text-accent/80"
           >
-            <img
-              src={getHsrUrl(`/relics/${r}.png`, 64, 64)}
+            <Image
+              src={`/relics/${r}.png`}
               alt={relicsMap[r].name}
               width={48}
               height={48}
             />
             <span className="ml-2">{relicsMap[r].name}</span>
-          </div>
+          </Link>
         ))}
       </div>
       <div>
         <h3 className="text-lg font-semibold text-accent">
-          {t({
-            id: "best_lightcones",
-            defaultMessage: "{name} Best Light Cones",
-            values: { name: characterName },
-          })}
+          {t("best_lightcones", { name: characterName })}
         </h3>
         {lightcones.map((r) => (
-          <div
+          <Link
             key={r}
-            className="mb-2 mt-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold"
+            href={`/hsr/lightcones/${r}`}
+            className="mb-2 mt-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold hover:text-accent/80"
           >
-            <img
-              src={getHsrUrl(`/lightcones/${r}.png`, 50, 50)}
+            <Image
+              src={`/lightcones/${r}.png`}
               alt={lightConesMap[r].name}
               width={32}
               height={32}
             />
             <span className="ml-2">{lightConesMap[r].name}</span>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

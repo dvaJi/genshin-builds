@@ -1,10 +1,12 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
+import { getLangData } from "@i18n/langData";
 import type { Bangboos } from "@interfaces/zenless/bangboos";
 import type { Builds } from "@interfaces/zenless/build";
 import type { Characters } from "@interfaces/zenless/characters";
@@ -24,7 +26,7 @@ export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return [];
 }
 
 type Props = {
@@ -40,9 +42,15 @@ export async function generateMetadata({
   const { lang, slug } = await params;
   const _slug = decodeURI(slug.join("/"));
 
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "zenless.character",
+  });
+  const langData = getLangData(lang, "zenless");
+
   const character = await getZenlessData<Characters>({
     resource: "characters",
-    language: lang,
+    language: langData,
     filter: { id: _slug },
   });
 
@@ -50,41 +58,35 @@ export async function generateMetadata({
     return;
   }
 
-  const title = `${character.fullname} Zenless Zone Zero (ZZZ) Build Guide`;
-  const description = `Discover the best builds and teams for ${character.fullname} in Zenless Zone Zero (ZZZ). Also included are their skills, upgrade costs, and more.`;
-  const publishedTime = new Date().toISOString();
+  const title = t("title", {
+    characterName: character.fullname,
+  });
+  const description = t("description", {
+    characterName: character.fullname,
+  });
   const image = `/zenless/characters/portrait_${character.id}_2.webp`;
 
-  return {
+  const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
+
+  return genPageMetadata({
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime: `${publishedTime}`,
-      url: `https://genshin-builds.com/zenless/characters/${_slug}`,
-      images: [
-        {
-          url: image,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-    },
-  };
+    image: ogImage,
+    path: `/zenless/characters/${_slug}`,
+    locale: lang,
+  });
 }
 
 export default async function CharactersPage({ params }: Props) {
   const { lang, slug: _slug } = await params;
   const slug = decodeURI(_slug.join("/"));
+  setRequestLocale(lang);
+
+  const t = await getTranslations("zenless.character");
+  const langData = getLangData(lang, "zenless");
   const character = await getZenlessData<Characters>({
     resource: "characters",
-    language: lang,
+    language: langData,
     filter: { id: slug },
   });
 
@@ -173,21 +175,21 @@ export default async function CharactersPage({ params }: Props) {
 
   return (
     <div className="relative mx-2 max-w-screen-lg md:mx-auto">
-      <div className="mb-5 flex flex-col sm:flex-row gap-4">
+      <div className="mb-5 flex flex-col gap-4 sm:flex-row">
         <Image
           src={`/characters/portrait_${character.id}_2.webp`}
           width={200}
           height={200}
           alt={character.fullname}
-          className="mx-auto sm:mx-0 w-48 sm:w-auto"
+          className="mx-auto w-48 sm:mx-0 sm:w-auto"
         />
         <div className="text-center sm:text-left">
-          <h1 className="text-3xl md:text-5xl font-semibold mb-2">
-            {character.fullname} Build Guide
+          <h1 className="mb-2 text-3xl font-semibold md:text-5xl">
+            {character.fullname} {t("title_suffix")}
           </h1>
           <div className="space-y-1 text-sm md:text-base">
             <p>
-              <b>Rarity</b>:{" "}
+              <b>{t("rarity")}</b>:{" "}
               <Image
                 src={`/icons/rank_${character.rarity}.png`}
                 width={24}
@@ -195,16 +197,16 @@ export default async function CharactersPage({ params }: Props) {
                 alt={character.rarity >= 4 ? "S" : "A"}
                 className="inline"
               />{" "}
-              Rank
+              {t("rank")}
             </p>
             <p>
-              <b>Element</b>: {character.element}
+              <b>{t("element")}</b>: {character.element}
             </p>
             <p>
-              <b>House</b>: {character.house}
+              <b>{t("house")}</b>: {character.house}
             </p>
             <p>
-              <b>Type</b>: {character.type}
+              <b>{t("type")}</b>: {character.type}
             </p>
           </div>
         </div>
@@ -252,7 +254,9 @@ export default async function CharactersPage({ params }: Props) {
         classList={["flex", "justify-center", "my-4"]}
       />
       <div className="space-y-4">
-        <h2 className="text-2xl md:text-3xl font-semibold">{character.name} Skills</h2>
+        <h2 className="text-2xl font-semibold md:text-3xl">
+          {character.name} {t("skills")}
+        </h2>
         <div className="flex flex-col gap-2">
           {character.skills.map((skill) => (
             <Skill
@@ -270,7 +274,11 @@ export default async function CharactersPage({ params }: Props) {
         classList={["flex", "justify-center", "my-4"]}
       />
       <div className="space-y-4">
-        <h2 className="text-2xl md:text-3xl font-semibold">{character.name} Talents</h2>
+        <h2 className="text-2xl font-semibold md:text-3xl">
+          {t("talents", {
+            characterName: character.name,
+          })}
+        </h2>
         <div className="flex flex-col gap-2">
           {character.talents.map((talent) => (
             <Skill

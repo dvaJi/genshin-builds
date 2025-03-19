@@ -1,10 +1,11 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import getTranslations from "@hooks/use-translations";
+import { getLangData } from "@i18n/langData";
+import { routing } from "@i18n/routing";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 
@@ -17,42 +18,34 @@ type Props = {
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({
-    lang,
-  }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
-  const { t, locale } = await getTranslations(lang, "genshin", "achievements");
-  const title = t({
-    id: "title",
-    defaultMessage: "Achievements",
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "Genshin.achievements",
   });
-  const description = t({
-    id: "description",
-    defaultMessage: "Track your Genshin Impact achievement easily",
-  });
+  const title = t("title");
+  const description = t("description");
 
   return genPageMetadata({
     title,
     description,
     path: `/achievements`,
-    locale,
+    locale: lang,
   });
 }
 
 export default async function GenshinTierlistWeapons({ params }: Props) {
   const { lang } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "genshin",
-    "achievements"
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("Genshin.achievements");
+  const langData = getLangData(lang, "genshin");
 
   const categories = await getGenshinData<any[]>({
     resource: "achievements",
@@ -69,14 +62,9 @@ export default async function GenshinTierlistWeapons({ params }: Props) {
       <div className="">
         <div>
           <h1 className="text-3xl font-semibold tracking-tight text-card-foreground">
-            {t({ id: "achievements", defaultMessage: "Achievements" })}
+            {t("achievements")}
           </h1>
-          <p className="text-muted-foreground">
-            {t({
-              id: "description",
-              defaultMessage: "Track your Genshin Impact achievements easily",
-            })}
-          </p>
+          <p className="text-muted-foreground">{t("description")}</p>
         </div>
         <div className="">
           <AchievementsWrapper categories={categories} />

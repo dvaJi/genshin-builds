@@ -1,6 +1,6 @@
 import { LucideUser } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
@@ -9,8 +9,8 @@ import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/wuthering-waves/Image";
 import Material from "@components/wuthering-waves/Material";
-import getTranslations from "@hooks/use-translations";
-import { i18n } from "@i18n-config";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
 import type { BuildsAndTeams } from "@interfaces/wuthering-waves/builds-and-teams";
 import type {
   Ascension,
@@ -28,10 +28,10 @@ import { formatSimpleDesc } from "@utils/template-replacement";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
-export const revalidate = 86400;
+export const revalidate = 43200;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return [];
 }
 
 interface Props {
@@ -45,11 +45,12 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, slug } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "character",
-  );
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "WW.character",
+  });
+  const langData = getLangData(lang, "wuthering-waves");
+
   const character = await getWWData<Characters>({
     resource: "characters",
     language: langData,
@@ -70,17 +71,17 @@ export async function generateMetadata({
       rarityString: rarityToString(character.rarity),
     }),
     path: `/wuthering-waves/characters/${slug}`,
-    locale: langData,
+    locale: lang,
   });
 }
 
 export default async function CharacterPage({ params }: Props) {
   const { lang, slug } = await params;
-  const { t, langData } = await getTranslations(
-    lang,
-    "wuthering-waves",
-    "character",
-  );
+  setRequestLocale(lang);
+
+  const t = await getTranslations("WW.character");
+  const langData = getLangData(lang, "wuthering-waves");
+
   const character = await getWWData<Characters>({
     resource: "characters",
     language: langData,
@@ -184,7 +185,7 @@ export default async function CharacterPage({ params }: Props) {
               />
             </div>
             <Link
-              href={`/${langData}/wuthering-waves/characters/${character.id}/info`}
+              href={`/wuthering-waves/characters/${character.id}/info`}
               className="rounded-md border border-primary bg-background px-3 py-2 text-xs text-white hover:bg-accent"
             >
               {t("story_and_voice")}
@@ -337,7 +338,7 @@ export default async function CharacterPage({ params }: Props) {
                     {e ? (
                       <Link
                         key={e.id}
-                        href={`/${lang}/wuthering-waves/echoes/${e.id}`}
+                        href={`/wuthering-waves/echoes/${e.id}`}
                         className="group mb-6 flex flex-col items-center"
                         prefetch={false}
                       >
@@ -382,7 +383,7 @@ export default async function CharacterPage({ params }: Props) {
                   className="grid grid-cols-12 border-b border-zinc-800 p-2 last-of-type:border-b-0"
                 >
                   <Link
-                    href={`/${lang}/wuthering-waves/echoes/${e.id}`}
+                    href={`/wuthering-waves/echoes/${e.id}`}
                     className="group col-span-4 mb-6 flex flex-col items-center"
                     prefetch={false}
                   >
@@ -413,7 +414,6 @@ export default async function CharacterPage({ params }: Props) {
       <div className="grid md:grid-cols-2 md:gap-4">
         <div>
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
-            {character.name} Best Echo Stats
             {t("best_echo_stats", {
               characterName: character.name,
             })}
@@ -468,7 +468,7 @@ export default async function CharacterPage({ params }: Props) {
           return (
             <Link
               key={weapon}
-              href={`/${lang}/wuthering-waves/weapons/${w.id}`}
+              href={`/wuthering-waves/weapons/${w.id}`}
               className="flex h-24 min-h-36 w-24 flex-col items-center transition-all hover:brightness-125"
             >
               <div
@@ -546,7 +546,7 @@ export default async function CharacterPage({ params }: Props) {
                 return (
                   <Link
                     key={`${team.name}-${c.id}`}
-                    href={`/${lang}/wuthering-waves/characters/${char}`}
+                    href={`/wuthering-waves/characters/${char}`}
                     className="group mb-6 flex flex-col items-center"
                     prefetch={false}
                   >

@@ -1,6 +1,7 @@
-import { getContentBySlug } from "@lib/mdApi";
-import { i18n } from "i18n-config";
 import { compileMDX } from "next-mdx-remote/rsc";
+
+import { routing } from "@i18n/routing";
+import { getContentBySlug } from "@lib/mdApi";
 
 export const dynamic = "force-static";
 
@@ -10,9 +11,7 @@ export const metadata = {
 };
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 export default async function PrivacyPolicy() {

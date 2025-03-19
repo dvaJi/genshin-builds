@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
 import Image from "@components/zenless/Image";
+import { getLangData } from "@i18n/langData";
 import type { DiskDrives } from "@interfaces/zenless/diskDrives";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
@@ -27,53 +30,51 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang, slug } = await params;
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "zenless.diskdrive",
+  });
+  const langData = getLangData(lang, "zenless");
+
   const item = await getZenlessData<DiskDrives>({
     resource: "disk-drives",
     filter: { id: slug },
-    language: lang,
+    language: langData,
   });
 
   if (!item) {
     return;
   }
 
-  const title = `${item.name} Zenless Zone Zero Disk Drive`;
-  const description = `Learn about the ${item.name} Disk Drive in Zenless Zone Zero (ZZZ), including effects, how to obtain, and more.`;
-  const publishedTime = new Date().toISOString();
+  const title = t("title", {
+    itemname: item.name,
+  });
+  const description = t("description", {
+    itemname: item.name,
+  });
   const image = `/zenless/disk-drives/${item.icon}.webp`;
 
   const ogImage = `https://genshin-builds.com/api/og?image=${image}&title=${title}&description=${description}`;
 
-  return {
+  return genPageMetadata({
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime: `${publishedTime}`,
-      url: `https://genshin-builds.com/zenless/disk-drives/${slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+    image: ogImage,
+    path: `/zenless/disk-drives/${slug}`,
+    locale: lang,
+  });
 }
 
 export default async function DriskDriveDetailPage({ params }: Props) {
   const { lang, slug } = await params;
+  setRequestLocale(lang);
+
+  const t = await getTranslations("zenless.diskdrive");
+  const langData = getLangData(lang, "zenless");
   const item = await getZenlessData<DiskDrives>({
     resource: "disk-drives",
     filter: { id: slug },
-    language: lang,
+    language: langData,
   });
 
   if (!item) {
@@ -94,7 +95,9 @@ export default async function DriskDriveDetailPage({ params }: Props) {
         </div>
         <div>
           <h1 className="text-2xl font-semibold md:text-5xl">
-            Zenless Zone Zero (ZZZ) {item.name} Disk Drive
+            {t("disk_title", {
+              item_name: item.name,
+            })}
           </h1>
           <p className="text-sm text-neutral-300">{item.filter}</p>
           <p className="text-sm">{item.story}</p>
@@ -106,7 +109,11 @@ export default async function DriskDriveDetailPage({ params }: Props) {
       />
       <Ads className="mx-auto my-0" adSlot={AD_ARTICLE_SLOT} />
 
-      <h2 className="text-2xl font-semibold">{item.name} Effects</h2>
+      <h2 className="text-2xl font-semibold">
+        {t("item_effects", {
+          item_name: item.name,
+        })}
+      </h2>
       <div className="mx-2 mb-4 flex flex-col gap-2 md:mx-0">
         <div className="flex gap-2 rounded-lg border-2 border-zinc-950 p-2">
           <div>
