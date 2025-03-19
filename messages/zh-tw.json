@@ -389,6 +389,17 @@
       "not_found_title": "未找到",
       "not_found_description": "很抱歉，您正在尋找的頁面不存在。",
       "go_home": "回家"
+    },
+    "tierlist": {
+      "title": "Zenless Zero（ZZZ）層列表",
+      "description": "零Zenless Zero Zero ZERO的層次列表將游戲的角色根據遊戲中的性能分為不同的層。",
+      "tierlist_title": "級別列表和最佳字符",
+      "tierlist_description": "零Zenless Zero Zero ZERO的層次列表將游戲的角色根據遊戲中的性能分為不同的層。\n角色是根據它們在遊戲核心遊戲內容中的性能-Shiyu Defence評估的。",
+      "overall": "全面的",
+      "dps": "DPS",
+      "debuffer": "Debuffer",
+      "supporter": "支持者",
+      "explanation": "解釋"
     }
   }
 }

@@ -272,5 +272,18 @@
       "not_found_description": "Lamentamos, mas a página que você está procurando não existe.",
       "go_home": "Ir para casa"
     }
+  },
+  "zenless": {
+    "tierlist": {
+      "title": "Lista de camadas Zero Zero Zero (ZZZ) (ZZZ)",
+      "description": "Esta lista de níveis do jogo Crossplataform Zenless Zone Zero categoriza os personagens do jogo em diferentes camadas com base em seu desempenho no jogo.",
+      "tierlist_title": "Lista de camadas e melhores personagens",
+      "tierlist_description": "Esta lista de níveis do jogo Crossplataform Zenless Zone Zero categoriza os personagens do jogo em diferentes camadas com base em seu desempenho no jogo. \nOs personagens são avaliados com base em seu desempenho no conteúdo principal do jogo do jogo - Shiyu Defense.",
+      "overall": "Geral",
+      "dps": "Dps",
+      "debuffer": "Debuffer",
+      "supporter": "Apoiador",
+      "explanation": "Explicação"
+    }
   }
 }

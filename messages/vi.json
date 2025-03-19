@@ -164,6 +164,17 @@
       "not_found_title": "Không tìm thấy",
       "not_found_description": "Chúng tôi xin lỗi, nhưng trang bạn đang tìm kiếm không tồn tại.",
       "go_home": "Về nhà"
+    },
+    "tierlist": {
+      "title": "Zenless Zone Zero (ZZZ) Danh sách cấp tầng",
+      "description": "Danh sách tầng này của trò chơi Crossplatform Zenless Zero phân loại các ký tự của trò chơi thành các tầng khác nhau dựa trên hiệu suất của chúng trong trò chơi.",
+      "tierlist_title": "Danh sách cấp và các ký tự tốt nhất",
+      "tierlist_description": "Danh sách tầng này của trò chơi Crossplatform Zenless Zero phân loại các ký tự của trò chơi thành các tầng khác nhau dựa trên hiệu suất của chúng trong trò chơi. \nCác nhân vật được đánh giá dựa trên hiệu suất của họ trong nội dung trò chơi cốt lõi của trò chơi - Shiyu Defense.",
+      "overall": "Tổng thể",
+      "dps": "DPS",
+      "debuffer": "Debuffer",
+      "supporter": "Người ủng hộ",
+      "explanation": "Giải thích"
     }
   }
 }

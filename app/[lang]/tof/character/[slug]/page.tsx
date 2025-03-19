@@ -7,7 +7,6 @@ import Image from "@components/tof/Image";
 import TypeIcon from "@components/tof/TypeIcon";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import { i18n } from "@i18n-config";
 import type { Characters } from "@interfaces/tof/characters";
 import type { Items } from "@interfaces/tof/items";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
@@ -18,23 +17,11 @@ import { slugify2 } from "@utils/hash";
 import ProfileBox from "./profile-box";
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const routes: { lang: string; slug: string }[] = [];
-
-  for await (const lang of i18n.locales) {
-    const data = await getRemoteData<Characters[]>("tof", "characters");
-
-    routes.push(
-      ...data.map((c) => ({
-        lang,
-        slug: slugify2(c.name),
-      }))
-    );
-  }
-
-  return routes;
+  return [];
 }
 
 interface Props {
@@ -79,10 +66,10 @@ export default async function CharacterPage({ params }: Props) {
   const gifts = items
     .filter((item) => {
       const isLikedGift = item.giftTags.some((tagObj) =>
-        character.likedGiftTypes.includes(tagObj.tagId)
+        character.likedGiftTypes.includes(tagObj.tagId),
       );
       const isDislikedGift = item.giftTags.some((tagObj) =>
-        character.dislikedGiftTypes.includes(tagObj.tagId as any)
+        character.dislikedGiftTypes.includes(tagObj.tagId as any),
       );
       return isLikedGift && !isDislikedGift;
     })
@@ -295,7 +282,7 @@ export default async function CharacterPage({ params }: Props) {
                   <div
                     className={cn(
                       "relative m-1 rounded shadow",
-                      `TOF-bg-${tag.rarity}`
+                      `TOF-bg-${tag.rarity}`,
                     )}
                   >
                     <Image

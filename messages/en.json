@@ -1209,6 +1209,17 @@
       "not_found_title": "Not Found",
       "not_found_description": "We're sorry, but the page you are looking for does not exist.",
       "go_home": "Go Home"
+    },
+    "tierlist": {
+      "title": "Zenless Zone Zero (ZZZ) Tier List",
+      "description": "This Tier List of the crossplatform game Zenless Zone Zero categorizes the characters of the game into different tiers based on their performance in the game.",
+      "tierlist_title": "Tier List and Best Characters",
+      "tierlist_description": "This Tier List of the crossplatform game Zenless Zone Zero categorizes the characters of the game into different tiers based on their performance in the game. The characters are assessed based on their performance in the core game content of the game – Shiyu Defense.",
+      "overall": "Overall",
+      "dps": "DPS",
+      "debuffer": "Debuffer",
+      "supporter": "Supporter",
+      "explanation": "Explanation"
     }
   }
 }

@@ -291,5 +291,18 @@
       "not_found_description": "申し訳ありませんが、探しているページは存在しません。",
       "go_home": "家に帰れ"
     }
+  },
+  "zenless": {
+    "tierlist": {
+      "title": "Zenless Zone Zero（ZZZ）層リスト",
+      "description": "CrossPlatformゲームのこの層リストZenless Zone Zeroは、ゲームのパフォーマンスに基づいて、ゲームのキャラクターを異なる層に分類します。",
+      "tierlist_title": "ティアリストと最高のキャラクター",
+      "tierlist_description": "CrossPlatformゲームのこの層リストZenless Zone Zeroは、ゲームのパフォーマンスに基づいて、ゲームのキャラクターを異なる層に分類します。\nキャラクターは、ゲームのコアゲームコンテンツであるShiyu Defenseのパフォーマンスに基づいて評価されます。",
+      "overall": "全体",
+      "dps": "DPS",
+      "debuffer": "デバッファー",
+      "supporter": "サポーター",
+      "explanation": "説明"
+    }
   }
 }

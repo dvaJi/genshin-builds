@@ -275,5 +275,18 @@
       "not_found_description": "Nous sommes désolés, mais la page que vous recherchez n'existe pas.",
       "go_home": "Rentrer chez eux"
     }
+  },
+  "zenless": {
+    "tierlist": {
+      "title": "Liste de niveau Zenless Zone Zero (ZZZ)",
+      "description": "Cette liste de niveaux du jeu CrossPlatform Zenless Zone Zero classe les personnages du jeu en différents niveaux en fonction de leurs performances dans le jeu.",
+      "tierlist_title": "Liste de niveau et meilleurs personnages",
+      "tierlist_description": "Cette liste de niveaux du jeu CrossPlatform Zenless Zone Zero classe les personnages du jeu en différents niveaux en fonction de leurs performances dans le jeu. \nLes personnages sont évalués en fonction de leurs performances dans le contenu de base du jeu du jeu - la défense de Shiyu.",
+      "overall": "Dans l'ensemble",
+      "dps": "Dps",
+      "debuffer": "Débuffer",
+      "supporter": "Supporter",
+      "explanation": "Explication"
+    }
   }
 }

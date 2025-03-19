@@ -274,5 +274,18 @@
       "not_found_description": "Es tut uns leid, aber die Seite, nach der Sie suchen, gibt es nicht.",
       "go_home": "Nach Hause gehen"
     }
+  },
+  "zenless": {
+    "tierlist": {
+      "title": "Zenless Zone Zero (ZZZ) Tierliste",
+      "description": "Diese Tierliste des CrossPlatform -Spiels Zenless Zone Zero kategorisiert die Charaktere des Spiels in verschiedenen Ebenen, basierend auf ihrer Leistung im Spiel.",
+      "tierlist_title": "Tierliste und beste Charaktere",
+      "tierlist_description": "Diese Tierliste des CrossPlatform -Spiels Zenless Zone Zero kategorisiert die Charaktere des Spiels in verschiedenen Ebenen, basierend auf ihrer Leistung im Spiel. \nDie Charaktere werden anhand ihrer Leistung im Kernspielinhalt des Spiels - Shiyu -Verteidigung - bewertet.",
+      "overall": "Gesamt",
+      "dps": "DPS",
+      "debuffer": "Debuffer",
+      "supporter": "Fan",
+      "explanation": "Erläuterung"
+    }
   }
 }

@@ -227,5 +227,18 @@
       "not_found_description": "미안하지만 찾고있는 페이지는 존재하지 않습니다.",
       "go_home": "집에 가십시오"
     }
+  },
+  "zenless": {
+    "tierlist": {
+      "title": "Zenless Zone Zero (ZZZ) 계층 목록",
+      "description": "CrossPlatform 게임 Zenless Zone Zero 의이 계층 목록은 게임의 성능에 따라 게임 캐릭터를 다른 계층으로 분류합니다.",
+      "tierlist_title": "계층 목록과 최고의 캐릭터",
+      "tierlist_description": "CrossPlatform 게임 Zenless Zone Zero 의이 계층 목록은 게임의 성능에 따라 게임 캐릭터를 다른 계층으로 분류합니다. \n캐릭터는 게임의 핵심 게임 컨텐츠 인 Shiyu Defense의 성능에 따라 평가됩니다.",
+      "overall": "전반적인",
+      "dps": "DPS",
+      "debuffer": "디버퍼",
+      "supporter": "서포터",
+      "explanation": "설명"
+    }
   }
 }

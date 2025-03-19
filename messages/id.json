@@ -183,5 +183,18 @@
       "not_found_description": "Kami minta maaf, tetapi halaman yang Anda cari tidak ada.",
       "go_home": "Pulang"
     }
+  },
+  "zenless": {
+    "tierlist": {
+      "title": "Zenless Zone Zero (ZZZ) Daftar Tier",
+      "description": "Daftar tingkat CrossPlatform Zenless Zone Zero Zero ini mengkategorikan karakter game menjadi tingkatan yang berbeda berdasarkan kinerja mereka dalam game.",
+      "tierlist_title": "Daftar tingkat dan karakter terbaik",
+      "tierlist_description": "Daftar tingkat CrossPlatform Zenless Zone Zero Zero ini mengkategorikan karakter game menjadi tingkatan yang berbeda berdasarkan kinerja mereka dalam game. \nKarakter dinilai berdasarkan kinerja mereka dalam konten game inti dari game - pertahanan Shiyu.",
+      "overall": "Keseluruhan",
+      "dps": "DPS",
+      "debuffer": "Debuffer",
+      "supporter": "Pendukung",
+      "explanation": "Penjelasan"
+    }
   }
 }

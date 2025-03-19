@@ -1,17 +1,22 @@
-import { i18n } from "i18n-config";
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
+import Image from "@components/zenless/Image";
+import { getLangData } from "@i18n/langData";
+import { Link } from "@i18n/navigation";
+import { routing } from "@i18n/routing";
 import type { Characters } from "@interfaces/zenless/characters";
 import type { Tiers } from "@interfaces/zenless/tierlist";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getZenlessData } from "@lib/dataApi";
 import { cn } from "@lib/utils";
+
+export const dynamic = "force-static";
+export const revalidate = 43200;
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -21,18 +26,22 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const langs = i18n.locales;
-  return langs.map((lang) => ({ lang }));
+  return routing.locales.map((lang) => ({ lang }));
 }
 
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata | undefined> {
   const { lang } = await params;
+  const t = await getTranslations({
+    locale: lang,
+    namespace: "zenless.tierlist",
+  });
+
   return genPageMetadata({
-    title: "tierlist.title",
-    description: "tierlist.description",
-    path: `/zenless/tierlist`,
+    title: t("title"),
+    description: t("description"),
+    path: `/zenless/w-engines`,
     locale: lang,
   });
 }
@@ -40,7 +49,10 @@ export async function generateMetadata({
 export default async function Page({ params, searchParams }: Props) {
   const { lang } = await params;
   const { type } = await searchParams;
-  const t = await useTranslations("zenless");
+  setRequestLocale(lang);
+
+  const t = await getTranslations("zenless.tierlist");
+  const langData = getLangData(lang, "zenless");
 
   const table = type ?? "overall";
   const tierlist = await getZenlessData<Tiers>({
@@ -62,7 +74,7 @@ export default async function Page({ params, searchParams }: Props) {
 
   const characters = await getZenlessData<Record<string, Characters>>({
     resource: "characters",
-    language: lang,
+    language: langData,
     select: ["id", "name", "rarity"],
     asMap: true,
   });
@@ -71,10 +83,10 @@ export default async function Page({ params, searchParams }: Props) {
     <div className="px-4 md:px-0">
       <div className="my-4 md:my-6">
         <h1 className="mb-3 text-3xl font-semibold md:text-4xl">
-          {t("tierlist.title")}
+          {t("tierlist_title")}
         </h1>
         <p className="text-sm text-neutral-200 md:text-base">
-          {t("tierlist.description")}
+          {t("tierlist_description")}
         </p>
 
         <FrstAds
@@ -86,7 +98,7 @@ export default async function Page({ params, searchParams }: Props) {
 
       <div className="relative z-20 mb-6 flex flex-wrap gap-2 md:gap-4">
         <Link
-          href={`/${lang}/zenless/tierlist`}
+          href={`/zenless/tierlist`}
           className={cn(
             "rounded-2xl border-2 border-neutral-600 px-3 py-2 text-sm font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4 md:px-4 md:text-base",
             table === "overall"
@@ -97,7 +109,7 @@ export default async function Page({ params, searchParams }: Props) {
           {t("overall")}
         </Link>
         <Link
-          href={`/${lang}/zenless/tierlist?type=dps`}
+          href={`/zenless/tierlist?type=dps`}
           className={cn(
             "rounded-2xl border-2 border-neutral-600 px-3 py-2 text-sm font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4 md:px-4 md:text-base",
             table === "dps" ? "bg-neutral-600 text-white" : "bg-neutral-900",
@@ -106,7 +118,7 @@ export default async function Page({ params, searchParams }: Props) {
           {t("dps")}
         </Link>
         <Link
-          href={`/${lang}/zenless/tierlist?type=debuffer`}
+          href={`/zenless/tierlist?type=debuffer`}
           className={cn(
             "rounded-2xl border-2 border-neutral-600 px-3 py-2 text-sm font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4 md:px-4 md:text-base",
             table === "debuffer"
@@ -117,7 +129,7 @@ export default async function Page({ params, searchParams }: Props) {
           {t("debuffer")}
         </Link>
         <Link
-          href={`/${lang}/zenless/tierlist?type=supporter`}
+          href={`/zenless/tierlist?type=supporter`}
           className={cn(
             "rounded-2xl border-2 border-neutral-600 px-3 py-2 text-sm font-semibold ring-black transition-all hover:bg-neutral-600 hover:ring-4 md:px-4 md:text-base",
             table === "supporter"
@@ -159,9 +171,8 @@ export default async function Page({ params, searchParams }: Props) {
                   >
                     {characters?.[char] ? (
                       <Link
-                        href={`/${lang}/zenless/characters/${char}`}
+                        href={`/zenless/characters/${char}`}
                         className="flex flex-col items-center justify-center gap-2"
-                        prefetch={false}
                       >
                         <div
                           className={cn(

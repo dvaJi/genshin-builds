@@ -5,17 +5,17 @@ import { genPageMetadata } from "@app/seo";
 import Image from "@components/tof/Image";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import { i18n } from "@i18n-config";
 import type { Weapons } from "@interfaces/tof/weapons";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
 import { slugify2 } from "@utils/hash";
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return [];
 }
 
 export async function generateMetadata(): Promise<Metadata | undefined> {

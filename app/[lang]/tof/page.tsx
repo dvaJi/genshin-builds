@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { genPageMetadata } from "@app/seo";
 import Ads from "@components/ui/Ads";
 import FrstAds from "@components/ui/FrstAds";
-import { i18n } from "@i18n-config";
 import type { Characters } from "@interfaces/tof/characters";
 import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getRemoteData } from "@lib/localData";
@@ -11,10 +10,11 @@ import { getRemoteData } from "@lib/localData";
 import CharactersList from "./characters";
 
 export const dynamic = "force-static";
+export const dynamicParams = true;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return [];
 }
 
 export async function generateMetadata(): Promise<Metadata | undefined> {

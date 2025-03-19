@@ -927,6 +927,17 @@
       "not_found_title": "Non trovato",
       "not_found_description": "Siamo spiacenti, ma la pagina che stai cercando non esiste.",
       "go_home": "Vai a casa"
+    },
+    "tierlist": {
+      "title": "Elenco di livello Zone Zone Zone Zone (ZZZ)",
+      "description": "Questo elenco di livello del gioco Crossform Zone Zone Zone Zone classifica i personaggi del gioco in diversi livelli in base alle loro prestazioni nel gioco.",
+      "tierlist_title": "Elenco di livello e personaggi migliori",
+      "tierlist_description": "Questo elenco di livello del gioco Crossform Zone Zone Zone Zone classifica i personaggi del gioco in diversi livelli in base alle loro prestazioni nel gioco. \nI personaggi sono valutati in base alle loro prestazioni nel contenuto del gioco principale del gioco: Shiyu Defense.",
+      "overall": "Complessivamente",
+      "dps": "Dps",
+      "debuffer": "Debuffer",
+      "supporter": "Sostenitore",
+      "explanation": "Spiegazione"
     }
   }
 }

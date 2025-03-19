@@ -935,6 +935,17 @@
       "not_found_title": "Bulunamadı",
       "not_found_description": "Üzgünüz, ama aradığınız sayfa mevcut değil.",
       "go_home": "Eve gitmek"
+    },
+    "tierlist": {
+      "title": "Zenless Bölgesi Sıfır (ZZZ) Katman Listesi",
+      "description": "Crossplatform oyununun bu katman listesi Zenless Zero Zero, oyunun karakterlerini oyundaki performanslarına dayanarak farklı katmanlara ayırır.",
+      "tierlist_title": "Katman listesi ve en iyi karakterler",
+      "tierlist_description": "Crossplatform oyununun bu katman listesi Zenless Zero Zero, oyunun karakterlerini oyundaki performanslarına dayanarak farklı katmanlara ayırır. \nKarakterler, oyunun temel oyun içeriğindeki performanslarına göre değerlendirilir - Shiyu Defense.",
+      "overall": "Etraflı",
+      "dps": "DPS",
+      "debuffer": "Küstah",
+      "supporter": "Destekçi",
+      "explanation": "Açıklama"
     }
   }
 }
