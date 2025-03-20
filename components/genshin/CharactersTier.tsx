@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import { Roles, TierNums, Tierlist } from "interfaces/tierlist";
-import { useTranslations } from "next-intl";
 import { memo } from "react";
 
 import { Link } from "@i18n/navigation";
 import type { Artifact, Character, Weapon } from "@interfaces/genshin";
+import { capitalize } from "@utils/capitalize";
 
 import CharacterPortrait from "./CharacterPortrait";
 
@@ -25,7 +25,6 @@ const CharactersTier = ({
   artifactsMap,
   selectedCol,
 }: CharactersTierProps) => {
-  const t = useTranslations("Genshin.tierlist");
   let tierText = "SS";
 
   switch (tier) {
@@ -75,7 +74,7 @@ const CharactersTier = ({
                 character={{
                   ...characters[tier.id],
                   constellationNum: tier.min_c,
-                  element: t(characters[tier.id].element.name),
+                  element: capitalize(characters[tier.id].element.id),
                 }}
                 weapon={weaponsMap[tier.w_id]}
                 artifacts={tier.a_ids.map((a) => artifactsMap[a])}
@@ -96,7 +95,7 @@ const CharactersTier = ({
                 character={{
                   ...characters[tier.id],
                   constellationNum: tier.min_c,
-                  element: t(characters[tier.id].element.name),
+                  element: capitalize(characters[tier.id].element.id),
                 }}
                 weapon={weaponsMap[tier.w_id]}
                 artifacts={tier.a_ids.map((a) => artifactsMap[a])}
@@ -117,7 +116,7 @@ const CharactersTier = ({
                 character={{
                   ...characters[tier.id],
                   constellationNum: tier.min_c,
-                  element: t(characters[tier.id].element.name),
+                  element: capitalize(characters[tier.id].element.id),
                 }}
                 weapon={weaponsMap[tier.w_id]}
                 artifacts={tier.a_ids.map((a) => artifactsMap[a])}
