@@ -861,8 +861,8 @@
       "piece_set": "件套裝",
       "recommended_characters": "推薦字符",
       "relic_pieces": "遺物",
-      "title_detail": "{名稱} HONKAI：Star Rail Relic",
-      "description_detail": "在Honkai：Star Rail中發現{名稱}的最佳文物。\n還包括他們的統計數據，設定獎金等。"
+      "title_detail": "{name} HONKAI：Star Rail Relic",
+      "description_detail": "在Honkai：Star Rail中發現{name}的最佳文物。\n還包括他們的統計數據，設定獎金等。"
     },
     "tierlist": {
       "title": "Honkai: Star Rail 星軌等級表",

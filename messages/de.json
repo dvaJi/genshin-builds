@@ -324,7 +324,7 @@
       "2piece_bonus": "Set-Bonus mit 2 Teilen",
       "4piece_bonus": "Set-Bonus mit 4 Teilen",
       "artifact_description": "{Name} ist ein Artefakt in Genshin Impact. \nErfahren Sie hier mehr über den Artefakt -Set -Effekt, die besten Charaktere und den Artefaktort!",
-      "artifact_details": "{Name} Genshin Impact Artefact {Rarity} Sterne Rarity",
+      "artifact_details": "{name} Genshin Impact Artefact {rarity} Sterne Rarity",
       "artifact_pieces": "Artefaktstücke",
       "four_pc": "4 PC",
       "one_pc": "1 PC",
@@ -735,7 +735,7 @@
       "submit_uid": "Uid einreichen",
       "submit_uid_desc": "Ihre UID ist im Profilabschnitt des Spiels zu finden",
       "sync_profile_data": "Profildaten synchronisieren",
-      "title_detail": "{Name} Genshin Impact Showcase"
+      "title_detail": "{name} Genshin Impact Showcase"
     },
     "leaderboard": {
       "description": "Community-gesteuerte Gen-Impact-Rangliste, die außergewöhnliche Charakterbaufläden und -konfigurationen präsentiert. \nFinden Sie Inspiration für Ihr Team oder reichen Sie Ihre eigenen Builds ein, um an Wettkämpfen teilzunehmen.",
@@ -857,12 +857,12 @@
       "relics": "Relikte",
       "relics_desc": "Relikte sind Gegenstände, mit denen Charaktere ausgerüstet werden können. ",
       "set": "Satz",
-      "description_detail": "Entdecken Sie die besten Relikte für {Name} in Honkai: Star Rail. \nEbenfalls enthalten sind ihre Statistiken, Set -Boni und mehr.",
+      "description_detail": "Entdecken Sie die besten Relikte für {name} in Honkai: Star Rail. \nEbenfalls enthalten sind ihre Statistiken, Set -Boni und mehr.",
       "ornament": "Ornament",
       "piece_set": "Stückset",
       "recommended_characters": "Empfohlene Zeichen",
       "relic_pieces": "Reliktstücke",
-      "title_detail": "{Name} Honkai: Star Rail Relic"
+      "title_detail": "{name} Honkai: Star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Tierliste",
@@ -1116,13 +1116,13 @@
       "explanation": "Erläuterung",
       "teams": "{character_name} Beste Teams und Bangboo",
       "best_bangboos": "Beste Bangboos",
-      "description": "Entdecken Sie die besten Builds und Teams für {CharacterName} in Zenless Zone Null (ZZZ). \nEbenfalls enthalten sind ihre Fähigkeiten, Upgradekosten und mehr.",
+      "description": "Entdecken Sie die besten Builds und Teams für {characterName} in Zenless Zone Null (ZZZ). \nEbenfalls enthalten sind ihre Fähigkeiten, Upgradekosten und mehr.",
       "element": "Element",
       "house": "Haus",
       "rank": "Rang",
       "rarity": "Seltenheit",
       "skills": "Fähigkeiten",
-      "title": "{Zeichenname} Zenlose Zone Null (Zzz) Build -Handbuch",
+      "title": "{characterName} Zenlose Zone Null (Zzz) Build -Handbuch",
       "title_suffix": "Leitfaden bauen",
       "type": "Typ"
     },

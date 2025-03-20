@@ -324,7 +324,7 @@
       "2piece_bonus": "Bonus 2 pièces",
       "4piece_bonus": "Bonus de 4 pièces",
       "artifact_description": "{Name} est un ensemble d'artefact dans Genshin Impact. \nEn savoir plus sur son effet d'ensemble d'artefact, ses meilleurs personnages et son emplacement d'artefact ici!",
-      "artifact_details": "{nom} Genshin Impact Artefact {rareté} Stars Rarity",
+      "artifact_details": "{name} Genshin Impact Artefact {rarity} Stars Rarity",
       "artifact_pieces": "Pièces d'artefact",
       "four_pc": "4 pc",
       "one_pc": "1 pc",
@@ -735,7 +735,7 @@
       "submit_uid": "Soumettre UID",
       "submit_uid_desc": "Votre UID peut être trouvé dans la section de profil du jeu",
       "sync_profile_data": "Synchroniser les données de profil",
-      "title_detail": "{nom} vitrine d'impact de Genshin"
+      "title_detail": "{name} vitrine d'impact de Genshin"
     },
     "leaderboard": {
       "description": "Genshin axé sur la communauté Impact Leadboard présentant des versions et des configurations de caractères exceptionnelles. \nTrouvez l'inspiration pour votre équipe ou soumettez vos propres versions pour concourir.",
@@ -857,12 +857,12 @@
       "relics": "Reliques",
       "relics_desc": "Les reliques sont des objets qui peuvent être équipés sur des personnages. ",
       "set": "Ensemble",
-      "description_detail": "Découvrez les meilleures reliques pour {nom} dans Honkai: Star Rail. \nSont également inclus leurs statistiques, leurs bonus réglés, et plus encore.",
+      "description_detail": "Découvrez les meilleures reliques pour {name} dans Honkai: Star Rail. \nSont également inclus leurs statistiques, leurs bonus réglés, et plus encore.",
       "ornament": "Ornement",
       "piece_set": "Set",
       "recommended_characters": "Caractères recommandés",
       "relic_pieces": "Pièces de relique",
-      "title_detail": "{nom} Honkai: Star Rail Relic"
+      "title_detail": "{name} Honkai: Star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Classement des Tiers",
@@ -1116,13 +1116,13 @@
       "explanation": "Explication",
       "teams": "{character_name} Meilleures équipes et bangboo",
       "best_bangboos": "Meilleurs bangboos",
-      "description": "Découvrez les meilleures builds et équipes pour {CharacterName} dans Zenless Zone Zero (ZZZ). \nSont également inclus leurs compétences, leurs coûts de mise à niveau, etc.",
+      "description": "Découvrez les meilleures builds et équipes pour {characterName} dans Zenless Zone Zero (ZZZ). \nSont également inclus leurs compétences, leurs coûts de mise à niveau, etc.",
       "element": "Élément",
       "house": "Maison",
       "rank": "Rang",
       "rarity": "Rareté",
       "skills": "Compétences",
-      "title": "{Characterame} Zenless Zone Zero (ZZZ) Guide de construction",
+      "title": "{characterName} Zenless Zone Zero (ZZZ) Guide de construction",
       "title_suffix": "Guide de construction",
       "type": "Taper"
     },

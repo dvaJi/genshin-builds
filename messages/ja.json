@@ -857,7 +857,7 @@
       "relics": "遺物",
       "relics_desc": "レリックはキャラクターに装備できるアイテムです。",
       "set": "設定",
-      "description_detail": "Honkai：Star Railで{Name}に最適な遺物を発見してください。\nまた、統計、セットボーナスなども含まれています。",
+      "description_detail": "Honkai：Star Railで{name}に最適な遺物を発見してください。\nまた、統計、セットボーナスなども含まれています。",
       "ornament": "オーナメント",
       "piece_set": "ピースセット",
       "recommended_characters": "推奨文字",
@@ -1124,7 +1124,7 @@
       "explanation": "説明",
       "teams": "{character_name}最高のチームとBangboo",
       "best_bangboos": "最高のバンブー",
-      "title": "{CharacterName} Zenless Zone Zero（zzz）ビルドガイド"
+      "title": "{characterName} Zenless Zone Zero（zzz）ビルドガイド"
     },
     "wengines": {
       "title": "Zenless Zone Zero（ZZZ）W-Enginesリスト",

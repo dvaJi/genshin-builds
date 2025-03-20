@@ -12,6 +12,7 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import { getGenshinData } from "@lib/dataApi";
 import { getData } from "@lib/localData";
 import { getBonusSet } from "@utils/bonus_sets";
+import { capitalize } from "@utils/capitalize";
 
 import ElementsFilter from "./elements-filter";
 import List from "./list";
@@ -194,7 +195,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
   for (const character of characters) {
     if (!elements.find((e) => e.value === character.element.name)) {
       elements.push({
-        label: t(character.element.name),
+        label: capitalize(character.element.id),
         value: character.element.name,
       });
     }

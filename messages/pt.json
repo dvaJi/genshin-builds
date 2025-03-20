@@ -324,7 +324,7 @@
       "2piece_bonus": "Bônus de 2 peças",
       "4piece_bonus": "Bônus de 4 peças",
       "artifact_description": "{nome} é um artefato definido no impacto de Genshin. \nSaiba mais sobre seu efeito de conjunto de artefatos, melhores personagens e localização de artefatos aqui!",
-      "artifact_details": "{Nome} Genshin Impact Artifact {rarity} estrelas raridade",
+      "artifact_details": "{name} Genshin Impact Artifact {rarity} estrelas raridade",
       "artifact_pieces": "Peças de artefatos",
       "four_pc": "4 pc",
       "one_pc": "1 pc",
@@ -735,7 +735,7 @@
       "submit_uid": "Envie uid",
       "submit_uid_desc": "Seu UID pode ser encontrado na seção de perfil do jogo",
       "sync_profile_data": "Dados de perfil de sincronização",
-      "title_detail": "{Nome} Genshin Impact Showcase"
+      "title_detail": "{name} Genshin Impact Showcase"
     },
     "leaderboard": {
       "description": "A tabela de classificação de impacto de Genshin, orientada pela comunidade, apresentando construções e configurações excepcionais de personagens. \nEncontre inspiração para sua equipe ou envie suas próprias construções para competir.",
@@ -857,12 +857,12 @@
       "relics": "relíquias",
       "relics_desc": "Relíquias são itens que podem ser equipados nos personagens. ",
       "set": "Definir",
-      "description_detail": "Descubra as melhores relíquias para {nome} em Honkai: Star Rail. \nTambém estão incluídas suas estatísticas, bônus definidos e muito mais.",
+      "description_detail": "Descubra as melhores relíquias para {name} em Honkai: Star Rail. \nTambém estão incluídas suas estatísticas, bônus definidos e muito mais.",
       "ornament": "Ornamento",
       "piece_set": "Conjunto de peças",
       "recommended_characters": "Caracteres recomendados",
       "relic_pieces": "Pieces relíquias",
-      "title_detail": "{nome} Honkai: Relic Star Rail"
+      "title_detail": "{name} Honkai: Relic Star Rail"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Lista de Níveis",
@@ -901,7 +901,7 @@
     },
     "item": {
       "title": "Item {itemName} em Honkai: Star Rail",
-      "description": "Informações sobre o item {itemName} do tipo {itemType}.",
+      "description": "Informações sobre o {itemName} {itemType} item.",
       "story": "História",
       "source": "Fonte",
       "world_level_required": "Nível de Mundo Requerido",
@@ -1116,13 +1116,13 @@
       "explanation": "Explicação",
       "teams": "{character_name} melhores equipes e bangboo",
       "best_bangboos": "Melhor Bangboa",
-      "description": "Descubra as melhores compilações e equipes para {CharacterName} na zero zero zero (zzz). \nTambém estão incluídas suas habilidades, custos de atualização e muito mais.",
+      "description": "Descubra as melhores compilações e equipes para {characterName} na zero zero zero (zzz). \nTambém estão incluídas suas habilidades, custos de atualização e muito mais.",
       "element": "Elemento",
       "house": "Casa",
       "rank": "Classificação",
       "rarity": "Raridade",
       "skills": "Habilidades",
-      "title": "{Characterame} zenless zone zero (zzz) guia de construção",
+      "title": "{characterName} zenless zone zero (zzz) guia de construção",
       "title_suffix": "Guia de construção",
       "type": "Tipo"
     },

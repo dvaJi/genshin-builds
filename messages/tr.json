@@ -797,10 +797,10 @@
     "item": {
       "world_level_require": "Dünya Seviyesi Gerekli",
       "cost": "Maliyet",
-      "description": "{İtemName} {itemType} öğesi hakkında bilgi.",
+      "description": "{itemName} {itemType} öğesi hakkında bilgi.",
       "source": "Kaynak",
       "story": "Hikaye",
-      "title": "Honkai: Star Rail {itemname} öğesi",
+      "title": "Honkai: Star Rail {itemName} öğesi",
       "world_level_required": "Dünya Seviyesi Gerekli"
     },
     "lightcones": {
@@ -820,12 +820,12 @@
       "recommended_characters": "Önerilen karakterler",
       "ornament": "Süs",
       "description": "Honkai'deki tüm kalıntıların ve istatistiklerinin tam bir listesi: Yıldız Demiryolu.",
-      "description_detail": "Honkai: Yıldız Rayında {Name} için en iyi kalıntıları keşfedin. \nAyrıca istatistikleri, set bonusları ve daha fazlası dahildir.",
+      "description_detail": "Honkai: Yıldız Rayında {name} için en iyi kalıntıları keşfedin. \nAyrıca istatistikleri, set bonusları ve daha fazlası dahildir.",
       "relics": "Kalıntılar",
       "relics_desc": "Kalıntılar, karakterlere donatılabilen öğelerdir. \nKalıntılar, donanımlı karaktere HP, hız, saldırı ve savunma dahil ek istatistikler sağlar. \nTüm kalıntılar, \"set\" olarak adlandırılan meslektaşlarıyla eşleştirildiğinde ekstra destekler verir. \nİstatistikleri artırmak için kalıntılar exp malzemesi ile yükseltilebilir.",
       "set": "Ayarlamak",
       "title": "Honkai: Yıldız Demiryolu Kalıntıları Listesi",
-      "title_detail": "{Name} Honkai: Star Rail Relic"
+      "title_detail": "{name} Honkai: Star Rail Relic"
     },
     "profile": {
       "simulated": "Simüle edilmiş",

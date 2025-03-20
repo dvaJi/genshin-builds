@@ -857,7 +857,7 @@
       "relics": "พระธาตุ",
       "relics_desc": "Relics คือไอเทมที่สามารถสวมใส่ให้กับตัวละครได้ ",
       "set": "ชุด",
-      "description_detail": "ค้นพบพระธาตุที่ดีที่สุดสำหรับ {ชื่อ} ใน Honkai: Star Rail \nรวมถึงสถิติของพวกเขาโบนัสและอื่น ๆ",
+      "description_detail": "ค้นพบพระธาตุที่ดีที่สุดสำหรับ {name} ใน Honkai: Star Rail \nรวมถึงสถิติของพวกเขาโบนัสและอื่น ๆ",
       "ornament": "เครื่องประดับ",
       "piece_set": "ชุดชิ้นส่วน",
       "recommended_characters": "อักขระที่แนะนำ",
@@ -957,7 +957,7 @@
       "explanation": "คำอธิบาย",
       "teams": "{character_name} ทีมที่ดีที่สุดและ bangboo",
       "best_bangboos": "Best Bangboos",
-      "title": "{ตัวละครชื่อ} zenless zero zero (zzz) คู่มือการสร้าง"
+      "title": "{characterName} zenless zero zero (zzz) คู่มือการสร้าง"
     },
     "wengines": {
       "title": "Zenless Zone Zero (ZZZ) รายการ W-Engines",
