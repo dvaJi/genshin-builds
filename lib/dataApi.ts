@@ -151,7 +151,7 @@ async function getData<T>(
       }
 
       if (options.asMap) {
-        const data = await res.json();
+        const data = (await res.json()) as any[];
         return data.reduce((acc: any, curr: any) => {
           acc[curr.id] = curr;
           return acc;

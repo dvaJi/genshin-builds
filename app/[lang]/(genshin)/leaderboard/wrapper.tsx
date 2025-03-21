@@ -26,7 +26,7 @@ type Filters = {
   characters: string[];
 };
 
-async function fetcher(url: string) {
+async function fetcher(url: string): Promise<(Build & { player: Profile })[]> {
   const res = await fetch(url);
   return await res.json();
 }

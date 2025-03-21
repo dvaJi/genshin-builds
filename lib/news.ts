@@ -47,7 +47,7 @@ export async function getNews(game: string) {
       return [];
     }
 
-    const data = (await res.json()) as Promise<News[]>;
+    const data = (await res.json()) as News[];
 
     return data ?? [];
   } catch (error) {

@@ -1,15 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
 import { submitGenshinUID, submitHSRUID } from "@app/actions";
 
 export const runtime = "edge";
 
+const ProfileSchema = z.object({
+  uid: z.string(),
+  game: z.enum(["genshin", "hsr"]),
+});
+
 export async function POST(req: NextRequest) {
   const searchParams = await req.json();
-  const data = {
-    uid: searchParams.uid as string,
-    game: searchParams.game as string,
-  };
+  const validated = ProfileSchema.safeParse(searchParams);
+
+  if (!validated.success) {
+    return NextResponse.json(
+      { error: "invalid data provided" },
+      { status: 400 },
+    );
+  }
+
+  const { data } = validated;
 
   const formData = new FormData();
   formData.append("uid", data.uid);

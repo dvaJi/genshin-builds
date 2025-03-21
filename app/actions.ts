@@ -292,7 +292,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     console.log("[submitGenshinUID] Invalid uid", {
       uid: parse.data.uid,
       response: response.status,
-      message: jsonResponse.message,
+      message: (jsonResponse as any).message,
     });
     return { message: "Invalid uid" };
   }

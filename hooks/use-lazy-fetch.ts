@@ -44,14 +44,14 @@ function useLazyFetch<T>(
             },
             body: JSON.stringify(body),
           });
-          const data = await response.json();
+          const data = (await response.json()) as T;
           cache.current[cacheKey] = data;
           if (cancelRequest) return;
           setData(data);
           setLoading(false);
 
-          if (data.errors) {
-            setError(data.errors);
+          if ((data as any).errors) {
+            setError((data as any).errors);
           }
         } catch (error: any) {
           if (cancelRequest) return;
