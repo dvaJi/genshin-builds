@@ -18,8 +18,8 @@
     "db:gui": "drizzle-kit studio",
     "db:up": "drizzle-kit up",
     "build:worker": "opennextjs-cloudflare",
-    "preview": "npm run build:worker && npm run wrangler dev",
-    "deploy": "npm run build:worker && npm run wrangler deploy",
+    "preview": "pnpm build:worker && pnpm wrangler dev",
+    "deploy": "pnpm build:worker && pnpm wrangler deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
