@@ -110,8 +110,6 @@ export const localeToHSRLang = (locale: string | undefined) => {
       return "cn";
     case "zh-tw":
       return "cht";
-    case "cn":
-      return "cn";
     case "de":
       return "de";
     case "fr":
@@ -150,8 +148,6 @@ export const localeToWWLang = (locale: string | undefined) => {
       return "cn";
     case "zh-tw":
       return "zh-tw";
-    case "cn":
-      return "cn";
     case "de":
       return "de";
     case "fr":
