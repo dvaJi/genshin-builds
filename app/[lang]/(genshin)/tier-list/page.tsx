@@ -13,6 +13,7 @@ import { getGenshinData } from "@lib/dataApi";
 import GenshinTierlistView from "./list";
 
 export const revalidate = 86400;
+export const runtime = "edge";
 
 type Props = {
   params: Promise<{ lang: string }>;

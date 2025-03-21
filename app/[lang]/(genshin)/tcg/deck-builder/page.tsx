@@ -24,6 +24,7 @@ import MyDeck from "./my-deck";
 import Share from "./share";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
 type Props = {
   params: Promise<{ lang: string }>;

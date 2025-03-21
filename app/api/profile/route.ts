@@ -3,6 +3,8 @@ import { z } from "zod";
 
 import { submitGenshinUID, submitHSRUID } from "@app/actions";
 
+export const runtime = "edge";
+
 const ProfileSchema = z.object({
   uid: z.string(),
   game: z.enum(["genshin", "hsr"]),

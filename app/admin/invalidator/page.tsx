@@ -1,3 +1,3 @@
-export default async function InvalidatorPage() {
+export default function InvalidatorPage() {
   return <div className="w-full">Invalidate</div>;
 }

@@ -8,6 +8,8 @@ import { db } from "@lib/db";
 import { builds } from "@lib/db/schema";
 import { decodeBuilds } from "@utils/leaderboard-enc";
 
+export const runtime = "edge";
+
 const schema = z.object({
   lang: z.string(),
   characters: z.string().optional(),

@@ -14,6 +14,7 @@ import { getWWData } from "@lib/dataApi";
 import { cn } from "@lib/utils";
 
 export const revalidate = 86400;
+export const runtime = "edge";
 
 type Props = {
   params: Promise<{ lang: string }>;

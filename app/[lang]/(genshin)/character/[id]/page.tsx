@@ -47,6 +47,7 @@ interface Props {
 export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = 43200;
+export const runtime = "edge";
 
 export async function generateStaticParams() {
   return [];

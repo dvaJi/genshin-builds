@@ -11,6 +11,7 @@ import { getZenlessData } from "@lib/dataApi";
 
 export const dynamic = "force-static";
 export const revalidate = 43200;
+export const runtime = "edge";
 
 export async function generateStaticParams() {
   return routing.locales.map((lang) => ({ lang }));

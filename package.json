@@ -17,10 +17,9 @@
     "db:push": "drizzle-kit push",
     "db:gui": "drizzle-kit studio",
     "db:up": "drizzle-kit up",
-    "build:worker": "opennextjs-cloudflare",
-    "preview": "pnpm build:worker && pnpm wrangler dev",
-    "deploy": "pnpm build:worker && pnpm wrangler deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.0",
@@ -86,6 +85,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.10",
     "@next/env": "~14.2.24",
     "@opennextjs/cloudflare": "^0.5.12",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",

@@ -1,6 +1,7 @@
 import Button from "@components/ui/Button";
 import { Link } from "@i18n/navigation";
 
+export const runtime = "edge";
 
 export default function DMCANotice() {
   return (

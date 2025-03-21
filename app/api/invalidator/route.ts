@@ -3,6 +3,8 @@ import { z } from "zod";
 
 import { invalidateAction } from "@app/admin/invalidator/actions";
 
+export const runtime = "edge";
+
 const InvalidatorSchema = z.object({
   type: z.string(),
   value: z.string(),

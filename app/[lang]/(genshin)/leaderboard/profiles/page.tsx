@@ -10,6 +10,7 @@ import { players } from "@lib/db/schema";
 
 import { ProfileTable } from "./datatable";
 
+export const runtime = "edge";
 
 type Props = {
   params: Promise<{

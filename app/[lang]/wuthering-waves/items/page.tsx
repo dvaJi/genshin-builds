@@ -18,6 +18,7 @@ type Props = {
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
+export const runtime = "edge";
 
 export async function generateStaticParams() {
   return routing.locales.map((lang) => ({ lang }));

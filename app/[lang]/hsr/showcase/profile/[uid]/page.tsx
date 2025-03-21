@@ -14,6 +14,7 @@ import { getHsrUrl } from "@lib/imgUrl";
 
 import Builds from "./builds";
 
+export const runtime = "edge";
 
 interface Props {
   params: Promise<{

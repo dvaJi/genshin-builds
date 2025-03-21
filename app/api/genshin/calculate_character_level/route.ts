@@ -5,6 +5,8 @@ import { z } from "zod";
 import type { Character, ExpMaterial } from "@interfaces/genshin";
 import { getGenshinData } from "@lib/dataApi";
 
+export const runtime = "edge";
+
 const lvlExpList = [
   0, 1000, 2325, 4025, 6175, 8800, 11950, 15675, 20025, 25025, 30725, 37175,
   44400, 52450, 61375, 71200, 81950, 93675, 106400, 120175, 135050, 151850,

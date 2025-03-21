@@ -1,6 +1,6 @@
 import createNextIntlPlugin from "next-intl/plugin";
 
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 
 const withNextIntl = createNextIntlPlugin();
 
@@ -123,6 +123,8 @@ const nextConfig = {
   // cacheMaxMemorySize: 1073741824, // 1GB in bytes
 };
 
-export default withNextIntl(nextConfig);
+if (process.env.IS_DEV_ENV === "true") {
+  await setupDevPlatform();
+}
 
-initOpenNextCloudflareForDev();
+export default withNextIntl(nextConfig);

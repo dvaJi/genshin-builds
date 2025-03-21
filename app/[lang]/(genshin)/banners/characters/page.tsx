@@ -17,6 +17,7 @@ import { getUrl } from "@lib/imgUrl";
 import { getTimeAgo } from "@lib/timeago";
 import { cn } from "@lib/utils";
 
+export const runtime = "edge";
 
 type Props = {
   params: Promise<{ lang: string }>;

@@ -25,10 +25,10 @@ type Props = {
   params: Promise<{ lang: string; version: string }>;
 };
 
-
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 export const revalidate = 43200;
+export const runtime = "edge";
 
 export function generateStaticParams() {
   return [];
