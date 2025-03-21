@@ -12,7 +12,7 @@ export interface Achievement {
 }
 
 export enum Rarity {
-  High = 'High',
-  Low = 'Low',
-  Mid = 'Mid',
+  High = "High",
+  Low = "Low",
+  Mid = "Mid",
 }

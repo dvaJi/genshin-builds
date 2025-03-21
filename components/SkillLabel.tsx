@@ -39,7 +39,7 @@ const SkillLabel = ({ skill, messages }: CollapsibleProps) => {
     default:
       console.log(
         'Error in SkillLabel: skill prop is not "normal attack", "skill" or "burst"',
-        skill
+        skill,
       );
       return null;
   }

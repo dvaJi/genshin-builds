@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function useDebounce<T>(
   value: T,
   delay: number,
-  minLength: number = 1
+  minLength: number = 1,
 ) {
   const [debouncedValue, setDebouncedValue] = useState(value);
 

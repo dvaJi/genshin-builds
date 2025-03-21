@@ -6,7 +6,7 @@ const noop = () => {};
 
 export const useClickOutside = <E extends HTMLElement>(
   handler: (e: MouseEvent) => void = noop,
-  dependencies: DependencyList
+  dependencies: DependencyList,
 ) => {
   const callbackRef = useRef(handler);
   const ref = useRef<E>(null);
@@ -36,7 +36,7 @@ export const useClickOutside = <E extends HTMLElement>(
 
 export const useEscapeHandler = (
   handler = noop,
-  dependencies: DependencyList = []
+  dependencies: DependencyList = [],
 ) => {
   useEffect(() => {
     const escapeHandler = (e: KeyboardEvent) => {

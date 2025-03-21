@@ -11,7 +11,7 @@ type UseLazyQuery<T> = {
 };
 
 function useLazyFetch<T>(
-  path: string
+  path: string,
 ): [(body: Record<string, any>) => void, UseLazyQuery<T>] {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ function useLazyFetch<T>(
         }
       }
     },
-    [path]
+    [path],
   );
 
   const reset = useCallback(() => {

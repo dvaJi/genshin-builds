@@ -5,7 +5,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { Fragment } from "react";
 
-import * as Sentry from "@sentry/nextjs";
 import { Badge } from "@app/components/ui/badge";
 import { Separator } from "@app/components/ui/separator";
 import { genPageMetadata } from "@app/seo";
@@ -32,6 +31,7 @@ type Props = {
 export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = 86400;
+export const runtime = "edge";
 
 export async function generateStaticParams() {
   return [];
@@ -84,11 +84,6 @@ export default async function GenshinCharacterTeams({ params }: Props) {
 
   const t = await getTranslations("Genshin.teams");
   const langData = getLangData(lang, "genshin");
-
-  Sentry.setTags({
-    character: characterParams,
-    lang,
-  });
 
   const detail = await getGenshinCharacterTeams(characterParams, langData);
 

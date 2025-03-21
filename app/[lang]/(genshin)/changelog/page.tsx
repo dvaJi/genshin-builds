@@ -21,6 +21,7 @@ import { getAllMaterialsMap } from "@utils/materials";
 import ChangelogVersion from "./view";
 
 export const dynamic = "force-static";
+export const runtime = "edge";
 
 export async function generateStaticParams() {
   return routing.locales.map((lang) => ({ lang }));

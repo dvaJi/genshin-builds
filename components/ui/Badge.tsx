@@ -11,9 +11,9 @@ const Badge = ({ children, className, textSize = "xs" }: CollapsibleProps) => {
   return (
     <span
       className={clsx(
-        "border-border bg-muted mr-1 rounded border p-1 font-bold",
+        "mr-1 rounded border border-border bg-muted p-1 font-bold",
         `text-${textSize}`,
-        className
+        className,
       )}
     >
       {children}

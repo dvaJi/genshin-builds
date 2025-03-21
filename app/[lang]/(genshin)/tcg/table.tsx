@@ -67,13 +67,13 @@ function CardsTable({ cards, types }: Props) {
 
           <Select value={typeSelected} onValueChange={setTypeSelected}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={t("all")} />
+              <SelectValue placeholder={"all"} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="All">{t("all")}</SelectItem>
+              <SelectItem value="All">{"all"}</SelectItem>
               {types.map((type) => (
                 <SelectItem key={type} value={type}>
-                  {t(type.toLowerCase())}
+                  {type.toLowerCase()}
                 </SelectItem>
               ))}
             </SelectContent>

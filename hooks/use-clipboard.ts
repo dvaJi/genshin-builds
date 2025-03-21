@@ -12,7 +12,7 @@ export function useClipboard() {
         return false;
       }
     },
-    []
+    [],
   );
 
   return { copyToClipboard };

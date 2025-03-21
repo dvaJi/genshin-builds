@@ -5,7 +5,7 @@ export type BonusSet = Record<string, Artifact>;
 export function getBonusSet(
   artifacts: Record<string, Artifact>,
   dict: Record<string, string>,
-  common: Record<string, string>
+  common: Record<string, string>,
 ): BonusSet {
   let bonusSet: Record<string, any> = {};
   const ATK18BONUS = [

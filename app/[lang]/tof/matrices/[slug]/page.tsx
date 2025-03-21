@@ -15,6 +15,7 @@ import { getRarityColor, rarityToString } from "@utils/rarity";
 export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = 86400;
+export const runtime = "edge";
 
 export function generateStaticParams() {
   return [];
@@ -78,7 +79,7 @@ export default async function MatrixPage({ params }: Props) {
             <span
               className={clsx(
                 "text-xl font-bold lg:text-3xl",
-                getRarityColor(matrix.rarity)
+                getRarityColor(matrix.rarity),
               )}
             >
               {rarityToString(matrix.rarity)}

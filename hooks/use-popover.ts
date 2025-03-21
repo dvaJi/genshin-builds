@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+
 import { useClickOutside, useEscapeHandler } from "./use-clickoutside";
 
 const style: CSSProperties = {
@@ -33,7 +34,7 @@ interface ContentProps<C> {
 }
 
 const usePopover = <T extends HTMLElement, C extends HTMLElement>(
-  defaultOpen = false
+  defaultOpen = false,
 ): [boolean, TriggerProps<T>, ContentProps<C>, (value: boolean) => void] => {
   const triggerRef = useRef<T>(null);
   const [position, setPosition] = useState<CSSProperties>({

@@ -10,7 +10,7 @@ interface Props {
 
 const MatrixPortrait = ({ matrix }: Props) => {
   return (
-    <div className="hover:bg-tof-600 flex flex-col items-center rounded-lg p-4">
+    <div className="flex flex-col items-center rounded-lg p-4 hover:bg-tof-600">
       <Image
         className="h-40 w-40"
         src={`/matrices/iconLarge_${matrix.id}.png`}
@@ -19,7 +19,7 @@ const MatrixPortrait = ({ matrix }: Props) => {
         height={160}
       />
       <div className="text-center">
-        <h2 className="text-tof-50 text-xl">{matrix.name}</h2>
+        <h2 className="text-xl text-tof-50">{matrix.name}</h2>
         <span className="text-sm">{matrix.name}</span>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 
 import { Character, LightCone, Relic } from "@interfaces/hsr";
 import { decodeBuilds, regionParse } from "@utils/mihomo_enc";
+
 import { getHSRData } from "./dataApi";
 import { db } from "./db";
 import { hsrBuilds, hsrPlayers } from "./db/schema";
@@ -72,7 +73,9 @@ export async function getBuild(lang: any, uid: string) {
       friends: playerData.friends,
       region: regionParse(playerData.uuid),
       updatedAt: playerData.updatedAt.toString(),
-      builds: (await decodeBuilds(builds, characters, lightCones, relics)).filter(Boolean),
+      builds: (
+        await decodeBuilds(builds, characters, lightCones, relics)
+      ).filter(Boolean),
     },
   };
 }

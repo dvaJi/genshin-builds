@@ -23,7 +23,7 @@ const Ads = ({ className, adSlot = AD_ARTICLE_SLOT }: AdsProps) => {
     if (GAD_ID && adSlot && typeof window !== "undefined") {
       try {
         ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-          {}
+          {},
         );
       } catch (err) {
         console.error(err);

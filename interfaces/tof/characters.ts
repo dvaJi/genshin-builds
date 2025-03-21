@@ -1,47 +1,47 @@
 export interface Characters {
-  name:              string;
-  rarity:            number;
-  id:                string;
-  weaponId:          string;
-  matrixId:          string;
-  version:           string;
-  banners:           Banner[];
-  assetsA0:          AssetsA0;
-  weapon:            Weapon;
-  matrix:            Matrix;
-  advanceId:         null | string;
-  affiliation:       string;
-  avatarId:          string;
-  awakening:         Awakening[];
-  birthday:          string;
-  gender:            Gender;
-  guidebook:         Guidebook[];
-  height:            string;
-  homeTown:          string;
-  likedGiftTypes:    string[];
+  name: string;
+  rarity: number;
+  id: string;
+  weaponId: string;
+  matrixId: string;
+  version: string;
+  banners: Banner[];
+  assetsA0: AssetsA0;
+  weapon: Weapon;
+  matrix: Matrix;
+  advanceId: null | string;
+  affiliation: string;
+  avatarId: string;
+  awakening: Awakening[];
+  birthday: string;
+  gender: Gender;
+  guidebook: Guidebook[];
+  height: string;
+  homeTown: string;
+  likedGiftTypes: string[];
   dislikedGiftTypes: DislikedGiftType[];
-  voicing:           Voicing;
+  voicing: Voicing;
 }
 
 export interface AssetsA0 {
-  painting:     string;
-  avatar:       string;
+  painting: string;
+  avatar: string;
   titlePicture: string;
   descPainting: string;
 }
 
 export interface Awakening {
   description: null | string;
-  icon:        null | string;
-  name:        null | string;
-  need:        number;
+  icon: null | string;
+  name: null | string;
+  need: number;
 }
 
 export interface Banner {
-  bannerNumber:  number;
+  bannerNumber: number;
   isFinalBanner: boolean;
-  endDate:       Date;
-  startDate:     Date;
+  endDate: Date;
+  startDate: Date;
 }
 
 export enum DislikedGiftType {
@@ -57,8 +57,8 @@ export enum Gender {
 
 export interface Guidebook {
   description: string;
-  icon:        string;
-  title:       string;
+  icon: string;
+  title: string;
 }
 
 export interface Matrix {
@@ -74,12 +74,12 @@ export interface Voicing {
 }
 
 export interface Weapon {
-  name:     string;
-  rarity:   number;
-  element:  string;
+  name: string;
+  rarity: number;
+  element: string;
   category: Category;
-  charge:   Charge;
-  shatter:  Charge;
+  charge: Charge;
+  shatter: Charge;
 }
 
 export enum Category {
@@ -89,7 +89,7 @@ export enum Category {
 }
 
 export interface Charge {
-  tier:  Tier;
+  tier: Tier;
   value: number;
 }
 

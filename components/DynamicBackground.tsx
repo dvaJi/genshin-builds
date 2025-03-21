@@ -10,9 +10,9 @@ function DynamicBackground({ bgStyle }: Props) {
   return (
     <div className="">
       {bgStyle?.image && (
-        <div className="pointer-events-none absolute top-0 left-0 right-0 bottom-0 z-0 flex items-start justify-center overflow-hidden">
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 top-0 z-0 flex items-start justify-center overflow-hidden">
           <img
-            className="w-full h-full object-cover select-none"
+            className="h-full w-full select-none object-cover"
             alt="Background image"
             src={bgStyle?.image}
           />
@@ -20,7 +20,7 @@ function DynamicBackground({ bgStyle }: Props) {
       )}
       {bgStyle?.gradient && (
         <div
-          className="pointer-events-none absolute top-0 left-0 h-full w-full"
+          className="pointer-events-none absolute left-0 top-0 h-full w-full"
           style={{ ...bgStyle?.gradient }}
         />
       )}

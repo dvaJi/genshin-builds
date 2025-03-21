@@ -96,7 +96,7 @@ const calculateFriendshipExpSchema = z.object({
 });
 export async function calculateFriendshipExp(
   prevState: any,
-  formData: FormData
+  formData: FormData,
 ) {
   console.log("calculateFriendshipExp", {
     prevState,
@@ -149,7 +149,7 @@ export async function calculateFriendshipExp(
     commisExpDaily,
     dailyResinExp,
     randomEventExp,
-    total
+    total,
   );
 
   return {
@@ -242,7 +242,7 @@ export async function calculateFatePrice(prevState: any, formData: FormData) {
       .sort(
         sortOrder
           ? (a, b) => a.perItem - b.perItem
-          : (a, b) => b.total - a.total
+          : (a, b) => b.total - a.total,
       );
   }
 
@@ -270,7 +270,7 @@ export async function calculateFatePrice(prevState: any, formData: FormData) {
         const usedItem = used.find(
           (e) =>
             e.amount === currentUsable.amount &&
-            e.firstTime === currentUsable.firstTime
+            e.firstTime === currentUsable.firstTime,
         );
         if (usedItem) {
           usedItem.qty++;
@@ -316,7 +316,7 @@ export async function calculateFatePrice(prevState: any, formData: FormData) {
         const usedItem = used.find(
           (e) =>
             e.amount === currentUsable.amount &&
-            e.firstTime === currentUsable.firstTime
+            e.firstTime === currentUsable.firstTime,
         );
         if (usedItem) {
           usedItem.qty++;
@@ -349,7 +349,7 @@ export async function calculateFatePrice(prevState: any, formData: FormData) {
         current.amount + (current.firstTime ? current.amount : current.bonus);
       totalPrice += current.price;
       const usedItem = used.find(
-        (e) => e.amount === current.amount && e.firstTime === current.firstTime
+        (e) => e.amount === current.amount && e.firstTime === current.firstTime,
       );
       if (usedItem) {
         usedItem.qty++;

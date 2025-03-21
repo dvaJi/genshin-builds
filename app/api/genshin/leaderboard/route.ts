@@ -1,12 +1,14 @@
-import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { desc, inArray } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+import type { Artifact, Character, Weapon } from "@interfaces/genshin";
 import { getGenshinData } from "@lib/dataApi";
 import { db } from "@lib/db";
 import { builds } from "@lib/db/schema";
 import { decodeBuilds } from "@utils/leaderboard-enc";
+
+export const runtime = "edge";
 
 const schema = z.object({
   lang: z.string(),
@@ -29,7 +31,7 @@ export async function GET(req: NextRequest) {
       { error: request.error },
       {
         status: 400,
-      }
+      },
     );
   }
 
@@ -42,7 +44,7 @@ export async function GET(req: NextRequest) {
         characters
           .toString()
           .split(",")
-          .map((x) => Number(x))
+          .map((x) => Number(x)),
       )
     : undefined;
 
@@ -86,7 +88,7 @@ export async function GET(req: NextRequest) {
     buildsData,
     _characters,
     _weapons,
-    _artifacts
+    _artifacts,
   );
 
   return NextResponse.json(decodedBuilds);

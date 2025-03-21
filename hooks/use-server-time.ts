@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 import {
   endAsia,
   endEU,
@@ -8,7 +10,6 @@ import {
   endWeekEU,
   endWeekNA,
 } from "@utils/server-time";
-import { useEffect, useRef, useState } from "react";
 
 type ServerTime = {
   EURemaining: string;
@@ -35,7 +36,7 @@ const calcRemaining = (endDate: Date) => {
     now.getUTCDate(),
     now.getUTCHours(),
     now.getUTCMinutes(),
-    now.getUTCSeconds()
+    now.getUTCSeconds(),
   );
 
   const distance = (endDate as any) - (nowUTC as any);
@@ -59,13 +60,13 @@ const calcRemainingToEndOfWeek = (serverEndTime: Date) => {
     serverTime.getUTCDate(),
     serverTime.getUTCHours(),
     serverTime.getUTCMinutes(),
-    serverTime.getUTCSeconds()
+    serverTime.getUTCSeconds(),
   );
 
   // Calculate the end of the week (Sunday) based on the server time
   const endOfWeek = new Date(serverTimeUTC);
   endOfWeek.setUTCDate(
-    serverTimeUTC.getUTCDate() + ((7 - serverTimeUTC.getUTCDay() || 7) % 7)
+    serverTimeUTC.getUTCDate() + ((7 - serverTimeUTC.getUTCDay() || 7) % 7),
   );
   endOfWeek.setUTCHours(23, 59, 59, 999); // Set time to the end of the day
 

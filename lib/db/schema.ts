@@ -1,4 +1,3 @@
-import { createId } from "@paralleldrive/cuid2";
 import { relations } from "drizzle-orm";
 import {
   index,
@@ -10,6 +9,8 @@ import {
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
+
+import { createId } from "@paralleldrive/cuid2";
 
 export const mySchema = pgSchema("genshinbuilds");
 
@@ -116,7 +117,7 @@ export const builds = mySchema.table(
       nameIdx: index("build_critvalue_idx").on(table.critValue),
       playerIdX: index("build_playerid_idx").on(table.playerId),
     };
-  }
+  },
 );
 
 export const buildsRelations = relations(builds, ({ one }) => ({
@@ -231,7 +232,7 @@ export const hsrBuilds = mySchema.table(
       nameIdx: index("hsrbuild_critvalue_idx").on(table.critValue),
       playerIdX: index("hsrbuild_playerid_idx").on(table.playerId),
     };
-  }
+  },
 );
 export type SelectHSRBuilds = typeof hsrBuilds.$inferSelect;
 export type InsertHSRBuilds = typeof hsrBuilds.$inferInsert;
@@ -272,7 +273,7 @@ export const accounts = mySchema.table(
     compoundKey: primaryKey({
       columns: [account.provider, account.providerAccountId],
     }),
-  })
+  }),
 );
 
 export const sessions = mySchema.table("session", {
@@ -292,7 +293,7 @@ export const verificationTokens = mySchema.table(
   },
   (vt) => ({
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
-  })
+  }),
 );
 
 export const invites = mySchema.table("invite", {

@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
-import { useActionState } from "react";
+import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 
 import { submitHSRUID } from "@app/actions";
@@ -27,7 +27,7 @@ function SubmitButton() {
 
 export function SubmitUidForm() {
   const t = useTranslations("HSR.showcase");
-  const [state, formAction] = useActionState(submitHSRUID, initialState);
+  const [state, formAction] = useFormState(submitHSRUID, initialState);
 
   if (state?.message === "Success") {
     redirect(`/hsr/showcase/profile/${state.uid}`);

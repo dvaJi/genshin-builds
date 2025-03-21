@@ -1,5 +1,5 @@
-import { CSSProperties } from "react";
 import { atom } from "nanostores";
+import { CSSProperties } from "react";
 
 export interface AppBackgroundStyle {
   image?: string;

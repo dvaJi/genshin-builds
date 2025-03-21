@@ -1,12 +1,12 @@
 "use client";
 
+import clsx from "clsx";
+import { FishingPoint } from "interfaces/fishing";
 import { useState } from "react";
 
 import FishingPointCard from "@components/genshin/FishingPointCard";
-import { getUrl } from "@lib/imgUrl";
-import clsx from "clsx";
 import type { Fish } from "@interfaces/genshin";
-import { FishingPoint } from "interfaces/fishing";
+import { getUrl } from "@lib/imgUrl";
 
 type Props = {
   fish: Record<string, Fish>;
@@ -55,7 +55,7 @@ export default function GenshinFishingList({ fish, fishingPoints }: Props) {
               "mr-1 rounded border hover:border-gray-700 hover:bg-vulcan-800 hover:opacity-90",
               fishFilter.includes(f.id)
                 ? "border-gray-700 bg-vulcan-800 opacity-100"
-                : "border-gray-800 opacity-70"
+                : "border-gray-800 opacity-70",
             )}
           >
             <img

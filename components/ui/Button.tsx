@@ -27,18 +27,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               variant === "primary",
             "bg-secondary text-secondary-foreground hover:bg-secondary/80":
               variant === "secondary",
-            "border-input bg-background hover:bg-accent hover:text-accent-foreground border":
+            "border border-input bg-background hover:bg-accent hover:text-accent-foreground":
               variant === "outline",
             "hover:bg-accent hover:text-accent-foreground": variant === "ghost",
             "bg-destructive text-destructive-foreground hover:bg-destructive/90":
               variant === "destructive",
           },
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

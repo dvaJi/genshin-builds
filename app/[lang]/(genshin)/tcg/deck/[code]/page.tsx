@@ -19,6 +19,7 @@ import { getUrl } from "@lib/imgUrl";
 import { decodeDeckCode } from "@utils/gcg-share-code";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
 type Props = {
   params: Promise<{ lang: string; code: string }>;

@@ -1,4 +1,4 @@
-import { IoMdSearch, IoMdClose } from "react-icons/io";
+import { IoMdClose, IoMdSearch } from "react-icons/io";
 
 type Props = {
   placeholder: string;
@@ -8,10 +8,10 @@ type Props = {
 
 const SearchInput = ({ value, setValue, placeholder }: Props) => {
   return (
-    <div className="flex items-center justify-start border border-gray-800 rounded-sm h-10 mx-3 md:mx-0 md:w-72">
-      <IoMdSearch className="flex items-center justify-center w-5 h-5 mx-2" />
+    <div className="mx-3 flex h-10 items-center justify-start rounded-sm border border-gray-800 md:mx-0 md:w-72">
+      <IoMdSearch className="mx-2 flex h-5 w-5 items-center justify-center" />
       <input
-        className="flex-grow h-full text-white border-0 outline-none bg-transparent"
+        className="h-full flex-grow border-0 bg-transparent text-white outline-none"
         type="text"
         placeholder={placeholder}
         value={value}
@@ -19,7 +19,7 @@ const SearchInput = ({ value, setValue, placeholder }: Props) => {
       />
       {value && (
         <IoMdClose
-          className="flex items-center justify-center w-5 h-5 cursor-pointer mx-2"
+          className="mx-2 flex h-5 w-5 cursor-pointer items-center justify-center"
           onClick={() => setValue("")}
         />
       )}

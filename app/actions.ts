@@ -44,7 +44,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       next: {
         revalidate: 0,
       },
-    }
+    },
   );
 
   if (response.status === 404) {
@@ -79,7 +79,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
 
     if (!player) {
       console.log(
-        `[submitHSRUID] Player [${data.player.uid}] not found, creating new one`
+        `[submitHSRUID] Player [${data.player.uid}] not found, creating new one`,
       );
       const insert: InsertHSRPlayer = {
         id: createId(),
@@ -183,7 +183,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
 
       for await (const avatar of encodedData.filter((avatar) =>
-        avatarsIds.includes(avatar.avatarId)
+        avatarsIds.includes(avatar.avatarId),
       )) {
         const updatedBuild = await db
           .update(hsrBuilds)
@@ -191,8 +191,8 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
           .where(
             eq(
               hsrBuilds.id,
-              currentBuilds.find((id) => id.avatarId === avatar.avatarId)?.id!
-            )
+              currentBuilds.find((id) => id.avatarId === avatar.avatarId)?.id!,
+            ),
           )
           .returning({
             updatedId: hsrBuilds.id,
@@ -211,7 +211,7 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
       const insertBuilds = encodedData
         .filter((avatar) => {
           const currentBuild = currentBuilds.find(
-            (build) => build.avatarId === avatar.avatarId
+            (build) => build.avatarId === avatar.avatarId,
           );
 
           return !currentBuild;
@@ -283,7 +283,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       next: {
         revalidate: 0,
       },
-    }
+    },
   );
 
   const jsonResponse = await response.json();
@@ -301,7 +301,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
 
   const artifactsDetail = await getRemoteData<{ set: number; ids: string[] }[]>(
     "genshin",
-    "artifacts_detail"
+    "artifacts_detail",
   );
 
   try {
@@ -311,7 +311,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
 
     if (!player) {
       console.log(
-        `[submitGenshinUID] Player [${data.uid}] not found, creating new one`
+        `[submitGenshinUID] Player [${data.uid}] not found, creating new one`,
       );
       const uniqueCharacters = () => {
         const characters = new Set();
@@ -359,7 +359,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
 
       const encodedData = await encodeEnkaBuilds(
         data.avatarInfoList ?? [],
-        artifactsDetail
+        artifactsDetail,
       );
       const insertBuilds: InsertBuilds[] = encodedData.map((avatar) => ({
         ...avatar,
@@ -378,7 +378,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         if (insertAvatars.length !== insertBuilds.length) {
           console.error(
             "[submitGenshinUID] error insertAvatars",
-            insertAvatars
+            insertAvatars,
           );
           return { message: "error insertAvatars" };
         }
@@ -391,7 +391,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           {
             uid: data.uid,
             ttl: data.ttl,
-          }
+          },
         );
         return {
           message: "Success",
@@ -406,7 +406,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       // Update builds
       const encodedData = await encodeEnkaBuilds(
         data.avatarInfoList ?? [],
-        artifactsDetail
+        artifactsDetail,
       );
       const avatarsIds = currentBuilds.map((build) => build.avatarId);
       const updateBuilds = encodedData
@@ -439,7 +439,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
       const insertBuilds: InsertBuilds[] = encodedData
         .filter((avatar) => {
           const currentBuild = currentBuilds.find(
-            (build) => build.avatarId === avatar.avatarId
+            (build) => build.avatarId === avatar.avatarId,
           );
 
           return !currentBuild;

@@ -4,7 +4,8 @@ import dayjs from "dayjs";
 import rTime from "dayjs/plugin/relativeTime";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { useActionState, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 import { MdOutlineTimer } from "react-icons/md";
@@ -56,7 +57,7 @@ export function ResinCalculatorForm() {
   const [type, setType] = useState("maxResin");
   const [currentResin, setCurrentResin] = useState(0);
   const [desiredResin, setDesiredResin] = useState(0);
-  const [state, formAction] = useActionState(calculateResin, initialState);
+  const [state, formAction] = useFormState(calculateResin, initialState);
 
   // Validation
   const MAX_RESIN = 160;

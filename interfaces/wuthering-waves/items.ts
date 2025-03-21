@@ -1,15 +1,15 @@
 export interface Items {
-  _id:      number;
-  id:       string;
-  name:     string;
-  rarity:   number;
-  type:     Type;
-  tag:      Source[];
-  desc?:    string;
-  bg?:      string;
-  icon:     string;
+  _id: number;
+  id: string;
+  name: string;
+  rarity: number;
+  type: Type;
+  tag: Source[];
+  desc?: string;
+  bg?: string;
+  icon: string;
   iconPath: IconPath;
-  source:   Source[];
+  source: Source[];
 }
 
 export enum IconPath {
@@ -28,13 +28,13 @@ export enum IconPath {
 }
 
 export interface Source {
-  id:   number;
+  id: number;
   name: string;
 }
 
 export interface Type {
-  id:    number;
-  icon:  Icon;
+  id: number;
+  icon: Icon;
   name?: Name;
 }
 

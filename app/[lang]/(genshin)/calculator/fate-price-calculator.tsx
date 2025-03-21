@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { type ReactNode, useActionState, useState } from "react";
+import { type ReactNode, useState } from "react";
+import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 import { MdCheck, MdClose, MdHelpOutline } from "react-icons/md";
@@ -113,7 +114,7 @@ export function FatePriceCalculatorForm() {
   const [currencyLabel, setCurrencyLabel] = useState<string>("");
   const [money, setMoney] = useState<number>(200);
   const [fate, setFate] = useState<number>(80);
-  const [state, formAction] = useActionState(calculateFatePrice, initialState);
+  const [state, formAction] = useFormState(calculateFatePrice, initialState);
 
   const currencies = [
     { label: "USD ($)", value: "USD" },

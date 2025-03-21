@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 import { Open_Sans } from "next/font/google";
 import type { VideoGame, WithContext } from "schema-dts";
 
@@ -63,7 +64,7 @@ export default async function TofLayout({ children, params }: Props) {
     operatingSystem: "ANDROID, IOS, WINDOWS",
   };
   return (
-    <>
+    <NextIntlClientProvider>
       <GoogleAnalytics gtagId={GA_TRACKING_ID} />
       <script
         type="application/ld+json"
@@ -88,6 +89,6 @@ export default async function TofLayout({ children, params }: Props) {
 
         <Footer />
       </div>
-    </>
+    </NextIntlClientProvider>
   );
 }

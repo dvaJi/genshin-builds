@@ -43,7 +43,7 @@ export const removeCharacterCardDeck = (card: string) => {
   $deckBuilder.set({
     actionCards: _deckBuilder.actionCards,
     characterCards: _deckBuilder.characterCards.map((c) =>
-      c === card ? "undefined" : c
+      c === card ? "undefined" : c,
     ),
   });
 };

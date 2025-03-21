@@ -8,7 +8,7 @@ export const runtime = "edge";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const font = fetch(
-    new URL("@styles/cheltenham-italic-700.ttf", import.meta.url)
+    new URL("@styles/cheltenham-italic-700.ttf", import.meta.url),
   ).then((res) => res.arrayBuffer());
   const image = searchParams.get("image");
   const title = searchParams.get("title");
@@ -95,6 +95,6 @@ export async function GET(req: NextRequest) {
           data: fontData,
         },
       ],
-    }
+    },
   );
 }

@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 
-import * as Sentry from "@sentry/nextjs";
-
 export default function Error({
   error,
   reset,
@@ -12,7 +10,8 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    Sentry.captureException(error);
+    // Log the error to an error reporting service
+    console.error(error);
   }, [error]);
 
   return (

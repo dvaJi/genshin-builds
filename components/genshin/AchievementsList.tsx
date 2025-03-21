@@ -34,7 +34,7 @@ export default function AchievementsList({
           "flex items-center justify-between gap-4 px-4 py-3 transition-colors",
           {
             "bg-muted/50": achievementsDone?.includes(ach.id),
-          }
+          },
         )}
       >
         <div className="flex-1 space-y-1">
@@ -64,7 +64,7 @@ export default function AchievementsList({
               "flex h-8 w-8 items-center justify-center rounded-md transition-colors",
               achievementsDone?.includes(ach.id)
                 ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                : "bg-secondary text-secondary-foreground hover:bg-secondary/80",
             )}
           >
             <AiOutlineCheck className="h-4 w-4" />

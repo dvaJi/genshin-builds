@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { type ReactNode, useActionState, useState } from "react";
+import { type ReactNode, useState } from "react";
+import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 import { MdHelpOutline } from "react-icons/md";
@@ -42,7 +43,7 @@ function SubmitButton({ text }: { text: ReactNode }) {
 
 export function FateCountCalculatorForm() {
   const t = useTranslations("Genshin.calculator");
-  const [state, formAction] = useActionState(calculateFateCount, initialState);
+  const [state, formAction] = useFormState(calculateFateCount, initialState);
   const [formValues, setFormValues] = useState({
     intertwinedFate: 0,
     starglitter: 0,

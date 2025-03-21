@@ -43,7 +43,7 @@ export default function AdminLayout({
         <section
           className={clsx(
             "flex h-screen overflow-hidden bg-zinc-900 text-sm text-white",
-            inter.className
+            inter.className,
           )}
         >
           <div className="hidden w-20 flex-shrink-0 flex-col border-r border-zinc-700 bg-zinc-900 sm:flex">

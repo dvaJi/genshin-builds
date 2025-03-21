@@ -278,10 +278,10 @@ export const REAL_SUBSTAT_VALUES: Record<
 
 export const MAX_ROLLS = Object.keys(STAT_NAMES).reduce((acc: any, val) => {
   const allPossibleRolls = Object.values(REAL_SUBSTAT_VALUES).filter(
-    (x) => x.type === val
+    (x) => x.type === val,
   );
   const highestPossibleRoll = Math.max(
-    ...Object.values(allPossibleRolls).map((o) => o.value)
+    ...Object.values(allPossibleRolls).map((o) => o.value),
   );
 
   const key = STAT_NAMES[val];

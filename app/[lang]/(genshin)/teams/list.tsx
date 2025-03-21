@@ -218,9 +218,7 @@ export default function GenshinTeamsList({ teamsByName, elements }: Props) {
                         width={16}
                         className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                       />
-                      <span className="truncate">
-                        {t(element.toLowerCase())}
-                      </span>
+                      <span className="truncate">{element.toLowerCase()}</span>
                     </button>
                   ))}
                 </div>
@@ -268,7 +266,7 @@ export default function GenshinTeamsList({ teamsByName, elements }: Props) {
                       width={16}
                       className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5"
                     />
-                    <span className="truncate">{t(element.toLowerCase())}</span>
+                    <span className="truncate">{element.toLowerCase()}</span>
                   </button>
                 ))}
               </div>
@@ -296,7 +294,7 @@ export default function GenshinTeamsList({ teamsByName, elements }: Props) {
                     width={12}
                     className="h-3 w-3 sm:h-3.5 sm:w-3.5"
                   />
-                  <span className="truncate">{t(element.toLowerCase())}</span>
+                  <span className="truncate">{element.toLowerCase()}</span>
                   <span className="ml-0.5 sm:ml-1">×</span>
                 </button>
               ))}

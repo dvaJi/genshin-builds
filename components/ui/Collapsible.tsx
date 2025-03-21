@@ -1,6 +1,7 @@
-import { memo, ReactNode } from "react";
-import { MdExpandMore } from "react-icons/md";
 import clsx from "clsx";
+import { ReactNode, memo } from "react";
+import { MdExpandMore } from "react-icons/md";
+
 import { useToggle } from "@hooks/use-toggle";
 
 interface CollapsibleProps {
@@ -21,19 +22,19 @@ const Collapsible = ({
   return (
     <div className={clsx("rounded", className)}>
       <div
-        className="w-full py-1 px-2 hover:bg-vulcan-700 rounded cursor-pointer relative"
+        className="relative w-full cursor-pointer rounded px-2 py-1 hover:bg-vulcan-700"
         onClick={toggle}
       >
         <span className="w-full">{text}</span>
         <span
-          className={clsx("absolute top-1/3 right-4 transition transform", {
+          className={clsx("absolute right-4 top-1/3 transform transition", {
             "rotate-180": isOpen,
           })}
         >
           <MdExpandMore />
         </span>
       </div>
-      <div className={clsx("py-3 px-2", { hidden: !isOpen })}>{children}</div>
+      <div className={clsx("px-2 py-3", { hidden: !isOpen })}>{children}</div>
     </div>
   );
 };

@@ -82,12 +82,8 @@
           "tableFrom": "account",
           "tableTo": "user",
           "schemaTo": "genshinbuilds",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -95,10 +91,7 @@
       "compositePrimaryKeys": {
         "account_provider_providerAccountId_pk": {
           "name": "account_provider_providerAccountId_pk",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "columns": ["provider", "providerAccountId"]
         }
       },
       "uniqueConstraints": {}
@@ -409,16 +402,12 @@
       "indexes": {
         "build_critvalue_idx": {
           "name": "build_critvalue_idx",
-          "columns": [
-            "crit_value"
-          ],
+          "columns": ["crit_value"],
           "isUnique": false
         },
         "build_playerid_idx": {
           "name": "build_playerid_idx",
-          "columns": [
-            "player_id"
-          ],
+          "columns": ["player_id"],
           "isUnique": false
         }
       },
@@ -428,12 +417,8 @@
           "tableFrom": "builds",
           "tableTo": "players",
           "schemaTo": "genshinbuilds",
-          "columnsFrom": [
-            "player_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["player_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -813,16 +798,12 @@
       "indexes": {
         "hsrbuild_critvalue_idx": {
           "name": "hsrbuild_critvalue_idx",
-          "columns": [
-            "crit_value"
-          ],
+          "columns": ["crit_value"],
           "isUnique": false
         },
         "hsrbuild_playerid_idx": {
           "name": "hsrbuild_playerid_idx",
-          "columns": [
-            "player_id"
-          ],
+          "columns": ["player_id"],
           "isUnique": false
         }
       },
@@ -832,12 +813,8 @@
           "tableFrom": "hsr_builds",
           "tableTo": "hsr_players",
           "schemaTo": "genshinbuilds",
-          "columnsFrom": [
-            "player_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["player_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -955,9 +932,7 @@
         "hsr_players_uuid_unique": {
           "name": "hsr_players_uuid_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "uuid"
-          ]
+          "columns": ["uuid"]
         }
       }
     },
@@ -1012,16 +987,12 @@
         "invite_user_id_unique": {
           "name": "invite_user_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "user_id"
-          ]
+          "columns": ["user_id"]
         },
         "invite_token_unique": {
           "name": "invite_token_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "token"
-          ]
+          "columns": ["token"]
         }
       }
     },
@@ -1146,9 +1117,7 @@
         "players_uuid_unique": {
           "name": "players_uuid_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "uuid"
-          ]
+          "columns": ["uuid"]
         }
       }
     },
@@ -1182,12 +1151,8 @@
           "tableFrom": "session",
           "tableTo": "user",
           "schemaTo": "genshinbuilds",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1264,10 +1229,7 @@
       "compositePrimaryKeys": {
         "verificationToken_identifier_token_pk": {
           "name": "verificationToken_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
+          "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {}

@@ -531,7 +531,7 @@
       "primogem_desc": "สกุลเงินพิเศษ",
       "random_events_help": "เหตุการณ์สุ่มทุกวันที่ให้มิตรภาพ EXP",
       "resin_calculation_results": "ผลการคำนวณ",
-      "resin_percent": "เรซิน {เปอร์เซ็นต์}%",
+      "resin_percent": "เรซิน {percent}%",
       "select_currency_first": "เลือกพร้อมกันก่อน",
       "select_friendship_level": "เลือกระดับมิตรภาพ",
       "select_weapon": "เลือกอาวุธ",

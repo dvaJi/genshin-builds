@@ -22,12 +22,12 @@ export const NewsPostCard = ({ post, type = "simple" }: Props) => {
     >
       <Link
         href={`/genshin/news/${post.slug}`}
-        className="bg-card hover:shadow-primary/10 group block h-full overflow-hidden rounded-xl backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
+        className="group block h-full overflow-hidden rounded-xl bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
         prefetch={false}
       >
         <div className="relative aspect-video w-full overflow-hidden">
           {/* Image gradient overlay */}
-          <div className="from-background via-background/20 absolute inset-0 z-10 bg-gradient-to-t to-transparent opacity-60" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60" />
 
           {/* Post image */}
           <Image
@@ -40,21 +40,21 @@ export const NewsPostCard = ({ post, type = "simple" }: Props) => {
 
           {/* Post date */}
           <div className="absolute bottom-3 right-3 z-20">
-            <span className="bg-card/90 text-muted-foreground rounded-full px-3 py-1 text-xs backdrop-blur-sm">
+            <span className="rounded-full bg-card/90 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm">
               {timeAgo}
             </span>
           </div>
         </div>
 
         <div className="p-4">
-          <h3 className="text-card-foreground group-hover:text-primary line-clamp-2 text-lg font-medium transition-colors">
+          <h3 className="line-clamp-2 text-lg font-medium text-card-foreground transition-colors group-hover:text-primary">
             {post.title}
           </h3>
 
           {type === "detailed" && (
             <>
               <p
-                className="text-muted-foreground mt-2 line-clamp-2 text-sm"
+                className="mt-2 line-clamp-2 text-sm text-muted-foreground"
                 dangerouslySetInnerHTML={{ __html: post.excerpt }}
               />
 
@@ -62,7 +62,7 @@ export const NewsPostCard = ({ post, type = "simple" }: Props) => {
                 {post.tags.map((tag: string) => (
                   <span
                     key={tag}
-                    className="bg-secondary/50 text-muted-foreground group-hover:bg-secondary/80 group-hover:text-secondary-foreground inline-flex rounded-full px-3 py-1 text-xs backdrop-blur-sm transition-colors duration-300"
+                    className="inline-flex rounded-full bg-secondary/50 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm transition-colors duration-300 group-hover:bg-secondary/80 group-hover:text-secondary-foreground"
                   >
                     {tag}
                   </span>

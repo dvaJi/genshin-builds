@@ -1,31 +1,31 @@
 export interface BuildsAndTeams {
-  id:     string;
+  id: string;
   builds: Builds;
-  teams:  Teams;
+  teams: Teams;
 }
 
 export interface Builds {
-  character:             string;
+  character: string;
   skillPriorityAndForte: SkillPriorityAndForte;
-  bestMainEchoes:        BestMainEcho[];
-  bestEchoSets:          BestEchoSet[];
-  mainEcho:              string;
-  bestWeapons:           string[];
-  bestEchoStats:         BestEchoStats;
-  builds:                Build[];
-  tipsAndTricks:         string[];
+  bestMainEchoes: BestMainEcho[];
+  bestEchoSets: BestEchoSet[];
+  mainEcho: string;
+  bestWeapons: string[];
+  bestEchoStats: BestEchoStats;
+  builds: Build[];
+  tipsAndTricks: string[];
 }
 
 export interface BestEchoSet {
-  setsName:            string[];
-  rating:              number;
-  pieces:              number;
+  setsName: string[];
+  rating: number;
+  pieces: number;
   recommendedMainEcho: null | string;
-  explanation:         string;
+  explanation: string;
 }
 
 export interface BestEchoStats {
-  mainStats:        MainStats;
+  mainStats: MainStats;
   substatsPriority: string[];
 }
 
@@ -43,31 +43,31 @@ export enum Cost1 {
 }
 
 export interface BestMainEcho {
-  name:        string;
+  name: string;
   explanation: string;
 }
 
 export interface Build {
-  name:               string;
-  bestWeapon:         string;
+  name: string;
+  bestWeapon: string;
   alternativeWeapons: string[];
-  notes:              string;
+  notes: string;
 }
 
 export interface SkillPriorityAndForte {
   skillPriority: SkillPriority[];
-  forte:         Forte[];
+  forte: Forte[];
 }
 
 export interface Forte {
-  name:         string;
-  effect:       string;
+  name: string;
+  effect: string;
   requirements: string;
 }
 
 export interface SkillPriority {
-  name:        Name;
-  priority:    number;
+  name: Name;
+  priority: number;
   explanation: string;
 }
 
@@ -85,21 +85,21 @@ export enum Name {
 
 export interface Teams {
   character: string;
-  teams:     Team[];
+  teams: Team[];
 }
 
 export interface Team {
-  name:                       string;
-  composition:                Composition[];
+  name: string;
+  composition: Composition[];
   otherRecommendedCharacters: OtherRecommendedCharacter[];
-  strategy:                   string[];
-  notes:                      string;
+  strategy: string[];
+  notes: string;
 }
 
 export interface Composition {
-  role:      Role;
+  role: Role;
   character: string;
-  isFlex:    boolean;
+  isFlex: boolean;
 }
 
 export enum Role {
@@ -115,7 +115,7 @@ export enum Role {
 }
 
 export interface OtherRecommendedCharacter {
-  role:        Role;
-  character:   string;
+  role: Role;
+  character: string;
   explanation: string;
 }

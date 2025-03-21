@@ -78,14 +78,10 @@
         "account_user_id_user_id_fk": {
           "name": "account_user_id_user_id_fk",
           "tableFrom": "account",
-          "columnsFrom": [
-            "user_id"
-          ],
+          "columnsFrom": ["user_id"],
           "tableTo": "user",
           "schemaTo": "genshinbuilds",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "cascade"
         }
@@ -93,10 +89,7 @@
       "compositePrimaryKeys": {
         "account_provider_providerAccountId_pk": {
           "name": "account_provider_providerAccountId_pk",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "columns": ["provider", "providerAccountId"]
         }
       },
       "uniqueConstraints": {}
@@ -407,16 +400,12 @@
       "indexes": {
         "build_critvalue_idx": {
           "name": "build_critvalue_idx",
-          "columns": [
-            "crit_value"
-          ],
+          "columns": ["crit_value"],
           "isUnique": false
         },
         "build_playerid_idx": {
           "name": "build_playerid_idx",
-          "columns": [
-            "player_id"
-          ],
+          "columns": ["player_id"],
           "isUnique": false
         }
       },
@@ -424,14 +413,10 @@
         "builds_player_id_players_id_fk": {
           "name": "builds_player_id_players_id_fk",
           "tableFrom": "builds",
-          "columnsFrom": [
-            "player_id"
-          ],
+          "columnsFrom": ["player_id"],
           "tableTo": "players",
           "schemaTo": "genshinbuilds",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
@@ -811,16 +796,12 @@
       "indexes": {
         "hsrbuild_critvalue_idx": {
           "name": "hsrbuild_critvalue_idx",
-          "columns": [
-            "crit_value"
-          ],
+          "columns": ["crit_value"],
           "isUnique": false
         },
         "hsrbuild_playerid_idx": {
           "name": "hsrbuild_playerid_idx",
-          "columns": [
-            "player_id"
-          ],
+          "columns": ["player_id"],
           "isUnique": false
         }
       },
@@ -828,14 +809,10 @@
         "hsr_builds_player_id_hsr_players_id_fk": {
           "name": "hsr_builds_player_id_hsr_players_id_fk",
           "tableFrom": "hsr_builds",
-          "columnsFrom": [
-            "player_id"
-          ],
+          "columnsFrom": ["player_id"],
           "tableTo": "hsr_players",
           "schemaTo": "genshinbuilds",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "no action"
         }
@@ -952,9 +929,7 @@
       "uniqueConstraints": {
         "hsr_players_uuid_unique": {
           "name": "hsr_players_uuid_unique",
-          "columns": [
-            "uuid"
-          ],
+          "columns": ["uuid"],
           "nullsNotDistinct": false
         }
       }
@@ -1009,16 +984,12 @@
       "uniqueConstraints": {
         "invite_user_id_unique": {
           "name": "invite_user_id_unique",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "nullsNotDistinct": false
         },
         "invite_token_unique": {
           "name": "invite_token_unique",
-          "columns": [
-            "token"
-          ],
+          "columns": ["token"],
           "nullsNotDistinct": false
         }
       }
@@ -1122,9 +1093,7 @@
       "uniqueConstraints": {
         "players_uuid_unique": {
           "name": "players_uuid_unique",
-          "columns": [
-            "uuid"
-          ],
+          "columns": ["uuid"],
           "nullsNotDistinct": false
         }
       }
@@ -1158,14 +1127,10 @@
         "session_userId_user_id_fk": {
           "name": "session_userId_user_id_fk",
           "tableFrom": "session",
-          "columnsFrom": [
-            "userId"
-          ],
+          "columnsFrom": ["userId"],
           "tableTo": "user",
           "schemaTo": "genshinbuilds",
-          "columnsTo": [
-            "id"
-          ],
+          "columnsTo": ["id"],
           "onUpdate": "no action",
           "onDelete": "cascade"
         }
@@ -1256,10 +1221,7 @@
       "compositePrimaryKeys": {
         "verificationToken_identifier_token_pk": {
           "name": "verificationToken_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
+          "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {}

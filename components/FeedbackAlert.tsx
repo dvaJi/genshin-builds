@@ -18,7 +18,7 @@ const FeedbackAlert = () => {
     <div
       className={clsx(
         "absolute left-0 top-16 z-40 flex h-10 w-full items-center justify-center bg-slate-600 bg-opacity-80 px-4 text-xs backdrop-blur md:h-12 lg:text-sm",
-        { hidden: !showAlert }
+        { hidden: !showAlert },
       )}
     >
       <div className="text-center text-slate-50">

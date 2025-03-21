@@ -1,9 +1,11 @@
-import type { Character, ExpMaterial } from "@interfaces/genshin";
+import { CalculationItemResult } from "interfaces/calculator";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+import type { Character, ExpMaterial } from "@interfaces/genshin";
 import { getGenshinData } from "@lib/dataApi";
-import { CalculationItemResult } from "interfaces/calculator";
+
+export const runtime = "edge";
 
 const lvlExpList = [
   0, 1000, 2325, 4025, 6175, 8800, 11950, 15675, 20025, 25025, 30725, 37175,
@@ -55,7 +57,7 @@ export async function POST(req: NextRequest) {
       { error: request.error },
       {
         status: 400,
-      }
+      },
     );
   }
 
@@ -72,7 +74,7 @@ export async function POST(req: NextRequest) {
       { error: "Character not found" },
       {
         status: 404,
-      }
+      },
     );
   }
 
@@ -252,7 +254,7 @@ export async function POST(req: NextRequest) {
   if (params.currentTalentLvl.aa < params.intendedTalentLvl.aa) {
     calculateTalentMaterials(
       params.currentTalentLvl.aa,
-      params.intendedTalentLvl.aa
+      params.intendedTalentLvl.aa,
     );
   }
 
@@ -260,7 +262,7 @@ export async function POST(req: NextRequest) {
   if (params.currentTalentLvl.skill < params.intendedTalentLvl.skill) {
     calculateTalentMaterials(
       params.currentTalentLvl.skill,
-      params.intendedTalentLvl.skill
+      params.intendedTalentLvl.skill,
     );
   }
 
@@ -268,7 +270,7 @@ export async function POST(req: NextRequest) {
   if (params.currentTalentLvl.burst < params.intendedTalentLvl.burst) {
     calculateTalentMaterials(
       params.currentTalentLvl.burst,
-      params.intendedTalentLvl.burst
+      params.intendedTalentLvl.burst,
     );
   }
 

@@ -1,6 +1,6 @@
 export function getUniqueListBy<T extends Record<string, any>>(
   arr: T[],
-  key: string
+  key: string,
 ) {
   const seen = new Set();
   return arr.filter((item) => {

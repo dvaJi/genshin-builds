@@ -20,7 +20,7 @@ export const getImg = (game: GameFolder, path: string, options?: ImgOptions) =>
     options?.quality,
     options?.index,
     options?.crop,
-    "/" + game
+    "/" + game,
   );
 
 export function getUrlLQ(
@@ -28,7 +28,7 @@ export function getUrlLQ(
   height?: number,
   width?: number,
   index = 1,
-  crop = false
+  crop = false,
 ) {
   return generateUrl(path, height, width, 10, index, crop, "/genshin");
 }
@@ -38,7 +38,7 @@ export function getUrl(
   height?: number,
   width?: number,
   index = 1,
-  crop = false
+  crop = false,
 ) {
   return generateUrl(path, height, width, undefined, index, crop, "/genshin");
 }
@@ -48,7 +48,7 @@ export function getHsrUrl(
   height?: number,
   width?: number,
   index = 1,
-  crop = false
+  crop = false,
 ) {
   return generateUrl(path, height, width, undefined, index, crop, "/hsr");
 }
@@ -58,7 +58,7 @@ export function getHsrUrlLQ(
   height?: number,
   width?: number,
   index = 1,
-  crop = false
+  crop = false,
 ) {
   return generateUrl(path, height, width, 10, index, crop, "/hsr");
 }
@@ -70,7 +70,7 @@ function generateUrl(
   quality?: number,
   index = 1,
   crop = false,
-  folder = "/genshin"
+  folder = "/genshin",
 ) {
   const href = IMGS_CDN + folder + path;
   const item: ImageItem = {

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { invalidateAction } from "@app/admin/invalidator/actions";
 
+export const runtime = "edge";
+
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const data = {
@@ -13,7 +15,7 @@ export async function POST(req: NextRequest) {
   if (data.token !== process.env.NEWS_API_KEY) {
     return NextResponse.json(
       { error: "invalid token provided" },
-      { status: 401 }
+      { status: 401 },
     );
   }
 

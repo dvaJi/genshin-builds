@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useActionState } from "react";
+import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 import { MdSync } from "react-icons/md";
 
@@ -52,7 +52,7 @@ type Props = {
 };
 
 export function SyncGenshinProfile({ uid }: Props) {
-  const [_, formAction] = useActionState(submitGenshinUID, {
+  const [_, formAction] = useFormState(submitGenshinUID, {
     ...initialState,
     uid,
   });

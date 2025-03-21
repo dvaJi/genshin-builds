@@ -8,6 +8,8 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 
 import { SubmitUidForm } from "./submit-uid";
 
+export const runtime = "edge";
+
 type Props = {
   params: Promise<{ lang: string }>;
 };

@@ -22,7 +22,7 @@ const AchievementsCategories = ({
 }: Props) => {
   const numFormat = useMemo(
     () => Intl.NumberFormat(undefined, { notation: "compact" }),
-    []
+    [],
   );
   return (
     <div className="space-y-4">
@@ -32,7 +32,7 @@ const AchievementsCategories = ({
           <div
             className={clsx(
               "group relative overflow-hidden rounded-lg border bg-card p-4 transition-all hover:bg-card/80",
-              cat.id === categorySelected.id && "ring-2 ring-primary"
+              cat.id === categorySelected.id && "ring-2 ring-primary",
             )}
             key={cat.id}
             onClick={() => {
@@ -50,7 +50,7 @@ const AchievementsCategories = ({
                   {cat.achievements.length} (
                   {numFormat.format(
                     ((achievementsDone[cat.id]?.length ?? 0) * 100) /
-                      cat.achievements.length
+                      cat.achievements.length,
                   )}
                   %)
                 </span>

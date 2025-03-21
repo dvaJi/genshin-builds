@@ -1,5 +1,6 @@
-import { persistentAtom } from "@nanostores/persistent";
 import { computed } from "nanostores";
+
+import { persistentAtom } from "@nanostores/persistent";
 
 type ID = { id: string; name: string; r: number };
 type Type = string;

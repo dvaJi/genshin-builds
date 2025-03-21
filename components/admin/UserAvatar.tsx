@@ -1,6 +1,5 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
-
 type Props = {
   session: any;
 };
@@ -19,7 +18,7 @@ function UserAvatar({ session }: Props) {
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className="data-[side=right]:animate-slideLeftAndFade min-w-[140px] rounded-md border border-zinc-600/50 bg-zinc-900 pb-2 text-zinc-300 shadow-lg will-change-[opacity,transform]"
+          className="min-w-[140px] rounded-md border border-zinc-600/50 bg-zinc-900 pb-2 text-zinc-300 shadow-lg will-change-[opacity,transform] data-[side=right]:animate-slideLeftAndFade"
           sideOffset={5}
           side="right"
           align="end"

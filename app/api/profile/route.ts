@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { submitGenshinUID, submitHSRUID } from "@app/actions";
 
+export const runtime = "edge";
+
 export async function POST(req: NextRequest) {
   const searchParams = await req.json();
   const data = {

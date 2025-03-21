@@ -1,10 +1,10 @@
 export interface GearSets {
-    name:  string;
-    bonus: Bonus[];
-    id:    string;
+  name: string;
+  bonus: Bonus[];
+  id: string;
 }
 
 export interface Bonus {
-    count: number;
-    value: string;
+  count: number;
+  value: string;
 }

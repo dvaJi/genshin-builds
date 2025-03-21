@@ -1,11 +1,11 @@
-import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
-import { withSentryConfig } from "@sentry/nextjs";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const withNextIntl = createNextIntlPlugin();
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx"],
   reactStrictMode: true,
   images: {
@@ -120,30 +120,9 @@ const nextConfig: NextConfig = {
   // cacheHandler: process.env.REDIS_URL
   //   ? require.resolve("./cache-handler.mjs")
   //   : undefined,
-  cacheMaxMemorySize: 1073741824, // 1GB in bytes
+  // cacheMaxMemorySize: 1073741824, // 1GB in bytes
 };
 
-export default withSentryConfig(withNextIntl(nextConfig), {
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options
+export default withNextIntl(nextConfig);
 
-  org: "aipurrjects",
-  project: "genshin-builds-web",
-
-  // Only print logs for uploading source maps in CI
-  silent: !process.env.CI,
-
-  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-  // This can increase your server load as well as your hosting bill.
-  // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-  // side errors will fail.
-  tunnelRoute: "/monitoring",
-
-  // Hides source maps from generated client bundles
-  sourcemaps: {
-    disable: true,
-  },
-
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
-  disableLogger: true,
-});
+initOpenNextCloudflareForDev();

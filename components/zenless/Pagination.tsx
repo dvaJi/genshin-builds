@@ -88,7 +88,7 @@ const Pagination = ({
             >
               {pageNumber}
             </Link>
-          )
+          ),
         )}
         <Link
           href={renderPageLink(currentPage + 1)}

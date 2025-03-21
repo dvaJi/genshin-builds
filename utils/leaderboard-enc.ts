@@ -6,7 +6,7 @@ import { ENKA_NAMES, REAL_SUBSTAT_VALUES, STAT_NAMES } from "./substats";
 
 export async function encodeBuilds(
   data: CharactersAPI[],
-  artifactsDetail: any[]
+  artifactsDetail: any[],
 ) {
   return data.map((avatar) => {
     const equip = avatar.equipList
@@ -20,7 +20,7 @@ export async function encodeBuilds(
             refinement: Object.values(item.weapon.affixMap || { x: 0 })[0],
             stats: item.flat.weaponStats
               .map(
-                (st: any) => `${STAT_NAMES[st.appendPropId]}|${st.statValue}`
+                (st: any) => `${STAT_NAMES[st.appendPropId]}|${st.statValue}`,
               )
               .join(","),
           };
@@ -37,7 +37,7 @@ export async function encodeBuilds(
                 },
               };
             },
-            {} as any
+            {} as any,
           );
 
           let critDmg = 0;
@@ -114,7 +114,7 @@ export async function encodeBuilds(
           goblet: any;
           circlet: any;
           weapon: any;
-        }
+        },
       );
     const encodedData = {
       avatarId: avatar.avatarId,
@@ -134,7 +134,7 @@ export async function encodeBuilds(
 
     const calculateCritValue = (
       equip: Record<string, any>,
-      encodedData: any
+      encodedData: any,
     ) => {
       const CONSTELLATION_EXPONENT = 0.3;
       const WEAPON_REFINEMENT_EXPONENT = 0.2;
@@ -142,19 +142,19 @@ export async function encodeBuilds(
 
       const artifactCritValue = Object.values(equip).reduce(
         (acc, item: any) => acc + (item.critValue || 0),
-        0
+        0,
       );
       const constellationCritValue = Math.pow(
         encodedData.constellations,
-        CONSTELLATION_EXPONENT
+        CONSTELLATION_EXPONENT,
       );
       const weaponCritValue = Math.pow(
         encodedData.weapon.refinement,
-        WEAPON_REFINEMENT_EXPONENT
+        WEAPON_REFINEMENT_EXPONENT,
       );
       const skillCritValue = Object.values(avatar.skillLevelMap).reduce(
         (acc, curr) => acc + Math.pow(curr, SKILL_LEVEL_EXPONENT),
-        0
+        0,
       );
 
       return (
@@ -177,7 +177,7 @@ export async function encodeBuilds(
       critValue: calculateCritValue(equip, encodedData),
       critValueArtifactsOnly: Object.values(equip).reduce(
         (acc, item: any) => acc + (item.critValue || 0),
-        0
+        0,
       ),
       plumeId: encodedData.plume?.itemId,
       plumeSetId: encodedData.plume?.setId,
@@ -236,7 +236,7 @@ export async function decodeBuilds(
   })[],
   characters: Character[],
   weapons: Weapon[],
-  artifacts: Artifact[]
+  artifacts: Artifact[],
 ) {
   const decodeStr = (str: string | null): Record<string, number> =>
     str
@@ -271,7 +271,7 @@ export async function decodeBuilds(
 
     if (travelerIds.includes(build.avatarId)) {
       character = characters.find(
-        (c) => c.id === "traveler_" + getTravelerElement(build.skillDepotId)
+        (c) => c.id === "traveler_" + getTravelerElement(build.skillDepotId),
       );
     }
 
@@ -321,7 +321,7 @@ export async function decodeBuilds(
         );
       })
       .map(
-        (artifact) => artifacts.find((a) => a.id === artifact?.id) as Artifact
+        (artifact) => artifacts.find((a) => a.id === artifact?.id) as Artifact,
       );
 
     const stats = decodeStr(build.fightProps);

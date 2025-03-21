@@ -23,7 +23,7 @@ export const profilesFavAtom = persistentAtom<Profile[]>("profilesFav", [], {
 export const isProfileFav = (uid: string) => {
   const _profilesFav = profilesFavAtom.get();
   const profileIndex = _profilesFav.findIndex(
-    (favProfile) => favProfile.uuid === uid
+    (favProfile) => favProfile.uuid === uid,
   );
 
   return profileIndex !== -1;
@@ -33,7 +33,7 @@ export const updateFavorites = (profile: Profile) => {
   // Check if the profile is already in the favorites
   const _profilesFav = profilesFavAtom.get();
   const profileIndex = _profilesFav.findIndex(
-    (favProfile) => favProfile.uuid === profile.uuid
+    (favProfile) => favProfile.uuid === profile.uuid,
   );
 
   // if is not in the favorites, add it

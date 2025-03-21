@@ -1,24 +1,24 @@
 export interface Echoes {
-  id:            string;
-  name:          string;
-  code:          string;
-  type?:         string;
-  intensity?:    Intensity;
-  place?:        Place;
-  icon:          string;
-  skill:         Skill;
-  group:         Group[];
-  rarity:        number[];
+  id: string;
+  name: string;
+  code: string;
+  type?: string;
+  intensity?: Intensity;
+  place?: Place;
+  icon: string;
+  skill: Skill;
+  group: Group[];
+  rarity: number[];
   intensityCode: number;
-  monsterInfo:   number;
+  monsterInfo: number;
 }
 
 export interface Group {
-  id:    number;
-  name:  Name;
-  icon:  string;
+  id: number;
+  name: Name;
+  icon: string;
   color: Color;
-  set:   Set[];
+  set: Set[];
 }
 
 export enum Color {
@@ -46,10 +46,10 @@ export enum Name {
 }
 
 export interface Set {
-  id:    number;
-  desc:  string;
+  id: number;
+  desc: string;
   param: string[];
-  key:   number;
+  key: number;
 }
 
 export enum Intensity {
@@ -64,8 +64,8 @@ export enum Place {
 }
 
 export interface Skill {
-  desc:       string;
+  desc: string;
   simpleDesc: string;
-  param:      Array<string[]>;
-  icon:       string;
+  param: Array<string[]>;
+  icon: string;
 }

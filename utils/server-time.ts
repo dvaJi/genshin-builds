@@ -1,7 +1,7 @@
 export const nextDayAndTime = (
   daydelta: number,
   hour: number,
-  minute: number
+  minute: number,
 ) => {
   const now = new Date();
   const result = new Date(
@@ -9,7 +9,7 @@ export const nextDayAndTime = (
     now.getUTCMonth(),
     now.getUTCDate() + daydelta,
     hour,
-    minute
+    minute,
   );
   if (
     result <
@@ -19,7 +19,7 @@ export const nextDayAndTime = (
       now.getUTCDate(),
       now.getUTCHours(),
       now.getUTCMinutes(),
-      now.getUTCSeconds()
+      now.getUTCSeconds(),
     )
   )
     result.setDate(result.getUTCDate() + 1);
@@ -29,7 +29,7 @@ export const nextDayAndTime = (
 export const nextWeekAndTime = (
   daydelta: number,
   hour: number,
-  minute: number
+  minute: number,
 ) => {
   const now = new Date();
   const result = new Date(
@@ -37,7 +37,7 @@ export const nextWeekAndTime = (
     now.getUTCMonth(),
     now.getUTCDate() + daydelta,
     hour,
-    minute
+    minute,
   );
   if (
     result <
@@ -47,7 +47,7 @@ export const nextWeekAndTime = (
       now.getUTCDate(),
       now.getUTCHours(),
       now.getUTCMinutes(),
-      now.getUTCSeconds()
+      now.getUTCSeconds(),
     )
   )
     result.setDate(result.getUTCDate() + 1);

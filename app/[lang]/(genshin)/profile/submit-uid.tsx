@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
-import { useActionState } from "react";
+import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 import { FaSpinner } from "react-icons/fa";
 
@@ -37,7 +37,7 @@ function SubmitButton() {
 }
 
 export function SubmitGenshinUidForm() {
-  const [state, formAction] = useActionState(submitGenshinUID, initialState);
+  const [state, formAction] = useFormState(submitGenshinUID, initialState);
   const t = useTranslations("Genshin.profile");
 
   if (state?.message === "Success") {

@@ -31,7 +31,7 @@ const StarRarity = ({
             "animate-[starPop_500ms_ease-out_forwards]",
             "[animation-delay:var(--star-delay)]",
             "-ml-0.5 first:ml-0",
-            starClassname
+            starClassname,
           )}
         >
           <LazyLoadImage

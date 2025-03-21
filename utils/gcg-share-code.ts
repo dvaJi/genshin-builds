@@ -7,13 +7,13 @@ const blockWords = ["64", "89", "c4", "cag", "gay", "ntr", "pcp", "rbq"];
 export function encodeDeckCode(
   characterCards: string[],
   actionCards: [string, number][],
-  ENCODE_ID_BY_CARD: any
+  ENCODE_ID_BY_CARD: any,
 ) {
   // Calculate encoding IDs for the cards in the deck
   const cardEncodingIds = [
     ...characterCards.map((card) => ENCODE_ID_BY_CARD[card]),
     ...actionCards.flatMap(([card, count]) =>
-      Array.from({ length: count }, () => ENCODE_ID_BY_CARD[card])
+      Array.from({ length: count }, () => ENCODE_ID_BY_CARD[card]),
     ),
   ];
   cardEncodingIds.push(0); // Pad to 34 items of 12-bit numbers
@@ -38,7 +38,7 @@ export function encodeDeckCode(
     // Check if the share code contains any blocked words
     if (
       !blockWords.some((blockWord) =>
-        shareCode.match(new RegExp(blockWord.split("").join("\\+*"), "i"))
+        shareCode.match(new RegExp(blockWord.split("").join("\\+*"), "i")),
       )
     ) {
       return shareCode;
@@ -63,10 +63,10 @@ export function decodeDeckCode(shareCode: string, CARD_BY_ENCODE_ID: any) {
   // Subtract the mask and reorder even and odd
   const reordered = [
     ...Array.from({ length: 25 }).map(
-      (_, i) => ((byteArray[2 * i] ?? 0) - (lastByte ?? 0)) & 0xff
+      (_, i) => ((byteArray[2 * i] ?? 0) - (lastByte ?? 0)) & 0xff,
     ),
     ...Array.from({ length: 25 }).map(
-      (_, i) => ((byteArray[2 * i + 1] ?? 0) - (lastByte ?? 0)) & 0xff
+      (_, i) => ((byteArray[2 * i + 1] ?? 0) - (lastByte ?? 0)) & 0xff,
     ),
     0,
   ];

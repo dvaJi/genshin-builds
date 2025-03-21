@@ -8,7 +8,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<"button"> & {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { children, className, disabled = false, state = "default", ...props },
-    ref
+    ref,
   ) => {
     return (
       <button
@@ -32,14 +32,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               state === "error_ghost",
             "bg-white": state === "abort",
           },
-          { "pointer-events-none": disabled, "opacity-50": disabled }
+          { "pointer-events-none": disabled, "opacity-50": disabled },
         )}
         {...props}
       >
         {children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

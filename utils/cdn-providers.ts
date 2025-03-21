@@ -16,7 +16,7 @@ export function google(item: ImageItem, index: number) {
     ele.host,
     index,
     0,
-    2
+    2,
   )}-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1${
     item.width ? "&resize_w=" + item.width : ""
   }&rewriteMime=image/*&url=${encodeURIComponent(item.href)}`;

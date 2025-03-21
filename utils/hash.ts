@@ -38,7 +38,7 @@ export function slugify2(_value?: string, separator = "-") {
   for (const key in specialChars) {
     value = value.replace(
       new RegExp(key, "g"),
-      specialChars[key as keyof typeof specialChars]
+      specialChars[key as keyof typeof specialChars],
     );
   }
 

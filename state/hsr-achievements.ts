@@ -20,5 +20,5 @@ export const $achievements = persistentAtom<AchievementsCompleted>(
         return value;
       }
     },
-  }
+  },
 );

@@ -1,4 +1,5 @@
 "use client";
+
 import { createContext } from "react";
 
 export type IntlMessage = Record<string, string>;
@@ -11,5 +12,5 @@ export type IntlContextShape = {
 };
 
 export const IntlContext = createContext<IntlContextShape | undefined>(
-  undefined
+  undefined,
 );

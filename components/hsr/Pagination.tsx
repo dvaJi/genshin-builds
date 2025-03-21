@@ -47,7 +47,7 @@ const Pagination = ({
   }, [totalItems, itemsPerPage, currentPage]);
 
   return (
-    <div className="my-8 flex items-center justify-center ">
+    <div className="my-8 flex items-center justify-center">
       {pages.map((pageNumber, i) =>
         pageNumber === dotts ? (
           <span
@@ -67,7 +67,7 @@ const Pagination = ({
           >
             {pageNumber}
           </Link>
-        )
+        ),
       )}
     </div>
   );

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const useFormattedDate = (
   date: string | number | Date,
   // locales?: string | string[] | undefined,
-  options?: Intl.DateTimeFormatOptions | undefined
+  options?: Intl.DateTimeFormatOptions | undefined,
 ) => {
   const [formattedDate, setFormattedDate] = useState<string | null>(null);
 

@@ -1,4 +1,3 @@
-import { getGenshinData } from "@lib/dataApi";
 import type {
   CommonMaterial,
   ElementalStoneMaterial,
@@ -9,6 +8,7 @@ import type {
   WeaponPrimaryMaterial,
   WeaponSecondaryMaterial,
 } from "@interfaces/genshin";
+import { getGenshinData } from "@lib/dataApi";
 
 export type Material = {
   id: string;
@@ -28,7 +28,9 @@ export const allTypes = [
   "weapon_secondary_materials",
 ];
 
-export async function getAllMaterialsMap(language: string): Promise<Record<string, Material>> {
+export async function getAllMaterialsMap(
+  language: string,
+): Promise<Record<string, Material>> {
   const characterExpMaterials = await getGenshinData<ExpMaterial[]>({
     resource: "characterExpMaterials",
     select: ["id", "name", "rarity"],

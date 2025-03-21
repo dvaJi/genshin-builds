@@ -2,7 +2,6 @@
   "name": "genshin-builds",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@9.15.4",
   "engines": {
     "node": "22"
   },
@@ -17,7 +16,11 @@
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:gui": "drizzle-kit studio",
-    "db:up": "drizzle-kit up"
+    "db:up": "drizzle-kit up",
+    "build:worker": "opennextjs-cloudflare",
+    "preview": "npm run build:worker && npm run wrangler dev",
+    "deploy": "npm run build:worker && npm run wrangler deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.0",
@@ -25,7 +28,6 @@
     "@freestar/pubfig-adslot-react-component": "^3.6.2",
     "@nanostores/persistent": "^0.10.2",
     "@nanostores/react": "^0.8.4",
-    "@neshca/cache-handler": "^1.9.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-avatar": "^1.1.3",
@@ -60,17 +62,16 @@
     "motion": "^12.5.0",
     "nanostores": "^0.11.4",
     "negotiator": "^1.0.0",
-    "next": "15.2.3",
+    "next": "~14.2.24",
     "next-axiom": "^1.9.1",
     "next-intl": "^4.0.2",
-    "next-mdx-remote": "^5.0.0",
     "next-pwa": "^5.6.0",
     "next-sitemap": "^4.2.3",
     "next-themes": "^0.4.6",
     "postgres": "^3.4.5",
     "qrcode": "^1.5.4",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "^18",
+    "react-dom": "^18",
     "react-icons": "^5.5.0",
     "react-lazy-load-image-component": "^1.6.3",
     "react-tooltip": "^5.28.0",
@@ -85,30 +86,24 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@next/env": "15.2.3",
+    "@next/env": "~14.2.24",
+    "@opennextjs/cloudflare": "^0.5.12",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^22.13.10",
     "@types/qrcode": "^1.5.5",
-    "@types/react": "19.0.10",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/react-lazy-load-image-component": "^1.6.4",
     "autoprefixer": "^10.4.21",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.30.5",
-    "eslint": "^9.22.0",
-    "eslint-config-next": "15.2.3",
-    "eslint-config-prettier": "^10.1.1",
+    "esbuild": "^0.25.1",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.0.10",
-      "@types/react-dom": "19.0.4"
-    }
+    "typescript": "^5.8.2",
+    "wrangler": "^4.2.0"
   }
 }

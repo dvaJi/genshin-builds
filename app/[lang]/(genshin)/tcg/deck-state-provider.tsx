@@ -1,7 +1,8 @@
 "use client";
 
-import { $deckBuilder, type DeckBuilder } from "@state/deck-builder";
 import { useEffect } from "react";
+
+import { $deckBuilder, type DeckBuilder } from "@state/deck-builder";
 
 type Props = {
   children: React.ReactNode;

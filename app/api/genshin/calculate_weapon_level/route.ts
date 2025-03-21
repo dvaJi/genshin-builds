@@ -1,9 +1,11 @@
-import type { ExpMaterial, Weapon } from "@interfaces/genshin";
+import { CalculationItemResult } from "interfaces/calculator";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+import type { ExpMaterial, Weapon } from "@interfaces/genshin";
 import { getGenshinData } from "@lib/dataApi";
-import { CalculationItemResult } from "interfaces/calculator";
+
+export const runtime = "edge";
 
 const lvlexp = [
   [
@@ -71,7 +73,7 @@ export async function POST(req: NextRequest) {
       { error: request.error },
       {
         status: 400,
-      }
+      },
     );
   }
 
@@ -88,7 +90,7 @@ export async function POST(req: NextRequest) {
       { error: "Weapon not found" },
       {
         status: 404,
-      }
+      },
     );
   }
 

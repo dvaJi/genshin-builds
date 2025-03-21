@@ -2,7 +2,7 @@ import { use } from "react";
 
 export default function useHook<Value>(
   hookName: string,
-  promise: Promise<Value>
+  promise: Promise<Value>,
 ) {
   try {
     return use(promise);
@@ -13,7 +13,7 @@ export default function useHook<Value>(
     ) {
       throw new Error(
         `\`${hookName}\` is not callable within an async component. Please refer to https://next-intl-docs.vercel.app/docs/environments/server-client-components#async-components`,
-        { cause: error }
+        { cause: error },
       );
     } else {
       throw error;

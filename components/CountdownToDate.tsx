@@ -4,6 +4,7 @@ import clsx from "clsx";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import React, { useEffect, useState } from "react";
+
 dayjs.extend(relativeTime);
 
 interface CountdownProps {
@@ -38,7 +39,7 @@ const CountdownToDate: React.FC<CountdownProps> = ({
 
   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   const hours = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
   );
   const min = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const sec = Math.floor((timeLeft % (1000 * 60)) / 1000);
@@ -47,7 +48,7 @@ const CountdownToDate: React.FC<CountdownProps> = ({
       <div
         className={clsx(
           "flex flex-col",
-          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2"
+          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2",
         )}
       >
         <span className="font-mono text-5xl">
@@ -58,7 +59,7 @@ const CountdownToDate: React.FC<CountdownProps> = ({
       <div
         className={clsx(
           "flex flex-col",
-          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2"
+          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2",
         )}
       >
         <span className="font-mono text-5xl">
@@ -69,7 +70,7 @@ const CountdownToDate: React.FC<CountdownProps> = ({
       <div
         className={clsx(
           "flex flex-col",
-          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2"
+          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2",
         )}
       >
         <span className="font-mono text-5xl">
@@ -80,7 +81,7 @@ const CountdownToDate: React.FC<CountdownProps> = ({
       <div
         className={clsx(
           "flex flex-col",
-          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2"
+          boxClass ? "" : "rounded-lg bg-zinc-950/50 p-2",
         )}
       >
         <span className="font-mono text-5xl">

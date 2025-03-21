@@ -22,7 +22,7 @@ function getUsedComponents(mdxContent: string) {
 // Function to dynamically import components based on usage
 export function useDynamicComponents(
   mdxContent: string,
-  componentsList: any[]
+  componentsList: any[],
 ) {
   const usedComponents = getUsedComponents(mdxContent);
 
@@ -40,7 +40,7 @@ export function useDynamicComponents(
 
   usedComponents.forEach((name) => {
     const component = componentsList.find(
-      (comp) => comp.componentName === name
+      (comp) => comp.componentName === name,
     );
     if (component) {
       const importComponent = () => component.importPath();

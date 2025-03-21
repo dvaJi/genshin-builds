@@ -164,7 +164,7 @@ export function CharacterCalculator({ characters }: Props) {
             htmlFor="character-select"
             className="mb-2 block text-sm font-medium"
           >
-            {t("select_character")}
+            select_character
           </label>
           <Select
             options={characters.map((c) => ({ id: c.id, name: c.name }))}

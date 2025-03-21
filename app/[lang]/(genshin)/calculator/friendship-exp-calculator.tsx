@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useActionState, useState } from "react";
+import { useState } from "react";
+import { useFormState } from "react-dom";
 import { MdHelpOutline } from "react-icons/md";
 
 import {
@@ -23,7 +24,7 @@ export function FriendshipExpCalculatorForm() {
   const [friendshipLevel, setFriendshipLevel] = useState<number | null>(null);
   const [expPercentage, setExpPercentage] = useState(20);
   const [randomEvents, setRandomEvents] = useState(0);
-  const [state, formAction] = useActionState(
+  const [state, formAction] = useFormState(
     calculateFriendshipExp,
     initialState,
   );

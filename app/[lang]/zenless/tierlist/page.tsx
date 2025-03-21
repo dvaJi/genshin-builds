@@ -17,6 +17,7 @@ import { cn } from "@lib/utils";
 
 export const dynamic = "force-static";
 export const revalidate = 43200;
+export const runtime = "edge";
 
 type Props = {
   params: Promise<{ lang: string }>;

@@ -33,7 +33,7 @@ function Tooltip({ className, contentsClassName, children, contents }: Props) {
           {
             hidden: !open,
           },
-          contentsClassName
+          contentsClassName,
         )}
         onClick={(e) => e.stopPropagation()}
       >

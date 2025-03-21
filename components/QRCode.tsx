@@ -25,7 +25,7 @@ function QRCode({ value, size = 128 }: QRCodeProps) {
           if (!error) {
             setQRGenerated(true);
           }
-        }
+        },
       );
     }
   }, [value, size]);
