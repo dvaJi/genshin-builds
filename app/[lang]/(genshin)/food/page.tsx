@@ -14,7 +14,6 @@ import { getGenshinData } from "@lib/dataApi";
 import GenshinMaterialsList from "./list";
 
 export const dynamic = "force-static";
-export const runtime = "edge";
 
 export async function generateStaticParams() {
   return routing.locales.map((lang) => ({ lang }));

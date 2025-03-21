@@ -12,7 +12,6 @@ import { getUrl } from "@lib/imgUrl";
 import { getData } from "@lib/localData";
 
 export const dynamic = "force-static";
-export const runtime = "edge";
 
 interface GenshinImpactCalculators {
   name: string;

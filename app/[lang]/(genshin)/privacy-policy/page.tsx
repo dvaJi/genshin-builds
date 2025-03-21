@@ -1,7 +1,6 @@
 import { routing } from "@i18n/routing";
 
 export const dynamic = "force-static";
-export const runtime = "edge";
 
 export const metadata = {
   title: "Privacy Policy",

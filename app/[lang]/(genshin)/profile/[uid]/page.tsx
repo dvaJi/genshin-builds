@@ -28,7 +28,6 @@ import { getUrl, getUrlLQ } from "@lib/imgUrl";
 import { FavoriteGenshinProfile } from "./favorite";
 import { SyncGenshinProfile } from "./sync";
 
-export const runtime = "edge";
 
 type Props = {
   params: Promise<{ lang: string; uid: string }>;

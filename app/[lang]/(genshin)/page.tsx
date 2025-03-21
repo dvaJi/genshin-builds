@@ -17,7 +17,6 @@ import FarmableToday from "./farmable-today";
 import { LatestPosts } from "./latest-posts";
 import Shortcuts from "./shortcuts";
 
-export const runtime = "edge";
 
 // Loading components with improved visual design
 const LoadingCard = () => (

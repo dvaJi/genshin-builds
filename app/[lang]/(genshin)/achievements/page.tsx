@@ -15,7 +15,6 @@ type Props = {
   params: Promise<{ lang: string }>;
 };
 
-export const runtime = "edge";
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
