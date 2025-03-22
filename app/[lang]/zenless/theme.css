@@ -202,16 +202,16 @@ body {
   left: -6.9rem;
   width: 25.9rem;
   height: 20.8rem;
-  background: url(https://zenless.hoyoverse.com/_nuxt/img/inner-top.5496864.png)
-    no-repeat 0 0 / 100% auto;
+  background: url(/imgs/games/zenless/inner-top.5496864.png) no-repeat 0 0 /
+    100% auto;
   opacity: 0.1;
 }
 
 .section__foot {
   position: absolute;
   bottom: 0.6rem;
-  background: url(https://zenless.hoyoverse.com/_nuxt/img/inner-foot.ebee1c3.png)
-    no-repeat 0 0 / 100% 100%;
+  background: url(/imgs/games/zenless/inner-foot.ebee1c3.png) no-repeat 0 0 /
+    100% 100%;
   width: 20.4rem;
   height: 20.8rem;
   z-index: -1;
