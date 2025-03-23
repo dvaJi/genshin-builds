@@ -3,6 +3,9 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: */tcg/deck-builder?code=*
+Disallow: */leaderboard/profiles?page=*
+Disallow: */hsr/leaderboard?page=*
+Disallow: *?_rsc=*
 
 # Host
 Host: https://genshin-builds.com

@@ -16,7 +16,7 @@ export const db = drizzle(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ sql, params, method, app: "myroomai" }),
+        body: JSON.stringify({ sql, params, method, app: "genshin" }),
       });
       const rows = (await res.json()) as any[];
 

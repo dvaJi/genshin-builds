@@ -127,13 +127,17 @@ export interface Player {
 export interface SpaceInfo {
   memory_data: MemoryData;
   universe_level: number;
-  light_cone_count: number;
   avatar_count: number;
+  light_cone_count: number;
+  relic_count: number;
   achievement_count: number;
+  book_count: number;
+  music_count: number;
 }
 
 export interface MemoryData {
   level: number;
-  chaos_id: number;
+  chaos_id: number | null;
   chaos_level: number;
+  chaos_star_count: number;
 }

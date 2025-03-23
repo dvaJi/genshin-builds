@@ -227,12 +227,10 @@ export const hsrBuilds = mySchema.table(
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
     playerId: text("player_id").references(() => hsrPlayers.id),
   },
-  (table) => {
-    return {
-      nameIdx: index("hsrbuild_critvalue_idx").on(table.critValue),
-      playerIdX: index("hsrbuild_playerid_idx").on(table.playerId),
-    };
-  },
+  (table) => [
+    index("hsrbuild_critvalue_idx").on(table.critValue),
+    index("hsrbuild_playerid_idx").on(table.playerId),
+  ],
 );
 export type SelectHSRBuilds = typeof hsrBuilds.$inferSelect;
 export type InsertHSRBuilds = typeof hsrBuilds.$inferInsert;
