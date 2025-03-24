@@ -15,6 +15,7 @@ const navRoutes: RouteType[] = [
   { id: "relics", name: "Relics", href: "/hsr/relics" },
   { id: "lightcones", name: "Light Cones", href: "/hsr/lightcones" },
   { id: "blog", name: "Blog", href: "/hsr/blog" },
+  { id: "leaderboard", name: "Leaderboard", href: "/hsr/leaderboard" },
   { id: "items", name: "Items", href: "/hsr/item" },
   { id: "messages", name: "Messages", href: "/hsr/message" },
   { id: "achievements", name: "Achievements", href: "/hsr/achievements" },
