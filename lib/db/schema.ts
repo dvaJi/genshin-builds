@@ -10,6 +10,7 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 
+import type { AvatarList, SocialDetail } from "@interfaces/enka_zzz";
 import { createId } from "@paralleldrive/cuid2";
 
 export const mySchema = pgSchema("genshinbuilds");
@@ -302,3 +303,44 @@ export const invites = mySchema.table("invite", {
   token: text("token").notNull().unique(),
   expires: timestamp("expires").notNull().defaultNow(),
 });
+
+export const zzzPlayers = mySchema.table("zzz_players", {
+  id: text("id")
+    .primaryKey()
+    .notNull()
+    .$defaultFn(() => createId()),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  uid: text("uid").unique().notNull(),
+  socialDetail: json("info").$type<SocialDetail>().notNull(),
+});
+
+export type SelectZZZPlayer = typeof zzzPlayers.$inferSelect;
+export type InsertZZZPlayer = typeof zzzPlayers.$inferInsert;
+
+export const zzzPlayersRelations = relations(zzzPlayers, ({ many }) => ({
+  builds: many(zzzBuilds),
+}));
+
+export const zzzBuilds = mySchema.table(
+  "zzz_builds",
+  {
+    id: text("id")
+      .primaryKey()
+      .notNull()
+      .$defaultFn(() => createId()),
+    playerId: text("player_id").references(() => zzzPlayers.id),
+    avatarId: integer("avatar_id").notNull(),
+    info: json("info").$type<AvatarList>().notNull(),
+  },
+  (table) => [index("zzzbuild_playerid_idx").on(table.playerId)],
+);
+export type SelectZZZBuilds = typeof zzzBuilds.$inferSelect;
+export type InsertZZZBuilds = typeof zzzBuilds.$inferInsert;
+
+export const zzzBuildsRelations = relations(zzzBuilds, ({ one }) => ({
+  player: one(zzzPlayers, {
+    fields: [zzzBuilds.playerId],
+    references: [zzzPlayers.id],
+  }),
+}));

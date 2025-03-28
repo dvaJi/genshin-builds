@@ -2,19 +2,25 @@
 
 import { eq, sql } from "drizzle-orm";
 import type { PlayerDataAPI as EnkaPlayerDataAPI } from "interfaces/enka";
+import type { PlayerDataAPI as EnkaZZZPlayerDataAPI } from "interfaces/enka_zzz";
 import type { PlayerDataAPI as MiHomoPlayerDataAPI } from "interfaces/mihomo";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
+import { i18n } from "@i18n/config";
 import { db } from "@lib/db";
 import {
   type InsertBuilds,
   type InsertHSRPlayer,
   type InsertPlayer,
+  type InsertZZZBuilds,
+  type InsertZZZPlayer,
   builds,
   hsrBuilds,
   hsrPlayers,
   players,
+  zzzBuilds,
+  zzzPlayers,
 } from "@lib/db/schema";
 import { getRemoteData } from "@lib/localData";
 import { createId } from "@paralleldrive/cuid2";
@@ -243,7 +249,10 @@ export async function submitHSRUID(prevState: any, formData: FormData) {
     }
 
     console.log("[submitHSRUID] Success!", { uuid: data.player.uid });
-    revalidatePath(`/[lang]/hsr/showcase/profile/${data.player.uid}`);
+
+    i18n.locales.forEach((lang) => {
+      revalidatePath(`/${lang}/hsr/showcase/profile/${data.player.uid}`);
+    });
     return {
       message: "Success",
       uid: data.player.uid,
@@ -346,7 +355,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         charactersCount: uniqueCharacters(),
       };
       const result = await db.insert(players).values(insert).returning({
-        insertedId: hsrBuilds.id,
+        insertedId: players.id,
       });
       if (result.length === 1) {
         player = await db.query.players.findFirst({
@@ -372,7 +381,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           .insert(builds)
           .values(insertBuilds)
           .returning({
-            insertedId: hsrBuilds.id,
+            insertedId: builds.id,
           });
 
         if (insertAvatars.length !== insertBuilds.length) {
@@ -424,7 +433,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           .set(updateBuild.data)
           .where(eq(builds.id, updateBuild.where.id!))
           .returning({
-            updatedId: hsrBuilds.id,
+            updatedId: builds.id,
           });
 
         if (updatedBuild.length !== 1) {
@@ -455,7 +464,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
           .insert(builds)
           .values(insertBuilds)
           .returning({
-            insertedId: hsrBuilds.id,
+            insertedId: builds.id,
           });
 
         if (newBuilds.length !== insertBuilds.length) {
@@ -510,7 +519,7 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
         })
         .where(eq(players.uuid, data.uid))
         .returning({
-          updatedId: hsrBuilds.id,
+          updatedId: players.id,
         });
 
       if (updatedPlayer.length !== 1) {
@@ -522,7 +531,9 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     }
 
     console.log("[submitGenshinUID] Success!", { uuid: data.uid });
-    revalidatePath(`/[lang]/profile/${data.uid}`, "page");
+    i18n.locales.forEach((lang) => {
+      revalidatePath(`/${lang}/profile/${data.uid}`);
+    });
 
     return {
       message: "Success",
@@ -530,6 +541,220 @@ export async function submitGenshinUID(prevState: any, formData: FormData) {
     };
   } catch (error) {
     console.error("[submitGenshinUID] catch error", parse, error);
+    return {
+      message: "Error, please try again later",
+    };
+  }
+}
+
+const submitZZZUIDSchema = z.object({
+  uid: z.string().min(1),
+});
+export async function submitZZZUID(prevState: any, formData: FormData) {
+  const parse = submitZZZUIDSchema.safeParse({
+    uid: formData.get("uid") || prevState?.uid,
+  });
+  console.log("[submitZZZUID] Starting", { prevState, formData });
+
+  if (!parse.success) {
+    console.log("[submitZZZUID] Missing uid", { error: parse.error });
+    return { message: parse.error.message };
+  }
+
+  const response = await fetch(
+    `${process.env.GENSHIN_MHY_API}/zzz/uid/${parse.data.uid}`,
+    {
+      method: "GET",
+      headers: {
+        "accept-encoding": "*",
+        "User-Agent": `enkanetwork.js/v2.8.6`,
+      },
+      referrerPolicy: "strict-origin-when-cross-origin",
+      next: {
+        revalidate: 0,
+      },
+    },
+  );
+
+  const jsonResponse = await response.json();
+
+  if (!response.ok) {
+    console.log("[submitZZZUID] Invalid uid", {
+      uid: parse.data.uid,
+      response: response.status,
+      message: (jsonResponse as any).message,
+    });
+    return { message: "Invalid uid" };
+  }
+
+  const data = jsonResponse as EnkaZZZPlayerDataAPI;
+
+  try {
+    let player = await db.query.zzzPlayers.findFirst({
+      where: eq(zzzPlayers.uid, data.uid),
+    });
+
+    if (!player) {
+      console.log(
+        `[submitZZZUID] Player [${data.uid}] not found, creating new one`,
+      );
+
+      const insert: InsertZZZPlayer = {
+        id: createId(),
+        uid: data.uid,
+        socialDetail: data.PlayerInfo.SocialDetail,
+        updatedAt: new Date(),
+        createdAt: new Date(),
+      };
+      const result = await db.insert(zzzPlayers).values(insert).returning({
+        insertedId: zzzPlayers.id,
+      });
+      if (result.length === 1) {
+        player = await db.query.zzzPlayers.findFirst({
+          where: eq(zzzPlayers.uid, data.uid),
+        });
+      } else {
+        console.error("[submitZZZUID] error insertPlayer", result);
+        return { message: "error insertPlayer" };
+      }
+
+      const insertBuilds: InsertZZZBuilds[] =
+        data.PlayerInfo.ShowcaseDetail.AvatarList.map((avatar) => ({
+          id: createId(),
+          playerId: player!.id,
+          avatarId: avatar.Id,
+          info: avatar,
+        }));
+
+      if (insertBuilds.length > 0) {
+        const insertAvatars = await db
+          .insert(zzzBuilds)
+          .values(insertBuilds)
+          .returning({
+            insertedId: zzzBuilds.id,
+          });
+
+        if (insertAvatars.length !== insertBuilds.length) {
+          console.error("[submitZZZUID] error insertAvatars", insertAvatars);
+          return { message: "error insertAvatars" };
+        }
+      }
+    } else {
+      // Check if we got the cached player data
+      if (data.ttl < 60) {
+        console.log(
+          "[submitZZZUID] Player data is cached, returning cached data",
+          {
+            uid: data.uid,
+            ttl: data.ttl,
+          },
+        );
+        return {
+          message: "Success",
+          uid: data.uid,
+        };
+      }
+
+      const currentBuilds = await db.query.zzzBuilds.findMany({
+        where: eq(zzzBuilds.playerId, player!.id),
+      });
+
+      // Update builds
+      const buildsData = data.PlayerInfo.ShowcaseDetail.AvatarList.map(
+        (avatar) => ({
+          playerId: player!.id,
+          avatarId: avatar.Id,
+          info: avatar,
+        }),
+      );
+      const avatarsIds = currentBuilds.map((build) => build.avatarId);
+      const updateBuilds = buildsData
+        .filter((avatar) => avatarsIds.includes(avatar.avatarId))
+        .map((avatar) => ({
+          where: {
+            id: currentBuilds.find((id) => id.avatarId === avatar.avatarId)?.id,
+          },
+          data: avatar,
+        }));
+
+      for await (const updateBuild of updateBuilds) {
+        const updatedBuild = await db
+          .update(zzzBuilds)
+          .set(updateBuild.data)
+          .where(eq(zzzBuilds.id, updateBuild.where.id!))
+          .returning({
+            updatedId: zzzBuilds.id,
+          });
+
+        if (updatedBuild.length !== 1) {
+          console.error("[submitZZZUID] error updatedBuild", updatedBuild);
+          return {
+            message: "error updatedBuild",
+          };
+        }
+      }
+
+      // insert new builds
+      const insertBuilds: InsertZZZBuilds[] = buildsData
+        .filter((avatar) => {
+          const currentBuild = currentBuilds.find(
+            (build) => build.avatarId === avatar.avatarId,
+          );
+
+          return !currentBuild;
+        })
+        .map((avatar) => ({
+          ...avatar,
+          id: createId(),
+          playerId: player!.id,
+        }));
+
+      if (insertBuilds.length > 0) {
+        const newBuilds = await db
+          .insert(zzzBuilds)
+          .values(insertBuilds)
+          .returning({
+            insertedId: zzzBuilds.id,
+          });
+
+        if (newBuilds.length !== insertBuilds.length) {
+          console.error("[submitZZZUID] error newBuilds", newBuilds);
+          return { message: "error newBuilds" };
+        }
+      }
+
+      // Update player data
+      const updatedPlayer = await db
+        .update(zzzPlayers)
+        .set({
+          socialDetail: data.PlayerInfo.SocialDetail,
+          updatedAt: new Date(),
+        })
+        .where(eq(zzzPlayers.uid, data.uid))
+        .returning({
+          updatedId: zzzPlayers.id,
+        });
+
+      if (updatedPlayer.length !== 1) {
+        console.error("[submitZZZUID] error updatedPlayer", updatedPlayer);
+        return {
+          message: "[submitZZZUID] error updatedPlayer",
+        };
+      }
+    }
+
+    console.log("[submitZZZUID] Success!", { uuid: data.uid });
+
+    i18n.locales.forEach((lang) => {
+      revalidatePath(`/${lang}/zenless/profile/${data.uid}`);
+    });
+
+    return {
+      message: "Success",
+      uid: data.uid,
+    };
+  } catch (error) {
+    console.error("[submitZZZUID] catch error", parse, error);
     return {
       message: "Error, please try again later",
     };

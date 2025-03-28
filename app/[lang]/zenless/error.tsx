@@ -17,7 +17,7 @@ export default function Error({ error, reset }: Props) {
   }, [error]);
 
   return (
-    <div className="relative z-20 overflow-hidden rounded-lg border-2 border-neutral-600 bg-neutral-800 p-6">
+    <div className="relative z-20 overflow-hidden rounded-lg border-2 border-neutral-600 bg-background p-6">
       <Image
         className="absolute -top-4 left-0 z-10 opacity-20 grayscale md:opacity-40 lg:opacity-50"
         src="/imgs/stickers/Sticker_Set_1_Nicole_smash.webp"

@@ -1259,6 +1259,20 @@
       "debuffer": "Debuffer",
       "supporter": "Supporter",
       "explanation": "Explanation"
+    },
+    "profile": {
+      "uid": "UID",
+      "level": "Level",
+      "achievement_count": "Achievements count",
+      "last_updated": "Last Update",
+      "character_showcase": "Avatar Showcase",
+      "view_builds": "View Builds",
+      "element": "Element",
+      "house": "House",
+      "type": "Type",
+      "skill_level": "Skill Level",
+      "weapon": "Weapon",
+      "equipment": "Equipment"
     }
   }
 }
