@@ -9,6 +9,7 @@ interface PageSEOProps {
   description?: string;
   image?: string;
   noOpenGraph?: boolean;
+  noIndex?: boolean;
   [key: string]: any;
 }
 
@@ -19,6 +20,7 @@ export function genPageMetadata({
   description,
   path,
   image,
+  noIndex,
   locale,
   noOpenGraph,
   ...rest
@@ -79,11 +81,11 @@ export function genPageMetadata({
       },
     },
     robots: {
-      index: true,
-      follow: true,
+      index: !noIndex,
+      follow: !noIndex,
       googleBot: {
-        index: true,
-        follow: true,
+        index: !noIndex,
+        follow: !noIndex,
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
