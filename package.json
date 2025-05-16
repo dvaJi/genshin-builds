@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
     "lint": "next lint",
     "analize": "cross-env ANALYZE=true npm run build",
     "start": "next start",

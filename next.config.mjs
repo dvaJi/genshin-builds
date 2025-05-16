@@ -44,6 +44,12 @@ const nextConfig = {
       source: "/ads.txt",
       destination: process.env.ADS_TXT_PUB || "/ads.txt",
     },
+    {
+      source: "/sitemap.xml",
+      destination: process.env.SITEMAP_URL
+        ? process.env.SITEMAP_URL
+        : "https://genshin-builds.com/sitemap.xml",
+    },
   ],
   redirects: async () => [
     {
