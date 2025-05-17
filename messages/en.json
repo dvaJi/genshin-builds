@@ -1081,8 +1081,8 @@
       "sources": "Sources"
     },
     "weapons": {
-      "title": "Wuthering Waves Weapons List | Best Weapons and Skills",
-      "description": "Discover the best weapons in Wuthering Waves with detailed skills and stats.",
+      "title": "{weaponName} - {rarityString} {weaponType} | Wuthering Waves Weapon Guide",
+      "description": "Explore {weaponName}, a {rarityString} {weaponType} in Wuthering Waves. Discover its stats, and all required ascension materials.",
       "main_title": "Wuthering Waves Weapons List",
       "main_description": "A complete list of all weapons in Wuthering Waves with the most updated information on their skills and stats.",
       "type": "Type",

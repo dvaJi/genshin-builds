@@ -1093,6 +1093,20 @@
       "home": "Trang chủ",
       "tierlist": "Danh sách Tierl",
       "w-engines": "Động cơ w"
+    },
+    "profile": {
+      "achievement_count": "Thành tích đếm",
+      "character_showcase": "Triển lãm Avatar",
+      "element": "Yếu tố",
+      "equipment": "Thiết bị",
+      "house": "Căn nhà",
+      "last_updated": "Cập nhật cuối cùng",
+      "level": "Mức độ",
+      "skill_level": "Trình độ kỹ năng",
+      "type": "Kiểu",
+      "uid": "Uid",
+      "view_builds": "Xem bản dựng",
+      "weapon": "Vũ khí"
     }
   },
   "WW": {
@@ -1113,7 +1127,7 @@
       "combat_roles": "Vai trò chiến đấu",
       "description": "{chacentername} là một ký tự {RarityString} ({Rarity} ★) trong sóng wuthering. \nKhám phá các bản dựng và thành phần nhóm tốt nhất cho {chacentername}.",
       "element": "Yếu tố",
-      "main_title": "Wuthering Waves {chacentername} Hướng dẫn xây dựng",
+      "main_title": "Wuthering Waves {characterName} Hướng dẫn xây dựng",
       "no_special_food": "Không có thức ăn đặc biệt",
       "resonance_chain": "{ChacterName} Chuỗi cộng hưởng",
       "skills": "{charactername} Kỹ năng",
@@ -1147,11 +1161,11 @@
       "cost": "Trị giá",
       "description": "{Echoname} là một tiếng vang trong sóng wuthering. \nTìm hiểu về các kỹ năng của nó và làm thế nào để sử dụng nó một cách hiệu quả.",
       "echo_skill": "{echoname} kỹ năng echo",
-      "main_title": "Wuthering Waves {Echoname} Echo",
+      "main_title": "Wuthering Waves {echoName} Echo",
       "num_pieces": "{N} -Piece Set",
       "rarity": "Hiếm khi",
       "sonata_effect": "{Echoname} Hiệu ứng sonata",
-      "title": "Wuthering Waves {Echoname} Hướng dẫn Echo | \nKỹ năng và hiệu ứng",
+      "title": "Wuthering Waves {echoName} Hướng dẫn Echo | \nKỹ năng và hiệu ứng",
       "type": "Kiểu"
     },
     "echoes": {
@@ -1252,13 +1266,13 @@
     },
     "weapons": {
       "ascensions": "Sự thăng thiên",
-      "description": "Khám phá những vũ khí tốt nhất trong sóng wuthering với các kỹ năng và chỉ số chi tiết.",
+      "description": "Khám phá {weaponName}, một {rarityString} {weaponType} trong sóng Wuthering. \nKhám phá số liệu thống kê của nó, và tất cả các vật liệu thăng thiên cần thiết.",
       "level_n": "Cấp độ {n}",
       "main_description": "Một danh sách đầy đủ tất cả các vũ khí trong sóng Wuthering với thông tin được cập nhật nhất về các kỹ năng và số liệu thống kê của chúng.",
       "main_title": "Danh sách vũ khí của Wuthering Waves",
       "rarity": "Hiếm khi",
       "syntonize": "Đồng bộ",
-      "title": "Danh sách vũ khí của Wuthering Waves | \nVũ khí và kỹ năng tốt nhất",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nHướng dẫn vũ khí của Wuthering Waves",
       "type": "Kiểu"
     }
   }

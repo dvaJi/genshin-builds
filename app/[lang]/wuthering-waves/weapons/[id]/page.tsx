@@ -52,7 +52,11 @@ export async function generateMetadata({
   }
 
   return genPageMetadata({
-    title: t("title", { weaponName: item.name }),
+    title: t("title", {
+      weaponName: item.name,
+      rarityString: rarityToString(item.rarity),
+      weaponType: item.type.name,
+    }),
     description: t("description", {
       weaponName: item.name,
       rarity: item.rarity.toString(),

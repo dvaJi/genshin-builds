@@ -993,7 +993,7 @@
       "syntonize": "Uydurmak",
       "ascensions": "Yükseliş",
       "level_n": "Seviye {n}",
-      "description": "Ayrıntılı beceriler ve istatistiklerle wuthering dalgalarındaki en iyi silahları keşfedin.",
+      "description": "Wuthering dalgalarında {rarityString} {weaponType} olan {weaponName} 'ı keşfedin. \nİstatistiklerini ve gerekli tüm yükseliş malzemelerini keşfedin.",
       "main_description": "Becerileri ve istatistikleri hakkında en güncel bilgilerle Wuthering dalgalarındaki tüm silahların tam bir listesi.",
       "main_title": "Wuthering Waves Silah Listesi",
       "title": "Wuthering Waves Silah Listesi | \nEn iyi silah ve beceriler"
@@ -1259,6 +1259,20 @@
       "debuffer": "Küstah",
       "supporter": "Destekçi",
       "explanation": "Açıklama"
+    },
+    "profile": {
+      "achievement_count": "Başarılar Sayısı",
+      "character_showcase": "Avatar Vitrini",
+      "element": "Eleman",
+      "equipment": "Teçhizat",
+      "house": "Ev",
+      "last_updated": "Son Güncelleme",
+      "level": "Seviyesi",
+      "skill_level": "Beceri seviyesi",
+      "type": "Tip",
+      "uid": "Uid",
+      "view_builds": "BURING'leri Görüntüle",
+      "weapon": "Silah"
     }
   }
 }

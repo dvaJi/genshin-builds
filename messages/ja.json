@@ -1082,8 +1082,8 @@
       "sources": "入手方法"
     },
     "weapons": {
-      "title": "『鳴潮』 武器一覧 | ベスト武器とスキル",
-      "description": "詳細なスキルとステータスを持つ『鳴潮』の最高の武器を発見しよう。",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nWuthering Waves Weapon Guide",
+      "description": "{weaponName}、{rarityString} {weaponType} wuthering波のExploreを。\nその統計を発見し、すべてが必要な昇天資料を発見します。",
       "main_title": "『鳴潮』 武器一覧",
       "main_description": "全ての武器の最新情報を持つ『鳴潮』の武器を完全にリストアップ。",
       "ascensions": "昇天",
@@ -1260,6 +1260,20 @@
       "home": "家",
       "tierlist": "ティアリスト",
       "w-engines": "W-エンジン"
+    },
+    "profile": {
+      "achievement_count": "成果は重要です",
+      "character_showcase": "アバターショーケース",
+      "element": "要素",
+      "equipment": "装置",
+      "house": "家",
+      "last_updated": "最後の更新",
+      "level": "レベル",
+      "skill_level": "スキルレベル",
+      "type": "タイプ",
+      "uid": "uid",
+      "view_builds": "ビルドを表示します",
+      "weapon": "武器"
     }
   }
 }

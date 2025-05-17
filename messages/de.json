@@ -1082,8 +1082,8 @@
       "sources": "Quellen"
     },
     "weapons": {
-      "title": "Wuthering Waves Waffenliste | Beste Waffen und Fähigkeiten",
-      "description": "Entdecken Sie die besten Waffen in Wuthering Waves mit detaillierten Fähigkeiten und Statistiken.",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nWuthering Waves Weapon Guide",
+      "description": "Erkunden Sie {weaponName}, a {rarityString} {weaponType} in Wuthering -Wellen. \nEntdecken Sie seine Statistiken und alle erforderlichen Aufstiegsmaterialien.",
       "main_title": "Wuthering Waves Waffenliste",
       "main_description": "Eine vollständige Liste aller Waffen in Wuthering Waves mit den aktuellsten Informationen zu ihren Fähigkeiten und Statistiken.",
       "ascensions": "Aufstieg",
@@ -1260,6 +1260,20 @@
       "home": "Heim",
       "tierlist": "Tierliste",
       "w-engines": "W-Engine"
+    },
+    "profile": {
+      "achievement_count": "Erfolge zählen",
+      "character_showcase": "Avatar Showcase",
+      "element": "Element",
+      "equipment": "Ausrüstung",
+      "house": "Haus",
+      "last_updated": "Letztes Update",
+      "level": "Ebene",
+      "skill_level": "Fähigkeitsniveau",
+      "type": "Typ",
+      "uid": "Uid",
+      "view_builds": "Ansicht Builds",
+      "weapon": "Waffe"
     }
   }
 }

@@ -1082,8 +1082,8 @@
       "sources": "Fontes"
     },
     "weapons": {
-      "title": "Lista de Armas de Wuthering Waves | Melhores Armas e Habilidades",
-      "description": "Descubra as melhores armas em Wuthering Waves com habilidades e estatísticas detalhadas.",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nGuia de armas de ondas Wuthering",
+      "description": "Explore {weaponName}, A {rarityString} {weaponType} em Wuthering Waves. \nDescubra suas estatísticas e todos os materiais de ascensão exigidos.",
       "main_title": "Lista de Armas de Wuthering Waves",
       "main_description": "Uma lista completa de todas as armas em Wuthering Waves com as informações mais atualizadas sobre suas habilidades e estatísticas.",
       "ascensions": "Ascensões",
@@ -1260,6 +1260,20 @@
       "home": "Lar",
       "tierlist": "TierList",
       "w-engines": "W-Engine"
+    },
+    "profile": {
+      "achievement_count": "Concedidas contam",
+      "character_showcase": "Avatar Showcase",
+      "element": "Elemento",
+      "equipment": "Equipamento",
+      "house": "Casa",
+      "last_updated": "Última atualização",
+      "level": "Nível",
+      "skill_level": "Nível de habilidade",
+      "type": "Tipo",
+      "uid": "Uid",
+      "view_builds": "Ver construções",
+      "weapon": "Arma"
     }
   }
 }

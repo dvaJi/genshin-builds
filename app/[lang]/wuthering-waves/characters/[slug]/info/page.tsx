@@ -99,6 +99,7 @@ export default async function CharacterPage({ params }: Props) {
           </svg>
           <div>{t("info")}</div>
         </Link>
+        <h1 className="mb-2 text-3xl text-white">{character.name}</h1>
         <div className="col-span-2 m-4 flex flex-col p-4">
           <h2 className="mx-2 mb-2 text-xl text-ww-50 lg:mx-0">
             {character.name} VA

@@ -1082,8 +1082,8 @@
       "sources": "Sources"
     },
     "weapons": {
-      "title": "Liste des Armes de Wuthering Waves | Meilleures Armes et Compétences",
-      "description": "Découvrez les meilleures armes dans Wuthering Waves avec des compétences et statistiques détaillées.",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nGuide d'armes Wuthering Waves",
+      "description": "Explore {weaponName}, un {rarityString} {weaponType} dans Wuthering Waves. \nDécouvrez ses statistiques et tous les matériaux d'ascension requis.",
       "main_title": "Liste des Armes de Wuthering Waves",
       "main_description": "Une liste complète de toutes les armes dans Wuthering Waves avec les informations les plus récentes sur leurs compétences et statistiques.",
       "ascensions": "Ascensions",
@@ -1260,6 +1260,20 @@
       "home": "Maison",
       "tierlist": "Tierlist",
       "w-engines": "W-mo dans le moteur"
+    },
+    "profile": {
+      "achievement_count": "Les réalisations comptent",
+      "character_showcase": "Vitrine avatar",
+      "element": "Élément",
+      "equipment": "Équipement",
+      "house": "Maison",
+      "last_updated": "Dernière mise à jour",
+      "level": "Niveau",
+      "skill_level": "Niveau de compétence",
+      "type": "Taper",
+      "uid": "Uid",
+      "view_builds": "Afficher les constructions",
+      "weapon": "Arme"
     }
   }
 }

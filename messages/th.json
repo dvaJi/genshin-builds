@@ -1093,6 +1093,20 @@
       "home": "บ้าน",
       "tierlist": "ผู้เล่นชั้น",
       "w-engines": "เครื่องยนต์ W-engine"
+    },
+    "profile": {
+      "achievement_count": "ความสำเร็จนับจำนวน",
+      "character_showcase": "Avatar Showcase",
+      "element": "องค์ประกอบ",
+      "equipment": "อุปกรณ์",
+      "house": "บ้าน",
+      "last_updated": "อัปเดตล่าสุด",
+      "level": "ระดับ",
+      "skill_level": "ระดับความสามารถ",
+      "type": "พิมพ์",
+      "uid": "uid",
+      "view_builds": "ดูการสร้าง",
+      "weapon": "อาวุธ"
     }
   },
   "WW": {

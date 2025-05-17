@@ -1082,8 +1082,8 @@
       "sources": "획득처"
     },
     "weapons": {
-      "title": "『명조:워더링 웨이브』 무기 목록 | 최고의 무기와 스킬",
-      "description": "상세한 스킬과 스탯을 가진 『명조:워더링 웨이브』의 최고의 무기를 발견하세요.",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nWuthering Waves 무기 가이드",
+      "description": "Wuthering Waves에서{weaponName} {rarityString} {weaponType}를 탐색하십시오. \n통계와 필요한 모든 승천 재료를 발견하십시오.",
       "main_title": "『명조:워더링 웨이브』 무기 목록",
       "main_description": "『명조:워더링 웨이브』의 모든 무기를 최신 스킬과 스탯 정보와 함께 완전하게 목록화했습니다.",
       "ascensions": "상승",
@@ -1260,6 +1260,20 @@
     "wengines": {
       "description": "Zenless Zone Zero의 모든 W- 엔진 무기 및 통계 목록.",
       "title": "Zenless Zone Zero (ZZZ) W- 엔진 목록"
+    },
+    "profile": {
+      "achievement_count": "업적 계산",
+      "character_showcase": "아바타 쇼케이스",
+      "element": "요소",
+      "equipment": "장비",
+      "house": "집",
+      "last_updated": "마지막 업데이트",
+      "level": "수준",
+      "skill_level": "기술 수준",
+      "type": "유형",
+      "uid": "uid",
+      "view_builds": "보기 빌드",
+      "weapon": "무기"
     }
   }
 }

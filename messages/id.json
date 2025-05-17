@@ -863,7 +863,7 @@
       "piece_set": "Set potongan",
       "recommended_characters": "Karakter yang disarankan",
       "relic_pieces": "Potongan peninggalan",
-      "title_detail": "{Name} Honkai: Star Rail Relic"
+      "title_detail": "{name} Honkai: Star Rail Relic"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Daftar Tier",
@@ -1082,8 +1082,8 @@
       "sources": "Sumber"
     },
     "weapons": {
-      "title": "Daftar Senjata Wuthering Waves | Senjata Terbaik dan Skill",
-      "description": "Temukan senjata terbaik di Wuthering Waves dengan skill dan statistik yang detail.",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nWuthering Waves Weapon Guide",
+      "description": "Jelajahi {weaponName}, A {rarityString} {weaponType} dalam gelombang wuthering. \nTemukan statistiknya, dan semua bahan kenaikan yang diperlukan.",
       "main_title": "Daftar Senjata Wuthering Waves",
       "main_description": "Daftar lengkap semua senjata di Wuthering Waves dengan informasi terbaru tentang skill dan statistik mereka.",
       "ascensions": "Kenaikan",
@@ -1260,6 +1260,20 @@
     "wengines": {
       "description": "Daftar semua senjata mesin-W dan statistik mereka di zona zenless nol.",
       "title": "Zenless Zone Zero (ZZZ) W-Engine List"
+    },
+    "profile": {
+      "achievement_count": "Hitungan Prestasi",
+      "character_showcase": "Showcase Avatar",
+      "element": "Elemen",
+      "equipment": "Peralatan",
+      "house": "Rumah",
+      "last_updated": "Pembaruan terakhir",
+      "level": "Tingkat",
+      "skill_level": "Tingkat keterampilan",
+      "type": "Jenis",
+      "uid": "Uid",
+      "view_builds": "Lihat Builds",
+      "weapon": "Senjata"
     }
   }
 }

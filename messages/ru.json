@@ -1082,8 +1082,8 @@
       "sources": "Источники"
     },
     "weapons": {
-      "title": "Список Оружия в Wuthering Waves | Лучшее Оружие и Навыки",
-      "description": "Откройте для себя лучшее оружие в Wuthering Waves с подробными навыками и характеристиками.",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nWuthering Waves Guide Guide",
+      "description": "Исследуйте {weaponName}, {rarityString} {weaponType} в волнах Wuthering. \nОткройте для себя его статистику, и все необходимые материалы для вознесения.",
       "main_title": "Список Оружия Wuthering Waves",
       "main_description": "Полный список всего оружия в Wuthering Waves с самой актуальной информацией о их навыках и характеристиках.",
       "ascensions": "Подъема",
@@ -1260,6 +1260,20 @@
     "wengines": {
       "description": "Список всего оружия w-engines и их статистика в беззенской зоне ноль.",
       "title": "Zenless Zone Zero (ZZZ) W-engines"
+    },
+    "profile": {
+      "achievement_count": "Достижения подсчитаны",
+      "character_showcase": "Аватарская витрина",
+      "element": "Элемент",
+      "equipment": "Оборудование",
+      "house": "Дом",
+      "last_updated": "Последнее обновление",
+      "level": "Уровень",
+      "skill_level": "Уровень мастерства",
+      "type": "Тип",
+      "uid": "Uid",
+      "view_builds": "Посмотреть сборки",
+      "weapon": "Оружие"
     }
   }
 }

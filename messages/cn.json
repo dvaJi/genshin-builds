@@ -938,7 +938,7 @@
       "achievements": "Achievements",
       "character": "Character",
       "crit_value": "Crit Value",
-      "description": "Community-driven Honkai: Star Rail leaderboard showcasing exceptional character builds and configurations. Find inspiration for your team or submit your own builds to compete.",
+      "description": "由社区驱动的《崩坏：星轨》排行榜，展示精彩的角色构建和配置。为您的团队寻找灵感，或提交您自己的构建来参与竞赛。",
       "displaying": "Showing {start} - {end} of {total} players",
       "eidolons": "Eidolons",
       "failed_load_data": "Failed to load, please try again later.",
@@ -964,7 +964,7 @@
       "section_still_in_development": "This section is still in development.",
       "showing": "Showing",
       "submit_uid": "Submit your UID here!",
-      "title": "Honkai: Star Rail Build Rankings: See Who's On Top",
+      "title": "崩坏：星轨建造排行榜：看看谁是冠军",
       "trailblaze_level": "Trailblaze Level",
       "uid_placeholder": "Enter UID..."
     }
@@ -1081,8 +1081,8 @@
       "sources": "来源"
     },
     "weapons": {
-      "title": "《鳴潮》 武器列表 | 最佳武器和技能",
-      "description": "发现 《鳴潮》 中的最佳武器，包含详细的技能和属性。",
+      "title": "{weaponName} - {rarityString} {weaponType} | 呼啸浪潮武器指南",
+      "description": "Explore {weaponName}, a {rarityString} {weaponType} in Wuthering Waves. Discover its stats, and all required ascension materials.",
       "main_title": "《鳴潮》 武器列表",
       "main_description": "《鳴潮》 中所有武器的完整列表，提供最新的技能和属性信息。",
       "type": "Type",
@@ -1259,6 +1259,20 @@
       "debuffer": "Debuffer",
       "supporter": "Supporter",
       "explanation": "Explanation"
+    },
+    "profile": {
+      "achievement_count": "Achievements count",
+      "character_showcase": "Avatar Showcase",
+      "element": "Element",
+      "equipment": "Equipment",
+      "house": "House",
+      "last_updated": "Last Update",
+      "level": "Level",
+      "skill_level": "Skill Level",
+      "type": "Type",
+      "uid": "UID",
+      "view_builds": "View Builds",
+      "weapon": "Weapon"
     }
   }
 }

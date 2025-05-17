@@ -1082,8 +1082,8 @@
       "sources": "來源"
     },
     "weapons": {
-      "title": "《鸣潮》 武器列表｜最佳武器與技能",
-      "description": "發現《鸣潮》中最好的武器，包含詳細的技能和屬性。",
+      "title": "{weaponName}  -  {rarityString} {weaponType} | Wuthering Waves武器指南",
+      "description": "探索{weaponName}，{rarityString} {weaponType}在wuthering波中。發現其統計數據，並所有必需的提升材料。",
       "main_title": "《鸣潮》 武器列表",
       "main_description": "完整列出《鸣潮》中的所有武器，包含他們最新的技能和屬性資訊。",
       "type": "類型",
@@ -1260,6 +1260,20 @@
       "debuffer": "Debuffer",
       "supporter": "支持者",
       "explanation": "解釋"
+    },
+    "profile": {
+      "achievement_count": "成就很重要",
+      "character_showcase": "頭像展示櫃",
+      "element": "元素",
+      "equipment": "裝置",
+      "house": "房子",
+      "last_updated": "最後更新",
+      "level": "等級",
+      "skill_level": "技能水平",
+      "type": "類型",
+      "uid": "UID",
+      "view_builds": "查看構建",
+      "weapon": "武器"
     }
   }
 }

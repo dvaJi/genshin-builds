@@ -820,12 +820,12 @@
       "recommended_characters": "Caratteri consigliati",
       "ornament": "Ornamento",
       "description": "Un elenco completo di tutte le reliquie e delle loro statistiche in Honkai: Star Rail.",
-      "description_detail": "Scopri le migliori reliquie per {nome} in Honkai: Star Rail. \nSono inclusi anche le loro statistiche, i bonus stabiliti e altro ancora.",
+      "description_detail": "Scopri le migliori reliquie per {name} in Honkai: Star Rail. \nSono inclusi anche le loro statistiche, i bonus stabiliti e altro ancora.",
       "relics": "Reliquie",
       "relics_desc": "Le reliquie sono elementi che possono essere attrezzati sui personaggi. \nLe reliquie forniscono statistiche aggiuntive, tra cui HP, velocità, attacco e difesa al personaggio attrezzato. \nTutte le reliquie danno potenziamenti extra se abbinati alle loro controparti, chiamate \"set\". \nLe reliquie possono essere aggiornate con il materiale EXP per aumentare le statistiche.",
       "set": "Impostato",
       "title": "Honkai: elenco di reliquie ferroviarie di stelle",
-      "title_detail": "{Nome} Honkai: Star Rail Relic"
+      "title_detail": "{name} Honkai: Star Rail Relic"
     },
     "profile": {
       "simulated": "Simulato",
@@ -906,12 +906,12 @@
       "leaderboard": "Classifica"
     },
     "message": {
-      "description": "Scopri tutti i messaggi da {name} - {firma}",
+      "description": "Scopri tutti i messaggi da {name} - {signature}",
       "message": "Messaggio {Messagenumber}",
       "messages": "Messaggi",
       "related_messages": "Messaggi correlati",
       "section": "Sezione {sectionnumber}",
-      "title": "Honkai: Star Rail {Nome} Messaggi"
+      "title": "Honkai: Star Rail {name} Messaggi"
     },
     "messages": {
       "description": "Un elenco completo di tutti i messaggi in Honkai: Star Rail.",
@@ -993,10 +993,10 @@
       "syntonize": "Sintonizzazione",
       "ascensions": "Ascensioni",
       "level_n": "Livello {n}",
-      "description": "Scopri le migliori armi nelle onde di Wuthering con abilità e statistiche dettagliate.",
+      "description": "Esplora {weaponName}, A {rarityString} {weaponType} in Wuthering Waves. \nScopri le sue statistiche e tutti i materiali di ascensione richiesti.",
       "main_description": "Un elenco completo di tutte le armi nelle onde di Wuthering con le informazioni più aggiornate sulle loro capacità e statistiche.",
       "main_title": "Wuthering Waves Elenco delle armi",
-      "title": "Wuthering Waves Elenco delle armi | \nMigliori armi e abilità"
+      "title": "{weaponName} - {rarityString} {weaponType} | \nWuthering Waves Weapon Guide"
     },
     "character": {
       "1_cost": "1 costo",
@@ -1049,11 +1049,11 @@
       "cost": "Costo",
       "description": "{Echoname} è un'eco nelle onde di Wuthering. \nScopri le sue capacità e come utilizzarle in modo efficace.",
       "echo_skill": "{Echoname} Echo Abilità",
-      "main_title": "Wuthering Waves {echoname} echo",
+      "main_title": "Wuthering Waves {echoName} echo",
       "num_pieces": "{n} -met set",
       "rarity": "Rarità",
       "sonata_effect": "{Echoname} Effetto Sonata",
-      "title": "Wuthering Waves {echoname} Echo Guide | \nAbilità ed effetti",
+      "title": "Wuthering Waves {echoName} Echo Guide | \nAbilità ed effetti",
       "type": "Tipo"
     },
     "echoes": {
@@ -1259,6 +1259,20 @@
       "debuffer": "Debuffer",
       "supporter": "Sostenitore",
       "explanation": "Spiegazione"
+    },
+    "profile": {
+      "achievement_count": "I risultati contano",
+      "character_showcase": "Avatar Showcase",
+      "element": "Elemento",
+      "equipment": "Attrezzatura",
+      "house": "Casa",
+      "last_updated": "Ultimo aggiornamento",
+      "level": "Livello",
+      "skill_level": "Livello di abilità",
+      "type": "Tipo",
+      "uid": "Uid",
+      "view_builds": "Visualizza build",
+      "weapon": "Arma"
     }
   }
 }

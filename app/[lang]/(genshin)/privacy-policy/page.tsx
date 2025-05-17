@@ -15,6 +15,7 @@ export async function generateStaticParams() {
 export default async function PrivacyPolicy() {
   return (
     <div className="card">
+      <h1 className="text-3xl font-bold">Privacy Policy</h1>
       <article className="prose prose-invert max-w-none">
         <p>Effective date: June 15, 2023</p>
         <p>

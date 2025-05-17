@@ -862,7 +862,7 @@
       "recommended_characters": "Personajes recomendados",
       "ornament": "Ornamento",
       "description_detail": "Descubra las mejores reliquias para {name} en Honkai: Star Rail. \nTambién se incluyen sus estadísticas, bonificaciones establecidas y más.",
-      "title_detail": "{nombre} Honkai: Reliquia de Rail Star"
+      "title_detail": "{name} Honkai: Reliquia de Rail Star"
     },
     "tierlist": {
       "title": "Honkai: Star Rail Lista de Niveles",
@@ -1081,8 +1081,8 @@
       "sources": "Fuentes"
     },
     "weapons": {
-      "title": "Lista de Armas de Wuthering Waves | Mejores Armas y Habilidades",
-      "description": "Descubre las mejores armas en Wuthering Waves con habilidades y estadísticas detalladas.",
+      "title": "{weaponName} - {rarityString} {weaponType} | \nGuía de armas de ondas huying",
+      "description": "Explore {weaponName}, un {rarityString} {weaponType} en ondas hormigonantes. \nDescubra sus estadísticas y todos los materiales de ascensión requeridos.",
       "main_title": "Lista de Armas de Wuthering Waves",
       "main_description": "Una lista completa de todas las armas en Wuthering Waves con la información más actualizada sobre sus habilidades y estadísticas.",
       "type": "Tipo",
@@ -1259,6 +1259,20 @@
       "debuffer": "Debuffer",
       "supporter": "Seguidor",
       "explanation": "Explicación"
+    },
+    "profile": {
+      "achievement_count": "Cuenta de logros",
+      "character_showcase": "Escaparate de avatar",
+      "element": "Elemento",
+      "equipment": "Equipo",
+      "house": "Casa",
+      "last_updated": "Última actualización",
+      "level": "Nivel",
+      "skill_level": "Nivel de habilidad",
+      "type": "Tipo",
+      "uid": "Uid",
+      "view_builds": "Ver compilaciones",
+      "weapon": "Arma"
     }
   }
 }
