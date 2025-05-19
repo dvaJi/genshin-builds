@@ -147,6 +147,93 @@ export default async function GenshinCharacterPage({ params }: Props) {
           __html: `window.__VM = window.__VM || [];`,
         }}
       />
+      {/* Desktop Takeover Ad with min-height and id */}
+      <div className="hidden md:block">
+        <VMAd
+          placementName="desktop_takeover"
+          className="min-h-[250px]" // Use Tailwind CSS class for min-height
+          id="desktop-takeover-ad"
+        />
+      </div>
+      {/* Mobile Takeover Ad with id */}
+      <div className="md:hidden">
+        <VMAd placementName="mobile_takeover" id="mobile-takeover-ad" />
+      </div>
+
+      {/* Billboard Ad */}
+      <VMAd placementName="billboard" />
+
+      {/* Character Information Block */}
+      <div className="relative z-20 my-4 flex flex-col items-start justify-between space-y-2 sm:space-y-4">
+        <div className="flex w-full flex-col items-center px-2 sm:flex-row sm:items-start lg:px-0">
+          <div
+            className={cn(
+              "relative mb-3 flex-none rounded-xl border-2 border-gray-900/80 sm:mb-0 sm:mr-4",
+              `genshin-bg-rarity-${character.rarity}`,
+            )}
+          >
+            <Image
+              className="h-28 w-28 sm:h-32 sm:w-32 md:h-40 md:w-40"
+              src={`/characters/${character.id}/image.png`}
+              alt={character.name}
+              width={160}
+              height={160}
+            />
+          </div>
+          <div className="flex flex-grow flex-col space-y-2 text-center sm:text-left">
+            <div className="mb-2 flex flex-col items-center sm:mb-0 sm:flex-row sm:items-center">
+              <h1 className="mb-2 text-2xl text-white sm:mb-0 sm:mr-2 sm:text-3xl">
+                {t("character_title", { name: character.name })}
+              </h1>
+              <ElementIcon
+                type={common[character.element.name]}
+                width={30}
+                height={30}
+              />
+            </div>
+            <div className="mt-1 flex flex-wrap justify-center gap-1.5 sm:justify-start sm:gap-2">
+              <WeaponTypeBadge weaponType={character.weapon_type} />
+              <ElementBadge element={character.element} />
+              <Badge
+                variant="secondary"
+                className="max-w-[120px] text-xs sm:max-w-none sm:text-sm"
+              >
+                <FaUserFriends className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.affiliation}</span>
+              </Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">
+                <FaBirthdayCake className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.birthday.join("/")}</span>
+              </Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">
+                <FaStar className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.constellation}</span>
+              </Badge>
+              <Badge
+                variant="secondary"
+                className="max-w-[120px] text-xs sm:max-w-none sm:text-sm"
+              >
+                <FaMapMarkedAlt className="mr-1 h-3 w-3 flex-shrink-0 sm:h-[14px] sm:w-[14px]" />
+                <span className="truncate">{character.domain}</span>
+              </Badge>
+            </div>
+            <blockquote className="mt-6 italic">
+              {character.description}
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      {(character as any).beta ? (
+        <div className="flex items-center justify-center px-4 sm:px-0">
+          <div className="w-full rounded border border-red-400/50 bg-red-600/50 p-2 text-center text-white">
+            Current content is a subject to change!
+          </div>
+        </div>
+      ) : null}
+
+      {/* Leaderboard Ad */}
+      <VMAd placementName="leaderboard" />
+
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -220,6 +307,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
           </div>
         </div>
       ) : null}
+
       {/* Venatus Desktop Takeover Ad (slot-1) - place at the very top for maximum viewability */}
       <div className="my-4 flex justify-center">
         <VMAd placementName="desktop_takeover" />
@@ -386,6 +474,16 @@ export default async function GenshinCharacterPage({ params }: Props) {
           talentsTotal={talentsTotal}
         />
       </div>
+      {/* Horizontal Sticky Ad with bottom margin */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 mb-[100px] md:mb-[90px]">
+        <VMAd placementName="horizontal_sticky" />
+      </div>
+
+      {/* Vertical Sticky Ad */}
+      <VMAd placementName="vertical_sticky" />
+
+      {/* Video Slider Ad */}
+      <VMAd placementName="video_slider" />
     </div>
   );
 }
