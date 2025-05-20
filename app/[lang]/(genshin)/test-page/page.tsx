@@ -154,6 +154,20 @@ export default async function GenshinCharacterPage({ params }: Props) {
           __html: JSON.stringify(jsonLd),
         }}
       ></script>
+      {/* Desktop Takeover Ad with min-height and id for PRVK maintainability */}
+      <div
+        className="my-4 hidden justify-center md:flex"
+        id="desktop-takeover-ad"
+      >
+        <VMAd placementName="desktop_takeover" className="min-h-[250px]" />
+      </div>
+      {/* Mobile Takeover Ad with id for PRVK maintainability */}
+      <div
+        className="my-4 flex justify-center md:hidden"
+        id="mobile-takeover-ad"
+      >
+        <VMAd placementName="mobile_takeover" />
+      </div>
       <div className="relative z-20 mb-4 flex flex-col items-start justify-between space-y-2 sm:space-y-4">
         <div className="flex w-full flex-col items-center px-2 sm:flex-row sm:items-start lg:px-0">
           <div
@@ -220,20 +234,6 @@ export default async function GenshinCharacterPage({ params }: Props) {
           </div>
         </div>
       ) : null}
-      {/* Desktop Takeover Ad with min-height and id for PRVK maintainability */}
-      <div
-        className="my-4 hidden justify-center md:flex"
-        id="desktop-takeover-ad"
-      >
-        <VMAd placementName="desktop_takeover" className="min-h-[250px]" />
-      </div>
-      {/* Mobile Takeover Ad with id for PRVK maintainability */}
-      <div
-        className="my-4 flex justify-center md:hidden"
-        id="mobile-takeover-ad"
-      >
-        <VMAd placementName="mobile_takeover" />
-      </div>
       {/* Billboard Ad (ATF, not stacked with leaderboard) */}
       <div className="my-4 flex justify-center">
         <VMAd placementName="billboard" />
@@ -317,12 +317,14 @@ export default async function GenshinCharacterPage({ params }: Props) {
       <h2 className="mb-2 ml-4 text-3xl text-white lg:ml-0">
         {t("skills", { name: character.name })}
       </h2>
-      <div className={cn(
-        "relative z-20 mb-8 grid w-full grid-cols-1 gap-3 sm:gap-4",
-        character.skills.length > 3
-          ? "lg:grid-cols-3 xl:grid-cols-4"
-          : "lg:grid-cols-3",
-      )}>
+      <div
+        className={cn(
+          "relative z-20 mb-8 grid w-full grid-cols-1 gap-3 sm:gap-4",
+          character.skills.length > 3
+            ? "lg:grid-cols-3 xl:grid-cols-4"
+            : "lg:grid-cols-3",
+        )}
+      >
         {character.skills.map((skill) => (
           <CharacterSkill
             key={skill.id}
