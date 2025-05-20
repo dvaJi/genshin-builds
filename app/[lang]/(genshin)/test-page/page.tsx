@@ -159,7 +159,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         className="my-4 hidden justify-center md:flex"
         id="desktop-takeover-ad"
       >
-        <VMAd placementName="desktop_takeover" className="min-h-[250px]" />
+        <VMAd placementName="desktop_takeover" className="min-h-[90px]" />
       </div>
       {/* Mobile Takeover Ad with id for PRVK maintainability */}
       <div
@@ -235,7 +235,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
         </div>
       ) : null}
       {/* Billboard Ad (ATF, not stacked with leaderboard) */}
-      <div className="my-4 flex justify-center">
+      <div className="my-4 flex min-h-[90px] justify-center">
         <VMAd placementName="billboard" />
       </div>
       {builds?.length > 0 || detail.mubuild ? (

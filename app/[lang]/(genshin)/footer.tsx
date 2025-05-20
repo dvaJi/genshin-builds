@@ -4,9 +4,11 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { RiPatreonFill } from "react-icons/ri";
 
 import LanguageSelector from "@components/ui/LanguageSelector";
-import { Link } from "@i18n/navigation";
+import { Link, usePathname } from "@i18n/navigation";
 
 export default function GenshinFooter() {
+  const pathname = usePathname();
+  const isTestPage = pathname.startsWith("/test-page");
   return (
     <footer className="relative z-10 border-t border-muted bg-card px-4 py-6 text-card-foreground backdrop-blur md:px-20 md:py-14">
       <div className="container mx-auto">
@@ -168,6 +170,7 @@ export default function GenshinFooter() {
           </div>
         </div>
       </div>
+      {isTestPage ? <div className="h-20"></div> : null}
     </footer>
   );
 }
