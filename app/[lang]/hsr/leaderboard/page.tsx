@@ -12,8 +12,6 @@ import { AD_ARTICLE_SLOT } from "@lib/constants";
 import LeaderboardWrapper from "./wrapper";
 
 export const dynamic = "force-static";
-export const runtime = "edge";
-
 export async function generateStaticParams() {
   return routing.locales.map((lang) => ({ lang }));
 }

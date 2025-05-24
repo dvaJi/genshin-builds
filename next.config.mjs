@@ -1,11 +1,10 @@
 import createNextIntlPlugin from "next-intl/plugin";
 
-import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
-
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   pageExtensions: ["ts", "tsx", "js", "jsx"],
   reactStrictMode: true,
   images: {
@@ -123,14 +122,12 @@ const nextConfig = {
   },
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
-  // cacheHandler: process.env.REDIS_URL
-  //   ? require.resolve("./cache-handler.mjs")
-  //   : undefined,
-  // cacheMaxMemorySize: 1073741824, // 1GB in bytes
+  cacheHandler: process.env.REDIS_URL
+    ? require.resolve("./cache-handler.mjs")
+    : undefined,
+  experimental: {
+    instrumentationHook: true,
+  },
 };
-
-if (process.env.IS_DEV_ENV === "true") {
-  await setupDevPlatform();
-}
 
 export default withNextIntl(nextConfig);

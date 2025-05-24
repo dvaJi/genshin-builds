@@ -17,8 +17,6 @@ import { cn } from "@lib/utils";
 export const dynamic = "force-static";
 export const dynamicParams = true;
 export const revalidate = 86400;
-export const runtime = "edge";
-
 export async function generateStaticParams() {
   return [];
 }

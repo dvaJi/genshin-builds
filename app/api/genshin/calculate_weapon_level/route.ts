@@ -5,8 +5,6 @@ import { z } from "zod";
 import type { ExpMaterial, Weapon } from "@interfaces/genshin";
 import { getGenshinData } from "@lib/dataApi";
 
-export const runtime = "edge";
-
 const lvlexp = [
   [
     0, 275, 700, 1300, 2100, 3125, 4400, 5950, 7800, 9975, 12475, 15350, 18600,

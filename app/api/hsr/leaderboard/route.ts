@@ -6,7 +6,6 @@ import { db } from "@lib/db";
 import { hsrPlayers } from "@lib/db/schema";
 import { regionParse } from "@utils/mihomo_enc";
 
-export const runtime = "edge";
 const ITEMS_PER_PAGE = 20;
 
 const schema = z.object({

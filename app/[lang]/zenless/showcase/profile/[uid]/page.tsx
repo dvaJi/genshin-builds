@@ -26,8 +26,6 @@ import { db } from "@lib/db";
 import { zzzBuilds, zzzPlayers } from "@lib/db/schema";
 
 export const dynamic = "force-dynamic";
-export const runtime = "edge";
-
 type Props = {
   params: {
     lang: string;

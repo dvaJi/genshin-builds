@@ -17,8 +17,6 @@ import FarmableToday from "./farmable-today";
 import { LatestPosts } from "./latest-posts";
 import Shortcuts from "./shortcuts";
 
-export const runtime = "edge";
-
 // Loading components with improved visual design
 const LoadingCard = () => (
   <div className="relative h-[280px] w-full animate-pulse overflow-hidden rounded-xl bg-card/90 p-4 sm:h-64 sm:p-6">
