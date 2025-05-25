@@ -1,3 +1,5 @@
+import NextTopLoader from "nextjs-toploader";
+
 import { Toaster } from "@app/components/ui/sonner";
 import { PreloadResources } from "@app/preload-resources";
 import { FormbricksProvider } from "@components/Formbricks";
@@ -26,6 +28,7 @@ export default async function Root({
       <ExternalScripts />
       <FormbricksProvider />
       <body suppressHydrationWarning>
+        <NextTopLoader />
         {children}
         <Toaster />
       </body>
