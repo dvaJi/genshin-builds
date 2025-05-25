@@ -264,7 +264,8 @@
       "passive": "Пассивный",
       "search_placeholder": "Поиск сборки ...",
       "show_build_details": "Показать детали сборки",
-      "substats": "Вещества"
+      "substats": "Вещества",
+      "15anemodmg_set": "Anemo DMG 15% установлен"
     },
     "weapons": {
       "title": "Список ударного оружия Genshin",

@@ -264,7 +264,8 @@
       "passive": "수동적인",
       "search_placeholder": "검색 빌드 ...",
       "show_build_details": "빌드 세부 사항을 보여줍니다",
-      "substats": "변전소"
+      "substats": "변전소",
+      "15anemodmg_set": "ANEMO DMG 15% 세트"
     },
     "weapons": {
       "title": "원신 임팩트 무기 목록",

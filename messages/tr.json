@@ -263,7 +263,8 @@
       "intended_level_error": "Amaçlanan seviye mevcut seviyeden daha yüksek olmalıdır",
       "intended_talent_error": "Amaçlanan yetenek seviyeleri mevcut seviyelerden daha yüksek olmalıdır",
       "no_data_to_add": "Todo listesine eklenecek hesaplama verisi yok",
-      "passive": "Pasif"
+      "passive": "Pasif",
+      "15anemodmg_set": "Anemo DMG% 15 set"
     },
     "weapons": {
       "title": "Genshin Etki Silahları Listesi",

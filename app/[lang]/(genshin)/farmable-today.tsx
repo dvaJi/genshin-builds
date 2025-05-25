@@ -107,7 +107,10 @@ export default function FarmableToday({
                   .find((r) => r.day === currentDay)
                   ?.ids.map((cId) =>
                     weapons[cId] ? (
-                      <Link key={cId} href={`/weapon/${cId}`}>
+                      <Link
+                        key={weaponsDomain.domainName + cId}
+                        href={`/weapon/${cId}`}
+                      >
                         <SimpleRarityBox
                           img={getUrl(`/weapons/${cId}.png`, 64, 64)}
                           rarity={weapons[cId].rarity}

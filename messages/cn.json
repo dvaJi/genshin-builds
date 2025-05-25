@@ -263,7 +263,8 @@
       "intended_level_error": "Intended level must be higher than current level",
       "intended_talent_error": "Intended talent levels must be higher than current levels",
       "no_data_to_add": "No calculation data to add to todo list",
-      "passive": "Passive"
+      "passive": "Passive",
+      "15anemodmg_set": "Anemo DMG  15% set"
     },
     "weapons": {
       "title": "原神武器列表",

@@ -1,5 +1,3 @@
-import { AxiomWebVitals } from "next-axiom";
-
 import { Toaster } from "@app/components/ui/sonner";
 import { PreloadResources } from "@app/preload-resources";
 import { FormbricksProvider } from "@components/Formbricks";
@@ -25,7 +23,6 @@ export default async function Root({
         </head>
       ) : null}
       <PreloadResources />
-      <AxiomWebVitals />
       <ExternalScripts />
       <FormbricksProvider />
       <body suppressHydrationWarning>

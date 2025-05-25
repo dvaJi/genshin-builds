@@ -263,7 +263,8 @@
       "intended_level_error": "Il livello previsto deve essere superiore al livello corrente",
       "intended_talent_error": "I livelli di talento previsti devono essere superiori ai livelli attuali",
       "no_data_to_add": "Nessun dato di calcolo da aggiungere all'elenco TODO",
-      "passive": "Passivo"
+      "passive": "Passivo",
+      "15anemodmg_set": "Anemo dmg 15% set"
     },
     "weapons": {
       "title": "Elenco delle armi da impatto Genshin",
