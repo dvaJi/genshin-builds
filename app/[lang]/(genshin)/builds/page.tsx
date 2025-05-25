@@ -167,7 +167,7 @@ export default async function GenshinCharacterPage({ params }: Props) {
     allBuilds.push({
       character,
       role: build.role,
-      element: character.element?.name ? t(character.element.name) : "",
+      element: character.element.name,
       weapons,
       artifacts,
       stats_priority: (build.stats_priority || []).map((s) =>
