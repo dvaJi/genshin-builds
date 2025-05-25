@@ -27,6 +27,12 @@ function CharacterBuild({
 }: Props) {
   const t = useTranslations("HSR.character");
 
+  if (!lightConesMap[data.bestLightCone]) {
+    console.warn(
+      `Best light cone ${data.bestLightCone} not found in lightConesMap`,
+    );
+  }
+
   return (
     <div className="text-card-foreground">
       <h2 className="mb-4 text-xl font-semibold text-accent">{name}</h2>
@@ -41,15 +47,15 @@ function CharacterBuild({
               className="my-1 flex items-center rounded-sm bg-muted px-2 py-1 text-sm font-semibold hover:bg-accent/20"
             >
               <Image
-                src={`/lightcones/${lightConesMap[data.bestLightCone].id}.png`}
+                src={`/lightcones/${lightConesMap[data.bestLightCone]?.id}.png`}
                 width={80}
                 height={80}
-                alt={lightConesMap[data.bestLightCone].name}
+                alt={lightConesMap[data.bestLightCone]?.name}
               />
               <div className="ml-2">
-                <div>{lightConesMap[data.bestLightCone].name}</div>
+                <div>{lightConesMap[data.bestLightCone]?.name}</div>
                 <div>
-                  <Stars stars={lightConesMap[data.bestLightCone].rarity} />
+                  <Stars stars={lightConesMap[data.bestLightCone]?.rarity} />
                 </div>
               </div>
             </Link>

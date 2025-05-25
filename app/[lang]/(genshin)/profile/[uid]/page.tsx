@@ -154,7 +154,7 @@ export default async function GenshinPlayerProfile({ params }: Props) {
                     <span>•</span>
                     <TimeAgo date={profile.updatedAt} locale={lang} />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary-foreground">
+                  <h2 className="text-2xl font-bold text-primary">
                     {profile.nickname}
                   </h2>
                   <p className="max-w-md text-sm italic text-muted-foreground">

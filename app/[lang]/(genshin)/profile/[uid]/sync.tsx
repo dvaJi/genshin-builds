@@ -1,9 +1,9 @@
 "use client";
 
+import { RefreshCw } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
-import { MdSync } from "react-icons/md";
 
 import { submitGenshinUID } from "@app/actions";
 import { Button } from "@app/components/ui/button";
@@ -34,7 +34,7 @@ function SubmitButton() {
             disabled={pending}
             className="h-9 w-9 rounded-full"
           >
-            <MdSync className={`h-4 w-4 ${pending ? "animate-spin" : ""}`} />
+            <RefreshCw className={`h-4 w-4 ${pending ? "animate-spin" : ""}`} />
             <span className="sr-only">{t("sync_profile_data")}</span>
           </Button>
         </TooltipTrigger>
