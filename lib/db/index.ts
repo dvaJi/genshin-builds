@@ -36,7 +36,7 @@ export const db = drizzle(
 
       return { rows };
     } catch (e: any) {
-      console.error("Error from pg proxy server: ", e);
+      console.error("Error from pg proxy server: ", { sql, params, method }, e);
       return { rows: [] };
     }
   },
